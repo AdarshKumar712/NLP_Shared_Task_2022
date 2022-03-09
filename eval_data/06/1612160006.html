@@ -1,0 +1,1362 @@
+<!doctype html>
+<html lang="es-CL" class="no-js">
+	<head>
+		<meta charset="UTF-8">
+		
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"94d757aee4",applicationID:"183521943"};window.NREUM||(NREUM={}),__nr_require=function(e,t,n){function r(n){if(!t[n]){var i=t[n]={exports:{}};e[n][0].call(i.exports,function(t){var i=e[n][1][t];return r(i||t)},i,i.exports)}return t[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(e,t,n){function r(){}function i(e,t,n){return function(){return o(e,[u.now()].concat(c(arguments)),t?null:this,n),t?void 0:this}}var o=e("handle"),a=e(7),c=e(8),f=e("ee").get("tracer"),u=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(e,t){s[t]=i(p+t,!0,"api")}),s.addPageAction=i(p+"addPageAction",!0),s.setCurrentRouteName=i(p+"routeName",!0),t.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,t){var n={},r=this,i="function"==typeof t;return o(l+"tracer",[u.now(),e,n],r),function(){if(f.emit((i?"":"no-")+"fn-start",[u.now(),r,i],n),i)try{return t.apply(this,arguments)}catch(e){throw f.emit("fn-err",[arguments,this,e],n),e}finally{f.emit("fn-end",[u.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,t){m[t]=i(l+t)}),newrelic.noticeError=function(e,t){"string"==typeof e&&(e=new Error(e)),o("err",[e,u.now(),!1,t])}},{}],2:[function(e,t,n){function r(){return c.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,c=e(9);t.exports=r,t.exports.offset=a,t.exports.getLastTimestamp=i},{}],3:[function(e,t,n){function r(e){return!(!e||!e.protocol||"file:"===e.protocol)}t.exports=r},{}],4:[function(e,t,n){function r(e,t){var n=e.getEntries();n.forEach(function(e){"first-paint"===e.name?d("timing",["fp",Math.floor(e.startTime)]):"first-contentful-paint"===e.name&&d("timing",["fcp",Math.floor(e.startTime)])})}function i(e,t){var n=e.getEntries();n.length>0&&d("lcp",[n[n.length-1]])}function o(e){e.getEntries().forEach(function(e){e.hadRecentInput||d("cls",[e])})}function a(e){if(e instanceof m&&!g){var t=Math.round(e.timeStamp),n={type:e.type};t<=p.now()?n.fid=p.now()-t:t>p.offset&&t<=Date.now()?(t-=p.offset,n.fid=p.now()-t):t=p.now(),g=!0,d("timing",["fi",t,n])}}function c(e){d("pageHide",[p.now(),e])}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var f,u,s,d=e("handle"),p=e("loader"),l=e(6),m=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){f=new PerformanceObserver(r);try{f.observe({entryTypes:["paint"]})}catch(v){}u=new PerformanceObserver(i);try{u.observe({entryTypes:["largest-contentful-paint"]})}catch(v){}s=new PerformanceObserver(o);try{s.observe({type:"layout-shift",buffered:!0})}catch(v){}}if("addEventListener"in document){var g=!1,w=["click","keydown","mousedown","pointerdown","touchstart"];w.forEach(function(e){document.addEventListener(e,a,!1)})}l(c)}},{}],5:[function(e,t,n){function r(e,t){if(!i)return!1;if(e!==i)return!1;if(!t)return!0;if(!o)return!1;for(var n=o.split("."),r=t.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var c=navigator.userAgent,f=c.match(a);f&&c.indexOf("Chrome")===-1&&c.indexOf("Chromium")===-1&&(i="Safari",o=f[1])}t.exports={agent:i,version:o,match:r}},{}],6:[function(e,t,n){function r(e){function t(){e(a&&document[a]?document[a]:document[i]?"hidden":"visible")}"addEventListener"in document&&o&&document.addEventListener(o,t,!1)}t.exports=r;var i,o,a;"undefined"!=typeof document.hidden?(i="hidden",o="visibilitychange",a="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",o="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",o="webkitvisibilitychange",a="webkitVisibilityState")},{}],7:[function(e,t,n){function r(e,t){var n=[],r="",o=0;for(r in e)i.call(e,r)&&(n[o]=t(r,e[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;t.exports=r},{}],8:[function(e,t,n){function r(e,t,n){t||(t=0),"undefined"==typeof n&&(n=e?e.length:0);for(var r=-1,i=n-t||0,o=Array(i<0?0:i);++r<i;)o[r]=e[t+r];return o}t.exports=r},{}],9:[function(e,t,n){t.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,t,n){function r(){}function i(e){function t(e){return e&&e instanceof r?e:e?u(e,f,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!l.aborted||o){e&&a&&e(n,r,i);for(var c=t(i),f=v(n),u=f.length,s=0;s<u;s++)f[s].apply(c,r);var p=d[h[n]];return p&&p.push([b,n,r,c]),c}}function o(e,t){y[e]=v(e).concat(t)}function m(e,t){var n=y[e];if(n)for(var r=0;r<n.length;r++)n[r]===t&&n.splice(r,1)}function v(e){return y[e]||[]}function g(e){return p[e]=p[e]||i(n)}function w(e,t){s(e,function(e,n){t=t||"feature",h[n]=t,t in d||(d[t]=[])})}var y={},h={},b={on:o,addEventListener:o,removeEventListener:m,emit:n,get:g,listeners:v,context:t,buffer:w,abort:c,aborted:!1};return b}function o(e){return u(e,f,a)}function a(){return new r}function c(){(d.api||d.feature)&&(l.aborted=!0,d=l.backlog={})}var f="nr@context",u=e("gos"),s=e(7),d={},p={},l=t.exports=i();t.exports.getOrSetContext=o,l.backlog=d},{}],gos:[function(e,t,n){function r(e,t,n){if(i.call(e,t))return e[t];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,t,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return e[t]=r,r}var i=Object.prototype.hasOwnProperty;t.exports=r},{}],handle:[function(e,t,n){function r(e,t,n,r){i.buffer([e],r),i.emit(e,t,n)}var i=e("ee").get("handle");t.exports=r,r.ee=i},{}],id:[function(e,t,n){function r(e){var t=typeof e;return!e||"object"!==t&&"function"!==t?-1:e===window?0:a(e,o,function(){return i++})}var i=1,o="nr@id",a=e("gos");t.exports=r},{}],loader:[function(e,t,n){function r(){if(!E++){var e=x.info=NREUM.info,t=l.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&t))return u.abort();f(h,function(t,n){e[t]||(e[t]=n)});var n=a();c("mark",["onload",n+x.offset],null,"api"),c("timing",["load",n]);var r=l.createElement("script");r.src="https://"+e.agent,t.parentNode.insertBefore(r,t)}}function i(){"complete"===l.readyState&&o()}function o(){c("mark",["domContent",a()+x.offset],null,"api")}var a=e(2),c=e("handle"),f=e(7),u=e("ee"),s=e(5),d=e(3),p=window,l=p.document,m="addEventListener",v="attachEvent",g=p.XMLHttpRequest,w=g&&g.prototype;if(d(p.location)){NREUM.o={ST:setTimeout,SI:p.setImmediate,CT:clearTimeout,XHR:g,REQ:p.Request,EV:p.Event,PR:p.Promise,MO:p.MutationObserver};var y=""+location,h={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1208.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),x=t.exports={offset:a.getLastTimestamp(),now:a,origin:y,features:{},xhrWrappable:b,userAgent:s};e(1),e(4),l[m]?(l[m]("DOMContentLoaded",o,!1),p[m]("load",r,!1)):(l[v]("onreadystatechange",i),p[v]("onload",r)),c("mark",["firstbyte",a.getLastTimestamp()],null,"api");var E=0}},{}],"wrap-function":[function(e,t,n){function r(e,t){function n(t,n,r,f,u){function nrWrapper(){var o,a,s,p;try{a=this,o=d(arguments),s="function"==typeof r?r(o,a):r||{}}catch(l){i([l,"",[o,a,f],s],e)}c(n+"start",[o,a,f],s,u);try{return p=t.apply(a,o)}catch(m){throw c(n+"err",[o,a,m],s,u),m}finally{c(n+"end",[o,a,p],s,u)}}return a(t)?t:(n||(n=""),nrWrapper[p]=t,o(t,nrWrapper,e),nrWrapper)}function r(e,t,r,i,o){r||(r="");var c,f,u,s="-"===r.charAt(0);for(u=0;u<t.length;u++)f=t[u],c=e[f],a(c)||(e[f]=n(c,s?f+r:r,i,f,o))}function c(n,r,o,a){if(!m||t){var c=m;m=!0;try{e.emit(n,r,o,t,a)}catch(f){i([f,n,r,o],e)}m=c}}return e||(e=s),n.inPlace=r,n.flag=p,n}function i(e,t){t||(t=s);try{t.emit("internal-error",e)}catch(n){}}function o(e,t,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(e);return r.forEach(function(n){Object.defineProperty(t,n,{get:function(){return e[n]},set:function(t){return e[n]=t,t}})}),t}catch(o){i([o],n)}for(var a in e)l.call(e,a)&&(t[a]=e[a]);return t}function a(e){return!(e&&e instanceof Function&&e.apply&&!e[p])}function c(e,t){var n=t(e);return n[p]=e,o(e,n,s),n}function f(e,t,n){var r=e[t];e[t]=c(r,n)}function u(){for(var e=arguments.length,t=new Array(e),n=0;n<e;++n)t[n]=arguments[n];return t}var s=e("ee"),d=e(8),p="nr@original",l=Object.prototype.hasOwnProperty,m=!1;t.exports=r,t.exports.wrapFunction=c,t.exports.wrapInPlace=f,t.exports.argsToArray=u},{}]},{},["loader"]);</script>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta charset="UTF-8">
+
+		<script type="text/javascript" src="//s.ntv.io/serve/load.js" async></script> 
+
+		<!-- FAVICONS -->
+		<link rel="icon" type="image/png" sizes="16x16" href="https://www.theclinic.cl/wp-content/themes/theme_theclinic_ned/img/icons/favicon.ico">
+		<link rel="apple-touch-icon" sizes="180x180" href="https://www.theclinic.cl/wp-content/themes/theme_theclinic_ned/img/icons/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="https://www.theclinic.cl/wp-content/themes/theme_theclinic_ned/img/icons/favicon-32x32.png">		
+		<link rel="manifest" href="https://www.theclinic.cl/wp-content/themes/theme_theclinic_ned/img/icons/manifest.json">
+		<meta name="theme-color" content="#ffffff">
+
+		<meta property="fb:pages" content="189771961033328" />
+
+		
+		<script type='text/javascript'>
+    (function() {
+        /** CONFIGURATION START **/
+        var _sf_async_config = window._sf_async_config = (window._sf_async_config || {});
+        _sf_async_config.uid = 66102;
+        _sf_async_config.domain = 'theclinic.cl';
+        _sf_async_config.useCanonical = true;
+        _sf_async_config.useCanonicalDomain = true;
+        _sf_async_config.sections = ''; //SET PAGE SECTION(S)
+        _sf_async_config.authors = ''; //SET PAGE AUTHOR(S)
+        /** CONFIGURATION END **/
+        function loadChartbeat() {
+            var e = document.createElement('script');
+            var n = document.getElementsByTagName('script')[0];
+            e.type = 'text/javascript';
+            e.async = true;
+            e.src = '//static.chartbeat.com/js/chartbeat.js';
+            n.parentNode.insertBefore(e, n);
+        }
+        loadChartbeat();
+    })();
+</script>
+
+<script src="https://middycdn-a.akamaihd.net/bootstrap/bootstrap.js" id="browsi-tag" data-pubKey="nedmedia" data-siteKey="clinic" async></script>
+
+<script type='text/javascript' src='https://d1e8b5coppv0r9.cloudfront.net/player.js'></script>
+
+<link rel="stylesheet" href="https://use.typekit.net/sru0rta.css">
+<link rel="stylesheet" href="https://use.typekit.net/hmb0wjx.css">
+<link rel="stylesheet" href="https://use.typekit.net/yzi7ypo.css">
+<link rel="stylesheet" href="https://use.typekit.net/plt2yen.css">
+
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+<script>
+    window.getQueryString = function(field, url) {
+        var href = url ? url : window.location.href;
+        var reg = new RegExp('[?&]' + field + '=([^&#]*)', 'i');
+        var string = reg.exec(href);
+        return string ? string[1] : null;
+    };
+
+    window._isDevice = function(devices){
+      var currentDevice = 'mobile';
+      var matched = false;
+
+      if(window.innerWidth >= 768){
+        currentDevice = 'tablet';
+      }
+
+      if(window.innerWidth > 1024){
+        currentDevice = 'desktop';
+      }
+
+      if(typeof devices === 'string'){
+        if(currentDevice.indexOf(devices) !== -1){
+          matched = true;
+        }
+      }
+
+      if(typeof devices === 'object' && devices.length){
+        devices.forEach(function(device){
+          if(currentDevice.indexOf(device) !== -1){
+            matched = true;
+          }
+        })
+      }
+      return matched
+    }
+
+    window.onDomLoaded = function(fn){
+      jQuery(function(){
+        typeof fn === 'function' && fn()
+      })
+    }
+
+    try {
+      !function(){"use strict";function t(t){t?(f[0]=f[16]=f[1]=f[2]=f[3]=f[4]=f[5]=f[6]=f[7]=f[8]=f[9]=f[10]=f[11]=f[12]=f[13]=f[14]=f[15]=0,this.blocks=f):this.blocks=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],this.h0=1732584193,this.h1=4023233417,this.h2=2562383102,this.h3=271733878,this.h4=3285377520,this.block=this.start=this.bytes=0,this.finalized=this.hashed=!1,this.first=!0}var h="object"==typeof window?window:{},i=!h.JS_SHA1_NO_NODE_JS&&"object"==typeof process&&process.versions&&process.versions.node;i&&(h=global);var s=!h.JS_SHA1_NO_COMMON_JS&&"object"==typeof module&&module.exports,e="function"==typeof define&&define.amd,r="0123456789abcdef".split(""),o=[-2147483648,8388608,32768,128],n=[24,16,8,0],a=["hex","array","digest","arrayBuffer"],f=[],u=function(h){return function(i){return new t(!0).update(i)[h]()}},c=function(){var h=u("hex");i&&(h=p(h)),h.create=function(){return new t},h.update=function(t){return h.create().update(t)};for(var s=0;s<a.length;++s){var e=a[s];h[e]=u(e)}return h},p=function(t){var h=require("crypto"),i=require("buffer").Buffer,s=function(s){if("string"==typeof s)return h.createHash("sha1").update(s,"utf8").digest("hex");if(s.constructor===ArrayBuffer)s=new Uint8Array(s);else if(void 0===s.length)return t(s);return h.createHash("sha1").update(new i(s)).digest("hex")};return s};t.prototype.update=function(t){if(!this.finalized){var i="string"!=typeof t;i&&t.constructor===h.ArrayBuffer&&(t=new Uint8Array(t));for(var s,e,r=0,o=t.length||0,a=this.blocks;o>r;){if(this.hashed&&(this.hashed=!1,a[0]=this.block,a[16]=a[1]=a[2]=a[3]=a[4]=a[5]=a[6]=a[7]=a[8]=a[9]=a[10]=a[11]=a[12]=a[13]=a[14]=a[15]=0),i)for(e=this.start;o>r&&64>e;++r)a[e>>2]|=t[r]<<n[3&e++];else for(e=this.start;o>r&&64>e;++r)s=t.charCodeAt(r),128>s?a[e>>2]|=s<<n[3&e++]:2048>s?(a[e>>2]|=(192|s>>6)<<n[3&e++],a[e>>2]|=(128|63&s)<<n[3&e++]):55296>s||s>=57344?(a[e>>2]|=(224|s>>12)<<n[3&e++],a[e>>2]|=(128|s>>6&63)<<n[3&e++],a[e>>2]|=(128|63&s)<<n[3&e++]):(s=65536+((1023&s)<<10|1023&t.charCodeAt(++r)),a[e>>2]|=(240|s>>18)<<n[3&e++],a[e>>2]|=(128|s>>12&63)<<n[3&e++],a[e>>2]|=(128|s>>6&63)<<n[3&e++],a[e>>2]|=(128|63&s)<<n[3&e++]);this.lastByteIndex=e,this.bytes+=e-this.start,e>=64?(this.block=a[16],this.start=e-64,this.hash(),this.hashed=!0):this.start=e}return this}},t.prototype.finalize=function(){if(!this.finalized){this.finalized=!0;var t=this.blocks,h=this.lastByteIndex;t[16]=this.block,t[h>>2]|=o[3&h],this.block=t[16],h>=56&&(this.hashed||this.hash(),t[0]=this.block,t[16]=t[1]=t[2]=t[3]=t[4]=t[5]=t[6]=t[7]=t[8]=t[9]=t[10]=t[11]=t[12]=t[13]=t[14]=t[15]=0),t[15]=this.bytes<<3,this.hash()}},t.prototype.hash=function(){var t,h,i,s=this.h0,e=this.h1,r=this.h2,o=this.h3,n=this.h4,a=this.blocks;for(h=16;80>h;++h)i=a[h-3]^a[h-8]^a[h-14]^a[h-16],a[h]=i<<1|i>>>31;for(h=0;20>h;h+=5)t=e&r|~e&o,i=s<<5|s>>>27,n=i+t+n+1518500249+a[h]<<0,e=e<<30|e>>>2,t=s&e|~s&r,i=n<<5|n>>>27,o=i+t+o+1518500249+a[h+1]<<0,s=s<<30|s>>>2,t=n&s|~n&e,i=o<<5|o>>>27,r=i+t+r+1518500249+a[h+2]<<0,n=n<<30|n>>>2,t=o&n|~o&s,i=r<<5|r>>>27,e=i+t+e+1518500249+a[h+3]<<0,o=o<<30|o>>>2,t=r&o|~r&n,i=e<<5|e>>>27,s=i+t+s+1518500249+a[h+4]<<0,r=r<<30|r>>>2;for(;40>h;h+=5)t=e^r^o,i=s<<5|s>>>27,n=i+t+n+1859775393+a[h]<<0,e=e<<30|e>>>2,t=s^e^r,i=n<<5|n>>>27,o=i+t+o+1859775393+a[h+1]<<0,s=s<<30|s>>>2,t=n^s^e,i=o<<5|o>>>27,r=i+t+r+1859775393+a[h+2]<<0,n=n<<30|n>>>2,t=o^n^s,i=r<<5|r>>>27,e=i+t+e+1859775393+a[h+3]<<0,o=o<<30|o>>>2,t=r^o^n,i=e<<5|e>>>27,s=i+t+s+1859775393+a[h+4]<<0,r=r<<30|r>>>2;for(;60>h;h+=5)t=e&r|e&o|r&o,i=s<<5|s>>>27,n=i+t+n-1894007588+a[h]<<0,e=e<<30|e>>>2,t=s&e|s&r|e&r,i=n<<5|n>>>27,o=i+t+o-1894007588+a[h+1]<<0,s=s<<30|s>>>2,t=n&s|n&e|s&e,i=o<<5|o>>>27,r=i+t+r-1894007588+a[h+2]<<0,n=n<<30|n>>>2,t=o&n|o&s|n&s,i=r<<5|r>>>27,e=i+t+e-1894007588+a[h+3]<<0,o=o<<30|o>>>2,t=r&o|r&n|o&n,i=e<<5|e>>>27,s=i+t+s-1894007588+a[h+4]<<0,r=r<<30|r>>>2;for(;80>h;h+=5)t=e^r^o,i=s<<5|s>>>27,n=i+t+n-899497514+a[h]<<0,e=e<<30|e>>>2,t=s^e^r,i=n<<5|n>>>27,o=i+t+o-899497514+a[h+1]<<0,s=s<<30|s>>>2,t=n^s^e,i=o<<5|o>>>27,r=i+t+r-899497514+a[h+2]<<0,n=n<<30|n>>>2,t=o^n^s,i=r<<5|r>>>27,e=i+t+e-899497514+a[h+3]<<0,o=o<<30|o>>>2,t=r^o^n,i=e<<5|e>>>27,s=i+t+s-899497514+a[h+4]<<0,r=r<<30|r>>>2;this.h0=this.h0+s<<0,this.h1=this.h1+e<<0,this.h2=this.h2+r<<0,this.h3=this.h3+o<<0,this.h4=this.h4+n<<0},t.prototype.hex=function(){this.finalize();var t=this.h0,h=this.h1,i=this.h2,s=this.h3,e=this.h4;return r[t>>28&15]+r[t>>24&15]+r[t>>20&15]+r[t>>16&15]+r[t>>12&15]+r[t>>8&15]+r[t>>4&15]+r[15&t]+r[h>>28&15]+r[h>>24&15]+r[h>>20&15]+r[h>>16&15]+r[h>>12&15]+r[h>>8&15]+r[h>>4&15]+r[15&h]+r[i>>28&15]+r[i>>24&15]+r[i>>20&15]+r[i>>16&15]+r[i>>12&15]+r[i>>8&15]+r[i>>4&15]+r[15&i]+r[s>>28&15]+r[s>>24&15]+r[s>>20&15]+r[s>>16&15]+r[s>>12&15]+r[s>>8&15]+r[s>>4&15]+r[15&s]+r[e>>28&15]+r[e>>24&15]+r[e>>20&15]+r[e>>16&15]+r[e>>12&15]+r[e>>8&15]+r[e>>4&15]+r[15&e]},t.prototype.toString=t.prototype.hex,t.prototype.digest=function(){this.finalize();var t=this.h0,h=this.h1,i=this.h2,s=this.h3,e=this.h4;return[t>>24&255,t>>16&255,t>>8&255,255&t,h>>24&255,h>>16&255,h>>8&255,255&h,i>>24&255,i>>16&255,i>>8&255,255&i,s>>24&255,s>>16&255,s>>8&255,255&s,e>>24&255,e>>16&255,e>>8&255,255&e]},t.prototype.array=t.prototype.digest,t.prototype.arrayBuffer=function(){this.finalize();var t=new ArrayBuffer(20),h=new DataView(t);return h.setUint32(0,this.h0),h.setUint32(4,this.h1),h.setUint32(8,this.h2),h.setUint32(12,this.h3),h.setUint32(16,this.h4),t};var d=c();s?module.exports=d:(h.sha1=d,e&&define(function(){return d}))}();
+    } catch(e){}
+  </script>
+<script>
+    /*
+    *  _gpt-debug
+    */
+    function _gptDebug(messages) {
+        if (getQueryString('ads-debug') !== 'true') {
+            return false;
+        }
+        if (typeof console === undefined) {
+            return false
+        }
+
+        typeof console.group === 'function' ? console.group('*** ADVERTISING DEBUG  *** ') : console.log('*** ADVERTISING DEBUG  *** ');
+
+        messages.forEach(function(message) {
+            typeof console.info === 'functon' ? console.info(message) : console.log(message);
+        })
+
+        typeof console.groupEnd === 'function' && console.groupEnd();
+    }
+
+    /*
+    *  displaySlotIf
+    *  deprecated
+    */
+    window.displaySlotIf = function(){
+      return 'google support ppl cant read "custom" code';
+    }
+</script>
+<!-- Start GPT Async Tag -->
+
+<script async='async' src='https://www.googletagservices.com/tag/js/gpt.js'></script>
+
+<script>
+  var googletag = googletag || {};
+  var _currentUrl = location.host + location.pathname;
+  var _currentUrlIdentifier = typeof window.sha1 === 'function' ? sha1(_currentUrl) : '';
+
+  window.__gpt_category = 'Actualidad';
+  window.__gpt_pagetype = 'singles';
+  window.__gpt_adunit = '/12505545/theclinic_quesucede';
+  window.__gpt_videotag = 'https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&ciu_szs=728x90,300x600,970x90,468x60,300x250,320x50&iu=/12505545/theclinic_home&ciu_szs=300x250,300x600,320x50,468x60,728x90,970x90&impl=s&gdfp_req=1&env=vp&output=xml_vast2&unviewed_position_start=1&url=[referrer_url]&description_url=https%3A%2F%2Fwww.theclinic.cl%2F2020%2F05%2F20%2Fnueva-york-plantea-apertura-religiosa-pese-a-alza-de-muertes-diarias-por-covid-19%2F&correlator=1618375080&cust_params=widthVal%3D640%26heightVal%3D480';
+  window.__gpt_livestream_tag = 'https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&ciu_szs=728x90,300x600,970x90,468x60,300x250,320x50&iu=/12505545/300x250_home_1&ciu_szs=300x250,300x600,320x50,468x60,728x90,970x90&impl=s&gdfp_req=1&env=vp&output=xml_vast2&unviewed_position_start=1&url=[referrer_url]&description_url=https%3A%2F%2Fwww.theclinic.cl%2F2020%2F05%2F20%2Fnueva-york-plantea-apertura-religiosa-pese-a-alza-de-muertes-diarias-por-covid-19%2F&correlator=1618375080';
+  window.__gpt_postid = '903056';
+  window.__gpt_postyear = '2020';
+  window.__gpt_safe = 'true';
+  window.__gpt_sensitive_content = 'coronavirus'
+
+  window._gptSlots = [];
+  window._gptLoadedSlots = [];
+  window._gptEmptySlots = [];
+  window._gptViewableSlots = [];
+
+  window.__gpt_is_mobile = function(){
+  return navigator.userAgent.match(/Android/i) ||
+          navigator.userAgent.match(/webOS/i) ||
+          navigator.userAgent.match(/iPhone/i) ||
+          navigator.userAgent.match(/iPad/i) ||
+          navigator.userAgent.match(/iPod/i) ||
+          navigator.userAgent.match(/BlackBerry/i) ||
+          navigator.userAgent.match(/Windows Phone/i) ||
+          window.innerWidth <= 1024
+  }
+
+  googletag.cmd = googletag.cmd || [];
+    googletag.cmd.push(function() {
+
+
+    /*
+      The first dimension is is the browser size and each subsequent dimension is an ad size.
+      GPT will detect the browser size and use the largest mapping that fits.
+      To determine the largest mapping GPT will first consider width,
+      then height (i.e. [100, 10] > [10, 100]) .
+    */
+
+    var topSizeMapHeader = googletag.sizeMapping()
+                              .addSize([1000, 500], [[970, 90], [728, 90]], [[768, 500], [728, 90] ], [[320, 200], [320, 50]] )
+                              .build()
+
+    var topSizeMap = googletag.sizeMapping()
+                              .addSize([1000, 500], [[970, 90], [728, 90]], [[768, 500], [728, 90] ], [[320, 200], [320, 50]] )
+                              .build()
+
+    var topSizeMap2 = googletag.sizeMapping()
+                              .addSize([1000, 500], [[970, 90], [728, 90]], [[768, 500], [728, 90]], [[320, 200], [320, 50]] )
+                              .build()
+
+    var topSizeMapHome = googletag.sizeMapping()
+                              .addSize([1000, 500], [[970, 90], [728, 90]], [[768, 500], [728, 90] ], [[320, 200], [320, 50]] )
+                              .build()
+
+    var topSizeMapHome2 = googletag.sizeMapping()
+                              .addSize([1000, 500], [[970, 90], [728, 90]], [[768, 500], [728, 90] ], [[320, 200], [320, 50]] )
+                              .build()                              
+    
+    var bottomSizeMap = googletag.sizeMapping()
+                              .addSize([1000, 500], [[970, 90], [728, 90]], [[768, 500], [728, 90]], [[320, 200], [320, 50]] )
+                              .build()
+
+    var mpu1SizeMap = googletag.sizeMapping()
+                              .addSize([0, 0], [300,250], [300,300], [[320, 200], [ 300, 250 ]])
+                              .build()
+
+    var mpu1sidebarSizeMap = googletag.sizeMapping()
+                              .addSize([0, 0], [300,250], [300,300], [300,600], [[320, 200], [ 300, 250 ]])
+                              .build()      
+
+    var mpu2sidebarSizeMap = googletag.sizeMapping()
+                              .addSize([0, 0], [300,600], [300,250], [300,300], [[320, 200], [ 300, 250 ]])
+                              .build()                              
+
+    var mpu2SizeMap = googletag.sizeMapping()
+                              .addSize([0, 0], [ 300,250 ], [300,300], [[320, 200], [300, 250 ]])
+                              .build()
+
+    var mpu3SizeMap = googletag.sizeMapping()
+                              .addSize([0, 0], [ 300,250 ], [300,300], [ [320, 200], [ 300, 250 ] ])                              
+                              .build()                           
+
+    // var mpu4SizeMap = googletag.sizeMapping()
+    //                           .addSize([0, 0], [ 300,250 ], [300,300], [ [320, 200], [ 300, 250 ] ])                              
+    //                           .build()                           
+
+    // var mpu5SizeMap = googletag.sizeMapping()
+    //                           .addSize([0, 0], [ 300,250 ], [300,300], [ [320, 200], [ 300, 250 ] ])
+    //                           .build()                           
+
+    // var mpu6SizeMap = googletag.sizeMapping()
+    //                           .addSize([0, 0], [ 300,250 ], [300,300], [ [320, 200], [ 300, 250 ] ])
+    //                           .build()                           
+
+    var sidebarmpu1SizeMap = googletag.sizeMapping()
+                              .addSize([0, 0], [ 300,250 ], [300,300], [ [320, 200], [ 300, 250 ] ])
+                              .build()                           
+
+    var sidebarmpu2SizeMap = googletag.sizeMapping()
+                              .addSize([0, 0], [ 300,250 ], [300,300], [300,600], [ [320, 200], [ 300, 250 ], [300,600] ])
+                              .build()
+
+    var singleMobile1SizeMap = googletag.sizeMapping()                                                              
+                               .addSize([320, 200], [ 300, 250 ])
+                               .build()
+
+    var singleMobile2SizeMap = googletag.sizeMapping()
+                               .addSize([320, 200], [ 300, 250 ])
+                               .build()
+    
+    var singleMobileFixedSizeMap = googletag.sizeMapping()
+                              .addSize([1025, 1], [])
+                              .addSize([0,0],[[320, 50], [ 300, 50 ]])
+                              .build()
+
+    var floatingSizeMap = googletag.sizeMapping()
+                              .addSize([700, 480], [ [640, 200], [ 320, 50 ] ])
+                              .build()    
+
+    var midSizeMap = googletag.sizeMapping()
+                              .addSize([640, 480], [468, 60], [ [400, 200] ])
+                              .build()
+
+    var skyScrapperMap1 = googletag.sizeMapping()
+                              .addSize([0, 0], [[120,600],[120,240]])
+                              .build()
+
+    var skyScrapperMap2 = googletag.sizeMapping()
+                              .addSize([0, 0], [[120,600],[120,240]])
+                              .build()
+
+    var topBannerFix = googletag.sizeMapping()
+                              .addSize([1,1])
+                              .build()
+
+    var adRight = googletag.sizeMapping()
+                              .addSize([0, 0], [[90, 728]])
+                              .build()
+
+    /* ad slots declaration */
+    window._gptSlots.push(
+    googletag.defineSlot(window.__gpt_adunit, [ [320, 200], [320, 50], [970, 90], [728, 90] ], 'topbanner-header')
+              .defineSizeMapping(topSizeMapHeader)
+              .setTargeting('pos', ['topbanner-header'])
+              .addService(googletag.pubads())
+    );
+
+    window._gptSlots.push(
+    googletag.defineSlot(window.__gpt_adunit, [ [320, 200], [320, 50], [970, 90], [728, 90] ], 'topbanner')
+              .defineSizeMapping(topSizeMap)
+              .setTargeting('pos', ['topbanner'])
+              .addService(googletag.pubads())
+    );
+
+    window._gptSlots.push(
+    googletag.defineSlot(window.__gpt_adunit, [ [320, 200], [320, 50], [970, 90], [728, 90] ], 'topbannerHome')
+              .defineSizeMapping(topSizeMapHome)
+              .setTargeting('pos', ['topbannerHome'])
+              .addService(googletag.pubads())
+    );
+
+    window._gptSlots.push(
+    googletag.defineSlot(window.__gpt_adunit, [ [320, 200], [320, 50], [970, 90], [728, 90] ], 'topbannerHome2')
+              .defineSizeMapping(topSizeMapHome2)
+              .setTargeting('pos', ['topbannerHome2'])
+              .addService(googletag.pubads())
+    );
+
+    window._gptSlots.push(
+    googletag.defineSlot(window.__gpt_adunit, [ [320, 200], [320, 50], [970, 90], [728, 90] ], 'topbanner2')
+              .defineSizeMapping(topSizeMap2)
+              .setTargeting('pos', ['topbanner2'])
+              .addService(googletag.pubads())
+    );
+
+    window._gptSlots.push(
+    googletag.defineSlot(window.__gpt_adunit, [ [320, 200], [300,250], [300,300] ], 'singleMobile1SizeMap')
+               .defineSizeMapping(singleMobile1SizeMap)
+               .setTargeting('pos', ['singleMobile1SizeMap'])
+               .addService(googletag.pubads())
+     );
+
+    window._gptSlots.push(
+    googletag.defineSlot(window.__gpt_adunit, [ [320, 200], [320, 50] ], 'singleMobile2SizeMap')
+                 .defineSizeMapping(singleMobile2SizeMap)
+                 .setTargeting('pos', ['singleMobile2SizeMap'])
+                 .addService(googletag.pubads())
+     );
+
+    window._gptSlots.push(
+      googletag.defineSlot(window.__gpt_adunit, [ [300, 50], [ 320, 50 ] ], 'singleMobileFixedSizeMap')
+                .defineSizeMapping(singleMobileFixedSizeMap)
+                .setTargeting('pos', ['singleMobileFixedSizeMap'])
+                .addService(googletag.pubads())
+    );
+
+    window._gptSlots.push(
+    googletag.defineSlot(window.__gpt_adunit, [ [320, 200], [320, 50], [970, 90], [728, 90] ], 'bottomobanner')
+              .defineSizeMapping(bottomSizeMap)
+              .setTargeting('pos', ['bottomobanner'])
+              .addService(googletag.pubads())
+    );
+
+    window._gptSlots.push(
+    googletag.defineSlot(window.__gpt_adunit, [[300,250], [300,300] [336, 280]], 'ad-mpu1')
+              .defineSizeMapping(mpu1SizeMap)
+              .setTargeting('pos', ['mpu1'])
+              .addService(googletag.pubads())
+    );
+
+    window._gptSlots.push(
+    googletag.defineSlot(window.__gpt_adunit, [[0, 0], [ 300,250 ], [300,300], [ [320, 200], [ 300, 250 ] ]], 'ad-mpu1-sidebar')
+              .defineSizeMapping(mpu1sidebarSizeMap)
+              .setTargeting('pos', ['mpu1sidebar'])
+              .addService(googletag.pubads())
+    );
+
+    window._gptSlots.push(
+    googletag.defineSlot(window.__gpt_adunit, [[300,250], [336, 280]], 'ad-mpu2')
+              .defineSizeMapping(mpu2SizeMap)
+              .setTargeting('pos', ['mpu2'])
+              .addService(googletag.pubads())
+    );
+
+    window._gptSlots.push(
+      googletag.defineSlot(window.__gpt_adunit, [[300, 600], [300,250], [300,300] [336, 280]], 'ad-mpu2-sidebar')
+              .defineSizeMapping(mpu2sidebarSizeMap)
+              .setTargeting('pos', ['mpu2sidebar'])
+              .addService(googletag.pubads())
+    );
+
+    window._gptSlots.push(
+    googletag.defineSlot(window.__gpt_adunit, [[300,250], [336, 280]], 'ad-mpu3')
+              .defineSizeMapping(mpu3SizeMap)
+              .setTargeting('pos', ['mpu3'])
+              .addService(googletag.pubads())
+    );
+
+    window._gptSlots.push(
+    googletag.defineSlot(window.__gpt_adunit, [[300,250], [336, 280]], 'ad-mpu4')
+              .defineSizeMapping(mpu3SizeMap)
+              .setTargeting('pos', ['mpu4'])
+              .addService(googletag.pubads())
+    );
+
+    window._gptSlots.push(
+    googletag.defineSlot(window.__gpt_adunit, [[300,250], [336, 280]], 'ad-mpu5')
+              .defineSizeMapping(mpu3SizeMap)
+              .setTargeting('pos', ['mpu5'])
+              .addService(googletag.pubads())
+    );
+
+    window._gptSlots.push(
+    googletag.defineSlot(window.__gpt_adunit, [[300,250], [336, 280]], 'ad-mpu6')
+            .defineSizeMapping(mpu3SizeMap)
+            .setTargeting('pos', ['mpu6'])
+            .addService(googletag.pubads())
+    );
+
+    window._gptSlots.push(
+    googletag.defineSlot(window.__gpt_adunit, [[300,250], [336, 280], [300, 600]], 'ad-sidebar-mpu1')
+              .defineSizeMapping(sidebarmpu1SizeMap)
+              .setTargeting('pos', ['ad-sidebar-mpu1'])
+              .addService(googletag.pubads())
+    );
+
+    window._gptSlots.push(
+    googletag.defineSlot(window.__gpt_adunit, [[300,250], [336, 280], [300, 600]], 'ad-sidebar-mpu2')
+              .defineSizeMapping(sidebarmpu2SizeMap)
+              .setTargeting('pos', ['ad-sidebar-mpu2'])
+              .addService(googletag.pubads())
+    );
+
+    window._gptSlots.push(
+    googletag.defineSlot(window.__gpt_adunit, [468,60], 'ad-mid')
+              .defineSizeMapping(midSizeMap)
+              .setTargeting('pos', ['midbanner'])
+              .addService(googletag.pubads())
+    );
+
+    window._gptSlots.push(
+    googletag.defineSlot(window.__gpt_adunit, [[320,50], [320,100]], 'ad-mpufloating')
+              .defineSizeMapping(floatingSizeMap)
+              .addService(googletag.pubads())
+    );
+
+    window._gptSlots.push(
+    googletag.defineSlot(window.__gpt_adunit, [[120,600], [120,240]], 'ad-skyscrapper1')
+              .defineSizeMapping(skyScrapperMap1)
+              .setTargeting('pos', ['skyScrapper1'])
+              .addService(googletag.pubads())
+    );
+
+    window._gptSlots.push(
+    googletag.defineSlot(window.__gpt_adunit, [[120,600], [120,240]], 'ad-skyscrapper2')
+              .defineSizeMapping(skyScrapperMap2)
+              .setTargeting('pos', ['skyScrapper2'])
+              .addService(googletag.pubads())
+    );    
+
+    window._gptSlots.push(
+    googletag.defineSlot(window.__gpt_adunit, [1,1], 'ad-onexone')
+              .setTargeting('pos', ['1x1-a'])
+              .addService(googletag.pubads())
+    );   
+
+    window._gptSlots.push(
+    googletag.defineSlot(window.__gpt_adunit, [1,1], 'ad-onexone-b')
+              .setTargeting('pos', ['1x1-b'])
+              .addService(googletag.pubads())
+    );
+
+    window._gptSlots.push(
+    googletag.defineSlot(window.__gpt_adunit, [1,1], 'ad-onexone-c')
+              .setTargeting('pos', ['1x1-c'])
+              .addService(googletag.pubads())
+    );
+
+    window._gptSlots.push(
+    googletag.defineSlot(window.__gpt_adunit, [1,1], 'ad-onexone-d')
+              .setTargeting('pos', ['1x1-d'])
+              .addService(googletag.pubads())
+    );
+
+    window._gptSlots.push(
+    googletag.defineSlot(window.__gpt_adunit, [1,1], 'ad-onexone-itt')
+              .setTargeting('pos', ['itt'])
+              .addService(googletag.pubads())
+    );   
+
+    window._gptSlots.push(
+    googletag.defineSlot(window.__gpt_adunit, [1,1], 'ad-skinWrapper')
+              .setTargeting('pos', ['skinWrapper'])
+              .addService(googletag.pubads())
+    ); 
+
+    /*window._gptSlots.push(
+      googletag.defineSlot(window.__gpt_adunit, ['fluid'], 'ad-fluid')
+                .setTargeting('pos', 'native')
+                .addService(googletag.pubads())
+    );*/
+
+    window._gptSlots.push(
+    googletag.defineOutOfPageSlot(window.__gpt_adunit, 'ad-topBannerFix')
+            .defineSizeMapping(topBannerFix)
+            .setTargeting('pos', ['topBannerFix'])
+            .addService(googletag.pubads())
+    ); 
+
+    // window._gptSlots.push(
+    // googletag.defineOutOfPageSlot(window.__gpt_adunit, 'ad-skinWrapper')
+    //         .defineSizeMapping(skinWrapperskinWrapper)
+    //         .setTargeting('pos', ['skinWrapper'])
+    //         .addService(googletag.pubads())
+    // ); 
+
+    window._gptSlots.push(
+    googletag.defineOutOfPageSlot(window.__gpt_adunit, 'ad-outofpage1')
+            .setTargeting('pos', ['oop'])
+            .addService(googletag.pubads())
+    );    
+
+
+    window._gptSlots.push(
+    googletag.defineSlot(window.__gpt_adunit, [[90, 728]], 'adRight')
+              .defineSizeMapping(adRight)
+              .setTargeting('pos', ['adRight'])
+              .addService(googletag.pubads())
+    );  
+
+    // googletag.pubads().setTargeting('demo', getQueryString('demo') || '');
+    googletag.pubads().setTargeting('seccion', window.__ad_pagetype || '');
+    googletag.pubads().setTargeting('category', window.__ad_category ? window.__ad_category.substr(0, 40) : '');
+    googletag.pubads().setTargeting('postid', window.__ad_postid || '');
+    googletag.pubads().setTargeting('postyear', window.__ad_postyear || '');
+    googletag.pubads().setTargeting('ad_safe', window.__ad_safe || '');
+
+    googletag.pubads().setTargeting("post_url_short", _currentUrl.slice(0,40));
+    googletag.pubads().setTargeting("post_url_sha1", _currentUrlIdentifier);
+
+    if (window.__gpt_sensitive_content) {
+      googletag.pubads().setTargeting('sensitive_content', window.__gpt_sensitive_content);
+    }
+
+    googletag.pubads().addEventListener('slotRenderEnded', function(e) {
+        if (!e.isEmpty) {
+            window._gptLoadedSlots.push(e.slot.getSlotElementId());
+            window._gptDebug(['SLOT LOADED: ' + e.slot.getSlotElementId(), e.slot.getResponseInformation()])
+        } else {
+            window._gptEmptySlots.push(e.slot.getSlotElementId());
+            window._gptDebug(['slot ' + e.slot.getSlotElementId() + ' came empty'])
+        }
+    });
+
+    googletag.pubads().addEventListener('impressionViewable', function(e) {
+        window._gptViewableSlots.push(e.slot.getSlotElementId());
+        window._gptDebug(['SLOT VIEWABLE: ' + e.slot.getSlotElementId(), e.slot.getResponseInformation()])
+    });
+
+    if (window.__is404) {
+      window.__gpt_safe = 'false';
+    }
+
+    if (window.__gpt_safe !== 'false') {
+      googletag.pubads().collapseEmptyDivs();
+      googletag.pubads().enableAsyncRendering();
+      googletag.enableServices();
+    }
+
+    // googletag.pubads().setTargeting('roxot-sector-id', getRoxotSectorId())
+    // googletag.pubads().setTargeting('roxot-deep', getRoxotDeep())
+    // googletag.pubads().setTargeting('roxot-event', getRoxotEvent());
+
+  });
+  </script>
+<!-- End GPT Async Tag -->
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v3.2&appId=409250275788709&autoLogAppEvents=1"></script>
+
+		
+<!-- This site is optimized with the Yoast SEO plugin v11.9 - https://yoast.com/wordpress/plugins/seo/ -->
+<title>Nueva York plantea apertura religiosa pese a alza de muertes diarias por Covid-19</title>
+<link rel="canonical" href="https://www.theclinic.cl/2020/05/20/nueva-york-plantea-apertura-religiosa-pese-a-alza-de-muertes-diarias-por-covid-19/" />
+<meta property="og:locale" content="es_ES" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Nueva York plantea apertura religiosa pese a alza de muertes diarias por Covid-19" />
+<meta property="og:description" content="El número de muertes diarias por Covid-19 en el estado de Nueva York, epicentro mundial de la pandemia con 28.558 fallecidos y 61.886 recuperados, ha experimentado un ligero repunte hasta los 112 decesos producidos el martes, pese a lo cual el gobernador neoyorquino, Andrew Cuomo, se comprometió este miércoles a trabajar para que las ceremonias&hellip;" />
+<meta property="og:url" content="https://www.theclinic.cl/2020/05/20/nueva-york-plantea-apertura-religiosa-pese-a-alza-de-muertes-diarias-por-covid-19/" />
+<meta property="og:site_name" content="The Clinic - Reportajes, noticias, podcast, videos y humor" />
+<meta property="article:publisher" content="https://www.facebook.com/thecliniconline" />
+<meta property="article:tag" content="COVID-19" />
+<meta property="article:tag" content="cultos" />
+<meta property="article:tag" content="nueva york" />
+<meta property="article:tag" content="Religión" />
+<meta property="article:section" content="Actualidad" />
+<meta property="article:published_time" content="2020-05-20T17:59:39+00:00" />
+<meta property="article:modified_time" content="2020-05-20T20:25:34+00:00" />
+<meta property="og:updated_time" content="2020-05-20T20:25:34+00:00" />
+<meta property="og:image" content="https://www.theclinic.cl/wp-content/uploads/2018/05/iglesia-aa1.jpg" />
+<meta property="og:image:secure_url" content="https://www.theclinic.cl/wp-content/uploads/2018/05/iglesia-aa1.jpg" />
+<meta property="og:image:width" content="640" />
+<meta property="og:image:height" content="427" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:description" content="El número de muertes diarias por Covid-19 en el estado de Nueva York, epicentro mundial de la pandemia con 28.558 fallecidos y 61.886 recuperados, ha experimentado un ligero repunte hasta los 112 decesos producidos el martes, pese a lo cual el gobernador neoyorquino, Andrew Cuomo, se comprometió este miércoles a trabajar para que las ceremonias&hellip;" />
+<meta name="twitter:title" content="Nueva York plantea apertura religiosa pese a alza de muertes diarias por Covid-19" />
+<meta name="twitter:site" content="@thecliniccl" />
+<meta name="twitter:image" content="https://www.theclinic.cl/wp-content/uploads/2018/05/iglesia-aa1.jpg" />
+<meta name="twitter:creator" content="@thecliniccl" />
+<script type='application/ld+json' class='yoast-schema-graph yoast-schema-graph--main'>{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.theclinic.cl/#organization","name":"The Clinic","url":"https://www.theclinic.cl/","sameAs":["https://www.facebook.com/thecliniconline","https://www.instagram.com/theclinic_cl/","https://cl.linkedin.com/company/thecliniccl","https://www.youtube.com/user/TheClinicTeve","https://es.wikipedia.org/wiki/The_Clinic_(revista)","https://twitter.com/thecliniccl"],"logo":{"@type":"ImageObject","@id":"https://www.theclinic.cl/#logo","url":"https://www.theclinic.cl/wp-content/uploads/2019/08/logocl.png","width":816,"height":202,"caption":"The Clinic"},"image":{"@id":"https://www.theclinic.cl/#logo"}},{"@type":"WebSite","@id":"https://www.theclinic.cl/#website","url":"https://www.theclinic.cl/","name":"The Clinic - Reportajes, noticias, podcast, videos y humor","publisher":{"@id":"https://www.theclinic.cl/#organization"},"potentialAction":{"@type":"SearchAction","target":"https://www.theclinic.cl/?s={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"ImageObject","@id":"https://www.theclinic.cl/2020/05/20/nueva-york-plantea-apertura-religiosa-pese-a-alza-de-muertes-diarias-por-covid-19/#primaryimage","url":"https://www.theclinic.cl/wp-content/uploads/2018/05/iglesia-aa1.jpg","width":640,"height":427},{"@type":"WebPage","@id":"https://www.theclinic.cl/2020/05/20/nueva-york-plantea-apertura-religiosa-pese-a-alza-de-muertes-diarias-por-covid-19/#webpage","url":"https://www.theclinic.cl/2020/05/20/nueva-york-plantea-apertura-religiosa-pese-a-alza-de-muertes-diarias-por-covid-19/","inLanguage":"es-CL","name":"Nueva York plantea apertura religiosa pese a alza de muertes diarias por Covid-19","isPartOf":{"@id":"https://www.theclinic.cl/#website"},"primaryImageOfPage":{"@id":"https://www.theclinic.cl/2020/05/20/nueva-york-plantea-apertura-religiosa-pese-a-alza-de-muertes-diarias-por-covid-19/#primaryimage"},"datePublished":"2020-05-20T17:59:39+00:00","dateModified":"2020-05-20T20:25:34+00:00"},{"@type":"Article","@id":"https://www.theclinic.cl/2020/05/20/nueva-york-plantea-apertura-religiosa-pese-a-alza-de-muertes-diarias-por-covid-19/#article","isPartOf":{"@id":"https://www.theclinic.cl/2020/05/20/nueva-york-plantea-apertura-religiosa-pese-a-alza-de-muertes-diarias-por-covid-19/#webpage"},"author":{"@id":"https://www.theclinic.cl/#/schema/person/e1d4003f3befd9b0500e9864b7cc3a0c"},"headline":"Nueva York plantea apertura religiosa pese a alza de muertes diarias por Covid-19","datePublished":"2020-05-20T17:59:39+00:00","dateModified":"2020-05-20T20:25:34+00:00","commentCount":0,"mainEntityOfPage":{"@id":"https://www.theclinic.cl/2020/05/20/nueva-york-plantea-apertura-religiosa-pese-a-alza-de-muertes-diarias-por-covid-19/#webpage"},"publisher":{"@id":"https://www.theclinic.cl/#organization"},"image":{"@id":"https://www.theclinic.cl/2020/05/20/nueva-york-plantea-apertura-religiosa-pese-a-alza-de-muertes-diarias-por-covid-19/#primaryimage"},"keywords":"COVID-19,cultos,nueva york,Religi\u00f3n","articleSection":"Actualidad"},{"@type":["Person"],"@id":"https://www.theclinic.cl/#/schema/person/e1d4003f3befd9b0500e9864b7cc3a0c","name":"EFE/The Clinic","image":{"@type":"ImageObject","@id":"https://www.theclinic.cl/#authorlogo","url":"https://secure.gravatar.com/avatar/381756d0d52e31f1aeaaa4c7f651257e?s=96&d=identicon&r=g","caption":"EFE/The Clinic"},"sameAs":[]}]}</script>
+<!-- / Yoast SEO plugin. -->
+
+<link rel='dns-prefetch' href='//www.googletagservices.com' />
+<link rel='dns-prefetch' href='//www.theclinic.cl' />
+<link rel='dns-prefetch' href='//s.w.org' />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/www.theclinic.cl\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.2.2"}};
+			!function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55357,56424,55356,57342,8205,55358,56605,8205,55357,56424,55356,57340],[55357,56424,55356,57342,8203,55358,56605,8203,55357,56424,55356,57340]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='wp-block-library-css'  href='https://www.theclinic.cl/wp-includes/css/dist/block-library/style.min.css?ver=5.2.2' media='all' />
+<link rel='stylesheet' id='base-css'  href='https://www.theclinic.cl/wp-content/themes/theme_theclinic_ned/css/main.min.css?ver=1.0.50' media='all' />
+<link rel='stylesheet' id='slick-css'  href='https://www.theclinic.cl/wp-content/themes/theme_theclinic_ned/css/lib/slick.css?ver=1.0.0' media='all' />
+<script type='text/javascript' src='https://www.googletagservices.com/tag/js/gpt.js?ver=5.2.2#asyncload'></script>
+<script type='text/javascript' src='https://www.theclinic.cl/wp-includes/js/jquery/jquery.js?ver=1.12.4-wp'></script>
+<script type='text/javascript' src='https://www.theclinic.cl/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<script type='text/javascript' src='https://www.theclinic.cl/wp-content/themes/theme_theclinic_ned/js/advertising.js?ver=1.1.2#asyncload'></script>
+<script type='text/javascript' src='https://www.theclinic.cl/wp-content/themes/theme_theclinic_ned/js/lib/jquery.sticky-kit.min.js?ver=1.1.2#asyncload'></script>
+<script type='text/javascript' src='https://www.theclinic.cl/wp-content/themes/theme_theclinic_ned/js/lib/jquery.matchHeight-min.js?ver=1.1.2#asyncload'></script>
+<script type='text/javascript' src='https://www.theclinic.cl/wp-content/themes/theme_theclinic_ned/js/lib/jquery.marquee.min.js?ver=1.1.2#asyncload'></script>
+<script type='text/javascript' src='https://www.theclinic.cl/wp-content/themes/theme_theclinic_ned/js/lib/slick.min.js?ver=1.1.2#asyncload'></script>
+<script type='text/javascript' src='https://www.theclinic.cl/wp-content/themes/theme_theclinic_ned/js/scripts.js?ver=1.1.10'></script>
+<link rel='https://api.w.org/' href='https://www.theclinic.cl/wp-json/' />
+<link rel="alternate" type="application/json+oembed" href="https://www.theclinic.cl/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.theclinic.cl%2F2020%2F05%2F20%2Fnueva-york-plantea-apertura-religiosa-pese-a-alza-de-muertes-diarias-por-covid-19%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://www.theclinic.cl/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.theclinic.cl%2F2020%2F05%2F20%2Fnueva-york-plantea-apertura-religiosa-pese-a-alza-de-muertes-diarias-por-covid-19%2F&#038;format=xml" />
+		<style type="text/css" id="wp-custom-css">
+			section.block.especialText .container a .title {
+	font-family: "ClinicSans-Normal"
+}
+section.block.videosFeatured .container .row .videoBig a {
+	height:615px;
+}
+@media only screen and (max-width: 1119px) {
+          .cat-marque {
+            padding-top: 70px; }
+	section.block.especialText .container a .title {
+		font-size: 3rem;
+	}
+	section.block.especialText .container {
+		padding: 10px;
+	}
+
+	.backgroundpodcast1 {
+	background-image:url("https://www.theclinic.cl/wp-content/uploads/2019/09/TCPODCAST-2.gif");
+	padding-top: 15%;
+	padding-bottom: 15%;
+}
+	.fullll a {
+	font-size: 72px;
+}
+}
+.font22 {
+		font-family: "ClinicSans-Normal";
+	font-size: 4rem;
+}
+.podcast-padding {
+	padding: 30px 0px;
+}
+.videosFeatured {
+	background-color: #6600cc;
+}
+.wp-block-image {
+	margin-bottom: 0em;
+}
+section.block.videosFeatured .container .row .videoSmall .data .title a {
+	color: white;
+}
+section.block.videosFeatured .container .row .videoSmall .date {
+	color: white;
+}
+.backgroundpodcast {
+	background-color: #ff0000;
+}
+.backgroundpodcast1 {
+	background-image:url("https://www.theclinic.cl/wp-content/uploads/2019/09/TCPODCAST-2.gif");
+	padding-top: 10%;
+	padding-bottom: 10%;
+}
+.fullll {
+	font-size: 150px;
+	padding: 15% 5%;
+	text-transform: uppercase;
+	color: red;
+	text-align:center;
+	font-family: "AUTHENTICSans-90";
+}
+.fullll a {
+	font-size: 150px;
+	padding: 15% 5%;
+	text-transform: uppercase;
+	color: red;
+	text-align:center;
+	font-family: "AUTHENTICSans-90";
+
+}
+.fullll a:hover {
+	font-family: "ClinicSans-Normal";
+}
+.backkkk {
+	background-image:url("https://www.theclinic.cl/wp-content/uploads/2019/09/Pablo-Larraín.jpg");
+	  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}		</style>
+				
+
+	</head>
+			
+	<body class="post-template-default single single-post postid-903056 single-format-standard wp-embed-responsive nueva-york-plantea-apertura-religiosa-pese-a-alza-de-muertes-diarias-por-covid-19">	
+
+
+	
+		
+
+	<!-- BEGIN WRAPPER -->
+	<div id="wrapperAll" style="position:relative; z-index: 10; background: #FFFFFF;">
+
+	<!-- header -->
+	<header id="header" class="sticky">
+
+		  <div class="ads" id="headerTopAd">
+    <a href="javascript:void(0);" class="close" id="closeHeaderTopAd"><i class="far fa-times-circle"></i></a>
+    <div class="row">
+    <script>
+      if(window._isDevice(['mobile', 'tablet', 'desktop'])){
+        document.write([
+          '<div id="topbanner-header"><sc',
+          'ript>googletag.cmd.push(function() { googletag.display(\'topbanner-header\'); });<\/sc',
+          'ript></div>'
+          ].join('')
+        )
+      }
+    </script>
+    </div>
+  </div>
+			
+		<section class="main-header container">
+			<div class="col left">
+				<button role="button" id="searchHeader"><i class="fas fa-search"></i></button>
+				<nav>
+					<ul id="menu-menu-izquierda" class="menu"><li id="menu-item-817777" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-817777"><a href="https://www.theclinic.cl/categoria/cosecha-propia/">Cosecha Propia</a></li>
+<li id="menu-item-817779" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-817779"><a href="https://www.theclinic.cl/categoria/humor/">Humor</a></li>
+<li id="menu-item-918397" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-918397"><a href="https://www.theclinic.cl/categoria/entrevistas/">Entrevistas</a></li>
+<li id="menu-item-1022007" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1022007"><a href="https://www.theclinic.cl/categoria/opinion/">Opinión</a></li>
+</ul>				</nav>
+			</div>
+			<div class="col center">
+				<a href="https://www.theclinic.cl" class="logo" title="The Clinic">
+					<img src="https://www.theclinic.cl/wp-content/uploads/2019/07/logo-theclinic-negro.png" alt="The Clinic">
+				</a>
+			</div>
+			<div class="col right">				
+				<button role="button" id="searchHeader"><i class="fas fa-search"></i></button>
+					<ul class="social">
+          <li><a rel="canonical" alt="social" target="_blank" alt="Twitter" href="https://twitter.com/#!/thecliniccl"><i class="fab fa-twitter-square"></i></a></li>
+    
+          <li><a rel="canonical" alt="social" target="_blank" alt="Facebook" href="https://www.facebook.com/thecliniconline"><i class="fab fa-facebook"></i></a></li>
+    
+          <li><a rel="canonical" alt="social" target="_blank" alt="Instagram" href="https://www.instagram.com/theclinic_cl/"><i class="fab fa-instagram"></i></a></li>
+    
+          <li><a rel="canonical" alt="social" target="_blank" alt="Youtube" href="https://www.youtube.com/user/TheClinicTeve"><i class="fab fa-youtube"></i></a></li>
+    </ul>				<button role="button" id="menuMore"><i class="fas fa-bars"></i></button>
+				<button role="button" id="menuMobile"><i class="fas fa-bars"></i></button>
+			</div>	
+		</section>
+		<section class="search-bar" id="searchBar">
+			<div class="container">
+				<div class="row">
+					<!-- search -->
+<form class="search" method="get" action="https://www.theclinic.cl" role="search">
+	<input class="search-input" type="search" name="s" placeholder="Ingresa tu búsqueda">
+	<button class="search-submit" type="submit" role="button"><i class="fas fa-search"></i></button>
+</form>
+<!-- /search -->
+					<button role="button" id="closeSearch" class="closeButton"><i class="far fa-times-circle"></i></button>
+				</div>
+			</div>
+		</section>
+		<section class="menu-desktop">
+  <div class="container">
+    <div class="topContent">
+      <div class="col">        
+        <nav class="extraCats row">          
+          <ul id="menu-categorias-extendido" class="menu"><li id="menu-item-810665" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-810665"><a href="https://www.theclinic.cl/categoria/actualidad/">Actualidad</a></li>
+<li id="menu-item-810666" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-810666"><a href="https://www.theclinic.cl/categoria/cosecha-propia/">Cosecha Propia</a></li>
+<li id="menu-item-817765" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-817765"><a href="https://www.theclinic.cl/categoria/humor/">Humor</a></li>
+<li id="menu-item-804704" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-804704"><a href="https://www.theclinic.cl/categoria/opinion/">Opinión</a></li>
+<li id="menu-item-918400" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-918400"><a href="https://www.theclinic.cl/categoria/entrevistas/">Entrevistas</a></li>
+<li id="menu-item-922361" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-922361"><a href="https://www.theclinic.cl/categoria/entrevista-canalla/">Entrevista Canalla</a></li>
+<li id="menu-item-922362" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-922362"><a href="https://www.theclinic.cl/categoria/seleccion-nacional/">Selección Nacional</a></li>
+<li id="menu-item-810670" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-810670"><a href="https://www.theclinic.cl/categoria/recreo/">Tiempo Libre</a></li>
+<li id="menu-item-918408" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-918408"><a href="https://www.theclinic.cl/categoria/en-la-b/">Deportes</a></li>
+<li id="menu-item-810668" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-810668"><a href="https://www.theclinic.cl/categoria/videos/">Videos</a></li>
+<li id="menu-item-817766" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-817766"><a href="https://www.theclinic.cl/categoria/audifono/">Podcasts</a></li>
+<li id="menu-item-840758" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-840758"><a href="https://www.theclinic.cl/categoria/emporio/">Emporio</a></li>
+<li id="menu-item-918409" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-918409"><a href="https://www.theclinic.cl/categoria/planeta/">Planeta</a></li>
+<li id="menu-item-892400" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-892400"><a href="https://www.theclinic.cl/categoria/juegos/">Juegos</a></li>
+</ul>        </nav>
+        
+        <nav class="extraTemas row">
+        <ul id="menu-etiquetas" class="menu"><li id="menu-item-891154" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-891154"><a href="#">.</a></li>
+</ul>        </nav>
+      </div>      
+    </div>
+    <div class="bottomContent">
+    
+    </div>
+  </div>
+</section>		<section class="menu-mobile">
+  <div class="container">
+    <div class="row-top">
+      <div class="col"></div>
+      <div class="col">
+        <img src="https://www.theclinic.cl/wp-content/themes/theme_theclinic_ned/img/logo-theclinic-blanco.png" alt="">
+      </div>
+      <div class="col">
+        <button id="closeMobileMenu"><i class="fas fa-times"></i></button>
+      </div>      
+    </div>
+    <div class="topContent">
+      <nav>
+        <ul id="menu-mobile" class="menu"><li id="menu-item-810679" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-810679"><a href="https://www.theclinic.cl/categoria/actualidad/">Actualidad</a></li>
+<li id="menu-item-810675" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-810675"><a href="https://www.theclinic.cl/categoria/cosecha-propia/">Cosecha Propia</a></li>
+<li id="menu-item-817783" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-817783"><a href="https://www.theclinic.cl/categoria/humor/">Humor</a></li>
+<li id="menu-item-807947" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-807947"><a href="https://www.theclinic.cl/categoria/opinion/">Opinión</a></li>
+<li id="menu-item-918394" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-918394"><a href="https://www.theclinic.cl/categoria/entrevistas/">Entrevistas</a></li>
+<li id="menu-item-922359" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-922359"><a href="https://www.theclinic.cl/categoria/entrevista-canalla/">Entrevista Canalla</a></li>
+<li id="menu-item-922360" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-922360"><a href="https://www.theclinic.cl/categoria/seleccion-nacional/">Selección Nacional</a></li>
+<li id="menu-item-810672" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-810672"><a href="https://www.theclinic.cl/categoria/recreo/">Tiempo Libre</a></li>
+<li id="menu-item-918414" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-918414"><a href="https://www.theclinic.cl/categoria/en-la-b/">Deportes</a></li>
+<li id="menu-item-810674" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-810674"><a href="https://www.theclinic.cl/categoria/videos/">Videos</a></li>
+<li id="menu-item-817782" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-817782"><a href="https://www.theclinic.cl/categoria/audifono/">Podcasts</a></li>
+<li id="menu-item-840757" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-840757"><a href="https://www.theclinic.cl/categoria/emporio/">Emporio</a></li>
+<li id="menu-item-810678" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-810678"><a href="https://www.theclinic.cl/categoria/planeta/">Planeta</a></li>
+<li id="menu-item-892402" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-892402"><a href="https://www.theclinic.cl/categoria/juegos/">Juegos</a></li>
+</ul>      </nav>
+    </div>
+  </div>
+</section>	</header>
+	<!-- /header -->
+			<div class="ads">
+  <script>
+    if(window._isDevice(['mobile', 'desktop', 'tablet'])){
+      document.write([
+        '<div id="topbanner"><sc',
+        'ript>googletag.cmd.push(function() { googletag.display(\'topbanner\'); });<\/sc',
+        'ript></div>'
+        ].join('')
+      )
+    }
+  </script>
+</div>
+<main class="single default container">
+
+  <div class="ads-single-left">
+    <script>
+  if(window._isDevice(['mobile', 'desktop', 'tablet'])){
+    document.write([
+      '<div id="ad-skyscrapper1"><sc',
+      'ript>googletag.cmd.push(function() { googletag.display(\'ad-skyscrapper1\'); });<\/sc',
+      'ript></div>'
+      ].join('')
+    )
+  }
+</script>  </div>  
+  
+  <div class="contents parent">
+    <article>
+
+      
+<div class="video-thumb">
+  <div class="thumb">    
+          <img src="https://www.theclinic.cl/wp-content/uploads/2018/05/iglesia-aa1.jpg" class="attachment-large size-large wp-post-image" alt="" srcset="https://www.theclinic.cl/wp-content/uploads/2018/05/iglesia-aa1.jpg 640w, https://www.theclinic.cl/wp-content/uploads/2018/05/iglesia-aa1-131x87.jpg 131w, https://www.theclinic.cl/wp-content/uploads/2018/05/iglesia-aa1-70x46.jpg 70w, https://www.theclinic.cl/wp-content/uploads/2018/05/iglesia-aa1-300x199.jpg 300w" sizes="(max-width: 640px) 100vw, 640px" />              <p class="creditos">Agencia UNO</p>
+      </div>
+</div>      
+
+      <div class="topPost">
+        <div class="catBox">
+          <ul class="post-categories">
+	<li><a href="https://www.theclinic.cl/categoria/actualidad/" rel="tag">Actualidad</a></li></ul>        </div>
+                <h1 class="normal">Nueva York plantea apertura religiosa pese a alza de muertes diarias por Covid-19</h1>        
+
+        <div class="author-date">
+          <p class="author">Por EFE/The Clinic</p>
+          <p class="date">20 de Mayo, 2020</p>
+        </div>        
+
+                <div class="excerpt">
+          El gobernador neoyorquino, Andrew Cuomo, precisó que se trataría de ceremonias de no más de 10 personas y siempre que haya estrictas medidas de distancia social y todos los participantes lleven mascarilla.        </div>
+                
+
+         
+        <div class="share-posts-widget">
+  
+  <div class="col">
+    <div class="title">Compártelo</div>
+  </div>
+  
+
+  <div class="buttons">
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.theclinic.cl/2020/05/20/nueva-york-plantea-apertura-religiosa-pese-a-alza-de-muertes-diarias-por-covid-19/" title="Share on Facebook" target="_blank" class="button facebook">
+      <span class="icon"><i class="fab fa-facebook"></i></span>
+      <!-- <span class="text button-text">Facebook</span> -->
+    </a>
+
+    <a href="https://twitter.com/intent/tweet?source=https://www.theclinic.cl/2020/05/20/nueva-york-plantea-apertura-religiosa-pese-a-alza-de-muertes-diarias-por-covid-19/&text=Nueva York plantea apertura religiosa pese a alza de muertes diarias por Covid-19 - https://www.theclinic.cl/2020/05/20/nueva-york-plantea-apertura-religiosa-pese-a-alza-de-muertes-diarias-por-covid-19/ vía @thecliniccl" target="_blank" title="Tweet" class="button twitter">
+      <span class="icon"><i class="fab fa-twitter"></i></span>
+      <!-- <span class="text button-text">Twitter</span> -->
+    </a>
+
+    <a href="whatsapp://send?text=Nueva York plantea apertura religiosa pese a alza de muertes diarias por Covid-19 – https://www.theclinic.cl/2020/05/20/nueva-york-plantea-apertura-religiosa-pese-a-alza-de-muertes-diarias-por-covid-19/" data-action="share/whatsapp/share" rel="nofollow" class="button whatsapp is-hidden-desktop">
+      <span class="icon"><i class="fab fa-whatsapp"></i></span>
+      <!-- <span class="text button-text">Whatsapp</span> -->
+    </a>  
+  </div>
+
+</div>      </div>      
+
+      <div class="ads">
+  <script>
+    if(window._isDevice(['mobile'])){
+      document.write([
+        '<div id="singleMobile1SizeMap" class="bloque"><sc',
+        'ript>googletag.cmd.push(function() { googletag.display(\'singleMobile1SizeMap\'); });<\/sc',
+        'ript></div>'
+        ].join('')
+      )
+    }
+  </script>
+</div>
+      <div class="contentPost">        
+
+        
+                  
+<p>El número de muertes diarias por Covid-19 en el estado de Nueva York, epicentro mundial de la pandemia con 28.558 fallecidos y 61.886 recuperados, ha experimentado un ligero repunte hasta los 112 decesos producidos el martes, pese a lo cual el gobernador neoyorquino, Andrew Cuomo, se comprometió este miércoles a trabajar para que las ceremonias religiosas recuperen la normalidad cuanto antes.</p>
+
+
+
+<p>En su comparecencia diaria, Cuomo señaló este miércoles que tanto las hospitalizaciones como las intubaciones habían vuelto a experimentar una bajada y que el número de nuevos casos contabilizados el martes retrocedían hasta los 295, menos que los 321 del lunes.&nbsp;</p>
+
+
+
+<p>Los fallecimientos, sin embargo, subían hasta los 112 el martes desde los 105 que registró el lunes.</p>
+
+
+
+<p>Esa subida no impidió al gobernador anunciar que se empezarán a permitir las ceremonias religiosas de no más de 10 personas siempre que haya estrictas medidas de distancia social y todos los participantes lleven mascarilla.</p>
+
+
+
+<p>&#8220;Creo que en estos momentos de tanta confusión, las celebraciones religiosas son muy reconfortantes para un gran número de personas y entiendo el deseo de que vuelvan los antes posible&#8221;, reflexionó el dirigente, quien agregó que el estado iba a doblar el número de iglesias donde se practican los tests hasta las 44 en total.</p>
+
+
+
+<p>La medida sobre la vuelta de las ceremonias religiosas es especialmente significativa para la comunidad judía, cuyas congregaciones suelen requerir un mínimo de 10 personas mayores de 13 años para poder celebrarse.</p>
+
+
+
+<p><strong>ZONAS CON BAJOS RECURSOS, LOS MAYORES FOCOS</strong></p>
+
+
+
+<p>Cuomo también ofreció datos por territorio tras haber practicado de forma intensiva más de 8.000 tests de anticuerpos focalizados en zonas con mayores índices de vulnerabilidad, principalmente en la ciudad de Nueva York y alertó de que los nuevos casos se están concentrando sobre todo en comunidades con bajos recursos y en las que predominan las minorías raciales.</p>
+
+
+
+<p>&#8220;Los datos muestran no solo más positivos en esas comunidades sino que el esparcimiento del virus es mayor y son las zonas donde se encuentran los nuevos casos&#8221;, resaltó el gobernador, quien alertó del sufrimiento que se está viviendo en esos barrios.</p>
+
+
+
+<p>En este sentido, llamó a las Administraciones locales a expandir su actuación en estas zonas y a desarrollar programas de ayuda para reducir el alto número de muertes que registran.</p>
+
+
+
+<p>El gobernador ejemplificó que en Morrisania y Brownsville, vecindarios de la ciudad de Nueva York ubicados en El Bronx y Brooklyn respectivamente, casi duplican la cifra media de las hospitalizaciones en la ciudad, mientras que las comunidades afroamericanas están cerca de doblar el número medio de positivos.</p>
+
+
+
+<p>Por distritos, en El Bronx la cifra de personas con anticuerpos, según el muestreo estatal, sube hasta el 34 %, en Brooklyn es del 29 %, en Queens del 25 %, en Manhattan del 20 % y en Staten Island del 19%.</p>
+
+
+
+<p>De media, el 27 % de las personas que viven en barrios pobres de la Gran Manzana han generado anticuerpos de COVID-19, frente al 19,9 % que registra la población general de la ciudad.</p>
+
+
+
+<p><strong>REAPERTURAS SIN INCIDENTES</strong></p>
+
+
+
+<p>Por otro lado, Andrew Cuomo señaló que, de momento, en aquellas regiones donde ya han comenzado las reaperturas económicas todavía no se ha registrado ningún rebrote significativo del virus y avanzó que ninguna de las tres zonas restantes que mantienen los parones, la ciudad de Nueva York y sus dos regiones limítrofes, cumplen todavía con las métricas para reabrir.</p>
+
+
+
+<p>El estado vecino de Connecticut, que forma parte del área triestatal junto con Nueva Jersey, también ha empezado su reapertura y, poco a poco, pequeños comercios como tiendas y algunos restaurantes han comenzado a retomar su actividad entre estrictas medidas de precaución.</p>
+
+
+
+<p>Estados Unidos registra ya más de 1,5 millones de casos confirmados de COVID-19 y unos 92.000 fallecimientos, de acuerdo con el recuento independiente de la Universidad Johns Hopkins.</p>
+
+
+
+<p>El estado de Nueva York se mantiene como el gran epicentro de la pandemia en Estados Unidos con más de 352.000 casos confirmados y 28.558 fallecidos.  </p>
+
+
+
+<figure class="wp-block-embed-wordpress wp-block-embed is-type-wp-embed is-provider-the-clinic-reportajes-noticias-podcast-videos-y-humor"><div class="wp-block-embed__wrapper">
+<blockquote class="wp-embedded-content" data-secret="BPEfI4dLwf"><a href="https://www.theclinic.cl/2020/05/20/a-los-86-anos-murio-mariana-salinas-figura-de-cocinando-con-monica/">A los 86 años murió Mariana Salinas, figura de &#8220;Cocinando con Mónica&#8221;</a></blockquote><iframe title="&#8220;A los 86 años murió Mariana Salinas, figura de &#8220;Cocinando con Mónica&#8221;&#8221; &#8212; The Clinic - Reportajes, noticias, podcast, videos y humor" class="wp-embedded-content" sandbox="allow-scripts" security="restricted" style="position: absolute; clip: rect(1px, 1px, 1px, 1px);" src="https://www.theclinic.cl/2020/05/20/a-los-86-anos-murio-mariana-salinas-figura-de-cocinando-con-monica/embed/#?secret=BPEfI4dLwf" data-secret="BPEfI4dLwf" width="600" height="338" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+</div></figure>
+        
+
+      </div>      
+
+        <div class="block tags">    
+  <a href="https://www.theclinic.cl/etiqueta/covid-19/" rel="tag">COVID-19</a><a href="https://www.theclinic.cl/etiqueta/cultos/" rel="tag">cultos</a><a href="https://www.theclinic.cl/etiqueta/nueva-york/" rel="tag">nueva york</a><a href="https://www.theclinic.cl/etiqueta/religion/" rel="tag">Religión</a> 
+  </div>
+
+      <div class="share-posts-widget">
+  
+  <div class="col">
+    <div class="title">Compártelo</div>
+  </div>
+  
+
+  <div class="buttons">
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.theclinic.cl/2020/05/20/nueva-york-plantea-apertura-religiosa-pese-a-alza-de-muertes-diarias-por-covid-19/" title="Share on Facebook" target="_blank" class="button facebook">
+      <span class="icon"><i class="fab fa-facebook"></i></span>
+      <!-- <span class="text button-text">Facebook</span> -->
+    </a>
+
+    <a href="https://twitter.com/intent/tweet?source=https://www.theclinic.cl/2020/05/20/nueva-york-plantea-apertura-religiosa-pese-a-alza-de-muertes-diarias-por-covid-19/&text=Nueva York plantea apertura religiosa pese a alza de muertes diarias por Covid-19 - https://www.theclinic.cl/2020/05/20/nueva-york-plantea-apertura-religiosa-pese-a-alza-de-muertes-diarias-por-covid-19/ vía @thecliniccl" target="_blank" title="Tweet" class="button twitter">
+      <span class="icon"><i class="fab fa-twitter"></i></span>
+      <!-- <span class="text button-text">Twitter</span> -->
+    </a>
+
+    <a href="whatsapp://send?text=Nueva York plantea apertura religiosa pese a alza de muertes diarias por Covid-19 – https://www.theclinic.cl/2020/05/20/nueva-york-plantea-apertura-religiosa-pese-a-alza-de-muertes-diarias-por-covid-19/" data-action="share/whatsapp/share" rel="nofollow" class="button whatsapp is-hidden-desktop">
+      <span class="icon"><i class="fab fa-whatsapp"></i></span>
+      <!-- <span class="text button-text">Whatsapp</span> -->
+    </a>  
+  </div>
+
+</div>
+      <div class="ads">
+  <script>
+    if(window._isDevice(['mobile'])){
+      document.write([
+        '<div id="singleMobile2SizeMap" class="bloque"><sc',
+        'ript>googletag.cmd.push(function() { googletag.display(\'singleMobile2SizeMap\'); });<\/sc',
+        'ript></div>'
+        ].join('')
+      )
+    }
+  </script>
+</div>
+      <!-- Composite Start -->
+      <div class="">
+        <div id="M661705ScriptRootC1042362">
+        </div>
+      </div>
+      <script src="https://jsc.mgid.com/n/e/nedmedia.theclinic.cl.1042362.js" async></script>
+      <!-- Composite End --> 
+
+              <div class="block comments">
+  <div class="titleBar">Comentarios</div>
+  <div class="fb-comments" width="100%" data-numposts="5"></div>
+</div>            
+
+    </article>
+
+    <aside>
+      <div class="aside-block">
+  <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fthecliniconline&tabs&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=296379937054691" height="214" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+</div>
+
+  <div class="ads">  
+  <script>
+    if(window._isDevice(['mobile', 'desktop', 'tablet'])){
+      document.write([
+        '<div id="ad-mpu1-sidebar"><sc',
+        'ript>googletag.cmd.push(function() { googletag.display(\'ad-mpu1-sidebar\'); });<\/sc',
+        'ript></div>'
+        ].join('')
+      )
+    }
+  </script>
+</div>
+<div class="loMasLeido" id="MostViewed">
+  <div class="titleBar">Lo Más Visto</div>
+  <div class="items-list">
+
+  
+<div class="item">
+    <a href="https://www.theclinic.cl/2021/04/09/ministro-paris-preocupado-tras-cifra-record-de-contagiados-estamos-viviendo-un-momento-critico//?utm_source=masvistos&utm_medium=post&utm_campaign=thc">          
+      <div class="thumb">
+              <img src="https://www.theclinic.cl/wp-content/uploads/2021/01/A_UNO_1191882-120x79.jpg" class="attachment-small size-small wp-post-image" alt="" srcset="https://www.theclinic.cl/wp-content/uploads/2021/01/A_UNO_1191882-120x79.jpg 120w, https://www.theclinic.cl/wp-content/uploads/2021/01/A_UNO_1191882-450x297.jpg 450w, https://www.theclinic.cl/wp-content/uploads/2021/01/A_UNO_1191882-768x507.jpg 768w, https://www.theclinic.cl/wp-content/uploads/2021/01/A_UNO_1191882-1200x792.jpg 1200w" sizes="(max-width: 120px) 100vw, 120px" />                  
+      </div>
+      <div class="data">
+        <div class="title">Ministro Paris preocupado tras cifra récord de contagiados: &#8220;Estamos viviendo un momento crítico&#8221;</div>
+        <p>09 de Abril, 2021 | Por The Clinic</p>
+      </div>
+    </a>
+  </div>
+
+  
+<div class="item">
+    <a href="https://www.theclinic.cl/2021/04/12/mateo-el-nino-que-transformo-un-dolor-de-orejas-en-donacion-anticovid//?utm_source=masvistos&utm_medium=post&utm_campaign=thc">          
+      <div class="thumb">
+              <img src="https://www.theclinic.cl/wp-content/uploads/2021/01/mascarilla-tela-pixabay.jpeg-120x120.jpg" class="attachment-small size-small wp-post-image" alt="" srcset="https://www.theclinic.cl/wp-content/uploads/2021/01/mascarilla-tela-pixabay.jpeg-120x120.jpg 120w, https://www.theclinic.cl/wp-content/uploads/2021/01/mascarilla-tela-pixabay.jpeg-450x450.jpg 450w, https://www.theclinic.cl/wp-content/uploads/2021/01/mascarilla-tela-pixabay.jpeg-400x400.jpg 400w, https://www.theclinic.cl/wp-content/uploads/2021/01/mascarilla-tela-pixabay.jpeg.jpg 640w" sizes="(max-width: 120px) 100vw, 120px" />                  
+      </div>
+      <div class="data">
+        <div class="title">Mateo, el niño que transformó un dolor de orejas en donación anticovid</div>
+        <p>12 de Abril, 2021 | Por EFE/The Clinic</p>
+      </div>
+    </a>
+  </div>
+
+  
+<div class="item">
+    <a href="https://www.theclinic.cl/2021/04/10/video-asi-fue-la-celebracion-de-camila-saez-en-el-primer-gol-de-chile-ante-camerun//?utm_source=masvistos&utm_medium=post&utm_campaign=thc">          
+      <div class="thumb">
+              <img src="https://www.theclinic.cl/wp-content/uploads/2021/04/Camila-Sáez-120x68.jpg" class="attachment-small size-small wp-post-image" alt="" srcset="https://www.theclinic.cl/wp-content/uploads/2021/04/Camila-Sáez-120x68.jpg 120w, https://www.theclinic.cl/wp-content/uploads/2021/04/Camila-Sáez-450x257.jpg 450w, https://www.theclinic.cl/wp-content/uploads/2021/04/Camila-Sáez-768x438.jpg 768w, https://www.theclinic.cl/wp-content/uploads/2021/04/Camila-Sáez.jpg 900w" sizes="(max-width: 120px) 100vw, 120px" />                  
+      </div>
+      <div class="data">
+        <div class="title">VIDEO: Así fue la celebración de Camila Sáez en el primer gol de Chile ante Camerún</div>
+        <p>10 de Abril, 2021 | Por The Clinic</p>
+      </div>
+    </a>
+  </div>
+
+  
+
+  </div>
+</div>
+  <div class="ads" id="sidebar2">  
+  <script>
+    if(window._isDevice(['mobile', 'desktop', 'tablet'])){
+      document.write([
+        '<div id="ad-mpu2-sidebar"><sc',
+        'ript>googletag.cmd.push(function() { googletag.display(\'ad-mpu2-sidebar\'); });<\/sc',
+        'ript></div>'
+        ].join('')
+      )
+    }
+  </script>
+</div>    </aside>
+  </div>
+</main>
+
+<div class="ads">
+  <script>
+    if(window._isDevice(['mobile', 'desktop', 'tablet'])){
+      document.write([
+        '<div id="bottomobanner"><sc',
+        'ript>googletag.cmd.push(function() { googletag.display(\'bottomobanner\'); });<\/sc',
+        'ript></div>'
+        ].join('')
+      )
+    }
+  </script>
+</div>
+<div class="ads fixedMobile">
+  <script>
+    if(window._isDevice(['mobile'])){
+      document.write([
+        '<div id="singleMobileFixedSizeMap" class="bloque"><sc',
+        'ript>googletag.cmd.push(function() { googletag.display(\'singleMobileFixedSizeMap\'); });<\/sc',
+        'ript></div>'
+        ].join('')
+      )
+    }
+  </script>
+</div>
+<section class="block relatedPosts">
+    <div class="container">
+      <div class="row">        
+        <div class="titleBar">Artículos Relacionados</div>                
+      </div>
+      <div class="row items">
+                          <div class="item itemSmall">
+  <div class="thumb">
+    <a href="https://www.theclinic.cl/2021/04/13/de-negar-el-coronavirus-a-su-adiccion-a-la-cocaina-cinco-momentos-que-dejo-la-entrevista-mas-reveladora-de-miguel-bose//?utm_source=relacionado&utm_medium=post&utm_campaign=thc">
+              <img src="https://www.theclinic.cl/wp-content/uploads/2021/04/Miguel-Bosé-1200x675.jpg" class="attachment-large size-large wp-post-image" alt="" srcset="https://www.theclinic.cl/wp-content/uploads/2021/04/Miguel-Bosé.jpg 1200w, https://www.theclinic.cl/wp-content/uploads/2021/04/Miguel-Bosé-450x253.jpg 450w, https://www.theclinic.cl/wp-content/uploads/2021/04/Miguel-Bosé-768x432.jpg 768w, https://www.theclinic.cl/wp-content/uploads/2021/04/Miguel-Bosé-120x68.jpg 120w" sizes="(max-width: 900px) 100vw, 900px" />                      
+    </a>
+  </div>
+  <div class="data">
+    <div class="title"><a href="https://www.theclinic.cl/2021/04/13/de-negar-el-coronavirus-a-su-adiccion-a-la-cocaina-cinco-momentos-que-dejo-la-entrevista-mas-reveladora-de-miguel-bose/">De negar el coronavirus a su adicción a la cocaína: Cinco momentos que dejó la entrevista más reveladora de Miguel Bosé</a></div>
+    <p><span class="cat">Tiempo Libre </span> | 13 de Abril, 2021</p>
+  </div>
+</div>                            <div class="item itemSmall">
+  <div class="thumb">
+    <a href="https://www.theclinic.cl/2021/04/12/estudio-asegura-que-quienes-usan-redes-sociales-para-saber-sobre-el-covid-19-estan-menos-informados//?utm_source=relacionado&utm_medium=post&utm_campaign=thc">
+              <img src="https://www.theclinic.cl/wp-content/uploads/2021/04/Celular-Telefono-Covid-19-Unsplash-1200x800.jpg" class="attachment-large size-large wp-post-image" alt="" srcset="https://www.theclinic.cl/wp-content/uploads/2021/04/Celular-Telefono-Covid-19-Unsplash-1200x800.jpg 1200w, https://www.theclinic.cl/wp-content/uploads/2021/04/Celular-Telefono-Covid-19-Unsplash-450x300.jpg 450w, https://www.theclinic.cl/wp-content/uploads/2021/04/Celular-Telefono-Covid-19-Unsplash-768x512.jpg 768w, https://www.theclinic.cl/wp-content/uploads/2021/04/Celular-Telefono-Covid-19-Unsplash-120x80.jpg 120w" sizes="(max-width: 900px) 100vw, 900px" />                      
+    </a>
+  </div>
+  <div class="data">
+    <div class="title"><a href="https://www.theclinic.cl/2021/04/12/estudio-asegura-que-quienes-usan-redes-sociales-para-saber-sobre-el-covid-19-estan-menos-informados/">Estudio asegura que quienes usan redes sociales para saber sobre el Covid-19 &#8220;están menos informados&#8221;</a></div>
+    <p><span class="cat">Tecnología </span> | 12 de Abril, 2021</p>
+  </div>
+</div>                            <div class="item itemSmall">
+  <div class="thumb">
+    <a href="https://www.theclinic.cl/2021/04/12/la-operacion-retorno-de-manalich-cinco-frases-del-exministro-que-han-remecido-la-estrategia-sanitaria-de-la-moneda//?utm_source=relacionado&utm_medium=post&utm_campaign=thc">
+              <img src="https://www.theclinic.cl/wp-content/uploads/2021/04/A_UNO_1181476-1200x720.jpg" class="attachment-large size-large wp-post-image" alt="" srcset="https://www.theclinic.cl/wp-content/uploads/2021/04/A_UNO_1181476.jpg 1200w, https://www.theclinic.cl/wp-content/uploads/2021/04/A_UNO_1181476-450x270.jpg 450w, https://www.theclinic.cl/wp-content/uploads/2021/04/A_UNO_1181476-768x461.jpg 768w, https://www.theclinic.cl/wp-content/uploads/2021/04/A_UNO_1181476-120x72.jpg 120w" sizes="(max-width: 900px) 100vw, 900px" />                      
+    </a>
+  </div>
+  <div class="data">
+    <div class="title"><a href="https://www.theclinic.cl/2021/04/12/la-operacion-retorno-de-manalich-cinco-frases-del-exministro-que-han-remecido-la-estrategia-sanitaria-de-la-moneda/">La operación retorno de Mañalich: Cinco frases del exministro que han remecido la estrategia sanitaria de La Moneda</a></div>
+    <p><span class="cat">Actualidad </span> | 12 de Abril, 2021</p>
+  </div>
+</div>                            <div class="item itemSmall">
+  <div class="thumb">
+    <a href="https://www.theclinic.cl/2021/04/12/la-aclaracion-del-minsal-tras-polemica-por-medida-para-eximir-de-cuarentena-por-contacto-estrecho-a-vacunados-con-ambas-dosis//?utm_source=relacionado&utm_medium=post&utm_campaign=thc">
+              <img src="https://www.theclinic.cl/wp-content/uploads/2021/04/vacunacion-Covid-19-A1.jpg" class="attachment-large size-large wp-post-image" alt="" srcset="https://www.theclinic.cl/wp-content/uploads/2021/04/vacunacion-Covid-19-A1.jpg 640w, https://www.theclinic.cl/wp-content/uploads/2021/04/vacunacion-Covid-19-A1-450x300.jpg 450w, https://www.theclinic.cl/wp-content/uploads/2021/04/vacunacion-Covid-19-A1-120x80.jpg 120w" sizes="(max-width: 640px) 100vw, 640px" />                      
+    </a>
+  </div>
+  <div class="data">
+    <div class="title"><a href="https://www.theclinic.cl/2021/04/12/la-aclaracion-del-minsal-tras-polemica-por-medida-para-eximir-de-cuarentena-por-contacto-estrecho-a-vacunados-con-ambas-dosis/">La aclaración del Minsal tras polémica por medida para eximir de cuarentena por contacto estrecho a vacunados con ambas dosis</a></div>
+    <p><span class="cat">Actualidad </span> | 12 de Abril, 2021</p>
+  </div>
+</div>         
+      </div>
+    </div>
+  </section>
+
+	
+	<script>
+				var categoryPost = 'Actualidad';
+		function eventCatName() { 
+			ga('send', 'event', {
+				'eventCategory': 'Categoría',
+				'eventAction': `${categoryPost}`,
+				'eventValue': '1'
+			});
+		} 
+    document.addEventListener("DOMContentLoaded", eventCatName, false);    
+		// console.log(`La categoría de este post es : ${categoryPost}`);
+  </script>
+
+		<!-- footer -->
+		<footer>
+			<div class="container">
+				<div class="col">
+						<ul class="social">
+          <li><a rel="canonical" alt="social" target="_blank" alt="Twitter" href="https://twitter.com/#!/thecliniccl"><i class="fab fa-twitter-square"></i></a></li>
+    
+          <li><a rel="canonical" alt="social" target="_blank" alt="Facebook" href="https://www.facebook.com/thecliniconline"><i class="fab fa-facebook"></i></a></li>
+    
+          <li><a rel="canonical" alt="social" target="_blank" alt="Instagram" href="https://www.instagram.com/theclinic_cl/"><i class="fab fa-instagram"></i></a></li>
+    
+          <li><a rel="canonical" alt="social" target="_blank" alt="Youtube" href="https://www.youtube.com/user/TheClinicTeve"><i class="fab fa-youtube"></i></a></li>
+    </ul>				</div>
+				<div class="col">
+					<p>© 2020 <strong>theclinic.cl</strong> &#8211; <a href="https://www.theclinic.cl/sobre-the-clinic/">Acerca de THC</a></p>
+				</div>
+				<div class="col">
+					<p><a href="https://www.theclinic.cl/privacidad/">Políticas de Privacidad</a></p>
+				</div>
+			</div>
+		</footer>
+		<!-- /footer -->
+
+		
+			<section class="sabiaudque">
+  <div class="marqueeSabia">
+        
+          Sabía ud que... En Las Condes y Vitacura las candidaturas de izquierda ya entraron en tierra derecha <span>--------------------------------</span>
+        
+          Sabía ud que... La gente espiritual, de colación se come un Súper Osho <span>--------------------------------</span>
+        
+          Sabía ud que... Reabrir cines en pandemia es pan para Hoyts y hambre para mañana <span>--------------------------------</span>
+        
+          Sabía ud que... La pandemia nos enseña a valorar las pequeñas cosas, especialmente las microscópicas <span>--------------------------------</span>
+        
+          Sabía ud que... En Enjoy, Piñera hace sus apuestas en “punto y Bancard” y en Larroulet <span>--------------------------------</span>
+    </div>
+</section>
+
+			<div class="ceroxcero">
+				<script>
+  if(window._isDevice(['desktop'])){
+    document.write([
+      '<div id="ad-skinWrapper"><sc',
+      'ript>googletag.cmd.push(function() { googletag.display(\'ad-skinWrapper\'); });<\/sc',
+      'ript></div>'
+      ].join('')
+    )
+  }
+</script>				<script>
+  if(window._isDevice(['mobile', 'desktop', 'tablet'])){
+    document.write([
+      '<div id="ad-onexone"><sc',
+      'ript>googletag.cmd.push(function() { googletag.display(\'ad-onexone\'); });<\/sc',
+      'ript></div>'
+      ].join('')
+    )
+  }
+</script>				<script>
+  if(window._isDevice(['mobile', 'desktop', 'tablet'])){
+    document.write([
+      '<div id="ad-onexone-b"><sc',
+      'ript>googletag.cmd.push(function() { googletag.display(\'ad-onexone-b\'); });<\/sc',
+      'ript></div>'
+      ].join('')
+    )
+  }
+</script>				<script>
+  if(window._isDevice(['mobile', 'desktop', 'tablet'])){
+    document.write([
+      '<div id="ad-onexone-c"><sc',
+      'ript>googletag.cmd.push(function() { googletag.display(\'ad-onexone-c\'); });<\/sc',
+      'ript></div>'
+      ].join('')
+    )
+  }
+</script>				<script>
+  if(window._isDevice(['mobile', 'desktop', 'tablet'])){
+    document.write([
+      '<div id="ad-onexone-d"><sc',
+      'ript>googletag.cmd.push(function() { googletag.display(\'ad-onexone-d\'); });<\/sc',
+      'ript></div>'
+      ].join('')
+    )
+  }
+</script>				<script>
+  if(window._isDevice(['mobile', 'desktop', 'tablet'])){
+    document.write([
+      '<div id="ad-onexone-itt"><sc',
+      'ript>googletag.cmd.push(function() { googletag.display(\'ad-onexone-itt\'); });<\/sc',
+      'ript></div>'
+      ].join('')
+    )
+  }
+</script>				<script>
+  if(window._isDevice(['mobile', 'desktop', 'tablet'])){
+    document.write([
+      '<div id="ad-outofpage1"><sc',
+      'ript>googletag.cmd.push(function() { googletag.display(\'ad-outofpage1\'); });<\/sc',
+      'ript></div>'
+      ].join('')
+    )
+  }
+</script>				
+			</div>
+
+		
+		<script type='text/javascript' src='https://www.theclinic.cl/wp-includes/js/wp-embed.min.js?ver=5.2.2'></script>
+
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23557630-1"></script>
+		<script>
+			(function(f,i,r,e,s,h,l){i['GoogleAnalyticsObject']=s;f[s]=f[s]||function(){
+			(f[s].q=f[s].q||[]).push(arguments)},f[s].l=1*new Date();h=i.createElement(r),
+			l=i.getElementsByTagName(r)[0];h.async=1;h.src=e;l.parentNode.insertBefore(h,l)
+			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+			ga('create', 'UA-23557630-1', 'auto');
+			ga('send', 'pageview');
+			</script>
+
+			
+
+	<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam-cell.nr-data.net","licenseKey":"94d757aee4","applicationID":"183521943","transactionName":"NVZSZEdSW0MHBkRbCQwccVNBWlpeSRZZXAEOVg==","queueTime":0,"applicationTime":452,"atts":"GRFREg9ISE0=","errorBeacon":"bam-cell.nr-data.net","agent":""}</script></body>
+</html>

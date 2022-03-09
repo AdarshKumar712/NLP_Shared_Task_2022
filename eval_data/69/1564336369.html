@@ -1,0 +1,1629 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"33f1d7e106",applicationID:"454105528"};window.NREUM||(NREUM={}),__nr_require=function(e,t,n){function r(n){if(!t[n]){var i=t[n]={exports:{}};e[n][0].call(i.exports,function(t){var i=e[n][1][t];return r(i||t)},i,i.exports)}return t[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(e,t,n){function r(){}function i(e,t,n){return function(){return o(e,[u.now()].concat(c(arguments)),t?null:this,n),t?void 0:this}}var o=e("handle"),a=e(6),c=e(7),f=e("ee").get("tracer"),u=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(e,t){s[t]=i(p+t,!0,"api")}),s.addPageAction=i(p+"addPageAction",!0),s.setCurrentRouteName=i(p+"routeName",!0),t.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,t){var n={},r=this,i="function"==typeof t;return o(l+"tracer",[u.now(),e,n],r),function(){if(f.emit((i?"":"no-")+"fn-start",[u.now(),r,i],n),i)try{return t.apply(this,arguments)}catch(e){throw f.emit("fn-err",[arguments,this,e],n),e}finally{f.emit("fn-end",[u.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,t){m[t]=i(l+t)}),newrelic.noticeError=function(e,t){"string"==typeof e&&(e=new Error(e)),o("err",[e,u.now(),!1,t])}},{}],2:[function(e,t,n){function r(){return c.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,c=e(8);t.exports=r,t.exports.offset=a,t.exports.getLastTimestamp=i},{}],3:[function(e,t,n){function r(e,t){var n=e.getEntries();n.forEach(function(e){"first-paint"===e.name?d("timing",["fp",Math.floor(e.startTime)]):"first-contentful-paint"===e.name&&d("timing",["fcp",Math.floor(e.startTime)])})}function i(e,t){var n=e.getEntries();n.length>0&&d("lcp",[n[n.length-1]])}function o(e){e.getEntries().forEach(function(e){e.hadRecentInput||d("cls",[e])})}function a(e){if(e instanceof m&&!g){var t=Math.round(e.timeStamp),n={type:e.type};t<=p.now()?n.fid=p.now()-t:t>p.offset&&t<=Date.now()?(t-=p.offset,n.fid=p.now()-t):t=p.now(),g=!0,d("timing",["fi",t,n])}}function c(e){d("pageHide",[p.now(),e])}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var f,u,s,d=e("handle"),p=e("loader"),l=e(5),m=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){f=new PerformanceObserver(r);try{f.observe({entryTypes:["paint"]})}catch(v){}u=new PerformanceObserver(i);try{u.observe({entryTypes:["largest-contentful-paint"]})}catch(v){}s=new PerformanceObserver(o);try{s.observe({type:"layout-shift",buffered:!0})}catch(v){}}if("addEventListener"in document){var g=!1,w=["click","keydown","mousedown","pointerdown","touchstart"];w.forEach(function(e){document.addEventListener(e,a,!1)})}l(c)}},{}],4:[function(e,t,n){function r(e,t){if(!i)return!1;if(e!==i)return!1;if(!t)return!0;if(!o)return!1;for(var n=o.split("."),r=t.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var c=navigator.userAgent,f=c.match(a);f&&c.indexOf("Chrome")===-1&&c.indexOf("Chromium")===-1&&(i="Safari",o=f[1])}t.exports={agent:i,version:o,match:r}},{}],5:[function(e,t,n){function r(e){function t(){e(a&&document[a]?document[a]:document[i]?"hidden":"visible")}"addEventListener"in document&&o&&document.addEventListener(o,t,!1)}t.exports=r;var i,o,a;"undefined"!=typeof document.hidden?(i="hidden",o="visibilitychange",a="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",o="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",o="webkitvisibilitychange",a="webkitVisibilityState")},{}],6:[function(e,t,n){function r(e,t){var n=[],r="",o=0;for(r in e)i.call(e,r)&&(n[o]=t(r,e[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;t.exports=r},{}],7:[function(e,t,n){function r(e,t,n){t||(t=0),"undefined"==typeof n&&(n=e?e.length:0);for(var r=-1,i=n-t||0,o=Array(i<0?0:i);++r<i;)o[r]=e[t+r];return o}t.exports=r},{}],8:[function(e,t,n){t.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,t,n){function r(){}function i(e){function t(e){return e&&e instanceof r?e:e?u(e,f,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!l.aborted||o){e&&a&&e(n,r,i);for(var c=t(i),f=v(n),u=f.length,s=0;s<u;s++)f[s].apply(c,r);var p=d[h[n]];return p&&p.push([b,n,r,c]),c}}function o(e,t){y[e]=v(e).concat(t)}function m(e,t){var n=y[e];if(n)for(var r=0;r<n.length;r++)n[r]===t&&n.splice(r,1)}function v(e){return y[e]||[]}function g(e){return p[e]=p[e]||i(n)}function w(e,t){s(e,function(e,n){t=t||"feature",h[n]=t,t in d||(d[t]=[])})}var y={},h={},b={on:o,addEventListener:o,removeEventListener:m,emit:n,get:g,listeners:v,context:t,buffer:w,abort:c,aborted:!1};return b}function o(e){return u(e,f,a)}function a(){return new r}function c(){(d.api||d.feature)&&(l.aborted=!0,d=l.backlog={})}var f="nr@context",u=e("gos"),s=e(6),d={},p={},l=t.exports=i();t.exports.getOrSetContext=o,l.backlog=d},{}],gos:[function(e,t,n){function r(e,t,n){if(i.call(e,t))return e[t];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,t,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return e[t]=r,r}var i=Object.prototype.hasOwnProperty;t.exports=r},{}],handle:[function(e,t,n){function r(e,t,n,r){i.buffer([e],r),i.emit(e,t,n)}var i=e("ee").get("handle");t.exports=r,r.ee=i},{}],id:[function(e,t,n){function r(e){var t=typeof e;return!e||"object"!==t&&"function"!==t?-1:e===window?0:a(e,o,function(){return i++})}var i=1,o="nr@id",a=e("gos");t.exports=r},{}],loader:[function(e,t,n){function r(){if(!x++){var e=b.info=NREUM.info,t=p.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&t))return u.abort();f(y,function(t,n){e[t]||(e[t]=n)});var n=a();c("mark",["onload",n+b.offset],null,"api"),c("timing",["load",n]);var r=p.createElement("script");r.src="https://"+e.agent,t.parentNode.insertBefore(r,t)}}function i(){"complete"===p.readyState&&o()}function o(){c("mark",["domContent",a()+b.offset],null,"api")}var a=e(2),c=e("handle"),f=e(6),u=e("ee"),s=e(4),d=window,p=d.document,l="addEventListener",m="attachEvent",v=d.XMLHttpRequest,g=v&&v.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:v,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var w=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1198.min.js"},h=v&&g&&g[l]&&!/CriOS/.test(navigator.userAgent),b=t.exports={offset:a.getLastTimestamp(),now:a,origin:w,features:{},xhrWrappable:h,userAgent:s};e(1),e(3),p[l]?(p[l]("DOMContentLoaded",o,!1),d[l]("load",r,!1)):(p[m]("onreadystatechange",i),d[m]("onload",r)),c("mark",["firstbyte",a.getLastTimestamp()],null,"api");var x=0},{}],"wrap-function":[function(e,t,n){function r(e,t){function n(t,n,r,f,u){function nrWrapper(){var o,a,s,p;try{a=this,o=d(arguments),s="function"==typeof r?r(o,a):r||{}}catch(l){i([l,"",[o,a,f],s],e)}c(n+"start",[o,a,f],s,u);try{return p=t.apply(a,o)}catch(m){throw c(n+"err",[o,a,m],s,u),m}finally{c(n+"end",[o,a,p],s,u)}}return a(t)?t:(n||(n=""),nrWrapper[p]=t,o(t,nrWrapper,e),nrWrapper)}function r(e,t,r,i,o){r||(r="");var c,f,u,s="-"===r.charAt(0);for(u=0;u<t.length;u++)f=t[u],c=e[f],a(c)||(e[f]=n(c,s?f+r:r,i,f,o))}function c(n,r,o,a){if(!m||t){var c=m;m=!0;try{e.emit(n,r,o,t,a)}catch(f){i([f,n,r,o],e)}m=c}}return e||(e=s),n.inPlace=r,n.flag=p,n}function i(e,t){t||(t=s);try{t.emit("internal-error",e)}catch(n){}}function o(e,t,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(e);return r.forEach(function(n){Object.defineProperty(t,n,{get:function(){return e[n]},set:function(t){return e[n]=t,t}})}),t}catch(o){i([o],n)}for(var a in e)l.call(e,a)&&(t[a]=e[a]);return t}function a(e){return!(e&&e instanceof Function&&e.apply&&!e[p])}function c(e,t){var n=t(e);return n[p]=e,o(e,n,s),n}function f(e,t,n){var r=e[t];e[t]=c(r,n)}function u(){for(var e=arguments.length,t=new Array(e),n=0;n<e;++n)t[n]=arguments[n];return t}var s=e("ee"),d=e(7),p="nr@original",l=Object.prototype.hasOwnProperty,m=!1;t.exports=r,t.exports.wrapFunction=c,t.exports.wrapInPlace=f,t.exports.argsToArray=u},{}]},{},["loader"]);</script><style id="litespeed-optm-css-rules">:root{--wp-admin-theme-color:#007cba;--wp-admin-theme-color-darker-10:#006ba1;--wp-admin-theme-color-darker-20:#005a87}html,body,div,span,h1,h2,h3,h4,p,a,img,i,ul,li,form,article,header,nav,section,time{margin:0;padding:0;border:0;font-size:100%;vertical-align:baseline}article,header,nav,section{display:block}ul{list-style:none}html{overflow-x:hidden}body{color:#000;font-size:1rem;-webkit-font-smoothing:antialiased;font-weight:400;line-height:100%;margin:0 auto;padding:0}h1,h2,h3,h4,h3 a{-webkit-backface-visibility:hidden;color:#000}img{max-width:100%;height:auto;-webkit-backface-visibility:hidden}a,a:visited{opacity:1;text-decoration:none}#mvp-site,#mvp-site-wall{overflow:hidden;width:100%}#mvp-site-main{width:100%}#mvp-site-main{-webkit-backface-visibility:hidden;backface-visibility:hidden;margin-top:0;z-index:9999}.relative{position:relative}.right{float:right}.left{float:left}.mvp-mob-img{display:none!important}#mvp-main-head-wrap{width:100%}#mvp-main-nav-wrap{width:100%}.mvp-main-box{margin:0 auto;width:1200px;height:100%}h2.mvp-logo-title{display:block;font-size:0px}span.mvp-nav-search-but{float:right;font-size:20px;line-height:1;padding:15px 0}#mvp-search-wrap{-webkit-backface-visibility:hidden;backface-visibility:hidden;background:rgba(0,0,0,.94);opacity:0;position:fixed;top:0;left:0;-webkit-transform:translate3d(0,-100%,0);-moz-transform:translate3d(0,-100%,0);-ms-transform:translate3d(0,-100%,0);-o-transform:translate3d(0,-100%,0);transform:translate3d(0,-100%,0);width:100%;height:100%;z-index:999999}#mvp-search-wrap .mvp-search-but-wrap span{background:#fff;top:27px}#mvp-search-box{margin:-30px 0 0 -25%;position:absolute;top:50%;left:50%;width:50%}#searchform input{background:0 0;border:0;color:#fff;float:left;font-size:50px;font-weight:300;line-height:1;padding:5px 0;text-transform:uppercase;width:100%;height:50px}#searchform #searchsubmit{border:none;float:left}#mvp-main-nav-small,#mvp-nav-small-wrap,#mvp-main-nav-small-cont,.mvp-nav-small-cont{width:100%}#mvp-main-nav-small{-webkit-backface-visibility:hidden;backface-visibility:hidden;overflow:hidden;height:50px;z-index:99999}.mvp-nav-small-cont{height:50px}.mvp-nav-small-right-out{margin-right:-50px;width:100%}.mvp-nav-small-right-in{margin-right:50px}.mvp-nav-small-left-out{margin-left:-50px;width:100%}.mvp-nav-small-left-in{margin-left:50px}#mvp-nav-small-left{margin:15px 20px 15px 0;width:30px;height:20px}#mvp-main-nav-small .mvp-nav-menu ul{text-align:left}#mvp-main-nav-small .mvp-drop-nav-title{margin:0;overflow:hidden;max-width:680px;height:0}.mvp-nav-small-mid{width:100%}.mvp-nav-small-mid-right{max-width:780px}#mvp-main-nav-small .mvp-nav-menu{overflow:hidden}.mvp-nav-small-logo{line-height:0;margin:10px 20px 10px 0;height:30px;max-width:200px}#mvp-nav-small-right{margin-left:20px;width:30px;height:50px}.mvp-nav-menu{text-align:center;width:100%;height:50px}.mvp-nav-menu ul{float:left;text-align:center;width:100%}.mvp-nav-menu ul li{display:inline-block;position:relative}.mvp-nav-menu ul li a{float:left;font-size:14px;font-weight:500;line-height:1;padding:18px 12px;position:relative;text-transform:uppercase}#mvp-fly-wrap{overflow:hidden;position:fixed;top:0;bottom:0;left:0;-webkit-transform:translate3d(-370px,0,0);-moz-transform:translate3d(-370px,0,0);-ms-transform:translate3d(-370px,0,0);-o-transform:translate3d(-370px,0,0);transform:translate3d(-370px,0,0);width:370px;height:100%;z-index:999999}.mvp-fly-but-wrap,.mvp-search-but-wrap{width:30px}.mvp-fly-but-wrap{height:20px}#mvp-fly-wrap .mvp-fly-but-wrap{margin:15px 0}.mvp-search-but-wrap{position:absolute;top:60px;right:80px;width:60px;height:60px}.mvp-fly-but-wrap span,.mvp-search-but-wrap span{-webkit-border-radius:2px;-moz-border-radius:2px;-ms-border-radius:2px;-o-border-radius:2px;border-radius:2px;display:block;position:absolute;left:0;-webkit-transform:rotate(0deg);-moz-transform:rotate(0deg);-ms-transform:rotate(0deg);-o-transform:rotate(0deg);transform:rotate(0deg);height:3px}.mvp-fly-but-wrap span:nth-child(1){top:0;width:30px}.mvp-fly-but-wrap span:nth-child(2),.mvp-fly-but-wrap span:nth-child(3){top:8px;width:24px}.mvp-fly-but-wrap span:nth-child(4){top:16px;width:18px}.mvp-search-but-wrap span:nth-child(1){-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-ms-transform:rotate(45deg);-o-transform:rotate(45deg);transform:rotate(45deg);width:30px}.mvp-search-but-wrap span:nth-child(2){-webkit-transform:rotate(-45deg);-moz-transform:rotate(-45deg);-ms-transform:rotate(-45deg);-o-transform:rotate(-45deg);transform:rotate(-45deg);width:30px}.mvp-search-but-wrap span:nth-child(1),.mvp-search-but-wrap span:nth-child(2){width:60px}#mvp-fly-menu-top{width:100%;height:50px}.mvp-fly-top-out{margin-right:-100px;left:50px;width:100%}.mvp-fly-top-in{margin-right:100px}#mvp-fly-logo{margin:10px 6.25%;text-align:center;width:87.5%;height:30px}#mvp-fly-logo img{line-height:0;height:100%}.mvp-fly-but-menu{float:left;margin-left:15px;position:relative}.mvp-fly-top{background:rgba(0,0,0,.3);border-top:1px solid #fff;border-left:1px solid #fff;border-bottom:1px solid #fff;color:#fff;opacity:1;overflow:hidden;position:fixed;right:0;top:50%;-webkit-transform:translate3d(100px,0,0);-moz-transform:translate3d(100px,0,0);-ms-transform:translate3d(100px,0,0);-o-transform:translate3d(100px,0,0);transform:translate3d(100px,0,0);width:50px;height:50px;z-index:9999}.mvp-fly-top i{font-size:40px;line-height:100%;position:absolute;top:1px;left:12.1px}#mvp-fly-menu-wrap{overflow:hidden;position:absolute;top:50px;left:0;width:100%;height:100%}nav.mvp-fly-nav-menu{-webkit-backface-visibility:hidden;backface-visibility:hidden;margin:20px 5.40540540541% 0;overflow:hidden;position:absolute!important;width:89.1891891892%;max-height:65%}nav.mvp-fly-nav-menu ul{float:left;position:relative;width:100%}nav.mvp-fly-nav-menu ul li{border-top:1px solid rgba(255,255,255,.1);float:left;position:relative;width:100%}nav.mvp-fly-nav-menu ul li:first-child{border-top:none;margin-top:-14px}nav.mvp-fly-nav-menu ul li a{color:#fff;display:inline-block;float:left;font-size:14px;font-weight:500;line-height:1;padding:14px 0;text-transform:uppercase}.mvp-fly-fade{background:#000;opacity:0;width:100%;position:fixed;top:0;left:0;z-index:99999}#mvp-fly-soc-wrap{margin:0 5.40540540541%;position:absolute;bottom:20px;left:0;text-align:center;width:89.1891891892%}span.mvp-fly-soc-head{display:inline-block;font-size:.7rem;font-weight:400;line-height:1;margin-bottom:15px;text-transform:uppercase}ul.mvp-fly-soc-list{text-align:center;width:100%}ul.mvp-fly-soc-list li{display:inline-block}ul.mvp-fly-soc-list li a{background:rgba(255,255,255,.15);-webkit-border-radius:50%;-moz-border-radius:50%;-ms-border-radius:50%;-o-border-radius:50%;border-radius:50%;color:#fff;display:inline-block;font-size:14px;line-height:1;margin-left:2px;padding-top:9px;text-align:center;width:32px;height:23px}ul.mvp-fly-soc-list li:first-child a{margin-left:0}#mvp-main-body-wrap{background:#fff;padding-bottom:60px;width:100%}#mvp-side-wrap{font-size:.9rem;margin-left:60px;width:320px}.mvp-side-widget{float:left;margin-top:30px;width:100%}.mvp-side-widget:first-child{margin-top:0}#mvp-article-wrap,#mvp-article-cont{width:100%}#mvp-article-wrap{float:left;position:relative}#mvp-post-main{margin:10px 0 60px;width:100%}#mvp-post-head{margin-bottom:30px;width:100%}h3.mvp-post-cat{margin-bottom:10px;width:100%}span.mvp-post-cat{color:#fff;display:inline-block;font-size:1rem;font-weight:700;line-height:1;padding:5px 13px;text-transform:uppercase;-webkit-transform:skewX(-15deg);-moz-transform:skewX(-15deg);-ms-transform:skewX(-15deg);-o-transform:skewX(-15deg);transform:skewX(-15deg)}h1.mvp-post-title{color:#000;font-family:'Oswald',sans-serif;font-size:3.5rem;font-weight:700;letter-spacing:-.02em;line-height:1.1;margin-right:20%;width:80%}.mvp-author-info-wrap{width:100%}.mvp-author-info-wrap{margin-top:12px}.mvp-author-info-thumb{line-height:0;width:46px}.mvp-author-info-text{color:#999;display:inline-block;float:left;font-size:14px;font-weight:400;line-height:1;margin:8px 0 0 15px}.mvp-author-info-text p{display:inline-block}.mvp-author-info-text a{color:#000!important;font-weight:700}.mvp-post-date{font-weight:500}.mvp-author-info-name{clear:both;margin-top:5px}.mvp-post-main-out{margin-right:-380px;width:100%}.mvp-post-main-in{margin-right:380px}#mvp-post-content{font-family:'Roboto',sans-serif;width:100%}#mvp-post-feat-img{line-height:0;margin-bottom:30px;text-align:center;width:100%}.posts-nav-link{display:none}.mvp-drop-nav-title{display:none;margin-left:20px;max-width:780px;overflow:hidden;height:30px}.mvp-drop-nav-title h4{color:#fff;float:left;font-size:23px;font-weight:700;letter-spacing:-.02em;line-height:30px;padding:0;width:200%}.posts-nav-link{display:none}.mvp-org-wrap{display:none}a,a:visited{color:#0be6af}#searchform input{border-bottom:1px solid #0be6af}span.mvp-post-cat{background:#ff005b}#mvp-fly-wrap,#mvp-main-nav-small-cont{background:#000}#mvp-main-nav-small .mvp-fly-but-wrap span,#mvp-fly-wrap .mvp-fly-but-wrap span{background:#777}span.mvp-fly-soc-head,#mvp-main-nav-small span.mvp-nav-search-but,#mvp-main-nav-small .mvp-nav-menu ul li a{color:#777}body,#searchform input,.mvp-author-info-text,nav.mvp-fly-nav-menu ul li a,span.mvp-fly-soc-head{font-family:'Roboto',sans-serif}.mvp-nav-menu ul li a{font-family:'Oswald',sans-serif}h1.mvp-post-title,.mvp-drop-nav-title h4{font-family:'Oswald',sans-serif}span.mvp-post-cat{font-family:'Oswald',sans-serif}a,a:visited{color:#f50e0e}#searchform input{border-bottom:1px solid #f50e0e}span.mvp-post-cat{background:#f50e0e}#mvp-fly-wrap,#mvp-main-nav-small-cont{background:#f50e0e}#mvp-main-nav-small .mvp-fly-but-wrap span,#mvp-fly-wrap .mvp-fly-but-wrap span{background:#fff}span.mvp-fly-soc-head,#mvp-main-nav-small span.mvp-nav-search-but,#mvp-main-nav-small .mvp-nav-menu ul li a{color:#fff}body,#searchform input,.mvp-author-info-text,nav.mvp-fly-nav-menu ul li a,span.mvp-fly-soc-head{font-family:'Roboto',sans-serif}.mvp-nav-menu ul li a{font-family:'Oswald',sans-serif}h1.mvp-post-title,.mvp-drop-nav-title h4{font-family:'Oswald',sans-serif}span.mvp-post-cat{font-family:'Roboto',sans-serif}#mvp-main-body-wrap{padding-top:20px}@media screen and (max-width:479px){#mvp-main-body-wrap{padding-top:15px}}#mvp-site-main{margin-top:0}html,body,div,span,h1,h2,h3,h4,p,a,img,i,ul,li,form,article,header,nav,section,time{margin:0;padding:0;border:0;font-size:100%;vertical-align:baseline}article,header,nav,section{display:block}body{line-height:1}ul{list-style:none}.fa{display:inline-block;font:normal normal normal 14px/1 FontAwesome;font-size:inherit;text-rendering:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.fa-search:before{content:"\f002"}.fa-twitter:before{content:"\f099"}.fa-facebook:before{content:"\f09a"}.fa-angle-up:before{content:"\f106"}.fa-instagram:before{content:"\f16d"}@media screen and (max-width:1260px) and (min-width:1200px){.mvp-main-box{margin:0 1.666666666%;width:96.666666666%}}@media screen and (max-width:1199px) and (min-width:1100px){.mvp-main-box{margin:0 1.81818181818%;width:96.3636363636%}}@media screen and (max-width:1099px) and (min-width:1004px){#mvp-nav-small-wrap .mvp-nav-menu{display:none!important}.mvp-main-box{margin:0 2%;width:96%}h1.mvp-post-title{margin-right:0;width:100%}.mvp-post-main-out{margin-right:-360px}.mvp-post-main-in{margin-right:360px}#mvp-side-wrap{margin-left:40px}.mvp-nav-small-mid{text-align:center}.mvp-nav-small-logo{float:none;margin:10px 0;width:100%;max-width:none}}@media screen and (max-width:1003px) and (min-width:900px){.mvp-fly-top,.mvp-drop-nav-title,#mvp-nav-small-wrap .mvp-nav-menu{display:none!important}.mvp-main-box{margin:0 2.2222222%;width:95.55555555%}h1.mvp-post-title{margin-right:0;width:100%}.mvp-post-main-out{margin-right:-360px}.mvp-post-main-in{margin-right:360px}#mvp-side-wrap{margin-left:40px}.mvp-nav-small-mid{text-align:center}.mvp-nav-small-logo{float:none;margin:10px 0;width:100%;max-width:none}#mvp-main-body-wrap{padding-top:20px}}@media screen and (max-width:899px) and (min-width:768px){.mvp-fly-top,.mvp-drop-nav-title,#mvp-nav-small-wrap .mvp-nav-menu{display:none!important}.mvp-main-box{margin:0 2.60416666666%;width:94.7916666666%}#mvp-side-wrap{border-top:1px solid #ddd;margin:20px 0 0;padding-top:20px;width:100%}#mvp-post-main{margin:0 0 40px}span.mvp-post-cat{font-size:.9rem}h1.mvp-post-title{font-size:2.9rem;margin-right:0;width:100%}.mvp-post-main-out,.mvp-post-main-in{margin-right:0}#mvp-post-content #mvp-post-feat-img{margin-left:-2.747252747%;width:105.4945055%}#mvp-post-feat-img{margin-bottom:20px}.mvp-nav-small-mid{text-align:center}.mvp-nav-small-logo{float:none;margin:10px 0;width:100%;max-width:none}#mvp-main-body-wrap{padding-top:20px}}@media screen and (max-width:767px) and (min-width:660px){.mvp-fly-top,.mvp-drop-nav-title,#mvp-nav-small-wrap .mvp-nav-menu{display:none!important}.mvp-main-box{margin:0 3.0303030303%;width:93.9393939393%}#mvp-side-wrap{border-top:1px solid #ddd;margin:20px 0 0;padding-top:20px;width:100%}#mvp-search-box{margin:-25px 0 0 -30%;width:60%}#searchform input{font-size:40px;height:40px}#mvp-post-main{margin:0 0 40px}#mvp-post-head{margin-bottom:20px}span.mvp-post-cat{font-size:.9rem}h1.mvp-post-title{font-size:2.6rem;margin-right:0;width:100%}.mvp-post-main-out,.mvp-post-main-in{margin-right:0}#mvp-post-content #mvp-post-feat-img{margin-left:-3.225806452%;width:106.4516129%}#mvp-post-feat-img{margin-bottom:20px}.mvp-nav-small-mid{text-align:center}.mvp-nav-small-logo{float:none;margin:10px 0;width:100%;max-width:none}#mvp-main-body-wrap{padding-top:20px}}@media screen and (max-width:659px) and (min-width:600px){.mvp-fly-top,.mvp-drop-nav-title,#mvp-nav-small-wrap .mvp-nav-menu{display:none!important}.mvp-main-box{margin:0 3.3333333333%;width:93.3333333333%}#mvp-side-wrap{border-top:1px solid #ddd;margin:20px 0 0;padding-top:20px;width:100%}#mvp-search-box{margin:-25px 0 0 -30%;width:60%}#searchform input{font-size:40px;height:40px}.mvp-search-but-wrap{top:40px;right:40px}#mvp-post-main{margin:0 0 40px}#mvp-post-head{margin-bottom:20px}span.mvp-post-cat{font-size:.9rem}h1.mvp-post-title{font-size:2.5rem;margin-right:0;width:100%}.mvp-post-main-out,.mvp-post-main-in{margin-right:0}#mvp-post-content #mvp-post-feat-img{margin-left:-3.571428571%;width:107.1428571%}#mvp-post-feat-img{margin-bottom:20px}.mvp-nav-small-mid{text-align:center}.mvp-nav-small-logo{float:none;margin:10px 0;width:100%;max-width:none}#mvp-main-body-wrap{padding-top:20px}}@media screen and (max-width:599px) and (min-width:480px){.mvp-fly-top,.mvp-drop-nav-title,#mvp-nav-small-wrap .mvp-nav-menu{display:none!important}.mvp-main-box{margin:0 4.1666666666%;width:91.6666666666%}#mvp-side-wrap{border-top:1px solid #ddd;margin:20px 0 0;padding-top:20px;width:100%}#mvp-search-box{margin:-15px 0 0 -30%;width:60%}#searchform input{font-size:30px;height:30px}.mvp-search-but-wrap{top:20px;right:20px}#mvp-post-main{margin:0 0 40px}#mvp-post-head{margin-bottom:20px}span.mvp-post-cat{font-size:.8rem}h1.mvp-post-title{font-size:1.9rem;margin-right:0;width:100%}.mvp-post-main-out,.mvp-post-main-in{margin-right:0}#mvp-post-content #mvp-post-feat-img{margin-left:-4.5454545454%;width:109.0909090909%}#mvp-post-feat-img{margin-bottom:20px}.mvp-nav-small-mid{text-align:center}.mvp-nav-small-logo{float:none;margin:10px 0;width:100%;max-width:none}#mvp-main-body-wrap{padding-top:20px}}@media screen and (max-width:479px){.mvp-fly-top,.mvp-drop-nav-title,#mvp-nav-small-wrap .mvp-nav-menu{display:none!important}.mvp-mob-img{display:block!important}.mvp-main-box{margin:0 4.1666666666%;width:91.6666666666%}#mvp-main-body-wrap{padding:15px 0 30px}#mvp-side-wrap{border-top:1px solid #ddd;margin:20px 0 0;padding-top:20px;width:100%}#mvp-search-box{margin:-15px 0 0 -30%;width:60%}#searchform input{font-size:30px;height:30px}.mvp-search-but-wrap{top:20px;right:20px}#mvp-post-main{margin:0 0 30px}#mvp-post-head{margin-bottom:15px}span.mvp-post-cat{font-size:.8rem}h1.mvp-post-title{font-size:1.8rem;margin-right:0;width:100%}.mvp-post-main-out,.mvp-post-main-in{margin-right:0}.mvp-author-info-wrap{margin-top:10px}#mvp-post-content #mvp-post-feat-img{margin-left:-4.5454545454%;width:109.0909090909%}#mvp-post-feat-img{margin-bottom:20px}.mvp-author-info-text{font-size:12px;margin-top:10px}.mvp-author-info-name{margin-top:2px}.mvp-nav-small-mid{text-align:center}.mvp-nav-small-logo{float:none;margin:10px 0;width:100%;max-width:none}#mvp-main-body-wrap{padding-top:15px}}#jp-relatedposts{display:none;padding-top:1em;margin:1em 0;position:relative;clear:both}.jp-relatedposts:after{content:'';display:block;clear:both}#jp-relatedposts{width:90%;margin:0 auto}.ai-viewports{--ai:1}.ai-viewport-3{display:none!important}.ai-viewport-2{display:none!important}.ai-viewport-1{display:inherit!important}@media (min-width:768px) and (max-width:979px){.ai-viewport-1{display:none!important}.ai-viewport-2{display:inherit!important}}@media (max-width:767px){.ai-viewport-1{display:none!important}.ai-viewport-3{display:inherit!important}}#web{display:block}#mobile{display:none}@media screen and (max-width:479px){#web{display:none}#mobile{display:block}}</style><script id="litespeed-css-async-lib" src="https://dailypost.ng/wp-content/plugins/litespeed-cache/assets/js/css_async.min.js" defer></script><meta http-equiv="x-dns-prefetch-control" content="on"><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" id="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+<link rel="pingback" href="https://dailypost.ng/xmlrpc.php" />
+<meta property="fb:app_id" content="420332301344305" />
+
+<title>COVID-19: Cancel all debt owed you for causing outbreak- Apostle Suleman tells China - Daily Post Nigeria</title>
+<meta name="description" content="Apostle Johnson Suleman of Omega Fire Ministries, on Tuesday, called on China to cancel all debts owed it over the Coronavirus pandemic. Suleman explained" />
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+<link rel="canonical" href="https://dailypost.ng/2020/03/31/covid-19-cancel-all-debt-owed-you-for-causing-outbreak-apostle-suleman-tells-china/" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="COVID-19: Cancel all debt owed you for causing outbreak- Apostle Suleman tells China - Daily Post Nigeria" />
+<meta property="og:description" content="Apostle Johnson Suleman of Omega Fire Ministries, on Tuesday, called on China to cancel all debts owed it over the Coronavirus pandemic. Suleman explained" />
+<meta property="og:url" content="https://dailypost.ng/2020/03/31/covid-19-cancel-all-debt-owed-you-for-causing-outbreak-apostle-suleman-tells-china/" />
+<meta property="og:site_name" content="Daily Post Nigeria" />
+<meta property="article:publisher" content="https://www.facebook.com/DailyPostNigeria/" />
+<meta property="article:published_time" content="2020-03-31T15:17:09+00:00" />
+<meta property="og:image" content="https://dailypost.ng/wp-content/uploads/2019/07/suleman.jpeg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="675" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:creator" content="@dailypostngr" />
+<meta name="twitter:site" content="@dailypostngr" />
+<meta name="twitter:label1" content="Written by">
+<meta name="twitter:data1" content="Seun Opejobi">
+<meta name="twitter:label2" content="Est. reading time">
+<meta name="twitter:data2" content="1 minute">
+
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="Daily Post Nigeria &raquo; Feed" href="https://dailypost.ng/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Daily Post Nigeria &raquo; Comments Feed" href="https://dailypost.ng/comments/feed/" />
+
+<script src="//www.googletagmanager.com/gtag/js?id=UA-19719691-6" type="text/javascript" data-cfasync="false"></script>
+<script type="text/javascript" data-cfasync="false">
+				var mi_version = '7.16.1';
+				var mi_track_user = true;
+				var mi_no_track_reason = '';
+				
+								var disableStr = 'ga-disable-UA-19719691-6';
+
+				/* Function to detect opted out users */
+				function __gtagTrackerIsOptedOut() {
+					return document.cookie.indexOf( disableStr + '=true' ) > - 1;
+				}
+
+				/* Disable tracking if the opt-out cookie exists. */
+				if ( __gtagTrackerIsOptedOut() ) {
+					window[disableStr] = true;
+				}
+
+				/* Opt-out function */
+				function __gtagTrackerOptout() {
+					document.cookie = disableStr + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
+					window[disableStr] = true;
+				}
+
+				if ( 'undefined' === typeof gaOptout ) {
+					function gaOptout() {
+						__gtagTrackerOptout();
+					}
+				}
+								window.dataLayer = window.dataLayer || [];
+				if ( mi_track_user ) {
+					function __gtagTracker() {
+						dataLayer.push( arguments );
+					}
+					__gtagTracker( 'js', new Date() );
+					__gtagTracker( 'set', {
+						'developer_id.dZGIzZG' : true,
+						'dimension1' : 'Seun Opejobi','dimension2' : 'News','dimension3' : 'post','dimension4' : '2020-03-31T16:17:09+01:00',                    });
+					__gtagTracker( 'config', 'UA-19719691-6', {
+						use_amp_client_id:true,forceSSL:true,					} );
+										window.gtag = __gtagTracker;										(
+						function () {
+							/* https://developers.google.com/analytics/devguides/collection/analyticsjs/ */
+							/* ga and __gaTracker compatibility shim. */
+							var noopfn = function () {
+								return null;
+							};
+							var noopnullfn = function () {
+								return null;
+							};
+							var Tracker = function () {
+								return null;
+							};
+							var p = Tracker.prototype;
+							p.get = noopfn;
+							p.set = noopfn;
+							p.send = noopfn;
+							var __gaTracker = function () {
+								var len = arguments.length;
+								if ( len === 0 ) {
+									return;
+								}
+								var f = arguments[len - 1];
+								if ( typeof f !== 'object' || f === null || typeof f.hitCallback !== 'function' ) {
+									if ( 'send' === arguments[0] ) {
+										var hitConverted, hitObject = false, action;
+										if ( 'event' === arguments[1] ) {
+											if ( 'undefined' !== typeof arguments[3] ) {
+												hitObject = {
+													'eventAction': arguments[3],
+													'eventCategory': arguments[2],
+													'eventLabel': arguments[4],
+													'value': arguments[5] ? arguments[5] : 1,
+												}
+											}
+										}
+										if ( typeof arguments[2] === 'object' ) {
+											hitObject = arguments[2];
+										}
+										if ( 'undefined' !== typeof (
+											arguments[1].hitType
+										) ) {
+											hitObject = arguments[1];
+										}
+										if ( hitObject ) {
+											action = 'timing' === arguments[1].hitType ? 'timing_complete' : hitObject.eventAction;
+											hitConverted = mapArgs( hitObject );
+											__gtagTracker( 'event', action, hitConverted );
+										}
+									}
+									return;
+								}
+
+								function mapArgs( args ) {
+									var gaKey, hit = {};
+									var gaMap = {
+										'eventCategory': 'event_category',
+										'eventAction': 'event_action',
+										'eventLabel': 'event_label',
+										'eventValue': 'event_value',
+										'nonInteraction': 'non_interaction',
+										'timingCategory': 'event_category',
+										'timingVar': 'name',
+										'timingValue': 'value',
+										'timingLabel': 'event_label',
+									};
+									for ( gaKey in gaMap ) {
+										if ( 'undefined' !== typeof args[gaKey] ) {
+											hit[gaMap[gaKey]] = args[gaKey];
+										}
+									}
+									return hit;
+								}
+
+								try {
+									f.hitCallback();
+								} catch ( ex ) {
+								}
+							};
+							__gaTracker.create = function () {
+								return new Tracker();
+							};
+							__gaTracker.getByName = noopnullfn;
+							__gaTracker.getAll = function () {
+								return [];
+							};
+							__gaTracker.remove = noopfn;
+							__gaTracker.loaded = true;
+							window['__gaTracker'] = __gaTracker;
+						}
+					)();
+									} else {
+										console.log( "" );
+					( function () {
+							function __gtagTracker() {
+								return null;
+							}
+							window['__gtagTracker'] = __gtagTracker;
+							window['gtag'] = __gtagTracker;
+					} )();
+									}
+			</script>
+
+<link data-asynced="1" as="style" onload="this.onload=null;this.rel='stylesheet'" rel='preload' id='wp-block-library-css' href='https://dailypost.ng/wp-includes/css/dist/block-library/style.min.css?ver=5.6.2' type='text/css' media='all' /><noscript><link rel='stylesheet' id='wp-block-library-css'  href='https://dailypost.ng/wp-includes/css/dist/block-library/style.min.css?ver=5.6.2' type='text/css' media='all' /></noscript>
+<style id='wp-block-library-inline-css' type='text/css'>
+.has-text-align-justify{text-align:justify;}
+</style>
+<link data-asynced="1" as="style" onload="this.onload=null;this.rel='stylesheet'" rel='preload' id='monsterinsights-popular-posts-style-css' href='https://dailypost.ng/wp-content/plugins/google-analytics-premium/assets/css/frontend.min.css?ver=7.16.1' type='text/css' media='all' /><noscript><link rel='stylesheet' id='monsterinsights-popular-posts-style-css'  href='https://dailypost.ng/wp-content/plugins/google-analytics-premium/assets/css/frontend.min.css?ver=7.16.1' type='text/css' media='all' /></noscript>
+<link data-asynced="1" as="style" onload="this.onload=null;this.rel='stylesheet'" rel='preload' id='mvp-custom-style-css' href='https://dailypost.ng/wp-content/themes/zox-news/style.css?ver=5.6.2' type='text/css' media='all' /><noscript><link rel='stylesheet' id='mvp-custom-style-css'  href='https://dailypost.ng/wp-content/themes/zox-news/style.css?ver=5.6.2' type='text/css' media='all' /></noscript>
+<style id='mvp-custom-style-inline-css' type='text/css'>
+
+
+#mvp-wallpaper {
+	background: url() no-repeat 50% 0;
+	}
+
+#mvp-foot-copy a {
+	color: #f50e0e;
+	}
+
+#mvp-content-main p a,
+.mvp-post-add-main p a {
+	box-shadow: inset 0 -4px 0 #f50e0e;
+	}
+
+#mvp-content-main p a:hover,
+.mvp-post-add-main p a:hover {
+	background: #f50e0e;
+	}
+
+a,
+a:visited,
+.post-info-name a,
+.woocommerce .woocommerce-breadcrumb a {
+	color: #f50e0e;
+	}
+
+#mvp-side-wrap a:hover {
+	color: #f50e0e;
+	}
+
+.mvp-fly-top:hover,
+.mvp-vid-box-wrap,
+ul.mvp-soc-mob-list li.mvp-soc-mob-com {
+	background: #f50e0e;
+	}
+
+nav.mvp-fly-nav-menu ul li.menu-item-has-children:after,
+.mvp-feat1-left-wrap span.mvp-cd-cat,
+.mvp-widget-feat1-top-story span.mvp-cd-cat,
+.mvp-widget-feat2-left-cont span.mvp-cd-cat,
+.mvp-widget-dark-feat span.mvp-cd-cat,
+.mvp-widget-dark-sub span.mvp-cd-cat,
+.mvp-vid-wide-text span.mvp-cd-cat,
+.mvp-feat2-top-text span.mvp-cd-cat,
+.mvp-feat3-main-story span.mvp-cd-cat,
+.mvp-feat3-sub-text span.mvp-cd-cat,
+.mvp-feat4-main-text span.mvp-cd-cat,
+.woocommerce-message:before,
+.woocommerce-info:before,
+.woocommerce-message:before {
+	color: #f50e0e;
+	}
+
+#searchform input,
+.mvp-authors-name {
+	border-bottom: 1px solid #f50e0e;
+	}
+
+.mvp-fly-top:hover {
+	border-top: 1px solid #f50e0e;
+	border-left: 1px solid #f50e0e;
+	border-bottom: 1px solid #f50e0e;
+	}
+
+.woocommerce .widget_price_filter .ui-slider .ui-slider-handle,
+.woocommerce #respond input#submit.alt,
+.woocommerce a.button.alt,
+.woocommerce button.button.alt,
+.woocommerce input.button.alt,
+.woocommerce #respond input#submit.alt:hover,
+.woocommerce a.button.alt:hover,
+.woocommerce button.button.alt:hover,
+.woocommerce input.button.alt:hover {
+	background-color: #f50e0e;
+	}
+
+.woocommerce-error,
+.woocommerce-info,
+.woocommerce-message {
+	border-top-color: #f50e0e;
+	}
+
+ul.mvp-feat1-list-buts li.active span.mvp-feat1-list-but,
+span.mvp-widget-home-title,
+span.mvp-post-cat,
+span.mvp-feat1-pop-head {
+	background: #f50e0e;
+	}
+
+.woocommerce span.onsale {
+	background-color: #f50e0e;
+	}
+
+.mvp-widget-feat2-side-more-but,
+.woocommerce .star-rating span:before,
+span.mvp-prev-next-label,
+.mvp-cat-date-wrap .sticky {
+	color: #f50e0e !important;
+	}
+
+#mvp-main-nav-top,
+#mvp-fly-wrap,
+.mvp-soc-mob-right,
+#mvp-main-nav-small-cont {
+	background: #f50e0e;
+	}
+
+#mvp-main-nav-small .mvp-fly-but-wrap span,
+#mvp-main-nav-small .mvp-search-but-wrap span,
+.mvp-nav-top-left .mvp-fly-but-wrap span,
+#mvp-fly-wrap .mvp-fly-but-wrap span {
+	background: #ffffff;
+	}
+
+.mvp-nav-top-right .mvp-nav-search-but,
+span.mvp-fly-soc-head,
+.mvp-soc-mob-right i,
+#mvp-main-nav-small span.mvp-nav-search-but,
+#mvp-main-nav-small .mvp-nav-menu ul li a  {
+	color: #ffffff;
+	}
+
+#mvp-main-nav-small .mvp-nav-menu ul li.menu-item-has-children a:after {
+	border-color: #ffffff transparent transparent transparent;
+	}
+
+#mvp-nav-top-wrap span.mvp-nav-search-but:hover,
+#mvp-main-nav-small span.mvp-nav-search-but:hover {
+	color: #000000;
+	}
+
+#mvp-nav-top-wrap .mvp-fly-but-wrap:hover span,
+#mvp-main-nav-small .mvp-fly-but-wrap:hover span,
+span.mvp-woo-cart-num:hover {
+	background: #000000;
+	}
+
+#mvp-main-nav-bot-cont {
+	background: #f50e0e;
+	}
+
+#mvp-nav-bot-wrap .mvp-fly-but-wrap span,
+#mvp-nav-bot-wrap .mvp-search-but-wrap span {
+	background: #000000;
+	}
+
+#mvp-nav-bot-wrap span.mvp-nav-search-but,
+#mvp-nav-bot-wrap .mvp-nav-menu ul li a {
+	color: #000000;
+	}
+
+#mvp-nav-bot-wrap .mvp-nav-menu ul li.menu-item-has-children a:after {
+	border-color: #000000 transparent transparent transparent;
+	}
+
+.mvp-nav-menu ul li:hover a {
+	border-bottom: 5px solid #ffffff;
+	}
+
+#mvp-nav-bot-wrap .mvp-fly-but-wrap:hover span {
+	background: #ffffff;
+	}
+
+#mvp-nav-bot-wrap span.mvp-nav-search-but:hover {
+	color: #ffffff;
+	}
+
+body,
+.mvp-feat1-feat-text p,
+.mvp-feat2-top-text p,
+.mvp-feat3-main-text p,
+.mvp-feat3-sub-text p,
+#searchform input,
+.mvp-author-info-text,
+span.mvp-post-excerpt,
+.mvp-nav-menu ul li ul.sub-menu li a,
+nav.mvp-fly-nav-menu ul li a,
+.mvp-ad-label,
+span.mvp-feat-caption,
+.mvp-post-tags a,
+.mvp-post-tags a:visited,
+span.mvp-author-box-name a,
+#mvp-author-box-text p,
+.mvp-post-gallery-text p,
+ul.mvp-soc-mob-list li span,
+#comments,
+h3#reply-title,
+h2.comments,
+#mvp-foot-copy p,
+span.mvp-fly-soc-head,
+.mvp-post-tags-header,
+span.mvp-prev-next-label,
+span.mvp-post-add-link-but,
+#mvp-comments-button a,
+#mvp-comments-button span.mvp-comment-but-text,
+.woocommerce ul.product_list_widget span.product-title,
+.woocommerce ul.product_list_widget li a,
+.woocommerce #reviews #comments ol.commentlist li .comment-text p.meta,
+.woocommerce div.product p.price,
+.woocommerce div.product p.price ins,
+.woocommerce div.product p.price del,
+.woocommerce ul.products li.product .price del,
+.woocommerce ul.products li.product .price ins,
+.woocommerce ul.products li.product .price,
+.woocommerce #respond input#submit,
+.woocommerce a.button,
+.woocommerce button.button,
+.woocommerce input.button,
+.woocommerce .widget_price_filter .price_slider_amount .button,
+.woocommerce span.onsale,
+.woocommerce-review-link,
+#woo-content p.woocommerce-result-count,
+.woocommerce div.product .woocommerce-tabs ul.tabs li a,
+a.mvp-inf-more-but,
+span.mvp-cont-read-but,
+span.mvp-cd-cat,
+span.mvp-cd-date,
+.mvp-feat4-main-text p,
+span.mvp-woo-cart-num,
+span.mvp-widget-home-title2,
+.wp-caption,
+#mvp-content-main p.wp-caption-text,
+.gallery-caption,
+.mvp-post-add-main p.wp-caption-text,
+#bbpress-forums,
+#bbpress-forums p,
+.protected-post-form input,
+#mvp-feat6-text p {
+	font-family: 'Roboto', sans-serif;
+	}
+
+.mvp-blog-story-text p,
+span.mvp-author-page-desc,
+#mvp-404 p,
+.mvp-widget-feat1-bot-text p,
+.mvp-widget-feat2-left-text p,
+.mvp-flex-story-text p,
+.mvp-search-text p,
+#mvp-content-main p,
+.mvp-post-add-main p,
+#mvp-content-main ul li,
+#mvp-content-main ol li,
+.rwp-summary,
+.rwp-u-review__comment,
+.mvp-feat5-mid-main-text p,
+.mvp-feat5-small-main-text p,
+#mvp-content-main .wp-block-button__link,
+.wp-block-audio figcaption,
+.wp-block-video figcaption,
+.wp-block-embed figcaption,
+.wp-block-verse pre,
+pre.wp-block-verse {
+	font-family: 'PT Serif', sans-serif;
+	}
+
+.mvp-nav-menu ul li a,
+#mvp-foot-menu ul li a {
+	font-family: 'Oswald', sans-serif;
+	}
+
+
+.mvp-feat1-sub-text h2,
+.mvp-feat1-pop-text h2,
+.mvp-feat1-list-text h2,
+.mvp-widget-feat1-top-text h2,
+.mvp-widget-feat1-bot-text h2,
+.mvp-widget-dark-feat-text h2,
+.mvp-widget-dark-sub-text h2,
+.mvp-widget-feat2-left-text h2,
+.mvp-widget-feat2-right-text h2,
+.mvp-blog-story-text h2,
+.mvp-flex-story-text h2,
+.mvp-vid-wide-more-text p,
+.mvp-prev-next-text p,
+.mvp-related-text,
+.mvp-post-more-text p,
+h2.mvp-authors-latest a,
+.mvp-feat2-bot-text h2,
+.mvp-feat3-sub-text h2,
+.mvp-feat3-main-text h2,
+.mvp-feat4-main-text h2,
+.mvp-feat5-text h2,
+.mvp-feat5-mid-main-text h2,
+.mvp-feat5-small-main-text h2,
+.mvp-feat5-mid-sub-text h2,
+#mvp-feat6-text h2,
+.alp-related-posts-wrapper .alp-related-post .post-title {
+	font-family: 'Oswald', sans-serif;
+	}
+
+.mvp-feat2-top-text h2,
+.mvp-feat1-feat-text h2,
+h1.mvp-post-title,
+h1.mvp-post-title-wide,
+.mvp-drop-nav-title h4,
+#mvp-content-main blockquote p,
+.mvp-post-add-main blockquote p,
+#mvp-content-main p.has-large-font-size,
+#mvp-404 h1,
+#woo-content h1.page-title,
+.woocommerce div.product .product_title,
+.woocommerce ul.products li.product h3,
+.alp-related-posts .current .post-title {
+	font-family: 'Oswald', sans-serif;
+	}
+
+span.mvp-feat1-pop-head,
+.mvp-feat1-pop-text:before,
+span.mvp-feat1-list-but,
+span.mvp-widget-home-title,
+.mvp-widget-feat2-side-more,
+span.mvp-post-cat,
+span.mvp-page-head,
+h1.mvp-author-top-head,
+.mvp-authors-name,
+#mvp-content-main h1,
+#mvp-content-main h2,
+#mvp-content-main h3,
+#mvp-content-main h4,
+#mvp-content-main h5,
+#mvp-content-main h6,
+.woocommerce .related h2,
+.woocommerce div.product .woocommerce-tabs .panel h2,
+.woocommerce div.product .product_title,
+.mvp-feat5-side-list .mvp-feat1-list-img:after {
+	font-family: 'Roboto', sans-serif;
+	}
+
+	
+
+	#mvp-main-body-wrap {
+		padding-top: 20px;
+		}
+	#mvp-feat2-wrap,
+	#mvp-feat4-wrap,
+	#mvp-post-feat-img-wide,
+	#mvp-vid-wide-wrap {
+		margin-top: -20px;
+		}
+	@media screen and (max-width: 479px) {
+		#mvp-main-body-wrap {
+			padding-top: 15px;
+			}
+		#mvp-feat2-wrap,
+		#mvp-feat4-wrap,
+		#mvp-post-feat-img-wide,
+		#mvp-vid-wide-wrap {
+			margin-top: -15px;
+			}
+		}
+		
+
+	#mvp-leader-wrap {
+		position: relative;
+		}
+	#mvp-site-main {
+		margin-top: 0;
+		}
+	#mvp-leader-wrap {
+		top: 0 !important;
+		}
+		
+
+	.alp-advert {
+		display: none;
+	}
+	.alp-related-posts-wrapper .alp-related-posts .current {
+		margin: 0 0 10px;
+	}
+		
+</style>
+<link data-asynced="1" as="style" onload="this.onload=null;this.rel='stylesheet'" rel='preload' id='mvp-reset-css' href='https://dailypost.ng/wp-content/themes/zox-news/css/reset.css?ver=5.6.2' type='text/css' media='all' /><noscript><link rel='stylesheet' id='mvp-reset-css'  href='https://dailypost.ng/wp-content/themes/zox-news/css/reset.css?ver=5.6.2' type='text/css' media='all' /></noscript>
+<link data-asynced="1" as="style" onload="this.onload=null;this.rel='stylesheet'" rel='preload' id='fontawesome-css' href='https://dailypost.ng/wp-content/themes/zox-news/font-awesome/css/font-awesome.css?ver=5.6.2' type='text/css' media='all' /><noscript><link rel='stylesheet' id='fontawesome-css'  href='https://dailypost.ng/wp-content/themes/zox-news/font-awesome/css/font-awesome.css?ver=5.6.2' type='text/css' media='all' /></noscript>
+<link data-asynced="1" as="style" onload="this.onload=null;this.rel='stylesheet'" crossorigin="anonymous" rel='preload' id='mvp-fonts-css' href='//fonts.googleapis.com/css?family=Roboto%3A300%2C400%2C700%2C900%7COswald%3A400%2C700%7CAdvent+Pro%3A700%7COpen+Sans%3A700%7CAnton%3A400Oswald%3A100%2C200%2C300%2C400%2C500%2C600%2C700%2C800%2C900%7COswald%3A100%2C200%2C300%2C400%2C500%2C600%2C700%2C800%2C900%7CRoboto%3A100%2C200%2C300%2C400%2C500%2C600%2C700%2C800%2C900%7CRoboto%3A100%2C200%2C300%2C400%2C500%2C600%2C700%2C800%2C900%7CPT+Serif%3A100%2C200%2C300%2C400%2C500%2C600%2C700%2C800%2C900%7COswald%3A100%2C200%2C300%2C400%2C500%2C600%2C700%2C800%2C900%26subset%3Dlatin%2Clatin-ext%2Ccyrillic%2Ccyrillic-ext%2Cgreek-ext%2Cgreek%2Cvietnamese&#038;display=swap' type='text/css' media='all' /><noscript><link crossorigin="anonymous" rel='stylesheet' id='mvp-fonts-css'  href='//fonts.googleapis.com/css?family=Roboto%3A300%2C400%2C700%2C900%7COswald%3A400%2C700%7CAdvent+Pro%3A700%7COpen+Sans%3A700%7CAnton%3A400Oswald%3A100%2C200%2C300%2C400%2C500%2C600%2C700%2C800%2C900%7COswald%3A100%2C200%2C300%2C400%2C500%2C600%2C700%2C800%2C900%7CRoboto%3A100%2C200%2C300%2C400%2C500%2C600%2C700%2C800%2C900%7CRoboto%3A100%2C200%2C300%2C400%2C500%2C600%2C700%2C800%2C900%7CPT+Serif%3A100%2C200%2C300%2C400%2C500%2C600%2C700%2C800%2C900%7COswald%3A100%2C200%2C300%2C400%2C500%2C600%2C700%2C800%2C900%26subset%3Dlatin%2Clatin-ext%2Ccyrillic%2Ccyrillic-ext%2Cgreek-ext%2Cgreek%2Cvietnamese&#038;display=swap' type='text/css' media='all' /></noscript>
+<link data-asynced="1" as="style" onload="this.onload=null;this.rel='stylesheet'" rel='preload' id='mvp-media-queries-css' href='https://dailypost.ng/wp-content/themes/zox-news/css/media-queries.css?ver=5.6.2' type='text/css' media='all' /><noscript><link rel='stylesheet' id='mvp-media-queries-css'  href='https://dailypost.ng/wp-content/themes/zox-news/css/media-queries.css?ver=5.6.2' type='text/css' media='all' /></noscript>
+<link data-asynced="1" as="style" onload="this.onload=null;this.rel='stylesheet'" rel='preload' id='jetpack_css-css' href='https://dailypost.ng/wp-content/plugins/jetpack/css/jetpack.css?ver=9.4' type='text/css' media='all' /><noscript><link rel='stylesheet' id='jetpack_css-css'  href='https://dailypost.ng/wp-content/plugins/jetpack/css/jetpack.css?ver=9.4' type='text/css' media='all' /></noscript>
+<script type='text/javascript' src='https://dailypost.ng/wp-includes/js/jquery/jquery.min.js?ver=3.5.1' id='jquery-core-js'></script>
+<script type='text/javascript' src='https://dailypost.ng/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.3.2' id='jquery-migrate-js' defer data-deferred="1"></script>
+<script type='text/javascript' id='jetpack_related-posts-js-extra'>
+/* <![CDATA[ */
+var related_posts_js_options = {"post_heading":"h4"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://dailypost.ng/wp-content/plugins/jetpack/_inc/build/related-posts/related-posts.min.js?ver=20201207' id='jetpack_related-posts-js' defer data-deferred="1"></script>
+<script type='text/javascript' id='monsterinsights-frontend-script-js-extra'>
+/* <![CDATA[ */
+var monsterinsights_frontend = {"js_events_tracking":"true","download_extensions":"doc,pdf,ppt,zip,xls,docx,pptx,xlsx","inbound_paths":"[]","home_url":"https:\/\/dailypost.ng","hash_tracking":"false","ua":"UA-19719691-6"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://dailypost.ng/wp-content/plugins/google-analytics-premium/assets/js/frontend-gtag.min.js?ver=7.16.1' id='monsterinsights-frontend-script-js' defer data-deferred="1"></script>
+<link rel="https://api.w.org/" href="https://dailypost.ng/wp-json/" /><link rel="alternate" type="application/json" href="https://dailypost.ng/wp-json/wp/v2/posts/775793" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://dailypost.ng/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://dailypost.ng/wp-includes/wlwmanifest.xml" />
+<meta name="generator" content="WordPress 5.6.2" />
+<link rel='shortlink' href='https://dailypost.ng/?p=775793' />
+<link rel="alternate" type="application/json+oembed" href="https://dailypost.ng/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fdailypost.ng%2F2020%2F03%2F31%2Fcovid-19-cancel-all-debt-owed-you-for-causing-outbreak-apostle-suleman-tells-china%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://dailypost.ng/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fdailypost.ng%2F2020%2F03%2F31%2Fcovid-19-cancel-all-debt-owed-you-for-causing-outbreak-apostle-suleman-tells-china%2F&#038;format=xml" />
+<style type='text/css'>img#wpstats{display:none}</style>
+
+<script type="application/ld+json" class="saswp-schema-markup-output">
+[{"@context":"https:\/\/schema.org","@type":"NewsArticle","@id":"https:\/\/dailypost.ng\/2020\/03\/31\/covid-19-cancel-all-debt-owed-you-for-causing-outbreak-apostle-suleman-tells-china\/#newsarticle","url":"https:\/\/dailypost.ng\/2020\/03\/31\/covid-19-cancel-all-debt-owed-you-for-causing-outbreak-apostle-suleman-tells-china\/","headline":"COVID-19: Cancel all debt owed you for causing outbreak- Apostle Suleman tells China","mainEntityOfPage":"https:\/\/dailypost.ng\/2020\/03\/31\/covid-19-cancel-all-debt-owed-you-for-causing-outbreak-apostle-suleman-tells-china\/","datePublished":"2020-03-31T16:17:09+01:00","dateModified":"2020-03-31T16:17:09+01:00","description":"Apostle Johnson Suleman of Omega Fire Ministries, on Tuesday, called on China to cancel all debts owed it over the Coronavirus pandemic. Suleman explained that such action would suffice for the outbreak of COVID-19. In a series of tweets, the clergyman said that though debt cancellation won't alienate the pain caused the world, it was","articleSection":"Top Headlines","articleBody":"Apostle Johnson Suleman of Omega Fire Ministries, on Tuesday, called on China to cancel all debts owed it over the Coronavirus pandemic.    Suleman explained that such action would suffice for the outbreak of COVID-19.    In a series of tweets, the clergyman said that though debt cancellation won't alienate the pain caused the world, it was the right step to take.    He also called on China to reveal to the world how they managed the virus.    According to Suleman: \"I have said this over and over, China should cancel all debts owed them. Even though that won't alienate them from the pains\/pangs they have caused the world.    \"They are suddenly dumb. They have handled the virus in ther country, tell others how you did it.    \"China allowed people who contracted the virus leave their country..now they ban entry.    \"Wuhan got but Beijing is free..how?..same country..yet the world is affected..and someone says its conspiracy theory? Asides precautions, we should all pray. God will frustrate their agenda.\"","keywords":"Apostle Suleiman, china, Covid-19, ","name":"COVID-19: Cancel all debt owed you for causing outbreak- Apostle Suleman tells China","thumbnailUrl":"https:\/\/dailypost.ng\/wp-content\/uploads\/2019\/07\/suleman-150x150.jpeg","wordCount":"157","timeRequired":"PT41S","mainEntity":{"@type":"WebPage","@id":"https:\/\/dailypost.ng\/2020\/03\/31\/covid-19-cancel-all-debt-owed-you-for-causing-outbreak-apostle-suleman-tells-china\/"},"author":{"@type":"Person","name":"Seun Opejobi","description":"","url":"https:\/\/dailypost.ng\/author\/seun-opejobi\/","sameAs":[],"image":{"@type":"ImageObject","url":"https:\/\/secure.gravatar.com\/avatar\/dff89b4ffa0f0176c551ed78bf37432d?s=96&d=mm&r=g","height":96,"width":96}},"publisher":{"@type":"Organization","name":"Daily Post Nigeria","url":"https:\/\/dailypost.ng","logo":{"@type":"ImageObject","url":"https:\/\/dailypost.ng\/wp-content\/uploads\/2020\/01\/DailyPost_Logo_Nov_2014_160x50.jpg","width":"158","height":"50"}},"image":[{"@type":"ImageObject","@id":"https:\/\/dailypost.ng\/2020\/03\/31\/covid-19-cancel-all-debt-owed-you-for-causing-outbreak-apostle-suleman-tells-china\/#primaryimage","url":"https:\/\/dailypost.ng\/wp-content\/uploads\/2019\/07\/suleman.jpeg","width":"1200","height":"675"}]}]
+</script>
+<link rel="amphtml" href="https://dailypost.ng/2020/03/31/covid-19-cancel-all-debt-owed-you-for-causing-outbreak-apostle-suleman-tells-china/?amp"><link rel="icon" href="https://dailypost.ng/wp-content/uploads/2020/10/cropped-Daily-Post-Icon-512x512px-Customsize3-32x32.jpg" sizes="32x32" />
+<link rel="icon" href="https://dailypost.ng/wp-content/uploads/2020/10/cropped-Daily-Post-Icon-512x512px-Customsize3-192x192.jpg" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://dailypost.ng/wp-content/uploads/2020/10/cropped-Daily-Post-Icon-512x512px-Customsize3-180x180.jpg" />
+<meta name="msapplication-TileImage" content="https://dailypost.ng/wp-content/uploads/2020/10/cropped-Daily-Post-Icon-512x512px-Customsize3-270x270.jpg" />
+<style type="text/css" id="wp-custom-css">
+			.mvp-widget-home {
+    margin-top: 30px;
+}
+
+
+#mvp-content-main p,.mvp-post-add-main p{font-size: 1.2rem;}
+
+#jp-relatedposts {
+    width: 90%;
+    margin: 0 auto;
+}
+
+
+#jp-relatedposts h3.jp-relatedposts-headline {
+	font-size: 1.5em;
+}
+
+#jp-relatedposts .jp-relatedposts-items .jp-relatedposts-post .jp-relatedposts-post-title a {
+	font-size: 1.2em;
+	line-height: 1.2em;
+}
+
+#jp-relatedposts .jp-relatedposts-items p {
+    font-size: 1.1em;
+	  line-height: 1.3em;
+}
+
+#stickyunit { 
+	
+  position: fixed;
+  bottom: 0;
+	z-index: 10;
+} 
+		</style>
+<style>
+.ai-viewports                 {--ai: 1;}
+.ai-viewport-3                { display: none !important;}
+.ai-viewport-2                { display: none !important;}
+.ai-viewport-1                { display: inherit !important;}
+.ai-viewport-0                { display: none !important;}
+@media (min-width: 768px) and (max-width: 979px) {
+.ai-viewport-1                { display: none !important;}
+.ai-viewport-2                { display: inherit !important;}
+}
+@media (max-width: 767px) {
+.ai-viewport-1                { display: none !important;}
+.ai-viewport-3                { display: inherit !important;}
+}
+</style>
+<script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+<script>
+
+  var googletag = googletag || {};
+
+  googletag.cmd = googletag.cmd || [];
+
+</script>
+<script>
+
+
+  // GPT slots
+
+ var gptAdSlots = [];
+
+ googletag.cmd.push(function() {
+
+ 
+
+   // Define a size mapping object. The first parameter to addSize is
+
+   // a viewport size, while the second is a list of allowed ad sizes.
+
+  var mapping = googletag.sizeMapping().
+
+    addSize([992, 0], [[970, 90], [728, 90], [1, 1]]). //desktop
+    addSize([768, 0], [[728, 90], [1, 1]]). //tablet
+    addSize([320, 0], [[320, 50], [320, 100], [300, 50], [300, 100], [300, 250], [1, 1]]). //mobile
+    addSize([0, 0], [[320, 50], [1, 1]]). //other
+    build();
+
+
+    var mapping1 = googletag.sizeMapping()
+                            .addSize([992, 10], [[970, 90], [728, 90], [1, 1]])
+                            .addSize([768, 10], [[728, 90], [1, 1]])
+                            .addSize([1, 1], [])
+                            .build();
+                            
+  var mapping2 = googletag.sizeMapping().
+    addSize([992, 0], [[970, 90], [728, 90], [1, 1]]). //desktop
+    addSize([768, 0], [[728, 90], [1, 1]]). //tablet
+    addSize([320, 0], [[320, 50], [320, 100], [300, 50], [300, 100], [1, 1]]). //mobile
+    addSize([0, 0], [[320, 50], [1, 1]]). //other
+
+    build();
+    
+    var mapping3 = googletag.sizeMapping().
+    addSize([992, 0], [[970, 90], [728, 90], [1, 1]]). //desktop
+    addSize([768, 0], [[728, 90], [1, 1]]). //tablet
+    addSize([320, 0], [[320, 50]]). //mobile
+    addSize([0, 0], [[320, 50], [1, 1]]). //other
+
+    build();
+    
+    var mapping4 = googletag.sizeMapping().
+    addSize([992, 0], [[300, 250], [1, 1]]). //desktop
+    addSize([768, 0], [[300, 250], [1, 1]]). //tablet
+    addSize([320, 0], [[320, 50], [320, 100], [300, 50], [300, 100],[300, 250], [1, 1]]). //mobile
+    addSize([0, 0], [[320, 50], [1, 1]]). //other
+
+    build();
+    
+
+  googletag.defineSlot('/14001636/DP_Leaderboard_1', [[320, 50],[320, 100], [300, 50], [300, 100], [728, 90]], 'div-gpt-ad-1500386953281-8').defineSizeMapping(mapping2).addService(googletag.pubads()).setTargeting('URL','/2020/03/31/covid-19-cancel-all-deb');
+
+ googletag.defineSlot('/14001636/DP_Leaderboard_2', [[320, 50],[320, 100], [300, 50], [300, 100], [728, 90]], 'div-gpt-ad-1500386953281-9').defineSizeMapping(mapping3).addService(googletag.pubads()).setTargeting('URL','/2020/03/31/covid-19-cancel-all-deb'); 
+
+   googletag.defineSlot('/14001636/DP_InsidePost_MPU_1', [[300, 250],[320, 100], [336, 280], [320, 50], [300, 100],[300, 50]], 'div-gpt-ad-1524595905268-4').defineSizeMapping(mapping4).addService(googletag.pubads()).setTargeting('URL','/2020/03/31/covid-19-cancel-all-deb');
+
+  googletag.defineSlot('/14001636/DP_InsidePost_MPU_2', [[300, 250],[320, 100], [336, 280], [320, 50], [300, 100],[300, 50]], 'div-gpt-ad-1524595905268-5').addService(googletag.pubads()).setTargeting('URL','/2020/03/31/covid-19-cancel-all-deb');
+
+  googletag.defineSlot('/14001636/DP_InsidePost_MPU_3', [[300, 250],[320, 100], [336, 280], [320, 50], [300, 100], [300, 50]], 'div-gpt-ad-1524595905268-6').addService(googletag.pubads()).setTargeting('URL','/2020/03/31/covid-19-cancel-all-deb');
+
+  googletag.defineSlot('/14001636/DP_InsidePost_MPU_4', [[300, 250],[320, 100], [336, 280], [320, 50], [300, 100], [300, 50]], 'div-gpt-ad-1524595905268-7').addService(googletag.pubads()).setTargeting('URL','/2020/03/31/covid-19-cancel-all-deb');
+  
+googletag.defineSlot('/14001636/DP_InsidePost_MPU_5', [[300, 250],[320, 100], [336, 280], [320, 50], [300, 100],[300, 50]], 'div-gpt-ad-1574186466205-0').addService(googletag.pubads()).setTargeting('URL','/2020/03/31/covid-19-cancel-all-deb');
+
+
+  googletag.pubads().enableSingleRequest();
+  googletag.enableServices();
+
+  });
+
+</script>
+<script>(function(){/*
+
+ Copyright The Closure Library Authors.
+ SPDX-License-Identifier: Apache-2.0
+*/
+'use strict';var g=function(a){var b=0;return function(){return b<a.length?{done:!1,value:a[b++]}:{done:!0}}},l=this||self,m=/^[\w+/_-]+[=]{0,2}$/,p=null,q=function(){},r=function(a){var b=typeof a;if("object"==b)if(a){if(a instanceof Array)return"array";if(a instanceof Object)return b;var c=Object.prototype.toString.call(a);if("[object Window]"==c)return"object";if("[object Array]"==c||"number"==typeof a.length&&"undefined"!=typeof a.splice&&"undefined"!=typeof a.propertyIsEnumerable&&!a.propertyIsEnumerable("splice"))return"array";
+if("[object Function]"==c||"undefined"!=typeof a.call&&"undefined"!=typeof a.propertyIsEnumerable&&!a.propertyIsEnumerable("call"))return"function"}else return"null";else if("function"==b&&"undefined"==typeof a.call)return"object";return b},u=function(a,b){function c(){}c.prototype=b.prototype;a.prototype=new c;a.prototype.constructor=a};var v=function(a,b){Object.defineProperty(l,a,{configurable:!1,get:function(){return b},set:q})};var y=function(a,b){this.b=a===w&&b||"";this.a=x},x={},w={};var aa=function(a,b){a.src=b instanceof y&&b.constructor===y&&b.a===x?b.b:"type_error:TrustedResourceUrl";if(null===p)b:{b=l.document;if((b=b.querySelector&&b.querySelector("script[nonce]"))&&(b=b.nonce||b.getAttribute("nonce"))&&m.test(b)){p=b;break b}p=""}b=p;b&&a.setAttribute("nonce",b)};var z=function(){return Math.floor(2147483648*Math.random()).toString(36)+Math.abs(Math.floor(2147483648*Math.random())^+new Date).toString(36)};var A=function(a,b){b=String(b);"application/xhtml+xml"===a.contentType&&(b=b.toLowerCase());return a.createElement(b)},B=function(a){this.a=a||l.document||document};B.prototype.appendChild=function(a,b){a.appendChild(b)};var C=function(a,b,c,d,e,f){try{var k=a.a,h=A(a.a,"SCRIPT");h.async=!0;aa(h,b);k.head.appendChild(h);h.addEventListener("load",function(){e();d&&k.head.removeChild(h)});h.addEventListener("error",function(){0<c?C(a,b,c-1,d,e,f):(d&&k.head.removeChild(h),f())})}catch(n){f()}};var ba=l.atob("aHR0cHM6Ly93d3cuZ3N0YXRpYy5jb20vaW1hZ2VzL2ljb25zL21hdGVyaWFsL3N5c3RlbS8xeC93YXJuaW5nX2FtYmVyXzI0ZHAucG5n"),ca=l.atob("WW91IGFyZSBzZWVpbmcgdGhpcyBtZXNzYWdlIGJlY2F1c2UgYWQgb3Igc2NyaXB0IGJsb2NraW5nIHNvZnR3YXJlIGlzIGludGVyZmVyaW5nIHdpdGggdGhpcyBwYWdlLg=="),da=l.atob("RGlzYWJsZSBhbnkgYWQgb3Igc2NyaXB0IGJsb2NraW5nIHNvZnR3YXJlLCB0aGVuIHJlbG9hZCB0aGlzIHBhZ2Uu"),ea=function(a,b,c){this.b=a;this.f=new B(this.b);this.a=null;this.c=[];this.g=!1;this.i=b;this.h=c},F=function(a){if(a.b.body&&!a.g){var b=
+function(){D(a);l.setTimeout(function(){return E(a,3)},50)};C(a.f,a.i,2,!0,function(){l[a.h]||b()},b);a.g=!0}},D=function(a){for(var b=G(1,5),c=0;c<b;c++){var d=H(a);a.b.body.appendChild(d);a.c.push(d)}b=H(a);b.style.bottom="0";b.style.left="0";b.style.position="fixed";b.style.width=G(100,110).toString()+"%";b.style.zIndex=G(2147483544,2147483644).toString();b.style["background-color"]=I(249,259,242,252,219,229);b.style["box-shadow"]="0 0 12px #888";b.style.color=I(0,10,0,10,0,10);b.style.display=
+"flex";b.style["justify-content"]="center";b.style["font-family"]="Roboto, Arial";c=H(a);c.style.width=G(80,85).toString()+"%";c.style.maxWidth=G(750,775).toString()+"px";c.style.margin="24px";c.style.display="flex";c.style["align-items"]="flex-start";c.style["justify-content"]="center";d=A(a.f.a,"IMG");d.className=z();d.src=ba;d.style.height="24px";d.style.width="24px";d.style["padding-right"]="16px";var e=H(a),f=H(a);f.style["font-weight"]="bold";f.textContent=ca;var k=H(a);k.textContent=da;J(a,
+e,f);J(a,e,k);J(a,c,d);J(a,c,e);J(a,b,c);a.a=b;a.b.body.appendChild(a.a);b=G(1,5);for(c=0;c<b;c++)d=H(a),a.b.body.appendChild(d),a.c.push(d)},J=function(a,b,c){for(var d=G(1,5),e=0;e<d;e++){var f=H(a);b.appendChild(f)}b.appendChild(c);c=G(1,5);for(d=0;d<c;d++)e=H(a),b.appendChild(e)},G=function(a,b){return Math.floor(a+Math.random()*(b-a))},I=function(a,b,c,d,e,f){return"rgb("+G(Math.max(a,0),Math.min(b,255)).toString()+","+G(Math.max(c,0),Math.min(d,255)).toString()+","+G(Math.max(e,0),Math.min(f,
+255)).toString()+")"},H=function(a){a=A(a.f.a,"DIV");a.className=z();return a},E=function(a,b){0>=b||null!=a.a&&0!=a.a.offsetHeight&&0!=a.a.offsetWidth||(fa(a),D(a),l.setTimeout(function(){return E(a,b-1)},50))},fa=function(a){var b=a.c;var c="undefined"!=typeof Symbol&&Symbol.iterator&&b[Symbol.iterator];b=c?c.call(b):{next:g(b)};for(c=b.next();!c.done;c=b.next())(c=c.value)&&c.parentNode&&c.parentNode.removeChild(c);a.c=[];(b=a.a)&&b.parentNode&&b.parentNode.removeChild(b);a.a=null};var ia=function(a,b,c,d,e){var f=ha(c),k=function(n){n.appendChild(f);l.setTimeout(function(){f?(0!==f.offsetHeight&&0!==f.offsetWidth?b():a(),f.parentNode&&f.parentNode.removeChild(f)):a()},d)},h=function(n){document.body?k(document.body):0<n?l.setTimeout(function(){h(n-1)},e):b()};h(3)},ha=function(a){var b=document.createElement("div");b.className=a;b.style.width="1px";b.style.height="1px";b.style.position="absolute";b.style.left="-10000px";b.style.top="-10000px";b.style.zIndex="-10000";return b};var K={},L=null;var M=function(){},N="function"==typeof Uint8Array,O=function(a,b){a.b=null;b||(b=[]);a.j=void 0;a.f=-1;a.a=b;a:{if(b=a.a.length){--b;var c=a.a[b];if(!(null===c||"object"!=typeof c||Array.isArray(c)||N&&c instanceof Uint8Array)){a.g=b-a.f;a.c=c;break a}}a.g=Number.MAX_VALUE}a.i={}},P=[],Q=function(a,b){if(b<a.g){b+=a.f;var c=a.a[b];return c===P?a.a[b]=[]:c}if(a.c)return c=a.c[b],c===P?a.c[b]=[]:c},R=function(a,b,c){a.b||(a.b={});if(!a.b[c]){var d=Q(a,c);d&&(a.b[c]=new b(d))}return a.b[c]};
+M.prototype.h=N?function(){var a=Uint8Array.prototype.toJSON;Uint8Array.prototype.toJSON=function(){var b;void 0===b&&(b=0);if(!L){L={};for(var c="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789".split(""),d=["+/=","+/","-_=","-_.","-_"],e=0;5>e;e++){var f=c.concat(d[e].split(""));K[e]=f;for(var k=0;k<f.length;k++){var h=f[k];void 0===L[h]&&(L[h]=k)}}}b=K[b];c=[];for(d=0;d<this.length;d+=3){var n=this[d],t=(e=d+1<this.length)?this[d+1]:0;h=(f=d+2<this.length)?this[d+2]:0;k=n>>2;n=(n&
+3)<<4|t>>4;t=(t&15)<<2|h>>6;h&=63;f||(h=64,e||(t=64));c.push(b[k],b[n],b[t]||"",b[h]||"")}return c.join("")};try{return JSON.stringify(this.a&&this.a,S)}finally{Uint8Array.prototype.toJSON=a}}:function(){return JSON.stringify(this.a&&this.a,S)};var S=function(a,b){return"number"!==typeof b||!isNaN(b)&&Infinity!==b&&-Infinity!==b?b:String(b)};M.prototype.toString=function(){return this.a.toString()};var T=function(a){O(this,a)};u(T,M);var U=function(a){O(this,a)};u(U,M);var ja=function(a,b){this.c=new B(a);var c=R(b,T,5);c=new y(w,Q(c,4)||"");this.b=new ea(a,c,Q(b,4));this.a=b},ka=function(a,b,c,d){b=new T(b?JSON.parse(b):null);b=new y(w,Q(b,4)||"");C(a.c,b,3,!1,c,function(){ia(function(){F(a.b);d(!1)},function(){d(!0)},Q(a.a,2),Q(a.a,3),Q(a.a,1))})};var la=function(a,b){V(a,"internal_api_load_with_sb",function(c,d,e){ka(b,c,d,e)});V(a,"internal_api_sb",function(){F(b.b)})},V=function(a,b,c){a=l.btoa(a+b);v(a,c)},W=function(a,b,c){for(var d=[],e=2;e<arguments.length;++e)d[e-2]=arguments[e];e=l.btoa(a+b);e=l[e];if("function"==r(e))e.apply(null,d);else throw Error("API not exported.");};var X=function(a){O(this,a)};u(X,M);var Y=function(a){this.h=window;this.a=a;this.b=Q(this.a,1);this.f=R(this.a,T,2);this.g=R(this.a,U,3);this.c=!1};Y.prototype.start=function(){ma();var a=new ja(this.h.document,this.g);la(this.b,a);na(this)};
+var ma=function(){var a=function(){if(!l.frames.googlefcPresent)if(document.body){var b=document.createElement("iframe");b.style.display="none";b.style.width="0px";b.style.height="0px";b.style.border="none";b.style.zIndex="-1000";b.style.left="-1000px";b.style.top="-1000px";b.name="googlefcPresent";document.body.appendChild(b)}else l.setTimeout(a,5)};a()},na=function(a){var b=Date.now();W(a.b,"internal_api_load_with_sb",a.f.h(),function(){var c;var d=a.b,e=l[l.btoa(d+"loader_js")];if(e){e=l.atob(e);
+e=parseInt(e,10);d=l.btoa(d+"loader_js").split(".");var f=l;d[0]in f||"undefined"==typeof f.execScript||f.execScript("var "+d[0]);for(;d.length&&(c=d.shift());)d.length?f[c]&&f[c]!==Object.prototype[c]?f=f[c]:f=f[c]={}:f[c]=null;c=Math.abs(b-e);c=1728E5>c?0:c}else c=-1;0!=c&&(W(a.b,"internal_api_sb"),Z(a,Q(a.a,6)))},function(c){Z(a,c?Q(a.a,4):Q(a.a,5))})},Z=function(a,b){a.c||(a.c=!0,a=new l.XMLHttpRequest,a.open("GET",b,!0),a.send())};(function(a,b){l[a]=function(c){for(var d=[],e=0;e<arguments.length;++e)d[e-0]=arguments[e];l[a]=q;b.apply(null,d)}})("__d3lUW8vwsKlB__",function(a){"function"==typeof window.atob&&(a=window.atob(a),a=new X(a?JSON.parse(a):null),(new Y(a)).start())});}).call(this);
+
+window.__d3lUW8vwsKlB__("WyI0N2FmMzhlYjQ1NWVkZGVlIixbbnVsbCxudWxsLG51bGwsImh0dHBzOi8vZnVuZGluZ2Nob2ljZXNtZXNzYWdlcy5nb29nbGUuY29tL2YvQUdTS1d4WFlZYVJqTHQzNmZqVTNTTHh5azNDdFRaUlBkeGZCdWNjem9CZ2FiRXFLLUJNUHhGcUFSY3RqUmczbTBURk5ndnBoUENfTWhoVV9YbDA1eWswRU5Yb1x1MDAzZCJdCixbMjAsImRpdi1ncHQtYWQiLDEwMCwiTkRkaFpqTTRaV0kwTlRWbFpHUmxaUVx1MDAzZFx1MDAzZCIsW251bGwsbnVsbCxudWxsLCJodHRwczovL3d3dy5nc3RhdGljLmNvbS8wZW1uL2YvcC80N2FmMzhlYjQ1NWVkZGVlLmpzP3VzcXBcdTAwM2RDQW8iXQpdCiwiaHR0cHM6Ly9mdW5kaW5nY2hvaWNlc21lc3NhZ2VzLmdvb2dsZS5jb20vbC9BR1NLV3hXT3I5YmRIU0drYTJ3Nm1BZlczOHY2TGp2Y1VlM1p2dmRqblBxNnltTk1XQVZiVEFxeUhXaGliZ1F6UWZ1eVZKQlIyS2Jza0tIdDd3YXIwdWZRP2FiXHUwMDNkMSIsImh0dHBzOi8vZnVuZGluZ2Nob2ljZXNtZXNzYWdlcy5nb29nbGUuY29tL2wvQUdTS1d4Vzl4c3M0R0V6dVUweFBSUTJwMmtzV3R2NzlxbWFLTHAxQ1l4dW92bjRyZHlrYXJQVDI3djc1T0NtTUtlUnNYYWo1R3ZXdjFpbllCaVRjcGdBbz9hYlx1MDAzZDJcdTAwMjZzYmZcdTAwM2QxIiwiaHR0cHM6Ly9mdW5kaW5nY2hvaWNlc21lc3NhZ2VzLmdvb2dsZS5jb20vbC9BR1NLV3hYaXZoSjBKUDJBZzJhTDYxMDBKeEY0bkZEZjRiZW1tdnpDSy0zSkpFWU9XR0VWMEdxXzNQM1doZ2MyTWhubkM2YjB6ZU1qaXRqSzI3Y3EwMkozP3NiZlx1MDAzZDIiXQo=");</script>
+</head>
+<body class="post-template-default single single-post postid-775793 single-format-standard">
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v9.0&appId=420332301344305" nonce="sm97MhBO"></script>
+
+<amp-analytics config="https://www.googletagmanager.com/amp.json?id=GTM-PB7KGN8&gtm.url=SOURCE_URL" data-credentials="include"></amp-analytics>
+<div id="mvp-fly-wrap">
+<div id="mvp-fly-menu-top" class="left relative">
+<div class="mvp-fly-top-out left relative">
+<div class="mvp-fly-top-in">
+<div id="mvp-fly-logo" class="left relative">
+<a href="https://dailypost.ng/"><img src="https://dailypost.ng/wp-content/uploads/2017/08/Daily_Post_Logo_Transparent_200x30-1.png" alt="Daily Post Nigeria" data-rjs="2" /></a>
+</div>
+</div>
+<div class="mvp-fly-but-wrap mvp-fly-but-menu mvp-fly-but-click">
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+</div>
+</div>
+</div>
+<div id="mvp-fly-menu-wrap">
+<nav class="mvp-fly-nav-menu left relative">
+<div class="menu-menu-2-container"><ul id="menu-menu-2" class="menu"><li id="menu-item-392934" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-392934"><a href="https://dailypost.ng/">Home</a></li>
+<li id="menu-item-361560" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-361560"><a href="https://dailypost.ng/hot-news/">News</a></li>
+<li id="menu-item-361557" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-361557"><a href="https://dailypost.ng/politics/">Politics</a></li>
+<li id="menu-item-361559" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-361559"><a href="https://dailypost.ng/metro/">Metro</a></li>
+<li id="menu-item-361558" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-361558"><a href="https://dailypost.ng/sport-news/">Sport</a></li>
+<li id="menu-item-361561" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-361561"><a href="https://dailypost.ng/entertainment/">Entertainment</a></li>
+<li id="menu-item-361562" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-361562"><a href="https://dailypost.ng/opinion/">Opinion</a></li>
+<li id="menu-item-361554" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-361554"><a href="https://dailypost.ng/education/">Education</a></li>
+<li id="menu-item-361555" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-361555"><a href="https://dailypost.ng/health/">Health</a></li>
+<li id="menu-item-361556" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-361556"><a href="https://dailypost.ng/interview/">Interview</a></li>
+<li id="menu-item-409398" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-409398"><a href="http://dailypost.com.gh/">Daily Post Ghana</a></li>
+</ul></div> </nav>
+</div>
+<div id="mvp-fly-soc-wrap">
+<span class="mvp-fly-soc-head">Connect with us</span>
+<ul class="mvp-fly-soc-list left relative">
+<li><a href="https://www.facebook.com/DailyPostNigeria/" target="_blank" class="fa fa-facebook fa-2"></a></li>
+<li><a href="https://twitter.com/DailyPostNGR" target="_blank" class="fa fa-twitter fa-2"></a></li>
+<li><a href="https://www.instagram.com/p/ByXruanDDku/" target="_blank" class="fa fa-instagram fa-2"></a></li>
+</ul>
+</div>
+</div>
+<div id="mvp-site" class="left relative">
+<div id="mvp-search-wrap">
+<div id="mvp-search-box">
+<form method="get" id="searchform" action="https://dailypost.ng/">
+<input type="text" name="s" id="s" value="Search" onfocus='if (this.value == "Search") { this.value = ""; }' onblur='if (this.value == "") { this.value = "Search"; }' />
+<input type="hidden" id="searchsubmit" value="Search" />
+</form> </div>
+<div class="mvp-search-but-wrap mvp-search-click">
+<span></span>
+<span></span>
+</div>
+</div>
+<div id="mvp-site-wall" class="left relative">
+<div id="mvp-site-main" class="left relative">
+<header id="mvp-main-head-wrap" class="left relative">
+<nav id="mvp-main-nav-wrap" class="left relative">
+<div id="mvp-main-nav-small" class="left relative">
+<div id="mvp-main-nav-small-cont" class="left">
+<div class="mvp-main-box">
+<div id="mvp-nav-small-wrap">
+<div class="mvp-nav-small-right-out left">
+<div class="mvp-nav-small-right-in">
+<div class="mvp-nav-small-cont left">
+<div class="mvp-nav-small-left-out right">
+<div id="mvp-nav-small-left" class="left relative">
+<div class="mvp-fly-but-wrap mvp-fly-but-click left relative">
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+</div>
+</div>
+<div class="mvp-nav-small-left-in">
+<div class="mvp-nav-small-mid left">
+<div class="mvp-nav-small-logo left relative">
+<a href="https://dailypost.ng/"><img src="https://dailypost.ng/wp-content/uploads/2017/08/Daily_Post_Logo_Transparent_200x30-1.png" alt="Daily Post Nigeria" data-rjs="2" /></a>
+<h2 class="mvp-logo-title">Daily Post Nigeria</h2>
+</div>
+<div class="mvp-nav-small-mid-right left">
+<div class="mvp-drop-nav-title left">
+<h4>COVID-19: Cancel all debt owed you for causing outbreak- Apostle Suleman tells China</h4>
+</div>
+<div class="mvp-nav-menu left">
+<div class="menu-menu1-container"><ul id="menu-menu1" class="menu"><li id="menu-item-392937" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-392937"><a href="https://dailypost.ng/">Home</a></li>
+<li id="menu-item-17427" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-17427"><a href="https://dailypost.ng/hot-news/">News</a></li>
+<li id="menu-item-12" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12"><a href="https://dailypost.ng/politics/">Politics</a></li>
+<li id="menu-item-13769" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-13769"><a href="https://dailypost.ng/metro/">Metro</a></li>
+<li id="menu-item-124880" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-124880"><a href="https://dailypost.ng/entertainment/">Entertainment</a></li>
+<li id="menu-item-475" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-475"><a href="https://dailypost.ng/sport-news/">Sport</a></li>
+</ul></div> </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="mvp-nav-small-right" class="right relative">
+<a href="https://dailypost.ng/search-page/"><span class="mvp-nav-search-but fa fa-search fa-2 mvp-search-click"></span></a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div id="mvp-main-body-wrap" class="left relative">
+<div class='code-block code-block-8' style='margin: 8px 0; clear: both;'>
+<div align="center">
+
+<div id='div-gpt-ad-1500386953281-8'>
+<script>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1500386953281-8'); });
+</script>
+</div>
+</div></div>
+<style>
+			   
+    #web {display: block;}
+    #mobile {display: none;}
+
+    @media screen and (max-width: 479px) {
+        #web {display: none;}
+        #mobile {display: block;}
+    }
+</style>
+<div id="mobile">
+</div>
+<div id="web">
+<div class='code-block code-block-10' style='margin: 8px auto; text-align: center; display: block; clear: both;'>
+</div>
+</div>
+<article id="mvp-article-wrap">
+<meta itemprop="mainEntityOfPage" itemType="https://schema.org/WebPage" itemid="https://dailypost.ng/2020/03/31/covid-19-cancel-all-debt-owed-you-for-causing-outbreak-apostle-suleman-tells-china/" />
+<div id="mvp-article-cont" class="left relative">
+<div class="mvp-main-box">
+<div id="mvp-post-main" class="left relative">
+<header id="mvp-post-head" class="left relative"><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<div class="breadcrumb">
+</div>
+<h3 class="mvp-post-cat left relative"><a class="mvp-post-cat-link" href="https://dailypost.ng/hot-news/"><span class="mvp-post-cat left">News</span></a></h3>
+<h1 class="mvp-post-title left entry-title" itemprop="headline">COVID-19: Cancel all debt owed you for causing outbreak- Apostle Suleman tells China</h1>
+<div class="mvp-author-info-wrap left relative">
+<div class="mvp-author-info-thumb left relative">
+</div>
+<div class="mvp-author-info-text left relative">
+<div class="mvp-author-info-date left relative">
+<p>Published</p> <p>on</p> <span class="mvp-post-date updated"><time class="post-date updated" datetime="2020-03-31">March 31, 2020</time></span>
+<meta itemprop="dateModified" content="2020-03-31 4:17 pm" />
+</div>
+<div class="mvp-author-info-name left relative">
+<p>By</p> <span class="author-name vcard fn author"><a href="https://dailypost.ng/author/seun-opejobi/" title="Posts by Seun Opejobi" rel="author">Seun Opejobi</a></span> </div>
+</div>
+</div>
+</header>
+<div class="mvp-post-main-out left relative">
+<div class="mvp-post-main-in">
+<div id="mvp-post-content" class="left relative">
+<div id="mvp-post-feat-img" class="left relative mvp-post-feat-img-wide2" itemprop="image">
+<img width="1200" height="675" src="https://dailypost.ng/wp-content/uploads/2019/07/suleman.jpeg" class="attachment- size- wp-post-image" alt="" loading="lazy" srcset="https://dailypost.ng/wp-content/uploads/2019/07/suleman.jpeg 1200w, https://dailypost.ng/wp-content/uploads/2019/07/suleman-300x169.jpeg 300w, https://dailypost.ng/wp-content/uploads/2019/07/suleman-1024x576.jpeg 1024w" sizes="(max-width: 1200px) 100vw, 1200px" /> <meta itemprop="url" content="https://dailypost.ng/wp-content/uploads/2019/07/suleman-1000x600.jpeg">
+<meta itemprop="width" content="1000">
+<meta itemprop="height" content="600">
+</div>
+<div id="mvp-content-wrap" class="left relative">
+<div class="mvp-post-soc-out right relative">
+<div class="mvp-post-soc-in">
+<div id="mvp-content-body" class="left relative">
+<div id="mvp-content-body-top" class="left relative">
+<div id="mvp-content-main" class="left relative">
+<div class='code-block code-block-9' style='margin: 8px 0; clear: both;'>
+</div>
+<div class='ai-viewports ai-viewport-3 ai-insert-7-50963138' style='margin: 8px 0; clear: both;' data-insertion='after' data-selector='.ai-insert-7-50963138' data-insertion-no-dbg data-code='PGRpdiBjbGFzcz0nY29kZS1ibG9jayBjb2RlLWJsb2NrLTcnIHN0eWxlPSdtYXJnaW46IDhweCAwOyBjbGVhcjogYm90aDsnPgo8ZGl2IGFsaWduPSJjZW50ZXIiPgo8ZGl2IGlkPSJzdGlja3l1bml0Ij4gCjwhLS0gLzE0MDAxNjM2L0RQX0xlYWRlcmJvYXJkXzIgLS0+CjxkaXYgaWQ9ImRpdi1ncHQtYWQtMTUwMDM4Njk1MzI4MS05Ij48c2NyaXB0Pgpnb29nbGV0YWcuY21kLnB1c2goZnVuY3Rpb24oKSB7IGdvb2dsZXRhZy5kaXNwbGF5KCdkaXYtZ3B0LWFkLTE1MDAzODY5NTMyODEtOScpOyB9KTsKPC9zY3JpcHQ+PC9kaXY+CjwvZGl2Pgo8L2Rpdj4gCjwvZGl2PiA8L2Rpdj4K' data-block='7'></div>
+<div class='ai-viewports ai-viewport-1 ai-insert-4-67672861' style='margin: 8px auto; text-align: center; display: block; clear: both;' data-insertion='after' data-selector='.ai-insert-4-67672861' data-insertion-no-dbg data-code='PGRpdiBjbGFzcz0nY29kZS1ibG9jayBjb2RlLWJsb2NrLTQnIHN0eWxlPSdtYXJnaW46IDhweCBhdXRvOyB0ZXh0LWFsaWduOiBjZW50ZXI7IGRpc3BsYXk6IGJsb2NrOyBjbGVhcjogYm90aDsnPgo8ZGl2IGFsaWduPSJjZW50ZXIiPiAKPCEtLSAvMTQwMDE2MzYvRFBfTGVhZGVyYm9hcmRfMiAtLT4KPGRpdiBpZD0iZGl2LWdwdC1hZC0xNTAwMzg2OTUzMjgxLTkiPjxzY3JpcHQ+Cmdvb2dsZXRhZy5jbWQucHVzaChmdW5jdGlvbigpIHsgZ29vZ2xldGFnLmRpc3BsYXkoJ2Rpdi1ncHQtYWQtMTUwMDM4Njk1MzI4MS05Jyk7IH0pOwo8L3NjcmlwdD48L2Rpdj4KPC9kaXY+Cgo8L2Rpdj4K' data-block='4'></div>
+<p>Apostle Johnson Suleman of Omega Fire Ministries, on Tuesday, called on China to cancel all debts owed it over the Coronavirus pandemic.</p><div class='ai-viewports ai-viewport-2 ai-viewport-3 ai-insert-17-54635662' style='margin: 8px 0; clear: both;' data-insertion='after' data-selector='.ai-insert-17-54635662' data-insertion-no-dbg data-code='PGRpdiBjbGFzcz0nY29kZS1ibG9jayBjb2RlLWJsb2NrLTE3JyBzdHlsZT0nbWFyZ2luOiA4cHggMDsgY2xlYXI6IGJvdGg7Jz4KPGRpdiBhbGlnbj0iY2VudGVyIj4KPCEtLSAvMTQwMDE2MzYvRFBfSW5zaWRlUG9zdF9BZHNlbnNlXzEgLS0+CjxkaXYgaWQ9J2Rpdi1ncHQtYWQtMTUyNDU5NTkwNTI2OC00Jz4KPHNjcmlwdD4KZ29vZ2xldGFnLmNtZC5wdXNoKGZ1bmN0aW9uKCkgeyBnb29nbGV0YWcuZGlzcGxheSgnZGl2LWdwdC1hZC0xNTI0NTk1OTA1MjY4LTQnKTsgfSk7Cjwvc2NyaXB0Pgo8L2Rpdj4KPC9kaXY+Cgo8L2Rpdj4K' data-block='17'></div>
+<p>Suleman explained that such action would suffice for the outbreak of COVID-19.</p>
+<p>In a series of tweets, the clergyman said that though debt cancellation won&#8217;t alienate the pain caused the world, it was the right step to take.</p>
+<p>He also called on China to reveal to the world how they managed the virus.</p>
+<div class='code-block code-block-2' style='margin: 8px auto; text-align: center; display: block; clear: both;'>
+</div>
+<p>According to Suleman: &#8220;I have said this over and over, China should cancel all debts owed them. Even though that won&#8217;t alienate them from the pains/pangs they have caused the world.</p><div class='ai-viewports ai-viewport-2 ai-viewport-3 ai-insert-18-96303003' style='margin: 8px 0; clear: both;' data-insertion='after' data-selector='.ai-insert-18-96303003' data-insertion-no-dbg data-code='PGRpdiBjbGFzcz0nY29kZS1ibG9jayBjb2RlLWJsb2NrLTE4JyBzdHlsZT0nbWFyZ2luOiA4cHggMDsgY2xlYXI6IGJvdGg7Jz4KPGRpdiBhbGlnbj0iY2VudGVyIj4KPCEtLSAvMTQwMDE2MzYvRFBfSW5zaWRlUG9zdF9BZHNlbnNlXzIgLS0+CjxkaXYgaWQ9J2Rpdi1ncHQtYWQtMTUyNDU5NTkwNTI2OC01Jz4KPHNjcmlwdD4KZ29vZ2xldGFnLmNtZC5wdXNoKGZ1bmN0aW9uKCkgeyBnb29nbGV0YWcuZGlzcGxheSgnZGl2LWdwdC1hZC0xNTI0NTk1OTA1MjY4LTUnKTsgfSk7Cjwvc2NyaXB0Pgo8L2Rpdj4KPC9kaXY+Cgo8L2Rpdj4K' data-block='18'></div>
+<p>&#8220;They are suddenly dumb. They have handled the virus in ther country, tell others how you did it.</p>
+<p>&#8220;China allowed people who contracted the virus leave their country..now they ban entry.</p>
+<p>&#8220;Wuhan got but Beijing is free..how?..same country..yet the world is affected..and someone says its conspiracy theory? Asides precautions, we should all pray. God will frustrate their agenda.&#8221;</p>
+<div id='jp-relatedposts' class='jp-relatedposts'>
+</div>
+</div>
+<div id="mvp-content-bot" class="left">
+<div class="mvp-post-tags">
+<span class="mvp-post-tags-header">Related Topics:</span><span itemprop="keywords"><a href="https://dailypost.ng/tag/apostle-suleiman/" rel="tag">Apostle Suleiman</a><a href="https://dailypost.ng/tag/china/" rel="tag">china</a><a href="https://dailypost.ng/tag/covid-19/" rel="tag">Covid-19</a></span>
+<div class='ai-viewports ai-viewport-2 ai-viewport-3 ai-insert-3-95802818' style='margin: 8px auto; text-align: center; display: block; clear: both;' data-insertion='after' data-selector='.ai-insert-3-95802818' data-insertion-no-dbg data-code='PGRpdiBjbGFzcz0nY29kZS1ibG9jayBjb2RlLWJsb2NrLTMnIHN0eWxlPSdtYXJnaW46IDhweCBhdXRvOyB0ZXh0LWFsaWduOiBjZW50ZXI7IGRpc3BsYXk6IGJsb2NrOyBjbGVhcjogYm90aDsnPgo8c2NyaXB0IGFzeW5jIHNyYz0iaHR0cHM6Ly9wYWdlYWQyLmdvb2dsZXN5bmRpY2F0aW9uLmNvbS9wYWdlYWQvanMvYWRzYnlnb29nbGUuanMiPjwvc2NyaXB0Pgo8aW5zIGNsYXNzPSJhZHNieWdvb2dsZSIKICAgICBzdHlsZT0iZGlzcGxheTpibG9jayIKICAgICBkYXRhLWFkLWNsaWVudD0iY2EtcHViLTQ2NjI0NTY5ODIwMjY2OTIiCiAgICAgZGF0YS1hZC1zbG90PSIyMzMxNzkzNzI0IgogICAgIGRhdGEtbWF0Y2hlZC1jb250ZW50LXVpLXR5cGU9ImltYWdlX3NpZGVieXNpZGUiCiAgICAgZGF0YS1tYXRjaGVkLWNvbnRlbnQtcm93cy1udW09IjQiCiAgICAgZGF0YS1tYXRjaGVkLWNvbnRlbnQtY29sdW1ucy1udW09IjEiCiAgICAgZGF0YS1hZC1mb3JtYXQ9ImF1dG9yZWxheGVkIj48L2lucz4KPHNjcmlwdD4KICAgICAoYWRzYnlnb29nbGUgPSB3aW5kb3cuYWRzYnlnb29nbGUgfHwgW10pLnB1c2goe30pOwo8L3NjcmlwdD48L2Rpdj4K' data-block='3'></div>
+</div>
+<div class="posts-nav-link">
+</div>
+<div id="mvp-prev-next-wrap" class="left relative">
+<div class="mvp-next-post-wrap right relative">
+<a href="https://dailypost.ng/2020/03/31/covid-19-ogun-state-confirms-new-case-of-coronavirus/" rel="bookmark">
+<div class="mvp-prev-next-cont left relative">
+<div class="mvp-next-cont-out left relative">
+<div class="mvp-next-cont-in">
+<div class="mvp-prev-next-text left relative">
+<span class="mvp-prev-next-label left relative">Up Next</span>
+<p>Covid-19: Ogun state confirms new case of Coronavirus</p>
+</div>
+</div>
+<span class="mvp-next-arr fa fa-chevron-right right"></span>
+</div>
+</div>
+</a>
+</div>
+<div class="mvp-prev-post-wrap left relative">
+<a href="https://dailypost.ng/2020/03/31/covid-19-un-announces-crisis-response-plan-for-displaced-persons-in-northeast-nigeria/" rel="bookmark">
+<div class="mvp-prev-next-cont left relative">
+<div class="mvp-prev-cont-out right relative">
+<span class="mvp-prev-arr fa fa-chevron-left left"></span>
+<div class="mvp-prev-cont-in">
+<div class="mvp-prev-next-text left relative">
+<span class="mvp-prev-next-label left relative">Don&#039;t Miss</span>
+<p>COVID-19: UN announces crisis response plan for displaced persons in Northeast Nigeria</p>
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+</div>
+<div class='ai-viewports ai-viewport-2 ai-viewport-3 ai-insert-21-50626539' style='margin: 8px 0; clear: both;' data-insertion='after' data-selector='.ai-insert-21-50626539' data-insertion-no-dbg data-code='PGRpdiBjbGFzcz0nY29kZS1ibG9jayBjb2RlLWJsb2NrLTIxJyBzdHlsZT0nbWFyZ2luOiA4cHggMDsgY2xlYXI6IGJvdGg7Jz4KPGRpdiBhbGlnbj0iY2VudGVyIj4KPCEtLSAvMTQwMDE2MzYvZHBfaW5zaWRlcG9zdF9hZHNlbnNlXzUgLS0+CjxkaXYgaWQ9J2Rpdi1ncHQtYWQtMTU3NDE4NjQ2NjIwNS0wJz4KPHNjcmlwdD4KZ29vZ2xldGFnLmNtZC5wdXNoKGZ1bmN0aW9uKCkgeyBnb29nbGV0YWcuZGlzcGxheSgnZGl2LWdwdC1hZC0xNTc0MTg2NDY2MjA1LTAnKTsgfSk7Cjwvc2NyaXB0Pgo8L2Rpdj4KPC9kaXY+Cgo8L2Rpdj4K' data-block='21'></div>
+<div class="mvp-org-wrap" itemprop="publisher">
+<div class="mvp-org-logo" itemprop="logo">
+<img src="https://dailypost.ng/wp-content/uploads/2017/08/Daily_Post_Logo_Transparent_200x30-1.png" />
+<meta itemprop="url" content="https://dailypost.ng/wp-content/uploads/2017/08/Daily_Post_Logo_Transparent_200x30-1.png">
+</div>
+ <meta content="Daily Post Nigeria">
+</div>
+</div>
+</div>
+<div class="mvp-cont-read-wrap">
+<div id="mvp-related-posts" class="left relative">
+<h4 class="mvp-widget-home-title">
+<span class="mvp-widget-home-title">You may like</span>
+</h4>
+<ul class="mvp-related-posts-list left related">
+<a href="https://dailypost.ng/2021/02/28/covid-19-nigeria-records-341-fresh-cases-more-deaths-recoveries/" rel="bookmark">
+<li>
+<div class="mvp-related-img left relative">
+<img width="400" height="240" src="https://dailypost.ng/wp-content/uploads/2020/07/coronavirus-400x240.jpg" class="mvp-reg-img wp-post-image" alt="" loading="lazy" srcset="https://dailypost.ng/wp-content/uploads/2020/07/coronavirus-400x240.jpg 400w, https://dailypost.ng/wp-content/uploads/2020/07/coronavirus-1000x600.jpg 1000w, https://dailypost.ng/wp-content/uploads/2020/07/coronavirus-590x354.jpg 590w" sizes="(max-width: 400px) 100vw, 400px" /> <img width="80" height="80" src="https://dailypost.ng/wp-content/uploads/2020/07/coronavirus-80x80.jpg" class="mvp-mob-img wp-post-image" alt="" loading="lazy" srcset="https://dailypost.ng/wp-content/uploads/2020/07/coronavirus-80x80.jpg 80w, https://dailypost.ng/wp-content/uploads/2020/07/coronavirus-150x150.jpg 150w, https://dailypost.ng/wp-content/uploads/2020/07/coronavirus-45x45.jpg 45w" sizes="(max-width: 80px) 100vw, 80px" /> </div>
+<div class="mvp-related-text left relative">
+<p>COVID-19: Nigeria records 341 fresh cases, more deaths, recoveries</p>
+</div>
+</li>
+</a>
+<a href="https://dailypost.ng/2021/02/27/covid-19-taraba-overtakes-fct-others-as-ncdc-reports-600-new-cases-11-deaths/" rel="bookmark">
+<li>
+<div class="mvp-related-img left relative">
+<img width="400" height="240" src="https://dailypost.ng/wp-content/uploads/2020/03/3c4678e2-ncdc-400x240.jpg" class="mvp-reg-img wp-post-image" alt="" loading="lazy" srcset="https://dailypost.ng/wp-content/uploads/2020/03/3c4678e2-ncdc-400x240.jpg 400w, https://dailypost.ng/wp-content/uploads/2020/03/3c4678e2-ncdc-1000x600.jpg 1000w, https://dailypost.ng/wp-content/uploads/2020/03/3c4678e2-ncdc-590x354.jpg 590w" sizes="(max-width: 400px) 100vw, 400px" /> <img width="80" height="80" src="https://dailypost.ng/wp-content/uploads/2020/03/3c4678e2-ncdc-80x80.jpg" class="mvp-mob-img wp-post-image" alt="" loading="lazy" srcset="https://dailypost.ng/wp-content/uploads/2020/03/3c4678e2-ncdc-80x80.jpg 80w, https://dailypost.ng/wp-content/uploads/2020/03/3c4678e2-ncdc-150x150.jpg 150w" sizes="(max-width: 80px) 100vw, 80px" /> </div>
+<div class="mvp-related-text left relative">
+<p>COVID-19: Taraba overtakes FCT, others as NCDC reports 600 new cases, 11 deaths</p>
+</div>
+</li>
+</a>
+<a href="https://dailypost.ng/2021/02/26/africas-covid-19-cases-near-3-87-million/" rel="bookmark">
+<li>
+<div class="mvp-related-img left relative">
+<img width="400" height="240" src="https://dailypost.ng/wp-content/uploads/2020/02/coronavirus-asia-map-2k-400x240.jpg" class="mvp-reg-img wp-post-image" alt="" loading="lazy" srcset="https://dailypost.ng/wp-content/uploads/2020/02/coronavirus-asia-map-2k-400x240.jpg 400w, https://dailypost.ng/wp-content/uploads/2020/02/coronavirus-asia-map-2k-1000x600.jpg 1000w, https://dailypost.ng/wp-content/uploads/2020/02/coronavirus-asia-map-2k-590x354.jpg 590w" sizes="(max-width: 400px) 100vw, 400px" /> <img width="80" height="80" src="https://dailypost.ng/wp-content/uploads/2020/02/coronavirus-asia-map-2k-80x80.jpg" class="mvp-mob-img wp-post-image" alt="" loading="lazy" srcset="https://dailypost.ng/wp-content/uploads/2020/02/coronavirus-asia-map-2k-80x80.jpg 80w, https://dailypost.ng/wp-content/uploads/2020/02/coronavirus-asia-map-2k-150x150.jpg 150w" sizes="(max-width: 80px) 100vw, 80px" /> </div>
+<div class="mvp-related-text left relative">
+<p>Africa’s COVID-19 cases near 3.87 million</p>
+</div>
+</li>
+</a>
+</ul>
+</div>
+<div class='code-block code-block-6' style='margin: 8px 0; clear: both;'>
+<div class="fb-comments" data-href="https://dailypost.ng/2020/03/31/covid-19-cancel-all-debt-owed-you-for-causing-outbreak-apostle-suleman-tells-china/" data-numposts="5" data-lazy="true"></div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="mvp-post-add-box">
+<div id="mvp-post-add-wrap" class="left relative">
+<div class="mvp-post-add-story left relative">
+<div class="mvp-post-add-head left relative">
+<h3 class="mvp-post-cat left relative"><a class="mvp-post-cat-link" href="https://dailypost.ng/hot-news/"><span class="mvp-post-cat left">News</span></a></h3>
+<h1 class="mvp-post-title left">Homosexuality: Anglican Church in Nigeria wants American bishops sanctioned</h1>
+<div class="mvp-author-info-wrap left relative">
+<div class="mvp-author-info-thumb left relative">
+</div>
+<div class="mvp-author-info-text left relative">
+<div class="mvp-author-info-date left relative">
+<p>Published</p> <span class="mvp-post-date">7 hours ago</span> <p>on</p> <span class="mvp-post-date">February 28, 2021</span>
+</div>
+<div class="mvp-author-info-name left relative">
+<p>By</p> <span class="author-name vcard fn author"><a href="https://dailypost.ng/author/wale-odunsi/" title="Posts by Wale Odunsi" rel="author">Wale Odunsi</a></span> <a href="dailypostngr" class="mvp-twit-but" target="_blank"><span class="mvp-author-info-twit-but"><i class="fa fa-twitter fa-2"></i></span></a> </div>
+</div>
+</div>
+</div>
+<div class="mvp-post-add-body left relative">
+<div class="mvp-post-add-img left relative">
+<img width="1280" height="720" src="https://dailypost.ng/wp-content/uploads/2021/02/Archbishop-Henry-Ndukuba.jpg" class="attachment- size- wp-post-image" alt="" loading="lazy" srcset="https://dailypost.ng/wp-content/uploads/2021/02/Archbishop-Henry-Ndukuba.jpg 1280w, https://dailypost.ng/wp-content/uploads/2021/02/Archbishop-Henry-Ndukuba-300x169.jpg 300w, https://dailypost.ng/wp-content/uploads/2021/02/Archbishop-Henry-Ndukuba-1024x576.jpg 1024w" sizes="(max-width: 1280px) 100vw, 1280px" /> </div>
+<div class="mvp-post-add-cont left relative">
+<div class="mvp-post-add-main right relative">
+<div class='code-block code-block-9' style='margin: 8px 0; clear: both;'>
+</div>
+<div class='ai-viewports ai-viewport-3 ai-insert-7-13299292' style='margin: 8px 0; clear: both;' data-insertion='after' data-selector='.ai-insert-7-13299292' data-insertion-no-dbg data-code='PGRpdiBjbGFzcz0nY29kZS1ibG9jayBjb2RlLWJsb2NrLTcnIHN0eWxlPSdtYXJnaW46IDhweCAwOyBjbGVhcjogYm90aDsnPgo8ZGl2IGFsaWduPSJjZW50ZXIiPgo8ZGl2IGlkPSJzdGlja3l1bml0Ij4gCjwhLS0gLzE0MDAxNjM2L0RQX0xlYWRlcmJvYXJkXzIgLS0+CjxkaXYgaWQ9ImRpdi1ncHQtYWQtMTUwMDM4Njk1MzI4MS05Ij48c2NyaXB0Pgpnb29nbGV0YWcuY21kLnB1c2goZnVuY3Rpb24oKSB7IGdvb2dsZXRhZy5kaXNwbGF5KCdkaXYtZ3B0LWFkLTE1MDAzODY5NTMyODEtOScpOyB9KTsKPC9zY3JpcHQ+PC9kaXY+CjwvZGl2Pgo8L2Rpdj4gCjwvZGl2PiA8L2Rpdj4K' data-block='7'></div>
+<div class='ai-viewports ai-viewport-1 ai-insert-4-49388938' style='margin: 8px auto; text-align: center; display: block; clear: both;' data-insertion='after' data-selector='.ai-insert-4-49388938' data-insertion-no-dbg data-code='PGRpdiBjbGFzcz0nY29kZS1ibG9jayBjb2RlLWJsb2NrLTQnIHN0eWxlPSdtYXJnaW46IDhweCBhdXRvOyB0ZXh0LWFsaWduOiBjZW50ZXI7IGRpc3BsYXk6IGJsb2NrOyBjbGVhcjogYm90aDsnPgo8ZGl2IGFsaWduPSJjZW50ZXIiPiAKPCEtLSAvMTQwMDE2MzYvRFBfTGVhZGVyYm9hcmRfMiAtLT4KPGRpdiBpZD0iZGl2LWdwdC1hZC0xNTAwMzg2OTUzMjgxLTkiPjxzY3JpcHQ+Cmdvb2dsZXRhZy5jbWQucHVzaChmdW5jdGlvbigpIHsgZ29vZ2xldGFnLmRpc3BsYXkoJ2Rpdi1ncHQtYWQtMTUwMDM4Njk1MzI4MS05Jyk7IH0pOwo8L3NjcmlwdD48L2Rpdj4KPC9kaXY+Cgo8L2Rpdj4K' data-block='4'></div>
+<p>The Church of Nigeria (Anglican Communion) on Sunday reiterated its non-acceptance of homosexuality.</p><div class='ai-viewports ai-viewport-2 ai-viewport-3 ai-insert-17-77216047' style='margin: 8px 0; clear: both;' data-insertion='after' data-selector='.ai-insert-17-77216047' data-insertion-no-dbg data-code='PGRpdiBjbGFzcz0nY29kZS1ibG9jayBjb2RlLWJsb2NrLTE3JyBzdHlsZT0nbWFyZ2luOiA4cHggMDsgY2xlYXI6IGJvdGg7Jz4KPGRpdiBhbGlnbj0iY2VudGVyIj4KPCEtLSAvMTQwMDE2MzYvRFBfSW5zaWRlUG9zdF9BZHNlbnNlXzEgLS0+CjxkaXYgaWQ9J2Rpdi1ncHQtYWQtMTUyNDU5NTkwNTI2OC00Jz4KPHNjcmlwdD4KZ29vZ2xldGFnLmNtZC5wdXNoKGZ1bmN0aW9uKCkgeyBnb29nbGV0YWcuZGlzcGxheSgnZGl2LWdwdC1hZC0xNTI0NTk1OTA1MjY4LTQnKTsgfSk7Cjwvc2NyaXB0Pgo8L2Rpdj4KPC9kaXY+Cgo8L2Rpdj4K' data-block='17'></div>
+<p>The Primate, Archbishop Henry Ndukuba, reaffirmed the position in a statement on Sunday.</p>
+<p>His stance was a reaction to a public communication by the Anglican Church in North America (ACNA).</p>
+<p>In a lengthy statement on Sexual and Identity seen by DAILY POST, ACNA College of Bishops seemed to recognize same-sex bond.</p>
+<p>The clerics said they were not seeking to win a debate, but desire to proceed cautiously and build the greatest degree of unity possible among biblically faithful Christians.</p>
+<div class='code-block code-block-2' style='margin: 8px auto; text-align: center; display: block; clear: both;'>
+</div>
+<p>The bishops added that they have a responsibility to serve both the church of today and the generations to come.</p><div class='ai-viewports ai-viewport-2 ai-viewport-3 ai-insert-18-83929395' style='margin: 8px 0; clear: both;' data-insertion='after' data-selector='.ai-insert-18-83929395' data-insertion-no-dbg data-code='PGRpdiBjbGFzcz0nY29kZS1ibG9jayBjb2RlLWJsb2NrLTE4JyBzdHlsZT0nbWFyZ2luOiA4cHggMDsgY2xlYXI6IGJvdGg7Jz4KPGRpdiBhbGlnbj0iY2VudGVyIj4KPCEtLSAvMTQwMDE2MzYvRFBfSW5zaWRlUG9zdF9BZHNlbnNlXzIgLS0+CjxkaXYgaWQ9J2Rpdi1ncHQtYWQtMTUyNDU5NTkwNTI2OC01Jz4KPHNjcmlwdD4KZ29vZ2xldGFnLmNtZC5wdXNoKGZ1bmN0aW9uKCkgeyBnb29nbGV0YWcuZGlzcGxheSgnZGl2LWdwdC1hZC0xNTI0NTk1OTA1MjY4LTUnKTsgfSk7Cjwvc2NyaXB0Pgo8L2Rpdj4KPC9kaXY+Cgo8L2Rpdj4K' data-block='18'></div>
+<p>&#8220;We are very aware of believers who experience profound same-sex attraction. We understand that our youth and adults need language to share their experience. We commend the usage of “Christians who experience same-sex attraction.”</p>
+<p>&#8220;We want to communicate our love for the many within the Church who live with same-sex attraction. We understand that not everyone will agree with our conclusions. We pray that many will recognize our commitment to biblical orthodoxy and our loving pastoral concern for the people of God.&#8221;</p>
+<div class='code-block code-block-2' style='margin: 8px auto; text-align: center; display: block; clear: both;'>
+</div>
+<p>The bishops deferred to diocesan bishops to discern same-sex matters within their own diocesan communities and ministries.</p><div class='ai-viewports ai-viewport-2 ai-viewport-3 ai-insert-19-89766715' style='margin: 8px 0; clear: both;' data-insertion='after' data-selector='.ai-insert-19-89766715' data-insertion-no-dbg data-code='PGRpdiBjbGFzcz0nY29kZS1ibG9jayBjb2RlLWJsb2NrLTE5JyBzdHlsZT0nbWFyZ2luOiA4cHggMDsgY2xlYXI6IGJvdGg7Jz4KPGRpdiBhbGlnbj0iY2VudGVyIj4gCjwhLS0gLzE0MDAxNjM2L0RQX0luc2lkZVBvc3RfQWRzZW5zZV8zIC0tPgo8ZGl2IGlkPSdkaXYtZ3B0LWFkLTE1MjQ1OTU5MDUyNjgtNic+CjxzY3JpcHQ+Cmdvb2dsZXRhZy5jbWQucHVzaChmdW5jdGlvbigpIHsgZ29vZ2xldGFnLmRpc3BsYXkoJ2Rpdi1ncHQtYWQtMTUyNDU5NTkwNTI2OC02Jyk7IH0pOwo8L3NjcmlwdD4KPC9kaXY+CjwvZGl2PgoKPC9kaXY+Cg==' data-block='19'></div>
+<p>The Anglican leader in Nigeria called for sanctions against the bishops, priests and laity in ACNA Province who signed the letter.</p><div class='ai-viewports ai-viewport-2 ai-viewport-3 ai-insert-18-77237982' style='margin: 8px 0; clear: both;' data-insertion='after' data-selector='.ai-insert-18-77237982' data-insertion-no-dbg data-code='PGRpdiBjbGFzcz0nY29kZS1ibG9jayBjb2RlLWJsb2NrLTE4JyBzdHlsZT0nbWFyZ2luOiA4cHggMDsgY2xlYXI6IGJvdGg7Jz4KPGRpdiBhbGlnbj0iY2VudGVyIj4KPCEtLSAvMTQwMDE2MzYvRFBfSW5zaWRlUG9zdF9BZHNlbnNlXzIgLS0+CjxkaXYgaWQ9J2Rpdi1ncHQtYWQtMTUyNDU5NTkwNTI2OC01Jz4KPHNjcmlwdD4KZ29vZ2xldGFnLmNtZC5wdXNoKGZ1bmN0aW9uKCkgeyBnb29nbGV0YWcuZGlzcGxheSgnZGl2LWdwdC1hZC0xNTI0NTk1OTA1MjY4LTUnKTsgfSk7Cjwvc2NyaXB0Pgo8L2Rpdj4KPC9kaXY+Cgo8L2Rpdj4K' data-block='18'></div>
+<p>Ndukuba said the letter had brought the Church to ridicule on biblical teachings about Christian marriage and human sexuality.</p>
+<p>The bishop noted that the ACNA statement was similar to the action by The Episcopal Church (TEC) before if fully endorsed same-sex unions, including among ordained clergy.</p>
+<div class='code-block code-block-2' style='margin: 8px auto; text-align: center; display: block; clear: both;'>
+</div>
+<p>Ndukuba thanked Archbishop Foley Beach’s intervention &#8220;by which the offensive gay Anglican letter was removed from the web&#8221;.</p>
+<p>He, however, complained that the removal &#8220;has not cured the diseases that have set in, neither has it mitigated the damage this has done by the public advertisement and the changing perception of the ACNA stand on Biblical orthodoxy.&#8221;</p><div class='ai-viewports ai-viewport-2 ai-viewport-3 ai-insert-20-14319283' style='margin: 8px 0; clear: both;' data-insertion='after' data-selector='.ai-insert-20-14319283' data-insertion-no-dbg data-code='PGRpdiBjbGFzcz0nY29kZS1ibG9jayBjb2RlLWJsb2NrLTIwJyBzdHlsZT0nbWFyZ2luOiA4cHggMDsgY2xlYXI6IGJvdGg7Jz4KPGRpdiBhbGlnbj0iY2VudGVyIj4gCjwhLS0gLzE0MDAxNjM2L0RQX0luc2lkZVBvc3RfQWRzZW5zZV80IC0tPgo8ZGl2IGlkPSdkaXYtZ3B0LWFkLTE1MjQ1OTU5MDUyNjgtNyc+CjxzY3JpcHQ+Cmdvb2dsZXRhZy5jbWQucHVzaChmdW5jdGlvbigpIHsgZ29vZ2xldGFnLmRpc3BsYXkoJ2Rpdi1ncHQtYWQtMTUyNDU5NTkwNTI2OC03Jyk7IH0pOwo8L3NjcmlwdD4KPC9kaXY+CjwvZGl2PgoKCjwvZGl2Pgo=' data-block='20'></div>
+<div class='ai-viewports ai-viewport-2 ai-viewport-3 ai-insert-18-67969120' style='margin: 8px 0; clear: both;' data-insertion='after' data-selector='.ai-insert-18-67969120' data-insertion-no-dbg data-code='PGRpdiBjbGFzcz0nY29kZS1ibG9jayBjb2RlLWJsb2NrLTE4JyBzdHlsZT0nbWFyZ2luOiA4cHggMDsgY2xlYXI6IGJvdGg7Jz4KPGRpdiBhbGlnbj0iY2VudGVyIj4KPCEtLSAvMTQwMDE2MzYvRFBfSW5zaWRlUG9zdF9BZHNlbnNlXzIgLS0+CjxkaXYgaWQ9J2Rpdi1ncHQtYWQtMTUyNDU5NTkwNTI2OC01Jz4KPHNjcmlwdD4KZ29vZ2xldGFnLmNtZC5wdXNoKGZ1bmN0aW9uKCkgeyBnb29nbGV0YWcuZGlzcGxheSgnZGl2LWdwdC1hZC0xNTI0NTk1OTA1MjY4LTUnKTsgfSk7Cjwvc2NyaXB0Pgo8L2Rpdj4KPC9kaXY+Cgo8L2Rpdj4K' data-block='18'></div>
+<p>“A Gay is a Gay, they cannot be rightly described otherwise. We cannot describe people as ‘Christian Murderer’, Christian Adulterer’ and ‘Christian terrorist’; neither should we even have ‘Gay Christian’ or ‘Gay Anglican.”</p>
+<div class='code-block code-block-2' style='margin: 8px auto; text-align: center; display: block; clear: both;'>
+</div>
+<p>Primate Ndukuba further stressed that no man shall see God without holiness.</p>
+<p>The cleric urged the ACNA to take a clear stand on homosexuality and same-sex relations.</p>
+<div id='jp-relatedposts' class='jp-relatedposts'>
+</div>
+</div>
+<div class="mvp-post-add-link">
+<a href="https://dailypost.ng/2021/02/28/homosexuality-anglican-church-in-nigeria-wants-american-bishops-sanctioned/" rel="bookmark"><span class="mvp-post-add-link-but">Continue Reading</span></a>
+</div>
+</div>
+</div>
+</div>
+<div class="mvp-post-add-story left relative">
+<div class="mvp-post-add-head left relative">
+<h3 class="mvp-post-cat left relative"><a class="mvp-post-cat-link" href="https://dailypost.ng/hot-news/"><span class="mvp-post-cat left">News</span></a></h3>
+<h1 class="mvp-post-title left">Middlebelt forum condemns alleged blocking of food items to southern Nigeria</h1>
+<div class="mvp-author-info-wrap left relative">
+<div class="mvp-author-info-thumb left relative">
+</div>
+<div class="mvp-author-info-text left relative">
+<div class="mvp-author-info-date left relative">
+<p>Published</p> <span class="mvp-post-date">7 hours ago</span> <p>on</p> <span class="mvp-post-date">February 28, 2021</span>
+</div>
+<div class="mvp-author-info-name left relative">
+<p>By</p> <span class="author-name vcard fn author"><a href="https://dailypost.ng/author/amos-tauna/" title="Posts by Amos Tauna" rel="author">Amos Tauna</a></span> </div>
+</div>
+</div>
+</div>
+<div class="mvp-post-add-body left relative">
+<div class="mvp-post-add-img left relative">
+<img width="1200" height="675" src="https://dailypost.ng/wp-content/uploads/2021/02/diverted-foods.jpg" class="attachment- size- wp-post-image" alt="" loading="lazy" srcset="https://dailypost.ng/wp-content/uploads/2021/02/diverted-foods.jpg 1200w, https://dailypost.ng/wp-content/uploads/2021/02/diverted-foods-300x169.jpg 300w, https://dailypost.ng/wp-content/uploads/2021/02/diverted-foods-1024x576.jpg 1024w" sizes="(max-width: 1200px) 100vw, 1200px" /> </div>
+<div class="mvp-post-add-cont left relative">
+<div class="mvp-post-add-main right relative">
+<div class='code-block code-block-9' style='margin: 8px 0; clear: both;'>
+</div>
+<div class='ai-viewports ai-viewport-3 ai-insert-7-78489466' style='margin: 8px 0; clear: both;' data-insertion='after' data-selector='.ai-insert-7-78489466' data-insertion-no-dbg data-code='PGRpdiBjbGFzcz0nY29kZS1ibG9jayBjb2RlLWJsb2NrLTcnIHN0eWxlPSdtYXJnaW46IDhweCAwOyBjbGVhcjogYm90aDsnPgo8ZGl2IGFsaWduPSJjZW50ZXIiPgo8ZGl2IGlkPSJzdGlja3l1bml0Ij4gCjwhLS0gLzE0MDAxNjM2L0RQX0xlYWRlcmJvYXJkXzIgLS0+CjxkaXYgaWQ9ImRpdi1ncHQtYWQtMTUwMDM4Njk1MzI4MS05Ij48c2NyaXB0Pgpnb29nbGV0YWcuY21kLnB1c2goZnVuY3Rpb24oKSB7IGdvb2dsZXRhZy5kaXNwbGF5KCdkaXYtZ3B0LWFkLTE1MDAzODY5NTMyODEtOScpOyB9KTsKPC9zY3JpcHQ+PC9kaXY+CjwvZGl2Pgo8L2Rpdj4gCjwvZGl2PiA8L2Rpdj4K' data-block='7'></div>
+<div class='ai-viewports ai-viewport-1 ai-insert-4-42173333' style='margin: 8px auto; text-align: center; display: block; clear: both;' data-insertion='after' data-selector='.ai-insert-4-42173333' data-insertion-no-dbg data-code='PGRpdiBjbGFzcz0nY29kZS1ibG9jayBjb2RlLWJsb2NrLTQnIHN0eWxlPSdtYXJnaW46IDhweCBhdXRvOyB0ZXh0LWFsaWduOiBjZW50ZXI7IGRpc3BsYXk6IGJsb2NrOyBjbGVhcjogYm90aDsnPgo8ZGl2IGFsaWduPSJjZW50ZXIiPiAKPCEtLSAvMTQwMDE2MzYvRFBfTGVhZGVyYm9hcmRfMiAtLT4KPGRpdiBpZD0iZGl2LWdwdC1hZC0xNTAwMzg2OTUzMjgxLTkiPjxzY3JpcHQ+Cmdvb2dsZXRhZy5jbWQucHVzaChmdW5jdGlvbigpIHsgZ29vZ2xldGFnLmRpc3BsYXkoJ2Rpdi1ncHQtYWQtMTUwMDM4Njk1MzI4MS05Jyk7IH0pOwo8L3NjcmlwdD48L2Rpdj4KPC9kaXY+Cgo8L2Rpdj4K' data-block='4'></div>
+<p>The Middle Belt Forum, MBF, has described as orchestrated and unpatriotic, the distribution of a video clip alleging an illegal blocking of food items to the South from the north at a Jebba village in Niger State by some unidentified persons.</p><div class='ai-viewports ai-viewport-2 ai-viewport-3 ai-insert-17-22493797' style='margin: 8px 0; clear: both;' data-insertion='after' data-selector='.ai-insert-17-22493797' data-insertion-no-dbg data-code='PGRpdiBjbGFzcz0nY29kZS1ibG9jayBjb2RlLWJsb2NrLTE3JyBzdHlsZT0nbWFyZ2luOiA4cHggMDsgY2xlYXI6IGJvdGg7Jz4KPGRpdiBhbGlnbj0iY2VudGVyIj4KPCEtLSAvMTQwMDE2MzYvRFBfSW5zaWRlUG9zdF9BZHNlbnNlXzEgLS0+CjxkaXYgaWQ9J2Rpdi1ncHQtYWQtMTUyNDU5NTkwNTI2OC00Jz4KPHNjcmlwdD4KZ29vZ2xldGFnLmNtZC5wdXNoKGZ1bmN0aW9uKCkgeyBnb29nbGV0YWcuZGlzcGxheSgnZGl2LWdwdC1hZC0xNTI0NTk1OTA1MjY4LTQnKTsgfSk7Cjwvc2NyaXB0Pgo8L2Rpdj4KPC9kaXY+Cgo8L2Rpdj4K' data-block='17'></div>
+<p>The forum which claimed it opposes such actions warned that it was capable of creating a rift and widening the already fragile nature of Nigeria&#8217;s corporate existence.</p>
+<p>The MBF in a statement issued by its National President, Dr Pogu Bitrus, said blocking food items from leaving the North to the South was not only criminal but an attempt to throw the entire nation into chaos.</p><div class='ai-viewports ai-viewport-2 ai-viewport-3 ai-insert-18-47468827' style='margin: 8px 0; clear: both;' data-insertion='after' data-selector='.ai-insert-18-47468827' data-insertion-no-dbg data-code='PGRpdiBjbGFzcz0nY29kZS1ibG9jayBjb2RlLWJsb2NrLTE4JyBzdHlsZT0nbWFyZ2luOiA4cHggMDsgY2xlYXI6IGJvdGg7Jz4KPGRpdiBhbGlnbj0iY2VudGVyIj4KPCEtLSAvMTQwMDE2MzYvRFBfSW5zaWRlUG9zdF9BZHNlbnNlXzIgLS0+CjxkaXYgaWQ9J2Rpdi1ncHQtYWQtMTUyNDU5NTkwNTI2OC01Jz4KPHNjcmlwdD4KZ29vZ2xldGFnLmNtZC5wdXNoKGZ1bmN0aW9uKCkgeyBnb29nbGV0YWcuZGlzcGxheSgnZGl2LWdwdC1hZC0xNTI0NTk1OTA1MjY4LTUnKTsgfSk7Cjwvc2NyaXB0Pgo8L2Rpdj4KPC9kaXY+Cgo8L2Rpdj4K' data-block='18'></div>
+<div class='code-block code-block-2' style='margin: 8px auto; text-align: center; display: block; clear: both;'>
+</div>
+<p>&#8220;We are not only stunned by this act which we believe is orchestrated by some unpatriotic elements but also shocked at this despicable action.</p>
+<p>It called on the Federal Government and other relevant security agencies to flush out the hooligans to discourage retaliation from the southern part.</p>
+<p>&#8220;Amidst the ongoing banditry in various parts of the country, the deliberate blockage of food items is nothing short of waging another form of terrorism on Nigerians. We cannot as a nation afford to deal with these urchins and bandits with kid gloves.&#8221;</p>
+<div class='code-block code-block-2' style='margin: 8px auto; text-align: center; display: block; clear: both;'>
+</div>
+<p>It explained that the Federal Government needs to do something drastically to send clear signals that outlaws whoever threatens the country.</p><div class='ai-viewports ai-viewport-2 ai-viewport-3 ai-insert-19-39631332' style='margin: 8px 0; clear: both;' data-insertion='after' data-selector='.ai-insert-19-39631332' data-insertion-no-dbg data-code='PGRpdiBjbGFzcz0nY29kZS1ibG9jayBjb2RlLWJsb2NrLTE5JyBzdHlsZT0nbWFyZ2luOiA4cHggMDsgY2xlYXI6IGJvdGg7Jz4KPGRpdiBhbGlnbj0iY2VudGVyIj4gCjwhLS0gLzE0MDAxNjM2L0RQX0luc2lkZVBvc3RfQWRzZW5zZV8zIC0tPgo8ZGl2IGlkPSdkaXYtZ3B0LWFkLTE1MjQ1OTU5MDUyNjgtNic+CjxzY3JpcHQ+Cmdvb2dsZXRhZy5jbWQucHVzaChmdW5jdGlvbigpIHsgZ29vZ2xldGFnLmRpc3BsYXkoJ2Rpdi1ncHQtYWQtMTUyNDU5NTkwNTI2OC02Jyk7IH0pOwo8L3NjcmlwdD4KPC9kaXY+CjwvZGl2PgoKPC9kaXY+Cg==' data-block='19'></div>
+<div class='ai-viewports ai-viewport-2 ai-viewport-3 ai-insert-18-37607129' style='margin: 8px 0; clear: both;' data-insertion='after' data-selector='.ai-insert-18-37607129' data-insertion-no-dbg data-code='PGRpdiBjbGFzcz0nY29kZS1ibG9jayBjb2RlLWJsb2NrLTE4JyBzdHlsZT0nbWFyZ2luOiA4cHggMDsgY2xlYXI6IGJvdGg7Jz4KPGRpdiBhbGlnbj0iY2VudGVyIj4KPCEtLSAvMTQwMDE2MzYvRFBfSW5zaWRlUG9zdF9BZHNlbnNlXzIgLS0+CjxkaXYgaWQ9J2Rpdi1ncHQtYWQtMTUyNDU5NTkwNTI2OC01Jz4KPHNjcmlwdD4KZ29vZ2xldGFnLmNtZC5wdXNoKGZ1bmN0aW9uKCkgeyBnb29nbGV0YWcuZGlzcGxheSgnZGl2LWdwdC1hZC0xNTI0NTk1OTA1MjY4LTUnKTsgfSk7Cjwvc2NyaXB0Pgo8L2Rpdj4KPC9kaXY+Cgo8L2Rpdj4K' data-block='18'></div>
+<p>&#8220;If we must take back our nation from these demons of destruction, we must never negotiate and treat them softly,&#8221; the forum advised.</p>
+<p>It explained that as the umbrella organization for all ethnic nationalities in the Middle Belt, the forum firmly believes that the only way for a prosperous Nigeria is to restructure, stressing that it would not only broaden the country&#8217;s potentials but give ethnic nationalities in the Nigerian Nation a space to develop and fully realise their potentials.</p>
+<div class='code-block code-block-2' style='margin: 8px auto; text-align: center; display: block; clear: both;'>
+</div>
+<p>The forum advised, &#8220;We must avoid any form of aggressive tendencies in resisting and enthroning the victory of unpatriotic elements. If some elements should block the transportation of petroleum products to the North from the South as retaliatory measures, what likely consequences would this have on our nation?&#8221;</p><div class='ai-viewports ai-viewport-2 ai-viewport-3 ai-insert-20-96843037' style='margin: 8px 0; clear: both;' data-insertion='after' data-selector='.ai-insert-20-96843037' data-insertion-no-dbg data-code='PGRpdiBjbGFzcz0nY29kZS1ibG9jayBjb2RlLWJsb2NrLTIwJyBzdHlsZT0nbWFyZ2luOiA4cHggMDsgY2xlYXI6IGJvdGg7Jz4KPGRpdiBhbGlnbj0iY2VudGVyIj4gCjwhLS0gLzE0MDAxNjM2L0RQX0luc2lkZVBvc3RfQWRzZW5zZV80IC0tPgo8ZGl2IGlkPSdkaXYtZ3B0LWFkLTE1MjQ1OTU5MDUyNjgtNyc+CjxzY3JpcHQ+Cmdvb2dsZXRhZy5jbWQucHVzaChmdW5jdGlvbigpIHsgZ29vZ2xldGFnLmRpc3BsYXkoJ2Rpdi1ncHQtYWQtMTUyNDU5NTkwNTI2OC03Jyk7IH0pOwo8L3NjcmlwdD4KPC9kaXY+CjwvZGl2PgoKCjwvZGl2Pgo=' data-block='20'></div>
+<div class='ai-viewports ai-viewport-2 ai-viewport-3 ai-insert-18-48274212' style='margin: 8px 0; clear: both;' data-insertion='after' data-selector='.ai-insert-18-48274212' data-insertion-no-dbg data-code='PGRpdiBjbGFzcz0nY29kZS1ibG9jayBjb2RlLWJsb2NrLTE4JyBzdHlsZT0nbWFyZ2luOiA4cHggMDsgY2xlYXI6IGJvdGg7Jz4KPGRpdiBhbGlnbj0iY2VudGVyIj4KPCEtLSAvMTQwMDE2MzYvRFBfSW5zaWRlUG9zdF9BZHNlbnNlXzIgLS0+CjxkaXYgaWQ9J2Rpdi1ncHQtYWQtMTUyNDU5NTkwNTI2OC01Jz4KPHNjcmlwdD4KZ29vZ2xldGFnLmNtZC5wdXNoKGZ1bmN0aW9uKCkgeyBnb29nbGV0YWcuZGlzcGxheSgnZGl2LWdwdC1hZC0xNTI0NTk1OTA1MjY4LTUnKTsgfSk7Cjwvc2NyaXB0Pgo8L2Rpdj4KPC9kaXY+Cgo8L2Rpdj4K' data-block='18'></div>
+<div id='jp-relatedposts' class='jp-relatedposts'>
+</div>
+</div>
+<div class="mvp-post-add-link">
+<a href="https://dailypost.ng/2021/02/28/middlebelt-forum-condemns-alleged-blocking-of-food-items-to-southern-nigeria/" rel="bookmark"><span class="mvp-post-add-link-but">Continue Reading</span></a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="mvp-side-wrap" class="left relative theiaStickySidebar">
+<section id="ai_widget-24" class="mvp-side-widget ai_widget"><div class='ai-viewports ai-viewport-1 ai-insert-33-32835932' style='margin: 8px auto; text-align: center; display: block; clear: both;' data-insertion='after' data-selector='.ai-insert-33-32835932' data-insertion-no-dbg data-code='PGRpdiBjbGFzcz0nY29kZS1ibG9jayBjb2RlLWJsb2NrLTMzJyBzdHlsZT0nbWFyZ2luOiA4cHggYXV0bzsgdGV4dC1hbGlnbjogY2VudGVyOyBkaXNwbGF5OiBibG9jazsgY2xlYXI6IGJvdGg7Jz4KPGRpdiBhbGlnbj0iY2VudGVyIj4KPCEtLSAvMTQwMDE2MzYvRFBfSW5zaWRlUG9zdF9BZHNlbnNlXzEgLS0+CjxkaXYgaWQ9J2Rpdi1ncHQtYWQtMTUyNDU5NTkwNTI2OC00Jz4KPHNjcmlwdD4KZ29vZ2xldGFnLmNtZC5wdXNoKGZ1bmN0aW9uKCkgeyBnb29nbGV0YWcuZGlzcGxheSgnZGl2LWdwdC1hZC0xNTI0NTk1OTA1MjY4LTQnKTsgfSk7Cjwvc2NyaXB0Pgo8L2Rpdj4KPC9kaXY+PC9kaXY+Cg==' data-block='33'></div>
+</section><section id="ai_widget-28" class="mvp-side-widget ai_widget"><div class='ai-viewports ai-viewport-1 ai-insert-34-75165339' style='margin: 8px auto; text-align: center; display: block; clear: both;' data-insertion='after' data-selector='.ai-insert-34-75165339' data-insertion-no-dbg data-code='PGRpdiBjbGFzcz0nY29kZS1ibG9jayBjb2RlLWJsb2NrLTM0JyBzdHlsZT0nbWFyZ2luOiA4cHggYXV0bzsgdGV4dC1hbGlnbjogY2VudGVyOyBkaXNwbGF5OiBibG9jazsgY2xlYXI6IGJvdGg7Jz4KPGRpdiBhbGlnbj0iY2VudGVyIj4KPCEtLSAvMTQwMDE2MzYvRFBfSW5zaWRlUG9zdF9BZHNlbnNlXzIgLS0+CjxkaXYgaWQ9J2Rpdi1ncHQtYWQtMTUyNDU5NTkwNTI2OC01Jz4KPHNjcmlwdD4KZ29vZ2xldGFnLmNtZC5wdXNoKGZ1bmN0aW9uKCkgeyBnb29nbGV0YWcuZGlzcGxheSgnZGl2LWdwdC1hZC0xNTI0NTk1OTA1MjY4LTUnKTsgfSk7Cjwvc2NyaXB0Pgo8L2Rpdj4KPC9kaXY+PC9kaXY+Cg==' data-block='34'></div>
+</section><section id="ai_widget-27" class="mvp-side-widget ai_widget"><div class='code-block code-block-35' style='margin: 8px auto; text-align: center; display: block; clear: both;'>
+<div align="center">
+
+<div id='div-gpt-ad-1524595905268-6'>
+<script>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1524595905268-6'); });
+</script>
+</div>
+</div></div>
+</section><section id="ai_widget-22" class="mvp-side-widget ai_widget"><div class='code-block code-block-36' style='margin: 8px auto; text-align: center; display: block; clear: both;'>
+<div align="center">
+
+<div id='div-gpt-ad-1524595905268-7'>
+<script>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1524595905268-7'); });
+</script>
+</div>
+</div></div>
+</section> </div>
+</div>
+</div>
+</div>
+</div>
+</article>
+</div>
+<footer id="mvp-foot-wrap" class="left relative">
+<div id="mvp-foot-top" class="left relative">
+<div class="mvp-main-box">
+<div id="mvp-foot-logo" class="left relative">
+<a href="https://dailypost.ng/"><img src="https://dailypost.ng/wp-content/uploads/2017/08/Daily_Post_Logo_Transparent_230x90-4.png" alt="Daily Post Nigeria" data-rjs="2" /></a>
+</div>
+<div id="mvp-foot-soc" class="left relative">
+<ul class="mvp-foot-soc-list left relative">
+<li><a href="https://www.facebook.com/DailyPostNigeria/" target="_blank" class="fa fa-facebook fa-2"></a></li>
+<li><a href="https://twitter.com/DailyPostNGR" target="_blank" class="fa fa-twitter fa-2"></a></li>
+<li><a href="https://www.instagram.com/p/ByXruanDDku/" target="_blank" class="fa fa-instagram fa-2"></a></li>
+</ul>
+</div>
+<div id="mvp-foot-menu-wrap" class="left relative">
+<div id="mvp-foot-menu" class="left relative">
+<div class="menu-menu3-container"><ul id="menu-menu3" class="menu"><li id="menu-item-361552" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-361552"><a href="https://dailypost.ng/advertise/">Advertise</a></li>
+<li id="menu-item-869919" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-869919"><a href="https://dailypost.ng/about/">About Us</a></li>
+<li id="menu-item-81583" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-81583"><a href="https://dailypost.ng/contact/">Contact Us</a></li>
+<li id="menu-item-81586" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-privacy-policy menu-item-81586"><a href="https://dailypost.ng/privacy-policy/">Privacy-Policy</a></li>
+<li id="menu-item-81589" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-81589"><a href="https://dailypost.ng/terms/">Terms</a></li>
+</ul></div> </div>
+</div>
+</div>
+</div>
+<div id="mvp-foot-bot" class="left relative">
+<div class="mvp-main-box">
+<div id="mvp-foot-copy" class="left relative">
+<p>Copyright © Daily Post - Nigeria News</p>
+</div>
+</div>
+</div>
+</footer>
+</div>
+</div>
+</div>
+<div class="mvp-fly-top back-to-top">
+<i class="fa fa-angle-up fa-3"></i>
+</div>
+<div class="mvp-fly-fade mvp-fly-but-click">
+</div>
+<script type="text/javascript">
+		/* MonsterInsights Scroll Tracking */
+			if ( typeof(jQuery) !== 'undefined' ) {
+				jQuery( document ).ready(function(){
+					function monsterinsights_scroll_tracking_load() {
+						if ( ( typeof(__gaTracker) !== 'undefined' && __gaTracker && __gaTracker.hasOwnProperty( "loaded" ) && __gaTracker.loaded == true ) || ( typeof(__gtagTracker) !== 'undefined' && __gtagTracker ) ) {
+							(function(factory) {
+								factory(jQuery);
+							}(function($) {
+
+								/* Scroll Depth */
+								"use strict";
+								var defaults = {
+									percentage: true
+								};
+
+								var $window = $(window),
+									cache = [],
+									scrollEventBound = false,
+									lastPixelDepth = 0;
+
+								/*
+								 * Plugin
+								 */
+
+								$.scrollDepth = function(options) {
+
+									var startTime = +new Date();
+
+									options = $.extend({}, defaults, options);
+
+									/*
+									 * Functions
+									 */
+
+									function sendEvent(action, label, scrollDistance, timing) {
+                                                                                    var type        = 'event';
+                                            var eventName   = action;
+                                            var fieldsArray = {
+                                                event_category : 'Scroll Depth',
+                                                event_label    : label,
+                                                value          : 1,
+                                                non_interaction: true
+                                            };
+
+                                            if ( 'undefined' === typeof MonsterInsightsObject || 'undefined' === typeof MonsterInsightsObject.sendEvent ) {
+                                                return;
+                                            }
+
+                                            MonsterInsightsObject.sendEvent( type, eventName, fieldsArray );
+                                            if (arguments.length > 3) {
+                                                var type        = 'event';
+                                                var eventName   = 'timing_complete';
+                                                fieldsArray = {
+                                                    event_category : 'Scroll Depth',
+                                                    name           : action,
+                                                    event_label    : label,
+                                                    value          : timing,
+                                                    non_interaction: 1
+                                                };
+                                                MonsterInsightsObject.sendEvent( type, eventName, fieldsArray );
+                                            }
+                                        									}
+
+									function calculateMarks(docHeight) {
+										return {
+											'25%' : parseInt(docHeight * 0.25, 10),
+											'50%' : parseInt(docHeight * 0.50, 10),
+											'75%' : parseInt(docHeight * 0.75, 10),
+											/* Cushion to trigger 100% event in iOS */
+											'100%': docHeight - 5
+										};
+									}
+
+									function checkMarks(marks, scrollDistance, timing) {
+										/* Check each active mark */
+										$.each(marks, function(key, val) {
+											if ( $.inArray(key, cache) === -1 && scrollDistance >= val ) {
+												sendEvent('Percentage', key, scrollDistance, timing);
+												cache.push(key);
+											}
+										});
+									}
+
+									function rounded(scrollDistance) {
+										/* Returns String */
+										return (Math.floor(scrollDistance/250) * 250).toString();
+									}
+
+									function init() {
+										bindScrollDepth();
+									}
+
+									/*
+									 * Public Methods
+									 */
+
+									/* Reset Scroll Depth with the originally initialized options */
+									$.scrollDepth.reset = function() {
+										cache = [];
+										lastPixelDepth = 0;
+										$window.off('scroll.scrollDepth');
+										bindScrollDepth();
+									};
+
+									/* Add DOM elements to be tracked */
+									$.scrollDepth.addElements = function(elems) {
+
+										if (typeof elems == "undefined" || !$.isArray(elems)) {
+											return;
+										}
+
+										$.merge(options.elements, elems);
+
+										/* If scroll event has been unbound from window, rebind */
+										if (!scrollEventBound) {
+											bindScrollDepth();
+										}
+
+									};
+
+									/* Remove DOM elements currently tracked */
+									$.scrollDepth.removeElements = function(elems) {
+
+										if (typeof elems == "undefined" || !$.isArray(elems)) {
+											return;
+										}
+
+										$.each(elems, function(index, elem) {
+
+											var inElementsArray = $.inArray(elem, options.elements);
+											var inCacheArray = $.inArray(elem, cache);
+
+											if (inElementsArray != -1) {
+												options.elements.splice(inElementsArray, 1);
+											}
+
+											if (inCacheArray != -1) {
+												cache.splice(inCacheArray, 1);
+											}
+
+										});
+
+									};
+
+									/*
+									 * Throttle function borrowed from:
+									 * Underscore.js 1.5.2
+									 * http://underscorejs.org
+									 * (c) 2009-2013 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
+									 * Underscore may be freely distributed under the MIT license.
+									 */
+
+									function throttle(func, wait) {
+										var context, args, result;
+										var timeout = null;
+										var previous = 0;
+										var later = function() {
+											previous = new Date;
+											timeout = null;
+											result = func.apply(context, args);
+										};
+										return function() {
+											var now = new Date;
+											if (!previous) previous = now;
+											var remaining = wait - (now - previous);
+											context = this;
+											args = arguments;
+											if (remaining <= 0) {
+												clearTimeout(timeout);
+												timeout = null;
+												previous = now;
+												result = func.apply(context, args);
+											} else if (!timeout) {
+												timeout = setTimeout(later, remaining);
+											}
+											return result;
+										};
+									}
+
+									/*
+									 * Scroll Event
+									 */
+
+									function bindScrollDepth() {
+
+										scrollEventBound = true;
+
+										$window.on('scroll.scrollDepth', throttle(function() {
+											/*
+											 * We calculate document and window height on each scroll event to
+											 * account for dynamic DOM changes.
+											 */
+
+											var docHeight = $(document).height(),
+												winHeight = window.innerHeight ? window.innerHeight : $window.height(),
+												scrollDistance = $window.scrollTop() + winHeight,
+
+												/* Recalculate percentage marks */
+												marks = calculateMarks(docHeight),
+
+												/* Timing */
+												timing = +new Date - startTime;
+
+											checkMarks(marks, scrollDistance, timing);
+										}, 500));
+
+									}
+
+									init();
+								};
+
+								/* UMD export */
+								return $.scrollDepth;
+
+							}));
+
+							jQuery.scrollDepth();
+						} else {
+							setTimeout(monsterinsights_scroll_tracking_load, 200);
+						}
+					}
+					monsterinsights_scroll_tracking_load();
+				});
+			}
+		/* End MonsterInsights Scroll Tracking */
+		
+</script><script type='text/javascript' src='https://dailypost.ng/wp-content/themes/zox-news/js/mvpcustom.js?ver=5.6.2' id='mvp-custom-js' defer data-deferred="1"></script>
+<script type='text/javascript' id='mvp-custom-js-after'>
+	jQuery(document).ready(function($) {
+	$(window).load(function(){
+	var leaderHeight = $("#mvp-leader-wrap").outerHeight();
+	var navHeight = $("#mvp-main-head-wrap").outerHeight();
+	var headerHeight = navHeight + leaderHeight;
+	var previousScroll = 0;
+	$(window).scroll(function(event){
+			var scroll = $(this).scrollTop();
+			if ($(window).scrollTop() > headerHeight){
+				$("#mvp-main-nav-small").addClass("mvp-nav-small-fixed");
+				$("#mvp-main-body-wrap").css("margin-top", navHeight );
+			} else {
+				$("#mvp-main-nav-small").removeClass("mvp-nav-small-fixed");
+				$("#mvp-main-body-wrap").css("margin-top","0");
+			}
+			if ($(window).scrollTop() > headerHeight + 50){
+				$("#mvp-main-nav-small").addClass("mvp-fixed");
+				$("#mvp-main-nav-small").addClass("mvp-fixed-shadow");
+				$(".mvp-fly-top").addClass("mvp-to-top");
+	    		if(scroll < previousScroll) {
+					$("#mvp-main-nav-small").removeClass("mvp-soc-mob-up");
+					$("#mvp-soc-mob-wrap").removeClass("mvp-soc-mob-up");
+					$(".mvp-drop-nav-title").removeClass("mvp-nav-small-post");
+					$(".mvp-nav-menu").show();
+				} else {
+					$("#mvp-main-nav-small").addClass("mvp-soc-mob-up");
+					$("#mvp-soc-mob-wrap").addClass("mvp-soc-mob-up");
+					$(".mvp-drop-nav-title").addClass("mvp-nav-small-post");
+					$(".mvp-nav-menu").hide();
+				}
+			} else {
+				$("#mvp-main-nav-small").removeClass("mvp-fixed");
+				$("#mvp-main-nav-small").removeClass("mvp-fixed-shadow");
+	    		$(".mvp-fly-top").removeClass("mvp-to-top");
+			}
+			previousScroll = scroll;
+	});
+	});
+	});
+	
+
+	jQuery(document).ready(function($) {
+	$(".menu-item-has-children a").click(function(event){
+	  event.stopPropagation();
+	  
+  	});
+
+	$(".menu-item-has-children").click(function(){
+    	  $(this).addClass("toggled");
+    	  if($(".menu-item-has-children").hasClass("toggled"))
+    	  {
+    	  $(this).children("ul").toggle();
+	  $(".mvp-fly-nav-menu").getNiceScroll().resize();
+	  }
+	  $(this).toggleClass("tog-minus");
+    	  return false;
+  	});
+
+	// Main Menu Scroll
+	$(window).load(function(){
+	  $(".mvp-fly-nav-menu").niceScroll({cursorcolor:"#888",cursorwidth: 7,cursorborder: 0,zindex:999999});
+	});
+	});
+	
+</script>
+<script type='text/javascript' src='https://dailypost.ng/wp-content/themes/zox-news/js/scripts.js?ver=5.6.2' id='zoxnews-js' defer data-deferred="1"></script>
+<script type='text/javascript' src='https://dailypost.ng/wp-content/themes/zox-news/js/retina.js?ver=5.6.2' id='retina-js' defer data-deferred="1"></script>
+<script type='text/javascript' src='https://dailypost.ng/wp-content/themes/zox-news/js/flexslider.js?ver=5.6.2' id='flexslider-js' defer data-deferred="1"></script>
+<script type='text/javascript' src='https://dailypost.ng/wp-includes/js/comment-reply.min.js?ver=5.6.2' id='comment-reply-js' defer data-deferred="1"></script>
+<script type='text/javascript' src='https://dailypost.ng/wp-includes/js/wp-embed.min.js?ver=5.6.2' id='wp-embed-js' defer data-deferred="1"></script>
+<script src='https://dailypost.ng/wp-content/litespeed/localres/stats.wp.com/e-202109.js' defer></script>
+<script>
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:9.4',blog:'69289628',post:'775793',tz:'1',srv:'dailypost.ng'} ]);
+	_stq.push([ 'clickTrackerInit', '69289628', '775793' ]);
+</script>
+
+<script type="text/javascript">
+_atrk_opts = { atrk_acct:"87q8j1aAkN00GL", domain:"dailypost.ng",dynamic: true};
+(function() { var as = document.createElement('script'); as.type = 'text/javascript'; as.async = true; as.src = "https://d31qbv1cthcecs.cloudfront.net/atrk.js"; var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(as, s); })();
+</script>
+<noscript><img src="//d5nxst8fruw4z.cloudfront.net/atrk.gif?account=87q8j1aAkN00GL" style="display:none" height="1" width="1" alt="" /></noscript>
+
+<script>
+/* <![CDATA[ */
+ai_front = {"insertion_before":"BEFORE","insertion_after":"AFTER","insertion_prepend":"PREPEND CONTENT","insertion_append":"APPEND CONTENT","insertion_replace_content":"REPLACE CONTENT","insertion_replace_element":"REPLACE ELEMENT","visible":"VISIBLE","hidden":"HIDDEN","fallback":"FALLBACK","automatically_placed":"Automatically placed by AdSense Auto ads code","cancel":"Cancel","use":"Use","add":"Add","parent":"Parent","cancel_element_selection":"Cancel element selection","select_parent_element":"Select parent element","css_selector":"CSS selector","use_current_selector":"Use current selector","element":"ELEMENT","path":"PATH","selector":"SELECTOR"};
+/* ]]> */
+function b2a(a){var b,c=0,l=0,f="",g=[];if(!a)return a;do{var e=a.charCodeAt(c++);var h=a.charCodeAt(c++);var k=a.charCodeAt(c++);var d=e<<16|h<<8|k;e=63&d>>18;h=63&d>>12;k=63&d>>6;d&=63;g[l++]="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=".charAt(e)+"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=".charAt(h)+"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=".charAt(k)+"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=".charAt(d)}while(c<
+a.length);return f=g.join(""),b=a.length%3,(b?f.slice(0,b-3):f)+"===".slice(b||3)}function a2b(a){var b,c,l,f={},g=0,e=0,h="",k=String.fromCharCode,d=a.length;for(b=0;64>b;b++)f["ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/".charAt(b)]=b;for(c=0;d>c;c++)for(b=f[a.charAt(c)],g=(g<<6)+b,e+=6;8<=e;)((l=255&g>>>(e-=8))||d-2>c)&&(h+=k(l));return h}b64e=function(a){return btoa(encodeURIComponent(a).replace(/%([0-9A-F]{2})/g,function(b,a){return String.fromCharCode("0x"+a)}))};
+b64d=function(a){return decodeURIComponent(atob(a).split("").map(function(a){return"%"+("00"+a.charCodeAt(0).toString(16)).slice(-2)}).join(""))};
+(function(a){if("function"===typeof define&&define.amd){define(a);var c=!0}"object"===typeof exports&&(module.exports=a(),c=!0);if(!c){var d=window.Cookies,b=window.Cookies=a();b.noConflict=function(){window.Cookies=d;return b}}})(function(){function a(){for(var d=0,b={};d<arguments.length;d++){var f=arguments[d],e;for(e in f)b[e]=f[e]}return b}function c(d){function b(){}function f(h,k,g){if("undefined"!==typeof document){g=a({path:"/"},b.defaults,g);"number"===typeof g.expires&&(g.expires=new Date(1*
+new Date+864E5*g.expires));g.expires=g.expires?g.expires.toUTCString():"";try{var l=JSON.stringify(k);/^[\{\[]/.test(l)&&(k=l)}catch(p){}k=d.write?d.write(k,h):encodeURIComponent(String(k)).replace(/%(23|24|26|2B|3A|3C|3E|3D|2F|3F|40|5B|5D|5E|60|7B|7D|7C)/g,decodeURIComponent);h=encodeURIComponent(String(h)).replace(/%(23|24|26|2B|5E|60|7C)/g,decodeURIComponent).replace(/[\(\)]/g,escape);l="";for(var n in g)g[n]&&(l+="; "+n,!0!==g[n]&&(l+="="+g[n].split(";")[0]));return document.cookie=h+"="+k+l}}
+function e(h,k){if("undefined"!==typeof document){for(var g={},l=document.cookie?document.cookie.split("; "):[],n=0;n<l.length;n++){var p=l[n].split("="),m=p.slice(1).join("=");k||'"'!==m.charAt(0)||(m=m.slice(1,-1));try{var q=p[0].replace(/(%[0-9A-Z]{2})+/g,decodeURIComponent);m=(d.read||d)(m,q)||m.replace(/(%[0-9A-Z]{2})+/g,decodeURIComponent);if(k)try{m=JSON.parse(m)}catch(r){}g[q]=m;if(h===q)break}catch(r){}}return h?g[h]:g}}b.set=f;b.get=function(h){return e(h,!1)};b.getJSON=function(h){return e(h,
+!0)};b.remove=function(h,k){f(h,"",a(k,{expires:-1}))};b.defaults={};b.withConverter=c;return b}return c(function(){})});AiCookies=Cookies.noConflict();
+ai_check_block=function(a){if(null==a)return!0;var c=AiCookies.getJSON("aiBLOCKS");ai_debug_cookie_status="";null==c&&(c={});"undefined"!==typeof ai_delay_showing_pageviews&&(c.hasOwnProperty(a)||(c[a]={}),c[a].hasOwnProperty("d")||(c[a].d=ai_delay_showing_pageviews));if(c.hasOwnProperty(a))for(var d in c[a]){if("x"==d){var b="",f=document.querySelectorAll('span[data-ai-block="'+a+'"]')[0];"aiHash"in f.dataset&&(b=f.dataset.aiHash);f="";c[a].hasOwnProperty("h")&&(f=c[a].h);var e=new Date;e=c[a][d]-
+Math.round(e.getTime()/1E3);if(0<e&&f==b)return ai_debug_cookie_status=a="closed for "+e+" s = "+Math.round(1E4*e/3600/24)/1E4+" days",!1;ai_set_cookie(a,"x","");c[a].hasOwnProperty("i")||c[a].hasOwnProperty("c")||ai_set_cookie(a,"h","")}else if("d"==d){if(0!=c[a][d])return ai_debug_cookie_status=a="delayed for "+c[a][d]+" pageviews",!1}else if("i"==d){b="";f=document.querySelectorAll('span[data-ai-block="'+a+'"]')[0];"aiHash"in f.dataset&&(b=f.dataset.aiHash);f="";c[a].hasOwnProperty("h")&&(f=c[a].h);
+if(0==c[a][d]&&f==b)return ai_debug_cookie_status=a="max impressions reached",!1;if(0>c[a][d]&&f==b){e=new Date;e=-c[a][d]-Math.round(e.getTime()/1E3);if(0<e)return ai_debug_cookie_status=a="max imp. reached ("+Math.round(1E4*e/24/3600)/1E4+" days = "+e+" s)",!1;ai_set_cookie(a,"i","");c[a].hasOwnProperty("c")||c[a].hasOwnProperty("x")||ai_set_cookie(a,"h","")}}if("ipt"==d&&0==c[a][d]&&(e=new Date,b=Math.round(e.getTime()/1E3),e=c[a].it-b,0<e))return ai_debug_cookie_status=a="max imp. per time reached ("+
+Math.round(1E4*e/24/3600)/1E4+" days = "+e+" s)",!1;if("c"==d){b="";f=document.querySelectorAll('span[data-ai-block="'+a+'"]')[0];"aiHash"in f.dataset&&(b=f.dataset.aiHash);f="";c[a].hasOwnProperty("h")&&(f=c[a].h);if(0==c[a][d]&&f==b)return ai_debug_cookie_status=a="max clicks reached",!1;if(0>c[a][d]&&f==b){e=new Date;e=-c[a][d]-Math.round(e.getTime()/1E3);if(0<e)return ai_debug_cookie_status=a="max clicks reached ("+Math.round(1E4*e/24/3600)/1E4+" days = "+e+" s)",!1;ai_set_cookie(a,"c","");c[a].hasOwnProperty("i")||
+c[a].hasOwnProperty("x")||ai_set_cookie(a,"h","")}}if("cpt"==d&&0==c[a][d]&&(e=new Date,b=Math.round(e.getTime()/1E3),e=c[a].ct-b,0<e))return ai_debug_cookie_status=a="max clicks per time reached ("+Math.round(1E4*e/24/3600)/1E4+" days = "+e+" s)",!1}ai_debug_cookie_status="OK";return!0};
+ai_check_and_insert_block=function(a,c){if(null==a)return!0;var d=document.getElementsByClassName(c);if(d.length){d=d[0];var b=d.closest(".code-block");if(ai_check_block(a)){if(ai_insert_code(d),b){var f=b.querySelectorAll(".ai-debug-block");b&&f.length&&(b.classList.remove("ai-list-block"),b.classList.remove("ai-list-block-ip"),b.style.visibility="",b.classList.contains("ai-remove-position")&&(b.style.position=""))}}else{f=d.closest("div[data-ai]");if(null!=f&&"undefined"!=typeof f.getAttribute("data-ai")){var e=
+JSON.parse(b64d(f.getAttribute("data-ai")));"undefined"!==typeof e&&e.constructor===Array&&(e[1]="",f.setAttribute("data-ai",b64e(JSON.stringify(e))))}f=b.querySelectorAll(".ai-debug-block");b&&f.length&&(b.classList.remove("ai-list-block"),b.classList.remove("ai-list-block-ip"),b.style.visibility="",b.classList.contains("ai-remove-position")&&(b.style.position=""))}d.classList.remove(c)}d=document.querySelectorAll("."+c+"-dbg");b=0;for(f=d.length;b<f;b++)e=d[b],e.querySelector(".ai-status").textContent=
+ai_debug_cookie_status,e.querySelector(".ai-cookie-data").textContent=ai_get_cookie_text(a),e.classList.remove(c+"-dbg")};function ai_load_cookie(){var a=AiCookies.getJSON("aiBLOCKS");null==a&&(a={});return a}function ai_get_cookie(a,c){var d="",b=ai_load_cookie();b.hasOwnProperty(a)&&b[a].hasOwnProperty(c)&&(d=b[a][c]);return d}
+function ai_set_cookie(a,c,d){var b=ai_load_cookie();if(""===d){if(b.hasOwnProperty(a)){delete b[a][c];a:{c=b[a];for(f in c)if(c.hasOwnProperty(f)){var f=!1;break a}f=!0}f&&delete b[a]}}else b.hasOwnProperty(a)||(b[a]={}),b[a][c]=d;0===Object.keys(b).length&&b.constructor===Object?AiCookies.remove("aiBLOCKS"):AiCookies.set("aiBLOCKS",b,{expires:365,path:"/"});return b}
+ai_get_cookie_text=function(a){var c=AiCookies.getJSON("aiBLOCKS");null==c&&(c={});return c.hasOwnProperty(a)?JSON.stringify(c[a]).replace(/"/g,"").replace("{","").replace("}",""):""};
+ai_insert=function(d,l,v){for(var p=-1!=l.indexOf(":eq")?jQuery(l):document.querySelectorAll(l),t=0,y=p.length;t<y;t++){var b=p[t];selector_string=b.hasAttribute("id")?"#"+b.getAttribute("id"):b.hasAttribute("class")?"."+b.getAttribute("class").replace(RegExp(" ","g"),"."):"";var u=document.createElement("div");u.innerHTML=v;var m=u.getElementsByClassName("ai-selector-counter")[0];null!=m&&(m.innerText=t+1);m=u.getElementsByClassName("ai-debug-name ai-main")[0];if(null!=m){var k="";"before"==d?k=
+ai_front.insertion_before:"after"==d?k=ai_front.insertion_after:"prepend"==d?k=ai_front.insertion_prepend:"append"==d?k=ai_front.insertion_append:"replace-content"==d?k=ai_front.insertion_replace_content:"replace-element"==d&&(k=ai_front.insertion_replace_element);-1==selector_string.indexOf(".ai-viewports")&&(m.innerText=k+" "+l+" ("+b.tagName.toLowerCase()+selector_string+")")}m=document.createRange();k=!0;try{var w=m.createContextualFragment(u.innerHTML)}catch(r){k=!1}"before"==d?k?b.parentNode.insertBefore(w,
+b):jQuery(u.innerHTML).insertBefore(jQuery(b)):"after"==d?k?b.parentNode.insertBefore(w,b.nextSibling):jQuery(u.innerHTML).insertBefore(jQuery(b.nextSibling)):"prepend"==d?k?b.insertBefore(w,b.firstChild):jQuery(u.innerHTML).insertBefore(jQuery(b.firstChild)):"append"==d?k?b.insertBefore(w,null):jQuery(u.innerHTML).appendTo(jQuery(b)):"replace-content"==d?(b.innerHTML="",k?b.insertBefore(w,null):jQuery(u.innerHTML).appendTo(jQuery(b))):"replace-element"==d&&(k?b.parentNode.insertBefore(w,b):jQuery(u.innerHTML).insertBefore(jQuery(b)),
+b.parentNode.removeChild(b))}};
+ai_insert_code=function(d){function l(m,k){return null==m?!1:m.classList?m.classList.contains(k):-1<(" "+m.className+" ").indexOf(" "+k+" ")}function v(m,k){null!=m&&(m.classList?m.classList.add(k):m.className+=" "+k)}function p(m,k){null!=m&&(m.classList?m.classList.remove(k):m.className=m.className.replace(new RegExp("(^|\\b)"+k.split(" ").join("|")+"(\\b|$)","gi")," "))}if("undefined"!=typeof d){var t=!1;if(l(d,"no-visibility-check")||d.offsetWidth||d.offsetHeight||d.getClientRects().length){t=
+d.getAttribute("data-code");var y=d.getAttribute("data-insertion"),b=d.getAttribute("data-selector");if(null!=t)if(null!=y&&null!=b){if(-1!=b.indexOf(":eq")?jQuery(b).length:document.querySelectorAll(b).length)ai_insert(y,b,b64d(t)),p(d,"ai-viewports")}else{y=document.createRange();b=!0;try{var u=y.createContextualFragment(b64d(t))}catch(m){b=!1}b?d.parentNode.insertBefore(u,d.nextSibling):jQuery(b64d(t)).insertBefore(jQuery(d.nextSibling));p(d,"ai-viewports")}t=!0}else u=d.previousElementSibling,
+l(u,"ai-debug-bar")&&l(u,"ai-debug-script")&&(p(u,"ai-debug-script"),v(u,"ai-debug-viewport-invisible")),p(d,"ai-viewports");return t}};
+ai_insert_list_code=function(d){var l=document.getElementsByClassName(d)[0];if("undefined"!=typeof l){var v=ai_insert_code(l),p=l.closest("div.code-block");if(p){v||p.removeAttribute("data-ai");var t=p.querySelectorAll(".ai-debug-block");p&&t.length&&(p.classList.remove("ai-list-block"),p.classList.remove("ai-list-block-ip"),p.style.visibility="",p.classList.contains("ai-remove-position")&&(p.style.position=""))}l.classList.remove(d);v&&ai_process_elements()}};
+ai_insert_viewport_code=function(d){var l=document.getElementsByClassName(d)[0];"undefined"!=typeof l&&(ai_insert_code(l),l.classList.remove(d),l.removeAttribute("style"),ai_process_elements())};ai_insert_code_by_class=function(d){var l=document.getElementsByClassName(d)[0];"undefined"!=typeof l&&(ai_insert_code(l),l.classList.remove(d))};
+ai_insert_client_code=function(d,l){var v=document.getElementsByClassName(d)[0];if("undefined"!=typeof v){var p=v.getAttribute("data-code");null!=p&&ai_check_block()&&ai_check_and_insert_block()&&(v.setAttribute("data-code",p.substring(Math.floor(l/19))),ai_insert_code_by_class(d),v.remove())}};ai_process_elements_active=!1;
+function ai_process_elements(){ai_process_elements_active||setTimeout(function(){ai_process_elements_active=!1;"function"==typeof ai_process_rotations&&ai_process_rotations();"function"==typeof ai_process_lists&&ai_process_lists(jQuery(".ai-list-data"));"function"==typeof ai_process_ip_addresses&&ai_process_ip_addresses(jQuery(".ai-ip-data"));"function"==typeof ai_adb_process_blocks&&ai_adb_process_blocks()},5);ai_process_elements_active=!0}
+var Arrive=function(d,l,v){function p(r,c,e){b.addMethod(c,e,r.unbindEvent);b.addMethod(c,e,r.unbindEventWithSelectorOrCallback);b.addMethod(c,e,r.unbindEventWithSelectorAndCallback)}function t(r){r.arrive=k.bindEvent;p(k,r,"unbindArrive");r.leave=w.bindEvent;p(w,r,"unbindLeave")}if(d.MutationObserver&&"undefined"!==typeof HTMLElement){var y=0,b=function(){var r=HTMLElement.prototype.matches||HTMLElement.prototype.webkitMatchesSelector||HTMLElement.prototype.mozMatchesSelector||HTMLElement.prototype.msMatchesSelector;
+return{matchesSelector:function(c,e){return c instanceof HTMLElement&&r.call(c,e)},addMethod:function(c,e,f){var a=c[e];c[e]=function(){if(f.length==arguments.length)return f.apply(this,arguments);if("function"==typeof a)return a.apply(this,arguments)}},callCallbacks:function(c,e){e&&e.options.onceOnly&&1==e.firedElems.length&&(c=[c[0]]);for(var f=0,a;a=c[f];f++)a&&a.callback&&a.callback.call(a.elem,a.elem);e&&e.options.onceOnly&&1==e.firedElems.length&&e.me.unbindEventWithSelectorAndCallback.call(e.target,
+e.selector,e.callback)},checkChildNodesRecursively:function(c,e,f,a){for(var g=0,h;h=c[g];g++)f(h,e,a)&&a.push({callback:e.callback,elem:h}),0<h.childNodes.length&&b.checkChildNodesRecursively(h.childNodes,e,f,a)},mergeArrays:function(c,e){var f={},a;for(a in c)c.hasOwnProperty(a)&&(f[a]=c[a]);for(a in e)e.hasOwnProperty(a)&&(f[a]=e[a]);return f},toElementsArray:function(c){"undefined"===typeof c||"number"===typeof c.length&&c!==d||(c=[c]);return c}}}(),u=function(){var r=function(){this._eventsBucket=
+[];this._beforeRemoving=this._beforeAdding=null};r.prototype.addEvent=function(c,e,f,a){c={target:c,selector:e,options:f,callback:a,firedElems:[]};this._beforeAdding&&this._beforeAdding(c);this._eventsBucket.push(c);return c};r.prototype.removeEvent=function(c){for(var e=this._eventsBucket.length-1,f;f=this._eventsBucket[e];e--)c(f)&&(this._beforeRemoving&&this._beforeRemoving(f),(f=this._eventsBucket.splice(e,1))&&f.length&&(f[0].callback=null))};r.prototype.beforeAdding=function(c){this._beforeAdding=
+c};r.prototype.beforeRemoving=function(c){this._beforeRemoving=c};return r}(),m=function(r,c){var e=new u,f=this,a={fireOnAttributesModification:!1};e.beforeAdding(function(g){var h=g.target;if(h===d.document||h===d)h=document.getElementsByTagName("html")[0];var n=new MutationObserver(function(x){c.call(this,x,g)});var q=r(g.options);n.observe(h,q);g.observer=n;g.me=f});e.beforeRemoving(function(g){g.observer.disconnect()});this.bindEvent=function(g,h,n){h=b.mergeArrays(a,h);for(var q=b.toElementsArray(this),
+x=0;x<q.length;x++)e.addEvent(q[x],g,h,n)};this.unbindEvent=function(){var g=b.toElementsArray(this);e.removeEvent(function(h){for(var n=0;n<g.length;n++)if(this===v||h.target===g[n])return!0;return!1})};this.unbindEventWithSelectorOrCallback=function(g){var h=b.toElementsArray(this);e.removeEvent("function"===typeof g?function(n){for(var q=0;q<h.length;q++)if((this===v||n.target===h[q])&&n.callback===g)return!0;return!1}:function(n){for(var q=0;q<h.length;q++)if((this===v||n.target===h[q])&&n.selector===
+g)return!0;return!1})};this.unbindEventWithSelectorAndCallback=function(g,h){var n=b.toElementsArray(this);e.removeEvent(function(q){for(var x=0;x<n.length;x++)if((this===v||q.target===n[x])&&q.selector===g&&q.callback===h)return!0;return!1})};return this},k=new function(){function r(f,a,g){return b.matchesSelector(f,a.selector)&&(f._id===v&&(f._id=y++),-1==a.firedElems.indexOf(f._id))?(a.firedElems.push(f._id),!0):!1}var c={fireOnAttributesModification:!1,onceOnly:!1,existing:!1};k=new m(function(f){var a=
+{attributes:!1,childList:!0,subtree:!0};f.fireOnAttributesModification&&(a.attributes=!0);return a},function(f,a){f.forEach(function(g){var h=g.addedNodes,n=g.target,q=[];null!==h&&0<h.length?b.checkChildNodesRecursively(h,a,r,q):"attributes"===g.type&&r(n,a,q)&&q.push({callback:a.callback,elem:n});b.callCallbacks(q,a)})});var e=k.bindEvent;k.bindEvent=function(f,a,g){"undefined"===typeof g?(g=a,a=c):a=b.mergeArrays(c,a);var h=b.toElementsArray(this);if(a.existing){for(var n=[],q=0;q<h.length;q++)for(var x=
+h[q].querySelectorAll(f),z=0;z<x.length;z++)n.push({callback:g,elem:x[z]});if(a.onceOnly&&n.length)return g.call(n[0].elem,n[0].elem);setTimeout(b.callCallbacks,1,n)}e.call(this,f,a,g)};return k},w=new function(){function r(f,a){return b.matchesSelector(f,a.selector)}var c={};w=new m(function(){return{childList:!0,subtree:!0}},function(f,a){f.forEach(function(g){g=g.removedNodes;var h=[];null!==g&&0<g.length&&b.checkChildNodesRecursively(g,a,r,h);b.callCallbacks(h,a)})});var e=w.bindEvent;w.bindEvent=
+function(f,a,g){"undefined"===typeof g?(g=a,a=c):a=b.mergeArrays(c,a);e.call(this,f,a,g)};return w};l&&t(l.fn);t(HTMLElement.prototype);t(NodeList.prototype);t(HTMLCollection.prototype);t(HTMLDocument.prototype);t(Window.prototype);l={};p(k,l,"unbindAllArrive");p(w,l,"unbindAllLeave");return l}}(window,"undefined"===typeof jQuery?null:jQuery,void 0);
+var $jscomp=$jscomp||{};$jscomp.scope={};$jscomp.createTemplateTagFirstArg=function(a){return a.raw=a};$jscomp.createTemplateTagFirstArgWithRaw=function(a,k){a.raw=k;return a};$jscomp.arrayIteratorImpl=function(a){var k=0;return function(){return k<a.length?{done:!1,value:a[k++]}:{done:!0}}};$jscomp.arrayIterator=function(a){return{next:$jscomp.arrayIteratorImpl(a)}};$jscomp.makeIterator=function(a){var k="undefined"!=typeof Symbol&&Symbol.iterator&&a[Symbol.iterator];return k?k.call(a):$jscomp.arrayIterator(a)};
+jQuery(function(a){function k(e){e=e.match(F);return null!=e&&1<e.length&&"string"===typeof e[1]&&0<e[1].length?e[1].toLowerCase():null}function A(e){try{var h=Date.parse(e);isNaN(h)&&(h=null)}catch(K){h=null}if(null==h&&e.includes(" ")){e=e.split(" ");try{h=Date.parse(e[0]);if(e[1].includes(":")){var w=e[1].split(":");h+=1E3*(3600*parseInt(w[0])+60*parseInt(w[1])+parseInt(w[2]))}isNaN(h)&&(h=null)}catch(K){h=null}}return h}function n(){(jQuery("#ai-iab-tcf-bar").length||jQuery(".ai-list-manual").length)&&
+"function"==typeof __tcfapi&&"function"==typeof ai_load_blocks&&"undefined"==typeof ai_iab_tcf_callback_installed&&(__tcfapi("addEventListener",2,function(e,h){h&&"useractioncomplete"===e.eventStatus&&(ai_tcData=e,ai_load_blocks(),jQuery("#ai-iab-tcf-status").text("DATA LOADED"),jQuery("#ai-iab-tcf-bar").addClass("status-ok").removeClass("status-error"))}),ai_iab_tcf_callback_installed=!0)}Array.prototype.includes||(Array.prototype.includes=function(e){return!!~this.indexOf(e)});var F=/:\/\/(.[^/:]+)/i;
+ai_process_lists=function(e){function h(d,b,g){if(0==d.length){if("!@!"==g)return!0;b!=g&&("true"==g.toLowerCase()?g=!0:"false"==g.toLowerCase()&&(g=!1));return b==g}if("object"!=typeof b&&"array"!=typeof b)return!1;var f=d[0];d=d.slice(1);if("*"==f)for(b=$jscomp.makeIterator(Object.entries(b)),f=b.next();!f.done;f=b.next()){if(f=$jscomp.makeIterator(f.value),f.next(),f=f.next().value,h(d,f,g))return!0}else if(f in b)return h(d,b[f],g);return!1}function w(d,b,g){if("object"!=typeof d||-1==b.indexOf("["))return!1;
+b=b.replace(/]| /gi,"").split("[");return h(b,d,g)}function K(){"function"==typeof __tcfapi&&(a("#ai-iab-tcf-status").text("DETECTED"),__tcfapi("getTCData",2,function(d,b){b?(a("#ai-iab-tcf-bar").addClass("status-ok"),"tcloaded"==d.eventStatus||"useractioncomplete"==d.eventStatus?(ai_tcData=d,d.gdprApplies?a("#ai-iab-tcf-status").text("DATA LOADED"):jQuery("#ai-iab-tcf-status").text("GDPR DOES NOT APPLY"),a("#ai-iab-tcf-bar").addClass("status-ok").removeClass("status-error"),setTimeout(function(){ai_process_lists()},
+10)):"cmpuishown"==d.eventStatus&&(ai_cmpuishown=!0,a("#ai-iab-tcf-status").text("CMP UI SHOWN"),a("#ai-iab-tcf-bar").addClass("status-ok").removeClass("status-error"))):(a("#ai-iab-tcf-status").text("__tcfapi getTCData failed"),a("#ai-iab-tcf-bar").removeClass("status-ok").addClass("status-error"))}))}function H(d){"function"==typeof __tcfapi?("undefined"==typeof ai_iab_tcf_callback_installed&&n(),"undefined"==typeof ai_tcData_requested&&(ai_tcData_requested=!0,K(),url_parameters_need_tcData=!0)):
+d&&(a("#ai-iab-tcf-bar").addClass("status-error").removeClass("status-ok"),a("#ai-iab-tcf-status").text("MISSING: __tcfapi function not found"))}e=null==e?a("div.ai-list-data, meta.ai-list-data"):e.filter(".ai-list-data");if(e.length){e.removeClass("ai-list-data");var G=document.cookie.split(";");G.forEach(function(d,b){G[b]=d.trim()});var Q=getAllUrlParams(window.location.search);if(null!=Q.referrer)var r=Q.referrer;else r=document.referrer,""!=r&&(r=k(r));var L=window.navigator.userAgent,M=L.toLowerCase();
+if("undefined"!==typeof MobileDetect)var R=new MobileDetect(L);e.each(function(){var d=a(this).closest("div.code-block"),b=!0,g=a(this).attr("referer-list");if("undefined"!=typeof g){g=b64d(g).split(",");var f=a(this).attr("referer-list-type"),l=!1;a.each(g,function(t,c){if(""==c)return!0;if("*"==c.charAt(0))if("*"==c.charAt(c.length-1)){if(c=c.substr(1,c.length-2),-1!=r.indexOf(c))return l=!0,!1}else{if(c=c.substr(1),r.substr(-c.length)==c)return l=!0,!1}else if("*"==c.charAt(c.length-
+1)){if(c=c.substr(0,c.length-1),0==r.indexOf(c))return l=!0,!1}else if("#"==c){if(""==r)return l=!0,!1}else if(c==r)return l=!0,!1});switch(f){case "B":l&&(b=!1);break;case "W":l||(b=!1)}}if(b&&(g=a(this).attr("client-list"),"undefined"!=typeof g&&"undefined"!==typeof R))switch(g=b64d(g).split(","),f=a(this).attr("client-list-type"),l=!1,a.each(g,function(t,c){if(""==c)return!0;if("*"==c.charAt(0))if("*"==c.charAt(c.length-1)){if(c=c.substr(1,c.length-2).toLowerCase(),-1!=M.indexOf(c))return l=!0,
+!1}else{if(c=c.substr(1).toLowerCase(),M.substr(-c.length)==c)return l=!0,!1}else if("*"==c.charAt(c.length-1)){if(c=c.substr(0,c.length-1).toLowerCase(),0==M.indexOf(c))return l=!0,!1}else if(R.is(c))return l=!0,!1}),f){case "B":l&&(b=!1);break;case "W":l||(b=!1)}var N=g=!1;if(b&&(f=a(this).attr("parameter-list"),"undefined"!=typeof f)){f=b64d(f).split(",");var u=a(this).attr("parameter-list-type"),S=[];G.forEach(function(t){t=t.split("=");try{var c=JSON.parse(decodeURIComponent(t[1]))}catch(T){c=
+decodeURIComponent(t[1])}S[t[0]]=c});var x=!1,I=a(this);a.each(f,function(t,c){var T=c.split("&&");a.each(T,function(X,m){var y=!0;m=m.trim();"!!"==m.substring(0,2)&&(y=!1,m=m.substring(2));var p=m,z="!@!",U=-1!=m.indexOf("["),V=(0==m.indexOf("tcf-v2")||0==m.indexOf("euconsent-v2"))&&-1!=m.indexOf("[");-1!=m.indexOf("=")&&(z=m.split("="),p=z[0],z=z[1],U=-1!=p.indexOf("["),V=(0==p.indexOf("tcf-v2")||0==p.indexOf("euconsent-v2"))&&-1!=p.indexOf("["));if(V)a("#ai-iab-tcf-bar").show(),"object"==typeof ai_tcData?
+(a("#ai-iab-tcf-bar").addClass("status-ok"),p=p.replace(/]| /gi,"").split("["),p.shift(),x=(p=h(p,ai_tcData,z))?y:!y):(I.addClass("ai-list-data"),N=!0,"function"==typeof __tcfapi?H(!1):"undefined"==typeof ai_tcData_retrying&&(ai_tcData_retrying=!0,setTimeout(function(){"function"==typeof __tcfapi?H(!1):setTimeout(function(){"function"==typeof __tcfapi?H(!1):setTimeout(function(){H(!0)},3E3)},1E3)},600)));else if(U)x=(p=w(S,p,z))?y:!y;else{var O=!1;"!@!"==z?G.every(function(W){return W.split("=")[0]==
+m?(O=!0,!1):!0}):O=-1!=G.indexOf(m);x=O?y:!y}if(!x)return!1});if(x)return!1});switch(u){case "B":x&&(b=!1);break;case "W":x||(b=!1)}a(this).hasClass("ai-list-manual")&&(b?(I.removeClass("ai-list-data"),I.removeClass("ai-list-manual")):(g=!0,I.addClass("ai-list-data")));if(!g&&!N&&(f=a(this).data("debug-info"),"undefined"!=typeof f&&(f=a("."+f),0!=f.length))){var q=f.parent();q.hasClass("ai-debug-info")&&q.remove()}}q=a(this).prevAll(".ai-debug-bar.ai-debug-lists");f=""==r?"#":r;q.find(".ai-debug-name.ai-list-info").text(f).attr("title",
+L);q.find(".ai-debug-name.ai-list-status").text(b?ai_front.visible:ai_front.hidden);f=!1;if(b){u=a(this).attr("scheduling-start");var B=a(this).attr("scheduling-end"),C=a(this).attr("scheduling-days");if("undefined"!=typeof u&&"undefined"!=typeof B&&"undefined"!=typeof C){f=!0;var P=parseInt(a(this).attr("scheduling-fallback")),v=parseInt(a(this).attr("gmt"));u=A(b64d(u))+v;B=A(b64d(B))+v;C=b64d(C).split(",");q=a(this).attr("scheduling-type");var D=(new Date).getTime()+v,J=new Date(D),E=J.getDay();
+0==E?E=6:E--;v=D>=u&&D<B&&C.includes(E.toString());switch(q){case "B":v=!v}v||(b=!1);J=J.toISOString().split(".")[0].replace("T"," ");q=a(this).prevAll(".ai-debug-bar.ai-debug-scheduling");q.find(".ai-debug-name.ai-scheduling-info").text(J+" "+E+" current_time:"+D.toString()+"  start_date:"+u.toString()+" ="+(D>=u).toString()+" end_date:"+B.toString()+" =:"+(D<B).toString()+" days:"+C.toString()+" =:"+C.includes(E.toString()).toString());q.find(".ai-debug-name.ai-scheduling-status").text(b?ai_front.visible:
+ai_front.hidden);b||0==P||(q.removeClass("ai-debug-scheduling").addClass("ai-debug-fallback"),q.find(".ai-debug-name.ai-scheduling-status").text(ai_front.fallback+"="+P))}}if(g||N)return!0;a(this).css({visibility:"",position:"",width:"",height:"","z-index":""});b?(d.css({visibility:""}),d.hasClass("ai-remove-position")&&d.css({position:""}),"undefined"!=typeof a(this).data("code")&&(b=b64d(a(this).data("code")),0!=a(this).closest("head").length?(a(this).after(b),a(this).remove()):a(this).append(b),
+ai_process_element(this))):f&&!v&&0!=P?(d.css({visibility:""}),d.hasClass("ai-remove-position")&&d.css({position:""}),a(this).next(".ai-fallback").removeClass("ai-fallback"),"undefined"!=typeof a(this).data("fallback-code")?(b=b64d(a(this).data("fallback-code")),a(this).append(b),ai_process_element(this)):(a(this).hide(),d.find(".ai-debug-block").length||d.hide()),b=d.attr("data-ai"),"undefined"!==typeof b&&!1!==b&&(b=a(this).attr("fallback-tracking"),"undefined"!==typeof b&&!1!==b&&d.attr("data-ai",
+b))):(a(this).hide(),d.find(".ai-debug-block").length||d.hide(),d.removeAttr("data-ai").removeClass("ai-track"),d.find(".ai-debug-block").length?(d.css({visibility:""}).removeClass("ai-close"),d.hasClass("ai-remove-position")&&d.css({position:""})):d.hide());a(this).attr("data-code","");a(this).attr("data-fallback-code","");d.removeClass("ai-list-block")})}};a(document).ready(function(e){setTimeout(function(){ai_process_lists();setTimeout(function(){n();if("function"==typeof ai_load_blocks){var h=
+function(w){"all"===w.consentLevel&&ai_load_blocks()};jQuery(document).on("cmplzEnableScripts",h);jQuery(document).on("cmplz_event_marketing",h)}},50);jQuery("#ai-iab-tcf-bar").click(function(){AiCookies.remove("euconsent-v2",{path:"/",domain:"."+window.location.hostname});AiCookies.remove("__lxG__consent__v2",{path:"/",domain:"."+window.location.hostname});AiCookies.remove("__lxG__consent__v2_daisybit",{path:"/",domain:"."+window.location.hostname});AiCookies.remove("__lxG__consent__v2_gdaisybit",
+{path:"/",domain:"."+window.location.hostname});AiCookies.remove("cmplz_marketing",{path:"/",domain:"."+window.location.hostname});AiCookies.remove("cmplz_stats",{path:"/",domain:"."+window.location.hostname});AiCookies.remove("complianz_consent_status",{path:"/",domain:"."+window.location.hostname});jQuery("#ai-iab-tcf-status").text("COOKIE DELETED")})},5)})});
+function ai_process_element(a){setTimeout(function(){"function"==typeof ai_process_rotations_in_element&&ai_process_rotations_in_element(a);"function"==typeof ai_process_lists&&ai_process_lists(jQuery(".ai-list-data",a));"function"==typeof ai_process_ip_addresses&&ai_process_ip_addresses(jQuery(".ai-ip-data",a));"function"==typeof ai_adb_process_blocks&&ai_adb_process_blocks(a)},5)}
+function getAllUrlParams(a){var k=a?a.split("?")[1]:window.location.search.slice(1);a={};if(k){k=k.split("#")[0];k=k.split("&");for(var A=0;A<k.length;A++){var n=k[A].split("="),F=void 0,e=n[0].replace(/\[\d*\]/,function(h){F=h.slice(1,-1);return""});n="undefined"===typeof n[1]?"":n[1];e=e.toLowerCase();n=n.toLowerCase();a[e]?("string"===typeof a[e]&&(a[e]=[a[e]]),"undefined"===typeof F?a[e].push(n):a[e][F]=n):a[e]=n}}return a};
+jQuery(function(a){function t(g,c){c||(c=window.location.href);g=g.replace(/[\[\]]/g,"\\$&");var e=(new RegExp("[?&]"+g+"(=([^&#]*)|&|#|$)")).exec(c);return e?e[2]?decodeURIComponent(e[2].replace(/\+/g," ")):"":null}function u(g){g.removeClass("ai-ip-data");var c=!1;if(""!=ai_ip_data){try{var e=JSON.parse(ai_ip_data),h=e[0],l=e[1],n=e[2],p=e[3]}catch(d){return}var q=h+", "+l;null!=n&&null!=p&&(q=q+":"+n+":"+p);null==n&&(n="");null==p&&(p="");null!=e&&g.each(function(){var d=a(this).closest("div.code-block");
+c=!0;var f=a(this).attr("ip-addresses");if("undefined"!=typeof f){f=f.split(",");var r=a(this).attr("ip-address-list"),k=!1;a.each(f,function(v,b){if("*"==b.charAt(0))if("*"==b.charAt(b.length-1)){if(b=b.substr(1,b.length-2),-1!=h.indexOf(b))return k=!0,!1}else{if(b=b.substr(1),h.substr(-b.length)==b)return k=!0,!1}else if("*"==b.charAt(b.length-1)){if(b=b.substr(0,b.length-1),0==h.indexOf(b))return k=!0,!1}else if("#"==b){if(""==h)return k=!0,!1}else if(b==h)return k=!0,!1});switch(r){case "B":k&&
+(c=!1);break;case "W":k||(c=!1)}}if(c&&(f=a(this).attr("countries"),"undefined"!=typeof f))switch(f=f.split(","),r=a(this).attr("country-list"),k=!1,a.each(f,function(v,b){var m=b.trim().split(":");if(null==m[1]||""==n)m[1]="";if(null==m[2]||""==p)m[2]="";var w=m.join(":").toUpperCase();m=(l+":"+(""==m[1]?"":n)+":"+(""==m[2]?"":p)).toUpperCase();if(w==m)return k=!0,!1}),r){case "B":k&&(c=!1);break;case "W":k||(c=!1)}a(this).css({visibility:"",position:"",width:"",height:"","z-index":""});f=a(this).prev(".ai-debug-bar");
+f.find(".ai-debug-name.ai-ip-country").text(q);f.find(".ai-debug-name.ai-ip-status").text(c?ai_front.visible:ai_front.hidden);c?(d.css({visibility:""}),d.hasClass("ai-remove-position")&&d.css({position:""}),"undefined"!=typeof a(this).data("code")&&(f=b64d(a(this).data("code")),0!=a(this).closest("head").length?(a(this).after(f),a(this).remove()):a(this).append(f),a(this).attr("data-code",""),ai_process_element(this))):(a(this).hide(),d.find(".ai-debug-block").length||d.hide(),d.removeAttr("data-ai"),
+d.find(".ai-debug-block")?(d.css({visibility:""}).removeClass("ai-close"),d.hasClass("ai-remove-position")&&d.css({position:""}),"undefined"!=typeof a(this).data("code")&&(d.removeClass("ai-list-block"),d.prev().hasClass("ai-debug-info")&&d.prev().remove())):d.hide());d.removeClass("ai-list-block-ip")})}}ai_process_ip_addresses=function(g){g=null==g?a("div.ai-ip-data, meta.ai-ip-data"):g.filter(".ai-ip-data");if(g.length)if("undefined"!=typeof ai_ip_data)u(g);else if("undefined"==typeof ai_ip_data_requested){ai_ip_data_requested=
+!0;var c="/wp-admin/admin-ajax.php?action=ai_ajax&ip-data=ip-address-country-city&ai_check=97fddf23a4&ver="+((new Date).getTime()+"-"+Math.round(1E5*Math.random())),e=t("ai-debug-ip-address");null!=e&&(c+="&ai-debug-ip-address="+e);e=t("ai-debug-country");null!=e&&(c+="&ai-debug-country="+e);a.get(c,function(h){ai_ip_data=h;if(""==h){var l="Ajax request returned empty data, geo-targeting disabled";console.error(l);"undefined"!=typeof ai_js_errors&&ai_js_errors.push([l,c,0])}else try{JSON.parse(h)}catch(n){l=
+"Ajax call returned invalid data, geo-targeting disabled",console.error(l,h),"undefined"!=typeof ai_js_errors&&ai_js_errors.push([l,c,0])}u(g)}).fail(function(h,l,n){a("div.ai-ip-data").each(function(){a(this).css({display:"none",visibility:"",position:"",width:"",height:"","z-index":""}).removeClass("ai-ip-data").hide()})})}};a(document).ready(function(g){setTimeout(function(){ai_process_ip_addresses()},5)})});
+function ai_process_element(a){setTimeout(function(){"function"==typeof ai_process_rotations_in_element&&ai_process_rotations_in_element(a);"function"==typeof ai_process_lists&&ai_process_lists(jQuery(".ai-list-data",a));"function"==typeof ai_process_ip_addresses&&ai_process_ip_addresses(jQuery(".ai-ip-data",a));"function"==typeof ai_adb_process_blocks&&ai_adb_process_blocks(a)},5)};
+ai_run_712088674637 = function(){
+ai_document_write=document.write;document.write=function(a){"interactive"==document.readyState?(console.error("document.write called after page load: ",a),"undefined"!=typeof ai_js_errors&&ai_js_errors.push(["document.write called after page load",a,0])):ai_document_write.call(document,a)};
+ai_insert_viewport_code ('ai-insert-34-75165339');
+ai_insert_viewport_code ('ai-insert-33-32835932');
+ai_insert_viewport_code ('ai-insert-20-96843037');
+ai_insert_viewport_code ('ai-insert-19-39631332');
+ai_insert_viewport_code ('ai-insert-18-48274212');
+ai_insert_viewport_code ('ai-insert-18-37607129');
+ai_insert_viewport_code ('ai-insert-18-47468827');
+ai_insert_viewport_code ('ai-insert-17-22493797');
+ai_insert_viewport_code ('ai-insert-7-78489466');
+ai_insert_viewport_code ('ai-insert-4-42173333');
+ai_insert_viewport_code ('ai-insert-20-14319283');
+ai_insert_viewport_code ('ai-insert-19-89766715');
+ai_insert_viewport_code ('ai-insert-18-67969120');
+ai_insert_viewport_code ('ai-insert-18-77237982');
+ai_insert_viewport_code ('ai-insert-18-83929395');
+ai_insert_viewport_code ('ai-insert-17-77216047');
+ai_insert_viewport_code ('ai-insert-7-13299292');
+ai_insert_viewport_code ('ai-insert-4-49388938');
+ai_insert_viewport_code ('ai-insert-21-50626539');
+ai_insert_viewport_code ('ai-insert-3-95802818');
+ai_insert_viewport_code ('ai-insert-18-96303003');
+ai_insert_viewport_code ('ai-insert-17-54635662');
+ai_insert_viewport_code ('ai-insert-7-50963138');
+ai_insert_viewport_code ('ai-insert-4-67672861');
+};
+if (document.readyState === 'complete' || (document.readyState !== 'loading' && !document.documentElement.doScroll)) ai_run_712088674637 (); else document.addEventListener ('DOMContentLoaded', ai_run_712088674637);
+ai_js_code = true;
+
+</script>
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam-cell.nr-data.net","licenseKey":"33f1d7e106","applicationID":"454105528","transactionName":"YlZRYRdQWEcFUBcKDFscclYRWFlaS0AKDQRZVg==","queueTime":0,"applicationTime":1539,"atts":"ThFSF19KS0k=","errorBeacon":"bam-cell.nr-data.net","agent":""}</script></body>
+</html>
+

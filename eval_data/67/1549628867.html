@@ -1,0 +1,1843 @@
+
+                    
+<!doctype html>
+<html class="no-js" lang="fr">
+<head>
+    <link rel="manifest" href="/manifest-v2.json">
+
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge"><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"fc2461609-",applicationID:"94223269"};window.NREUM||(NREUM={}),__nr_require=function(e,n,t){function r(t){if(!n[t]){var i=n[t]={exports:{}};e[t][0].call(i.exports,function(n){var i=e[t][1][n];return r(i||n)},i,i.exports)}return n[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(e,n,t){function r(){}function i(e,n,t){return function(){return o(e,[u.now()].concat(f(arguments)),n?null:this,t),n?void 0:this}}var o=e("handle"),a=e(4),f=e(5),c=e("ee").get("tracer"),u=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",d=l+"ixn-";a(p,function(e,n){s[n]=i(l+n,!0,"api")}),s.addPageAction=i(l+"addPageAction",!0),s.setCurrentRouteName=i(l+"routeName",!0),n.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,n){var t={},r=this,i="function"==typeof n;return o(d+"tracer",[u.now(),e,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return n.apply(this,arguments)}catch(e){throw c.emit("fn-err",[arguments,this,e],t),e}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,n){m[n]=i(d+n)}),newrelic.noticeError=function(e,n){"string"==typeof e&&(e=new Error(e)),o("err",[e,u.now(),!1,n])}},{}],2:[function(e,n,t){function r(e,n){var t=e.getEntries();t.forEach(function(e){"first-paint"===e.name?c("timing",["fp",Math.floor(e.startTime)]):"first-contentful-paint"===e.name&&c("timing",["fcp",Math.floor(e.startTime)])})}function i(e,n){var t=e.getEntries();t.length>0&&c("lcp",[t[t.length-1]])}function o(e){if(e instanceof s&&!l){var n,t=Math.round(e.timeStamp);n=t>1e12?Date.now()-t:u.now()-t,l=!0,c("timing",["fi",t,{type:e.type,fid:n}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var a,f,c=e("handle"),u=e("loader"),s=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){a=new PerformanceObserver(r),f=new PerformanceObserver(i);try{a.observe({entryTypes:["paint"]}),f.observe({entryTypes:["largest-contentful-paint"]})}catch(p){}}if("addEventListener"in document){var l=!1,d=["click","keydown","mousedown","pointerdown","touchstart"];d.forEach(function(e){document.addEventListener(e,o,!1)})}}},{}],3:[function(e,n,t){function r(e,n){if(!i)return!1;if(e!==i)return!1;if(!n)return!0;if(!o)return!1;for(var t=o.split("."),r=n.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}n.exports={agent:i,version:o,match:r}},{}],4:[function(e,n,t){function r(e,n){var t=[],r="",o=0;for(r in e)i.call(e,r)&&(t[o]=n(r,e[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;n.exports=r},{}],5:[function(e,n,t){function r(e,n,t){n||(n=0),"undefined"==typeof t&&(t=e?e.length:0);for(var r=-1,i=t-n||0,o=Array(i<0?0:i);++r<i;)o[r]=e[n+r];return o}n.exports=r},{}],6:[function(e,n,t){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,n,t){function r(){}function i(e){function n(e){return e&&e instanceof r?e:e?c(e,f,o):o()}function t(t,r,i,o){if(!l.aborted||o){e&&e(t,r,i);for(var a=n(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function d(e,n){h[e]=v(e).concat(n)}function m(e,n){var t=h[e];if(t)for(var r=0;r<t.length;r++)t[r]===n&&t.splice(r,1)}function v(e){return h[e]||[]}function g(e){return p[e]=p[e]||i(t)}function w(e,n){u(e,function(e,t){n=n||"feature",y[t]=n,n in s||(s[n]=[])})}var h={},y={},b={on:d,addEventListener:d,removeEventListener:m,emit:t,get:g,listeners:v,context:n,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(l.aborted=!0,s=l.backlog={})}var f="nr@context",c=e("gos"),u=e(4),s={},p={},l=n.exports=i();l.backlog=s},{}],gos:[function(e,n,t){function r(e,n,t){if(i.call(e,n))return e[n];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,n,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return e[n]=r,r}var i=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(e,n,t){function r(e,n,t,r){i.buffer([e],r),i.emit(e,n,t)}var i=e("ee").get("handle");n.exports=r,r.ee=i},{}],id:[function(e,n,t){function r(e){var n=typeof e;return!e||"object"!==n&&"function"!==n?-1:e===window?0:a(e,o,function(){return i++})}var i=1,o="nr@id",a=e("gos");n.exports=r},{}],loader:[function(e,n,t){function r(){if(!x++){var e=E.info=NREUM.info,n=d.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&n))return s.abort();u(y,function(n,t){e[n]||(e[n]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=d.createElement("script");t.src="https://"+e.agent,n.parentNode.insertBefore(t,n)}}function i(){"complete"===d.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=e("handle"),u=e(4),s=e("ee"),p=e(3),l=window,d=l.document,m="addEventListener",v="attachEvent",g=l.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:l.setImmediate,CT:clearTimeout,XHR:g,REQ:l.Request,EV:l.Event,PR:l.Promise,MO:l.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1167.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=n.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};e(1),e(2),d[m]?(d[m]("DOMContentLoaded",o,!1),l[m]("load",r,!1)):(d[v]("onreadystatechange",i),l[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=e(6)},{}],"wrap-function":[function(e,n,t){function r(e){return!(e&&e instanceof Function&&e.apply&&!e[a])}var i=e("ee"),o=e(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;n.exports=function(e,n){function t(e,n,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){l([u,"",[r,a,i],f])}s(n+"start",[r,a,i],f);try{return c=e.apply(a,r)}catch(p){throw s(n+"err",[r,a,p],f),p}finally{s(n+"end",[r,a,c],f)}}return r(e)?e:(n||(n=""),nrWrapper[a]=e,p(e,nrWrapper),nrWrapper)}function u(e,n,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<n.length;c++)f=n[c],a=e[f],r(a)||(e[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||n){var o=c;c=!0;try{e.emit(t,r,i,n)}catch(a){l([a,t,r,i])}c=o}}function p(e,n){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(e);return t.forEach(function(t){Object.defineProperty(n,t,{get:function(){return e[t]},set:function(n){return e[t]=n,n}})}),n}catch(r){l([r])}for(var i in e)f.call(e,i)&&(n[i]=e[i]);return n}function l(n){try{e.emit("internal-error",n)}catch(t){}}return e||(e=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script>
+
+                <link rel="amphtml" href="https://www.capital.fr/entreprises-marches/les-valeurs-du-secteur-petrolier-attendues-en-forte-baisse-a-wall-street-1364831?amp">
+                <link rel="canonical" href="https://www.capital.fr/entreprises-marches/les-valeurs-du-secteur-petrolier-attendues-en-forte-baisse-a-wall-street-1364831">
+    
+    
+                        
+
+                            
+                    
+            
+    
+                
+    
+                                            
+
+    
+                                                
+    
+    
+                    <meta name="description" content="(AOF) - Les valeurs pétrolières et parapétrolières (Exxon Mobil, Chevron, Halliburton, Schlumberger, Baker Hughes et TechnipFMC) sont attendus en forte baisse à une heure de l'ouverture du marché américain.">
+        
+        <title>
+                            Les valeurs du secteur pétrolier attendues en forte baisse à Wall Street - Capital.fr
+                    </title>
+
+        
+        <meta name="robots" content="max-snippet:-1">
+        <meta name="robots" content="max-image-preview:large">
+        <meta name="robots" content="max-video-preview:-1">
+
+        <meta property="og:site_name" content="Capital.fr" />
+<meta property="og:title" content="Les valeurs du secteur pétrolier attendues en forte baisse à Wall Street" />
+<meta property="og:description" content="(AOF) - Les valeurs pétrolières et parapétrolières (Exxon Mobil, Chevron, Halliburton, Schlumberger, Baker Hughes et TechnipFMC) sont attendus en forte baisse à une heure de l'ouverture du marché américain." />
+<meta property="og:type" content="article" />
+<meta property="article:author" content="Capital.fr" />
+<meta property="article:publisher" content="Capital.fr" />
+<meta property="og:locale" content="fr_FR" />
+<meta property="og:url" content="https://www.capital.fr/entreprises-marches/les-valeurs-du-secteur-petrolier-attendues-en-forte-baisse-a-wall-street-1364831" />
+<meta property="fb:app_id" content="300640713292181" />
+<meta property="article:published_time" content="2020-03-16T14:00:24+01:00" />
+<meta property="article:modified_time" content="2020-03-16T14:00:24+01:00" />
+<meta property="article:tag" content="" />
+<meta property="article:section" content="Entreprises-et-marches" />
+<meta property="og:image" content="https://cap.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Fcap.2F2019.2F06.2F04.2F2f077978-26d5-497a-8912-7a72b39eadf2.2Ejpeg/1200x630/background-color/ffffff/quality/70/cr/wqkgUGl4YWJheSAvIENBUElUQUw%3D/les-valeurs-du-secteur-petrolier-attendues-en-forte-baisse-a-wall-street-1364831.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:updated_time" content="2020-03-16T14:00:24+01:00" />
+
+        <meta name="twitter:title" content="Les valeurs du secteur pétrolier attendues en forte baisse à Wall Street" />
+<meta name="twitter:description" content="(AOF) - Les valeurs pétrolières et parapétrolières (Exxon Mobil, Chevron, Halliburton, Schlumberger, Baker Hughes et TechnipFMC) sont attendus en forte baisse à une heure de l'ouverture du marché américain." />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@MagazineCapital" />
+<meta name="twitter:image" content="https://cap.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Fcap.2F2019.2F06.2F04.2F2f077978-26d5-497a-8912-7a72b39eadf2.2Ejpeg/1200x630/background-color/ffffff/quality/70/cr/wqkgUGl4YWJheSAvIENBUElUQUw%3D/les-valeurs-du-secteur-petrolier-attendues-en-forte-baisse-a-wall-street-1364831.jpg" />
+
+
+                                            
+                <meta name="parsely-title" content="Les valeurs du secteur pétrolier attendues en forte baisse à Wall Street" />
+<meta name="parsely-type" content="post" />
+<meta name="parsely-author" content="AOF" />
+<meta name="parsely-source" content="AOF" />
+<meta name="parsely-link" content="https://www.capital.fr/entreprises-marches/les-valeurs-du-secteur-petrolier-attendues-en-forte-baisse-a-wall-street-1364831" />
+<meta name="parsely-pub-date" content="2020-03-16T14:00:24+01:00" />
+<meta name="parsely-tags" content="_noVideo" />
+<meta name="parsely-section" content="Entreprises-et-marches" />
+<meta name="parsely-image-url" content="https://cap.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Fcap.2F2019.2F06.2F04.2F2f077978-26d5-497a-8912-7a72b39eadf2.2Ejpeg/1200x630/background-color/ffffff/quality/70/cr/wqkgUGl4YWJheSAvIENBUElUQUw%3D/les-valeurs-du-secteur-petrolier-attendues-en-forte-baisse-a-wall-street-1364831.jpg" />
+
+        
+
+                
+                            
+<script type="text/javascript">
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+        "siteName":"Capital.fr",
+"name":"Les valeurs du secteur p\u00e9trolier attendues en forte baisse \u00e0 Wall Street",
+"pageType":"NewsArticle",
+"source":"AOF",
+"urlprisma":"https:\/\/www.capital.fr\/entreprises-marches\/les-valeurs-du-secteur-petrolier-attendues-en-forte-baisse-a-wall-street-1364831",
+"env":"prod",
+"host":"www.capital.fr",
+"keywords":[""],
+"pageCategory":"Entreprises-et-marches",
+"pageSubCategory":"Autres",
+"path":"\/entreprises-marches\/les-valeurs-du-secteur-petrolier-attendues-en-forte-baisse-a-wall-street-1364831"
+    });
+</script>
+        
+    
+
+                    
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "headline":"Les valeurs du secteur p\u00e9trolier attendues en forte baisse \u00e0 Wall Street",
+    "description":"(AOF) - Les valeurs p\u00e9troli\u00e8res et parap\u00e9troli\u00e8res (Exxon Mobil, Chevron, Halliburton, Schlumberger, Baker Hughes et TechnipFMC) sont attendus en forte baisse \u00e0 une heure de l'ouverture du march\u00e9 am\u00e9ricain.",
+    "@type":"NewsArticle",
+    "author":{"@type":"Organization","name":"Capital.fr","url":"https:\/\/plus.google.com\/+capital","logo":{"@type":"ImageObject","url":"https:\/\/www.capital.fr\/assets\/img\/logo_capital.png","height":60,"width":175}},
+    "publisher":{"@type":"Organization","name":"Capital.fr","url":"https:\/\/www.capital.fr","logo":{"@type":"ImageObject","url":"https:\/\/www.capital.fr\/assets\/img\/logo_capital.png","height":60,"width":175}},
+    "mainEntityOfPage":"https:\/\/www.capital.fr\/entreprises-marches\/les-valeurs-du-secteur-petrolier-attendues-en-forte-baisse-a-wall-street-1364831",
+    "articleBody":"(AOF) - Les valeurs p\u00e9troli\u00e8res et parap\u00e9troli\u00e8res (Exxon Mobil, Chevron, Halliburton, Schlumberger, Baker Hughes et TechnipFMC) sont attendus en forte baisse \u00e0 une heure de l'ouverture du march\u00e9 am\u00e9ricain. Les titres du secteur souffrent de la chute des cours du p\u00e9trole. Le baril de WTI recule de plus de 12%.",
+    "datePublished":"2020-03-16T14:00:24+01:00",
+    "dateModified":"2020-03-16T14:00:24+01:00",
+    "keywords":"",
+    "articleSection":"Entreprises-et-marches",
+    "image":{"url":"https:\/\/cap.img.pmdstatic.net\/fit\/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Fcap.2F2019.2F06.2F04.2F2f077978-26d5-497a-8912-7a72b39eadf2.2Ejpeg\/1200x630\/background-color\/ffffff\/quality\/70\/cr\/wqkgUGl4YWJheSAvIENBUElUQUw%3D\/les-valeurs-du-secteur-petrolier-attendues-en-forte-baisse-a-wall-street-1364831.jpg","width":1200,"height":630,"@type":"ImageObject"},
+    "copyrightYear":"2020"
+}
+</script>
+    
+            
+        <script type="application/ld+json">
+        {
+          "@context": "http://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement":
+          [
+          {
+                "@type": "ListItem",
+                "position": 1,
+                "item":
+                {
+                    "name": "A la une" ,
+"@id": "https://www.capital.fr/"
+                }
+            },{
+                "@type": "ListItem",
+                "position": 2,
+                "item":
+                {
+                    "name": "Entreprises et marchés" ,
+"@id": "https://www.capital.fr/entreprises-marches"
+                }
+            }
+          ]
+        }
+        </script>
+    
+                        <script type="text/javascript">
+                var uuid = function b(a) { return a ? (a ^ Math.random() * 16 >> a / 4).toString(16) : ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, b) };
+                window.dataLayer = window.dataLayer || {};
+                window.dataLayer.push({
+                    pageHitID: uuid()
+                });
+            </script>
+            <script type="text/javascript">
+        (function() {
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+              (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+            
+                ga('create', 'UA-18383854-1', 'auto', {'allowAnchor': true, 'cookieExpires': 33696000, 'useAmpClientId': true});
+                ga('require', 'displayfeatures');
+                ga('require', 'linkid', 'linkid.js');
+                ga('set', 'dimension14', window.navigator.userAgent||'undefined');
+                ga('set', 'dimension27', document.referrer||'undefined');
+                ga('set', 'dimension13', "NewsArticle");
+ga('set', 'dimension17', "Capital.fr");
+ga('set', 'dimension21', "https");
+ga('set', 'dimension29', window.dataLayer.filter(el =>  el.pageHitID !== undefined).shift().pageHitID);
+ga('set', 'dimension1', "AOF");
+ga('set', 'dimension2', 'no');
+ga('set', 'dimension22', "2020-03-16 14:00:24");
+ga('set', 'dimension18', 'no');
+ga('set', 'dimension12', "Entreprises-et-marches");
+ga('set', 'dimension26', 'no');
+ga('send', 'pageview');
+        })();
+        </script>
+        
+
+    
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+        <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+        <meta name="theme-color" content="#ffffff">
+        <meta property="fb:pages" content="107116979321299">
+                    <meta name="news_keywords" content=""/>
+        
+        <meta name="p:domain_verify" content="032f922737ae4d3e978e12109b0d2a13"/>
+        <meta name="apple-itunes-app" content="app-id=565222716" app-argument="https://itunes.apple.com/fr/app/capital-actu-%C3%A9co-et-bourse/id565222716?mt=8">
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="alternate" type="application/rss+xml" title="Flux RSS pour capital.fr" href="/rss" />
+
+    <!-- preload -->
+                                    
+        <link rel="preconnect" href="https://api.prismaconnect.fr" crossorigin>
+        <link rel="preconnect" href="https://tra.scds.pmdstatic.net" crossorigin>
+        <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous">
+        <link rel="preconnect" href="https://sourcepoint.mgr.consensu.org" crossorigin="anonymous">
+        <link rel="preconnect" href="https://cdn.polyfill.io" crossorigin>
+                <link rel="preload" href="https://tra.scds.pmdstatic.net/pmd-browsertools/1.7.44/browsertools.js" as="script">
+        <link rel="preload" href="https://tra.scds.pmdstatic.net/advertising-core/4.19.0/core-ads.js" crossorigin as="fetch">
+        <link rel="preload" href="https://www.googletagservices.com/tag/js/gpt.js" as="script">
+        <link rel="preload" href="https://www.capital.fr/assets/img/default_capital.png" as="image">
+        <link rel="dns-prefetch" href="https://api.prismaconnect.fr">
+        <link rel="dns-prefetch" href="https://cap.img.pmdstatic.net">
+    
+            <!-- /preload -->
+
+            
+    <link rel="stylesheet" href="/assets/css/article.css?v=1584444686">
+
+    <!-- javascript_head -->
+            <script>(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)</script>
+        <script type="text/javascript">
+            window.fosroutingJS = ["/bundles/fosjsrouting/js/router.js", "/js/fos_js_routes.js?v=1584444686"]
+        </script>
+                        <!-- /javascript_head -->
+</head>
+
+<body data-loader='{
+    "site": {
+        "mainScript": "/assets/js/essentials.js?v=1584444686",
+                "coreAds": "https://tra.scds.pmdstatic.net/advertising-core/4.19.0/core-ads.js",
+        "prismaConnect": "https://tra.scds.pmdstatic.net/pmc-starter/3.1.1/assets/scripts/index.js",
+        "cmp": "https://tra.scds.pmdstatic.net/sourcepoint/1.1.0/sourcepoint.min.js"
+    },
+    "external": {
+                    "bookmark": "https://tra.scds.pmdstatic.net/bookmark/2.2.0/js/bookmark-statics.js",
+                "tagmanager": {
+            "name": "dataLayer",
+            "id": "GTM-WKQXL3P"
+        },
+        "tracker": "UA-18383854-1",
+        "players": []
+    },
+    "other": [
+        "https://tra.scds.pmdstatic.net/pmd-videoplayer/3.2.2/app.js&quot;, &quot;/assets/js/article.js?v=1584444686&quot;, &quot;https://tra.scds.pmdstatic.net/perceval-widget/1.1.4/index.js&quot;, &quot;https://cdn.flipboard.com/web/buttons/js/flbuttons.min.js&quot;, &quot;https://tra.scds.pmdstatic.net/bundle.php?scripts[]=pmc-kit-components%2F2.2.0%2FnewsletterBundle.js&amp;scripts[]=pmc-kit-components%2F2.2.0%2FoptinBundle.js"
+    ],
+    "polyfills": ["arrayMap"]
+}'>
+    <!-- global svg sprite -->
+            <svg class="hidden" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><symbol viewBox="0 0 13 10" id="icon-arrow"><path d="M12.326.108L6.218 9.556.11.108z" fill-rule="evenodd" /></symbol><symbol viewBox="0 0 13 13" id="icon-articles"><path d="M11.722 0H.412a.333.333 0 0 0-.325.325v12.35c0 .173.151.325.325.325h11.31a.333.333 0 0 0 .325-.325V.325A.333.333 0 0 0 11.722 0zM2.058 2.557c0-.174.152-.325.325-.325h3.424c.173 0 .325.151.325.325v2.621a.333.333 0 0 1-.325.325H2.383a.333.333 0 0 1-.325-.325V2.557zm7.692 8.211H2.383a.333.333 0 0 1-.325-.325c0-.173.152-.325.325-.325H9.75c.173 0 .325.152.325.325a.32.32 0 0 1-.325.325zm0-2.795H2.383a.333.333 0 0 1-.325-.325c0-.173.152-.325.325-.325H9.75c.173 0 .325.152.325.325a.32.32 0 0 1-.325.325zm0-2.47H8.017a.333.333 0 0 1-.325-.325c0-.173.151-.325.325-.325H9.75c.173 0 .325.152.325.325a.32.32 0 0 1-.325.325zm0-2.621H8.017a.333.333 0 0 1-.325-.325c0-.174.151-.325.325-.325H9.75c.173 0 .325.151.325.325a.32.32 0 0 1-.325.325z" fill-rule="nonzero" /></symbol><symbol viewBox="0 0 30.9 41.9" id="icon-book"><path d="M28.9,35.6l-22.7,0c-0.5,0-1,0.4-1,1c0,0.6,0.4,1,1,1l22.7,0v1.9c0,0.1,0,0.2-0.1,0.3c-0.1,0.1-0.2,0.1-0.3,0.1 H5.2c-1.8,0-3.2-1.5-3.2-3.3c0-1.8,1.4-3.3,3.2-3.3h23.3c0.2,0,0.4,0.2,0.4,0.4V35.6z M2,5.3C2,3.5,3.4,2,5.2,2h11v10.2 c0,0.8,0.5,1.5,1.2,1.8c0.9,0.3,1.6-0.3,2.1-1.1l1.5-2.5l1.5,2.5c0.5,0.7,1.2,1.3,2.1,1.1c0.8-0.2,1.3-1,1.2-1.8V2h2.6 c0.2,0,0.4,0.2,0.4,0.4v28.9c-0.1,0-0.3,0-0.4,0H5.2c-1.2,0-2.3,0.4-3.2,1.1V5.3z M18.2,2h5.8v9.4L21.9,8c-0.1-0.1-0.2-0.3-0.3-0.3 c-0.5-0.3-1.1-0.1-1.4,0.3l-2,3.3V2z M28.5,0H17.2H5.2C2.4,0,0,2.4,0,5.3v31.3c0,2.9,2.4,5.3,5.2,5.3h23.3c0.6,0,1.3-0.2,1.7-0.7 c0.4-0.5,0.7-1.1,0.7-1.7v-37C30.9,1.1,29.8,0,28.5,0z" /></symbol><symbol viewBox="0 0 14 15" id="icon-bookmark"><path d="M1.2,0h11.7C13.5,0,14,0.5,14,1.2V15l-7-4.2L0,15V1.2C0,0.5,0.5,0,1.2,0z" /></symbol><symbol viewBox="0 0 14 11" id="icon-camera"><path d="M13.103 1.789c.495 0 .897.4.897.894V9.84a.896.896 0 0 1-.897.894H.897A.896.896 0 0 1 0 9.84V2.683c0-.494.402-.894.897-.894h2.544l.542-1.44A.538.538 0 0 1 4.487 0h5.026a.54.54 0 0 1 .504.348l.542 1.44h2.544zM7 2.862a3.408 3.408 0 0 0-3.41 3.4A3.408 3.408 0 0 0 7 9.66c1.88 0 3.41-1.525 3.41-3.399A3.408 3.408 0 0 0 7 2.862z" /></symbol><symbol aria-hidden="true" viewBox="0 0 22 23" id="icon-close"><path fill-rule="evenodd" d="M9.756 11.69L1.55 3.485l-.884-.884L2.434.833l.884.884 8.205 8.205 7.705-7.705.884-.884 1.768 1.768-.884.884-7.705 7.705 7.705 7.705.884.884-1.768 1.768-.884-.884-7.705-7.705-8.205 8.205-.884.884-1.767-1.768.884-.884 8.205-8.205z" /></symbol><symbol viewBox="0 0 17 17" id="icon-copylink"><path d="M13.3 10.1c.2-1 .1-2.1-.3-3.1l1-1c.8-.7.8-2 0-2.8-.8-.8-2.1-.8-2.9 0L7.7 6.6c-.8.8-.8 2.1 0 2.9.3.2.6.4 1 .5l-1.8 1.8-.9-.6C4.3 9.4 4.3 6.6 6 4.9l3.4-3.4c1.8-1.7 4.6-1.7 6.3 0 1.7 1.7 1.7 4.5 0 6.2l-2.4 2.4zm-9.5-3c-.1 1 0 2.1.4 3l-1 1c-.8.8-.8 2.1 0 2.9.8.8 2.1.8 2.8 0l3.5-3.4c.7-.8.7-2.1 0-2.9-.3-.2-.6-.4-1-.5l1.8-1.8.9.6c1.7 1.8 1.7 4.6 0 6.3l-3.5 3.4c-1.7 1.7-4.5 1.7-6.2 0-1.7-1.7-1.7-4.5 0-6.3l2.3-2.3z" /></symbol><symbol aria-hidden="true" viewBox="0 0 60 60" id="icon-diapo"><path d="M30 60C13.431 60 0 46.569 0 30 0 13.431 13.431 0 30 0c16.569 0 30 13.431 30 30 0 16.569-13.431 30-30 30zm18.103-40.222h-7.268l-1.548-4.116a1.538 1.538 0 0 0-1.44-.995h-14.36c-.641 0-1.215.396-1.44.995l-1.55 4.116h-7.266a2.56 2.56 0 0 0-2.564 2.555v20.445a2.56 2.56 0 0 0 2.564 2.555h34.872a2.56 2.56 0 0 0 2.564-2.555V22.333a2.56 2.56 0 0 0-2.564-2.555zm-17.436 3.066c5.372 0 9.743 4.357 9.743 9.712 0 5.354-4.37 9.71-9.743 9.71s-9.744-4.356-9.744-9.71c0-5.355 4.371-9.712 9.744-9.712z" fill-rule="evenodd" /></symbol><symbol aria-hidden="true" viewBox="0 0 16 16" id="icon-doublefleche"><path d="M8.446 8.01L2.03 15.146.087 12.98l4.477-5.024-4.477-4.96L2.03.854 8.446 8.01zm7.467 0l-6.416 7.136-1.943-2.166 4.476-5.024-4.476-4.96L9.497.854l6.416 7.156z" fill="#FFF" fill-rule="evenodd" /></symbol><symbol viewBox="0 0 32 32" id="icon-euro"><path fill-rule="evenodd" d="M31 22.794c-.595 2.706-1.972 4.75-4.13 6.132C24.714 30.31 22.058 31 18.903 31c-3.66 0-6.704-.89-9.13-2.67-2.425-1.779-4.025-4.286-4.799-7.521H1v-2.912h3.482c-.06-.823-.09-1.456-.09-1.897l.045-1.103H1v-2.912h3.795c.684-3.5 2.254-6.206 4.71-8.117C11.96 1.956 15.091 1 18.901 1c3.006 0 5.602.618 7.79 1.853 2.187 1.235 3.594 2.926 4.219 5.073l-6.474 3c-.148-1.323-.691-2.294-1.629-2.911-.937-.618-2.09-.927-3.46-.927-3.363 0-5.476 1.633-6.34 4.897h8.974l-1.25 2.912h-8.125V16c0 .853.015 1.485.045 1.897h7.857l-1.116 2.912h-6.206c.447 1.382 1.154 2.412 2.121 3.088.967.677 2.254 1.015 3.862 1.015 1.339 0 2.448-.331 3.326-.993.878-.662 1.45-1.684 1.718-3.066L31 22.794z" /></symbol><symbol viewBox="0 0 14 14" aria-hidden="true" id="icon-event"><path d="M13.176 1.242h-1.852V.685c0-.376-.338-.685-.752-.685h-.555c-.414 0-.752.309-.752.685v.557h-4.53V.685C4.735.31 4.397 0 3.983 0h-.555c-.413 0-.752.309-.752.685v.557H.823c-.452 0-.823.338-.823.75V13.25c0 .412.37.75.823.75h12.353c.453 0 .824-.338.824-.75V1.993c0-.413-.37-.75-.824-.75zM7.475 5.974h2.82v2.143h-2.82V5.974zm5.29 6.754H1.235V4.473h11.53v8.255z" /></symbol><symbol aria-hidden="true" viewBox="0 0 10 19" id="icon-facebook"><path fill-rule="evenodd" d="M.298 9.84h2.025v8.339c0 .164.134.298.298.298h3.434a.298.298 0 0 0 .298-.298v-8.3h2.329a.298.298 0 0 0 .296-.263l.353-3.07a.298.298 0 0 0-.296-.332H6.353V4.29c0-.58.313-.874.929-.874h1.753a.298.298 0 0 0 .298-.298V.3a.298.298 0 0 0-.298-.298H6.62L6.509 0C6.088 0 4.63.082 3.48 1.141c-1.276 1.174-1.098 2.58-1.056 2.823v2.25H.298A.298.298 0 0 0 0 6.512v3.03c0 .165.133.299.298.299z" /></symbol><symbol aria-hidden="true" viewBox="0 0 13 13" id="icon-feed"><path d="M1.236 0c1.08 0 2.12.14 3.118.42a11.787 11.787 0 0 1 8.212 8.211c.28 1 .42 2.039.42 3.118 0 .341-.121.633-.363.874a1.19 1.19 0 0 1-.874.362 1.19 1.19 0 0 1-.873-.362 1.19 1.19 0 0 1-.363-.874c0-.852-.11-1.674-.333-2.465a9.272 9.272 0 0 0-2.387-4.092A9.275 9.275 0 0 0 3.7 2.807a9.055 9.055 0 0 0-2.465-.334 1.19 1.19 0 0 1-.874-.362A1.19 1.19 0 0 1 0 1.236C0 .896.12.604.362.362A1.19 1.19 0 0 1 1.236 0zm0 4.674c.976 0 1.892.187 2.75.561a7.26 7.26 0 0 1 2.244 1.52A7.232 7.232 0 0 1 7.75 9a6.8 6.8 0 0 1 .561 2.75c0 .34-.12.632-.362.873a1.19 1.19 0 0 1-.874.362 1.19 1.19 0 0 1-.874-.362 1.19 1.19 0 0 1-.362-.874c0-.634-.12-1.23-.362-1.79a4.664 4.664 0 0 0-.988-1.463 4.664 4.664 0 0 0-1.463-.987 4.464 4.464 0 0 0-1.79-.363 1.19 1.19 0 0 1-.874-.362A1.19 1.19 0 0 1 0 5.91c0-.34.12-.632.362-.873a1.19 1.19 0 0 1 .874-.363zm2.273 6.493a1.702 1.702 0 0 1-.504 1.229 1.725 1.725 0 0 1-1.229.504 1.703 1.703 0 0 1-1.229-.504 1.702 1.702 0 0 1-.504-1.229c0-.237.045-.462.135-.675a1.72 1.72 0 0 1 1.598-1.058c.237 0 .462.045.675.135.213.09.398.213.554.369a1.725 1.725 0 0 1 .504 1.229z" fill="#FFF" /></symbol><symbol aria-hidden="true" viewBox="0 0 15 14" id="icon-fleche"><path fill-rule="evenodd" d="M14.893 6.783a.363.363 0 0 0 0-.514L8.721.106a.365.365 0 0 0-.516 0L6.561 1.748a.363.363 0 0 0 0 .514l2.646 2.643H.151c-.201 0-.201 3.242 0 3.242h9.056L6.561 10.79a.374.374 0 0 0 0 .515l1.644 1.642a.365.365 0 0 0 .516 0l6.172-6.163z" /></symbol><symbol viewBox="0 0 100 100" id="icon-flipboard"><path fill="#F52828" d="M0 0h100v100H0z" /><g shape-rendering="crispEdges" fill="#fff"><path opacity=".8" d="M40 40h20v20H40z" /><path opacity=".9" d="M40 20h40v20H40z" /><path d="M20 20h20v60H20z" /></g></symbol><symbol viewBox="0 0 13 12" id="icon-fluctuations"><g fill="#FFF" fill-rule="nonzero"><path d="M3.642 10.144h-2.26a.125.125 0 0 1-.126-.125V5.247c0-.07.056-.126.125-.126h2.26c.07 0 .126.056.126.126v4.772c0 .07-.056.125-.125.125zM7.41 10.144H5.148a.125.125 0 0 1-.126-.125V.223c0-.07.056-.125.126-.125h2.26c.07 0 .126.056.126.125v9.796c0 .07-.056.125-.126.125zM11.177 10.144h-2.26a.125.125 0 0 1-.126-.125V2.735c0-.07.056-.126.125-.126h2.26c.07 0 .126.057.126.126v7.284c0 .07-.056.125-.125.125zM0 11.777v-.754c0-.07.056-.125.126-.125h12.307c.069 0 .125.056.125.125v.754c0 .07-.056.125-.125.125H.126A.125.125 0 0 1 0 11.777z" /></g></symbol><symbol viewBox="0 0 14 14" id="icon-fluxrss"><g fill="#FFF"><ellipse cx="1.9" cy="12.1" rx="1.9" ry="1.9" /><path d="M9.2 14H6.5c0-3.6-2.9-6.6-6.5-6.6V4.7c5.1 0 9.2 4.2 9.2 9.3z" /><path d="M11.1 14c0-6.2-5-11.2-11.1-11.2V0c7.6 0 13.8 6.3 13.8 14h-2.7z" /></g></symbol><symbol aria-hidden="true" viewBox="0 0 26 18" id="icon-googleplus"><path d="M17.03 8.515c0 4.695-3.82 8.515-8.515 8.515S0 13.21 0 8.515 3.82 0 8.515 0c1.894 0 3.689.61 5.19 1.764l-1.977 2.571a5.228 5.228 0 0 0-3.213-1.091 5.277 5.277 0 0 0-5.271 5.27 5.277 5.277 0 0 0 5.271 5.272 5.28 5.28 0 0 0 5.016-3.65H8.515V6.894h8.515v1.622zm8.965 1.06h-2.44v2.44h-2.12v-2.44h-2.439v-2.12h2.439v-2.44h2.12v2.44h2.44v2.12z" /></symbol><symbol viewBox="0 0 13 13" aria-hidden="true" id="icon-guide"><path d="M11.813 0H2.437v13h9.376c.431 0 .78-.364.78-.813V.813c0-.45-.349-.813-.78-.813zM0 .813v11.374c0 .45.364.813.813.813h.812V0H.812A.812.812 0 0 0 0 .813z" /></symbol><symbol viewBox="0 0 32 32" id="icon-home"><path d="M30.623 15.046L17.066 1.443A1.496 1.496 0 0 0 16 1c-.403 0-.782.157-1.066.443L1.377 15.046c-.454.456-.401.847-.33 1.033.073.186.288.51.918.51h1.527v12.09C3.492 29.937 4.533 31 5.713 31h6.872v-8.195h6.65V31h7.052c1.183 0 2.176-1.085 2.176-2.321v-12.09h1.572c.63 0 .845-.324.917-.51.072-.186.125-.577-.329-1.033z" /></symbol><symbol viewBox="0 0 20 11" id="icon-learn"><path d="M9.7.1L0 3.8l9.7 3.6 9.6-3.6L9.7.1zM1.1 4.6V7c-.2.1-.2.3-.2.4 0 .4.2.7.6.7.4 0 .6-.3.6-.7 0-.1 0-.3-.2-.4V5l-.8-.4zm2.6 1v2.7c0 .9 2.6 2.1 6 2.1 3.3 0 6-1.2 6-2.1V5.6L9.8 7.8c-.1.1-.2.1-.3 0L3.7 5.6z" fill="#FFF" /></symbol><symbol aria-hidden="true" viewBox="0 0 21 20" id="icon-linkedin"><path fill-rule="evenodd" d="M20.91 12.26v7.719h-4.482v-7.203c0-1.809-.648-3.044-2.27-3.044-1.239 0-1.976.832-2.3 1.637-.118.288-.149.689-.149 1.092v7.518H7.226s.06-12.199 0-13.462h4.483v1.908l-.03.043h.03v-.043c.595-.916 1.66-2.225 4.04-2.225 2.95 0 5.16 1.924 5.16 6.06zM2.536.026C1.003.027 0 1.032 0 2.353 0 3.645.974 4.68 2.477 4.68h.03c1.564 0 2.536-1.035 2.536-2.327C5.013 1.032 4.07.027 2.537.027zM.267 19.98h4.48V6.517H.268v13.462z" /></symbol><symbol aria-hidden="true" viewBox="0 0 20 17" id="icon-mail"><path fill-rule="evenodd" d="M18.207 16.182c.45 0 .84-.153 1.17-.454l-5.664-5.835c-.136.1-.268.197-.392.29-.424.322-.768.573-1.032.753-.264.18-.616.364-1.054.551-.44.188-.848.282-1.228.282h-.022c-.38 0-.788-.094-1.227-.282a6.271 6.271 0 0 1-1.055-.551 26.29 26.29 0 0 1-1.032-.753c-.118-.09-.249-.187-.39-.292L.614 15.728c.331.301.72.454 1.17.454h16.422zM1.127 6.218a5.968 5.968 0 0 1-1.127-1v8.878l4.992-5.143a385.747 385.747 0 0 0-3.865-2.735zm17.75 0a328.435 328.435 0 0 0-3.875 2.737l4.99 5.141V5.218a6.21 6.21 0 0 1-1.115 1zM18.207 0H1.785C1.212 0 .772.2.463.598.154.996 0 1.495 0 2.092c0 .483.205 1.006.614 1.569.409.563.844 1.005 1.305 1.327.253.184 1.015.73 2.287 1.638A739.23 739.23 0 0 1 7.13 8.723l.167.123.307.228c.242.18.443.326.603.437.16.111.353.235.58.373.227.138.44.242.642.31.2.07.386.104.557.104h.022c.172 0 .358-.034.558-.103.201-.07.415-.173.642-.31.227-.139.42-.263.58-.374.16-.111.361-.257.603-.437a74.922 74.922 0 0 1 .474-.35l1.129-.809 4.092-2.927c.543-.39.997-.862 1.361-1.413.364-.552.547-1.13.547-1.736a1.79 1.79 0 0 0-.53-1.298A1.7 1.7 0 0 0 18.207 0z" /></symbol><symbol viewBox="0 0 22 14" id="icon-menu"><path d="M21 8H0V6h22v2h-1zM7.682 14H7v-2h15v2H7.682zm2.863-12H10V0h12v2H10.545z" /></symbol><symbol viewBox="0 0 29 37" aria-hidden="true" id="icon-moteurs"><path d="M28.96 34.973V2.005A1.914 1.914 0 0 0 27.048.09H2.423A1.914 1.914 0 0 0 .509 2.005v32.971c0 1.057.857 1.914 1.914 1.914h24.624a1.918 1.918 0 0 0 1.914-1.917zM25.265 7.76a.957.957 0 0 1-.957.957H5.159a.957.957 0 0 1-.957-.957V4.45c0-.529.429-.958.957-.958h19.148c.528 0 .957.429.957.957v3.31zm0 7.704a.957.957 0 0 1-.957.957H22.1a.957.957 0 0 1-.957-.957v-2.208c0-.528.429-.957.957-.957h2.208c.528 0 .957.429.957.957v2.208zm0 5.676a.957.957 0 0 1-.957.957H22.1a.957.957 0 0 1-.957-.957v-2.209c0-.528.429-.956.957-.956h2.208c.528 0 .957.428.957.956v2.209zm0 11.351a.957.957 0 0 1-.957.957H22.1a.957.957 0 0 1-.957-.957v-7.88c0-.528.429-.957.957-.957h2.208c.528 0 .957.429.957.957v7.88zm-5.638-17.027a.957.957 0 0 1-.957.957h-2.204a.957.957 0 0 1-.957-.957v-2.208c0-.528.429-.957.957-.957h2.208c.528 0 .957.429.957.957v2.208h-.004zm0 5.676a.957.957 0 0 1-.957.957h-2.204a.957.957 0 0 1-.957-.957v-2.209c0-.528.429-.956.957-.956h2.208c.528 0 .957.428.957.956v2.209h-.004zm0 5.676a.957.957 0 0 1-.957.956h-2.204a.957.957 0 0 1-.957-.956v-2.205c0-.528.429-.957.957-.957h2.208c.528 0 .957.429.957.957v2.205h-.004zm0 5.675a.957.957 0 0 1-.957.957h-2.204a.957.957 0 0 1-.957-.957v-2.208c0-.528.429-.957.957-.957h2.208c.528 0 .957.429.957.957v2.208h-.004zM13.99 15.465a.957.957 0 0 1-.957.957h-2.208a.957.957 0 0 1-.957-.957v-2.208c0-.528.428-.957.957-.957h2.208c.528 0 .957.429.957.957v2.208zm0 5.676a.957.957 0 0 1-.957.957h-2.208a.957.957 0 0 1-.957-.957v-2.209c0-.528.428-.956.957-.956h2.208c.528 0 .957.428.957.956v2.209zm0 5.676a.957.957 0 0 1-.957.956h-2.208a.957.957 0 0 1-.957-.956v-2.205c0-.528.428-.957.957-.957h2.208c.528 0 .957.429.957.957v2.205zm0 5.675a.957.957 0 0 1-.957.957h-2.208a.957.957 0 0 1-.957-.957v-2.208c0-.528.428-.957.957-.957h2.208c.528 0 .957.429.957.957v2.208zM8.35 15.465a.957.957 0 0 1-.957.957H5.186a.957.957 0 0 1-.957-.957v-2.208c0-.528.429-.957.957-.957h2.208c.528 0 .957.429.957.957v2.208zm0 5.676a.957.957 0 0 1-.957.957H5.186a.957.957 0 0 1-.957-.957v-2.209c0-.528.429-.956.957-.956h2.208c.528 0 .957.428.957.956v2.209zm0 5.676a.957.957 0 0 1-.957.956H5.186a.957.957 0 0 1-.957-.956v-2.205c0-.528.429-.957.957-.957h2.208c.528 0 .957.429.957.957v2.205zm0 5.675a.957.957 0 0 1-.957.957H5.186a.957.957 0 0 1-.957-.957v-2.208c0-.528.429-.957.957-.957h2.208c.528 0 .957.429.957.957v2.208z" /></symbol><symbol aria-hidden="true" viewBox="0 0 48 48" id="icon-newsletter"><path d="M8.832 22.556l-3.14-2.148-3.183-2.177 3.18-2.64V1.554A1.564 1.564 0 0 1 7.26 0h32.6c.868 0 1.572.696 1.572 1.555V14.26l4.06 3.372-4.06 2.776-3.14 2.148V3.11H8.83v19.446zM34.1 13.18c.663 0 1.2.534 1.2 1.19 0 .656-.537 1.188-1.2 1.188H13.9c-.663 0-1.2-.532-1.2-1.188 0-.656.537-1.19 1.2-1.19h20.2zm0 6.34c.663 0 1.2.533 1.2 1.19 0 .655-.537 1.188-1.2 1.188H13.9c-.663 0-1.2-.533-1.2-1.19 0-.655.537-1.188 1.2-1.188h20.2zm-5.36 13.722l2.736-1.87L48 20.066v25.45C48 46.887 46.877 48 45.493 48H2.507C1.123 48 0 46.888 0 45.517v-25.45L16.524 31.37l2.735 1.872L24 36.486l4.74-3.244zm5.36-26.4c.663 0 1.2.532 1.2 1.188 0 .656-.537 1.19-1.2 1.19H13.9c-.663 0-1.2-.533-1.2-1.19 0-.656.537-1.188 1.2-1.188h20.2z" fill-rule="evenodd" /></symbol><symbol viewBox="0 0 15 21" aria-hidden="true" id="icon-next"><path d="M14.119 11.088a.57.57 0 0 0 0-.808L4.419.596a.573.573 0 0 0-.81 0l-2.584 2.58a.57.57 0 0 0 0 .808l4.159 4.152S7.572 9.31 7.572 10.28c0 .727-2.389 2.952-2.389 2.952l-4.158 4.151a.587.587 0 0 0 0 .808l2.584 2.58a.573.573 0 0 0 .81 0l9.7-9.683z" /></symbol><symbol viewBox="0 0 32 32" id="icon-next-mask"><path d="M16 31C7.716 31 1 24.284 1 16 1 7.716 7.716 1 16 1c8.284 0 15 6.716 15 15 0 8.284-6.716 15-15 15zm4.45-14.974a.311.311 0 0 0 0-.44l-5.29-5.283a.313.313 0 0 0-.442 0l-1.41 1.407a.311.311 0 0 0 0 .44l2.269 2.266s1.302.64 1.302 1.17c0 .396-1.302 1.61-1.302 1.61l-2.269 2.264a.32.32 0 0 0 0 .44l1.41 1.408a.313.313 0 0 0 .442 0l5.29-5.282z" /></symbol><symbol viewBox="0 0 32 6" id="icon-other"><path d="M3 6C1.3 6 0 4.7 0 3s1.3-3 3-3 3 1.3 3 3-1.3 3-3 3zm13 0c-1.7 0-3-1.3-3-3s1.3-3 3-3 3 1.3 3 3-1.3 3-3 3zm13 0c-1.7 0-3-1.3-3-3s1.3-3 3-3 3 1.3 3 3-1.3 3-3 3z" /></symbol><symbol viewBox="0 0 14 18" id="icon-pinterest"><path d="M7.7 12.7c-1-.1-1.5-.6-2.3-1.1-.4 2.4-1 4.7-2.6 5.9-.5-3.6.8-6.4 1.3-9.3-.9-1.7.1-5.1 2.2-4.2 2.5 1-2.2 6.2 1 6.9 3.3.7 4.6-5.9 2.6-8-3-3.1-8.6-.1-7.9 4.3.1 1.1 1.2 1.4.4 2.9-1.9-.4-2.5-2-2.4-4C.1 2.7 2.9.4 5.8.1c3.5-.5 6.9 1.3 7.3 4.8.5 3.9-1.6 8.1-5.4 7.8" /></symbol><symbol viewBox="0 0 46 46" aria-hidden="true" id="icon-play"><path d="M23 1C10.85 1 1 10.85 1 23c0 12.153 9.85 22 22 22 12.153 0 22-9.847 22-22 0-12.15-9.847-22-22-22zm8.81 22.88l-11.372 8.982c-.637.501-1.67.501-2.306 0l.006-.006c-.314-.229-.516-.555-.516-.921V14.012c0-.36.19-.683.495-.915l.015-.015c.637-.498 1.67-.498 2.306 0l11.31 8.962.062.032c.64.496.64 1.305 0 1.804z" /></symbol><symbol viewBox="0 0 29 23" id="icon-podcast"><path d="M15.7.4h-2.3C11.5.4 9.9 2 9.9 3.9v11.2c0 1.5.9 2.8 2.3 3.3v4.5h1.4v-4.3h2v4.3H17v-4.5c1.4-.5 2.3-1.8 2.3-3.3V3.9C19.1 2 17.6.4 15.7.4zm0 16.8h-2.3c-1.2 0-2.1-1-2.1-2.1v-.2h2.2v-1.4h-2.2v-1.3h2.2v-1.4h-2.2v-1h2.2V8.4h-2.2V7.2h2.2V5.8h-2.2V3.9c0-1.2 1-2.1 2.1-2.1h2.3c1.2 0 2.1 1 2.1 2.1v1.9h-2.2v1.4h2.2v1.2h-2.2v1.4h2.2v1.1h-2.2v1.4h2.2v1.3h-2.2V15h2.2v.2c0 1-1 2-2.1 2zM1.8 9.5c0 2.8.9 5.5 2.6 7.7l-1 .8C-.5 13-.5 6 3.4.9l1.1.8C2.7 4 1.8 6.7 1.8 9.5zm26.7 0c0 3.1-1 6.1-2.9 8.6l-1.1-.8c3.5-4.6 3.5-10.9 0-15.4l1.1-.8c1.9 2.3 2.9 5.3 2.9 8.4zm-3.2 0c0 1.8-.5 3.6-1.3 5.2l-1.2-.7c1.5-2.8 1.6-6.2 0-9.1l1.2-.6c.9 1.6 1.3 3.4 1.3 5.2zM6.2 4.9c-1.6 2.8-1.6 6.2 0 9.1l-1.2.6C3.2 11.4 3.3 7.5 5 4.3l1.2.6zm15.9 2.2c.5 1.6.5 3.4-.1 5l-1.3-.4c.5-1.3.5-2.8.1-4.1l1.3-.5zM7.9 9.5c0 .7.1 1.5.4 2.2l-1.3.4c-.6-1.6-.6-3.3-.1-4.9l1.3.4c-.2.6-.3 1.2-.3 1.9z" /></symbol><symbol viewBox="0 0 15 15" aria-hidden="true" id="icon-pratique"><path d="M14.955 6.667c-.023-.21-.27-.369-.482-.369A1.666 1.666 0 0 1 12.92 5.27a1.67 1.67 0 0 1 .42-1.854.417.417 0 0 0 .045-.566 7.422 7.422 0 0 0-1.188-1.2.417.417 0 0 0-.57.046c-.447.495-1.25.68-1.87.42A1.666 1.666 0 0 1 8.744.489.416.416 0 0 0 8.375.05 7.488 7.488 0 0 0 6.688.046a.417.417 0 0 0-.371.429 1.669 1.669 0 0 1-1.027 1.6c-.613.25-1.41.068-1.857-.423a.418.418 0 0 0-.566-.047 7.45 7.45 0 0 0-1.213 1.2.417.417 0 0 0 .045.57c.522.472.69 1.224.42 1.87-.26.617-.9 1.014-1.633 1.014a.408.408 0 0 0-.433.369A7.513 7.513 0 0 0 .05 8.333c.023.212.277.37.492.37A1.645 1.645 0 0 1 2.085 9.73c.262.64.093 1.384-.42 1.854a.417.417 0 0 0-.045.566c.348.443.748.847 1.186 1.2a.417.417 0 0 0 .571-.045c.449-.497 1.252-.68 1.87-.42a1.66 1.66 0 0 1 1.014 1.627.417.417 0 0 0 .369.438 7.455 7.455 0 0 0 1.687.005.417.417 0 0 0 .371-.43 1.667 1.667 0 0 1 1.026-1.6c.618-.251 1.412-.067 1.858.423a.42.42 0 0 0 .566.048 7.467 7.467 0 0 0 1.213-1.2.416.416 0 0 0-.045-.57 1.662 1.662 0 0 1-.42-1.871 1.68 1.68 0 0 1 1.534-1.017l.093.003a.417.417 0 0 0 .44-.368 7.507 7.507 0 0 0 .002-1.706zm-7.44 3.35a2.504 2.504 0 0 1-2.502-2.5 2.504 2.504 0 0 1 2.502-2.503 2.504 2.504 0 0 1 2.501 2.502 2.504 2.504 0 0 1-2.501 2.502z" /></symbol><symbol viewBox="0 0 25 25" aria-hidden="true" id="icon-print"><path d="M6.24 1.56h12.48v3.12h1.56V1.56C20.28.7 19.581 0 18.72 0H6.24c-.86 0-1.56.7-1.56 1.56v3.12h1.56V1.56zM23.4 6.24H1.56C.7 6.24 0 6.939 0 7.8v9.36c0 .862.699 1.56 1.56 1.56h3.12v4.68c0 .862.699 1.56 1.56 1.56h12.48a1.56 1.56 0 0 0 1.56-1.56v-4.68h3.12a1.56 1.56 0 0 0 1.559-1.56V7.8a1.56 1.56 0 0 0-1.56-1.56zM18.72 23.4H6.24v-9.36h12.48v9.36zM7.8 15.6h9.36v1.56H7.8V15.6zm14.039-4.68a1.559 1.559 0 1 1 0-3.12 1.56 1.56 0 0 1 0 3.12zM7.8 18.72h7.8v1.56H7.8v-1.56z" /></symbol><symbol viewBox="0 0 12 16.7" id="icon-profile"><path d="M6,16.7c3.3,0,6,0.6,6-2.8S9.3,7.7,6,7.7s-6,2.7-6,6.1S2.7,16.7,6,16.7z" /><circle cx="6" cy="3" r="3" /></symbol><symbol viewBox="0 0 32 32" id="icon-questionmark"><path d="M10.035 24.9h8.692V31h-8.692v-6.1zm.4-3.166c0-1.223.221-2.24.665-3.05.443-.81 1.182-1.69 2.217-2.638a69.097 69.097 0 0 1 1.774-1.514c.887-.703 1.508-1.284 1.862-1.743.355-.459.533-1.04.533-1.743 0-.948-.377-1.636-1.131-2.064-.754-.428-1.974-.643-3.659-.643-1.271 0-2.498.153-3.68.46-1.183.305-2.188.733-3.016 1.284V2.927C8.483 1.642 11.514 1 15.09 1c3.49 0 6.18.772 8.072 2.317C25.054 4.86 26 7.009 26 9.76c0 1.621-.296 2.967-.887 4.037-.591 1.07-1.582 2.202-2.971 3.395l-.976.825c-1.005.795-1.73 1.468-2.173 2.019-.443.55-.665 1.208-.665 1.972v.55h-7.893v-.825z" /></symbol><symbol viewBox="0 0 45 45" aria-hidden="true" id="icon-quiz"><path d="M22.5 45C34.926 45 45 34.926 45 22.5S34.926 0 22.5 0 0 10.074 0 22.5 10.074 45 22.5 45zm-3.797-17.472c0-.88.165-1.612.495-2.196.33-.583.88-1.216 1.652-1.899a51.05 51.05 0 0 1 1.32-1.09c.661-.506 1.124-.925 1.388-1.255.264-.33.396-.749.396-1.255 0-.683-.28-1.178-.842-1.486-.562-.308-1.47-.463-2.725-.463-.947 0-1.86.11-2.741.33-.88.22-1.63.53-2.246.925v-5.152c1.85-.925 4.106-1.387 6.77-1.387 2.599 0 4.602.556 6.012 1.668 1.409 1.112 2.113 2.659 2.113 4.64 0 1.167-.22 2.136-.66 2.907-.44.77-1.178 1.585-2.213 2.444l-.727.594c-.748.573-1.288 1.057-1.618 1.453-.33.397-.495.87-.495 1.42v.397h-5.88v-.595zm-.297 2.28h6.473V34.2h-6.473v-4.393z" /></symbol><symbol viewBox="0 0 13 12" aria-hidden="true" id="icon-redac"><path d="M4.069 4.938a2.47 2.47 0 1 0-.002-4.94 2.47 2.47 0 0 0 .002 4.94zm5.224 1.518c-.777 0-1.493.32-2.064.859C6.489 6.15 5.335 5.4 4.038 5.4 1.808 5.4 0 7.612 0 10.338c0 .91.602 1.646 1.346 1.646h5.383c.054 0 .107-.005.16-.013a.905.905 0 0 0 .144.013h4.52c.624 0 1.13-.618 1.13-1.382 0-2.289-1.519-4.146-3.39-4.146zm-.02-.31a2.073 2.073 0 1 0-.002-4.147 2.073 2.073 0 0 0 .001 4.147z" /></symbol><symbol viewBox="0 0 32 32" id="icon-reverse"><path fill-rule="evenodd" d="M23.893 22.744l-6.172 6.15a.365.365 0 0 1-.516 0l-1.644-1.639a.372.372 0 0 1 0-.513l2.646-2.637H9.151c-.201 0-.201-3.236 0-3.236h9.056l-2.646-2.637a.362.362 0 0 1 0-.513l1.644-1.639a.365.365 0 0 1 .516 0l6.172 6.15a.362.362 0 0 1 0 .514zM8.107 9.77a.362.362 0 0 1 0-.514l6.172-6.15a.365.365 0 0 1 .516 0l1.644 1.639a.362.362 0 0 1 0 .513l-2.646 2.637h9.056c.201 0 .201 3.236 0 3.236h-9.056l2.646 2.637a.372.372 0 0 1 0 .513l-1.644 1.639a.365.365 0 0 1-.516 0L8.107 9.77z" /></symbol><symbol viewBox="0 0 20 21" id="icon-search"><path d="M19.696 19.128l-4.93-5.199a8.521 8.521 0 0 0 1.962-5.45C16.728 3.804 12.976 0 8.364 0 3.752 0 0 3.804 0 8.479c0 4.675 3.752 8.478 8.364 8.478 1.731 0 3.381-.529 4.792-1.534l4.967 5.238c.208.218.487.339.787.339.283 0 .552-.11.756-.309a1.118 1.118 0 0 0 .03-1.563zM8.364 2.212c3.409 0 6.182 2.811 6.182 6.267 0 3.455-2.773 6.267-6.182 6.267-3.409 0-6.182-2.812-6.182-6.267 0-3.456 2.773-6.267 6.182-6.267z" /></symbol><symbol aria-hidden="true" viewBox="0 0 15 15" id="icon-services"><path d="M12.358.255a3.744 3.744 0 0 0-3.906.876 3.744 3.744 0 0 0-.876 3.906L.623 11.99c-.63.63-.63 1.643 0 2.273.63.63 1.644.63 2.273 0L9.85 7.31c1.32.469 2.85.181 3.906-.876a3.744 3.744 0 0 0 .876-3.906l-1.507 1.507c-.63.63-1.643.63-2.273 0a1.604 1.604 0 0 1 0-2.273L12.358.255z" /></symbol><symbol viewBox="0 0 40 32" id="icon-sms"><path d="M40 20.4c0-3.576-2.503-6.699-6.231-8.388.219.78.345 1.585.368 2.412.372.221.732.46 1.068.72 1.88 1.451 2.917 3.316 2.917 5.256 0 1.939-1.033 3.805-2.917 5.255-2.063 1.589-4.836 2.467-7.807 2.467-2.005 0-3.917-.401-5.584-1.145a21.25 21.25 0 0 1-3.221.379c2.273 1.709 5.377 2.764 8.804 2.764 2.197 0 4.264-.433 6.065-1.197l4.585 2.341-.927-4.681c1.8-1.68 2.879-3.833 2.879-6.181L40 20.4zm-7.167-7.284a10.016 10.016 0 0 0-.369-2.411C30.863 5.006 24.287.738 16.419.738 7.351.738 0 6.407 0 13.401c0 3.06 1.407 5.865 3.749 8.055l-1.208 6.097 5.977-3.049c2.344.995 5.036 1.56 7.9 1.56.292 0 .583-.005.871-.019a20.756 20.756 0 0 0 3.219-.377c7.088-1.401 12.328-6.361 12.328-12.267 0-.096-.001-.191-.003-.285zM8.675 15.487a2.388 2.388 0 1 1 0-4.777 2.389 2.389 0 1 1 0 4.777zm7.744 0a2.388 2.388 0 1 1 0-4.777 2.389 2.389 0 1 1 0 4.777zm7.744 0a2.389 2.389 0 1 1 0-4.777 2.389 2.389 0 0 1 0 4.777z" /></symbol><symbol viewBox="0 0 17 16" aria-hidden="true" id="icon-top"><path d="M12.219 9.74l1.47 5.394a.52.52 0 0 1-.79.57L8.5 12.772l-4.399 2.932a.522.522 0 0 1-.792-.57L4.781 9.74.368 6.307a.52.52 0 0 1 .32-.932h5.377L8.017.494c.158-.396.808-.396.967 0l1.951 4.881h5.377a.522.522 0 0 1 .32.932L12.22 9.74z" /></symbol><symbol aria-hidden="true" viewBox="0 0 11 13" id="icon-top-news"><path d="M1.127 11.07C1.681 11.749 3.035 13 5.5 13c1.86 0 3.088-.713 3.816-1.355.753-.588 1.283-1.526 1.495-2.368.778-3.086-.933-5.506-3.053-6.968 0 .722-.12 1.327-.312 1.854C6.61 3.116 5.677 2.016 5.677 0 3.72 1.35 2.111 3.518 2.488 6.271a4.203 4.203 0 0 1-1.037-1.816C.15 6.017-.626 8.228.655 10.433c.126.216.286.433.472.637zm4.408-4.247c0 1.972 1.58 2.341 1.614 3.808.02.931-.693 1.629-1.614 1.614-.83-.014-1.435-.88-1.614-1.614-.411-1.686.493-3.009 1.614-3.808z" fill="#FFF" fill-rule="evenodd" /></symbol><symbol aria-hidden="true" viewBox="0 0 18 15" id="icon-twitter"><path d="M15.781 2.299a3.681 3.681 0 0 0 1.614-2.03c-.71.42-1.495.725-2.33.89A3.67 3.67 0 0 0 8.81 4.506 10.42 10.42 0 0 1 1.244.672a3.668 3.668 0 0 0 1.136 4.9 3.655 3.655 0 0 1-1.662-.46v.047a3.672 3.672 0 0 0 2.944 3.598 3.677 3.677 0 0 1-1.658.063 3.674 3.674 0 0 0 3.429 2.55A7.363 7.363 0 0 1 0 12.888a10.387 10.387 0 0 0 5.626 1.649c6.75 0 10.442-5.593 10.442-10.443 0-.159-.003-.317-.01-.474a7.456 7.456 0 0 0 1.83-1.9 7.339 7.339 0 0 1-2.107.578z" /></symbol><symbol viewBox="0 0 64 64" id="icon-user"><path d="M36 44.163v-3.299c4.406-2.483 8-8.673 8-14.864 0-9.941 0-18-12-18s-12 8.059-12 18c0 6.191 3.594 12.382 8 14.864v3.299C14.431 45.272 4 51.939 4 60h56c0-8.06-10.431-14.727-24-15.837z" /></symbol><symbol viewBox="0 0 9 13" aria-hidden="true" id="icon-video"><path d="M8.506 7l-6.462 5.103c-.362.285-.948.285-1.31 0l.003-.003c-.178-.13-.293-.315-.293-.523V1.393c0-.205.108-.388.282-.52L.734.865c.362-.283.948-.283 1.31 0l6.427 5.092.035.018c.363.282.363.742 0 1.025z" /></symbol><symbol viewBox="0 0 512 512" id="icon-whatsapp"><path d="M436.5 74.4C388.6 26.4 324.9 0 257 0 117.2 0 3.4 113.8 3.4 253.7c0 44.7 11.7 88.4 33.9 126.8L1.3 512l134.5-35.3c37.1 20.2 78.8 30.9 121.2 30.9h.1c139.8 0 253.7-113.8 253.7-253.7 0-67.8-26.4-131.5-74.3-179.5zM257.1 464.8c-37.9 0-75-10.2-107.4-29.4l-7.7-4.6-79.8 20.9 21.3-77.8-5-8c-21.2-33.5-32.3-72.3-32.3-112.2 0-116.3 94.6-210.9 211-210.9 56.3 0 109.3 22 149.1 61.8 39.8 39.9 61.7 92.8 61.7 149.2-.1 116.4-94.7 211-210.9 211zm115.6-158c-6.3-3.2-37.5-18.5-43.3-20.6s-10-3.2-14.3 3.2c-4.2 6.3-16.4 20.6-20.1 24.9-3.7 4.2-7.4 4.8-13.7 1.6s-26.8-9.9-51-31.5c-18.8-16.8-31.6-37.6-35.3-43.9s-.4-9.8 2.8-12.9c2.9-2.8 6.3-7.4 9.5-11.1s4.2-6.3 6.3-10.6c2.1-4.2 1.1-7.9-.5-11.1s-14.3-34.4-19.5-47.1c-5.1-12.4-10.4-10.7-14.3-10.9-3.7-.2-7.9-.2-12.1-.2s-11.1 1.6-16.9 7.9c-5.8 6.3-22.2 21.7-22.2 52.9s22.7 61.3 25.9 65.6c3.2 4.2 44.7 68.3 108.3 95.7 15.1 6.5 26.9 10.4 36.1 13.4 15.2 4.8 29 4.1 39.9 2.5 12.2-1.8 37.5-15.3 42.8-30.1s5.3-27.5 3.7-30.1c-1.5-2.8-5.7-4.4-12.1-7.6z" /></symbol></defs></svg>        <!-- End global svg sprite -->
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WKQXL3P"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    
+    <!-- .page -->
+        <div class="page" data-theme-color="pink">
+
+                    
+<header class="page-header site_header" role="banner">
+
+    <!-- .header-top -->
+    <div class="header-top">
+                    <a href="https://www.capital.fr" class="header-logo" aria-label="Capital">
+                <svg height="0" viewBox="0 0 810 239" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M168.927 156.621l-36.456-27.516c-10.618 13.66-21.488 22.77-39.944 22.77-24.775 0-42.219-21.966-42.219-50.09v-.536c0-27.321 17.444-49.82 42.22-49.82 16.937 0 28.567 8.84 38.679 21.964l36.91-30.267c-15.674-22.768-38.932-38.84-75.084-38.84C39.438 4.286 0 47.144 0 101.786v.536c0 55.978 40.702 96.962 91.263 96.962 38.618 0 61.067-17.657 77.712-41.731 1.56 26.442 20.708 41.194 45.655 41.194 17.95 0 30.843-7.499 40.45-18.481v15.267h47.275v-83.301c0-20.357-4.298-35.358-14.664-46.072-10.87-11.517-27.555-17.677-52.078-17.677-23.511 0-39.944 4.552-55.364 11.249l9.859 35.624c12.388-4.82 23.511-8.035 37.92-8.035 18.456 0 27.304 8.572 27.304 23.838v2.41c-7.837-3.211-20.224-5.625-32.865-5.625-32.106 0-53.595 15.27-53.595 45.536v.536c0 .88.018 1.749.055 2.605zm0 0l.453.342c-.134.197-.27.394-.405.59-.018-.309-.034-.62-.048-.932zm86.911-13.587v-6.695c-5.056-2.142-11.882-3.751-18.96-3.751-13.905 0-21.995 6.963-21.995 17.945v.537c0 9.91 7.079 15.803 16.939 15.803 14.156 0 24.016-9.374 24.016-23.84zm54.791-92.409h48.034V69.91c9.353-12.054 20.982-22.5 41.46-22.5 32.63 0 60.702 28.662 60.702 75v.536c0 47.142-28.072 75.802-60.45 75.802-20.73 0-32.864-9.91-41.712-20.892v60.534h-48.034V50.625zm103.151 72.59v-.537c0-19.287-12.646-32.947-28.067-32.947-15.674 0-28.062 13.66-28.062 32.947v.536c0 19.283 12.388 32.945 28.062 32.945 15.421 0 28.067-13.394 28.067-32.945zm54.244 72.318h47.781V50.625h-47.781v144.908zM467.013 37.5h49.803V0h-49.803v37.5zm70.844 113.033V91.34h-16.179V50.625h16.179V13.93h47.781v36.695h31.856v40.714h-31.856v49.284c0 10.178 4.3 14.466 13.146 14.466 6.32 0 12.39-1.877 18.203-4.824v39.642c-8.594 5.09-19.973 8.572-33.37 8.572-28.82 0-45.76-13.392-45.76-47.946zm82.418 3.483v-.536c0-30.266 21.488-45.536 53.595-45.536 12.638 0 25.028 2.414 32.864 5.626v-2.411c0-15.266-8.847-23.838-27.302-23.838-14.412 0-25.535 3.215-37.921 8.035l-9.86-35.624c15.421-6.697 31.852-11.25 55.364-11.25 24.521 0 41.206 6.16 52.078 17.678 10.364 10.714 14.663 25.715 14.663 46.072v83.3h-47.274v-15.266c-9.61 10.982-22.503 18.481-40.45 18.481-26.04 0-45.757-16.07-45.757-44.73zm86.966-10.982v-6.695c-5.058-2.142-11.883-3.751-18.963-3.751-13.904 0-21.995 6.963-21.995 17.945v.537c0 9.91 7.08 15.803 16.94 15.803 14.157 0 24.018-9.374 24.018-23.84zm54.98 52.499H810V0h-47.778v195.533z"/>
+                </svg>
+            </a>
+                <button aria-controls="header-content">
+            <svg class="icon-menu" aria-hidden="true"><use xlink:href="#icon-menu"></use></svg>
+            <svg class="icon-close" aria-hidden="true"><use xlink:href="#icon-close"></use></svg>
+            <span>Menu</span>
+        </button>
+        <button aria-controls="header-nav">
+            <svg class="icon-menu" aria-hidden="true"><use xlink:href="#icon-menu"></use></svg>
+            <span>Menu</span>
+        </button>
+    </div>
+    <!-- /.header-top -->
+
+    <!-- #header-content.header-content -->
+    <div id="header-content" class="header-content" aria-hidden="true">
+        <button class="btn-close" aria-controls="header-content">
+            <svg class="icon-close" aria-hidden="true"><use xlink:href="#icon-close"></use></svg>
+            <span>Menu</span>
+        </button>
+
+        <div id="header-nav" class="header-nav">
+            <button class="btn-close" aria-controls="header-nav">
+                <svg class="icon-close" aria-hidden="true"><use xlink:href="#icon-close"></use></svg>
+                <span>Menu</span>
+            </button>
+            
+
+    
+        <nav role="navigation">
+            <ul>
+
+                
+                    
+                    <li>
+                        <a href="https://www.capital.fr/economie-politique" class="header-nav-link"
+                            data-theme-color="purple">
+                            <span>Economie et politique</span>
+                        </a>
+                    </li>
+                
+                    
+                    <li>
+                        <a href="https://www.capital.fr/votre-argent" class="header-nav-link"
+                            data-theme-color="yellow">
+                            <span>Votre argent</span>
+                        </a>
+                    </li>
+                
+                    
+                    <li>
+                        <a href="https://www.capital.fr/polemik" class="header-nav-link"
+                            data-theme-color="light-blue">
+                            <span>Polemik</span>
+                        </a>
+                    </li>
+                
+                    
+                    <li>
+                        <a href="https://www.capital.fr/entreprises-marches" class="header-nav-link"
+                            data-theme-color="pink">
+                            <span>Entreprises et marchés</span>
+                        </a>
+                    </li>
+                
+                    
+                    <li>
+                        <a href="https://www.capital.fr/immobilier" class="header-nav-link"
+                            data-theme-color="red">
+                            <span>Immobilier</span>
+                        </a>
+                    </li>
+                
+                    
+                    <li>
+                        <a href="https://www.capital.fr/votre-carriere" class="header-nav-link"
+                            data-theme-color="orange">
+                            <span>Management</span>
+                        </a>
+                    </li>
+                
+                    
+                    <li>
+                        <a href="https://www.capital.fr/votre-retraite" class="header-nav-link"
+                            data-theme-color="light-purple">
+                            <span>Votre retraite</span>
+                        </a>
+                    </li>
+                
+                    
+                    <li>
+                        <a href="https://www.capital.fr/lifestyle" class="header-nav-link"
+                            data-theme-color="green">
+                            <span>Lifestyle</span>
+                        </a>
+                    </li>
+                                            </ul>
+        </nav>
+    
+        </div>
+
+        <div class="header-nav-more" aria-hidden="true" aria-controls="header-nav--clone">
+            <button class="btn-more">+</button>
+        </div>
+
+        <div class="header-advert">
+            <div class="ads-core-placer" id="Bouton-Header_5e70e5d00134b" data-ads-core='{"type":"Bouton-Header"}'></div>
+        </div>
+
+        <!-- .header-links -->
+        <div class="header-links">
+
+            <!-- .header-social -->
+            <div class="header-social" aria-controls="list-social">
+                <button class="header-social-btn">Nous suivre</button>
+                <ul class="list-social" id="list-social" aria-hidden="true">
+                    <li>
+                        <a href="https://fr-fr.facebook.com/Capital.fr/" class="btn-facebook" aria-label="Capital sur Facebook"
+                            target="_blank">
+                            <svg class="icon-facebook" aria-hidden="true"><use xlink:href="#icon-facebook"></use></svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com/company/capital-fr" class="btn-linkedin" aria-label="Capital sur LinkedIn"
+                            target="_blank">
+                            <svg class="icon-linkedin" aria-hidden="true"><use xlink:href="#icon-linkedin"></use></svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/MagazineCapital" class="btn-twitter" aria-label="Capital sur Twitter"
+                            target="_blank">
+                            <svg class="icon-twitter" aria-hidden="true"><use xlink:href="#icon-twitter"></use></svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.pinterest.fr/magazinecapital/" class="btn-pinterest" aria-label="Capital sur Pinterest"
+                            target="_blank">
+                            <svg class="icon-pinterest" aria-hidden="true"><use xlink:href="#icon-pinterest"></use></svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.capital.fr/economie-politique/suivez-capital-partout-tout-le-temps-1265916" class="btn-fluxrss" aria-label="Suivez Capital partout"
+                            target="_blank">
+                            <svg class="icon-fluxrss" aria-hidden="true"><use xlink:href="#icon-fluxrss"></use></svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://connect.capital.fr/newsletters" class="btn-newsletter" aria-label="S'abonner à la newsletter">
+                            <svg class="icon-mail" aria-hidden="true"><use xlink:href="#icon-mail"></use></svg>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.header-social -->
+
+            <!-- .header-services -->
+            <ul class="header-services">
+                <li>
+                    <div class="button-bookmark-desktop">
+                        <div class="button-bookmark" data-toggle-click>
+    <div class="btn-account">
+        <button class="btn-account-connect btn btn--primary pmc-authentification">
+            <svg class="icon-profile" aria-hidden="true"><use xlink:href="#icon-profile"></use></svg>
+            <span>Se connecter</span>
+        </button>
+        <button aria-controls-click class="btn-account-connected btn btn--primary">
+            <svg class="icon-profile" aria-hidden="true"><use xlink:href="#icon-profile"></use></svg>
+            <span>Mon compte</span>
+        </button>
+    </div>
+    <div class="panel-account" aria-target-click aria-hidden="true">
+        <button class="btn pmc-authentification">
+            <svg class="icon-profile" aria-hidden="true"><use xlink:href="#icon-profile"></use></svg>
+            <span>Mon profil</span>
+        </button>
+        <button class="btn" data-bookmark-link>Mes articles sauvegardés</button>
+        <button class="btn"><a href="https://connect.capital.fr/subscriptions">Mes sujets suivis</a></button>
+    </div>
+</div>
+                    </div>
+                </li>
+                <li>
+                        <div aria-controls="header-subscription">
+        <a href="https://pxlme.me/wLHC--Kt" class="btn" target="_blank">Le magazine</a>
+        <div id="header-subscription" class="header-subscription">
+            <div class="box-subscription">
+                <span class="heading">Abonnez-vous</span>
+                <div class="box-flex">
+                    <div class="box-shop">
+                        <a class="box-shop-link-img" href="https://pxlme.me/wLHC--Kt">
+                            <img data-src="https://cap.img.pmdstatic.net/scale/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Fcap.2F2018.2F10.2F19.2F4beaed04-69b8-487c-912e-a8a81bac7e7a.2Ejpeg/170xauto/quality/70/picture.jpg?1584457168" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="lazyload" alt="Couverture du dernier numéro de Capital" >
+                        </a>
+                        <span class="box-title">Chaque mois, Capital directement chez vous !</span>
+
+                        
+                                                <a href="https://pxlme.me/wLHC--Kt" class="btn btn--primary">Je m&#039;abonne</a>
+                    </div>
+                </div>
+            </div>
+
+                            <div class="box-subscription">
+                    <span class="heading">Actuellement en vente</span>
+                    <div class="box-flex">
+                                                    <div class="box-shop">
+                                <a class="box-shop-link-img" href="https://www.capital.fr/economie-politique/votre-magazine-en-kiosque-ce-mois-ci-1230668">
+                                    <img data-src="https://cap.img.pmdstatic.net/scale/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Fcap.2F2020.2F02.2F19.2F034d2ea3-df22-48f5-a075-5730c3d26a15.2Ejpeg/170xauto/quality/70/picture.jpg?1584457168" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="lazyload" alt="">
+                                </a>
+                                <span class="box-title">Capital mensuel n°342</span>
+                                <span class="box-text">Spécial Immobilier, le placement qui rapporte ! (Airbnb, quartiers d&#039;avenir, défiscalisation, SCPI, ...) / Les viande est attaquée, comment elle se défend / Retraite : trouver du travail aux seniors, le vrai défi</span>
+                                <a href="https://www.capital.fr/economie-politique/votre-magazine-en-kiosque-ce-mois-ci-1230668" class="btn btn--secondary">J'achète</a>
+                            </div>
+                                                    <div class="box-shop">
+                                <a class="box-shop-link-img" href="https://www.capital.fr/economie-politique/votre-magazine-en-kiosque-ce-mois-ci-1230668#99gdq">
+                                    <img data-src="https://cap.img.pmdstatic.net/scale/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Fcap.2F2019.2F10.2F28.2F796de964-6c77-41e7-90a5-7e54c6c41a7a.2Ejpeg/170xauto/quality/70/picture.jpg?1584457168" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="lazyload" alt="">
+                                </a>
+                                <span class="box-title">Capital Votre Argent n° 8</span>
+                                <span class="box-text">Capital Votre Argent : Succession et héritage / Transmettre plus à son conjoint / Mieux protéger ses enfants / Réduire la facture fiscale</span>
+                                <a href="https://www.capital.fr/economie-politique/votre-magazine-en-kiosque-ce-mois-ci-1230668#99gdq" class="btn btn--secondary">J'achète</a>
+                            </div>
+                                            </div>
+                </div>
+                    </div>
+    </div>
+
+                </li>
+            </ul>
+            <!-- /.header-services -->
+        </div>
+        <!-- /.header-links -->
+    </div>
+    <!-- /#header-content.header-content -->
+
+    <div class="button-bookmark-mobile">
+        <div class="button-bookmark" data-toggle-click>
+    <div class="btn-account">
+        <button class="btn-account-connect btn btn--primary pmc-authentification">
+            <svg class="icon-profile" aria-hidden="true"><use xlink:href="#icon-profile"></use></svg>
+            <span>Se connecter</span>
+        </button>
+        <button aria-controls-click class="btn-account-connected btn btn--primary">
+            <svg class="icon-profile" aria-hidden="true"><use xlink:href="#icon-profile"></use></svg>
+            <span>Mon compte</span>
+        </button>
+    </div>
+    <div class="panel-account" aria-target-click aria-hidden="true">
+        <button class="btn pmc-authentification">
+            <svg class="icon-profile" aria-hidden="true"><use xlink:href="#icon-profile"></use></svg>
+            <span>Mon profil</span>
+        </button>
+        <button class="btn" data-bookmark-link>Mes articles sauvegardés</button>
+        <button class="btn"><a href="https://connect.capital.fr/subscriptions">Mes sujets suivis</a></button>
+    </div>
+</div>
+    </div>
+
+    <!-- .header-search -->
+    <button class="button-search" aria-controls="header-search" aria-label="Rechercher">
+        <svg class="icon-search" aria-hidden="true" aria-label="Rechercher"><use xlink:href="#icon-search"></use></svg>
+    </button>
+    <!-- /.header-search -->
+
+    <!-- .search-engine -->
+    <div class="header-search" id="header-search">
+    <div class="search-engine">
+        <form class="search-form" action="/recherche" method="get">
+            <input id="search-input" type="text" name="q" placeholder="Tapez votre recherche" required="required" autocomplete="off" spellcheck="false" dir="auto" title="Tapez votre recherche">
+            <pre class="search-pre hidden" aria-hidden="true"></pre>
+            <div class="search-result">
+                <div class="search-data"></div>
+            </div>
+            <button class="search-submit">
+                <svg class="icon-search" aria-hidden="true" aria-label="Rechercher"><use xlink:href="#icon-search"></use></svg>
+            </button>
+        </form>
+        <button class="search-close" aria-controls="header-search" aria-label="Rechercher">
+            <svg class="icon-close" aria-hidden="true"><use xlink:href="#icon-close"></use></svg>
+        </button>
+    </div>
+</div>    <!-- /.search-engine -->
+
+    
+    <nav class="quicklinks" role="navigation">
+        <ul>
+                                            <li class="quicklinks-item">
+                    <a href="https://www.capital.fr/infos" class="gros-titre">
+                        <span class="rounded-icon rounded-icon--feed">
+                            <svg class="icon-feed" aria-hidden="true"><use xlink:href="#icon-feed"/></svg>
+                        </span>
+                        Fil d&#039;infos
+                    </a>
+                </li>
+                                            <li class="quicklinks-item">
+                    <a href="https://video.capital.fr/" class="gros-titre">
+                        <span class="rounded-icon rounded-icon--play">
+                            <svg class="icon-play" aria-hidden="true"><use xlink:href="#icon-play"/></svg>
+                        </span>
+                        Vidéos
+                    </a>
+                </li>
+                                            <li class="quicklinks-item">
+                    <a href="https://www.capital.fr/bourse/devises/cours-devises" class="gros-titre">
+                        <span class="rounded-icon rounded-icon--euro">
+                            <svg class="icon-euro" aria-hidden="true"><use xlink:href="#icon-euro"/></svg>
+                        </span>
+                        Devises
+                    </a>
+                </li>
+                                            <li class="quicklinks-item">
+                    <a href="https://www.capital.fr/services" class="gros-titre">
+                        <span class="rounded-icon rounded-icon--services">
+                            <svg class="icon-services" aria-hidden="true"><use xlink:href="#icon-services"/></svg>
+                        </span>
+                        Services
+                    </a>
+                </li>
+                    </ul>
+    </nav>
+
+</header>
+        
+                    <div id="corps">
+
+                <div class="ads-core-placer" id="Out-Of-Banner_5e70e5d02265e" data-ads-core='{"type":"Out-Of-Banner"}'></div>
+                <div class="ads-core-placer" id="Habillage-Interstitiel_5e70e5d022664" data-ads-core='{"device":"desktop","type":"Habillage-Interstitiel"}'></div>
+                <div class="ads-core-placer" id="Postitiel_5e70e5d022669" data-ads-core='{"device":"mobile,tablet","type":"Postitiel"}'></div>
+                <div class="ads-core-placer" id="Banniere-Haute_5e70e5d02266c" data-ads-core='{"device":"tablet,desktop","type":"Banniere-Haute"}'></div>
+
+                <div class="site_content">
+                                                                    <nav class="subnav">
+        <span>En ce moment&nbsp;:</span>
+        <ul>
+                            <li class="subnav-item">
+                    <a href="https://art19.com/shows/guerres-de-business" class="btn btn--outline mise-en-avant-redac">
+                        Nike vs. Adidas
+                    </a>
+                </li>
+                            <li class="subnav-item">
+                    <a href="https://immobilier.capital.fr" class="btn btn--outline mise-en-avant-redac">
+                        Annonces Immo
+                    </a>
+                </li>
+                            <li class="subnav-item">
+                    <a href="https://www.capital.fr/tag/bnp-paribas" class="btn btn--outline mise-en-avant-redac">
+                        Bnp Paribas
+                    </a>
+                </li>
+                            <li class="subnav-item">
+                    <a href="https://www.capital.fr/tag/coronavirus" class="btn btn--outline mise-en-avant-redac">
+                        coronavirus
+                    </a>
+                </li>
+                    </ul>
+    </nav>
+
+                                        <div class="page-content">
+                                                
+    <main class="page-main" id="page-main-article" data-template="article">
+
+        
+
+                        <nav class="breadcrumb" role="navigation">
+                                    <a class="breadcrumb-text" href="/entreprises-marches">Entreprises et marchés</a>
+                        </nav>
+        
+        <article id="article" class="article">
+
+                        <header class="article-head">
+
+                <h1 class="article-title">Les valeurs du secteur pétrolier attendues en forte baisse à Wall Street</h1>
+
+                                    <section id="bookmark" class="bookmark">
+                        <ul class="tag-list">
+                                                    </ul>
+                    </section>
+                
+                                                    <div class="article-meta">
+                                                                                                                <span class="article-publication-date">
+                                    Publié le <time datetime="2020-03-16T14:00:24+01:00" pubdate>16/03/2020 à 14h00</time>
+                                </span>
+                                                                                                </div>
+                                
+                
+                    <figure class="article-media">
+                                                    <picture class="ratio-16-9 ratio-2-1-desktop">
+                                <source media="(max-width: 480px)"
+                                    srcset="https://cap.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Fcap.2F2019.2F06.2F04.2F2f077978-26d5-497a-8912-7a72b39eadf2.2Ejpeg/480x270/background-color/ffffff/quality/70/les-valeurs-du-secteur-petrolier-attendues-en-forte-baisse-a-wall-street-1364831.jpg">
+                                <source media="(max-width: 767px)"
+                                    srcset="https://cap.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Fcap.2F2019.2F06.2F04.2F2f077978-26d5-497a-8912-7a72b39eadf2.2Ejpeg/768x432/background-color/ffffff/quality/70/les-valeurs-du-secteur-petrolier-attendues-en-forte-baisse-a-wall-street-1364831.jpg">
+                                <img src="https://cap.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Fcap.2F2019.2F06.2F04.2F2f077978-26d5-497a-8912-7a72b39eadf2.2Ejpeg/750x375/background-color/ffffff/quality/70/les-valeurs-du-secteur-petrolier-attendues-en-forte-baisse-a-wall-street-1364831.jpg" alt="Les valeurs du secteur pétrolier attendues en forte baisse à Wall Street">
+                            </picture>
+                        
+                                                                            <figcaption class="article-media-meta">
+                                                                                                    <span class="article-media-copyright">Pixabay</span>
+                                                            </figcaption>
+                                                                    </figure>
+                            </header>
+            
+            
+                                                                                                            <div class="only-desktop">
+                    
+<div class="bookmark-button-wrapper ">
+    <div class="bookmark-button"
+        data-id="1364831"
+        data-article-path="https://www.capital.fr/entreprises-marches/les-valeurs-du-secteur-petrolier-attendues-en-forte-baisse-a-wall-street-1364831"
+        data-bookmark-type="readitlater"
+        data-bookmark-button
+        data-bookmark-status
+    >
+        <button class="bookmark-status-like pmc-auth-required pmc-auto-follow btn--bookmark"
+            data-pmc-signup-id="CAP_BMK_1"
+            data-pmc-signup-service="BOOKMARK_AJOUT"
+                                            >
+                                <svg class="icon-bookmark" aria-hidden="true"><use xlink:href="#icon-bookmark"></use></svg>
+                    <span class="text-bookmark">SAUVEGARDER CET ARTICLE</span>
+                
+        </button>
+        <button class="bookmark-status-liked pmc-auth-required pmc-auto-follow btn--bookmark">
+                                <svg class="icon-bookmark" aria-hidden="true"><use xlink:href="#icon-bookmark"></use></svg>
+                    <span class="text-bookmark">SAUVEGARDÉ</span>
+                
+        </button>
+    </div>
+                        <div class="bookmark-button-tooltip" data-tooltip-type="explain"  data-tooltip-cookie-name=tooltipExplainReadItLater data-tooltip-cookie-duration=1>
+                        <div class="tooltip-explain">
+                        <svg class="icon-book" aria-hidden="true"><use xlink:href="#icon-book"></use></svg>
+                        <p>Retrouvez ce contenu plus tard en appuyant sur ce bouton</p>
+                        <button class="tooltip-btn" data-tooltip-close>J'ai compris</button>
+                    </div>
+                
+</div>
+        
+                    <div class="bookmark-button-tooltip" data-tooltip-type="like" data-bookmark-type=readitlater >
+                        <div class="tooltip-like">
+                        <button class="tootip-close" data-tooltip-close>Fermer</button>
+                        <p>Ce contenu a bien été ajouté à vos favoris dans votre profil !</p>
+                        <button class="tooltip-btn" data-bookmark-link>Voir mes favoris</button>
+                    </div>
+                
+</div>
+        
+        
+                    <div class="bookmark-button-tooltip" data-tooltip-type="liked" data-bookmark-type=readitlater >
+                        <div class="tooltip-liked">
+                        <button class="tootip-close" data-tooltip-close>Fermer</button>
+                        <p>Ce contenu a bien été retiré de vos favoris.</p>
+                        <button class="tooltip-btn" data-bookmark-link>Voir mes favoris</button>
+                    </div>
+                
+</div>
+        
+            </div>
+                </div>
+            
+                                        
+                            <div class="ads-core-placer" id="Pave-Haut_5e70e5d028e4c" data-ads-core='{"device":"mobile","type":"Pave-Haut"}'></div>
+            
+
+            <div class="article-body">
+                                                            <p>(AOF) - Les valeurs pétrolières et parapétrolières (Exxon Mobil, Chevron, Halliburton, Schlumberger, Baker Hughes et TechnipFMC) sont attendus en forte baisse à une heure de l'ouverture du marché américain. Les titres du secteur souffrent de la chute des cours du pétrole. Le baril de WTI recule de plus de 12%.</p>
+                                                                    </div>
+
+                            <!-- Navigation article event -->
+                <div class="article-nav">
+        </div>
+            
+                        <aside class="article-aside">
+                                    <div class="article-google-podcasts">
+                        <span>Ecoutez 21 millions, le podcast de Capital sur les cryptomonnaies</span>
+                        <a href="https://bit.ly/podcast-capital-21-millions" target="_blank">
+                            <img data-src="/assets/img/google_podcasts_badge@8x.png" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="lazyload" />
+                        </a>
+                    </div>
+                
+                                        <section class="bounce-box">
+        <span class="heading">A lire aussi</span>
+        <ul>
+            
+                                
+
+                <li>
+                    <a
+                            href="https://www.capital.fr/entreprises-marches/wall-street-termine-en-legere-baisse-lestee-par-le-secteur-de-la-sante-1335605"
+                            data-image-src="https://cap.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2FAFP.2F2019.2F04.2F09.2F2a3249d6-3038-4623-bb76-8a07711f6d04.2Ejpeg/160x90/background-color/ffffff/quality/70/picture.jpg">
+                        Wall Street termine en légère baisse, lestée par le secteur de la santé
+                    </a>
+                </li>
+            
+                                
+
+                <li>
+                    <a
+                            href="https://www.capital.fr/entreprises-marches/wall-street-lestee-par-la-chine-ouvre-en-forte-baisse-1321762"
+                            data-image-src="https://cap.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2FAFP.2F2018.2F12.2F24.2F7ae4e137-8daf-4e41-ba3d-e0218650a5d2.2Ejpeg/160x90/background-color/ffffff/quality/70/picture.jpg">
+                        Wall Street, lestée par la Chine, ouvre en forte baisse
+                    </a>
+                </li>
+            
+                                
+
+                <li>
+                    <a
+                            href="https://www.capital.fr/entreprises-marches/wall-street-finit-en-forte-hausse-portee-par-les-valeurs-tech-1332333"
+                            data-image-src="https://cap.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2FAFP.2F2019.2F03.2F12.2F82d32a8f-ec4b-40de-8f7b-106e0c6db010.2Ejpeg/160x90/background-color/ffffff/quality/70/picture.jpg">
+                        Wall Street finit en forte hausse, portée par les valeurs tech
+                    </a>
+                </li>
+                    </ul>
+    </section>
+                
+                                                    
+                                    <div class="sharebar offscreen" data-sharebar>
+    <div class="sharebar-progressbar">
+        <div class="sharebar-progressbar-value"></div>
+    </div>
+    <div class="sharebar-wrapper">
+        <div class="sharebar-article">
+            <div class="sharebar-article-heading sharebar-item-heading">Vous lisez actuellement :</div>
+            <div class="sharebar-article-title sharebar-item-title">Les valeurs du secteur pétrolier attendues en forte baisse à Wall Stre...</div>
+        </div>
+        <div class="sharebar-primary">
+            <ul>
+                <li>
+                    <button class="btn-share btn-copylink copylink-share" aria-label="Copier dans le presse-papier">
+                        <svg class="icon-copylink" aria-hidden="true"><use xlink:href="#icon-copylink"></use></svg>
+                        <p id="copylink-select">https://www.capital.fr/entreprises-marches/les-valeurs-du-secteur-petrolier-attendues-en-forte-baisse-a-wall-street-1364831</p>
+                        <div class="copylink-toolbox">
+                            <span class="copylink-copy">Copier le lien</span>
+                            <span class="copylink-copied"><svg viewBox="0 0 32 34"><g fill="#008C48" fill-rule="evenodd"><polygon points="24.627 5 31 10.937 13.746 27 1 15.134 7.3732 9.1961 13.746 15.134"/></g></svg>Lien copi&eacute;</span>
+                        </div>
+                    </button>
+                </li>
+                <li>
+                    <button class="btn-share btn-facebook facebook-share" aria-label="Partager sur Facebook" data-share-settitle="Les valeurs du secteur pétrolier attendues en forte baisse à Wall Street" data-share-setlinkback="https://www.capital.fr/entreprises-marches/les-valeurs-du-secteur-petrolier-attendues-en-forte-baisse-a-wall-street-1364831">
+                        <svg class="icon-facebook" aria-hidden="true"><use xlink:href="#icon-facebook"></use></svg>
+                        <span>Partager sur Facebook</span>
+                    </button>
+                </li>
+                <li class="only-mobile">
+                                                                                                                        
+<div class="bookmark-button-wrapper ">
+    <div class="bookmark-button"
+        data-id="1364831"
+        data-article-path="https://www.capital.fr/entreprises-marches/les-valeurs-du-secteur-petrolier-attendues-en-forte-baisse-a-wall-street-1364831"
+        data-bookmark-type="readitlater"
+        data-bookmark-button
+        data-bookmark-status
+    >
+        <button class="bookmark-status-like pmc-auth-required pmc-auto-follow btn--bookmark-white"
+            data-pmc-signup-id="CAP_BMK_1"
+            data-pmc-signup-service="BOOKMARK_AJOUT"
+                                            >
+                                    <svg class="icon-bookmark" aria-hidden="true"><use xlink:href="#icon-bookmark"></use></svg>
+                    
+        </button>
+        <button class="bookmark-status-liked pmc-auth-required pmc-auto-follow btn--bookmark">
+                                    <svg class="icon-bookmark" aria-hidden="true"><use xlink:href="#icon-bookmark"></use></svg>
+                    
+        </button>
+    </div>
+                        <div class="bookmark-button-tooltip" data-tooltip-type="explain"  data-tooltip-cookie-name=tooltipExplainReadItLater-mobile data-tooltip-cookie-duration=1>
+                            <div class="tooltip-explain">
+                            <svg class="icon-book" aria-hidden="true"><use xlink:href="#icon-book"></use></svg>
+                            <p>Retrouvez ce contenu plus tard en appuyant sur ce bouton</p>
+                            <button class="tooltip-btn" data-tooltip-close>J'ai compris</button>
+                        </div>
+                    
+</div>
+        
+                    <div class="bookmark-button-tooltip" data-tooltip-type="like" data-bookmark-type=readitlater >
+                            <div class="tooltip-like">
+                            <button class="tootip-close" data-tooltip-close>Fermer</button>
+                            <p>Ce contenu a bien été ajouté à vos favoris dans votre profil !</p>
+                            <button class="tooltip-btn" data-bookmark-link>Voir mes favoris</button>
+                        </div>
+                    
+</div>
+        
+        
+                    <div class="bookmark-button-tooltip" data-tooltip-type="liked" data-bookmark-type=readitlater >
+                            <div class="tooltip-liked">
+                            <button class="tootip-close" data-tooltip-close>Fermer</button>
+                            <p>Ce contenu a bien été retiré de vos favoris.</p>
+                            <button class="tooltip-btn" data-bookmark-link>Voir mes favoris</button>
+                        </div>
+                    
+</div>
+        
+            </div>
+                </li>
+                <li>
+                    <button class="btn-share btn-pinterest pinterest-share" aria-label="Partager sur Pinterest" data-share-settitle="Les valeurs du secteur pétrolier attendues en forte baisse à Wall Street" data-share-setlinkback="https://www.capital.fr/entreprises-marches/les-valeurs-du-secteur-petrolier-attendues-en-forte-baisse-a-wall-street-1364831">
+                        <svg class="icon-pinterest" aria-hidden="true"><use xlink:href="#icon-pinterest"></use></svg>
+                        <span>Partager</span>
+                    </button>
+                </li>
+            </ul>
+            <button class="btn-more" aria-controls="sharebar-secondary" aria-label="Afficher plus de boutons de partage">
+                <svg class="icon-other" aria-hidden="true"><use xlink:href="#icon-other"></use></svg>
+            </button>
+        </div>
+        <div id="sharebar-secondary" class="sharebar-secondary">
+            <div class="sharebar-title">
+                <strong>Les valeurs du secteur pétrolier attendues en fort...</strong>
+                <button class="btn-close" aria-controls="sharebar-secondary" aria-label="Fermer">
+                    <svg class="icon-close" aria-hidden="true"><use xlink:href="#icon-close"></use></svg>
+                </button>
+            </div>
+            <ul>
+                <li>
+                    <button class="btn-share btn-twitter twitter-share" aria-label="Partager sur Twitter" data-share-settitle="Les%20valeurs%20du%20secteur%20p%C3%A9trolier%20attendues%20en%20forte%20baisse%20%C3%A0%20Wall%20Street" data-share-setlinkback="https://www.capital.fr/entreprises-marches/les-valeurs-du-secteur-petrolier-attendues-en-forte-baisse-a-wall-street-1364831">
+                        <svg class="icon-twitter" aria-hidden="true"><use xlink:href="#icon-twitter"></use></svg>
+                        <span>Partager</span>
+                    </button>
+                </li>
+                <li>
+                    <button class="btn-share btn-linkedin linkedin-share" aria-label="Partager sur LinkedIn" data-share-settitle="Les valeurs du secteur pétrolier attendues en forte baisse à Wall Street" data-share-setlinkback="https://www.capital.fr/entreprises-marches/les-valeurs-du-secteur-petrolier-attendues-en-forte-baisse-a-wall-street-1364831">
+                        <svg class="icon-linkedin" aria-hidden="true"><use xlink:href="#icon-linkedin"></use></svg>
+                        <span>Partager sur LinkedIn</span>
+                    </button>
+                </li>
+                <li>
+                    <a data-flip-widget="shareflip" href="https://flipboard.com">
+                        <button class="btn-share btn-flipboard flipboard-share" aria-label="Partager sur Flipboard" data-share-settitle="Les valeurs du secteur pétrolier attendues en forte baisse à Wall Street" data-share-setlinkback="https://www.capital.fr/entreprises-marches/les-valeurs-du-secteur-petrolier-attendues-en-forte-baisse-a-wall-street-1364831">
+                            <svg class="icon-flipboard" aria-hidden="true"><use xlink:href="#icon-flipboard"></use></svg>
+                            <span>Partager sur Flipboard</span>
+                        </button>
+                    </a>
+                </li>
+                <li>
+                    <a class="btn-share btn-whatsapp whatsapp-share" aria-label="Partager sur Whatsapp" data-share-settitle="Les valeurs du secteur pétrolier attendues en forte baisse à Wall Street" data-share-setlinkback="https://www.capital.fr/entreprises-marches/les-valeurs-du-secteur-petrolier-attendues-en-forte-baisse-a-wall-street-1364831" role="button">
+                        <svg class="icon-whatsapp" aria-hidden="true"><use xlink:href="#icon-whatsapp"></use></svg>
+                        <span>Partager sur Whatsapp</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="btn-share btn-email email-share" aria-label="Partager par email" data-share-settitle="Les valeurs du secteur pétrolier attendues en forte baisse à Wall Street" data-share-setlinkback="https://www.capital.fr/entreprises-marches/les-valeurs-du-secteur-petrolier-attendues-en-forte-baisse-a-wall-street-1364831" role="button">
+                        <svg class="icon-mail" aria-hidden="true"><use xlink:href="#icon-mail"></use></svg>
+                        <span>Partager par e-mail</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="btn-share btn-sms sms-share" aria-label="Partager par SMS" data-share-settitle="Les valeurs du secteur pétrolier attendues en forte baisse à Wall Street" data-share-setlinkback="https://www.capital.fr/entreprises-marches/les-valeurs-du-secteur-petrolier-attendues-en-forte-baisse-a-wall-street-1364831" role="button">
+                        <svg class="icon-sms" aria-hidden="true"><use xlink:href="#icon-sms"></use></svg>
+                        <span>Partager par SMS</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div id="recoArticle" class="recoArticle">
+    <div class="recoArticle-link" data-wide-target>
+        <div class="recoArticle-image"><img src="/assets/img/default_capital.png" alt=""></div>
+        <div class="recoArticle-item">
+            <div class="recoArticle-heading sharebar-item-heading">Nous vous recommandons :</div>
+            <a class="recoArticle-title" href="#" data-wide></a>
+            <button class="recoArticle-button">
+                <svg class="icon-fleche" aria-hidden="true"><use xlink:href="#icon-fleche"></use></svg>
+            </button>
+        </div>
+    </div>
+    <div class="recoArticle-close" id="recoArticle-close"><svg class="icon-close" aria-hidden="true"><use xlink:href="#icon-close"></use></svg></div>
+</div>
+    <div id="bannerNewsletter" class="bannerNewsletter">
+    <div class="bannerNewsletter-link" data-wide-target>
+        <div class="bannerNewsletter-image">
+            <svg class="icon-newsletter" aria-hidden="true"><use xlink:href="#icon-newsletter"></use></svg>
+        </div>
+        <div class="bannerNewsletter-item">
+            <div class="bannerNewsletter-heading">Toutes nos dernières actus dans votre boîte mail</div>
+            <a class="bannerNewsletter-title" id="bannerNewsletter-link" href="#" data-wide>RECEVOIR NOTRE NEWSLETTER ></a>
+        </div>
+    </div>
+    <div class="bannerNewsletter-close" id="bannerNewsletter-close"><svg class="icon-close" aria-hidden="true"><use xlink:href="#icon-close"></use></svg></div>
+</div>
+</div>
+                            </aside>
+            
+                                        <footer class="article-footer">
+
+                                            <span class="article-source">
+                        &copy;
+                                                        AOF
+                        </span>
+                    
+                    
+                                                    <button aria-controls="article-copyright" aria-expanded="false">
+                                Avertissement légal
+                                <img data-src="/assets/img/aof.jpg"
+                                     alt="AOF"
+                                     class="article-copyright-image lazyload">
+                            </button>
+                        
+                    
+                    
+                                                    <div id="article-copyright" class="article-copyright" aria-hidden="true">
+                                Les informations AOF reproduites sur Capital.fr sont extraites du service d&#039;informations AOF.
+Ces informations sont protégées par des droits de propriété intellectuelle détenus par OPTION FINANCE SAS, éditeur du service d&#039;informations boursières en temps réel AOF, et de ses contributeurs.
+Par conséquent, toute reproduction, copie, duplication, modification, transfert, rediffusion, traduction, exploitation commerciale ou non, création de lien hypertexte ou réutilisation de quelque manière que ce soit de ces informations sont soumis à l&#039;accord préalable et écrit d&#039;OPTION FINANCE SAS et de ses contributeurs.
+AOF peut être joint à l&#039;adresse suivante aof@optionfinance.fr
+OPTION FINANCE SAS collecte ses données auprès des sources qu&#039;elle considère les plus sûres. Cependant sous réserve de sa faute lourde, OPTION FINANCES SAS et ses contributeurs ne garantissent aucunement l&#039;absence d&#039;erreur et de vices, même cachés, ni le caractère exhaustif ou le défaut de conformité à un usage quelconque de ces données et de OPTION FINANCE SAS ou de l&#039;un de ses contributeurs, et ne pourra être tenue responsable des retards ou interruptions qui pourraient affecter l&#039;accès à ces dernières.
+L&#039;utilisateur du service OPTION FINANCE SAS utilisera les données AOF à ses propres risques et devra tenir OPTION FINANCE SAS et ses contributeurs indemnes de toute réclamation résultant de cette utilisation.
+                            </div>
+                        
+                    
+                </footer>
+                                    <div class="endArticle"></div>
+        </article>
+        
+                    <div class="OUTBRAIN" data-src="https://www.capital.fr/entreprises-marches/les-valeurs-du-secteur-petrolier-attendues-en-forte-baisse-a-wall-street-1364831" data-widget-id="AR_1"></div>
+
+        
+        
+                    <section class="pmdfp-shoopbox-placer">
+                <div class="ads-core-placer" id="Pave-Bas2_5e70e5d02907c" data-ads-core='{"device":"tablet,desktop","type":"Pave-Bas2"}'></div>
+                <div class="shopbox">
+    <iframe src="https://abo.prismamediadigital.com/cap/1" sandbox="allow-popups allow-scripts allow-same-origin" class="sidebarIFrame" scrolling="no" frameborder="0" allowtransparency="true" width="300" height="250"></iframe>
+</div>
+            </section>
+        
+                    
+    <section class="articlelist ">
+
+                    <span class="articlelist-title heading heading--section">
+                                    <span class="rounded-icon">
+                                                    <svg class="icon-fleche" aria-hidden="true"><use xlink:href="#icon-fleche" /></svg>
+                                            </span>
+                                D&#039;autres articles qui pourraient vous intéresser
+            </span>
+        
+        
+                        
+            
+                                    
+                                    
+            <article class="" data-wide-target>
+
+                
+                    <figure class="articlelist-item-media">
+
+                        
+                                                            <picture class="ratio-4-3 ratio-16-9-tablet">
+                                    <source
+                                        media="(max-width: 480px)"
+                                        data-srcset="https://cap.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Fcap.2F2019.2F06.2F04.2F2f077978-26d5-497a-8912-7a72b39eadf2.2Ejpeg/180x135/background-color/ffffff/quality/70/picture.jpg">
+                                    <img
+                                        data-src="https://cap.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Fcap.2F2019.2F06.2F04.2F2f077978-26d5-497a-8912-7a72b39eadf2.2Ejpeg/300x169/background-color/ffffff/quality/70/picture.jpg" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="lazyload" alt="Fortes turbulences en vue pour le secteur aérien à l’ouverture de Wall Street">
+                                </picture>
+                                                    
+                                            </figure>
+                
+                <div class="articlelist-item-wrapper">
+                    <h2><a href="https://www.capital.fr/entreprises-marches/fortes-turbulences-en-vue-pour-le-secteur-aerien-a-louverture-de-wall-street-1364572" class="articlelist-item-title" data-wide>Fortes turbulences en vue pour le secteur aérien à l’ouverture de Wall Street</a></h2>
+
+                    
+                    
+                                        
+                </div>
+            </article>
+
+            
+            
+        
+                        
+            
+                                    
+                                    
+            <article class="" data-wide-target>
+
+                
+                    <figure class="articlelist-item-media">
+
+                        
+                                                            <picture class="ratio-4-3 ratio-16-9-tablet">
+                                    <source
+                                        media="(max-width: 480px)"
+                                        data-srcset="https://cap.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Fcap.2F2019.2F06.2F04.2F2f077978-26d5-497a-8912-7a72b39eadf2.2Ejpeg/180x135/background-color/ffffff/quality/70/picture.jpg">
+                                    <img
+                                        data-src="https://cap.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Fcap.2F2019.2F06.2F04.2F2f077978-26d5-497a-8912-7a72b39eadf2.2Ejpeg/300x169/background-color/ffffff/quality/70/picture.jpg" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="lazyload" alt="Le secteur pétrolier devrait souffrir à l’ouverture de Wall Street">
+                                </picture>
+                                                    
+                                            </figure>
+                
+                <div class="articlelist-item-wrapper">
+                    <h2><a href="https://www.capital.fr/entreprises-marches/le-secteur-petrolier-devrait-souffrir-a-louverture-de-wall-street-1364242" class="articlelist-item-title" data-wide>Le secteur pétrolier devrait souffrir à l’ouverture de Wall Street</a></h2>
+
+                    
+                    
+                                        
+                </div>
+            </article>
+
+            
+            
+        
+                        
+            
+                                    
+                                    
+            <article class="" data-wide-target>
+
+                
+                    <figure class="articlelist-item-media">
+
+                        
+                                                            <picture class="ratio-4-3 ratio-16-9-tablet">
+                                    <source
+                                        media="(max-width: 480px)"
+                                        data-srcset="https://cap.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Fcap.2F2019.2F06.2F04.2F2f077978-26d5-497a-8912-7a72b39eadf2.2Ejpeg/180x135/background-color/ffffff/quality/70/picture.jpg">
+                                    <img
+                                        data-src="https://cap.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Fcap.2F2019.2F06.2F04.2F2f077978-26d5-497a-8912-7a72b39eadf2.2Ejpeg/300x169/background-color/ffffff/quality/70/picture.jpg" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="lazyload" alt="TECHNIPFMC attendu en très forte baisse à Wall Street">
+                                </picture>
+                                                    
+                                            </figure>
+                
+                <div class="articlelist-item-wrapper">
+                    <h2><a href="https://www.capital.fr/entreprises-marches/technipfmc-attendu-en-tres-forte-baisse-a-wall-street-1364229" class="articlelist-item-title" data-wide>TECHNIPFMC attendu en très forte baisse à Wall Street</a></h2>
+
+                    
+                    
+                                        
+                </div>
+            </article>
+
+            
+            
+        
+                        
+            
+                                    
+                                    
+            <article class="" data-wide-target>
+
+                
+                    <figure class="articlelist-item-media">
+
+                        
+                                                            <picture class="ratio-4-3 ratio-16-9-tablet">
+                                    <source
+                                        media="(max-width: 480px)"
+                                        data-srcset="https://cap.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Fcap.2F2019.2F06.2F04.2F2f077978-26d5-497a-8912-7a72b39eadf2.2Ejpeg/180x135/background-color/ffffff/quality/70/picture.jpg">
+                                    <img
+                                        data-src="https://cap.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Fcap.2F2019.2F06.2F04.2F2f077978-26d5-497a-8912-7a72b39eadf2.2Ejpeg/300x169/background-color/ffffff/quality/70/picture.jpg" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="lazyload" alt="Les valeurs pétrolières dans la tourmente">
+                                </picture>
+                                                    
+                                            </figure>
+                
+                <div class="articlelist-item-wrapper">
+                    <h2><a href="https://www.capital.fr/entreprises-marches/les-valeurs-petrolieres-dans-la-tourmente-1364184" class="articlelist-item-title" data-wide>Les valeurs pétrolières dans la tourmente</a></h2>
+
+                    
+                    
+                                        
+                </div>
+            </article>
+
+            
+            
+        
+                        
+            
+                                    
+                                    
+            <article class="" data-wide-target>
+
+                
+                    <figure class="articlelist-item-media">
+
+                        
+                                                            <picture class="ratio-4-3 ratio-16-9-tablet">
+                                    <source
+                                        media="(max-width: 480px)"
+                                        data-srcset="https://cap.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Fcap.2F2019.2F06.2F04.2F2f077978-26d5-497a-8912-7a72b39eadf2.2Ejpeg/180x135/background-color/ffffff/quality/70/picture.jpg">
+                                    <img
+                                        data-src="https://cap.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Fcap.2F2019.2F06.2F04.2F2f077978-26d5-497a-8912-7a72b39eadf2.2Ejpeg/300x169/background-color/ffffff/quality/70/picture.jpg" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="lazyload" alt="Le secteur pétrolier américain malmené par la baisse du brut">
+                                </picture>
+                                                    
+                                            </figure>
+                
+                <div class="articlelist-item-wrapper">
+                    <h2><a href="https://www.capital.fr/entreprises-marches/le-secteur-petrolier-americain-malmene-par-la-baisse-du-brut-1362986" class="articlelist-item-title" data-wide>Le secteur pétrolier américain malmené par la baisse du brut</a></h2>
+
+                    
+                    
+                                        
+                </div>
+            </article>
+
+            
+            
+        
+                        
+            
+                                    
+                                    
+            <article class="" data-wide-target>
+
+                
+                    <figure class="articlelist-item-media">
+
+                        
+                                                            <picture class="ratio-4-3 ratio-16-9-tablet">
+                                    <source
+                                        media="(max-width: 480px)"
+                                        data-srcset="https://cap.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Fcap.2F2019.2F06.2F04.2F2f077978-26d5-497a-8912-7a72b39eadf2.2Ejpeg/180x135/background-color/ffffff/quality/70/picture.jpg">
+                                    <img
+                                        data-src="https://cap.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Fcap.2F2019.2F06.2F04.2F2f077978-26d5-497a-8912-7a72b39eadf2.2Ejpeg/300x169/background-color/ffffff/quality/70/picture.jpg" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="lazyload" alt="WALL STREET : les valeurs chinoises cotées à New York attendues en forte baisse">
+                                </picture>
+                                                    
+                                            </figure>
+                
+                <div class="articlelist-item-wrapper">
+                    <h2><a href="https://www.capital.fr/entreprises-marches/wall-street-les-valeurs-chinoises-cotees-a-new-york-attendues-en-forte-baisse-1360662" class="articlelist-item-title" data-wide>WALL STREET : les valeurs chinoises cotées à New York attendues en forte baisse</a></h2>
+
+                    
+                    
+                                        
+                </div>
+            </article>
+
+            
+            
+        
+                        
+            
+                                    
+                                    
+            <article class="" data-wide-target>
+
+                
+                    <figure class="articlelist-item-media">
+
+                        
+                                                            <picture class="ratio-4-3 ratio-16-9-tablet">
+                                    <source
+                                        media="(max-width: 480px)"
+                                        data-srcset="https://cap.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Fcap.2F2019.2F06.2F04.2F2f077978-26d5-497a-8912-7a72b39eadf2.2Ejpeg/180x135/background-color/ffffff/quality/70/picture.jpg">
+                                    <img
+                                        data-src="https://cap.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Fcap.2F2019.2F06.2F04.2F2f077978-26d5-497a-8912-7a72b39eadf2.2Ejpeg/300x169/background-color/ffffff/quality/70/picture.jpg" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="lazyload" alt="WALT DISNEY attendu en baisse à l&#039;ouverture de Wall Street">
+                                </picture>
+                                                    
+                                            </figure>
+                
+                <div class="articlelist-item-wrapper">
+                    <h2><a href="https://www.capital.fr/entreprises-marches/walt-disney-attendu-en-baisse-a-louverture-de-wall-street-1360661" class="articlelist-item-title" data-wide>WALT DISNEY attendu en baisse à l&#039;ouverture de Wall Street</a></h2>
+
+                    
+                    
+                                        
+                </div>
+            </article>
+
+            
+            
+        
+                        
+            
+                                    
+                                    
+            <article class="" data-wide-target>
+
+                
+                    <figure class="articlelist-item-media">
+
+                        
+                                                            <picture class="ratio-4-3 ratio-16-9-tablet">
+                                    <source
+                                        media="(max-width: 480px)"
+                                        data-srcset="https://cap.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Fcap.2F2019.2F06.2F04.2F2f077978-26d5-497a-8912-7a72b39eadf2.2Ejpeg/180x135/background-color/ffffff/quality/70/picture.jpg">
+                                    <img
+                                        data-src="https://cap.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Fcap.2F2019.2F06.2F04.2F2f077978-26d5-497a-8912-7a72b39eadf2.2Ejpeg/300x169/background-color/ffffff/quality/70/picture.jpg" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="lazyload" alt="WALT DISNEY attendu en baisse à l&#039;ouverture de Wall Street">
+                                </picture>
+                                                    
+                                            </figure>
+                
+                <div class="articlelist-item-wrapper">
+                    <h2><a href="https://www.capital.fr/entreprises-marches/walt-disney-attendu-en-baisse-a-louverture-de-wall-street-1360530" class="articlelist-item-title" data-wide>WALT DISNEY attendu en baisse à l&#039;ouverture de Wall Street</a></h2>
+
+                    
+                    
+                                        
+                </div>
+            </article>
+
+            
+            
+        
+                        
+            
+                                    
+                                    
+            <article class="" data-wide-target>
+
+                
+                    <figure class="articlelist-item-media">
+
+                        
+                                                            <picture class="ratio-4-3 ratio-16-9-tablet">
+                                    <source
+                                        media="(max-width: 480px)"
+                                        data-srcset="https://cap.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Fcap.2F2019.2F06.2F04.2F2f077978-26d5-497a-8912-7a72b39eadf2.2Ejpeg/180x135/background-color/ffffff/quality/70/picture.jpg">
+                                    <img
+                                        data-src="https://cap.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Fcap.2F2019.2F06.2F04.2F2f077978-26d5-497a-8912-7a72b39eadf2.2Ejpeg/300x169/background-color/ffffff/quality/70/picture.jpg" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="lazyload" alt="Les valeurs pétrolières recherchées">
+                                </picture>
+                                                    
+                                            </figure>
+                
+                <div class="articlelist-item-wrapper">
+                    <h2><a href="https://www.capital.fr/entreprises-marches/les-valeurs-petrolieres-recherchees-1350211" class="articlelist-item-title" data-wide>Les valeurs pétrolières recherchées</a></h2>
+
+                    
+                    
+                                        
+                </div>
+            </article>
+
+            
+            
+        
+                        
+            
+                                    
+                                    
+            <article class="" data-wide-target>
+
+                
+                    <figure class="articlelist-item-media">
+
+                        
+                                                            <picture class="ratio-4-3 ratio-16-9-tablet">
+                                    <source
+                                        media="(max-width: 480px)"
+                                        data-srcset="https://cap.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Fcap.2F2019.2F06.2F04.2F2f077978-26d5-497a-8912-7a72b39eadf2.2Ejpeg/180x135/background-color/ffffff/quality/70/picture.jpg">
+                                    <img
+                                        data-src="https://cap.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Fcap.2F2019.2F06.2F04.2F2f077978-26d5-497a-8912-7a72b39eadf2.2Ejpeg/300x169/background-color/ffffff/quality/70/picture.jpg" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="lazyload" alt="FIAT CHRYSLER attendu en forte hausse à Wall Street">
+                                </picture>
+                                                    
+                                            </figure>
+                
+                <div class="articlelist-item-wrapper">
+                    <h2><a href="https://www.capital.fr/entreprises-marches/fiat-chrysler-attendu-en-forte-hausse-a-wall-street-1339893" class="articlelist-item-title" data-wide>FIAT CHRYSLER attendu en forte hausse à Wall Street</a></h2>
+
+                    
+                    
+                                        
+                </div>
+            </article>
+
+            
+            
+        
+                        
+            
+                                    
+                                    
+            <article class="" data-wide-target>
+
+                
+                    <figure class="articlelist-item-media">
+
+                        
+                                                            <picture class="ratio-4-3 ratio-16-9-tablet">
+                                    <source
+                                        media="(max-width: 480px)"
+                                        data-srcset="https://cap.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Fcap.2F2019.2F06.2F04.2F2f077978-26d5-497a-8912-7a72b39eadf2.2Ejpeg/180x135/background-color/ffffff/quality/70/picture.jpg">
+                                    <img
+                                        data-src="https://cap.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Fcap.2F2019.2F06.2F04.2F2f077978-26d5-497a-8912-7a72b39eadf2.2Ejpeg/300x169/background-color/ffffff/quality/70/picture.jpg" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="lazyload" alt="BOEING : le titre attendu en forte baisse à Wall Street, après le crash d’un 737 Max 8">
+                                </picture>
+                                                    
+                                            </figure>
+                
+                <div class="articlelist-item-wrapper">
+                    <h2><a href="https://www.capital.fr/entreprises-marches/boeing-le-titre-attendu-en-forte-baisse-a-wall-street-apres-le-crash-dun-737-max-8-1330881" class="articlelist-item-title" data-wide>BOEING : le titre attendu en forte baisse à Wall Street, après le crash d’un 737 Max 8</a></h2>
+
+                    
+                    
+                                        
+                </div>
+            </article>
+
+            
+            
+        
+                        
+            
+                                    
+                                    
+            <article class="" data-wide-target>
+
+                
+                    <figure class="articlelist-item-media">
+
+                        
+                                                            <picture class="ratio-4-3 ratio-16-9-tablet">
+                                    <source
+                                        media="(max-width: 480px)"
+                                        data-srcset="https://cap.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Fcap.2F2019.2F06.2F04.2F2f077978-26d5-497a-8912-7a72b39eadf2.2Ejpeg/180x135/background-color/ffffff/quality/70/picture.jpg">
+                                    <img
+                                        data-src="https://cap.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Fcap.2F2019.2F06.2F04.2F2f077978-26d5-497a-8912-7a72b39eadf2.2Ejpeg/300x169/background-color/ffffff/quality/70/picture.jpg" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="lazyload" alt="AUTODESK attendu en forte hausse à Wall Street grâce à ses résultats solides">
+                                </picture>
+                                                    
+                                            </figure>
+                
+                <div class="articlelist-item-wrapper">
+                    <h2><a href="https://www.capital.fr/entreprises-marches/autodesk-attendu-en-forte-hausse-a-wall-street-grace-a-ses-resultats-solides-1304136" class="articlelist-item-title" data-wide>AUTODESK attendu en forte hausse à Wall Street grâce à ses résultats solides</a></h2>
+
+                    
+                    
+                                        
+                </div>
+            </article>
+
+            
+            
+            </section>
+            </main>
+                        
+    <aside class="page-aside" role="complementary">
+
+        
+    <section class="linklist ">
+
+        <span class="heading heading--section">
+            <span class="rounded-icon">
+                                    <svg class="icon-top-news" aria-hidden="true"><use xlink:href="#icon-top-news"/></svg>
+                            </span>
+            Les + lus&nbsp;: <strong>Entreprises et marchés</strong>
+        </span>
+
+        <ol>
+                            <li class="linklist-item">
+                    <a href="https://www.capital.fr/entreprises-marches/vous-attendez-la-fibre-optique-vous-allez-enfin-savoir-quand-le-raccordement-est-prevu-1364297">Vous attendez la fibre optique ? Vous allez enfin savoir quand le raccordement est prévu</a>
+                </li>
+                            <li class="linklist-item">
+                    <a href="https://www.capital.fr/entreprises-marches/une-bugatti-en-vente-pour-16-500-euros-mais-elle-est-en-bois-1364435">Une Bugatti en vente pour 16.500 euros. Mais elle est en bois</a>
+                </li>
+                            <li class="linklist-item">
+                    <a href="https://www.capital.fr/entreprises-marches/renault-plus-forte-hausse-du-cac-40-a-la-mi-seance-du-mardi-10-mars-2020-1364342">Le patron achète des actions, Renault s&#039;envole en Bourse</a>
+                </li>
+                            <li class="linklist-item">
+                    <a href="https://www.capital.fr/entreprises-marches/cac40-le-pire-reste-a-venir-selon-saxo-bank-le-conseil-bourse-du-jour-1364386">CAC40, “le pire reste à venir” selon Saxo Bank : le conseil Bourse du jour</a>
+                </li>
+                            <li class="linklist-item">
+                    <a href="https://www.capital.fr/entreprises-marches/coronavirus-decouvrez-en-images-la-spectaculaire-ruee-des-francais-vers-les-supermarches-1364762">Coronavirus : découvrez en images la spectaculaire ruée des Français vers les supermarchés</a>
+                </li>
+                    </ol>
+
+                    <a href="https://www.capital.fr/les-plus-lus" class="btn">
+                voir les + lus
+            </a>
+        
+    </section>
+
+
+                    <div class="ads-core-placer" id="Pave-Haut_5e70e5d02c299" data-ads-core='{"device":"tablet,desktop","type":"Pave-Haut"}'></div>
+            <div class="ads-core-placer" id="Bouton_5e70e5d02c29e" data-ads-core='{"device":"tablet,desktop","type":"Bouton"}'></div>
+
+            
+
+<section class="carousel ">
+
+        <span class="heading heading--section">
+                <span class="rounded-icon rounded-icon--video">
+            <svg class="icon-video" aria-hidden="true">
+                <use xlink:href="#icon-video">
+            </svg>
+        </span>
+                Vidéos à ne pas manquer
+    </span>
+    
+    <div class="carousel-wrapper">
+        <div class="carousel-container">
+                            
+                                
+                <div class="carousel-item" data-wide-target>
+                    <div class="carousel-item-image ratio-16-9">
+                                                <img data-src="https://cap.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Fcap.2F2020.2F03.2F17.2F1e2c1746-3f1e-485e-85e3-7ae94f58bf7c.2Ejpeg/300x169/background-color/ffffff/focus-point/653%2C503/quality/70/picture.jpg" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="lazyload" alt="">
+                        
+                        <svg class="icon-play" aria-hidden="true">
+                            <use xlink:href="#icon-play"></use>
+                        </svg>
+                    </div>
+
+                    <a href="https://www.capital.fr/economie-politique/comment-editer-lattestation-coronavirus-sur-votre-smartphone-1364964" class="carousel-item-title" data-wide>Comment éditer l’attestation coronavirus sur iPhone et Android</a>
+                </div>
+                            
+                                
+                <div class="carousel-item" data-wide-target>
+                    <div class="carousel-item-image ratio-16-9">
+                                                <img data-src="https://cap.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Fcap.2F2020.2F03.2F17.2F354309aa-2204-4aed-87e7-6f3bcb7dfb37.2Ejpeg/300x169/background-color/ffffff/focus-point/2303%2C754/quality/70/picture.jpg" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="lazyload" alt="Muriel Penicaud et Bruno Le Maire, à la sortie de l&#039;Elysée, le 19 février dernier.">
+                        
+                        <svg class="icon-play" aria-hidden="true">
+                            <use xlink:href="#icon-play"></use>
+                        </svg>
+                    </div>
+
+                    <a href="https://www.capital.fr/economie-politique/non-le-gouvernement-ninterdira-pas-les-licenciements-pendant-la-crise-1364956" class="carousel-item-title" data-wide>Non, le gouvernement n’interdira pas les licenciements pendant la crise</a>
+                </div>
+                            
+                                
+                <div class="carousel-item" data-wide-target>
+                    <div class="carousel-item-image ratio-16-9">
+                                                <img data-src="https://cap.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Fcap.2F2019.2F11.2F07.2F67f4f790-d6a9-4734-b963-80d0090c84e8.2Ejpeg/300x169/background-color/ffffff/quality/70/picture.jpg" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="lazyload" alt="">
+                        
+                        <svg class="icon-play" aria-hidden="true">
+                            <use xlink:href="#icon-play"></use>
+                        </svg>
+                    </div>
+
+                    <a href="https://www.capital.fr/votre-argent/independants-liberaux-comment-faire-pour-beneficier-du-fonds-de-soutien-1364942" class="carousel-item-title" data-wide>Indépendants, libéraux : comment faire pour bénéficier du fonds de soutien ?</a>
+                </div>
+                            
+                                
+                <div class="carousel-item" data-wide-target>
+                    <div class="carousel-item-image ratio-16-9">
+                                                <img data-src="https://cap.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Fcap.2F2020.2F01.2F09.2F592f01f2-b41f-4594-aa81-688f0fa75ab1.2Ejpeg/300x169/background-color/ffffff/quality/70/picture.jpg" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="lazyload" alt="">
+                        
+                        <svg class="icon-play" aria-hidden="true">
+                            <use xlink:href="#icon-play"></use>
+                        </svg>
+                    </div>
+
+                    <a href="https://www.capital.fr/entreprises-marches/des-nationalisations-sont-envisageables-annonce-bruno-le-maire-1364926" class="carousel-item-title" data-wide>Des nationalisations sont envisageables, annonce Bruno Le Maire</a>
+                </div>
+                            
+                                
+                <div class="carousel-item" data-wide-target>
+                    <div class="carousel-item-image ratio-16-9">
+                                                <img data-src="https://cap.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Fcap.2F2020.2F03.2F15.2F43f1eb1e-ba05-4248-99b4-3b13150255b6.2Epng/300x169/background-color/ffffff/quality/70/picture.jpg" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="lazyload" alt="">
+                        
+                        <svg class="icon-play" aria-hidden="true">
+                            <use xlink:href="#icon-play"></use>
+                        </svg>
+                    </div>
+
+                    <a href="https://www.capital.fr/economie-politique/la-liste-des-commerces-qui-vont-rester-ouverts-1364767" class="carousel-item-title" data-wide>Quincailleries, téléphonie… la liste des magasins ouverts est plus longue qu’on ne le pense</a>
+                </div>
+                            
+                                
+                <div class="carousel-item" data-wide-target>
+                    <div class="carousel-item-image ratio-16-9">
+                                                <img data-src="https://cap.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Fcap.2F2020.2F03.2F17.2Fc79d308b-0c70-48c2-a305-d6924a1cc1d4.2Epng/300x169/background-color/ffffff/quality/70/picture.jpg" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="lazyload" alt="">
+                        
+                        <svg class="icon-play" aria-hidden="true">
+                            <use xlink:href="#icon-play"></use>
+                        </svg>
+                    </div>
+
+                    <a href="https://www.capital.fr/economie-politique/attestation-coronavirus-voici-le-texte-a-recopier-si-vous-navez-pas-dimprimante-1364899" class="carousel-item-title" data-wide>Attestation coronavirus : voici le texte à recopier si vous n’avez pas d’imprimante</a>
+                </div>
+                            
+                                
+                <div class="carousel-item" data-wide-target>
+                    <div class="carousel-item-image ratio-16-9">
+                                                <img data-src="https://cap.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Fcap.2F2020.2F03.2F17.2F550d27e0-9941-4d85-8550-409b32e52541.2Ejpeg/300x169/background-color/ffffff/quality/70/picture.jpg" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="lazyload" alt="">
+                        
+                        <svg class="icon-play" aria-hidden="true">
+                            <use xlink:href="#icon-play"></use>
+                        </svg>
+                    </div>
+
+                    <a href="https://www.capital.fr/economie-politique/les-americains-se-ruent-vers-les-armureries-1364894" class="carousel-item-title" data-wide>Les Américains se ruent vers les armureries</a>
+                </div>
+                            
+                                
+                <div class="carousel-item" data-wide-target>
+                    <div class="carousel-item-image ratio-16-9">
+                                                <img data-src="https://cap.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Fcap.2F2019.2F12.2F09.2F562eee58-f834-4af0-b5b3-97a6acbeca1c.2Ejpeg/300x169/background-color/ffffff/focus-point/2506%2C1595/quality/70/picture.jpg" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="lazyload" alt="">
+                        
+                        <svg class="icon-play" aria-hidden="true">
+                            <use xlink:href="#icon-play"></use>
+                        </svg>
+                    </div>
+
+                    <a href="https://www.capital.fr/entreprises-marches/canal-bascule-tous-ses-programmes-en-clair-1364892" class="carousel-item-title" data-wide>Canal+ bascule tous ses programmes en clair</a>
+                </div>
+                            
+                                
+                <div class="carousel-item" data-wide-target>
+                    <div class="carousel-item-image ratio-16-9">
+                                                <img data-src="https://cap.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Fcap.2F2020.2F03.2F16.2Fc5a2a150-9817-4704-a49a-d7667c6a0696.2Ejpeg/300x169/background-color/ffffff/focus-point/529%2C519/quality/70/picture.jpg" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="lazyload" alt="">
+                        
+                        <svg class="icon-play" aria-hidden="true">
+                            <use xlink:href="#icon-play"></use>
+                        </svg>
+                    </div>
+
+                    <a href="https://www.capital.fr/economie-politique/un-test-du-coronavirus-bien-plus-rapide-debarque-dans-les-laboratoires-de-ville-1364891" class="carousel-item-title" data-wide>Un test du coronavirus bien plus rapide débarque dans les laboratoires de ville</a>
+                </div>
+                            
+                                
+                <div class="carousel-item" data-wide-target>
+                    <div class="carousel-item-image ratio-16-9">
+                                                <img data-src="https://cap.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Fcap.2F2020.2F03.2F16.2F11319bc5-681a-40ca-a645-44e2b3ed7065.2Ejpeg/300x169/background-color/ffffff/quality/70/picture.jpg" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="lazyload" alt="">
+                        
+                        <svg class="icon-play" aria-hidden="true">
+                            <use xlink:href="#icon-play"></use>
+                        </svg>
+                    </div>
+
+                    <a href="https://www.capital.fr/economie-politique/en-direct-les-annonces-demmanuel-macron-sur-le-coronavirus-et-les-municipales-1364883" class="carousel-item-title" data-wide>Déplacements pendant le coronavirus : ce qui est interdit, ce qui est toléré</a>
+                </div>
+                            
+                                
+                <div class="carousel-item" data-wide-target>
+                    <div class="carousel-item-image ratio-16-9">
+                                                <img data-src="https://cap.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2FAFP.2F2017.2F11.2F20.2F65e0437d-b38e-49ac-a247-810ea24d2a69.2Ejpeg/300x169/background-color/ffffff/quality/70/picture.jpg" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="lazyload" alt="">
+                        
+                        <svg class="icon-play" aria-hidden="true">
+                            <use xlink:href="#icon-play"></use>
+                        </svg>
+                    </div>
+
+                    <a href="https://www.capital.fr/entreprises-marches/auchan-annonce-la-mise-en-vente-de-21-sites-en-france-1336739" class="carousel-item-title" data-wide>Auchan annonce la mise en vente de 21 sites en France</a>
+                </div>
+                            
+                                
+                <div class="carousel-item" data-wide-target>
+                    <div class="carousel-item-image ratio-16-9">
+                                                <img data-src="https://cap.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Fcap.2F2019.2F04.2F16.2Fdb829333-cdab-4bf0-acf0-ff79e9927fea.2Ejpeg/300x169/background-color/ffffff/quality/70/picture.jpg" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="lazyload" alt="">
+                        
+                        <svg class="icon-play" aria-hidden="true">
+                            <use xlink:href="#icon-play"></use>
+                        </svg>
+                    </div>
+
+                    <a href="https://www.capital.fr/economie-politique/notre-dame-arnault-et-pinault-annoncent-pour-300-millions-deuros-de-dons-1335351" class="carousel-item-title" data-wide>Notre-Dame: Arnault et Pinault annoncent pour 300 millions d&#039;euros de dons</a>
+                </div>
+                            
+                                
+                <div class="carousel-item" data-wide-target>
+                    <div class="carousel-item-image ratio-16-9">
+                                                <img data-src="https://cap.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Fcap.2F2018.2F04.2F09.2F0225e4fb-d8f6-4d06-a7d5-57a16071a9a6.2Ejpeg/300x169/background-color/ffffff/quality/70/picture.jpg" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="lazyload" alt="Inde: sans motrice, un train bondé recule sur 12 kilomètres">
+                        
+                        <svg class="icon-play" aria-hidden="true">
+                            <use xlink:href="#icon-play"></use>
+                        </svg>
+                    </div>
+
+                    <a href="https://www.capital.fr/economie-politique/inde-sans-motrice-un-train-bonde-recule-sur-12-kilometres-1282028" class="carousel-item-title" data-wide>Inde: sans motrice, un train bondé recule sur 12 kilomètres</a>
+                </div>
+                            
+                                
+                <div class="carousel-item" data-wide-target>
+                    <div class="carousel-item-image ratio-16-9">
+                                                <img data-src="https://cap.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Fcap.2F2018.2F04.2F09.2Fdec4b28e-0702-4d2f-bd46-4caab4359655.2Ejpeg/300x169/background-color/ffffff/quality/70/picture.jpg" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="lazyload" alt="Grève SNCF: paroles d&#039;usagers gare Saint-Lazare">
+                        
+                        <svg class="icon-play" aria-hidden="true">
+                            <use xlink:href="#icon-play"></use>
+                        </svg>
+                    </div>
+
+                    <a href="https://www.capital.fr/votre-carriere/greve-sncf-paroles-dusagers-gare-saint-lazare-1282017" class="carousel-item-title" data-wide>Grève SNCF: paroles d&#039;usagers gare Saint-Lazare</a>
+                </div>
+                            
+                                
+                <div class="carousel-item" data-wide-target>
+                    <div class="carousel-item-image ratio-16-9">
+                                                <img data-src="https://cap.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Fcap.2F2018.2F04.2F09.2Fb876a76f-a1ef-42cf-ab0c-a49c640ede86.2Ejpeg/300x169/background-color/ffffff/quality/70/picture.jpg" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="lazyload" alt="NDDL:opération d&#039;expulsion, trois mois après l&#039;abandon du projet">
+                        
+                        <svg class="icon-play" aria-hidden="true">
+                            <use xlink:href="#icon-play"></use>
+                        </svg>
+                    </div>
+
+                    <a href="https://www.capital.fr/economie-politique/nddl-operation-dexpulsion-trois-mois-apres-labandon-du-projet-1282014" class="carousel-item-title" data-wide>NDDL:opération d&#039;expulsion, trois mois après l&#039;abandon du projet</a>
+                </div>
+                            
+                                
+                <div class="carousel-item" data-wide-target>
+                    <div class="carousel-item-image ratio-16-9">
+                                                <img data-src="https://cap.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Fcap.2F2018.2F04.2F09.2F1bca5699-b950-40f4-86af-7dd8a4e95e19.2Ejpeg/300x169/background-color/ffffff/quality/70/picture.jpg" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="lazyload" alt="Attaques en Syrie: localisation">
+                        
+                        <svg class="icon-play" aria-hidden="true">
+                            <use xlink:href="#icon-play"></use>
+                        </svg>
+                    </div>
+
+                    <a href="https://www.capital.fr/economie-politique/attaques-en-syrie-localisation-1282006" class="carousel-item-title" data-wide>Attaques en Syrie: localisation</a>
+                </div>
+                            
+                                
+                <div class="carousel-item" data-wide-target>
+                    <div class="carousel-item-image ratio-16-9">
+                                                <img data-src="https://cap.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Fcap.2F2018.2F04.2F09.2F595029f0-a0f6-4f3d-934b-2f95e80eec67.2Ejpeg/300x169/background-color/ffffff/quality/70/picture.jpg" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="lazyload" alt="Le &quot;Marathon des Sables&quot; s&#039;élance dans le désert marocain">
+                        
+                        <svg class="icon-play" aria-hidden="true">
+                            <use xlink:href="#icon-play"></use>
+                        </svg>
+                    </div>
+
+                    <a href="https://www.capital.fr/lifestyle/le-marathon-des-sables-selance-dans-le-desert-marocain-1281998" class="carousel-item-title" data-wide>Le &quot;Marathon des Sables&quot; s&#039;élance dans le désert marocain</a>
+                </div>
+                            
+                                
+                <div class="carousel-item" data-wide-target>
+                    <div class="carousel-item-image ratio-16-9">
+                                                <img data-src="https://cap.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Fcap.2F2018.2F04.2F09.2F7289f89c-6359-4b0f-a217-7002c48e7a93.2Ejpeg/300x169/background-color/ffffff/quality/70/picture.jpg" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="lazyload" alt="Syrie : frappes contre une base militaire">
+                        
+                        <svg class="icon-play" aria-hidden="true">
+                            <use xlink:href="#icon-play"></use>
+                        </svg>
+                    </div>
+
+                    <a href="https://www.capital.fr/economie-politique/syrie-frappes-contre-une-base-militaire-1281987" class="carousel-item-title" data-wide>Syrie : frappes contre une base militaire</a>
+                </div>
+                            
+                                
+                <div class="carousel-item" data-wide-target>
+                    <div class="carousel-item-image ratio-16-9">
+                                                <img data-src="https://cap.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Fcap.2F2018.2F04.2F08.2F7501d2e0-8adb-4056-96bb-f2e788f3c48a.2Ejpeg/300x169/background-color/ffffff/quality/70/picture.jpg" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="lazyload" alt="Le prince héritier saoudien est arrivé en France">
+                        
+                        <svg class="icon-play" aria-hidden="true">
+                            <use xlink:href="#icon-play"></use>
+                        </svg>
+                    </div>
+
+                    <a href="https://www.capital.fr/economie-politique/le-prince-heritier-saoudien-est-arrive-en-france-1281898" class="carousel-item-title" data-wide>Le prince héritier saoudien est arrivé en France</a>
+                </div>
+                            
+                                
+                <div class="carousel-item" data-wide-target>
+                    <div class="carousel-item-image ratio-16-9">
+                                                <img data-src="https://cap.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Fcap.2F2018.2F04.2F08.2F665a72e2-e9ae-4823-861c-b7e10763818b.2Ejpeg/300x169/background-color/ffffff/quality/70/picture.jpg" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="lazyload" alt="Syrie/Ghouta: l&#039;offensive reprend sur la dernière poche rebelle">
+                        
+                        <svg class="icon-play" aria-hidden="true">
+                            <use xlink:href="#icon-play"></use>
+                        </svg>
+                    </div>
+
+                    <a href="https://www.capital.fr/economie-politique/syrie-ghouta-loffensive-reprend-sur-la-derniere-poche-rebelle-1281894" class="carousel-item-title" data-wide>Syrie/Ghouta: l&#039;offensive reprend sur la dernière poche rebelle</a>
+                </div>
+                    </div>
+        <div class="carousel-controls">
+            <button class="carousel-control carousel-control--prev" aria-label="Précédent" aria-controls="carousel-0">
+                <svg class="icon-next-mask" aria-hidden="true">
+                    <use xlink:href="#icon-next-mask"></use>
+                </svg>
+            </button>
+            <button class="carousel-control carousel-control--next" aria-label="Suivant" aria-controls="carousel-0">
+                <svg class="icon-next-mask" aria-hidden="true">
+                    <use xlink:href="#icon-next-mask"></use>
+                </svg>
+            </button>
+        </div>
+    </div>
+</section>
+
+
+
+                                <section class="link-box">
+        <span class="heading">Services recommandés par Capital</span>
+        <ul>
+                                                <li>
+                        <svg class="icon-fleche" aria-hidden="true"><use xlink:href="#icon-fleche"></use></svg>
+                        <a href="https://www.capital.fr/votre-carriere/tout-savoir-sur-les-annonces-legales-1224385#utm_source=HR-entreprises-marches&amp;utm_medium=marque_blanche&amp;utm_campaign=annonces-legales">Publier son annonce légale</a>
+                    </li>
+                                                                <li>
+                        <svg class="icon-fleche" aria-hidden="true"><use xlink:href="#icon-fleche"></use></svg>
+                        <a href="http://comparateur.banques-pro.capital.fr/#utm_source=HR-entreprises-marches&amp;utm_medium=marque_blanche&amp;utm_campaign=comparateur-pro-panorabanques">Comparateur de banques pro</a>
+                    </li>
+                                                                <li>
+                        <svg class="icon-fleche" aria-hidden="true"><use xlink:href="#icon-fleche"></use></svg>
+                        <a href="http://comparateur.comptes-titres.capital.fr/#utm_source=HR-entreprises-marches&amp;utm_medium=marque_grise&amp;utm_campaign=comptes-titres-panorabanques">Comparateur de comptes titres</a>
+                    </li>
+                                    </ul>
+    </section>
+            
+                                            
+    
+                        <div class="custombox">
+                <a href="https://services.bemove.fr/capital/vp-prixtel-revelation"
+                title="Entreprises et marchés">
+                                            <img data-src="https://cap.img.pmdstatic.net/scale/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Fcap.2F2020.2F02.2F28.2F01edca6b-fa1c-4b49-b2e2-3aca6d7bb915.2Egif/300xauto/quality/70/picture.gif" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="lazyload" alt="">
+                                    </a>
+            </div>
+            
+                                            
+    
+            <div data-wide-target class="pushbox">
+                            <a data-wide class="pushbox__image" href="https://leclub.hbrfrance.fr/content/membership?utm_source=capfr&amp;utm_medium=ban&amp;utm_campaign=clubMC1" title="Le Club HBR">
+                        <img data-src="https://cap.img.pmdstatic.net/scale/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Fcap.2F2020.2F03.2F02.2Ff26d6ed8-040a-45b8-9732-59bd6c44feae.2Egif/360xauto/quality/70/picture.gif" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="lazyload" alt="" height="202" width="360">
+                            </a>
+                    </div>
+    
+            
+                            
+<section class="facebook-page" id="facebook-page">
+    <iframe class="lazyload" sandbox="allow-popups allow-scripts allow-same-origin" data-url="https://www.facebook.com/plugins/page.php?href=https://facebook.com/Capital.fr/&tabs&width=360&height=214&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="360" height="214" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+</section>
+            
+            <div class="ads-core-placer" id="Pave-Bas_5e70e5d04845e" data-ads-core='{"device":"tablet,desktop","type":"Pave-Bas"}'></div>
+            </aside>
+
+                    </div>
+                                                                                                    </div>
+            </div>
+        
+                    <footer class="page-footer" role="contentinfo">
+        <ul class="footer-links">
+        <li>
+            <a href="http://www.prismamedia.com/cgu-groupe-prisma/" target="_blank">Conditions générales d'utilisation</a>
+        </li>
+        <li>
+            <a href="http://www.prismamedia.com/charte-pour-la-protection-des-donnees/" target="_blank">
+                Charte pour la protection des données
+            </a>
+        </li>
+                    <li>
+                <button class="footer-links-button" onclick="window._sp_.privacyManager.loadPrivacyManagerModal(2492, '5c703cddb9639967dde767df')">
+                    Paramétrer vos cookies
+                </button>
+            </li>
+                <li>
+            <a href="http://www.prismamedia.com/mentions-legales-capital/" target="_blank">Mentions légales</a>
+        </li>
+        <li>
+            <a href="http://ops.capital.fr/magazines/" target="_blank">Tous vos magazines</a>
+        </li>
+
+        
+                                        
+        <li>
+            <a href="https://www.capital.fr/page/abonnement-capital" target="_blank">Abonnement magazine</a>
+        </li>
+        <li>
+            <a href="http://www.prismamediasolutions.com/les-marques/capital" target="_blank">Publicité</a>
+        </li>
+    </ul>
+
+    <p class="footer-copyright">
+        &copy; 2020 Prisma Media - Tous droits réservés<br>
+        Un site du groupe Prisma Media (G+J Network)
+    </p>
+
+</footer>
+        
+    </div>
+    <!-- /.page -->
+
+                <script type="text/javascript">
+            var j = document.createElement("script");
+            j.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2'
+            j.async = !0;
+            var fbTimeID = window.setTimeout(function() {
+                var i = document.getElementsByTagName("script")[0];
+                i.parentNode && i.parentNode.insertBefore(j, i)
+                console.warn('ok done 1', i);
+                window.clearTimeout(fbTimeID);
+            }, 750)
+        </script>
+                <script defer type="text/javascript" src="https://tra.scds.pmdstatic.net/pmd-browsertools/1.7.44/browsertools.js"></script>
+        <script async type="text/javascript" id="parsely-cfg" src="//cdn.parsely.com/keys/capital.fr/p.js"></script>
+
+                    <script type="text/javascript">
+                function addAnalytics(el) {
+  el.addEventListener('click', function (e) {
+    var catName = e.target.classList.contains('gros-titre') ? 'Gros titre' : 'Mise en avant de la rédaction';
+    var evt = {
+      eventCategory: catName,
+      eventAction: 'click',
+      eventLabel: e.target.innerText
+    };
+    console.log(evt);
+    ga('send', 'event', evt);
+  });
+}
+
+var redac = document.querySelectorAll('.mise-en-avant-redac');
+var boldTitle = document.querySelectorAll('.gros-titre');
+
+redac.length > 0 ? redac.forEach(addAnalytics) : ''
+boldTitle.length > 0 ? boldTitle.forEach(addAnalytics) : ''
+
+            </script>
+        
+            
+
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"fc2461609-","applicationID":"94223269","transactionName":"Y1RTbBdSVxFZABUIXloeck0WR1YPFxMMBW5XUEFREVJVPV4RDg9Fa1BDTAxQVQc=","queueTime":0,"applicationTime":422,"atts":"TxNQGl9IRB8=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>

@@ -1,0 +1,602 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"bb68f2bed9",applicationID:"214114386"};window.NREUM||(NREUM={}),__nr_require=function(e,n,t){function r(t){if(!n[t]){var i=n[t]={exports:{}};e[t][0].call(i.exports,function(n){var i=e[t][1][n];return r(i||n)},i,i.exports)}return n[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(e,n,t){function r(){}function i(e,n,t){return function(){return o(e,[u.now()].concat(f(arguments)),n?null:this,t),n?void 0:this}}var o=e("handle"),a=e(4),f=e(5),c=e("ee").get("tracer"),u=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",d=l+"ixn-";a(p,function(e,n){s[n]=i(l+n,!0,"api")}),s.addPageAction=i(l+"addPageAction",!0),s.setCurrentRouteName=i(l+"routeName",!0),n.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,n){var t={},r=this,i="function"==typeof n;return o(d+"tracer",[u.now(),e,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return n.apply(this,arguments)}catch(e){throw c.emit("fn-err",[arguments,this,e],t),e}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,n){m[n]=i(d+n)}),newrelic.noticeError=function(e,n){"string"==typeof e&&(e=new Error(e)),o("err",[e,u.now(),!1,n])}},{}],2:[function(e,n,t){function r(e,n){var t=e.getEntries();t.forEach(function(e){"first-paint"===e.name?c("timing",["fp",Math.floor(e.startTime)]):"first-contentful-paint"===e.name&&c("timing",["fcp",Math.floor(e.startTime)])})}function i(e,n){var t=e.getEntries();t.length>0&&c("lcp",[t[t.length-1]])}function o(e){if(e instanceof s&&!l){var n,t=Math.round(e.timeStamp);n=t>1e12?Date.now()-t:u.now()-t,l=!0,c("timing",["fi",t,{type:e.type,fid:n}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var a,f,c=e("handle"),u=e("loader"),s=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){a=new PerformanceObserver(r),f=new PerformanceObserver(i);try{a.observe({entryTypes:["paint"]}),f.observe({entryTypes:["largest-contentful-paint"]})}catch(p){}}if("addEventListener"in document){var l=!1,d=["click","keydown","mousedown","pointerdown","touchstart"];d.forEach(function(e){document.addEventListener(e,o,!1)})}}},{}],3:[function(e,n,t){function r(e,n){if(!i)return!1;if(e!==i)return!1;if(!n)return!0;if(!o)return!1;for(var t=o.split("."),r=n.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}n.exports={agent:i,version:o,match:r}},{}],4:[function(e,n,t){function r(e,n){var t=[],r="",o=0;for(r in e)i.call(e,r)&&(t[o]=n(r,e[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;n.exports=r},{}],5:[function(e,n,t){function r(e,n,t){n||(n=0),"undefined"==typeof t&&(t=e?e.length:0);for(var r=-1,i=t-n||0,o=Array(i<0?0:i);++r<i;)o[r]=e[n+r];return o}n.exports=r},{}],6:[function(e,n,t){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,n,t){function r(){}function i(e){function n(e){return e&&e instanceof r?e:e?c(e,f,o):o()}function t(t,r,i,o){if(!l.aborted||o){e&&e(t,r,i);for(var a=n(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function d(e,n){h[e]=v(e).concat(n)}function m(e,n){var t=h[e];if(t)for(var r=0;r<t.length;r++)t[r]===n&&t.splice(r,1)}function v(e){return h[e]||[]}function g(e){return p[e]=p[e]||i(t)}function w(e,n){u(e,function(e,t){n=n||"feature",y[t]=n,n in s||(s[n]=[])})}var h={},y={},b={on:d,addEventListener:d,removeEventListener:m,emit:t,get:g,listeners:v,context:n,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(l.aborted=!0,s=l.backlog={})}var f="nr@context",c=e("gos"),u=e(4),s={},p={},l=n.exports=i();l.backlog=s},{}],gos:[function(e,n,t){function r(e,n,t){if(i.call(e,n))return e[n];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,n,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return e[n]=r,r}var i=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(e,n,t){function r(e,n,t,r){i.buffer([e],r),i.emit(e,n,t)}var i=e("ee").get("handle");n.exports=r,r.ee=i},{}],id:[function(e,n,t){function r(e){var n=typeof e;return!e||"object"!==n&&"function"!==n?-1:e===window?0:a(e,o,function(){return i++})}var i=1,o="nr@id",a=e("gos");n.exports=r},{}],loader:[function(e,n,t){function r(){if(!x++){var e=E.info=NREUM.info,n=d.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&n))return s.abort();u(y,function(n,t){e[n]||(e[n]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=d.createElement("script");t.src="https://"+e.agent,n.parentNode.insertBefore(t,n)}}function i(){"complete"===d.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=e("handle"),u=e(4),s=e("ee"),p=e(3),l=window,d=l.document,m="addEventListener",v="attachEvent",g=l.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:l.setImmediate,CT:clearTimeout,XHR:g,REQ:l.Request,EV:l.Event,PR:l.Promise,MO:l.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1169.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=n.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};e(1),e(2),d[m]?(d[m]("DOMContentLoaded",o,!1),l[m]("load",r,!1)):(d[v]("onreadystatechange",i),l[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=e(6)},{}],"wrap-function":[function(e,n,t){function r(e){return!(e&&e instanceof Function&&e.apply&&!e[a])}var i=e("ee"),o=e(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;n.exports=function(e,n){function t(e,n,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){l([u,"",[r,a,i],f])}s(n+"start",[r,a,i],f);try{return c=e.apply(a,r)}catch(p){throw s(n+"err",[r,a,p],f),p}finally{s(n+"end",[r,a,c],f)}}return r(e)?e:(n||(n=""),nrWrapper[a]=e,p(e,nrWrapper),nrWrapper)}function u(e,n,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<n.length;c++)f=n[c],a=e[f],r(a)||(e[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||n){var o=c;c=!0;try{e.emit(t,r,i,n)}catch(a){l([a,t,r,i])}c=o}}function p(e,n){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(e);return t.forEach(function(t){Object.defineProperty(n,t,{get:function(){return e[t]},set:function(n){return e[t]=n,n}})}),n}catch(r){l([r])}for(var i in e)f.call(e,i)&&(n[i]=e[i]);return n}function l(n){try{e.emit("internal-error",n)}catch(t){}}return e||(e=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <title>Entre miedos y nuevos hábitos, finalizó el Ramadán</title>
+
+<!-- Google Tag Manager for WordPress by gtm4wp.com -->
+<script data-cfasync="false" data-pagespeed-no-defer>//<![CDATA[
+	var gtm4wp_datalayer_name = "dataLayer";
+	var dataLayer = dataLayer || [];
+//]]>
+</script>
+<!-- End Google Tag Manager for WordPress by gtm4wp.com --><!-- Jetpack Site Verification Tags -->
+<meta name="google-site-verification" content="CaOX7Rv87mwJePnFVVgv-yDvfdaPwQbQ6bmiC6F9YaQ" />
+
+<!-- This site is optimized with the Yoast SEO plugin v11.1.1 - https://yoast.com/wordpress/plugins/seo/ -->
+<meta name="description" content="Entre miedos y nuevos hábitos, finalizó el Ramadán"/>
+<link rel="canonical" href="https://elintransigente.com/mundo/2020/05/25/entre-miedos-y-nuevos-habitos-finalizo-el-ramadan/" />
+<meta property="og:locale" content="es_ES" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Entre miedos y nuevos hábitos, finalizó el Ramadán" />
+<meta property="og:description" content="Entre miedos y nuevos hábitos, finalizó el Ramadán" />
+<meta property="og:url" content="https://elintransigente.com/mundo/2020/05/25/entre-miedos-y-nuevos-habitos-finalizo-el-ramadan/" />
+<meta property="og:site_name" content="El Intransigente" />
+<meta property="article:publisher" content="https://www.facebook.com/diarioelintransigente/" />
+<meta property="article:tag" content="aislamiento" />
+<meta property="article:tag" content="musulmanes" />
+<meta property="article:tag" content="Ramadán" />
+<meta property="article:tag" content="religión" />
+<meta property="article:section" content="MUNDO" />
+<meta property="article:published_time" content="2020-05-25T12:44:13-03:00" />
+<meta property="article:modified_time" content="2020-05-25T12:44:14-03:00" />
+<meta property="og:updated_time" content="2020-05-25T12:44:14-03:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:description" content="Entre miedos y nuevos hábitos, finalizó el Ramadán" />
+<meta name="twitter:title" content="Entre miedos y nuevos hábitos, finalizó el Ramadán" />
+<meta name="twitter:site" content="@elintransigente" />
+<meta name="twitter:image" content="https://elintransigente.com/wp-content/uploads/2020/05/KAABBNOVBJBSJGFCPPGLD7LITA.png" />
+<meta name="twitter:creator" content="@elintransigente" />
+<script type='application/ld+json' class='yoast-schema-graph yoast-schema-graph--main'>{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://elintransigente.com/#organization","name":"El Intransigente","url":"https://elintransigente.com/","sameAs":["https://www.facebook.com/diarioelintransigente/","http://elintransigente","https://www.youtube.com/channel/UC8zuz4joM9MHZavOmbg6dpA","https://twitter.com/elintransigente"],"logo":{"@type":"ImageObject","@id":"https://elintransigente.com/#logo","url":"https://elintransigente.com/wp-content/uploads/2019/12/el-intransigente-b.png","width":436,"height":34,"caption":"El Intransigente"},"image":{"@id":"https://elintransigente.com/#logo"}},{"@type":"WebSite","@id":"https://elintransigente.com/#website","url":"https://elintransigente.com/","name":"El Intransigente","publisher":{"@id":"https://elintransigente.com/#organization"},"potentialAction":{"@type":"SearchAction","target":"https://elintransigente.com/?s={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"WebPage","@id":"https://elintransigente.com/mundo/2020/05/25/entre-miedos-y-nuevos-habitos-finalizo-el-ramadan/#webpage","url":"https://elintransigente.com/mundo/2020/05/25/entre-miedos-y-nuevos-habitos-finalizo-el-ramadan/","inLanguage":"es-AR","name":"Entre miedos y nuevos h\u00e1bitos, finaliz\u00f3 el Ramad\u00e1n","isPartOf":{"@id":"https://elintransigente.com/#website"},"image":{"@type":"ImageObject","@id":"https://elintransigente.com/mundo/2020/05/25/entre-miedos-y-nuevos-habitos-finalizo-el-ramadan/#primaryimage","url":"https://elintransigente.com/wp-content/uploads/2020/05/KAABBNOVBJBSJGFCPPGLD7LITA.png","width":1916,"height":1074,"caption":"Ramad\u00e1n"},"primaryImageOfPage":{"@id":"https://elintransigente.com/mundo/2020/05/25/entre-miedos-y-nuevos-habitos-finalizo-el-ramadan/#primaryimage"},"datePublished":"2020-05-25T12:44:13-03:00","dateModified":"2020-05-25T12:44:14-03:00","description":"Entre miedos y nuevos h\u00e1bitos, finaliz\u00f3 el Ramad\u00e1n","breadcrumb":{"@id":"https://elintransigente.com/mundo/2020/05/25/entre-miedos-y-nuevos-habitos-finalizo-el-ramadan/#breadcrumb"}},{"@type":"BreadcrumbList","@id":"https://elintransigente.com/mundo/2020/05/25/entre-miedos-y-nuevos-habitos-finalizo-el-ramadan/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"WebPage","@id":"https://elintransigente.com/","url":"https://elintransigente.com/","name":"Home"}},{"@type":"ListItem","position":2,"item":{"@type":"WebPage","@id":"https://elintransigente.com/mundo/2020/05/25/entre-miedos-y-nuevos-habitos-finalizo-el-ramadan/","url":"https://elintransigente.com/mundo/2020/05/25/entre-miedos-y-nuevos-habitos-finalizo-el-ramadan/","name":"Entre miedos y nuevos h\u00e1bitos, finaliz\u00f3 el Ramad\u00e1n"}}]},{"@type":"Article","@id":"https://elintransigente.com/mundo/2020/05/25/entre-miedos-y-nuevos-habitos-finalizo-el-ramadan/#article","isPartOf":{"@id":"https://elintransigente.com/mundo/2020/05/25/entre-miedos-y-nuevos-habitos-finalizo-el-ramadan/#webpage"},"author":{"@id":"https://elintransigente.com/author/nestormunoz/#author","name":"Nestor Mu\u00f1oz"},"publisher":{"@id":"https://elintransigente.com/#organization"},"headline":"Entre miedos y nuevos h\u00e1bitos, finaliz\u00f3 el Ramad\u00e1n","datePublished":"2020-05-25T12:44:13-03:00","dateModified":"2020-05-25T12:44:14-03:00","commentCount":0,"mainEntityOfPage":"https://elintransigente.com/mundo/2020/05/25/entre-miedos-y-nuevos-habitos-finalizo-el-ramadan/#webpage","image":{"@id":"https://elintransigente.com/mundo/2020/05/25/entre-miedos-y-nuevos-habitos-finalizo-el-ramadan/#primaryimage"},"keywords":"aislamiento,musulmanes,Ramad\u00e1n,religi\u00f3n","articleSection":"MUNDO"},{"@type":"Person","@id":"https://elintransigente.com/author/nestormunoz/#author","name":"Nestor Mu\u00f1oz","image":{"@type":"ImageObject","@id":"https://elintransigente.com/#personlogo","url":"https://secure.gravatar.com/avatar/3d08aee8e3e8001118e94ce8ee2867a7?s=96&d=mm&r=g","caption":"Nestor Mu\u00f1oz"},"sameAs":[]}]}</script>
+<!-- / Yoast SEO plugin. -->
+
+<link rel='dns-prefetch' href='//s.w.org' />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/elintransigente.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.4.2"}};
+			/*! This file is auto-generated */
+			!function(e,a,t){var r,n,o,i,p=a.createElement("canvas"),s=p.getContext&&p.getContext("2d");function c(e,t){var a=String.fromCharCode;s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,e),0,0);var r=p.toDataURL();return s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,t),0,0),r===p.toDataURL()}function l(e){if(!s||!s.fillText)return!1;switch(s.textBaseline="top",s.font="600 32px Arial",e){case"flag":return!c([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])&&(!c([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!c([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]));case"emoji":return!c([55357,56424,55356,57342,8205,55358,56605,8205,55357,56424,55356,57340],[55357,56424,55356,57342,8203,55358,56605,8203,55357,56424,55356,57340])}return!1}function d(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(i=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},o=0;o<i.length;o++)t.supports[i[o]]=l(i[o]),t.supports.everything=t.supports.everything&&t.supports[i[o]],"flag"!==i[o]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[i[o]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(r=t.source||{}).concatemoji?d(r.concatemoji):r.wpemoji&&r.twemoji&&(d(r.twemoji),d(r.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='all-css-0' href='https://elintransigente.com/_static/??/wp-includes/css/dist/block-library/style.min.css,/wp-content/mu-plugins/jetpack/modules/likes/style.css,/wp-content/themes/elintranews-theme/style.css?m=1592329660' type='text/css' media='all' />
+<style id='wp-block-library-inline-css'>
+.has-text-align-justify{text-align:justify;}
+</style>
+<style id='rocket-lazyload-inline-css'>
+.rll-youtube-player{position:relative;padding-bottom:56.23%;height:0;overflow:hidden;max-width:100%;}.rll-youtube-player iframe{position:absolute;top:0;left:0;width:100%;height:100%;z-index:100;background:0 0}.rll-youtube-player img{bottom:0;display:block;left:0;margin:auto;max-width:100%;width:100%;position:absolute;right:0;top:0;border:none;height:auto;cursor:pointer;-webkit-transition:.4s all;-moz-transition:.4s all;transition:.4s all}.rll-youtube-player img:hover{-webkit-filter:brightness(75%)}.rll-youtube-player .play{height:72px;width:72px;left:50%;top:50%;margin-left:-36px;margin-top:-36px;position:absolute;background:url(https://elintransigente.com/wp-content/plugins/rocket-lazy-load/assets/img/youtube.png) no-repeat;cursor:pointer}
+</style>
+<link rel='stylesheet' id='all-css-2' href='https://elintransigente.com/_static/??-eJyNjEEKgzAQRS/UOLVUsIvSo0iYhDhtMhOchNLbVwUXbsTd+/Deh282KFw8F0jV5FgDscLbl2zxA0lcjV5BRzt5Z537rUgcGlS9wHE9ECOoINloogTR3WgS8ZmXWdl40V/p2XaP9tbf+2v3BzrnRqM=' type='text/css' media='all' />
+<script type='text/javascript' src='https://elintransigente.com/_static/??-eJyVjlEOwiAMQC8kw2Vq9MN4FmQd66RlQnHZ7WVTf/wwMSFp0r73gp5GhWx9biHpobx7hji/RzWkjf4FKEIXjUBFyB/YBhZg0aPPDjnpNkdjwXsJhMqF4DwoMU6RYeMgLk0ntCtmFyIpCo9yL8oN4ndSeqDyC/DIhWCYklpXa+NVLlE/C9r0j2t7E+UKRha6Q1fcC53r/ak+NvWh2Q5PStxt3w=='></script>
+<link rel='https://api.w.org/' href='https://elintransigente.com/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://elintransigente.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://elintransigente.com/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 5.4.2" />
+<link rel='shortlink' href='https://wp.me/paV6wR-29Ug' />
+<link rel="alternate" type="application/json+oembed" href="https://elintransigente.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Felintransigente.com%2Fmundo%2F2020%2F05%2F25%2Fentre-miedos-y-nuevos-habitos-finalizo-el-ramadan%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://elintransigente.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Felintransigente.com%2Fmundo%2F2020%2F05%2F25%2Fentre-miedos-y-nuevos-habitos-finalizo-el-ramadan%2F&#038;format=xml" />
+
+<script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
+
+<!-- Google Tag Manager for WordPress by gtm4wp.com -->
+<script data-cfasync="false" data-pagespeed-no-defer>//<![CDATA[
+	var dataLayer_content = {"pagePostType":"post","pagePostType2":"single-post","pageCategory":["mundo"],"pageAttributes":["aislamiento","musulmanes","ramadan","religion"],"pagePostAuthor":"Nestor Muñoz"};
+	dataLayer.push( dataLayer_content );//]]>
+</script>
+<script data-cfasync="false">//<![CDATA[
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.'+'js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-W79XD7D');//]]>
+</script>
+<!-- End Google Tag Manager -->
+<!-- End Google Tag Manager for WordPress by gtm4wp.com -->
+<link rel='dns-prefetch' href='//v0.wordpress.com'/>
+<link rel='dns-prefetch' href='//widgets.wp.com'/>
+<link rel='dns-prefetch' href='//s0.wp.com'/>
+<link rel='dns-prefetch' href='//0.gravatar.com'/>
+<link rel='dns-prefetch' href='//1.gravatar.com'/>
+<link rel='dns-prefetch' href='//2.gravatar.com'/>
+<style type='text/css'>img#wpstats{display:none}</style>
+		<script type="text/javascript">
+			var title = decodeURIComponent('Entre%20miedos%20y%20nuevos%20h%C3%A1bitos%2C%20finaliz%C3%B3%20el%20Ramad%C3%A1n');
+			var category = decodeURIComponent('MUNDO');
+			var authorname = decodeURIComponent('Nestor%20Mu%C3%B1oz');
+			var tags = [{"term_id":9394,"name":"aislamiento","slug":"aislamiento","term_group":0,"term_taxonomy_id":9394,"taxonomy":"post_tag","description":"","parent":0,"count":90,"filter":"raw"},{"term_id":11968,"name":"musulmanes","slug":"musulmanes","term_group":0,"term_taxonomy_id":11968,"taxonomy":"post_tag","description":"","parent":0,"count":2,"filter":"raw"},{"term_id":11969,"name":"Ramad\u00e1n","slug":"ramadan","term_group":0,"term_taxonomy_id":11969,"taxonomy":"post_tag","description":"","parent":0,"count":2,"filter":"raw"},{"term_id":306,"name":"religi\u00f3n","slug":"religion","term_group":0,"term_taxonomy_id":306,"taxonomy":"post_tag","description":"","parent":0,"count":5,"filter":"raw"}];
+			ga_track_page(window.location.pathname, title, authorname, category, tags);
+		</script>
+
+	<link rel="amphtml" href="https://elintransigente.com/mundo/2020/05/25/entre-miedos-y-nuevos-habitos-finalizo-el-ramadan/?amp"><link rel="icon" href="https://elintransigente.com/wp-content/uploads/2019/10/15a81f7e-e67b-4703-bb58-a7a83212fe40.jpg?w=32" sizes="32x32" />
+<link rel="icon" href="https://elintransigente.com/wp-content/uploads/2019/10/15a81f7e-e67b-4703-bb58-a7a83212fe40.jpg?w=192" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://elintransigente.com/wp-content/uploads/2019/10/15a81f7e-e67b-4703-bb58-a7a83212fe40.jpg?w=180" />
+<meta name="msapplication-TileImage" content="https://elintransigente.com/wp-content/uploads/2019/10/15a81f7e-e67b-4703-bb58-a7a83212fe40.jpg?w=224" />
+			<link rel="stylesheet" type="text/css" id="wp-custom-css" href="https://elintransigente.com/?custom-css=64b206bb15" />
+		<noscript><style id="rocket-lazyload-nojs-css">.rll-youtube-player, [data-lazy-src]{display:none !important;}</style></noscript>
+        <!-- Start Alexa Certify Javascript -->
+      <script type="text/javascript">
+        _atrk_opts = {
+          atrk_acct: "c5gil1asWhy3Io",
+          domain: "elintransigente.com",
+          dynamic: true
+        };
+        (function() {
+          var as = document.createElement('script');
+          as.type = 'text/javascript';
+          as.async = true;
+          as.src = "https://certify-js.alexametrics.com/atrk.js";
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(as, s);
+        })();
+      </script>
+      <noscript><img src="https://certify.alexametrics.com/atrk.gif?account=c5gil1asWhy3Io" style="display:none" height="1" width="1" alt="" /></noscript>
+      <!-- End Alexa Certify Javascript -->
+
+      
+
+</head>
+
+<body class="post-template-default single single-post postid-514740 single-format-standard wp-custom-logo">
+
+  
+  <div id="home">
+        
+    
+    <header class="container">
+          <div id="customlogo">
+            <a href="https://elintransigente.com/" class="brand" rel="home"><img loading="lazy" width="920" height="149" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20920%20149'%3E%3C/svg%3E" class="brand" alt="El Intransigente" data-lazy-srcset="https://elintransigente.com/wp-content/uploads/2020/04/cropped-elintransigente-logo.png 920w, https://elintransigente.com/wp-content/uploads/2020/04/cropped-elintransigente-logo.png?resize=300,49 300w, https://elintransigente.com/wp-content/uploads/2020/04/cropped-elintransigente-logo.png?resize=768,124 768w" data-lazy-sizes="(max-width: 920px) 100vw, 920px" data-attachment-id="431433" data-permalink="https://elintransigente.com/cropped-elintransigente-logo-png/" data-orig-file="https://elintransigente.com/wp-content/uploads/2020/04/cropped-elintransigente-logo.png" data-orig-size="920,149" data-comments-opened="0" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="cropped-elintransigente-logo.png" data-image-description="&lt;p&gt;https://elintransigente.com/wp-content/uploads/2020/04/cropped-elintransigente-logo.png&lt;/p&gt;
+" data-medium-file="https://elintransigente.com/wp-content/uploads/2020/04/cropped-elintransigente-logo.png?w=300" data-large-file="https://elintransigente.com/wp-content/uploads/2020/04/cropped-elintransigente-logo.png?w=920" data-lazy-src="https://elintransigente.com/wp-content/uploads/2020/04/cropped-elintransigente-logo.png" /><noscript><img width="920" height="149" src="https://elintransigente.com/wp-content/uploads/2020/04/cropped-elintransigente-logo.png" class="brand" alt="El Intransigente" srcset="https://elintransigente.com/wp-content/uploads/2020/04/cropped-elintransigente-logo.png 920w, https://elintransigente.com/wp-content/uploads/2020/04/cropped-elintransigente-logo.png?resize=300,49 300w, https://elintransigente.com/wp-content/uploads/2020/04/cropped-elintransigente-logo.png?resize=768,124 768w" sizes="(max-width: 920px) 100vw, 920px" data-attachment-id="431433" data-permalink="https://elintransigente.com/cropped-elintransigente-logo-png/" data-orig-file="https://elintransigente.com/wp-content/uploads/2020/04/cropped-elintransigente-logo.png" data-orig-size="920,149" data-comments-opened="0" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="cropped-elintransigente-logo.png" data-image-description="&lt;p&gt;https://elintransigente.com/wp-content/uploads/2020/04/cropped-elintransigente-logo.png&lt;/p&gt;
+" data-medium-file="https://elintransigente.com/wp-content/uploads/2020/04/cropped-elintransigente-logo.png?w=300" data-large-file="https://elintransigente.com/wp-content/uploads/2020/04/cropped-elintransigente-logo.png?w=920" /></noscript></a>          </div>
+
+
+      <div class="search-bar">
+                              <form class="custom-form" id="searchform" method="get" action="https://elintransigente.com/">
+            <input type="text" class="search-field custom-search" name="s" placeholder="Buscar" value="">
+            <button type="submit" class="custom-button"><i class="fa fa-search"></i></button>
+        </form>
+                  </div>
+
+
+      <div class="social">
+        <a target="_blank" style="color: #1e3699;" href="https://www.facebook.com/diarioelintransigente/"><i class="fab fa-facebook-f"></i></a>
+        <a target="_blank" href="https://twitter.com/elintransigente"><i class="fab fa-twitter"></i></a>
+        <a target="_blank" style="color: #3a396b;" href="https://www.instagram.com/elintransigente/"><i class="fab fa-instagram"></i></a>
+      </div>
+
+      
+      <nav class="navigation">
+
+        <div class="nav-menu">
+          <ul id="menu-list">
+            
+                              <li class="parent-item ">
+                                    <a href="https://elintransigente.com/category/politica/">POLÍTICA</a>
+                                                                                                            </li>
+                                    
+                              <li class="parent-item ">
+                                    <a href="https://elintransigente.com/category/sociedad/">SOCIEDAD</a>
+                                                                                                            </li>
+                                    
+                              <li class="parent-item ">
+                                    <a href="https://elintransigente.com/category/economia/">ECONOMÍA</a>
+                                                                                                            </li>
+                                    
+                              <li class="parent-item ">
+                                    <a href="https://elintransigente.com/category/salud/">SALUD</a>
+                                                                                                            </li>
+                                    
+                              <li class="parent-item ">
+                                    <a href="https://elintransigente.com/category/mundo/">MUNDO</a>
+                                                                                                            </li>
+                                    
+                              <li class="parent-item has-childs">
+                                    <a href="https://elintransigente.com/category/deportes/">DEPORTES</a>
+                                                                                                                  
+                                                    <ul class="ul-sublist">
+                                        <li>
+                                        <a href="https://elintransigente.com/category/deportes/river/">RIVER PLATE</a>
+                                                                                                                  
+                                                    <li>
+                                        <a href="https://elintransigente.com/category/deportes/boca/">BOCA JUNIORS</a>
+                                                                                                                  
+                                                    <li>
+                                        <a href="https://elintransigente.com/category/deportes/independiente/">INDEPENDIENTE</a>
+                                                                                                                  
+                                                    <li>
+                                        <a href="https://elintransigente.com/category/deportes/san-lorenzo/">SAN LORENZO</a>
+                                                                                                                  
+                                                    <li>
+                                        <a href="https://elintransigente.com/category/deportes/racing/">RACING CLUB</a>
+                                                              </li>
+                    </ul>
+                                                                                    </li>
+                                    
+                              <li class="parent-item ">
+                                    <a href="https://elintransigente.com/category/espectaculo/">ESPECTÁCULO</a>
+                                                                                                            </li>
+                                    
+                              <li class="parent-item has-childs">
+                                    <a href="https://elintransigente.com/category/celebrities/">CELEBRITIES</a>
+                                                                                                                  
+                                                    <ul class="ul-sublist">
+                                        <li>
+                                        <a href="https://elintransigente.com/category/celebrities/vida-estilo/">VIDA &amp; ESTILO</a>
+                                                              </li>
+                    </ul>
+                                                                                    </li>
+                                    
+                              <li class="parent-item ">
+                                    <a href="https://elintransigente.com/category/tecno/">TECNO</a>
+                                                                                                            </li>
+                                    
+                              <li class="parent-item ">
+                                    <a href="https://elintransigente.com/category/music/">MUSIC</a>
+                                                                                                            </li>
+                                    
+                              <li class="parent-item ">
+                                    <a href="https://elintransigente.com/category/animals/">ANIMALS</a>
+                                                  </li>
+                      
+          </ul>
+        </div>
+      </nav><!-- #site-navigation -->
+    </header>
+
+        
+    <main>
+
+      
+
+
+<div id="single" class="content-area">
+    <div id="content" class="site-content" role="main">
+
+        
+
+        <div class="entry-header">
+            <div class="entry-galery">
+                <img loading="lazy" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%200'%3E%3C/svg%3E" width="100%" data-lazy-src="https://elintransigente.com/wp-content/uploads/2020/05/KAABBNOVBJBSJGFCPPGLD7LITA.png?w=1024?w=1000&amp;h=600&amp;crop=1"><noscript><img src="https://elintransigente.com/wp-content/uploads/2020/05/KAABBNOVBJBSJGFCPPGLD7LITA.png?w=1024?w=1000&amp;h=600&amp;crop=1" width="100%"></noscript>
+            </div>
+            <div class="entry-text">
+                <div class="entry-date">— Mayo, 25, 2020 09:44 am</div>
+
+                <h1 class="title-entry">Entre miedos y nuevos hábitos, finalizó el Ramadán</h1>
+
+                                    <div class="tags">
+                                                    <div class="tag"><a href="/tag/aislamiento/">aislamiento</a></div>
+                                                    <div class="tag"><a href="/tag/musulmanes/">musulmanes</a></div>
+                                                    <div class="tag"><a href="/tag/ramadan/">Ramadán</a></div>
+                                                    <div class="tag"><a href="/tag/religion/">religión</a></div>
+                                            </div>
+                            </div>
+        </div>
+                
+        <div id="single-container" class="container">
+            <div class="row">
+                <div class="col-8">
+                    <article class="entry-article" data-authorname="Nestor Muñoz" data-postid="514740">
+                        <div class="entry-summary">El aislamiento pudo más y las mezquitas estuvieron vacías</div>
+
+                                                
+
+                                                    <div class="ad">
+                            </div>
+                        
+
+
+                        <div class="entry-content">
+
+                            <div class="content-field">
+                                
+<p>Si alguien pensaba que algo tan delicado y respetado se iba a mantener inalterable ante la llegada de la <a href="https://elintransigente.com/salud/2020/05/22/oms-america-latina-es-el-nuevo-epicentro-de-la-pandemia/">pandemia</a>, eso podía haber sido, por ejemplo, el <strong>Ramadán</strong>. Pero no. Gran parte del mundo islámico comenzó el Eid al Fitr, para los musulmanes una de las celebraciones religiosas más importantes ya que se festeja el fin de un largo período de ayuno del <a href="https://elintransigente.com/tag/ramadan/">Ramadán</a>.</p>
+
+
+
+<p>Pero el <a href="https://elintransigente.com/mundo/2020/05/25/coronavirus-como-sera-la-reapertura-de-los-colegios-en-el-reino-unido/">coronavirus</a> detuvo todo gracias a su aislamiento, incluso en Arabia Saudita, donde se encuentran los lugares más sagrados del Islam, La Mecca y Medina. <mark>Desde el domingo pasado, por ejemplo, el reino impuso un toque de queda de cinco días, las 24 horas del día, luego de que los contagios se cuadruplicaran desde antes del Ramadán con 68 mil contagios, la cifra más alta entre los países del Golfo</mark>.</p><div class="special-content"><img src="" /></div>
+
+
+
+			<div class="nota-single-related">
+				<div class="titulo">MÁS DE </div>
+			</div>
+
+			
+					<article class="nota-12">
+						<div class="related-summary">
+							<div class="related-thumbnail">
+								<a href="https://elintransigente.com/mundo/2020/05/24/coronavirus-reabrio-el-santo-sepulcro-con-estrictas-medidas-de-prevencion-sanitaria/">
+									<img loading="lazy" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%200'%3E%3C/svg%3E" alt="" width="100%" data-lazy-src="https://elintransigente.com/wp-content/uploads/2020/05/santo1.png?w=1000"><noscript><img src="https://elintransigente.com/wp-content/uploads/2020/05/santo1.png?w=1000" alt="" width="100%"></noscript>
+								</a>
+							</div>
+							<div class="related-title">
+								<div class="volanta">MUNDO</div>
+								<a href="https://elintransigente.com/mundo/2020/05/24/coronavirus-reabrio-el-santo-sepulcro-con-estrictas-medidas-de-prevencion-sanitaria/">Coronavirus: reabrió el Santo Sepulcro, con estrictas medidas de prevención sanitaria</a>
+								<span>Entre ellas, se autoriza el ingreso de un máximo de 50 personas con mascarillas y sin síntomas relacionados con el COVID-19.</span>
+							</div>
+						</div>
+					</article>
+
+			
+
+
+<h2>Mezquitas vacías</h2>
+
+
+
+<p>Por ello, este 2020 las postales ya no fueron las mismas, con las dos mezquitas sagradas en las ciudades de Mecca y Medina donde antes estaban repletas de fieles, ahora permanecieron vacías producto de las nuevas normas. La mezquita Al-Aqsa de Jerusalén es el tercer sitio más sagrado del <a href="https://eacnur.org/es/islam-islamismo-islamista-y-musulman-aclaramos-terminos">Islam</a>, también estuvo vacío y sólo reabrirá después de Eid.</p><div class="special-content"><img src="" /></div>
+
+
+
+<p><mark>Si bien la cifras están en una curva ascendente, el total de víctimas de COVID-19 en Medio Oriente y en Asia fue menor si se lo compara con Europa y Estados Unidos. En Irán, con una alta cantidad de infectados, hubo duras restricciones, históricas para los habitantes que intentaron negarse al cambio de hábito obligado</mark>. En Irak señalan el inicio de la fiesta desde ayer, a su vez limitadas por diversas restricciones.</p>
+
+
+
+<p>De acuerdo a las cifras oficiales, en varios países la Policía tuvo que intervenir para disuadir a las aglomeraciones que tras las oraciones e presentaban en los mercados a comprar dulces. Indonesia, la nación musulmana más poblada del mundo, muchas personas falsificaron documentos para poder trasladarse. Emiratos Árabes, con más riqueza, también tuvo que obedecer: todos de rodillas ante el aislamiento social, con o sin Ramadán.</p>
+</p><div class="sharedaddy sd-sharing-enabled"><div class="robots-nocontent sd-block sd-social sd-social-icon sd-sharing"><div class="sd-content"><ul><li class="share-twitter"><a rel="nofollow noopener noreferrer" data-shared="sharing-twitter-514740" class="share-twitter sd-button share-icon no-text" href="https://elintransigente.com/mundo/2020/05/25/entre-miedos-y-nuevos-habitos-finalizo-el-ramadan/?share=twitter" target="_blank" title="Click to share on Twitter"><span></span><span class="sharing-screen-reader-text">Click to share on Twitter (Opens in new window)</span></a></li><li class="share-facebook"><a rel="nofollow noopener noreferrer" data-shared="sharing-facebook-514740" class="share-facebook sd-button share-icon no-text" href="https://elintransigente.com/mundo/2020/05/25/entre-miedos-y-nuevos-habitos-finalizo-el-ramadan/?share=facebook" target="_blank" title="Click to share on Facebook"><span></span><span class="sharing-screen-reader-text">Click to share on Facebook (Opens in new window)</span></a></li><li class="share-linkedin"><a rel="nofollow noopener noreferrer" data-shared="sharing-linkedin-514740" class="share-linkedin sd-button share-icon no-text" href="https://elintransigente.com/mundo/2020/05/25/entre-miedos-y-nuevos-habitos-finalizo-el-ramadan/?share=linkedin" target="_blank" title="Click to share on LinkedIn"><span></span><span class="sharing-screen-reader-text">Click to share on LinkedIn (Opens in new window)</span></a></li><li class="share-telegram"><a rel="nofollow noopener noreferrer" data-shared="" class="share-telegram sd-button share-icon no-text" href="https://elintransigente.com/mundo/2020/05/25/entre-miedos-y-nuevos-habitos-finalizo-el-ramadan/?share=telegram" target="_blank" title="Click to share on Telegram"><span></span><span class="sharing-screen-reader-text">Click to share on Telegram (Opens in new window)</span></a></li><li class="share-jetpack-whatsapp"><a rel="nofollow noopener noreferrer" data-shared="" class="share-jetpack-whatsapp sd-button share-icon no-text" href="https://elintransigente.com/mundo/2020/05/25/entre-miedos-y-nuevos-habitos-finalizo-el-ramadan/?share=jetpack-whatsapp" target="_blank" title="Click to share on WhatsApp"><span></span><span class="sharing-screen-reader-text">Click to share on WhatsApp (Opens in new window)</span></a></li><li class="share-end"></li></ul></div></div></div>                            </div>
+
+                                                                                    
+                        </div>
+                        <div class="entry-share">
+                            <small>Compartir en:</small>
+                            <a rel="nofollow noopener noreferrer" data-shared="sharing-twitter-514740" title="Click para compartir en Twitter" href="https://elintransigente.com/mundo/2020/05/25/entre-miedos-y-nuevos-habitos-finalizo-el-ramadan/?share=twitter&amp;nb=1" target="_blank"><i style="color: rgba(58, 57, 107, 1);" class="fab fa-twitter"></i></a>
+                            <a rel="nofollow noopener noreferrer" data-shared="sharing-facebook-514740" title="Click para compartir en Facebook" href="https://elintransigente.com/mundo/2020/05/25/entre-miedos-y-nuevos-habitos-finalizo-el-ramadan/?share=facebook&amp;nb=1" target="_blank"><i style="color: rgba(173, 33, 51, 1);" class="fab fa-facebook-f"></i></a>
+                            <a rel="nofollow noopener noreferrer" data-shared="sharing-linkedin-514740" title="Click para compartir en Linkedin" href="https://elintransigente.com/mundo/2020/05/25/entre-miedos-y-nuevos-habitos-finalizo-el-ramadan/?share=linkedin&amp;nb=1" target="_blank"><i style="color: rgba(58, 57, 107, 1);" class="fab fa-linkedin"></i></a>
+                            <a rel="nofollow noopener noreferrer" title="Click para compartir en Telegram" href="https://elintransigente.com/mundo/2020/05/25/entre-miedos-y-nuevos-habitos-finalizo-el-ramadan/?share=telegram&amp;nb=1" target="_blank"><i style="color: rgba(173, 33, 51, 1);" class="fab fa-telegram"></i></a>
+                            <a rel="nofollow noopener noreferrer" title="Click para compartir en Whatsapp" href="https://elintransigente.com/mundo/2020/05/25/entre-miedos-y-nuevos-habitos-finalizo-el-ramadan/?share=jetpack-whatsapp&amp;nb=1" data-action="share/whatsapp/share" target="_blank"><i style="color: rgba(58, 57, 107, 1);" class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-4 cont-ads">
+                                            <div class="ad sticky-column">
+
+                            <div class="banner-right">
+                                <!-- HOME WEB posición 4 responsive cuadrado -->
+
+
+
+                            </div>
+                        </div>
+                                                                            </div>
+            </div>
+        </div>
+
+    </div><!-- #content -->
+</div><!-- #primary -->
+
+
+<button id="goTop" title="Go to top"><i class="fas fa-chevron-up"></i></button>
+
+</main>
+
+<footer>
+  <div class="container">
+    <a href="https://elintransigente.com" class="brand">
+      <img loading="lazy" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E" data-lazy-srcset="https://elintransigente.com/wp-content/themes/elintranews-theme/src/images/logos/logo-el-intransigente-2.svg 2x" alt="El Intrasigente" data-lazy-src="https://elintransigente.com/wp-content/themes/elintranews-theme/src/images/logos/logo-el-intransigente-2.png"><noscript><img src="https://elintransigente.com/wp-content/themes/elintranews-theme/src/images/logos/logo-el-intransigente-2.png" srcset="https://elintransigente.com/wp-content/themes/elintranews-theme/src/images/logos/logo-el-intransigente-2.svg 2x" alt="El Intrasigente"></noscript>
+    </a>
+    <div class="sponsors">
+      <a href="https://elintranews.com/" target="_blank">
+        <img loading="lazy" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2080%200'%3E%3C/svg%3E" data-lazy-srcset="https://elintransigente.com/wp-content/themes/elintranews-theme/src/images/logos/logo-elintranews.svg 2x" alt="" width="80" data-lazy-src="https://elintransigente.com/wp-content/themes/elintranews-theme/src/images/logos/logo-elintranews.png"><noscript><img src="https://elintransigente.com/wp-content/themes/elintranews-theme/src/images/logos/logo-elintranews.png" srcset="https://elintransigente.com/wp-content/themes/elintranews-theme/src/images/logos/logo-elintranews.svg 2x" alt="" width="80"></noscript>
+      </a>
+      <a href="https://salta4400.com/" target="_blank">
+        <img loading="lazy" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20170%200'%3E%3C/svg%3E" data-lazy-srcset="https://elintransigente.com/wp-content/themes/elintranews-theme/src/images/logos/logo-salta-4400.svg 2x" alt="" width="170" data-lazy-src="https://elintransigente.com/wp-content/themes/elintranews-theme/src/images/logos/logo-salta-4400.png"><noscript><img src="https://elintransigente.com/wp-content/themes/elintranews-theme/src/images/logos/logo-salta-4400.png" srcset="https://elintransigente.com/wp-content/themes/elintranews-theme/src/images/logos/logo-salta-4400.svg 2x" alt="" width="170"></noscript>
+      </a>
+      <a href="https://elaconquija.com/" target="_blank">
+        <img loading="lazy" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20150%200'%3E%3C/svg%3E" data-lazy-srcset="https://elintransigente.com/wp-content/themes/elintranews-theme/src/images/logos/logo-el-aconquija.svg 2x" alt="" width="150" data-lazy-src="https://elintransigente.com/wp-content/themes/elintranews-theme/src/images/logos/logo-el-aconquija.png"><noscript><img src="https://elintransigente.com/wp-content/themes/elintranews-theme/src/images/logos/logo-el-aconquija.png" srcset="https://elintransigente.com/wp-content/themes/elintranews-theme/src/images/logos/logo-el-aconquija.svg 2x" alt="" width="150"></noscript>
+      </a>
+      <a href="https://elcivico.com/" target="_blank">
+        <img loading="lazy" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20130%200'%3E%3C/svg%3E" data-lazy-srcset="https://elintransigente.com/wp-content/themes/elintranews-theme/src/images/logos/logo-el-civico.svg 2x" alt="" width="130" data-lazy-src="https://elintransigente.com/wp-content/themes/elintranews-theme/src/images/logos/logo-el-civico.png"><noscript><img src="https://elintransigente.com/wp-content/themes/elintranews-theme/src/images/logos/logo-el-civico.png" srcset="https://elintransigente.com/wp-content/themes/elintranews-theme/src/images/logos/logo-el-civico.svg 2x" alt="" width="130"></noscript>
+      </a>
+      <a href="https://elintra.com.ar/" target="_blank">
+        <img loading="lazy" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20130%200'%3E%3C/svg%3E" data-lazy-srcset="https://elintransigente.com/wp-content/themes/elintranews-theme/src/images/logos/logo-el-intra-sport.svg 2x" alt="" width="130" data-lazy-src="https://elintransigente.com/wp-content/themes/elintranews-theme/src/images/logos/logo-el-intra-sport.png"><noscript><img src="https://elintransigente.com/wp-content/themes/elintranews-theme/src/images/logos/logo-el-intra-sport.png" srcset="https://elintransigente.com/wp-content/themes/elintranews-theme/src/images/logos/logo-el-intra-sport.svg 2x" alt="" width="130"></noscript>
+      </a>
+    </div>
+    <div class="content-data">
+      <div>
+        <h6>DIRECTOR</h6>
+        <ul>
+        <li><a href="mailto:director@elintransigente.com"><i class="fas fa-envelope footer-director"></i></a></li>
+        </ul>
+        <h6>MATERIAL PERIODÍSTICO</h6>
+        <ul>
+        <li><a href="mailto:redaccion@elintransigente.com"><i class="fas fa-envelope footer-redaccion"></i></a></li>
+        </ul>
+        <h6>TRABAJÁ CON NOSOTROS</h6>
+        <ul>
+          <li><a href="mailto:rrhh@elintransigente.com"><i class="fas fa-envelope footer-rrhh"></i></a></li>
+        </ul>
+      </div>
+      <div>
+        <h6>REDES SOCIALES</h6>
+        <ul class="list-social">
+          <li><a target="_blank" href="https://www.facebook.com/diarioelintransigente/"><img loading="lazy" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2020%200'%3E%3C/svg%3E" width="20" data-lazy-src="https://elintransigente.com/wp-content/themes/elintranews-theme/src/images/logos/icon-social-facebook.svg"><noscript><img src="https://elintransigente.com/wp-content/themes/elintranews-theme/src/images/logos/icon-social-facebook.svg" width="20"></noscript>/diarioelintransigente/</a></li>
+          <li><a target="_blank" href="https://twitter.com/elintransigente"><img loading="lazy" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2020%200'%3E%3C/svg%3E" width="20" data-lazy-src="https://elintransigente.com/wp-content/themes/elintranews-theme/src/images/logos/icon-social-twitter.svg"><noscript><img src="https://elintransigente.com/wp-content/themes/elintranews-theme/src/images/logos/icon-social-twitter.svg" width="20"></noscript>@elintransigente</a></li>
+          <li><a target="_blank" href="https://www.instagram.com/elintransigente/"><img loading="lazy" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2020%200'%3E%3C/svg%3E" width="20" data-lazy-src="https://elintransigente.com/wp-content/themes/elintranews-theme/src/images/logos/icon-social-instagram.svg"><noscript><img src="https://elintransigente.com/wp-content/themes/elintranews-theme/src/images/logos/icon-social-instagram.svg" width="20"></noscript>/elintransigente/</a></li>
+        </ul>
+      </div>
+      <div class="">
+        <h6>CONTACTO</h6>
+        <ul>
+          <li><a href="mailto:info@elintransigente.com"><i class="fas fa-envelope footer-info"></i></a></li>
+        </ul>
+        <h6>PUBLICIDAD</h6>
+        <ul>
+          <li><a href="mailto:publicidad@elintransigente.com"><i class="fas fa-envelope footer-publicidad"></i></a></li>
+        </ul>
+      </div>
+      <div>
+        <h6>ESTAMOS EN</h6>
+        <ul>
+          <li>
+            <a target="_blank" href="https://www.google.com/maps/place/Buenos+Aires,+CABA,+Argentina/@-34.6156624,-58.5035094,12z/data=!3m1!4b1!4m5!3m4!1s0x95bcca3b4ef90cbd:0xa0b3812e88e88e87!8m2!3d-34.6036844!4d-58.3815591"  class="footer-location"><img loading="lazy" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2020%200'%3E%3C/svg%3E" width="20" data-lazy-src="https://elintransigente.com/wp-content/themes/elintranews-theme/src/images/logos/icon-location.svg"><noscript><img src="https://elintransigente.com/wp-content/themes/elintranews-theme/src/images/logos/icon-location.svg" width="20"></noscript><br />
+            <span class="footer-location-text">Buenos Aires, Argentina</span></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="bajada">
+    <div class="container">
+      <p>El Intrasigente, República Argentina © Copyright 2020 // Todos los derechos reservados - <a href="">AVISO LEGAL</a></p>
+    </div>
+  </div>
+    </footer>
+		<script type="text/javascript">
+						var _sf_async_config={};
+			_sf_async_config.uid = "9269";
+			_sf_async_config.domain = "elintransigente.com";
+			_sf_async_config.useCanonical = "true";
+			 _sf_async_config.authors = "Nestor Mu\u00f1oz";
+			_sf_async_config.sections = "MUNDO";
+					(function(){
+			        function loadChartbeat() {
+					window._sf_endpt=(new Date()).getTime();
+					var e = document.createElement('script');
+					e.setAttribute('language', 'javascript');
+					e.setAttribute('type', 'text/javascript');
+					e.setAttribute('src', "\/\/static.chartbeat.com\/js\/chartbeat.js" );
+					document.body.appendChild(e);
+				  }
+				  var oldonload = window.onload;
+				  window.onload = (typeof window.onload != 'function') ?
+					 loadChartbeat : function() { try { oldonload(); } catch (e) { loadChartbeat(); throw e} loadChartbeat(); };
+				})();
+		</script>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W79XD7D"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+	<script type="text/javascript">
+		window.WPCOM_sharing_counts = {"https:\/\/elintransigente.com\/mundo\/2020\/05\/25\/entre-miedos-y-nuevos-habitos-finalizo-el-ramadan\/":514740};
+	</script>
+				<script>
+var beloadmore = {"url":"https:\/\/elintransigente.com\/wp-admin\/admin-ajax.php","nonce":"696b158ac2"};
+</script>
+<script type='text/javascript' src='https://elintransigente.com/_static/??/wp-content/themes/elintranews-theme/scripts.js,/wp-includes/js/wp-embed.min.js?m=1591831631j'></script>
+<script>
+var sharing_js_options = {"lang":"en","counts":"1","is_stats_active":"1"};
+</script>
+<script src='https://elintransigente.com/wp-content/mu-plugins/jetpack/_inc/build/sharedaddy/sharing.min.js?ver=8.6.1'></script>
+<script>
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-twitter', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomtwitter', 'menubar=1,resizable=1,width=600,height=350' );
+				return false;
+			});
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-facebook', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomfacebook', 'menubar=1,resizable=1,width=600,height=400' );
+				return false;
+			});
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-linkedin', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomlinkedin', 'menubar=1,resizable=1,width=580,height=450' );
+				return false;
+			});
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-telegram', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomtelegram', 'menubar=1,resizable=1,width=450,height=450' );
+				return false;
+			});
+</script>
+<script type='text/javascript' src='https://stats.wp.com/e-202025.js' async='async' defer='defer'></script>
+<script type='text/javascript'>
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:8.6.1',blog:'161373157',post:'514740',tz:'-3',srv:'elintransigente.com'} ]);
+	_stq.push([ 'clickTrackerInit', '161373157', '514740' ]);
+</script>
+<script>window.lazyLoadOptions = {
+                elements_selector: "[loading=lazy],.rocket-lazyload",
+                data_src: "lazy-src",
+                data_srcset: "lazy-srcset",
+                data_sizes: "lazy-sizes",
+                class_loading: "lazyloading",
+                class_loaded: "lazyloaded",
+                threshold: 300,
+                callback_loaded: function(element) {
+                    if ( element.tagName === "IFRAME" && element.dataset.rocketLazyload == "fitvidscompatible" ) {
+                        if (element.classList.contains("lazyloaded") ) {
+                            if (typeof window.jQuery != "undefined") {
+                                if (jQuery.fn.fitVids) {
+                                    jQuery(element).parent().fitVids();
+                                }
+                            }
+                        }
+                    }
+                },
+use_native: true};
+        window.addEventListener('LazyLoad::Initialized', function (e) {
+            var lazyLoadInstance = e.detail.instance;
+        
+            if (window.MutationObserver) {
+                var observer = new MutationObserver(function(mutations) {
+                    var image_count = 0;
+                    var iframe_count = 0;
+                    var rocketlazy_count = 0;
+
+                    mutations.forEach(function(mutation) {
+                        for (i = 0; i < mutation.addedNodes.length; i++) {
+                            if (typeof mutation.addedNodes[i].getElementsByTagName !== 'function') {
+                                return;
+                            }
+
+                           if (typeof mutation.addedNodes[i].getElementsByClassName !== 'function') {
+                                return;
+                            }
+
+                            images = mutation.addedNodes[i].getElementsByTagName('img');
+                            is_image = mutation.addedNodes[i].tagName == "IMG";
+                            iframes = mutation.addedNodes[i].getElementsByTagName('iframe');
+                            is_iframe = mutation.addedNodes[i].tagName == "IFRAME";
+                            rocket_lazy = mutation.addedNodes[i].getElementsByClassName('rocket-lazyload');
+
+                            image_count += images.length;
+			                iframe_count += iframes.length;
+			                rocketlazy_count += rocket_lazy.length;
+                            
+                            if(is_image){
+                                image_count += 1;
+                            }
+
+                            if(is_iframe){
+                                iframe_count += 1;
+                            }
+                        }
+                    } );
+
+                    if(image_count > 0 || iframe_count > 0 || rocketlazy_count > 0){
+                        lazyLoadInstance.update();
+                    }
+                } );
+                
+                var b      = document.getElementsByTagName("body")[0];
+                var config = { childList: true, subtree: true };
+                
+                observer.observe(b, config);
+            }
+        }, false);</script><script data-no-minify="1" async src="https://elintransigente.com/wp-content/plugins/rocket-lazy-load/assets/js/12.0/lazyload.min.js"></script><script>function lazyLoadThumb(e){var t='<img loading="lazy" data-lazy-src="https://i.ytimg.com/vi/ID/hqdefault.jpg" alt="" width="480" height="360"><noscript><img src="https://i.ytimg.com/vi/ID/hqdefault.jpg" alt="" width="480" height="360"></noscript>',a='<div class="play"></div>';return t.replace("ID",e)+a}function lazyLoadYoutubeIframe(){var e=document.createElement("iframe"),t="https://www.youtube.com/embed/ID?autoplay=1";t+=0===this.dataset.query.length?'':'&'+this.dataset.query;e.setAttribute("src",t.replace("ID",this.dataset.id)),e.setAttribute("frameborder","0"),e.setAttribute("allowfullscreen","1"),e.setAttribute("allow", "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"),this.parentNode.replaceChild(e,this)}document.addEventListener("DOMContentLoaded",function(){var e,t,a=document.getElementsByClassName("rll-youtube-player");for(t=0;t<a.length;t++)e=document.createElement("div"),e.setAttribute("data-id",a[t].dataset.id),e.setAttribute("data-query", a[t].dataset.query),e.innerHTML=lazyLoadThumb(a[t].dataset.id),e.onclick=lazyLoadYoutubeIframe,a[t].appendChild(e)});</script><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"bb68f2bed9","applicationID":"214114386","transactionName":"ZVZVbEZYVkYFUxVQXlwcdltAUFdbS0MIV1ZeVg==","queueTime":0,"applicationTime":246,"atts":"SRFCGg5CRRlGUUMDSk9O","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+
+</html>

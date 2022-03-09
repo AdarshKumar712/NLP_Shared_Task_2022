@@ -1,0 +1,982 @@
+<!doctype html>
+<html lang="es" class="">
+<head>
+	<meta charset="UTF-8"><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"53cef82690",applicationID:"189190456"};window.NREUM||(NREUM={}),__nr_require=function(e,n,t){function r(t){if(!n[t]){var i=n[t]={exports:{}};e[t][0].call(i.exports,function(n){var i=e[t][1][n];return r(i||n)},i,i.exports)}return n[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(e,n,t){function r(){}function i(e,n,t){return function(){return o(e,[u.now()].concat(f(arguments)),n?null:this,t),n?void 0:this}}var o=e("handle"),a=e(4),f=e(5),c=e("ee").get("tracer"),u=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",d=l+"ixn-";a(p,function(e,n){s[n]=i(l+n,!0,"api")}),s.addPageAction=i(l+"addPageAction",!0),s.setCurrentRouteName=i(l+"routeName",!0),n.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,n){var t={},r=this,i="function"==typeof n;return o(d+"tracer",[u.now(),e,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return n.apply(this,arguments)}catch(e){throw c.emit("fn-err",[arguments,this,e],t),e}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,n){m[n]=i(d+n)}),newrelic.noticeError=function(e,n){"string"==typeof e&&(e=new Error(e)),o("err",[e,u.now(),!1,n])}},{}],2:[function(e,n,t){function r(e,n){var t=e.getEntries();t.forEach(function(e){"first-paint"===e.name?c("timing",["fp",Math.floor(e.startTime)]):"first-contentful-paint"===e.name&&c("timing",["fcp",Math.floor(e.startTime)])})}function i(e,n){var t=e.getEntries();t.length>0&&c("lcp",[t[t.length-1]])}function o(e){if(e instanceof s&&!l){var n,t=Math.round(e.timeStamp);n=t>1e12?Date.now()-t:u.now()-t,l=!0,c("timing",["fi",t,{type:e.type,fid:n}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var a,f,c=e("handle"),u=e("loader"),s=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){a=new PerformanceObserver(r),f=new PerformanceObserver(i);try{a.observe({entryTypes:["paint"]}),f.observe({entryTypes:["largest-contentful-paint"]})}catch(p){}}if("addEventListener"in document){var l=!1,d=["click","keydown","mousedown","pointerdown","touchstart"];d.forEach(function(e){document.addEventListener(e,o,!1)})}}},{}],3:[function(e,n,t){function r(e,n){if(!i)return!1;if(e!==i)return!1;if(!n)return!0;if(!o)return!1;for(var t=o.split("."),r=n.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}n.exports={agent:i,version:o,match:r}},{}],4:[function(e,n,t){function r(e,n){var t=[],r="",o=0;for(r in e)i.call(e,r)&&(t[o]=n(r,e[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;n.exports=r},{}],5:[function(e,n,t){function r(e,n,t){n||(n=0),"undefined"==typeof t&&(t=e?e.length:0);for(var r=-1,i=t-n||0,o=Array(i<0?0:i);++r<i;)o[r]=e[n+r];return o}n.exports=r},{}],6:[function(e,n,t){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,n,t){function r(){}function i(e){function n(e){return e&&e instanceof r?e:e?c(e,f,o):o()}function t(t,r,i,o){if(!l.aborted||o){e&&e(t,r,i);for(var a=n(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function d(e,n){h[e]=v(e).concat(n)}function m(e,n){var t=h[e];if(t)for(var r=0;r<t.length;r++)t[r]===n&&t.splice(r,1)}function v(e){return h[e]||[]}function g(e){return p[e]=p[e]||i(t)}function w(e,n){u(e,function(e,t){n=n||"feature",y[t]=n,n in s||(s[n]=[])})}var h={},y={},b={on:d,addEventListener:d,removeEventListener:m,emit:t,get:g,listeners:v,context:n,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(l.aborted=!0,s=l.backlog={})}var f="nr@context",c=e("gos"),u=e(4),s={},p={},l=n.exports=i();l.backlog=s},{}],gos:[function(e,n,t){function r(e,n,t){if(i.call(e,n))return e[n];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,n,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return e[n]=r,r}var i=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(e,n,t){function r(e,n,t,r){i.buffer([e],r),i.emit(e,n,t)}var i=e("ee").get("handle");n.exports=r,r.ee=i},{}],id:[function(e,n,t){function r(e){var n=typeof e;return!e||"object"!==n&&"function"!==n?-1:e===window?0:a(e,o,function(){return i++})}var i=1,o="nr@id",a=e("gos");n.exports=r},{}],loader:[function(e,n,t){function r(){if(!x++){var e=E.info=NREUM.info,n=d.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&n))return s.abort();u(y,function(n,t){e[n]||(e[n]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=d.createElement("script");t.src="https://"+e.agent,n.parentNode.insertBefore(t,n)}}function i(){"complete"===d.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=e("handle"),u=e(4),s=e("ee"),p=e(3),l=window,d=l.document,m="addEventListener",v="attachEvent",g=l.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:l.setImmediate,CT:clearTimeout,XHR:g,REQ:l.Request,EV:l.Event,PR:l.Promise,MO:l.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1169.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=n.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};e(1),e(2),d[m]?(d[m]("DOMContentLoaded",o,!1),l[m]("load",r,!1)):(d[v]("onreadystatechange",i),l[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=e(6)},{}],"wrap-function":[function(e,n,t){function r(e){return!(e&&e instanceof Function&&e.apply&&!e[a])}var i=e("ee"),o=e(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;n.exports=function(e,n){function t(e,n,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){l([u,"",[r,a,i],f])}s(n+"start",[r,a,i],f);try{return c=e.apply(a,r)}catch(p){throw s(n+"err",[r,a,p],f),p}finally{s(n+"end",[r,a,c],f)}}return r(e)?e:(n||(n=""),nrWrapper[a]=e,p(e,nrWrapper),nrWrapper)}function u(e,n,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<n.length;c++)f=n[c],a=e[f],r(a)||(e[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||n){var o=c;c=!0;try{e.emit(t,r,i,n)}catch(a){l([a,t,r,i])}c=o}}function p(e,n){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(e);return t.forEach(function(t){Object.defineProperty(n,t,{get:function(){return e[t]},set:function(n){return e[t]=n,n}})}),n}catch(r){l([r])}for(var i in e)f.call(e,i)&&(n[i]=e[i]);return n}function l(n){try{e.emit("internal-error",n)}catch(t){}}return e||(e=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<link rel="profile" href="https://gmpg.org/xfn/11">
+
+	<title>El gobernador de NY urge a los participantes de las protestas realizarse las pruebas de COVID-19 &#8211; Telemundo New York (47)</title>
+<link rel='dns-prefetch' href='//ak.sail-horizon.com' />
+<link rel='dns-prefetch' href='//native.sharethrough.com' />
+<link rel='dns-prefetch' href='//js-sec.indexww.com' />
+<link rel='dns-prefetch' href='//use.fontawesome.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="Telemundo New York (47) &raquo; Feed" href="https://www.telemundo47.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Telemundo New York (47) &raquo;  RSS de los comentarios" href="/feed/" />
+<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='all-css-0' href='https://www.telemundo47.com/_static/??-eJyVjUEKwjAQRS9kOq0i1IV4lskk1cHpNGRSJLc3CBY3Xbh9/z0+vJKjRUvUAknWO6sBBidYYzannoDsl4QpdY0c4L9ua1hJ1hDtMwe2Al4WejphnzFXsFIldjPrToH24PZr+wqGNjmP+avc5utwvgzjcexP/Rv56ldb' type='text/css' media='all' />
+<style id='wp-block-library-inline-css'>
+.has-text-align-justify{text-align:justify;}
+</style>
+<style id='admin-bar-inline-css'>
+#wp-admin-bar-my-sites-search.hide-if-no-js {
+	display: none;
+}
+#wp-admin-bar-my-sites-search label[for="my-sites-search-text"] {
+	clip: rect(1px, 1px, 1px, 1px);
+	position: absolute !important;
+	height: 1px;
+	width: 1px;
+	overflow: hidden;
+}
+#wp-admin-bar-my-sites-search {
+	height: 38px;
+}
+#wp-admin-bar-my-sites-search .ab-item {
+	height: 34px;
+}
+#wp-admin-bar-my-sites-search input {
+	padding: 0 2px;
+	width: 95%;
+	width: calc( 100% - 4px );
+}
+	
+</style>
+<link crossorigin="anonymous" rel='stylesheet' id='font-awesome-css'  href='https://use.fontawesome.com/releases/v5.9.0/css/all.css' media='all' />
+<link rel='stylesheet' id='all-css-2' href='https://www.telemundo47.com/_static/??-eJydzlsOwiAQheENKTDtDIUH41pgOiiRi7EYt299cAH6/J98Ofp1P3JvQ9rQ4ypVNt0iH7cRRu5Nc8mfEp+5rJq3PfYW6l0lGxwDrbJMiNbjgpBUzU3tm4P+0eRea2/KiaCfTURYySZ26P2k+Ppst7/lS+kxFGWMIbFAFMDSftbHOP9thsfIXEQJTg5XWpBMwpn8jCl+0XM9AXlwMHmCN4ZNeTY=' type='text/css' media='all' />
+<script src='https://www.telemundo47.com/wp-includes/js/jquery/jquery.js?ver=1.12.4-wp'></script>
+<script>
+jQuery(document).ready( function($) {
+	$('#wp-admin-bar-my-sites-search.hide-if-no-js').show();
+	$('#wp-admin-bar-my-sites-search input').keyup( function( ) {
+
+		var searchValRegex = new RegExp( $(this).val(), 'i');
+
+		$('#wp-admin-bar-my-sites-list > li.menupop').hide().filter(function() {
+
+			return searchValRegex.test( $(this).find('> a').text() );
+
+		}).show();
+
+	});
+});
+	
+</script>
+<script>
+var adLayersDFP = {"layerDebugLabel":"Current ad layer","consoleDebugLabel":"Switch to Google console","adUnitPrefix":"div-gpt-ad-"};
+</script>
+<script>
+var adLayersAdServer = {"jsAPIClass":"AdLayersDFPAPI"};
+</script>
+<script type='text/javascript' src='https://www.telemundo47.com/_static/??-eJzTLy/QzcxLzilNSS3WzwKiwtLUokoopZubmV6UWJKql5uZp5dVrKMPVJycn1eSmleiX5BTmp6ZV6yfmKKbk1iZWlSsm5eUDDIBIZCSVkC6LqAO+1xbQ1NLQwsjCwNjgywAQr46fw=='></script>
+<script src='https://www.telemundo47.com/wp-includes/js/dist/vendor/wp-polyfill.min.js?ver=7.4.4'></script>
+<script>
+( 'fetch' in window ) || document.write( '<script src="https://www.telemundo47.com/wp-includes/js/dist/vendor/wp-polyfill-fetch.min.js?ver=3.0.0"></scr' + 'ipt>' );( document.contains ) || document.write( '<script src="https://www.telemundo47.com/wp-includes/js/dist/vendor/wp-polyfill-node-contains.min.js?ver=3.26.0-0"></scr' + 'ipt>' );( window.FormData && window.FormData.prototype.keys ) || document.write( '<script src="https://www.telemundo47.com/wp-includes/js/dist/vendor/wp-polyfill-formdata.min.js?ver=3.0.12"></scr' + 'ipt>' );( Element.prototype.matches && Element.prototype.closest ) || document.write( '<script src="https://www.telemundo47.com/wp-includes/js/dist/vendor/wp-polyfill-element-closest.min.js?ver=2.0.2"></scr' + 'ipt>' );
+</script>
+<script type='text/javascript' src='https://www.telemundo47.com/wp-includes/js/dist/i18n.min.js?m=1591828030g'></script>
+<script>
+var nbc = {"brand":"telemundo","callLetters":"WNJU","env":"production","fullDomain":"telemundo47.com","globalSiteKey":"tlmd-nyc","comscore_c4":"TELEMUNDO 47","on_air_name":"Telemundo 47","host":"telemundo47.com","market":"telemundo47","pdkAcct":"TQboeC","sensitive":"","siteKey":"tlmd-nyc","themeUrl":"https:\/\/www.telemundo47.com\/wp-content\/themes\/nbc-station","twitterVia":"telemundo47","zipCode":"11371","dataLayer":{"adobe":{"prop1":"salud","eVar1":"salud","prop2":"article - general","prop3":"coronavirus","eVar3":"coronavirus","prop4":"coronavirus-en-estados-unidos","eVar4":"coronavirus-en-estados-unidos","eVar8":"telemundo","prop8":"telemundo","prop9":"D=v9","eVar9":"TLMD-NYC","prop10":"D=v10","eVar10":"WNJU","prop20":"nbcuotstelemundodivision","prop21":"10252063101","eVar21":"10252063101","prop22":"El gobernador de NY urge a los participantes de las protestas realizarse las pruebas de COVID-19","eVar22":"El gobernador de NY urge a los participantes de las protestas realizarse las pruebas de COVID-19","prop28":"","eVar28":"","prop29":"noticias, salud, coronavirus, coronavirus-en-estados-unidos, historias-destacadas, local, coronavirus, coronavirus-en-eeuu, coronavirus-en-ny, protestas-en-la-ciudad-de-nueva-york, protestas-por-george-floyd, reapertura-de-la-ciudad-de-nueva-york, reapertura-de-nueva-york, reapertura-economica","prop32":"no keyword","prop57":"","eVar57":"","eVar68":"","eVar70":"Jun 07, 2020","prop74":"D=v74","eVar74":"page not sponsored","eVar76":"page not sponsored","eVar80":"article - general","eVar81":"10252063101","eVar90":"Reapertura de Nueva York","list2":"noticias, salud, coronavirus, coronavirus-en-estados-unidos, historias-destacadas, local, coronavirus, coronavirus-en-eeuu, coronavirus-en-ny, protestas-en-la-ciudad-de-nueva-york, protestas-por-george-floyd, reapertura-de-la-ciudad-de-nueva-york, reapertura-de-nueva-york, reapertura-economica","attrs":[],"contextData":{"pagename":"","events":"","rsid":"nbcuotstelemundodivision","callsign":"WNJU","businessunit":"telemundo47","division":"telemundo","sitekey":"tlmd-nyc","section":"salud","subsection":"coronavirus","subsubsection":"coronavirus-en-estados-unidos","exitlink":"","url":"https:\/\/www.telemundo47.com\/noticias\/salud\/coronavirus\/coronavirus-en-estados-unidos\/el-gobernador-de-ny-urge-a-los-participantes-de-las-protestas-realizarse-las-pruebas-de-covid-19\/2063101\/","contentid":2063101,"localid":"1:25:2063101","contenttitle":"El gobernador de NY urge a los participantes de las protestas realizarse las pruebas de COVID-19","contenttype":"article","nationalized":true,"byline_authors":"TELEMUNDO 47","date":"June 7, 2020","sourceid":"","source":"","pageName":"coronavirus:detail content page","collections":""},"prop30":"Nueva York","prop18":"catalinaruiz","pageName":"coronavirus:detail content page","pageType":"","prop23":"article video embed ","eVar23":"article video embed ","prop19":"true","prop25":"TELEMUNDO 47","eVar25":"D=c25"},"page_name":["coronavirus:detail","content","page"],"site_events":{},"division":"telemundo","market":"WNJU","sitekey":"tlmd-nyc","type":"post","network_id":"1:25:2063101","id":2063101,"source":"","title":"El gobernador de NY urge a los participantes de las protestas realizarse las pruebas de COVID-19","summary":"<p>\u201cHazte una prueba. H\u00e1ganse una prueba&#8221;, dijo el gobernador de Nueva York. El estado lleg\u00f3 a ser el epicentro del brote del coronavirus en EEUU.<\/p>\n","link":"https:\/\/www.telemundo47.com\/noticias\/salud\/coronavirus\/coronavirus-en-estados-unidos\/el-gobernador-de-ny-urge-a-los-participantes-de-las-protestas-realizarse-las-pruebas-de-covid-19\/2063101\/","date":"June 7, 2020","subtitle":"\u201cHazte una prueba. H\u00e1ganse una prueba\", dijo el gobernador de Nueva York. El estado lleg\u00f3 a ser el epicentro del brote del coronavirus en EEUU.","sponsor":"","sst_source_id":"","linkout":"","linkout_url":"","syndicated":false,"nationalized":true,"originating_market":"","content_tag":"coronavirus|coronavirus-en-eeuu|coronavirus-en-ny|protestas-en-la-ciudad-de-nueva-york|protestas-por-george-floyd|reapertura-de-la-ciudad-de-nueva-york|reapertura-de-nueva-york|reapertura-economica","section":"salud","subsection":"coronavirus","subsubsection":"coronavirus-en-estados-unidos","all_sections":"noticias|salud|coronavirus|coronavirus-en-estados-unidos|historias-destacadas|local","primary_tag":"Reapertura de Nueva York","sponsored":false,"contentid":"10252063101","localid":"1:25:2063101","localid_combined":"10252063101","contenttitle":"El gobernador de NY urge a los participantes de las protestas realizarse las pruebas de COVID-19","contenttype":"article video embed ","syndicatedid":"1:25:2063101","byline_authors":"TELEMUNDO 47","sourceid":"","pageName":"coronavirus:detail content page","collections":"","uri":"\/noticias\/salud\/coronavirus\/el-gobernador-de-ny-urge-a-los-participantes-de-las-protestas-realizarse-las-pruebas-de-covid-19\/2063101\/","uri_length":7,"section_name":"salud","detail_section_name":"coronavirus","detail_subsection_name":"coronavirus-en-estados-unidos","this_contenttype":"article video embed ","template":"article - general","this_request_type":"singular"},"browserTitle":"%s - Telemundo New York (47)","pageType":"article","locale":"es_ES","video":{"playerType":"articleplayer","fwSSID":"tlmd_wnju_salud_coronavirus_coronavirus-en-estados-unidos","fwSSID_liveNoPre":"tlmd_live_nopreroll","fwNetworkID":"382114","fwManager":{"network":"_live","siteKey":"_telemundo"},"config":{"volume":100,"htmlPreRoll":true,"htmlOmniture":false,"tremorFlashKey":"52289094b872c","tremorFlashSyndKey":"5239b2feaee2e","tremorHTMLKey":"5239c44e7e9e1","tremorHTMLSyndKey":"5239c4849009"},"htmlOmniture":false,"pdkPath":"\/assets\/pdk587","plugins":["akamaiHD","FreeWheel","comscore","captions","capcon","liveCaptions","streamsense","chartbeat"]},"adobe":{"rsid":"nbcuotstelemundodivision","link_internal_filters":"javascript:,telemundo47.com,media.telemundo47.com,events.telemundo47.com,tsn.telemundo47.com,autos.telemundo47.com"},"weather":{"weather_url":"https:\/\/www.telemundo47.com\/el-tiempo\/","alerts_url":"https:\/\/www.telemundo47.com\/el-tiempo\/alertas-del-tiempo\/","closings_url":"https:\/\/www.telemundo47.com\/el-tiempo\/cierre-de-escuelas\/"},"sharethrough_codes":["nP3EagztciAhUuFBbE24BQsi"],"param_zipcode":"","appleStoreUrl":"https:\/\/ad.apps.fm\/KflgaCWm46YQyTjaNLPCULmEqdAzHrteUpaQzsBej-0iJHW5w8yMa_2rxOYz2DmFyHqc_Tsm4QCBQWKzBXHCJA","androidStoreUrl":"https:\/\/ad.apps.fm\/eRGN-VaEW_sYBH9TC4-GaV5KLoEjTszcQMJsV6-2VnHFDLXitVHB6BlL95nuoNYfD4DN9cA_K7isGKodpGGvS_rgon8r1m-R4drqTrpwEu8bmi2HW0QUPBwqpcQ_g8B0og2aV7rzdVJZF2M43pDGKA"};
+</script>
+<script src='https://www.telemundo47.com/wp-content/themes/nbc-station/client/build/js/analytics.6fb421ee9a9d57acbbbb.bundle.min.js?ver=1.0.2'></script>
+<script>
+( function( domain, translations ) {
+	var localeData = translations.locale_data[ domain ] || translations.locale_data.messages;
+	localeData[""].domain = domain;
+	wp.i18n.setLocaleData( localeData, domain );
+} )( 'nbc', {"domain":"messages","locale_data":{"messages":{"":{"domain":"messages","plural_forms":"nplurals=2; plural=(n != 1);","lang":"es_US"},"New Comment":["Nuevo comentario"],"Submit Comment":["Enviar comentario"],"Type provider name to search":["Escribe el nombre del proveedor para buscar"],"For your local NBC live stream, select your TV provider and sign in.":["Para tu transmisión en vivo de Telemundo, selecciona tu proveedor de televisión por cable e inicia sesión."],"Don't see your provider? Search below":["¿No ves a tu proveedor? Busca a continuación"],"Need help signing in?":["¿Necesitas ayuda para iniciar sesión?"],"See our FAQ":["Consulta nuestras preguntas frecuentes"],"For technical issues email:":["Para problemas técnicos escribe al correo electrónico:"],"Sign Out":["Cerrar sesión"],"TV Schedule":["Programación de TV"],"NEED HELP?":["¿NECESITAS AYUDA?"],"Live Stream":["En Vivo"],"Live stream video support":["Soporte de transmisión de vídeo en directo"],"Email":["Correo electrónico"],"FAQ":["Preguntas más frecuentes"],"Live TV":["TV en vivo"],"#":["#"],"NOW":["Ahora"],"Jan":["Enero"],"Feb":["Febrero"],"Mar":["Marzo"],"Apr":["Abril"],"May":["Mayo"],"Jun":["Junio"],"Jul":["Julio"],"Aug":["Agosto"],"Sep":["Septiembre"],"Oct":["Octubre"],"Nov":["Noviembre"],"Dec":["Diciembre"],"Visit Site":["Visita el sitio"],"Horoscopo":["Horóscopo"],"Sponsored":["Auspiciado"],"Enter your email":["Ingresa tu correo electrónico"],"Sign up":["Regístrate"],"Privacy Policy":["Política de privacidad"],"More Newsletters":["Más boletines"],"Sign up successful!":["¡Registro completado con éxito!"],"Male":["Masculino"],"Female":["Femenino"],"Cannot be blank":["No puede estar en blanco"],"Sign in / Sign up":["Iniciar sesión / Registrarse"],"ex: mailAddress@client.com":["por ejemplo: mailAddress@client.com"],"Sign up / Sign in":["Regístrate / Inicia sesión"],"First name":["Nombre."],"Last name":["Apellido."],"Zip code":["Código postal."],"Finish sign up":["Terminar el registro"],"Choose the newsletters you'd like to receive.":["Elija los boletines que le gustaría recibir."],"Log out":["Cerrar sesión"],"Close success message":["Mensaje de cierre exitoso"],"Submitting...":["Enviando "],"Save Changes":["Guardar Cambios"],"Sign in to view":["Inicia sesión para ver"],"Full Schedule":["Horario completo"],"ex: mailAdress@client.com":["por ejemplo: mailAdress@client.com"],"Phone number":["Número de teléfono"],"+1 (555)-555-5555)":["+1 (555)-555-5555)"],"Choose files to upload":["Elige los archivos que deseas cargar"],"File is too large":["El archivo es muy pesado"],"No file chosen":["No se ha elegido ningún archivo"],"Submit":["Enviar"],"On a desktop computer? Hold “Ctrl\" on PC or “command\" on Mac to select multiple files. Up to 5 files will be accepted. Zip and all common image, video, and document formats are accepted. Any documents or images submitted could be used for broadcast or digital use.":["¿En un ordenador de sobremesa? Mantenga presionada la tecla \"Ctrl\" en el PC o \"comando\" en Mac para seleccionar varios archivos. Se aceptarán hasta 5 archivos. Zip y se aceptan todos los formatos comunes de imagen, vídeo y documentos. Cualquier documento o imagen presentada podría utilizarse para difusión o uso digital."],"Required Fields":["Campos requeridos"],"Subject":["Asunto"],"Use a short descriptive subject":["Utilice un breve tema descriptivo"],"Describe your tip in detail":["Describa su información en detalle"],"Please type in complete sentences":["Por favor escriba oraciones completas"],"Tags":["Etiquetas"],"comma separated - ex: hurricane, weather":["Separado por comas - por ejemplo: huracán, tiempo"],"Your Name":["Tu nombre"],"First & last name":["Nombre y apellido"],"I agree to the ":["Estoy de acuerdo con "],"terms of service":["Condiciones de servicio de configuración"]," and ":["Y"],"privacy policy":["Política de privacidad"],"Submit Your Media":["Envía tus fotos o videos"],"Thanks for submitting your media.":["Gracias por enviar tu material"],"Choose a file to upload":["Elige un archivo para cargar"],"Title":["Título"],"Use a short descriptive title":["Utilice un breve título descriptivo"],"Description":["Descripción"],"Please type in a description":["Por favor, escriba una descripción"],"Select a Category":["Seleccionar categoría"],"Videos":["Videos"],"More Videos":["Más videos"],"More":["Más Videos"],"More %s Videos":["Más videos de %s"],"Search Videos:":["Buscar vídeos"],"Search Videos":["Buscar vídeos"],"Search":["Buscar "],"Show More":["Mostrar más"],"Search Results":["Resultado de la Busqueda"],"No Results":["Sin resultados"],"Latest":["Lo último"],"Local":["Local"],"Up Next":["Siguiente"],"News":["Noticias"],"Now Playing":["Reproduciendo ahora"],"Expand Map":["Expandir mapa"],"Collapse Map":["Contraer mapa"],"Weather Alerts":["Alertas del Tiempo "],"School Closings":["Cierres de escuelas"],"View All":["Ver todo"],"Wind":["Viento"],"Click to search by city or zip...":["Haga clic para buscar por ciudad o zip..."],"Feels like":["Sensación térmica"],"Humidity":["Humedad"],"Precip":["Precip"],"Temperature":["Temperatura"],"Precipitation":["Precipitación"],"Tonight":["Esta noche"],"Tomorrow":["Mañana"],"Suggested Regions":["Regiones sugeridas"],"Search city, zip…":["Buscar ciudad, zip..."],"Close search":["Búsqueda cercana"],"Today":["Hoy"],"High Temperature":["Alta temperatura"],"Low Temperature":["Baja temperatura"],"Chance of precipitation":["Probabilidad de precipitación"],"10 Day Forecast":["Pronóstico de 10 días"],"Type of Complaint":["Tipo de queja"],"Provide a detailed description of your problem":["Proporcione una descripción detallada de su problema"],"Postal Code (only the first 5 digits)":["Código postal (Solo los primeros 5 dígitos)"],"Provide Documentation":["Proporcione la documentación"],"Send":["Enviar"]}}} );
+</script>
+<link rel='https://api.w.org/' href='https://www.telemundo47.com/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.telemundo47.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://www.telemundo47.com/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 5.3.4" />
+<link rel="canonical" href="https://www.telemundo47.com/noticias/salud/coronavirus/coronavirus-en-estados-unidos/el-gobernador-de-ny-urge-a-los-participantes-de-las-protestas-realizarse-las-pruebas-de-covid-19/2063101/" />
+<link rel="alternate" type="application/json+oembed" href="https://www.telemundo47.com/wp-json/oembed/1.0/embed" />
+<link rel="alternate" type="text/xml+oembed" href="https://www.telemundo47.com/wp-json/oembed/1.0/embed" />
+		<style>
+		.getty.aligncenter {
+			text-align: center;
+		}
+		.getty.alignleft {
+			float: none;
+			margin-right: 0;
+		}
+		.getty.alignleft > div {
+			float: left;
+			margin-right: 5px;
+		}
+		.getty.alignright {
+			float: none;
+			margin-left: 0;
+		}
+		.getty.alignright > div {
+			float: right;
+			margin-left: 5px;
+		}
+		</style>
+		<style type='text/css'>img#wpstats{display:none}</style><style type="text/css">
+	@media (max-width: 375px) {
+		.hero-background:empty { background-image: linear-gradient(to bottom, rgba(0,0,0,0.55) 0%,rgba(0,0,0,0) 20%), url('https://media.telemundo47.com/2019/09/NYC_aerial-1-1-3.png?resize=1440%2C415'); }
+	}
+	@media (min-width: 376px) and (max-width: 768px) {
+		.hero-background:empty { background-image: linear-gradient(to bottom, rgba(0,0,0,0.55) 0%,rgba(0,0,0,0) 20%), url('https://media.telemundo47.com/2019/09/NYC_aerial-1-1-3.png?resize=1440%2C415'); }
+	}
+	@media (min-width: 769px) {
+		.hero-background:empty { background-image: linear-gradient(to bottom, rgba(0,0,0,0.55) 0%,rgba(0,0,0,0) 20%), url('https://media.telemundo47.com/2019/09/NYC_aerial-1-1-3.png?resize=1440%2C415'); }
+	}
+</style>
+		<!-- Begin comScore Tag -->
+		<script>
+		var _comscore = _comscore || [];
+		_comscore.push({ c1: "2", c2: "6035083" });
+		(function() {
+			var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;
+			s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
+			el.parentNode.insertBefore(s, el);
+		})();
+		</script>
+		<noscript>
+		<img src="https://sb.scorecardresearch.com/p?c1=2&c2=6035083&cv=2.0&cj=1" />
+		</noscript>
+		<!-- End comScore Tag -->
+				<script type="text/javascript">
+				window._taboola = window._taboola || [];
+						_taboola.push({'article':'2063101', tracking:'_osource=taboola-recirc'});
+						!function (e, f, u) {
+					e.async = 1;
+					e.src = u;
+					f.parentNode.insertBefore(e, f);
+				}(document.createElement('script'),
+				document.getElementsByTagName('script')[0],
+				'//cdn.taboola.com/libtrc/nbcots-network/loader.js');
+		</script><script>
+			window._newsroom = window._newsroom || [];
+					!function (e, f, u) {
+				e.async = 1;
+				e.src = u;
+				f.parentNode.insertBefore(e, f);
+			}(document.createElement('script'),
+			document.getElementsByTagName('script')[0], '//c2.taboola.com/nr/nbcots-wnju/newsroom.js');
+		</script>
+		<meta property="og:site_name" content="Telemundo New York (47)" /><meta name="google-site-verification" content="_yuWZo7fXpflrS7PT5Slea4NyMwXmDWYqxbstt0vCcM" /><meta property="fb:app_id" content="516321075179066" /><meta name="twitter:site" content="@telemundo47" /><meta property="og:type" content="article" /><meta property="article:opinion" content="false" /><meta property="article:content_tier" content="free" /><meta name="twitter:creator" content="@telemundo47" /><meta name="article:publisher" content="https://www.facebook.com/Telemundo47" /><meta name="description" content="“Hazte una prueba. Háganse una prueba”, dijo el gobernador de Nueva York. El estado llegó a ser el epicentro del brote del coronavirus en EEUU." /><meta property="og:description" content="“Hazte una prueba. Háganse una prueba”, dijo el gobernador de Nueva York. El estado llegó a ser el epicentro del brote del coronavirus en EEUU." /><meta name="twitter:description" content="“Hazte una prueba. Háganse una prueba”, dijo el gobernador de Nueva York. El estado llegó a ser el epicentro del brote del coronavirus en EEUU." /><meta property="og:title" content="El gobernador de NY urge a los participantes de las protestas realizarse las pruebas de COVID-19" /><meta name="twitter:title" content="El gobernador de NY urge a los participantes de las protestas realizarse las pruebas de COVID-19" /><meta property="og:url" content="https://www.telemundo47.com/noticias/salud/coronavirus/coronavirus-en-estados-unidos/el-gobernador-de-ny-urge-a-los-participantes-de-las-protestas-realizarse-las-pruebas-de-covid-19/2063101/" /><meta name="twitter:url" content="https://www.telemundo47.com/noticias/salud/coronavirus/coronavirus-en-estados-unidos/el-gobernador-de-ny-urge-a-los-participantes-de-las-protestas-realizarse-las-pruebas-de-covid-19/2063101/" /><meta name="keywords" content="Coronavirus, Coronavirus en EEUU, CORONAVIRUS EN NY, Protestas en la ciudad de Nueva York, Protestas por George Floyd, reapertura de la ciudad de Nueva York, Reapertura de Nueva York, Reapertura económica" /><meta name="sailthru.title" content="El gobernador de NY urge a los participantes de las protestas realizarse las pruebas de COVID-19" /><meta name="sailthru.description" content="“Hazte una prueba. Háganse una prueba”, dijo el gobernador de Nueva York. El estado llegó a ser el epicentro del brote del coronavirus en EEUU." /><meta name="sailthru.tags" content="Coronavirus, Coronavirus en EEUU, CORONAVIRUS EN NY, Protestas en la ciudad de Nueva York, Protestas por George Floyd, reapertura de la ciudad de Nueva York, Reapertura de Nueva York, Reapertura económica" /><meta name="sailthru.tags" content="Coronavirus, Coronavirus en EEUU, CORONAVIRUS EN NY, Protestas en la ciudad de Nueva York, Protestas por George Floyd, reapertura de la ciudad de Nueva York, Reapertura de Nueva York, Reapertura económica" /><meta name="sailthru.type" content="article" /><meta name="sailthru.date" content="2020-06-07T16:05:44+00:00" /><meta property="og:image" content="https://media.telemundo47.com/2019/09/GettyImages-1214734774.jpg?crop=0px%2C307px%2C6048px%2C3402px&amp;resize=1200%2C675" /><meta name="twitter:image" content="https://media.telemundo47.com/2019/09/GettyImages-1214734774.jpg?crop=0px%2C307px%2C6048px%2C3402px&amp;resize=1200%2C675" /><meta name="taboola_lead" content="video" /><script type="application/ld+json">{"@context":"http:\/\/schema.org","@type":"NewsArticle","mainEntityOfPage":"https:\/\/www.telemundo47.com\/noticias\/salud\/coronavirus\/coronavirus-en-estados-unidos\/el-gobernador-de-ny-urge-a-los-participantes-de-las-protestas-realizarse-las-pruebas-de-covid-19\/2063101\/","headline":"El gobernador de NY urge a los participantes de las protestas realizarse las pruebas de COVID-19","datePublished":"2020-06-07T16:05:44","dateModified":"2020-06-07T19:33:36","description":"\u201cHazte una prueba. H\u00e1ganse una prueba&#8221;, dijo el gobernador de Nueva York. El estado lleg\u00f3 a ser el epicentro del brote del coronavirus en EEUU.","speakable":{"@type":"SpeakableSpecification","cssSelector":[".article-headline",".article-subtitle"]},"keywords":"Coronavirus, Coronavirus en EEUU, CORONAVIRUS EN NY, Protestas en la ciudad de Nueva York, Protestas por George Floyd, reapertura de la ciudad de Nueva York, Reapertura de Nueva York, Reapertura econ\u00f3mica","publisher":{"@type":"Organization","name":"Telemundo New York","logo":{"@type":"ImageObject","height":60,"url":"https:\/\/media.telemundo47.com\/wp-content\/uploads\/2019\/09\/light_amp_wnju.png","width":160}},"image":{"@type":"ImageObject","height":675,"url":"https:\/\/media.telemundo47.com\/2019\/09\/GettyImages-1214734774.jpg?crop=0px%2C307px%2C6048px%2C3402px&resize=1200%2C675","width":1200},"author":{"@type":"Person","name":"TELEMUNDO 47"}}</script>							<script type='text/javascript'>
+				var dfpAdUnits = {};
+				var googletag = googletag || {};
+				googletag.cmd = googletag.cmd || [];
+				(function() {
+				var gads = document.createElement('script');
+				gads.async = true;
+				gads.type = 'text/javascript';
+				var useSSL = 'https:' == document.location.protocol;
+				gads.src = (useSSL ? 'https:' : 'http:') +
+				'//www.googletagservices.com/tag/js/gpt.js';
+				var node = document.getElementsByTagName('script')[0];
+				node.parentNode.insertBefore(gads, node);
+				})();
+				</script>
+												<script type="text/javascript">
+			var dfpBuiltMappings = {}, dfpAdUnits = {};
+
+			if (768 <= window.innerWidth) {									googletag.cmd.push(function() {
+					dfpBuiltMappings["bottombanner"] = googletag.sizeMapping().addSize([768,1],[[970,90],[970,66],[970,250],[728,90]]).build();
+dfpBuiltMappings["bottombox"] = googletag.sizeMapping().addSize([768,1],[[300,250],[300,600]]).build();
+dfpBuiltMappings["topbox"] = googletag.sizeMapping().addSize([768,1],[[300,250],[300,600]]).build();
+dfpBuiltMappings["topbanner"] = googletag.sizeMapping().addSize([768,1],[[970,90],[970,66],[970,250],[728,90]]).build();
+dfpBuiltMappings["logo"] = googletag.sizeMapping().addSize([768,1],[[88,31],[120,60]]).build();
+dfpBuiltMappings["interstitial"] = googletag.sizeMapping().addSize([768,1],[[1,1]]).build();
+					});
+					var dfpAdDetails = {"topbox":{"path":"\/2620\/otstm_web\/wnju\/noticias\/salud\/coronavirus","sizes":[[300,250],[300,600]],"targeting":[]},"bottombox":{"path":"\/2620\/otstm_web\/wnju\/noticias\/salud\/coronavirus","sizes":[[300,250],[300,600]],"targeting":[]},"logo":{"path":"\/2620\/otstm_web\/wnju\/noticias\/salud\/coronavirus","sizes":[[88,31],[120,60]],"targeting":[]},"topbanner":{"path":"\/2620\/otstm_web\/wnju\/noticias\/salud\/coronavirus","sizes":[[970,90],[970,66],[970,250],[728,90]],"targeting":[]},"interstitial":{"path":"\/2620\/otstm_web\/wnju\/noticias\/salud\/coronavirus","sizes":[[1,1]],"targeting":[]},"bottombanner":{"path":"\/2620\/otstm_web\/wnju\/noticias\/salud\/coronavirus","sizes":[[970,90],[970,66],[970,250],[728,90]],"targeting":[]}};
+					var dfpSizeMapping = {"bottombanner":[[[768,1],[[970,90],[970,66],[970,250],[728,90]]]],"bottombox":[[[768,1],[[300,250],[300,600]]]],"topbox":[[[768,1],[[300,250],[300,600]]]],"topbanner":[[[768,1],[[970,90],[970,66],[970,250],[728,90]]]],"logo":[[[768,1],[[88,31],[120,60]]]],"interstitial":[[[768,1],[[1,1]]]]};
+
+					 } else { 									googletag.cmd.push(function() {
+					dfpBuiltMappings["mobilemultibox"] = googletag.sizeMapping().addSize([1,1],[[300,250],[300,100],[320,50]]).build();
+dfpBuiltMappings["mobilebackstage"] = googletag.sizeMapping().addSize([1,1],[[1,1]]).build();
+dfpBuiltMappings["mobilebottombanner"] = googletag.sizeMapping().addSize([1,1],[[300,250],[320,50],[300,100]]).build();
+dfpBuiltMappings["mobiletopbanner"] = googletag.sizeMapping().addSize([1,1],[[320,50],[300,100]]).build();
+					});
+					var dfpAdDetails = {"mobiletopbanner":{"path":"\/2620\/otstm_mobile\/wnju_mobileweb\/noticias\/salud\/coronavirus","sizes":[[320,50],[300,100]],"targeting":[]},"mobilemultibox":{"path":"\/2620\/otstm_mobile\/wnju_mobileweb\/noticias\/salud\/coronavirus","sizes":[[300,250],[300,100],[320,50]],"targeting":[]},"mobilebackstage":{"path":"\/2620\/otstm_mobile\/wnju_mobileweb\/noticias\/salud\/coronavirus","sizes":[[1,1]],"targeting":[]},"mobilebottombanner":{"path":"\/2620\/otstm_mobile\/wnju_mobileweb\/noticias\/salud\/coronavirus","sizes":[[300,250],[320,50],[300,100]],"targeting":[]}};
+					var dfpSizeMapping = {"mobilemultibox":[[[1,1],[[300,250],[300,100],[320,50]]]],"mobilebackstage":[[[1,1],[[1,1]]]],"mobilebottombanner":[[[1,1],[[300,250],[320,50],[300,100]]]],"mobiletopbanner":[[[1,1],[[320,50],[300,100]]]]};
+
+													}					googletag.cmd.push(function() {
+					googletag.pubads().enableAsyncRendering();
+googletag.pubads().collapseEmptyDivs();
+					googletag.pubads().addEventListener('slotRenderEnded', function(event) {
+						var slotElementId = event.slot.getSlotElementId();
+						if (false === event.isEmpty) {
+							if (0 <= slotElementId.indexOf('topbanner')) {
+								document.body.classList.add("topbanner");
+							}
+							if (0 <= slotElementId.indexOf('logo')) {
+								document.querySelector('#' + slotElementId).classList.add('logo-rendered');
+							} else {
+								document.querySelector('#' + slotElementId).classList.add('ad-rendered');
+							}
+						}
+					});
+						googletag.pubads().setTargeting("zipcode", localStorage.getItem("zipCode") || nbc.zipCode );
+
+	var isMobile = window.matchMedia('screen and (max-width: 767px)').matches;
+	googletag.pubads().setTargeting("gpt1", isMobile ? "ots_mobile" : "ots_web");
+	googletag.pubads().setTargeting("platform", isMobile ? "mobile" : "desktop");
+			googletag.pubads().setTargeting("source", "www.telemundo47.com");
+				googletag.pubads().setTargeting("pageid", "10252063101");
+				googletag.pubads().setTargeting("pageid2", "10252063101");
+				googletag.pubads().setTargeting("sect", "salud");
+				googletag.pubads().setTargeting("sub", "coronavirus");
+				googletag.pubads().setTargeting("call", "WNJU");
+				googletag.pubads().setTargeting("region", "nuevayork");
+				googletag.pubads().setTargeting("stationtype", "telemundo");
+				googletag.pubads().setTargeting("tags", "noticias,salud,coronavirus,coronavirus-en-estados-unidos,historias-destacadas,local,coronavirus,coronavirus-en-eeuu,coronavirus-en-ny,protestas-en-la-ciudad-de-nueva-york,protestas-por-george-floyd,reapertura-de-la-ciudad-de-nueva-york,reapertura-de-nueva-york,reapertura-economica");
+				googletag.pubads().setTargeting("gpt2", "WNJU");
+				googletag.pubads().setTargeting("station", "ots");
+				googletag.pubads().setTargeting("sponsor", "");
+				googletag.pubads().setTargeting("excl_cat", "salud,coronavirus");
+		
+					if ( typeof AdLayersAPI === 'undefined' || ! AdLayersAPI.isDebug() ) {
+						googletag.enableServices();
+					}
+				});
+								var dfpAdLayer = {"post_id":1907064,"title":"Article Ad Layer"};
+
+			</script>
+			<link rel="amphtml" href="https://www.telemundo47.com/noticias/salud/coronavirus/el-gobernador-de-ny-urge-a-los-participantes-de-las-protestas-realizarse-las-pruebas-de-covid-19/2063101/?amp"><link rel="icon" href="https://media.telemundo47.com/2019/09/cropped-TLMD_47_New-York.png?fit=32%2C32" sizes="32x32" />
+<link rel="icon" href="https://media.telemundo47.com/2019/09/cropped-TLMD_47_New-York.png?fit=192%2C192" sizes="192x192" />
+<link rel="apple-touch-icon-precomposed" href="https://media.telemundo47.com/2019/09/cropped-TLMD_47_New-York.png?fit=180%2C180" />
+<meta name="msapplication-TileImage" content="https://media.telemundo47.com/2019/09/cropped-TLMD_47_New-York.png?fit=270%2C270" />
+</head>
+
+<body class="post-template-default single single-post postid-2063101 single-format-standard station-telemundo wnju has-featured-image short-hero">
+	<div id="fb-root"></div>
+		<script
+			async
+			defer
+			crossorigin="anonymous"
+			src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.3&appId=516321075179066&autoLogAppEvents=1"></script>
+		<div class="leaderboard_ad">
+		<div id="div-gpt-ad-topbanner_" class=" gpt-topbanner" data-beforetext="" data-fallbacktext=""></div><script style="text/javascript">
+				if (typeof adInstance === 'undefined') {
+					adInstance = new AdLayersAPI();
+				}
+				adInstance.lazyLoadAd({ slotName: 'topbanner_', format: 'topbanner', targeting: {"slot":"topbanner","pos":"topbanner"} });
+			</script><div id="div-gpt-ad-mobiletopbanner_" class=" gpt-mobiletopbanner" data-beforetext="" data-fallbacktext=""></div><script style="text/javascript">
+				if (typeof adInstance === 'undefined') {
+					adInstance = new AdLayersAPI();
+				}
+				adInstance.lazyLoadAd({ slotName: 'mobiletopbanner_', format: 'mobiletopbanner', targeting: {"slot":"mobiletopbanner","pos":"mobiletopbanner"} });
+			</script>	</div>
+<div id="page" class="site" data-component="wrapper">
+	
+<a class="skip-link screen-reader-text" href="#content">Saltar al contenido</a>
+<header id="masthead" class="site-header" role="banner" data-component="siteHeader">
+		<div class="site-header__primary">
+		<div class="site-header__wrap">
+							<div class="site-header__logo">
+					<a href="https://www.telemundo47.com/">
+						<img
+							src="https://media.telemundo47.com/2019/09/TLMD_47_On_Dark-@3x-2.png?fit=204%2C120"
+							alt="Telemundo New York (47)"
+						/>
+					</a>
+				</div>
+						<div class="site-header__nav-search">
+				<div class="site-header__nav-main">
+					<button class="site-header__nav-main-toggle">
+						<span class="site-header__nav-main-toggle-text">Navegación principal</span>
+					</button>
+				</div>
+				<div class="site-header__search" data-component="headerSearch">
+					<button class="site-header__search-toggle">
+						<span class="site-header__search-toggle-text">Buscar</span>
+					</button>
+					<div class="site-header__search-form">
+						
+<form class="search-form" role="search" method="get" action="https://www.telemundo47.com/" >
+	<label>
+		<span class="screen-reader-text">Búsqueda por:</span>
+		<input type="search" value="" name="s" placeholder="Buscar" />
+	</label>
+	<input type="submit" class="search-submit" value="Buscar" />
+</form>
+					</div>
+				</div>
+			</div>
+			<div class="site-header__animated-section">
+				<nav class="site-header__nav-sections">
+					<div class="menu-top-navigation-container"><nav id="primary-menu" class="menu"><a class=" menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent" href="/noticias/local/">NOTICIERO 47 TELEMUNDO</a></li>
+<a class=" menu-item menu-item-type-custom menu-item-object-custom" href="https://www.telemundo47.com/el-tiempo/">El tiempo</a></li>
+<a class=" menu-item menu-item-type-custom menu-item-object-custom" href="https://www.telemundo47.com/responde/">RESPONDE</a></li>
+<a class=" menu-item menu-item-type-custom menu-item-object-custom" href="/videos/">Videos</a></li>
+<a class=" menu-item menu-item-type-taxonomy menu-item-object-category" href="/entretenimiento/">ENTRETENIMIENTO</a></li>
+<a class=" menu-item menu-item-type-custom menu-item-object-custom" href="https://www.telemundo47.com/entretenimiento/acceso-total/">Acceso Total</a></li>
+<a class=" menu-item menu-item-type-post_type menu-item-object-page" href="https://www.telemundo47.com/boletin-electronico/">Boletín Electrónico</a></li>
+</nav></div>				</nav>
+				<div class="site-header__weather-tv">
+					<div
+						class="site-header__local-weather"
+						data-react-component="NBCWeather"
+						data-view="conditions"
+					>
+					</div>
+										<a class="site-header__live-tv" href="https://www.telemundo47.com/en-vivo">En Vivo</a>
+									</div>
+				<button class="site-header__mobile-share-toggle">
+					<span class="text-share">Comparte</span>
+					<span class="text-close">Cerrar</span>
+				</button>
+			</div>
+		</div> <!-- site-header__wrap -->
+	</div> <!-- site-header__primary -->
+	<div class="site-header__secondary">
+		<div class="site-header__wrap">
+							<div class="site-header__trending">
+					<span class="site-header__trending-label">Tendencias</span>
+											<nav class="site-header__trending-nav">
+												<a href="https://www.telemundo47.com/historias-destacadas/coronavirus-guia-de-recursos-y-servicios-de-salud-para-prevenir-y-protegerse/2020134/" class="site-header__trending-nav-item">Guía de Recursos</a>
+					<a href="https://www.telemundo47.com/tag/coronavirus/" class="site-header__trending-nav-item">Coronavirus</a>
+					<a href="https://www.telemundo47.com/tag/afrolatinos/" class="site-header__trending-nav-item">Afrolatinos</a>
+					<a href="https://www.telemundo47.com/noticias/local/consulta-aqui-los-casos-confirmados-de-coronavirus-en-el-area-triestatal/2029726/" class="site-header__trending-nav-item">Casos totales de COVID-19 en el área triestatal</a>
+					<a href="https://www.telemundo47.com/tag/nueva-york/" class="site-header__trending-nav-item">Nueva York</a>
+					<a href="https://www.telemundo47.com/tag/nueva-jersey/" class="site-header__trending-nav-item">Nueva Jersey</a>
+					<a href="https://www.telemundo47.com/destacados/mapa-interactivo-sobre-casos-del-coronavirus-a-nivel-mundial/2027375/" class="site-header__trending-nav-item">Mapa: Casos de COVID-19</a>
+					<a href="https://www.telemundo47.com/noticias/salud/coronavirus/estas-son-las-calles-que-se-abriran-a-los-peatones-en-nueva-york/2050096/" class="site-header__trending-nav-item">Calles para peatones</a>
+		
+							</nav>
+										<div class="site-header__trending-toggle">
+						<button class="trending-toggle"><span class="screen-reader-text">Ampliar</span></button>
+					</div>
+				</div>
+
+				
+<div class="site-header__alerts">
+	<div
+		class="site-header__weather "
+		data-react-component="NBCWeather"
+		data-view="alerts"
+		data-alert-singular="Alerta meteorológica"
+		data-alert-plural="Alertas de El Tiempo"
+		data-zip-code="11371">
+	</div>
+	</div> <!-- site-header__wrap -->
+					</div> <!-- site-header__secondary -->
+	</div>
+	</header>
+	<div id="content" class="site-content " data-component="formsContainer">
+		<div id="primary" class="content-area">
+			<main id="main" class="site-main">
+				<article id="post-5178183" data-component="article">
+
+	<div
+			id="template-hero"
+		class="template-hero "
+		data-component="templateHero"
+	>
+			<div class="hero-background"></div>
+	
+	
+	
+					
+	
+	
+	
+	
+	
+	
+	</div>
+		<div class="section-content--header below-hero">
+		<div class="article-eyebrow__container">
+	<div class="article-eyebrow__wrap">
+									<a class="article-eyebrow" href="https://www.telemundo47.com/tag/reapertura-de-nueva-york/">Reapertura de Nueva York</a>						</div>
+</div>
+<div class="article-header--wrap ">
+	<h1 class="article-headline">
+		El gobernador de NY urge a los participantes de las protestas realizarse las pruebas de COVID-19	</h1>
+			<h2 class="article-subtitle">
+			“Hazte una prueba. Háganse una prueba", dijo el gobernador de Nueva York. El estado llegó a ser el epicentro del brote del coronavirus en EEUU.		</h2>
+				
+<div class="article-meta" data-component="articleMeta">
+	<h4 class="article-byline">
+					Por <a href="https://www.telemundo47.com?s=Autor%3A%20%22TELEMUNDO%2047%22">TELEMUNDO 47</a>							<span class="meta-dot">&bull;</span>
+					
+							<span class="time-wrap">
+				<time class="entry-date published" datetime="2020-06-07T20:05:44-04:00">Publicado el 07 de junio del 2020</time>					<span class="meta-dot">&bull;</span>
+				<time class="entry-date updated" datetime="2020-06-07T19:33:36-04:00">Actualizado a las <span class="time">7:33 pm</span> del <span class="date">07 de junio del 2020</span></time>			</span>
+			</h4>
+	<div
+	class="share-buttons"
+	data-component="sharingBar"
+>
+			<a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.telemundo47.com%2Fnoticias%2Fsalud%2Fcoronavirus%2Fcoronavirus-en-estados-unidos%2Fel-gobernador-de-ny-urge-a-los-participantes-de-las-protestas-realizarse-las-pruebas-de-covid-19%2F2063101%2F&#038;El%20gobernador%20de%20NY%20urge%20a%20los%20participantes%20de%20las%20protestas%20realizarse%20las%20pruebas%20de%20COVID-19?_osource=db_npd_tlmd_wnju_fb_shr" data-service="facebook">
+			<i class="fab fa-facebook-f"></i>
+		</a>
+	
+			<a href="https://twitter.com/intent/tweet?text=El%20gobernador%20de%20NY%20urge%20a%20los%20participantes%20de%20las%20protestas%20realizarse%20las%20pruebas%20de%20COVID-19&#038;url=https%3A%2F%2Fwww.telemundo47.com%2Fnoticias%2Fsalud%2Fcoronavirus%2Fcoronavirus-en-estados-unidos%2Fel-gobernador-de-ny-urge-a-los-participantes-de-las-protestas-realizarse-las-pruebas-de-covid-19%2F2063101%2F?_osource=db_npd_tlmd_wnju_twt_shr" data-service="twitter">
+			<i class="fab fa-twitter"></i>
+		</a>
+	
+			<a href="mailto:?body=El%20gobernador%20de%20NY%20urge%20a%20los%20participantes%20de%20las%20protestas%20realizarse%20las%20pruebas%20de%20COVID-19%0D%0A%0D%0Ahttps%3A%2F%2Fwww.telemundo47.com%2Fnoticias%2Fsalud%2Fcoronavirus%2Fcoronavirus-en-estados-unidos%2Fel-gobernador-de-ny-urge-a-los-participantes-de-las-protestas-realizarse-las-pruebas-de-covid-19%2F2063101%2F?_osource=db_npd_tlmd_wnju_eml_shr" data-service="email">
+			<i class="fas fa-envelope"></i>
+		</a>
+	
+	</div>
+</div>
+	</div>
+	</div>
+	<div class="section-content--full below-hero">
+		<div class="section-content--primary">
+			<div class="article-content--wrap">
+				<div class="video-flyout" data-component="videoFlyout">
+	<figure class="article-featured-media">
+		<div
+			data-react-component="VideoPlayer"
+		data-meta="{&quot;amp_status&quot;:&quot;&quot;,&quot;spay_email&quot;:&quot;&quot;,&quot;syndicated_id&quot;:&quot;&quot;,&quot;should_nationalize&quot;:false,&quot;nbc_first_published_date&quot;:&quot;&quot;,&quot;nbc_prevent_modified_update&quot;:false,&quot;nbc_primary_category_id&quot;:33846,&quot;nbc_primary_tag_id&quot;:54998,&quot;nbc_social_page_title&quot;:&quot;&quot;,&quot;nbc_page_title&quot;:&quot;&quot;,&quot;nbc_seo_description&quot;:&quot;&quot;,&quot;nbc_social_description&quot;:&quot;&quot;,&quot;nbc_national_headline&quot;:&quot;&quot;,&quot;entities&quot;:&quot;&quot;,&quot;nbc_canonical_url&quot;:&quot;&quot;,&quot;nbc_hide_from_recirculation&quot;:&quot;&quot;,&quot;nbc_hide_from_search&quot;:&quot;&quot;,&quot;nbc_syndication_category&quot;:&quot;&quot;,&quot;nbc_national_collections&quot;:[],&quot;nopreroll&quot;:false,&quot;video_copyright&quot;:&quot;Telemundo&quot;,&quot;sst_source_id&quot;:&quot;&quot;,&quot;nbc_disable_legacy_embeds&quot;:false,&quot;desktopFlashPid&quot;:&quot;&quot;,&quot;mpx_dfxp_url&quot;:&quot;https:\/\/media.telemundo51.com\/videos\/NBCU_TLM_-_WNJU\/770\/959\/El_gobernador_Cuomo_pide_a_los_manifestantes_hacerse_la.dfxp&quot;,&quot;mp4_url&quot;:&quot;http:\/\/tlmdstationgroup.edgesuite.net\/videos\/NBCU_TLM_-_WNJU\/770\/959\/El_gobernador_Cuomo_pide_a_los_manifestantes_hacerse_la__789408.mp4&quot;,&quot;mpx_download_pid&quot;:&quot;yy7C2z9o93rq&quot;,&quot;mpx_high_id&quot;:&quot;&quot;,&quot;mpx_high_url&quot;:&quot;&quot;,&quot;mpx_is_livestream&quot;:&quot;&quot;,&quot;mpx_m3upid&quot;:&quot;&quot;,&quot;mpx_pid&quot;:&quot;KnYPsyyxOd_w&quot;,&quot;mpx_thumbnail_url&quot;:&quot;https:\/\/media.telemundo47.com\/2019\/09\/El_gobernador_Cuomo_pide_a_los_manifestantes_hacerse_la.jpg?crop&amp;resize=850%2C478&quot;,&quot;pid_streaming_web_high&quot;:&quot;jXtQbUAZPvnP&quot;,&quot;pid_streaming_web_medium&quot;:&quot;KnYPsyyxOd_w&quot;,&quot;subtitle&quot;:&quot;&quot;,&quot;dfxp_url&quot;:&quot;&quot;,&quot;video_call_letter&quot;:&quot;WNJU&quot;,&quot;video_captions&quot;:&quot;&quot;,&quot;video_id&quot;:&quot;1747785283803_155&quot;,&quot;video_length&quot;:&quot;140307&quot;,&quot;video_provider&quot;:&quot;mpx&quot;,&quot;alleypack_schedule_unpublish&quot;:&quot;&quot;,&quot;feed_remote_id&quot;:&quot;mpx_1747785283803&quot;,&quot;feed_thumbnail_url&quot;:&quot;&quot;}"
+	data-livestream="false"
+	data-title="Cuomo pide a los manifestantes en NYC hacerse la prueba de COVID-19"
+	data-vidcid="1:25:2063113"
+	data-vidurl="https://www.telemundo47.com/videos/videos-noticias/cuomo-pide-a-los-manifestantes-en-nyc-hacerse-la-prueba-de-covid-19/2063113/"
+			data-islead="true"
+		data-catnames="{&quot;208&quot;:&quot;Salud&quot;,&quot;100&quot;:&quot;Noticias&quot;,&quot;60598&quot;:&quot;Coronavirus&quot;,&quot;62020&quot;:&quot;Coronavirus en Estados Unidos&quot;,&quot;146&quot;:&quot;Estados Unidos&quot;,&quot;49908&quot;:&quot;Historias Destacadas&quot;,&quot;101&quot;:&quot;Local&quot;,&quot;1392&quot;:&quot;Videos&quot;,&quot;33846&quot;:&quot;Videos Noticias&quot;}"
+	data-tagnames="{&quot;54998&quot;:&quot;Coronavirus&quot;,&quot;60695&quot;:&quot;Coronavirus en EEUU&quot;,&quot;60302&quot;:&quot;CORONAVIRUS EN NY&quot;,&quot;70930&quot;:&quot;Protestas en la ciudad de Nueva York&quot;,&quot;71135&quot;:&quot;Protestas por George Floyd&quot;,&quot;71807&quot;:&quot;reapertura de la ciudad de Nueva York&quot;,&quot;68481&quot;:&quot;Reapertura de Nueva York&quot;,&quot;65961&quot;:&quot;Reapertura econ\u00f3mica&quot;}"
+	data-customdata="{&quot;ContentPartner&quot;:&quot;None&quot;,&quot;Source&quot;:&quot;WEBFM&quot;,&quot;SyndicationAllowed&quot;:&quot;true&quot;,&quot;mSNVideoCategories&quot;:&quot;MSN Video v4 Connector-most watched news&quot;,&quot;mSNVideoContentSupplierID&quot;:&quot;NBC_Local&quot;,&quot;mSNVideoCountry&quot;:&quot;us&quot;,&quot;subtitle&quot;:&quot;nosubtitle&quot;,&quot;uploadedByTeam&quot;:&quot;1&quot;,&quot;youtubeChannel&quot;:&quot;None&quot;}"
+			data-autoplay="true"
+	></div>
+			<figcaption>
+									<cite>Telemundo</cite>
+				
+															<div
+							class="caption"
+							data-react-component="NBCTruncate"
+							data-maxlines="2"
+							data-maxlinesmobile="4"
+							data-readmore="Leer más"
+							data-text="<p>Cuomo pide a los manifestantes en NYC hacerse la prueba de COVID-19</p>
+"
+							data-ellipsis="false">
+						</div>
+												</figcaption>
+						<button class="video-flyout__dismiss"><i class="fas fa-times"></i></button>
+			</figure>
+</div>
+				<div class="article-content rich-text">
+
+					
+<p>NUEVA YORK – Con la ciudad de Nueva York a punto de reabrir tras un cierre de más de dos meses debido a la crisis del COVID-19, las autoridades levantaron el toque de queda en medio de protestas en contra la brutalidad policial y el racismo. Pero también instaron a que los manifestantes se hagan la prueba para el COVID-19.</p>
+
+<p>“Hazte una prueba. Háganse una prueba", dijo el gobernador de Nueva York, Andrew Cuomo, a personas que han participado en las manifestaciones y marchas en memoria de George Floyd.</p>
+
+<p><a rel="noreferrer noopener" href="https://coronavirus.health.ny.gov/find-test-site-near-you" target="_blank">El gobernador anunció que habrán 15 sitios adicionales de pruebas de COVID-19 en la ciudad para los manifestantes.</a>&nbsp;"Yo actuaría como si estuviese expuesto, y le diría a las personas con las que estoy interactuando", dijo Cuomo. Asimismo, se espera que la ciudad realice unas 35,000 pruebas por día mientras los funcionarios monitorean de cerca el éxito de la Fase I. </p>
+<div class="recirc-module">
+	<h3 class="recirc__heading"></h3>
+	<p class="recirc__subheading"></p>
+					<div class="recirc__post">
+			<div class="post__wrap">
+				<div class="post__image-wrapper">
+											<a href="https://www.telemundo47.com/noticias/eeuu/fbi-joven-pierde-una-mano-fabricando-bomba-para-atacar-a-mujeres-atractivas-virginia/2063126/">
+							<img class="post__image" src="https://media.telemundo47.com/2019/09/main-explosivos-casa-virginia.jpg?resize=850%2C478" alt="" />
+						</a>
+
+													<span class="format-icon format-icon--video"></span>
+						
+															</div>
+
+				<div class="post__text">
+					<div class="post__meta">
+													<a class="post__tag" href="https://www.telemundo47.com/tag/virginia/">Virginia</a>
+																			<span class="post__date post__date--has-category">
+								7 Jun							</span>
+											</div>
+
+											<h3 class="post__title">
+							<a class="post__title--link" href="https://www.telemundo47.com/noticias/eeuu/fbi-joven-pierde-una-mano-fabricando-bomba-para-atacar-a-mujeres-atractivas-virginia/2063126/">
+								<span data-ellipsis="true" data-text="FBI: joven pierde una mano fabricando bomba para atacar a mujeres “atractivas”" data-react-component="NBCTruncate" data-maxlines="3" data-maxlinesmobile="2" data-readmore="">
+									FBI: joven pierde una mano fabricando bomba para atacar a mujeres “atractivas”								</span>
+							</a>
+						</h3>
+									</div>
+			</div>
+		</div>
+					<div class="recirc__post">
+			<div class="post__wrap">
+				<div class="post__image-wrapper">
+											<a href="https://www.telemundo47.com/noticias/eeuu/impresionante-video-se-lleva-a-manifestante-montado-sobre-su-auto-en-florida/2063048/">
+							<img class="post__image" src="https://media.telemundo47.com/2019/09/main-protesta-pensacola-.jpg?resize=850%2C478" alt="" />
+						</a>
+
+													<span class="format-icon format-icon--video"></span>
+						
+															</div>
+
+				<div class="post__text">
+					<div class="post__meta">
+													<a class="post__tag" href="https://www.telemundo47.com/tag/captado-en-camara/">CAPTADO EN CÁMARA</a>
+																			<span class="post__date post__date--has-category">
+								7 Jun							</span>
+											</div>
+
+											<h3 class="post__title">
+							<a class="post__title--link" href="https://www.telemundo47.com/noticias/eeuu/impresionante-video-se-lleva-a-manifestante-montado-sobre-su-auto-en-florida/2063048/">
+								<span data-ellipsis="true" data-text="Impresionante video: conduce con un manifestante montado sobre su auto en Florida" data-react-component="NBCTruncate" data-maxlines="3" data-maxlinesmobile="2" data-readmore="">
+									Impresionante video: conduce con un manifestante montado sobre su auto en Florida								</span>
+							</a>
+						</h3>
+									</div>
+			</div>
+		</div>
+	</div>
+
+<p>La medida gratuita es similar a las que se han visto en ciudades como Seattle, San Francisco y Atlanta después de las manifestaciones masivas de los últimos días. </p>
+
+<p>Nueva York ha sido el epicentro del brote de coronavirus en EEUU y las comunidades afroamericanas se han visto especialmente afectadas.</p>
+
+<p>En medio de las preparaciones de reapertura miles de manifestantes se han tomado las calles de la ciudad de Nueva York, algunas de ellas terminaron en noches de disturbios violentos y saqueos que llevaron al alcalde, Bill de Blasio, a declarar toque de queda en la Gran Manzana. Sin embargo, de Blasio levantó la medida de toque de queda un día antes de su culminación debido a que en las últimas noches las manifestaciones han terminado en su mayoría de manera pacífica.</p>
+
+<p>“Anoche fue una noche con diferencia", dijo de Blasio. “Tuvimos la mayor cantidad de manifestantes, la menor cantidad de arrestos, la menor cantidad de problemas y eso me convenció de que era hora de que el toque de queda desapareciera. No tengo intención de traerlo de vuelta".</p>
+
+<figure class="wp-block-embed-twitter wp-block-embed is-type-rich is-provider-twitter"><div class="wp-block-embed__wrapper">
+<blockquote class="twitter-tweet" data-width="500" data-dnt="true"><p lang="en" dir="ltr">New York City: We are lifting the curfew, effective immediately. Yesterday and last night we saw the very best of our city.<br><br>Tomorrow we take the first big step to restart. Keep staying safe. Keep looking out for each other.</p>&mdash; Mayor Bill de Blasio (@NYCMayor) <a href="https://twitter.com/NYCMayor/status/1269585607090733062?ref_src=twsrc%5Etfw">June 7, 2020</a></blockquote><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div></figure>
+
+<p>En su reunión informativa el domingo por la mañana, de Blasio agradeció a los manifestantes que, según señaló, en su mayoría fueron pacíficos durante cinco días seguidos. La policía de Nueva York realizó cuatro arrestos y emitió 24 multas el sábado, dijo el alcalde.</p>
+
+<figure class="wp-block-embed-twitter wp-block-embed is-type-rich is-provider-twitter"><div class="wp-block-embed__wrapper">
+<blockquote class="twitter-tweet" data-width="500" data-dnt="true"><p lang="en" dir="ltr">If you attended a protest, assume you may have been exposed to COVID. Get tested.<br><br>There are 15 new testing sites in NYC for people who attended protests.<br><br>Find a testing site here:<a href="https://t.co/HiBW4O6qPa">https://t.co/HiBW4O6qPa</a></p>&mdash; Andrew Cuomo (@NYGovCuomo) <a href="https://twitter.com/NYGovCuomo/status/1269666282372300800?ref_src=twsrc%5Etfw">June 7, 2020</a></blockquote><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div></figure>
+
+<p>En Nueva York se agregaron 45 muertes el sábado. De las 60,435 pruebas realizadas el sábado, aproximadamente el 1 por ciento dio positivo, dijo Cuomo.</p>
+
+<p>Se espera que hasta 400,000 personas regresen a trabajar en la Fase I en la ciudad de Nueva York. Muchos de esos empleados regresarán a un sistema de tránsito que ha visto una caída del 90% en la cantidad de pasajeros en el transcurso de la pandemia y enfrenta preguntas sobre cómo mantener el distanciamiento físico. La MTA instaló nuevos escáneres de pago sin contacto en la mitad de sus estaciones de metro para ayudar a evitar algún contacto, y está pidiendo a la alcaldía 60 millas de carriles de autobuses prioritarios en El Bronx, Brooklyn y en Staten Island.</p>
+
+<p>Como
+parte de la Fase 1 de reapertura, también se permitirá reanudar la
+construcción, y el Departamento de Edificios de la ciudad dio a conocer una
+guía sobre cómo deberían reabrirse más de 33,000 sitios. Se deben seguir los
+protocolos de distanciamiento físico y se deben usar mascarillas en todos los
+sitios. También habrá registros actualizados para la limpieza y desinfección,
+límites de capacidad para áreas pequeñas y otras precauciones tomadas para
+proteger la salud.</p>
+<div data-react-component="VideoPlayer" data-meta="{&quot;amp_status&quot;:&quot;&quot;,&quot;spay_email&quot;:&quot;&quot;,&quot;syndicated_id&quot;:&quot;&quot;,&quot;should_nationalize&quot;:false,&quot;nbc_first_published_date&quot;:&quot;&quot;,&quot;nbc_prevent_modified_update&quot;:false,&quot;nbc_primary_category_id&quot;:148,&quot;nbc_primary_tag_id&quot;:9691,&quot;nbc_social_page_title&quot;:&quot;&quot;,&quot;nbc_page_title&quot;:&quot;&quot;,&quot;nbc_seo_description&quot;:&quot;&quot;,&quot;nbc_social_description&quot;:&quot;&quot;,&quot;nbc_national_headline&quot;:&quot;&quot;,&quot;entities&quot;:&quot;&quot;,&quot;nbc_canonical_url&quot;:&quot;&quot;,&quot;nbc_hide_from_recirculation&quot;:&quot;&quot;,&quot;nbc_hide_from_search&quot;:&quot;&quot;,&quot;nbc_syndication_category&quot;:&quot;1:3:148&quot;,&quot;nbc_national_collections&quot;:[],&quot;nopreroll&quot;:false,&quot;video_copyright&quot;:&quot;Telemundo&quot;,&quot;sst_source_id&quot;:&quot;&quot;,&quot;nbc_disable_legacy_embeds&quot;:false,&quot;desktopFlashPid&quot;:&quot;&quot;,&quot;mpx_dfxp_url&quot;:&quot;&quot;,&quot;mp4_url&quot;:&quot;&quot;,&quot;mpx_download_pid&quot;:&quot;&quot;,&quot;mpx_high_id&quot;:&quot;&quot;,&quot;mpx_high_url&quot;:&quot;&quot;,&quot;mpx_is_livestream&quot;:&quot;&quot;,&quot;mpx_m3upid&quot;:&quot;&quot;,&quot;mpx_pid&quot;:&quot;RpuRQoCqOJ57&quot;,&quot;mpx_thumbnail_url&quot;:&quot;https:\/\/media.telemundo47.com\/2019\/09\/Liberado-luego-de-28-an\u0303os-por-un-asesinato-de-nin\u0303a.jpg?resize=850%2C478&quot;,&quot;pid_streaming_web_high&quot;:&quot;&quot;,&quot;pid_streaming_web_medium&quot;:&quot;RpuRQoCqOJ57&quot;,&quot;subtitle&quot;:&quot;&quot;,&quot;dfxp_url&quot;:&quot;&quot;,&quot;video_call_letter&quot;:&quot;NBCU TLM&quot;,&quot;video_captions&quot;:&quot;&quot;,&quot;video_id&quot;:&quot;1747612227959_313&quot;,&quot;video_length&quot;:&quot;68368&quot;,&quot;video_provider&quot;:&quot;mpx&quot;,&quot;alleypack_schedule_unpublish&quot;:&quot;&quot;,&quot;feed_remote_id&quot;:&quot;mpx_1747612227959&quot;,&quot;feed_thumbnail_url&quot;:&quot;&quot;}" data-livestream="false" data-title="Injusta condena: pasó casi 30 años en la cárcel por el brutal asesinato de niñita" data-vidcid="1:3:1907335" data-vidurl="https://ots.nbcwpshield.com/telemundo/noticias/eeuu/injusta-condena-paso-casi-30-anos-en-la-carcel-por-el-brutal-asesinato-de-una-pequena/1907335/" data-islead="false" data-catnames="{&quot;81&quot;:&quot;Noticias&quot;,&quot;148&quot;:&quot;EEUU&quot;}" data-tagnames="{&quot;12490&quot;:&quot;asesinato&quot;,&quot;9691&quot;:&quot;EEUU&quot;,&quot;2394&quot;:&quot;FILADELFIA&quot;}" data-customdata="{&quot;ContentPartner&quot;:&quot;None&quot;,&quot;Source&quot;:&quot;WEBFM&quot;,&quot;SyndicationAllowed&quot;:&quot;true&quot;,&quot;mSNVideoCategories&quot;:&quot;MSN Video v4 Connector-most watched news&quot;,&quot;mSNVideoContentSupplierID&quot;:&quot;NBC_Local&quot;,&quot;mSNVideoCountry&quot;:&quot;us&quot;,&quot;subtitle&quot;:&quot;nosubtitle&quot;,&quot;uploadedByTeam&quot;:&quot;1&quot;,&quot;youtubeChannel&quot;:&quot;None&quot;}" data-autoplay="false"></div>
+<div class="video_caption" data-react-component="NBCTruncate" data-maxlines="2" data-maxlinesmobile="4" data-readmore="Read more" data-text="El cadáver de la pequeña fue encontrado en una caja de cartón. Estas son las pruebas que lograron ponerlo en libertad." data-ellipsis="false">
+							El cadáver de la pequeña fue encontrado en una caja de cartón. Estas son las pruebas que lograron ponerlo en libertad.
+						</div>
+<p>El alcalde espera que cientos de miles de personas más regresen a trabajar a la ciudad cuando esta ingrese a la Fase II, que podría suceder a principios de julio, dijo el jueves.&nbsp;<a rel="noreferrer noopener" href="https://www.telemundo47.com/noticias/salud/coronavirus/nyc-presenta-plan-para-permitir-almuerzos-al-aire-libre-para-la-fase-ii-de-reapertura-de-blasio-estima-a-principios-de-julio/2062192/" target="_blank">Él ya ha presentado un plan de comidas al aire libre para ayudar a los restaurantes a prepararse para el siguiente paso.</a></p>
+
+<p>Para encontrar un sitio donde se pueda realizar una prueba de COVID-19 haz clic <a href="http://coronavirus.health.ny.gov/home">aquí</a>. </p>
+
+									</div>
+					
+	<div class="article-footer">
+		<div class="article-tags">
+	<h4 class="article-tags__heading">Este artículo etiquetado en:</h4>
+	<a class="article-tags__tag" href="https://www.telemundo47.com/tag/reapertura-de-nueva-york/">Reapertura de Nueva York</a><a class="article-tags__tag" href="https://www.telemundo47.com/tag/coronavirus/">Coronavirus</a><a class="article-tags__tag" href="https://www.telemundo47.com/tag/coronavirus-en-ny/">CORONAVIRUS EN NY</a><a class="article-tags__tag" href="https://www.telemundo47.com/tag/coronavirus-en-eeuu/">Coronavirus en EEUU</a><a class="article-tags__tag" href="https://www.telemundo47.com/tag/reapertura-economica/">Reapertura económica</a></div>
+		<div
+	class="share-buttons"
+	data-component="sharingBar"
+>
+			<a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.telemundo47.com%2Fnoticias%2Fsalud%2Fcoronavirus%2Fcoronavirus-en-estados-unidos%2Fel-gobernador-de-ny-urge-a-los-participantes-de-las-protestas-realizarse-las-pruebas-de-covid-19%2F2063101%2F&#038;El%20gobernador%20de%20NY%20urge%20a%20los%20participantes%20de%20las%20protestas%20realizarse%20las%20pruebas%20de%20COVID-19?_osource=db_npd_tlmd_wnju_fb_shr" data-service="facebook">
+			<i class="fab fa-facebook-f"></i>
+		</a>
+	
+			<a href="https://twitter.com/intent/tweet?text=El%20gobernador%20de%20NY%20urge%20a%20los%20participantes%20de%20las%20protestas%20realizarse%20las%20pruebas%20de%20COVID-19&#038;url=https%3A%2F%2Fwww.telemundo47.com%2Fnoticias%2Fsalud%2Fcoronavirus%2Fcoronavirus-en-estados-unidos%2Fel-gobernador-de-ny-urge-a-los-participantes-de-las-protestas-realizarse-las-pruebas-de-covid-19%2F2063101%2F?_osource=db_npd_tlmd_wnju_twt_shr" data-service="twitter">
+			<i class="fab fa-twitter"></i>
+		</a>
+	
+			<a href="mailto:?body=El%20gobernador%20de%20NY%20urge%20a%20los%20participantes%20de%20las%20protestas%20realizarse%20las%20pruebas%20de%20COVID-19%0D%0A%0D%0Ahttps%3A%2F%2Fwww.telemundo47.com%2Fnoticias%2Fsalud%2Fcoronavirus%2Fcoronavirus-en-estados-unidos%2Fel-gobernador-de-ny-urge-a-los-participantes-de-las-protestas-realizarse-las-pruebas-de-covid-19%2F2063101%2F?_osource=db_npd_tlmd_wnju_eml_shr" data-service="email">
+			<i class="fas fa-envelope"></i>
+		</a>
+	
+			<a href="#" data-service="comments">
+			<i class="fas fa-comment-alt"></i>
+
+			<div class="share-buttons__comment-count">
+				<div class="fb-comments-count" data-href="https://www.telemundo47.com/noticias/salud/coronavirus/coronavirus-en-estados-unidos/el-gobernador-de-ny-urge-a-los-participantes-de-las-protestas-realizarse-las-pruebas-de-covid-19/2063101/">0</div>
+			</div>
+		</a>
+	</div>
+	</div>
+				<div id="div-gpt-ad-mobilemultibox_belowarticle" class="widget_ad_layers_ad_widget gpt-mobilemultibox" data-beforetext="" data-fallbacktext=""></div><script style="text/javascript">
+				if (typeof adInstance === 'undefined') {
+					adInstance = new AdLayersAPI();
+				}
+				adInstance.lazyLoadAd({ slotName: 'mobilemultibox_belowarticle', format: 'mobilemultibox', targeting: {"slot":"mobilemultibox","pos":"mobilemultibox"} });
+			</script>	<div id="taboola-below-article-thumbnails"></div>
+
+	<script type="text/javascript">
+		/** scroll cookie for scroll.com **/
+		if (document.cookie.indexOf("scroll0=") < 0) {
+			window._taboola = window._taboola || [];
+			_taboola.push({
+				mode: 'thumbnails-e',
+				container: 'taboola-below-article-thumbnails',
+				placement: 'Below Article Thumbnails',
+				target_type: 'text'
+			});
+		};
+	</script>
+	<div id="taboola-below-article-text-links"></div>
+		<script type="text/javascript">
+		/** scroll cookie for scroll.com **/
+			if (document.cookie.indexOf("scroll0=") < 0) {
+				window._taboola = window._taboola || [];
+				_taboola.push({
+					mode: 'hybrid-text-links-b',
+					container: 'taboola-below-article-text-links',
+					placement: 'Below Article Text Links',
+					target_type: 'text'
+				});
+			};
+		</script>
+				</div>
+		</div>
+		<div class="section-content--secondary">
+			<aside class="sidebar article-sidebar">
+						<section id="ad_layers_ad_widget-2" class="widget widget_ad_layers_ad_widget"><div id="div-gpt-ad-topbox_150" class=" gpt-topbox" data-beforetext="" data-fallbacktext=""></div><script style="text/javascript">
+				if (typeof adInstance === 'undefined') {
+					adInstance = new AdLayersAPI();
+				}
+				adInstance.lazyLoadAd({ slotName: 'topbox_150', format: 'topbox', targeting: {"slot":"topbox","pos":"topbox"} });
+			</script></section><section id="nbc_most_popular-2" class="widget widget_nbc_most_popular"><div class="nbc-most-popular" data-react-component="MostPopular" data-title="Lo más popular" data-include-sponsored="true" data-beforetext="Patrocinado por"></div></section><section id="nbc_weather_widget-3" class="widget widget_nbc_weather_widget">		<div class="nbc-weather-widget">
+			<div class="nbc_owned_television_stations_weather_iframe">
+	<h2>Pronóstico de El Tiempo</h2><div class="widget_location">Nueva York, NY</div>
+	<a class="weather-module__conditions" href="https://www.telemundo47.com/el-tiempo/">
+		<div data-react-component="IframeConditions" data-location="11371"></div>
+	</a>
+		<div class="widget_sponsor">
+		<div id="div-gpt-ad-logo_weather_922" class="sponsored-ad-unit gpt-logo" data-beforetext="Patrocinado por" data-fallbacktext=""></div><script style="text/javascript">
+				if (typeof adInstance === 'undefined') {
+					adInstance = new AdLayersAPI();
+				}
+				adInstance.lazyLoadAd({ slotName: 'logo_weather_922', format: 'logo', targeting: {"module":"weather","slot":"logo","pos":"logo"} });
+			</script>	</div>
+</div>
+		</div>
+		</section><section id="ad_layers_ad_widget-10" class="widget widget_ad_layers_ad_widget"><div id="div-gpt-ad-mobilemultibox_597" class=" gpt-mobilemultibox" data-beforetext="" data-fallbacktext=""></div><script style="text/javascript">
+				if (typeof adInstance === 'undefined') {
+					adInstance = new AdLayersAPI();
+				}
+				adInstance.lazyLoadAd({ slotName: 'mobilemultibox_597', format: 'mobilemultibox', targeting: {"slot":"mobilemultibox","pos":"mobilemultibox"} });
+			</script></section><section id="nbc_civic_science-2" class="widget widget_nbc_civic_science"><div id="civsci-99943157" class="module-civicScience"></div></section><section id="ad_layers_ad_widget-7" class="widget widget_ad_layers_ad_widget"><div id="div-gpt-ad-bottombox_790" class=" gpt-bottombox" data-beforetext="" data-fallbacktext=""></div><script style="text/javascript">
+				if (typeof adInstance === 'undefined') {
+					adInstance = new AdLayersAPI();
+				}
+				adInstance.lazyLoadAd({ slotName: 'bottombox_790', format: 'bottombox', targeting: {"slot":"bottombox","pos":"bottombox"} });
+			</script></section><section id="ad_layers_ad_widget-17" class="widget widget_ad_layers_ad_widget"><div id="div-gpt-ad-interstitial_503" class=" gpt-interstitial" data-beforetext="" data-fallbacktext=""></div><script style="text/javascript">
+				if (typeof adInstance === 'undefined') {
+					adInstance = new AdLayersAPI();
+				}
+				adInstance.lazyLoadAd({ slotName: 'interstitial_503', format: 'interstitial', targeting: {"slot":"interstitial","pos":"interstitial"} });
+			</script></section><section id="ad_layers_ad_widget-18" class="widget widget_ad_layers_ad_widget"><div id="div-gpt-ad-mobilebackstage_112" class=" gpt-mobilebackstage" data-beforetext="" data-fallbacktext=""></div><script style="text/javascript">
+				if (typeof adInstance === 'undefined') {
+					adInstance = new AdLayersAPI();
+				}
+				adInstance.lazyLoadAd({ slotName: 'mobilebackstage_112', format: 'mobilebackstage', targeting: {"slot":"mobilebackstage","pos":"mobilebackstage"} });
+			</script></section>			</aside>
+		</div>
+	</div>
+</article>
+
+			</main>
+		</div>
+
+		
+	</div><!-- #content -->
+	
+<footer role="contentinfo" class="site-footer">
+	<div class="site-footer__wrapper">
+		<div class="site-footer__identity">
+							<a href="https://www.telemundo47.com/" class="site-footer__logo">
+					<img
+						src="https://media.telemundo47.com/2019/09/TLMD_47_On_Light@3x.png?fit=204%2C120"
+						alt="Telemundo New York (47)"
+					/>
+				</a>
+			
+			<ul class="site-footer__social-list">
+				
+									<li class="site-footer__social-list-item facebook">
+						<a href="https://www.facebook.com/Telemundo47" target="_blank">
+							<span class="screen-reader-text">Facebook</span>
+							<i class="fab fa-facebook-f"></i>
+						</a>
+					</li>
+				
+									<li class="site-footer__social-list-item twitter">
+						<a href="https://twitter.com/telemundo47" target="_blank">
+							<span class="screen-reader-text">Twitter</span>
+							<i class="fab fa-twitter"></i>
+						</a>
+					</li>
+				
+									<li class="site-footer__social-list-item instagram">
+						<a href="https://instagram.com/Telemundo47" target="_blank">
+							<span class="screen-reader-text">Instagram</span>
+							<i class="fab fa-instagram"></i>
+						</a>
+					</li>
+							</ul>
+		</div>
+
+		<ul id="menu-primary-footer" class="footer-menu site-footer__menu-primary"><li id="menu-item-2018527" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2018527"><a href="https://www.telemundo47.com/boletin-electronico/">Boletín Electrónico</a></li>
+<li id="menu-item-2002482" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-2002482"><a href="/noticias/local/">Noticias Locales</a></li>
+<li id="menu-item-1861118" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1861118"><a href="/noticias/eeuu/">ESTADOS UNIDOS</a></li>
+<li id="menu-item-1861129" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1861129"><a href="/noticias/republica-dominicana/">República Dominicana</a></li>
+<li id="menu-item-1861130" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1861130"><a href="/noticias/puerto-rico/">Puerto Rico</a></li>
+<li id="menu-item-1861117" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1861117"><a href="/noticias/mexico/">México</a></li>
+<li id="menu-item-2002483" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2002483"><a href="/noticias/inmigracion/">Inmigración</a></li>
+<li id="menu-item-1861122" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1861122"><a href="/entretenimiento/">Entretenimiento</a></li>
+<li id="menu-item-2002485" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2002485"><a href="/entretenimiento/acceso-total/">Acceso Total</a></li>
+<li id="menu-item-2002484" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor menu-item-2002484"><a href="/noticias/salud/">Salud</a></li>
+<li id="menu-item-2022439" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2022439"><a href="https://www.telemundo47.com/especiales/objetivo-tu-salud/">Objetivo Tu Salud</a></li>
+<li id="menu-item-1861121" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1861121"><a href="/noticias/mundo/">Mundo</a></li>
+<li id="menu-item-2012435" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2012435"><a href="/responde/">Responde</a></li>
+<li id="menu-item-2017389" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2017389"><a href="https://www.telemundo47.com/conectate/">Contáctanos</a></li>
+</ul><ul id="menu-secondary-footer" class="footer-menu-secondary site-footer__menu-secondary"><li id="menu-item-1861151" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1861151"><a href="https://publicfiles.fcc.gov/tv-profile/wnju/">WNJU Public Inspection File</a></li>
+<li id="menu-item-1861137" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1861137"><a href="https://www.nbcuniversal.com/privacy-policies/privacy-latinamerica?brandA=Owned_Stations&#038;intake=Telemundo_47/">Política de Privacidad &#8211; Nuevo</a></li>
+<li id="menu-item-1996097" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1996097"><a href="https://www.nbcuniversal.com/privacy/notrtoo-spanish?brandA=Owned_Stations&#038;intake=Telemundo_47/">No venda mi información personal</a></li>
+<li id="menu-item-1861132" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1861132"><a href="https://www.telemundo47.com/wnju-informacion-de-empleos/">Información de empleos en WNJU</a></li>
+<li id="menu-item-1861133" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1861133"><a href="https://www.telemundo47.com/terminos-de-servicio/">Términos de Servicios</a></li>
+<li id="menu-item-1861140" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1861140"><a href="https://info.evidon.com/pub_info/209?v=1&#038;nt=0&#038;nw=false/">Ad Choices</a></li>
+<li id="menu-item-1861150" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1861150"><a href="https://www.telemundo47.com/envia-tus-comentarios/">Envía tus comentarios</a></li>
+<li id="menu-item-1954519" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1954519"><a href="mailto:WNJUViewerMail.Advertising@nbcuni.com?subject=Advertise%20with%20Us%20HP/">Publicidad con nosotros</a></li>
+</ul>
+				<div class="site-footer__corporate">
+			
+			<span class="site-footer__corporate-copyright">
+				Copyright © 2020 NBC Universal Inc. Derechos Reservados.			</span>
+		</div>
+	</div><!-- wrapper -->
+</footer><!-- #colophon -->
+</div><!-- #page -->
+
+	<script type='text/javascript'>
+	(function() {
+		function CreateEvent(type, data) {
+			var event;
+
+			if ('undefined' === typeof data) {
+				data = {};
+			}
+
+			try {
+				event = new CustomEvent(type, { detail: data });
+			} catch (err) {
+				event = document.createEvent('CustomEvent');
+				event.initCustomEvent(type, true, true, data);
+			}
+
+			return event;
+		}
+
+		var pdk6Url = "https://www.telemundo47.com/wp-content/themes/nbc-station/static/video/pdk6/player.6.1.3.js";		var pdkScript = pdk6Url;
+		var win7ie = navigator.userAgent.indexOf('Windows NT 6.1') > -1 && (navigator.userAgent.indexOf('Trident') > -1 || navigator.userAgent.indexOf('MSIE') > -1);
+
+		pdkScript = win7ie ?
+			"https://www.telemundo47.com/wp-content/themes/nbc-station/static/video/pdk5/tpPdk.js"			: pdk6Url;
+
+		if (pdkScript) {
+			var s = document.createElement('script');
+			s.type = 'text/javascript';
+			s.src = pdkScript;
+			s.onload = function() {
+				window.dispatchEvent(
+					CreateEvent('nbc:pdkLoaded')
+				);
+			};
+			document.body.appendChild(s);
+		}
+	})();
+	</script>
+	<link rel="stylesheet" href="https://www.telemundo47.com/wp-content/themes/nbc-station/static/video/pdk6/player_smooth.css?v=102319" type="text/css" />		<script type="text/javascript">
+		(function() {
+						var _sf_async_config      = window._sf_async_config = (window._sf_async_config || {});
+			_sf_async_config.domain   = "telemundo47.com";
+			_sf_async_config.uid      = 61937;
+			_sf_async_config.sections = "coronavirus";
+			_sf_async_config.authors  = "TELEMUNDO 47";
+			_sf_async_config.title    = "El gobernador de NY urge a los participantes de las protestas realizarse las pruebas de COVID-19";
+
+			function loadChartbeat() {
+				var e = document.createElement('script');
+				var n = document.getElementsByTagName('script')[0];
+				e.type = 'text/javascript';
+				e.async = true;
+				e.src = '//static.chartbeat.com/js/chartbeat.js';
+				n.parentNode.insertBefore(e, n);
+			}
+			loadChartbeat();
+		})();
+		</script>
+				<div class="facebook-comments">
+			<button class="facebook-comments__close"><i class="fas fa-chevron-left"></i> Volver al artículo</button>
+			<div class="fb-comments" data-href="https://www.telemundo47.com/noticias/salud/coronavirus/coronavirus-en-estados-unidos/el-gobernador-de-ny-urge-a-los-participantes-de-las-protestas-realizarse-las-pruebas-de-covid-19/2063101/" data-width="100%"></div>
+		</div>
+		<div class="flyout-nav" data-component="flyoutNav">
+	<button class="flyout-nav__close"><i class="fas fa-times"></i> <span class="screen-reader-text">Cerrar menú</span></button>
+	<div class="flyout-nav__logo">
+		<a href="https://www.telemundo47.com/">
+					<img
+						src="https://media.telemundo47.com/2019/09/TLMD_47_On_Light@3x.png?fit=204%2C120"
+						alt="Telemundo New York (47)"
+					/>
+		</a>
+	</div>
+	<div class="flyout-nav__search">
+<form class="search-form" role="search" method="get" action="https://www.telemundo47.com/" >
+	<label>
+		<span class="screen-reader-text">Búsqueda por:</span>
+		<input type="search" value="" name="s" placeholder="Buscar" />
+	</label>
+	<input type="submit" class="search-submit" value="Buscar" />
+</form>
+</div>
+	<div class="flyout-nav__menu">
+		<div class="flyout-nav__menu--upper">
+							<a class="flyout-nav__menu-item parent-item" href="https://www.telemundo47.com/en-vivo/">
+					Mira TV En Vivo				</a>
+							<a class="flyout-nav__menu-item parent-item" href="/noticias/">
+					NOTICIAS				</a>
+							<a class="flyout-nav__menu-item parent-item" href="/noticias/local/">
+					Noticiero Telemundo 47				</a>
+							<a class="flyout-nav__menu-item child-item" href="/noticias/decision/">
+					DECISIÓN				</a>
+							<a class="flyout-nav__menu-item child-item" href="/noticias/eeuu/">
+					ESTADOS UNIDOS				</a>
+							<a class="flyout-nav__menu-item child-item" href="/noticias/inmigracion/">
+					INMIGRACIÓN				</a>
+							<a class="flyout-nav__menu-item child-item" href="/noticias/mundo/">
+					MUNDO				</a>
+							<a class="flyout-nav__menu-item child-item" href="/noticias/centroamerica/">
+					Centroamérica				</a>
+							<a class="flyout-nav__menu-item child-item" href="/noticias/republica-dominicana/">
+					REPÚBLICA DOMINICANA				</a>
+							<a class="flyout-nav__menu-item child-item" href="/noticias/puerto-rico/">
+					PUERTO RICO				</a>
+							<a class="flyout-nav__menu-item child-item" href="/noticias/mexico/">
+					MÉXICO				</a>
+							<a class="flyout-nav__menu-item parent-item" href="https://www.telemundo47.com/el-tiempo/">
+					El tiempo				</a>
+							<a class="flyout-nav__menu-item parent-item" href="/especiales/enfoque/">
+					Enfoque				</a>
+							<a class="flyout-nav__menu-item parent-item" href="/responde/">
+					Responde				</a>
+							<a class="flyout-nav__menu-item parent-item" href="/fotosyvideos/">
+					MULTIMEDIA				</a>
+							<a class="flyout-nav__menu-item parent-item" href="/entretenimiento/">
+					ENTRETENIMIENTO				</a>
+							<a class="flyout-nav__menu-item child-item" href="https://www.telemundo47.com/entretenimiento/acceso-total/">
+					Acceso Total				</a>
+							<a class="flyout-nav__menu-item parent-item" href="/deportes/">
+					DEPORTES				</a>
+							<a class="flyout-nav__menu-item parent-item" href="https://www.telemundo47.com/boletin-electronico/">
+					Boletín Electrónico				</a>
+							<a class="flyout-nav__menu-item parent-item" href="https://www.telemundo47.com/trafico/">
+					Tráfico				</a>
+					</div>
+		<div class="flyout-nav__menu--lower">
+							<a class="flyout-nav__menu-item child-item" href="https://publicfiles.fcc.gov/tv-profile/wnju/">
+					WNJU Public Inspection File				</a>
+							<a class="flyout-nav__menu-item child-item" href="https://www.nbcuniversal.com/privacy-policies/privacy-latinamerica?brandA=Owned_Stations&#038;intake=Telemundo_47/">
+					Política de Privacidad - Nuevo				</a>
+							<a class="flyout-nav__menu-item child-item" href="https://www.nbcuniversal.com/privacy/notrtoo-spanish?brandA=Owned_Stations&#038;intake=Telemundo_47/">
+					No venda mi información personal				</a>
+							<a class="flyout-nav__menu-item child-item" href="https://www.telemundo47.com/wnju-informacion-de-empleos/">
+					Información de empleos en WNJU				</a>
+							<a class="flyout-nav__menu-item child-item" href="https://www.telemundo47.com/terminos-de-servicio/">
+					Términos de Servicios				</a>
+							<a class="flyout-nav__menu-item child-item" href="https://info.evidon.com/pub_info/209?v=1&#038;nt=0&#038;nw=false/">
+					Ad Choices				</a>
+							<a class="flyout-nav__menu-item child-item" href="https://www.telemundo47.com/envia-tus-comentarios/">
+					Envía tus comentarios				</a>
+							<a class="flyout-nav__menu-item child-item" href="mailto:WNJUViewerMail.Advertising@nbcuni.com?subject=Advertise%20with%20Us%20HP/">
+					Publicidad con nosotros				</a>
+					</div>
+	</div>
+	<div class="flyout-nav__social">
+		<h4 class="flyout-nav__social-heading">Síguenos</h4>
+		<ul class="flyout-nav__social-list">
+			
+							<li class="site-footer__social-list-item facebook">
+					<a href="https://www.facebook.com/Telemundo47" target="_blank">
+						<span class="screen-reader-text">Facebook</span>
+						<i class="fab fa-facebook-f"></i>
+					</a>
+				</li>
+			
+							<li class="site-footer__social-list-item twitter">
+					<a href="https://twitter.com/telemundo47" target="_blank">
+						<span class="screen-reader-text">Twitter</span>
+						<i class="fab fa-twitter"></i>
+					</a>
+				</li>
+			
+							<li class="site-footer__social-list-item instagram">
+					<a href="https://instagram.com/Telemundo47" target="_blank">
+						<span class="screen-reader-text">Instagram</span>
+						<i class="fab fa-instagram"></i>
+					</a>
+				</li>
+					</ul>
+	</div>
+</div>
+<a class="flyout-contact-button"
+			href="/conectate"
+	>
+	Contáctanos</a>
+<script type='text/javascript' src='https://www.telemundo47.com/_static/??-eJx9i7EOwjAMBX+I9rUgpDIgPgXRJKJOEzvCtvh9MnRmuuHu8G1DELbEhupDK/4mVuRk7RV2PIkDVqcS0TYx4QNjJR6zntD3nhSPqU+KSGrwT/nrN5Fdj+JR7/P1Ni/nZbpM+QfWNDMz'></script>
+<script>
+( function( domain, translations ) {
+	var localeData = translations.locale_data[ domain ] || translations.locale_data.messages;
+	localeData[""].domain = domain;
+	wp.i18n.setLocaleData( localeData, domain );
+} )( "default", {"translation-revision-date":"2019-03-08 20:25:53+0000","generator":"GlotPress\/2.4.0-alpha","domain":"messages","locale_data":{"messages":{"":{"domain":"messages","plural-forms":"nplurals=2; plural=n != 1;","lang":"es"},"The response is not a valid JSON response.":["Las respuesta no es una respuesta JSON v\u00e1lida."],"An unknown error occurred.":["Ocurri\u00f3 un error desconocido."]}}} );
+</script>
+<script src='https://www.telemundo47.com/wp-includes/js/dist/api-fetch.min.js?ver=3.6.4'></script>
+<script>
+wp.apiFetch.use( wp.apiFetch.createRootURLMiddleware( "https://www.telemundo47.com/wp-json/" ) );
+wp.apiFetch.nonceMiddleware = wp.apiFetch.createNonceMiddleware( "625e14be07" );
+wp.apiFetch.use( wp.apiFetch.nonceMiddleware );
+wp.apiFetch.use( wp.apiFetch.mediaUploadMiddleware );
+wp.apiFetch.nonceEndpoint = "https://www.telemundo47.com/wp-admin/admin-ajax.php?action=rest-nonce";
+wp.apiFetch.use( wp.apiFetch.createPreloadingMiddleware( {"\/nbc\/v1\/weather-alerts":{"body":[],"headers":[]},"\/nbc\/v1\/top-stories?include_sponsored=1&section=salud":{"body":[{"title":"Cuomo env\u00eda mensaje esperanzador tras \u2018111 d\u00edas de infierno\u2019 a causa del coronavirus","link":"https:\/\/www.telemundo47.com\/historias-destacadas\/cuomo-envia-mensaje-esperanzador-tras-111-dias-de-infierno-a-causa-del-coronavirus\/2067016\/","eyebrow":"Andrew Cuomo","eyebrow_link":"https:\/\/www.telemundo47.com\/tag\/andrew-cuomo\/","thumbnail_url":"https:\/\/media.telemundo47.com\/2019\/09\/Governor-Andrew-Cuomo-Getty-Images.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"\u2018Hemos hecho lo imposible\u2019: Cuomo tiene su \u00faltima sesi\u00f3n informativa diaria de COVID","link":"https:\/\/www.telemundo47.com\/noticias\/salud\/coronavirus\/cuomo-llevara-a-cabo-su-ultima-conferencia-de-prensa-sobre-covid-mientras-nyc-se-acerca-a-la-fase-ii\/2066780\/","eyebrow":"Coronavirus","eyebrow_link":"https:\/\/www.telemundo47.com\/tag\/coronavirus\/","thumbnail_url":"https:\/\/media.telemundo47.com\/2019\/09\/cuomo-smaller.jpg?crop=0px%2C37px%2C1024px%2C576px&resize=100%2C56","type":"article","presented_by":""},{"title":"Cu\u00e1l es el tipo de sangre que podr\u00eda influir si alguien contrae el COVID-19","link":"https:\/\/www.telemundo47.com\/noticias\/salud\/coronavirus\/coronavirus-en-el-mundo\/cual-es-el-tipo-de-sangre-que-podria-influir-si-alguien-contrae-el-covid-19\/2066408\/","eyebrow":"pandemia","eyebrow_link":"https:\/\/www.telemundo47.com\/tag\/pandemia\/","thumbnail_url":"https:\/\/media.telemundo47.com\/2019\/09\/muestra-sangre-covid-1.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"En video: Ir\u00e1n hace explotar un buque con sus nuevos misiles","link":"https:\/\/www.telemundo47.com\/noticias\/mundo\/en-video-iran-hace-explotar-un-buque-con-sus-nuevos-misiles\/2066852\/","eyebrow":"Ir\u00e1n","eyebrow_link":"https:\/\/www.telemundo47.com\/tag\/iran\/","thumbnail_url":"https:\/\/media.telemundo47.com\/2019\/09\/tlmd-misil-iran-foto-main-1234.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Fervor por el f\u00fatbol habr\u00eda terminado en la muerte de un joven deportista","link":"https:\/\/www.telemundo47.com\/noticias\/fervor-por-el-futbol-habria-terminado-en-la-muerte-de-un-joven-deportista\/2066962\/","eyebrow":"Colombia","eyebrow_link":"https:\/\/www.telemundo47.com\/tag\/colombia\/","thumbnail_url":"https:\/\/media.telemundo47.com\/2019\/09\/Ardila-Queens-1.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Dominicanos en Nueva York se preparan para votar en las pr\u00f3ximas elecciones","link":"https:\/\/www.telemundo47.com\/noticias\/dominicanos-en-nueva-york-se-preparan-para-votar-en-las-proximas-elecciones\/2067046\/","eyebrow":"","eyebrow_link":"","thumbnail_url":"https:\/\/media.telemundo47.com\/2019\/09\/voto_rd.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Disputa por equipos de f\u00fatbol termina en el asesinato de joven deportista","link":"https:\/\/www.telemundo47.com\/historias-destacadas\/disputa-por-equipos-de-futbol-termina-en-el-asesinato-de-joven-deportista\/2067000\/","eyebrow":"Colombia","eyebrow_link":"https:\/\/www.telemundo47.com\/tag\/colombia\/","thumbnail_url":"https:\/\/media.telemundo47.com\/2019\/09\/fut.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Premio millonario: pareja gana la loter\u00eda usando como n\u00fameros fechas de cumplea\u00f1os familiares","link":"https:\/\/www.telemundo47.com\/noticias\/local\/pareja-que-gana-la-loteria-uso-como-numero-sus-fechas-de-cumpleanos\/2067007\/","eyebrow":"Arizona","eyebrow_link":"https:\/\/www.telemundo47.com\/tag\/arizona\/","thumbnail_url":"https:\/\/media.telemundo47.com\/2019\/09\/PORTADA-GANADOR-LOTERIA-.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"American Airlines proh\u00edbe abordaje a hombre que se rehus\u00f3 a usar mascarilla","link":"https:\/\/www.telemundo47.com\/historias-destacadas\/american-airlines-prohibe-abordaje-a-hombre-que-se-rehuso-a-usar-mascarilla\/2067027\/","eyebrow":"American Airlines","eyebrow_link":"https:\/\/www.telemundo47.com\/tag\/american-airlines\/","thumbnail_url":"https:\/\/media.telemundo47.com\/2019\/09\/avion-american-airlines.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Los signos m\u00e1s compatibles en el amor","link":"https:\/\/www.telemundo47.com\/horoscopo\/los-signos-mas-compatibles-en-el-amor-elementos-fuego-tierra-aire-agua\/90585\/","eyebrow":"","eyebrow_link":"","thumbnail_url":"https:\/\/media.telemundo47.com\/2019\/09\/tlmd_shutterstock_22696294.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Brasil supera el mill\u00f3n de casos de COVID-19","link":"https:\/\/www.telemundo47.com\/noticias\/mundo\/brasil-se-convierte-en-el-segundo-pais-del-mundo-con-mas-casos-de-covid-19-por-detras-de-eeuu\/2058207\/","eyebrow":"Brasil","eyebrow_link":"https:\/\/www.telemundo47.com\/tag\/brasil\/","thumbnail_url":"https:\/\/media.telemundo47.com\/2019\/09\/cementerio-brasil-efe-1.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Galer\u00eda: Compara \u201cSin senos\u201d y \u201cSin tetas\u201d","link":"https:\/\/www.telemundo47.com\/local\/compara-sin-senos-y-sin-tetas-galeria\/91228\/","eyebrow":"","eyebrow_link":"","thumbnail_url":"https:\/\/media.telemundo47.com\/2019\/09\/tlmd_22477142.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Concejales piden retiro de estatua de Thomas Jefferson, quien fue \u2018due\u00f1o\u2019 de esclavos","link":"https:\/\/www.telemundo47.com\/historias-destacadas\/concejales-piden-retiro-de-estatua-de-thomas-jefferson-quien-fue-dueno-de-esclavos\/2067010\/","eyebrow":"Thomas Jefferson","eyebrow_link":"https:\/\/www.telemundo47.com\/tag\/thomas-jefferson\/","thumbnail_url":"https:\/\/media.telemundo47.com\/2019\/09\/Thomas-Jefferson-Letters.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Estos son los 10 nuevos centros de prueba del COVID-19 en la Gran Manzana","link":"https:\/\/www.telemundo47.com\/historias-destacadas\/estos-son-los-10-nuevos-centros-de-prueba-del-covid-19-en-la-gran-manzana\/2045935\/","eyebrow":"CORONAVIRUS EN NY","eyebrow_link":"https:\/\/www.telemundo47.com\/tag\/coronavirus-en-ny\/","thumbnail_url":"https:\/\/media.telemundo47.com\/2019\/09\/GettyImages-1208704622.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Mortal choque: auto sale volando desde un puente y cae sobre un tren","link":"https:\/\/www.telemundo47.com\/noticias\/eeuu\/chp-accidente-automovilistico-deja-al-menos-un-muerto-en-crockett\/2067005\/","eyebrow":"California","eyebrow_link":"https:\/\/www.telemundo47.com\/tag\/california\/","thumbnail_url":"https:\/\/media.telemundo47.com\/2019\/09\/crockett.png?resize=100%2C56","type":"article","presented_by":""},{"title":"M\u00e1s de una docena de tiroteos se han registrado en NYC en solo una semana","link":"https:\/\/www.telemundo47.com\/noticias\/mas-de-una-docena-de-tiroteos-se-han-registrado-en-nyc-en-solo-una-semana\/2067039\/","eyebrow":"","eyebrow_link":"","thumbnail_url":"https:\/\/media.telemundo47.com\/2019\/09\/Pablo-NYPD.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Ricky Martin anuncia que volver\u00e1 a casarse con Jwan Yosef","link":"https:\/\/www.telemundo47.com\/entretenimiento\/entretenimiento-destacados\/ricky-martin-anuncia-que-volvera-a-casarse-con-jwan-yosef\/2066927\/","eyebrow":"Far\u00e1ndula","eyebrow_link":"https:\/\/www.telemundo47.com\/tag\/farandula\/","thumbnail_url":"https:\/\/media.telemundo47.com\/2019\/09\/ricky-martin-jwan-yosef-beso.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"\u201cArbitraria y caprichosa\u201d: juez Roberts fustiga decisi\u00f3n de Trump al ir contra el programa DACA","link":"https:\/\/www.telemundo47.com\/noticias\/eeuu\/arbitraria-y-caprichosa-juez-roberts-fustiga-a-trump-por-ir-contra-el-programa-daca\/2066470\/","eyebrow":"DACA","eyebrow_link":"https:\/\/www.telemundo47.com\/tag\/daca\/","thumbnail_url":"https:\/\/media.telemundo47.com\/2019\/09\/doble-roberts-trump.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Aprende a hacer pasteles de unicornio","link":"https:\/\/www.telemundo47.com\/entretenimiento\/acceso-total\/aprende-a-hacer-pasteles-de-unicornio_tlmd-nueva-york\/17151\/","eyebrow":"","eyebrow_link":"","thumbnail_url":"https:\/\/media.telemundo47.com\/2019\/09\/Aprende_a_hacer_pasteles_de_unicornio.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Programaci\u00f3n en vivo-Noticia de \u00faltima hora","link":"https:\/\/www.telemundo47.com\/noticias\/local\/programacion-en-vivo-wnju\/2031168\/","eyebrow":"Coronavirus","eyebrow_link":"https:\/\/www.telemundo47.com\/tag\/coronavirus\/","thumbnail_url":null,"type":"article","presented_by":""},{"title":"47 Responde: Pago de est\u00edmulo del IRS enviado a direcci\u00f3n equivocada","link":"https:\/\/www.telemundo47.com\/videos\/47-responde-pago-de-estimulo-del-irs-enviado-a-direccion-equivocada\/2066776\/","eyebrow":"47 Responde","eyebrow_link":"https:\/\/www.telemundo47.com\/tag\/47-responde\/","thumbnail_url":"https:\/\/media.telemundo47.com\/2019\/09\/cheque-segundo-paquete.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Aparatoso atropello en video: manifestante vuela por los aires","link":"https:\/\/www.telemundo47.com\/noticias\/eeuu\/aparatoso-atropello-en-video-manifestante-vuela-por-los-aires\/2066601\/","eyebrow":"Kentucky","eyebrow_link":"https:\/\/www.telemundo47.com\/tag\/kentucky\/","thumbnail_url":"https:\/\/media.telemundo47.com\/2019\/09\/tlmd-atropello-kentu-1234.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"La leyenda de la Llorona","link":"https:\/\/www.telemundo47.com\/horoscopo\/la-leyenda-llorona-horoscopo-zodiaco-superticion\/91897\/","eyebrow":"","eyebrow_link":"","thumbnail_url":"https:\/\/media.telemundo47.com\/2019\/09\/tlmd_tlmd_121412_llorona.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Otro soldado de origen hispano desapareci\u00f3 de base en Fort Hood","link":"https:\/\/www.telemundo47.com\/noticias\/eeuu\/otro-soldado-de-origen-hispano-desaparecio-de-base-en-fort-hood\/2066077\/","eyebrow":"gregory morales","eyebrow_link":"https:\/\/www.telemundo47.com\/tag\/gregory-morales\/","thumbnail_url":"https:\/\/media.telemundo47.com\/2019\/09\/morales-fort-hood.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Temen oleada de desalojos en Nueva York al vencerse moratoria este fin de semana","link":"https:\/\/www.telemundo47.com\/noticias\/temen-oleada-de-desalojos-en-nueva-york-al-vencerse-moratoria-este-fin-de-semana\/2066329\/","eyebrow":"gobernador andrew cuomo","eyebrow_link":"https:\/\/www.telemundo47.com\/tag\/gobernador-andrew-cuomo\/","thumbnail_url":"https:\/\/media.telemundo47.com\/2019\/09\/rent-fund.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Fin de semana del D\u00eda de la Madre con un r\u00e9cord de bajas temperaturas; Central Park tuvo nieve","link":"https:\/\/www.telemundo47.com\/noticias\/local\/drastico-cambio-en-el-tiempo-amenaza-con-temperaturas-record-y-hasta-la-posibilidad-de-nieve\/2052119\/","eyebrow":"el tiempo","eyebrow_link":"https:\/\/www.telemundo47.com\/tag\/el-tiempo\/","thumbnail_url":"https:\/\/media.telemundo47.com\/2019\/09\/frio-shutterstock-1.png?resize=100%2C56","type":"article","presented_by":""},{"title":"Muestra de humanidad brinda esperanza en medio de crisis de salud","link":"https:\/\/www.telemundo47.com\/noticias\/local\/muestra-de-humanidad-en-medio-de-crisis-de-salud\/2037174\/","eyebrow":"","eyebrow_link":"","thumbnail_url":"https:\/\/media.telemundo47.com\/2019\/09\/nj.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Los servicios funerarios de George Floyd ser\u00e1n pagados por excampe\u00f3n de boxeo","link":"https:\/\/www.telemundo47.com\/noticias\/eeuu\/los-servicios-funerarios-de-george-floyd-seran-pagados-por-excampeon-de-boxeo\/2061241\/","eyebrow":"George Floyd","eyebrow_link":"https:\/\/www.telemundo47.com\/tag\/george-floyd\/","thumbnail_url":"https:\/\/media.telemundo47.com\/2019\/09\/74dc81de3adb868a497071ade16e4576299fe6f6w.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"L\u00edderes comunitarios contin\u00faan jornadas de entrega de alimentos en El Bronx","link":"https:\/\/www.telemundo47.com\/noticias\/lideres-comunitarios-continuan-jornadas-de-entrega-de-alimentos-en-el-bronx\/2066974\/","eyebrow":"","eyebrow_link":"","thumbnail_url":"https:\/\/media.telemundo47.com\/2019\/09\/Ana_Ledo_Bronx.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Aspirante hispano ser\u00eda el favorito para ocupar esca\u00f1o del congresista Jos\u00e9 Serrano","link":"https:\/\/www.telemundo47.com\/noticias\/aspirante-hispano-seria-el-favorito-para-ocupar-escano-del-congresista-jose-serrano\/2066968\/","eyebrow":"","eyebrow_link":"","thumbnail_url":"https:\/\/media.telemundo47.com\/2019\/09\/Luis-Bronx.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"El consumo de bebidas alcoh\u00f3licas en p\u00fablico ahora es permitido en algunas partes de la costa de NJ","link":"https:\/\/www.telemundo47.com\/historias-destacadas\/el-consumo-de-bebidas-alcoholicas-en-publico-ahora-es-permitido-en-algunas-partes-de-la-costa-de-nj\/2065139\/","eyebrow":"Nueva Jersey","eyebrow_link":"https:\/\/www.telemundo47.com\/tag\/nueva-jersey\/","thumbnail_url":"https:\/\/media.telemundo47.com\/2019\/09\/20200612-Drinks-on-Boardwalk.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"EN VIVO: Noticia de \u00faltima hora:","link":"https:\/\/www.telemundo47.com\/noticias\/local\/en-vivo-noticia-de-ultima-hora\/2032054\/","eyebrow":"Nueva York","eyebrow_link":"https:\/\/www.telemundo47.com\/tag\/nueva-york\/","thumbnail_url":"https:\/\/media.telemundo47.com\/2019\/09\/breaking-news13-1.jpg?resize=100%2C56","type":"article","presented_by":""}],"headers":[]}} ) );
+</script>
+<script type='text/javascript' src='https://www.telemundo47.com/wp-content/themes/nbc-station/client/build/js/common.d68e2147deee7491961e.chunk.min.js?m=1592580891g'></script>
+<script>
+nbc.preloadedResources = nbc.preloadedResources || {}; nbc.preloadedResources = Object.assign({}, nbc.preloadedResources, {"https:\/\/wsidata.weather.com\/200904-01\/369362872\/Weather\/Report\/11371?filter=1,4,9&locale = es":"<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<Cities>\r\n  <City Id=\"USNY0504\" Name=\"Flushing\" StateAbbr=\"NY\" StateName=\"New York\" CountyFips=\"36081\" CountyName=\"Queens\" CountryName=\"United States\" CountryFips=\"US\" StnIcao=\"KLGA\" ClimateStn=\"305811\" Latitude=\"40.77\" Longitude=\"-73.82\" TimeZone=\"-5\" IsDaylightSavings=\"True\" ObservesDaylightSavings=\"True\" PreferredZipCode=\"11390\" PreferredAirport=\"LGA \" PreferredTide=\"2723\" PreferredBuoy=\"kptn6\" PreferredSkiResort=\"201004\" Dma=\"501\">\r\n    <CurrentObservation StnIcao=\"KLGA\" ReportTime=\"6\/20\/2020 12:51:00 PM\" TempF=\"79\" TempC=\"26\" DewPtF=\"64\" DewPtC=\"18\" RelHumidity=\"60\" WndSpdMph=\"0\" WndDirDegr=\"\" WndDirCardinal=\"\" WndGustMph=\"\" Pressure=\"30.07\" Weather=\"\" Sky=\"Broken Clouds\" IconCode=\"66\" Ceiling=\"25000\" Visibility=\"10\" HeatIdxF=\"81\" HeatIdxC=\"27\" WndChillF=\"79\" WndChillC=\"26\" FeelsLikeF=\"81\" FeelsLikeC=\"27\" SnowDepth=\"\" SixHrMax=\"77\" TwentyFourHrMax=\"86\" SixHrMin=\"72\" TwentyFourHrMin=\"67\" ThreeHrPrecip=\"0\" SixHrPrecip=\"0\" TwentyFourHrPrecip=\"\" CodedWeather=\"NSW\" EnhancedWeather=\"\" ReportText=\"KLGA 201251Z 00000KT 10SM FEW110 FEW200 BKN250 26\/18 A3007 RMK     AO2 SLP184 T02610178 \" DayNight=\"D\" TempTrend=\"HIGHER\" \/>\r\n    <WeatherStations>\r\n      <Station Icao=\"KLGA\" DistanceMiles=\"2.82\" Name=\"NEW YORK\/LAGUARDIA\" CountryAbbr=\"US\" StateAbbr=\"NY\" Latitude=\"40.7795\" Longitude=\"-73.8803\" ElevationFeet=\"6\">\r\n        <Conditions StnIcao=\"KLGA\" ReportTime=\"6\/20\/2020 12:51:00 PM\" TempF=\"79\" TempC=\"26\" DewPtF=\"64\" DewPtC=\"18\" RelHumidity=\"60\" WndSpdMph=\"0\" WndDirDegr=\"\" WndDirCardinal=\"\" WndGustMph=\"\" Pressure=\"30.07\" Weather=\"\" Sky=\"Broken Clouds\" IconCode=\"66\" Ceiling=\"25000\" Visibility=\"10\" HeatIdxF=\"81\" HeatIdxC=\"27\" WndChillF=\"79\" WndChillC=\"26\" FeelsLikeF=\"81\" FeelsLikeC=\"27\" SnowDepth=\"\" SixHrMax=\"77\" TwentyFourHrMax=\"86\" SixHrMin=\"72\" TwentyFourHrMin=\"67\" ThreeHrPrecip=\"0\" SixHrPrecip=\"0\" TwentyFourHrPrecip=\"\" CodedWeather=\"NSW\" EnhancedWeather=\"\" ReportText=\"KLGA 201251Z 00000KT 10SM FEW110 FEW200 BKN250 26\/18 A3007 RMK     AO2 SLP184 T02610178 \" DayNight=\"D\" TempTrend=\"HIGHER\" \/>\r\n      <\/Station>\r\n      <Station Icao=\"KNYC\" DistanceMiles=\"7.73\" Name=\"NEW YORK\/CENTRAL PARK\" CountryAbbr=\"US\" StateAbbr=\"NY\" Latitude=\"40.779\" Longitude=\"-73.96925\" ElevationFeet=\"33\">\r\n        <Conditions StnIcao=\"KNYC\" ReportTime=\"6\/20\/2020 12:51:00 PM\" TempF=\"75\" TempC=\"24\" DewPtF=\"65\" DewPtC=\"18\" RelHumidity=\"71\" WndSpdMph=\"0\" WndDirDegr=\"\" WndDirCardinal=\"\" WndGustMph=\"\" Pressure=\"30.11\" Weather=\"\" Sky=\"Clear\" IconCode=\"85\" Ceiling=\"Unl\" Visibility=\"10\" HeatIdxF=\"75\" HeatIdxC=\"24\" WndChillF=\"75\" WndChillC=\"24\" FeelsLikeF=\"75\" FeelsLikeC=\"24\" SnowDepth=\"\" SixHrMax=\"74\" TwentyFourHrMax=\"83\" SixHrMin=\"70\" TwentyFourHrMin=\"65\" ThreeHrPrecip=\"0\" SixHrPrecip=\"0\" TwentyFourHrPrecip=\"\" CodedWeather=\"NSW\" EnhancedWeather=\"\" ReportText=\"KNYC 201251Z AUTO 00000KT 10SM CLR 24\/18 A3011 RMK AO2 SLP185 T02390183 \" DayNight=\"D\" TempTrend=\"HIGHER\" \/>\r\n      <\/Station>\r\n      <Station Icao=\"KJFK\" DistanceMiles=\"9.24\" Name=\"NEW YORK\/JFK INTL\" CountryAbbr=\"US\" StateAbbr=\"NY\" Latitude=\"40.6392\" Longitude=\"-73.7639\" ElevationFeet=\"4\">\r\n        <Conditions StnIcao=\"KJFK\" ReportTime=\"6\/20\/2020 12:51:00 PM\" TempF=\"71\" TempC=\"22\" DewPtF=\"65\" DewPtC=\"18\" RelHumidity=\"81\" WndSpdMph=\"7\" WndDirDegr=\"200\" WndDirCardinal=\"SSW\" WndGustMph=\"\" Pressure=\"30.09\" Weather=\"\" Sky=\"Broken Clouds\" IconCode=\"66\" Ceiling=\"25000\" Visibility=\"10\" HeatIdxF=\"71\" HeatIdxC=\"22\" WndChillF=\"71\" WndChillC=\"22\" FeelsLikeF=\"71\" FeelsLikeC=\"22\" SnowDepth=\"\" SixHrMax=\"70\" TwentyFourHrMax=\"78\" SixHrMin=\"64\" TwentyFourHrMin=\"64\" ThreeHrPrecip=\"0\" SixHrPrecip=\"0\" TwentyFourHrPrecip=\"\" CodedWeather=\"NSW\" EnhancedWeather=\"\" ReportText=\"KJFK 201251Z 20006KT 10SM FEW110 FEW200 BKN250 22\/18 A3009 RMK     AO2 SLP190 T02170183 \" DayNight=\"D\" TempTrend=\"HIGHER\" \/>\r\n      <\/Station>\r\n    <\/WeatherStations>\r\n    <DailyForecast>\r\n      <Day DayNum=\"1\" DayOfWk=\"Saturday\" ValidDateUtc=\"6\/20\/2020 12:00:00 AM\" ValidDateLocal=\"6\/20\/2020 7:00:00 AM\" HiTempF=\"84\" LoTempF=\"69\" HiTempC=\"29\" LoTempC=\"21\" ShortPhrase=\"Times of sun and clouds\" PhraseDay=\"A mix of clouds and sun during the morning will give way to cloudy skies this afternoon. A stray shower or thunderstorm is possible. High 84F. Winds S at 10 to 20 mph.\" PhraseNight=\"Partly cloudy. Low 69F. Winds S at 10 to 15 mph.\" IconCode=\"66\" SkyCode=\"30\" SkyText=\"Partly Cloudy\" PrecipChance=\"20\" SnowChance=\"0\" RelHumidity=\"54\" WndSpdMph=\"13\" WndSpdKm=\"21\" WndSpdKn=\"11\" WndDirDegr=\"175\" WndDirCardinal=\"S\" CloudCoverage=\"53\" UvIdx=\"8\" UvDescr=\"Very High\" UvWarn=\"0\" Sunrise=\"05:24:27 am\" Sunset=\"08:29:51 pm\" Moonrise=\"04:49:35 am\" Moonset=\"08:08:28 pm\" MoonPhase=\"0\" MoonPhaseText=\"New\" SkyCodeDay=\"30\" SkyCodeNight=\"29\" PrecipChanceDay=\"20\" PrecipChanceNight=\"10\" IconCodeDay=\"66\" IconCodeNight=\"98\" SkyTextDay=\"Partly Cloudy\" SkyTextNight=\"Partly Cloudy\" RelHumidityNight=\"73\" WndSpdMphNight=\"10\" WndSpdKmNight=\"16\" WndSpdKnNight=\"9\" WndDirDegrNight=\"188\" WndDirCardinalNight=\"S\" PhraseDayC=\"A mix of clouds and sun during the morning will give way to cloudy skies this afternoon. A stray shower or thunderstorm is possible. High 29C. Winds S at 15 to 30 km\/h.\" PhraseNightC=\"Some clouds. Low around 20C. Winds S at 15 to 25 km\/h.\" SnowAmtIn=\"0.00\" SnowAmtCm=\"0.00\" \/>\r\n      <Day DayNum=\"2\" DayOfWk=\"Sunday\" ValidDateUtc=\"6\/21\/2020 12:00:00 AM\" ValidDateLocal=\"6\/21\/2020 7:00:00 AM\" HiTempF=\"82\" LoTempF=\"69\" HiTempC=\"28\" LoTempC=\"21\" ShortPhrase=\"Mix of sun and clouds\" PhraseDay=\"Sunshine and clouds mixed. A stray shower or thunderstorm is possible. High 82F. Winds S at 10 to 15 mph.\" PhraseNight=\"A few clouds from time to time. Low 69F. Winds S at 10 to 15 mph.\" IconCode=\"66\" SkyCode=\"30\" SkyText=\"Partly Cloudy\" PrecipChance=\"20\" SnowChance=\"0\" RelHumidity=\"62\" WndSpdMph=\"12\" WndSpdKm=\"19\" WndSpdKn=\"10\" WndDirDegr=\"187\" WndDirCardinal=\"S\" CloudCoverage=\"52\" UvIdx=\"9\" UvDescr=\"Very High\" UvWarn=\"0\" Sunrise=\"05:24:40 am\" Sunset=\"08:30:03 pm\" Moonrise=\"05:35:45 am\" Moonset=\"09:07:38 pm\" MoonPhase=\"0\" MoonPhaseText=\"New\" SkyCodeDay=\"30\" SkyCodeNight=\"29\" PrecipChanceDay=\"20\" PrecipChanceNight=\"10\" IconCodeDay=\"66\" IconCodeNight=\"98\" SkyTextDay=\"Partly Cloudy\" SkyTextNight=\"Partly Cloudy\" RelHumidityNight=\"75\" WndSpdMphNight=\"12\" WndSpdKmNight=\"19\" WndSpdKnNight=\"10\" WndDirDegrNight=\"189\" WndDirCardinalNight=\"S\" PhraseDayC=\"Partly cloudy skies. A stray shower or thunderstorm is possible. High 28C. Winds S at 15 to 25 km\/h.\" PhraseNightC=\"Partly cloudy skies. Low 21C. Winds S at 15 to 25 km\/h.\" SnowAmtIn=\"0.00\" SnowAmtCm=\"0.00\" \/>\r\n      <Day DayNum=\"3\" DayOfWk=\"Monday\" ValidDateUtc=\"6\/22\/2020 12:00:00 AM\" ValidDateLocal=\"6\/22\/2020 7:00:00 AM\" HiTempF=\"85\" LoTempF=\"71\" HiTempC=\"29\" LoTempC=\"22\" ShortPhrase=\"Partly cloudy\" PhraseDay=\"Mix of sun and clouds. Highs in the mid 80s and lows in the low 70s.\" PhraseNight=\"\" IconCode=\"66\" SkyCode=\"30\" SkyText=\"Partly Cloudy\" PrecipChance=\"20\" SnowChance=\"0\" RelHumidity=\"61\" WndSpdMph=\"13\" WndSpdKm=\"21\" WndSpdKn=\"11\" WndDirDegr=\"195\" WndDirCardinal=\"SSW\" CloudCoverage=\"41\" UvIdx=\"9\" UvDescr=\"Very High\" UvWarn=\"0\" Sunrise=\"05:24:55 am\" Sunset=\"08:30:13 pm\" Moonrise=\"06:29:20 am\" Moonset=\"10:01:15 pm\" MoonPhase=\"1\" MoonPhaseText=\"Waxing Crescent\" SkyCodeDay=\"30\" SkyCodeNight=\"29\" PrecipChanceDay=\"20\" PrecipChanceNight=\"20\" IconCodeDay=\"66\" IconCodeNight=\"98\" SkyTextDay=\"Partly Cloudy\" SkyTextNight=\"Partly Cloudy\" RelHumidityNight=\"72\" WndSpdMphNight=\"12\" WndSpdKmNight=\"19\" WndSpdKnNight=\"10\" WndDirDegrNight=\"194\" WndDirCardinalNight=\"SSW\" PhraseDayC=\"Intervals of clouds and sunshine. A stray shower or thunderstorm is possible. High near 30C. Winds SSW at 15 to 30 km\/h.\" PhraseNightC=\"\" SnowAmtIn=\"0.00\" SnowAmtCm=\"0.00\" \/>\r\n      <Day DayNum=\"4\" DayOfWk=\"Tuesday\" ValidDateUtc=\"6\/23\/2020 12:00:00 AM\" ValidDateLocal=\"6\/23\/2020 7:00:00 AM\" HiTempF=\"87\" LoTempF=\"74\" HiTempC=\"31\" LoTempC=\"23\" ShortPhrase=\"Partly cloudy with a stray thunderstorm\" PhraseDay=\"Partly cloudy, chance of a thunderstorm. Highs in the upper 80s and lows in the mid 70s.\" PhraseNight=\"\" IconCode=\"95\" SkyCode=\"37\" SkyText=\"Isolated Thunderstorms\" PrecipChance=\"30\" SnowChance=\"0\" RelHumidity=\"62\" WndSpdMph=\"12\" WndSpdKm=\"19\" WndSpdKn=\"10\" WndDirDegr=\"179\" WndDirCardinal=\"S\" CloudCoverage=\"48\" UvIdx=\"9\" UvDescr=\"Very High\" UvWarn=\"0\" Sunrise=\"05:25:12 am\" Sunset=\"08:30:21 pm\" Moonrise=\"07:31:29 am\" Moonset=\"10:48:16 pm\" MoonPhase=\"1\" MoonPhaseText=\"Waxing Crescent\" SkyCodeDay=\"37\" SkyCodeNight=\"47\" PrecipChanceDay=\"30\" PrecipChanceNight=\"40\" IconCodeDay=\"95\" IconCodeNight=\"101\" SkyTextDay=\"Isolated Thunderstorms\" SkyTextNight=\"Scattered Thunderstorms\" RelHumidityNight=\"69\" WndSpdMphNight=\"10\" WndSpdKmNight=\"16\" WndSpdKnNight=\"9\" WndDirDegrNight=\"216\" WndDirCardinalNight=\"SW\" PhraseDayC=\"Sun and clouds mixed with a slight chance of thunderstorms during the afternoon. High 31C. Winds S at 15 to 25 km\/h. Chance of rain 30%.\" PhraseNightC=\"\" SnowAmtIn=\"0.00\" SnowAmtCm=\"0.00\" \/>\r\n      <Day DayNum=\"5\" DayOfWk=\"Wednesday\" ValidDateUtc=\"6\/24\/2020 12:00:00 AM\" ValidDateLocal=\"6\/24\/2020 7:00:00 AM\" HiTempF=\"87\" LoTempF=\"72\" HiTempC=\"31\" LoTempC=\"22\" ShortPhrase=\"Scattered thunderstorms\" PhraseDay=\"A few thunderstorms possible. Highs in the upper 80s and lows in the low 70s.\" PhraseNight=\"\" IconCode=\"96\" SkyCode=\"38\" SkyText=\"Scattered Thunderstorms\" PrecipChance=\"50\" SnowChance=\"0\" RelHumidity=\"61\" WndSpdMph=\"11\" WndSpdKm=\"18\" WndSpdKn=\"10\" WndDirDegr=\"242\" WndDirCardinal=\"WSW\" CloudCoverage=\"48\" UvIdx=\"9\" UvDescr=\"Very High\" UvWarn=\"0\" Sunrise=\"05:25:30 am\" Sunset=\"08:30:28 pm\" Moonrise=\"08:38:15 am\" Moonset=\"11:29:12 pm\" MoonPhase=\"1\" MoonPhaseText=\"Waxing Crescent\" SkyCodeDay=\"38\" SkyCodeNight=\"47\" PrecipChanceDay=\"50\" PrecipChanceNight=\"40\" IconCodeDay=\"96\" IconCodeNight=\"101\" SkyTextDay=\"Scattered Thunderstorms\" SkyTextNight=\"Scattered Thunderstorms\" RelHumidityNight=\"66\" WndSpdMphNight=\"10\" WndSpdKmNight=\"16\" WndSpdKnNight=\"9\" WndDirDegrNight=\"272\" WndDirCardinalNight=\"W\" PhraseDayC=\"Mixed clouds and sun with scattered thunderstorms. High 31C. Winds WSW at 15 to 25 km\/h. Chance of rain 50%.\" PhraseNightC=\"\" SnowAmtIn=\"0.00\" SnowAmtCm=\"0.00\" \/>\r\n      <Day DayNum=\"6\" DayOfWk=\"Thursday\" ValidDateUtc=\"6\/25\/2020 12:00:00 AM\" ValidDateLocal=\"6\/25\/2020 7:00:00 AM\" HiTempF=\"88\" LoTempF=\"72\" HiTempC=\"31\" LoTempC=\"22\" ShortPhrase=\"Mix of sun and clouds\" PhraseDay=\"Partly cloudy. Highs in the upper 80s and lows in the low 70s.\" PhraseNight=\"\" IconCode=\"66\" SkyCode=\"30\" SkyText=\"Partly Cloudy\" PrecipChance=\"20\" SnowChance=\"0\" RelHumidity=\"51\" WndSpdMph=\"10\" WndSpdKm=\"16\" WndSpdKn=\"9\" WndDirDegr=\"282\" WndDirCardinal=\"WNW\" CloudCoverage=\"41\" UvIdx=\"9\" UvDescr=\"Very High\" UvWarn=\"0\" Sunrise=\"05:25:51 am\" Sunset=\"08:30:32 pm\" Moonrise=\"09:48:46 am\" Moonset=\"12:01:00 am\" MoonPhase=\"1\" MoonPhaseText=\"Waxing Crescent\" SkyCodeDay=\"30\" SkyCodeNight=\"33\" PrecipChanceDay=\"20\" PrecipChanceNight=\"20\" IconCodeDay=\"66\" IconCodeNight=\"102\" SkyTextDay=\"Partly Cloudy\" SkyTextNight=\"Mostly Clear\" RelHumidityNight=\"58\" WndSpdMphNight=\"10\" WndSpdKmNight=\"16\" WndSpdKnNight=\"9\" WndDirDegrNight=\"251\" WndDirCardinalNight=\"WSW\" PhraseDayC=\"Sunshine and clouds mixed. High 31C. Winds WNW at 10 to 15 km\/h.\" PhraseNightC=\"\" SnowAmtIn=\"0.00\" SnowAmtCm=\"0.00\" \/>\r\n      <Day DayNum=\"7\" DayOfWk=\"Friday\" ValidDateUtc=\"6\/26\/2020 12:00:00 AM\" ValidDateLocal=\"6\/26\/2020 7:00:00 AM\" HiTempF=\"87\" LoTempF=\"71\" HiTempC=\"31\" LoTempC=\"22\" ShortPhrase=\"Plenty of sun\" PhraseDay=\"More sun than clouds. Highs in the upper 80s and lows in the low 70s.\" PhraseNight=\"\" IconCode=\"65\" SkyCode=\"34\" SkyText=\"Mostly Sunny\" PrecipChance=\"20\" SnowChance=\"0\" RelHumidity=\"43\" WndSpdMph=\"12\" WndSpdKm=\"19\" WndSpdKn=\"10\" WndDirDegr=\"273\" WndDirCardinal=\"W\" CloudCoverage=\"25\" UvIdx=\"9\" UvDescr=\"Very High\" UvWarn=\"0\" Sunrise=\"05:26:13 am\" Sunset=\"08:30:34 pm\" Moonrise=\"10:59:39 am\" Moonset=\"12:04:03 am\" MoonPhase=\"1\" MoonPhaseText=\"Waxing Crescent\" SkyCodeDay=\"34\" SkyCodeNight=\"29\" PrecipChanceDay=\"20\" PrecipChanceNight=\"10\" IconCodeDay=\"65\" IconCodeNight=\"98\" SkyTextDay=\"Mostly Sunny\" SkyTextNight=\"Partly Cloudy\" RelHumidityNight=\"57\" WndSpdMphNight=\"12\" WndSpdKmNight=\"19\" WndSpdKnNight=\"10\" WndDirDegrNight=\"262\" WndDirCardinalNight=\"W\" PhraseDayC=\"Except for a few afternoon clouds, mainly sunny. High around 30C. Winds W at 15 to 25 km\/h.\" PhraseNightC=\"\" SnowAmtIn=\"0.00\" SnowAmtCm=\"0.00\" \/>\r\n      <Day DayNum=\"8\" DayOfWk=\"Saturday\" ValidDateUtc=\"6\/27\/2020 12:00:00 AM\" ValidDateLocal=\"6\/27\/2020 7:00:00 AM\" HiTempF=\"88\" LoTempF=\"71\" HiTempC=\"31\" LoTempC=\"22\" ShortPhrase=\"More sun than clouds\" PhraseDay=\"Plenty of sun. Highs in the upper 80s and lows in the low 70s.\" PhraseNight=\"\" IconCode=\"65\" SkyCode=\"34\" SkyText=\"Mostly Sunny\" PrecipChance=\"20\" SnowChance=\"0\" RelHumidity=\"44\" WndSpdMph=\"12\" WndSpdKm=\"19\" WndSpdKn=\"10\" WndDirDegr=\"277\" WndDirCardinal=\"W\" CloudCoverage=\"30\" UvIdx=\"9\" UvDescr=\"Very High\" UvWarn=\"0\" Sunrise=\"05:26:36 am\" Sunset=\"08:30:34 pm\" Moonrise=\"12:10:30 pm\" Moonset=\"12:35:14 am\" MoonPhase=\"1\" MoonPhaseText=\"Waxing Crescent\" SkyCodeDay=\"34\" SkyCodeNight=\"45\" PrecipChanceDay=\"20\" PrecipChanceNight=\"40\" IconCodeDay=\"65\" IconCodeNight=\"106\" SkyTextDay=\"Mostly Sunny\" SkyTextNight=\"Showers Late\" RelHumidityNight=\"58\" WndSpdMphNight=\"11\" WndSpdKmNight=\"18\" WndSpdKnNight=\"10\" WndDirDegrNight=\"266\" WndDirCardinalNight=\"W\" PhraseDayC=\"Generally sunny despite a few afternoon clouds. High 31C. Winds W at 15 to 25 km\/h.\" PhraseNightC=\"\" SnowAmtIn=\"0.00\" SnowAmtCm=\"0.00\" \/>\r\n      <Day DayNum=\"9\" DayOfWk=\"Sunday\" ValidDateUtc=\"6\/28\/2020 12:00:00 AM\" ValidDateLocal=\"6\/28\/2020 7:00:00 AM\" HiTempF=\"85\" LoTempF=\"71\" HiTempC=\"29\" LoTempC=\"22\" ShortPhrase=\"A few thunderstorms possible\" PhraseDay=\"Scattered thunderstorms. Highs in the mid 80s and lows in the low 70s.\" PhraseNight=\"\" IconCode=\"96\" SkyCode=\"38\" SkyText=\"Scattered Thunderstorms\" PrecipChance=\"60\" SnowChance=\"0\" RelHumidity=\"49\" WndSpdMph=\"11\" WndSpdKm=\"18\" WndSpdKn=\"10\" WndDirDegr=\"325\" WndDirCardinal=\"NW\" CloudCoverage=\"59\" UvIdx=\"8\" UvDescr=\"Very High\" UvWarn=\"0\" Sunrise=\"05:27:01 am\" Sunset=\"08:30:32 pm\" Moonrise=\"01:21:51 pm\" Moonset=\"01:04:37 am\" MoonPhase=\"2\" MoonPhaseText=\"First Quarter\" SkyCodeDay=\"38\" SkyCodeNight=\"47\" PrecipChanceDay=\"60\" PrecipChanceNight=\"50\" IconCodeDay=\"96\" IconCodeNight=\"101\" SkyTextDay=\"Scattered Thunderstorms\" SkyTextNight=\"Scattered Thunderstorms\" RelHumidityNight=\"63\" WndSpdMphNight=\"10\" WndSpdKmNight=\"16\" WndSpdKnNight=\"9\" WndDirDegrNight=\"343\" WndDirCardinalNight=\"NNW\" PhraseDayC=\"Scattered showers and thunderstorms. High near 30C. NNE winds shifting to WSW at 15 to 25 km\/h. Chance of rain 60%.\" PhraseNightC=\"\" SnowAmtIn=\"0.00\" SnowAmtCm=\"0.00\" \/>\r\n      <Day DayNum=\"10\" DayOfWk=\"Monday\" ValidDateUtc=\"6\/29\/2020 12:00:00 AM\" ValidDateLocal=\"6\/29\/2020 7:00:00 AM\" HiTempF=\"84\" LoTempF=\"71\" HiTempC=\"29\" LoTempC=\"22\" ShortPhrase=\"Thunderstorms developing in the afternoon\" PhraseDay=\"Showers and thunderstorms late. Highs in the mid 80s and lows in the low 70s.\" PhraseNight=\"\" IconCode=\"96\" SkyCode=\"38\" SkyText=\"PM Thunderstorms\" PrecipChance=\"50\" SnowChance=\"0\" RelHumidity=\"54\" WndSpdMph=\"9\" WndSpdKm=\"14\" WndSpdKn=\"8\" WndDirDegr=\"59\" WndDirCardinal=\"ENE\" CloudCoverage=\"49\" UvIdx=\"9\" UvDescr=\"Very High\" UvWarn=\"0\" Sunrise=\"05:27:28 am\" Sunset=\"08:30:28 pm\" Moonrise=\"02:32:50 pm\" Moonset=\"01:33:20 am\" MoonPhase=\"3\" MoonPhaseText=\"Waxing Gibbous\" SkyCodeDay=\"38\" SkyCodeNight=\"47\" PrecipChanceDay=\"50\" PrecipChanceNight=\"60\" IconCodeDay=\"96\" IconCodeNight=\"101\" SkyTextDay=\"PM Thunderstorms\" SkyTextNight=\"Thunderstorms Early\" RelHumidityNight=\"63\" WndSpdMphNight=\"10\" WndSpdKmNight=\"16\" WndSpdKnNight=\"9\" WndDirDegrNight=\"123\" WndDirCardinalNight=\"ESE\" PhraseDayC=\"Partly cloudy with afternoon showers or thunderstorms. High 29C. Winds ENE at 10 to 15 km\/h. Chance of rain 50%.\" PhraseNightC=\"\" SnowAmtIn=\"0.00\" SnowAmtCm=\"0.00\" \/>\r\n    <\/DailyForecast>\r\n    <WeatherAlerts \/>\r\n  <\/City>\r\n<\/Cities>"});
+</script>
+<script src='https://www.telemundo47.com/wp-content/themes/nbc-station/client/build/js/nonamp.6cc7a0a4727953483d1e.bundle.min.js?ver=1.0.2'></script>
+<script async src='https://www.telemundo47.com/wp-content/themes/nbc-station/client/build/js/weatherConditions.5a6267eee8727c2e0f5d.bundle.min.js?ver=1.0.2'></script>
+<script async src='https://www.telemundo47.com/wp-content/themes/nbc-station/client/build/js/global.3773dd9bc7570b4a8794.bundle.min.js?ver=1.0.2'></script>
+<script async src='https://www.telemundo47.com/wp-content/themes/nbc-station/client/build/js/article.55be463aa3730f56a44c.bundle.min.js?ver=1.0.2'></script>
+<script src='https://ak.sail-horizon.com/spm/spm.v1.min.js?ver=1.0.0'></script>
+<script>
+if ("undefined" !== typeof Sailthru) { Sailthru.init({"customerId":"578ec885bae0cc2cb367533f487ce02d"}); }
+</script>
+<script async src='https://www.telemundo47.com/wp-content/themes/nbc-station/client/build/js/videoPlayer.faa6254630c6f634397a.bundle.min.js?ver=1.0.2'></script>
+<script src='https://native.sharethrough.com/assets/sfp.js?ver=5.3.4'></script>
+<script defer src='https://js-sec.indexww.com/ht/p/186439-164241333408562.js?ver=1.0.2'></script>
+<script src='https://www.telemundo47.com/wp-includes/js/dist/vendor/lodash.min.js?ver=4.17.15'></script>
+<script>
+window.lodash = _.noConflict();
+</script>
+<script type='text/javascript' src='https://www.telemundo47.com/wp-includes/js/wp-embed.min.js?m=1591828030g'></script>
+<script src='https://www.civicscience.com/widget/jspoll/?elt=civsci-99943157&#038;tgtid=036ba0f9-8a51-17e4-b991-8da51aba0eef&#038;ver=1.0.0'></script>
+<script src='https://z.moatads.com/nbcuyieldheader7581548001/moatheader.js?ver=1.0.0'></script>
+<script type='text/javascript' src='https://stats.wp.com/e-202025.js' async='async' defer='defer'></script>
+<script type='text/javascript'>
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:8.6.1',blog:'165596347',post:'2063101',tz:'-4',srv:'www.telemundo47.com'} ]);
+	_stq.push([ 'clickTrackerInit', '165596347', '2063101' ]);
+</script>
+
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"53cef82690","applicationID":"189190456","transactionName":"YVBXYBEFVkZSU00NVlgadFcXDVdbHEdLBUlGUEc=","queueTime":0,"applicationTime":1219,"atts":"TRdAFlkfRRkRURteQktI","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>

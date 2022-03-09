@@ -1,0 +1,2066 @@
+<!DOCTYPE html>
+<html lang="de" dir="ltr">
+<head>
+    <meta charset="utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"VwIOV1NRGwYDVFRaAAc=",licenseKey:"86456ee2c4",applicationID:"5305876"};window.NREUM||(NREUM={}),__nr_require=function(t,n,e){function r(e){if(!n[e]){var o=n[e]={exports:{}};t[e][0].call(o.exports,function(n){var o=t[e][1][n];return r(o||n)},o,o.exports)}return n[e].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<e.length;o++)r(e[o]);return r}({1:[function(t,n,e){function r(t){try{s.console&&console.log(t)}catch(n){}}var o,i=t("ee"),a=t(21),s={};try{o=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(s.console=!0,o.indexOf("dev")!==-1&&(s.dev=!0),o.indexOf("nr_dev")!==-1&&(s.nrDev=!0))}catch(c){}s.nrDev&&i.on("internal-error",function(t){r(t.stack)}),s.dev&&i.on("fn-err",function(t,n,e){r(e.stack)}),s.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(s,function(t,n){return t}).join(", ")))},{}],2:[function(t,n,e){function r(t,n,e,r,s){try{p?p-=1:o(s||new UncaughtException(t,n,e),!0)}catch(f){try{i("ierr",[f,c.now(),!0])}catch(d){}}return"function"==typeof u&&u.apply(this,a(arguments))}function UncaughtException(t,n,e){this.message=t||"Uncaught error with no additional information",this.sourceURL=n,this.line=e}function o(t,n){var e=n?null:c.now();i("err",[t,e])}var i=t("handle"),a=t(22),s=t("ee"),c=t("loader"),f=t("gos"),u=window.onerror,d=!1,l="nr@seenError",p=0;c.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(h){"stack"in h&&(t(9),t(8),"addEventListener"in window&&t(5),c.xhrWrappable&&t(10),d=!0)}s.on("fn-start",function(t,n,e){d&&(p+=1)}),s.on("fn-err",function(t,n,e){d&&!e[l]&&(f(e,l,function(){return!0}),this.thrown=!0,o(e))}),s.on("fn-end",function(){d&&!this.thrown&&p>0&&(p-=1)}),s.on("internal-error",function(t){i("ierr",[t,c.now(),!0])})},{}],3:[function(t,n,e){t("loader").features.ins=!0},{}],4:[function(t,n,e){function r(t){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var o=t("ee"),i=t("handle"),a=t(9),s=t(8),c="learResourceTimings",f="addEventListener",u="resourcetimingbufferfull",d="bstResource",l="resource",p="-start",h="-end",m="fn"+p,w="fn"+h,v="bstTimer",g="pushState",y=t("loader");y.features.stn=!0,t(7),"addEventListener"in window&&t(5);var x=NREUM.o.EV;o.on(m,function(t,n){var e=t[0];e instanceof x&&(this.bstStart=y.now())}),o.on(w,function(t,n){var e=t[0];e instanceof x&&i("bst",[e,n,this.bstStart,y.now()])}),a.on(m,function(t,n,e){this.bstStart=y.now(),this.bstType=e}),a.on(w,function(t,n){i(v,[n,this.bstStart,y.now(),this.bstType])}),s.on(m,function(){this.bstStart=y.now()}),s.on(w,function(t,n){i(v,[n,this.bstStart,y.now(),"requestAnimationFrame"])}),o.on(g+p,function(t){this.time=y.now(),this.startPath=location.pathname+location.hash}),o.on(g+h,function(t){i("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),f in window.performance&&(window.performance["c"+c]?window.performance[f](u,function(t){i(d,[window.performance.getEntriesByType(l)]),window.performance["c"+c]()},!1):window.performance[f]("webkit"+u,function(t){i(d,[window.performance.getEntriesByType(l)]),window.performance["webkitC"+c]()},!1)),document[f]("scroll",r,{passive:!0}),document[f]("keypress",r,!1),document[f]("click",r,!1)}},{}],5:[function(t,n,e){function r(t){for(var n=t;n&&!n.hasOwnProperty(u);)n=Object.getPrototypeOf(n);n&&o(n)}function o(t){s.inPlace(t,[u,d],"-",i)}function i(t,n){return t[1]}var a=t("ee").get("events"),s=t("wrap-function")(a,!0),c=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";n.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(o(window),o(f.prototype)),a.on(u+"-start",function(t,n){var e=t[1],r=c(e,"nr@wrapped",function(){function t(){if("function"==typeof e.handleEvent)return e.handleEvent.apply(e,arguments)}var n={object:t,"function":e}[typeof e];return n?s(n,"fn-",null,n.name||"anonymous"):e});this.wrapped=t[1]=r}),a.on(d+"-start",function(t){t[1]=this.wrapped||t[1]})},{}],6:[function(t,n,e){function r(t,n,e){var r=t[n];"function"==typeof r&&(t[n]=function(){var t=i(arguments),n={};o.emit(e+"before-start",[t],n);var a;n[m]&&n[m].dt&&(a=n[m].dt);var s=r.apply(this,t);return o.emit(e+"start",[t,a],s),s.then(function(t){return o.emit(e+"end",[null,t],s),t},function(t){throw o.emit(e+"end",[t],s),t})})}var o=t("ee").get("fetch"),i=t(22),a=t(21);n.exports=o;var s=window,c="fetch-",f=c+"body-",u=["arrayBuffer","blob","json","text","formData"],d=s.Request,l=s.Response,p=s.fetch,h="prototype",m="nr@context";d&&l&&p&&(a(u,function(t,n){r(d[h],n,f),r(l[h],n,f)}),r(s,"fetch",c),o.on(c+"end",function(t,n){var e=this;if(n){var r=n.headers.get("content-length");null!==r&&(e.rxSize=r),o.emit(c+"done",[null,n],e)}else o.emit(c+"done",[t],e)}))},{}],7:[function(t,n,e){var r=t("ee").get("history"),o=t("wrap-function")(r);n.exports=r;var i=window.history&&window.history.constructor&&window.history.constructor.prototype,a=window.history;i&&i.pushState&&i.replaceState&&(a=i),o.inPlace(a,["pushState","replaceState"],"-")},{}],8:[function(t,n,e){var r=t("ee").get("raf"),o=t("wrap-function")(r),i="equestAnimationFrame";n.exports=r,o.inPlace(window,["r"+i,"mozR"+i,"webkitR"+i,"msR"+i],"raf-"),r.on("raf-start",function(t){t[0]=o(t[0],"fn-")})},{}],9:[function(t,n,e){function r(t,n,e){t[0]=a(t[0],"fn-",null,e)}function o(t,n,e){this.method=e,this.timerDuration=isNaN(t[1])?0:+t[1],t[0]=a(t[0],"fn-",this,e)}var i=t("ee").get("timer"),a=t("wrap-function")(i),s="setTimeout",c="setInterval",f="clearTimeout",u="-start",d="-";n.exports=i,a.inPlace(window,[s,"setImmediate"],s+d),a.inPlace(window,[c],c+d),a.inPlace(window,[f,"clearImmediate"],f+d),i.on(c+u,r),i.on(s+u,o)},{}],10:[function(t,n,e){function r(t,n){d.inPlace(n,["onreadystatechange"],"fn-",s)}function o(){var t=this,n=u.context(t);t.readyState>3&&!n.resolved&&(n.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,g,"fn-",s)}function i(t){y.push(t),h&&(b?b.then(a):w?w(a):(E=-E,O.data=E))}function a(){for(var t=0;t<y.length;t++)r([],y[t]);y.length&&(y=[])}function s(t,n){return n}function c(t,n){for(var e in t)n[e]=t[e];return n}t(5);var f=t("ee"),u=f.get("xhr"),d=t("wrap-function")(u),l=NREUM.o,p=l.XHR,h=l.MO,m=l.PR,w=l.SI,v="readystatechange",g=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],y=[];n.exports=u;var x=window.XMLHttpRequest=function(t){var n=new p(t);try{u.emit("new-xhr",[n],n),n.addEventListener(v,o,!1)}catch(e){try{u.emit("internal-error",[e])}catch(r){}}return n};if(c(p,x),x.prototype=p.prototype,d.inPlace(x.prototype,["open","send"],"-xhr-",s),u.on("send-xhr-start",function(t,n){r(t,n),i(n)}),u.on("open-xhr-start",r),h){var b=m&&m.resolve();if(!w&&!m){var E=1,O=document.createTextNode(E);new h(a).observe(O,{characterData:!0})}}else f.on("fn-end",function(t){t[0]&&t[0].type===v||a()})},{}],11:[function(t,n,e){function r(t){if(!i(t))return null;var n=window.NREUM;if(!n.loader_config)return null;var e=(n.loader_config.accountID||"").toString()||null,r=(n.loader_config.agentID||"").toString()||null,s=(n.loader_config.trustKey||"").toString()||null;if(!e||!r)return null;var c=a.generateCatId(),f=a.generateCatId(),u=Date.now(),d=o(c,f,u,e,r,s);return{header:d,guid:c,traceId:f,timestamp:u}}function o(t,n,e,r,o,i){var a="btoa"in window&&"function"==typeof window.btoa;if(!a)return null;var s={v:[0,1],d:{ty:"Browser",ac:r,ap:o,id:t,tr:n,ti:e}};return i&&r!==i&&(s.d.tk=i),btoa(JSON.stringify(s))}function i(t){var n=!1,e=!1,r={};if("init"in NREUM&&"distributed_tracing"in NREUM.init&&(r=NREUM.init.distributed_tracing,e=!!r.enabled),e)if(t.sameOrigin)n=!0;else if(r.allowed_origins instanceof Array)for(var o=0;o<r.allowed_origins.length;o++){var i=s(r.allowed_origins[o]);if(t.hostname===i.hostname&&t.protocol===i.protocol&&t.port===i.port){n=!0;break}}return e&&n}var a=t(19),s=t(13);n.exports={generateTracePayload:r,shouldGenerateTrace:i}},{}],12:[function(t,n,e){function r(t){var n=this.params,e=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;r<l;r++)t.removeEventListener(d[r],this.listener,!1);n.aborted||(e.duration=a.now()-this.startTime,this.loadCaptureCalled||4!==t.readyState?null==n.status&&(n.status=0):i(this,t),e.cbTime=this.cbTime,u.emit("xhr-done",[t],t),s("xhr",[n,e,this.startTime]))}}function o(t,n){var e=c(n),r=t.params;r.host=e.hostname+":"+e.port,r.pathname=e.pathname,t.parsedOrigin=c(n),t.sameOrigin=t.parsedOrigin.sameOrigin}function i(t,n){t.params.status=n.status;var e=w(n,t.lastSize);if(e&&(t.metrics.rxSize=e),t.sameOrigin){var r=n.getResponseHeader("X-NewRelic-App-Data");r&&(t.params.cat=r.split(", ").pop())}t.loadCaptureCalled=!0}var a=t("loader");if(a.xhrWrappable){var s=t("handle"),c=t(13),f=t(11).generateTracePayload,u=t("ee"),d=["load","error","abort","timeout"],l=d.length,p=t("id"),h=t(17),m=t(16),w=t(14),v=window.XMLHttpRequest;a.features.xhr=!0,t(10),t(6),u.on("new-xhr",function(t){var n=this;n.totalCbs=0,n.called=0,n.cbTime=0,n.end=r,n.ended=!1,n.xhrGuids={},n.lastSize=null,n.loadCaptureCalled=!1,t.addEventListener("load",function(e){i(n,t)},!1),h&&(h>34||h<10)||window.opera||t.addEventListener("progress",function(t){n.lastSize=t.loaded},!1)}),u.on("open-xhr-start",function(t){this.params={method:t[0]},o(this,t[1]),this.metrics={}}),u.on("open-xhr-end",function(t,n){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&n.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid);var e=f(this.parsedOrigin);e&&e.header&&(n.setRequestHeader("newrelic",e.header),this.dt=e)}),u.on("send-xhr-start",function(t,n){var e=this.metrics,r=t[0],o=this;if(e&&r){var i=m(r);i&&(e.txSize=i)}this.startTime=a.now(),this.listener=function(t){try{"abort"!==t.type||o.loadCaptureCalled||(o.params.aborted=!0),("load"!==t.type||o.called===o.totalCbs&&(o.onloadCalled||"function"!=typeof n.onload))&&o.end(n)}catch(e){try{u.emit("internal-error",[e])}catch(r){}}};for(var s=0;s<l;s++)n.addEventListener(d[s],this.listener,!1)}),u.on("xhr-cb-time",function(t,n,e){this.cbTime+=t,n?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof e.onload||this.end(e)}),u.on("xhr-load-added",function(t,n){var e=""+p(t)+!!n;this.xhrGuids&&!this.xhrGuids[e]&&(this.xhrGuids[e]=!0,this.totalCbs+=1)}),u.on("xhr-load-removed",function(t,n){var e=""+p(t)+!!n;this.xhrGuids&&this.xhrGuids[e]&&(delete this.xhrGuids[e],this.totalCbs-=1)}),u.on("addEventListener-end",function(t,n){n instanceof v&&"load"===t[0]&&u.emit("xhr-load-added",[t[1],t[2]],n)}),u.on("removeEventListener-end",function(t,n){n instanceof v&&"load"===t[0]&&u.emit("xhr-load-removed",[t[1],t[2]],n)}),u.on("fn-start",function(t,n,e){n instanceof v&&("onload"===e&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=a.now()))}),u.on("fn-end",function(t,n){this.xhrCbStart&&u.emit("xhr-cb-time",[a.now()-this.xhrCbStart,this.onload,n],n)}),u.on("fetch-before-start",function(t){var n,e=t[1]||{};"string"==typeof t[0]?n=t[0]:t[0]&&t[0].url&&(n=t[0].url),n&&(this.parsedOrigin=c(n),this.sameOrigin=this.parsedOrigin.sameOrigin);var r=f(this.parsedOrigin);if(r&&r.header){var o=r.header;if("string"==typeof t[0]){var i={};for(var a in e)i[a]=e[a];i.headers=new Headers(e.headers||{}),i.headers.set("newrelic",o),this.dt=r,t.length>1?t[1]=i:t.push(i)}else t[0]&&t[0].headers&&(t[0].headers.append("newrelic",o),this.dt=r)}})}},{}],13:[function(t,n,e){var r={};n.exports=function(t){if(t in r)return r[t];var n=document.createElement("a"),e=window.location,o={};n.href=t,o.port=n.port;var i=n.href.split("://");!o.port&&i[1]&&(o.port=i[1].split("/")[0].split("@").pop().split(":")[1]),o.port&&"0"!==o.port||(o.port="https"===i[0]?"443":"80"),o.hostname=n.hostname||e.hostname,o.pathname=n.pathname,o.protocol=i[0],"/"!==o.pathname.charAt(0)&&(o.pathname="/"+o.pathname);var a=!n.protocol||":"===n.protocol||n.protocol===e.protocol,s=n.hostname===document.domain&&n.port===e.port;return o.sameOrigin=a&&(!n.hostname||s),"/"===o.pathname&&(r[t]=o),o}},{}],14:[function(t,n,e){function r(t,n){var e=t.responseType;return"json"===e&&null!==n?n:"arraybuffer"===e||"blob"===e||"json"===e?o(t.response):"text"===e||"document"===e||""===e||void 0===e?o(t.responseText):void 0}var o=t(16);n.exports=r},{}],15:[function(t,n,e){function r(){}function o(t,n,e){return function(){return i(t,[f.now()].concat(s(arguments)),n?null:this,e),n?void 0:this}}var i=t("handle"),a=t(21),s=t(22),c=t("ee").get("tracer"),f=t("loader"),u=NREUM;"undefined"==typeof window.newrelic&&(newrelic=u);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",p=l+"ixn-";a(d,function(t,n){u[n]=o(l+n,!0,"api")}),u.addPageAction=o(l+"addPageAction",!0),u.setCurrentRouteName=o(l+"routeName",!0),n.exports=newrelic,u.interaction=function(){return(new r).get()};var h=r.prototype={createTracer:function(t,n){var e={},r=this,o="function"==typeof n;return i(p+"tracer",[f.now(),t,e],r),function(){if(c.emit((o?"":"no-")+"fn-start",[f.now(),r,o],e),o)try{return n.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],e),t}finally{c.emit("fn-end",[f.now()],e)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,n){h[n]=o(p+n)}),newrelic.noticeError=function(t,n){"string"==typeof t&&(t=new Error(t)),i("err",[t,f.now(),!1,n])}},{}],16:[function(t,n,e){n.exports=function(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(n){return}}}},{}],17:[function(t,n,e){var r=0,o=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);o&&(r=+o[1]),n.exports=r},{}],18:[function(t,n,e){function r(t,n){var e=t.getEntries();e.forEach(function(t){"first-paint"===t.name?c("timing",["fp",Math.floor(t.startTime)]):"first-contentful-paint"===t.name&&c("timing",["fcp",Math.floor(t.startTime)])})}function o(t,n){var e=t.getEntries();e.length>0&&c("lcp",[e[e.length-1]])}function i(t){if(t instanceof u&&!l){var n,e=Math.round(t.timeStamp);n=e>1e12?Date.now()-e:f.now()-e,l=!0,c("timing",["fi",e,{type:t.type,fid:n}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var a,s,c=t("handle"),f=t("loader"),u=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){a=new PerformanceObserver(r),s=new PerformanceObserver(o);try{a.observe({entryTypes:["paint"]}),s.observe({entryTypes:["largest-contentful-paint"]})}catch(d){}}if("addEventListener"in document){var l=!1,p=["click","keydown","mousedown","pointerdown","touchstart"];p.forEach(function(t){document.addEventListener(t,i,!1)})}}},{}],19:[function(t,n,e){function r(){function t(){return n?15&n[e++]:16*Math.random()|0}var n=null,e=0,r=window.crypto||window.msCrypto;r&&r.getRandomValues&&(n=r.getRandomValues(new Uint8Array(31)));for(var o,i="xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx",a="",s=0;s<i.length;s++)o=i[s],"x"===o?a+=t().toString(16):"y"===o?(o=3&t()|8,a+=o.toString(16)):a+=o;return a}function o(){function t(){return n?15&n[e++]:16*Math.random()|0}var n=null,e=0,r=window.crypto||window.msCrypto;r&&r.getRandomValues&&Uint8Array&&(n=r.getRandomValues(new Uint8Array(31)));for(var o=[],i=0;i<16;i++)o.push(t().toString(16));return o.join("")}n.exports={generateUuid:r,generateCatId:o}},{}],20:[function(t,n,e){function r(t,n){if(!o)return!1;if(t!==o)return!1;if(!n)return!0;if(!i)return!1;for(var e=i.split("."),r=n.split("."),a=0;a<r.length;a++)if(r[a]!==e[a])return!1;return!0}var o=null,i=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var s=navigator.userAgent,c=s.match(a);c&&s.indexOf("Chrome")===-1&&s.indexOf("Chromium")===-1&&(o="Safari",i=c[1])}n.exports={agent:o,version:i,match:r}},{}],21:[function(t,n,e){function r(t,n){var e=[],r="",i=0;for(r in t)o.call(t,r)&&(e[i]=n(r,t[r]),i+=1);return e}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],22:[function(t,n,e){function r(t,n,e){n||(n=0),"undefined"==typeof e&&(e=t?t.length:0);for(var r=-1,o=e-n||0,i=Array(o<0?0:o);++r<o;)i[r]=t[n+r];return i}n.exports=r},{}],23:[function(t,n,e){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(t,n,e){function r(){}function o(t){function n(t){return t&&t instanceof r?t:t?c(t,s,i):i()}function e(e,r,o,i){if(!l.aborted||i){t&&t(e,r,o);for(var a=n(o),s=m(e),c=s.length,f=0;f<c;f++)s[f].apply(a,r);var d=u[y[e]];return d&&d.push([x,e,r,a]),a}}function p(t,n){g[t]=m(t).concat(n)}function h(t,n){var e=g[t];if(e)for(var r=0;r<e.length;r++)e[r]===n&&e.splice(r,1)}function m(t){return g[t]||[]}function w(t){return d[t]=d[t]||o(e)}function v(t,n){f(t,function(t,e){n=n||"feature",y[e]=n,n in u||(u[n]=[])})}var g={},y={},x={on:p,addEventListener:p,removeEventListener:h,emit:e,get:w,listeners:m,context:n,buffer:v,abort:a,aborted:!1};return x}function i(){return new r}function a(){(u.api||u.feature)&&(l.aborted=!0,u=l.backlog={})}var s="nr@context",c=t("gos"),f=t(21),u={},d={},l=n.exports=o();l.backlog=u},{}],gos:[function(t,n,e){function r(t,n,e){if(o.call(t,n))return t[n];var r=e();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,n,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return t[n]=r,r}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(t,n,e){function r(t,n,e,r){o.buffer([t],r),o.emit(t,n,e)}var o=t("ee").get("handle");n.exports=r,r.ee=o},{}],id:[function(t,n,e){function r(t){var n=typeof t;return!t||"object"!==n&&"function"!==n?-1:t===window?0:a(t,i,function(){return o++})}var o=1,i="nr@id",a=t("gos");n.exports=r},{}],loader:[function(t,n,e){function r(){if(!E++){var t=b.info=NREUM.info,n=p.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&n))return u.abort();f(y,function(n,e){t[n]||(t[n]=e)}),c("mark",["onload",a()+b.offset],null,"api");var e=p.createElement("script");e.src="https://"+t.agent,n.parentNode.insertBefore(e,n)}}function o(){"complete"===p.readyState&&i()}function i(){c("mark",["domContent",a()+b.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(s=Math.max((new Date).getTime(),s))-b.offset}var s=(new Date).getTime(),c=t("handle"),f=t(21),u=t("ee"),d=t(20),l=window,p=l.document,h="addEventListener",m="attachEvent",w=l.XMLHttpRequest,v=w&&w.prototype;NREUM.o={ST:setTimeout,SI:l.setImmediate,CT:clearTimeout,XHR:w,REQ:l.Request,EV:l.Event,PR:l.Promise,MO:l.MutationObserver};var g=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1167.min.js"},x=w&&v&&v[h]&&!/CriOS/.test(navigator.userAgent),b=n.exports={offset:s,now:a,origin:g,features:{},xhrWrappable:x,userAgent:d};t(15),t(18),p[h]?(p[h]("DOMContentLoaded",i,!1),l[h]("load",r,!1)):(p[m]("onreadystatechange",o),l[m]("onload",r)),c("mark",["firstbyte",s],null,"api");var E=0,O=t(23)},{}],"wrap-function":[function(t,n,e){function r(t){return!(t&&t instanceof Function&&t.apply&&!t[a])}var o=t("ee"),i=t(22),a="nr@original",s=Object.prototype.hasOwnProperty,c=!1;n.exports=function(t,n){function e(t,n,e,o){function nrWrapper(){var r,a,s,c;try{a=this,r=i(arguments),s="function"==typeof e?e(r,a):e||{}}catch(f){l([f,"",[r,a,o],s])}u(n+"start",[r,a,o],s);try{return c=t.apply(a,r)}catch(d){throw u(n+"err",[r,a,d],s),d}finally{u(n+"end",[r,a,c],s)}}return r(t)?t:(n||(n=""),nrWrapper[a]=t,d(t,nrWrapper),nrWrapper)}function f(t,n,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<n.length;c++)s=n[c],a=t[s],r(a)||(t[s]=e(a,f?s+o:o,i,s))}function u(e,r,o){if(!c||n){var i=c;c=!0;try{t.emit(e,r,o,n)}catch(a){l([a,e,r,o])}c=i}}function d(t,n){if(Object.defineProperty&&Object.keys)try{var e=Object.keys(t);return e.forEach(function(e){Object.defineProperty(n,e,{get:function(){return t[e]},set:function(n){return t[e]=n,n}})}),n}catch(r){l([r])}for(var o in t)s.call(t,o)&&(n[o]=t[o]);return n}function l(n){try{t.emit("internal-error",n)}catch(e){}}return t||(t=o),e.inPlace=f,e.flag=a,e}},{}]},{},["loader",2,12,4,3]);</script>
+<script>window.dataLayer = window.dataLayer || []; window.dataLayer.push({"drupalLanguage":"de","drupalCountry":"CH","siteName":"suedostschweiz.ch","entityCreated":"1584741337","entityLangcode":"de","entityStatus":"1","entityUid":"76","entityUuid":"8a66a1e5-e6b1-46ef-a3fe-dccee130739c","entityVid":"3184606","entityName":"Agentur sda","entityType":"node","entityBundle":"np8_news","entityId":"2701483","entityTitle":"Frankreich bereitet Verl\u00e4ngerung der Ausgangssperre vor","entityTaxonomy":{"np8_event":{"2236":"M\u00e4rz"},"np8_other":{"40821":"2020"},"np8_region":{"20":"Ausland"},"np8_section":{"1563":"Politik"},"np8_source":{"3":"sda"},"np8_tags":{"42343":"Coronavirus - Frankreich"}},"userUid":0});</script>
+<script>(function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,"script","https://www.google-analytics.com/analytics.js","ga");ga("create", "UA-1739122-13", {"cookieDomain":"auto"});ga("set", "anonymizeIp", true);ga("set", "dimension1", "Politik");ga("set", "dimension2", "Ausland");ga("set", "dimension3", "Frei");ga("set", "dimension4", "Yes");ga("set", "dimension5", "Agentur sda");ga("set", "dimension6", "2701483");ga("set", "dimension7", "News");ga("send", "pageview");</script>
+<script>window.audienzz = {"dmp":{"providerId":"-1505167650317139916"}, "keywords":{"url1":"politik","url2":"2020-03-20","url3":"frankreich-bereitet-verlaengerung-der-ausgangssperre-vor","ressort":"politik","topregion":"ausland","wetter":"beautiful"}}</script>
+<script src="https://adnz.co/header.js?adTagId=6"></script>
+<meta name="Generator" content="Drupal 8 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<script type="application/ld+json">{"@context":"http:\/\/schema.org","@type":"NewsArticle","mainEntityOfPage":"https:\/\/www.suedostschweiz.ch\/politik\/2020-03-20\/frankreich-bereitet-verlaengerung-der-ausgangssperre-vor","headline":"Frankreich bereitet Verl\u00e4ngerung der Ausgangssperre vor","datePublished":"2020-03-20T21:55:37+00:00","dateModified":"2020-03-20T22:55:37+01:00","description":"Im Kampf gegen das Coronavirus stimmt Frankreich seine B\u00fcrger auf eine Verl\u00e4ngerung der\u2026","publisher":{"@type":"Organization","name":"suedostschweiz.ch","logo":{"@type":"ImageObject","url":"https:\/\/www.suedostschweiz.ch\/themes\/suedostschweiz\/logo.svg","width":100,"height":45}},"author":{"@type":"Person","name":"Agentur sda"},"image":{"@type":"ImageObject","url":"https:\/\/www.suedostschweiz.ch\/sites\/default\/files\/styles\/np8_amp\/public\/media\/2020\/03\/20\/20200320225543837.jpg?itok=0RjqJ1th","height":522,"width":696}}</script>
+<meta name="description" content="Im Kampf gegen das Coronavirus stimmt Frankreich seine Bürger auf eine Verlängerung der…" />
+<script src="https://www.google.com/recaptcha/api.js?hl=de" async defer></script>
+<meta property="og:title" content="Frankreich bereitet Verlängerung der Ausgangssperre vor" />
+<meta property="og:image" content="https://www.suedostschweiz.ch/sites/default/files/styles/np8_full/public/media/2020/03/20/20200320225543837.jpg?itok=Lt8NRozf" />
+<meta property="og:image:width" content="780" />
+<meta property="og:image:height" content="439" />
+<meta property="og:url" content="https://www.suedostschweiz.ch/politik/2020-03-20/frankreich-bereitet-verlaengerung-der-ausgangssperre-vor" />
+<meta property="og:description" content="Hier gehts zum Artikel." />
+<meta property="og:type" content="website" />
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:site" content="suedostschweiz" />
+<meta property="twitter:description" content="Hier gehts zum Artikel." />
+<meta property="twitter:image" content="https://www.suedostschweiz.ch/sites/default/files/styles/np8_full/public/media/2020/03/20/20200320225543837.jpg?itok=Lt8NRozf" />
+<link rel="shortcut icon" href="/themes/suedostschweiz/favicon.ico" type="image/vnd.microsoft.icon" />
+<link rel="manifest" href="/manifest.json" />
+<link rel="canonical" href="https://www.suedostschweiz.ch/politik/2020-03-20/frankreich-bereitet-verlaengerung-der-ausgangssperre-vor" />
+<link rel="shortlink" href="https://www.suedostschweiz.ch/node/2701483" />
+<link rel="revision" href="https://www.suedostschweiz.ch/politik/2020-03-20/frankreich-bereitet-verlaengerung-der-ausgangssperre-vor" />
+<link rel="amphtml" href="https://www.suedostschweiz.ch/politik/2020-03-20/frankreich-bereitet-verlaengerung-der-ausgangssperre-vor?amp" />
+<script src="/sites/default/files/google_tag/aboshop/google_tag.script.js?q7ess3" defer></script>
+
+        <title>Frankreich bereitet Verlängerung der Ausgangssperre vor | suedostschweiz.ch</title>
+        <link rel="stylesheet" media="all" href="/sites/default/files/css/css_6EDGvNbWKffeXp2kceYros-7RS67QlfKHEV_hl1V-i0.css" />
+<link rel="stylesheet" media="all" href="/sites/default/files/css/css_iQ8pLTSVadnk5DO-RZxH6gaaSbY0DggDiSwfMyrF6DE.css" />
+
+            
+<!--[if lte IE 8]>
+<script src="/sites/default/files/js/js_VtafjXmRvoUgAzqzYTA3Wrjkx9wcWhjP0G4ZnnqRamA.js"></script>
+<![endif]-->
+<script src="/sites/default/files/js/js_8y68LFEL6GOI0dcB1aJxIGDk4m0Bxmh41AfCYAkQJUI.js"></script>
+
+
+                                <style>
+                    @import url('https://fonts.googleapis.com/css?family=Bitter:400,400i,700|Noto+Serif:400,400i,700,700i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i|Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i');
+                </style>
+
+                <!-- Favicons -->
+                <link rel="apple-touch-icon" sizes="57x57"
+                      href="/themes/suedostschweiz/images/favicons/apple-touch-icon-57x57.png">
+                <link rel="apple-touch-icon" sizes="60x60"
+                      href="/themes/suedostschweiz/images/favicons/apple-touch-icon-60x60.png">
+                <link rel="apple-touch-icon" sizes="72x72"
+                      href="/themes/suedostschweiz/images/favicons/apple-touch-icon-72x72.png">
+                <link rel="apple-touch-icon" sizes="76x76"
+                      href="/themes/suedostschweiz/images/favicons/apple-touch-icon-76x76.png">
+                <link rel="apple-touch-icon" sizes="114x114"
+                      href="/themes/suedostschweiz/images/favicons/apple-touch-icon-114x114.png">
+                <link rel="apple-touch-icon" sizes="120x120"
+                      href="/themes/suedostschweiz/images/favicons/apple-touch-icon-120x120.png">
+                <link rel="apple-touch-icon" sizes="144x144"
+                      href="/themes/suedostschweiz/images/favicons/apple-touch-icon-144x144.png">
+                <link rel="apple-touch-icon" sizes="152x152"
+                      href="/themes/suedostschweiz/images/favicons/apple-touch-icon-152x152.png">
+                <link rel="apple-touch-icon" sizes="180x180"
+                      href="/themes/suedostschweiz/images/favicons/apple-touch-icon-180x180.png">
+                <link rel="icon" type="image/png" href="/themes/suedostschweiz/images/favicons/favicon-32x32.png"
+                      sizes="32x32">
+                <link rel="icon" type="image/png"
+                      href="/themes/suedostschweiz/images/favicons/android-chrome-192x192.png" sizes="192x192">
+                <link rel="icon" type="image/png" href="/themes/suedostschweiz/images/favicons/favicon-16x16.png"
+                      sizes="16x16">
+                <link rel="manifest" href="/themes/suedostschweiz/images/favicons/manifest.json">
+                <link rel="mask-icon" href="/themes/suedostschweiz/images/favicons/safari-pinned-tab.svg"
+                      color="#95C11F">
+                <meta name="msapplication-TileColor" content="#da532c">
+                <meta name="msapplication-TileImage"
+                      content="/themes/suedostschweiz/images/favicons/mstile-144x144.png">
+                <meta name="msapplication-config" content="/themes/suedostschweiz/images/favicons/browserconfig.xml">
+                <meta name="theme-color" content="#ffffff">
+              
+                </head>
+<body class="so-domain--so path-node page-node-type-np8-news">
+<a href="#main-content" class="visually-hidden focusable skip-link">
+    Direkt zum Inhalt
+</a>
+<noscript aria-hidden="true"><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WB4DP2G" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><script>
+           var wemf_url = (('https:' == document.location.protocol) ? 'https://sued-ssl.wemfbox.ch/cgi-bin/ivw/CP/' : 'http://suedost.wemfbox.ch/cgi-bin/ivw/CP/' );
+            var wemf_path = "so_portal";
+        // Minified version of isMobile https://github.com/kaimallea/isMobile.
+        !function(a){var b=/iPhone/i,c=/iPod/i,d=/iPad/i,e=/(?=.*\bAndroid\b)(?=.*\bMobile\b)/i,f=/Android/i,g=/IEMobile/i,h=/(?=.*\bWindows\b)(?=.*\bARM\b)/i,i=/BlackBerry/i,j=/BB10/i,k=/Opera Mini/i,l=/(?=.*\bFirefox\b)(?=.*\bMobile\b)/i,m=new RegExp("(?:Nexus 7|BNTV250|Kindle Fire|Silk|GT-P1000)","i"),n=function(a,b){return a.test(b)},o=function(a){var o=a||navigator.userAgent;return this.apple={phone:n(b,o),ipod:n(c,o),tablet:n(d,o),device:n(b,o)||n(c,o)||n(d,o)},this.android={phone:n(e,o),tablet:!n(e,o)&&n(f,o),device:n(e,o)||n(f,o)},this.windows={phone:n(g,o),tablet:n(h,o),device:n(g,o)||n(h,o)},this.other={blackberry:n(i,o),blackberry10:n(j,o),opera:n(k,o),firefox:n(l,o),device:n(i,o)||n(j,o)||n(k,o)||n(l,o)},this.seven_inch=n(m,o),this.any=this.apple.device||this.android.device||this.windows.device||this.other.device||this.seven_inch,this.phone=this.apple.phone||this.android.phone||this.windows.phone,this.tablet=this.apple.tablet||this.android.tablet||this.windows.tablet,"undefined"==typeof window?this:void 0},p=function(){var a=new o;return a.Class=o,a};"undefined"!=typeof module&&module.exports&&"undefined"==typeof window?module.exports=o:"undefined"!=typeof module&&module.exports&&"undefined"!=typeof window?module.exports=p():"function"==typeof define&&define.amd?define("isMobile",[],a.isMobile=p()):a.isMobile=p()}(this);
+        if (isMobile.phone) {
+          wemf_path = "mobilesite/" + wemf_path;
+        }
+      if (navigator.userAgent.match(/\(iOS-universal; U; CPU OS/)) {
+        wemf_path = "apps/suedostschweiz/ios/universal";
+      }
+      if (navigator.userAgent.match(/\(Linux; U; Android-universal/)) {
+        wemf_path = "apps/suedostschweiz/android/universal";
+      }
+        var NETMX = wemf_url + wemf_path;
+        document.write("<img class=\"wemf\" src=\""+NETMX+"?r="+escape(document.referrer)+"&d="+(Math.random()*100000)+"&x="+screen.width+"x"+screen.height+"\" width=\"1\" height=\"1\" alt=\"\" />");</script><noscript><img src="https://sued-ssl.wemfbox.ch/cgi-bin/ivw/CP/so_portal" width="1" height="1" alt="" /></noscript>
+  <!-- Use any element to open/show the overlay navigation menu -->
+  <!-- => #block-headermenumobile a.offcanvas -->
+
+  <!-- The overlay -->
+  <div id="offcanvas-overlay" class="overlay">
+    <!-- Button to close the overlay navigation -->
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+    <!-- Overlay content -->
+    <div class="overlay-content container">
+      
+      <div  id="block-zonesswitcher" class="block block-so-zones block-so-zones-switcher clearfix">
+        
+                
+        <div class="block__content">
+                      <div class="frontpage-select">
+<select class="zone-list" onchange="if (this.value) window.location.href=this.value"><option class="zone zone-graubünden" value="/zone/graubunden">Graubünden</option><option class="zone zone-glarus" value="/zone/glarus">Glarus</option></select></div>
+                  </div>
+      </div>
+
+<div class="headerservicenavigation col-xs-9 col-sm-9 no-padding">
+  <nav id="block-headerservicenavigation-offcanvas" class="block block-menu navigation menu--header-service-navigation" role="navigation">
+                      
+    <h2  class="visually-hidden">Header Service Navigation</h2>
+    
+
+              
+        <ul class="menu">
+                          <li class="expanded dropdown">
+        <a href="/wohnen" class="icon-wohnen no-domain-lz" target="_blank" data-drupal-link-system-path="wohnen">Wohnen</a>
+                  </li>
+                        <li class="expanded dropdown">
+        <a href="/zeitung" class="icon-zeitung no-domain-lz" data-drupal-link-system-path="zeitung">E-Paper</a>
+                  </li>
+                        <li class="expanded dropdown">
+        <a href="/radio" class="icon-radio no-domain-lz" target="_blank" data-drupal-link-system-path="radio">Radio</a>
+                  </li>
+                        <li class="expanded dropdown">
+        <a href="/tv" class="icon-tv no-domain-lz" data-drupal-link-system-path="tv">TV</a>
+                  </li>
+      </ul>
+    
+
+
+      </nav>
+</div>
+<div class="benutzermenu col-xs-3 col-sm-3 no-padding">
+  <nav id="block-benutzermenu-offcanvas" class="block block-menu navigation menu--account" role="navigation">
+                      
+    <h2  class="visually-hidden">Benutzermenü</h2>
+    
+
+              
+              <ul class="menu nav">
+                            <li class="expanded dropdown">
+        <a href="/user/login" data-drupal-link-system-path="user/login">Anmelden</a>
+                  </li>
+        </ul>
+    </ul>
+
+
+
+      </nav>
+</div>
+
+      <div  class="np8-search-block block block-np8-search block-np8-search-form-block clearfix" data-drupal-selector="np8-search-block" id="block-suchformular-offcanvas">
+        
+                
+        <div class="block__content">
+                      <form action="/search" method="GET" id="np8-search-block" accept-charset="UTF-8" class="form-horizontal">
+  
+
+  <div class="js-form-item form-item js-form-type-textfield form-item-keywords js-form-item-keywords form-no-label">
+        <div class="control-label"><label for="edit-keywords" class="visually-hidden js-form-required form-required">Suchbegriff...</label></div>
+                <div class="custom-form"><input title="Geben Sie Ihre Suchbegriffe ein." data-drupal-selector="edit-keywords" type="text" id="edit-keywords" name="keywords" value="" size="15" maxlength="128" placeholder="Suchbegriff..." class="form-text required form-control" required="required" aria-required="true" /></div>
+                  </div>
+
+
+<div data-drupal-selector="edit-actions" class="form-actions form-group" id="edit-actions"><input data-drupal-selector="edit-submit" type="submit" id="edit-submit" name="search" value="Suche" class="button js-form-submit form-submit btn button--primary, btn-primary" />
+</div>
+
+</form>
+
+                  </div>
+      </div>
+
+<div class="headermenuuebersicht">
+  <nav id="block-headermenuubersicht-offcanvas" class="block block-menu navigation menu--headermenuoverview" role="navigation">
+                      
+    <h2  class="visually-hidden">Headermenuübersicht</h2>
+    
+
+              
+    
+              
+    <ul class="menu nav menu-level--0">
+
+            
+              
+                <li class="expanded dropdown">
+          <a href="/" class="dropdown-toggle" tabindex="-1" data-toggle="dropdown">Alle </a>
+                              
+              
+    <ul class="menu dropdown-menu menu-level--1">
+
+            
+              
+                  <li class="expanded dropdown">
+          <a href="/politik" target="" data-drupal-link-system-path="taxonomy/term/1563">Nachrichten</a>
+                              
+              
+    <ul class="menu menu-level--2">
+
+            
+              
+                  <li class="expanded dropdown">
+          <a href="/politik" data-drupal-link-system-path="taxonomy/term/1563">Politik</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/tourismus" target="" data-drupal-link-system-path="taxonomy/term/13878">Tourismus</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/wirtschaft" target="" data-drupal-link-system-path="taxonomy/term/18">Wirtschaft</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/boerse" target="" data-drupal-link-system-path="boerse">Börse</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/ereignisse" target="" data-drupal-link-system-path="taxonomy/term/1847">Ereignisse</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/polizeimeldungen" data-drupal-link-system-path="taxonomy/term/1567">Polizeimeldungen</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/kultur-musik" target="" data-drupal-link-system-path="taxonomy/term/1569">Kultur und Musik</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/stars-sternli" target="" data-drupal-link-system-path="taxonomy/term/1570">Stars und Sternli</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/aus-dem-leben" data-drupal-link-system-path="taxonomy/term/2335">Leben</a>
+                        </li>
+      
+                                                                                                                                          
+    </ul>
+
+  
+                </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/sport" target="" data-drupal-link-system-path="sport">Sport</a>
+                              
+              
+    <ul class="menu menu-level--2">
+
+            
+              
+                  <li class="expanded dropdown">
+          <a href="/regiosport" target="" data-drupal-link-system-path="regiosport">Regiosport</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/sport/eishockey" target="" data-drupal-link-system-path="taxonomy/term/1849">Eishockey</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/sport/fussball" target="" data-drupal-link-system-path="taxonomy/term/10">Fussball</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/sport/ski-alpin" target="" data-drupal-link-system-path="taxonomy/term/1850">Ski alpin</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/sport/wintersport" target="" data-drupal-link-system-path="taxonomy/term/1851">Wintersport</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/sport/unihockey" target="" data-drupal-link-system-path="taxonomy/term/1852">Unihockey</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/sport/schwingen" target="" data-drupal-link-system-path="taxonomy/term/1853">Schwingen</a>
+                        </li>
+      
+                                                                                                              
+    </ul>
+
+  
+                </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/unterhaltung" data-drupal-link-system-path="unterhaltung">Unterhaltung</a>
+                              
+              
+    <ul class="menu menu-level--2">
+
+            
+              
+                  <li class="expanded dropdown">
+          <a href="/ratgeber" data-drupal-link-system-path="ratgeber">Ratgeber</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/quiz" target="" data-drupal-link-system-path="quiz">Quiz</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/wettbewerbe" target="" data-drupal-link-system-path="wettbewerbe">Wettbewerbe</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/horoskop" data-drupal-link-system-path="horoskop">Horoskop</a>
+                        </li>
+      
+                                                                    
+    </ul>
+
+  
+                </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/mediathek/video" data-drupal-link-system-path="mediathek/video">Mediathek</a>
+                              
+              
+    <ul class="menu menu-level--2">
+
+            
+              
+                  <li class="expanded dropdown">
+          <a href="/mediathek/video" data-drupal-link-system-path="mediathek/video">TV-Beiträge</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/mediathek/audio" data-drupal-link-system-path="mediathek/audio">Radio-Beiträge</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/bilder" target="" data-drupal-link-system-path="bilder">Bilder</a>
+                        </li>
+      
+                                                      
+    </ul>
+
+  
+                </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/" target="" data-drupal-link-system-path="&lt;front&gt;">Meinungen</a>
+                              
+              
+    <ul class="menu menu-level--2">
+
+            
+              
+                  <li class="expanded dropdown">
+          <a href="/blogs" target="" data-drupal-link-system-path="blogs">Blogs</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/kommentare" data-drupal-link-system-path="kommentare">Redaktionelle Kommentare</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/leserforum" target="" data-drupal-link-system-path="leserforum">Leserforum</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/vlogs" data-drupal-link-system-path="vlogs">Vlogs</a>
+                        </li>
+      
+                                                                    
+    </ul>
+
+  
+                </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/kontakt" target="" data-drupal-link-system-path="kontakt">Service</a>
+                              
+              
+    <ul class="menu menu-level--2">
+
+            
+              
+                  <li class="expanded dropdown">
+          <a href="/kontakt" target="" data-drupal-link-system-path="kontakt">Kontakt</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/team" target="" data-drupal-link-system-path="team">Team</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/somedia/dashboard" target="" data-drupal-link-system-path="somedia/dashboard">Aboservice</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/somedia/shop" target="" data-drupal-link-system-path="somedia/shop">Shop</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/wetter" target="" data-drupal-link-system-path="wetter">Wetter</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/eventline" target="" data-drupal-link-system-path="eventline">Eventline</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/zeitung/todesanzeigen" target="" data-drupal-link-system-path="zeitung/todesanzeigen">Todesanzeigen</a>
+                        </li>
+      
+                                                                                                              
+    </ul>
+
+  
+                </li>
+      
+                                                                                                    <li class="menu-overview-footer-wrapper">
+            <ul class="menu-overview-footer">
+              <li><a href="https://www.suedostschweizjobs.ch" target="_blank" class="icon-suedostschweizjobs">suedostschweizjobs.ch</a></li>
+              <li><a href="https://www.abschied-nehmen.ch" target="_blank" class="icon-abschied-nehmen">abschied-nehmen.ch</a></li>
+            </ul>
+          </li>
+              
+    </ul>
+
+  
+                </li>
+      
+                          
+    </ul>
+
+  
+
+
+
+
+
+      </nav>
+</div>
+    </div>
+  </div>
+
+
+            <header class="container no-padding" id="navbar" role="banner">
+            
+              <div class="header">
+                                                <div class="region region-header-top col-xs-6 col-sm-5 no-padding">
+          <div class="logo-wrapper">
+      <a href="/" title="Startseite"
+         class="logo navbar-btn pull-left" rel="home">
+        <img src="/themes/suedostschweiz/logo.svg" alt="Startseite"/>
+      </a>
+    </div>
+  
+      
+  </div>
+
+                      
+                                                <div class="region region-header col-xs-6 col-sm-7 no-padding">
+    
+      <div  id="block-zonesswitcher-2" class="block block-so-zones block-so-zones-switcher clearfix">
+        
+                
+        <div class="block__content">
+                      <div class="frontpage-select">
+<select class="zone-list" onchange="if (this.value) window.location.href=this.value"><option class="zone zone-graubünden" value="/zone/graubunden">Graubünden</option><option class="zone zone-glarus" value="/zone/glarus">Glarus</option></select></div>
+                  </div>
+      </div>
+
+
+<div  id="block-benutzeranmeldung" role="form" class="block block-user block-user-login-block clearfix so-login-modal">
+  <div class="arrow-up"></div>
+  <div class="modal-dialog">
+    <div class="block_modal_header">
+      
+              <h2 class="block-title">Anmelden</h2>
+            
+    </div>
+    <div class="block_modal_content">
+              <form class="user-login-form form-horizontal" data-drupal-selector="user-login-form" action="/politik/2020-03-20/frankreich-bereitet-verlaengerung-der-ausgangssperre-vor?destination=/politik/2020-03-20/frankreich-bereitet-verlaengerung-der-ausgangssperre-vor" method="post" id="user-login-form" accept-charset="UTF-8">
+  <div class="register-info">Haben sie noch kein Login? Dann<a href="/user/register"> jetzt Registrieren</a></div>
+
+  <div class="js-form-item form-item js-form-type-textfield form-item-name js-form-item-name">
+        <div class="control-label"><label for="edit-name" class="js-form-required form-required">E-Mail</label></div>
+                <div class="custom-form"><input autocorrect="none" autocapitalize="none" spellcheck="false" data-drupal-selector="edit-name" type="text" id="edit-name" name="name" value="" size="15" maxlength="60" class="form-text required form-control" required="required" aria-required="true" /></div>
+                  </div>
+
+
+
+
+  <div class="js-form-item form-item js-form-type-password form-item-pass js-form-item-pass">
+        <div class="control-label"><label for="edit-pass" class="js-form-required form-required">Passwort</label></div>
+                <div class="custom-form"><input data-drupal-selector="edit-pass" type="password" id="edit-pass" name="pass" size="15" maxlength="128" class="form-text required form-control" required="required" aria-required="true" /></div>
+                  </div>
+
+
+<div class="custom-form"><input autocomplete="off" data-drupal-selector="form-ukmaxnukobkduoausnrvnel5whql7-qbhtlrhlc0fky" type="hidden" name="form_build_id" value="form-UkmAxNUkOBKDuoAuSNrVnEl5wHql7-QbHtlRHLc0fkY" class="form-control" /></div><div class="custom-form"><input data-drupal-selector="edit-user-login-form" type="hidden" name="form_id" value="user_login_form" class="form-control" /></div><div data-drupal-selector="edit-actions" class="form-actions form-group" id="edit-actions--2"><input data-drupal-selector="edit-submit" type="submit" id="edit-submit--2" name="op" value="Anmelden" class="button js-form-submit form-submit btn button--primary, btn-primary" />
+</div>
+
+</form>
+<div class="item-list"><ul><li><a href="/user/register" title="Ein neues Benutzerkonto erstellen." class="create-account-link">Neues Benutzerkonto erstellen</a></li><li><a href="/user/password" title="Send password reset instructions via email." class="request-password-link">Passwort zurücksetzen</a></li></ul></div>
+            <div class="so-password"><a href="/user/password">Passwort vergessen?</a></div>
+    </div>
+    <div class="block_modal_footer">
+      <div class="so-register">Noch nicht registriert? &nbsp; <a href="/user/register">Jetzt ein <br> kostenloses Benutzerkonto erstellen.</a></div>
+    </div>
+  </div>
+</div>
+
+
+<div  class="np8-search-block block block-np8-search block-np8-search-form-block clearfix" data-drupal-selector="np8-search-block-2" id="block-suchformular-header">
+  <div class="arrow-up"></div>
+  <div class="modal-dialog">
+    <div class="block_modal_header">
+      
+            
+    </div>
+    <div class="block_modal_content">
+              <form action="/search" method="GET" id="np8-search-block--2" accept-charset="UTF-8" class="form-horizontal">
+  
+
+  <div class="js-form-item form-item js-form-type-textfield form-item-keywords js-form-item-keywords form-no-label">
+        <div class="control-label"><label for="edit-keywords--2" class="visually-hidden js-form-required form-required">Suchbegriff...</label></div>
+                <div class="custom-form"><input title="Geben Sie Ihre Suchbegriffe ein." data-drupal-selector="edit-keywords" type="text" id="edit-keywords--2" name="keywords" value="" size="15" maxlength="128" placeholder="Suchbegriff..." class="form-text required form-control" required="required" aria-required="true" /></div>
+                  </div>
+
+
+<div data-drupal-selector="edit-actions" class="form-actions form-group" id="edit-actions--3"><input data-drupal-selector="edit-submit" type="submit" id="edit-submit--3" name="search" value="Suche" class="button js-form-submit form-submit btn button--primary, btn-primary" />
+</div>
+
+</form>
+
+          </div>
+  </div>
+</div>
+
+<div class="headerservicenavigation hidden-xs hidden-sm">
+  <nav id="block-headerservicenavigation" class="block block-menu navigation menu--header-service-navigation" role="navigation">
+                      
+    <h2  class="visually-hidden">Header Service Navigation</h2>
+    
+
+              
+        <ul class="menu">
+                          <li class="expanded dropdown">
+        <a href="/wohnen" class="icon-wohnen no-domain-lz" target="_blank" data-drupal-link-system-path="wohnen">Wohnen</a>
+                  </li>
+                        <li class="expanded dropdown">
+        <a href="/zeitung" class="icon-zeitung no-domain-lz" data-drupal-link-system-path="zeitung">E-Paper</a>
+                  </li>
+                        <li class="expanded dropdown">
+        <a href="/radio" class="icon-radio no-domain-lz" target="_blank" data-drupal-link-system-path="radio">Radio</a>
+                  </li>
+                        <li class="expanded dropdown">
+        <a href="/tv" class="icon-tv no-domain-lz" data-drupal-link-system-path="tv">TV</a>
+                  </li>
+      </ul>
+    
+
+
+      </nav>
+</div>
+<div class="headermenunavigation hidden-xs hidden-sm">
+  <nav id="block-suedostschweiz-header" class="block block-menu navigation menu--header" role="navigation">
+                      
+    <h2  class="visually-hidden">Header menu</h2>
+    
+
+              
+        <ul class="menu nav navbar-nav">
+                          <li class="expanded dropdown">
+        <a href="/somedia/aboplus" class="aboplus no-domain-lz" target="_blank" data-drupal-link-system-path="somedia/aboplus">Aboplus</a>
+                  </li>
+                        <li class="expanded dropdown">
+        <a href="/somedia/shop" class="abo no-domain-lz" target="_blank" data-drupal-link-system-path="somedia/shop">Abonnieren</a>
+                  </li>
+                        <li class="expanded dropdown">
+        <a href="/search" class="suchen menu-link-search" target="" data-drupal-link-system-path="search">Suchen</a>
+                  </li>
+                        <li class="menu-link-login expanded dropdown">
+        <a href="/user/login?destination=/politik/2020-03-20/frankreich-bereitet-verlaengerung-der-ausgangssperre-vor" target="" data-drupal-link-query="{&quot;destination&quot;:&quot;\/politik\/2020-03-20\/frankreich-bereitet-verlaengerung-der-ausgangssperre-vor&quot;}" data-drupal-link-system-path="user/login">Login</a>
+                  </li>
+      </ul>
+    
+
+
+      </nav>
+</div>
+<nav id="block-headermenumobile" class="block block-menu navigation menu--header-menu-mobile hidden-lg pull-right" role="navigation">
+            
+  <h2  class="visually-hidden">Header Menu Mobile</h2>
+  
+
+        
+    
+              
+    <ul class="menu menu-level--0">
+
+            
+              
+                  <li class="expanded dropdown">
+          <a href="/somedia/shop" class="abo" data-drupal-link-system-path="somedia/shop">Abonnemente</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/so-reporter" class="icon-leserepoerter" target="" data-drupal-link-system-path="so-reporter">Lesereporter</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="#offcanvas-open" class="icon-menu-overview offcanvas" target="">Übersicht</a>
+                        </li>
+      
+    </ul>
+  
+
+
+  </nav>
+
+  </div>
+
+                      
+                    
+          <div class="header-navigation col-xs-12 no-padding" role="heading">
+              <div class="region region-navigation no-padding-container">
+    
+<div class="mainnavigation">
+  
+  <nav id="block-suedostschweiz-mainnavigation" class="block block-menu navigation menu--main" role="navigation">
+                      
+    <h2  class="visually-hidden">Main navigation</h2>
+    
+
+              
+    
+              
+    <ul class="menu nav menu-level--0">
+
+                          
+                  <li class="expanded">
+          <a href="/fokus" target="" data-drupal-link-system-path="fokus">Im Fokus</a>
+                        </li>
+              
+                  <li class="expanded">
+          <a href="/meistgeklickt" target="" data-drupal-link-system-path="meistgeklickt">Meistgeklickt</a>
+                        </li>
+              
+                  <li class="expanded">
+          <a href="/miniregion" target="" title="Mini Region" data-drupal-link-system-path="meinegemeinde">Regional</a>
+                        </li>
+              
+                  <li class="expanded active">
+          <a href="/politik" target="" data-drupal-link-system-path="taxonomy/term/1563">Nachrichten</a>
+                        </li>
+              
+                  <li class="expanded">
+          <a href="/sport" target="" data-drupal-link-system-path="sport">Sport</a>
+                        </li>
+              
+                  <li class="expanded">
+          <a href="/mediathek/video" data-drupal-link-system-path="mediathek/video">Mediathek</a>
+                        </li>
+              
+                  <li class="expanded">
+          <a href="/wettbewerbe" data-drupal-link-system-path="wettbewerbe">Wettbewerbe</a>
+                        </li>
+              
+                  <li class="expanded">
+          <a href="/leserforum" target="" data-drupal-link-system-path="leserforum">Meinungen</a>
+                        </li>
+              
+                  <li class="expanded">
+          <a href="/wohnen" class="hidden-lg" data-drupal-link-system-path="wohnen">Wohnen</a>
+                        </li>
+            <li class="menu-overview icon-menuoverview hidden-xs hidden-sm">
+        
+    
+              
+    <ul class="menu nav menu-level--0">
+
+            
+              
+                <li class="expanded dropdown">
+          <a href="/" class="dropdown-toggle" tabindex="-1" data-toggle="dropdown">Alle </a>
+                              
+              
+    <ul class="menu dropdown-menu menu-level--1">
+
+            
+              
+                  <li class="expanded dropdown">
+          <a href="/politik" target="" data-drupal-link-system-path="taxonomy/term/1563">Nachrichten</a>
+                              
+              
+    <ul class="menu menu-level--2">
+
+            
+              
+                  <li class="expanded dropdown">
+          <a href="/politik" data-drupal-link-system-path="taxonomy/term/1563">Politik</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/tourismus" target="" data-drupal-link-system-path="taxonomy/term/13878">Tourismus</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/wirtschaft" target="" data-drupal-link-system-path="taxonomy/term/18">Wirtschaft</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/boerse" target="" data-drupal-link-system-path="boerse">Börse</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/ereignisse" target="" data-drupal-link-system-path="taxonomy/term/1847">Ereignisse</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/polizeimeldungen" data-drupal-link-system-path="taxonomy/term/1567">Polizeimeldungen</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/kultur-musik" target="" data-drupal-link-system-path="taxonomy/term/1569">Kultur und Musik</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/stars-sternli" target="" data-drupal-link-system-path="taxonomy/term/1570">Stars und Sternli</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/aus-dem-leben" data-drupal-link-system-path="taxonomy/term/2335">Leben</a>
+                        </li>
+      
+                                                                                                                                          
+    </ul>
+
+  
+                </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/sport" target="" data-drupal-link-system-path="sport">Sport</a>
+                              
+              
+    <ul class="menu menu-level--2">
+
+            
+              
+                  <li class="expanded dropdown">
+          <a href="/regiosport" target="" data-drupal-link-system-path="regiosport">Regiosport</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/sport/eishockey" target="" data-drupal-link-system-path="taxonomy/term/1849">Eishockey</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/sport/fussball" target="" data-drupal-link-system-path="taxonomy/term/10">Fussball</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/sport/ski-alpin" target="" data-drupal-link-system-path="taxonomy/term/1850">Ski alpin</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/sport/wintersport" target="" data-drupal-link-system-path="taxonomy/term/1851">Wintersport</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/sport/unihockey" target="" data-drupal-link-system-path="taxonomy/term/1852">Unihockey</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/sport/schwingen" target="" data-drupal-link-system-path="taxonomy/term/1853">Schwingen</a>
+                        </li>
+      
+                                                                                                              
+    </ul>
+
+  
+                </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/unterhaltung" data-drupal-link-system-path="unterhaltung">Unterhaltung</a>
+                              
+              
+    <ul class="menu menu-level--2">
+
+            
+              
+                  <li class="expanded dropdown">
+          <a href="/ratgeber" data-drupal-link-system-path="ratgeber">Ratgeber</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/quiz" target="" data-drupal-link-system-path="quiz">Quiz</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/wettbewerbe" target="" data-drupal-link-system-path="wettbewerbe">Wettbewerbe</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/horoskop" data-drupal-link-system-path="horoskop">Horoskop</a>
+                        </li>
+      
+                                                                    
+    </ul>
+
+  
+                </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/mediathek/video" data-drupal-link-system-path="mediathek/video">Mediathek</a>
+                              
+              
+    <ul class="menu menu-level--2">
+
+            
+              
+                  <li class="expanded dropdown">
+          <a href="/mediathek/video" data-drupal-link-system-path="mediathek/video">TV-Beiträge</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/mediathek/audio" data-drupal-link-system-path="mediathek/audio">Radio-Beiträge</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/bilder" target="" data-drupal-link-system-path="bilder">Bilder</a>
+                        </li>
+      
+                                                      
+    </ul>
+
+  
+                </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/" target="" data-drupal-link-system-path="&lt;front&gt;">Meinungen</a>
+                              
+              
+    <ul class="menu menu-level--2">
+
+            
+              
+                  <li class="expanded dropdown">
+          <a href="/blogs" target="" data-drupal-link-system-path="blogs">Blogs</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/kommentare" data-drupal-link-system-path="kommentare">Redaktionelle Kommentare</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/leserforum" target="" data-drupal-link-system-path="leserforum">Leserforum</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/vlogs" data-drupal-link-system-path="vlogs">Vlogs</a>
+                        </li>
+      
+                                                                    
+    </ul>
+
+  
+                </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/kontakt" target="" data-drupal-link-system-path="kontakt">Service</a>
+                              
+              
+    <ul class="menu menu-level--2">
+
+            
+              
+                  <li class="expanded dropdown">
+          <a href="/kontakt" target="" data-drupal-link-system-path="kontakt">Kontakt</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/team" target="" data-drupal-link-system-path="team">Team</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/somedia/dashboard" target="" data-drupal-link-system-path="somedia/dashboard">Aboservice</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/somedia/shop" target="" data-drupal-link-system-path="somedia/shop">Shop</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/wetter" target="" data-drupal-link-system-path="wetter">Wetter</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/eventline" target="" data-drupal-link-system-path="eventline">Eventline</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/zeitung/todesanzeigen" target="" data-drupal-link-system-path="zeitung/todesanzeigen">Todesanzeigen</a>
+                        </li>
+      
+                                                                                                              
+    </ul>
+
+  
+                </li>
+      
+                                                                                                    <li class="menu-overview-footer-wrapper">
+            <ul class="menu-overview-footer">
+              <li><a href="https://www.suedostschweizjobs.ch" target="_blank" class="icon-suedostschweizjobs">suedostschweizjobs.ch</a></li>
+              <li><a href="https://www.abschied-nehmen.ch" target="_blank" class="icon-abschied-nehmen">abschied-nehmen.ch</a></li>
+            </ul>
+          </li>
+              
+    </ul>
+
+  
+                </li>
+      
+                          
+    </ul>
+
+  
+
+
+
+
+
+      </li>
+
+    </ul>
+
+  
+
+
+
+      </nav>
+</div>
+
+<div class="mainnavigation">
+  
+  <nav id="block-suedostschweiz-mainnavigation-level-2" class="block block-menu navigation menu--main" role="navigation">
+                      
+    <h2  class="visually-hidden">Main Navigation Level 2</h2>
+    
+
+              
+    
+              
+    <ul class="menu nav menu-level--0">
+
+                          
+                  <li class="expanded">
+          <a href="/fokus" target="" data-drupal-link-system-path="fokus">Im Fokus</a>
+                        </li>
+              
+                  <li class="expanded">
+          <a href="/meistgeklickt" target="" data-drupal-link-system-path="meistgeklickt">Meistgeklickt</a>
+                        </li>
+              
+                <li class="expanded">
+          <a href="/miniregion">Regional </a>
+                              
+              
+    <ul class="menu nav menu-level--1">
+
+                          
+                  <li class="expanded">
+          <a href="/miniregion" target="" data-drupal-link-system-path="meinegemeinde">Mini Region</a>
+                        </li>
+              
+                  <li class="expanded">
+          <a href="/regional/graubunden" data-drupal-link-system-path="regional/graubunden">Graubünden</a>
+                        </li>
+              
+                  <li class="expanded">
+          <a href="/regional/glarus" target="" data-drupal-link-system-path="regional/glarus">Glarus</a>
+                        </li>
+            <li class="menu-overview icon-menuoverview hidden-xs hidden-sm">
+        
+      </li>
+
+    </ul>
+
+  
+
+                </li>
+              
+                <li class="expanded active">
+          <a href="/politik">Nachrichten </a>
+                              
+              
+    <ul class="menu nav menu-level--1">
+
+                          
+                  <li class="expanded active">
+          <a href="/politik" target="" data-drupal-link-system-path="taxonomy/term/1563">Politik</a>
+                        </li>
+              
+                  <li class="expanded">
+          <a href="/tourismus" target="" data-drupal-link-system-path="taxonomy/term/13878">Tourismus</a>
+                        </li>
+              
+                  <li class="expanded">
+          <a href="/wirtschaft" target="" data-drupal-link-system-path="taxonomy/term/18">Wirtschaft</a>
+                        </li>
+              
+                  <li class="expanded">
+          <a href="/boerse" target="" data-drupal-link-system-path="boerse">Börse</a>
+                        </li>
+              
+                  <li class="expanded">
+          <a href="/ereignisse" target="" data-drupal-link-system-path="taxonomy/term/1847">Ereignisse</a>
+                        </li>
+              
+                  <li class="expanded">
+          <a href="/polizeimeldungen" target="" data-drupal-link-system-path="taxonomy/term/1567">Polizeimeldungen</a>
+                        </li>
+              
+                  <li class="expanded">
+          <a href="/kultur-musik" target="" data-drupal-link-system-path="taxonomy/term/1569">Kultur</a>
+                        </li>
+              
+                  <li class="expanded">
+          <a href="/stars-sternli" target="" data-drupal-link-system-path="taxonomy/term/1570">Stars &amp; Sternli</a>
+                        </li>
+              
+                  <li class="expanded">
+          <a href="/aus-dem-leben" target="" data-drupal-link-system-path="taxonomy/term/2335">Leben</a>
+                        </li>
+            <li class="menu-overview icon-menuoverview hidden-xs hidden-sm">
+        
+      </li>
+
+    </ul>
+
+  
+
+                </li>
+              
+                <li class="expanded">
+          <a href="/sport">Sport </a>
+                              
+              
+    <ul class="menu nav menu-level--1">
+
+                          
+                  <li class="expanded">
+          <a href="/regiosport" target="" data-drupal-link-system-path="regiosport">Regiosport</a>
+                        </li>
+              
+                  <li class="expanded">
+          <a href="/sport/eishockey" target="" data-drupal-link-system-path="taxonomy/term/1849">Eishockey</a>
+                        </li>
+              
+                  <li class="expanded">
+          <a href="/hcd" data-drupal-link-system-path="hcd">HC Davos</a>
+                        </li>
+              
+                  <li class="expanded">
+          <a href="/sport/fussball" target="" data-drupal-link-system-path="taxonomy/term/10">Fussball</a>
+                        </li>
+              
+                  <li class="expanded">
+          <a href="/sport/ski-alpin" target="" data-drupal-link-system-path="taxonomy/term/1850">Ski alpin</a>
+                        </li>
+              
+                  <li class="expanded">
+          <a href="/sport/unihockey" target="" data-drupal-link-system-path="taxonomy/term/1852">Unihockey</a>
+                        </li>
+            <li class="menu-overview icon-menuoverview hidden-xs hidden-sm">
+        
+      </li>
+
+    </ul>
+
+  
+
+                </li>
+              
+                  <li class="expanded">
+          <a href="/mediathek/video" data-drupal-link-system-path="mediathek/video">Mediathek</a>
+                        </li>
+              
+                  <li class="expanded">
+          <a href="/wettbewerbe" data-drupal-link-system-path="wettbewerbe">Wettbewerbe</a>
+                        </li>
+              
+                <li class="expanded">
+          <a href="/leserforum">Meinungen </a>
+                              
+              
+    <ul class="menu nav menu-level--1">
+
+                          
+                  <li class="expanded">
+          <a href="/leserforum" target="" data-drupal-link-system-path="leserforum">Leserforum</a>
+                        </li>
+              
+                  <li class="expanded">
+          <a href="/blogs" target="" data-drupal-link-system-path="blogs">Blogs</a>
+                        </li>
+              
+                  <li class="expanded">
+          <a href="/vlogs" data-drupal-link-system-path="vlogs">Vlogs</a>
+                        </li>
+            <li class="menu-overview icon-menuoverview hidden-xs hidden-sm">
+        
+      </li>
+
+    </ul>
+
+  
+
+                </li>
+              
+                  <li class="expanded">
+          <a href="/wohnen" class="hidden-lg" data-drupal-link-system-path="wohnen">Wohnen</a>
+                        </li>
+            <li class="menu-overview icon-menuoverview hidden-xs hidden-sm">
+        
+    
+              
+    <ul class="menu nav menu-level--0">
+
+            
+              
+                <li class="expanded dropdown">
+          <a href="/" class="dropdown-toggle" tabindex="-1" data-toggle="dropdown">Alle </a>
+                              
+              
+    <ul class="menu dropdown-menu menu-level--1">
+
+            
+              
+                  <li class="expanded dropdown">
+          <a href="/politik" target="" data-drupal-link-system-path="taxonomy/term/1563">Nachrichten</a>
+                              
+              
+    <ul class="menu menu-level--2">
+
+            
+              
+                  <li class="expanded dropdown">
+          <a href="/politik" data-drupal-link-system-path="taxonomy/term/1563">Politik</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/tourismus" target="" data-drupal-link-system-path="taxonomy/term/13878">Tourismus</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/wirtschaft" target="" data-drupal-link-system-path="taxonomy/term/18">Wirtschaft</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/boerse" target="" data-drupal-link-system-path="boerse">Börse</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/ereignisse" target="" data-drupal-link-system-path="taxonomy/term/1847">Ereignisse</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/polizeimeldungen" data-drupal-link-system-path="taxonomy/term/1567">Polizeimeldungen</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/kultur-musik" target="" data-drupal-link-system-path="taxonomy/term/1569">Kultur und Musik</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/stars-sternli" target="" data-drupal-link-system-path="taxonomy/term/1570">Stars und Sternli</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/aus-dem-leben" data-drupal-link-system-path="taxonomy/term/2335">Leben</a>
+                        </li>
+      
+                                                                                                                                          
+    </ul>
+
+  
+                </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/sport" target="" data-drupal-link-system-path="sport">Sport</a>
+                              
+              
+    <ul class="menu menu-level--2">
+
+            
+              
+                  <li class="expanded dropdown">
+          <a href="/regiosport" target="" data-drupal-link-system-path="regiosport">Regiosport</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/sport/eishockey" target="" data-drupal-link-system-path="taxonomy/term/1849">Eishockey</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/sport/fussball" target="" data-drupal-link-system-path="taxonomy/term/10">Fussball</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/sport/ski-alpin" target="" data-drupal-link-system-path="taxonomy/term/1850">Ski alpin</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/sport/wintersport" target="" data-drupal-link-system-path="taxonomy/term/1851">Wintersport</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/sport/unihockey" target="" data-drupal-link-system-path="taxonomy/term/1852">Unihockey</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/sport/schwingen" target="" data-drupal-link-system-path="taxonomy/term/1853">Schwingen</a>
+                        </li>
+      
+                                                                                                              
+    </ul>
+
+  
+                </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/unterhaltung" data-drupal-link-system-path="unterhaltung">Unterhaltung</a>
+                              
+              
+    <ul class="menu menu-level--2">
+
+            
+              
+                  <li class="expanded dropdown">
+          <a href="/ratgeber" data-drupal-link-system-path="ratgeber">Ratgeber</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/quiz" target="" data-drupal-link-system-path="quiz">Quiz</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/wettbewerbe" target="" data-drupal-link-system-path="wettbewerbe">Wettbewerbe</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/horoskop" data-drupal-link-system-path="horoskop">Horoskop</a>
+                        </li>
+      
+                                                                    
+    </ul>
+
+  
+                </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/mediathek/video" data-drupal-link-system-path="mediathek/video">Mediathek</a>
+                              
+              
+    <ul class="menu menu-level--2">
+
+            
+              
+                  <li class="expanded dropdown">
+          <a href="/mediathek/video" data-drupal-link-system-path="mediathek/video">TV-Beiträge</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/mediathek/audio" data-drupal-link-system-path="mediathek/audio">Radio-Beiträge</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/bilder" target="" data-drupal-link-system-path="bilder">Bilder</a>
+                        </li>
+      
+                                                      
+    </ul>
+
+  
+                </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/" target="" data-drupal-link-system-path="&lt;front&gt;">Meinungen</a>
+                              
+              
+    <ul class="menu menu-level--2">
+
+            
+              
+                  <li class="expanded dropdown">
+          <a href="/blogs" target="" data-drupal-link-system-path="blogs">Blogs</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/kommentare" data-drupal-link-system-path="kommentare">Redaktionelle Kommentare</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/leserforum" target="" data-drupal-link-system-path="leserforum">Leserforum</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/vlogs" data-drupal-link-system-path="vlogs">Vlogs</a>
+                        </li>
+      
+                                                                    
+    </ul>
+
+  
+                </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/kontakt" target="" data-drupal-link-system-path="kontakt">Service</a>
+                              
+              
+    <ul class="menu menu-level--2">
+
+            
+              
+                  <li class="expanded dropdown">
+          <a href="/kontakt" target="" data-drupal-link-system-path="kontakt">Kontakt</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/team" target="" data-drupal-link-system-path="team">Team</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/somedia/dashboard" target="" data-drupal-link-system-path="somedia/dashboard">Aboservice</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/somedia/shop" target="" data-drupal-link-system-path="somedia/shop">Shop</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/wetter" target="" data-drupal-link-system-path="wetter">Wetter</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/eventline" target="" data-drupal-link-system-path="eventline">Eventline</a>
+                        </li>
+              
+                  <li class="expanded dropdown">
+          <a href="/zeitung/todesanzeigen" target="" data-drupal-link-system-path="zeitung/todesanzeigen">Todesanzeigen</a>
+                        </li>
+      
+                                                                                                              
+    </ul>
+
+  
+                </li>
+      
+                                                                                                    <li class="menu-overview-footer-wrapper">
+            <ul class="menu-overview-footer">
+              <li><a href="https://www.suedostschweizjobs.ch" target="_blank" class="icon-suedostschweizjobs">suedostschweizjobs.ch</a></li>
+              <li><a href="https://www.abschied-nehmen.ch" target="_blank" class="icon-abschied-nehmen">abschied-nehmen.ch</a></li>
+            </ul>
+          </li>
+              
+    </ul>
+
+  
+                </li>
+      
+                          
+    </ul>
+
+  
+
+
+
+
+
+      </li>
+
+    </ul>
+
+  
+
+
+
+      </nav>
+</div>
+
+  </div>
+
+          </div>
+
+                            </div>
+          </header>
+  
+  <div id="js-sticky-header-top-space"></div>
+  <div role="main" class="js-quickedit-main-content container main-container">
+    <div class="row">
+
+            
+                  <div class="main-content">
+        <section class="col-sm-12 no-padding-container">
+
+                                              <div class="highlighted">  <div class="region region-highlighted no-padding-container">
+    <div data-drupal-messages-fallback class="hidden"></div>
+
+  </div>
+</div>
+                      
+                    
+                    
+                    
+                                <a id="main-content" class="content-top"></a>
+              <div class="region region-content-top no-padding-container">
+    
+      <div  id="block-audienzzblock-2" class="block block-np8-audienzz clearfix">
+        
+                
+        <div class="block__content">
+                        <div class="js-audienzz" id="adv-wideboard-1"></div>
+
+                  </div>
+      </div>
+
+
+  </div>
+
+          
+                                <a id="main-content" class="content"></a>
+              <div class="region region-content no-padding-container">
+    
+      <div  id="block-suedostschweiz-content" class="block block-system block-system-main-block clearfix">
+        
+                
+        <div class="block__content">
+                      <article role="article" class="np8-priority-3 node node--type-np8-news node--promoted node--view-mode-full">
+
+  <div class="main-content">
+    <div class="node_section hidden-md hidden-lg">
+      <a class="section_link" href="/politik">
+            <div class="field field--name-np8-section field--type-entity-reference field--label-hidden field__item">Politik</div>
+      </a>
+    </div>
+        
+    <div class="node_label">
+      <h1><span>Frankreich bereitet Verlängerung der Ausgangssperre vor</span>
+</h1>
+    </div>
+          <div class="node_share_news_head">
+        <div class="addthis_toolbox addthis_default_style addthis_32x32_style" addthis:url="https://www.suedostschweiz.ch/politik/2020-03-20/frankreich-bereitet-verlaengerung-der-ausgangssperre-vor" addthis:title="Frankreich bereitet Verlängerung der Ausgangssperre vor" addthis:description="Hier gehts zum Artikel.">
+                                                  <a class="addthis_button_facebook" href="#addthis">
+                <img src="/themes/suedostschweiz/images/sov5/facebook-share.svg">
+              </a>
+                                                                                                          <a class="addthis_button_email" href="#addthis">
+                <img src="/themes/suedostschweiz/images/sov5/mail-share.svg">
+              </a>
+                                                                                                          <a class="addthis_button_whatsapp" href="#addthis">
+                <img src="/themes/suedostschweiz/images/sov5/whatsapp-share.svg">
+              </a>
+                                    
+    
+    </div>
+
+      </div>
+    
+        <div class="node_favorites">
+      <a href="#" id="login-layover">
+        <div class="spacer"></div>
+        <img class="flag-icon" src="/themes/suedostschweiz/images/sov5/bookmark.svg">
+        <span>Beitrag in Merkliste speichern</span>
+      </a>
+    </div>
+    
+          <div class="node_lead">
+        
+            <div class="clearfix text-formatted field field--name-np8-lead field--type-text-long field--label-hidden field__item"><p>Im Kampf gegen das Coronavirus stimmt Frankreich seine Bürger auf eine Verlängerung der Ausgangssperre ein. Präsident Emmanuel Macron sprach am Freitag in Paris von einem «Wettlauf mit dem Virus».</p>
+</div>
+      
+      </div>
+    
+                <div class="node_author">
+        
+            <div class="field field--name-np8-author-ref field--type-entity-reference field--label-hidden field__item">
+
+
+
+<article  class="user">
+
+  
+            <div class="field field--name-so-portrait field--type-image field--label-hidden field__item">  <img src="/sites/default/files/styles/portrait/public/2017-05/sda_0.png?itok=P5lsx8vj" width="150" height="150" alt="" />
+
+
+
+</div>
+      
+            <div class="field field--name-np8-prename field--type-string field--label-hidden field__item">Agentur</div>
+      
+            <div class="field field--name-np8-surname field--type-string field--label-hidden field__item">sda</div>
+      
+</article>
+</div>
+      
+      </div>
+          
+          <div class="node_display_date">
+        Freitag, 20. März 2020, 22:55 Uhr
+                  <strong>Paris</strong>
+              </div>
+    
+                  <div class="node_main_image">
+          
+      <div class="field field--name-np8-main-media field--type-file field--label-hidden field__items">
+              <div class="field__item">
+    <picture>
+                <!--[if IE 9]><video style="display: none;"><![endif]-->
+              <source srcset="/sites/default/files/styles/responsive_voll_desktop/public/media/2020/03/20/20200320225543837.jpg?itok=iTm40KYl 1x" media="all and (min-width: 851px)" type="image/jpeg"/>
+              <source srcset="/sites/default/files/styles/responsive_voll_tablet/public/media/2020/03/20/20200320225543837.jpg?itok=jDbHvvb3 1x" media="all and (min-width: 560px) and (max-width: 850px)" type="image/jpeg"/>
+              <source srcset="/sites/default/files/styles/responsive_voll_mobile/public/media/2020/03/20/20200320225543837.jpg?itok=7zh2rddT 1x" type="image/jpeg"/>
+            <!--[if IE 9]></video><![endif]-->
+            <img src="/sites/default/files/styles/np8_full/public/media/2020/03/20/20200320225543837.jpg?itok=Lt8NRozf" alt="Kontrolle auf der Avenue des Champs-Élysées im Zentrum von Paris." title="Kontrolle auf der Avenue des Champs-Élysées im Zentrum von Paris." />
+
+  </picture>
+
+
+  <div class="so-image-metadatas">
+        <div class="image-title">Kontrolle auf der Avenue des Champs-Élysées im Zentrum von Paris.</div>
+        <div class="image-source-author">KEYSTONE/AP/Michel Euler</div>
+    </div>
+</div>
+          </div>
+  
+                  </div>
+          
+    <div class="node_body">
+
+
+      
+
+      
+      <div class="field field--name-so-paragraphs field--type-entity-reference-revisions field--label-hidden field__items">
+              <div class="field__item">  <div class="paragraph paragraph--type--so-text paragraph--view-mode--default">
+                  
+            <div class="clearfix text-formatted field field--name-so-text field--type-text-with-summary field--label-hidden field__item"><p>Beratungen im Parlament zur Ausrufung eines «Gesundheitsnotstandes» verzögerten sich dagegen. Dieser soll der Regierung umfassende Sondervollmachten geben.</p>
+                  <p>Regierungssprecherin Sibeth Ndiaye nannte es «wahrscheinlich, dass wir die Ausgangssperre verlängern müssen». Dafür hatte zuvor bereits die nationale Gesundheitsbehörde plädiert. Das seit Dienstag geltende Ausgangsverbot ist vorerst bis zum 31. März befristet.</p>
+                  <p>Alle französischen Mittelmeerstrände und viele Uferpromenaden waren erstmals geschlossen, um Menschenansammlungen zu vermeiden. Präsident Macron hatte die Menschen zuvor eindringlich zur Disziplin ermahnt. «Ich sehe Leute, die weiter in den Park gehen, an den Strand oder sich auf geöffneten Wochenmärkten drängen», kritisierte er.</p>
+                  <p>Die Beratungen in der französischen Nationalversammlung und im Senat über den von der Regierung eingebrachten «Gesundheitsnotstand» verzögerten sich laut Abgeordneten wegen inhaltlicher Differenzen, ein Beschluss wird nun erst am Samstag oder Sonntag erwartet. Eine Rede von Premierminister Edouard Philippe wurde auf den späten Freitagabend verschoben. Wegen der Corona-Krise tagt das Parlament nur in einem Rumpf-Format mit wenigen Abgeordneten.</p>
+                  <p>Die Regierung soll mit dem Gesetz die Möglichkeit erhalten, im Schnellverfahren striktere Massnahmen umzusetzen. Diese betreffen laut dem Gesetzestext unter anderem die Bewegungs- und Versammlungsfreiheit sowie die «Beschlagnahme von allen Gütern und Dienstleistungen, um gegen die Gesundheitskatastrophe zu kämpfen».</p>
+                  <h3>Parlament wird nur noch informiert</h3>
+                  <p>Die einzelnen Massnahmen sollen unter dem «Gesundheitsnotstand» per Dekret verabschiedet werden, das Parlament wird anschliessend nur noch informiert. Zudem umfasst das Massnahmenpaket der Regierung Wirtschaftshilfen in Höhe von 45 Milliarden Euro für Kurzarbeit und zur Senkung von Abgaben für die Unternehmen.</p>
+                  <p>Die französische Rechtspopulistin Marine Le Pen forderte eine totale Ausgangssperre in den Abendstunden. Ausnahmen dürfe es nur für Ärzte, Polizisten oder andere dringend benötigte Berufsgruppen geben, forderte sie.</p>
+                  <p>Unter dem derzeit geltenden Ausgangsverbot sind Einkäufe, der Gang zum Arzt oder zur Arbeit erlaubt. Auch eine sportliche Betätigung in der Nähe der Wohnung oder das Gassigehen mit dem Hund sind möglich. Bei Verstössen droht ein Bussgeld von 135 Euro. Die Pariser Stadtverwaltung kündigte für das Wochenende unter anderem die Sperrung des Marsfeldes am Eiffelturm und der Seine-Ufer an, wo sich zuvor viele Menschen versammelt hatten.</p>
+                  <h3>Unter Beteiligung der Armee</h3>
+                  <p>Auch die französische Armee beteiligt sich am Kampf gegen das Virus: Die Marine soll an diesem Wochenende Intensiv-Patienten aus überlasteten Krankenhäusern auf der Insel Korsika nach Südfrankreich bringen.</p>
+                  <p>Am Donnerstag hatten Soldaten mit einem Spezialflugzeug bereits sechs erste Patienten aus dem elsässischen Mülhausen in ein Militärkrankenhaus im Süden des Landes verlegt. Dort ist auch ein Notlazarett der Armee im Aufbau. Das Grenzgebiet zur Schweiz und zu Deutschland ist einer der Krisenherde in Frankreich.</p>
+                  <p>In Europa ist Frankreich eines der am stärksten von der Corona-Krise betroffenen Länder. Den Behörden zufolge stieg die Zahl der bestätigten Infektionen zuletzt auf rund 11'000, 372 Menschen starben an den Folgen des Virus.</p></div>
+      
+            </div>
+</div>
+          </div>
+  
+
+
+          <div class="node_share_news">
+        <div class="addthis_toolbox addthis_default_style addthis_32x32_style" addthis:url="https://www.suedostschweiz.ch/politik/2020-03-20/frankreich-bereitet-verlaengerung-der-ausgangssperre-vor" addthis:title="Frankreich bereitet Verlängerung der Ausgangssperre vor" addthis:description="Hier gehts zum Artikel.">
+                                                  <a class="addthis_button_facebook" href="#addthis">
+                <img src="/themes/suedostschweiz/images/sov5/facebook-share.svg">
+              </a>
+                                                                                                          <a class="addthis_button_email" href="#addthis">
+                <img src="/themes/suedostschweiz/images/sov5/mail-share.svg">
+              </a>
+                                                                                                          <a class="addthis_button_whatsapp" href="#addthis">
+                <img src="/themes/suedostschweiz/images/sov5/whatsapp-share.svg">
+              </a>
+                                    
+    
+    </div>
+
+      </div>
+    
+                  <div class="node_commment_headline">
+            <div class="spacer"></div>
+            <a onclick="window.location.hash='#so_comment'" href="#so-comment">Artikel kommentieren
+                            </a>
+          </div>
+            </div>
+
+            
+        <div class="node_so_related_ad">
+                                </div>
+    
+          <div class="block-np8-adtech">
+          <div class="js-audienzz" id="adv-sidebarmobilecontent"></div>
+
+    </div>
+      
+          <div class="node_read_more">
+        <div class="field"><div class="field-label">Mehr zum Thema</div>
+
+      <div class="view view-np8-search-more-like-this view-id-np8_search_more_like_this view-display-id-block_1 js-view-dom-id-bb3bfdaf29fb97b77ecf40ab651f37f78c844f305e4c266af411ece2f0d373d6">
+        
+                
+                        
+                  <div class="view-content">
+            
+      <div class="row-overview-layout">
+      <div class="row"><div class="col-xs-12 col-sm-12 col-md-4 col-lg-8"><article role="article" class="np8-priority-2 node np8_news np8_news--view-mode--teaser_overview article article--view-mode--teaser_overview np8_news--promoted--true"><div class="teaser-icon-overview"></div><a href="/politik/2020-03-21/zahlen-von-erkrankten-steigen-weltweit-laender-riegeln-sich-ab" title="Zahlen von Erkrankten steigen weltweit: Länder riegeln sich ab"
+           rel="bookmark"  role="article" class="np8-priority-2 node np8_news np8_news--view-mode--teaser_overview article article--view-mode--teaser_overview np8_news--promoted--true" target="_blank" ><div
+              class="col-xs-12 col-sm-4 col-md-6 col-lg-6 so-right no-padding-mobile"><div class="image-wrapper"><div class="field field--name-np8-main-media field--type-file field--label-hidden field__items"><div class="field__item"><img src="/sites/default/files/styles/teaser_overview/public/media/2020/03/21/20200321171631553.jpg?itok=VDs1wuum" width="315" height="177" alt="In Madrid reinigen Armeeangehörige Metrostationen." title="In Madrid reinigen Armeeangehörige Metrostationen." /></div></div></div></div><div class="col-xs-12 col-sm-8 col-md-6 col-lg-6 no-padding-mobile"><div class="content-wrapper"><p class="spitzmarke">
+                        Rom/London/Madrid
+                      </p><h2 class="title"><span>Zahlen von Erkrankten steigen weltweit: Länder riegeln sich ab</span></h2><div class="content-lead  hidden-xs hidden-sm"></div><div class="content-metadatas"><div class="metadatas"><div class="metadata"><span
+                        class="metadatalabel"><div class="field field--name-np8-display-date field--type-datetime field--label-hidden field__item"><time datetime="2020-03-21T16:16:19Z">21.03.2020</time></div></span><span class="metadatalabel"> | bilder</span></div></div></div></div></div></a></a></article></div><div class="col-xs-12 col-sm-12 col-md-8 col-lg-4"></div></div><div class="row"><div class="col-xs-12 col-sm-12 col-md-4 col-lg-8"><article role="article" class="np8-priority-3 node np8_news np8_news--view-mode--teaser_overview article article--view-mode--teaser_overview"><div class="teaser-icon-overview"></div><a href="/politik/2020-03-16/trump-ruft-amerikaner-zum-verzicht-auf-reisen-auf" title="Trump ruft Amerikaner zum Verzicht auf Reisen auf"
+           rel="bookmark"  role="article" class="np8-priority-3 node np8_news np8_news--view-mode--teaser_overview article article--view-mode--teaser_overview" target="_blank" ><div
+              class="col-xs-12 col-sm-4 col-md-6 col-lg-6 so-right no-padding-mobile"><div class="image-wrapper"><div class="field field--name-np8-main-media field--type-file field--label-hidden field__items"><div class="field__item"><img src="/sites/default/files/styles/teaser_overview/public/media/2020/03/16/20200316214134300.jpg?itok=YHXdakn3" width="315" height="177" alt="US-Präsident Donald Trump präsentiert im Weissen Haus seine Massnahmen zur Eindämmung des Coronavirus." title="US-Präsident Donald Trump präsentiert im Weissen Haus seine Massnahmen zur Eindämmung des Coronavirus." /></div></div></div></div><div class="col-xs-12 col-sm-8 col-md-6 col-lg-6 no-padding-mobile"><div class="content-wrapper"><p class="spitzmarke">
+                        Washington
+                      </p><h2 class="title"><span>Trump ruft Amerikaner zum Verzicht auf Reisen auf</span></h2><div class="content-lead  hidden-xs hidden-sm"></div><div class="content-metadatas"><div class="metadatas"><div class="metadata"><span
+                        class="metadatalabel"><div class="field field--name-np8-display-date field--type-datetime field--label-hidden field__item"><time datetime="2020-03-16T21:29:11Z">16.03.2020</time></div></span></div></div></div></div></div></a></a></article></div><div class="col-xs-12 col-sm-12 col-md-8 col-lg-4"></div></div><div class="row"><div class="col-xs-12 col-sm-12 col-md-4 col-lg-8"><article role="article" class="np8-priority-3 node np8_news np8_news--view-mode--teaser_overview article article--view-mode--teaser_overview"><div class="teaser-icon-overview"></div><a href="/wirtschaft/2020-03-20/finnische-regierung-hilft-airline-finnair-mit-staatsgarantien" title="Finnische Regierung hilft Airline Finnair mit Staatsgarantien"
+           rel="bookmark"  role="article" class="np8-priority-3 node np8_news np8_news--view-mode--teaser_overview article article--view-mode--teaser_overview" target="_blank" ><div
+              class="col-xs-12 col-sm-4 col-md-6 col-lg-6 so-right no-padding-mobile"><div class="image-wrapper"><div class="field field--name-np8-main-media field--type-file field--label-hidden field__items"><div class="field__item"><img src="/sites/default/files/styles/teaser_overview/public/media/2020/03/20/20200320112957511.jpg?itok=hKM73WcI" width="315" height="177" alt="Der Passagiereinbruch bringt auch die Finnair in Nöten - im Bild der fast menschenleere Flughafen Helsinki." title="Der Passagiereinbruch bringt auch die Finnair in Nöten - im Bild der fast menschenleere Flughafen Helsinki." /></div></div></div></div><div class="col-xs-12 col-sm-8 col-md-6 col-lg-6 no-padding-mobile"><div class="content-wrapper"><p class="spitzmarke">
+                        Helsinki
+                      </p><h2 class="title"><span>Finnische Regierung hilft Airline Finnair mit Staatsgarantien</span></h2><div class="content-lead  hidden-xs hidden-sm"></div><div class="content-metadatas"><div class="metadatas"><div class="metadata"><span
+                        class="metadatalabel"><div class="field field--name-np8-display-date field--type-datetime field--label-hidden field__item"><time datetime="2020-03-20T10:29:08Z">20.03.2020</time></div></span></div></div></div></div></div></a></a></article></div><div class="col-xs-12 col-sm-12 col-md-8 col-lg-4"></div></div>
+    </div>
+  
+
+<div class="so-embedviews container no-padding-container">
+  
+        </div>
+
+
+          </div>
+        
+                                              </div>
+      </div>
+
+      </div>
+    
+            
+                <div class="block-np8-adtech">
+        <div class="js-audienzz" id="adv-wideboard-2"></div>
+
+    </div>
+        
+                    <div class="node_read_more_from_section">
+      <div class="field"></div>
+
+      <div class="field">
+        <div class="field-label">
+          <a href="/politik">
+           Mehr zu Politik
+          </a>
+        </div>
+      </div>
+      <div class="view-mehr-von-xy">
+        <div class="view-content">
+          <div class="views-row">
+                  <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4"><article role="article" class="np8-priority-2 node np8_news np8_news--view-mode--teaser_flexible3 article article--view-mode--teaser_flexible3 np8_news--promoted--true"><div class="teaser-icon-3"></div><a href="/politik/2020-03-21/zahlen-von-erkrankten-steigen-weltweit-laender-riegeln-sich-ab" title="Zahlen von Erkrankten steigen weltweit: Länder riegeln sich ab" rel="bookmark"><div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 no-padding"><div class="image-wrapper"><div class="field field--name-np8-main-media field--type-file field--label-hidden field__items"><div class="field__item"><img src="/sites/default/files/styles/teaser_flexible_3/public/media/2020/03/21/20200321171631553.jpg?itok=YL6lfyvO" width="315" height="177" alt="In Madrid reinigen Armeeangehörige Metrostationen." title="In Madrid reinigen Armeeangehörige Metrostationen." /></div></div></div></div><div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 no-padding"><div class="content-wrapper"><p class="spitzmarke">
+                    Rom/London/Madrid
+                  </p><h2 class="title"><span>Zahlen von Erkrankten steigen weltweit: Länder riegeln sich ab</span></h2><div class="content-lead hidden-xs hidden-sm"></div><div class="content-metadatas"><div class="metadatas"><div class="metadata"><span class="metadatalabel">
+                    bilder
+                  </span></div></div></div></div></div></a></article></div>
+                  <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4"><article role="article" class="np8-priority-2 node np8_news np8_news--view-mode--teaser_flexible3 article article--view-mode--teaser_flexible3 np8_news--promoted--true"><div class="teaser-icon-3"></div><a href="/politik/2020-03-21/rekordanstieg-an-ansteckungen-630-touristen-koennen-heim" title="Rekordanstieg an Ansteckungen - 630 Touristen können heim" rel="bookmark"><div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 no-padding"><div class="image-wrapper"><div class="field field--name-np8-main-media field--type-file field--label-hidden field__items"><div class="field__item"><img src="/sites/default/files/styles/teaser_flexible_3/public/media/2020/03/21/20200321170557130.jpg?itok=eIRa0ixu" width="315" height="177" alt="&quot;Ich erwarte, dass in rund einer Woche der Anstieg nicht mehr so stark ist&quot;: Daniel Koch vom BAG an einer Medienkonferenz zur Situation des Coronavirus am Samstag in Bern." title="&quot;Ich erwarte, dass in rund einer Woche der Anstieg nicht mehr so stark ist&quot;: Daniel Koch vom BAG an einer Medienkonferenz zur Situation des Coronavirus am Samstag in Bern." /></div></div></div></div><div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 no-padding"><div class="content-wrapper"><p class="spitzmarke">
+                    Bern
+                  </p><h2 class="title"><span>Rekordanstieg an Ansteckungen - 630 Touristen können heim</span></h2><div class="content-lead hidden-xs hidden-sm"></div></div></div></a></article></div>
+                  <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4"><article role="article" class="np8-priority-2 node np8_news np8_news--view-mode--teaser_flexible3 article article--view-mode--teaser_flexible3 np8_news--promoted--true"><div class="teaser-icon-3"></div><a href="/politik/2020-03-21/800-spitalsoldaten-werden-in-biere-auf-corona-einsatz-vorbereitet" title="800 Spitalsoldaten werden in Bière auf Corona-Einsatz vorbereitet" rel="bookmark"><div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 no-padding"><div class="image-wrapper"><div class="field field--name-np8-main-media field--type-file field--label-hidden field__items"><div class="field__item"><img src="/sites/default/files/styles/teaser_flexible_3/public/media/2020/03/21/20200321162008019.jpg?itok=bzW7dHDY" width="315" height="177" alt="Blaue Mützen und Mundschutz: Spitalsoldaten am Samstag in der Kaserne Bière VD." title="Blaue Mützen und Mundschutz: Spitalsoldaten am Samstag in der Kaserne Bière VD." /></div></div></div></div><div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 no-padding"><div class="content-wrapper"><p class="spitzmarke">
+                    Bière VD
+                  </p><h2 class="title"><span>800 Spitalsoldaten werden in Bière auf Corona-Einsatz vorbereitet</span></h2><div class="content-lead hidden-xs hidden-sm"></div></div></div></a></article></div>
+                  </div>
+        </div>
+      </div>
+    </div>
+            
+        <div class="block-np8-adtech">
+        <div class="js-audienzz" id="adv-businessclick"></div>
+
+    </div>
+                    <div class="teads-inread">
+        <div class="js-audienzz" id="adv-teads"></div>
+
+    </div>
+        
+                <script type="text/javascript">
+      (function() {
+        var holder;
+        if (window !== window.top && !!window.frameElement) {
+          holder = document.createElement('div');
+          holder.className="bc-content";
+          window.frameElement.parentElement.appendChild(holder);
+          window.frameElement.style.setProperty('display', 'none', 'important');
+        } else {
+          var id = Math.random().toString(36).substring(7);
+          document.write('<div class="bc-content" id=' + id + '></div>');
+          holder = document.getElementById(id);
+        }
+        window.audienzz = window.audienzz || {};
+        window.audienzz.bcQueue = window.audienzz.bcQueue || [];
+        window.audienzz.bcQueue.push(function() {
+          window.audienzz.bc(holder, {
+            uuid: '70bd10cd-3d9c-4bab-b14c-9a791431b9ae',
+            url: encodeURIComponent(window.top.location.href)
+          });
+        });
+      })();
+    </script>
+    <script src="https://businessclick.ch/index.js"></script>
+        
+
+              <div class="row">
+        <div class="col-xs-12 col-md-6 col-md-offset-3 no-padding">
+          <iframe src="https://www.suedostschweizjobs.ch/external/suedostschweiz" frameborder="0" style="overflow:hidden;height:360px;width:100%" height="360px" width="100%"></iframe>
+        </div>
+      </div>
+        
+            <div id="so_comment" class="node_commment">
+        <section class="field field--name-comment field--type-comment field--label-above comment-wrapper">
+      <h3 class="title comment-form__title">Kommentar schreiben</h3>
+    
+
+  <div class="js-form-item form-item js-form-type-textarea form-item- js-form-item- form-no-label">
+                <div class="form-textarea-wrapper">
+  <div class="custom-textarea">
+    <textarea class="so_special_field form-textarea resize-vertical form-control resize-vertical" rows="5" cols="60"></textarea>
+  </div>
+</div>
+
+                  </div>
+
+
+<div class="btn btn-primary so-button">Kommentar senden</div>
+    
+
+</section>
+
+            </div>
+        </div>
+  <div style="display: none" id="section_for_app">Politik</div>
+</article>
+
+
+
+                  </div>
+      </div>
+
+
+  </div>
+
+          
+                                <a id="main-content" class="content-bottom"></a>
+              <div class="region region-content-bottom no-padding-container">
+    
+      <div  id="block-audienzzblock-3" class="block block-np8-audienzz clearfix">
+        
+                
+        <div class="block__content">
+                        <div class="js-audienzz" id="adv-wideboard-3"></div>
+
+                  </div>
+      </div>
+
+
+      <div  id="block-loginformoverlayblock" class="block block-so-custom block-so-custom-login-overlay-block clearfix">
+        
+                
+        <div class="block__content">
+                      <div class="login_popup_layover"></div>
+<div class="login_popup">
+  <div class="login_popup_header">
+    <div class="close-layover">×</div>
+    <h3>Für Merkliste einloggen</h3>
+  </div>
+  <form class="user-login-form form-horizontal" data-drupal-selector="user-login-form-2" action="/user/login?destination=/region/gaster_see/rss" method="post" id="user-login-form--2" accept-charset="UTF-8">
+  <div class="register-info">Haben sie noch kein Login? Dann<a href="/user/register"> jetzt Registrieren</a></div>
+
+  <div class="js-form-item form-item js-form-type-textfield form-item-name js-form-item-name">
+        <div class="control-label"><label for="edit-name--2" class="js-form-required form-required">E-Mail</label></div>
+                <div class="custom-form"><input autocorrect="none" autocapitalize="none" spellcheck="false" autofocus="autofocus" data-drupal-selector="edit-name" aria-describedby="edit-name--2--description" type="text" id="edit-name--2" name="name" value="" size="60" maxlength="60" class="form-text required form-control" required="required" aria-required="true" /></div>
+                      <div id="edit-name--2--description" class="description">
+        Geben Sie Ihren suedostschweiz.ch-Benutzernamen ein.
+      </div>
+      </div>
+
+
+
+
+  <div class="js-form-item form-item js-form-type-password form-item-pass js-form-item-pass">
+        <div class="control-label"><label for="edit-pass--2" class="js-form-required form-required">Passwort</label></div>
+                <div class="custom-form"><input data-drupal-selector="edit-pass" aria-describedby="edit-pass--2--description" type="password" id="edit-pass--2" name="pass" size="60" maxlength="128" class="form-text required form-control" required="required" aria-required="true" /></div>
+                      <div id="edit-pass--2--description" class="description">
+        Geben Sie hier das zugehörige Passwort an.
+      </div>
+      </div>
+
+
+<div class="custom-form"><input autocomplete="off" data-drupal-selector="form-bos0mcl8he79twd-k3f3ujmmro6fee8cabqo1hoca2g" type="hidden" name="form_build_id" value="form-BoS0mcl8he79TwD-k3F3UJMMRO6fEe8CabQO1HoCa2g" class="form-control" /></div><div class="custom-form"><input data-drupal-selector="edit-user-login-form-2" type="hidden" name="form_id" value="user_login_form" class="form-control" /></div><div data-drupal-selector="edit-actions" class="form-actions form-group" id="edit-actions--4"><input data-drupal-selector="edit-submit" type="submit" id="edit-submit--4" name="op" value="Anmelden" class="button js-form-submit form-submit btn button--primary, btn-primary" />
+</div>
+
+</form>
+
+  <div class="so-infotext">
+    Noch nicht registriert?
+    <a href="/user/register">Jetzt Benutzerkonto erstellen</a>
+  </div>
+  <div class="so-password"><a href="/user/password">Passwort vergessen?</a></div>
+</div>
+                  </div>
+      </div>
+
+
+  </div>
+
+                  </section>
+      </div>
+            
+                    <div class="sidebar-ad">
+          <aside class="ad-sidebar" role="complementary">
+              <div class="region region-ad-sidebar no-padding-container">
+    
+      <div  id="block-audienzzblock" class="block block-np8-audienzz clearfix">
+        
+                
+        <div class="block__content">
+                        <div class="js-audienzz" id="adv-right"></div>
+
+                  </div>
+      </div>
+
+
+  </div>
+
+          </aside>
+        </div>
+          </div>
+  </div>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+                    <div class="footer-top col-xs-12">
+                        <div class="region region-footer-top no-padding-container">
+    <div class="footernavigation">
+  <nav id="block-footernavigation" class="block block-menu navigation menu--footernavigation" role="navigation">
+            
+    <h2 >Footernavigation</h2>
+    
+
+              
+        <ul class="menu nav navbar-nav">
+                          <li class="expanded dropdown">
+        <a href="/politik" data-drupal-link-system-path="taxonomy/term/1563">Politik</a>
+                  </li>
+                        <li class="expanded dropdown">
+        <a href="/tourismus" target="" data-drupal-link-system-path="taxonomy/term/13878">Tourismus</a>
+                  </li>
+                        <li class="expanded dropdown">
+        <a href="/wirtschaft" data-drupal-link-system-path="taxonomy/term/18">Wirtschaft</a>
+                  </li>
+                        <li class="expanded dropdown">
+        <a href="/boerse" data-drupal-link-system-path="boerse">Börse</a>
+                  </li>
+                        <li class="expanded dropdown">
+        <a href="/ereignisse" target="" data-drupal-link-system-path="taxonomy/term/1847">Ereignisse</a>
+                  </li>
+                        <li class="expanded dropdown">
+        <a href="/polizeimeldungen" target="" data-drupal-link-system-path="taxonomy/term/1567">Polizeimeldungen</a>
+                  </li>
+                        <li class="expanded dropdown">
+        <a href="/sport" data-drupal-link-system-path="sport">Sport</a>
+                  </li>
+                        <li class="expanded dropdown">
+        <a href="/kultur-musik" data-drupal-link-system-path="taxonomy/term/1569">Kultur &amp; Musik</a>
+                  </li>
+                        <li class="expanded dropdown">
+        <a href="/stars-sternli" target="" data-drupal-link-system-path="taxonomy/term/1570">Stars &amp; Sternli</a>
+                  </li>
+                        <li class="expanded dropdown">
+        <a href="/aus-dem-leben" target="" data-drupal-link-system-path="taxonomy/term/2335">Leben</a>
+                  </li>
+      </ul>
+    
+
+
+      </nav>
+</div>
+  </div>
+
+                  </div>
+      
+                    <div class="footer col-xs-12">
+                        <div class="region region-footer no-padding-container">
+    <div class="footermenu">
+  <nav id="block-suedostschweiz-footer" class="block block-menu navigation menu--footer" role="navigation">
+                      
+    <h2  class="visually-hidden">Footer menu</h2>
+    
+
+              
+        <ul class="menu nav navbar-nav">
+                          <li class="expanded dropdown">
+        <a href="/kontakt" class="no-domain-lz" data-drupal-link-system-path="kontakt">Kontakt</a>
+                  </li>
+                        <li class="expanded dropdown">
+        <a href="/so-reporter" class="no-domain-lz" data-drupal-link-system-path="so-reporter">SO-Reporter</a>
+                  </li>
+                        <li class="expanded dropdown">
+        <a href="/somedia/shop" target="_blank" data-drupal-link-system-path="somedia/shop">Abo</a>
+                  </li>
+                        <li class="expanded dropdown">
+        <a href="/werbung" target="" data-drupal-link-system-path="node/1907140">Werbung</a>
+                  </li>
+                        <li class="expanded dropdown">
+        <a href="/somedia/dashboard/epaper-newsletter" target="" data-drupal-link-system-path="somedia/dashboard/epaper-newsletter">Newsletter</a>
+                  </li>
+                        <li class="expanded dropdown">
+        <a href="/impressum" class="no-domain-lz" data-drupal-link-system-path="node/21617">Impressum</a>
+                  </li>
+                        <li class="expanded dropdown">
+        <a href="/agb" data-drupal-link-system-path="node/23376">AGB</a>
+                  </li>
+                        <li class="expanded dropdown">
+        <a href="/sites/default/files/Netiquette.pdf" target="_blank">Netiquette</a>
+                  </li>
+                        <li class="expanded dropdown">
+        <a href="https://www.somedia.ch" target="_blank">Somedia</a>
+                  </li>
+      </ul>
+    
+
+
+      </nav>
+</div>
+  </div>
+
+                  </div>
+      
+                    <div class="footer-bottom col-xs-12">
+                        <div class="region region-footer-bottom no-padding-container">
+    
+      <div  id="block-socialmedialinks" class="block block-so-custom block-so-custom-social-media-links clearfix">
+        
+                
+        <div class="block__content">
+                      <div class="col-xs-12">
+  <ul class="social-media-links">
+    <li class="link-1">
+      <a href="https://www.facebook.com/suedostschweiz" target="_blank"><img src="/themes/suedostschweiz/images/sov5/facebook-share.svg" alt="share-icon" /></a>
+    </li>
+    <li class="link-2">
+      <a href="https://twitter.com/suedostschweiz" target="_blank"><img src="/themes/suedostschweiz/images/sov5/twitter-share.svg" alt="share-icon" /></a>
+    </li>
+    <li class="link-3">
+      <a href="https://www.instagram.com/suedostschweiz/" target="_blank"><img src="/themes/suedostschweiz/images/sov5/instagram-share.svg" alt="share-icon" /></a>
+    </li>
+    <li class="link-4">
+      <a href="https://www.youtube.com/channel/UC8-4h5GSOshP5Lf47uUW2FQ" target="_blank"><img src="/themes/suedostschweiz/images/sov5/youtube-share.svg" alt="share-icon" /></a>
+    </li>
+  </ul>
+</div>
+
+                  </div>
+      </div>
+
+
+  </div>
+
+                  </div>
+                      </div>
+
+
+  </footer>
+
+
+    <!-- SZMFRABO VERSION="1.1" -->
+    <script>
+      var szmvars="suedost//CP//";
+      if (isMobile.phone) {
+        var szmopt={mobile:true};
+      }
+    </script>
+    <script src="https://sued-ssl.wemfbox.ch/2004/01/survey.js"></script>
+    <!-- /SZMFRABO -->
+<script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/2701483","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"de"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"ajaxPageState":{"libraries":"classy\/base,classy\/messages,commerce_google_tag_manager\/commerce_google_tag_manager,core\/html5shiv,core\/normalize,core\/picturefill,datalayer\/behaviors,np8_adtech\/np8.adtech.remote.section:politik,np8_audienzz\/np8_audienzz,np8_news\/dialog_fullscreen,np8_push\/onesignal,np8_responsive_base_theme\/bootstrap-js,np8_responsive_base_theme\/browser-update,np8_responsive_base_theme\/custom-js,np8_responsive_base_theme\/global-styling,np8_responsive_base_theme\/icons,np8_responsive_base_theme\/slick,np8_user\/login-destination,paragraphs\/drupal.paragraphs.unpublished,poll\/drupal.poll-links,sharemessage\/addthis,so_ajax_comment\/ajaxcomment,so_custom\/login_layover,so_custom\/mobile_app_youtube,statistics\/drupal.statistics,suedostschweiz\/bootstrap-js,suedostschweiz\/custom-js,suedostschweiz\/datepicker_config,suedostschweiz\/external-libraries,suedostschweiz\/global-styling,system\/base,views\/views.module,webform\/webform.dialog,zol_scroll_depth_tracking\/scroll_depth_tracking","theme":"suedostschweiz","theme_token":null},"ajaxTrustedUrl":{"form_action_p_pvdeGsVG5zNF_XLGPTvYSKCf43t8qZYSwcfZl2uzM":true,"\/search":true},"jquery":{"ui":{"datepicker":{"isRTL":false,"firstDay":0}}},"commerceGoogleTagManager":{"eventsUrl":"\/commerce_google_tag_manager","dataLayerVariable":"dataLayer"},"dataLayer":{"defaultLang":"de","languages":{"de":{"id":"de","name":"German","direction":"ltr","weight":0}}},"google_analytics":{"trackOutbound":true,"trackMailto":true,"trackDownload":true,"trackDownloadExtensions":"7z|aac|arc|arj|asf|asx|avi|bin|csv|doc|exe|flv|gif|gz|gzip|hqx|jar|jpe?g|js|mp(2|3|4|e?g)|mov(ie)?|msi|msp|pdf|phps|png|ppt|qtm?|ra(m|r)?|sea|sit|tar|tgz|torrent|txt|wav|wma|wmv|wpd|xls|xml|z|zip"},"webform":{"dialog":{"options":{"narrow":{"title":"Narrow","width":600},"normal":{"title":"Normal","width":800},"wide":{"title":"Wide","width":1000}},"entity_type":"node","entity_id":"2701483"}},"np8_adtech":{"site_config":{"params":{"loc":"100"},"network":"1135.1","siteid":1230133}},"np8Push":{"app_id":"fb783454-e04d-4aa3-866c-7aa705e56565","safari_web_id":"web.onesignal.auto.1afe2633-50cf-455e-8f3e-a50d8cbe1d12","autoRegister":true,"notifyButton":false,"showHttpPrompt":false,"actionMessage":"M\u00f6chten Sie Benachrichtigungen von suedostschweiz.ch erhalten?","acceptButtonText":"Ja","cancelButtonText":"Nein"},"statistics":{"data":{"nid":"2701483"},"url":"\/core\/modules\/statistics\/statistics.php"},"addthis_config":{"data_track_addressbar":true},"user":{"uid":0,"permissionsHash":"241dc3c23f719a6701ac0b416c5a4f030b3243d389a6c1309ae88e3c425c8313"}}</script>
+<script src="https://www.youtube.com/iframe_api"></script>
+<script src="https://aka-cdn.adtech.de/dt/common/DAC.js"></script>
+<script src="https://aka-cdn.adtech.de/dac/1135.1/w1230133.js"></script>
+<script src="/sites/default/files/js/js_DUEzzSRfYmbVorlUBhq86ko7Pl8S0qdqtay4bJqPTlI.js"></script>
+<script src="https://content.jwplatform.com/libraries/OXGUuzso.js"></script>
+<script src="/sites/default/files/js/js_0F3Lu54g7GO3szdOp6Yi5Tq_PhEneaHoHCyd6dAJDd8.js"></script>
+<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js"></script>
+<script src="/sites/default/files/js/js_bOMuPvC0sgcCZArH0rNr_z-TzeWYKX981HJfdla6gPM.js"></script>
+<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4fbf7a0772670db7"></script>
+<script src="/sites/default/files/js/js_3rvsnkuc8aWegWimicgNxX7vtXSyCPgiGeORyaP97Pc.js"></script>
+
+        <div class="afs_ads">&nbsp;</div>
+    <script>
+        function testAdBlock() {
+            setTimeout(function () {
+                if (!document.getElementsByClassName) return;
+
+                var ads = document.getElementsByClassName('afs_ads'),
+                    ad = ads[ads.length - 1];
+
+                if (!ad || ad.innerHTML.length == 0 || ad.clientHeight === 0) {
+                    if (typeof ga !== 'undefined') {
+                        ga('send', 'event', 'ads', 'activated', 'ad blocker', {nonInteraction: true});
+                    } else if (typeof _gat !== 'undefined' && typeof pageTracker !== 'undefined') {
+                        pageTracker._trackEvent('ads', 'activated', 'ad blocker', undefined, true);
+                    } else if (typeof _gaq !== 'undefined') {
+                        _gaq.push(['_trackEvent', 'ads', 'activated', 'ad blocker', undefined, true]);
+                    }
+                } else {
+                    if (typeof ga !== 'undefined') {
+                        ga('send', 'event', 'ads', 'not active', 'ad blocker', {nonInteraction: true});
+                    } else if (typeof _gat !== 'undefined' && typeof pageTracker !== 'undefined') {
+                        pageTracker._trackEvent('ads', 'not active', 'ad blocker', undefined, true);
+                    } else if (typeof _gaq !== 'undefined') {
+                        _gaq.push(['_trackEvent', 'ads', 'not active', 'ad blocker', undefined, true]);
+                    }
+                }
+            }, 2000);
+        }
+
+        if (document.cookie.indexOf('session') <= 0) {
+            if (window.addEventListener) {
+                window.addEventListener('load', testAdBlock, false);
+            } else {
+                window.attachEvent('onload', testAdBlock);
+            }
+        }
+
+        var d = new Date();
+        d.setTime(d.getTime() + 1800000);
+        var expires = 'expires=' + d.toGMTString();
+        document.cookie = 'session=1; ' + expires + '; path=/';
+    </script>
+
+
+        <script type="text/javascript">// <![CDATA[
+                var gaProperty = 'UA-1739122-13';
+
+                var disableStr = 'ga-disable-' + gaProperty;
+        if (document.cookie.indexOf(disableStr + '=true') > -1) {
+            window[disableStr] = true;
+        }
+
+                function gaOptout() {
+            document.cookie = disableStr + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
+            window[disableStr] = true;
+        }
+    </script>
+
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"86456ee2c4","applicationID":"5305876","transactionName":"Z1daZ0FXWkYEUURfC14dbUFaGV1bAVdIGBRYQg==","queueTime":0,"applicationTime":8,"atts":"SxBZEQlNSUg=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>

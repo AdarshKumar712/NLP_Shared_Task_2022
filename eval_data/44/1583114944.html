@@ -1,0 +1,1287 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>‘Utter contempt for human life’: Iranian FM Zarif slams US for hitting Tehran with new sanctions amid Covid-19 crisis &laquo; Aletho News</title>
+<link rel="stylesheet" href="https://s2.wp.com/wp-content/themes/pub/andreas04/style.css" type="text/css" media="screen" />
+<link rel="pingback" href="https://alethonews.com/xmlrpc.php" />
+<meta name="google-site-verification" content="KTxZ8gScrxSYw-43N4aE6gdNie9Nchw_NfD9d2hn5i8" />
+
+<!-- Async WordPress.com Remote Login -->
+<script id="wpcom_remote_login_js">
+var wpcom_remote_login_extra_auth = '';
+function wpcom_remote_login_remove_dom_node_id( element_id ) {
+	var dom_node = document.getElementById( element_id );
+	if ( dom_node ) { dom_node.remove(); }
+}
+function wpcom_remote_login_remove_dom_node_classes( class_name ) {
+	var dom_nodes = document.querySelectorAll( '.' + class_name );
+	for ( var i = 0; i < dom_nodes.length; i++ ) {
+		dom_nodes[i].remove();
+	}
+}
+function wpcom_remote_login_final_cleanup() {
+	wpcom_remote_login_remove_dom_node_classes( "wpcom_remote_login_msg" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_remote_login_key" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_remote_login_validate" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_remote_login_js" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_request_access_iframe" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_request_access_styles" );
+}
+
+// Watch for messages back from the remote login
+window.addEventListener( "message", function( e ) {
+	if ( e.origin === "https://r-login.wordpress.com" ) {
+		var data = {};
+		try {
+			data = JSON.parse( e.data );
+		} catch( e ) {
+			wpcom_remote_login_final_cleanup();
+			return;
+		}
+
+		if ( data.msg === 'LOGIN' ) {
+			// Clean up the login check iframe
+			wpcom_remote_login_remove_dom_node_id( "wpcom_remote_login_key" );
+
+			var id_regex = new RegExp( /^[0-9]+$/ );
+			var token_regex = new RegExp( /^.*|.*|.*$/ );
+			if (
+				token_regex.test( data.token )
+				&& id_regex.test( data.wpcomid )
+			) {
+				// We have everything we need to ask for a login
+				var script = document.createElement( "script" );
+				script.setAttribute( "id", "wpcom_remote_login_validate" );
+				script.src = '/remote-login.php?wpcom_remote_login=validate'
+					+ '&wpcomid=' + data.wpcomid
+					+ '&token=' + encodeURIComponent( data.token )
+					+ '&host=' + window.location.protocol
+						+ '//' + window.location.hostname;
+				document.body.appendChild( script );
+			}
+
+			return;
+		}
+
+		// Safari ITP, not logged in, so redirect
+		if ( data.msg === 'LOGIN-REDIRECT' ) {
+			window.location = 'https://wordpress.com/log-in?redirect_to=' + window.location.href;
+			return;
+		}
+
+		// Safari ITP, storage access failed, remove the request
+		if ( data.msg === 'LOGIN-REMOVE' ) {
+			var css_zap = 'html { -webkit-transition: margin-top 1s; transition: margin-top 1s; } /* 9001 */ html { margin-top: 0 !important; } * html body { margin-top: 0 !important; } @media screen and ( max-width: 782px ) { html { margin-top: 0 !important; } * html body { margin-top: 0 !important; } }';
+			var style_zap = document.createElement( 'style' );
+			style_zap.type = 'text/css';
+			style_zap.appendChild( document.createTextNode( css_zap ) );
+			document.body.appendChild( style_zap );
+
+			var e = document.getElementById( 'wpcom_request_access_iframe' );
+			e.parentNode.removeChild( e );
+
+			document.cookie = 'wordpress_com_login_access=denied; path=/; max-age=31536000';
+
+			return;
+		}
+
+		// Safari ITP
+		if ( data.msg === 'REQUEST_ACCESS' ) {
+			console.log( 'request access: safari' );
+
+			// Check ITP iframe enable/disable knob
+			if ( wpcom_remote_login_extra_auth !== 'safari_itp_iframe' ) {
+				return;
+			}
+
+			// If we are in a "private window" there is no ITP.
+			var private_window = false;
+			try {
+				var opendb = window.openDatabase( null, null, null, null );
+			} catch( e ) {
+				private_window = true;
+			}
+
+			if ( private_window ) {
+				console.log( 'private window' );
+				return;
+			}
+
+			var iframe = document.createElement( 'iframe' );
+			iframe.id = 'wpcom_request_access_iframe';
+			iframe.setAttribute( 'scrolling', 'no' );
+			iframe.setAttribute( 'sandbox', 'allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-top-navigation-by-user-activation' );
+			iframe.src = 'https://r-login.wordpress.com/remote-login.php?wpcom_remote_login=request_access&origin=' + encodeURIComponent( data.origin ) + '&wpcomid=' + encodeURIComponent( data.wpcomid );
+
+			var css = 'html { -webkit-transition: margin-top 1s; transition: margin-top 1s; } /* 9001 */ html { margin-top: 46px !important; } * html body { margin-top: 46px !important; } @media screen and ( max-width: 660px ) { html { margin-top: 71px !important; } * html body { margin-top: 71px !important; } #wpcom_request_access_iframe { display: block; height: 71px !important; } } #wpcom_request_access_iframe { border: 0px; height: 46px; position: fixed; top: 0; left: 0; width: 100%; min-width: 100%; z-index: 99999; background: #23282d; } ';
+
+			var style = document.createElement( 'style' );
+			style.type = 'text/css';
+			style.id = 'wpcom_request_access_styles';
+			style.appendChild( document.createTextNode( css ) );
+			document.body.appendChild( style );
+
+			document.body.appendChild( iframe );
+		}
+
+		if ( data.msg === 'DONE' ) {
+			wpcom_remote_login_final_cleanup();
+		}
+	}
+}, false );
+
+// Inject the remote login iframe after the page has had a chance to load
+// more critical resources
+window.addEventListener( "DOMContentLoaded", function( e ) {
+	var iframe = document.createElement( "iframe" );
+	iframe.style.display = "none";
+	iframe.setAttribute( "scrolling", "no" );
+	iframe.setAttribute( "id", "wpcom_remote_login_key" );
+	iframe.src = "https://r-login.wordpress.com/remote-login.php"
+		+ "?wpcom_remote_login=key"
+		+ "&origin=aHR0cHM6Ly9hbGV0aG9uZXdzLmNvbQ%3D%3D"
+		+ "&wpcomid=10703098"
+		+ "&time=1588036147";
+	document.body.appendChild( iframe );
+}, false );
+</script>
+<link rel='dns-prefetch' href='//s1.wp.com' />
+<link rel='dns-prefetch' href='//s2.wp.com' />
+<link rel='dns-prefetch' href='//alethonews.wordpress.com' />
+<link rel='dns-prefetch' href='//s0.wp.com' />
+<link rel='dns-prefetch' href='//wordpress.com' />
+<link rel="alternate" type="application/rss+xml" title="Aletho News &raquo; Feed" href="https://alethonews.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Aletho News &raquo; Comments Feed" href="https://alethonews.com/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Aletho News &raquo; ‘Utter contempt for human life’: Iranian FM Zarif slams US for hitting Tehran with new sanctions amid Covid-19&nbsp;crisis Comments Feed" href="https://alethonews.com/2020/03/20/utter-contempt-for-human-life-iranian-fm-zarif-slams-us-for-hitting-tehran-with-new-sanctions-amid-covid-19-crisis/feed/" />
+	<script type="text/javascript">
+		/* <![CDATA[ */
+		function addLoadEvent(func) {
+			var oldonload = window.onload;
+			if (typeof window.onload != 'function') {
+				window.onload = func;
+			} else {
+				window.onload = function () {
+					oldonload();
+					func();
+				}
+			}
+		}
+		/* ]]> */
+	</script>
+			<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s0.wp.com\/wp-content\/mu-plugins\/wpcom-smileys\/twemoji\/2\/72x72\/","ext":".png","svgUrl":"https:\/\/s0.wp.com\/wp-content\/mu-plugins\/wpcom-smileys\/twemoji\/2\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/s0.wp.com\/wp-includes\/js\/wp-emoji-release.min.js?m=1582709031h&ver=5.4.1-RC1-47624"}};
+			/*! This file is auto-generated */
+			!function(e,a,t){var r,n,o,i,p=a.createElement("canvas"),s=p.getContext&&p.getContext("2d");function c(e,t){var a=String.fromCharCode;s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,e),0,0);var r=p.toDataURL();return s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,t),0,0),r===p.toDataURL()}function l(e){if(!s||!s.fillText)return!1;switch(s.textBaseline="top",s.font="600 32px Arial",e){case"flag":return!c([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])&&(!c([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!c([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]));case"emoji":return!c([55357,56424,55356,57342,8205,55358,56605,8205,55357,56424,55356,57340],[55357,56424,55356,57342,8203,55358,56605,8203,55357,56424,55356,57340])}return!1}function d(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(i=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},o=0;o<i.length;o++)t.supports[i[o]]=l(i[o]),t.supports.everything=t.supports.everything&&t.supports[i[o]],"flag"!==i[o]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[i[o]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(r=t.source||{}).concatemoji?d(r.concatemoji):r.wpemoji&&r.twemoji&&(d(r.twemoji),d(r.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='all-css-0-1' href='https://s1.wp.com/_static/??-eJylU9tSwyAQ/SEJTcdM2gfHbyHJFmkhMLAY8/cuoa2xVTqjb3s7e87shU+O9XZEGJE7HaUaAz9ErVlQCAwGhWqULGf47nnfbrebhvfWGDvyQQU821UfwhNfNTORXfp50AJhYM4GvPFKMK1OEPgR0In+xBbvrvxSKyO5HXhJGQ+8rXZVzbuo9MA7bRd454WfecBZQ4nVeTAqmmvqZ8A970KzkitmG5FJr4a/tvAizT48gD9eFrWVedqZIa/tXcH0a9PenrXU1XZT1WxytOWMy4kqi1om/A9pWZWmvmtpt9HSutK6KW6cwFRhiEmABkNlJdikBgl0jFRythnCRxmSZsC6jg4kBHY5E3wjruIZp/+gUD7ghfBbJEMVHy0qQoerUeopwTKaDB0IfeHaYQctlC8/Y7oHMuWi5ctNoFfzUje7tmn3TVMfPwGbGYg3?cssminify=yes' type='text/css' media='all' />
+<style id='wp-block-library-inline-css'>
+.has-text-align-justify {
+	text-align:justify;
+}
+</style>
+<link rel='stylesheet' id='print-css-1-1' href='https://s2.wp.com/wp-content/mu-plugins/global-print/global-print.css?m=1465851035h&cssminify=yes' type='text/css' media='print' />
+<link rel='stylesheet' id='all-css-2-1' href='https://s1.wp.com/_static/??-eJx9jtEOgjAMRX/IWTEswIPxW8Yco1pWQkuMf+9MIGJIfGqbnHt74Dkaz0lDUhhmM9IcMQk4r8ipddN3O3qRA2zwle1mIiOowYQbKqa4tEBdNtX5fLIQiVuXGX1REBB1ih5acumxK904jCxqOnI4gfRuysXr/JcS9ph/EUf+PXYh7cOQdfpy8fsA1+FS2LqyVWNtcX8DZVpolw==?cssminify=yes' type='text/css' media='all' />
+<style id='jetpack-global-styles-frontend-style-inline-css'>
+:root { --font-headings: unset; --font-base: unset; --font-headings-default: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif; --font-base-default: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;}
+</style>
+<script>
+var related_posts_js_options = {"post_heading":"h4"};
+</script>
+<script type='text/javascript' src='https://s2.wp.com/_static/??-eJx9jMEOwjAMQ3+IruzABgfEt4wtVKmatDSNpv39ggSXHZAsWbae7dfikOekC4iPprdC3b7WRTn5f4AjDHVq0BHyD54zN+D2YSk/MYFTgToF6+zolY8cqStJA7L4CsnOFleytEOy1YPu/WXsb+dxGK5xB1+BRFU='></script>
+<link rel='stylesheet' id='all-css-0-2' href='https://s0.wp.com/wp-content/mu-plugins/highlander-comments/style.css?m=1530132353h&cssminify=yes' type='text/css' media='all' />
+<!--[if lt IE 8]>
+<link rel='stylesheet' id='highlander-comments-ie7-css'  href='https://s2.wp.com/wp-content/mu-plugins/highlander-comments/style-ie7.css?m=1351637563h&#038;ver=20110606' media='all' />
+<![endif]-->
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://alethonews.wordpress.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://s1.wp.com/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='Diverse media perspectives on Coronavirus&nbsp;Pandemic' href='https://alethonews.com/2020/03/20/diverse-media-perspectives-on-coronavirus-pandemic/' />
+<link rel='next' title='US must shut down its biowarfare labs to save the world from&nbsp;pandemics' href='https://alethonews.com/2020/03/20/us-must-shut-down-its-biowarfare-labs-to-save-the-world-from-pandemics/' />
+<meta name="generator" content="WordPress.com" />
+<link rel="canonical" href="https://alethonews.com/2020/03/20/utter-contempt-for-human-life-iranian-fm-zarif-slams-us-for-hitting-tehran-with-new-sanctions-amid-covid-19-crisis/" />
+<link rel='shortlink' href='https://wp.me/pIUmC-OYX' />
+<link rel="alternate" type="application/json+oembed" href="https://public-api.wordpress.com/oembed/?format=json&amp;url=https%3A%2F%2Falethonews.com%2F2020%2F03%2F20%2Futter-contempt-for-human-life-iranian-fm-zarif-slams-us-for-hitting-tehran-with-new-sanctions-amid-covid-19-crisis%2F&amp;for=wpcom-auto-discovery" /><link rel="alternate" type="application/xml+oembed" href="https://public-api.wordpress.com/oembed/?format=xml&amp;url=https%3A%2F%2Falethonews.com%2F2020%2F03%2F20%2Futter-contempt-for-human-life-iranian-fm-zarif-slams-us-for-hitting-tehran-with-new-sanctions-amid-covid-19-crisis%2F&amp;for=wpcom-auto-discovery" />
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article" />
+<meta property="og:title" content="‘Utter contempt for human life’: Iranian FM Zarif slams US for hitting Tehran with new sanctions amid Covid-19 crisis" />
+<meta property="og:url" content="https://alethonews.com/2020/03/20/utter-contempt-for-human-life-iranian-fm-zarif-slams-us-for-hitting-tehran-with-new-sanctions-amid-covid-19-crisis/" />
+<meta property="og:description" content="RT | March 20, 2020 Iranian foreign minister Javad Zarif accused the US of taking its policy of “maximum pressure” on Tehran to a “new level of inhumanity” by imposing new sanctions on Iran as it s…" />
+<meta property="article:published_time" content="2020-03-20T19:30:43+00:00" />
+<meta property="article:modified_time" content="2020-03-20T19:42:43+00:00" />
+<meta property="og:site_name" content="Aletho News" />
+<meta property="og:image" content="https://alethonews.files.wordpress.com/2020/03/0a3e8517-049c-4607-9376-8ef8350eb7db.jpg" />
+<meta property="og:image:width" content="650" />
+<meta property="og:image:height" content="365" />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:creator" content="@Aletho" />
+<meta name="twitter:site" content="@Aletho" />
+<meta name="twitter:text:title" content="‘Utter contempt for human life’: Iranian FM Zarif slams US for hitting Tehran with new sanctions amid Covid-19&nbsp;crisis" />
+<meta name="twitter:card" content="summary" />
+<meta property="article:publisher" content="https://www.facebook.com/WordPresscom" />
+
+<!-- End Jetpack Open Graph Tags -->
+<link rel="shortcut icon" type="image/x-icon" href="https://secure.gravatar.com/blavatar/e49c80b85d64875f3966c3f8eba0b69e?s=32" sizes="16x16" />
+<link rel="icon" type="image/x-icon" href="https://secure.gravatar.com/blavatar/e49c80b85d64875f3966c3f8eba0b69e?s=32" sizes="16x16" />
+<link rel="apple-touch-icon" href="https://secure.gravatar.com/blavatar/e49c80b85d64875f3966c3f8eba0b69e?s=114" />
+<link rel='openid.server' href='https://alethonews.com/?openidserver=1' />
+<link rel='openid.delegate' href='https://alethonews.com/' />
+<link rel="search" type="application/opensearchdescription+xml" href="https://alethonews.com/osd.xml" title="Aletho News" />
+<link rel="search" type="application/opensearchdescription+xml" href="https://s1.wp.com/opensearch.xml" title="WordPress.com" />
+<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>		<style type="text/css">
+			.recentcomments a {
+				display: inline !important;
+				padding: 0 !important;
+				margin: 0 !important;
+			}
+
+			table.recentcommentsavatartop img.avatar, table.recentcommentsavatarend img.avatar {
+				border: 0px;
+				margin: 0;
+			}
+
+			table.recentcommentsavatartop a, table.recentcommentsavatarend a {
+				border: 0px !important;
+				background-color: transparent !important;
+			}
+
+			td.recentcommentsavatarend, td.recentcommentsavatartop {
+				padding: 0px 0px 1px 0px;
+				margin: 0px;
+			}
+
+			td.recentcommentstextend {
+				border: none !important;
+				padding: 0px 0px 2px 10px;
+			}
+
+			.rtl td.recentcommentstextend {
+				padding: 0px 10px 2px 0px;
+			}
+
+			td.recentcommentstexttop {
+				border: none;
+				padding: 0px 0px 0px 10px;
+			}
+
+			.rtl td.recentcommentstexttop {
+				padding: 0px 10px 0px 0px;
+			}
+		</style>
+		<meta name="application-name" content="Aletho News" /><meta name="msapplication-window" content="width=device-width;height=device-height" /><meta name="msapplication-tooltip" content="ΑΛΗΘΩΣ" /><meta name="msapplication-task" content="name=Subscribe;action-uri=https://alethonews.com/feed/;icon-uri=https://secure.gravatar.com/blavatar/e49c80b85d64875f3966c3f8eba0b69e?s=16" /><meta name="msapplication-task" content="name=Sign up for a free blog;action-uri=http://wordpress.com/signup/;icon-uri=https://s1.wp.com/i/favicon.ico" /><meta name="msapplication-task" content="name=WordPress.com Support;action-uri=http://support.wordpress.com/;icon-uri=https://s1.wp.com/i/favicon.ico" /><meta name="msapplication-task" content="name=WordPress.com Forums;action-uri=http://forums.wordpress.com/;icon-uri=https://s1.wp.com/i/favicon.ico" /><meta name="description" content="RT | March 20, 2020 Iranian foreign minister Javad Zarif accused the US of taking its policy of “maximum pressure” on Tehran to a “new level of inhumanity” by imposing new sanctions on Iran as it struggles to cope with a huge surge of Covid-19 cases. Zarif tweeted on Friday that The Trump administration was&hellip;" />
+<link rel="amphtml" href="https://alethonews.com/2020/03/20/utter-contempt-for-human-life-iranian-fm-zarif-slams-us-for-hitting-tehran-with-new-sanctions-amid-covid-19-crisis/amp/"></head>
+
+<body class="post-template-default single single-post postid-195979 single-format-standard customizer-styles-applied highlander-enabled highlander-light">
+  <div id="container">
+
+<div id="sitetitle">
+<h1><a href="https://alethonews.com/" rel="home">Aletho News</a></h1>
+<h2>ΑΛΗΘΩΣ</h2>
+</div>
+
+<div id="menu">
+	</div>
+
+    <div id="content">
+
+      <div id="left">
+
+        
+          
+              <div id="post-195979" class="entry post-195979 post type-post status-publish format-standard hentry category-economics category-wars-for-israel tag-sanctions-against-iran tag-united-states">
+
+                <h2>‘Utter contempt for human life’: Iranian FM Zarif slams US for hitting Tehran with new sanctions amid Covid-19&nbsp;crisis</h2>
+
+                <p><img data-attachment-id="195982" data-permalink="https://alethonews.com/2020/03/20/utter-contempt-for-human-life-iranian-fm-zarif-slams-us-for-hitting-tehran-with-new-sanctions-amid-covid-19-crisis/0a3e8517-049c-4607-9376-8ef8350eb7db/" data-orig-file="https://alethonews.files.wordpress.com/2020/03/0a3e8517-049c-4607-9376-8ef8350eb7db-e1584733073822.jpg" data-orig-size="370,208" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="0a3e8517-049c-4607-9376-8ef8350eb7db" data-image-description="" data-medium-file="https://alethonews.files.wordpress.com/2020/03/0a3e8517-049c-4607-9376-8ef8350eb7db-e1584733073822.jpg?w=300" data-large-file="https://alethonews.files.wordpress.com/2020/03/0a3e8517-049c-4607-9376-8ef8350eb7db-e1584733073822.jpg?w=370" class="aligncenter size-full wp-image-195982" src="https://alethonews.files.wordpress.com/2020/03/0a3e8517-049c-4607-9376-8ef8350eb7db.jpg?w=650&#038;h=365" alt="" width="650" height="365" /></p>
+<blockquote>
+<h5><a href="https://www.rt.com/news/483671-iran-zarif-us-sanctions/" target="_blank" rel="noopener"><span style="color:#003366;">RT | March 20, 2020</span> </a></h5>
+</blockquote>
+<p>Iranian foreign minister Javad Zarif accused the US of taking its policy of “maximum pressure” on Tehran to a “new level of inhumanity” by imposing new sanctions on Iran as it struggles to cope with a huge surge of Covid-19 cases.</p>
+<p>Zarif tweeted on Friday that The Trump administration was “gleefully” taking pride in “killing Iranian citizens” on Nowruz, the Persian New Year, celebrated on March 20 this year. He said US policy betrayed an “utter contempt for human life.”</p>
+<p>His rebuke comes shortly after the US <a href="https://www.rt.com/newsline/483519-iran-us-sanctions-uae/" target="_blank" rel="noopener noreferrer">blacklisted</a> five companies based in the United Arab Emirates for trading in Iranian petrochemicals. Three companies in China, three in Hong Kong and one in South Africa were also added to the list this week, as Washington attempts to choke off Tehran&#8217;s oil revenues.</p>
+<p>&#8220;Washington&#8217;s increased pressure against Iran is a crime against humanity… all the world should help each other to overcome this disease,&#8221; <em>Reuters</em> quoted an Iranian official as saying on Friday.</p>
+<p>“Our policy of maximum pressure on the regime continues,&#8221; US special representative for Iran Brian Hook told reporters, even though Iran is the worst-hit country in the Middle East by the Covid-19 coronavirus outbreak and may face economic catastrophe as a result.</p>
+<p>Secretary of State Mike Pompeo said on Friday that the US has imposed “no sanctions” on medication or humanitarian assistance going into Iran. However, US financial sanctions have in effect prevented Tehran from buying the necessary supplies, while shipping sanctions have interfered with humanitarian deliveries.</p>
+<p>China has called on the US to offer sanctions relief to Iran, with the Ministry for Foreign Affairs in Beijing <a href="https://twitter.com/MFA_China/status/1239544099083972608" target="_blank" rel="noopener noreferrer">tweeting</a> on Wednesday that the policy was “against humanitarianism and hampers Iran&#8217;s epidemic response,” as well as deliveries of aid by the UN and other organizations.</p>
+<p>Iran has seen at least 1,400 deaths from Covid-19 so far, with more than 19,000 confirmed cases. A health ministry spokesperson said on Wednesday that one person in Iran was now dying &#8220;<a href="https://www.rt.com/news/483508-iran-coronavirus-deaths-infected/" target="_blank" rel="noopener noreferrer">every 10 minutes</a>&#8221; from the virus, with 50 new infections every hour.</p>
+<div id="jp-post-flair" class="sharedaddy sd-like-enabled sd-sharing-enabled"><div class="sharedaddy sd-sharing-enabled"><div class="robots-nocontent sd-block sd-social sd-social-icon sd-sharing"><h3 class="sd-title">Share this:</h3><div class="sd-content"><ul><li class="share-twitter"><a rel="nofollow noopener noreferrer" data-shared="sharing-twitter-195979" class="share-twitter sd-button share-icon no-text" href="https://alethonews.com/2020/03/20/utter-contempt-for-human-life-iranian-fm-zarif-slams-us-for-hitting-tehran-with-new-sanctions-amid-covid-19-crisis/?share=twitter" target="_blank" title="Click to share on Twitter"><span></span><span class="sharing-screen-reader-text">Click to share on Twitter (Opens in new window)</span></a></li><li class="share-email"><a rel="nofollow noopener noreferrer" data-shared="" class="share-email sd-button share-icon no-text" href="https://alethonews.com/2020/03/20/utter-contempt-for-human-life-iranian-fm-zarif-slams-us-for-hitting-tehran-with-new-sanctions-amid-covid-19-crisis/?share=email" target="_blank" title="Click to email this to a friend"><span></span><span class="sharing-screen-reader-text">Click to email this to a friend (Opens in new window)</span></a></li><li class="share-print"><a rel="nofollow noopener noreferrer" data-shared="" class="share-print sd-button share-icon no-text" href="https://alethonews.com/2020/03/20/utter-contempt-for-human-life-iranian-fm-zarif-slams-us-for-hitting-tehran-with-new-sanctions-amid-covid-19-crisis/#print" target="_blank" title="Click to print"><span></span><span class="sharing-screen-reader-text">Click to print (Opens in new window)</span></a></li><li class="share-facebook"><a rel="nofollow noopener noreferrer" data-shared="sharing-facebook-195979" class="share-facebook sd-button share-icon no-text" href="https://alethonews.com/2020/03/20/utter-contempt-for-human-life-iranian-fm-zarif-slams-us-for-hitting-tehran-with-new-sanctions-amid-covid-19-crisis/?share=facebook" target="_blank" title="Click to share on Facebook"><span></span><span class="sharing-screen-reader-text">Click to share on Facebook (Opens in new window)</span></a></li><li><a href="#" class="sharing-anchor sd-button share-more"><span>More</span></a></li><li class="share-end"></li></ul><div class="sharing-hidden"><div class="inner" style="display: none;"><ul><li class="share-skype"><a rel="nofollow noopener noreferrer" data-shared="sharing-skype-195979" class="share-skype sd-button share-icon no-text" href="https://alethonews.com/2020/03/20/utter-contempt-for-human-life-iranian-fm-zarif-slams-us-for-hitting-tehran-with-new-sanctions-amid-covid-19-crisis/?share=skype" target="_blank" title="Click to share on Skype"><span></span><span class="sharing-screen-reader-text">Click to share on Skype (Opens in new window)</span></a></li><li class="share-pocket"><a rel="nofollow noopener noreferrer" data-shared="" class="share-pocket sd-button share-icon no-text" href="https://alethonews.com/2020/03/20/utter-contempt-for-human-life-iranian-fm-zarif-slams-us-for-hitting-tehran-with-new-sanctions-amid-covid-19-crisis/?share=pocket" target="_blank" title="Click to share on Pocket"><span></span><span class="sharing-screen-reader-text">Click to share on Pocket (Opens in new window)</span></a></li><li class="share-end"></li><li class="share-reddit"><a rel="nofollow noopener noreferrer" data-shared="" class="share-reddit sd-button share-icon no-text" href="https://alethonews.com/2020/03/20/utter-contempt-for-human-life-iranian-fm-zarif-slams-us-for-hitting-tehran-with-new-sanctions-amid-covid-19-crisis/?share=reddit" target="_blank" title="Click to share on Reddit"><span></span><span class="sharing-screen-reader-text">Click to share on Reddit (Opens in new window)</span></a></li><li class="share-telegram"><a rel="nofollow noopener noreferrer" data-shared="" class="share-telegram sd-button share-icon no-text" href="https://alethonews.com/2020/03/20/utter-contempt-for-human-life-iranian-fm-zarif-slams-us-for-hitting-tehran-with-new-sanctions-amid-covid-19-crisis/?share=telegram" target="_blank" title="Click to share on Telegram"><span></span><span class="sharing-screen-reader-text">Click to share on Telegram (Opens in new window)</span></a></li><li class="share-end"></li><li class="share-pinterest"><a rel="nofollow noopener noreferrer" data-shared="sharing-pinterest-195979" class="share-pinterest sd-button share-icon no-text" href="https://alethonews.com/2020/03/20/utter-contempt-for-human-life-iranian-fm-zarif-slams-us-for-hitting-tehran-with-new-sanctions-amid-covid-19-crisis/?share=pinterest" target="_blank" title="Click to share on Pinterest"><span></span><span class="sharing-screen-reader-text">Click to share on Pinterest (Opens in new window)</span></a></li><li class="share-tumblr"><a rel="nofollow noopener noreferrer" data-shared="" class="share-tumblr sd-button share-icon no-text" href="https://alethonews.com/2020/03/20/utter-contempt-for-human-life-iranian-fm-zarif-slams-us-for-hitting-tehran-with-new-sanctions-amid-covid-19-crisis/?share=tumblr" target="_blank" title="Click to share on Tumblr"><span></span><span class="sharing-screen-reader-text">Click to share on Tumblr (Opens in new window)</span></a></li><li class="share-end"></li><li class="share-jetpack-whatsapp"><a rel="nofollow noopener noreferrer" data-shared="" class="share-jetpack-whatsapp sd-button share-icon no-text" href="https://alethonews.com/2020/03/20/utter-contempt-for-human-life-iranian-fm-zarif-slams-us-for-hitting-tehran-with-new-sanctions-amid-covid-19-crisis/?share=jetpack-whatsapp" target="_blank" title="Click to share on WhatsApp"><span></span><span class="sharing-screen-reader-text">Click to share on WhatsApp (Opens in new window)</span></a></li><li class="share-linkedin"><a rel="nofollow noopener noreferrer" data-shared="sharing-linkedin-195979" class="share-linkedin sd-button share-icon no-text" href="https://alethonews.com/2020/03/20/utter-contempt-for-human-life-iranian-fm-zarif-slams-us-for-hitting-tehran-with-new-sanctions-amid-covid-19-crisis/?share=linkedin" target="_blank" title="Click to share on LinkedIn"><span></span><span class="sharing-screen-reader-text">Click to share on LinkedIn (Opens in new window)</span></a></li><li class="share-end"></li><li class="share-end"></li></ul></div></div></div></div></div><div class='sharedaddy sd-block sd-like jetpack-likes-widget-wrapper jetpack-likes-widget-unloaded' id='like-post-wrapper-10703098-195979-5ea78233ec5e7' data-src='//widgets.wp.com/likes/index.html?ver=20190321#blog_id=10703098&amp;post_id=195979&amp;origin=alethonews.wordpress.com&amp;obj_id=10703098-195979-5ea78233ec5e7&amp;domain=alethonews.com' data-name='like-post-frame-10703098-195979-5ea78233ec5e7'><h3 class='sd-title'>Like this:</h3><div class='likes-widget-placeholder post-likes-widget-placeholder' style='height: 55px;'><span class='button'><span>Like</span></span> <span class="loading">Loading...</span></div><span class='sd-text-color'></span><a class='sd-link-color'></a></div>
+<div id='jp-relatedposts' class='jp-relatedposts' >
+	<h3 class="jp-relatedposts-headline"><em>Related</em></h3>
+</div></div>		                <p class="meta">
+
+               		<span class="date">
+                                        <a href="https://alethonews.com/2020/03/20/">March 20, 2020</a> - <!-- at 1:30 pm -->
+                  </span>
+
+									<span class="postedby">
+	                  Posted by	               		<a href="https://alethonews.com/author/aletho/" title="Posts by aletho" rel="author">aletho</a> |
+	                  <a href="https://alethonews.com/category/economics/" rel="category tag">Economics</a>, <a href="https://alethonews.com/category/wars-for-israel/" rel="category tag">Wars for Israel</a>					   | <a href="https://alethonews.com/tag/sanctions-against-iran/" rel="tag">Sanctions against Iran</a>, <a href="https://alethonews.com/tag/united-states/" rel="tag">United States</a>									</span>
+
+                  
+             		</p>
+
+              </div>
+
+              <h2 id="comments">6 Comments	<a href="#postcomment" title="Leave a comment">&raquo;</a>
+</h2>
+
+<ol id="commentlist">
+<li class="comment byuser comment-author-brianharryaustralia even thread-even depth-1 parent highlander-comment" id="comment-152164">
+	<div id="div-comment-152164">
+	<p>“Our policy of maximum pressure on the regime continues,” US special representative for Iran Brian Hook told reporters, even though Iran is the worst-hit country in the Middle East by the Covid-19 coronavirus outbreak and may face economic catastrophe as a result&#8221;.</p>
+<p>Once again, the deranged psychopaths in the Military Industrial Complex, drag America&#8217;s reputation down into the gutter, with their Obsessive Compulsive behaviour. It&#8217;s &#8220;Man&#8217;s inhumanity to man&#8221;(and women), with absolutely no remorse.</p>
+<p id="comment-like-152164" data-liked=comment-not-liked class="comment-likes comment-not-liked"><a href="https://alethonews.com/2020/03/20/utter-contempt-for-human-life-iranian-fm-zarif-slams-us-for-hitting-tehran-with-new-sanctions-amid-covid-19-crisis/?like_comment=152164&#038;_wpnonce=fa4fdcebab" class="comment-like-link needs-login" rel="nofollow" data-blog="10703098"><span>Like</span></a><span id="comment-like-count-152164" class="comment-like-feedback">Liked by <a href="#" class="view-likers" data-like-count="2">2 people</a></span></p>
+	<p class="vcard"><cite>
+	<img alt='' src='https://0.gravatar.com/avatar/61db5c9855a24908216d93b590923ae6?s=16&#038;d=retro&#038;r=G' class='avatar avatar-16' height='16' width='16' />	Comment	by	<span class="fn">brianharryaustralia</span> |
+	March 20, 2020 <!-- @ <a href="#comment-152164">2:34 pm</a> -->
+		 | <a rel='nofollow' class='comment-reply-link' href='https://alethonews.com/2020/03/20/utter-contempt-for-human-life-iranian-fm-zarif-slams-us-for-hitting-tehran-with-new-sanctions-amid-covid-19-crisis/?replytocom=152164#respond' data-commentid="152164" data-postid="195979" data-belowelement="div-comment-152164" data-respondelement="respond" aria-label='Reply to brianharryaustralia'>Reply</a>	</cite></p>
+	</div>
+<ul class="children">
+<li class="comment byuser comment-author-brianharryaustralia odd alt depth-2 parent highlander-comment" id="comment-152182">
+	<div id="div-comment-152182">
+	<p>Sorry&#8230;.I don&#8217;t know how I &#8220;Liked&#8221; my own comment&#8230;..</p>
+<p id="comment-like-152182" data-liked=comment-not-liked class="comment-likes comment-not-liked"><a href="https://alethonews.com/2020/03/20/utter-contempt-for-human-life-iranian-fm-zarif-slams-us-for-hitting-tehran-with-new-sanctions-amid-covid-19-crisis/?like_comment=152182&#038;_wpnonce=9ec834d300" class="comment-like-link needs-login" rel="nofollow" data-blog="10703098"><span>Like</span></a><span id="comment-like-count-152182" class="comment-like-feedback">Liked by <a href="#" class="view-likers" data-like-count="1">1 person</a></span></p>
+	<p class="vcard"><cite>
+	<img alt='' src='https://0.gravatar.com/avatar/61db5c9855a24908216d93b590923ae6?s=16&#038;d=retro&#038;r=G' class='avatar avatar-16' height='16' width='16' />	Comment	by	<span class="fn">brianharryaustralia</span> |
+	March 21, 2020 <!-- @ <a href="#comment-152182">3:58 am</a> -->
+		 | <a rel='nofollow' class='comment-reply-link' href='https://alethonews.com/2020/03/20/utter-contempt-for-human-life-iranian-fm-zarif-slams-us-for-hitting-tehran-with-new-sanctions-amid-covid-19-crisis/?replytocom=152182#respond' data-commentid="152182" data-postid="195979" data-belowelement="div-comment-152182" data-respondelement="respond" aria-label='Reply to brianharryaustralia'>Reply</a>	</cite></p>
+	</div>
+<ul class="children">
+<li class="comment even depth-3 highlander-comment" id="comment-152201">
+	<div id="div-comment-152201">
+	<p>I like your comment, so count me for your &#8220;like&#8221; spot.  (I can&#8217;t hit like without signing in to a privacy assaulting website.) What can one say?  This level of mendacity against the people of Iran under such circumstances is Satanic.</p>
+<p id="comment-like-152201" data-liked=comment-not-liked class="comment-likes comment-not-liked"><a href="https://alethonews.com/2020/03/20/utter-contempt-for-human-life-iranian-fm-zarif-slams-us-for-hitting-tehran-with-new-sanctions-amid-covid-19-crisis/?like_comment=152201&#038;_wpnonce=76f78a35b2" class="comment-like-link needs-login" rel="nofollow" data-blog="10703098"><span>Like</span></a><span id="comment-like-count-152201" class="comment-like-feedback">Like</span></p>
+	<p class="vcard"><cite>
+	<img alt='' src='https://2.gravatar.com/avatar/25bbfe719b020e1d41733710c600082b?s=16&#038;d=retro&#038;r=G' class='avatar avatar-16' height='16' width='16' />	Comment	by	<span class="fn">4justice</span> |
+	March 21, 2020 <!-- @ <a href="#comment-152201">11:07 pm</a> -->
+		 | <a rel='nofollow' class='comment-reply-link' href='https://alethonews.com/2020/03/20/utter-contempt-for-human-life-iranian-fm-zarif-slams-us-for-hitting-tehran-with-new-sanctions-amid-covid-19-crisis/?replytocom=152201#respond' data-commentid="152201" data-postid="195979" data-belowelement="div-comment-152201" data-respondelement="respond" aria-label='Reply to 4justice'>Reply</a>	</cite></p>
+	</div>
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+<li class="comment odd alt thread-odd thread-alt depth-1 parent highlander-comment" id="comment-152166">
+	<div id="div-comment-152166">
+	<p>Consider how America&#8217;s leash holder, Israel, conducts war on its imprisoned population and how America&#8217;s leash holder has unleashed its attack dog on the neighbors of Israel. </p>
+<p>Consider how America has used trumped up reasons and false evidence to destroy Israel&#8217;s neighbors who have attempted help for what has stood in the way of Greater Israel. </p>
+<p>Consider how America has warred on those countries. And incidentally, in this regards, consider the use of nuclear weapons on Iraq, for surely the use of depleted uranium munitions is such.</p>
+<p>Consider how America is following along with what is set forth by Israel, anything from giving tours to elected politicians to training on &#8216;crowd control&#8217; to American police departments, as in effect ways to engage in war.</p>
+<p>This biological war is one way. That is, if Iran suffers a huge death toll from this disease, all the better. </p>
+<p>That&#8217;s the leash held by Israel. </p>
+<p>You have been made morally corrupt and will be even more ruined, America, by being Israel&#8217;s dog of war, unleashed as Israel see fit. For Israel. And its world-wide enlisted enterprise.</p>
+<p id="comment-like-152166" data-liked=comment-not-liked class="comment-likes comment-not-liked"><a href="https://alethonews.com/2020/03/20/utter-contempt-for-human-life-iranian-fm-zarif-slams-us-for-hitting-tehran-with-new-sanctions-amid-covid-19-crisis/?like_comment=152166&#038;_wpnonce=3a69498d44" class="comment-like-link needs-login" rel="nofollow" data-blog="10703098"><span>Like</span></a><span id="comment-like-count-152166" class="comment-like-feedback">Liked by <a href="#" class="view-likers" data-like-count="2">2 people</a></span></p>
+	<p class="vcard"><cite>
+	<img alt='' src='https://2.gravatar.com/avatar/819a17dd5530f881b9a6056c06121ce8?s=16&#038;d=retro&#038;r=G' class='avatar avatar-16' height='16' width='16' />	Comment	by	<span class="fn">michael</span> |
+	March 20, 2020 <!-- @ <a href="#comment-152166">2:56 pm</a> -->
+		 | <a rel='nofollow' class='comment-reply-link' href='https://alethonews.com/2020/03/20/utter-contempt-for-human-life-iranian-fm-zarif-slams-us-for-hitting-tehran-with-new-sanctions-amid-covid-19-crisis/?replytocom=152166#respond' data-commentid="152166" data-postid="195979" data-belowelement="div-comment-152166" data-respondelement="respond" aria-label='Reply to michael'>Reply</a>	</cite></p>
+	</div>
+<ul class="children">
+<li class="comment byuser comment-author-roberthstiver even depth-2 highlander-comment" id="comment-152181">
+	<div id="div-comment-152181">
+	<p>Complete agreement, Michael.  And (another consider): Tulsi Gabbard has dropped out of any chance to be POTUS and has &#8212; mysteriously, ominously &#8212; hoisted herself onto Biden&#8217;s train of deceit, death and destruction:  My prediction:  If Biden makes it to POTUS, look for &#8220;godmother&#8221; Killary to orchestrate all-out war on Russia within weeks or a few months of January 2021.  Biden will be nothing but a dementia-ridden Zionist puppet.  CoVid-19, of course, is the big &#8220;wild card&#8221;&#8230;so it has implications far beyond Iran.</p>
+<p id="comment-like-152181" data-liked=comment-not-liked class="comment-likes comment-not-liked"><a href="https://alethonews.com/2020/03/20/utter-contempt-for-human-life-iranian-fm-zarif-slams-us-for-hitting-tehran-with-new-sanctions-amid-covid-19-crisis/?like_comment=152181&#038;_wpnonce=188f6fa334" class="comment-like-link needs-login" rel="nofollow" data-blog="10703098"><span>Like</span></a><span id="comment-like-count-152181" class="comment-like-feedback">Liked by <a href="#" class="view-likers" data-like-count="1">1 person</a></span></p>
+	<p class="vcard"><cite>
+	<img alt='' src='https://0.gravatar.com/avatar/c36c6435a0d962475d04366f2289a9b6?s=16&#038;d=retro&#038;r=G' class='avatar avatar-16' height='16' width='16' />	Comment	by	<span class="fn"><a href='http://roberthstiver.wordpress.com' rel='external nofollow ugc' class='url'>roberthstiver</a></span> |
+	March 21, 2020 <!-- @ <a href="#comment-152181">3:41 am</a> -->
+		 | <a rel='nofollow' class='comment-reply-link' href='https://alethonews.com/2020/03/20/utter-contempt-for-human-life-iranian-fm-zarif-slams-us-for-hitting-tehran-with-new-sanctions-amid-covid-19-crisis/?replytocom=152181#respond' data-commentid="152181" data-postid="195979" data-belowelement="div-comment-152181" data-respondelement="respond" aria-label='Reply to roberthstiver'>Reply</a>	</cite></p>
+	</div>
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+<li class="comment byuser comment-author-roberthstiver odd alt thread-even depth-1 highlander-comment" id="comment-152180">
+	<div id="div-comment-152180">
+	<p>This pisses me off to the point of apoplexy.  Will US scumbags of the ilk of BClinton, Dubya/Cheney, Obama/Killery and (devolving from bad to worse to worst) Bully Trump/Pence ever face earthly justice?  Near 100-percent unlikely&#8230;methinks the Zionist Enterprise/Program would never allow justice to be served as the collectivity of Zionists savor their sordid-satanic &#8216;victories&#8217; amidst their ever-increasing wealth, power, influence, and arrogance.</p>
+<p>Kudos to FM Jarif.  Viva Iran!  (and Viva Palestine! / Viva Syria!)</p>
+<p id="comment-like-152180" data-liked=comment-not-liked class="comment-likes comment-not-liked"><a href="https://alethonews.com/2020/03/20/utter-contempt-for-human-life-iranian-fm-zarif-slams-us-for-hitting-tehran-with-new-sanctions-amid-covid-19-crisis/?like_comment=152180&#038;_wpnonce=9c94cf2f95" class="comment-like-link needs-login" rel="nofollow" data-blog="10703098"><span>Like</span></a><span id="comment-like-count-152180" class="comment-like-feedback">Liked by <a href="#" class="view-likers" data-like-count="1">1 person</a></span></p>
+	<p class="vcard"><cite>
+	<img alt='' src='https://0.gravatar.com/avatar/c36c6435a0d962475d04366f2289a9b6?s=16&#038;d=retro&#038;r=G' class='avatar avatar-16' height='16' width='16' />	Comment	by	<span class="fn"><a href='http://roberthstiver.wordpress.com' rel='external nofollow ugc' class='url'>roberthstiver</a></span> |
+	March 21, 2020 <!-- @ <a href="#comment-152180">3:29 am</a> -->
+		 | <a rel='nofollow' class='comment-reply-link' href='https://alethonews.com/2020/03/20/utter-contempt-for-human-life-iranian-fm-zarif-slams-us-for-hitting-tehran-with-new-sanctions-amid-covid-19-crisis/?replytocom=152180#respond' data-commentid="152180" data-postid="195979" data-belowelement="div-comment-152180" data-respondelement="respond" aria-label='Reply to roberthstiver'>Reply</a>	</cite></p>
+	</div>
+</li><!-- #comment-## -->
+</ol>
+
+<div class="navigation">
+	<div class="alignleft"></div>
+	<div class="alignright"></div>
+</div>
+<br />
+
+
+		<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="/2020/03/20/utter-contempt-for-human-life-iranian-fm-zarif-slams-us-for-hitting-tehran-with-new-sanctions-amid-covid-19-crisis/#respond" style="display:none;">Cancel reply</a></small></h3><form action="https://alethonews.com/wp-comments-post.php" method="post" id="commentform" class="comment-form"><input type="hidden" id="highlander_comment_nonce" name="highlander_comment_nonce" value="3c43c1396e" /><input type="hidden" name="_wp_http_referer" value="/2020/03/20/utter-contempt-for-human-life-iranian-fm-zarif-slams-us-for-hitting-tehran-with-new-sanctions-amid-covid-19-crisis/" />
+<input type="hidden" name="hc_post_as" id="hc_post_as" value="guest" />
+
+<div class="comment-form-field comment-textarea">
+	<label for="comment">Enter your comment here...</label>
+	<div id="comment-form-comment"><textarea id="comment" name="comment" title="Enter your comment here..."></textarea></div>
+</div>
+
+<div id="comment-form-identity">
+	<div id="comment-form-nascar">
+		<p>Fill in your details below or click an icon to log in:</p>
+		<ul>
+			<li class="selected" style="display:none;">
+				<a href="#comment-form-guest" id="postas-guest" class="nascar-signin-link"
+                   title="Login via Guest">
+									</a>
+			</li>
+			<li>
+				<a href="#comment-form-load-service:WordPress.com" id="postas-wordpress" class="nascar-signin-link"
+                   title="Login via WordPress.com">
+					<svg xmlns="http://www.w3.org/2000/svg" role="presentation" viewBox="0 0 24 24" ><rect x="0" fill="none" width="24" height="24"/><g><path fill="#0087be" d="M12.158 12.786l-2.698 7.84c.806.236 1.657.365 2.54.365 1.047 0 2.05-.18 2.986-.51-.024-.037-.046-.078-.065-.123l-2.762-7.57zM3.008 12c0 3.56 2.07 6.634 5.068 8.092L3.788 8.342c-.5 1.117-.78 2.354-.78 3.658zm15.06-.454c0-1.112-.398-1.88-.74-2.48-.456-.74-.883-1.368-.883-2.11 0-.825.627-1.595 1.51-1.595.04 0 .078.006.116.008-1.598-1.464-3.73-2.36-6.07-2.36-3.14 0-5.904 1.613-7.512 4.053.21.008.41.012.58.012.94 0 2.395-.114 2.395-.114.484-.028.54.684.057.74 0 0-.487.058-1.03.086l3.275 9.74 1.968-5.902-1.4-3.838c-.485-.028-.944-.085-.944-.085-.486-.03-.43-.77.056-.742 0 0 1.484.114 2.368.114.94 0 2.397-.114 2.397-.114.486-.028.543.684.058.74 0 0-.488.058-1.03.086l3.25 9.665.897-2.997c.456-1.17.684-2.137.684-2.907zm1.82-3.86c.04.286.06.593.06.924 0 .912-.17 1.938-.683 3.22l-2.746 7.94c2.672-1.558 4.47-4.454 4.47-7.77 0-1.564-.4-3.033-1.1-4.314zM12 22C6.486 22 2 17.514 2 12S6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></g></svg>				</a>
+			</li>
+			<li>
+				<a href="#comment-form-load-service:Twitter" id="postas-twitter" class="nascar-signin-link"
+                   title="Login via Twitter">
+					<svg xmlns="http://www.w3.org/2000/svg" role="presentation" viewBox="0 0 24 24" ><rect x="0" fill="none" width="24" height="24"/><g><path fill="#1DA1F2" d="M22.23 5.924c-.736.326-1.527.547-2.357.646.847-.508 1.498-1.312 1.804-2.27-.793.47-1.67.812-2.606.996C18.325 4.498 17.258 4 16.078 4c-2.266 0-4.103 1.837-4.103 4.103 0 .322.036.635.106.935-3.41-.17-6.433-1.804-8.457-4.287-.353.607-.556 1.312-.556 2.064 0 1.424.724 2.68 1.825 3.415-.673-.022-1.305-.207-1.86-.514v.052c0 1.988 1.415 3.647 3.293 4.023-.344.095-.707.145-1.08.145-.265 0-.522-.026-.773-.074.522 1.63 2.038 2.817 3.833 2.85-1.404 1.1-3.174 1.757-5.096 1.757-.332 0-.66-.02-.98-.057 1.816 1.164 3.973 1.843 6.29 1.843 7.547 0 11.675-6.252 11.675-11.675 0-.178-.004-.355-.012-.53.802-.578 1.497-1.3 2.047-2.124z"/></g></svg>				</a>
+			</li>
+			<li>
+				<a href="#comment-form-load-service:Facebook" id="postas-facebook" class="nascar-signin-link"
+                   title="Login via Facebook">
+					<svg xmlns="http://www.w3.org/2000/svg" role="presentation" viewBox="0 0 24 24" ><rect x="0" fill="none" width="24" height="24"/><g><path fill="#3B5998" d="M20.007 3H3.993C3.445 3 3 3.445 3 3.993v16.013c0 .55.445.994.993.994h8.62v-6.97H10.27V11.31h2.346V9.31c0-2.325 1.42-3.59 3.494-3.59.993 0 1.847.073 2.096.106v2.43h-1.438c-1.128 0-1.346.537-1.346 1.324v1.734h2.69l-.35 2.717h-2.34V21h4.587c.548 0 .993-.445.993-.993V3.993c0-.548-.445-.993-.993-.993z"/></g></svg>				</a>
+			</li>
+		</ul>
+	</div>
+
+	<div id="comment-form-guest" class="comment-form-service selected">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+<a href="https://gravatar.com/site/signup/" target="_blank">				<img src="https://1.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=25&amp;d=retro&amp;forcedefault=y&amp;r=G" alt="Gravatar" width="25" class="no-grav" />
+</a>			</div>
+
+				<div class="comment-form-fields">
+				<div class="comment-form-field comment-form-email">
+					<label for="email">Email <span class="required">(required)</span> <span class="nopublish">(Address never made public)</span></label>
+					<div class="comment-form-input"><input id="email" name="email" type="email" value="" /></div>
+				</div>
+				<div class="comment-form-field comment-form-author">
+					<label for="author">Name <span class="required">(required)</span></label>
+					<div class="comment-form-input"><input id="author" name="author" type="text" value="" /></div>
+				</div>
+				<div class="comment-form-field comment-form-url">
+					<label for="url">Website</label>
+					<div class="comment-form-input"><input id="url" name="url" type="url" value="" /></div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+
+	<div id="comment-form-wordpress" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="https://1.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=25&amp;d=retro&amp;forcedefault=y&amp;r=G" alt="WordPress.com Logo" width="25" class="no-grav" />
+			</div>
+
+				<div class="comment-form-fields">
+				<input type="hidden" name="wp_avatar" id="wordpress-avatar" class="comment-meta-wordpress" value="" />
+				<input type="hidden" name="wp_user_id" id="wordpress-user_id" class="comment-meta-wordpress" value="" />
+				<input type="hidden" name="wp_access_token" id="wordpress-access_token" class="comment-meta-wordpress" value="" />
+						<p class="comment-form-posting-as pa-wordpress">
+			<strong></strong>
+			You are commenting using your WordPress.com account.			<span class="comment-form-log-out">
+				(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout( 'wordpress' );">Log&nbsp;Out</a>&nbsp;/&nbsp;
+				<a href="#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)
+			</span>
+			<span class="pa-icon"><svg xmlns="http://www.w3.org/2000/svg" role="presentation" viewBox="0 0 24 24" ><rect x="0" fill="none" width="24" height="24"/><g><path fill="#0087be" d="M12.158 12.786l-2.698 7.84c.806.236 1.657.365 2.54.365 1.047 0 2.05-.18 2.986-.51-.024-.037-.046-.078-.065-.123l-2.762-7.57zM3.008 12c0 3.56 2.07 6.634 5.068 8.092L3.788 8.342c-.5 1.117-.78 2.354-.78 3.658zm15.06-.454c0-1.112-.398-1.88-.74-2.48-.456-.74-.883-1.368-.883-2.11 0-.825.627-1.595 1.51-1.595.04 0 .078.006.116.008-1.598-1.464-3.73-2.36-6.07-2.36-3.14 0-5.904 1.613-7.512 4.053.21.008.41.012.58.012.94 0 2.395-.114 2.395-.114.484-.028.54.684.057.74 0 0-.487.058-1.03.086l3.275 9.74 1.968-5.902-1.4-3.838c-.485-.028-.944-.085-.944-.085-.486-.03-.43-.77.056-.742 0 0 1.484.114 2.368.114.94 0 2.397-.114 2.397-.114.486-.028.543.684.058.74 0 0-.488.058-1.03.086l3.25 9.665.897-2.997c.456-1.17.684-2.137.684-2.907zm1.82-3.86c.04.286.06.593.06.924 0 .912-.17 1.938-.683 3.22l-2.746 7.94c2.672-1.558 4.47-4.454 4.47-7.77 0-1.564-.4-3.033-1.1-4.314zM12 22C6.486 22 2 17.514 2 12S6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></g></svg></span>
+		</p>
+					</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-googleplus" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="https://1.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=25&amp;d=retro&amp;forcedefault=y&amp;r=G" alt="Google photo" width="25" class="no-grav" />
+			</div>
+
+				<div class="comment-form-fields">
+				<input type="hidden" name="googleplus_avatar" id="googleplus-avatar" class="comment-meta-googleplus" value="" />
+				<input type="hidden" name="googleplus_user_id" id="googleplus-user_id" class="comment-meta-googleplus" value="" />
+				<input type="hidden" name="googleplus_access_token" id="googleplus-access_token" class="comment-meta-googleplus" value="" />
+						<p class="comment-form-posting-as pa-googleplus">
+			<strong></strong>
+			You are commenting using your Google account.			<span class="comment-form-log-out">
+				(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout( 'googleplus' );">Log&nbsp;Out</a>&nbsp;/&nbsp;
+				<a href="#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)
+			</span>
+			<span class="pa-icon"><svg xmlns="http://www.w3.org/2000/svg" role="presentation" x="0px" y="0px" viewBox="0 0 60 60" ><path fill="#519bf7" d="M56.3,30c0,-1.6 -0.2,-3.4 -0.6,-5h-3.1H42.2H30v10.6h14.8C44,39.3 42,42 39.1,43.9l8.8,6.8C53,46 56.3,39 56.3,30z" /><path fill="#3db366" d="M30,57.5c6.7,0 13.1,-2.4 17.9,-6.8l-8.8,-6.8c-2.5,1.6 -5.6,2.4 -9.1,2.4c-7.2,0 -13.3,-4.7 -15.4,-11.2l-9.3,7.1C9.8,51.3 19.1,57.5 30,57.5z" /><path fill="#fdc600" d="M5.3,42.2l9.3,-7.1c-0.5,-1.6 -0.8,-3.3 -0.8,-5.1s0.3,-3.5 0.8,-5.1l-9.3,-7.1C3.5,21.5 2.5,25.6 2.5,30S3.5,38.5 5.3,42.2z" /><path fill="#f15b44" d="M40.1,17.4l8,-8C43.3,5.1 37,2.5 30,2.5C19.1,2.5 9.8,8.7 5.3,17.8l9.3,7.1c2.1,-6.5 8.2,-11.1 15.4,-11.1C33.9,13.7 37.4,15.1 40.1,17.4z" /></svg></span>
+		</p>
+					</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-twitter" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="https://1.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=25&amp;d=retro&amp;forcedefault=y&amp;r=G" alt="Twitter picture" width="25" class="no-grav" />
+			</div>
+
+				<div class="comment-form-fields">
+				<input type="hidden" name="twitter_avatar" id="twitter-avatar" class="comment-meta-twitter" value="" />
+				<input type="hidden" name="twitter_user_id" id="twitter-user_id" class="comment-meta-twitter" value="" />
+				<input type="hidden" name="twitter_access_token" id="twitter-access_token" class="comment-meta-twitter" value="" />
+						<p class="comment-form-posting-as pa-twitter">
+			<strong></strong>
+			You are commenting using your Twitter account.			<span class="comment-form-log-out">
+				(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout( 'twitter' );">Log&nbsp;Out</a>&nbsp;/&nbsp;
+				<a href="#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)
+			</span>
+			<span class="pa-icon"><svg xmlns="http://www.w3.org/2000/svg" role="presentation" viewBox="0 0 24 24" ><rect x="0" fill="none" width="24" height="24"/><g><path fill="#1DA1F2" d="M22.23 5.924c-.736.326-1.527.547-2.357.646.847-.508 1.498-1.312 1.804-2.27-.793.47-1.67.812-2.606.996C18.325 4.498 17.258 4 16.078 4c-2.266 0-4.103 1.837-4.103 4.103 0 .322.036.635.106.935-3.41-.17-6.433-1.804-8.457-4.287-.353.607-.556 1.312-.556 2.064 0 1.424.724 2.68 1.825 3.415-.673-.022-1.305-.207-1.86-.514v.052c0 1.988 1.415 3.647 3.293 4.023-.344.095-.707.145-1.08.145-.265 0-.522-.026-.773-.074.522 1.63 2.038 2.817 3.833 2.85-1.404 1.1-3.174 1.757-5.096 1.757-.332 0-.66-.02-.98-.057 1.816 1.164 3.973 1.843 6.29 1.843 7.547 0 11.675-6.252 11.675-11.675 0-.178-.004-.355-.012-.53.802-.578 1.497-1.3 2.047-2.124z"/></g></svg></span>
+		</p>
+					</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-facebook" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="https://1.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=25&amp;d=retro&amp;forcedefault=y&amp;r=G" alt="Facebook photo" width="25" class="no-grav" />
+			</div>
+
+				<div class="comment-form-fields">
+				<input type="hidden" name="fb_avatar" id="facebook-avatar" class="comment-meta-facebook" value="" />
+				<input type="hidden" name="fb_user_id" id="facebook-user_id" class="comment-meta-facebook" value="" />
+				<input type="hidden" name="fb_access_token" id="facebook-access_token" class="comment-meta-facebook" value="" />
+						<p class="comment-form-posting-as pa-facebook">
+			<strong></strong>
+			You are commenting using your Facebook account.			<span class="comment-form-log-out">
+				(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout( 'facebook' );">Log&nbsp;Out</a>&nbsp;/&nbsp;
+				<a href="#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)
+			</span>
+			<span class="pa-icon"><svg xmlns="http://www.w3.org/2000/svg" role="presentation" viewBox="0 0 24 24" ><rect x="0" fill="none" width="24" height="24"/><g><path fill="#3B5998" d="M20.007 3H3.993C3.445 3 3 3.445 3 3.993v16.013c0 .55.445.994.993.994h8.62v-6.97H10.27V11.31h2.346V9.31c0-2.325 1.42-3.59 3.494-3.59.993 0 1.847.073 2.096.106v2.43h-1.438c-1.128 0-1.346.537-1.346 1.324v1.734h2.69l-.35 2.717h-2.34V21h4.587c.548 0 .993-.445.993-.993V3.993c0-.548-.445-.993-.993-.993z"/></g></svg></span>
+		</p>
+					</div>
+	
+		</div>
+	</div>
+
+
+	<div id="comment-form-load-service" class="comment-form-service">
+		<div class="comment-form-posting-as-cancel"><a href="javascript:HighlanderComments.cancelExternalWindow();">Cancel</a></div>
+		<p>Connecting to %s</p>
+	</div>
+
+</div>
+
+<script type="text/javascript">
+var highlander_expando_javascript = function(){
+	var input = document.createElement( 'input' ),
+	    comment = jQuery( '#comment' );
+
+	if ( 'placeholder' in input ) {
+		comment.attr( 'placeholder', jQuery( '.comment-textarea label' ).remove().text() );
+	}
+
+	// Expando Mode: start small, then auto-resize on first click + text length
+	jQuery( '#comment-form-identity' ).hide();
+	jQuery( '#comment-form-subscribe' ).hide();
+	jQuery( '#commentform .form-submit' ).hide();
+
+	comment.css( { 'height':'10px' } ).one( 'focus', function() {
+		var timer = setInterval( HighlanderComments.resizeCallback, 10 )
+		jQuery( this ).animate( { 'height': HighlanderComments.initialHeight } ).delay( 100 ).queue( function(n) { clearInterval( timer ); HighlanderComments.resizeCallback(); n(); } );
+		jQuery( '#comment-form-identity' ).slideDown();
+		jQuery( '#comment-form-subscribe' ).slideDown();
+		jQuery( '#commentform .form-submit' ).slideDown();
+	});
+}
+jQuery(document).ready( highlander_expando_javascript );
+</script>
+
+<div id="comment-form-subscribe">
+	<p class="comment-subscription-form"><input type="checkbox" name="subscribe" id="subscribe" value="subscribe" style="width: auto;"/> <label class="subscribe-label" id="subscribe-label" for="subscribe" style="display: inline;">Notify me of new comments via email.</label></p><p class="post-subscription-form"><input type="checkbox" name="subscribe_blog" id="subscribe_blog" value="subscribe" style="width: auto;"/> <label class="subscribe-label" id="subscribe-blog-label" for="subscribe_blog"  style="display: inline;">Notify me of new posts via email.</label></p></div>
+
+
+
+
+<p class="form-submit"><input name="submit" type="submit" id="comment-submit" class="submit" value="Post Comment" /> <input type='hidden' name='comment_post_ID' value='195979' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="064a89cf38" /></p>
+<input type="hidden" name="genseq" value="1588036147" />
+<p style="display: none;"><input type="hidden" id="ak_js" name="ak_js" value="189"/></p></form>	</div><!-- #respond -->
+	<div style="clear: both"></div><p class="akismet_comment_form_privacy_notice">This site uses Akismet to reduce spam. <a href="https://akismet.com/privacy/" target="_blank" rel="nofollow noopener">Learn how your comment data is processed</a>.</p>
+              <p class="pagenav"><a href="https://alethonews.com/2020/03/20/diverse-media-perspectives-on-coronavirus-pandemic/">&laquo; Previous</a> | <a href="https://alethonews.com/2020/03/20/us-must-shut-down-its-biowarfare-labs-to-save-the-world-from-pandemics/">Next &raquo;</a></p>
+
+          
+        
+      </div>
+
+      
+
+<div id="right">
+<div class="sidebar-about">
+<h2><strong>Featured Video</strong> </h2>
+<p><a href="https://alethonews.com/2020/04/27/dr-shiva-live-how-vitamin-d-defends-you-more-evidence-msm-forced-to-admit-truth/" target="_blank" rel="noopener"><img data-attachment-id="198713" data-permalink="https://alethonews.com/about/beach-vacation-packing1-2/" data-orig-file="https://alethonews.files.wordpress.com/2020/04/beach-vacation-packing1-1.jpg" data-orig-size="320,213" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="beach-vacation-packing1" data-image-description="" data-medium-file="https://alethonews.files.wordpress.com/2020/04/beach-vacation-packing1-1.jpg?w=300" data-large-file="https://alethonews.files.wordpress.com/2020/04/beach-vacation-packing1-1.jpg?w=320" class="aligncenter size-full wp-image-198713" src="https://alethonews.files.wordpress.com/2020/04/beach-vacation-packing1-1.jpg?w=320&#038;h=213" alt="" width="320" height="213" srcset="https://alethonews.files.wordpress.com/2020/04/beach-vacation-packing1-1.jpg 320w, https://alethonews.files.wordpress.com/2020/04/beach-vacation-packing1-1.jpg?w=150&amp;h=100 150w, https://alethonews.files.wordpress.com/2020/04/beach-vacation-packing1-1.jpg?w=300&amp;h=200 300w" sizes="(max-width: 320px) 100vw, 320px" /></a></p>
+<h2 style="text-align:center;"><a href="https://alethonews.com/2020/04/27/dr-shiva-live-how-vitamin-d-defends-you-more-evidence-msm-forced-to-admit-truth/" target="_blank" rel="noopener">How Vitamin D Defends YOU – MSM Forced to Admit Truth</a></h2>
+<h2></h2>
+<p style="text-align:center;"><a href="../category/video/"><span style="color:#003366;">For more videos go to the Aletho News – Video Category</span></a></p>
+<p style="text-align:center;">or go to</p>
+<p style="text-align:center;"><a href="http://aletho-news.blogspot.com/2012/01/aletho-news-video-images.html" target="_blank" rel="noopener noreferrer"><span style="color:#003366;">Aletho News Archives &#8211; Video-Images</span></a></p>
+<hr />
+<h2 style="text-align:center;"><strong>From the Archives<br />
+</strong></h2>
+<h2><a href="https://alethonews.com/2014/04/03/a-century-of-deceit-world-wars-and-zionist-militarism/" target="_blank" rel="noopener">A century of deceit: World wars and Zionist militarism</a></h2>
+<blockquote>
+<h5><span style="color:#003366;">By Brandon Martinez | Press TV | April 3, 2014</span></h5>
+</blockquote>
+<p>Some studies estimate that close to 1.5 million Iraqis have lost their lives as a result of the brutal American invasion and occupation of their country in 2003.[1] Millions more Iraqis have become refugees and orphans with no future prospects for prosperity or stability. Most of the critical infrastructure of the country was bombed into rubble and dust. American depleted uranium weapons have caused cancer rates in some Iraqi cities to skyrocket, permanently destroying the genes of future generations of Iraqis who are being born with horrific birth defects and diseases.</p>
+<p>The culprits responsible for this genocidal campaign to subdue and enslave the Iraqi people are not the CEOs of American oil companies as some disingenuous commentators on the Left have claimed. &#8230; <a href="https://alethonews.com/2014/04/03/a-century-of-deceit-world-wars-and-zionist-militarism/" target="_blank" rel="noopener">continue</a></p>
+<h2 style="text-align:center;"></h2>
+<h2 style="text-align:center;"><strong>Aletho News Original Content<br />
+</strong></h2>
+<h2><a href="https://alethonews.wordpress.com/2012/01/08/three-mile-island-global-warming-and-the-cia/" target="_blank" rel="noopener noreferrer">Three Mile Island, Global Warming and the CIA</a></h2>
+<blockquote>
+<h5><span style="color:#003366;">By <em>Aletho News</em> | January 9, 2012</span></h5>
+</blockquote>
+<p>This article will examine some of the connections between the US and UK National Security apparatus and the appearance of the anthropogenic global warming (AGW) theory beginning after the accident at Three Mile Island. &#8230; <a href="https://alethonews.wordpress.com/2012/01/08/three-mile-island-global-warming-and-the-cia/" target="_blank" rel="noopener noreferrer">continue</a></p>
+<p style="text-align:center;">~</p>
+<p><em>Also by Aletho News:</em></p>
+<blockquote>
+<h5>March 8, 2011</h5>
+</blockquote>
+<h2><a href="../2011/03/07/investment-bankers-salivate-over-north-africa/">Investment bankers salivate over North Africa</a></h2>
+<blockquote>
+<h5>February 25, 2010</h5>
+</blockquote>
+<h2><a title="Permalink" href="../2010/02/25/look-out-for-the-nuclear-bomb-coming-with-your-electric-bill/">Look out for the nuclear bomb coming with your electric bill</a></h2>
+<blockquote>
+<h5>February 7, 2010</h5>
+</blockquote>
+<h2><a title="Permalink" href="../2010/02/06/the-saturated-fat-scam-whats-the-real-story/">The saturated fat scam: What’s the real story?</a></h2>
+<p><a href="http://aletho-news.blogspot.com/2016/09/permalink.html" target="_blank" rel="noopener noreferrer">More</a></p>
+<h2 style="text-align:center;"><span style="color:#808080;"> </span></h2>
+<h2 style="text-align:center;"><a href="http://aletho-news.blogspot.com/2012/01/about-aletho-news-name.html" target="_blank" rel="noopener noreferrer">About Aletho News’ Name</a></h2>
+<h2></h2>
+<h2 style="text-align:center;"><strong>Blog Roll<br />
+</strong></h2>
+</div>
+
+<div class="subcontainer">
+  <ul class="rightsub">
+<li id="blog_subscription-2" class="widget widget_blog_subscription jetpack_subscription_widget"><h2 class="widgettitle"><label for="subscribe-field">Subscribe to Aletho News</label></h2>
+
+            <form action="https://subscribe.wordpress.com" method="post" accept-charset="utf-8"
+                  id="subscribe-blog">
+									<p>Enter your email address to receive  new posts by email.</p>
+<p>Join 2,226 other followers</p>
+                    <p><input type="text" name="email" style="width: 95%; padding: 1px 10px"
+                              placeholder="Enter your email address" value=""
+                              id="subscribe-field"/></p>
+				
+                <p>
+                    <input type="hidden" name="action" value="subscribe"/>
+                    <input type="hidden" name="blog_id" value="10703098"/>
+                    <input type="hidden" name="source" value="https://alethonews.com/2020/03/20/utter-contempt-for-human-life-iranian-fm-zarif-slams-us-for-hitting-tehran-with-new-sanctions-amid-covid-19-crisis/"/>
+                    <input type="hidden" name="sub-type" value="widget"/>
+                    <input type="hidden" name="redirect_fragment" value="blog_subscription-2"/>
+					<input type="hidden" id="_wpnonce" name="_wpnonce" value="6d8b39e203" />                    <button type="submit"
+	                    		                	                >
+	                    Sign me up!                    </button>
+                </p>
+            </form>
+			
+</li>
+<li id="blog-stats-2" class="widget widget_blog-stats"><h2 class="widgettitle">Visits Since December 2009</h2>
+		<ul>
+			<li>3,877,964 hits</li>
+		</ul>
+		</li>
+<li id="search-2" class="widget widget_search"><h2 class="widgettitle">Looking for something?</h2>
+<form role="search" method="get" id="searchform" class="searchform" action="https://alethonews.com/">
+				<div>
+					<label class="screen-reader-text" for="s">Search for:</label>
+					<input type="text" value="" name="s" id="s" />
+					<input type="submit" id="searchsubmit" value="Search" />
+				</div>
+			</form></li>
+<li id="archives-3" class="widget widget_archive"><h2 class="widgettitle">Archives</h2>
+		<label class="screen-reader-text" for="archives-dropdown-3">Archives</label>
+		<select id="archives-dropdown-3" name="archive-dropdown">
+			
+			<option value="">Select Month</option>
+				<option value='https://alethonews.com/2020/04/'> April 2020 </option>
+	<option value='https://alethonews.com/2020/03/'> March 2020 </option>
+	<option value='https://alethonews.com/2020/02/'> February 2020 </option>
+	<option value='https://alethonews.com/2020/01/'> January 2020 </option>
+	<option value='https://alethonews.com/2019/12/'> December 2019 </option>
+	<option value='https://alethonews.com/2019/11/'> November 2019 </option>
+	<option value='https://alethonews.com/2019/10/'> October 2019 </option>
+	<option value='https://alethonews.com/2019/09/'> September 2019 </option>
+	<option value='https://alethonews.com/2019/08/'> August 2019 </option>
+	<option value='https://alethonews.com/2019/07/'> July 2019 </option>
+	<option value='https://alethonews.com/2019/06/'> June 2019 </option>
+	<option value='https://alethonews.com/2019/05/'> May 2019 </option>
+	<option value='https://alethonews.com/2019/04/'> April 2019 </option>
+	<option value='https://alethonews.com/2019/03/'> March 2019 </option>
+	<option value='https://alethonews.com/2019/02/'> February 2019 </option>
+	<option value='https://alethonews.com/2019/01/'> January 2019 </option>
+	<option value='https://alethonews.com/2018/12/'> December 2018 </option>
+	<option value='https://alethonews.com/2018/11/'> November 2018 </option>
+	<option value='https://alethonews.com/2018/10/'> October 2018 </option>
+	<option value='https://alethonews.com/2018/09/'> September 2018 </option>
+	<option value='https://alethonews.com/2018/08/'> August 2018 </option>
+	<option value='https://alethonews.com/2018/07/'> July 2018 </option>
+	<option value='https://alethonews.com/2018/06/'> June 2018 </option>
+	<option value='https://alethonews.com/2018/05/'> May 2018 </option>
+	<option value='https://alethonews.com/2018/04/'> April 2018 </option>
+	<option value='https://alethonews.com/2018/03/'> March 2018 </option>
+	<option value='https://alethonews.com/2018/02/'> February 2018 </option>
+	<option value='https://alethonews.com/2018/01/'> January 2018 </option>
+	<option value='https://alethonews.com/2017/12/'> December 2017 </option>
+	<option value='https://alethonews.com/2017/11/'> November 2017 </option>
+	<option value='https://alethonews.com/2017/10/'> October 2017 </option>
+	<option value='https://alethonews.com/2017/09/'> September 2017 </option>
+	<option value='https://alethonews.com/2017/08/'> August 2017 </option>
+	<option value='https://alethonews.com/2017/07/'> July 2017 </option>
+	<option value='https://alethonews.com/2017/06/'> June 2017 </option>
+	<option value='https://alethonews.com/2017/05/'> May 2017 </option>
+	<option value='https://alethonews.com/2017/04/'> April 2017 </option>
+	<option value='https://alethonews.com/2017/03/'> March 2017 </option>
+	<option value='https://alethonews.com/2017/02/'> February 2017 </option>
+	<option value='https://alethonews.com/2017/01/'> January 2017 </option>
+	<option value='https://alethonews.com/2016/12/'> December 2016 </option>
+	<option value='https://alethonews.com/2016/11/'> November 2016 </option>
+	<option value='https://alethonews.com/2016/10/'> October 2016 </option>
+	<option value='https://alethonews.com/2016/09/'> September 2016 </option>
+	<option value='https://alethonews.com/2016/08/'> August 2016 </option>
+	<option value='https://alethonews.com/2016/07/'> July 2016 </option>
+	<option value='https://alethonews.com/2016/06/'> June 2016 </option>
+	<option value='https://alethonews.com/2016/05/'> May 2016 </option>
+	<option value='https://alethonews.com/2016/04/'> April 2016 </option>
+	<option value='https://alethonews.com/2016/03/'> March 2016 </option>
+	<option value='https://alethonews.com/2016/02/'> February 2016 </option>
+	<option value='https://alethonews.com/2016/01/'> January 2016 </option>
+	<option value='https://alethonews.com/2015/12/'> December 2015 </option>
+	<option value='https://alethonews.com/2015/11/'> November 2015 </option>
+	<option value='https://alethonews.com/2015/10/'> October 2015 </option>
+	<option value='https://alethonews.com/2015/09/'> September 2015 </option>
+	<option value='https://alethonews.com/2015/08/'> August 2015 </option>
+	<option value='https://alethonews.com/2015/07/'> July 2015 </option>
+	<option value='https://alethonews.com/2015/06/'> June 2015 </option>
+	<option value='https://alethonews.com/2015/05/'> May 2015 </option>
+	<option value='https://alethonews.com/2015/04/'> April 2015 </option>
+	<option value='https://alethonews.com/2015/03/'> March 2015 </option>
+	<option value='https://alethonews.com/2015/02/'> February 2015 </option>
+	<option value='https://alethonews.com/2015/01/'> January 2015 </option>
+	<option value='https://alethonews.com/2014/12/'> December 2014 </option>
+	<option value='https://alethonews.com/2014/11/'> November 2014 </option>
+	<option value='https://alethonews.com/2014/10/'> October 2014 </option>
+	<option value='https://alethonews.com/2014/09/'> September 2014 </option>
+	<option value='https://alethonews.com/2014/08/'> August 2014 </option>
+	<option value='https://alethonews.com/2014/07/'> July 2014 </option>
+	<option value='https://alethonews.com/2014/06/'> June 2014 </option>
+	<option value='https://alethonews.com/2014/05/'> May 2014 </option>
+	<option value='https://alethonews.com/2014/04/'> April 2014 </option>
+	<option value='https://alethonews.com/2014/03/'> March 2014 </option>
+	<option value='https://alethonews.com/2014/02/'> February 2014 </option>
+	<option value='https://alethonews.com/2014/01/'> January 2014 </option>
+	<option value='https://alethonews.com/2013/12/'> December 2013 </option>
+	<option value='https://alethonews.com/2013/11/'> November 2013 </option>
+	<option value='https://alethonews.com/2013/10/'> October 2013 </option>
+	<option value='https://alethonews.com/2013/09/'> September 2013 </option>
+	<option value='https://alethonews.com/2013/08/'> August 2013 </option>
+	<option value='https://alethonews.com/2013/07/'> July 2013 </option>
+	<option value='https://alethonews.com/2013/06/'> June 2013 </option>
+	<option value='https://alethonews.com/2013/05/'> May 2013 </option>
+	<option value='https://alethonews.com/2013/04/'> April 2013 </option>
+	<option value='https://alethonews.com/2013/03/'> March 2013 </option>
+	<option value='https://alethonews.com/2013/02/'> February 2013 </option>
+	<option value='https://alethonews.com/2013/01/'> January 2013 </option>
+	<option value='https://alethonews.com/2012/12/'> December 2012 </option>
+	<option value='https://alethonews.com/2012/11/'> November 2012 </option>
+	<option value='https://alethonews.com/2012/10/'> October 2012 </option>
+	<option value='https://alethonews.com/2012/09/'> September 2012 </option>
+	<option value='https://alethonews.com/2012/08/'> August 2012 </option>
+	<option value='https://alethonews.com/2012/07/'> July 2012 </option>
+	<option value='https://alethonews.com/2012/06/'> June 2012 </option>
+	<option value='https://alethonews.com/2012/05/'> May 2012 </option>
+	<option value='https://alethonews.com/2012/04/'> April 2012 </option>
+	<option value='https://alethonews.com/2012/03/'> March 2012 </option>
+	<option value='https://alethonews.com/2012/02/'> February 2012 </option>
+	<option value='https://alethonews.com/2012/01/'> January 2012 </option>
+	<option value='https://alethonews.com/2011/12/'> December 2011 </option>
+	<option value='https://alethonews.com/2011/11/'> November 2011 </option>
+	<option value='https://alethonews.com/2011/10/'> October 2011 </option>
+	<option value='https://alethonews.com/2011/09/'> September 2011 </option>
+	<option value='https://alethonews.com/2011/08/'> August 2011 </option>
+	<option value='https://alethonews.com/2011/07/'> July 2011 </option>
+	<option value='https://alethonews.com/2011/06/'> June 2011 </option>
+	<option value='https://alethonews.com/2011/05/'> May 2011 </option>
+	<option value='https://alethonews.com/2011/04/'> April 2011 </option>
+	<option value='https://alethonews.com/2011/03/'> March 2011 </option>
+	<option value='https://alethonews.com/2011/02/'> February 2011 </option>
+	<option value='https://alethonews.com/2011/01/'> January 2011 </option>
+	<option value='https://alethonews.com/2010/12/'> December 2010 </option>
+	<option value='https://alethonews.com/2010/11/'> November 2010 </option>
+	<option value='https://alethonews.com/2010/10/'> October 2010 </option>
+	<option value='https://alethonews.com/2010/09/'> September 2010 </option>
+	<option value='https://alethonews.com/2010/08/'> August 2010 </option>
+	<option value='https://alethonews.com/2010/07/'> July 2010 </option>
+	<option value='https://alethonews.com/2010/06/'> June 2010 </option>
+	<option value='https://alethonews.com/2010/05/'> May 2010 </option>
+	<option value='https://alethonews.com/2010/04/'> April 2010 </option>
+	<option value='https://alethonews.com/2010/03/'> March 2010 </option>
+	<option value='https://alethonews.com/2010/02/'> February 2010 </option>
+	<option value='https://alethonews.com/2010/01/'> January 2010 </option>
+	<option value='https://alethonews.com/2009/12/'> December 2009 </option>
+	<option value='https://alethonews.com/2009/11/'> November 2009 </option>
+
+		</select>
+
+<script type="text/javascript">
+/* <![CDATA[ */
+(function() {
+	var dropdown = document.getElementById( "archives-dropdown-3" );
+	function onSelectChange() {
+		if ( dropdown.options[ dropdown.selectedIndex ].value !== '' ) {
+			document.location.href = this.options[ this.selectedIndex ].value;
+		}
+	}
+	dropdown.onchange = onSelectChange;
+})();
+/* ]]> */
+</script>
+
+		</li>
+<li id="calendar-3" class="widget widget_calendar"><h2 class="widgettitle">Calendar</h2>
+<div id="calendar_wrap" class="calendar_wrap"><table id="wp-calendar" class="wp-calendar-table">
+	<caption>March 2020</caption>
+	<thead>
+	<tr>
+		<th scope="col" title="Monday">M</th>
+		<th scope="col" title="Tuesday">T</th>
+		<th scope="col" title="Wednesday">W</th>
+		<th scope="col" title="Thursday">T</th>
+		<th scope="col" title="Friday">F</th>
+		<th scope="col" title="Saturday">S</th>
+		<th scope="col" title="Sunday">S</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td colspan="6" class="pad">&nbsp;</td><td><a href="https://alethonews.com/2020/03/01/" aria-label="Posts published on March 1, 2020">1</a></td>
+	</tr>
+	<tr>
+		<td><a href="https://alethonews.com/2020/03/02/" aria-label="Posts published on March 2, 2020">2</a></td><td><a href="https://alethonews.com/2020/03/03/" aria-label="Posts published on March 3, 2020">3</a></td><td><a href="https://alethonews.com/2020/03/04/" aria-label="Posts published on March 4, 2020">4</a></td><td><a href="https://alethonews.com/2020/03/05/" aria-label="Posts published on March 5, 2020">5</a></td><td><a href="https://alethonews.com/2020/03/06/" aria-label="Posts published on March 6, 2020">6</a></td><td><a href="https://alethonews.com/2020/03/07/" aria-label="Posts published on March 7, 2020">7</a></td><td><a href="https://alethonews.com/2020/03/08/" aria-label="Posts published on March 8, 2020">8</a></td>
+	</tr>
+	<tr>
+		<td><a href="https://alethonews.com/2020/03/09/" aria-label="Posts published on March 9, 2020">9</a></td><td><a href="https://alethonews.com/2020/03/10/" aria-label="Posts published on March 10, 2020">10</a></td><td><a href="https://alethonews.com/2020/03/11/" aria-label="Posts published on March 11, 2020">11</a></td><td><a href="https://alethonews.com/2020/03/12/" aria-label="Posts published on March 12, 2020">12</a></td><td><a href="https://alethonews.com/2020/03/13/" aria-label="Posts published on March 13, 2020">13</a></td><td><a href="https://alethonews.com/2020/03/14/" aria-label="Posts published on March 14, 2020">14</a></td><td><a href="https://alethonews.com/2020/03/15/" aria-label="Posts published on March 15, 2020">15</a></td>
+	</tr>
+	<tr>
+		<td><a href="https://alethonews.com/2020/03/16/" aria-label="Posts published on March 16, 2020">16</a></td><td><a href="https://alethonews.com/2020/03/17/" aria-label="Posts published on March 17, 2020">17</a></td><td><a href="https://alethonews.com/2020/03/18/" aria-label="Posts published on March 18, 2020">18</a></td><td><a href="https://alethonews.com/2020/03/19/" aria-label="Posts published on March 19, 2020">19</a></td><td><a href="https://alethonews.com/2020/03/20/" aria-label="Posts published on March 20, 2020">20</a></td><td><a href="https://alethonews.com/2020/03/21/" aria-label="Posts published on March 21, 2020">21</a></td><td><a href="https://alethonews.com/2020/03/22/" aria-label="Posts published on March 22, 2020">22</a></td>
+	</tr>
+	<tr>
+		<td><a href="https://alethonews.com/2020/03/23/" aria-label="Posts published on March 23, 2020">23</a></td><td><a href="https://alethonews.com/2020/03/24/" aria-label="Posts published on March 24, 2020">24</a></td><td><a href="https://alethonews.com/2020/03/25/" aria-label="Posts published on March 25, 2020">25</a></td><td><a href="https://alethonews.com/2020/03/26/" aria-label="Posts published on March 26, 2020">26</a></td><td><a href="https://alethonews.com/2020/03/27/" aria-label="Posts published on March 27, 2020">27</a></td><td><a href="https://alethonews.com/2020/03/28/" aria-label="Posts published on March 28, 2020">28</a></td><td><a href="https://alethonews.com/2020/03/29/" aria-label="Posts published on March 29, 2020">29</a></td>
+	</tr>
+	<tr>
+		<td><a href="https://alethonews.com/2020/03/30/" aria-label="Posts published on March 30, 2020">30</a></td><td><a href="https://alethonews.com/2020/03/31/" aria-label="Posts published on March 31, 2020">31</a></td>
+		<td class="pad" colspan="5">&nbsp;</td>
+	</tr>
+	</tbody>
+	</table><nav aria-label="Previous and next months" class="wp-calendar-nav">
+		<span class="wp-calendar-nav-prev"><a href="https://alethonews.com/2020/02/">&laquo; Feb</a></span>
+		<span class="pad">&nbsp;</span>
+		<span class="wp-calendar-nav-next"><a href="https://alethonews.com/2020/04/">Apr &raquo;</a></span>
+	</nav></div></li>
+<li id="tag_cloud-3" class="widget widget_tag_cloud"><h2 class="widgettitle">Categories</h2>
+<div style="overflow: hidden;"><a href="https://alethonews.com/category/aletho-news/" style="font-size: 110.98537825811%; padding: 1px; margin: 1px;"  title="Aletho News (1553)">Aletho News</a> <a href="https://alethonews.com/category/civil-liberties/" style="font-size: 139.61220597584%; padding: 1px; margin: 1px;"  title="Civil Liberties (4555)">Civil Liberties</a> <a href="https://alethonews.com/category/corruption/" style="font-size: 116.02034329307%; padding: 1px; margin: 1px;"  title="Corruption (2081)">Corruption</a> <a href="https://alethonews.com/category/deception/" style="font-size: 166.36999364272%; padding: 1px; margin: 1px;"  title="Deception (7361)">Deception</a> <a href="https://alethonews.com/category/economics/" style="font-size: 127.32994278449%; padding: 1px; margin: 1px;"  title="Economics (3267)">Economics</a> <a href="https://alethonews.com/category/environmentalism/" style="font-size: 101.74507310871%; padding: 1px; margin: 1px;"  title="Environmentalism (584)">Environmentalism</a> <a href="https://alethonews.com/category/ethnic-cleansing-racism-zionism/" style="font-size: 172.97838525111%; padding: 1px; margin: 1px;"  title="Ethnic Cleansing, Racism, Zionism (8054)">Ethnic Cleansing, Racism, Zionism</a> <a href="https://alethonews.com/category/mainstream-media-warmongering/fake-news/" style="font-size: 108.26764144946%; padding: 1px; margin: 1px;"  title="Fake News (1268)">Fake News</a> <a href="https://alethonews.com/category/false-flag-terrorism/" style="font-size: 109.22123331214%; padding: 1px; margin: 1px;"  title="False Flag Terrorism (1368)">False Flag Terrorism</a> <a href="https://alethonews.com/category/full-spectrum-dominance/" style="font-size: 125.05085823268%; padding: 1px; margin: 1px;"  title="Full Spectrum Dominance (3028)">Full Spectrum Dominance</a> <a href="https://alethonews.com/category/illegal-occupation/" style="font-size: 125.17482517483%; padding: 1px; margin: 1px;"  title="Illegal Occupation (3041)">Illegal Occupation</a> <a href="https://alethonews.com/category/mainstream-media-warmongering/" style="font-size: 141.5861411316%; padding: 1px; margin: 1px;"  title="Mainstream Media, Warmongering (4762)">Mainstream Media, Warmongering</a> <a href="https://alethonews.com/category/militarism/" style="font-size: 142.47298156389%; padding: 1px; margin: 1px;"  title="Militarism (4855)">Militarism</a> <a href="https://alethonews.com/category/nuclear-power/" style="font-size: 100%; padding: 1px; margin: 1px;"  title="Nuclear Power (401)">Nuclear Power</a> <a href="https://alethonews.com/category/progressive-hypocrite/" style="font-size: 116.0680228862%; padding: 1px; margin: 1px;"  title="Progressive Hypocrite (2086)">Progressive Hypocrite</a> <a href="https://alethonews.com/category/russophobia/" style="font-size: 106.57024793388%; padding: 1px; margin: 1px;"  title="Russophobia (1090)">Russophobia</a> <a href="https://alethonews.com/category/science-and-pseudo-science/" style="font-size: 105.68340750159%; padding: 1px; margin: 1px;"  title="Science and Pseudo-Science (997)">Science and Pseudo-Science</a> <a href="https://alethonews.com/category/solidarity-and-activism/" style="font-size: 116.44945963128%; padding: 1px; margin: 1px;"  title="Solidarity and Activism (2126)">Solidarity and Activism</a> <a href="https://alethonews.com/category/subjugation-torture/" style="font-size: 131.05848696758%; padding: 1px; margin: 1px;"  title="Subjugation - Torture (3658)">Subjugation - Torture</a> <a href="https://alethonews.com/category/supremacism-social-darwinism/" style="font-size: 102.3458359822%; padding: 1px; margin: 1px;"  title="Supremacism, Social Darwinism (647)">Supremacism, Social Darwinism</a> <a href="https://alethonews.com/category/timeless-or-most-popular/" style="font-size: 175%; padding: 1px; margin: 1px;"  title="Timeless or most popular (8266)">Timeless or most popular</a> <a href="https://alethonews.com/category/video/" style="font-size: 113.72218690401%; padding: 1px; margin: 1px;"  title="Video (1840)">Video</a> <a href="https://alethonews.com/category/war-crimes/" style="font-size: 139.19262555626%; padding: 1px; margin: 1px;"  title="War Crimes (4511)">War Crimes</a> <a href="https://alethonews.com/category/wars-for-israel/" style="font-size: 121.86586141132%; padding: 1px; margin: 1px;"  title="Wars for Israel (2694)">Wars for Israel</a> </div></li>
+<li id="wp_tag_cloud-2" class="widget wp_widget_tag_cloud"><h2 class="widgettitle">Tags</h2>
+<div style="overflow:hidden"><a href="https://alethonews.com/tag/911/" class="tag-cloud-link tag-link-8239 tag-link-position-1" style="font-size: 9.2975609756098pt;" aria-label="9/11 (169 items)">9/11</a>
+<a href="https://alethonews.com/tag/afghanistan/" class="tag-cloud-link tag-link-4338 tag-link-position-2" style="font-size: 12.643902439024pt;" aria-label="Afghanistan (529 items)">Afghanistan</a>
+<a href="https://alethonews.com/tag/africa/" class="tag-cloud-link tag-link-2214 tag-link-position-3" style="font-size: 11.960975609756pt;" aria-label="Africa (420 items)">Africa</a>
+<a href="https://alethonews.com/tag/aipac/" class="tag-cloud-link tag-link-339115 tag-link-position-4" style="font-size: 9.2292682926829pt;" aria-label="AIPAC (164 items)">AIPAC</a>
+<a href="https://alethonews.com/tag/al-qaeda/" class="tag-cloud-link tag-link-42800 tag-link-position-5" style="font-size: 10.59512195122pt;" aria-label="al-Qaeda (260 items)">al-Qaeda</a>
+<a href="https://alethonews.com/tag/argentina/" class="tag-cloud-link tag-link-18939 tag-link-position-6" style="font-size: 9.1609756097561pt;" aria-label="Argentina (161 items)">Argentina</a>
+<a href="https://alethonews.com/tag/australia/" class="tag-cloud-link tag-link-4330 tag-link-position-7" style="font-size: 8.409756097561pt;" aria-label="Australia (124 items)">Australia</a>
+<a href="https://alethonews.com/tag/bahrain/" class="tag-cloud-link tag-link-13441 tag-link-position-8" style="font-size: 8pt;" aria-label="Bahrain (109 items)">Bahrain</a>
+<a href="https://alethonews.com/tag/bbc/" class="tag-cloud-link tag-link-2988 tag-link-position-9" style="font-size: 9.7073170731707pt;" aria-label="BBC (196 items)">BBC</a>
+<a href="https://alethonews.com/tag/benjamin-netanyahu/" class="tag-cloud-link tag-link-476192 tag-link-position-10" style="font-size: 11.551219512195pt;" aria-label="Benjamin Netanyahu (361 items)">Benjamin Netanyahu</a>
+<a href="https://alethonews.com/tag/brazil/" class="tag-cloud-link tag-link-4390 tag-link-position-11" style="font-size: 9.2975609756098pt;" aria-label="Brazil (169 items)">Brazil</a>
+<a href="https://alethonews.com/tag/canada/" class="tag-cloud-link tag-link-2443 tag-link-position-12" style="font-size: 12.917073170732pt;" aria-label="Canada (573 items)">Canada</a>
+<a href="https://alethonews.com/tag/central-intelligence-agency/" class="tag-cloud-link tag-link-220564 tag-link-position-13" style="font-size: 11.960975609756pt;" aria-label="Central Intelligence Agency (414 items)">Central Intelligence Agency</a>
+<a href="https://alethonews.com/tag/china/" class="tag-cloud-link tag-link-1470 tag-link-position-14" style="font-size: 11.346341463415pt;" aria-label="China (336 items)">China</a>
+<a href="https://alethonews.com/tag/cia/" class="tag-cloud-link tag-link-29199 tag-link-position-15" style="font-size: 14.692682926829pt;" aria-label="CIA (1,041 items)">CIA</a>
+<a href="https://alethonews.com/tag/cnn/" class="tag-cloud-link tag-link-55758 tag-link-position-16" style="font-size: 9.4341463414634pt;" aria-label="CNN (178 items)">CNN</a>
+<a href="https://alethonews.com/tag/colombia/" class="tag-cloud-link tag-link-21691 tag-link-position-17" style="font-size: 9.1609756097561pt;" aria-label="Colombia (163 items)">Colombia</a>
+<a href="https://alethonews.com/tag/daesh/" class="tag-cloud-link tag-link-11873180 tag-link-position-18" style="font-size: 9.2292682926829pt;" aria-label="Da’esh (166 items)">Da’esh</a>
+<a href="https://alethonews.com/tag/donald-trump/" class="tag-cloud-link tag-link-189091 tag-link-position-19" style="font-size: 10.663414634146pt;" aria-label="Donald Trump (270 items)">Donald Trump</a>
+<a href="https://alethonews.com/tag/egypt/" class="tag-cloud-link tag-link-14644 tag-link-position-20" style="font-size: 12.165853658537pt;" aria-label="Egypt (446 items)">Egypt</a>
+<a href="https://alethonews.com/tag/european-union/" class="tag-cloud-link tag-link-46740 tag-link-position-21" style="font-size: 14.829268292683pt;" aria-label="European Union (1,088 items)">European Union</a>
+<a href="https://alethonews.com/tag/facebook/" class="tag-cloud-link tag-link-81819 tag-link-position-22" style="font-size: 9.7073170731707pt;" aria-label="Facebook (193 items)">Facebook</a>
+<a href="https://alethonews.com/tag/fbi/" class="tag-cloud-link tag-link-68079 tag-link-position-23" style="font-size: 12.09756097561pt;" aria-label="FBI (435 items)">FBI</a>
+<a href="https://alethonews.com/tag/france/" class="tag-cloud-link tag-link-4704 tag-link-position-24" style="font-size: 13.6pt;" aria-label="France (721 items)">France</a>
+<a href="https://alethonews.com/tag/gaza/" class="tag-cloud-link tag-link-239229 tag-link-position-25" style="font-size: 14.214634146341pt;" aria-label="Gaza (887 items)">Gaza</a>
+<a href="https://alethonews.com/tag/germany/" class="tag-cloud-link tag-link-3550 tag-link-position-26" style="font-size: 10.59512195122pt;" aria-label="Germany (264 items)">Germany</a>
+<a href="https://alethonews.com/tag/google/" class="tag-cloud-link tag-link-81 tag-link-position-27" style="font-size: 8.819512195122pt;" aria-label="Google (142 items)">Google</a>
+<a href="https://alethonews.com/tag/hamas/" class="tag-cloud-link tag-link-55270 tag-link-position-28" style="font-size: 11.687804878049pt;" aria-label="Hamas (382 items)">Hamas</a>
+<a href="https://alethonews.com/tag/hebron/" class="tag-cloud-link tag-link-358691 tag-link-position-29" style="font-size: 10.59512195122pt;" aria-label="Hebron (262 items)">Hebron</a>
+<a href="https://alethonews.com/tag/hezbollah/" class="tag-cloud-link tag-link-239228 tag-link-position-30" style="font-size: 12.029268292683pt;" aria-label="Hezbollah (425 items)">Hezbollah</a>
+<a href="https://alethonews.com/tag/hillary-clinton/" class="tag-cloud-link tag-link-64094 tag-link-position-31" style="font-size: 12.985365853659pt;" aria-label="Hillary Clinton (588 items)">Hillary Clinton</a>
+<a href="https://alethonews.com/tag/human-rights/" class="tag-cloud-link tag-link-2720 tag-link-position-32" style="font-size: 19.2pt;" aria-label="Human rights (4,767 items)">Human rights</a>
+<a href="https://alethonews.com/tag/india/" class="tag-cloud-link tag-link-3054 tag-link-position-33" style="font-size: 10.185365853659pt;" aria-label="India (227 items)">India</a>
+<a href="https://alethonews.com/tag/iran/" class="tag-cloud-link tag-link-6645 tag-link-position-34" style="font-size: 16.331707317073pt;" aria-label="Iran (1,829 items)">Iran</a>
+<a href="https://alethonews.com/tag/iraq/" class="tag-cloud-link tag-link-1147 tag-link-position-35" style="font-size: 14.146341463415pt;" aria-label="Iraq (868 items)">Iraq</a>
+<a href="https://alethonews.com/tag/isis/" class="tag-cloud-link tag-link-12871 tag-link-position-36" style="font-size: 11.687804878049pt;" aria-label="ISIS (377 items)">ISIS</a>
+<a href="https://alethonews.com/tag/israel/" class="tag-cloud-link tag-link-9937 tag-link-position-37" style="font-size: 20.019512195122pt;" aria-label="Israel (6,247 items)">Israel</a>
+<a href="https://alethonews.com/tag/israeli-settlement/" class="tag-cloud-link tag-link-2099612 tag-link-position-38" style="font-size: 13.053658536585pt;" aria-label="Israeli settlement (601 items)">Israeli settlement</a>
+<a href="https://alethonews.com/tag/japan/" class="tag-cloud-link tag-link-2062 tag-link-position-39" style="font-size: 8.819512195122pt;" aria-label="Japan (142 items)">Japan</a>
+<a href="https://alethonews.com/tag/jeremy-corbyn/" class="tag-cloud-link tag-link-6863059 tag-link-position-40" style="font-size: 8.2731707317073pt;" aria-label="Jeremy Corbyn (119 items)">Jeremy Corbyn</a>
+<a href="https://alethonews.com/tag/jerusalem/" class="tag-cloud-link tag-link-27993 tag-link-position-41" style="font-size: 12.165853658537pt;" aria-label="Jerusalem (448 items)">Jerusalem</a>
+<a href="https://alethonews.com/tag/john-kerry/" class="tag-cloud-link tag-link-84303 tag-link-position-42" style="font-size: 8.819512195122pt;" aria-label="John Kerry (142 items)">John Kerry</a>
+<a href="https://alethonews.com/tag/korea/" class="tag-cloud-link tag-link-3956 tag-link-position-43" style="font-size: 8.4780487804878pt;" aria-label="Korea (129 items)">Korea</a>
+<a href="https://alethonews.com/tag/latin-america/" class="tag-cloud-link tag-link-5839 tag-link-position-44" style="font-size: 14.624390243902pt;" aria-label="Latin America (1,023 items)">Latin America</a>
+<a href="https://alethonews.com/tag/lebanon/" class="tag-cloud-link tag-link-56959 tag-link-position-45" style="font-size: 12.370731707317pt;" aria-label="Lebanon (476 items)">Lebanon</a>
+<a href="https://alethonews.com/tag/libya/" class="tag-cloud-link tag-link-16272 tag-link-position-46" style="font-size: 11.551219512195pt;" aria-label="Libya (364 items)">Libya</a>
+<a href="https://alethonews.com/tag/middle-east/" class="tag-cloud-link tag-link-3250 tag-link-position-47" style="font-size: 16.4pt;" aria-label="Middle East (1,855 items)">Middle East</a>
+<a href="https://alethonews.com/tag/military/" class="tag-cloud-link tag-link-488 tag-link-position-48" style="font-size: 8.2048780487805pt;" aria-label="Military (116 items)">Military</a>
+<a href="https://alethonews.com/tag/national-security-agency/" class="tag-cloud-link tag-link-61115 tag-link-position-49" style="font-size: 11.346341463415pt;" aria-label="National Security Agency (339 items)">National Security Agency</a>
+<a href="https://alethonews.com/tag/nato/" class="tag-cloud-link tag-link-75691 tag-link-position-50" style="font-size: 14.829268292683pt;" aria-label="NATO (1,102 items)">NATO</a>
+<a href="https://alethonews.com/tag/new-york-times/" class="tag-cloud-link tag-link-33609 tag-link-position-51" style="font-size: 13.736585365854pt;" aria-label="New York Times (757 items)">New York Times</a>
+<a href="https://alethonews.com/tag/north-korea/" class="tag-cloud-link tag-link-4333 tag-link-position-52" style="font-size: 9.980487804878pt;" aria-label="North Korea (214 items)">North Korea</a>
+<a href="https://alethonews.com/tag/nsa/" class="tag-cloud-link tag-link-29197 tag-link-position-53" style="font-size: 11.551219512195pt;" aria-label="NSA (365 items)">NSA</a>
+<a href="https://alethonews.com/tag/obama/" class="tag-cloud-link tag-link-376320 tag-link-position-54" style="font-size: 15.375609756098pt;" aria-label="Obama (1,326 items)">Obama</a>
+<a href="https://alethonews.com/tag/pakistan/" class="tag-cloud-link tag-link-3235 tag-link-position-55" style="font-size: 10.321951219512pt;" aria-label="Pakistan (241 items)">Pakistan</a>
+<a href="https://alethonews.com/tag/palestine/" class="tag-cloud-link tag-link-15271 tag-link-position-56" style="font-size: 18.99512195122pt;" aria-label="Palestine (4,485 items)">Palestine</a>
+<a href="https://alethonews.com/tag/press-tv/" class="tag-cloud-link tag-link-1414538 tag-link-position-57" style="font-size: 8.2731707317073pt;" aria-label="Press TV (120 items)">Press TV</a>
+<a href="https://alethonews.com/tag/qatar/" class="tag-cloud-link tag-link-140390 tag-link-position-58" style="font-size: 9.7073170731707pt;" aria-label="Qatar (193 items)">Qatar</a>
+<a href="https://alethonews.com/tag/russia/" class="tag-cloud-link tag-link-10759 tag-link-position-59" style="font-size: 17.014634146341pt;" aria-label="Russia (2,310 items)">Russia</a>
+<a href="https://alethonews.com/tag/sanctions-against-iran/" class="tag-cloud-link tag-link-6801083 tag-link-position-60" style="font-size: 13.736585365854pt;" aria-label="Sanctions against Iran (765 items)">Sanctions against Iran</a>
+<a href="https://alethonews.com/tag/saudi-arabia/" class="tag-cloud-link tag-link-16270 tag-link-position-61" style="font-size: 14.965853658537pt;" aria-label="Saudi Arabia (1,158 items)">Saudi Arabia</a>
+<a href="https://alethonews.com/tag/syria/" class="tag-cloud-link tag-link-18052 tag-link-position-62" style="font-size: 17.90243902439pt;" aria-label="Syria (3,057 items)">Syria</a>
+<a href="https://alethonews.com/tag/the-guardian/" class="tag-cloud-link tag-link-97838 tag-link-position-63" style="font-size: 9.9121951219512pt;" aria-label="The Guardian (207 items)">The Guardian</a>
+<a href="https://alethonews.com/tag/turkey/" class="tag-cloud-link tag-link-1148 tag-link-position-64" style="font-size: 14.078048780488pt;" aria-label="Turkey (850 items)">Turkey</a>
+<a href="https://alethonews.com/tag/uae/" class="tag-cloud-link tag-link-27522 tag-link-position-65" style="font-size: 8.6829268292683pt;" aria-label="UAE (136 items)">UAE</a>
+<a href="https://alethonews.com/tag/uk/" class="tag-cloud-link tag-link-8199 tag-link-position-66" style="font-size: 17.014634146341pt;" aria-label="UK (2,271 items)">UK</a>
+<a href="https://alethonews.com/tag/ukraine/" class="tag-cloud-link tag-link-22735 tag-link-position-67" style="font-size: 14.556097560976pt;" aria-label="Ukraine (1,005 items)">Ukraine</a>
+<a href="https://alethonews.com/tag/united-nations/" class="tag-cloud-link tag-link-59722 tag-link-position-68" style="font-size: 12.165853658537pt;" aria-label="United Nations (445 items)">United Nations</a>
+<a href="https://alethonews.com/tag/united-states/" class="tag-cloud-link tag-link-5850 tag-link-position-69" style="font-size: 22pt;" aria-label="United States (12,248 items)">United States</a>
+<a href="https://alethonews.com/tag/usa/" class="tag-cloud-link tag-link-699 tag-link-position-70" style="font-size: 11.619512195122pt;" aria-label="USA (369 items)">USA</a>
+<a href="https://alethonews.com/tag/venezuela/" class="tag-cloud-link tag-link-17923 tag-link-position-71" style="font-size: 13.190243902439pt;" aria-label="Venezuela (634 items)">Venezuela</a>
+<a href="https://alethonews.com/tag/washington-post/" class="tag-cloud-link tag-link-51173 tag-link-position-72" style="font-size: 11.141463414634pt;" aria-label="Washington Post (318 items)">Washington Post</a>
+<a href="https://alethonews.com/tag/west-bank/" class="tag-cloud-link tag-link-242039 tag-link-position-73" style="font-size: 15.170731707317pt;" aria-label="West Bank (1,231 items)">West Bank</a>
+<a href="https://alethonews.com/tag/yemen/" class="tag-cloud-link tag-link-61496 tag-link-position-74" style="font-size: 12.848780487805pt;" aria-label="Yemen (567 items)">Yemen</a>
+<a href="https://alethonews.com/tag/zionism/" class="tag-cloud-link tag-link-47476 tag-link-position-75" style="font-size: 19.951219512195pt;" aria-label="Zionism (6,122 items)">Zionism</a></div></li>
+<li id="recent-comments-2" class="widget widget_recent_comments"><h2 class="widgettitle">Latest Comments</h2>
+				<table class="recentcommentsavatar" cellspacing="0" cellpadding="0" border="0">
+					<tr><td title="Tsisageya 1" class="recentcommentsavatartop" style="height:48px; width:48px;"><img alt='' src='https://0.gravatar.com/avatar/39be4f972002bb9886678981d5482ba5?s=48&#038;d=retro&#038;r=G' class='avatar avatar-48' height='48' width='48' /></td><td class="recentcommentstexttop" style="">Tsisageya 1 on <a href="https://alethonews.com/2020/04/27/why-outside-air-is-safe-and-park-closures-should-end/#comment-153542">Why Outside Air is Safe and Pa&hellip;</a></td></tr><tr><td title="Tsisageya 1" class="recentcommentsavatarend" style="height:48px; width:48px;"><img alt='' src='https://0.gravatar.com/avatar/39be4f972002bb9886678981d5482ba5?s=48&#038;d=retro&#038;r=G' class='avatar avatar-48' height='48' width='48' /></td><td class="recentcommentstextend" style="">Tsisageya 1 on <a href="https://alethonews.com/2020/04/27/why-outside-air-is-safe-and-park-closures-should-end/#comment-153541">Why Outside Air is Safe and Pa&hellip;</a></td></tr><tr><td title="Tsisageya 1" class="recentcommentsavatarend" style="height:48px; width:48px;"><img alt='' src='https://0.gravatar.com/avatar/39be4f972002bb9886678981d5482ba5?s=48&#038;d=retro&#038;r=G' class='avatar avatar-48' height='48' width='48' /></td><td class="recentcommentstextend" style="">Tsisageya 1 on <a href="https://alethonews.com/2020/04/27/why-outside-air-is-safe-and-park-closures-should-end/#comment-153540">Why Outside Air is Safe and Pa&hellip;</a></td></tr><tr><td title="Tsisageya 1" class="recentcommentsavatarend" style="height:48px; width:48px;"><img alt='' src='https://0.gravatar.com/avatar/39be4f972002bb9886678981d5482ba5?s=48&#038;d=retro&#038;r=G' class='avatar avatar-48' height='48' width='48' /></td><td class="recentcommentstextend" style="">Tsisageya 1 on <a href="https://alethonews.com/2020/04/27/why-outside-air-is-safe-and-park-closures-should-end/#comment-153539">Why Outside Air is Safe and Pa&hellip;</a></td></tr><tr><td title="Tsisageya 1" class="recentcommentsavatarend" style="height:48px; width:48px;"><img alt='' src='https://0.gravatar.com/avatar/39be4f972002bb9886678981d5482ba5?s=48&#038;d=retro&#038;r=G' class='avatar avatar-48' height='48' width='48' /></td><td class="recentcommentstextend" style="">Tsisageya 1 on <a href="https://alethonews.com/2020/04/27/why-outside-air-is-safe-and-park-closures-should-end/#comment-153538">Why Outside Air is Safe and Pa&hellip;</a></td></tr><tr><td title="Tsisageya 1" class="recentcommentsavatarend" style="height:48px; width:48px;"><img alt='' src='https://0.gravatar.com/avatar/39be4f972002bb9886678981d5482ba5?s=48&#038;d=retro&#038;r=G' class='avatar avatar-48' height='48' width='48' /></td><td class="recentcommentstextend" style="">Tsisageya 1 on <a href="https://alethonews.com/2020/04/27/why-outside-air-is-safe-and-park-closures-should-end/#comment-153537">Why Outside Air is Safe and Pa&hellip;</a></td></tr><tr><td title="Tsisageya 1" class="recentcommentsavatarend" style="height:48px; width:48px;"><img alt='' src='https://0.gravatar.com/avatar/39be4f972002bb9886678981d5482ba5?s=48&#038;d=retro&#038;r=G' class='avatar avatar-48' height='48' width='48' /></td><td class="recentcommentstextend" style="">Tsisageya 1 on <a href="https://alethonews.com/2020/04/27/why-outside-air-is-safe-and-park-closures-should-end/#comment-153536">Why Outside Air is Safe and Pa&hellip;</a></td></tr><tr><td title="Tsisageya 1" class="recentcommentsavatarend" style="height:48px; width:48px;"><img alt='' src='https://0.gravatar.com/avatar/39be4f972002bb9886678981d5482ba5?s=48&#038;d=retro&#038;r=G' class='avatar avatar-48' height='48' width='48' /></td><td class="recentcommentstextend" style="">Tsisageya 1 on <a href="https://alethonews.com/2020/04/27/why-outside-air-is-safe-and-park-closures-should-end/#comment-153535">Why Outside Air is Safe and Pa&hellip;</a></td></tr><tr><td title="Tsisageya 1" class="recentcommentsavatarend" style="height:48px; width:48px;"><img alt='' src='https://0.gravatar.com/avatar/39be4f972002bb9886678981d5482ba5?s=48&#038;d=retro&#038;r=G' class='avatar avatar-48' height='48' width='48' /></td><td class="recentcommentstextend" style="">Tsisageya 1 on <a href="https://alethonews.com/2020/04/27/why-outside-air-is-safe-and-park-closures-should-end/#comment-153534">Why Outside Air is Safe and Pa&hellip;</a></td></tr><tr><td title="Tsisageya 1" class="recentcommentsavatarend" style="height:48px; width:48px;"><img alt='' src='https://0.gravatar.com/avatar/39be4f972002bb9886678981d5482ba5?s=48&#038;d=retro&#038;r=G' class='avatar avatar-48' height='48' width='48' /></td><td class="recentcommentstextend" style="">Tsisageya 1 on <a href="https://alethonews.com/2020/04/27/why-outside-air-is-safe-and-park-closures-should-end/#comment-153533">Why Outside Air is Safe and Pa&hellip;</a></td></tr><tr><td title="Tsisageya 1" class="recentcommentsavatarend" style="height:48px; width:48px;"><img alt='' src='https://0.gravatar.com/avatar/39be4f972002bb9886678981d5482ba5?s=48&#038;d=retro&#038;r=G' class='avatar avatar-48' height='48' width='48' /></td><td class="recentcommentstextend" style="">Tsisageya 1 on <a href="https://alethonews.com/2020/04/27/why-outside-air-is-safe-and-park-closures-should-end/#comment-153532">Why Outside Air is Safe and Pa&hellip;</a></td></tr><tr><td title="Tsisageya 1" class="recentcommentsavatarend" style="height:48px; width:48px;"><img alt='' src='https://0.gravatar.com/avatar/39be4f972002bb9886678981d5482ba5?s=48&#038;d=retro&#038;r=G' class='avatar avatar-48' height='48' width='48' /></td><td class="recentcommentstextend" style="">Tsisageya 1 on <a href="https://alethonews.com/2020/04/27/why-outside-air-is-safe-and-park-closures-should-end/#comment-153531">Why Outside Air is Safe and Pa&hellip;</a></td></tr><tr><td title="Tsisageya 1" class="recentcommentsavatarend" style="height:48px; width:48px;"><img alt='' src='https://0.gravatar.com/avatar/39be4f972002bb9886678981d5482ba5?s=48&#038;d=retro&#038;r=G' class='avatar avatar-48' height='48' width='48' /></td><td class="recentcommentstextend" style="">Tsisageya 1 on <a href="https://alethonews.com/2020/04/27/why-outside-air-is-safe-and-park-closures-should-end/#comment-153530">Why Outside Air is Safe and Pa&hellip;</a></td></tr><tr><td title="Tsisageya 1" class="recentcommentsavatarend" style="height:48px; width:48px;"><img alt='' src='https://0.gravatar.com/avatar/39be4f972002bb9886678981d5482ba5?s=48&#038;d=retro&#038;r=G' class='avatar avatar-48' height='48' width='48' /></td><td class="recentcommentstextend" style="">Tsisageya 1 on <a href="https://alethonews.com/2020/04/27/why-outside-air-is-safe-and-park-closures-should-end/#comment-153529">Why Outside Air is Safe and Pa&hellip;</a></td></tr><tr><td title="Tsisageya 1" class="recentcommentsavatarend" style="height:48px; width:48px;"><img alt='' src='https://0.gravatar.com/avatar/39be4f972002bb9886678981d5482ba5?s=48&#038;d=retro&#038;r=G' class='avatar avatar-48' height='48' width='48' /></td><td class="recentcommentstextend" style="">Tsisageya 1 on <a href="https://alethonews.com/2020/04/27/why-outside-air-is-safe-and-park-closures-should-end/#comment-153528">Why Outside Air is Safe and Pa&hellip;</a></td></tr>				</table>
+				</li>
+  </ul>
+
+  <ul class="rightsub2">
+<li id="rss-20" class="widget widget_rss"><h2 class="widgettitle"><a class="rsswidget" href="https://alethonews.com/feed/" title="Syndicate this content"><img style="background: orange; color: white; border: none;" width="14" height="14" src="https://s-ssl.wordpress.com/wp-includes/images/rss.png?m=1354137473h" alt="RSS" /></a> <a class="rsswidget" href="https://alethonews.com" title="ΑΛΗΘΩΣ">Aletho News</a></h2>
+<ul><li><a class='rsswidget' href='https://alethonews.com/2020/04/27/ukraines-opposition-accuses-us-of-scrubbing-info-about-biolabs-activities-on-ukrainian-territory/' title='Sputnik – 27.04.2020 The US Embassy in Kiev has been caught in the center of a brewing political scandal after denying allegations about US biological laboratories’ “unlawful activity” in Ukraine, while admitting that such labs do exist. The US Embassy in Kiev has scrubbed information about the work of two of its biolabs in Ukraine […]'>Ukraine’s Opposition Accuses US of Scrubbing Info About Biolabs’ Activities on Ukrainian Territory</a> <span class="rss-date">April 27, 2020</span></li><li><a class='rsswidget' href='https://alethonews.com/2020/04/27/how-the-fight-against-covid-19-has-brought-us-a-step-closer-to-an-orwellian-nightmare/' title='By Timothy Alexander Guzman – Silent Crow News – April 26, 2020 For many years, we in the alternative media have been warning that when a new crisis emerges, a future of social engineering and control would bring us closer to George Orwell’s predictions right to our doorstep.  Since the start of the Corona Virus […]'>How the Fight Against Covid-19 Has Brought Us a Step Closer to an Orwellian Nightmare</a> <span class="rss-date">April 27, 2020</span></li><li><a class='rsswidget' href='https://alethonews.com/2020/04/27/narrative-managers-argue-china-like-internet-censorship-is-needed/' title='By Caitlin Johnstone | April 26, 2020 Neoconservative publication The Atlantic has published an article authored by two university professors titled “Internet Speech Will Never Go Back to Normal”, subtitled “In the debate over freedom versus control of the global network, China was largely correct, and the US was wrong.” The article is actually worth reading [&hellip;]'>Narrative Managers Argue China-Like Internet Censorship Is Needed</a> <span class="rss-date">April 27, 2020</span></li><li><a class='rsswidget' href='https://alethonews.com/2020/04/27/history-teacher-fired-for-allowing-students-to-question-holocaust-loses-lawsuit-on-appeal/' title='By Eric Striker | National Justice | April 27, 2020 Jason Mostafa Ali, a New Jersey history teacher of Egyptian descent, had his appeal in a lawsuit alleging discrimination at the hands of the principal at his school tossed out of federal court. The dispute began in 2017, when Woodbridge High School’s Jewish principal Glenn […]'>History Teacher Fired for Allowing Students to Question “Holocaust” Loses Lawsuit On Appeal</a> <span class="rss-date">April 27, 2020</span></li><li><a class='rsswidget' href='https://alethonews.com/2020/04/27/israel-freezes-palestinian-authority-tax-revenue-again/' title='MEMO | April 27, 2020 A court in Jerusalem decided on Sunday to freeze NIS450m ($128m) of Palestinian Authority tax revenue collected by Israeli customs, Quds Press has reported. The decision followed a lawsuit submitted by dozens of Israelis whose relatives were killed in resistance action against the military occupation during the Second Intifada. The […] [&hellip;]'>Israel freezes Palestinian Authority tax revenue again</a> <span class="rss-date">April 27, 2020</span></li><li><a class='rsswidget' href='https://alethonews.com/2020/04/27/why-outside-air-is-safe-and-park-closures-should-end/' title='Cliff Mass Weather Blog | April 18, 2020 During the past month, the fear of coronavirus had spurred political leaders to close parks and nature areas throughout the country. In Washington State, all state parks and state lands managed by the Department of Natural Resources are closed through at least May 4. Here in Seattle, […]'>Why Outside Air is Safe and Park Closures Should End</a> <span class="rss-date">April 27, 2020</span></li><li><a class='rsswidget' href='https://alethonews.com/2020/04/27/dr-shiva-live-how-vitamin-d-defends-you-more-evidence-msm-forced-to-admit-truth/' title='Dr. Shiva Ayyadurai | April 20, 2020 Learn more about my technology #CytoSolve that helps discover molecular pathways. #VitaminD #TruthFreedomHealth ——- CytoSolve provides the world’s first computational systems biology platform for scalable integration of molecular pathway models to enable predictive and quantitative understanding of complex biomolecular pr [&hellip;]'>Dr SHIVA LIVE: How Vitamin D Defends YOU – More EVIDENCE &amp; MSM Forced to Admit Truth</a> <span class="rss-date">April 27, 2020</span></li><li><a class='rsswidget' href='https://alethonews.com/2020/04/26/home-latest-news-recent-legislation-action-alerts-about-donate-subscribe-israel-may-ask-for-double-its-usual-3-8-billion-from-the-u-s-this-year/' title='By Alison Weir | If Americans Knew | April 26, 2020 Breaking Defense, a digital magazine that covers military issues, reports that Israel may ask for its U.S. aid early, possibly in a lump sum that could be as high as $7.6 billion. This would work out to almost $21 million per day from American taxpayers, […]'>Israel may ask for double its usual $3.8 billion from the U.S this year</a> <span class="rss-date">April 27, 2020</span></li><li><a class='rsswidget' href='https://alethonews.com/2020/04/26/two-palestinians-wounded-in-violent-israeli-raid-on-kafr-qaddum-settlers-pitch-tent-in-bethlehem/' title='Palestine Information Center – April 26, 2020 WEST BANK – Two Palestinian young men were badly injured during violent clashes on Saturday with the Israeli occupation forces in Kafr Qaddum town, east of Qalqilya. Local activist Murad Shetaiwi said that a large number of Israeli troops stormed the town from different sides and embarked on […]'>Two Palestinians wounded in violent Israeli raid on Kafr Qaddum, Settlers pitch tent in Bethlehem</a> <span class="rss-date">April 26, 2020</span></li><li><a class='rsswidget' href='https://alethonews.com/2020/04/26/us-seeking-to-replace-iraqs-pmu-in-the-western-anbar-province-bordering-syria-analyst/' title='Press TV – April 26, 2020 An Iraqi military advisor and analyst has said that the US is seeking to replace Iraq’s Popular Mobilization Units in the western Anbar province bordering Syria with its own forces. Speaking to Iraq’s al-Maloumah news agency on Sunday, Safa al-A’ssam said that Washington seeks to force the PMU out […]'>US seeking to replace Iraq’s PMU in the western Anbar province bordering Syria: Analyst</a> <span class="rss-date">April 26, 2020</span></li><li><a class='rsswidget' href='https://alethonews.com/2020/04/26/jacobin-magazine-is-funded-by-zionist-money-stiffs-authors/' title='By Eric Striker • National Justice • April 25, 2020 Jacobin Magazine is today the premier magazine of the “Bernie Left” and the Democratic Socialists of America. Since 2017, they have come under attack for purging many of the original writers who captured the essence of left-wing populism — defending white working people, pushing back […]'>Jacobin Magazine Is Funded by Zionist Money; Stiffs Authors</a> <span class="rss-date">April 26, 2020</span></li><li><a class='rsswidget' href='https://alethonews.com/2020/04/26/a-tale-of-two-cruise-ships-the-cuban-difference/' title='By Tim Anderson | American Herald Tribune | April 26, 2020 On 19 March two cruise ships with COVID19 infected passengers and crew were evacuated, one in Havana and the other in Sydney. The first evacuation, of the Braemar, was so successful and uneventful that it barely raised a ripple in the world media. The […]'>A Tale of Two Cruise Ships: The Cuban Difference</a> <span class="rss-date">April 26, 2020</span></li><li><a class='rsswidget' href='https://alethonews.com/2020/04/26/the-covid-19-pandemic-exposes-deep-flaws-in-americas-broken-healthcare-system/' title='By Margaret Flowers | RT | April 26, 2020 The coronavirus crisis is demonstrating why it’s time we replaced a system that exists purely for profits with one that puts public health first. When it comes to the number of Covid-19 cases and deaths, the United States is off the charts compared to other countries. […]'>The Covid-19 pandemic exposes deep flaws in America’s broken healthcare system</a> <span class="rss-date">April 26, 2020</span></li><li><a class='rsswidget' href='https://alethonews.com/2020/04/26/u-s-concocting-intel-to-frame-china-for-covid-19-crisis/' title='By Finian Cunningham | Strategic Culture Foundation | April 25, 2020 China’s communist leaders have blood on their hands, so say U.S. hawks. Chinaphobes in Congress and a battalion of media pundits are demanding compensation from Beijing for the spiraling death toll and economic destruction incurred by the United States. Already U.S. states have begun […] [&hellip;]'>U.S. Concocting Intel to Frame China for COVID-19 Crisis</a> <span class="rss-date">April 26, 2020</span></li><li><a class='rsswidget' href='https://alethonews.com/2020/04/26/oregon-state-university-researcher-vitamins-c-d-can-help-prevent-covid-19/' title='“The stakes are huge” By Whitney Woodworth | Salem Statesman Journal | April 23, 2020 Supplements containing vitamins C and D, along with other micronutrients [zinc], can be a “safe, effective and low-cost” means to fight off COVID-19 and other acute respiratory tract diseases, according to an Oregon State University researcher. Adrian Gombart of OSU’s […] [&hellip;]'>Oregon State University researcher: Vitamins C, D can help prevent COVID-19</a> <span class="rss-date">April 26, 2020</span></li><li><a class='rsswidget' href='https://alethonews.com/2020/04/26/palestinians-hunker-down-for-ramadan-facing-a-virus-that-doesnt-discriminate-but-an-occupier-that-does/' title='By Jonathan Cook | Palestine DeepDive | April 25, 2020 As the holy fasting month of Ramadan begins, the coronavirus outbreak in Israel and the Palestinian territories is proving how inevitably intertwined the two populations’ lives are, while also underlining the extreme differentials of power between them. While 15,000 Israelis have tested positive for Covi [&hellip;]'>Palestinians hunker down for Ramadan, facing a virus that doesn’t discriminate but an occupier that does</a> <span class="rss-date">April 26, 2020</span></li><li><a class='rsswidget' href='https://alethonews.com/2020/04/26/the-senseless-battle-of-peleliu/' title='Tales of the American Empire The 1944 plan to retake the Philippines was to invade the island of Peleliu first to deny the Japanese use of its excellent airfield, which could then be used by American aircraft to support a US Army landing in the southern Philippines. A huge US Navy carrier task force cruised […]'>The Senseless Battle of Peleliu</a> <span class="rss-date">April 26, 2020</span></li><li><a class='rsswidget' href='https://alethonews.com/2020/04/25/airlines-are-in-freefall-amid-covid-19-pandemic-but-why-should-taxpayers-foot-the-bill/' title='RT | April 25, 2020 Airlines are turning to governments for rescue money – but bailing out the massive capitalist ventures makes about as much sense as leaving the middle row empty to avoid the virus. With the world in a tailspin from Covid-19, airlines are in for a bumpy ride – and some of […]'>Airlines are in freefall amid Covid-19 pandemic, but why should taxpayers foot the bill?</a> <span class="rss-date">April 25, 2020</span></li></ul></li>
+<li id="rss-34" class="widget widget_rss"><h2 class="widgettitle"><a class="rsswidget" href="https://israelpalestinenews.org/feed/" title="Syndicate this content"><img style="background: orange; color: white; border: none;" width="14" height="14" src="https://s-ssl.wordpress.com/wp-includes/images/rss.png?m=1354137473h" alt="RSS" /></a> <a class="rsswidget" href="https://israelpalestinenews.org" title="An essential compilation of news and analysis about Palestine, Israel, and related topics">If Americans Knew</a></h2>
+<ul><li><a class='rsswidget' href='https://israelpalestinenews.org/israel-may-ask-for-double-its-usual-3-8-billion-from-the-u-s-this-year/' title='Breaking Defense magazine reports that Israel may ask to get its yearly aid ahead of time, and possibly twice as much as usual… But 26 million Americans out of jobs and U.S. companies closing due to coronavirus might object… A petition proposes: ‘Israel has received over $10 million per day, year after year. This year it’s time to keep our money home.’ [&hellip;]'>Israel may ask for double its usual $3.8 billion from the U.S this year</a> <span class="rss-date">April 26, 2020</span></li><li><a class='rsswidget' href='https://israelpalestinenews.org/israeli-forces-shoot-youth-kill-man-invade-gaza-raze-farmland-abduct-people-etc/' title='Some Israeli actions in the Palestinian Territories April 21-23: Israelis attack farmers, fishermen, villagers, children, invade homes - the usual. News reports from IMEMC...'>Israeli forces shoot youth, kill man, invade Gaza, raze farmland, abduct people, etc</a> <span class="rss-date">April 23, 2020</span></li><li><a class='rsswidget' href='https://israelpalestinenews.org/israeli-fifth-column-in-virginia-funnels-resources-to-israel/' title='By Philip Giraldi: The Virginia Israel Advisory Board is little more than a mechanism set up to carry out licensed robbery of Virginia state resources being run by a cabal of local Jewish Americans and Israelis to benefit their co-religionists in Israel. The VIAB is actually part of the Virginia state government. It is funded by the Commonwealth of Virginia [&hellip;]'>Israeli fifth column in Virginia funnels resources to Israel</a> <span class="rss-date">April 20, 2020</span></li></ul></li>
+<li id="rss-36" class="widget widget_rss"><h2 class="widgettitle"><a class="rsswidget" href="https://indianpunchline.com/feed/" title="Syndicate this content"><img style="background: orange; color: white; border: none;" width="14" height="14" src="https://s-ssl.wordpress.com/wp-includes/images/rss.png?m=1354137473h" alt="RSS" /></a> <a class="rsswidget" href="https://indianpunchline.com" title="">Indian Punchline</a></h2>
+<ul><li><a class='rsswidget' href='https://indianpunchline.com/trump-and-putin-revisit-the-spirit-of-the-elbe/' title='Soviet officers and American soldiers met up at the Elbe River near Torgau, Germany, 25th April, 1945   Unusual for a Saturday evening, the White House and the Kremlin upgraded their websites simultaneously to feature a joint statement by the two presidents on “Commemorating the 75th Anniversary of the Meeting on the Elbe” (here and … Continue reading &quot; [&hellip;]'>Trump and Putin revisit the “Spirit of the Elbe”</a> <span class="rss-date">April 26, 2020</span></li></ul></li>
+<li id="rss-35" class="widget widget_rss"><h2 class="widgettitle"><a class="rsswidget" href="https://notalotofpeopleknowthat.wordpress.com/feed/" title="Syndicate this content"><img style="background: orange; color: white; border: none;" width="14" height="14" src="https://s-ssl.wordpress.com/wp-includes/images/rss.png?m=1354137473h" alt="RSS" /></a> <a class="rsswidget" href="https://notalotofpeopleknowthat.wordpress.com" title="“We do not believe any group of men adequate enough or wise enough to operate without scrutiny or without criticism. We know that the only way to avoid error is to detect it, that the only way to detect it is to be free to inquire. We know that in secrecy error undetected will flourish and subvert”.  - J Robert Oppenheimer.">Not A Lot Of People Know That</a></h2>
+<ul><li><a class='rsswidget' href='https://notalotofpeopleknowthat.wordpress.com/2020/04/27/climate-change-propaganda-for-7-year-olds/' title='By Paul Homewood   One of our readers sent me this power point presentation, which his seven year old was given for home schooling on Earth Day. I have not included all of the slides, but these are the key ones: What is Climate Change Powerpoint The whole thing is nothing but pure propaganda. It […]'>Climate Change Propaganda For 7-Year Olds</a> <span class="rss-date">April 27, 2020</span></li><li><a class='rsswidget' href='https://notalotofpeopleknowthat.wordpress.com/2020/04/26/coronavirus-recovery-plan-must-tackle-climate-change-bbc/' title='By Paul Homewood   This is something we are going to hear a lot more of in coming months, the idea that any economic recovery plan should be centred around the Green New Deal agenda:       Tackling climate change must be woven into the solution to the Covid-19 economic crisis, the UK will […]'>Coronavirus recovery plan ‘must tackle climate change’-BBC</a> <span class="rss-date">April 26, 2020</span></li><li><a class='rsswidget' href='https://notalotofpeopleknowthat.wordpress.com/2020/04/24/four-twenty-sevens-error-strewn-report/' title='By Paul Homewood Four Twenty Seven claims to be the leading publisher and provider of market intelligence on the economic risk of climate change. According to their website: “Our mission is to catalyse climate adaptation and resilience investments by enabling the integration of climate science into business and policy decisions. In July 2019, Four Twenty […] [&hellip;]'>Four Twenty Seven’s Error Strewn Report</a> <span class="rss-date">April 24, 2020</span></li></ul></li>
+<li id="linkcat-121493" class="widget widget_links"><h2 class="widgettitle">More Links</h2>
+
+	<ul class='xoxo blogroll'>
+<li><a href="https://www.youtube.com/channel/UCSRc-wteNLZf3oSEIj5Rsow" title="youtube content cited or embeded at Aletho News">1 Atheo Videos</a></li>
+<li><a href="http://www.almanar.com.lb/english/">Al-Manar</a></li>
+<li><a href="http://www.imemc.org/">International Middle East Media Center</a></li>
+<li><a href="http://www.presstv.ir/">Press TV</a></li>
+<li><a href="http://www.palestine-info.co.uk/en/">The Voice of Palestine</a></li>
+
+	</ul>
+</li>
+
+<li id="text-6" class="widget widget_text"><h2 class="widgettitle">Contact:</h2>
+			<div class="textwidget">atheonews (at) gmail.com
+</div>
+		</li>
+<li id="text-4" class="widget widget_text"><h2 class="widgettitle">Disclaimer</h2>
+			<div class="textwidget"><p>This site is provided as a research and reference tool. Although we make every reasonable effort to ensure that the information and data provided at this site are useful, accurate, and current, we cannot guarantee that the information and data provided here will be error-free. By using this site, you assume all responsibility for and risk arising from your use of and reliance upon the contents of this site.</p>
+<p>This site and the information available through it do not, and are not intended to constitute legal advice. Should you require legal advice, you should consult your own attorney. </p>
+<p>Nothing within this site or linked to by this site constitutes investment advice or medical advice. </p>
+<p>Materials accessible from or added to this site by third parties, such as comments posted, are strictly the responsibility of the third party who added such materials or made them accessible and we neither endorse nor undertake to control, monitor, edit or assume responsibility for any such third-party material.</p>
+<p>The posting of stories, commentaries, reports, documents and links (embedded or otherwise) on this site does not in any way, shape or form, implied or otherwise, necessarily express or suggest endorsement or support of any of such posted material or parts therein.</p>
+<p>The word &#8220;alleged&#8221; is deemed to occur before the word &#8220;fraud.&#8221; Since the rule of law still applies. To peasants, at least.</p>
+<p>Fair Use</p>
+<p>This site contains copyrighted material the use of which has not always been specifically authorized by the copyright owner. We are making such material available in our efforts to advance understanding of environmental, political, human rights, economic, democracy, scientific, and social justice issues, etc. We believe this constitutes a &#8216;fair use&#8217; of any such copyrighted material as provided for in section 107 of the US Copyright Law. In accordance with Title 17 U.S.C. Section 107, the material on this site is distributed without profit to those who have expressed a prior interest in receiving the included information for research and educational purposes. For more info go to: http://www.law.cornell.edu/uscode/17/107.shtml. If you wish to use copyrighted material from this site for purposes of your own that go beyond &#8216;fair use&#8217;, you must obtain permission from the copyright owner. </p>
+<p>DMCA Contact</p>
+<p>This is information for anyone that wishes to challenge our “fair use” of copyrighted material.</p>
+<p>If you are a legal copyright holder or a designated agent for such and you believe that content residing on or accessible through our website infringes a copyright and falls outside the boundaries of “Fair Use”, please send a notice of infringement by contacting atheonews@gmail.com.</p>
+<p>We will respond and take necessary action immediately.</p>
+<p>If notice is given of an alleged copyright violation we will act expeditiously to remove or disable access to the material(s) in question.</p>
+<p>All 3rd party material posted on this website is copyright the respective owners / authors. Aletho News makes no claim of copyright on such material.</p>
+</div>
+		</li>
+  </ul>
+</div>
+</div>
+
+      
+<div id="footer">
+	<h2 class="hide">Site info</h2>
+	<span>Aletho News</span><br />
+	 <a href="https://wordpress.com/?ref=footer_blog" rel="nofollow">Blog at WordPress.com.</a>
+</div>
+
+
+    </div>
+
+  </div>
+
+<!--  -->
+<script src='//0.gravatar.com/js/gprofiles.js?ver=202018y'></script>
+<script>
+var WPGroHo = {"my_hash":""};
+</script>
+<script type='text/javascript' src='https://s1.wp.com/wp-content/mu-plugins/gravatar-hovercards/wpgroho.js?m=1380573781h'></script>
+
+	<script>
+		//initialize and attach hovercards to all gravatars
+		jQuery( document ).ready( function( $ ) {
+
+			if (typeof Gravatar === "undefined"){
+				return;
+			}
+
+			if ( typeof Gravatar.init !== "function" ) {
+				return;
+			}			
+
+			Gravatar.profile_cb = function( hash, id ) {
+				WPGroHo.syncProfileData( hash, id );
+			};
+			Gravatar.my_hash = WPGroHo.my_hash;
+			Gravatar.init( 'body', '#wp-admin-bar-my-account' );
+		});
+	</script>
+
+		<div style="display:none">
+	<div class="grofile-hash-map-61db5c9855a24908216d93b590923ae6">
+	</div>
+	<div class="grofile-hash-map-25bbfe719b020e1d41733710c600082b">
+	</div>
+	<div class="grofile-hash-map-819a17dd5530f881b9a6056c06121ce8">
+	</div>
+	<div class="grofile-hash-map-c36c6435a0d962475d04366f2289a9b6">
+	</div>
+	<div class="grofile-hash-map-39be4f972002bb9886678981d5482ba5">
+	</div>
+	</div>
+<script>
+var HighlanderComments = {"loggingInText":"Logging In\u2026","submittingText":"Posting Comment\u2026","postCommentText":"Post Comment","connectingToText":"Connecting to %s","commentingAsText":"%1$s: You are commenting using your %2$s account.","logoutText":"Log Out","loginText":"Log In","connectURL":"https:\/\/alethonews.wordpress.com\/public.api\/connect\/?action=request&domain=alethonews.com","logoutURL":"https:\/\/alethonews.wordpress.com\/wp-login.php?action=logout&_wpnonce=48f9f90c96","homeURL":"https:\/\/alethonews.com\/","postID":"195979","gravDefault":"retro","enterACommentError":"Please enter a comment","enterEmailError":"Please enter your email address here","invalidEmailError":"Invalid email address","enterAuthorError":"Please enter your name here","gravatarFromEmail":"This picture will show whenever you leave a comment. Click to customize it.","logInToExternalAccount":"Log in to use details from one of these accounts.","change":"Change","changeAccount":"Change Account","comment_registration":"","userIsLoggedIn":"","isJetpack":"","text_direction":"ltr"};
+</script>
+<script type='text/javascript' src='https://s0.wp.com/_static/??/wp-content/js/jquery/jquery.autoresize.js,/wp-content/mu-plugins/highlander-comments/script.js?m=1573483029j'></script>
+
+	<div id="carousel-reblog-box">
+		<form action="#" name="carousel-reblog">
+			<textarea id="carousel-reblog-content" name="carousel-reblog-content" placeholder="Add your thoughts here... (optional)"></textarea>
+			<label for="carousel-reblog-to-blog-id" id="carousel-reblog-lblogid">Post to</label>
+			<select name="carousel-reblog-to-blog-id" id="carousel-reblog-to-blog-id">
+						</select>
+
+			<div class="submit">
+				<span class="canceltext"><a href="#" class="cancel">Cancel</a></span>
+				<input type="submit" name="carousel-reblog-submit" class="button" id="carousel-reblog-submit" value="Reblog Post" />
+				<input type="hidden" id="carousel-reblog-blog-id" value="10703098" />
+				<input type="hidden" id="carousel-reblog-blog-url" value="https://alethonews.com" />
+				<input type="hidden" id="carousel-reblog-blog-title" value="Aletho News" />
+				<input type="hidden" id="carousel-reblog-post-url" value="" />
+				<input type="hidden" id="carousel-reblog-post-title" value="" />
+			</div>
+
+			<input type="hidden" id="_wpnonce" name="_wpnonce" value="a3520a1e35" /><input type="hidden" name="_wp_http_referer" value="/2020/03/20/utter-contempt-for-human-life-iranian-fm-zarif-slams-us-for-hitting-tehran-with-new-sanctions-amid-covid-19-crisis/" />		</form>
+
+		<div class="arrow"></div>
+	</div>
+
+	<script type="text/javascript">
+		window.WPCOM_sharing_counts = {"https:\/\/alethonews.com\/2020\/03\/20\/utter-contempt-for-human-life-iranian-fm-zarif-slams-us-for-hitting-tehran-with-new-sanctions-amid-covid-19-crisis\/":195979};
+	</script>
+					<div id="sharing_email" style="display: none;">
+		<form action="/2020/03/20/utter-contempt-for-human-life-iranian-fm-zarif-slams-us-for-hitting-tehran-with-new-sanctions-amid-covid-19-crisis/" method="post">
+			<label for="target_email">Send to Email Address</label>
+			<input type="email" name="target_email" id="target_email" value="" />
+
+			
+				<label for="source_name">Your Name</label>
+				<input type="text" name="source_name" id="source_name" value="" />
+
+				<label for="source_email">Your Email Address</label>
+				<input type="email" name="source_email" id="source_email" value="" />
+
+						<input type="text" id="jetpack-source_f_name" name="source_f_name" class="input" value="" size="25" autocomplete="off" title="This field is for validation and should not be changed" />
+			
+			<div
+				class="g-recaptcha"
+				data-sitekey="6LcmyE0UAAAAALID28yVNg7pFCodGaArJzHitez_"
+				data-theme="light"
+				data-type="image"
+				data-tabindex="0"></div>
+			<script type="text/javascript" src="https://www.google.com/recaptcha/api.js?hl=en" async></script>
+			
+			<img style="float: right; display: none" class="loading" src="https://s2.wp.com/wp-content/mu-plugins/post-flair/sharing/images/loading.gif" alt="loading" width="16" height="16" />
+			<input type="submit" value="Send Email" class="sharing_send" />
+			<a rel="nofollow" href="#cancel" class="sharing_cancel" role="button">Cancel</a>
+
+			<div class="errors errors-1" style="display: none;">
+				Post was not sent - check your email addresses!			</div>
+
+			<div class="errors errors-2" style="display: none;">
+				Email check failed, please try again			</div>
+
+			<div class="errors errors-3" style="display: none;">
+				Sorry, your blog cannot share posts by email.			</div>
+		</form>
+	</div>
+		<link rel='stylesheet' id='all-css-0-3' href='https://s0.wp.com/_static/??/wp-content/plugins/gutenberg-blocks/jetpack-layout-grid/blocks/front.css,/wp-content/mu-plugins/carousel/jetpack-carousel.css?m=1583834955j&cssminify=yes' type='text/css' media='all' />
+<script>
+var comment_like_text = {"loading":"Loading..."};
+</script>
+<script>
+var actionbardata = {"siteID":"10703098","siteName":"Aletho News","siteURL":"https:\/\/alethonews.com","icon":"<img alt='' src='https:\/\/secure.gravatar.com\/blavatar\/e49c80b85d64875f3966c3f8eba0b69e?s=50&d=https%3A%2F%2Fs2.wp.com%2Fi%2Flogo%2Fwpcom-gray-white.png' class='avatar avatar-50' height='50' width='50' \/>","canManageOptions":"","canCustomizeSite":"","isFollowing":"","themeSlug":"pub\/andreas04","signupURL":"https:\/\/wordpress.com\/start\/","loginURL":"https:\/\/wordpress.com\/log-in?redirect_to=https%3A%2F%2Falethonews.com%2F2020%2F03%2F20%2Futter-contempt-for-human-life-iranian-fm-zarif-slams-us-for-hitting-tehran-with-new-sanctions-amid-covid-19-crisis%2F&signup_flow=account&domain=alethonews.com","themeURL":"","xhrURL":"https:\/\/alethonews.com\/wp-admin\/admin-ajax.php","nonce":"278b3b8b2b","isSingular":"1","isFolded":"","isLoggedIn":"","isMobile":"","subscribeNonce":"<input type=\"hidden\" id=\"_wpnonce\" name=\"_wpnonce\" value=\"6d8b39e203\" \/>","referer":"https:\/\/alethonews.com\/2020\/03\/20\/utter-contempt-for-human-life-iranian-fm-zarif-slams-us-for-hitting-tehran-with-new-sanctions-amid-covid-19-crisis\/","canFollow":"1","feedID":"82959919","statusMessage":"","customizeLink":"https:\/\/alethonews.wordpress.com\/wp-admin\/customize.php?url=https%3A%2F%2Falethonews.wordpress.com%2F2020%2F03%2F20%2Futter-contempt-for-human-life-iranian-fm-zarif-slams-us-for-hitting-tehran-with-new-sanctions-amid-covid-19-crisis%2F","postID":"195979","shortlink":"https:\/\/wp.me\/pIUmC-OYX","canEditPost":"","editLink":"https:\/\/wordpress.com\/post\/alethonews.com\/195979","statsLink":"https:\/\/wordpress.com\/stats\/post\/195979\/alethonews.com","i18n":{"view":"View site","follow":"Follow","following":"Following","edit":"Edit","login":"Log in","signup":"Sign up","customize":"Customize","report":"Report this content","themeInfo":"Get theme: Andreas04","shortlink":"Copy shortlink","copied":"Copied","followedText":"New posts from this site will now appear in your <a href=\"https:\/\/wordpress.com\/read\">Reader<\/a>","foldBar":"Collapse this bar","unfoldBar":"Expand this bar","editSubs":"Manage subscriptions","viewReader":"View site in Reader","viewReadPost":"View post in Reader","subscribe":"Sign me up","enterEmail":"Enter your email address","followers":"Join 2,226 other followers","alreadyUser":"Already have a WordPress.com account? <a href=\"https:\/\/wordpress.com\/log-in?redirect_to=https%3A%2F%2Falethonews.com%2F2020%2F03%2F20%2Futter-contempt-for-human-life-iranian-fm-zarif-slams-us-for-hitting-tehran-with-new-sanctions-amid-covid-19-crisis%2F&signup_flow=account&domain=alethonews.com\">Log in now.<\/a>","stats":"Stats"}};
+</script>
+<script>
+var jetpackCarouselStrings = {"widths":[370,700,1000,1200,1400,2000],"is_logged_in":"","lang":"en","ajaxurl":"https:\/\/alethonews.com\/wp-admin\/admin-ajax.php","nonce":"475e5e5f3f","display_exif":"1","display_geo":"1","single_image_gallery":"1","single_image_gallery_media_file":"","background_color":"black","comment":"Comment","post_comment":"Post Comment","write_comment":"Write a Comment...","loading_comments":"Loading Comments...","download_original":"View full size <span class=\"photo-size\">{0}<span class=\"photo-size-times\">\u00d7<\/span>{1}<\/span>","no_comment_text":"Please be sure to submit some text with your comment.","no_comment_email":"Please provide an email address to comment.","no_comment_author":"Please provide your name to comment.","comment_post_error":"Sorry, but there was an error posting your comment. Please try again later.","comment_approved":"Your comment was approved.","comment_unapproved":"Your comment is in moderation.","camera":"Camera","aperture":"Aperture","shutter_speed":"Shutter Speed","focal_length":"Focal Length","copyright":"Copyright","comment_registration":"0","require_name_email":"1","login_url":"https:\/\/alethonews.wordpress.com\/wp-login.php?redirect_to=https%3A%2F%2Falethonews.com%2F2020%2F03%2F20%2Futter-contempt-for-human-life-iranian-fm-zarif-slams-us-for-hitting-tehran-with-new-sanctions-amid-covid-19-crisis%2F","blog_id":"10703098","meta_data":["camera","aperture","shutter_speed","focal_length","copyright"],"local_comments_commenting_as":"<fieldset><label for=\"email\">Email (Required)<\/label> <input type=\"text\" name=\"email\" class=\"jp-carousel-comment-form-field jp-carousel-comment-form-text-field\" id=\"jp-carousel-comment-form-email-field\" \/><\/fieldset><fieldset><label for=\"author\">Name (Required)<\/label> <input type=\"text\" name=\"author\" class=\"jp-carousel-comment-form-field jp-carousel-comment-form-text-field\" id=\"jp-carousel-comment-form-author-field\" \/><\/fieldset><fieldset><label for=\"url\">Website<\/label> <input type=\"text\" name=\"url\" class=\"jp-carousel-comment-form-field jp-carousel-comment-form-text-field\" id=\"jp-carousel-comment-form-url-field\" \/><\/fieldset>","reblog":"Reblog","reblogged":"Reblogged","reblog_add_thoughts":"Add your thoughts here... (optional)","reblogging":"Reblogging...","post_reblog":"Post Reblog","stats_query_args":"blog=10703098&v=wpcom&tz=-6&user_id=0&subd=alethonews","is_public":"1","reblog_enabled":""};
+</script>
+<script>
+var sharing_js_options = {"lang":"en","counts":"1","is_stats_active":"1"};
+</script>
+<script type='text/javascript' src='https://s1.wp.com/_static/??-eJylUttSwkAM/SG3AbQDPDh+irNsU0i7Nze7Rfx6t5YiYKeO41MySU5yThI4eqGcjWgjNAwVdqTQvxcNP8BtyjuOBpnlHscsWaVThfyFJI7Qoa1c6FPe6VNNWheG7H0zr9OeLEOdtBZMEQVWFMnuxZCBzdN2vVotSlDOGGeH3oM/Qax5SxhOZ1OQ7QiPv5Y1GL1UrQjI9IH35SaJkaSmNgvMoIQHaSuNYUp9Ty4DczuvT//TvNMuB/OyWWRXtefNToi6YjnOH9g2Pe0d8JH8nLQfoJvADFBWWaHYyQBGcsSQPeE6DIH6dVxif+wQQz7I7FgVydkedPGmbsH+e/3X8dsHuK6a2o0MLjFqGB9lDMzxa4kNRvFYLOA1T4baBTNT3x9Z1FpSAD7IkJ9htBn0Yp6X5WZdrrdluWw+AX8pXCU='></script>
+<script type='text/javascript'>
+( 'fetch' in window ) || document.write( '<script src="https://s0.wp.com/wp-includes/js/dist/vendor/wp-polyfill-fetch.min.js?m=1573572739h&#038;ver=3.0.0"></scr' + 'ipt>' );( document.contains ) || document.write( '<script src="https://s1.wp.com/wp-includes/js/dist/vendor/wp-polyfill-node-contains.min.js?m=1540208548h&#038;ver=3.42.0"></scr' + 'ipt>' );( window.DOMRect ) || document.write( '<script src="https://s0.wp.com/wp-includes/js/dist/vendor/wp-polyfill-dom-rect.min.js?m=1585663916h&#038;ver=3.42.0"></scr' + 'ipt>' );( window.URL && window.URL.prototype && window.URLSearchParams ) || document.write( '<script src="https://s2.wp.com/wp-includes/js/dist/vendor/wp-polyfill-url.min.js?m=1585663916h&#038;ver=3.6.4"></scr' + 'ipt>' );( window.FormData && window.FormData.prototype.keys ) || document.write( '<script src="https://s1.wp.com/wp-includes/js/dist/vendor/wp-polyfill-formdata.min.js?m=1550600082h&#038;ver=3.0.12"></scr' + 'ipt>' );( Element.prototype.matches && Element.prototype.closest ) || document.write( '<script src="https://s2.wp.com/wp-includes/js/dist/vendor/wp-polyfill-element-closest.min.js?m=1540208548h&#038;ver=2.0.2"></scr' + 'ipt>' );
+( window.URL && window.URL.prototype && window.URLSearchParams ) || document.write( '<script src="https://s2.wp.com/wp-content/plugins/gutenberg-core/7.8.1/vendor/wp-polyfill-url.min.7490158b.js?m=1586214842h&#038;ver=3.6.4"></scr' + 'ipt>' );
+( window.DOMRect ) || document.write( '<script src="https://s1.wp.com/wp-content/plugins/gutenberg-core/7.8.1/vendor/wp-polyfill-dom-rect.7e21c103.js?m=1586214842h&#038;ver=3.42.0"></scr' + 'ipt>' );
+</script>
+<script type='text/javascript'>
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-twitter', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomtwitter', 'menubar=1,resizable=1,width=600,height=350' );
+				return false;
+			});
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-facebook', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomfacebook', 'menubar=1,resizable=1,width=600,height=400' );
+				return false;
+			});
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-skype', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomskype', 'menubar=1,resizable=1,width=305,height=665' );
+				return false;
+			});
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-pocket', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcompocket', 'menubar=1,resizable=1,width=450,height=450' );
+				return false;
+			});
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-telegram', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomtelegram', 'menubar=1,resizable=1,width=450,height=450' );
+				return false;
+			});
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-tumblr', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomtumblr', 'menubar=1,resizable=1,width=450,height=450' );
+				return false;
+			});
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-linkedin', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomlinkedin', 'menubar=1,resizable=1,width=580,height=450' );
+				return false;
+			});
+</script>
+<script type="text/javascript">
+// <![CDATA[
+(function() {
+try{
+  if ( window.external &&'msIsSiteMode' in window.external) {
+    if (window.external.msIsSiteMode()) {
+      var jl = document.createElement('script');
+      jl.type='text/javascript';
+      jl.async=true;
+      jl.src='/wp-content/plugins/ie-sitemode/custom-jumplist.php';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(jl, s);
+    }
+  }
+}catch(e){}
+})();
+// ]]>
+</script>		<iframe src='https://widgets.wp.com/likes/master.html?ver=20190321#ver=20190321' scrolling='no' id='likes-master' name='likes-master' style='display:none;'></iframe>
+		<div id='likes-other-gravatars'><div class="likes-text"><span>%d</span> bloggers like this:</div><ul class="wpl-avatars sd-like-gravatars"></ul></div>
+<script src="//stats.wp.com/w.js?61" type="text/javascript" async defer></script>
+<script type="text/javascript">
+_tkq = window._tkq || [];
+_stq = window._stq || [];
+_tkq.push(['storeContext', {'blog_id':'10703098','blog_tz':'-6','user_lang':'en','blog_lang':'en','user_id':'0'}]);
+_stq.push(['view', {'blog':'10703098','v':'wpcom','tz':'-6','user_id':'0','post':'195979','subd':'alethonews'}]);
+_stq.push(['extra', {'crypt':'UE40eW5QN0p8M2Y/RE1TaVhzUzFMbjdWNHpwZGhTayxPSUFCMGNrd29+Smw0TDhnZmRTK0hlRi9QSGh6bi9GXVhBJWIlZlR5U1JMLU8/MkNtblkvY1dnXTdGWnR2JlAsbn5DVl04dnFoLS5NT09hNUd6SWxkW1FrVjRNfkNkM0J+N2xvZ10ldW9MMFI1YmFkOGZjX1ZWfmFWeHZWRXg0Umw4al9dZlFCN1pwSkxVeHEyTXpbUld0Wm05LmcxV3lIXXQmUyZpPXgsa11+ay1qM3Z8XzR5RWMrNi9ILXI4M1hFUnE9SHpmJmZddFVsX1k2ZXlpY3Qmdj0rLjgxTGtGUllIeE9BZERhVFN4ZG9NLzdxUmg4bX5hMy5uZXlYSkdwRVNZcHxjTEtkLXUmTi44Y0FUeH5vPXc1UlBzeXRvL1krUzdEfixpUS58NzhSUD9XQXlMWzFteXhWMlBZVkRPW19ZeW9uLnBY'}]);
+_stq.push([ 'clickTrackerInit', '10703098', '195979' ]);
+	</script>
+<noscript><img src="https://pixel.wp.com/b.gif?v=noscript" style="height:0px;width:0px;overflow:hidden" alt="" /></noscript>
+<script>
+if ( 'object' === typeof wpcom_mobile_user_agent_info ) {
+
+	wpcom_mobile_user_agent_info.init();
+	var mobileStatsQueryString = "";
+	
+	if( false !== wpcom_mobile_user_agent_info.matchedPlatformName )
+		mobileStatsQueryString += "&x_" + 'mobile_platforms' + '=' + wpcom_mobile_user_agent_info.matchedPlatformName;
+	
+	if( false !== wpcom_mobile_user_agent_info.matchedUserAgentName )
+		mobileStatsQueryString += "&x_" + 'mobile_devices' + '=' + wpcom_mobile_user_agent_info.matchedUserAgentName;
+	
+	if( wpcom_mobile_user_agent_info.isIPad() )
+		mobileStatsQueryString += "&x_" + 'ipad_views' + '=' + 'views';
+
+	if( "" != mobileStatsQueryString ) {
+		new Image().src = document.location.protocol + '//pixel.wp.com/g.gif?v=wpcom-no-pv' + mobileStatsQueryString + '&baba=' + Math.random();
+	}
+	
+}
+</script>
+</body>
+</html>

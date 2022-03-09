@@ -1,0 +1,748 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head profile="http://gmpg.org/xfn/11">
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+	<title>Top 10 most Demonic events of 2019 that indicate rise of Satanism | 22MOON.COM</title>
+
+	<link rel="stylesheet" href="https://s2.wp.com/wp-content/themes/pub/sunburn/style.css" type="text/css" media="screen" />
+	<link rel="pingback" href="https://rashmanly.com/xmlrpc.php" />
+
+	<style type="text/css"> @import url("https://s2.wp.com/wp-content/themes/pub/sunburn/style.css"); </style>
+	<!--[if gte IE 6]> 	<link rel="stylesheet" href="https://s2.wp.com/wp-content/themes/pub/sunburn/ie.css" type="text/css" media="screen" /> <![endif]-->
+	
+<!-- Async WordPress.com Remote Login -->
+<script id="wpcom_remote_login_js">
+var wpcom_remote_login_extra_auth = '';
+function wpcom_remote_login_remove_dom_node_id( element_id ) {
+	var dom_node = document.getElementById( element_id );
+	if ( dom_node ) { dom_node.remove(); }
+}
+function wpcom_remote_login_remove_dom_node_classes( class_name ) {
+	var dom_nodes = document.querySelectorAll( '.' + class_name );
+	for ( var i = 0; i < dom_nodes.length; i++ ) {
+		dom_nodes[i].remove();
+	}
+}
+function wpcom_remote_login_final_cleanup() {
+	wpcom_remote_login_remove_dom_node_classes( "wpcom_remote_login_msg" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_remote_login_key" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_remote_login_validate" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_remote_login_js" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_request_access_iframe" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_request_access_styles" );
+}
+
+// Watch for messages back from the remote login
+window.addEventListener( "message", function( e ) {
+	if ( e.origin === "https://r-login.wordpress.com" ) {
+		var data = {};
+		try {
+			data = JSON.parse( e.data );
+		} catch( e ) {
+			wpcom_remote_login_final_cleanup();
+			return;
+		}
+
+		if ( data.msg === 'LOGIN' ) {
+			// Clean up the login check iframe
+			wpcom_remote_login_remove_dom_node_id( "wpcom_remote_login_key" );
+
+			var id_regex = new RegExp( /^[0-9]+$/ );
+			var token_regex = new RegExp( /^.*|.*|.*$/ );
+			if (
+				token_regex.test( data.token )
+				&& id_regex.test( data.wpcomid )
+			) {
+				// We have everything we need to ask for a login
+				var script = document.createElement( "script" );
+				script.setAttribute( "id", "wpcom_remote_login_validate" );
+				script.src = '/remote-login.php?wpcom_remote_login=validate'
+					+ '&wpcomid=' + data.wpcomid
+					+ '&token=' + encodeURIComponent( data.token )
+					+ '&host=' + window.location.protocol
+						+ '//' + window.location.hostname;
+				document.body.appendChild( script );
+			}
+
+			return;
+		}
+
+		// Safari ITP, not logged in, so redirect
+		if ( data.msg === 'LOGIN-REDIRECT' ) {
+			window.location = 'https://wordpress.com/log-in?redirect_to=' + window.location.href;
+			return;
+		}
+
+		// Safari ITP, storage access failed, remove the request
+		if ( data.msg === 'LOGIN-REMOVE' ) {
+			var css_zap = 'html { -webkit-transition: margin-top 1s; transition: margin-top 1s; } /* 9001 */ html { margin-top: 0 !important; } * html body { margin-top: 0 !important; } @media screen and ( max-width: 782px ) { html { margin-top: 0 !important; } * html body { margin-top: 0 !important; } }';
+			var style_zap = document.createElement( 'style' );
+			style_zap.type = 'text/css';
+			style_zap.appendChild( document.createTextNode( css_zap ) );
+			document.body.appendChild( style_zap );
+
+			var e = document.getElementById( 'wpcom_request_access_iframe' );
+			e.parentNode.removeChild( e );
+
+			document.cookie = 'wordpress_com_login_access=denied; path=/; max-age=31536000';
+
+			return;
+		}
+
+		// Safari ITP
+		if ( data.msg === 'REQUEST_ACCESS' ) {
+			console.log( 'request access: safari' );
+
+			// Check ITP iframe enable/disable knob
+			if ( wpcom_remote_login_extra_auth !== 'safari_itp_iframe' ) {
+				return;
+			}
+
+			// If we are in a "private window" there is no ITP.
+			var private_window = false;
+			try {
+				var opendb = window.openDatabase( null, null, null, null );
+			} catch( e ) {
+				private_window = true;
+			}
+
+			if ( private_window ) {
+				console.log( 'private window' );
+				return;
+			}
+
+			var iframe = document.createElement( 'iframe' );
+			iframe.id = 'wpcom_request_access_iframe';
+			iframe.setAttribute( 'scrolling', 'no' );
+			iframe.setAttribute( 'sandbox', 'allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-top-navigation-by-user-activation' );
+			iframe.src = 'https://r-login.wordpress.com/remote-login.php?wpcom_remote_login=request_access&origin=' + encodeURIComponent( data.origin ) + '&wpcomid=' + encodeURIComponent( data.wpcomid );
+
+			var css = 'html { -webkit-transition: margin-top 1s; transition: margin-top 1s; } /* 9001 */ html { margin-top: 46px !important; } * html body { margin-top: 46px !important; } @media screen and ( max-width: 660px ) { html { margin-top: 71px !important; } * html body { margin-top: 71px !important; } #wpcom_request_access_iframe { display: block; height: 71px !important; } } #wpcom_request_access_iframe { border: 0px; height: 46px; position: fixed; top: 0; left: 0; width: 100%; min-width: 100%; z-index: 99999; background: #23282d; } ';
+
+			var style = document.createElement( 'style' );
+			style.type = 'text/css';
+			style.id = 'wpcom_request_access_styles';
+			style.appendChild( document.createTextNode( css ) );
+			document.body.appendChild( style );
+
+			document.body.appendChild( iframe );
+		}
+
+		if ( data.msg === 'DONE' ) {
+			wpcom_remote_login_final_cleanup();
+		}
+	}
+}, false );
+
+// Inject the remote login iframe after the page has had a chance to load
+// more critical resources
+window.addEventListener( "DOMContentLoaded", function( e ) {
+	var iframe = document.createElement( "iframe" );
+	iframe.style.display = "none";
+	iframe.setAttribute( "scrolling", "no" );
+	iframe.setAttribute( "id", "wpcom_remote_login_key" );
+	iframe.src = "https://r-login.wordpress.com/remote-login.php"
+		+ "?wpcom_remote_login=key"
+		+ "&origin=aHR0cHM6Ly9yYXNobWFubHkuY29t"
+		+ "&wpcomid=2851186"
+		+ "&time=1578078976";
+	document.body.appendChild( iframe );
+}, false );
+</script>
+<link rel='dns-prefetch' href='//s2.wp.com' />
+<link rel='dns-prefetch' href='//s1.wp.com' />
+<link rel='dns-prefetch' href='//rashmanly.wordpress.com' />
+<link rel='dns-prefetch' href='//s0.wp.com' />
+<link rel="alternate" type="application/rss+xml" title="22MOON.COM &raquo; Feed" href="https://rashmanly.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="22MOON.COM &raquo; Comments Feed" href="https://rashmanly.com/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="22MOON.COM &raquo; Top 10 most Demonic events of 2019 that indicate rise of&nbsp;Satanism Comments Feed" href="https://rashmanly.com/2020/01/01/top-10-most-demonic-events-of-2019-that-indicate-rise-of-satanism/feed/" />
+	<script type="text/javascript">
+		/* <![CDATA[ */
+		function addLoadEvent(func) {
+			var oldonload = window.onload;
+			if (typeof window.onload != 'function') {
+				window.onload = func;
+			} else {
+				window.onload = function () {
+					oldonload();
+					func();
+				}
+			}
+		}
+		/* ]]> */
+	</script>
+			<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s0.wp.com\/wp-content\/mu-plugins\/wpcom-smileys\/twemoji\/2\/72x72\/","ext":".png","svgUrl":"https:\/\/s0.wp.com\/wp-content\/mu-plugins\/wpcom-smileys\/twemoji\/2\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/s0.wp.com\/wp-includes\/js\/wp-emoji-release.min.js?m=1573557586h&ver=5.3.2"}};
+			!function(e,a,t){var r,n,o,i,p=a.createElement("canvas"),s=p.getContext&&p.getContext("2d");function c(e,t){var a=String.fromCharCode;s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,e),0,0);var r=p.toDataURL();return s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,t),0,0),r===p.toDataURL()}function l(e){if(!s||!s.fillText)return!1;switch(s.textBaseline="top",s.font="600 32px Arial",e){case"flag":return!c([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])&&(!c([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!c([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]));case"emoji":return!c([55357,56424,55356,57342,8205,55358,56605,8205,55357,56424,55356,57340],[55357,56424,55356,57342,8203,55358,56605,8203,55357,56424,55356,57340])}return!1}function d(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(i=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},o=0;o<i.length;o++)t.supports[i[o]]=l(i[o]),t.supports.everything=t.supports.everything&&t.supports[i[o]],"flag"!==i[o]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[i[o]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(r=t.source||{}).concatemoji?d(r.concatemoji):r.wpemoji&&r.twemoji&&(d(r.twemoji),d(r.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='all-css-0-1' href='https://s0.wp.com/_static/??-eJydU9lygzAM/KEaJ51mQh46/RYDiqPEB2OLUP6+MpDmat0OL0FydnWtJPtW1N4ROJK2E63pNLoo+7b2VkSLBoYHr6hjfJE/0wIYRdCI1kd68HI0gyeI8gjUqvokRu8JfsHqjt0KguZ/AshtsS5WsurQNLIyfqRXQYVBRhoM/CPMyLpmhzPDGN45anzvloYxavAdCR2wWRoiKEKn41I6oQWDDv7g7ztjREQCAQ2mhLMqclWsy+I1DVVPCk4JZIOR5Bmh/zVk7edS1inEamJMT8VUzKjX4pKmagxHvS3p8TW3cGl1+N22ihLCch4FBizDcrQeGw282AyZbUHwmaeMp1NVbYAYBf9a7KygA+fKnsQlFfl2vqYbGVE6T8is+G3kYmnwgifC6+TdnSP2RmHIH3TSn009Nn11cyRVp+CVCldrsdba+EoxIjWfZsB117xLymX1TRObmpPxoEIqf/7mWNHXyLm4Q3/vPJEm/eThba4vAT7s+3qz3e425a4sj199ygG4?cssminify=yes' type='text/css' media='all' />
+<style id='wp-block-library-inline-css'>
+.has-text-align-justify {
+	text-align:justify;
+}
+</style>
+<style id='jetpack-global-styles-frontend-style-inline-css'>
+:root { --font-headings: unset; --font-base: unset; --font-headings-default: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif; --font-base-default: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;}
+</style>
+<script>
+var related_posts_js_options = {"post_heading":"h4"};
+</script>
+<script type='text/javascript' src='https://s0.wp.com/_static/??-eJyFj9EOwiAMRX9Ihntw0wfjtyCrpAgFKbjo1wuJPrgsmjRpbnpy762co0DSrkzA0ta5FUiP9+osb+QvQHg0SWXoPNIH1oEyUG5sDJw9MCsDK1cfzuhAFIZUAco15hKWnC8iumKQWCZwNWoSzXWhVty/H0G6I8x/MQs5Kn0VCRifrfPJH/vd2B+24zDs7QszQHB9'></script>
+<link rel='stylesheet' id='all-css-0-2' href='https://s0.wp.com/wp-content/mu-plugins/highlander-comments/style.css?m=1530132353h&cssminify=yes' type='text/css' media='all' />
+<!--[if lt IE 8]>
+<link rel='stylesheet' id='highlander-comments-ie7-css'  href='https://s2.wp.com/wp-content/mu-plugins/highlander-comments/style-ie7.css?m=1351637563h&#038;ver=20110606' media='all' />
+<![endif]-->
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://rashmanly.wordpress.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://s1.wp.com/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='Trump Derangement Syndrome&nbsp;low-lights' href='https://rashmanly.com/2020/01/01/worst-of-the-decade-trump-derangement-syndrome/' />
+<link rel='next' title='2019 BOX OFFICE&nbsp;BOMBS' href='https://rashmanly.com/2020/01/01/2019-box-office-bombs/' />
+<meta name="generator" content="WordPress.com" />
+<link rel="canonical" href="https://rashmanly.com/2020/01/01/top-10-most-demonic-events-of-2019-that-indicate-rise-of-satanism/" />
+<link rel='shortlink' href='https://wp.me/pbXIS-1VOh' />
+<link rel="alternate" type="application/json+oembed" href="https://public-api.wordpress.com/oembed/?format=json&amp;url=https%3A%2F%2Frashmanly.com%2F2020%2F01%2F01%2Ftop-10-most-demonic-events-of-2019-that-indicate-rise-of-satanism%2F&amp;for=wpcom-auto-discovery" /><link rel="alternate" type="application/xml+oembed" href="https://public-api.wordpress.com/oembed/?format=xml&amp;url=https%3A%2F%2Frashmanly.com%2F2020%2F01%2F01%2Ftop-10-most-demonic-events-of-2019-that-indicate-rise-of-satanism%2F&amp;for=wpcom-auto-discovery" />
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Top 10 most Demonic events of 2019 that indicate rise of Satanism" />
+<meta property="og:url" content="https://rashmanly.com/2020/01/01/top-10-most-demonic-events-of-2019-that-indicate-rise-of-satanism/" />
+<meta property="og:description" content=". . . . . . . . . . . . . . . . . . . . . . . . . . . . . ." />
+<meta property="article:published_time" content="2020-01-01T17:06:16+00:00" />
+<meta property="article:modified_time" content="2020-01-01T17:06:16+00:00" />
+<meta property="og:site_name" content="22MOON.COM" />
+<meta property="og:image" content="https://rashmanly.files.wordpress.com/2020/01/fullsizeoutput_66ce.jpeg" />
+<meta property="og:image:width" content="1000" />
+<meta property="og:image:height" content="784" />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:text:title" content="Top 10 most Demonic events of 2019 that indicate rise of&nbsp;Satanism" />
+<meta name="twitter:card" content="summary" />
+<meta property="article:publisher" content="https://www.facebook.com/WordPresscom" />
+
+<!-- End Jetpack Open Graph Tags -->
+<link rel="shortcut icon" type="image/x-icon" href="https://s1.wp.com/i/favicon.ico" sizes="16x16 24x24 32x32 48x48" />
+<link rel="icon" type="image/x-icon" href="https://s1.wp.com/i/favicon.ico" sizes="16x16 24x24 32x32 48x48" />
+<link rel="apple-touch-icon-precomposed" href="https://s2.wp.com/i/webclip.png" />
+<link rel='openid.server' href='https://rashmanly.com/?openidserver=1' />
+<link rel='openid.delegate' href='https://rashmanly.com/' />
+<link rel="search" type="application/opensearchdescription+xml" href="https://rashmanly.com/osd.xml" title="22MOON.COM" />
+<link rel="search" type="application/opensearchdescription+xml" href="https://s1.wp.com/opensearch.xml" title="WordPress.com" />
+		<style id="wpcom-hotfix-masterbar-style">
+			@media screen and (min-width: 783px) {
+				#wpadminbar .quicklinks li#wp-admin-bar-my-account.with-avatar > a img {
+					margin-top: 5px;
+				}
+			}
+		</style>
+				<style type="text/css">
+			.recentcomments a {
+				display: inline !important;
+				padding: 0 !important;
+				margin: 0 !important;
+			}
+
+			table.recentcommentsavatartop img.avatar, table.recentcommentsavatarend img.avatar {
+				border: 0px;
+				margin: 0;
+			}
+
+			table.recentcommentsavatartop a, table.recentcommentsavatarend a {
+				border: 0px !important;
+				background-color: transparent !important;
+			}
+
+			td.recentcommentsavatarend, td.recentcommentsavatartop {
+				padding: 0px 0px 1px 0px;
+				margin: 0px;
+			}
+
+			td.recentcommentstextend {
+				border: none !important;
+				padding: 0px 0px 2px 10px;
+			}
+
+			.rtl td.recentcommentstextend {
+				padding: 0px 10px 2px 0px;
+			}
+
+			td.recentcommentstexttop {
+				border: none;
+				padding: 0px 0px 0px 10px;
+			}
+
+			.rtl td.recentcommentstexttop {
+				padding: 0px 10px 0px 0px;
+			}
+		</style>
+		<style type="text/css">
+.widget_twitter li {
+	word-wrap: break-word;
+}
+</style>
+		<script type="text/javascript">
+		function __ATA_CC() {var v = document.cookie.match('(^|;) ?personalized-ads-consent=([^;]*)(;|$)');return v ? 1 : 0;}
+		var __ATA_PP = { pt: 1, ht: 0, tn: 'sunburn', amp: false, siteid: 8982, blogid: 2851186, consent: __ATA_CC(), flag: 2 };
+		</script>
+		<script type="text/javascript">
+		!function(t){var n={};function e(r){if(n[r])return n[r].exports;var o=n[r]={i:r,l:!1,exports:{}};return t[r].call(o.exports,o,o.exports,e),o.l=!0,o.exports}e.m=t,e.c=n,e.d=function(t,n,r){e.o(t,n)||Object.defineProperty(t,n,{enumerable:!0,get:r})},e.r=function(t){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(t,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(t,"__esModule",{value:!0})},e.t=function(t,n){if(1&n&&(t=e(t)),8&n)return t;if(4&n&&"object"==typeof t&&t&&t.__esModule)return t;var r=Object.create(null);if(e.r(r),Object.defineProperty(r,"default",{enumerable:!0,value:t}),2&n&&"string"!=typeof t)for(var o in t)e.d(r,o,function(n){return t[n]}.bind(null,o));return r},e.n=function(t){var n=t&&t.__esModule?function(){return t.default}:function(){return t};return e.d(n,"a",n),n},e.o=function(t,n){return Object.prototype.hasOwnProperty.call(t,n)},e.p="https://c0.pubmine.com/2.2.01576584942509/",e(e.s=164)}({0:function(t,n){t.exports=function(t,n,e){return n in t?Object.defineProperty(t,n,{value:e,enumerable:!0,configurable:!0,writable:!0}):t[n]=e,t}},1:function(t,n){t.exports=function(t,n){if(!(t instanceof n))throw new TypeError("Cannot call a class as a function")}},10:function(t,n,e){"use strict";var r=e(17),o=e(8),i=e(20);t.exports=function(t,n,e){if(!r(t))return e;if(!o(n))return e;try{var u=n.split(".").reduce((function(t,n){return t[n]}),t);return i(u)?e:u}catch(t){return e}}},16:function(t,n,e){"use strict";t.exports=function(){}},164:function(t,n,e){"use strict";e.r(n);var r=e(0),o=e.n(r),i=e(29),u=e.n(i),c=e(16),f=e.n(c),s=e(34),a=e.n(s),p=e(45),l=e(46),d=e(23);function v(t,n){var e=Object.keys(t);if(Object.getOwnPropertySymbols){var r=Object.getOwnPropertySymbols(t);n&&(r=r.filter((function(n){return Object.getOwnPropertyDescriptor(t,n).enumerable}))),e.push.apply(e,r)}return e}function m(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{},n=function(t){for(var n=1;n<arguments.length;n++){var e=null!=arguments[n]?arguments[n]:{};n%2?v(e,!0).forEach((function(n){o()(t,n,e[n])})):Object.getOwnPropertyDescriptors?Object.defineProperties(t,Object.getOwnPropertyDescriptors(e)):v(e).forEach((function(n){Object.defineProperty(t,n,Object.getOwnPropertyDescriptor(e,n))}))}return t}({r:(new Date).getTime()},window.__ATA_PP,{},Object(p.a)(t),{us_privacy:Object(l.a)()}),e=a()("//s.pubmine.com/mhead.js",n);u()(e,f.a)}Object(d.b)()?Object(d.a)().then(m,m):m()},17:function(t,n,e){"use strict";t.exports=function(t){var n=typeof t;return"object"===n&&null!=t||"function"===n}},2:function(t,n){function e(t,n){for(var e=0;e<n.length;e++){var r=n[e];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(t,r.key,r)}}t.exports=function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}},20:function(t,n,e){"use strict";t.exports=function(t){return void 0===t}},21:function(t,n,e){"use strict";t.exports=function(t,n){for(var e=0,r=t.length;e<r;e++){var o=t[e];if(n(o,e))return o}return null}},23:function(t,n,e){"use strict";e.d(n,"a",(function(){return p})),e.d(n,"b",(function(){return l}));var r=e(35),o=e.n(r),i=e(10),u=e.n(i),c=e(9),f=e.n(c),s=e(3);function a(t){var n=Date.now();return function(t){return new o.a((function(n,e){if(window.__cmp){var r;window.setTimeout((function(){clearTimeout(r),e("cmp ping timeout")}),t),function t(){window.__cmp("ping",null,(function(o,i){i&&o.cmpLoaded?n():i?r=window.setTimeout(t,50):e("cmp ping returned error with data: ".concat(JSON.stringify(o)))}))}()}else e("CMP is not defined")}))}(t).then((function(){var e=Date.now()-n,r=t-e;return new o.a((function(t,n){window.__cmp("getConsentData",null,(function(e,r){r?t(e):n("cmp getConsentData returned error with data: ".concat(JSON.stringify(e)))})),setTimeout((function(){n("cmp getConsentData timeout")}),r)}))}))}function p(){return a(arguments.length>0&&void 0!==arguments[0]?arguments[0]:500).catch((function(t){return s.a.error(t),"boolean"==typeof(n=u()(window,"__ATA_PP.gdpr_applies"))?{gdprApplies:n}:{};var n}))}function l(){return f()(window.__cmp)}},25:function(t,n,e){"use strict";var r=e(21),o=e(33);t.exports=function(t,n){void 0===n&&(n=document.cookie);var e=n.split("; "),i=r(e,(function(n){return o(n,t+"=")}));return i?i.split("=")[1]:""}},29:function(t,n,e){"use strict";var r=e(16),o=e(9);t.exports=function(t,n,e){var i,u,c=document.createElement("script"),f=n instanceof HTMLElement&&n;if(i=o(n)?n:o(e)?e:r,c.src=t,c.onload=function(){i(void 0)},c.onerror=function(){i("error")},f)u=f;else{var s=document.getElementsByTagName("head");u=s&&0!==s.length?s[0]:document.documentElement}u.appendChild(c)}},3:function(t,n,e){"use strict";var r=e(1),o=e.n(r),i=e(2),u=e.n(i),c=e(0),f=e.n(c),s=function(){function t(){o()(this,t)}return u()(t,null,[{key:"configure",value:function(n){t.config=n}},{key:"error",value:function(t){function n(n,e){return t.apply(this,arguments)}return n.toString=function(){return t.toString()},n}((function(t,n){this.config&&this.config.onError?this.config.onError(t,n):window.console&&console.log(t,n)}))}]),t}();f()(s,"config",void 0),n.a=s},33:function(t,n,e){"use strict";t.exports=function(t,n){return t.indexOf(n)>-1}},34:function(t,n,e){"use strict";var r=e(33),o=e(76);t.exports=function(t,n){var e=o(n);return 0===e.length?t:t+(r(t,"?")?"&":"?")+e}},35:function(t,n,e){"use strict";var r,o=e(75),i=e(9);!function(t){t.REJECTED="rejected",t.RESOLVED="resolved",t.PENDING="pending"}(r||(r={}));var u=function(){function t(t,n){var e=this;this.status=r.PENDING,this.emitter=new o,this.onFulfilled=function(t){e.status===r.PENDING&&(e.status=r.RESOLVED,e.emitter.emit(r.RESOLVED,[t]))},this.onRejected=function(t){e.status===r.PENDING&&(e.status=r.REJECTED,e.emitter.emit(r.REJECTED,[t]))};var i=function(){return t(e.onFulfilled,e.onRejected)};n?i():setTimeout(i,0)}return t.resolve=function(n){return new t((function(t){t(n)}))},t.reject=function(n){return new t((function(t,e){e(n)}))},t.prototype.then=function(n,e){var o=this;return new t((function(u,c){o.emitter.on(r.RESOLVED,(function(e){if(i(n)){var r=n(e);r instanceof t?r.then(u,c):u(r)}else u(e)})),o.emitter.on(r.REJECTED,(function(n){if(i(e)){var r=e(n);r instanceof t?r.then(u,c):u(r)}else c(n)}))}),!0)},t.prototype.catch=function(n){var e=this;return new t((function(o){i(n)&&e.emitter.on(r.REJECTED,(function(e){var r=n(e);r instanceof t?r.then(o):o(r)})),e.emitter.on(r.RESOLVED,o)}),!0)},t}();t.exports=u},38:function(t,n,e){"use strict";t.exports=function(t){return"string"==typeof t&&t.length>0}},45:function(t,n,e){"use strict";e.d(n,"a",(function(){return i}));var r=e(8),o=e.n(r);function i(t){var n=t.gdprApplies,e=t.consentData;return{gdpr:"boolean"==typeof n?Number(n):void 0,gdpr_consent:o()(e)?e:void 0}}},46:function(t,n,e){"use strict";e.d(n,"a",(function(){return f}));var r=e(25),o=e.n(r),i=e(38),u=e.n(i),c="usprivacy";function f(){var t=o()(c);return u()(t)?t:null}},56:function(t,n,e){"use strict";t.exports=function(t){return null===t}},75:function(t,n,e){"use strict";var r=function(){function t(){this.events={}}return t.prototype.on=function(t,n){if(this.events[t]){if(-1!==(e=this.events[t]).indexOf(n))throw new Error('This handler has already been subcribed for "'+t+'" event');e.push(n)}else{var e;(e=[]).push(n),this.events[t]=e}},t.prototype.off=function(t,n){var e=this.events[t],r=e.indexOf(n);-1!==r&&e.splice(r,1)},t.prototype.emit=function(t,n){void 0===n&&(n=[]);var e=this.events[t];e&&e.map((function(t){n?t.apply(void 0,n):t()}))},t}();t.exports=r},76:function(t,n,e){"use strict";var r=e(56),o=e(20);t.exports=function(t){var n=Object.keys(t),e=[];return n.forEach((function(n){var i=t[n];r(i)||o(i)||e.push(n+"="+encodeURIComponent(t[n]))})),e.join("&")}},8:function(t,n,e){"use strict";t.exports=function(t){return"string"==typeof t}},9:function(t,n,e){"use strict";t.exports=function(t){return"function"==typeof t}}});
+		</script><meta name="application-name" content="22MOON.COM" /><meta name="msapplication-window" content="width=device-width;height=device-height" /><meta name="msapplication-tooltip" content="You can see the whole Earth from the Moon!" /><meta name="msapplication-task" content="name=Subscribe;action-uri=https://rashmanly.com/feed/;icon-uri=https://s1.wp.com/i/favicon.ico" /><meta name="msapplication-task" content="name=Sign up for a free blog;action-uri=http://wordpress.com/signup/;icon-uri=https://s1.wp.com/i/favicon.ico" /><meta name="msapplication-task" content="name=WordPress.com Support;action-uri=http://support.wordpress.com/;icon-uri=https://s1.wp.com/i/favicon.ico" /><meta name="msapplication-task" content="name=WordPress.com Forums;action-uri=http://forums.wordpress.com/;icon-uri=https://s1.wp.com/i/favicon.ico" /><meta name="description" content=". . . . . . . . . . . . . . . . . . . . . . . . . . . . . ." />
+<link rel="amphtml" href="https://rashmanly.com/2020/01/01/top-10-most-demonic-events-of-2019-that-indicate-rise-of-satanism/amp/"></head>
+<body class="post-template-default single single-post postid-460553 single-format-standard customizer-styles-applied highlander-enabled highlander-dark">
+
+	<div id="bg_maker">
+	
+		<div id="wrapper">
+
+			<div id="header_sun"></div>
+
+			<div id="header_text">
+				<h1><a href="https://rashmanly.com/">22MOON.COM</a><br />
+				<span class="description">You can see the whole Earth from the Moon!</span></h1>
+			</div>
+	<div id="content" class="widecolumn">
+	
+		<div class="post-460553 post type-post status-publish format-standard hentry category-demons category-exorcism category-flashlight-on-the-occult category-god category-gossip category-satan category-uncategorized tag-astonishing-spike-in-demand-for-exorcisms-joshua-gill-dailycaller-com tag-jesus-command-was-to-heal-the-sick-and-to-cast-out-demons tag-catholic-church-reports-spike-in-demonic-activity-requests-for-exorcists-have-tripled-thomas-d-williams-ph-d-breitbart-com tag-demonic-possession-claims-have-tripled-in-recent-years-and-attributed-the-rise-in-demonic-activity-to-an-increased-use-of-fortune-tellers-and-tarot-cards tag-exorcists-condemn-childrens-book-on-summoning-demons-thomas-d-williams-ph-d-breitbart-com tag-report-catholics-face-mushrooming-demand-for-exorcisms-thomas-d-williams-ph-d-breitbart-com tag-the-top-10-most-evil-demonic-but-true-events-of-2019-that-indicate-the-rise-of-satanism-ethan-huff-liberalmob-com tag-vatican-trains-exorcists-as-demonic-possession-claims-rise-cruxnow-com tag-walmart-target-and-amazon-all-sell-books-that-teach-children-as-young-as-five-how-to-summon-demons-ethan-huff-naturalnews-com" id="post-460553">
+			<h2>Top 10 most Demonic events of 2019 that indicate rise of&nbsp;Satanism</h2>
+
+			<div class="entrytext">
+				<p><a href="https://liberalmob.com/2019-12-16-top-10-most-evil-demonic-true-events-2019-satanism.html"><img data-attachment-id="460555" data-permalink="https://rashmanly.com/2020/01/01/top-10-most-demonic-events-of-2019-that-indicate-rise-of-satanism/fullsizeoutput_66ce/" data-orig-file="https://rashmanly.files.wordpress.com/2020/01/fullsizeoutput_66ce.jpeg" data-orig-size="1000,784" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;1577879817&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;1&quot;}" data-image-title="fullsizeoutput_66ce" data-image-description="" data-medium-file="https://rashmanly.files.wordpress.com/2020/01/fullsizeoutput_66ce.jpeg?w=300" data-large-file="https://rashmanly.files.wordpress.com/2020/01/fullsizeoutput_66ce.jpeg?w=450" class="aligncenter size-full wp-image-460555" src="https://rashmanly.files.wordpress.com/2020/01/fullsizeoutput_66ce.jpeg?w=450&#038;h=353" alt="" width="450" height="353" srcset="https://rashmanly.files.wordpress.com/2020/01/fullsizeoutput_66ce.jpeg?w=450&amp;h=353 450w, https://rashmanly.files.wordpress.com/2020/01/fullsizeoutput_66ce.jpeg?w=900&amp;h=706 900w, https://rashmanly.files.wordpress.com/2020/01/fullsizeoutput_66ce.jpeg?w=150&amp;h=118 150w, https://rashmanly.files.wordpress.com/2020/01/fullsizeoutput_66ce.jpeg?w=300&amp;h=235 300w, https://rashmanly.files.wordpress.com/2020/01/fullsizeoutput_66ce.jpeg?w=768&amp;h=602 768w" sizes="(max-width: 450px) 100vw, 450px" /><img class="irc_mi" src="https://media3.giphy.com/media/sWI5KFnLucfVm/giphy.gif" alt="Image result for satan gif" width="471" height="362" /></a></p>
+<p><span style="color:#000000;">.</span></p>
+<p><span style="color:#000000;">.</span></p>
+<p><span style="color:#000000;">.</span></p>
+<p><span style="color:#000000;">.</span></p>
+<p><span style="color:#000000;">.</span></p>
+<p><a href="https://www.breitbart.com/faith/2019/12/17/exorcists-condemn-childrens-book-on-summoning-demons/"><img data-attachment-id="459621" data-permalink="https://rashmanly.com/2019/12/20/childrens-book-on-summoning-demons-condemned-by-exorcists/fullsizeoutput_6464/" data-orig-file="https://rashmanly.files.wordpress.com/2019/12/fullsizeoutput_6464.jpeg" data-orig-size="329,400" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;1576665836&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;1&quot;}" data-image-title="fullsizeoutput_6464" data-image-description="" data-medium-file="https://rashmanly.files.wordpress.com/2019/12/fullsizeoutput_6464.jpeg?w=247" data-large-file="https://rashmanly.files.wordpress.com/2019/12/fullsizeoutput_6464.jpeg?w=329" class="aligncenter wp-image-459621" src="https://rashmanly.files.wordpress.com/2019/12/fullsizeoutput_6464.jpeg?w=454&#038;h=552" alt="" width="454" height="552" srcset="https://rashmanly.files.wordpress.com/2019/12/fullsizeoutput_6464.jpeg 329w, https://rashmanly.files.wordpress.com/2019/12/fullsizeoutput_6464.jpeg?w=123&amp;h=150 123w, https://rashmanly.files.wordpress.com/2019/12/fullsizeoutput_6464.jpeg?w=247&amp;h=300 247w" sizes="(max-width: 454px) 100vw, 454px" /><img data-attachment-id="291586" data-permalink="https://rashmanly.com/2015/09/15/muslim-exorcist-murdered-in-whitechapel-uk/c6bf4571-2204-4922-af1a-f6c30e2fe7d4/" data-orig-file="https://rashmanly.files.wordpress.com/2015/09/c6bf4571-2204-4922-af1a-f6c30e2fe7d4.jpeg" data-orig-size="455,519" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;1&quot;}" data-image-title="c6bf4571-2204-4922-af1a-f6c30e2fe7d4" data-image-description="" data-medium-file="https://rashmanly.files.wordpress.com/2015/09/c6bf4571-2204-4922-af1a-f6c30e2fe7d4.jpeg?w=263" data-large-file="https://rashmanly.files.wordpress.com/2015/09/c6bf4571-2204-4922-af1a-f6c30e2fe7d4.jpeg?w=450" class="aligncenter size-full wp-image-291586" src="https://rashmanly.files.wordpress.com/2015/09/c6bf4571-2204-4922-af1a-f6c30e2fe7d4.jpeg?w=450&#038;h=513" alt="c6bf4571-2204-4922-af1a-f6c30e2fe7d4" width="450" height="513" srcset="https://rashmanly.files.wordpress.com/2015/09/c6bf4571-2204-4922-af1a-f6c30e2fe7d4.jpeg?w=450&amp;h=513 450w, https://rashmanly.files.wordpress.com/2015/09/c6bf4571-2204-4922-af1a-f6c30e2fe7d4.jpeg?w=132&amp;h=150 132w, https://rashmanly.files.wordpress.com/2015/09/c6bf4571-2204-4922-af1a-f6c30e2fe7d4.jpeg?w=263&amp;h=300 263w, https://rashmanly.files.wordpress.com/2015/09/c6bf4571-2204-4922-af1a-f6c30e2fe7d4.jpeg 455w" sizes="(max-width: 450px) 100vw, 450px" /></a></p>
+<p><span style="color:#000000;">.</span></p>
+<p><span style="color:#000000;">.</span></p>
+<p><span style="color:#000000;">.</span></p>
+<p><span style="color:#000000;">.</span></p>
+<p><span style="color:#000000;">.</span></p>
+<p><a href="https://www.naturalnews.com/2019-12-11-walmart-target-amazon-sell-books-children-how-to-summon-demons.html"><img data-attachment-id="459177" data-permalink="https://rashmanly.com/2019/12/13/walmart-target-and-amazon-sell-books-that-teach-children-how-to-summon-demons/fullsizeoutput_62b7/" data-orig-file="https://rashmanly.files.wordpress.com/2019/12/fullsizeoutput_62b7.jpeg" data-orig-size="988,884" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;1576152100&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;1&quot;}" data-image-title="fullsizeoutput_62b7" data-image-description="" data-medium-file="https://rashmanly.files.wordpress.com/2019/12/fullsizeoutput_62b7.jpeg?w=300" data-large-file="https://rashmanly.files.wordpress.com/2019/12/fullsizeoutput_62b7.jpeg?w=450" class="aligncenter size-full wp-image-459177" src="https://rashmanly.files.wordpress.com/2019/12/fullsizeoutput_62b7.jpeg?w=450&#038;h=403" alt="" width="450" height="403" srcset="https://rashmanly.files.wordpress.com/2019/12/fullsizeoutput_62b7.jpeg?w=450&amp;h=403 450w, https://rashmanly.files.wordpress.com/2019/12/fullsizeoutput_62b7.jpeg?w=900&amp;h=806 900w, https://rashmanly.files.wordpress.com/2019/12/fullsizeoutput_62b7.jpeg?w=150&amp;h=134 150w, https://rashmanly.files.wordpress.com/2019/12/fullsizeoutput_62b7.jpeg?w=300&amp;h=268 300w, https://rashmanly.files.wordpress.com/2019/12/fullsizeoutput_62b7.jpeg?w=768&amp;h=687 768w" sizes="(max-width: 450px) 100vw, 450px" /><img class="irc_mi" src="https://i.imgur.com/3JLyiXg.gif?1" alt="Image result for summoning demons gif" width="448" height="336" /></a></p>
+<p><span style="color:#000000;">.</span></p>
+<p><span style="color:#000000;">.</span></p>
+<p><span style="color:#000000;">.</span></p>
+<p><span style="color:#000000;">.</span></p>
+<p><span style="color:#000000;">.</span></p>
+<p><a href="https://dailycaller.com/2017/07/09/astonishing-spike-in-demand-for-exorcisms/"><img data-attachment-id="432956" data-permalink="https://rashmanly.com/2019/01/18/astonishing-spike-in-demands-for-exorcisms/fullsizeoutput_6c1/" data-orig-file="https://rashmanly.files.wordpress.com/2019/01/fullsizeoutput_6c1.jpeg" data-orig-size="951,676" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;1547577155&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;1&quot;}" data-image-title="fullsizeoutput_6c1" data-image-description="" data-medium-file="https://rashmanly.files.wordpress.com/2019/01/fullsizeoutput_6c1.jpeg?w=300" data-large-file="https://rashmanly.files.wordpress.com/2019/01/fullsizeoutput_6c1.jpeg?w=450" class="aligncenter size-full wp-image-432956" src="https://rashmanly.files.wordpress.com/2019/01/fullsizeoutput_6c1.jpeg?w=450&#038;h=320" alt="" width="450" height="320" srcset="https://rashmanly.files.wordpress.com/2019/01/fullsizeoutput_6c1.jpeg?w=450&amp;h=320 450w, https://rashmanly.files.wordpress.com/2019/01/fullsizeoutput_6c1.jpeg?w=900&amp;h=640 900w, https://rashmanly.files.wordpress.com/2019/01/fullsizeoutput_6c1.jpeg?w=150&amp;h=107 150w, https://rashmanly.files.wordpress.com/2019/01/fullsizeoutput_6c1.jpeg?w=300&amp;h=213 300w, https://rashmanly.files.wordpress.com/2019/01/fullsizeoutput_6c1.jpeg?w=768&amp;h=546 768w" sizes="(max-width: 450px) 100vw, 450px" /></a><a href="https://dailycaller.com/2017/07/09/astonishing-spike-in-demand-for-exorcisms/"><img data-attachment-id="432957" data-permalink="https://rashmanly.com/2019/01/18/astonishing-spike-in-demands-for-exorcisms/1286e7b1-0e33-45c3-a586-fb58f91094ab/" data-orig-file="https://rashmanly.files.wordpress.com/2019/01/1286e7b1-0e33-45c3-a586-fb58f91094ab.jpeg" data-orig-size="476,273" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="1286e7b1-0e33-45c3-a586-fb58f91094ab" data-image-description="" data-medium-file="https://rashmanly.files.wordpress.com/2019/01/1286e7b1-0e33-45c3-a586-fb58f91094ab.jpeg?w=300" data-large-file="https://rashmanly.files.wordpress.com/2019/01/1286e7b1-0e33-45c3-a586-fb58f91094ab.jpeg?w=450" class="aligncenter size-full wp-image-432957" src="https://rashmanly.files.wordpress.com/2019/01/1286e7b1-0e33-45c3-a586-fb58f91094ab.jpeg?w=450&#038;h=258" alt="" width="450" height="258" srcset="https://rashmanly.files.wordpress.com/2019/01/1286e7b1-0e33-45c3-a586-fb58f91094ab.jpeg?w=450&amp;h=258 450w, https://rashmanly.files.wordpress.com/2019/01/1286e7b1-0e33-45c3-a586-fb58f91094ab.jpeg?w=150&amp;h=86 150w, https://rashmanly.files.wordpress.com/2019/01/1286e7b1-0e33-45c3-a586-fb58f91094ab.jpeg?w=300&amp;h=172 300w, https://rashmanly.files.wordpress.com/2019/01/1286e7b1-0e33-45c3-a586-fb58f91094ab.jpeg 476w" sizes="(max-width: 450px) 100vw, 450px" /></a><a href="https://dailycaller.com/2017/07/09/astonishing-spike-in-demand-for-exorcisms/"><img data-attachment-id="432958" data-permalink="https://rashmanly.com/2019/01/18/astonishing-spike-in-demands-for-exorcisms/fullsizeoutput_6bd/" data-orig-file="https://rashmanly.files.wordpress.com/2019/01/fullsizeoutput_6bd.jpeg" data-orig-size="480,300" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;1547577061&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;1&quot;}" data-image-title="fullsizeoutput_6bd" data-image-description="" data-medium-file="https://rashmanly.files.wordpress.com/2019/01/fullsizeoutput_6bd.jpeg?w=300" data-large-file="https://rashmanly.files.wordpress.com/2019/01/fullsizeoutput_6bd.jpeg?w=450" class="aligncenter size-full wp-image-432958" src="https://rashmanly.files.wordpress.com/2019/01/fullsizeoutput_6bd.jpeg?w=450&#038;h=281" alt="" width="450" height="281" srcset="https://rashmanly.files.wordpress.com/2019/01/fullsizeoutput_6bd.jpeg?w=450&amp;h=281 450w, https://rashmanly.files.wordpress.com/2019/01/fullsizeoutput_6bd.jpeg?w=150&amp;h=94 150w, https://rashmanly.files.wordpress.com/2019/01/fullsizeoutput_6bd.jpeg?w=300&amp;h=188 300w, https://rashmanly.files.wordpress.com/2019/01/fullsizeoutput_6bd.jpeg 480w" sizes="(max-width: 450px) 100vw, 450px" /></a></p>
+<p><a href="https://www.infowars.com/video-crazed-leftist-sounds-possessed-as-he-rips-up-ted-cruz-signs/"><img data-attachment-id="425776" data-permalink="https://rashmanly.com/2018/10/19/loony-leftist-destroying-ted-cruz-signs-appears-to-be-demon-possessed-video/3c045e28fc096f6efc94af8d401b28f00004c99f_hq/" data-orig-file="https://rashmanly.files.wordpress.com/2018/10/3c045e28fc096f6efc94af8d401b28f00004c99f_hq.gif" data-orig-size="500,193" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="3c045e28fc096f6efc94af8d401b28f00004c99f_hq" data-image-description="" data-medium-file="https://rashmanly.files.wordpress.com/2018/10/3c045e28fc096f6efc94af8d401b28f00004c99f_hq.gif?w=300" data-large-file="https://rashmanly.files.wordpress.com/2018/10/3c045e28fc096f6efc94af8d401b28f00004c99f_hq.gif?w=450" class="aligncenter wp-image-425776" src="https://rashmanly.files.wordpress.com/2018/10/3c045e28fc096f6efc94af8d401b28f00004c99f_hq.gif?w=458&#038;h=177" alt="" width="458" height="177" /></a></p>
+<p><span style="color:#000000;">.</span></p>
+<p><span style="color:#000000;">.</span></p>
+<p><span style="color:#000000;">.</span></p>
+<p><span style="color:#000000;">.</span></p>
+<p><span style="color:#000000;">.</span></p>
+<p><a href="https://www.breitbart.com/politics/2019/01/15/report-catholics-face-mushrooming-demand-for-exorcisms/"><img data-attachment-id="432952" data-permalink="https://rashmanly.com/2019/01/18/astonishing-spike-in-demands-for-exorcisms/fullsizeoutput_6be/" data-orig-file="https://rashmanly.files.wordpress.com/2019/01/fullsizeoutput_6be.jpeg" data-orig-size="1155,630" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;1547577055&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;1&quot;}" data-image-title="fullsizeoutput_6be" data-image-description="" data-medium-file="https://rashmanly.files.wordpress.com/2019/01/fullsizeoutput_6be.jpeg?w=300" data-large-file="https://rashmanly.files.wordpress.com/2019/01/fullsizeoutput_6be.jpeg?w=450" class="aligncenter size-full wp-image-432952" src="https://rashmanly.files.wordpress.com/2019/01/fullsizeoutput_6be.jpeg?w=450&#038;h=245" alt="" width="450" height="245" srcset="https://rashmanly.files.wordpress.com/2019/01/fullsizeoutput_6be.jpeg?w=450&amp;h=245 450w, https://rashmanly.files.wordpress.com/2019/01/fullsizeoutput_6be.jpeg?w=898&amp;h=490 898w, https://rashmanly.files.wordpress.com/2019/01/fullsizeoutput_6be.jpeg?w=150&amp;h=82 150w, https://rashmanly.files.wordpress.com/2019/01/fullsizeoutput_6be.jpeg?w=300&amp;h=164 300w, https://rashmanly.files.wordpress.com/2019/01/fullsizeoutput_6be.jpeg?w=768&amp;h=419 768w" sizes="(max-width: 450px) 100vw, 450px" /></a><a href="https://www.breitbart.com/politics/2019/01/15/report-catholics-face-mushrooming-demand-for-exorcisms/"><img data-attachment-id="432953" data-permalink="https://rashmanly.com/2019/01/18/astonishing-spike-in-demands-for-exorcisms/fullsizeoutput_70f/" data-orig-file="https://rashmanly.files.wordpress.com/2019/01/fullsizeoutput_70f.jpeg" data-orig-size="541,368" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;1547658505&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;1&quot;}" data-image-title="fullsizeoutput_70f" data-image-description="" data-medium-file="https://rashmanly.files.wordpress.com/2019/01/fullsizeoutput_70f.jpeg?w=300" data-large-file="https://rashmanly.files.wordpress.com/2019/01/fullsizeoutput_70f.jpeg?w=450" class="aligncenter size-full wp-image-432953" src="https://rashmanly.files.wordpress.com/2019/01/fullsizeoutput_70f.jpeg?w=450&#038;h=306" alt="" width="450" height="306" srcset="https://rashmanly.files.wordpress.com/2019/01/fullsizeoutput_70f.jpeg?w=450&amp;h=306 450w, https://rashmanly.files.wordpress.com/2019/01/fullsizeoutput_70f.jpeg?w=150&amp;h=102 150w, https://rashmanly.files.wordpress.com/2019/01/fullsizeoutput_70f.jpeg?w=300&amp;h=204 300w, https://rashmanly.files.wordpress.com/2019/01/fullsizeoutput_70f.jpeg 541w" sizes="(max-width: 450px) 100vw, 450px" /></a><a href="https://www.infowars.com/video-crazed-leftist-sounds-possessed-as-he-rips-up-ted-cruz-signs/"><br />
+</a><a href="https://www.breitbart.com/politics/2019/01/15/report-catholics-face-mushrooming-demand-for-exorcisms/"><img data-attachment-id="343033" data-permalink="https://rashmanly.com/2016/10/29/charlie-charlie-screaming-teen-girls-exorcised-for-5-hours-after-being-possessed-by-demons/200-6-26/" data-orig-file="https://rashmanly.files.wordpress.com/2016/10/200-64.gif" data-orig-size="382,200" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="200-6" data-image-description="" data-medium-file="https://rashmanly.files.wordpress.com/2016/10/200-64.gif?w=300" data-large-file="https://rashmanly.files.wordpress.com/2016/10/200-64.gif?w=382" class="aligncenter wp-image-343033" src="https://rashmanly.files.wordpress.com/2016/10/200-64.gif?w=455&#038;h=238" alt="200-6" width="455" height="238" /></a></p>
+<p><span style="color:#000000;">.</span></p>
+<p><span style="color:#000000;">.</span></p>
+<p><span style="color:#000000;">.</span></p>
+<p><span style="color:#000000;">.</span></p>
+<p><span style="color:#000000;">.</span></p>
+<p><a href="https://cruxnow.com/vatican/2018/03/01/vatican-trains-exorcists-demonic-possession-claims-rise/"><img data-attachment-id="244603" data-permalink="https://rashmanly.com/2014/05/11/the-pope-goes-medieval-on-satan/4186f49f-d2bc-4a88-a590-a9d85bf5cf17/" data-orig-file="https://rashmanly.files.wordpress.com/2014/05/4186f49f-d2bc-4a88-a590-a9d85bf5cf17.jpeg" data-orig-size="500,626" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;}" data-image-title="4186f49f-d2bc-4a88-a590-a9d85bf5cf17" data-image-description="" data-medium-file="https://rashmanly.files.wordpress.com/2014/05/4186f49f-d2bc-4a88-a590-a9d85bf5cf17.jpeg?w=240" data-large-file="https://rashmanly.files.wordpress.com/2014/05/4186f49f-d2bc-4a88-a590-a9d85bf5cf17.jpeg?w=450" class="aligncenter size-full wp-image-244603" src="https://rashmanly.files.wordpress.com/2014/05/4186f49f-d2bc-4a88-a590-a9d85bf5cf17.jpeg?w=450&#038;h=563" alt="4186f49f-d2bc-4a88-a590-a9d85bf5cf17" width="450" height="563" srcset="https://rashmanly.files.wordpress.com/2014/05/4186f49f-d2bc-4a88-a590-a9d85bf5cf17.jpeg?w=450&amp;h=563 450w, https://rashmanly.files.wordpress.com/2014/05/4186f49f-d2bc-4a88-a590-a9d85bf5cf17.jpeg?w=120&amp;h=150 120w, https://rashmanly.files.wordpress.com/2014/05/4186f49f-d2bc-4a88-a590-a9d85bf5cf17.jpeg?w=240&amp;h=300 240w, https://rashmanly.files.wordpress.com/2014/05/4186f49f-d2bc-4a88-a590-a9d85bf5cf17.jpeg 500w" sizes="(max-width: 450px) 100vw, 450px" /></a><a href="https://cruxnow.com/vatican/2018/03/01/vatican-trains-exorcists-demonic-possession-claims-rise/"><img data-attachment-id="425777" data-permalink="https://rashmanly.com/2018/10/19/loony-leftist-destroying-ted-cruz-signs-appears-to-be-demon-possessed-video/attachment/25657625/" data-orig-file="https://rashmanly.files.wordpress.com/2018/10/25657625.gif" data-orig-size="500,268" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="25657625" data-image-description="" data-medium-file="https://rashmanly.files.wordpress.com/2018/10/25657625.gif?w=300" data-large-file="https://rashmanly.files.wordpress.com/2018/10/25657625.gif?w=450" class="aligncenter wp-image-425777" src="https://rashmanly.files.wordpress.com/2018/10/25657625.gif?w=456&#038;h=244" alt="" width="456" height="244" /></a><a href="https://cruxnow.com/vatican/2018/03/01/vatican-trains-exorcists-demonic-possession-claims-rise/"><img data-attachment-id="343034" data-permalink="https://rashmanly.com/2016/10/29/charlie-charlie-screaming-teen-girls-exorcised-for-5-hours-after-being-possessed-by-demons/200-5-32/" data-orig-file="https://rashmanly.files.wordpress.com/2016/10/200-53.gif" data-orig-size="272,200" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="200-5" data-image-description="" data-medium-file="https://rashmanly.files.wordpress.com/2016/10/200-53.gif?w=272" data-large-file="https://rashmanly.files.wordpress.com/2016/10/200-53.gif?w=272" class="aligncenter wp-image-343034" src="https://rashmanly.files.wordpress.com/2016/10/200-53.gif?w=453&#038;h=333" alt="200-5" width="453" height="333" /></a></p>
+<p><span style="color:#000000;">.</span></p>
+<p><span style="color:#000000;">.</span></p>
+<p><span style="color:#000000;">.</span></p>
+<p><span style="color:#000000;">.</span></p>
+<p><span style="color:#000000;">.</span></p>
+<p><a href="https://www.breitbart.com/politics/2018/03/06/catholic-church-reports-spike-in-demonic-activity-italy-requests-exorcists-have-tripled/"><img data-attachment-id="404334" data-permalink="https://rashmanly.com/2018/03/17/hillarys-occult-connections-video/a08b8b77-d458-4128-b084-4c3808dc2556/" data-orig-file="https://rashmanly.files.wordpress.com/2018/03/a08b8b77-d458-4128-b084-4c3808dc2556.jpg" data-orig-size="947,1238" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;1&quot;}" data-image-title="a08b8b77-d458-4128-b084-4c3808dc2556" data-image-description="" data-medium-file="https://rashmanly.files.wordpress.com/2018/03/a08b8b77-d458-4128-b084-4c3808dc2556.jpg?w=229" data-large-file="https://rashmanly.files.wordpress.com/2018/03/a08b8b77-d458-4128-b084-4c3808dc2556.jpg?w=450" class="aligncenter size-full wp-image-404334" src="https://rashmanly.files.wordpress.com/2018/03/a08b8b77-d458-4128-b084-4c3808dc2556.jpg?w=450&#038;h=588" alt="" width="450" height="588" srcset="https://rashmanly.files.wordpress.com/2018/03/a08b8b77-d458-4128-b084-4c3808dc2556.jpg?w=450&amp;h=588 450w, https://rashmanly.files.wordpress.com/2018/03/a08b8b77-d458-4128-b084-4c3808dc2556.jpg?w=900&amp;h=1176 900w, https://rashmanly.files.wordpress.com/2018/03/a08b8b77-d458-4128-b084-4c3808dc2556.jpg?w=115&amp;h=150 115w, https://rashmanly.files.wordpress.com/2018/03/a08b8b77-d458-4128-b084-4c3808dc2556.jpg?w=229&amp;h=300 229w, https://rashmanly.files.wordpress.com/2018/03/a08b8b77-d458-4128-b084-4c3808dc2556.jpg?w=768&amp;h=1004 768w" sizes="(max-width: 450px) 100vw, 450px" /></a><a href="https://www.breitbart.com/politics/2018/03/06/catholic-church-reports-spike-in-demonic-activity-italy-requests-exorcists-have-tripled/"><img data-attachment-id="404335" data-permalink="https://rashmanly.com/2018/03/17/hillarys-occult-connections-video/tumblr_nvot7nzy5l1ugwriro1_500-2/" data-orig-file="https://rashmanly.files.wordpress.com/2018/03/tumblr_nvot7nzy5l1ugwriro1_500.gif" data-orig-size="500,404" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="tumblr_nvot7nzy5L1ugwriro1_500" data-image-description="" data-medium-file="https://rashmanly.files.wordpress.com/2018/03/tumblr_nvot7nzy5l1ugwriro1_500.gif?w=300" data-large-file="https://rashmanly.files.wordpress.com/2018/03/tumblr_nvot7nzy5l1ugwriro1_500.gif?w=450" class="aligncenter size-full wp-image-404335" src="https://rashmanly.files.wordpress.com/2018/03/tumblr_nvot7nzy5l1ugwriro1_500.gif?w=450&#038;h=364" alt="" width="450" height="364" /></a></p>
+<div id="jp-post-flair" class="sharedaddy sharedaddy-dark sd-like-enabled sd-sharing-enabled"><div class="sharedaddy sd-sharing-enabled"><div class="robots-nocontent sd-block sd-social sd-social-icon-text sd-sharing"><h3 class="sd-title">Share this:</h3><div class="sd-content"><ul><li class="share-twitter"><a rel="nofollow noopener noreferrer" data-shared="sharing-twitter-460553" class="share-twitter sd-button share-icon" href="https://rashmanly.com/2020/01/01/top-10-most-demonic-events-of-2019-that-indicate-rise-of-satanism/?share=twitter" target="_blank" title="Click to share on Twitter"><span>Twitter</span></a></li><li class="share-facebook"><a rel="nofollow noopener noreferrer" data-shared="sharing-facebook-460553" class="share-facebook sd-button share-icon" href="https://rashmanly.com/2020/01/01/top-10-most-demonic-events-of-2019-that-indicate-rise-of-satanism/?share=facebook" target="_blank" title="Click to share on Facebook"><span>Facebook</span></a></li><li class="share-end"></li></ul></div></div></div><div class='sharedaddy sd-block sd-like jetpack-likes-widget-wrapper jetpack-likes-widget-unloaded' id='like-post-wrapper-2851186-460553-5e0f93009cd49' data-src='//widgets.wp.com/likes/index.html?ver=20190321#blog_id=2851186&amp;post_id=460553&amp;origin=rashmanly.wordpress.com&amp;obj_id=2851186-460553-5e0f93009cd49&amp;domain=rashmanly.com' data-name='like-post-frame-2851186-460553-5e0f93009cd49'><h3 class='sd-title'>Like this:</h3><div class='likes-widget-placeholder post-likes-widget-placeholder' style='height: 55px;'><span class='button'><span>Like</span></span> <span class="loading">Loading...</span></div><span class='sd-text-color'></span><a class='sd-link-color'></a></div>
+<div id='jp-relatedposts' class='jp-relatedposts' >
+	<h3 class="jp-relatedposts-headline"><em>Related</em></h3>
+</div></div>
+				
+			</div>
+		</div>
+
+	
+	<h3 id="comments">No Responses to &#8220;Top 10 most Demonic events of 2019 that indicate rise of&nbsp;Satanism&#8221;</h3>
+
+
+
+	<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="/2020/01/01/top-10-most-demonic-events-of-2019-that-indicate-rise-of-satanism/#respond" style="display:none;">Cancel reply</a></small></h3><form action="https://rashmanly.com/wp-comments-post.php" method="post" id="commentform" class="comment-form"><input type="hidden" id="highlander_comment_nonce" name="highlander_comment_nonce" value="4f8334a8fb" /><input type="hidden" name="_wp_http_referer" value="/2020/01/01/top-10-most-demonic-events-of-2019-that-indicate-rise-of-satanism/" />
+<input type="hidden" name="hc_post_as" id="hc_post_as" value="guest" />
+
+<div class="comment-form-field comment-textarea">
+	<label for="comment">Enter your comment here...</label>
+	<div id="comment-form-comment"><textarea id="comment" name="comment" title="Enter your comment here..."></textarea></div>
+</div>
+
+<div id="comment-form-identity">
+	<div id="comment-form-nascar">
+		<p>Fill in your details below or click an icon to log in:</p>
+		<ul>
+			<li class="selected" style="display:none;">
+				<a href="#comment-form-guest" id="postas-guest" class="nascar-signin-link"
+                   title="Login via Guest">
+									</a>
+			</li>
+			<li>
+				<a href="#comment-form-load-service:WordPress.com" id="postas-wordpress" class="nascar-signin-link"
+                   title="Login via WordPress.com">
+					<svg xmlns="http://www.w3.org/2000/svg" role="presentation" viewBox="0 0 24 24" ><rect x="0" fill="none" width="24" height="24"/><g><path fill="#FFF" d="M12.158 12.786l-2.698 7.84c.806.236 1.657.365 2.54.365 1.047 0 2.05-.18 2.986-.51-.024-.037-.046-.078-.065-.123l-2.762-7.57zM3.008 12c0 3.56 2.07 6.634 5.068 8.092L3.788 8.342c-.5 1.117-.78 2.354-.78 3.658zm15.06-.454c0-1.112-.398-1.88-.74-2.48-.456-.74-.883-1.368-.883-2.11 0-.825.627-1.595 1.51-1.595.04 0 .078.006.116.008-1.598-1.464-3.73-2.36-6.07-2.36-3.14 0-5.904 1.613-7.512 4.053.21.008.41.012.58.012.94 0 2.395-.114 2.395-.114.484-.028.54.684.057.74 0 0-.487.058-1.03.086l3.275 9.74 1.968-5.902-1.4-3.838c-.485-.028-.944-.085-.944-.085-.486-.03-.43-.77.056-.742 0 0 1.484.114 2.368.114.94 0 2.397-.114 2.397-.114.486-.028.543.684.058.74 0 0-.488.058-1.03.086l3.25 9.665.897-2.997c.456-1.17.684-2.137.684-2.907zm1.82-3.86c.04.286.06.593.06.924 0 .912-.17 1.938-.683 3.22l-2.746 7.94c2.672-1.558 4.47-4.454 4.47-7.77 0-1.564-.4-3.033-1.1-4.314zM12 22C6.486 22 2 17.514 2 12S6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></g></svg>				</a>
+			</li>
+			<li>
+			<li>
+				<a href="#comment-form-load-service:Twitter" id="postas-twitter" class="nascar-signin-link"
+                   title="Login via Twitter">
+					<svg xmlns="http://www.w3.org/2000/svg" role="presentation" viewBox="0 0 24 24" ><rect x="0" fill="none" width="24" height="24"/><g><path fill="#FFF" d="M22.23 5.924c-.736.326-1.527.547-2.357.646.847-.508 1.498-1.312 1.804-2.27-.793.47-1.67.812-2.606.996C18.325 4.498 17.258 4 16.078 4c-2.266 0-4.103 1.837-4.103 4.103 0 .322.036.635.106.935-3.41-.17-6.433-1.804-8.457-4.287-.353.607-.556 1.312-.556 2.064 0 1.424.724 2.68 1.825 3.415-.673-.022-1.305-.207-1.86-.514v.052c0 1.988 1.415 3.647 3.293 4.023-.344.095-.707.145-1.08.145-.265 0-.522-.026-.773-.074.522 1.63 2.038 2.817 3.833 2.85-1.404 1.1-3.174 1.757-5.096 1.757-.332 0-.66-.02-.98-.057 1.816 1.164 3.973 1.843 6.29 1.843 7.547 0 11.675-6.252 11.675-11.675 0-.178-.004-.355-.012-.53.802-.578 1.497-1.3 2.047-2.124z"/></g></svg>				</a>
+			</li>
+			<li>
+				<a href="#comment-form-load-service:Facebook" id="postas-facebook" class="nascar-signin-link"
+                   title="Login via Facebook">
+					<svg xmlns="http://www.w3.org/2000/svg" role="presentation" viewBox="0 0 24 24" ><rect x="0" fill="none" width="24" height="24"/><g><path fill="#FFF" d="M20.007 3H3.993C3.445 3 3 3.445 3 3.993v16.013c0 .55.445.994.993.994h8.62v-6.97H10.27V11.31h2.346V9.31c0-2.325 1.42-3.59 3.494-3.59.993 0 1.847.073 2.096.106v2.43h-1.438c-1.128 0-1.346.537-1.346 1.324v1.734h2.69l-.35 2.717h-2.34V21h4.587c.548 0 .993-.445.993-.993V3.993c0-.548-.445-.993-.993-.993z"/></g></svg>				</a>
+			</li>
+		</ul>
+	</div>
+
+	<div id="comment-form-guest" class="comment-form-service selected">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+<a href="https://gravatar.com/site/signup/" target="_blank">				<img src="https://1.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=25&amp;d=identicon&amp;forcedefault=y&amp;r=PG" alt="Gravatar" width="25" class="no-grav" />
+</a>			</div>
+
+				<div class="comment-form-fields">
+				<div class="comment-form-field comment-form-email">
+					<label for="email">Email <span class="required">(required)</span> <span class="nopublish">(Address never made public)</span></label>
+					<div class="comment-form-input"><input id="email" name="email" type="email" value="" /></div>
+				</div>
+				<div class="comment-form-field comment-form-author">
+					<label for="author">Name <span class="required">(required)</span></label>
+					<div class="comment-form-input"><input id="author" name="author" type="text" value="" /></div>
+				</div>
+				<div class="comment-form-field comment-form-url">
+					<label for="url">Website</label>
+					<div class="comment-form-input"><input id="url" name="url" type="url" value="" /></div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+
+	<div id="comment-form-wordpress" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="https://1.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=25&amp;d=identicon&amp;forcedefault=y&amp;r=PG" alt="WordPress.com Logo" width="25" class="no-grav" />
+			</div>
+
+				<div class="comment-form-fields">
+				<input type="hidden" name="wp_avatar" id="wordpress-avatar" class="comment-meta-wordpress" value="" />
+				<input type="hidden" name="wp_user_id" id="wordpress-user_id" class="comment-meta-wordpress" value="" />
+				<input type="hidden" name="wp_access_token" id="wordpress-access_token" class="comment-meta-wordpress" value="" />
+						<p class="comment-form-posting-as pa-wordpress">
+			<strong></strong>
+			You are commenting using your WordPress.com account.			<span class="comment-form-log-out">
+				(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout( 'wordpress' );">Log&nbsp;Out</a>&nbsp;/&nbsp;
+				<a href="#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)
+			</span>
+			<span class="pa-icon"><svg xmlns="http://www.w3.org/2000/svg" role="presentation" viewBox="0 0 24 24" ><rect x="0" fill="none" width="24" height="24"/><g><path fill="#FFF" d="M12.158 12.786l-2.698 7.84c.806.236 1.657.365 2.54.365 1.047 0 2.05-.18 2.986-.51-.024-.037-.046-.078-.065-.123l-2.762-7.57zM3.008 12c0 3.56 2.07 6.634 5.068 8.092L3.788 8.342c-.5 1.117-.78 2.354-.78 3.658zm15.06-.454c0-1.112-.398-1.88-.74-2.48-.456-.74-.883-1.368-.883-2.11 0-.825.627-1.595 1.51-1.595.04 0 .078.006.116.008-1.598-1.464-3.73-2.36-6.07-2.36-3.14 0-5.904 1.613-7.512 4.053.21.008.41.012.58.012.94 0 2.395-.114 2.395-.114.484-.028.54.684.057.74 0 0-.487.058-1.03.086l3.275 9.74 1.968-5.902-1.4-3.838c-.485-.028-.944-.085-.944-.085-.486-.03-.43-.77.056-.742 0 0 1.484.114 2.368.114.94 0 2.397-.114 2.397-.114.486-.028.543.684.058.74 0 0-.488.058-1.03.086l3.25 9.665.897-2.997c.456-1.17.684-2.137.684-2.907zm1.82-3.86c.04.286.06.593.06.924 0 .912-.17 1.938-.683 3.22l-2.746 7.94c2.672-1.558 4.47-4.454 4.47-7.77 0-1.564-.4-3.033-1.1-4.314zM12 22C6.486 22 2 17.514 2 12S6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></g></svg></span>
+		</p>
+					</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-googleplus" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="https://1.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=25&amp;d=identicon&amp;forcedefault=y&amp;r=PG" alt="Google photo" width="25" class="no-grav" />
+			</div>
+
+				<div class="comment-form-fields">
+				<input type="hidden" name="googleplus_avatar" id="googleplus-avatar" class="comment-meta-googleplus" value="" />
+				<input type="hidden" name="googleplus_user_id" id="googleplus-user_id" class="comment-meta-googleplus" value="" />
+				<input type="hidden" name="googleplus_access_token" id="googleplus-access_token" class="comment-meta-googleplus" value="" />
+						<p class="comment-form-posting-as pa-googleplus">
+			<strong></strong>
+			You are commenting using your Google account.			<span class="comment-form-log-out">
+				(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout( 'googleplus' );">Log&nbsp;Out</a>&nbsp;/&nbsp;
+				<a href="#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)
+			</span>
+			<span class="pa-icon"><svg xmlns="http://www.w3.org/2000/svg" role="presentation" x="0px" y="0px" viewBox="0 0 60 60" ><path fill="#FFF" d="M56.3,30c0,-1.6 -0.2,-3.4 -0.6,-5h-3.1H42.2H30v10.6h14.8C44,39.3 42,42 39.1,43.9l8.8,6.8C53,46 56.3,39 56.3,30z" /><path fill="#FFF" d="M30,57.5c6.7,0 13.1,-2.4 17.9,-6.8l-8.8,-6.8c-2.5,1.6 -5.6,2.4 -9.1,2.4c-7.2,0 -13.3,-4.7 -15.4,-11.2l-9.3,7.1C9.8,51.3 19.1,57.5 30,57.5z" /><path fill="#FFF" d="M5.3,42.2l9.3,-7.1c-0.5,-1.6 -0.8,-3.3 -0.8,-5.1s0.3,-3.5 0.8,-5.1l-9.3,-7.1C3.5,21.5 2.5,25.6 2.5,30S3.5,38.5 5.3,42.2z" /><path fill="#FFF" d="M40.1,17.4l8,-8C43.3,5.1 37,2.5 30,2.5C19.1,2.5 9.8,8.7 5.3,17.8l9.3,7.1c2.1,-6.5 8.2,-11.1 15.4,-11.1C33.9,13.7 37.4,15.1 40.1,17.4z" /></svg></span>
+		</p>
+					</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-twitter" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="https://1.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=25&amp;d=identicon&amp;forcedefault=y&amp;r=PG" alt="Twitter picture" width="25" class="no-grav" />
+			</div>
+
+				<div class="comment-form-fields">
+				<input type="hidden" name="twitter_avatar" id="twitter-avatar" class="comment-meta-twitter" value="" />
+				<input type="hidden" name="twitter_user_id" id="twitter-user_id" class="comment-meta-twitter" value="" />
+				<input type="hidden" name="twitter_access_token" id="twitter-access_token" class="comment-meta-twitter" value="" />
+						<p class="comment-form-posting-as pa-twitter">
+			<strong></strong>
+			You are commenting using your Twitter account.			<span class="comment-form-log-out">
+				(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout( 'twitter' );">Log&nbsp;Out</a>&nbsp;/&nbsp;
+				<a href="#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)
+			</span>
+			<span class="pa-icon"><svg xmlns="http://www.w3.org/2000/svg" role="presentation" viewBox="0 0 24 24" ><rect x="0" fill="none" width="24" height="24"/><g><path fill="#FFF" d="M22.23 5.924c-.736.326-1.527.547-2.357.646.847-.508 1.498-1.312 1.804-2.27-.793.47-1.67.812-2.606.996C18.325 4.498 17.258 4 16.078 4c-2.266 0-4.103 1.837-4.103 4.103 0 .322.036.635.106.935-3.41-.17-6.433-1.804-8.457-4.287-.353.607-.556 1.312-.556 2.064 0 1.424.724 2.68 1.825 3.415-.673-.022-1.305-.207-1.86-.514v.052c0 1.988 1.415 3.647 3.293 4.023-.344.095-.707.145-1.08.145-.265 0-.522-.026-.773-.074.522 1.63 2.038 2.817 3.833 2.85-1.404 1.1-3.174 1.757-5.096 1.757-.332 0-.66-.02-.98-.057 1.816 1.164 3.973 1.843 6.29 1.843 7.547 0 11.675-6.252 11.675-11.675 0-.178-.004-.355-.012-.53.802-.578 1.497-1.3 2.047-2.124z"/></g></svg></span>
+		</p>
+					</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-facebook" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="https://1.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=25&amp;d=identicon&amp;forcedefault=y&amp;r=PG" alt="Facebook photo" width="25" class="no-grav" />
+			</div>
+
+				<div class="comment-form-fields">
+				<input type="hidden" name="fb_avatar" id="facebook-avatar" class="comment-meta-facebook" value="" />
+				<input type="hidden" name="fb_user_id" id="facebook-user_id" class="comment-meta-facebook" value="" />
+				<input type="hidden" name="fb_access_token" id="facebook-access_token" class="comment-meta-facebook" value="" />
+						<p class="comment-form-posting-as pa-facebook">
+			<strong></strong>
+			You are commenting using your Facebook account.			<span class="comment-form-log-out">
+				(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout( 'facebook' );">Log&nbsp;Out</a>&nbsp;/&nbsp;
+				<a href="#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)
+			</span>
+			<span class="pa-icon"><svg xmlns="http://www.w3.org/2000/svg" role="presentation" viewBox="0 0 24 24" ><rect x="0" fill="none" width="24" height="24"/><g><path fill="#FFF" d="M20.007 3H3.993C3.445 3 3 3.445 3 3.993v16.013c0 .55.445.994.993.994h8.62v-6.97H10.27V11.31h2.346V9.31c0-2.325 1.42-3.59 3.494-3.59.993 0 1.847.073 2.096.106v2.43h-1.438c-1.128 0-1.346.537-1.346 1.324v1.734h2.69l-.35 2.717h-2.34V21h4.587c.548 0 .993-.445.993-.993V3.993c0-.548-.445-.993-.993-.993z"/></g></svg></span>
+		</p>
+					</div>
+	
+		</div>
+	</div>
+
+
+	<div id="comment-form-load-service" class="comment-form-service">
+		<div class="comment-form-posting-as-cancel"><a href="javascript:HighlanderComments.cancelExternalWindow();">Cancel</a></div>
+		<p>Connecting to %s</p>
+	</div>
+
+</div>
+
+<script type="text/javascript">
+var highlander_expando_javascript = function(){
+	var input = document.createElement( 'input' ),
+	    comment = jQuery( '#comment' );
+
+	if ( 'placeholder' in input ) {
+		comment.attr( 'placeholder', jQuery( '.comment-textarea label' ).remove().text() );
+	}
+
+	// Expando Mode: start small, then auto-resize on first click + text length
+	jQuery( '#comment-form-identity' ).hide();
+	jQuery( '#comment-form-subscribe' ).hide();
+	jQuery( '#commentform .form-submit' ).hide();
+
+	comment.css( { 'height':'10px' } ).one( 'focus', function() {
+		var timer = setInterval( HighlanderComments.resizeCallback, 10 )
+		jQuery( this ).animate( { 'height': HighlanderComments.initialHeight } ).delay( 100 ).queue( function(n) { clearInterval( timer ); HighlanderComments.resizeCallback(); n(); } );
+		jQuery( '#comment-form-identity' ).slideDown();
+		jQuery( '#comment-form-subscribe' ).slideDown();
+		jQuery( '#commentform .form-submit' ).slideDown();
+	});
+}
+jQuery(document).ready( highlander_expando_javascript );
+</script>
+
+<div id="comment-form-subscribe">
+	<p class="comment-subscription-form"><input type="checkbox" name="subscribe" id="subscribe" value="subscribe" style="width: auto;"/> <label class="subscribe-label" id="subscribe-label" for="subscribe" style="display: inline;">Notify me of new comments via email.</label></p><p class="post-subscription-form"><input type="checkbox" name="subscribe_blog" id="subscribe_blog" value="subscribe" style="width: auto;"/> <label class="subscribe-label" id="subscribe-blog-label" for="subscribe_blog"  style="display: inline;">Notify me of new posts via email.</label></p></div>
+
+
+
+
+<p class="form-submit"><input name="submit" type="submit" id="comment-submit" class="submit" value="Post Comment" /> <input type='hidden' name='comment_post_ID' value='460553' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="d60747fc15" /></p>
+<input type="hidden" name="genseq" value="1578078976" />
+<p style="display: none;"><input type="hidden" id="ak_js" name="ak_js" value="95"/></p></form>	</div><!-- #respond -->
+	<div style="clear: both"></div><p class="akismet_comment_form_privacy_notice">This site uses Akismet to reduce spam. <a href="https://akismet.com/privacy/" target="_blank" rel="nofollow noopener">Learn how your comment data is processed</a>.</p>
+	
+	</div>
+
+		<div id="sidebar" style="color: #ccc; font-size: 0.8em;">
+
+		<p><a href="https://rashmanly.com">Home</a></p>
+
+		<p class="postmeta_single">
+				This entry was posted on January 1, 2020 at 1:06 pm and filed under <a href="https://rashmanly.com/category/flashlight-on-the-occult/demons/" rel="category tag">Demons</a>,<a href="https://rashmanly.com/category/flashlight-on-the-occult/exorcism/" rel="category tag">Exorcism</a>,<a href="https://rashmanly.com/category/flashlight-on-the-occult/" rel="category tag">FLASHLIGHT on the OCCULT</a>,<a href="https://rashmanly.com/category/uncategorized/god/" rel="category tag">GOD</a>,<a href="https://rashmanly.com/category/gossip/" rel="category tag">GOSSIP!</a>,<a href="https://rashmanly.com/category/flashlight-on-the-occult/satan/" rel="category tag">Satan</a>,<a href="https://rashmanly.com/category/uncategorized/" rel="category tag">Uncategorized</a>. You can follow any responses to this entry through the <a href=""https://rashmanly.com/2020/01/01/top-10-most-demonic-events-of-2019-that-indicate-rise-of-satanism/feed/">RSS</a> feed.				<p>Tags: <a href="https://rashmanly.com/tag/astonishing-spike-in-demand-for-exorcisms-joshua-gill-dailycaller-com/" rel="tag">‘ASTONISHING’ SPIKE IN DEMAND FOR EXORCISMS - Joshua Gill - dailycaller.com</a>, <a href="https://rashmanly.com/tag/jesus-command-was-to-heal-the-sick-and-to-cast-out-demons/" rel="tag">“Jesus’ command was to heal the sick and to cast out demons"</a>, <a href="https://rashmanly.com/tag/catholic-church-reports-spike-in-demonic-activity-requests-for-exorcists-have-tripled-thomas-d-williams-ph-d-breitbart-com/" rel="tag">Catholic Church Reports Spike in ‘Demonic Activity’ - Requests for Exorcists Have ‘Tripled’ - Thomas D. Williams PH.D - breitbart.com</a>, <a href="https://rashmanly.com/tag/demonic-possession-claims-have-tripled-in-recent-years-and-attributed-the-rise-in-demonic-activity-to-an-increased-use-of-fortune-tellers-and-tarot-cards/" rel="tag">Demonic Possession claims have tripled in recent years and attributed the rise in demonic activity to an increased use of fortune tellers and tarot cards</a>, <a href="https://rashmanly.com/tag/exorcists-condemn-childrens-book-on-summoning-demons-thomas-d-williams-ph-d-breitbart-com/" rel="tag">Exorcists Condemn Children’s Book on Summoning Demons - Thomas D. Williams PH.D. - breitbart.com</a>, <a href="https://rashmanly.com/tag/report-catholics-face-mushrooming-demand-for-exorcisms-thomas-d-williams-ph-d-breitbart-com/" rel="tag">Report: Catholics Face ‘Mushrooming Demand for Exorcisms’ - Thomas D. Williams PH.D - Breitbart.com</a>, <a href="https://rashmanly.com/tag/the-top-10-most-evil-demonic-but-true-events-of-2019-that-indicate-the-rise-of-satanism-ethan-huff-liberalmob-com/" rel="tag">The top 10 most evil demonic but TRUE events of 2019 that indicate the rise of Satanism - Ethan Huff - liberalmob.com</a>, <a href="https://rashmanly.com/tag/vatican-trains-exorcists-as-demonic-possession-claims-rise-cruxnow-com/" rel="tag">Vatican trains exorcists as demonic possession claims rise - cruxnow.com</a>, <a href="https://rashmanly.com/tag/walmart-target-and-amazon-all-sell-books-that-teach-children-as-young-as-five-how-to-summon-demons-ethan-huff-naturalnews-com/" rel="tag">Walmart - Target and Amazon all sell books that teach children as young as five how to summon Demons - Ethan Huff - naturalnews.com</a></p>
+									You can <a href="#respond">leave a response</a>, or <a href="https://rashmanly.com/2020/01/01/top-10-most-demonic-events-of-2019-that-indicate-rise-of-satanism/trackback/" rel="trackback">trackback</a> from your own site.
+						</p>
+
+
+		<div class="navigation">
+			<div class="alignright"><a href="https://rashmanly.com/2020/01/01/2019-box-office-bombs/" rel="next">2019 BOX OFFICE&nbsp;BOMBS</a> &raquo;</div>
+			<div class="alignleft">&laquo; <a href="https://rashmanly.com/2020/01/01/worst-of-the-decade-trump-derangement-syndrome/" rel="prev">Trump Derangement Syndrome&nbsp;low-lights</a></div>
+		</div>
+
+	</div>
+
+		</div>
+
+		<div id="bar"></div>
+
+		<div id="footer_bg">
+			<div id="footer">
+				<p>
+					 				</p>
+			</div>
+		</div>
+
+	</div>
+
+	<!--  -->
+<script src='//0.gravatar.com/js/gprofiles.js?ver=202001y'></script>
+<script>
+var WPGroHo = {"my_hash":""};
+</script>
+<script type='text/javascript' src='https://s1.wp.com/wp-content/mu-plugins/gravatar-hovercards/wpgroho.js?m=1380573781h'></script>
+
+	<script>
+		//initialize and attach hovercards to all gravatars
+		jQuery( document ).ready( function( $ ) {
+
+			if (typeof Gravatar === "undefined"){
+				return;
+			}
+
+			if ( typeof Gravatar.init !== "function" ) {
+				return;
+			}			
+
+			Gravatar.profile_cb = function( hash, id ) {
+				WPGroHo.syncProfileData( hash, id );
+			};
+			Gravatar.my_hash = WPGroHo.my_hash;
+			Gravatar.init( 'body', '#wp-admin-bar-my-account' );
+		});
+	</script>
+
+		<div style="display:none">
+	</div>
+<script>
+var HighlanderComments = {"loggingInText":"Logging In\u2026","submittingText":"Posting Comment\u2026","postCommentText":"Post Comment","connectingToText":"Connecting to %s","commentingAsText":"%1$s: You are commenting using your %2$s account.","logoutText":"Log Out","loginText":"Log In","connectURL":"https:\/\/rashmanly.wordpress.com\/public.api\/connect\/?action=request&domain=rashmanly.com","logoutURL":"https:\/\/rashmanly.wordpress.com\/wp-login.php?action=logout&_wpnonce=b509faf966","homeURL":"https:\/\/rashmanly.com\/","postID":"460553","gravDefault":"identicon","enterACommentError":"Please enter a comment","enterEmailError":"Please enter your email address here","invalidEmailError":"Invalid email address","enterAuthorError":"Please enter your name here","gravatarFromEmail":"This picture will show whenever you leave a comment. Click to customize it.","logInToExternalAccount":"Log in to use details from one of these accounts.","change":"Change","changeAccount":"Change Account","comment_registration":"","userIsLoggedIn":"","isJetpack":"","text_direction":"ltr"};
+</script>
+<script type='text/javascript' src='https://s0.wp.com/_static/??/wp-content/js/jquery/jquery.autoresize.js,/wp-content/mu-plugins/highlander-comments/script.js?m=1573483029j'></script>
+
+	<div id="carousel-reblog-box">
+		<form action="#" name="carousel-reblog">
+			<textarea id="carousel-reblog-content" name="carousel-reblog-content" placeholder="Add your thoughts here... (optional)"></textarea>
+			<label for="carousel-reblog-to-blog-id" id="carousel-reblog-lblogid">Post to</label>
+			<select name="carousel-reblog-to-blog-id" id="carousel-reblog-to-blog-id">
+						</select>
+
+			<div class="submit">
+				<span class="canceltext"><a href="#" class="cancel">Cancel</a></span>
+				<input type="submit" name="carousel-reblog-submit" class="button" id="carousel-reblog-submit" value="Reblog Post" />
+				<input type="hidden" id="carousel-reblog-blog-id" value="2851186" />
+				<input type="hidden" id="carousel-reblog-blog-url" value="https://rashmanly.com" />
+				<input type="hidden" id="carousel-reblog-blog-title" value="22MOON.COM" />
+				<input type="hidden" id="carousel-reblog-post-url" value="" />
+				<input type="hidden" id="carousel-reblog-post-title" value="" />
+			</div>
+
+			<input type="hidden" id="_wpnonce" name="_wpnonce" value="1dd95ebb5d" /><input type="hidden" name="_wp_http_referer" value="/2020/01/01/top-10-most-demonic-events-of-2019-that-indicate-rise-of-satanism/" />		</form>
+
+		<div class="arrow"></div>
+	</div>
+
+	<script type="text/javascript">
+		window.WPCOM_sharing_counts = {"https:\/\/rashmanly.com\/2020\/01\/01\/top-10-most-demonic-events-of-2019-that-indicate-rise-of-satanism\/":460553};
+	</script>
+				<link rel='stylesheet' id='all-css-0-3' href='https://s2.wp.com/_static/??/wp-content/plugins/gutenberg-blocks/jetpack-layout-grid/blocks/front.css,/wp-content/mu-plugins/carousel/jetpack-carousel.css?m=1576278967j&cssminify=yes' type='text/css' media='all' />
+<script>
+var actionbardata = {"siteID":"2851186","siteName":"22MOON.COM","siteURL":"https:\/\/rashmanly.com","icon":"<img alt='' src='https:\/\/s2.wp.com\/i\/logo\/wpcom-gray-white.png' class='avatar avatar-50' height='50' width='50' \/>","canManageOptions":"","canCustomizeSite":"","isFollowing":"","themeSlug":"pub\/sunburn","signupURL":"https:\/\/wordpress.com\/start\/","loginURL":"https:\/\/wordpress.com\/log-in?redirect_to=https%3A%2F%2Frashmanly.com%2F2020%2F01%2F01%2Ftop-10-most-demonic-events-of-2019-that-indicate-rise-of-satanism%2F&signup_flow=account&domain=rashmanly.com","themeURL":"","xhrURL":"https:\/\/rashmanly.com\/wp-admin\/admin-ajax.php","nonce":"3aa770aafe","isSingular":"1","isFolded":"","isLoggedIn":"","isMobile":"","subscribeNonce":"<input type=\"hidden\" id=\"_wpnonce\" name=\"_wpnonce\" value=\"300d22416f\" \/>","referer":"https:\/\/rashmanly.com\/2020\/01\/01\/top-10-most-demonic-events-of-2019-that-indicate-rise-of-satanism\/","canFollow":"1","feedID":"41693545","statusMessage":"","customizeLink":"https:\/\/rashmanly.wordpress.com\/wp-admin\/customize.php?url=https%3A%2F%2Frashmanly.wordpress.com%2F2020%2F01%2F01%2Ftop-10-most-demonic-events-of-2019-that-indicate-rise-of-satanism%2F","postID":"460553","shortlink":"https:\/\/wp.me\/pbXIS-1VOh","canEditPost":"","editLink":"https:\/\/wordpress.com\/post\/rashmanly.com\/460553","statsLink":"https:\/\/wordpress.com\/stats\/post\/460553\/rashmanly.com","i18n":{"view":"View site","follow":"Follow","following":"Following","edit":"Edit","login":"Log in","signup":"Sign up","customize":"Customize","report":"Report this content","themeInfo":"Get theme: Sunburn","shortlink":"Copy shortlink","copied":"Copied","followedText":"New posts from this site will now appear in your <a href=\"https:\/\/wordpress.com\/read\">Reader<\/a>","foldBar":"Collapse this bar","unfoldBar":"Expand this bar","editSubs":"Manage subscriptions","viewReader":"View site in Reader","viewReadPost":"View post in Reader","subscribe":"Sign me up","enterEmail":"Enter your email address","followers":"Join 279 other followers","alreadyUser":"Already have a WordPress.com account? <a href=\"https:\/\/wordpress.com\/log-in?redirect_to=https%3A%2F%2Frashmanly.com%2F2020%2F01%2F01%2Ftop-10-most-demonic-events-of-2019-that-indicate-rise-of-satanism%2F&signup_flow=account&domain=rashmanly.com\">Log in now.<\/a>","stats":"Stats"}};
+</script>
+<script>
+var jetpackCarouselStrings = {"widths":[370,700,1000,1200,1400,2000],"is_logged_in":"","lang":"en","ajaxurl":"https:\/\/rashmanly.com\/wp-admin\/admin-ajax.php","nonce":"f753644eb2","display_exif":"1","display_geo":"1","single_image_gallery":"1","single_image_gallery_media_file":"","background_color":"black","comment":"Comment","post_comment":"Post Comment","write_comment":"Write a Comment...","loading_comments":"Loading Comments...","download_original":"View full size <span class=\"photo-size\">{0}<span class=\"photo-size-times\">\u00d7<\/span>{1}<\/span>","no_comment_text":"Please be sure to submit some text with your comment.","no_comment_email":"Please provide an email address to comment.","no_comment_author":"Please provide your name to comment.","comment_post_error":"Sorry, but there was an error posting your comment. Please try again later.","comment_approved":"Your comment was approved.","comment_unapproved":"Your comment is in moderation.","camera":"Camera","aperture":"Aperture","shutter_speed":"Shutter Speed","focal_length":"Focal Length","copyright":"Copyright","comment_registration":"0","require_name_email":"1","login_url":"https:\/\/rashmanly.wordpress.com\/wp-login.php?redirect_to=https%3A%2F%2Frashmanly.com%2F2020%2F01%2F01%2Ftop-10-most-demonic-events-of-2019-that-indicate-rise-of-satanism%2F","blog_id":"2851186","meta_data":["camera","aperture","shutter_speed","focal_length","copyright"],"local_comments_commenting_as":"<fieldset><label for=\"email\">Email (Required)<\/label> <input type=\"text\" name=\"email\" class=\"jp-carousel-comment-form-field jp-carousel-comment-form-text-field\" id=\"jp-carousel-comment-form-email-field\" \/><\/fieldset><fieldset><label for=\"author\">Name (Required)<\/label> <input type=\"text\" name=\"author\" class=\"jp-carousel-comment-form-field jp-carousel-comment-form-text-field\" id=\"jp-carousel-comment-form-author-field\" \/><\/fieldset><fieldset><label for=\"url\">Website<\/label> <input type=\"text\" name=\"url\" class=\"jp-carousel-comment-form-field jp-carousel-comment-form-text-field\" id=\"jp-carousel-comment-form-url-field\" \/><\/fieldset>","reblog":"Reblog","reblogged":"Reblogged","reblog_add_thoughts":"Add your thoughts here... (optional)","reblogging":"Reblogging...","post_reblog":"Post Reblog","stats_query_args":"blog=2851186&v=wpcom&tz=-4&user_id=0&subd=rashmanly","is_public":"1","reblog_enabled":""};
+</script>
+<script>
+var sharing_js_options = {"lang":"en","counts":"1","is_stats_active":"1"};
+</script>
+<script type='text/javascript' src='https://s2.wp.com/_static/??-eJyVUe1ugzAMfKEFt5uq0h/THmVKE0MN+aB2Qte3X9CgqiaGtF9xznf22YbboEwMCUOCTsDiSAaHr6qTF3hK+awGl1sKAo56FLhmzHjRwTrkhUzBuGxLshQy0fsiVIyDu1eewhrJkiQYMdjIU2qI7t6Qc8/0xcDSvcnOKaGECi0lCu3sC3bVvq5e4exigaIkUSU0/dyD8PZXxTaX7xm5/REUY5gGbXqF4zSAiTkkG28B5vQveGNT2pZB1FkzeC0JuUQqjshM0/wP7J8VEhdzsiUyiWKYRI9obfkyrB+lK6fl+/xUz6yVXkZzzILusbQF2PLXk3hM6q3awWfpDE1kv8Gfrqkap4lBLprLzZe3iD78+/5wPJ4O9amuu29XWQx4'></script>
+<script type='text/javascript'>
+( 'fetch' in window ) || document.write( '<script src="https://s0.wp.com/wp-includes/js/dist/vendor/wp-polyfill-fetch.min.js?m=1573572739h&#038;ver=3.0.0"></scr' + 'ipt>' );( document.contains ) || document.write( '<script src="https://s1.wp.com/wp-includes/js/dist/vendor/wp-polyfill-node-contains.min.js?m=1540208548h&#038;ver=3.26.0-0"></scr' + 'ipt>' );( window.FormData && window.FormData.prototype.keys ) || document.write( '<script src="https://s1.wp.com/wp-includes/js/dist/vendor/wp-polyfill-formdata.min.js?m=1550600082h&#038;ver=3.0.12"></scr' + 'ipt>' );( Element.prototype.matches && Element.prototype.closest ) || document.write( '<script src="https://s2.wp.com/wp-includes/js/dist/vendor/wp-polyfill-element-closest.min.js?m=1540208548h&#038;ver=2.0.2"></scr' + 'ipt>' );
+</script>
+<script type='text/javascript'>
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-twitter', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomtwitter', 'menubar=1,resizable=1,width=600,height=350' );
+				return false;
+			});
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-facebook', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomfacebook', 'menubar=1,resizable=1,width=600,height=400' );
+				return false;
+			});
+</script>
+<script type="text/javascript">
+// <![CDATA[
+(function() {
+try{
+  if ( window.external &&'msIsSiteMode' in window.external) {
+    if (window.external.msIsSiteMode()) {
+      var jl = document.createElement('script');
+      jl.type='text/javascript';
+      jl.async=true;
+      jl.src='/wp-content/plugins/ie-sitemode/custom-jumplist.php';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(jl, s);
+    }
+  }
+}catch(e){}
+})();
+// ]]>
+</script>		<iframe src='https://widgets.wp.com/likes/master.html?ver=20190321#ver=20190321' scrolling='no' id='likes-master' name='likes-master' style='display:none;'></iframe>
+		<div id='likes-other-gravatars'><div class="likes-text"><span>%d</span> bloggers like this:</div><ul class="wpl-avatars sd-like-gravatars"></ul></div>
+<script src="//stats.wp.com/w.js?60" type="text/javascript" async defer></script>
+<script type="text/javascript">
+_tkq = window._tkq || [];
+_stq = window._stq || [];
+_tkq.push(['storeContext', {'blog_id':'2851186','blog_tz':'-4','user_lang':'en','blog_lang':'en','user_id':'0'}]);
+_stq.push(['view', {'blog':'2851186','v':'wpcom','tz':'-4','user_id':'0','post':'460553','subd':'rashmanly'}]);
+_stq.push(['extra', {'crypt':'UE40eW5QN0p8M2Y/RE0/bU8yQkx3RTR3RmZTSndoTltKYUswLWMvL2YzZy83a3FNZnFkcHFqZ0VraDROd3NSK10xVyUtb3VuVWV6SSZoTzdxQnN5cHM5UGFhZTkuMEJoJUhlcWxkeUt+T1NPWiVpaF9JQz1oTH5yaFRkXVt4dUVzSmRYV2wwYmMvPVFaLVN1bmJJNWcrUkt+enlPejFSTmM2TGU1LT00U1JJVmpfMH5nUjlbZFQyVldxMEpRSmE/cU0mSXNfLldLc0RsalJHfFEzYjlLWHB6bCt+dVJCc1NOLlo3TXJ3JT1aYmdlbGJFcThkLVhKelhiV358YjM/UlZxT294LU1JNTctSS1VZnhJZEYzQlRa'}]);
+_stq.push([ 'clickTrackerInit', '2851186', '460553' ]);
+	</script>
+<noscript><img src="https://pixel.wp.com/b.gif?v=noscript" style="height:0px;width:0px;overflow:hidden" alt="" /></noscript>
+<script>
+if ( 'object' === typeof wpcom_mobile_user_agent_info ) {
+
+	wpcom_mobile_user_agent_info.init();
+	var mobileStatsQueryString = "";
+	
+	if( false !== wpcom_mobile_user_agent_info.matchedPlatformName )
+		mobileStatsQueryString += "&x_" + 'mobile_platforms' + '=' + wpcom_mobile_user_agent_info.matchedPlatformName;
+	
+	if( false !== wpcom_mobile_user_agent_info.matchedUserAgentName )
+		mobileStatsQueryString += "&x_" + 'mobile_devices' + '=' + wpcom_mobile_user_agent_info.matchedUserAgentName;
+	
+	if( wpcom_mobile_user_agent_info.isIPad() )
+		mobileStatsQueryString += "&x_" + 'ipad_views' + '=' + 'views';
+
+	if( "" != mobileStatsQueryString ) {
+		new Image().src = document.location.protocol + '//pixel.wp.com/g.gif?v=wpcom-no-pv' + mobileStatsQueryString + '&baba=' + Math.random();
+	}
+	
+}
+</script>
+</body>
+</html>

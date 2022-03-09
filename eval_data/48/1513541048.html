@@ -1,0 +1,1882 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"UQ8DU1ZXGwEHVFRbBQY=",licenseKey:"9093b2023a",applicationID:"2705927"};window.NREUM||(NREUM={}),__nr_require=function(t,n,e){function r(e){if(!n[e]){var o=n[e]={exports:{}};t[e][0].call(o.exports,function(n){var o=t[e][1][n];return r(o||n)},o,o.exports)}return n[e].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<e.length;o++)r(e[o]);return r}({1:[function(t,n,e){function r(t){try{s.console&&console.log(t)}catch(n){}}var o,i=t("ee"),a=t(20),s={};try{o=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(s.console=!0,o.indexOf("dev")!==-1&&(s.dev=!0),o.indexOf("nr_dev")!==-1&&(s.nrDev=!0))}catch(c){}s.nrDev&&i.on("internal-error",function(t){r(t.stack)}),s.dev&&i.on("fn-err",function(t,n,e){r(e.stack)}),s.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(s,function(t,n){return t}).join(", ")))},{}],2:[function(t,n,e){function r(t,n,e,r,s){try{p?p-=1:o(s||new UncaughtException(t,n,e),!0)}catch(f){try{i("ierr",[f,c.now(),!0])}catch(d){}}return"function"==typeof u&&u.apply(this,a(arguments))}function UncaughtException(t,n,e){this.message=t||"Uncaught error with no additional information",this.sourceURL=n,this.line=e}function o(t,n){var e=n?null:c.now();i("err",[t,e])}var i=t("handle"),a=t(21),s=t("ee"),c=t("loader"),f=t("gos"),u=window.onerror,d=!1,l="nr@seenError",p=0;c.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(h){"stack"in h&&(t(9),t(8),"addEventListener"in window&&t(5),c.xhrWrappable&&t(10),d=!0)}s.on("fn-start",function(t,n,e){d&&(p+=1)}),s.on("fn-err",function(t,n,e){d&&!e[l]&&(f(e,l,function(){return!0}),this.thrown=!0,o(e))}),s.on("fn-end",function(){d&&!this.thrown&&p>0&&(p-=1)}),s.on("internal-error",function(t){i("ierr",[t,c.now(),!0])})},{}],3:[function(t,n,e){t("loader").features.ins=!0},{}],4:[function(t,n,e){function r(t){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var o=t("ee"),i=t("handle"),a=t(9),s=t(8),c="learResourceTimings",f="addEventListener",u="resourcetimingbufferfull",d="bstResource",l="resource",p="-start",h="-end",m="fn"+p,w="fn"+h,v="bstTimer",g="pushState",y=t("loader");y.features.stn=!0,t(7),"addEventListener"in window&&t(5);var x=NREUM.o.EV;o.on(m,function(t,n){var e=t[0];e instanceof x&&(this.bstStart=y.now())}),o.on(w,function(t,n){var e=t[0];e instanceof x&&i("bst",[e,n,this.bstStart,y.now()])}),a.on(m,function(t,n,e){this.bstStart=y.now(),this.bstType=e}),a.on(w,function(t,n){i(v,[n,this.bstStart,y.now(),this.bstType])}),s.on(m,function(){this.bstStart=y.now()}),s.on(w,function(t,n){i(v,[n,this.bstStart,y.now(),"requestAnimationFrame"])}),o.on(g+p,function(t){this.time=y.now(),this.startPath=location.pathname+location.hash}),o.on(g+h,function(t){i("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),f in window.performance&&(window.performance["c"+c]?window.performance[f](u,function(t){i(d,[window.performance.getEntriesByType(l)]),window.performance["c"+c]()},!1):window.performance[f]("webkit"+u,function(t){i(d,[window.performance.getEntriesByType(l)]),window.performance["webkitC"+c]()},!1)),document[f]("scroll",r,{passive:!0}),document[f]("keypress",r,!1),document[f]("click",r,!1)}},{}],5:[function(t,n,e){function r(t){for(var n=t;n&&!n.hasOwnProperty(u);)n=Object.getPrototypeOf(n);n&&o(n)}function o(t){s.inPlace(t,[u,d],"-",i)}function i(t,n){return t[1]}var a=t("ee").get("events"),s=t("wrap-function")(a,!0),c=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";n.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(o(window),o(f.prototype)),a.on(u+"-start",function(t,n){var e=t[1],r=c(e,"nr@wrapped",function(){function t(){if("function"==typeof e.handleEvent)return e.handleEvent.apply(e,arguments)}var n={object:t,"function":e}[typeof e];return n?s(n,"fn-",null,n.name||"anonymous"):e});this.wrapped=t[1]=r}),a.on(d+"-start",function(t){t[1]=this.wrapped||t[1]})},{}],6:[function(t,n,e){function r(t,n,e){var r=t[n];"function"==typeof r&&(t[n]=function(){var t=i(arguments),n={};o.emit(e+"before-start",[t],n);var a;n[m]&&n[m].dt&&(a=n[m].dt);var s=r.apply(this,t);return o.emit(e+"start",[t,a],s),s.then(function(t){return o.emit(e+"end",[null,t],s),t},function(t){throw o.emit(e+"end",[t],s),t})})}var o=t("ee").get("fetch"),i=t(21),a=t(20);n.exports=o;var s=window,c="fetch-",f=c+"body-",u=["arrayBuffer","blob","json","text","formData"],d=s.Request,l=s.Response,p=s.fetch,h="prototype",m="nr@context";d&&l&&p&&(a(u,function(t,n){r(d[h],n,f),r(l[h],n,f)}),r(s,"fetch",c),o.on(c+"end",function(t,n){var e=this;if(n){var r=n.headers.get("content-length");null!==r&&(e.rxSize=r),o.emit(c+"done",[null,n],e)}else o.emit(c+"done",[t],e)}))},{}],7:[function(t,n,e){var r=t("ee").get("history"),o=t("wrap-function")(r);n.exports=r;var i=window.history&&window.history.constructor&&window.history.constructor.prototype,a=window.history;i&&i.pushState&&i.replaceState&&(a=i),o.inPlace(a,["pushState","replaceState"],"-")},{}],8:[function(t,n,e){var r=t("ee").get("raf"),o=t("wrap-function")(r),i="equestAnimationFrame";n.exports=r,o.inPlace(window,["r"+i,"mozR"+i,"webkitR"+i,"msR"+i],"raf-"),r.on("raf-start",function(t){t[0]=o(t[0],"fn-")})},{}],9:[function(t,n,e){function r(t,n,e){t[0]=a(t[0],"fn-",null,e)}function o(t,n,e){this.method=e,this.timerDuration=isNaN(t[1])?0:+t[1],t[0]=a(t[0],"fn-",this,e)}var i=t("ee").get("timer"),a=t("wrap-function")(i),s="setTimeout",c="setInterval",f="clearTimeout",u="-start",d="-";n.exports=i,a.inPlace(window,[s,"setImmediate"],s+d),a.inPlace(window,[c],c+d),a.inPlace(window,[f,"clearImmediate"],f+d),i.on(c+u,r),i.on(s+u,o)},{}],10:[function(t,n,e){function r(t,n){d.inPlace(n,["onreadystatechange"],"fn-",s)}function o(){var t=this,n=u.context(t);t.readyState>3&&!n.resolved&&(n.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,g,"fn-",s)}function i(t){y.push(t),h&&(b?b.then(a):w?w(a):(E=-E,O.data=E))}function a(){for(var t=0;t<y.length;t++)r([],y[t]);y.length&&(y=[])}function s(t,n){return n}function c(t,n){for(var e in t)n[e]=t[e];return n}t(5);var f=t("ee"),u=f.get("xhr"),d=t("wrap-function")(u),l=NREUM.o,p=l.XHR,h=l.MO,m=l.PR,w=l.SI,v="readystatechange",g=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],y=[];n.exports=u;var x=window.XMLHttpRequest=function(t){var n=new p(t);try{u.emit("new-xhr",[n],n),n.addEventListener(v,o,!1)}catch(e){try{u.emit("internal-error",[e])}catch(r){}}return n};if(c(p,x),x.prototype=p.prototype,d.inPlace(x.prototype,["open","send"],"-xhr-",s),u.on("send-xhr-start",function(t,n){r(t,n),i(n)}),u.on("open-xhr-start",r),h){var b=m&&m.resolve();if(!w&&!m){var E=1,O=document.createTextNode(E);new h(a).observe(O,{characterData:!0})}}else f.on("fn-end",function(t){t[0]&&t[0].type===v||a()})},{}],11:[function(t,n,e){function r(t){if(!i(t))return null;var n=window.NREUM;if(!n.loader_config)return null;var e=(n.loader_config.accountID||"").toString()||null,r=(n.loader_config.agentID||"").toString()||null,s=(n.loader_config.trustKey||"").toString()||null;if(!e||!r)return null;var c=a.generateCatId(),f=a.generateCatId(),u=Date.now(),d=o(c,f,u,e,r,s);return{header:d,guid:c,traceId:f,timestamp:u}}function o(t,n,e,r,o,i){var a="btoa"in window&&"function"==typeof window.btoa;if(!a)return null;var s={v:[0,1],d:{ty:"Browser",ac:r,ap:o,id:t,tr:n,ti:e}};return i&&r!==i&&(s.d.tk=i),btoa(JSON.stringify(s))}function i(t){var n=!1,e=!1,r={};if("init"in NREUM&&"distributed_tracing"in NREUM.init&&(r=NREUM.init.distributed_tracing,e=!!r.enabled),e)if(t.sameOrigin)n=!0;else if(r.allowed_origins instanceof Array)for(var o=0;o<r.allowed_origins.length;o++){var i=s(r.allowed_origins[o]);if(t.hostname===i.hostname&&t.protocol===i.protocol&&t.port===i.port){n=!0;break}}return e&&n}var a=t(18),s=t(13);n.exports={generateTracePayload:r,shouldGenerateTrace:i}},{}],12:[function(t,n,e){function r(t){var n=this.params,e=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;r<p;r++)t.removeEventListener(l[r],this.listener,!1);n.aborted||(e.duration=s.now()-this.startTime,this.loadCaptureCalled||4!==t.readyState?null==n.status&&(n.status=0):a(this,t),e.cbTime=this.cbTime,d.emit("xhr-done",[t],t),c("xhr",[n,e,this.startTime]))}}function o(t,n){var e=t.responseType;if("json"===e&&null!==n)return n;var r="arraybuffer"===e||"blob"===e||"json"===e?t.response:t.responseText;return w(r)}function i(t,n){var e=f(n),r=t.params;r.host=e.hostname+":"+e.port,r.pathname=e.pathname,t.parsedOrigin=f(n),t.sameOrigin=t.parsedOrigin.sameOrigin}function a(t,n){t.params.status=n.status;var e=o(n,t.lastSize);if(e&&(t.metrics.rxSize=e),t.sameOrigin){var r=n.getResponseHeader("X-NewRelic-App-Data");r&&(t.params.cat=r.split(", ").pop())}t.loadCaptureCalled=!0}var s=t("loader");if(s.xhrWrappable){var c=t("handle"),f=t(13),u=t(11).generateTracePayload,d=t("ee"),l=["load","error","abort","timeout"],p=l.length,h=t("id"),m=t(16),w=t(15),v=window.XMLHttpRequest;s.features.xhr=!0,t(10),t(6),d.on("new-xhr",function(t){var n=this;n.totalCbs=0,n.called=0,n.cbTime=0,n.end=r,n.ended=!1,n.xhrGuids={},n.lastSize=null,n.loadCaptureCalled=!1,t.addEventListener("load",function(e){a(n,t)},!1),m&&(m>34||m<10)||window.opera||t.addEventListener("progress",function(t){n.lastSize=t.loaded},!1)}),d.on("open-xhr-start",function(t){this.params={method:t[0]},i(this,t[1]),this.metrics={}}),d.on("open-xhr-end",function(t,n){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&n.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid);var e=u(this.parsedOrigin);e&&e.header&&(n.setRequestHeader("newrelic",e.header),this.dt=e)}),d.on("send-xhr-start",function(t,n){var e=this.metrics,r=t[0],o=this;if(e&&r){var i=w(r);i&&(e.txSize=i)}this.startTime=s.now(),this.listener=function(t){try{"abort"!==t.type||o.loadCaptureCalled||(o.params.aborted=!0),("load"!==t.type||o.called===o.totalCbs&&(o.onloadCalled||"function"!=typeof n.onload))&&o.end(n)}catch(e){try{d.emit("internal-error",[e])}catch(r){}}};for(var a=0;a<p;a++)n.addEventListener(l[a],this.listener,!1)}),d.on("xhr-cb-time",function(t,n,e){this.cbTime+=t,n?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof e.onload||this.end(e)}),d.on("xhr-load-added",function(t,n){var e=""+h(t)+!!n;this.xhrGuids&&!this.xhrGuids[e]&&(this.xhrGuids[e]=!0,this.totalCbs+=1)}),d.on("xhr-load-removed",function(t,n){var e=""+h(t)+!!n;this.xhrGuids&&this.xhrGuids[e]&&(delete this.xhrGuids[e],this.totalCbs-=1)}),d.on("addEventListener-end",function(t,n){n instanceof v&&"load"===t[0]&&d.emit("xhr-load-added",[t[1],t[2]],n)}),d.on("removeEventListener-end",function(t,n){n instanceof v&&"load"===t[0]&&d.emit("xhr-load-removed",[t[1],t[2]],n)}),d.on("fn-start",function(t,n,e){n instanceof v&&("onload"===e&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=s.now()))}),d.on("fn-end",function(t,n){this.xhrCbStart&&d.emit("xhr-cb-time",[s.now()-this.xhrCbStart,this.onload,n],n)}),d.on("fetch-before-start",function(t){var n,e=t[1]||{};"string"==typeof t[0]?n=t[0]:t[0]&&t[0].url&&(n=t[0].url),n&&(this.parsedOrigin=f(n),this.sameOrigin=this.parsedOrigin.sameOrigin);var r=u(this.parsedOrigin);if(r&&r.header){var o=r.header;if("string"==typeof t[0]){var i={};for(var a in e)i[a]=e[a];i.headers=new Headers(e.headers||{}),i.headers.set("newrelic",o),this.dt=r,t.length>1?t[1]=i:t.push(i)}else t[0]&&t[0].headers&&(t[0].headers.append("newrelic",o),this.dt=r)}})}},{}],13:[function(t,n,e){var r={};n.exports=function(t){if(t in r)return r[t];var n=document.createElement("a"),e=window.location,o={};n.href=t,o.port=n.port;var i=n.href.split("://");!o.port&&i[1]&&(o.port=i[1].split("/")[0].split("@").pop().split(":")[1]),o.port&&"0"!==o.port||(o.port="https"===i[0]?"443":"80"),o.hostname=n.hostname||e.hostname,o.pathname=n.pathname,o.protocol=i[0],"/"!==o.pathname.charAt(0)&&(o.pathname="/"+o.pathname);var a=!n.protocol||":"===n.protocol||n.protocol===e.protocol,s=n.hostname===document.domain&&n.port===e.port;return o.sameOrigin=a&&(!n.hostname||s),"/"===o.pathname&&(r[t]=o),o}},{}],14:[function(t,n,e){function r(){}function o(t,n,e){return function(){return i(t,[f.now()].concat(s(arguments)),n?null:this,e),n?void 0:this}}var i=t("handle"),a=t(20),s=t(21),c=t("ee").get("tracer"),f=t("loader"),u=NREUM;"undefined"==typeof window.newrelic&&(newrelic=u);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",p=l+"ixn-";a(d,function(t,n){u[n]=o(l+n,!0,"api")}),u.addPageAction=o(l+"addPageAction",!0),u.setCurrentRouteName=o(l+"routeName",!0),n.exports=newrelic,u.interaction=function(){return(new r).get()};var h=r.prototype={createTracer:function(t,n){var e={},r=this,o="function"==typeof n;return i(p+"tracer",[f.now(),t,e],r),function(){if(c.emit((o?"":"no-")+"fn-start",[f.now(),r,o],e),o)try{return n.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],e),t}finally{c.emit("fn-end",[f.now()],e)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,n){h[n]=o(p+n)}),newrelic.noticeError=function(t,n){"string"==typeof t&&(t=new Error(t)),i("err",[t,f.now(),!1,n])}},{}],15:[function(t,n,e){n.exports=function(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(n){return}}}},{}],16:[function(t,n,e){var r=0,o=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);o&&(r=+o[1]),n.exports=r},{}],17:[function(t,n,e){function r(t,n){var e=t.getEntries();e.forEach(function(t){"first-paint"===t.name?a("timing",["fp",Math.floor(t.startTime)]):"first-contentful-paint"===t.name&&a("timing",["fcp",Math.floor(t.startTime)])})}function o(t){if(t instanceof c&&!u){var n,e=Math.round(t.timeStamp);n=e>1e12?Date.now()-e:s.now()-e,u=!0,a("timing",["fi",e,{type:t.type,fid:n}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var i,a=t("handle"),s=t("loader"),c=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){i=new PerformanceObserver(r);try{i.observe({entryTypes:["paint"]})}catch(f){}}if("addEventListener"in document){var u=!1,d=["click","keydown","mousedown","pointerdown","touchstart"];d.forEach(function(t){document.addEventListener(t,o,!1)})}}},{}],18:[function(t,n,e){function r(){function t(){return n?15&n[e++]:16*Math.random()|0}var n=null,e=0,r=window.crypto||window.msCrypto;r&&r.getRandomValues&&(n=r.getRandomValues(new Uint8Array(31)));for(var o,i="xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx",a="",s=0;s<i.length;s++)o=i[s],"x"===o?a+=t().toString(16):"y"===o?(o=3&t()|8,a+=o.toString(16)):a+=o;return a}function o(){function t(){return n?15&n[e++]:16*Math.random()|0}var n=null,e=0,r=window.crypto||window.msCrypto;r&&r.getRandomValues&&Uint8Array&&(n=r.getRandomValues(new Uint8Array(31)));for(var o=[],i=0;i<16;i++)o.push(t().toString(16));return o.join("")}n.exports={generateUuid:r,generateCatId:o}},{}],19:[function(t,n,e){function r(t,n){if(!o)return!1;if(t!==o)return!1;if(!n)return!0;if(!i)return!1;for(var e=i.split("."),r=n.split("."),a=0;a<r.length;a++)if(r[a]!==e[a])return!1;return!0}var o=null,i=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var s=navigator.userAgent,c=s.match(a);c&&s.indexOf("Chrome")===-1&&s.indexOf("Chromium")===-1&&(o="Safari",i=c[1])}n.exports={agent:o,version:i,match:r}},{}],20:[function(t,n,e){function r(t,n){var e=[],r="",i=0;for(r in t)o.call(t,r)&&(e[i]=n(r,t[r]),i+=1);return e}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],21:[function(t,n,e){function r(t,n,e){n||(n=0),"undefined"==typeof e&&(e=t?t.length:0);for(var r=-1,o=e-n||0,i=Array(o<0?0:o);++r<o;)i[r]=t[n+r];return i}n.exports=r},{}],22:[function(t,n,e){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(t,n,e){function r(){}function o(t){function n(t){return t&&t instanceof r?t:t?c(t,s,i):i()}function e(e,r,o,i){if(!l.aborted||i){t&&t(e,r,o);for(var a=n(o),s=m(e),c=s.length,f=0;f<c;f++)s[f].apply(a,r);var d=u[y[e]];return d&&d.push([x,e,r,a]),a}}function p(t,n){g[t]=m(t).concat(n)}function h(t,n){var e=g[t];if(e)for(var r=0;r<e.length;r++)e[r]===n&&e.splice(r,1)}function m(t){return g[t]||[]}function w(t){return d[t]=d[t]||o(e)}function v(t,n){f(t,function(t,e){n=n||"feature",y[e]=n,n in u||(u[n]=[])})}var g={},y={},x={on:p,addEventListener:p,removeEventListener:h,emit:e,get:w,listeners:m,context:n,buffer:v,abort:a,aborted:!1};return x}function i(){return new r}function a(){(u.api||u.feature)&&(l.aborted=!0,u=l.backlog={})}var s="nr@context",c=t("gos"),f=t(20),u={},d={},l=n.exports=o();l.backlog=u},{}],gos:[function(t,n,e){function r(t,n,e){if(o.call(t,n))return t[n];var r=e();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,n,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return t[n]=r,r}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(t,n,e){function r(t,n,e,r){o.buffer([t],r),o.emit(t,n,e)}var o=t("ee").get("handle");n.exports=r,r.ee=o},{}],id:[function(t,n,e){function r(t){var n=typeof t;return!t||"object"!==n&&"function"!==n?-1:t===window?0:a(t,i,function(){return o++})}var o=1,i="nr@id",a=t("gos");n.exports=r},{}],loader:[function(t,n,e){function r(){if(!E++){var t=b.info=NREUM.info,n=p.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&n))return u.abort();f(y,function(n,e){t[n]||(t[n]=e)}),c("mark",["onload",a()+b.offset],null,"api");var e=p.createElement("script");e.src="https://"+t.agent,n.parentNode.insertBefore(e,n)}}function o(){"complete"===p.readyState&&i()}function i(){c("mark",["domContent",a()+b.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(s=Math.max((new Date).getTime(),s))-b.offset}var s=(new Date).getTime(),c=t("handle"),f=t(20),u=t("ee"),d=t(19),l=window,p=l.document,h="addEventListener",m="attachEvent",w=l.XMLHttpRequest,v=w&&w.prototype;NREUM.o={ST:setTimeout,SI:l.setImmediate,CT:clearTimeout,XHR:w,REQ:l.Request,EV:l.Event,PR:l.Promise,MO:l.MutationObserver};var g=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1158.min.js"},x=w&&v&&v[h]&&!/CriOS/.test(navigator.userAgent),b=n.exports={offset:s,now:a,origin:g,features:{},xhrWrappable:x,userAgent:d};t(14),t(17),p[h]?(p[h]("DOMContentLoaded",i,!1),l[h]("load",r,!1)):(p[m]("onreadystatechange",o),l[m]("onload",r)),c("mark",["firstbyte",s],null,"api");var E=0,O=t(22)},{}],"wrap-function":[function(t,n,e){function r(t){return!(t&&t instanceof Function&&t.apply&&!t[a])}var o=t("ee"),i=t(21),a="nr@original",s=Object.prototype.hasOwnProperty,c=!1;n.exports=function(t,n){function e(t,n,e,o){function nrWrapper(){var r,a,s,c;try{a=this,r=i(arguments),s="function"==typeof e?e(r,a):e||{}}catch(f){l([f,"",[r,a,o],s])}u(n+"start",[r,a,o],s);try{return c=t.apply(a,r)}catch(d){throw u(n+"err",[r,a,d],s),d}finally{u(n+"end",[r,a,c],s)}}return r(t)?t:(n||(n=""),nrWrapper[a]=t,d(t,nrWrapper),nrWrapper)}function f(t,n,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<n.length;c++)s=n[c],a=t[s],r(a)||(t[s]=e(a,f?s+o:o,i,s))}function u(e,r,o){if(!c||n){var i=c;c=!0;try{t.emit(e,r,o,n)}catch(a){l([a,e,r,o])}c=i}}function d(t,n){if(Object.defineProperty&&Object.keys)try{var e=Object.keys(t);return e.forEach(function(e){Object.defineProperty(n,e,{get:function(){return t[e]},set:function(n){return t[e]=n,n}})}),n}catch(r){l([r])}for(var o in t)s.call(t,o)&&(n[o]=t[o]);return n}function l(n){try{t.emit("internal-error",n)}catch(e){}}return t||(t=o),e.inPlace=f,e.flag=a,e}},{}]},{},["loader",2,12,4,3]);</script>
+<meta content="width=device-width,user-scalable=yes,initial-scale=1" name="viewport">
+<link href="https://img.rosbalt.ru" rel="dns-prefetch">
+<link href="https://m.rosbalt.ru/amp/world/2020/02/05/1826436.html" rel="amphtml">
+<title>США намерены провести переговоры с РФ по контролю над вооружениями - Росбалт</title>
+<meta content="Помощник президента США по нацбезопасности Роберт ОʼБрайен заявил о необходимости &amp;laquo;противостоять русским&amp;raquo;, но назвал диалог между странами важным &amp;laquo;для всего мира&amp;raquo;." name="description" />
+<meta property="fb:app_id" content="495352693835597"/>
+    <meta content="Помощник президента США по нацбезопасности Роберт ОʼБрайен заявил о необходимости &amp;laquo;противостоять русским&amp;raquo;, но назвал диалог между странами важным &amp;laquo;для всего мира&amp;raquo;." name="description" />
+    <meta property="og:site_name" content="Росбалт">
+    <meta property="og:type"        content="article" />
+
+    <meta property="og:url"         content="https://www.rosbalt.ru/world/2020/02/05/1826436.html" />
+    <meta property="og:title"       content="США намерены провести переговоры с РФ по контролю над вооружениями" />
+    <meta property="og:description" content="Помощник президента США по нацбезопасности Роберт ОʼБрайен заявил о необходимости &amp;laquo;противостоять русским&amp;raquo;, но назвал диалог между странами важным &amp;laquo;для всего мира&amp;raquo;." />
+
+        <meta property="og:image" content="http://img.rosbalt.ru/photobank/2/6/b/b/9WvGMmVD-800.jpg"/>
+    <meta property="og:image:width" content="800"/>
+    <meta property="og:image:height" content="600"/>
+       
+    <meta name="twitter:author" content="@rosbaltru">
+    <meta property="twitter:title"       content="США намерены провести переговоры с РФ по контролю над вооружениями" />
+    <meta property="twitter:description" content="Помощник президента США по нацбезопасности Роберт ОʼБрайен заявил о необходимости &amp;laquo;противостоять русским&amp;raquo;, но назвал диалог между странами важным &amp;laquo;для всего мира&amp;raquo;." />
+    <meta property="twitter:site"        content="@rosbaltru" />
+    <meta property="twitter:url"         content="https://www.rosbalt.ru/world/2020/02/05/1826436.html" />
+    <meta property="twitter:card"        content="summary_large_image" />
+        <meta property="twitter:image:src"   content="http://img.rosbalt.ru/photobank/2/6/b/b/9WvGMmVD-800.jpg" />
+      <link rel="stylesheet" type="text/css" href="/assets/main-a0f1a461e3.css" />
+<script src="/assets/main-2bc918841b.js"></script>
+
+
+<script src="https://yastatic.net/pcode/adfox/loader.js" crossorigin="anonymous"></script>
+<script async src="//moevideo.biz/embed/js/mvpt.min.js"></script>
+</head>
+<body>
+<!--LiveInternet counter--><script type="text/javascript"><!--
+new Image().src = "//counter.yadro.ru/hit?r"+
+escape(document.referrer)+((typeof(screen)=="undefined")?"":
+";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?
+screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
+";"+Math.random();//--></script><!--/LiveInternet-->
+<script type="text/javascript" >
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(55757050, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true,
+        webvisor:true
+   });
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/55757050" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+
+<!--AdFox START-->
+<!--rosbalt.ru-->
+<!--Площадка: rosbalt.ru / * / *-->
+<!--Тип баннера: 994x180js-->
+<!--Расположение: <верх страницы>-->
+<div id="adfox_150530509024392791" style="text-align:center;min-width:1264px;max-height:180px;margin:0 auto;overflow:hidden;"></div>
+<script>
+    window.Ya.adfoxCode.create({
+        ownerId: 165068,
+        containerId: 'adfox_150530509024392791',
+        params: {
+            pp: 'g',
+            ps: 'nze',
+            p2: 'ejnj'
+        }
+    });
+</script>
+
+
+        
+    <nav>
+    <div class="nav-menu">
+        <div class="nav-wrapper">
+        <ul class="nav-menu__main">
+            <li><a href="#" id="btnHamburger" class="ham"><!--&equiv;--></a></li>
+            <li><a href="/allnews/">Новости</a></li>
+            <li><a href="/articles/">Статьи</a></li>
+            <li><a href="/opinions/">Мнения</a></li>
+            <li><a href="/russia/">В России</a></li>
+            <li><a href="/moscow/">Москва</a></li>
+            <li><a href="/piter/">Петербург</a></li>
+                        <li><a href="/world/">В мире</a></li>
+            <li><a href="/business/">Бизнес</a></li>
+            <li><a href="/style/">Стиль</a></li>
+            <li><a href="/blogs/">Блоги</a></li>
+            <li><a href="/like/">Like</a></li>
+            <li><a href="/video/">Видео</a></li>
+            <li><a href="/press/">Релизы</a></li>
+            <li><a href="/press-center/">Пресс-центр</a></li>
+            <li><a href="/aboutus/">О нас</a></li>
+        </ul>
+        <ul class="nav-menu__btn">
+            <li class="mobile"><a href="https://m.rosbalt.ru/"></a></li>
+            <li class="search"><a href="/search/" id="btnSearch"></a></li>
+        </ul>
+        </div>
+    </div>
+    <div class="nav-logo color-default color-world">
+                <div class="nav-wrapper">
+
+        <a class="logo" href="/"></a>
+
+                                        <div class="site-title"><a class="link" href="/world/">В мире</a></div>
+                        <ul class="nav-logo__submenu">
+                                                <li><a href="/world/allnews/">Новости</a></li>
+                    <li><a href="/world/articles/">Статьи, интервью</a></li>
+                                        </ul>
+        
+        <ul class="nav-logo__social"> 
+            <li class="fb"><a target="_blank" href="https://www.facebook.com/rosbaltru"></a></li>
+            <li class="tw"><a target="_blank" href="https://twitter.com/rosbaltru"></a></li>
+            <li class="vk"><a target="_blank" href="https://vk.com/public34710108"></a></li>
+            <li class="in"><a target="_blank" href="https://www.instagram.com/rosbaltru/"></a></li>
+            <li class="yt"><a target="_blank" href="https://www.youtube.com/user/RosbaltMoscow"></a></li>
+            <li class="ok"><a target="_blank" href="https://ok.ru/group/51976746041546"></a></li>
+        </ul>
+        </div>
+    </div>
+    </nav>
+
+  <main>
+
+    <div class="main" data-equalizer>
+        
+        <div class="main-content-news">
+
+<div class="row" data-equalizer>
+
+    <div class="news-left" data-equalizer-watch>
+                <div class="hotmatsite" onmouseout="hide_sub(this)" onmouseover="show_sub(this)">
+  <a href="/world/2020/02/06/1826461.html">
+    <div class="hover" data-url="https://www.rosbalt.ru/world/2020/02/06/1826461.html" data-title="В Китае от коронавируса скончались 563 человека">
+      <div class="image-rollover fader"></div>
+      <div onclick="share.vk(this.parentNode);" class="image-rollover rollover-vk"></div>
+      <div onclick="share.tw(this.parentNode);" class="image-rollover rollover-tw"></div>
+      <div onclick="share.fb(this.parentNode);" class="image-rollover rollover-fb"></div>
+      <div class="image-rollover rollover-views">1707</div>
+    </div>
+    <img src="//img.rosbalt.ru/photobank/0/f/4/f/fxTrKtz7-280.jpg" class="th280" alt="СС0 Public Domain" />
+    <span class="head">В Китае от коронавируса скончались 563 человека</span>
+    </a> 
+</div>
+
+        
+            <div class="main-content__topsitenews">
+  <div class="divider"></div>
+    <span style="padding:0;" class="themed-heading">Главные новости</span>
+    <ul class="topnews">
+        <li><a href="/world/2020/02/06/1826456.html">Сенат США оправдал Трампа на процессе по импичменту</a></li>
+        <li><a href="/world/2020/02/05/1826445.html">США пригрозили ввести санкции против «Роснефти»</a></li>
+        <li><a href="/world/2020/02/05/1826438.html">Число пострадавших во время ЧП с самолетом в Стамбуле достигло 120</a></li>
+        <li><a href="/world/2020/02/05/1826434.html">В результате инцидента с самолетом в стамбульском аэропорту пострадали более 50 человек</a></li>
+        <li><a href="/world/2020/02/05/1826424.html">В Стамбуле самолет врезался в стену аэропорта и загорелся (видео)</a></li>
+        <li><a href="/world/2020/02/05/1826418.html">В Турции сообщают уже о 38 жертвах схода двух лавин</a></li>
+        </ul>
+</div>
+
+    
+        <div style="margin:0; padding-left:35px;display:block;clear:both;">
+        <div class="divider"></div>
+<ul class="selector">
+    <li><a href="/world/allnews/" class="active-region world">Новости</a></li>
+</ul>
+<div class="scroll-pane scroll-pane__main">
+<ul class="topnews-main">
+                <li><a href="/world/2020/02/06/1826584.html"><time datetime="2020-02-06T12:50:00Z">15:50</time>Жан-Поль Готье: Две страны создают красавиц миру</a></li>
+            <li><a href="/world/2020/02/06/1826590.html"><time datetime="2020-02-06T12:42:00Z">15:42</time>Белоруссия решила не зацикливаться на России</a></li>
+            <li><a href="/world/2020/02/06/1826586.html"><time datetime="2020-02-06T12:28:00Z">15:28</time>Растет число жертв схода двух лавин в Турции — уже 39 погибших</a></li>
+            <li><a href="/business/2020/02/06/1826582.html"><time datetime="2020-02-06T12:25:00Z">15:25</time>Странам ОПЕК+ рекомендовали сильнее сократить нефтедобычу</a></li>
+            <li><a href="/business/2020/02/06/1826578.html"><time datetime="2020-02-06T11:58:00Z">14:58</time>Российский уголь оказался не нужен Польше</a></li>
+            <li><a href="/world/2020/02/06/1826575.html"><time datetime="2020-02-06T11:49:00Z">14:49</time>СМИ: Лидер Китая усиливает цензуру в охваченной коронавирусом стране</a></li>
+            <li><a href="/world/2020/02/06/1826566.html"><time datetime="2020-02-06T11:29:00Z">14:29</time>Трек Илона Маска попал в десятку самых «горячих песен» SoundCloud</a></li>
+            <li><a href="/world/2020/02/06/1826561.html"><time datetime="2020-02-06T11:09:00Z">14:09</time>В украинской Раде со скандалом и потасовкой рассматривают закон о рынке земли</a></li>
+            <li><a href="/business/2020/02/06/1826556.html"><time datetime="2020-02-06T11:09:00Z">14:09</time>Подсчитаны потери Белоруссии из-за налогового маневра в России</a></li>
+            <li><a href="/world/2020/02/06/1826550.html"><time datetime="2020-02-06T10:40:00Z">13:40</time>Скоростной поезд сошел с рельсов в Италии, есть погибшие и раненые</a></li>
+            <li><a href="/world/2020/02/06/1826544.html"><time datetime="2020-02-06T10:13:00Z">13:13</time>Эксперты назвали самые опасные приложения для Android</a></li>
+            <li><a href="/world/2020/02/06/1826537.html"><time datetime="2020-02-06T09:50:00Z">12:50</time>Осужденного на 16 лет за педофилию литовца поместили в колонию для несовершеннолетних</a></li>
+            <li><a href="/world/2020/02/06/1826533.html"><time datetime="2020-02-06T09:46:00Z">12:46</time>Медики узнали, что можно есть при раке груди</a></li>
+            <li><a href="/main/2020/02/06/1826543.html"><time datetime="2020-02-06T09:45:00Z">12:45</time>Космонавты и астронавты благополучно вернулись на Землю с МКС</a></li>
+            <li><a href="/business/2020/02/06/1826542.html"><time datetime="2020-02-06T09:42:00Z">12:42</time>В Moodyʼs рассказали, что будет с ценами на нефть из-за коронавируса</a></li>
+            <li><a href="/main/2020/02/06/1826541.html"><time datetime="2020-02-06T09:40:00Z">12:40</time>МИД РФ: В Идлибе погибли российские военспецы</a></li>
+            <li><a href="/russia/2020/02/06/1826536.html"><time datetime="2020-02-06T09:27:00Z">12:27</time>В Кремле не исключают встречу Путина и Эрдогана для обсуждения Идлиба</a></li>
+            <li><a href="/world/2020/02/06/1826528.html"><time datetime="2020-02-06T09:12:00Z">12:12</time>В Генштабе Белоруссии «предсказывали» войну на Украине за два года до ее начала</a></li>
+            <li><a href="/world/2020/02/06/1826524.html"><time datetime="2020-02-06T08:57:00Z">11:57</time>Рак яичка назвали самым распространенным видом онкологии у мужчин</a></li>
+            <li><a href="/world/2020/02/06/1826514.html"><time datetime="2020-02-06T08:37:00Z">11:37</time>Ученые раскрыли новые механизмы и генетические мутации, вызывающие рак</a></li>
+            <li><a href="/world/2020/02/06/1826519.html"><time datetime="2020-02-06T08:24:00Z">11:24</time>Украинского боксера Усика обозвали обезьяной — он ответил стихами</a></li>
+            <li><a href="/russia/2020/02/06/1826507.html"><time datetime="2020-02-06T07:53:00Z">10:53</time>СК России возбудил еще одно дело по факту артобстрела жителей Донбасса</a></li>
+            <li><a href="/world/2020/02/06/1826505.html"><time datetime="2020-02-06T07:41:00Z">10:41</time>В Китае проводить тесты на коронавирус будет робот</a></li>
+            <li><a href="/world/2020/02/06/1826497.html"><time datetime="2020-02-06T07:15:00Z">10:15</time>Ученые: Более 70% женщин недовольны размером и формой своей груди</a></li>
+            <li><a href="/business/2020/02/06/1826495.html"><time datetime="2020-02-06T06:59:00Z">09:59</time>Стоимость нефти Brent закрепилась выше $56 за баррель</a></li>
+            <li><a href="/world/2020/02/06/1826493.html"><time datetime="2020-02-06T06:47:00Z">09:47</time>Россиян эвакуировали из Китая на военном самолете с ведром вместо туалета</a></li>
+            <li><a href="/world/2020/02/06/1826488.html"><time datetime="2020-02-06T06:14:00Z">09:14</time>Космический корабль «Союз МС-13» направляется к Земле</a></li>
+            <li><a href="/business/2020/02/06/1826487.html"><time datetime="2020-02-06T06:10:00Z">09:10</time>Фондовые торги в США завершились в плюсе на ослаблении опасений</a></li>
+            <li><a href="/world/2020/02/06/1826486.html"><time datetime="2020-02-06T05:58:00Z">08:58</time>Стало известно, куда чаще всего уезжают работать россияне</a></li>
+            <li><a href="/world/2020/02/06/1826482.html"><time datetime="2020-02-06T05:27:00Z">08:27</time>Девушка кашлем и словами «Я из Уханя» прогнала насильника</a></li>
+            <li><a href="/world/2020/02/06/1826480.html"><time datetime="2020-02-06T04:48:00Z">07:48</time>Сын первого президента Киргизии Айдар Акаев умер в 44 года</a></li>
+            <li><a href="/world/2020/02/06/1826479.html"><time datetime="2020-02-06T04:33:00Z">07:33</time>В США на 104-м году жизни скончался голливудский актер Кирк Дуглас</a></li>
+            <li><a href="/world/2020/02/06/1826475.html"><time datetime="2020-02-06T04:17:00Z">07:17</time>В США пообещали противостоять Кремлю, «который ведет авантюрную политику»</a></li>
+            <li><a href="/world/2020/02/06/1826472.html"><time datetime="2020-02-06T03:30:00Z">06:30</time>В Иерусалиме автомобиль врезался в толпу пешеходов</a></li>
+            <li><a href="/world/2020/02/06/1826470.html"><time datetime="2020-02-06T02:56:00Z">05:56</time>Власти Тайваня из-за коронавируса полностью запретили въезд с материковой части Китая</a></li>
+            <li><a href="/world/2020/02/06/1826469.html"><time datetime="2020-02-06T02:46:00Z">05:46</time>Житель Израиля случайно нашел необычный древнеегипетский артефакт</a></li>
+            <li><a href="/world/2020/02/06/1826468.html"><time datetime="2020-02-06T02:35:00Z">05:35</time>Гонконг вводит двухнедельный карантин для всех приезжающих из Китая</a></li>
+            <li><a href="/world/2020/02/06/1826455.html"><time datetime="2020-02-06T02:05:00Z">05:05</time>Пелоси: Трамп остается угрозой для американской демократии</a></li>
+            <li><a href="/world/2020/02/06/1826465.html"><time datetime="2020-02-06T01:44:00Z">04:44</time>В Южной Корее число зараженных коронавирусом выросло до 23 человек</a></li>
+            <li><a href="/world/2020/02/06/1826464.html"><time datetime="2020-02-06T01:30:00Z">04:30</time>На круизном судне в Японии коронавирус обнаружен еще у десяти пассажиров</a></li>
+            <li><a href="/world/2020/02/06/1826463.html"><time datetime="2020-02-06T01:14:00Z">04:14</time>Израильские ВВС нанесли удары по объектам ХАМАС</a></li>
+            <li><a href="/world/2020/02/06/1826462.html"><time datetime="2020-02-06T00:59:00Z">03:59</time>Белый дом прокомментировал итоги процесса по импичменту Трампа</a></li>
+            <li><a href="/world/2020/02/06/1826460.html"><time datetime="2020-02-05T23:40:00Z">02:40</time>Число жертв жесткой посадки самолета в Стамбуле выросло до трех</a></li>
+            <li><a href="/world/2020/02/06/1826459.html"><time datetime="2020-02-05T23:22:00Z">02:22</time>В грузинском монастыре зарезали россиянина</a></li>
+            <li><a href="/world/2020/02/06/1826458.html"><time datetime="2020-02-05T23:10:00Z">02:10</time>Сын Трампа предложил исключить из партии республиканца, поддержавшего импичмент</a></li>
+            <li><a href="/world/2020/02/06/1826456.html"><time datetime="2020-02-05T21:59:00Z">00:59</time>Сенат США оправдал Трампа на процессе по импичменту</a></li>
+                <li><time>5 февраля 2020</time></li>
+                <li><a href="/world/2020/02/05/1826449.html"><time datetime="2020-02-05T20:29:00Z">23:29</time>Во время ЧП с самолетом в Стамбуле погиб человек, ранены почти 160</a></li>
+            <li><a href="/russia/2020/02/05/1826452.html"><time datetime="2020-02-05T20:00:00Z">23:00</time>В МИД РФ заявили, что более 60 российских дипломатов не получили визы США</a></li>
+            <li><a href="/world/2020/02/05/1826448.html"><time datetime="2020-02-05T19:58:00Z">22:58</time>Жертвами обстрела в Алеппо стали четыре мирных жителя</a></li>
+            <li><a href="/world/2020/02/05/1826444.html"><time datetime="2020-02-05T19:17:00Z">22:17</time>В США назвали срок принятия решения по статусу РУСАДА</a></li>
+    </ul>
+</div>
+<a href="/world/allnews/" class="read-allnews">В мире - все новости</a>
+
+        <div class="reaction">
+<div class="divider"></div>
+<a href="/posts/" class="heading world">Реакция</a>
+<ul class="topnews">
+<li><a href="/posts/2020/02/05/1826433.html">Аббас Галлямов. Почему Путин ничего не объясняет?</a></li>
+<li><a href="/posts/2020/02/05/1826432.html">Антон Орехъ. Не устал и не уходит</a></li>
+<li><a href="/posts/2020/02/05/1826419.html">Федот Тумусов. Проблема булочника</a></li>
+<li><a href="/posts/2020/02/05/1826416.html">Константин Сонин. Коронавирус обвалил нефть?</a></li>
+<li><a href="/posts/2020/02/05/1826411.html">Олег Козловский. Режим молчания</a></li>
+<li><a href="/posts/2020/02/05/1826409.html">Кирилл Мартынов. Никто не верит китайскому правительству</a></li>
+<li><a href="/posts/2020/02/05/1826405.html">Александр Плющев. Эвакуация из Ухани — смесь показухи и идиотизма</a></li>
+<li><a href="/posts/2020/02/04/1826218.html">Иван Курилла. Путин снова контролирует повестку — пусть она и фейковая</a></li>
+<li><a href="/posts/2020/02/04/1826201.html">Василий Головнин. Самые крутые и прикольные меры против коронавируса</a></li>
+<li><a href="/posts/2020/02/04/1826139.html">Дмитрий Колезев. «Я президент, я так вижу»</a></li>
+</ul>
+</div>
+        </div>
+
+    </div>
+    <div class="news-right" data-equalizer-watch>
+        <div class="social">
+        <div class="social-likes" data-url="https://www.rosbalt.ru/world/2020/02/05/1826436.html" data-title="США намерены провести переговоры с РФ по контролю над вооружениями" data-uid="1826436">
+    <div class="facebook" title="Поделиться ссылкой на Фейсбуке"></div>
+    <div class="twitter" title="Поделиться ссылкой в Твиттере"></div>
+    <div class="vkontakte" title="Поделиться ссылкой во Вконтакте"></div>
+    <div class="odnoklassniki" title="Поделиться ссылкой в Одноклассниках"></div>
+</div>
+
+        </div>
+
+    <article class="news">
+    <div class="news-info">5 февраля 2020, 19:59
+            <div class="eye">415</div>
+        
+    </div>
+    <h1>США намерены провести переговоры с РФ по контролю над вооружениями</h1>
+
+        <div class="news-image">
+        <div class="image-photo"><img src="https://img.rosbalt.ru/photobank/2/6/b/b/9WvGMmVD-580.jpg" alt="" /></div>
+        <div class="image-info">
+                        <span class="image-author">© Фото с сайта pentagon.afis.osd.mil</span>        </div>
+
+    </div>
+    
+
+    <div class="newstext">
+        <p>
+	Помощник президента США по нацбезопасности Роберт ОʼБрайен заявил о необходимости &laquo;противостоять русским&raquo;, но назвал диалог между странами важным &laquo;для всего мира&raquo;.</p>
+<p>
+	По его словам, уже в ближайшее время Москва и Вашингтон начнут переговоры по контролю над вооружениями и ядерным вопросам.</p>
+<p>
+	&laquo;Мы будем противостоять России там, где это необходимо, однако в то&nbsp;же время мы скоро начнем переговоры по контролю над вооружениями. Это важно для всего мира, не только для США и России&raquo;,&nbsp;&mdash; подчеркнул ОʼБрайен.</p>
+<p>
+	Одним из самых важных вопросов на переговорах он считает дальнейшую судьбу Договора о мерах по дальнейшему сокращению и ограничению стратегических наступательных вооружений (ДСНВ, или СНВ-3).</p>
+<p>
+	Помощник президента также назвал Россию важной силой в мире, которая обладает арсеналом более 1,4 тыс. ядерных ракет.</p>
+<p>
+	В целом, США стремятся устанавливать диалог с РФ и развивать &laquo;великолепные отношения&raquo;, насколько это будет возможно.</p>
+<p>
+	&laquo;В то&nbsp;же время мы не станет подводить наших союзников по всему миру, в том числе Украину&raquo;,&nbsp;&mdash; добавил&nbsp;ОʼБрайен.</p>
+
+
+
+
+        <script>
+var rb_banner=
+['Самые интересные новости и статьи «Росбалта» читайте на нашем <a href="https://t-do.ru/RosbaltPoint" target="_blank">канале в Telegram</a>',
+'Эксклюзивные новости и статьи читайте на нашем Telegram-канале <a href="https://t-do.ru/Rosbaltcrime" target="_blank">«Источники Росбалта»</a>',
+'Меньше слов &mdash; в нашем <a href="https://www.instagram.com/rosbaltru/" target="_blank">Instagram</a>',
+'Подписывайтесь на канал Росбалта в <a href="https://zen.yandex.ru/rosbalt" target="_blank">Яндекс.Дзен</a>',
+'Подписывайтесь на нас <a href="https://vk.com/public34710108" target="_blank">Вконтакте</a>',
+'Читайте Росбалт <a href="https://www.facebook.com/rosbaltru" target="_blank">в Facebook</a>, чтобы быть в курсе главных событий',
+'Читайте новости прямо <a href="https://twitter.com/rosbaltru" target="_blank">в Twitter</a>',
+'Нет сил читать? Смотри наши видео на <a href="https://www.youtube.com/user/RosbaltMoscow" target="_blank">Youtube</a>',
+'Присоединяйтесь к нам <a href="https://ok.ru/group/51976746041546" target="_blank">в Одноклассниках</a> и будьте в курсе главных событий',
+'Подпишитесь на нас в <a href="https://news.yandex.ru/index.html?from=article&favid=1063" target="_blank">Яндекс.Новости</a>'
+];
+document.write('<div class="subscriber">' + rb_banner[Math.floor(Math.random()*rb_banner.length)] + '.</div>');
+</script>
+    
+        
+    </div>
+
+    <script async src="https://moevideo.biz/embed/js/mvpt.min.js"></script>
+<div id="moevideo"></div>
+<script>
+var moevideoQueue = moevideoQueue || [];
+moevideoQueue.push(function () {
+moevideo.ContentRoll({
+  "mode": "manual",
+  "el": "#moevideo",
+  "ignorePlayers": true,
+  "floatMode": "full",
+  "floatPosition": "bottom right",
+  "maxRefresh": 5,
+  "floatCloseTimeout": 3
+});
+});
+</script>
+
+
+
+
+
+    
+        <div class="news-ad">
+        <!--AdFox START-->
+<!--adsmart-->
+<!--Площадка: Rosbalt.ru / all_pages / adsmart-->
+<!--Категория: <не задана>-->
+<!--Тип баннера: adsmart-->
+<div id="adfox_157414543436579217"></div>
+<script>
+    window.Ya.adfoxCode.createScroll({
+        ownerId: 1435,
+        containerId: 'adfox_157414543436579217',
+        params: {
+            p1: 'chyra',
+            p2: 'ul',
+            puid20: ''
+        }
+    });
+</script>
+
+        </div>
+
+    </article>
+
+
+    <div class="comments-row">
+                <div class="hyper-btn">
+        <a href="/comments/world/2020/02/05/1826436.html" class="btn-comment">Обсудить</a>
+        </div>
+            </div>
+
+    <div class="themed">
+    <span class="themed-heading">По теме</span>
+    <ul class="themed-list">
+            <li><sup class="sup-updated">Новое</sup><a href="/world/2020/02/06/1826475.html">В США пообещали противостоять Кремлю, «который ведет авантюрную политику»</a></li>
+            <li><a href="/world/2020/02/05/1826397.html">США успешно испытали новую баллистическую ракету</a></li>
+            <li><a href="/world/2020/02/05/1826233.html">Пентагон разместил на подлодках новые ядерные боеголовки для «сдерживания России»</a></li>
+            <li><a href="/world/2020/01/29/1825076.html">США модернизируют систему предупреждений о ракетном нападении</a></li>
+        </ul>
+    </div>
+
+<div class="adriver-wrapper">
+    <div class="left" style='width:240px;height:200px;overflow:hidden;'>
+<!--AdFox START-->
+<!--WiseUP-->
+<!--Площадка: rosbalt.ru / * / *-->
+<!--Тип баннера: 240x200_d-->
+<!--Расположение: <верх страницы>-->
+<div id="adfox_123034000"></div>
+<script>
+    window.Ya.adfoxCode.createScroll({
+        ownerId: 239292,
+        containerId: 'adfox_123034000',
+        params: {
+            pp: 'g',
+            ps: 'cbfk',
+            p2: 'flha',
+            pt: 'b',
+        }
+    });
+</script>
+    </div>
+    <div class="right" style='width:240px;height:200px;overflow:hidden;'>
+<!--AdFox START-->
+<!--WiseUP-->
+<!--Площадка: rosbalt.ru / * / *-->
+<!--Тип баннера: 240x200_d-->
+<!--Расположение: <середина страницы>-->
+<div id="adfox_12303994"></div>
+<script>
+    window.Ya.adfoxCode.createScroll({
+        ownerId: 239292,
+        containerId: 'adfox_12303994',
+        params: {
+            pp: 'h',
+            ps: 'cbfk',
+            p2: 'flha',
+            pt: 'b',
+        }
+    });
+</script>
+    </div>
+</div>
+
+<div class="yandex-wrapper">
+<div id="yandex_rtb_R-A-45272-11"></div>
+</div>
+<script type="text/javascript">
+    (function(w, d, n, s, t) {
+        w[n] = w[n] || [];
+        w[n].push(function() {
+            Ya.Context.AdvManager.render({
+                blockId: "R-A-45272-11",
+                renderTo: "yandex_rtb_R-A-45272-11",
+                async: true
+            });
+        });
+        t = d.getElementsByTagName("script")[0];
+        s = d.createElement("script");
+        s.type = "text/javascript";
+        s.src = "//an.yandex.ru/system/context.js";
+        s.async = true;
+        t.parentNode.insertBefore(s, t);
+    })(this, this.document, "yandexContextAsyncCallbacks");
+</script>
+
+
+
+
+
+<div id="unit_94816"><a href="http://smi2.ru/" >Новости СМИ2</a></div>
+<script type="text/javascript" charset="utf-8">
+  (function() {
+    var sc = document.createElement('script'); sc.type = 'text/javascript'; sc.async = true;
+    sc.src = '//smi2.ru/data/js/94816.js'; sc.charset = 'utf-8';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(sc, s);
+  }());
+</script>
+
+
+<script async src="https://yastatic.net/pcode-native/loaders/loader.js"></script>
+<script>
+    (yaads = window.yaads || []).push({
+        id: "45272-17",
+        render: "#id-45272-17"
+    });
+</script>
+<div id="id-45272-17"></div>
+
+
+    </div>
+
+
+
+</div>
+
+</div>
+
+<script>
+</script>
+
+       
+        <!-- sidebar -->
+        <div class="sidebar sidebar-wrapper" data-equalizer>
+            <div class="sticky sidebar-wrapper-news">
+                <div style='width:300px;'>
+
+<!--AdFox START-->
+<!--rosbalt.ru-->
+<!--Площадка: rosbalt.ru / * / *-->
+<!--Тип баннера: TGB Over 300x600-->
+<!--Расположение: <верх страницы>-->
+<div id="adfox_15047807421694118"></div>
+<script>
+    window.Ya.adfoxCode.createScroll({
+        ownerId: 165068,
+        containerId: 'adfox_15047807421694118',
+        params: {
+            pp: 'g',
+            ps: 'nze',
+            p2: 'embs'
+        }
+    });
+</script>
+
+</div>
+
+
+
+
+<!--AdFox START-->
+<!--tn-inpool-->
+<!--Площадка: Rosbalt.ru / all_pages / 300x600-->
+<!--Категория: <не задана>-->
+<!--Тип баннера: 300x600-->
+<div id="adfox_15741455968125555" style="width:300px;"></div>
+<script>
+    window.Ya.adfoxCode.create({
+        ownerId: 5374,
+        containerId: 'adfox_15741455968125555',
+        params: {
+            p1: 'chyrb',
+            p2: 'gdnn'
+        }
+    });
+</script>
+
+
+
+
+<div id="tgb">
+<div style='width:300px;'>
+
+
+<!--AdFox START-->
+<!--rosbalt.ru-->
+<!--Площадка: rosbalt.ru / * / *-->
+<!--Тип баннера: TGB 100х300 MITS-->
+<!--Расположение: <верх страницы>-->
+<div id="adfox_150478077676336102"></div>
+<script>
+    window.Ya.adfoxCode.createScroll({
+        ownerId: 165068,
+        containerId: 'adfox_150478077676336102',
+        params: {
+            pp: 'g',
+            ps: 'nze',
+            p2: 'ewvu'
+        }
+    });
+</script>
+
+
+</div><div class="clear"></div>
+
+
+<div class="clear"></div><div style='margin-top:5px;width:300px;'>
+
+
+<!--AdFox START-->
+<!--rosbalt.ru-->
+<!--Площадка: rosbalt.ru / * / *-->
+<!--Тип баннера: TGB 100х300-->
+<!--Расположение: <верх страницы>-->
+<div id="adfox_150478086022016486"></div>
+<script>
+    window.Ya.adfoxCode.createScroll({
+        ownerId: 165068,
+        containerId: 'adfox_150478086022016486',
+        params: {
+            pp: 'g',
+            ps: 'nze',
+            p2: 'eobm'
+        }
+    });
+</script>
+
+
+<div class="clear"></div>
+</div>
+</div>
+
+
+
+
+<div class="editorschoice">
+<span class="themed-heading editors-choice-23" style='padding:0;'>Выбор читателей</span>
+    <ul class="exclusive">
+        <li>
+        <a href="/russia/2020/02/05/1826343.html?utm_source=rosbalt&utm_medium=web&utm_campaign=editorchoice">
+                        <div class="editorschoice-thumb" style="background:url('https://img.rosbalt.ru/photobank/5/7/b/5/XtRTpLZy-112.jpg')"></div>
+                        <span>В Череповце у места 20-секундной встречи Путина с народом очевидцы засняли снайпера</span>
+        </a>
+    </li>
+        <li>
+        <a href="/piter/2020/02/01/1825748.html?utm_source=rosbalt&utm_medium=web&utm_campaign=editorchoice">
+                        <div class="editorschoice-thumb" style="background:url('https://img.rosbalt.ru/photobank/8/5/e/9/WTKxVch3-112.jpg')"></div>
+                        <span>Шнуров отреагировал на предложение патриарха вписать Бога в Конституцию</span>
+        </a>
+    </li>
+        <li>
+        <a href="/russia/2020/02/01/1825736.html?utm_source=rosbalt&utm_medium=web&utm_campaign=editorchoice">
+                        <div class="editorschoice-thumb" style="background:url('https://img.rosbalt.ru/photobank/f/c/5/5/J86dhvtL-112.jpg')"></div>
+                        <span>Патриарх Кирилл предложил вписать Бога в российскую Конституцию</span>
+        </a>
+    </li>
+        <li>
+        <a href="/piter/2020/02/01/1825721.html?utm_source=rosbalt&utm_medium=web&utm_campaign=editorchoice">
+                        <div class="editorschoice-thumb" style="background:url('https://img.rosbalt.ru/photobank/5/b/b/7/mLPtJRDr-112.jpg')"></div>
+                        <span>На Сенатской площади в Петербурге продолжаются жесткие задержания на пикетах (фото)</span>
+        </a>
+    </li>
+        <li>
+        <a href="/piter/2020/02/01/1825722.html?utm_source=rosbalt&utm_medium=web&utm_campaign=editorchoice">
+                        <div class="editorschoice-thumb" style="background:url('https://img.rosbalt.ru/photobank/d/7/7/1/Jrwby97G-112.jpg')"></div>
+                        <span>На Сенатской площади в Петербурге проходят задержания активистов, вышедших на пикеты против поправок в Конституцию</span>
+        </a>
+    </li>
+        </ul>
+</div>
+
+        
+        </div>
+          
+        </div>
+
+
+    </div>
+            <div class="block4" style='padding-left:40px;padding-top:10px;'>
+            <div class="row">
+            <div class="newslist">
+                <a href="/world/articles/" class="heading name4">В мире. Статьи</a>
+            </div></div>
+    <div class="shot" onmouseout="hide_sub(this)" onmouseover="show_sub(this)" style='float:left;display:table;width:300px;padding-right:20px;'>
+        <a href="/world/2020/02/06/1826512.html">
+                    <div class="hover" data-url="https://www.rosbalt.ru/world/2020/02/06/1826512.html" data-title="Нужно ли полякам и литовцам так бояться России?">
+                        <div class="image-rollover fader"></div>
+                        <div onclick="share.vk(this.parentNode);" class="image-rollover rollover-vk"></div>
+                        <div onclick="share.tw(this.parentNode)" class="image-rollover rollover-tw"></div>
+                        <div onclick="share.fb(this.parentNode)" class="image-rollover rollover-fb"></div>
+                        <div class="image-rollover rollover-views">1066</div>
+                    </div>
+
+                    <img src="//img.rosbalt.ru/photobank/c/8/8/6/LFtNWcvx-280.jpg" class="th280" alt="" />
+                    <span class="head">Нужно ли полякам и литовцам так бояться России?</span>
+                    <span class="lead">Экс-советская республика и бывшая страна соцлагеря наращивают военные силы, готовясь защищаться от «нападения» своего недавнего сюзерена.</span>
+                </a>
+
+    </div>
+        <div class="shot" onmouseout="hide_sub(this)" onmouseover="show_sub(this)" style='float:left;display:table;width:300px;padding-right:20px;'>
+        <a href="/world/2020/02/05/1826399.html">
+                    <div class="hover" data-url="https://www.rosbalt.ru/world/2020/02/05/1826399.html" data-title="Возьмете русский газ — отключим доллар">
+                        <div class="image-rollover fader"></div>
+                        <div onclick="share.vk(this.parentNode);" class="image-rollover rollover-vk"></div>
+                        <div onclick="share.tw(this.parentNode)" class="image-rollover rollover-tw"></div>
+                        <div onclick="share.fb(this.parentNode)" class="image-rollover rollover-fb"></div>
+                        <div class="image-rollover rollover-views">24279</div>
+                    </div>
+
+                    <img src="//img.rosbalt.ru/photobank/b/9/1/b/MCXwdB3Z-280.jpg" class="th280" alt="" />
+                    <span class="head">Возьмете русский газ — отключим доллар</span>
+                    <span class="lead">Если Россия все же попытается достроить «Северный поток-2», то американцы ударят санкциями прямо по европейским компаниям.</span>
+                </a>
+
+    </div>
+        <div class="shot" onmouseout="hide_sub(this)" onmouseover="show_sub(this)" style='float:left;display:table;width:300px;padding-right:20px;'>
+        <a href="/world/2020/02/05/1826213.html">
+                    <div class="hover" data-url="https://www.rosbalt.ru/world/2020/02/05/1826213.html" data-title="Чем так «воодушевился» Помпео в Белоруссии?">
+                        <div class="image-rollover fader"></div>
+                        <div onclick="share.vk(this.parentNode);" class="image-rollover rollover-vk"></div>
+                        <div onclick="share.tw(this.parentNode)" class="image-rollover rollover-tw"></div>
+                        <div onclick="share.fb(this.parentNode)" class="image-rollover rollover-fb"></div>
+                        <div class="image-rollover rollover-views">1911</div>
+                    </div>
+
+                    <img src="//img.rosbalt.ru/photobank/b/9/9/2/trG4BbnR-280.jpg" class="th280" alt="" />
+                    <span class="head">Чем так «воодушевился» Помпео в Белоруссии?</span>
+                    <span class="lead">Госсекретарь США, посетив Парк высоких технологий в Минске, заявил о «необычайном потенциале роста» экс-советской республики.</span>
+                </a>
+
+    </div>
+        <div class="shot" onmouseout="hide_sub(this)" onmouseover="show_sub(this)" style='float:left;display:table;width:300px;padding-right:20px;'>
+        <a href="/world/2020/02/05/1826098.html">
+                    <div class="hover" data-url="https://www.rosbalt.ru/world/2020/02/05/1826098.html" data-title="Не прогадает ли Армения с «политикой Двуликого Януса»?">
+                        <div class="image-rollover fader"></div>
+                        <div onclick="share.vk(this.parentNode);" class="image-rollover rollover-vk"></div>
+                        <div onclick="share.tw(this.parentNode)" class="image-rollover rollover-tw"></div>
+                        <div onclick="share.fb(this.parentNode)" class="image-rollover rollover-fb"></div>
+                        <div class="image-rollover rollover-views">10282</div>
+                    </div>
+
+                    <img src="//img.rosbalt.ru/photobank/f/a/9/7/vcXqhHpC-280.jpg" class="th280" alt="" />
+                    <span class="head">Не прогадает ли Армения с «политикой Двуликого Януса»?</span>
+                    <span class="lead">Ереван охотно перевооружает свою армию за счет РФ, уповает на ее помощь в карабахском конфликте, но при этом хочет закрыть российские телеканалы.</span>
+                </a>
+
+    </div>
+    <div style='clear:both;padding-top:20px;'></div>    <div class="shot" onmouseout="hide_sub(this)" onmouseover="show_sub(this)" style='float:left;display:table;width:300px;padding-right:20px;'>
+        <a href="/piter/2020/02/04/1826156.html">
+                    <div class="hover" data-url="https://www.rosbalt.ru/piter/2020/02/04/1826156.html" data-title="Во всем виноват Китай?">
+                        <div class="image-rollover fader"></div>
+                        <div onclick="share.vk(this.parentNode);" class="image-rollover rollover-vk"></div>
+                        <div onclick="share.tw(this.parentNode)" class="image-rollover rollover-tw"></div>
+                        <div onclick="share.fb(this.parentNode)" class="image-rollover rollover-fb"></div>
+                        <div class="image-rollover rollover-views">5342</div>
+                    </div>
+
+                    <img src="//img.rosbalt.ru/photobank/1/d/a/1/qKQXYrmd-280.jpg" class="th280" alt="" />
+                    <span class="head">Во всем виноват Китай?</span>
+                    <span class="lead">«Родиной» эпидемий не случайно все чаще становится Поднебесная, и за нынешней вспышкой 2019-nCoV наверняка последуют другие случаи — ведь мутации вирусов неизбежны.</span>
+                </a>
+
+    </div>
+        <div class="shot" onmouseout="hide_sub(this)" onmouseover="show_sub(this)" style='float:left;display:table;width:300px;padding-right:20px;'>
+        <a href="/world/2020/02/04/1826132.html">
+                    <div class="hover" data-url="https://www.rosbalt.ru/world/2020/02/04/1826132.html" data-title="«Слава Украине!» уже говорят с турецким акцентом">
+                        <div class="image-rollover fader"></div>
+                        <div onclick="share.vk(this.parentNode);" class="image-rollover rollover-vk"></div>
+                        <div onclick="share.tw(this.parentNode)" class="image-rollover rollover-tw"></div>
+                        <div onclick="share.fb(this.parentNode)" class="image-rollover rollover-fb"></div>
+                        <div class="image-rollover rollover-views">2861</div>
+                    </div>
+
+                    <img src="//img.rosbalt.ru/photobank/f/d/7/2/kcxbX9Kj-280.jpg" class="th280" alt="" />
+                    <span class="head">«Слава Украине!» уже говорят с турецким акцентом</span>
+                    <span class="lead">В Киеве остались очень довольны визитом Эрдогана, однако эксперты предупреждают: не нужно ожидать, что Россия после всего сказанного о Крыме пойдет на уступки.</span>
+                </a>
+
+    </div>
+        <div class="shot" onmouseout="hide_sub(this)" onmouseover="show_sub(this)" style='float:left;display:table;width:300px;padding-right:20px;'>
+        <a href="/world/2020/02/04/1826062.html">
+                    <div class="hover" data-url="https://www.rosbalt.ru/world/2020/02/04/1826062.html" data-title="Как американцы «соблазняют» Казахстан и Узбекистан">
+                        <div class="image-rollover fader"></div>
+                        <div onclick="share.vk(this.parentNode);" class="image-rollover rollover-vk"></div>
+                        <div onclick="share.tw(this.parentNode)" class="image-rollover rollover-tw"></div>
+                        <div onclick="share.fb(this.parentNode)" class="image-rollover rollover-fb"></div>
+                        <div class="image-rollover rollover-views">13096</div>
+                    </div>
+
+                    <img src="//img.rosbalt.ru/photobank/3/e/d/d/FGBxHDMK-280.jpg" class="th280" alt="" />
+                    <span class="head">Как американцы «соблазняют» Казахстан и Узбекистан</span>
+                    <span class="lead">Зачем госсекретарь США Майкл Помпео наведался в Нур-Султан и Ташкент и каковы будут последствия этого визита для Москвы и Пекина?</span>
+                </a>
+
+    </div>
+        <div class="shot" onmouseout="hide_sub(this)" onmouseover="show_sub(this)" style='float:left;display:table;width:300px;padding-right:20px;'>
+        <a href="/world/2020/02/04/1826013.html">
+                    <div class="hover" data-url="https://www.rosbalt.ru/world/2020/02/04/1826013.html" data-title="Кремль сохраняет лицо, но теряет позиции">
+                        <div class="image-rollover fader"></div>
+                        <div onclick="share.vk(this.parentNode);" class="image-rollover rollover-vk"></div>
+                        <div onclick="share.tw(this.parentNode)" class="image-rollover rollover-tw"></div>
+                        <div onclick="share.fb(this.parentNode)" class="image-rollover rollover-fb"></div>
+                        <div class="image-rollover rollover-views">31853</div>
+                    </div>
+
+                    <img src="//img.rosbalt.ru/photobank/d/e/e/d/TJBzt2Rx-280.jpg" class="th280" alt="" />
+                    <span class="head">Кремль сохраняет лицо, но теряет позиции</span>
+                    <span class="lead">В тандеме Путин-Эрдоган лидерство переходит к турецкому президенту, отмечает востоковед Александр Шумилин.</span>
+                </a>
+
+    </div>
+    <div style='clear:both;padding-top:20px;'></div>    <div class="shot" onmouseout="hide_sub(this)" onmouseover="show_sub(this)" style='float:left;display:table;width:300px;padding-right:20px;'>
+        <a href="/world/2020/02/03/1826007.html">
+                    <div class="hover" data-url="https://www.rosbalt.ru/world/2020/02/03/1826007.html" data-title="Brexit: кто следующий на выход?">
+                        <div class="image-rollover fader"></div>
+                        <div onclick="share.vk(this.parentNode);" class="image-rollover rollover-vk"></div>
+                        <div onclick="share.tw(this.parentNode)" class="image-rollover rollover-tw"></div>
+                        <div onclick="share.fb(this.parentNode)" class="image-rollover rollover-fb"></div>
+                        <div class="image-rollover rollover-views">3427</div>
+                    </div>
+
+                    <img src="//img.rosbalt.ru/photobank/9/4/7/9/3kR4vDfM-280.jpg" class="th280" alt="" />
+                    <span class="head">Brexit: кто следующий на выход?</span>
+                    <span class="lead">Брюссель мирно отпустил британцев. Но знают ли на континенте, что надо делать, чтобы они так и остались единственными беглецами из Евросоюза?</span>
+                </a>
+
+    </div>
+        <div class="shot" onmouseout="hide_sub(this)" onmouseover="show_sub(this)" style='float:left;display:table;width:300px;padding-right:20px;'>
+        <a href="/world/2020/02/03/1825951.html">
+                    <div class="hover" data-url="https://www.rosbalt.ru/world/2020/02/03/1825951.html" data-title="За черногорскими протестами стоят Сербия и Россия?">
+                        <div class="image-rollover fader"></div>
+                        <div onclick="share.vk(this.parentNode);" class="image-rollover rollover-vk"></div>
+                        <div onclick="share.tw(this.parentNode)" class="image-rollover rollover-tw"></div>
+                        <div onclick="share.fb(this.parentNode)" class="image-rollover rollover-fb"></div>
+                        <div class="image-rollover rollover-views">2452</div>
+                    </div>
+
+                    <img src="//img.rosbalt.ru/photobank/a/3/4/c/FZGz3jbY-280.jpg" class="th280" alt="" />
+                    <span class="head">За черногорскими протестами стоят Сербия и Россия?</span>
+                    <span class="lead">Подгорица обвиняет Белград и Москву в организации антиправительственных шествий и митингов против закона о свободе вероисповеданий.</span>
+                </a>
+
+    </div>
+        <div class="shot" onmouseout="hide_sub(this)" onmouseover="show_sub(this)" style='float:left;display:table;width:300px;padding-right:20px;'>
+        <a href="/world/2020/02/03/1825856.html">
+                    <div class="hover" data-url="https://www.rosbalt.ru/world/2020/02/03/1825856.html" data-title="Новая «любимая жена» Вашингтона">
+                        <div class="image-rollover fader"></div>
+                        <div onclick="share.vk(this.parentNode);" class="image-rollover rollover-vk"></div>
+                        <div onclick="share.tw(this.parentNode)" class="image-rollover rollover-tw"></div>
+                        <div onclick="share.fb(this.parentNode)" class="image-rollover rollover-fb"></div>
+                        <div class="image-rollover rollover-views">10507</div>
+                    </div>
+
+                    <img src="//img.rosbalt.ru/photobank/d/4/7/2/RvtBrWY4-280.jpg" class="th280" alt="" />
+                    <span class="head">Новая «любимая жена» Вашингтона</span>
+                    <span class="lead">Визит госсекретаря США в Киев прошел достаточно спокойно, без сенсаций и громких заявлений. На следующий день в Минске все было куда как интересней.</span>
+                </a>
+
+    </div>
+        <div class="shot" onmouseout="hide_sub(this)" onmouseover="show_sub(this)" style='float:left;display:table;width:300px;padding-right:20px;'>
+        <a href="/world/2020/01/31/1825501.html">
+                    <div class="hover" data-url="https://www.rosbalt.ru/world/2020/01/31/1825501.html" data-title="Поместится ли Белоруссия в РФ?">
+                        <div class="image-rollover fader"></div>
+                        <div onclick="share.vk(this.parentNode);" class="image-rollover rollover-vk"></div>
+                        <div onclick="share.tw(this.parentNode)" class="image-rollover rollover-tw"></div>
+                        <div onclick="share.fb(this.parentNode)" class="image-rollover rollover-fb"></div>
+                        <div class="image-rollover rollover-views">23702</div>
+                    </div>
+
+                    <img src="//img.rosbalt.ru/photobank/d/f/d/d/tbq8JHdc-280.jpg" class="th280" alt="" />
+                    <span class="head">Поместится ли Белоруссия в РФ?</span>
+                    <span class="lead">Если Лукашенко под давлением обстоятельств все-таки решится «вручить России свой народ», то совсем не факт, что этот народ безропотно согласится жить в одних границах со «старшим братом».</span>
+                </a>
+
+    </div>
+    <div style='clear:both;padding-top:20px;'></div></div>
+
+    
+
+
+                <div class="themes-region">
+    <div class="themes-region__block">
+        <ul class="nav-logo__themes">
+            <li><a class="" href="/theme/199/">Эпидемия коронавируса</a></li>
+        <li><a class="" href="/theme/197/">Поправки в Конституцию РФ</a></li>
+        <li><a class="" href="/theme/198/">Перестановки в российской власти</a></li>
+    </ul>
+
+    </div>
+</div>
+
+        <div class="block4 blogs">
+    <div class="main-content">
+        <div class="row">
+            <div class="newslist">
+                <hr class="c1">
+                <a href="/blogs/" class="heading name4">Блоги</a>
+                
+                <div class="shot" onmouseout="hide_sub(this)" onmouseover="show_sub(this)">
+                <a href="/blogs/2020/02/04/1826065.html">
+                    <div class="hover" data-url="https://www.rosbalt.ru/blogs/2020/02/04/1826065.html" data-title="Элиты ягнят или ягнята элит?">
+                        <div class="image-rollover fader"></div>
+                        <div onclick="share.vk(this.parentNode);" class="image-rollover rollover-vk"></div>
+                        <div onclick="share.tw(this.parentNode)" class="image-rollover rollover-tw"></div>
+                        <div onclick="share.fb(this.parentNode)" class="image-rollover rollover-fb"></div>
+                        <div class="image-rollover rollover-views">1282</div>
+                    </div>
+
+                    <div class="hover-blog"><div class="image-rollover fader"></div></div>
+                    <img src="//img.rosbalt.ru/photobank/d/2/2/5/q3nR6WHN-280.jpg" class="th280" alt="" />
+                    <span class="head">Элиты ягнят или ягнята элит?</span>
+                </a>
+
+                </div>
+
+            </div>
+                
+            <div class="articleslist"> 
+
+                <div class="row">
+                    <div class="slide4">
+                        <hr class="c2">
+
+                        <div class="shot" onmouseout="hide_sub(this)" onmouseover="show_sub(this)">
+                        <a href="/blogs/2020/01/22/1823985.html">
+                            <div class="hover" data-url="https://www.rosbalt.ru/blogs/2020/01/22/1823985.html" data-title="«Ложный флаг» для населения">
+                                <div class="image-rollover fader"></div>
+                                <div onclick="share.vk(this.parentNode);" class="image-rollover rollover-vk"></div>
+                                <div onclick="share.tw(this.parentNode)" class="image-rollover rollover-tw"></div>
+                                <div onclick="share.fb(this.parentNode)" class="image-rollover rollover-fb"></div>
+                                <div class="image-rollover rollover-views">3506</div>
+                            </div>
+
+                            <div class="hover-blog"><div class="image-rollover fader"></div></div>
+                            <img src="//img.rosbalt.ru/photobank/4/f/7/2/nXjPqmVd-280.jpg" class="th280" alt="" />
+                            <span class="head">«Ложный флаг» для населения</span>
+                        </a>
+                        </div>
+                    </div>
+                    <div class="slide4">
+                        <hr class="c3">
+                        <div class="shot" onmouseout="hide_sub(this)" onmouseover="show_sub(this)">
+                        <a href="/blogs/2020/01/17/1823191.html">
+                            <div class="hover" data-url="https://www.rosbalt.ru/blogs/2020/01/17/1823191.html" data-title="Техничный шабаш">
+                                <div class="image-rollover fader"></div>
+                                <div onclick="share.vk(this.parentNode);" class="image-rollover rollover-vk"></div>
+                                <div onclick="share.tw(this.parentNode)" class="image-rollover rollover-tw"></div>
+                                <div onclick="share.fb(this.parentNode)" class="image-rollover rollover-fb"></div>
+                                <div class="image-rollover rollover-views">3371</div>
+                            </div>
+
+                            <div class="hover-blog"><div class="image-rollover fader"></div></div>
+                            <img src="//img.rosbalt.ru/photobank/8/6/b/3/fkTmnK6j-280.jpg" class="th280" alt="" />
+                            <span class="head">Техничный шабаш</span>
+                        </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="sidebar">
+        <hr class="c4">
+        <div class="shot" onmouseout="hide_sub(this)" onmouseover="show_sub(this)">
+            <a href="/blogs/2020/01/16/1822791.html">
+                <div class="hover" data-url="https://www.rosbalt.ru/blogs/2020/01/16/1822791.html" data-title="Итог двух десятилетий Путина">
+                    <div class="image-rollover fader"></div>
+                    <div onclick="share.vk(this.parentNode);" class="image-rollover rollover-vk"></div>
+                    <div onclick="share.tw(this.parentNode)" class="image-rollover rollover-tw"></div>
+                    <div onclick="share.fb(this.parentNode)" class="image-rollover rollover-fb"></div>
+                    <div class="image-rollover rollover-views">6093</div>
+                </div>
+                
+                <div class="hover-blog"><div class="image-rollover fader"></div></div>
+                <img src="//img.rosbalt.ru/photobank/3/0/3/e/WMCvkgtj-280.jpg" class="th280" alt="" />
+                <span class="head">Итог двух десятилетий Путина</span>
+            </a>
+        </div>
+    </div>
+</div>
+
+        <div class="block4">
+  <div class="main-content">
+    <div class="row">
+      <div class="newslist">
+        <hr class="c1">
+          
+          <a href="http://avangard.rosbalt.ru/" target="_blank" class="heading name4">Петербургский Авангард</a>
+          <div class="shot" onmouseout="hide_sub(this)" onmouseover="show_sub(this)">
+            <a href="/piter/2020/02/03/1825884.html">
+              <div class="hover" data-url="https://www.rosbalt.ru/piter/2020/02/03/1825884.html" data-title="Билет в Эрмитаж для иностранцев подорожает">
+                <div class="image-rollover fader"></div>
+                <div onclick="share.vk(this.parentNode);" class="image-rollover rollover-vk"></div>
+                <div onclick="share.tw(this.parentNode)" class="image-rollover rollover-tw"></div>
+                <div onclick="share.fb(this.parentNode)" class="image-rollover rollover-fb"></div>
+                <div class="image-rollover rollover-views">575</div>
+              </div>
+              <img class="th280" src="//img.rosbalt.ru/photobank/9/e/7/d/ktyKRDvz-280.jpg" alt="" />
+              <span class="head">Билет в Эрмитаж для иностранцев подорожает</span>
+            </a>
+          </div>
+      </div>
+      <div class="articleslist">
+        <div class="row">
+          <div class="slide4">
+            <hr class="c2">
+
+                        <div class="shot" onmouseout="hide_sub(this)" onmouseover="show_sub(this)">
+                        <a href="/piter/2020/02/02/1825778.html">
+                            <div class="hover" data-url="https://www.rosbalt.ru/piter/2020/02/02/1825778.html" data-title="В арт-пространстве mArs открывается выставка Андрея Дейнекина «Из тени в цвет»">
+                                <div class="image-rollover fader"></div>
+                                <div onclick="share.vk(this.parentNode);" class="image-rollover rollover-vk"></div>
+                                <div onclick="share.tw(this.parentNode)" class="image-rollover rollover-tw"></div>
+                                <div onclick="share.fb(this.parentNode)" class="image-rollover rollover-fb"></div>
+                                <div class="image-rollover rollover-views">365</div>
+                            </div>
+                            <img src="//img.rosbalt.ru/photobank/5/9/e/1/tPZGYmy6-280.jpg" class="th280" alt="" />
+                            <span class="head">В арт-пространстве mArs открывается выставка Андрея Дейнекина «Из тени в цвет»</span>
+                        </a>
+                        </div>
+          </div>
+          <div class="slide4">
+            <hr class="c3">
+                        <div class="shot" onmouseout="hide_sub(this)" onmouseover="show_sub(this)">
+                        <a href="/piter/2020/01/29/1825196.html">
+                            <div class="hover" data-url="https://www.rosbalt.ru/piter/2020/01/29/1825196.html" data-title="В Петербурге опустел Эрмитаж">
+                                <div class="image-rollover fader"></div>
+                                <div onclick="share.vk(this.parentNode);" class="image-rollover rollover-vk"></div>
+                                <div onclick="share.tw(this.parentNode)" class="image-rollover rollover-tw"></div>
+                                <div onclick="share.fb(this.parentNode)" class="image-rollover rollover-fb"></div>
+                                <div class="image-rollover rollover-views">6752</div>
+                            </div>
+                            <img src="//img.rosbalt.ru/photobank/0/6/5/7/Wr8w7Zty-280.jpg" class="th280" alt="" />
+                            <span class="head">В Петербурге опустел Эрмитаж</span>
+                        </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sidebar">
+        <hr class="c4">
+        <div class="shot">
+            <ul class="col3-projects">
+                                <li onmouseout="hide_sub(this)" onmouseover="show_sub(this)">
+                    <a href="/piter/2020/01/20/1823434.html">
+                        <div class="hover">
+                            <div class="image-rollover fader-small"></div>
+                            <div class="image-rollover rollover-views-small">373</div>
+                        </div>
+                        <img src="//img.rosbalt.ru/photobank/a/5/9/b/qRCw37kD-112.jpg" alt="" />
+                        <span>В арт-пространстве mArs открывается выставка Арона Зинштейна «Цветная река жизни»</span>
+                    </a>
+                </li>
+                                <li onmouseout="hide_sub(this)" onmouseover="show_sub(this)">
+                    <a href="/piter/2020/01/17/1823181.html">
+                        <div class="hover">
+                            <div class="image-rollover fader-small"></div>
+                            <div class="image-rollover rollover-views-small">2841</div>
+                        </div>
+                        <img src="//img.rosbalt.ru/photobank/e/5/9/8/cLwGJCQ3-112.jpg" alt="" />
+                        <span>Эксперт рассказал об опасных святочных гаданиях</span>
+                    </a>
+                </li>
+                                <li onmouseout="hide_sub(this)" onmouseover="show_sub(this)">
+                    <a href="/piter/2020/01/15/1822641.html">
+                        <div class="hover">
+                            <div class="image-rollover fader-small"></div>
+                            <div class="image-rollover rollover-views-small">702</div>
+                        </div>
+                        <img src="//img.rosbalt.ru/photobank/1/8/6/b/ZnFQ6rXz-112.jpg" alt="" />
+                        <span>В Петербурге покажут уникальные портреты Константина Райкина, Майи Плисецкой и других деятелей искусства</span>
+                    </a>
+                </li>
+                            </ul>
+
+        </div>
+    </div>
+</div>
+
+        
+        <div class="block4 blogs rosbalt-like-top">
+    <div class="main-content">
+        <div class="row">
+            <div class="newslist">
+                <hr class="c1">
+                <a href="/like/" class="heading name4">Like</a>
+                
+                <div class="shot" onmouseout="hide_sub(this)" onmouseover="show_sub(this)">
+                <a href="/like/2020/02/06/1826569.html?utm_source=rosbalt&utm_medium=web&utm_campaign=like4">
+                    <div class="hover" data-url="https://www.rosbalt.ru/like/2020/02/06/1826569.html" data-title="На Первом канале нашли железобетонное доказательство виновности США в эпидемии коронавируса">
+                        <div class="image-rollover fader"></div>
+                        <div onclick="share.vk(this.parentNode);" class="image-rollover rollover-vk"></div>
+                        <div onclick="share.tw(this.parentNode)" class="image-rollover rollover-tw"></div>
+                        <div onclick="share.fb(this.parentNode)" class="image-rollover rollover-fb"></div>
+                        <div class="image-rollover rollover-views">902</div>
+                    </div>
+
+                    <div class="hover-blog"><div class="image-rollover fader"></div></div>
+                    <img src="//img.rosbalt.ru/photobank/0/3/7/0/YhdqpfvV-280.jpg" class="th280" alt="" />
+                    <span class="head">На Первом канале нашли железобетонное доказательство виновности США в эпидемии коронавируса</span>
+                </a>
+
+                </div>
+
+            </div>
+                
+            <div class="articleslist"> 
+
+                <div class="row">
+                    <div class="slide4">
+                        <hr class="c2">
+
+                        <div class="shot" onmouseout="hide_sub(this)" onmouseover="show_sub(this)">
+                        <a href="/like/2020/02/05/1826451.html?utm_source=rosbalt&utm_medium=web&utm_campaign=like4">
+                            <div class="hover" data-url="https://www.rosbalt.ru/like/2020/02/05/1826451.html" data-title="Дружеский жест койота по отношению к барсуку попал на видео">
+                                <div class="image-rollover fader"></div>
+                                <div onclick="share.vk(this.parentNode);" class="image-rollover rollover-vk"></div>
+                                <div onclick="share.tw(this.parentNode)" class="image-rollover rollover-tw"></div>
+                                <div onclick="share.fb(this.parentNode)" class="image-rollover rollover-fb"></div>
+                                <div class="image-rollover rollover-views">1568</div>
+                            </div>
+
+                            <div class="hover-blog"><div class="image-rollover fader"></div></div>
+                            <img src="//img.rosbalt.ru/photobank/0/8/d/d/hxP4RJCg-280.jpg" class="th280" alt="" />
+                            <span class="head">Дружеский жест койота по отношению к барсуку попал на видео</span>
+                        </a>
+                        </div>
+                    </div>
+                    <div class="slide4">
+                        <hr class="c3">
+                        <div class="shot" onmouseout="hide_sub(this)" onmouseover="show_sub(this)">
+                        <a href="/like/2020/02/05/1826408.html?utm_source=rosbalt&utm_medium=web&utm_campaign=like4">
+                            <div class="hover" data-url="https://www.rosbalt.ru/like/2020/02/05/1826408.html" data-title="«Киберкоронавирус»: в соцсетях обсуждают сбой в работе «Яндекса»">
+                                <div class="image-rollover fader"></div>
+                                <div onclick="share.vk(this.parentNode);" class="image-rollover rollover-vk"></div>
+                                <div onclick="share.tw(this.parentNode)" class="image-rollover rollover-tw"></div>
+                                <div onclick="share.fb(this.parentNode)" class="image-rollover rollover-fb"></div>
+                                <div class="image-rollover rollover-views">759</div>
+                            </div>
+
+                            <div class="hover-blog"><div class="image-rollover fader"></div></div>
+                            <img src="//img.rosbalt.ru/photobank/4/0/5/f/knTgXZFm-280.jpg" class="th280" alt="" />
+                            <span class="head">«Киберкоронавирус»: в соцсетях обсуждают сбой в работе «Яндекса»</span>
+                        </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="sidebar">
+        <hr class="c4">
+        <div class="shot" onmouseout="hide_sub(this)" onmouseover="show_sub(this)">
+            <a href="/like/2020/02/04/1826226.html?utm_source=rosbalt&utm_medium=web&utm_campaign=like4">
+                <div class="hover" data-url="https://www.rosbalt.ru/like/2020/02/04/1826226.html" data-title="Вот вы тут сидите, а в соцсетях Алену Водонаеву выдвигают в президенты России. Из-за видео...">
+                    <div class="image-rollover fader"></div>
+                    <div onclick="share.vk(this.parentNode);" class="image-rollover rollover-vk"></div>
+                    <div onclick="share.tw(this.parentNode)" class="image-rollover rollover-tw"></div>
+                    <div onclick="share.fb(this.parentNode)" class="image-rollover rollover-fb"></div>
+                    <div class="image-rollover rollover-views">5224</div>
+                </div>
+                
+                <div class="hover-blog"><div class="image-rollover fader"></div></div>
+                <img src="//img.rosbalt.ru/photobank/e/5/9/0/7CwJbv49-280.jpg" class="th280" alt="" />
+                <span class="head">Вот вы тут сидите, а в соцсетях Алену Водонаеву выдвигают в президенты России. Из-за видео...</span>
+            </a>
+        </div>
+    </div>
+</div>
+
+
+        <div class="block4">
+    <div class="main-content">
+        <div class="row">
+            <div class="newslist">
+                <hr class="c1">
+                <a href="/articles/" class="heading name4">Статьи</a>
+                
+                <div class="shot" onmouseout="hide_sub(this)" onmouseover="show_sub(this)">
+                <a href="/piter/2020/02/04/1826190.html">
+                    <div class="hover" data-url="https://www.rosbalt.ru/piter/2020/02/04/1826190.html" data-title="Осторожно, снюс!">
+                        <div class="image-rollover fader"></div>
+                        <div onclick="share.vk(this.parentNode);" class="image-rollover rollover-vk"></div>
+                        <div onclick="share.tw(this.parentNode)" class="image-rollover rollover-tw"></div>
+                        <div onclick="share.fb(this.parentNode)" class="image-rollover rollover-fb"></div>
+                        <div class="image-rollover rollover-views">3281</div>
+                    </div>
+
+                    <img src="//img.rosbalt.ru/photobank/4/8/5/7/6tnQyBvH-280.jpg" class="th280" alt="" />
+                    <span class="head">Осторожно, снюс!</span>
+                    <span class="lead">Среди подростков стремительно растет популярность бестабачных смесей. Впору говорить о масштабной зависимости, опасной для здоровья и даже для жизни.</span>
+                </a>
+
+                </div>
+
+            </div>
+                
+            <div class="articleslist"> 
+
+                <div class="row">
+                    <div class="slide4">
+                        <hr class="c2">
+
+                        <div class="shot" onmouseout="hide_sub(this)" onmouseover="show_sub(this)">
+                        <a href="/russia/2020/01/31/1825663.html">
+                            <div class="hover" data-url="https://www.rosbalt.ru/russia/2020/01/31/1825663.html" data-title="Коронавирус бьет по Дальнему Востоку">
+                                <div class="image-rollover fader"></div>
+                                <div onclick="share.vk(this.parentNode);" class="image-rollover rollover-vk"></div>
+                                <div onclick="share.tw(this.parentNode)" class="image-rollover rollover-tw"></div>
+                                <div onclick="share.fb(this.parentNode)" class="image-rollover rollover-fb"></div>
+                                <div class="image-rollover rollover-views">9895</div>
+                            </div>
+
+                            <img src="//img.rosbalt.ru/photobank/5/5/9/d/vgnYZMTN-280.jpg" class="th280" alt="" />
+                            <span class="head">Коронавирус бьет по Дальнему Востоку</span>
+                            <span class="lead">Китайская болезнь уже начинает сказываться на экономике близких к КНР российских территорий — ведь за последние годы рынки двух стран тесно переплелись.</span>
+                        </a>
+                        </div>
+                    </div>
+                    <div class="slide4">
+                        <hr class="c3">
+                        <div class="shot" onmouseout="hide_sub(this)" onmouseover="show_sub(this)">
+                        <a href="/russia/2020/01/31/1825676.html">
+                            <div class="hover" data-url="https://www.rosbalt.ru/russia/2020/01/31/1825676.html" data-title="Избирателям дадут иллюзию выбора">
+                                <div class="image-rollover fader"></div>
+                                <div onclick="share.vk(this.parentNode);" class="image-rollover rollover-vk"></div>
+                                <div onclick="share.tw(this.parentNode)" class="image-rollover rollover-tw"></div>
+                                <div onclick="share.fb(this.parentNode)" class="image-rollover rollover-fb"></div>
+                                <div class="image-rollover rollover-views">2970</div>
+                            </div>
+
+                            <img src="//img.rosbalt.ru/photobank/a/4/8/a/TGBxZXg3-280.jpg" class="th280" alt="" />
+                            <span class="head">Избирателям дадут иллюзию выбора</span>
+                            <span class="lead">Один из сценариев предстоящих выборов в Госдуму предполагает запуск сразу нескольких новых партий, которые должны раздробить протестный электорат.</span>
+                        </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="sidebar">
+        <hr class="c4">
+        <div class="shot" onmouseout="hide_sub(this)" onmouseover="show_sub(this)">
+            <a href="/piter/2020/01/31/1825212.html">
+                <div class="hover" data-url="https://www.rosbalt.ru/piter/2020/01/31/1825212.html" data-title="Удар ниже пояса">
+                    <div class="image-rollover fader"></div>
+                    <div onclick="share.vk(this.parentNode);" class="image-rollover rollover-vk"></div>
+                    <div onclick="share.tw(this.parentNode)" class="image-rollover rollover-tw"></div>
+                    <div onclick="share.fb(this.parentNode)" class="image-rollover rollover-fb"></div>
+                    <div class="image-rollover rollover-views">16630</div>
+                </div>
+
+                <img src="//img.rosbalt.ru/photobank/3/4/c/a/y8wYKNHq-280.jpg" class="th280" alt="" />
+                <span class="head">Удар ниже пояса</span>
+                <span class="lead">Показатели заболеваемости раком шейки матки в России сопоставимы с данными по Индии и Республике Чад. Значительно улучшить статистику может своевременная вакцинация.</span>
+            </a>
+        </div>
+    </div>
+</div>
+
+        <div class="block4">
+    <div class="main-content">
+        <div class="row">
+            <div class="newslist">
+                <hr class="c1">
+                <a href="/opinions/" class="heading name4">Мнения</a>
+                
+                <div class="shot" onmouseout="hide_sub(this)" onmouseover="show_sub(this)">
+                <a href="/moscow/2020/02/05/1826392.html">
+                    <div class="hover" data-url="https://www.rosbalt.ru/moscow/2020/02/05/1826392.html" data-title="Стриптиз, на который мы не соглашались">
+                        <div class="image-rollover fader"></div>
+                        <div onclick="share.vk(this.parentNode);" class="image-rollover rollover-vk"></div>
+                        <div onclick="share.tw(this.parentNode)" class="image-rollover rollover-tw"></div>
+                        <div onclick="share.fb(this.parentNode)" class="image-rollover rollover-fb"></div>
+                        <div class="image-rollover rollover-views">5779</div>
+                    </div>
+
+                    <img src="https://img.rosbalt.ru/photobank/4/3/a/c/B4gWPCtH-280.jpg" class="th280 grayscale" alt="" />
+                    <span class="author"></span>
+                    <span class="head">Стриптиз, на который мы не соглашались</span>
+                    <span class="lead">Когда государства и корпорации каблуками топчут нашу приватность, в обществе растет тревожность и агрессия, считает доктор психологических наук Александр Асмолов.</span>
+                </a>
+
+                </div>
+
+            </div>
+                
+            <div class="articleslist"> 
+
+                <div class="row">
+                    <div class="slide4">
+                        <hr class="c2">
+
+                        <div class="shot" onmouseout="hide_sub(this)" onmouseover="show_sub(this)">
+                        <a href="/blogs/2020/02/05/1826371.html">
+                            <div class="hover" data-url="https://www.rosbalt.ru/blogs/2020/02/05/1826371.html" data-title="Почему российская эпидемия страшнее китайской">
+                                <div class="image-rollover fader"></div>
+                                <div onclick="share.vk(this.parentNode);" class="image-rollover rollover-vk"></div>
+                                <div onclick="share.tw(this.parentNode)" class="image-rollover rollover-tw"></div>
+                                <div onclick="share.fb(this.parentNode)" class="image-rollover rollover-fb"></div>
+                                <div class="image-rollover rollover-views">44683</div>
+                            </div>
+
+                            <img src="https://img.rosbalt.ru/photobank/6/a/3/2/MJnxYZ9z-280.jpg" class="th280 grayscale" alt="" />
+                            <span class="author">Виктория Волошина</span>
+                            <span class="head">Почему российская эпидемия страшнее китайской</span>
+                            <span class="lead">Болезнь, от которой только в прошлом году умерли более 37 тысяч россиян, а счет заразившимся перевалил за миллион, уже давно пришла в нашу страну.</span>
+                        </a>
+                        </div>
+                    </div>
+                    <div class="slide4">
+                        <hr class="c3">
+                        <div class="shot" onmouseout="hide_sub(this)" onmouseover="show_sub(this)">
+                        <a href="/blogs/2020/02/04/1826168.html">
+                            <div class="hover" data-url="https://www.rosbalt.ru/blogs/2020/02/04/1826168.html" data-title="Китайский вирус: экономика России уже заражена">
+                                <div class="image-rollover fader"></div>
+                                <div onclick="share.vk(this.parentNode);" class="image-rollover rollover-vk"></div>
+                                <div onclick="share.tw(this.parentNode)" class="image-rollover rollover-tw"></div>
+                                <div onclick="share.fb(this.parentNode)" class="image-rollover rollover-fb"></div>
+                                <div class="image-rollover rollover-views">12472</div>
+                            </div>
+
+                            <img src="https://img.rosbalt.ru/photobank/f/7/2/5/nhL8drkp-280.jpg" class="th280 grayscale" alt="" />
+                            <span class="author">Сергей Шелин</span>
+                            <span class="head">Китайский вирус: экономика России уже заражена</span>
+                            <span class="lead">Наша страна теряет трижды: вместе с нефтеторговцами, вместе с другими соседями Китая и как государство, раздувшее свою от него зависимость.</span>
+                        </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="sidebar">
+        <hr class="c4">
+        <div class="shot" onmouseout="hide_sub(this)" onmouseover="show_sub(this)">
+            <a href="/moscow/2020/02/02/1825789.html">
+                <div class="hover" data-url="https://www.rosbalt.ru/moscow/2020/02/02/1825789.html" data-title="Второй Ватиканский собор в России будет «в рассрочку»">
+                    <div class="image-rollover fader"></div>
+                    <div onclick="share.vk(this.parentNode);" class="image-rollover rollover-vk"></div>
+                    <div onclick="share.tw(this.parentNode)" class="image-rollover rollover-tw"></div>
+                    <div onclick="share.fb(this.parentNode)" class="image-rollover rollover-fb"></div>
+                    <div class="image-rollover rollover-views">3951</div>
+                </div>
+
+                <img src="https://img.rosbalt.ru/photobank/4/0/6/6/X3ckx9ZV-280.jpg" class="th280 grayscale" alt="" />
+                <span class="author"></span>
+                <span class="head">Второй Ватиканский собор в России будет «в рассрочку»</span>
+                <span class="lead">Какие тенденции характерны сегодня для Русской православной церкви, рассуждает заместитель директора Института Европы РАН Роман Лункин.</span>
+            </a>
+        </div>
+    </div>
+</div>
+
+
+        
+                <div class="block4">
+    <div class="main-content">
+        <div class="row">
+            <div class="newslist">
+                <hr class="c1">
+                <a href="/video/" class="heading name4">Видео</a>
+                
+                <div class="shot" onmouseout="hide_sub(this)" onmouseover="show_sub(this)">
+                <a href="/video/2020/01/23/1824139.html">
+                    <div class="hover" data-url="https://www.rosbalt.ru/video/2020/01/23/1824139.html" data-title="Виктор Андреев. Почему Федерико Гарсия Лорка стал «родным» поэтом для нашей страны">
+                        <div class="image-rollover fader"></div>
+                        <div onclick="share.vk(this.parentNode);" class="image-rollover rollover-vk"></div>
+                        <div onclick="share.tw(this.parentNode)" class="image-rollover rollover-tw"></div>
+                        <div onclick="share.fb(this.parentNode)" class="image-rollover rollover-fb"></div>
+                        <div class="image-rollover rollover-views">436</div>
+                    </div>
+
+                    <div class="hover-video">
+                        <div class="image-rollover hover-play"></div>
+                    </div>
+
+
+                    <img src="//img.rosbalt.ru/photobank/0/a/9/9/gN28K4kG-280.jpg" class="th280" alt="" />
+                    <span class="head">Виктор Андреев. Почему Федерико Гарсия Лорка стал «родным» поэтом для нашей страны</span>
+                </a>
+
+                </div>
+
+            </div>
+                
+            <div class="articleslist"> 
+
+                <div class="row">
+                    <div class="slide4">
+                        <hr class="c2">
+
+                        <div class="shot" onmouseout="hide_sub(this)" onmouseover="show_sub(this)">
+                        <a href="/video/2019/12/31/1821057.html">
+                            <div class="hover" data-url="https://www.rosbalt.ru/video/2019/12/31/1821057.html" data-title="С Новым Годом!">
+                                <div class="image-rollover fader"></div>
+                                <div onclick="share.vk(this.parentNode);" class="image-rollover rollover-vk"></div>
+                                <div onclick="share.tw(this.parentNode)" class="image-rollover rollover-tw"></div>
+                                <div onclick="share.fb(this.parentNode)" class="image-rollover rollover-fb"></div>
+                                <div class="image-rollover rollover-views">2794</div>
+                            </div>
+
+                    <div class="hover-video">
+                        <div class="image-rollover hover-play"></div>
+                    </div>
+
+
+                            <img src="//img.rosbalt.ru/photobank/1/5/f/9/7JkynB8X-280.jpg" class="th280" alt="" />
+                            <span class="head">С Новым Годом!</span>
+                        </a>
+                        </div>
+                    </div>
+                    <div class="slide4">
+                        <hr class="c3">
+                        <div class="shot" onmouseout="hide_sub(this)" onmouseover="show_sub(this)">
+                        <a href="/video/2019/12/26/1820443.html">
+                            <div class="hover" data-url="https://www.rosbalt.ru/video/2019/12/26/1820443.html" data-title="Оксана Пикулева. Как поставить елку по феншую">
+                                <div class="image-rollover fader"></div>
+                                <div onclick="share.vk(this.parentNode);" class="image-rollover rollover-vk"></div>
+                                <div onclick="share.tw(this.parentNode)" class="image-rollover rollover-tw"></div>
+                                <div onclick="share.fb(this.parentNode)" class="image-rollover rollover-fb"></div>
+                                <div class="image-rollover rollover-views">709</div>
+                            </div>
+                    <div class="hover-video">
+                        <div class="image-rollover hover-play"></div>
+                    </div>
+
+                            <img src="//img.rosbalt.ru/photobank/2/7/7/7/WwyjVtXQ-280.jpg" class="th280" alt="" />
+                            <span class="head">Оксана Пикулева. Как поставить елку по феншую</span>
+                        </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="sidebar">
+        <hr class="c4">
+        <div class="shot" onmouseout="hide_sub(this)" onmouseover="show_sub(this)">
+            <a href="/video/2019/12/25/1819995.html">
+                <div class="hover" data-url="https://www.rosbalt.ru/video/2019/12/25/1819995.html" data-title="Сергей Гуляев. Почему война в Афганистане развалила СССР">
+                    <div class="image-rollover fader"></div>
+                    <div onclick="share.vk(this.parentNode);" class="image-rollover rollover-vk"></div>
+                    <div onclick="share.tw(this.parentNode)" class="image-rollover rollover-tw"></div>
+                    <div onclick="share.fb(this.parentNode)" class="image-rollover rollover-fb"></div>
+                    <div class="image-rollover rollover-views">3988</div>
+                </div>
+                    <div class="hover-video">
+                        <div class="image-rollover hover-play"></div>
+                    </div>
+
+                <img src="//img.rosbalt.ru/photobank/f/f/d/c/YfnzgrTv-280.jpg" class="th280" alt="" />
+                <span class="head">Сергей Гуляев. Почему война в Афганистане развалила СССР</span>
+            </a>
+        </div>
+    </div>
+</div>
+
+        
+        <div class="block4">
+  <div class="main-content">
+    <div class="row">
+      <div class="newslist">
+        <hr class="c1">
+          <a href="/style/" class="heading name4">Стиль жизни</a>
+                
+          <div class="shot" onmouseout="hide_sub(this)" onmouseover="show_sub(this)">
+            <a href="/moscow/2020/02/06/1826592.html">
+              <div class="hover" data-url="https://www.rosbalt.ru/moscow/2020/02/06/1826592.html" data-title="Врачи назвали оптимальное для здоровья количество секса">
+                <div class="image-rollover fader"></div>
+                <div onclick="share.vk(this.parentNode);" class="image-rollover rollover-vk"></div>
+                <div onclick="share.tw(this.parentNode)" class="image-rollover rollover-tw"></div>
+                <div onclick="share.fb(this.parentNode)" class="image-rollover rollover-fb"></div>
+                <div class="image-rollover rollover-views"></div>
+              </div>
+
+              <img class="th280" src="//img.rosbalt.ru/photobank/a/b/a/a/jVLtG4mb-280.jpg" alt="" />
+              <span class="head">Врачи назвали оптимальное для здоровья количество секса</span>
+            </a>
+
+          </div>
+
+      </div>
+
+      <div class="articleslist">
+        <div class="row">
+          <div class="slide4">
+            <hr class="c2">
+            <div class="shot">
+              <ul class="col3">
+                                <li onmouseout="hide_sub(this)" onmouseover="show_sub(this)">
+                  <a href="/russia/2020/02/06/1826573.html">
+                    <div class="hover">
+                      <div class="image-rollover fader-small"></div>
+                      <div class="image-rollover rollover-views-small">264</div>
+                    </div>
+                    <img src="//img.rosbalt.ru/photobank/a/b/a/a/jVLtG4mb-112.jpg" alt="" />
+                    <span>В презервативах нашли цинк и спирт</span>
+                  </a>
+                </li>
+                                <li onmouseout="hide_sub(this)" onmouseover="show_sub(this)">
+                  <a href="/world/2020/02/06/1826566.html">
+                    <div class="hover">
+                      <div class="image-rollover fader-small"></div>
+                      <div class="image-rollover rollover-views-small">60</div>
+                    </div>
+                    <img src="//img.rosbalt.ru/photobank/5/2/6/4/zqky7gHW-112.jpg" alt="" />
+                    <span>Трек Илона Маска попал в десятку самых «горячих песен» SoundCloud</span>
+                  </a>
+                </li>
+                                <li onmouseout="hide_sub(this)" onmouseover="show_sub(this)">
+                  <a href="/world/2020/02/06/1826544.html">
+                    <div class="hover">
+                      <div class="image-rollover fader-small"></div>
+                      <div class="image-rollover rollover-views-small">528</div>
+                    </div>
+                    <img src="//img.rosbalt.ru/photobank/e/2/1/f/LHhXkr8n-112.jpg" alt="" />
+                    <span>Эксперты назвали самые опасные приложения для Android</span>
+                  </a>
+                </li>
+                              </ul>
+            </div>
+
+          </div>
+          <div class="slide4">
+            <hr class="c3">
+            <div class="shot">
+
+            <ul class="col3">
+                                <li onmouseout="hide_sub(this)" onmouseover="show_sub(this)">
+                    <a href="/world/2020/02/06/1826533.html">
+                        <div class="hover">
+                            <div class="image-rollover fader-small"></div>
+                            <div class="image-rollover rollover-views-small">161</div>
+                        </div>
+                        <img src="//img.rosbalt.ru/photobank/5/a/d/d/MFYQx6mG-112.jpg" alt="" />
+                        <span>Медики узнали, что можно есть при раке груди</span>
+                    </a>
+                </li>
+                                <li onmouseout="hide_sub(this)" onmouseover="show_sub(this)">
+                    <a href="/world/2020/02/06/1826524.html">
+                        <div class="hover">
+                            <div class="image-rollover fader-small"></div>
+                            <div class="image-rollover rollover-views-small">338</div>
+                        </div>
+                        <img src="//img.rosbalt.ru/photobank/6/3/0/7/Rg2XTKZ3-112.jpg" alt="" />
+                        <span>Рак яичка назвали самым распространенным видом онкологии у мужчин</span>
+                    </a>
+                </li>
+                                <li onmouseout="hide_sub(this)" onmouseover="show_sub(this)">
+                    <a href="/world/2020/02/06/1826514.html">
+                        <div class="hover">
+                            <div class="image-rollover fader-small"></div>
+                            <div class="image-rollover rollover-views-small">242</div>
+                        </div>
+                        <img src="//img.rosbalt.ru/photobank/7/0/d/7/ZyvVTcgN-112.jpg" alt="" />
+                        <span>Ученые раскрыли новые механизмы и генетические мутации, вызывающие рак</span>
+                    </a>
+                </li>
+                            </ul>
+        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sidebar">
+        <hr class="c4">
+        <div class="shot">
+
+            <ul class="col3">
+                                <li onmouseout="hide_sub(this)" onmouseover="show_sub(this)">
+                    <a href="/world/2020/02/06/1826519.html">
+                        <div class="hover">
+                            <div class="image-rollover fader-small"></div>
+                            <div class="image-rollover rollover-views-small">837</div>
+                        </div>
+                        <img src="//img.rosbalt.ru/photobank/5/4/b/5/m97bkBJH-112.jpg" alt="" />
+                        <span>Украинского боксера Усика обозвали обезьяной — он ответил стихами</span>
+                    </a>
+                </li>
+                                <li onmouseout="hide_sub(this)" onmouseover="show_sub(this)">
+                    <a href="/world/2020/02/06/1826497.html">
+                        <div class="hover">
+                            <div class="image-rollover fader-small"></div>
+                            <div class="image-rollover rollover-views-small">528</div>
+                        </div>
+                        <img src="//img.rosbalt.ru/photobank/e/4/e/6/DXrYJqH6-112.jpg" alt="" />
+                        <span>Ученые: Более 70% женщин недовольны размером и формой своей груди</span>
+                    </a>
+                </li>
+                                <li onmouseout="hide_sub(this)" onmouseover="show_sub(this)">
+                    <a href="/world/2020/02/06/1826479.html">
+                        <div class="hover">
+                            <div class="image-rollover fader-small"></div>
+                            <div class="image-rollover rollover-views-small">2081</div>
+                        </div>
+                        <img src="//img.rosbalt.ru/photobank/c/4/2/5/RZDX8hNf-112.jpg" alt="" />
+                        <span>В США на 104-м году жизни скончался голливудский актер Кирк Дуглас</span>
+                    </a>
+                </li>
+                            </ul>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+        
+        <div class="gfx nojs">
+        <div class="photo">
+        <div class="navi">
+            <div class="title"><a href="/photobank/" class="heading">Фоторепортаж</a></div>
+            <div class="btns">
+                <div class="prev prev-photo"></div>
+                <div class="next next-photo"></div>
+            </div>
+            <div class="head"><a id="title-photo" href="/photobank/gallery/561/">Новогодний Петербург</a></div>
+        </div>
+        <div id="slider-photo" class="owl-carousel owl-theme">
+                        <div class="item" style='background:url("//img.rosbalt.ru/photobank/5/4/7/3/kd7pZJYQ.jpg") 100% 50% no-repeat;background-size:cover;'><img style='width:0px;height:0px;' src='//img.rosbalt.ru/1x1.gif' alt="Новогодний Петербург" data-url="/photobank/gallery/561/" /></div>
+                        <div class="item" style='background:url("//img.rosbalt.ru/photobank/0/f/e/4/fjzJ87GC.jpg") 100% 50% no-repeat;background-size:cover;'><img style='width:0px;height:0px;' src='//img.rosbalt.ru/1x1.gif' alt="Финальный концерт группировки &quot;Ленинград&quot;" data-url="/photobank/gallery/560/" /></div>
+                        <div class="item" style='background:url("//img.rosbalt.ru/photobank/4/0/a/d/JW7NjL9Q.jpg") 100% 50% no-repeat;background-size:cover;'><img style='width:0px;height:0px;' src='//img.rosbalt.ru/1x1.gif' alt="Петербуржцы сделали свой выбор" data-url="/photobank/gallery/559/" /></div>
+                        <div class="item" style='background:url("//img.rosbalt.ru/photobank/7/9/7/8/2zv7TtGC.jpg") 100% 50% no-repeat;background-size:cover;'><img style='width:0px;height:0px;' src='//img.rosbalt.ru/1x1.gif' alt="«Допускай» и «Отпускай!» на Сахарова" data-url="/photobank/gallery/558/" /></div>
+                        <div class="item" style='background:url("//img.rosbalt.ru/photobank/2/0/0/9/XbfDxdCT.jpg") 100% 50% no-repeat;background-size:cover;'><img style='width:0px;height:0px;' src='//img.rosbalt.ru/1x1.gif' alt="Петербуржцы протестуют против произвола на выборах" data-url="/photobank/gallery/556/" /></div>
+                    </div>
+    </div>
+</div>
+        <div class="block4">
+    <div class="main-content">
+        <div class="row">
+            <div class="newslist">
+                <hr class="c1">
+                <a href="/russia/" class="heading name4">В России</a>
+                
+                <div class="shot" onmouseout="hide_sub(this)" onmouseover="show_sub(this)">
+                <a href="/russia/2020/02/06/1826549.html">
+                    <div class="hover" data-url="https://www.rosbalt.ru/russia/2020/02/06/1826549.html" data-title="Мишустин: Мы не добились такого роста зарплат, чтобы кратно увеличить штрафы">
+                        <div class="image-rollover fader"></div>
+                        <div onclick="share.vk(this.parentNode);" class="image-rollover rollover-vk"></div>
+                        <div onclick="share.tw(this.parentNode)" class="image-rollover rollover-tw"></div>
+                        <div onclick="share.fb(this.parentNode)" class="image-rollover rollover-fb"></div>
+                        <div class="image-rollover rollover-views">923</div>
+                    </div>
+
+                    <img class="th280" src="//img.rosbalt.ru/photobank/4/c/5/b/cFZtw2N6-280.jpg" alt="" />
+                    <span class="head">Мишустин: Мы не добились такого роста зарплат, чтобы кратно увеличить штрафы</span>
+
+                </a>
+
+                </div>
+
+            </div>
+                
+            <div class="articleslist"> 
+
+                <div class="row">
+                                        <div class="slide4">
+                    
+                <hr class="c1">
+                <a href="/moscow/" class="heading name4">Москва</a>
+
+                        <div class="shot" onmouseout="hide_sub(this)" onmouseover="show_sub(this)">
+                        <a href="/moscow/2020/02/06/1826565.html">
+                            <div class="hover" data-url="https://www.rosbalt.ru/moscow/2020/02/06/1826565.html" data-title="Следователя по особо важным делам  поймали на взятке в 4,3 млн рублей">
+                                <div class="image-rollover fader"></div>
+                                <div onclick="share.vk(this.parentNode);" class="image-rollover rollover-vk"></div>
+                                <div onclick="share.tw(this.parentNode)" class="image-rollover rollover-tw"></div>
+                                <div onclick="share.fb(this.parentNode)" class="image-rollover rollover-fb"></div>
+                                <div class="image-rollover rollover-views">327</div>
+                            </div>
+
+                            <img class="th280" src="//img.rosbalt.ru/photobank/e/7/c/6/hGzpVwWC-280.jpg" alt="" />
+                            <span class="head">Следователя по особо важным делам  поймали на взятке в 4,3 млн рублей</span>
+
+                        </a>
+                        </div>
+                    </div>
+                                                            <div class="slide4">
+                <hr class="c1">
+                <a href="/piter/" class="heading name4">Петербург</a>
+                        <div class="shot" onmouseout="hide_sub(this)" onmouseover="show_sub(this)">
+                        <a href="/piter/2020/02/06/1826572.html">
+                            <div class="hover" data-url="https://www.rosbalt.ru/piter/2020/02/06/1826572.html" data-title="Китайцы нашли способ, как попасть в Россию, минуя закрытые границы">
+                                <div class="image-rollover fader"></div>
+                                <div onclick="share.vk(this.parentNode);" class="image-rollover rollover-vk"></div>
+                                <div onclick="share.tw(this.parentNode)" class="image-rollover rollover-tw"></div>
+                                <div onclick="share.fb(this.parentNode)" class="image-rollover rollover-fb"></div>
+                                <div class="image-rollover rollover-views">2183</div>
+                            </div>
+
+                            <img class="th280" src="//img.rosbalt.ru/photobank/1/6/9/3/ZBPL3qjw-280.jpg" alt="" />
+                            <span class="head">Китайцы нашли способ, как попасть в Россию, минуя закрытые границы</span>
+
+                        </a>
+                        </div>
+                    </div>
+                                    </div>
+
+            </div>
+        </div>
+
+    </div>
+    <div class="sidebar">
+                <hr class="c1-flat">
+                <a href="/world/" class="heading name4">В мире</a>
+        <div class="shot" onmouseout="hide_sub(this)" onmouseover="show_sub(this)">
+            <a href="/world/2020/02/06/1826461.html">
+                <div class="hover" data-url="https://www.rosbalt.ru/world/2020/02/06/1826461.html" data-title="В Китае от коронавируса скончались 563 человека">
+                    <div class="image-rollover fader"></div>
+                    <div onclick="share.vk(this.parentNode);" class="image-rollover rollover-vk"></div>
+                    <div onclick="share.tw(this.parentNode)" class="image-rollover rollover-tw"></div>
+                    <div onclick="share.fb(this.parentNode)" class="image-rollover rollover-fb"></div>
+                    <div class="image-rollover rollover-views">1707</div>
+                </div>
+
+                <img class="th280" src="//img.rosbalt.ru/photobank/0/f/4/f/fxTrKtz7-280.jpg" alt="" />
+                <span class="head">В Китае от коронавируса скончались 563 человека</span>
+
+            </a>
+        </div>
+    </div>
+    </div>
+
+        
+                
+
+</main>
+
+    <footer>
+        <div class="footer-wrapper">
+
+    <div class="footer-menu">
+        <ul class="footer-menu__main">
+            <li><a href="/">Главная</a></li>
+            <li><a href="https://m.rosbalt.ru/">Мобильная версия</a></li>
+            <li><a href="/feed/">RSS</a></li>
+            <li><a href="/search/">Поиск</a></li>
+            <li><a href="/page/proj/">Проекты</a></li>
+            <li><a href="/poll/">Опросы</a></li>
+            <li><a href="/page/ads/">Реклама</a></li>
+            <li><a href="/page/vacancy/">Вакансии</a></li>
+            <li><a href="/about/">Контакты</a></li>
+            <li><a href="/aboutus/">О нас</a></li>
+        </ul>
+        <ul class="footer-menu__btn">
+            <li class="mobile"><a href="https://m.rosbalt.ru/"></a></li>
+            <li class="search"><a href="/search/"></a></li>
+            <li><span class="esrb">18+</span></li>
+        </ul>
+    </div>
+    <div class="copyrights">
+        <div>
+            © 2000-2020 Росбалт.RU<br/>
+            Все права на материалы,<br/>
+            размещенные на сайте ИА «Росбалт»,<br/>
+            защищены и охраняются законом<br/>
+            Российской Федерации.
+        </div>
+        <div>
+            При полном или частичном<br/>
+            использовании аналитики, интервью<br/>
+            или новостей ИА «Росбалт» активная<br/>
+            гиперссылка на главную страницу<br/>
+            www.rosbalt.ru обязательна.
+        </div>
+        <div>
+            Мнение редакции не всегда<br/>
+            совпадает с мнением авторов.<br/>
+            Заметили ошибку в тексте?<br/>
+            Выделите её и нажмите Ctrl-Enter,<br/>
+            чтобы отослать информацию редактору.
+        </div>
+        <div>
+            © 2020 ИА «Росбалт»<br/>
+            © 2020 Программирование и дизайн: ИА «Росбалт»<br/>
+            Использование иллюстраций<br/>
+            возможно только с письменного согласия редакции.
+        </div>
+    </div>
+
+    <div class="counters">
+        <div class="social">
+            <ul class="footer-logo__social"> 
+    <li class="fb"><a target="_blank" href="https://www.facebook.com/rosbaltru"></a></li>
+    <li class="tw"><a target="_blank" href="https://twitter.com/rosbaltru"></a></li>
+    <li class="vk"><a target="_blank" href="https://vk.com/public34710108"></a></li>
+    <li class="te"><a target="_blank" href="https://t.me/RosbaltPoint"></a></li>
+    <li class="in"><a target="_blank" href="https://www.instagram.com/rosbaltru/"></a></li>
+    <li class="yt"><a target="_blank" href="https://www.youtube.com/user/RosbaltMoscow"></a></li>
+    <li class="ok"><a target="_blank" href="https://ok.ru/group/51976746041546"></a></li>
+</ul>
+        </div>
+        <div class="count">
+            <a href="https://www.liveinternet.ru/click" rel="nofollow" target="_blank"><img src="//counter.yadro.ru/logo?45.01" title="LiveInternet" alt=""/></a>
+        </div>
+    </div>
+
+    <div class="registration">
+        Свидетельство о регистрации СМИ Эл N77-20023 выдано Федеральной службой по надзору за соблюдением законодательства в сфере массовых коммуникаций и охране культурного наследия 15.10.2004<br/>
+        Свидетельство о регистрации СМИ ИА N77-7286 выдано Министерством Российской Федерации по делам печати, телерадиовещания и средств массовой информации 28.01.2001<br/>
+        Учредитель: ЗАО «Информационное агентство «Росбалт»<br/>
+        Главный редактор: Ульянов Николай Владимирович<br/>
+        Адрес электронной почты редакции: main@rosbalt.ru<br/>
+        Телефон редакции: 7 (495) 690-07-16<br/>
+        Настоящий ресурс содержит материалы 18+
+    </div>
+
+</div>
+</footer>
+    <div class="popup-search" id="popupSearch">
+	<div class="popup-search__close" id="popupSearchClose"></div>
+    <div class="popup-search__form">
+
+
+        <form method="POST" action="/search/">
+            <input type="text" value="" name="q" class="search" id="search_field">
+            <input type="submit" class="submit" name="submit" value="">
+        </form>
+
+    <div class="popup-search-results">
+    </div>
+
+    </div>
+
+</div>
+
+
+    <div class="popup-hamburger" id="popupHamburger">
+    <div class="ham-menu">
+
+        <div class="ham-logo__container">
+        <a class="ham-logo" href="/"></a>
+        </div>
+
+        <div class="row">
+        <ul class="ham-menu__main ham-menu__main1">
+            <li><a href="/allnews/">Новости</a></li>
+            <li><a href="/articles/">Статьи</a></li>
+            <li><a href="/opinions/">Мнения</a></li>
+                        <li><a href="/blogs/">Блоги</a></li>
+            <li><a href="/business/">Бизнес</a></li>
+            <li><a href="/style/">Стиль</a></li>
+            <li><a href="/press/">Релизы</a></li>
+            <li><a href="/press-center/">Пресс-центр</a></li>
+            <li><a href="/federal/">В России</a></li>
+            <li><a href="/moscow/">Москва</a></li>
+            <li><a href="/piter/">Петербург</a></li>
+                        <li><a href="/exussr/">В мире</a></li>
+        </ul>
+            
+        </div>
+
+        <div class="row">
+            <div class="ham-menu__divider"></div>
+
+        <ul class="ham-menu__main">
+            <li><a href="">Политика</a></li>
+            <li><a href="">Экономика</a></li>
+            <li><a href="">Общество</a></li>
+            <li><a href="">Происшествия</a></li>
+            <li><a href="">Спорт</a></li>
+            <li><a href="/poll/">Опросы</a></li>
+        </ul>
+        </div>
+
+        <div class="social ham-social">
+        <div class="social-likes" data-url="https://www.rosbalt.ru" data-title="Росбалт" >
+    <div class="facebook" title="Поделиться ссылкой на Фейсбуке"></div>
+    <div class="twitter" title="Поделиться ссылкой в Твиттере"></div>
+    <div class="vkontakte" title="Поделиться ссылкой во Вконтакте"></div>
+    <div class="odnoklassniki" title="Поделиться ссылкой в Одноклассниках"></div>
+</div>
+
+        </div>
+
+        <div class="row">
+
+        <ul class="ham-menu__main ham-menu__black">
+            <li><a href="https://m.rosbalt.ru/">Мобильная версия</a></li>
+            <li><a href="/page/proj/">Проекты</a></li>
+            <li><a href="/page/ads/">Реклама</a></li>
+            <li><a href="/page/vacancy/">Вакансии</a></li>
+            <li><a href="/about/">Контакты</a></li>
+            <li><a href="/aboutus/">О нас</a></li>
+        </ul>
+
+        </div>
+
+    </div>
+</div>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-18830308-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<!-- Begin comScore Tag -->
+<script>
+  var _comscore = _comscore || [];
+  _comscore.push({ c1: "2", c2: "20521237" });
+  (function() {
+    var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;
+    s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
+    el.parentNode.insertBefore(s, el);
+  })();
+</script>
+<noscript>
+  <img src="//b.scorecardresearch.com/p?c1=2&c2=20521237&cv=2.0&cj=1" alt="" />
+</noscript>
+<!-- End comScore Tag -->
+
+<img src="https://static.rosbalt.ru/1826436.gif" alt="" width="0" height="0" style="width:0px !important;height:0px !important; border:0px;position:absolute;" />
+
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"9093b2023a","applicationID":"2705927","transactionName":"YlIAMUBYVxJUUUJdDlsYIwZGUFYPGnZEWw9QYAcHcExXBVlXDGcIQVJYFlpWTjVaQmJcBFhSEQ==","queueTime":0,"applicationTime":92,"atts":"ThUDRwhCRBw=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>

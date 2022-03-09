@@ -1,0 +1,2570 @@
+        <!DOCTYPE html>
+<html lang="de-DE">
+    <head>
+
+    <link rel="preload" as="script" href="https://cmp2.pcwelt.de/wrapperMessagingWithoutDetection.js">
+
+            <script>
+            var d = new Date();
+            d.setTime(d.getTime() + 60 * 60 * 24 * 2 * 1000);
+            document.cookie = "__adblocker=true; expires=" + d.toUTCString() + "; path=/";
+        </script>
+                    <!--start Sourcepoint tcfv2 code-->
+        <script>
+            console.log('###### Serving CMP v2');
+        </script>
+        <script type="text/javascript">
+            !function () { var e = function () { var e, t = "__tcfapiLocator", a = [], n = window; for (; n;) { try { if (n.frames[t]) { e = n; break } } catch (e) { } if (n === window.top) break; n = n.parent } e || (!function e() { var a = n.document, r = !!n.frames[t]; if (!r) if (a.body) { var i = a.createElement("iframe"); i.style.cssText = "display:none", i.name = t, a.body.appendChild(i) } else setTimeout(e, 5); return !r }(), n.__tcfapi = function () { for (var e, t = arguments.length, n = new Array(t), r = 0; r < t; r++)n[r] = arguments[r]; if (!n.length) return a; if ("setGdprApplies" === n[0]) n.length > 3 && 2 === parseInt(n[1], 10) && "boolean" == typeof n[3] && (e = n[3], "function" == typeof n[2] && n[2]("set", !0)); else if ("ping" === n[0]) { var i = { gdprApplies: e, cmpLoaded: !1, cmpStatus: "stub" }; "function" == typeof n[2] && n[2](i) } else a.push(n) }, n.addEventListener("message", (function (e) { var t = "string" == typeof e.data, a = {}; try { a = t ? JSON.parse(e.data) : e.data } catch (e) { } var n = a.__tcfapiCall; n && window.__tcfapi(n.command, n.version, (function (a, r) { var i = { __tcfapiReturn: { returnValue: a, success: r, callId: n.callId } }; t && (i = JSON.stringify(i)), e.source.postMessage(i, "*") }), n.parameter) }), !1)) }; "undefined" != typeof module ? module.exports = e : e() }();
+        </script>
+        <script>
+            window._sp_ = {
+                config: {
+                    accountId: 146,
+                    baseEndpoint: 'https://cmp2.pcwelt.de',
+                    consentLanguage: 'de',
+                    events: {
+                        onMessageReady: function () {
+                            console.log('###### _sp_.onMessageReady() callback.');
+                        },
+                        onMessageChoiceSelect: function (choice_id, choice_type_id) {
+                            console.log('###### _sp_.onMessageChoiceSelect() callback (choice_id, choice_type_id).', choice_id, choice_type_id);
+                        },
+                        onPrivacyManagerAction: function (pmData) {
+                            console.log('###### _sp_.onPrivacyManagerAction() callback(pmData).', pmData);
+                        },
+                        onMessageChoiceError: function (err) {
+                            console.log('###### _sp_.onMessageChoiceError() callback(err).', err);
+                        },
+                        onConsentReady: function (consentUUID, euconsent) {
+                            console.log('###### _sp_.onConsentReady() callback(consentUUID,euconsent).', consentUUID, euconsent);
+
+                            console.log('###### _sp_.onConsentReady __tcfapi.addEventListener');
+                            __tcfapi('addEventListener', 2, function(tcData, success) {
+                                
+                                console.log('###### _sp_.onConsentReady __tcfapi addEventListener() - tcData: ', tcData)
+                                console.log('###### _sp_.onConsentReady __tcfapi addEventListener() -tcData.dgprApplies:', tcData.gdprApplies, 'eventStatus', tcData.eventStatus, 'success', success);
+
+                                if ( success && (tcData.eventStatus === 'tcloaded' || tcData.eventStatus === 'useractioncomplete') ) {
+                                    
+                                    console.log('###### _sp_.onConsentReady __tcfapi addEventListener() tcData.eventStatus', tcData.eventStatus)
+                                    /*
+                                     * check consent for given vendor ID i.e. '5e74df5ff443bb795772df9c' for Google Ad Manager
+                                     */
+                                    var checkConsent = function(identity) {
+                                        console.log('###### _sp_.onConsentReady __tcfapi addEventListener() checkConsent with identity', identity);
+                                        
+                                        /*
+                                         * Always assume consent is not given by default
+                                         */
+                                        var consentGiven = false;
+
+                                        if (identity in vendorGrants) {
+
+                                            /* 
+                                             * Check grant for consent and associated purposes
+                                             */
+                                            var vendor = vendorGrants[identity];
+                                            
+                                            console.log('###### _sp_.onConsentReady __tcfapi addEventListener() checkConsent vendorGrants[identity] is', vendor);
+
+                                            consentGiven = vendor.vendorGrant;
+
+                                            console.log('###### _sp_.onConsentReady __tcfapi addEventListener() checkConsent vendor.vendorGrant', consentGiven);
+                                            
+                                            /*
+                                             * Check purposes
+                                             */
+                                            if (consentGiven) {
+                                                for (var purposeID in vendor.purposeGrants) {
+                                                    
+                                                    consentGiven = vendor.purposeGrants[purposeID];
+                                                    
+                                                    console.log('###### _sp_.onConsentReady __tcfapi addEventListener() checkConsent vendor.purposeGrands[purposeID] with purposeID,consentGiven', purposeID, consentGiven);
+                                                    /*
+                                                     * We can stop here if one consent was denied already
+                                                     */
+                                                    if (!consentGiven) {
+                                                        break;
+                                                    }
+                                                }
+                                            }
+                                            console.log('###### _sp_.onConsentReady __tcfapi addEventListener() checkConsent vendor has ultimate grant', consentGiven);
+                                            return consentGiven;
+                                        }
+                                    
+                                        /*
+                                         * not in vendorGrants, so check purposes 
+                                         */
+                                        consentGiven = consentedPurposes.some( function(object) { return object[__id] ==  identity} );
+                                        
+                                        console.log('###### _sp_.onConsentReady __tcfapi addEventListener() checkConsent consentedPurposes.some(identity) ', consentGiven);
+
+                                        return consentGiven;
+                                    };
+
+                                    var isEuVisitor = tcData.gdprApplies || false;
+                                    
+                                    console.log('###### _sp_.onConsentReady isEuVisitor', isEuVisitor);
+
+                                    if (isEuVisitor) {
+
+                                        console.log('###### _sp_.onConsentReady __tcfapi.getCustomVendorConsents');
+                                        __tcfapi('getCustomVendorConsents', 2, function(vendorConsents, success) {
+                                            /*
+                                             * this can possibly fail for some reason, so check success before using vendorConsents
+                                             */
+                                            console.log('###### __tcfapi getCustomVendorConsents inside eventListener success', success);
+                                            if(success) {
+                                                consentedPurposes = vendorConsents.consentedPurposes || [];
+                                                consentedCustomVendors = vendorConsents.consentedVendors || [];
+                                                vendorGrants = vendorConsents.grants;
+                                                
+                                                /*
+                                                    VendorGrands and purposeGrants by Vendor
+                                                    grants["5e7ced56b8e05c4854221bb3"] = {vendorGrant:true, purposeGrants : {
+                                                        '5ea7dfd36ede87504f7df18d': true
+                                                        '5ea7dfd36ede87504f7df378': false
+                                                    }
+                                                */
+
+                                                console.log('###### __tcfapi getCustomVendorConsents inside eventListener -vendorConsents:', vendorConsents);
+                                                console.log('###### __tcfapi getCustomVendorConsents inside eventListener consentedPurposes,consentedCustomVendors', consentedPurposes, consentedCustomVendors);
+
+                                                var googleAdManagerConsent = checkConsent('5e74df5ff443bb795772df9c');
+
+                                                console.log('###### __tcfapi getCustomVendorConsents inside eventListener googleAdManagerConsent', googleAdManagerConsent);
+                                                console.log('###### __tcfapi getCustomVendorConsents inside eventListener setRequestNonPersonalizedAds()', googleAdManagerConsent);
+
+                                                /*
+                                                 * set RequestNonPersonalizedAds based on given consent
+                                                 */
+                                                console.log('###### Checking host after consent given');
+                                                                                            } else {
+                                                console.log('###### __tcfapi getCustomVendorConsents inside eventListener success', success);
+                                                console.log('###### __tcfapi getCustomVendorConsents inside eventListener proceeding with nonPersonalizedAds');;
+                                                /*
+                                                 * if this call for some reason did not succeed, proceed with nonPersonalized ads
+                                                 * since it's not possible to check consent at this moment, somehow.
+                                                 */
+                                                // 
+                                               
+                                            }
+
+                                            console.log('###### __tcfapi getCustomVendorConsents inside eventListener googletag.pubads().refresh();');
+                                            
+                                            /* 
+                                             * Refresh pubads after setting RequestNonPersonalizedAds based on given consent
+                                             * and add eventListener for 'scroll' and lazy loading for ads:
+                                             * #ad_mpu2, #ad_mpu3_flying_carpet, #ad_mpu4, #ad_mpu5
+                                             */
+                                            
+                                            // var pubadsRefreshInterval = setInterval( function checkPubadsAvailability() {
+                                            //     console.log('###### __tcfapi getCustomVendorConsents inside eventListener waiting for window.googletag && googletag.pubadsReady to refresh', window.googletag, googletag.pubadsReady);
+                                            //     if(window.googletag && googletag.pubadsReady) {
+
+                                            //         function elementIsInViewport(element) {
+
+                                            //             console.log('#### elementIsInViewport called with', element);
+
+                                            //             /* remember original style.display value */
+                                            //             var originalValue = element.style.display;
+
+                                            //             /* briefly set style.display to block so getBoundingClientRect() returns the right values */
+                                            //             element.style.display = 'block';
+
+                                            //             /* get element boundings */
+                                            //             var bounding = element.getBoundingClientRect();
+
+                                            //             /* restore original display value */
+                                            //             element.style.display = originalValue;
+
+                                            //             var winHeight = (window.innerHeight || document.documentElement.clientHeight);
+
+                                            //             var isVisible = bounding.top >= 0 && bounding.bottom <= winHeight;
+
+                                            //             return isVisible;
+                                            //         };
+
+                                            //         console.log('#### Adding eventListener to window on scroll');
+
+                                            //         window.addEventListener('scroll', function() {
+
+                                            //             var elements = document.querySelectorAll('#ad_mpu2, #ad_mpu3_flying_carpet, #ad_mpu4, #ad_mpu5');
+
+                                            //             console.log('#### Selected elements are', elements);
+
+                                            //             elements.forEach(function(element) {
+
+                                            //                 console.log('#### checking element', element);
+
+                                            //                 if (elementIsInViewport(element)) {
+
+                                            //                     console.log('#### Element', element, 'is in viewport');
+
+                                            //                     console.log('#### checking element class has-loaded');
+                                                                
+                                            //                     if (!$(element).hasClass('has-loaded')) {
+
+                                            //                         console.log('#### element was not loaded yet');
+
+                                            //                         var id = jQuery(element).attr("id");
+                                                                    
+                                            //                         /* flying-carpet #mpu is always 'in viewport', so check the wrapper instead */
+                                            //                         if( id === 'ad_mpu3_flying_carpet') {
+
+                                            //                             console.log('#### id is mpu3_flying_carpet');
+
+                                            //                             $(element).addClass("has-loaded");
+                                            //                             id = 'ad_mpu3';
+                                            //                             element = document.getElementById(id);
+
+                                            //                         }
+
+                                            //                         var name = id.replace(/^ad_/, "");
+                                            //                         var sizeval = jQuery(element).attr("data-idg-sizes");
+                                            //                         var sizes = [];
+                                            //                         if (typeof sizeval != 'undefined') {
+                                            //                             try {
+                                            //                                 sizes = JSON.parse(sizeval);
+                                            //                             } catch (e) {
+                                            //                                 sizes = 0;
+                                            //                             }
+                                            //                         }
+                                            //                         if (typeof sizes[0] != 'undefined') {
+
+                                            //                             console.log('#### define slot: googletag.cmd.push', sizes, id);
+
+                                            //                             googletag.cmd.push(function() {
+                                            //                                 googletag.defineSlot(idgStorage.adUnit, sizes, id).addService(googletag.pubads()).setTargeting("pos", name);
+                                            //                             });
+
+                                            //                         } else {
+                                            //                             console.log('#### define out of page slot: googletag.cmd.push', id);
+                                            //                             googletag.cmd.push(function() {
+                                            //                                 googletag.defineOutOfPageSlot(idgStorage.adUnit, id).addService(googletag.pubads()).setTargeting("pos", name);
+                                            //                             });
+                                            //                         }
+                                            //                         console.log('#### googletag.cmd.push display(id)', id);
+                                            //                         googletag.cmd.push(function() {
+                                            //                             googletag.display(id);
+                                            //                         });
+                                            //                     }
+                                            //                     $(element).addClass("has-loaded");
+                                            //                 }
+
+                                            //             });
+                                            //         });
+                                            //     };
+                                            //     console.log('#### lazy load should be set up by now');
+                                            //     console.log('#### calling pubads().refresh()..');
+                                            //     
+                                            // }, 125);
+
+                                            console.log('###### _sp_.onConsentReady  __tcfapi getCustomVendorConsents inside eventListener -vendorConsents:', vendorConsents);
+                                            console.log('###### _sp_.onConsentReady  __tcfapi getCustomVendorConsents inside eventListener consentedPurposes,consentedCustomVendors', consentedPurposes, consentedCustomVendors);
+                                            
+                                        });
+                                    };
+                                    __tcfapi('removeEventListener', 2, function(success) {
+                                        if (success) {
+                                            console.log('###### _sp_.onConsentReady __tcfapi addEventListener removeEventListener:', tcData.listenerId);
+                                        }
+                                    }, tcData.listenerId);
+                                };
+                            });
+                        },
+                        onPMCancel: function () {
+                            console.log('###### _sp_.onPMCancel() callback.');
+                        },
+                        onMessageReceiveData: function (data) {
+                            console.log('###### _sp_.onMessageReceiveData() callback(data).', data);
+                        },
+                        onSPPMObjectReady: function () {
+                            console.log('###### _sp_.onSPPMObjectReady() callback() => load modal.');
+                            console.log('###### onSPPMObjectReady', window._sp_.loadPrivacyManagerModal)
+                        }
+                    },
+                }
+            };
+        </script>
+        <script type="text/javascript">
+            window._sp_analytics = {
+                config: {
+                    accountId: 146,
+                    events: {
+                        onDetectionComplete: function () {
+                            console.log('###### _sp_analytics onMessageReady fired.')
+                        }
+                    },  
+                }
+            }
+        </script>
+        <script type="text/javascript" src="/sourcepoint_analytics.js"></script>
+        <script src='https://cmp2.pcwelt.de/wrapperMessagingWithoutDetection.js'></script>
+        <!-- end Sourcepoint tcfv2 code-->
+
+        <!-- __tcfapi callbacks -->
+        <script>
+            console.group('__tcfapi tests');
+                
+                /* tcfapi.ping */
+                console.log('###### Testing __tcfapi.ping:');
+                __tcfapi('ping', 2, function(pingReturn) {
+                    console.log('###### __tcfapi.ping returned:', pingReturn);  
+                });
+
+                /* tcfapi.getTCData */
+                console.log('###### Testing __tcfapi.getTCData:');
+                __tcfapi('getTCData', 2, function(tcData, success) { 
+                    console.log('###### __tcfapi.getTCData returned:', tcData, success);
+                }); 
+                
+                /* tcfapi.getCustomVendorConsents */
+                console.log('###### Testing __tcfapi.getCustomVendorConsents:');
+                __tcfapi('getCustomVendorConsents', 2, function(vendorConsents, success) { 
+                    console.log('###### __tcfapi.getCustomVendorConsents returned:', vendorConsents, success); 
+                });
+
+            console.groupEnd();
+        </script>
+            
+    
+    <link href="https://fonts.googleapis.com" rel="preconnect" crossorigin>
+    <link href="https://www.google-analytics.com" rel="preconnect" crossorigin>
+
+    <script>console.log("checking for __tcfapi.. ", typeof tcfapi);</script><script>console.log("###### loading //js-sec.indexww.");</script><script async src="//js-sec.indexww.com/ht/p/183980-135689442153887.js"></script>
+    
+    <link href="https://api.permutive.com" rel="preconnect" crossorigin>
+    <link href="https://de.ioam.de" rel="preconnect" crossorigin>
+    <link href="https://script.ioam.de" rel="preconnect" crossorigin>
+    <link href="https://tt.onthe.io" rel="preconnect" crossorigin>
+    <link href="https://www.googletagmanager.com" rel="preconnect" crossorigin>
+    <link href="https://bilder.pcwelt.de" rel="preconnect" crossorigin>
+                    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="google-site-verification" content="VDHXFVeE4DdfZ5tLqRuLqd31Q2zmCIWJSKaMg2XZ600">
+    <meta name="copyright" content="IDG Tech Media GmbH">
+    <meta name="publisher" content="IDG Tech Media GmbH">
+    <meta name="date" content="2020-04-21 09:55" />
+    <meta name="pubdate" content="2020-03-30T14:16:09+02:00">
+    <meta name="keywords" content="Corona-Virus,&#x20;2019-nCoV,&#x20;Tracking">
+    <meta name="description" content="Das Oktoberfest in München wird in diesem Jahr nicht stattfinden. Die aktuelle Coronavirus-Entwicklung im Überblick.">
+        <link rel="amphtml" href="https://amp.pcwelt.de/article/10744095" />
+    
+            <meta name="robots" content="index, follow, noodp" />
+            
+            <meta name="author" content="Panagiotis&#x20;Kolokythas">
+        <meta property="article:publisher" content="https://www.facebook.com/pcwelt" />
+    <meta property="publisher" content="IDG Tech Media GmbH">
+    <meta property="og:title" content="Coronavirus Live-Tracker: München sagt Oktoberfest 2020 ab" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://www.pcwelt.de/news/Coronavirus-Live-Tracker-Muenchen-sagt-Oktoberfest-2020-ab-10744095.html" />
+    <meta name="og:image" property="og:image" content="https://bilder.pcwelt.de/4253435_1000x500_r.jpg" />
+    <meta property="og:image:type" content="image/jpg">
+    <meta property="og:image:width" content="1000">
+    <meta property="og:image:height" content="500">
+    <meta property="ob:image" content="https://bilder.pcwelt.de/4253435_640x320_r.jpg" />
+    <link rel="image_src" href="https://bilder.pcwelt.de/4253435_1000x500_r.jpg">
+    <meta property="og:description" content="Das Oktoberfest in München wird in diesem Jahr nicht stattfinden. Die aktuelle Coronavirus-Entwicklung im Überblick." />
+    <meta name="twitter:title" content="Coronavirus&#x20;Live-Tracker&#x3A;&#x20;M&#x00FC;nchen&#x20;sagt&#x20;Oktoberfest&#x20;2020&#x20;ab" />
+    <meta name="twitter:description" content="Das&#x20;Oktoberfest&#x20;in&#x20;M&#x00FC;nchen&#x20;wird&#x20;in&#x20;diesem&#x20;Jahr&#x20;nicht&#x20;stattfinden.&#x20;Die&#x20;aktuelle&#x20;Coronavirus-Entwicklung&#x20;im&#x20;&#x00DC;berblick." />
+    <meta property="twitter:image" content="https://bilder.pcwelt.de/4253435_620x310_r.jpg" />
+    <meta name="DC.date.issued" content="2020-04-21T09:55:00+02:00" />
+            <meta property="vr:category" content="Computer&#x20;&amp;&#x20;Technik" />
+    
+    <title>
+                        Coronavirus Live-Tracker: München sagt Oktoberfest 2020 ab - PC-WELT
+                </title>
+            <link rel="canonical" href="https://www.pcwelt.de/news/Coronavirus-Live-Tracker-Muenchen-sagt-Oktoberfest-2020-ab-10744095.html" />
+        <link title="PC-WELT.de - Globale Suche" type="application/opensearchdescription+xml" rel="search" href="https://www.pcwelt.de/suche/osd.xml" >
+        <link  rel="alternate" media="only screen and (max-width: 640px)" href="https://mobil.pcwelt.de/news/Coronavirus-Live-Tracker-Muenchen-sagt-Oktoberfest-2020-ab-10744095.html" />
+    <meta property="og:site_name" content="PC-WELT">
+        <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@pcwelt" />
+    
+    <script>var globB2Cdata = {};
+globB2Cdata.timestamp = Date.now();
+dataLayer = [{
+'displayType': 'IdgArticle', //dim1 
+'contentId': '2483601', //dim2 
+'title': 'Coronakrise: München sagt Oktoberfest 2020 ab', //dim3 
+'canonicalDomain': 'www.pcwelt.de', //dim4 
+'contentDatum': '2020-04-21T09:55:00+02:00', //dim5 
+'score2': 'Security,Web', //dim6 
+'autoren': 'Panagiotis Kolokythas', //dim7 
+'contentLength': '5000', //dim8 
+'contentType': 'Online-News', //dim9 
+'rubrik': 'Computer & Technik(2)', //dim10 
+'subRubrik': 'Internet & Tarife(28)', //dim11 
+'subSubRubrik': 'Online(30)', //dim12 
+'rubrikenPfad': 'Computer & Technik(2),Internet & Tarife(28),Online(30)', //dim13 
+'seitenzahl': '1', //dim15 
+'datePublished': '', //dim16 
+'userStatus': document.cookie.match(/user_is_insider=true/) ? 'Insider' : 'Anonym', //dim17 
+'abm': document.cookie.match(/idg_company=(.+?);/) ? document.cookie.match(/idg_company=(.+?);/)[1] : '', //dim18 
+'gTaxonomie': 'Corona(100000),Technologies(1),Universal(25),Applications(3),Best Practices(572),Management(560),Malware(67),Viruses(70),Governance(571),Software(2)', //dim19 
+'isSponsored': '0', //dim20 
+'tapId': document.cookie.match(/tap_id=(.+?);/) ? document.cookie.match(/tap_id=(.+?);/)[1] : '', //dim21 
+'gaTrackingId': document.cookie.match(/_ga=(.+?);/) ? document.cookie.match(/_ga=(.+?);/)[1].split('.').slice(-2).join('.') : '', //dim29 
+'property': 'PCW DE', //dim30 
+'gtaxIdList': '100000,1,25,3,572,560,67,70,571,2', //dim31 
+'gtaxList': 'Corona,Technologies,Universal,Applications,Best Practices,Management,Malware,Viruses,Governance,Software', //dim32 
+'timestamp': globB2Cdata.timestamp, //dim53 
+'platform': 'web',
+'propertyCountry': 'IDG DE',
+'primaryCategory': 'Computer & Technik',
+'secondaryCategory': 'Internet & Tarife',
+'sponsorName': '',
+'blogName': '',
+'insiderSignedIn': document.cookie.match(/user_is_insider=true/) ? true : false
+}];
+</script>
+    <!-- DFP -->
+            <script>
+            var idgStorage = new Object();
+            String.prototype.rot13 = function(){
+                var decoded = this.replace(/[a-zA-Z]/g, function(c){
+                    return String.fromCharCode((c <= "Z" ? 90 : 122) >= (c = c.charCodeAt(0) + 13) ? c : c - 26);
+                });
+                return decoded.replace(/\\/g, "/");
+            };
+            idgStorage.setRot13 = function(key, value) {
+                var cleanKey = key.rot13();
+                var cleanValue = value.rot13();
+                this[cleanKey] = cleanValue;
+            }
+            idgStorage.setRot13("nqHavg1", "\\8456\\VQT.QR_O2P_CPJryg.qr");
+            idgStorage.setRot13("nqHavg2", "\\pbzchgrehaqgrpuavx");
+            idgStorage.setRot13("nqHavg3", "\\vagreargqfy\\bayvar");
+            inDapIF = true;
+            idgStorage.rs_tax = "Corona-Virus, 2019-nCoV, Tracking";
+                        idgStorage.adScore1 = ["Security","Web"];
+                        idgStorage.adScore2 = ["Virenschutz","Security allgemein","Web allgemein"];
+                        idgStorage.adTax = ["Virus","Corona Virus","Corona","Verbreitung","Infektion","Erkrankung","Website","Deutschland","Fall","Infizierung","Menschen","Informationen","nCoV","Ende","China","Opfer","Dashboard","SARS","Wuhan"];idgStorage.goldenTaxonomy = ["Corona","Technologies","Universal","Applications","Best Practices","Management","Malware","Viruses","Governance","Software"];
+idgStorage.goldenTaxonomyIds = ["100000","1","25","3","572","560","67","70","571","2"];
+idgStorage.clientShortcut = "pcwelt";
+                        idgStorage.adContentType = "IdgArticle";
+                        idgStorage.detailContentId = "2483601";
+                        idgStorage.editorialDate = "2020-04-21T09:55:00.000Z";
+            idgStorage.adBlock = "1";  
+            idgStorage.blockWall = false;   
+            </script>
+			<!-- DFP --><script>window.grumi = {key: "c6874004-9568-46d5-93a9-067147d516fd"};</script><script src="//rumcdn.geoedge.be/c6874004-9568-46d5-93a9-067147d516fd/grumi-ip.js" async></script><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-PVFV5DH');</script>
+                    <!-- <link rel="stylesheet" type="text/css" media="screen" href="/css/bootstrap.css?v=77010947b" /> -->
+        <!--[if IE]>
+<link rel="stylesheet" type="text/css" media="screen" href="/css/ie.css?v=77010947b" />
+<![endif]-->
+<link rel="stylesheet" type="text/css" media="screen" href="/css/pcwelt_combined.css?v=77010947b" />                <link rel="stylesheet" type="text/css" media="print" href="/css/print.css?v=77010947b" />
+    
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/article_pcwelt.css?v=77010947b" />
+            <link rel="stylesheet" type="text/css" media="screen" href="/css/plus_pcwelt.css?v=77010947b" />
+    
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/article_pcwelt.css?v=77010947b" />
+    <script>
+    var ivwConfig = {"st":"pcwelt","sv":null,"co":null};
+</script>
+
+    <script src="https://script.ioam.de/iam.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700%7COpen+Sans:400,600,700%7CSource+Code+Pro&amp;display=swap" rel="stylesheet">
+                                        <script src="/js/??pcwelt_combined.js,pcwelt_additional_scripts.js?v=77010947b"></script>
+                    <script src="/js/advert.js"></script>
+                            <script>
+            redirectConfig = {
+                name: "idg_content_content_showcontent",
+                parameters: {
+                    speakingUrl: "Coronavirus-Live-Tracker-Muenchen-sagt-Oktoberfest-2020-ab",
+                    id: "10744095",
+                    type: "news",
+                    subdomain: "mobil"
+                }
+            };
+            Navigation.checkMobile(redirectConfig);
+        </script>
+        
+    <script src="/js/article.js?v=77010947b"></script>
+
+
+    <script>Idg.Tracking.Config.add('googleAnalytics', '""');
+Idg.Tracking.Config.add('ivw', '{"ivw_path":"Computer_Technik_Online_N","versions":["2.0"]}');
+Idg.Tracking.Config.add('vgwort', '""');
+Idg.Tracking.Config.add('onthe', '""');
+Idg.Tracking.Config.add('permutive', '""');
+</script>
+    <script type="application/ld+json">
+            { "@context" : "https://schema.org",
+              "@type" : "Organization",
+              "name" : "IDG Tech Media GmbH",
+              "url" : "https://www.pcwelt.de",
+              "sameAs" : ["https://twitter.com/pcwelt","https://www.facebook.com/pcwelt","https://www.youtube.com/user/PCWELT"]
+            }
+        </script>
+    <script> (function(){ window.ldfdr = window.ldfdr || {}; (function(d, s, ss, fs){ fs = d.getElementsByTagName(s)[0]; function ce(src){ var cs = d.createElement(s); cs.src = src; setTimeout(function(){fs.parentNode.insertBefore(cs,fs)}, 1); } ce(ss); })(document, 'script', 'https://sc.lfeeder.com/lftracker_v1_YEgkB8l0ZmM8ep3Z.js'); })(); </script>
+    <!-- Blue Conic -->
+        <script type="text/javascript">
+            if (typeof __tcfapi == "function") {
+
+                console.log("###### __tcfapi found, loading blueconic");
+
+                var bcscript = document.createElement("script");
+                bcscript.async = true;
+                bcscript.type = "text/javascript";
+                var useSSL = "https:" == document.location.protocol;
+                bcscript.src = (useSSL ? "https:" : "http:") + "//cdn.blueconic.net/idg.js";
+                var node = document.getElementsByTagName("script")[0];
+                node.parentNode.insertBefore(bcscript, node);
+
+            }
+        </script>
+    </head>
+
+    <body class="blue pcwelt" data-abmisactive="true">
+        <div class="ad-enabled"></div>
+        <script async src="https://cdn.onthe.io/io.js/LLZXbh8Gtijj"></script><script>
+                !function(n,e,o,r,i){if(!e){e=e||{},window.permutive=e,e.q=[],e.config=i||{},e.config.projectId=o,e.config.apiKey=r,e.config.environment=e.config.environment||"production";for(var t=["addon","identify","track","trigger","query","segment","segments","ready","on","once","user","consent"],c=0;c<t.length;c++){var f=t[c];e[f]=function(n){return function(){var o=Array.prototype.slice.call(arguments,0);e.q.push({functionName:n,arguments:o})}}(f)}}}(document,window.permutive,"f5b3be27-f789-4ef1-8867-37c67da5b361","84c7e805-5ce9-41f4-b988-3529488bab1c",{});
+                permutive.addon('web', {"page":{"type":"article","keywords":["Virus","Corona Virus","Corona","Verbreitung","Infektion","Erkrankung","Website","Deutschland","Fall","Infizierung","Menschen","Informationen","nCoV","Ende","China","Opfer","Dashboard","SARS","Wuhan"],"language":"de","audience":"consumer","tags":[],"article":{"authors":["Panagiotis Kolokythas"],"description":"Das Oktoberfest in M\u00fcnchen wird in diesem Jahr nicht stattfinden. Die aktuelle Coronavirus-Entwicklung im \u00dcberblick.","id":"2483601","isInsiderContent":false,"source":"pcwelt","title":"Coronavirus Live-Tracker: M\u00fcnchen sagt Oktoberfest 2020 ab","type":"news"},"ads":{"adblocker":false,"enabled":true},"tax":{"primaryCategories":["corona"],"secondaryCategories":["technologies","universal","applications","best practices","management","malware","viruses","governance","software"]},"gTax":{"primaryIds":[100000],"secondaryIds":[1,25,3,572,560,67,70,571,2]}}});</script><script async src="https://cdn.permutive.com/f5b3be27-f789-4ef1-8867-37c67da5b361-web.js"></script><script>if($.cookie('idg_company')) {
+            window.permutive.track('User', {
+                emailDomain: $.cookie('idg_company')
+            });
+        }</script>
+        <script>/* googleAnalytics */
+var idgStorage = idgStorage || {};
+idgStorage.gaData = {"1":"IdgArticle","2":"2483601","3":"Coronakrise: M\u00fcnchen sagt Oktoberfest 2020 ab","4":"www.pcwelt.de","5":"2020-04-21T09:55:00+02:00","6":"Security,Web","7":"Panagiotis Kolokythas","8":5000,"9":"Online-News","10":"Computer & Technik(2)","11":"Internet & Tarife(28)","12":"Online(30)","13":"Computer & Technik(2),Internet & Tarife(28),Online(30)","14":"","15":1,"16":"","17":"Anonym","18":"","19":"Corona(100000),Technologies(1),Universal(25),Applications(3),Best Practices(572),Management(560),Malware(67),Viruses(70),Governance(571),Software(2)","30":"PCW DE","20":false,"31":"100000,1,25,3,572,560,67,70,571,2","32":"Corona,Technologies,Universal,Applications,Best Practices,Management,Malware,Viruses,Governance,Software","14":idgStorage.adBlock};
+idgStorage.gaTarget = {"idg":"UA-59557754-10","objekt":"UA-59557754-1","detail":"UA-59557754-26"};
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+if(typeof dataLayer!=='undefined' && typeof dataLayer[0]!=='undefined' && typeof idgStorage.adBlock!=='undefined'){ dataLayer[0].ablocker = idgStorage.adBlock; } //dim14 
+var disableStr = 'ga-disable-UA-59557754-10';
+                if (document.cookie.indexOf(disableStr + '=true') > -1) {
+                    window[disableStr] = true;
+                }
+                function gaOptout() {
+                    document.cookie = disableStr + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
+                    window[disableStr] = true;
+                };
+ga('create', 'UA-59557754-10', 'auto', {'name': 'idg', 'allowLinker': true});
+ga('idg.set', 'anonymizeIp', true);
+ga('idg.set', 'forceSSL', true);
+ga('idg.require', 'linkid');
+ga('idg.require', 'displayfeatures');
+ga('idg.set', 'dimension1', "IdgArticle");
+ga('idg.set', 'dimension2', "2483601");
+ga('idg.set', 'dimension3', "Coronakrise: München sagt Oktoberfest 2020 ab");
+ga('idg.set', 'dimension4', "www.pcwelt.de");
+ga('idg.set', 'dimension5', "2020-04-21T09:55:00+02:00");
+ga('idg.set', 'dimension6', "Security,Web");
+ga('idg.set', 'dimension7', "Panagiotis Kolokythas");
+ga('idg.set', 'dimension8', "5000");
+ga('idg.set', 'dimension9', "Online-News");
+ga('idg.set', 'dimension10', "Computer & Technik(2)");
+ga('idg.set', 'dimension11', "Internet & Tarife(28)");
+ga('idg.set', 'dimension12', "Online(30)");
+ga('idg.set', 'dimension13', "Computer & Technik(2),Internet & Tarife(28),Online(30)");
+ga('idg.set', 'dimension14', idgStorage.adBlock);
+ga('idg.set', 'dimension15', "1");
+ga('idg.set', 'dimension16', "");
+ga('idg.set', 'dimension17', $.cookie("user_is_insider") ? "Insider" : "Anonym");
+ga('idg.set', 'dimension19', "Corona(100000),Technologies(1),Universal(25),Applications(3),Best Practices(572),Management(560),Malware(67),Viruses(70),Governance(571),Software(2)");
+ga('idg.set', 'dimension30', "PCW DE");
+ga('idg.set', 'dimension20', "");
+ga('idg.set', 'dimension31', "100000,1,25,3,572,560,67,70,571,2");
+ga('idg.set', 'dimension32', "Corona,Technologies,Universal,Applications,Best Practices,Management,Malware,Viruses,Governance,Software");
+ga('idg.set', 'dimension53', globB2Cdata.timestamp);
+ga('idg.set', 'dimension18', $.cookie('idg_company') ? $.cookie('idg_company') : '');
+ga('idg.set', 'dimension21', $.cookie('tap_id') ? $.cookie('tap_id') : '');
+ga('idg.set', 'dimension29', document.cookie.match(/_ga=(.+?);/) ? document.cookie.match(/_ga=(.+?);/)[1].split('.').slice(-2).join() : '');
+ga('idg.send', 'pageview');
+var disableStr = 'ga-disable-UA-59557754-53';
+                if (document.cookie.indexOf(disableStr + '=true') > -1) {
+                    window[disableStr] = true;
+                }
+                function gaOptout() {
+                    document.cookie = disableStr + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
+                    window[disableStr] = true;
+                };
+ga('create', 'UA-59557754-53', 'auto', {'name': 'event', 'allowLinker': true});
+ga('event.set', 'anonymizeIp', true);
+ga('event.set', 'forceSSL', true);
+ga('event.require', 'linkid');
+ga('event.require', 'displayfeatures');
+ga('event.set', 'dimension1', "IdgArticle");
+ga('event.set', 'dimension2', "2483601");
+ga('event.set', 'dimension3', "Coronakrise: München sagt Oktoberfest 2020 ab");
+ga('event.set', 'dimension4', "www.pcwelt.de");
+ga('event.set', 'dimension5', "2020-04-21T09:55:00+02:00");
+ga('event.set', 'dimension6', "Security,Web");
+ga('event.set', 'dimension7', "Panagiotis Kolokythas");
+ga('event.set', 'dimension8', "5000");
+ga('event.set', 'dimension9', "Online-News");
+ga('event.set', 'dimension10', "Computer & Technik(2)");
+ga('event.set', 'dimension11', "Internet & Tarife(28)");
+ga('event.set', 'dimension12', "Online(30)");
+ga('event.set', 'dimension13', "Computer & Technik(2),Internet & Tarife(28),Online(30)");
+ga('event.set', 'dimension14', idgStorage.adBlock);
+ga('event.set', 'dimension15', "1");
+ga('event.set', 'dimension16', "");
+ga('event.set', 'dimension17', $.cookie("user_is_insider") ? "Insider" : "Anonym");
+ga('event.set', 'dimension19', "Corona(100000),Technologies(1),Universal(25),Applications(3),Best Practices(572),Management(560),Malware(67),Viruses(70),Governance(571),Software(2)");
+ga('event.set', 'dimension30', "PCW DE");
+ga('event.set', 'dimension20', "");
+ga('event.set', 'dimension31', "100000,1,25,3,572,560,67,70,571,2");
+ga('event.set', 'dimension32', "Corona,Technologies,Universal,Applications,Best Practices,Management,Malware,Viruses,Governance,Software");
+ga('event.set', 'dimension53', globB2Cdata.timestamp);
+ga('event.set', 'dimension18', $.cookie('idg_company') ? $.cookie('idg_company') : '');
+ga('event.set', 'dimension21', $.cookie('tap_id') ? $.cookie('tap_id') : '');
+ga('event.set', 'dimension29', document.cookie.match(/_ga=(.+?);/) ? document.cookie.match(/_ga=(.+?);/)[1].split('.').slice(-2).join() : '');
+var disableStr = 'ga-disable-UA-59557754-1';
+                if (document.cookie.indexOf(disableStr + '=true') > -1) {
+                    window[disableStr] = true;
+                }
+                function gaOptout() {
+                    document.cookie = disableStr + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
+                    window[disableStr] = true;
+                };
+ga('create', 'UA-59557754-1', 'auto', {'name': 'objekt', 'allowLinker': true});
+ga('objekt.set', 'anonymizeIp', true);
+ga('objekt.set', 'forceSSL', true);
+ga('objekt.require', 'linkid');
+ga('objekt.require', 'displayfeatures');
+ga('objekt.set', 'dimension1', "IdgArticle");
+ga('objekt.set', 'dimension2', "2483601");
+ga('objekt.set', 'dimension3', "Coronakrise: München sagt Oktoberfest 2020 ab");
+ga('objekt.set', 'dimension4', "www.pcwelt.de");
+ga('objekt.set', 'dimension5', "2020-04-21T09:55:00+02:00");
+ga('objekt.set', 'dimension6', "Security,Web");
+ga('objekt.set', 'dimension7', "Panagiotis Kolokythas");
+ga('objekt.set', 'dimension8', "5000");
+ga('objekt.set', 'dimension9', "Online-News");
+ga('objekt.set', 'dimension10', "Computer & Technik(2)");
+ga('objekt.set', 'dimension11', "Internet & Tarife(28)");
+ga('objekt.set', 'dimension12', "Online(30)");
+ga('objekt.set', 'dimension13', "Computer & Technik(2),Internet & Tarife(28),Online(30)");
+ga('objekt.set', 'dimension14', idgStorage.adBlock);
+ga('objekt.set', 'dimension15', "1");
+ga('objekt.set', 'dimension16', "");
+ga('objekt.set', 'dimension17', $.cookie("user_is_insider") ? "Insider" : "Anonym");
+ga('objekt.set', 'dimension19', "Corona(100000),Technologies(1),Universal(25),Applications(3),Best Practices(572),Management(560),Malware(67),Viruses(70),Governance(571),Software(2)");
+ga('objekt.set', 'dimension30', "PCW DE");
+ga('objekt.set', 'dimension20', "");
+ga('objekt.set', 'dimension31', "100000,1,25,3,572,560,67,70,571,2");
+ga('objekt.set', 'dimension32', "Corona,Technologies,Universal,Applications,Best Practices,Management,Malware,Viruses,Governance,Software");
+ga('objekt.set', 'dimension53', globB2Cdata.timestamp);
+ga('objekt.set', 'dimension18', $.cookie('idg_company') ? $.cookie('idg_company') : '');
+ga('objekt.set', 'dimension21', $.cookie('tap_id') ? $.cookie('tap_id') : '');
+ga('objekt.set', 'dimension29', document.cookie.match(/_ga=(.+?);/) ? document.cookie.match(/_ga=(.+?);/)[1].split('.').slice(-2).join() : '');
+ga('objekt.send', 'pageview');
+var disableStr = 'ga-disable-UA-59557754-26';
+                if (document.cookie.indexOf(disableStr + '=true') > -1) {
+                    window[disableStr] = true;
+                }
+                function gaOptout() {
+                    document.cookie = disableStr + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
+                    window[disableStr] = true;
+                };
+ga('create', 'UA-59557754-26', 'auto', {'name': 'detail', 'siteSpeedSampleRate': '10'});
+ga('detail.set', 'anonymizeIp', true);
+ga('detail.set', 'forceSSL', true);
+ga('detail.require', 'linkid');
+ga('detail.require', 'displayfeatures');
+ga('detail.set', 'dimension1', "IdgArticle");
+ga('detail.set', 'dimension2', "2483601");
+ga('detail.set', 'dimension3', "Coronakrise: München sagt Oktoberfest 2020 ab");
+ga('detail.set', 'dimension4', "www.pcwelt.de");
+ga('detail.set', 'dimension5', "2020-04-21T09:55:00+02:00");
+ga('detail.set', 'dimension6', "Security,Web");
+ga('detail.set', 'dimension7', "Panagiotis Kolokythas");
+ga('detail.set', 'dimension8', "5000");
+ga('detail.set', 'dimension9', "Online-News");
+ga('detail.set', 'dimension10', "Computer & Technik(2)");
+ga('detail.set', 'dimension11', "Internet & Tarife(28)");
+ga('detail.set', 'dimension12', "Online(30)");
+ga('detail.set', 'dimension13', "Computer & Technik(2),Internet & Tarife(28),Online(30)");
+ga('detail.set', 'dimension14', idgStorage.adBlock);
+ga('detail.set', 'dimension15', "1");
+ga('detail.set', 'dimension16', "");
+ga('detail.set', 'dimension17', $.cookie("user_is_insider") ? "Insider" : "Anonym");
+ga('detail.set', 'dimension19', "Corona(100000),Technologies(1),Universal(25),Applications(3),Best Practices(572),Management(560),Malware(67),Viruses(70),Governance(571),Software(2)");
+ga('detail.set', 'dimension30', "PCW DE");
+ga('detail.set', 'dimension20', "");
+ga('detail.set', 'dimension31', "100000,1,25,3,572,560,67,70,571,2");
+ga('detail.set', 'dimension32', "Corona,Technologies,Universal,Applications,Best Practices,Management,Malware,Viruses,Governance,Software");
+ga('detail.set', 'dimension53', globB2Cdata.timestamp);
+ga('detail.set', 'dimension18', $.cookie('idg_company') ? $.cookie('idg_company') : '');
+ga('detail.set', 'dimension21', $.cookie('tap_id') ? $.cookie('tap_id') : '');
+ga('detail.set', 'dimension29', document.cookie.match(/_ga=(.+?);/) ? document.cookie.match(/_ga=(.+?);/)[1].split('.').slice(-2).join() : '');
+ga('detail.send', 'pageview');
+
+/* ivw */
+var iam_data = {
+                "st":"pcwelt",
+                "cp":"Computer_Technik_Online_N",
+                "sv":"in",
+                "sc":"yes",
+                "co":""}
+                iom.c(iam_data);
+/* vgwort */
+var vgWort = "https://ssl-idgmagazine.met.vgwort.de/na/85011ec957e2480abf73e0dd7a046421";
+document.write("<img class=\"vgwort\" src=\""+vgWort+"?"+(Math.random()*100000)+"\" width=\"1\" height=\"1\" alt=\"vgwort\" />");
+
+/* onthe */
+
+        window._io_config = window._io_config || {};
+        window._io_config["0.2.0"] = window._io_config["0.2.0"] || [];
+        window._io_config["0.2.0"].push({
+            page_url: window.location.href,
+            page_url_canonical: "https://www.pcwelt.de/news/Coronavirus-Live-Tracker-Muenchen-sagt-Oktoberfest-2020-ab-10744095.html",
+            page_title: "Coronavirus Live-Tracker: M\u00fcnchen sagt Oktoberfest 2020 ab",
+            page_type: "article",
+            page_language: "de",
+                article_authors: ["Panagiotis Kolokythas"],
+                article_categories: ["COMPUTER & TECHNIK(2)","INTERNET & TARIFE(28)","ONLINE(30)"],
+                article_type: "Online-News",article_publication_date: "Tue, 21 Apr 2020 09:55:00 +0200"})
+/* permutive */
+
+</script>
+        <noscript><img class="vgwort" src="https://ssl-idgmagazine.met.vgwort.de/na/85011ec957e2480abf73e0dd7a046421?123806954" width="1" height="1" alt="vgwort" /></noscript>
+        <div id="wrapper">
+            <div id="article-wrapper" class="w1">
+                                    <header id="header">
+    <div class="bar">
+        <div id="headersearch-form" class="search-form">
+            <fieldset>
+                <div class="field">
+                    <input zoomdSearch='{"trigger":"OnEnter"}' id="text_field" placeholder="Suchbegriff eingeben..."/>
+                    <div class="alignright">
+                        <button zoomdSearch='{"trigger":"OnClick","forInput":"#text_field"}'>
+                        </button>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+        <strong class="logo">
+            <a href="//www.pcwelt.de/">
+                <img src="//www.pcwelt.de/img/pcwelt/logo.svg" alt="PC-WELT Logo">
+            </a>
+        </strong>
+                    <nav class="nav">
+    <ul>
+                                                                                                            <li data-color="blue" class="blue dividerActive">
+                        <span class="nav_item_description">
+                <span class="divider"></span>
+            </span>
+                                                <a href="https://www.pcwelt.de/computer-technik" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Computer&#x20;&amp;&#x20;Technik&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;computer-technik">
+                Computer &amp; Technik
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </a>
+            <ul>
+                                                                <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/computer-technik/betriebssystem-software" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Betriebssystem&#x20;&amp;&#x20;Software&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;computer-technik&#x2F;betriebssystem-software">
+                Betriebssystem &amp; Software
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <i class="icon-caret-right"></i>
+                            </a>
+            <ul>
+                                                                <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/computer-technik/betriebssystem-software/online-browser" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Online&#x20;&amp;&#x20;Browser&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;computer-technik&#x2F;betriebssystem-software&#x2F;online-browser">
+                Online &amp; Browser
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+                                                                        <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/computer-technik/betriebssystem-software/linux" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Linux&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;computer-technik&#x2F;betriebssystem-software&#x2F;linux">
+                Linux
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+                                                                        <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/computer-technik/betriebssystem-software/windows" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Windows&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;computer-technik&#x2F;betriebssystem-software&#x2F;windows">
+                Windows
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+                                                                        <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/computer-technik/betriebssystem-software/system-tools" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="System-Tools&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;computer-technik&#x2F;betriebssystem-software&#x2F;system-tools">
+                System-Tools
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+                                                                        <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/computer-technik/betriebssystem-software/audio-video-foto" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Audio,&#x20;Video&#x20;&amp;&#x20;Foto&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;computer-technik&#x2F;betriebssystem-software&#x2F;audio-video-foto">
+                Audio, Video &amp; Foto
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+                                                                        <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/computer-technik/betriebssystem-software/windows-7" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Windows&#x20;7&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;computer-technik&#x2F;betriebssystem-software&#x2F;windows-7">
+                Windows 7
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+                                                                        <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/computer-technik/betriebssystem-software/windows-8" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Windows&#x20;8&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;computer-technik&#x2F;betriebssystem-software&#x2F;windows-8">
+                Windows 8
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+                                                                        <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/computer-technik/betriebssystem-software/aus-fur-windows-xp" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Aus&#x20;f&#x00FC;r&#x20;Windows&#x20;XP&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;computer-technik&#x2F;betriebssystem-software&#x2F;aus-fur-windows-xp">
+                Aus für Windows XP
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+                                                                        <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/computer-technik/betriebssystem-software/windows-10" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Windows&#x20;10&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;computer-technik&#x2F;betriebssystem-software&#x2F;windows-10">
+                Windows 10
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+            </ul>
+        </li>
+                                                                        <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/computer-technik/pc-peripherie" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="PC&#x20;&amp;&#x20;Peripherie&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;computer-technik&#x2F;pc-peripherie">
+                PC &amp; Peripherie
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <i class="icon-caret-right"></i>
+                            </a>
+            <ul>
+                                                                <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/computer-technik/pc-peripherie/pc" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="PC&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;computer-technik&#x2F;pc-peripherie&#x2F;pc">
+                PC
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+                                                                        <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/computer-technik/pc-peripherie/notebook" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Notebook&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;computer-technik&#x2F;pc-peripherie&#x2F;notebook">
+                Notebook
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+                                                                        <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/computer-technik/pc-peripherie/festplatte-speicher" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Festplatte&#x20;&amp;&#x20;Speicher&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;computer-technik&#x2F;pc-peripherie&#x2F;festplatte-speicher">
+                Festplatte &amp; Speicher
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+                                                                        <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/computer-technik/pc-peripherie/drucker" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Drucker&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;computer-technik&#x2F;pc-peripherie&#x2F;drucker">
+                Drucker
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+                                                                        <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/computer-technik/pc-peripherie/monitor" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Monitor&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;computer-technik&#x2F;pc-peripherie&#x2F;monitor">
+                Monitor
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+                                                                        <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/computer-technik/pc-peripherie/komponenten" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Komponenten&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;computer-technik&#x2F;pc-peripherie&#x2F;komponenten">
+                Komponenten
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+                                                                        <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/computer-technik/pc-peripherie/peripherie" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Peripherie&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;computer-technik&#x2F;pc-peripherie&#x2F;peripherie">
+                Peripherie
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+                                                                        <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/computer-technik/pc-peripherie/pc-welt-hacks" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="PC-WELT&#x20;Hacks&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;computer-technik&#x2F;pc-peripherie&#x2F;pc-welt-hacks">
+                PC-WELT Hacks
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+                                                                        <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/computer-technik/pc-peripherie/hollenmaschine" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="H&#x00F6;llenmaschine&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;computer-technik&#x2F;pc-peripherie&#x2F;hollenmaschine">
+                Höllenmaschine
+                                                                                                                                                                                                                            </a>
+            <ul>
+                                                                <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/computer-technik/pc-peripherie/hollenmaschine/hollenmaschine-gewinnspiel" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="H&#x00F6;llenmaschine&#x20;Gewinnspiel&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;computer-technik&#x2F;pc-peripherie&#x2F;hollenmaschine&#x2F;hollenmaschine-gewinnspiel">
+                Höllenmaschine Gewinnspiel
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+                                                                        <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/computer-technik/pc-peripherie/hollenmaschine/hollenmaschine-pro-gewinnspiel" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="H&#x00F6;llenmaschine&#x20;PRO&#x20;Gewinnspiel&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;computer-technik&#x2F;pc-peripherie&#x2F;hollenmaschine&#x2F;hollenmaschine-pro-gewinnspiel">
+                Höllenmaschine PRO Gewinnspiel
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+            </ul>
+        </li>
+            </ul>
+        </li>
+                                                                        <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/computer-technik/neue-technologien" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Neue&#x20;Technologien&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;computer-technik&#x2F;neue-technologien">
+                Neue Technologien
+                                                                                                                                                                                                                                    <i class="icon-caret-right"></i>
+                            </a>
+            <ul>
+                                                                <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/computer-technik/neue-technologien/smart-home" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Smart&#x20;Home&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;computer-technik&#x2F;neue-technologien&#x2F;smart-home">
+                Smart Home
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+                                                                        <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/computer-technik/neue-technologien/microsoft-hololens" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Microsoft&#x20;HoloLens&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;computer-technik&#x2F;neue-technologien&#x2F;microsoft-hololens">
+                Microsoft HoloLens
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+            </ul>
+        </li>
+                                                                        <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/computer-technik/sicherheit" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Sicherheit&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;computer-technik&#x2F;sicherheit">
+                Sicherheit
+                                                                                                                                                                                                                                                                                                                    <i class="icon-caret-right"></i>
+                            </a>
+            <ul>
+                                                                <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/computer-technik/sicherheit/antivirus-firewall" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Antivirus&#x20;&amp;&#x20;Firewall&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;computer-technik&#x2F;sicherheit&#x2F;antivirus-firewall">
+                Antivirus &amp; Firewall
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+                                                                        <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/computer-technik/sicherheit/backup-datenschutz" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Backup&#x20;&amp;&#x20;Datenschutz&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;computer-technik&#x2F;sicherheit&#x2F;backup-datenschutz">
+                Backup &amp; Datenschutz
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+                                                                        <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/computer-technik/sicherheit/sicherheitszentrale" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Sicherheitszentrale&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;computer-technik&#x2F;sicherheit&#x2F;sicherheitszentrale">
+                Sicherheitszentrale
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+            </ul>
+        </li>
+                                                                        <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/computer-technik/smartphone-tablet-navi" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Smartphone,&#x20;Tablet&#x20;&amp;&#x20;Navi&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;computer-technik&#x2F;smartphone-tablet-navi">
+                Smartphone, Tablet &amp; Navi
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <i class="icon-caret-right"></i>
+                            </a>
+            <ul>
+                                                                <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/computer-technik/smartphone-tablet-navi/smartphone" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Smartphone&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;computer-technik&#x2F;smartphone-tablet-navi&#x2F;smartphone">
+                Smartphone
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+                                                                        <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/computer-technik/smartphone-tablet-navi/tablet" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Tablet&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;computer-technik&#x2F;smartphone-tablet-navi&#x2F;tablet">
+                Tablet
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+                                                                        <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/computer-technik/smartphone-tablet-navi/navigation" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Navigation&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;computer-technik&#x2F;smartphone-tablet-navi&#x2F;navigation">
+                Navigation
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+                                                                                                                        <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/computer-technik/smartphone-tablet-navi/androidwelt" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Androidwelt&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;computer-technik&#x2F;smartphone-tablet-navi&#x2F;androidwelt">
+                Androidwelt
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+                                                                        <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/computer-technik/smartphone-tablet-navi/pc-welt-netztest" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="PC-WELT&#x20;Netztest&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;computer-technik&#x2F;smartphone-tablet-navi&#x2F;pc-welt-netztest">
+                PC-WELT Netztest
+                                                                                                                                                                                                                                                </a>
+            <ul>
+                                                                </ul>
+        </li>
+            </ul>
+        </li>
+                                                                        <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/computer-technik/netzwerk" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Netzwerk&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;computer-technik&#x2F;netzwerk">
+                Netzwerk
+                                                                                                                                                                                                                                    <i class="icon-caret-right"></i>
+                            </a>
+            <ul>
+                                                                <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/computer-technik/netzwerk/heimnetz-lan" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Heimnetz&#x20;&amp;&#x20;LAN&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;computer-technik&#x2F;netzwerk&#x2F;heimnetz-lan">
+                Heimnetz &amp; LAN
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+                                                                        <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/computer-technik/netzwerk/wlan-wifi-bluetooth" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="WLAN,&#x20;WiFi&#x20;&amp;&#x20;Bluetooth&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;computer-technik&#x2F;netzwerk&#x2F;wlan-wifi-bluetooth">
+                WLAN, WiFi &amp; Bluetooth
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+            </ul>
+        </li>
+                                                                        <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/computer-technik/internet-tarife" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Internet&#x20;&amp;&#x20;Tarife&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;computer-technik&#x2F;internet-tarife">
+                Internet &amp; Tarife
+                                                                                                                                                                                                                                                                                                                    <i class="icon-caret-right"></i>
+                            </a>
+            <ul>
+                                                                <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/computer-technik/internet-tarife/dsl-voip" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="DSL&#x20;&amp;&#x20;VoIP&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;computer-technik&#x2F;internet-tarife&#x2F;dsl-voip">
+                DSL &amp; VoIP
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+                                                                        <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/computer-technik/internet-tarife/online" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Online&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;computer-technik&#x2F;internet-tarife&#x2F;online">
+                Online
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+                                                                        <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/computer-technik/internet-tarife/tarifrechner" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Tarifrechner&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;computer-technik&#x2F;internet-tarife&#x2F;tarifrechner">
+                Tarifrechner
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+            </ul>
+        </li>
+                                                                        <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/computer-technik/auto-e-bike-e-scooter" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Auto,&#x20;E-Bike&#x20;&amp;&#x20;E-Scooter&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;computer-technik&#x2F;auto-e-bike-e-scooter">
+                Auto, E-Bike &amp; E-Scooter
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+                                                                        <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/computer-technik/wissenschaft-forschung" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Wissenschaft&#x20;&amp;&#x20;Forschung&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;computer-technik&#x2F;wissenschaft-forschung">
+                Wissenschaft &amp; Forschung
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+                                                                        <li data-color="" class="">
+                                                <a href="/galerien" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Bildergalerien&#x20;-&#x20;&#x20;&#x2F;galerien">
+                Bildergalerien
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+                                                                                    <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/computer-technik/news" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="News&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;computer-technik&#x2F;news">
+                News
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+                                                                        <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/computer-technik/tests" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Tests&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;computer-technik&#x2F;tests">
+                Tests
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+                                                                        <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/computer-technik/ratgeber-tipps" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Ratgeber&#x20;&amp;&#x20;Tipps&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;computer-technik&#x2F;ratgeber-tipps">
+                Ratgeber &amp; Tipps
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+                                                                        <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/computer-technik/schnappchen-deals" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Schn&#x00E4;ppchen&#x20;&amp;&#x20;Deals&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;computer-technik&#x2F;schnappchen-deals">
+                Schnäppchen &amp; Deals
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+            </ul>
+        </li>
+                                                                                                                    <li data-color="red" class="red">
+                        <span class="nav_item_description">
+                <span class="divider"></span>
+            </span>
+                                                <a href="https://www.pcwelt.de/professional-it" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Profi&#x20;IT&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;professional-it">
+                Profi IT
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </a>
+            <ul>
+                                                                <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/professional-it/hardware" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Hardware&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;professional-it&#x2F;hardware">
+                Hardware
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+                                                                        <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/professional-it/software" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Software&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;professional-it&#x2F;software">
+                Software
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+                                                                        <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/professional-it/netzwerk" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Netzwerk&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;professional-it&#x2F;netzwerk">
+                Netzwerk
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+                                                                        <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/professional-it/sicherheit" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Sicherheit&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;professional-it&#x2F;sicherheit">
+                Sicherheit
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+                                                                        <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/professional-it/it-services" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="IT-Services&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;professional-it&#x2F;it-services">
+                IT-Services
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+                                                                        <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/professional-it/home-office" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Home&#x20;Office&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;professional-it&#x2F;home-office">
+                Home Office
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+                                                                        <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/professional-it/karriere" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Karriere&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;professional-it&#x2F;karriere">
+                Karriere
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+                                                                        <li data-color="" class="">
+                                                <a href="http://jobs.pcwelt.de" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Stellenmarkt&#x20;-&#x20;&#x20;http&#x3A;&#x2F;&#x2F;jobs.pcwelt.de">
+                Stellenmarkt
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+                        </ul>
+        </li>
+                                                                                                                    <li data-color="green" class="green">
+                        <span class="nav_item_description">
+                <span class="divider"></span>
+            </span>
+                                                <a href="https://www.pcwelt.de/digital-lifestyle" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Digital&#x20;Life&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;digital-lifestyle">
+                Digital Life
+                                                                                                                                                                                                                                                                                                                                                </a>
+            <ul>
+                                                                <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/digital-lifestyle/audio-tv-video" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Audio&#x20;&amp;&#x20;TV&#x20;&#x2F;&#x20;Video&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;digital-lifestyle&#x2F;audio-tv-video">
+                Audio &amp; TV / Video
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+                                                                        <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/digital-lifestyle/foto-slr-camcorder" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Foto,&#x20;SLR&#x20;&amp;&#x20;Camcorder&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;digital-lifestyle&#x2F;foto-slr-camcorder">
+                Foto, SLR &amp; Camcorder
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+                                                                        <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/digital-lifestyle/gaming-esport" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Gaming&#x20;&amp;&#x20;eSport&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;digital-lifestyle&#x2F;gaming-esport">
+                Gaming &amp; eSport
+                                                                                                                                                                                                                                    <i class="icon-caret-right"></i>
+                            </a>
+            <ul>
+                                                                <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/digital-lifestyle/gaming-esport/tests-previews-esport" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Gaming&#x3A;&#x20;Tests,&#x20;Previews&#x20;&amp;&#x20;eSport&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;digital-lifestyle&#x2F;gaming-esport&#x2F;tests-previews-esport">
+                Gaming: Tests, Previews &amp; eSport
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+                                                                        <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/digital-lifestyle/gaming-esport/news" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Gaming-Newsticker&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;digital-lifestyle&#x2F;gaming-esport&#x2F;news">
+                Gaming-Newsticker
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+            </ul>
+        </li>
+                        </ul>
+        </li>
+                                                                                                                    <li data-color="orange" class="orange">
+                        <span class="nav_item_description">
+                <span class="divider"></span>
+            </span>
+                                                <a href="https://www.pcwelt.de/downloads" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Downloads&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;downloads">
+                Downloads
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </a>
+            <ul>
+                                                                <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/downloads/neuzugaenge" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Download-Neuzug&#x00E4;nge&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;downloads&#x2F;neuzugaenge">
+                Download-Neuzugänge
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+                                                                        <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/downloads/top100" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Top&#x20;100&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;downloads&#x2F;top100">
+                Top 100
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+                                                                        <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/giveawayoftheday" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Gratis-Vollversion&#x20;des&#x20;Tages&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;giveawayoftheday">
+                Gratis-Vollversion des Tages
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+                                                                        <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/downloads/desktop-wallpaper" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Desktop-Wallpaper&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;downloads&#x2F;desktop-wallpaper">
+                Desktop-Wallpaper
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+                                                                        <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/downloads/audio-video-foto" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Audio,&#x20;Video&#x20;&amp;&#x20;Foto&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;downloads&#x2F;audio-video-foto">
+                Audio, Video &amp; Foto
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+                                                                        <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/downloads/betriebssystem-und-treiber" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Betriebssystem&#x20;und&#x20;Treiber&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;downloads&#x2F;betriebssystem-und-treiber">
+                Betriebssystem und Treiber
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+                                                                        <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/downloads/buro-finanzen-tools" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="B&#x00FC;ro,&#x20;Finanzen&#x20;&amp;&#x20;Tools&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;downloads&#x2F;buro-finanzen-tools">
+                Büro, Finanzen &amp; Tools
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+                                                                        <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/downloads/gaming-fun" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Gaming&#x20;&amp;&#x20;Fun&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;downloads&#x2F;gaming-fun">
+                Gaming &amp; Fun
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+                                                                        <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/downloads/internet-browser-mail" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Internet,&#x20;Browser&#x20;&amp;&#x20;Mail&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;downloads&#x2F;internet-browser-mail">
+                Internet, Browser &amp; Mail
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+                                                                        <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/downloads/navigation-mobility" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Navigation&#x20;&amp;&#x20;Mobility&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;downloads&#x2F;navigation-mobility">
+                Navigation &amp; Mobility
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+                                                                        <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/downloads/pc-welt-tools" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="PC-WELT&#x20;Tools&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;downloads&#x2F;pc-welt-tools">
+                PC-WELT Tools
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+                                                                        <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/downloads/sicherheit" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Sicherheit&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;downloads&#x2F;sicherheit">
+                Sicherheit
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+                                                                        <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/downloads/pc-welt-sonderhefte" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="PC-WELT&#x20;Sonderhefte&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;downloads&#x2F;pc-welt-sonderhefte">
+                PC-WELT Sonderhefte
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+            </ul>
+        </li>
+                                                                                                                    <li data-color="magenta" class="magenta">
+                        <span class="nav_item_description">
+                <span class="divider"></span>
+            </span>
+                                                <a href="https://www.pcwelt.de/specials" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Specials&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;specials">
+                Specials
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </a>
+            <ul>
+                                                                <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/preisvergleich" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Preisvergleich&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;preisvergleich">
+                Preisvergleich
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+                                                                        <li data-color="" class="">
+                                                <a href=" https://software.pcwelt.de/" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Angebote&#x20;von&#x20;PC-WELT&#x20;-&#x20;&#x20;&#x20;https&#x3A;&#x2F;&#x2F;software.pcwelt.de&#x2F;">
+                Angebote von PC-WELT
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+                                                                        <li data-color="" class="">
+                                                <a href="https://tarife.pcwelt.de/" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Tarifrechner&#x20;DSL,&#x20;Strom&#x20;&amp;&#x20;Gas&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;tarife.pcwelt.de&#x2F;">
+                Tarifrechner DSL, Strom &amp; Gas
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+                                                                        <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/news/Black-Friday-2019-Die-besten-Technik-Deals-10690600.html" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Technik-Schn&#x00E4;ppchen&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;news&#x2F;Black-Friday-2019-Die-besten-Technik-Deals-10690600.html">
+                Technik-Schnäppchen
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+                                                                        <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/computer-technik/smartphone-tablet-navi/pc-welt-netztest/tarifrechner" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Tarifrechner&#x20;Smartphone&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;computer-technik&#x2F;smartphone-tablet-navi&#x2F;pc-welt-netztest&#x2F;tarifrechner">
+                Tarifrechner Smartphone
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+                                                                                                                                                                                                            <li data-color="" class="">
+                                                <a href="https://vereint-durch-technologie.pcwelt.de?utm_source=IDG&utm_campaign=Dell22925&utm_medium=homenewsletter&utm_content=nativepromo_DE" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Vereint&#x20;durch&#x20;Technologie&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;vereint-durch-technologie.pcwelt.de&#x3F;utm_source&#x3D;IDG&amp;utm_campaign&#x3D;Dell22925&amp;utm_medium&#x3D;homenewsletter&amp;utm_content&#x3D;nativepromo_DE">
+                Vereint durch Technologie
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+            </ul>
+        </li>
+                                                                                                                                            <li data-color="yellow" class="yellow">
+                        <span class="nav_item_description">
+                <span class="divider"></span>
+            </span>
+                                                <a href="https://www.pcwelt.de/mehr" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Mehr...&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;mehr">
+                Mehr...
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </a>
+            <ul>
+                                                                <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/mehr/insider" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Insider&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;mehr&#x2F;insider">
+                Insider
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+                                                                        <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/mehr/mein-konto" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Mein&#x20;Konto&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;mehr&#x2F;mein-konto">
+                Mein Konto
+                                                                                                                                                                        </a>
+            <ul>
+                                        </ul>
+        </li>
+                                                                                    <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/pcwelt-tv" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Videos&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;pcwelt-tv">
+                Videos
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+                                                                        <li data-color="" class="">
+                                                <a href="https://www.pcwelt-forum.de/" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="Forum&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt-forum.de&#x2F;">
+                Forum
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+                                                                                                <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/fan" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="PC-WELT&#x20;Fan-Shop&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;fan">
+                PC-WELT Fan-Shop
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+                                                                        <li data-color="" class="">
+                                                <a href="https://www.idgshop.de/pcwelt" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="PC-WELT&#x20;Shop&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.idgshop.de&#x2F;pcwelt">
+                PC-WELT Shop
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+                                                                                                                                                <li data-color="" class="">
+                                                <a href="https://www.pcwelt.de/mehr/pc-welt-plus" data-ga-event-type="click" data-ga-event-category="hautpnavi_click" data-ga-event-label="PC-WELT&#x20;Plus&#x20;-&#x20;&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;mehr&#x2F;pc-welt-plus">
+                PC-WELT Plus
+                                                            </a>
+            <ul>
+    </ul>
+        </li>
+            </ul>
+        </li>
+            </ul>
+</nav>
+            </div>
+    <div id="top-themen" class="panel">
+                <strong>Auf einen Blick:</strong>
+<ul class="add-nav">
+                        <li><a href="https://www.pcwelt.de/computer-technik/pc-peripherie/hollenmaschine">Höllenmaschine</a></li>
+                                <li><a href="https://www.idgshop.de/?websale8=idg&amp;ci=pcwelt">PC-WELT-Shop</a></li>
+                                <li><a href="https://www.pcwelt.de/computer-technik/schnappchen-deals">Schnäppchen&amp;Deals</a></li>
+                                <li><a href="https://www.pcwelt.de/newsletter">Newsletter</a></li>
+                                <li><a href="https://jobapplication.hrworks.de/de?companyId=g3a848e">Jobs bei IDG</a></li>
+                                <li><a href="https://www.pcwelt.de/computer-technik/smartphone-tablet-navi/pc-welt-netztest/tarifrechner">Mobilfunktarife</a></li>
+                                <li><a href="https://www.pcwelt.de/mehr/insider">Insider</a></li>
+            </ul>
+                                                                    <span class="icon-user align-right"></span>
+        <span class="login">Login&nbsp;&nbsp;</span>
+        <div class="loginframe"></div>
+        <div id="decision_layer">
+            <h3>Login</h3>
+            <div class="intro">Wählen Sie eine der beiden Login-Möglichkeiten aus</div>
+            <script>
+                function pianoTopLogin() {
+                    var offerId = 'OF877NBBNDQD';
+                    var templateId = 'OTCJZ1F6VLAU';
+                    if (window.location.hostname.match('macwelt')) {
+                        offerId = 'OFMQZPC9TPIW';
+                        templateId = 'OT3QJ13OUCQ0';
+                    }
+                    tp.offer.show({
+                        offerId: offerId,
+                        templateId: templateId,
+                        displayMode: 'inline',
+                        containerSelector: '#login_holder'
+                    });
+                }
+            </script>
+            <div class="choices clearfix">
+                <a style="background-image:url('/img/pcwelt/insider/insider_login.jpg')" href="javascript:pianoTopLogin()" class="insider">
+                    <div class="explanation">Loggen Sie sich hier für Ihr<br>Insider-Abonnement ein</div>
+                    <div class="button" style="background-color:#ffc000;">Zum Insider-Login</div>
+                </a>
+                <a style="background-image:url('/img/pcwelt/insider/plus_login.jpg')" href="/plus" class="plus">
+                    <div class="explanation">Loggen Sie sich hier für Ihr<br>Digitales Heft-Abonnement ein</div>
+                    <div class="button" style="background-color:#0a75b7;">Zum Plus-Login</div>
+                </a>
+            </div>
+        </div>
+    
+    </div>
+</header>
+
+<!-- AD: dfp leadfull --><div data-idg-sizes="[[728,90],[800,250],[970,250]]" title="Google-Ad (Position: leadfull)" id="ad_leadfull" class="idgGoogleAdTag leadfull ad"></div>
+
+<script>
+    Search.initAutocomplete("#headersearch");
+</script>                                <div id="main">
+        <div id="outer">
+                                                    <div id="twocolumns">
+                <div id="content">
+                                            <div class="heading-page">
+        <div class="breadcrumb" vocab="https://schema.org" typeof="BreadcrumbList">
+                                <span>
+    <span property="itemListElement" typeof="ListItem">
+                        <a href="https://www.pcwelt.de/" title="Zur Homepage" property="item" typeof="WebPage">
+            <span property="name">Home</span>
+        </a> >         <meta property="position" content="1">
+    </span>
+    </span>                                        <span>
+    <span property="itemListElement" typeof="ListItem">
+                        <a href="https://www.pcwelt.de/computer-technik" title="Zur Computer &amp; Technik Übersicht" property="item" typeof="WebPage">
+            <span property="name">Computer &amp; Technik</span>
+        </a> >         <meta property="position" content="2">
+    </span>
+    </span>                                        <span>
+    <span property="itemListElement" typeof="ListItem">
+                        <a href="https://www.pcwelt.de/computer-technik/internet-tarife" title="Zur Internet &amp; Tarife Übersicht" property="item" typeof="WebPage">
+            <span property="name">Internet &amp; Tarife</span>
+        </a> >         <meta property="position" content="3">
+    </span>
+    </span>                                                        <span>
+    <span property="itemListElement" typeof="ListItem">
+                        <a href="https://www.pcwelt.de/computer-technik/internet-tarife/online" title="Zur Online Übersicht" property="item" typeof="WebPage">
+            <span property="name">Online</span>
+        </a>        <meta property="position" content="4">
+    </span>
+    </span>                        </div>
+        <span class="bid_info invis">2483601</span>
+        <div class="add-box2">
+            <h1 class="headline">Coronavirus Live-Tracker: München sagt Oktoberfest 2020 ab</h1>
+                <div class="author">
+        <p>
+            <strong class="author">
+                21.04.2020 | 09:55 Uhr
+                                    |
+                                                                                                                                                                                                                                                    <span>
+                                    <a class="authors" data-authors="Panagiotis Kolokythas">Panagiotis Kolokythas</a>                                </span>
+                                                                                                                                                                                                                    <script>
+                            $(function() {
+                                authorsPlugin.initOpenClick();
+                                                            });
+                        </script>
+                                                </strong>
+        </p>
+    </div>
+
+    <div class="social_media_buttons">
+        <a title="Facebook"
+       href="https://www.facebook.com/sharer.php?u=https://www.pcwelt.de/2483601/facebook&amp;t=Coronavirus&#x20;Live-Tracker&#x3A;&#x20;M&#x00FC;nchen&#x20;sagt&#x20;Oktoberfest&#x20;2020&#x20;ab"
+       target="_blank" rel="noopener" data-network="Facebook" data-action="Share">
+        <div class='social_media_icon facebook'>
+            <i class="icon-facebook"></i>
+        </div>
+    </a>
+        <a title="Twitter"
+       href="https://twitter.com/share?url=https://www.pcwelt.de/2483601/twitter&amp;text=Coronavirus&#x20;Live-Tracker&#x3A;&#x20;M&#x00FC;nchen&#x20;sagt&#x20;Oktoberfest&#x20;2020&#x20;ab&amp;via=PCWELT"
+       target="_blank" rel="noopener" data-network="Twitter" data-action="Tweet">
+        <div class='social_media_icon twitter'>
+            <i class="icon-twitter"></i>
+        </div>
+    </a>
+        <a title="Pocket"
+       href="https://getpocket.com/edit.php?url=https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;2483601&#x2F;pocket"
+       target="_blank" rel="noopener" data-network="Pocket" data-action="Share">
+        <div class='social_media_icon pocket'>
+            <i class="icon-get-pocket"></i>
+        </div>
+    </a>
+        <a title="Xing"
+       href="https://www.xing.com/spi/shares/new?url=https://www.pcwelt.de/2483601/xing;title=Coronavirus&#x20;Live-Tracker&#x3A;&#x20;M&#x00FC;nchen&#x20;sagt&#x20;Oktoberfest&#x20;2020&#x20;ab"
+       target="_blank" rel="noopener" data-network="XING" data-action="Share">
+        <div class='social_media_icon xing'>
+            <i class="icon-xing"></i>
+        </div>
+    </a>
+</div>        </div>
+    </div>
+        <article class="article" itemscope itemtype="https://schema.org/NewsArticle" data-io-article-url="https://www.pcwelt.de/news/Coronavirus-Live-Tracker-Muenchen-sagt-Oktoberfest-2020-ab-10744095.html">
+        <meta itemprop="datePublished" content="2020-03-30T14:16:09+02:00"/>
+    <meta itemprop="dateModified" content="2020-04-21T09:55:00+02:00"/>
+    <span class="schema-author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Panagiotis Kolokythas</span>
+    </span>
+            <meta itemprop="headline" content="Coronavirus Live-Tracker: München sagt Oktoberfest 2020 ab"/>
+    <meta itemprop="image" content="https://bilder.pcwelt.de/4253435_original.jpg"/>
+    <meta itemscope itemprop="mainEntityOfPage"  itemType="https://schema.org/WebPage" itemid="https://www.pcwelt.de/news/Coronavirus-Live-Tracker-Muenchen-sagt-Oktoberfest-2020-ab-10744095.html"/>
+    <div itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+        <div itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
+            <meta itemprop="url" content="https://www.pcwelt.de/img/pcwelt/amp_logo.png">
+            <meta itemprop="width" content="60">
+            <meta itemprop="height" content="60">
+        </div>
+        <meta itemprop="name" content="PC-WELT">
+    </div>
+            <div class="add-box">
+            <p>
+                <strong class="title">
+                    Das Oktoberfest in München wird in diesem Jahr nicht stattfinden. Die aktuelle Coronavirus-Entwicklung im Überblick.
+                </strong>
+            </p>
+        </div>
+                                    <div class="visual first-gallery">
+                                                    <div class="visual inline">
+            <picture>
+                <source data-srcset="//bilder.pcwelt.de/4253435_620x310_r.webp" type="image/webp">
+                <img
+                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                        data-src="//bilder.pcwelt.de/4253435_620x310_r.jpg"
+                        alt="Website&#x20;trackt&#x20;Coronavirus-Verbreitung"
+                        title="Website&#x20;trackt&#x20;Coronavirus-Verbreitung"
+                        width="620"
+                        height="310"
+                        class="lazyload"
+                />
+            </picture>
+            <div class="description">
+                <a class="btn"
+                   data-doi="4253435"
+                   data-image-lightbox-id="4253435"
+                   data-author_name=""
+                   data-description="Website&#x20;trackt&#x20;Coronavirus-Verbreitung"
+                   href="//bilder.pcwelt.de/4253435_original.jpg">
+                    <strong>Vergrößern</strong>
+                </a>
+                <strong class="title" title="Website&#x20;trackt&#x20;Coronavirus-Verbreitung">Website trackt Coronavirus-Verbreitung</strong>
+                <div class="box">
+                    <span class="copy"></span>
+                </div>
+            </div>
+        </div>
+            
+            </div>
+                                    <div class="add-box linkdb-marker">
+                <!-- AD: adsense article_top --><div style="width:620px; min-height:155px;" data-idg-sizes="[620,155]" id="ad_adsense_top" class="idgGoogleAdTag ad_adsense_top ad"></div>
+            </div>
+                                                                                                            
+                                        
+                                            <p class="linkdb-marker">
+
+                            Die Stadt München hat nun offiziell das Oktoberfest 2020 abgesagt, welches ursprünglich vom 19. September bis zum 4. Oktober 2020 stattfinden sollte. Die &quot;Wiesn&quot; ist das weltgrößte Volksfest und wird damit in diesem Jahr nicht wieder Millionen von Menschen aus aller Welt in die bayerische Landeshauptstadt locken, wobei normalerweise auch ein Umsatz von über 1 Milliarde Euro erwirtschaftet werden würde. Auf einer gemeinsamen Pressekonferenz erklärten der bayerische Ministerpräsident Markus Söder (CSU) und der Münchner Oberbürgermeister Dieter Reiter (SPD) am Dienstagmorgen (21.4.), dass es das vorrangige Ziel sei, &quot;Bayern weiter zu beschützen&quot; vor den Auswirkungen der Coronavirus-Pandemie. In Bayern sind bis Ende August 2020, ähnlich wie in anderen Bundesländern, alle größeren Veranstaltungen verboten.   
+
+                <br>
+    
+    </p>
+                                        <p id="piano-anchor"></p>
+                                                                                                                                                                                                    
+                                        
+                                            <p class="linkdb-marker">
+
+                            Die Coronakrise hält weiterhin die Welt in Atem: Die Zahl der weltweit infizierten Menschen hat sich auf knapp 2,5 Millionen erhöht. Laut den Zahlen der Johns Hopkins Universität stieg die Zahl aller in Deutschland infizierten Menschen auf knapp 147.000. Hierzulande starben bisher 4.862 Menschen und die Anzahl der Menschen, die sich von einer Infizierung erholten, stiegt auf über 92.000 (Stand: 21.4.2020, 09:45 Uhr).
+
+    
+    </p>
+                                                                                                                                                                                                
+                                    <!-- AD: performance article_link -->
+                                
+                                            <p class="linkdb-marker">
+
+                            In vielen Bundesländern tritt eine Lockerung des Kontaktverbots und der Einschränkungen des öffentlichen Lebens bereits ab heute in Kraft. Das Bundesland Bayern zieht mit einer Verzögerung von einer Woche nach, also ab dem 27. April 2020. Für ganz Bayern gilt dann auch ab diesem Tag eine Maskenpflicht, wie Markus Söder, Ministerpräsident von Bayern, am Montagvormittag verkündete. Nach Sachsen und Mecklenburg-Vorpommern ist Bayern damit das dritte Bundesland, in dem eine solche Maskenpflicht gelten soll.
+
+    
+    </p>
+                                                                                                                                                                                            <!-- AD: dfp video --><div style="width:620px; min-height:350px;" data-idg-sizes="[1,1]" title="Google-Ad (Position: video)" id="ad_video" class="idgGoogleAdTag video ad"></div>
+                                    
+                                    
+                                
+                                            <p class="linkdb-marker">
+
+                            In Bayern ist ein Mund-Nasen-Schutz ab dem 27. April zwingend erforderlich bei der Nutzung öffentlicher Verkehrsmittel und beim Einkaufen in Geschäften. Ausdrücklich betont wurde dabei, dass dafür keine medizinischen Masken verwendet werden müssen, sondern jegliche Mittel reichen, durch die der Mund und die Nase einer Person bedeckt werden.
+
+    
+    </p>
+                                                                                                                                                                                                
+                                        
+                                            <p class="linkdb-marker">
+
+                    
+                                                                                                                    <a href="https://www.pcwelt.de/news/Coronavirus-stoppen-So-bauen-Sie-einen-Mundschutz-10784595.html"   title="Lesetipp&#x3A;&#x20;So&#x20;bauen&#x20;Sie&#x20;einen&#x20;Mundschutz">Lesetipp: So bauen Sie einen Mundschutz</a>
+                            <br>
+    
+    </p>
+                                                                                                                                                                                                
+        
+                                        	<div class="clearfix"></div>
+    <h2 id="abschnitt-weiter-steigende-zahl-an-infizierten-und-toten">Weiter steigende Zahl an Infizierten und Toten</h2>
+                                                
+                                                                                                                                                                                
+                                        
+                                            <p class="linkdb-marker">
+
+                            Laut  
+
+                        
+                                                                                                                                        <a href="https://coronavirus.jhu.edu/map.html" rel="noopener" target="_blank" title="dem&#x20;Live-Tracker&#x20;der&#x20;Johns&#x20;Hopkins">dem Live-Tracker der Johns Hopkins</a>
+                                            Universität wurden bisher weltweit 2.480.749 Infizierte registriert (Stand: 21. April, 09:45 Uhr), davon 787.901 in den USA. Auf den weiteren Plätzen landen Spanien (200.210 Fälle), Italien (181.228), Frankreich (156.493), Deutschland (147.065) und Großbritannien (125.856). 
+
+                <br>
+    
+    </p>
+                                                                                                                                                                                                
+                                        
+                                            <p class="linkdb-marker">
+
+                            Die Anzahl der Toten liegt bei derzeit weltweit 170.399. Die meisten Opfer hat Italien mit 24.114 Toten zu beklagen, in Spanien sind es 20.852 Opfer. 
+
+                <br>
+    
+    </p>
+                                                                                                                                                                                                
+                                        
+                                            <p class="linkdb-marker">
+
+                            Das Robert-Koch-Institut  
+
+                        
+                                                                                                                                        <a href="https://www.rki.de/DE/Content/InfAZ/N/Neuartiges_Coronavirus/Fallzahlen.html?nn=13490888" rel="noopener" target="_blank" title="meldet">meldet</a>
+                                             für Deutschland bisher 143.457 Infektionen bundesweit (Stand: 21. April, 08:15 Uhr). Die meisten Todesopfer melden Bayern (1.336), Baden-Württemberg (1.031) und Nordrhein-Westfalen (896). Im Vergleich zum Vortag wurden damit 1.785 neue Fälle registriert.
+
+    
+    </p>
+                                                                                                                                                                                                
+        
+                                        	<div class="clearfix"></div>
+    <h2 id="abschnitt-in-deutschland-gilt-weiterhin-kontaktverbot-mit-ersten-lockerungen">In Deutschland gilt weiterhin Kontaktverbot - mit ersten Lockerungen</h2>
+                                                                                                                                                                                                
+                                        
+                                            <p class="linkdb-marker">
+
+                            Die Bundesregierung hatte gemeinsam mit den Bundesländern entschieden, dass es zumindest vorerst keine Ausgangssperre geben wird. Stattdessen  
+
+                                <b>gelten in ganz Deutschland strenge Regeln, die als &quot;Kontaktverbot&quot; bezeichnet werden. Diese Regelung gilt nach der jüngsten Verlängerung mindestens bis zum 3. Mai 2020. </b>
+
+    
+    </p>
+                                                                                                                                                                                                
+                                        
+                                            <p class="linkdb-marker">
+
+                            <b>Allerdings gibt es seit dem 20.4. in einigen Bundesländern einige Lockerungen:</b>
+
+                                In einigen Bundesländern dürfen Geschäfte mit einer Größe von bis zu 800 Quadratmetern Verkaufsfläche öffnen, wenn entsprechende Maßnahmen ergriffen werden, die das Personal und die Kunden vor einer Infizierung schützen. 
+
+    
+    </p>
+                                                                                                                                                                                                
+                                        
+                                            <p class="linkdb-marker">
+
+                            <b>Abseits von Ausnahmen gelten aber weiterhin die Einschränkungen des öffentlichen Lebens.  Untersagt sind:</b>
+
+    
+    </p>
+                                                                                                                                                                                                
+        
+                                        <div class="list-element linkdb-marker">
+            <ul>
+                                        <li>
+                        <p class="linkdb-marker">
+
+                            Zusammenkünfte und Ansammlungen in der Öffentlichkeit von mehr als 2 Personen 
+
+                <br>
+    
+    </p>
+                </li>
+                            </ul>
+    </div>                                                                                                                                                                                                
+                                        
+                                            <p class="linkdb-marker">
+
+                            <b>Von dieser Regel gibt es diese Ausnahmen:</b>
+
+                <br>
+    
+    </p>
+                                                                                                                                                                                                
+        
+                                        <div class="list-element linkdb-marker">
+            <ul>
+                                        <li>
+                        <p class="linkdb-marker">
+
+                            Verwandte, Ehegatten, Lebenspartner sowie in häuslicher Gemeinschaft lebende Personen
+
+    
+    </p>
+                </li>
+                            <li>
+                        <p class="linkdb-marker">
+
+                            Begleitung minderjähriger und unterstützungsbedürftiger Personen
+
+    
+    </p>
+                </li>
+                            <li>
+                        <p class="linkdb-marker">
+
+                            Zwingend notwendige Zusammenkünfte aus gesellschaftlichen, beruflichen und dienstlichen sowie aus prüfungs- und betreuungsrelevanten Gründen
+
+    
+    </p>
+                </li>
+                            <li>
+                        <p class="linkdb-marker">
+
+                            Nutzung öffentlicher Verkehrsmittel
+
+    
+    </p>
+                </li>
+                            <li>
+                        <p class="linkdb-marker">
+
+                            Beerdigungen
+
+    
+    </p>
+                </li>
+                            </ul>
+    </div>                                                                                                                                                                                                
+                                        
+                                            <p class="linkdb-marker">
+
+                            Alle Geschäfte (für die die Lockerungen noch nicht gelten) und Restaurants bleiben geschlossen. Ausnahmen gibt es hier für Gastronomiebetriebe, die das Essen auch liefern oder einen Take-Away-Service anbieten. Und natürlich auch für alle Supermärkte, Drogerien, Apotheken, Bäckereien, Banken, Anbieter medizinischer Leistungen, usw.
+
+    
+    </p>
+                                                                                                                                                                                                
+                                        
+                                            <p class="linkdb-marker">
+
+                            Personen sollten in der Öffentlichkeit mindestens einen Abstand von 1,5 Metern halten.  
+
+                <br>
+    
+    </p>
+                                                                                                                                                                                                
+                                        
+                                            <p class="linkdb-marker">
+
+                            <b>Lese-Tipp</b>
+
+                                :  
+
+                        
+                                                                                                                    <a href="https://www.pcwelt.de/ratgeber/Die-besten-Tools-Tipps-Tricks-fuers-Home-Office-10768978.html"   title="Coronavirus&#x20;-&#x20;die&#x20;besten&#x20;Tools,&#x20;Tipps&#x20;&amp;&#x20;Tricks&#x20;f&#x00FC;rs&#x20;Home&#x20;Office">Coronavirus - die besten Tools, Tipps &amp; Tricks fürs Home Office</a>
+                
+    </p>
+                                                                                                                                                                                                
+        
+                                        	<div class="clearfix"></div>
+    <h2 id="abschnitt-so-schuetzen-sie-sich-vor-dem-coronavirus">So schützen Sie sich vor dem Coronavirus</h2>
+                                                                                                                                                                                                
+                                        
+                                            <p class="linkdb-marker">
+
+                            Empfohlen wird der Bevölkerung unter anderem folgendes Verhalten, um sich vor einer Ansteckung zu schützen. Es sind die gleichen Regeln, die auch für den Schutz vor einer Ansteckung durch Grippeviren gelten: 
+
+                <br>
+    
+    </p>
+                                                                                                                                                                                                
+        
+                                        <div class="list-element linkdb-marker">
+            <ul>
+                                        <li>
+                        <p class="linkdb-marker">
+
+                            Husten und niesen Sie nicht in die Hand, sondern in die Armbeuge
+
+    
+    </p>
+                </li>
+                            <li>
+                        <p class="linkdb-marker">
+
+                            Waschen Sie regelmäßig die Hände
+
+    
+    </p>
+                </li>
+                            <li>
+                        <p class="linkdb-marker">
+
+                            Fassen Sie sich nicht mit den Händen ins Gesicht
+
+    
+    </p>
+                </li>
+                            <li>
+                        <p class="linkdb-marker">
+
+                            Halten Sie mindestens einen Abstand von 1 bis 2 Metern zu Infizierten
+
+    
+    </p>
+                </li>
+                            <li>
+                        <p class="linkdb-marker">
+
+                            Melden Sie sich telefonisch bei Ihrem Arzt, falls Sie Grippe-Symptome haben
+
+    
+    </p>
+                </li>
+                            </ul>
+    </div>                                                                                                                                                                                                
+        
+                                        	<div class="clearfix"></div>
+    <h2 id="abschnitt-was-ist-covid-19">Was ist Covid-19?</h2>
+                                                                                                                                                                                                
+                                        
+                                            <p class="linkdb-marker">
+
+                            Die neue Variante des Corona-Virus verbreitete sich in China Ende 2019 zunächst in der chinesischen Region Wuhan. Am 9. Januar 2020 warnte dann schließlich die Weltgesundheitsorganisation (WHO) vor dem Virus, das bei den Infizierten zu einer Erkrankung führen kann, die der Lungenentzündung ähnelt und die tödlich enden kann. In dem laufend aktualisierten Dashboard werden alle weltweit verfügbaren Informationen über 2019-nCoV gesammelt und übersichtlich dargestellt.
+
+    
+    </p>
+                                                                                                                                                                                                
+                                        
+                                            <p class="linkdb-marker">
+
+                            2019-nCoV gehört zu der Familie der Corona-Viren, die zu diversen Erkrankungen führen können, darunter harmlose Virenerkrankungen, aber auch tödlich endende Infektionen wie bei  
+
+                        
+                                                                                                                    <a href="https://www.pcwelt.de/news/Keine-SARS-Infektionen-durch-Hauptplatinen-321722.html"   title="SARS">SARS</a>
+                                             (Schweres Akutes Respiratorisches Syndrom), welches Ende 2002 in der chinesischen Provinz Guangdong auftrat.
+
+    
+    </p>
+                                                                                                        <!-- AD: dfp marktplatz_special --><div data-idg-sizes="[1,1]" title="Google-Ad (Position: marktplatz_special)" id="ad_marktplatz_special" class="idgGoogleAdTag marktplatz_special ad"></div>
+                
+        <!-- AD: performance article_bottom --><div class="google-wrapper">
+    <div data-idg-sizes="[1,1]" id="ad_layer_bottom" class="idgGoogleAdTag ad_layer_bottom ad"></div>
+</div>
+</article>
+<div id="rs_ctTileRecommender"></div>
+    <div id="feedback_info" style="display:none">
+    📧 <a href="mailto:online@pcwelt.de?subject=Ihr&#x20;Kommentar&#x20;zum&#x20;Artikel&#x20;&#x27;Coronavirus&#x20;Live-Tracker&#x3A;&#x20;M&#x00FC;nchen&#x20;sagt&#x20;Oktoberfest&#x20;2020&#x20;ab&#x27;&amp;body=Ihr&#x20;Kommentar&#x20;zum&#x20;Artikel&#x20;https&#x3A;&#x2F;&#x2F;www.pcwelt.de&#x2F;news&#x2F;Coronavirus-Live-Tracker-Muenchen-sagt-Oktoberfest-2020-ab-10744095.html&#x3A;" title="Feedback an PC-WELT">Feedback an PC-WELT</a>
+</div>                        <!-- AD: dfp sfp_infeed --><div style="width:620px; min-height:155px;" data-idg-sizes='[[1,1],[620,140],[620,155],["fluid"]]' title="Google-Ad (Position: sfp_infeed)" id="ad_sfp_infeed" class="sfp_infeed ad"></div>
+    <!-- AD: outbrain article --><div class="OUTBRAIN" data-src="https://www.pcwelt.de/news/Coronavirus-Live-Tracker-Muenchen-sagt-Oktoberfest-2020-ab-10744095.html" data-widget-id="AR_11" data-ob-template="PC-Welt.de" ></div>
+    <!-- AD: dfp marktplatz -->
+            <div class="marketplace standard">
+                <div class="heading">
+                    <span class="banner-text">-Anzeige-</span>
+                    <h4>PC-WELT Marktplatz</h4>
+                </div>
+                <div class="content clearfix">
+                <div class="marketplace_element">
+                    <div data-idg-sizes="[[309,363],[618,363]]" id="ad_marktplatz_links" class="marktplatz_links ad"></div>
+                </div>
+                <div class="marketplace_element">
+                    <div data-idg-sizes="[309,363]" id="ad_marktplatz_rechts" class="marktplatz_rechts ad"></div>
+                </div>
+                </div>
+            </div>
+    <!-- AD: outbrain idg_content_footer --><div class="OUTBRAIN" data-src="https://www.pcwelt.de/news/Coronavirus-Live-Tracker-Muenchen-sagt-Oktoberfest-2020-ab-10744095.html" data-widget-id="AR_12" data-ob-template="PC-Welt.de" ></div>
+        <!-- AD: yieldkit  --><script>
+                (function () {
+                    var scriptProto = 'https:' == document.location.protocol ? 'https://' : 'http://';
+                    var script = document.createElement('script');
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = scriptProto+'js.srvtrck.com/v1/js?api_key=cc86ea3a04806258ca5dfd8a1fdab564&site_id=258fdff975614989a5989d6db151206a';
+                    (document.getElementsByTagName('head')[0] || document.body).appendChild(script);
+                })();</script>
+    <!-- AD: intextlinks  --><script language="javascript" type="text/javascript">
+                clid=110;
+            (function(src) {
+                var a = document.createElement("script");
+                a.type = "text/javascript";
+                a.async = true;
+                a.src = src;
+                var b = document.getElementsByTagName("script")[0];
+                b.parentNode.insertBefore(a, b)
+                })("https://intextlinks.idg.zone/dist/libs/powerlinks/include.js");
+            </script>
+    <div id='blmhinweis'></div><script>var blmhinweis = document.getElementById('blmhinweis'); blmhinweis.innerHTML = 'Einige Links in diesem Artikel können Affiliate-Links sein. Kaufen Sie über einen solchen Link ein Produkt, erhält PC-WELT eine kleine Provision. Am Kaufpreis ändert sich dadurch nichts. Unsere redaktionelle Berichterstattung ist grundsätzlich unabhängig vom Bestehen oder der Höhe einer Provision.';</script>
+                </div>
+                <aside id="sidebar">
+                                                                                                        <div class="news-teaser-placeholder" data-navid="2" data-breadcrumb="Online" data-count="5" data-host="pcwelt" data-articletypes="news,test,tip,international,ratgeber,video,external_article,download" data-mainnav="Computer&#x20;&amp;&#x20;Technik"></div>
+                <!-- AD Slot dfp -->
+<!-- AD: dfp mpu --><div style="width:300px; min-height:600px;" data-idg-sizes="[[1,1],[300,250],[300,600],[336,280]]" title="Google-Ad (Position: mpu)" id="ad_mpu" class="idgGoogleAdTag mpu ad iframe-box"></div>
+                
+<div class="box" data-ga-event-type="view" data-ga-event-category="right_column_specials_block_teaserspalte" data-ga-event-label="PC-WELT&#x20;Specials">
+    <div class="heading">
+                                                                        <span class="banner-text">-Anzeige-</span>
+        <h4>PC-WELT Specials</h4>
+    </div>
+    <div class="content">
+                                            <ul>
+                            <li>
+                    <a class="holder"
+                       href="https://vereint-durch-technologie.pcwelt.de/collection/it-beratung-und-partnerschaft-fur-kmu/article/auch-kleinunternehmen-brauchen-modernste-it-dieses-video-zeigt,-worauf-zu-a?utm_source=IDG&amp;utm_campaign=Dell22925&amp;utm_medium=specials&amp;utm_content=nativepromo_DE"
+                       data-ga-event-type="click"
+                       data-ga-event-category="right_column_specials_block_teaserspalte"
+                       data-ga-event-label="PC-WELT&#x20;Specials_https://vereint-durch-technologie.pcwelt.de/collection/it-beratung-und-partnerschaft-fur-kmu/article/auch-kleinunternehmen-brauchen-modernste-it-dieses-video-zeigt,-worauf-zu-a?utm_source=IDG&amp;utm_campaign=Dell22925&amp;utm_medium=specials&amp;utm_content=nativepromo_DE"
+                       target="_blank"
+                        rel="nofollow noopener">
+                                                                                                                                            <picture>
+                                <source data-srcset="//bilder.pcwelt.de/4284458_120x60.webp" type="image/webp">
+                                <img
+                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                        data-src="//bilder.pcwelt.de/4284458_120x60.jpg"
+                                        alt="Neue&#x20;PCs&#x20;kaufen"
+                                        title="Neue&#x20;PCs&#x20;kaufen"
+                                        width="120"
+                                        height="60"
+                                        class="lazyload"
+                                />
+                            </picture>
+                                                <div class="text-holder">
+                            <h5>Neue PCs kaufen</h5>
+                            <p>Auch Kleinunternehmen brauchen modernste IT.</p>
+                        </div>
+                    </a>
+                </li>
+                            <li>
+                    <a class="holder"
+                       href="https://w.idg.de/3oEJ0ji"
+                       data-ga-event-type="click"
+                       data-ga-event-category="right_column_specials_block_teaserspalte"
+                       data-ga-event-label="PC-WELT&#x20;Specials_https://w.idg.de/3oEJ0ji"
+                       target="_blank"
+                        rel="nofollow noopener">
+                                                                                <picture>
+                                <source data-srcset="//bilder.pcwelt.de/4273123_120x60.webp" type="image/webp">
+                                <img
+                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                        data-src="//bilder.pcwelt.de/4273123_120x60.jpg"
+                                        alt="Videoschnitt-Software"
+                                        title="Videoschnitt-Software"
+                                        width="120"
+                                        height="60"
+                                        class="lazyload"
+                                />
+                            </picture>
+                                                <div class="text-holder">
+                            <h5>Videoschnitt-Software</h5>
+                            <p>Bis zu 60 Prozent Rabatt.</p>
+                        </div>
+                    </a>
+                </li>
+                            <li>
+                    <a class="holder"
+                       href="https://www.pcwelt.de/news/WinX-HD-Video-Converter-jetzt-mit-bis-zu-45-Prozent-Rabatt-10943805.html"
+                       data-ga-event-type="click"
+                       data-ga-event-category="right_column_specials_block_teaserspalte"
+                       data-ga-event-label="PC-WELT&#x20;Specials_https://www.pcwelt.de/news/WinX-HD-Video-Converter-jetzt-mit-bis-zu-45-Prozent-Rabatt-10943805.html"
+                       target="_blank"
+                        rel="nofollow noopener">
+                                                                                <picture>
+                                <source data-srcset="//bilder.pcwelt.de/4281321_120x60.webp" type="image/webp">
+                                <img
+                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                        data-src="//bilder.pcwelt.de/4281321_120x60.jpg"
+                                        alt="WinX&#x20;Video&#x20;Converter"
+                                        title="WinX&#x20;Video&#x20;Converter"
+                                        width="120"
+                                        height="60"
+                                        class="lazyload"
+                                />
+                            </picture>
+                                                <div class="text-holder">
+                            <h5>WinX Video Converter</h5>
+                            <p>Videos konvertieren und herunterladen</p>
+                        </div>
+                    </a>
+                </li>
+                            <li>
+                    <a class="holder"
+                       href="http://w.idg.de/2ZulcUa"
+                       data-ga-event-type="click"
+                       data-ga-event-category="right_column_specials_block_teaserspalte"
+                       data-ga-event-label="PC-WELT&#x20;Specials_http://w.idg.de/2ZulcUa"
+                       target="_blank"
+                        rel="nofollow noopener">
+                                                                                <picture>
+                                <source data-srcset="//bilder.pcwelt.de/4285704_120x60.webp" type="image/webp">
+                                <img
+                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                        data-src="//bilder.pcwelt.de/4285704_120x60.jpg"
+                                        alt="Das&#x20;Netzteil&#x20;der&#x20;HMX3"
+                                        title="Das&#x20;Netzteil&#x20;der&#x20;HMX3"
+                                        width="120"
+                                        height="60"
+                                        class="lazyload"
+                                />
+                            </picture>
+                                                <div class="text-holder">
+                            <h5>Das Netzteil der HMX3</h5>
+                            <p>Seasonic PRIME TX-1600 80 PLUS Titanium</p>
+                        </div>
+                    </a>
+                </li>
+                            <li>
+                    <a class="holder"
+                       href="https://webcast.idg.de/content/personalisierung-als-erfolgsrezept?utm_source=News"
+                       data-ga-event-type="click"
+                       data-ga-event-category="right_column_specials_block_teaserspalte"
+                       data-ga-event-label="PC-WELT&#x20;Specials_https://webcast.idg.de/content/personalisierung-als-erfolgsrezept?utm_source=News"
+                       target="_blank"
+                        rel="nofollow noopener">
+                                                                                <picture>
+                                <source data-srcset="//bilder.pcwelt.de/4287084_120x60.webp" type="image/webp">
+                                <img
+                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                        data-src="//bilder.pcwelt.de/4287084_120x60.jpg"
+                                        alt="Live&#x20;Webcast"
+                                        title="Live&#x20;Webcast"
+                                        width="120"
+                                        height="60"
+                                        class="lazyload"
+                                />
+                            </picture>
+                                                <div class="text-holder">
+                            <h5>Live Webcast</h5>
+                            <p>So geht Online-Business heute.</p>
+                        </div>
+                    </a>
+                </li>
+                    </ul>
+    </div>
+</div>
+
+                                        <div id="sticky-anchor"></div>
+<div data-idg-sizes="[[300,390],[300,250],[1,1]]" id="ad_mpu_affiliate1" class="mpu_affiliate1 ad"></div>
+                                                    <div class="billiger-teaser-placeholder" data-is-home="" data-type="article" data-categories="100034,100035"></div>
+                        <div class="box">
+        <div class="heading">
+            <a href="/pcwelt-tv" class="btn">
+                <strong>Mehr</strong>
+            </a>
+            <span class="icon-play background square-30 color-white-ffffff align-left"></span>
+            <h4>PC-WELT TV</h4>
+        </div>
+        <div class="content hover">
+            <div class="video-holder">
+                <a class="lightbox"
+                   href="/videos/Errate-den-Sound-GEWINNE-eine-PS5-Technikliebe-Quiz-1-10990920.html"
+                   data-href="inc/video.html">
+                    <span class="icon-play-circle-o size-80"></span>
+                    <picture>
+                        <source data-srcset="//bilder.pcwelt.de/4289298_300x150.webp" type="image/webp">
+                        <img
+                                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                data-src="//bilder.pcwelt.de/4289298_300x150.jpg"
+                                alt="Errate&#x20;den&#x20;Sound,&#x20;GEWINNE&#x20;eine&#x20;PS5&#x21;&#x20;&#x7C;Technikliebe-Quiz"
+                                title="Errate&#x20;den&#x20;Sound,&#x20;GEWINNE&#x20;eine&#x20;PS5&#x21;&#x20;&#x7C;Technikliebe-Quiz"
+                                width="300"
+                                height="150"
+                                class="lazyload"
+                        />
+                    </picture>
+                </a>
+            </div>
+            <a class="description" href="/videos/Errate-den-Sound-GEWINNE-eine-PS5-Technikliebe-Quiz-1-10990920.html">
+                <h5>Errate den Sound, GEWINNE eine PS5! |Technikliebe-Quiz</h5>
+
+                <p>Kennen Sie diesen Sound? Mitmachen und mit etwas Glück eine brandneue Playstation 5 gewinnen!</p>
+            </a>
+        </div>
+    </div>
+                
+<div class="box">
+    <div class="heading">
+                                            <span class="banner-text"></span>
+        <h4>Partner-Angebot</h4>
+    </div>
+    <div class="content">
+        <div class="cycle-gallery">
+            <div class="mask">
+                <div class="slideset" style="position: relative; height: 256px; margin-left: -300px;">
+                                                                                                                                                                                                                            
+                        <div class="slide active" style="position: absolute; left: 0px; top: 0px;">
+                        <div class="image-holder">
+                            <picture>
+                                <source data-srcset="//bilder.pcwelt.de/4287145_300x150.webp" type="image/webp">
+                                <img
+                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                        data-src="//bilder.pcwelt.de/4287145_300x150.jpg"
+                                        alt="Das&#x20;neue&#x20;Microsoft&#x20;Surface&#x20;Duo"
+                                        title="Das&#x20;neue&#x20;Microsoft&#x20;Surface&#x20;Duo"
+                                        width="300"
+                                        height="150"
+                                        class="lazyload"
+                                />
+                            </picture>
+                        </div>
+                        <a class="description" href="https://pvn.mediamarkt.de/trck/eclick/979a4786303593d2ff74aee73eb408bf?subid=PCW_WDG&amp;url=https%3A%2F%2Fwww.mediamarkt.de%2Fde%2Fproduct%2F_microsoft-surface-duo-2712771.html" rel="nofollow noopener" target="_blank">
+                            <h5>Das neue Microsoft Surface Duo</h5>
+                            <p>Entdecken Sie mobile Produktivität unterstützt von zwei hochauflösende 5,6-Zoll-Bildschirme im neuen Microsfot Surface Duo.</p>
+                        </a>
+                    </div>
+                                                                                                                                                                        
+                        <div class="slide " style="position: absolute; left: 300px; top: 0px;">
+                        <div class="image-holder">
+                            <picture>
+                                <source data-srcset="//bilder.pcwelt.de/4263592_300x150.webp" type="image/webp">
+                                <img
+                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                        data-src="//bilder.pcwelt.de/4263592_300x150.jpg"
+                                        alt="Ab&#x20;15&#x20;Euro&#x21;&#x20;Windows&#x20;10&#x20;zum&#x20;Hammer-Preis"
+                                        title="Ab&#x20;15&#x20;Euro&#x21;&#x20;Windows&#x20;10&#x20;zum&#x20;Hammer-Preis"
+                                        width="300"
+                                        height="150"
+                                        class="lazyload"
+                                />
+                            </picture>
+                        </div>
+                        <a class="description" href="http://www.pcwelt.de/pv/YsS0dU"  target="_blank">
+                            <h5>Ab 15 Euro! Windows 10 zum Hammer-Preis</h5>
+                            <p>Im PC-WELT Preisvergleich finden Sie viele Versionen des aktuellen Microsoft Betriebssystems zu super günstigen Preisen!</p>
+                        </a>
+                    </div>
+                                                                                                                                                                        
+                        <div class="slide " style="position: absolute; left: 600px; top: 0px;">
+                        <div class="image-holder">
+                            <picture>
+                                <source data-srcset="//bilder.pcwelt.de/4270268_300x150.webp" type="image/webp">
+                                <img
+                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                        data-src="//bilder.pcwelt.de/4270268_300x150.jpg"
+                                        alt="Gaming-PC&#x20;Konfigurationen&#x20;f&#x00FC;r&#x20;jeden&#x20;Geldbeutel"
+                                        title="Gaming-PC&#x20;Konfigurationen&#x20;f&#x00FC;r&#x20;jeden&#x20;Geldbeutel"
+                                        width="300"
+                                        height="150"
+                                        class="lazyload"
+                                />
+                            </picture>
+                        </div>
+                        <a class="description" href="https://www.pcwelt.de/ratgeber/Guenstigen-Gaming-PC-zusammenstellen-Die-beste-Hardware-in-jedem-Preisbereich-10784892.html"  target="_blank">
+                            <h5>Gaming-PC Konfigurationen für jeden Geldbeutel</h5>
+                            <p>Ein guter Gaming-PC muss keine Unsummen kosten. Hier geben wir Beispiel-Konfigurationen in Preisbereichen zwischen 300 und 1000 Euro.</p>
+                        </a>
+                    </div>
+                                    </div>
+            </div>
+            <div class="gallery-nav">
+                <a rel="nofollow noopener" href="#" class="next"><span class="icon-chevron-right"></span></a>
+                <a rel="nofollow noopener" href="#" class="prev"><span class="icon-chevron-left"></span></a>
+                <div class="pagination">
+                    <ul>
+                        <li class="active">
+                            <a rel="nofollow noopener" href="#">'</a>
+                        </li>
+                        <li>
+                            <a rel="nofollow noopener" href="#">'</a>
+                        </li>
+                        <li>
+                            <a rel="nofollow noopener" href="#">'</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>                
+<div class="box" data-ga-event-type="view" data-ga-event-category="right_column_specials_block_teaserspalte" data-ga-event-label="Angebote&#x20;f&#x00FC;r&#x20;PC-WELT&#x20;Leser">
+    <div class="heading">
+                                                                        <span class="banner-text">-Anzeigen-</span>
+        <h4>Angebote für PC-WELT Leser</h4>
+    </div>
+    <div class="content">
+                                            <ul>
+                            <li>
+                    <a class="holder"
+                       href="https://pvn.mediamarkt.de/trck/eclick/979a4786303593d2ff74aee73eb408bf?subid=PCW_WDG-eCommerce3&amp;url=https%3A%2F%2Fwww.mediamarkt.de%2Fde%2Fcategory%2F_prospekte-angebote-583019.html"
+                       data-ga-event-type="click"
+                       data-ga-event-category="right_column_specials_block_teaserspalte"
+                       data-ga-event-label="Angebote&#x20;f&#x00FC;r&#x20;PC-WELT&#x20;Leser_https://pvn.mediamarkt.de/trck/eclick/979a4786303593d2ff74aee73eb408bf?subid=PCW_WDG-eCommerce3&amp;url=https%3A%2F%2Fwww.mediamarkt.de%2Fde%2Fcategory%2F_prospekte-angebote-583019.html"
+                       target="_blank"
+                        rel="nofollow noopener">
+                                                                                                                                            <picture>
+                                <source data-srcset="//bilder.pcwelt.de/4253246_120x60.webp" type="image/webp">
+                                <img
+                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                        data-src="//bilder.pcwelt.de/4253246_120x60.jpg"
+                                        alt="Die&#x20;besten&#x20;Angebote"
+                                        title="Die&#x20;besten&#x20;Angebote"
+                                        width="120"
+                                        height="60"
+                                        class="lazyload"
+                                />
+                            </picture>
+                                                <div class="text-holder">
+                            <h5>Die besten Angebote</h5>
+                            <p>Top-Angebote und Aktionen bei MediaMarkt.</p>
+                        </div>
+                    </a>
+                </li>
+                            <li>
+                    <a class="holder"
+                       href="https://www.awin1.com/cread.php?awinmid=11660&amp;awinaffid=486277&amp;clickref=&amp;p=%5B%5Bhttps%3A%2F%2Fwww.bitdefender.com%2Fimages%2FAffiliates%2F2019%2FDE%2FIDG%2Fbitdefender_antivirus.exe%5D%5D"
+                       data-ga-event-type="click"
+                       data-ga-event-category="right_column_specials_block_teaserspalte"
+                       data-ga-event-label="Angebote&#x20;f&#x00FC;r&#x20;PC-WELT&#x20;Leser_https://www.awin1.com/cread.php?awinmid=11660&amp;awinaffid=486277&amp;clickref=&amp;p=%5B%5Bhttps%3A%2F%2Fwww.bitdefender.com%2Fimages%2FAffiliates%2F2019%2FDE%2FIDG%2Fbitdefender_antivirus.exe%5D%5D"
+                       target="_blank"
+                        rel="nofollow noopener">
+                                                                                <picture>
+                                <source data-srcset="//bilder.pcwelt.de/4269422_120x60.webp" type="image/webp">
+                                <img
+                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                                        data-src="//bilder.pcwelt.de/4269422_120x60.jpg"
+                                        alt="Bitdefender&#x20;Antivirus&#x20;2020"
+                                        title="Bitdefender&#x20;Antivirus&#x20;2020"
+                                        width="120"
+                                        height="60"
+                                        class="lazyload"
+                                />
+                            </picture>
+                                                <div class="text-holder">
+                            <h5>Bitdefender Antivirus 2020</h5>
+                            <p>Hier die Testversion direkt herunterladen.</p>
+                        </div>
+                    </a>
+                </li>
+                    </ul>
+    </div>
+</div>
+
+                                        <div id="sticky-anchor"></div>
+<div data-idg-sizes="[[300,600],[300,250],[1,1]]" id="ad_mpu_affiliate2" class="mpu_affiliate2 ad"></div>
+                                                                            </aside>
+            </div>
+                                                <div class="info-section">
+                                                            </div>
+                                                        <span class="bid_info">2483601</span>
+                        <div class="divider"></div>
+        </div>
+    </div>
+                            <div class="banner outer">
+    <!-- AD: dfp sky --><div data-idg-sizes="[[200,600],[1,1],[120,600],[160,600],[400,600]]" title="Google-Ad (Position: sky)" id="ad_sky" class="idgGoogleAdTag sky ad"></div>
+    <script>
+        // Damit die Werbung nicht springt
+        $( document ).ready(function() {
+            Advertising.initSkyBanner();
+        });
+        // Falls sich der Content durch #ad_leadfull verschiebt, wird nochmal neu positioniert
+        $( window ).load(function() {
+            Advertising.initSkyBanner();
+        });
+    </script>
+</div>
+<footer id="footer">
+                            <div class="panel">
+            <ul id="social">
+                <li>
+                    <div>
+                        <a href="https://www.facebook.com/pcwelt">
+                            <span class="icon-facebook size-50 square-66 background-light color-dark" id="aeaoofnhgocdbnbeljkmbjdmhbcokfdb-mousedown"></span>
+                            <span>Facebook</span>
+                        </a>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <a href="https://www.twitter.com/pcwelt">
+                            <span class="icon-twitter size-50 square-66 background-light color-dark"></span>
+                            <span>Twitter</span>
+                        </a>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <a href="https://www.pcwelt.de/newsletter">
+                            <span class="icon-envelope size-50 square-66 background-light color-dark"></span>
+                            <span>Newsletter</span>
+                        </a>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <a href="//www.pcwelt.de/rss">
+                            <span class="icon-rss size-50 square-66 background-light color-dark"></span>
+                            <span>RSS Feed</span>
+                        </a>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <a href="http://www.pcwelt.de/magazinapp">
+                            <span class="icon-download size-50 square-66 background-light color-dark"></span>
+                            <span>Apps</span>
+                        </a>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <a href="https://www.idgshop.de/pcwelt">
+                            <span class="icon-shopping-cart size-50 square-66 background-light color-dark"></span>
+                            <span>Shop</span>
+                        </a>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <a href="//www.pcwelt.de/kontakt">
+                            <span class="icon-user size-50 square-66 background-light color-dark"></span>
+                            <span>Kontakt</span>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="bar">
+    <div class="columns-holder">
+                    
+            <div class="col">
+    <div class="heading">
+        <div class="header">Service</div>
+        <div class="divider lightblue"></div>
+    </div>
+    <ul>
+                                    <li><a href="//www.pcwelt.de/kontakt">Kontakt</a></li>
+                                                <li><a href="https://www.pcwelt.de/computer-technik/schnappchen-deals">Deals</a></li>
+                                                <li><a href="https://www.idgshop.de/pcwelt-magazin-abo-shop.htm?websale8=idg&amp;ci=pcwelt">PC-WELT Magazine</a></li>
+                                                <li><a href="https://www.idg.de/kontakt/mediadaten/">Mediadaten</a></li>
+                                                <li><a href="http://magazin.pcwelt.de">Zeitschriften-Archiv</a></li>
+                                                <li><a href="//www.pcwelt.de/archiv">News-Archiv</a></li>
+                                                <li><a href="//www.pcwelt.de/syndikation">Syndikation</a></li>
+                                                <li><a href="https://www.pcwelt.de/impressum">Impressum</a></li>
+                                                <li><a href="https://www.pcwelt.de/datenschutz">Datenschutzerklärung</a></li>
+                                                <li><a href="javascript:window._sp_.loadPrivacyManagerModal(165623)">Datenschutzeinstellungen</a></li>
+                                                <li><a href="https://www.idg.de/marketing-services/leadgeneration/">Nutzerbasierte Werbung</a></li>
+                                                <li><a href="https://www.pcwelt.de/cookie-policy">Cookie Policy</a></li>
+                                                <li><a href="https://www.pcwelt.de/ratgeber/Wir-ueber-uns-10541665.html">Über uns</a></li>
+                                                <li><a href="https://www.idg.de/thema/karriere/">Karriere bei IDG</a></li>
+                        </ul>
+</div>
+
+            </div>
+</div>
+
+        <div class="copy">
+        <p>&copy;  IDG Tech Media GmbH - <a href="http://www.interred.de" target="_blank" rel="noopener" title="Content Management by InterRed">Content Management</a> by InterRed</p>
+    </div>
+</footer>
+                        </div>
+        </div>
+                                    <!-- AD: dfp layer --><div data-idg-sizes="[1,1]" title="Google-Ad (Position: layer)" id="ad_layer" class="idgGoogleAdTag layer ad"></div>
+                <div id="loader-modal">
+            <div class="spinner">
+                <div></div>
+            </div>
+        </div>
+        <!-- AD: dfp sovrn --><div data-idg-sizes="[1,1]" title="Google-Ad (Position: sovrn)" id="ad_sovrn" class="idgGoogleAdTag sovrn ad"></div>
+        <script src="/js/adserver_footer.js"></script><script>
+                console.log("#### Checking for __tcfApi before loading outbrain..")
+                __tcfapi("ping", 2, function(pingReturn) {
+                        console.log("###### __tcfapi.ping returned:", pingReturn);  
+                    });
+                console.log("#### Loading outbrain..");
+            </script>
+            </script><script async="async" defer src="https://widgets.outbrain.com/outbrain.js"></script><div class="OUTBRAIN" data-src="https://www.pcwelt.de/news/Coronavirus-Live-Tracker-Muenchen-sagt-Oktoberfest-2020-ab-10744095.html" data-widget-id="TR_1" data-ob-template="PC-Welt.de" ></div><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PVFV5DH" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+                        <script>
+            tp = window["tp"] || [];
+            if (typeof idgStorage.gaData !== 'undefined') {
+                tp.push(["setContentCreated", idgStorage.gaData[5]]);
+                tp.push(["setContentAuthor",  idgStorage.gaData[7]]);
+                tp.push(["setContentSection", idgStorage.gaData[11]]);
+                pianoTags = [idgStorage.gaData[10], idgStorage.gaData[11], idgStorage.gaData[12]];
+                if (idgStorage.rs_tax && idgStorage.rs_tax.length > 0) {
+                    contentTags = idgStorage.rs_tax.split(',');
+                    contentTags = contentTags.map(function(element) {
+                        return element.trim()
+                    });
+                    pianoTags = pianoTags.concat(contentTags);
+                }
+                tp.push(["setTags", pianoTags]);
+                tp.push(["setCustomVariable", "ContentType", idgStorage.gaData[9]]);
+                tp.push(["setCustomVariable", "ContentId", idgStorage.gaData[2]]);
+                tp.push(["setCustomVariable", "ContentTitle", idgStorage.gaData[3]]);
+                tp.push(["setCustomVariable", "RubricPath", idgStorage.gaData[13]]);
+                tp.push(["setCustomVariable", "LoginStatus", idgStorage.gaData[17]]);
+            }
+            if (typeof iam_data !== 'undefined') {
+                tp.push(["setZone", iam_data.st]);
+            }
+            if (idgStorage.adScore1 && idgStorage.adScore2 && typeof idgStorage.adTax !== 'undefined') {
+                tp.push(["setCustomVariable", "Score1", idgStorage.adScore1]);
+                tp.push(["setCustomVariable", "Score2", idgStorage.adScore2]);
+                tp.push(["setCustomVariable", "Tax", idgStorage.adTax]);
+            }
+            if ($.cookie('idg_company')) {
+                tp.push(["setCustomVariable", "Company", $.cookie('idg_company')]);
+            }
+                                                                                var fromNewsletter = false;
+            if (window.location.href.match('utm_medium=email')) {
+                fromNewsletter = true;
+            }
+            tp.push(["setCustomVariable", "fromNewsletter", fromNewsletter]);
+            window.__permutive = window.__permutive || {};
+            window.__permutive.pianoEvents = window.__permutive.pianoEvents || [];
+            window.tp = window.tp || [];
+            var events = ['loginRequired', 'showTemplate', 'showOffer', 'startCheckout', 'checkoutComplete', 'checkoutClose', 'meterActive', 'meterExpired']
+            events.forEach(function (evt) {
+                window.tp.push(['addHandler', evt, function (e) {
+                    window.__permutive.pianoEvents.push({
+                    name: evt,
+                    e: e
+                    })
+                }]);
+            });
+            tp.push(["setCustomVariable", "ArticleStatus", "Free"]);
+            tp.push(["setContentIsNative", false]);
+            tp.push(["setDebug", true]);
+            tp.push(["setUsePianoIdUserProvider", true ]);
+            tp.push(["addHandler", "loginSuccess", function(){
+                $.cookie('user_is_insider', 'true', {expires: 365, path: '/', domain: '.pcwelt.de'});
+                window.setTimeout(function(){window.location.reload()}, 5000);
+            }]);
+
+            (function(src) {
+                var a = document.createElement("script");
+                a.type = "text/javascript";
+                a.async = true;
+                a.src = src;
+                var b = document.getElementsByTagName("script")[0];
+                b.parentNode.insertBefore(a, b)
+            })("//experience.tinypass.com/xbuilder/experience/load?aid=5SXED9fog1");
+        </script>
+                    <!-- Twitter universal website tag code -->
+            <script>
+                !function(e,t,n,s,u,a){e.twq||(s=e.twq=function(){s.exe?s.exe.apply(s,arguments):s.queue.push(arguments);
+                },s.version='1.1',s.queue=[],u=t.createElement(n),u.async=!0,u.src='//static.ads-twitter.com/uwt.js',
+                    a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(u,a))}(window,document,'script');
+                // Insert Twitter Pixel ID and Standard Event data below
+                twq('init','o1jdj');
+                twq('track','PageView');
+            </script>
+            <!-- End Twitter universal website tag code -->
+            <!-- Facebook Pixel Code -->
+            <script>
+                !function(f,b,e,v,n,t,s)
+                {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+                    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+                    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+                    n.queue=[];t=b.createElement(e);t.async=!0;
+                    t.src=v;s=b.getElementsByTagName(e)[0];
+                    s.parentNode.insertBefore(t,s)}(window, document,'script',
+                    'https://connect.facebook.net/en_US/fbevents.js');
+                fbq('init', '609344049218434');
+                fbq('track', 'PageView');
+            </script>
+            <noscript><img height="1" width="1" style="display:none"
+                           src="https://www.facebook.com/tr?id=609344049218434&ev=PageView&noscript=1"
+                /></noscript>
+            <!-- End Facebook Pixel Code -->
+                                                    <script type="text/javascript">
+            var subscribersSiteId = '2da7b387-f066-4c90-9810-a1533c85c8c4';
+        </script>
+        <script type="text/javascript" src="https://cdn.subscribers.com/assets/subscribers.js"></script>
+        <div id="login_holder"></div>
+                                            <script async="async" src="//zdwidget3-bs.sphereup.com/zoomd/SearchUi/Script?clientId=75197923"></script>
+        <style>
+            .field input {
+                outline: none;
+                border: 0px;
+                padding-left: 10px;
+            }
+            .alignright button {
+                background-color: #fff;
+                padding: 0px;
+                position: relative;
+                left: 165px;
+                bottom: 19px;
+                margin-top: -1px;
+            }
+            .alignright button::after {
+                content: url('https://suweb.blob.core.windows.net/content/pc-welt/images/magnifier.png');
+            }
+        </style>
+    </body>
+</html>

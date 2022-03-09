@@ -1,0 +1,841 @@
+
+<!DOCTYPE html>
+<html lang="en-US" class="bg-white antialiased h-full">
+<head>
+<meta charset="UTF-8"><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"NRJS-348f5968cb8f6767d0b",applicationID:"700434721"};window.NREUM||(NREUM={}),__nr_require=function(e,t,n){function r(n){if(!t[n]){var i=t[n]={exports:{}};e[n][0].call(i.exports,function(t){var i=e[n][1][t];return r(i||t)},i,i.exports)}return t[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(e,t,n){function r(){}function i(e,t,n){return function(){return o(e,[u.now()].concat(c(arguments)),t?null:this,n),t?void 0:this}}var o=e("handle"),a=e(7),c=e(8),f=e("ee").get("tracer"),u=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(e,t){s[t]=i(p+t,!0,"api")}),s.addPageAction=i(p+"addPageAction",!0),s.setCurrentRouteName=i(p+"routeName",!0),t.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,t){var n={},r=this,i="function"==typeof t;return o(l+"tracer",[u.now(),e,n],r),function(){if(f.emit((i?"":"no-")+"fn-start",[u.now(),r,i],n),i)try{return t.apply(this,arguments)}catch(e){throw f.emit("fn-err",[arguments,this,e],n),e}finally{f.emit("fn-end",[u.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,t){m[t]=i(l+t)}),newrelic.noticeError=function(e,t){"string"==typeof e&&(e=new Error(e)),o("err",[e,u.now(),!1,t])}},{}],2:[function(e,t,n){function r(){return c.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,c=e(9);t.exports=r,t.exports.offset=a,t.exports.getLastTimestamp=i},{}],3:[function(e,t,n){function r(e){return!(!e||!e.protocol||"file:"===e.protocol)}t.exports=r},{}],4:[function(e,t,n){function r(e,t){var n=e.getEntries();n.forEach(function(e){"first-paint"===e.name?d("timing",["fp",Math.floor(e.startTime)]):"first-contentful-paint"===e.name&&d("timing",["fcp",Math.floor(e.startTime)])})}function i(e,t){var n=e.getEntries();n.length>0&&d("lcp",[n[n.length-1]])}function o(e){e.getEntries().forEach(function(e){e.hadRecentInput||d("cls",[e])})}function a(e){if(e instanceof m&&!g){var t=Math.round(e.timeStamp),n={type:e.type};t<=p.now()?n.fid=p.now()-t:t>p.offset&&t<=Date.now()?(t-=p.offset,n.fid=p.now()-t):t=p.now(),g=!0,d("timing",["fi",t,n])}}function c(e){d("pageHide",[p.now(),e])}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var f,u,s,d=e("handle"),p=e("loader"),l=e(6),m=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){f=new PerformanceObserver(r);try{f.observe({entryTypes:["paint"]})}catch(v){}u=new PerformanceObserver(i);try{u.observe({entryTypes:["largest-contentful-paint"]})}catch(v){}s=new PerformanceObserver(o);try{s.observe({type:"layout-shift",buffered:!0})}catch(v){}}if("addEventListener"in document){var g=!1,w=["click","keydown","mousedown","pointerdown","touchstart"];w.forEach(function(e){document.addEventListener(e,a,!1)})}l(c)}},{}],5:[function(e,t,n){function r(e,t){if(!i)return!1;if(e!==i)return!1;if(!t)return!0;if(!o)return!1;for(var n=o.split("."),r=t.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var c=navigator.userAgent,f=c.match(a);f&&c.indexOf("Chrome")===-1&&c.indexOf("Chromium")===-1&&(i="Safari",o=f[1])}t.exports={agent:i,version:o,match:r}},{}],6:[function(e,t,n){function r(e){function t(){e(a&&document[a]?document[a]:document[i]?"hidden":"visible")}"addEventListener"in document&&o&&document.addEventListener(o,t,!1)}t.exports=r;var i,o,a;"undefined"!=typeof document.hidden?(i="hidden",o="visibilitychange",a="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",o="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",o="webkitvisibilitychange",a="webkitVisibilityState")},{}],7:[function(e,t,n){function r(e,t){var n=[],r="",o=0;for(r in e)i.call(e,r)&&(n[o]=t(r,e[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;t.exports=r},{}],8:[function(e,t,n){function r(e,t,n){t||(t=0),"undefined"==typeof n&&(n=e?e.length:0);for(var r=-1,i=n-t||0,o=Array(i<0?0:i);++r<i;)o[r]=e[t+r];return o}t.exports=r},{}],9:[function(e,t,n){t.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,t,n){function r(){}function i(e){function t(e){return e&&e instanceof r?e:e?u(e,f,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!l.aborted||o){e&&a&&e(n,r,i);for(var c=t(i),f=v(n),u=f.length,s=0;s<u;s++)f[s].apply(c,r);var p=d[h[n]];return p&&p.push([b,n,r,c]),c}}function o(e,t){y[e]=v(e).concat(t)}function m(e,t){var n=y[e];if(n)for(var r=0;r<n.length;r++)n[r]===t&&n.splice(r,1)}function v(e){return y[e]||[]}function g(e){return p[e]=p[e]||i(n)}function w(e,t){s(e,function(e,n){t=t||"feature",h[n]=t,t in d||(d[t]=[])})}var y={},h={},b={on:o,addEventListener:o,removeEventListener:m,emit:n,get:g,listeners:v,context:t,buffer:w,abort:c,aborted:!1};return b}function o(e){return u(e,f,a)}function a(){return new r}function c(){(d.api||d.feature)&&(l.aborted=!0,d=l.backlog={})}var f="nr@context",u=e("gos"),s=e(7),d={},p={},l=t.exports=i();t.exports.getOrSetContext=o,l.backlog=d},{}],gos:[function(e,t,n){function r(e,t,n){if(i.call(e,t))return e[t];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,t,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return e[t]=r,r}var i=Object.prototype.hasOwnProperty;t.exports=r},{}],handle:[function(e,t,n){function r(e,t,n,r){i.buffer([e],r),i.emit(e,t,n)}var i=e("ee").get("handle");t.exports=r,r.ee=i},{}],id:[function(e,t,n){function r(e){var t=typeof e;return!e||"object"!==t&&"function"!==t?-1:e===window?0:a(e,o,function(){return i++})}var i=1,o="nr@id",a=e("gos");t.exports=r},{}],loader:[function(e,t,n){function r(){if(!E++){var e=x.info=NREUM.info,t=l.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&t))return u.abort();f(h,function(t,n){e[t]||(e[t]=n)});var n=a();c("mark",["onload",n+x.offset],null,"api"),c("timing",["load",n]);var r=l.createElement("script");r.src="https://"+e.agent,t.parentNode.insertBefore(r,t)}}function i(){"complete"===l.readyState&&o()}function o(){c("mark",["domContent",a()+x.offset],null,"api")}var a=e(2),c=e("handle"),f=e(7),u=e("ee"),s=e(5),d=e(3),p=window,l=p.document,m="addEventListener",v="attachEvent",g=p.XMLHttpRequest,w=g&&g.prototype;if(d(p.location)){NREUM.o={ST:setTimeout,SI:p.setImmediate,CT:clearTimeout,XHR:g,REQ:p.Request,EV:p.Event,PR:p.Promise,MO:p.MutationObserver};var y=""+location,h={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1208.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),x=t.exports={offset:a.getLastTimestamp(),now:a,origin:y,features:{},xhrWrappable:b,userAgent:s};e(1),e(4),l[m]?(l[m]("DOMContentLoaded",o,!1),p[m]("load",r,!1)):(l[v]("onreadystatechange",i),p[v]("onload",r)),c("mark",["firstbyte",a.getLastTimestamp()],null,"api");var E=0}},{}],"wrap-function":[function(e,t,n){function r(e,t){function n(t,n,r,f,u){function nrWrapper(){var o,a,s,p;try{a=this,o=d(arguments),s="function"==typeof r?r(o,a):r||{}}catch(l){i([l,"",[o,a,f],s],e)}c(n+"start",[o,a,f],s,u);try{return p=t.apply(a,o)}catch(m){throw c(n+"err",[o,a,m],s,u),m}finally{c(n+"end",[o,a,p],s,u)}}return a(t)?t:(n||(n=""),nrWrapper[p]=t,o(t,nrWrapper,e),nrWrapper)}function r(e,t,r,i,o){r||(r="");var c,f,u,s="-"===r.charAt(0);for(u=0;u<t.length;u++)f=t[u],c=e[f],a(c)||(e[f]=n(c,s?f+r:r,i,f,o))}function c(n,r,o,a){if(!m||t){var c=m;m=!0;try{e.emit(n,r,o,t,a)}catch(f){i([f,n,r,o],e)}m=c}}return e||(e=s),n.inPlace=r,n.flag=p,n}function i(e,t){t||(t=s);try{t.emit("internal-error",e)}catch(n){}}function o(e,t,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(e);return r.forEach(function(n){Object.defineProperty(t,n,{get:function(){return e[n]},set:function(t){return e[n]=t,t}})}),t}catch(o){i([o],n)}for(var a in e)l.call(e,a)&&(t[a]=e[a]);return t}function a(e){return!(e&&e instanceof Function&&e.apply&&!e[p])}function c(e,t){var n=t(e);return n[p]=e,o(e,n,s),n}function f(e,t,n){var r=e[t];e[t]=c(r,n)}function u(){for(var e=arguments.length,t=new Array(e),n=0;n<e;++n)t[n]=arguments[n];return t}var s=e("ee"),d=e(8),p="nr@original",l=Object.prototype.hasOwnProperty,m=!1;t.exports=r,t.exports.wrapFunction=c,t.exports.wrapInPlace=f,t.exports.argsToArray=u},{}]},{},["loader"]);</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style type="text/css">			.heateorSssInstagramBackground{background:radial-gradient(circle at 30% 107%,#fdf497 0,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285aeb 90%)}
+											.heateor_sss_horizontal_sharing .heateorSssSharing,.heateor_sss_standard_follow_icons_container .heateorSssSharing{
+							color: #fff;
+						border-width: 0px;
+			border-style: solid;
+			border-color: transparent;
+		}
+				.heateor_sss_horizontal_sharing .heateorSssTCBackground{
+			color:#666;
+		}
+				.heateor_sss_horizontal_sharing .heateorSssSharing:hover,.heateor_sss_standard_follow_icons_container .heateorSssSharing:hover{
+						border-color: transparent;
+		}
+		.heateor_sss_vertical_sharing .heateorSssSharing,.heateor_sss_floating_follow_icons_container .heateorSssSharing{
+							color: #fff;
+						border-width: 0px;
+			border-style: solid;
+			border-color: transparent;
+		}
+				.heateor_sss_vertical_sharing .heateorSssTCBackground{
+			color:#666;
+		}
+				.heateor_sss_vertical_sharing .heateorSssSharing:hover,.heateor_sss_floating_follow_icons_container .heateorSssSharing:hover{
+						border-color: transparent;
+		}
+		
+		@media screen and (max-width:783px) {.heateor_sss_vertical_sharing{display:none!important}}@media screen and (max-width:783px) {.heateor_sss_floating_follow_icons_container{display:none!important}}</style><meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+
+<title>Senate Constructs $500 Billion State Bailout to Fund Coronavirus Lock Down - Irony: Taxpayers Pay for Their Confinement... - The Last Refuge</title>
+<link rel="canonical" href="https://theconservativetreehouse.com/2020/04/20/senate-constructs-500-billion-state-bailout-to-fund-coronavirus-lock-down-irony-taxpayers-pay-for-their-confinement/" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Senate Constructs $500 Billion State Bailout to Fund Coronavirus Lock Down - Irony: Taxpayers Pay for Their Confinement... - The Last Refuge" />
+<meta property="og:description" content="Comrades, senators within the United States government have proposed a terrific scheme to force taxpayers to fund their own confinement.   According to the plan $500 billion will be provided to state and local officials in an effort to offset lost revenue as a result of keeping citizens under house arrest.  Under the remarkable plan, taxpayers [&hellip;]" />
+<meta property="og:url" content="https://theconservativetreehouse.com/2020/04/20/senate-constructs-500-billion-state-bailout-to-fund-coronavirus-lock-down-irony-taxpayers-pay-for-their-confinement/" />
+<meta property="og:site_name" content="The Last Refuge" />
+<meta property="article:published_time" content="2020-04-20T20:02:17+00:00" />
+<meta property="og:image" content="https://theconservativetreehouse.files.wordpress.com/2016/08/gadsden-flag-2.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:label1" content="Written by">
+<meta name="twitter:data1" content="Sundance">
+<meta name="twitter:label2" content="Est. reading time">
+<meta name="twitter:data2" content="1 minute">
+<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://theconservativetreehouse.com/#website","url":"https://theconservativetreehouse.com/","name":"The Last Refuge","description":"Rag Tag Bunch of Conservative Misfits - Contact Info:  TheLastRefuge@reagan.com","potentialAction":[{"@type":"SearchAction","target":"https://theconservativetreehouse.com/?s={search_term_string}","query-input":"required name=search_term_string"}],"inLanguage":"en-US"},{"@type":"ImageObject","@id":"https://theconservativetreehouse.com/2020/04/20/senate-constructs-500-billion-state-bailout-to-fund-coronavirus-lock-down-irony-taxpayers-pay-for-their-confinement/#primaryimage","inLanguage":"en-US","url":"https://theconservativetreehouse.files.wordpress.com/2016/08/gadsden-flag-2.jpg"},{"@type":"WebPage","@id":"https://theconservativetreehouse.com/2020/04/20/senate-constructs-500-billion-state-bailout-to-fund-coronavirus-lock-down-irony-taxpayers-pay-for-their-confinement/#webpage","url":"https://theconservativetreehouse.com/2020/04/20/senate-constructs-500-billion-state-bailout-to-fund-coronavirus-lock-down-irony-taxpayers-pay-for-their-confinement/","name":"Senate Constructs $500 Billion State Bailout to Fund Coronavirus Lock Down - Irony: Taxpayers Pay for Their Confinement... - The Last Refuge","isPartOf":{"@id":"https://theconservativetreehouse.com/#website"},"primaryImageOfPage":{"@id":"https://theconservativetreehouse.com/2020/04/20/senate-constructs-500-billion-state-bailout-to-fund-coronavirus-lock-down-irony-taxpayers-pay-for-their-confinement/#primaryimage"},"datePublished":"2020-04-20T20:02:17+00:00","dateModified":"2020-04-20T20:02:17+00:00","author":{"@id":"https://theconservativetreehouse.com/#/schema/person/81dcd1a826a0b6b6ce6c4d429f70d761"},"breadcrumb":{"@id":"https://theconservativetreehouse.com/2020/04/20/senate-constructs-500-billion-state-bailout-to-fund-coronavirus-lock-down-irony-taxpayers-pay-for-their-confinement/#breadcrumb"},"inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https://theconservativetreehouse.com/2020/04/20/senate-constructs-500-billion-state-bailout-to-fund-coronavirus-lock-down-irony-taxpayers-pay-for-their-confinement/"]}]},{"@type":"BreadcrumbList","@id":"https://theconservativetreehouse.com/2020/04/20/senate-constructs-500-billion-state-bailout-to-fund-coronavirus-lock-down-irony-taxpayers-pay-for-their-confinement/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"WebPage","@id":"https://theconservativetreehouse.com/","url":"https://theconservativetreehouse.com/","name":"Home"}},{"@type":"ListItem","position":2,"item":{"@type":"WebPage","@id":"https://theconservativetreehouse.com/2020/04/20/senate-constructs-500-billion-state-bailout-to-fund-coronavirus-lock-down-irony-taxpayers-pay-for-their-confinement/","url":"https://theconservativetreehouse.com/2020/04/20/senate-constructs-500-billion-state-bailout-to-fund-coronavirus-lock-down-irony-taxpayers-pay-for-their-confinement/","name":"Senate Constructs $500 Billion State Bailout to Fund Coronavirus Lock Down &#8211; Irony: Taxpayers Pay for Their Confinement&#8230;"}}]},{"@type":"Person","@id":"https://theconservativetreehouse.com/#/schema/person/81dcd1a826a0b6b6ce6c4d429f70d761","name":"Sundance","image":{"@type":"ImageObject","@id":"https://theconservativetreehouse.com/#personlogo","inLanguage":"en-US","url":"https://secure.gravatar.com/avatar/ebe94b97b124a5f2dab135adc2d5f8b9?s=96&r=g","caption":"Sundance"},"sameAs":["https://theconservativetreehouse.com"]}]}</script>
+
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="The Last Refuge &raquo; Feed" href="https://theconservativetreehouse.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="The Last Refuge &raquo; Comments Feed" href="https://theconservativetreehouse.com/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="The Last Refuge &raquo; Senate Constructs $500 Billion State Bailout to Fund Coronavirus Lock Down &#8211; Irony: Taxpayers Pay for Their Confinement&#8230; Comments Feed" href="https://theconservativetreehouse.com/2020/04/20/senate-constructs-500-billion-state-bailout-to-fund-coronavirus-lock-down-irony-taxpayers-pay-for-their-confinement/feed/" />
+
+<script src="//www.googletagmanager.com/gtag/js?id=UA-184124865-1" type="text/javascript" data-cfasync="false"></script>
+<script type="text/javascript" data-cfasync="false">
+				var mi_version = '7.16.2';
+				var mi_track_user = true;
+				var mi_no_track_reason = '';
+				
+								var disableStr = 'ga-disable-UA-184124865-1';
+
+				/* Function to detect opted out users */
+				function __gtagTrackerIsOptedOut() {
+					return document.cookie.indexOf( disableStr + '=true' ) > - 1;
+				}
+
+				/* Disable tracking if the opt-out cookie exists. */
+				if ( __gtagTrackerIsOptedOut() ) {
+					window[disableStr] = true;
+				}
+
+				/* Opt-out function */
+				function __gtagTrackerOptout() {
+					document.cookie = disableStr + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
+					window[disableStr] = true;
+				}
+
+				if ( 'undefined' === typeof gaOptout ) {
+					function gaOptout() {
+						__gtagTrackerOptout();
+					}
+				}
+								window.dataLayer = window.dataLayer || [];
+				if ( mi_track_user ) {
+					function __gtagTracker() {dataLayer.push( arguments );}
+					__gtagTracker( 'js', new Date() );
+					__gtagTracker( 'set', {
+						'developer_id.dZGIzZG' : true,
+						                    });
+					__gtagTracker( 'config', 'UA-184124865-1', {
+						forceSSL:true,link_attribution:true,					} );
+										window.gtag = __gtagTracker;										(
+						function () {
+							/* https://developers.google.com/analytics/devguides/collection/analyticsjs/ */
+							/* ga and __gaTracker compatibility shim. */
+							var noopfn = function () {
+								return null;
+							};
+							var newtracker = function () {
+								return new Tracker();
+							};
+							var Tracker = function () {
+								return null;
+							};
+							var p = Tracker.prototype;
+							p.get = noopfn;
+							p.set = noopfn;
+							p.send = function (){
+								var args = Array.prototype.slice.call(arguments);
+								args.unshift( 'send' );
+								__gaTracker.apply(null, args);
+							};
+							var __gaTracker = function () {
+								var len = arguments.length;
+								if ( len === 0 ) {
+									return;
+								}
+								var f = arguments[len - 1];
+								if ( typeof f !== 'object' || f === null || typeof f.hitCallback !== 'function' ) {
+									if ( 'send' === arguments[0] ) {
+										var hitConverted, hitObject = false, action;
+										if ( 'event' === arguments[1] ) {
+											if ( 'undefined' !== typeof arguments[3] ) {
+												hitObject = {
+													'eventAction': arguments[3],
+													'eventCategory': arguments[2],
+													'eventLabel': arguments[4],
+													'value': arguments[5] ? arguments[5] : 1,
+												}
+											}
+										}
+										if ( typeof arguments[2] === 'object' ) {
+											hitObject = arguments[2];
+										}
+										if ( 'undefined' !== typeof (
+											arguments[1].hitType
+										) ) {
+											hitObject = arguments[1];
+										}
+										if ( hitObject ) {
+											action = 'timing' === arguments[1].hitType ? 'timing_complete' : hitObject.eventAction;
+											hitConverted = mapArgs( hitObject );
+											__gtagTracker( 'event', action, hitConverted );
+										}
+									}
+									return;
+								}
+
+								function mapArgs( args ) {
+									var gaKey, hit = {};
+									var gaMap = {
+										'eventCategory': 'event_category',
+										'eventAction': 'event_action',
+										'eventLabel': 'event_label',
+										'eventValue': 'event_value',
+										'nonInteraction': 'non_interaction',
+										'timingCategory': 'event_category',
+										'timingVar': 'name',
+										'timingValue': 'value',
+										'timingLabel': 'event_label',
+									};
+									for ( gaKey in gaMap ) {
+										if ( 'undefined' !== typeof args[gaKey] ) {
+											hit[gaMap[gaKey]] = args[gaKey];
+										}
+									}
+									return hit;
+								}
+
+								try {
+									f.hitCallback();
+								} catch ( ex ) {
+								}
+							};
+							__gaTracker.create = newtracker;
+							__gaTracker.getByName = newtracker;
+							__gaTracker.getAll = function () {
+								return [];
+							};
+							__gaTracker.remove = noopfn;
+							__gaTracker.loaded = true;
+							window['__gaTracker'] = __gaTracker;
+						}
+					)();
+									} else {
+										console.log( "" );
+					( function () {
+							function __gtagTracker() {
+								return null;
+							}
+							window['__gtagTracker'] = __gtagTracker;
+							window['gtag'] = __gtagTracker;
+					} )();
+									}
+			</script>
+
+<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.0.1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.0.1\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/theconservativetreehouse.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.7"}};
+			!function(e,a,t){var n,r,o,i=a.createElement("canvas"),p=i.getContext&&i.getContext("2d");function s(e,t){var a=String.fromCharCode;p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,e),0,0);e=i.toDataURL();return p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,t),0,0),e===i.toDataURL()}function c(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(o=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},r=0;r<o.length;r++)t.supports[o[r]]=function(e){if(!p||!p.fillText)return!1;switch(p.textBaseline="top",p.font="600 32px Arial",e){case"flag":return s([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])?!1:!s([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!s([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]);case"emoji":return!s([55357,56424,8205,55356,57212],[55357,56424,8203,55356,57212])}return!1}(o[r]),t.supports.everything=t.supports.everything&&t.supports[o[r]],"flag"!==o[r]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[o[r]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(n=t.source||{}).concatemoji?c(n.concatemoji):n.wpemoji&&n.twemoji&&(c(n.twemoji),c(n.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='wp-block-library-css' href='https://theconservativetreehouse.com/wp-includes/css/dist/block-library/style.min.css?ver=5.7' type='text/css' media='all' />
+<link rel='stylesheet' id='wpdiscuz-frontend-minimal-css-css' href='https://theconservativetreehouse.com/wp-content/plugins/wpdiscuz/themes/default/style-minimal.css?ver=7.1.5' type='text/css' media='all' />
+<style id='wpdiscuz-frontend-minimal-css-inline-css' type='text/css'>
+ #wpdcom .ql-snow .ql-tooltip[data-mode="link"]::before{content:"Enter link:"}#wpdcom .ql-snow .ql-tooltip.ql-editing a.ql-action::after{content:"Save"}#wpcomm .vote-head, .vote-head-right,.wv-vote-content{background-color:#FAFAFA;border-color:#AAAAAA!important;color:#666666;font-size:13px}#wpcomm .wv-head .vote-arrow,#wpcomm .wv-head-right .vote-arrow{border-bottom:10px solid #AAAAAA}#wpcomm .wv-head .vote-arrow-no-border,#wpcomm .wv-head-right .vote-arrow-no-border{border-bottom-color:#FAFAFA}.vote-head a:hover,.wv-vote-content a:hover,.wv-view-all-button:hover{color:#3d4d57 !important}
+</style>
+<link rel='stylesheet' id='wpdiscuz-fa-css' href='https://theconservativetreehouse.com/wp-content/plugins/wpdiscuz/assets/third-party/font-awesome-5.13.0/css/fa.min.css?ver=7.1.5' type='text/css' media='all' />
+<link rel='stylesheet' id='wpdiscuz-combo-css-css' href='https://theconservativetreehouse.com/wp-content/plugins/wpdiscuz/assets/css/wpdiscuz-combo.min.css?ver=5.7' type='text/css' media='all' />
+<link rel='stylesheet' id='wpdiscuz-flag-css-css' href='https://theconservativetreehouse.com/wp-content/plugins/wpdiscuz-report-flagging/assets/css/flag.min.css?ver=7.0.5' type='text/css' media='all' />
+<link rel='stylesheet' id='wpdiscuz-voters-style-css' href='https://theconservativetreehouse.com/wp-content/plugins/wpdiscuz-advanced-likers/assets/css/wv.min.css?ver=7.0.4' type='text/css' media='all' />
+<link rel='stylesheet' id='ye_dynamic-css' href='https://theconservativetreehouse.com/wp-content/plugins/youtube-embed/css/main.min.css?ver=5.2' type='text/css' media='all' />
+<link rel='stylesheet' id='monsterinsights-popular-posts-style-css' href='https://theconservativetreehouse.com/wp-content/plugins/google-analytics-premium/assets/css/frontend.min.css?ver=7.16.2' type='text/css' media='all' />
+<link rel='stylesheet' id='google-font-css' href='https://fonts.googleapis.com/css2?family=Merriweather%3Aital%2Cwght%400%2C400%3B0%2C700%3B1%2C400%3B1%2C700&#038;display=swap&#038;ver=0.13' type='text/css' media='all' />
+<link rel='stylesheet' id='heateor_sss_frontend_css-css' href='https://theconservativetreehouse.com/wp-content/plugins/sassy-social-share/public/css/sassy-social-share-public.css?ver=3.3.20' type='text/css' media='all' />
+<link rel='stylesheet' id='heateor_sss_sharing_default_svg-css' href='https://theconservativetreehouse.com/wp-content/plugins/sassy-social-share/admin/css/sassy-social-share-svg.css?ver=3.3.20' type='text/css' media='all' />
+<script type='text/javascript' id='monsterinsights-frontend-script-js-extra'>
+/* <![CDATA[ */
+var monsterinsights_frontend = {"js_events_tracking":"true","download_extensions":"doc,pdf,ppt,zip,xls,docx,pptx,xlsx","inbound_paths":"[{\"path\":\"\\\/go\\\/\",\"label\":\"affiliate\"},{\"path\":\"\\\/recommend\\\/\",\"label\":\"affiliate\"}]","home_url":"https:\/\/theconservativetreehouse.com","hash_tracking":"false","ua":"UA-184124865-1"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://theconservativetreehouse.com/wp-content/plugins/google-analytics-premium/assets/js/frontend-gtag.min.js?ver=7.16.2' id='monsterinsights-frontend-script-js'></script>
+<script type='text/javascript' src='https://theconservativetreehouse.com/wp-includes/js/jquery/jquery.min.js?ver=3.5.1' id='jquery-core-js'></script>
+<script type='text/javascript' src='https://theconservativetreehouse.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.3.2' id='jquery-migrate-js'></script>
+<script async type='text/javascript' src='https://theconservativetreehouse.com/wp-content/themes/cth-2/dist/lazysizes.js?ver=0.13' id='lazysizes-js'></script>
+<link rel="https://api.w.org/" href="https://theconservativetreehouse.com/wp-json/" /><link rel="alternate" type="application/json" href="https://theconservativetreehouse.com/wp-json/wp/v2/posts/189588" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://theconservativetreehouse.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://theconservativetreehouse.com/wp-includes/wlwmanifest.xml" />
+<meta name="generator" content="WordPress 5.7" />
+<link rel='shortlink' href='https://theconservativetreehouse.com/?p=189588' />
+<link rel="alternate" type="application/json+oembed" href="https://theconservativetreehouse.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Ftheconservativetreehouse.com%2F2020%2F04%2F20%2Fsenate-constructs-500-billion-state-bailout-to-fund-coronavirus-lock-down-irony-taxpayers-pay-for-their-confinement%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://theconservativetreehouse.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Ftheconservativetreehouse.com%2F2020%2F04%2F20%2Fsenate-constructs-500-billion-state-bailout-to-fund-coronavirus-lock-down-irony-taxpayers-pay-for-their-confinement%2F&#038;format=xml" />
+<style>/*! modern-normalize v1.0.0 | MIT License | https://github.com/sindresorhus/modern-normalize */:root{-moz-tab-size:4;-o-tab-size:4;tab-size:4}html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji}hr{height:0;color:inherit}abbr[title]{-webkit-text-decoration:underline dotted;text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace,SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}button,select{text-transform:none}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button}::-moz-focus-inner{border-style:none;padding:0}:-moz-focusring{outline:1px dotted ButtonText}:-moz-ui-invalid{box-shadow:none}legend{padding:0}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}button{background-color:transparent;background-image:none}button:focus{outline:1px dotted;outline:5px auto -webkit-focus-ring-color}fieldset,ol,ul{margin:0;padding:0}ol,ul{list-style:none}html{font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;line-height:1.5}body{font-family:inherit;line-height:inherit}*,:after,:before{box-sizing:border-box;border:0 solid #e5e7eb}hr{border-top-width:1px}img{border-style:solid}textarea{resize:vertical}input::-moz-placeholder,textarea::-moz-placeholder{color:#9ca3af}input:-ms-input-placeholder,textarea:-ms-input-placeholder{color:#9ca3af}input::placeholder,textarea::placeholder{color:#9ca3af}[role=button],button{cursor:pointer}table{border-collapse:collapse}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}button,input,optgroup,select,textarea{padding:0;line-height:inherit;color:inherit}code,kbd,pre,samp{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[multiple],[type=date],[type=datetime-local],[type=email],[type=month],[type=number],[type=password],[type=search],[type=tel],[type=text],[type=time],[type=url],[type=week],select,textarea{-webkit-appearance:none;-moz-appearance:none;appearance:none;background-color:#fff;border-color:#6b7280;border-width:1px;border-radius:0;padding:.5rem .75rem;font-size:1rem;line-height:1.5rem}[multiple]:focus,[type=date]:focus,[type=datetime-local]:focus,[type=email]:focus,[type=month]:focus,[type=number]:focus,[type=password]:focus,[type=search]:focus,[type=tel]:focus,[type=text]:focus,[type=time]:focus,[type=url]:focus,[type=week]:focus,select:focus,textarea:focus{outline:2px solid transparent;outline-offset:2px;--tw-ring-inset:var(--tw-empty,/*!*/ /*!*/);--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:#2563eb;--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow,0 0 transparent);border-color:#2563eb}input::-moz-placeholder,textarea::-moz-placeholder{color:#6b7280;opacity:1}input:-ms-input-placeholder,textarea:-ms-input-placeholder{color:#6b7280;opacity:1}input::placeholder,textarea::placeholder{color:#6b7280;opacity:1}::-webkit-datetime-edit-fields-wrapper{padding:0}::-webkit-date-and-time-value{min-height:1.5em}select{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E");background-position:right .5rem center;background-repeat:no-repeat;background-size:1.5em 1.5em;padding-right:2.5rem;-webkit-print-color-adjust:exact;color-adjust:exact}[multiple]{background-image:none;background-position:0 0;background-repeat:unset;background-size:initial;padding-right:.75rem;-webkit-print-color-adjust:unset;color-adjust:unset}[type=checkbox],[type=radio]{-webkit-appearance:none;-moz-appearance:none;appearance:none;padding:0;-webkit-print-color-adjust:exact;color-adjust:exact;display:inline-block;vertical-align:middle;background-origin:border-box;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;flex-shrink:0;height:1rem;width:1rem;color:#2563eb;background-color:#fff;border-color:#6b7280;border-width:1px}[type=checkbox]{border-radius:0}[type=radio]{border-radius:100%}[type=checkbox]:focus,[type=radio]:focus{outline:2px solid transparent;outline-offset:2px;--tw-ring-inset:var(--tw-empty,/*!*/ /*!*/);--tw-ring-offset-width:2px;--tw-ring-offset-color:#fff;--tw-ring-color:#2563eb;--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow,0 0 transparent)}[type=checkbox]:checked,[type=radio]:checked{border-color:transparent;background-color:currentColor;background-size:100% 100%;background-position:50%;background-repeat:no-repeat}[type=checkbox]:checked{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg viewBox='0 0 16 16' fill='%23fff' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3E%3C/svg%3E")}[type=radio]:checked{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg viewBox='0 0 16 16' fill='%23fff' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='8' cy='8' r='3'/%3E%3C/svg%3E")}[type=checkbox]:checked:focus,[type=checkbox]:checked:hover,[type=radio]:checked:focus,[type=radio]:checked:hover{border-color:transparent;background-color:currentColor}[type=checkbox]:indeterminate{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 16 16'%3E%3Cpath stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4 8h8'/%3E%3C/svg%3E");border-color:transparent;background-color:currentColor;background-size:100% 100%;background-position:50%;background-repeat:no-repeat}[type=checkbox]:indeterminate:focus,[type=checkbox]:indeterminate:hover{border-color:transparent;background-color:currentColor}[type=file]{background:unset;border-color:inherit;border-width:0;border-radius:0;padding:0;font-size:unset;line-height:inherit}[type=file]:focus{outline:1px auto -webkit-focus-ring-color}a{--tw-text-opacity:1;color:rgba(0,0,0,var(--tw-text-opacity));text-decoration:none}h1,h2,h3,h4,h5,h6{font-weight:700;margin-bottom:1.5rem}h1{font-size:2.25rem;line-height:2.5rem}@media (min-width:1024px){h1{font-size:1.875rem;line-height:2.25rem}}h2{font-size:1.875rem;line-height:2.25rem}@media (min-width:1024px){h2{font-size:1.5rem;line-height:2rem}}h3{font-size:1.5rem;line-height:2rem}@media (min-width:1024px){h3{font-size:1.25rem;line-height:1.75rem}}h4,h5,h6{font-size:1.25rem;line-height:1.75rem}@media (min-width:1024px){h4,h5,h6{font-size:1.125rem;line-height:1.75rem}}ul{list-style-type:disc}ol,ul{padding-left:1rem}ol{list-style-type:decimal}.list-none{padding-left:0}.container{width:100%;margin-right:auto;margin-left:auto;padding-right:1rem;padding-left:1rem}@media (min-width:1200px){.container{max-width:1200px}}.btn{border-radius:.25rem;font-weight:700;padding:.5rem 1rem}.btn-blue{--tw-bg-opacity:1;background-color:rgba(59,130,246,var(--tw-bg-opacity));--tw-text-opacity:1;color:rgba(255,255,255,var(--tw-text-opacity))}.btn-blue:hover{--tw-bg-opacity:1;background-color:rgba(29,78,216,var(--tw-bg-opacity))}.btn-gray{--tw-bg-opacity:1;background-color:rgba(156,163,175,var(--tw-bg-opacity));--tw-text-opacity:1;color:rgba(31,41,55,var(--tw-text-opacity))}.btn-gray:hover{--tw-bg-opacity:1;background-color:rgba(107,114,128,var(--tw-bg-opacity))}#menu-main-menu li a:hover{--tw-bg-opacity:1;background-color:rgba(255,255,255,var(--tw-bg-opacity))}#menu-main-menu li a{display:inline-block;font-weight:700;padding:1rem .75rem;--tw-text-opacity:1;color:rgba(255,255,255,var(--tw-text-opacity))}#menu-main-menu li a:hover{--tw-text-opacity:1;color:rgba(61,77,87,var(--tw-text-opacity))}#menu-main-menu li a{text-transform:uppercase}#drawer a{display:inline-block;padding-top:.75rem;padding-bottom:.75rem;--tw-text-opacity:1;color:rgba(255,255,255,var(--tw-text-opacity))}#content{grid-template-columns:1fr 300px}#sidebar .widget-container{font-family:Merriweather,ui-serif,Georgia,Cambria,Times New Roman,Times,serif;font-size:.875rem;line-height:1.25rem;margin-top:1.5rem;margin-bottom:1.5rem}#sidebar .widget-container .widget-title{--tw-bg-opacity:1;background-color:rgba(255,255,255,var(--tw-bg-opacity));display:flex;align-items:center;justify-content:center;font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;font-weight:700;font-size:.875rem;line-height:1.25rem;margin-bottom:1rem;margin-top:3rem;text-align:center;--tw-text-opacity:1;color:rgba(0,0,0,var(--tw-text-opacity));text-transform:uppercase;width:100%}#sidebar .widget-container .widget-title:after,#sidebar .widget-container .widget-title:before{content:"";border-top:.5px solid;margin:0 10px 0 0;flex:1 0 10px}#sidebar .widget-container .widget-title:after{margin:0 0 0 10px}#sidebar .widget-container:first-child{margin-top:0}#sidebar .widget-container ul{padding-left:0;list-style-type:none}#sidebar .widget-container ul li{margin-top:.75rem;margin-bottom:.75rem}#sidebar .widget-container ul li:first-child{margin-top:0}#sidebar .widget-container a{--tw-text-opacity:1;color:rgba(86,23,29,var(--tw-text-opacity));text-decoration:underline}#sidebar .widget_media_image img{margin-left:auto;margin-right:auto}.bg-white{--tw-bg-opacity:1;background-color:rgba(255,255,255,var(--tw-bg-opacity))}.bg-cth-red{--tw-bg-opacity:1;background-color:rgba(86,23,29,var(--tw-bg-opacity))}.bg-cth-blue{--tw-bg-opacity:1;background-color:rgba(61,77,87,var(--tw-bg-opacity))}.border-gray-300{--tw-border-opacity:1;border-color:rgba(209,213,219,var(--tw-border-opacity))}.border{border-width:1px}.border-b{border-bottom-width:1px}.block{display:block}.flex{display:flex}.table{display:table}.hidden{display:none}.flex-row{flex-direction:row}.flex-col{flex-direction:column}.items-center{align-items:center}.justify-end{justify-content:flex-end}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.flex-grow{flex-grow:1}.clear-both{clear:both}.font-sans{font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji}.font-serif{font-family:Merriweather,ui-serif,Georgia,Cambria,Times New Roman,Times,serif}.font-normal{font-weight:400}.font-bold{font-weight:700}.h-auto{height:auto}.h-full{height:100%}.text-xs{font-size:.75rem;line-height:1rem}.text-sm{font-size:.875rem;line-height:1.25rem}.text-base{font-size:1rem;line-height:1.5rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.leading-none{line-height:1}.leading-tight{line-height:1.25}.leading-normal{line-height:1.5}.list-none{list-style-type:none}.my-0{margin-top:0;margin-bottom:0}.my-2{margin-top:.5rem;margin-bottom:.5rem}.mx-8{margin-left:2rem;margin-right:2rem}.my-auto{margin-top:auto;margin-bottom:auto}.mb-0{margin-bottom:0}.mt-1{margin-top:.25rem}.ml-1{margin-left:.25rem}.mr-2{margin-right:.5rem}.mb-2{margin-bottom:.5rem}.mb-4{margin-bottom:1rem}.ml-4{margin-left:1rem}.min-h-screen{min-height:100vh}.overflow-hidden{overflow:hidden}.py-0{padding-top:0;padding-bottom:0}.px-0{padding-left:0;padding-right:0}.py-2{padding-top:.5rem;padding-bottom:.5rem}.py-4{padding-top:1rem;padding-bottom:1rem}.px-4{padding-left:1rem;padding-right:1rem}.py-6{padding-top:1.5rem;padding-bottom:1.5rem}.py-8{padding-top:2rem;padding-bottom:2rem}.px-8{padding-left:2rem;padding-right:2rem}.pb-2{padding-bottom:.5rem}.pt-4{padding-top:1rem}.pr-10{padding-right:2.5rem}.placeholder-gray-800::-moz-placeholder{--tw-placeholder-opacity:1;color:rgba(31,41,55,var(--tw-placeholder-opacity))}.placeholder-gray-800:-ms-input-placeholder{--tw-placeholder-opacity:1;color:rgba(31,41,55,var(--tw-placeholder-opacity))}.placeholder-gray-800::placeholder{--tw-placeholder-opacity:1;color:rgba(31,41,55,var(--tw-placeholder-opacity))}.static{position:static}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.top-0{top:0}.right-0{right:0}.top-4{top:1rem}.right-4{right:1rem}*{--tw-shadow:0 0 transparent;--tw-ring-inset:var(--tw-empty,/*!*/ /*!*/);--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,0.5);--tw-ring-offset-shadow:0 0 transparent;--tw-ring-shadow:0 0 transparent}.text-center{text-align:center}.text-black{--tw-text-opacity:1;color:rgba(0,0,0,var(--tw-text-opacity))}.text-white{--tw-text-opacity:1;color:rgba(255,255,255,var(--tw-text-opacity))}.text-cth-red{--tw-text-opacity:1;color:rgba(86,23,29,var(--tw-text-opacity))}.text-cth-blue{--tw-text-opacity:1;color:rgba(61,77,87,var(--tw-text-opacity))}.underline{text-decoration:underline}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.w-full{width:100%}.z-10{z-index:10}.transform{--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;transform:translateX(var(--tw-translate-x)) translateY(var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.-translate-y-1\/2{--tw-translate-y:-50%}.transition{transition-property:background-color,border-color,color,fill,stroke,opacity,box-shadow,transform;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}@-webkit-keyframes spin{to{transform:rotate(1turn)}}@keyframes spin{to{transform:rotate(1turn)}}@-webkit-keyframes ping{75%,to{transform:scale(2);opacity:0}}@keyframes ping{75%,to{transform:scale(2);opacity:0}}@-webkit-keyframes pulse{50%{opacity:.5}}@keyframes pulse{50%{opacity:.5}}@-webkit-keyframes bounce{0%,to{transform:translateY(-25%);-webkit-animation-timing-function:cubic-bezier(.8,0,1,1);animation-timing-function:cubic-bezier(.8,0,1,1)}50%{transform:none;-webkit-animation-timing-function:cubic-bezier(0,0,.2,1);animation-timing-function:cubic-bezier(0,0,.2,1)}}@keyframes bounce{0%,to{transform:translateY(-25%);-webkit-animation-timing-function:cubic-bezier(.8,0,1,1);animation-timing-function:cubic-bezier(.8,0,1,1)}50%{transform:none;-webkit-animation-timing-function:cubic-bezier(0,0,.2,1);animation-timing-function:cubic-bezier(0,0,.2,1)}}.responsive-embed{position:relative;height:0;padding-bottom:56.25%}.responsive-embed iframe{height:100%;position:absolute;top:0;left:0;width:100%}.entry-content p,.post-content p,.post-meta p{margin-bottom:1.5rem}.entry-content h2,.entry-content h3,.entry-content h4,.entry-content h5,.entry-content h6,.post-content h2,.post-content h3,.post-content h4,.post-content h5,.post-content h6,.post-meta h2,.post-meta h3,.post-meta h4,.post-meta h5,.post-meta h6{font-weight:400}.entry-content h3,.entry-content h4,.entry-content h5,.entry-content h6,.post-content h3,.post-content h4,.post-content h5,.post-content h6,.post-meta h3,.post-meta h4,.post-meta h5,.post-meta h6{font-size:1.125rem;line-height:1.75rem}.entry-content a,.post-content a,.post-meta a{--tw-text-opacity:1;color:rgba(86,23,29,var(--tw-text-opacity));text-decoration:underline}.entry-content img,.post-content img,.post-meta img{display:inline-block}.entry-content p:first-child,.post-content p:first-child,.post-meta p:first-child{margin-top:0}.entry-content p ul,.post-content p ul,.post-meta p ul{padding-left:1rem;margin-bottom:1rem}.entry-content p ul li,.post-content p ul li,.post-meta p ul li{list-style:disc;margin-left:1.5rem}.entry-content .wp-caption,.post-content .wp-caption,.post-meta .wp-caption{margin-top:.25rem}.entry-content .wp-caption .wp-caption-text,.post-content .wp-caption .wp-caption-text,.post-meta .wp-caption .wp-caption-text{font-size:.875rem;line-height:1.25rem}.entry-content .aligncenter,.post-content .aligncenter,.post-meta .aligncenter{display:block;margin-bottom:1.5rem}@media (min-width:1024px){.entry-content .aligncenter,.post-content .aligncenter,.post-meta .aligncenter{margin-left:auto;margin-right:auto;margin-bottom:.5rem}}.entry-content .alignleft,.post-content .alignleft,.post-meta .alignleft{display:block;margin-bottom:1.5rem}@media (min-width:1024px){.entry-content .alignleft,.post-content .alignleft,.post-meta .alignleft{display:inline-block;float:left;margin-bottom:.5rem;margin-right:1.5rem}}.entry-content .alignright,.post-content .alignright,.post-meta .alignright{display:block;margin-bottom:1.5rem}@media (min-width:1024px){.entry-content .alignright,.post-content .alignright,.post-meta .alignright{display:inline-block;float:right;margin-bottom:.5rem;margin-left:1.5rem}}.page-numbers{padding-left:1rem;padding-right:1rem}.page-numbers.current{font-weight:700}.post-archive{--tw-border-opacity:1;border-color:rgba(0,0,0,var(--tw-border-opacity));border-top-width:1px}.post-archive:first-child{border-width:0}article p{font-family:Merriweather,ui-serif,Georgia,Cambria,Times New Roman,Times,serif;margin-bottom:1rem}#wpdcom .wpd-comment-text{--tw-text-opacity:1;color:rgba(0,0,0,var(--tw-text-opacity));overflow-wrap:normal;word-break:normal}#wpdcom .wpd-comment-text a{word-break:break-all}#wpdcom .wpd-comment-author,#wpdcom .wpd-comment-date,#wpdcom .wpd-comment-footer .wpd-vote-result{--tw-text-opacity:1;color:rgba(30,58,138,var(--tw-text-opacity))}#wpdcom .wpd-comment-footer .wpd-vote-up svg{fill:#1e3a8a}#wpdcom .wpd-comment-footer .wpd-reply-button span{--tw-text-opacity:1;color:rgba(30,58,138,var(--tw-text-opacity))}#wpdcom .wpd-comment-footer .wpd-reply-button svg{fill:#1e3a8a}#wpdcom .wpd-comment .wpd-reply-to,#wpdcom .wpd-comment .wpd-reply-to a{--tw-text-opacity:1;color:rgba(75,85,99,var(--tw-text-opacity))}@media (min-width:768px){.md\:container{width:100%;margin-right:auto;margin-left:auto;padding-right:1rem;padding-left:1rem}@media (min-width:1200px){.md\:container{max-width:1200px}}.md\:block{display:block}.md\:flex-row{flex-direction:row}}@media (min-width:1024px){.lg\:container{width:100%;margin-right:auto;margin-left:auto;padding-right:1rem;padding-left:1rem}@media (min-width:1200px){.lg\:container{max-width:1200px}}.lg\:border-black{--tw-border-opacity:1;border-color:rgba(0,0,0,var(--tw-border-opacity))}.lg\:border-l{border-left-width:1px}.lg\:block{display:block}.lg\:flex{display:flex}.lg\:grid{display:grid}.lg\:hidden{display:none}.lg\:flex-row{flex-direction:row}.lg\:flex-grow{flex-grow:1}.lg\:order-3{order:3}.lg\:font-sans{font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji}.lg\:font-bold{font-weight:700}.lg\:text-sm{font-size:.875rem;line-height:1.25rem}.lg\:text-base{font-size:1rem;line-height:1.5rem}.lg\:text-2xl{font-size:1.5rem;line-height:2rem}.lg\:my-0{margin-bottom:0}.lg\:mt-0,.lg\:my-0{margin-top:0}.lg\:mb-0{margin-bottom:0}.lg\:ml-0{margin-left:0}.lg\:py-0{padding-top:0;padding-bottom:0}.lg\:py-12{padding-top:3rem;padding-bottom:3rem}.lg\:pt-0{padding-top:0}.lg\:text-left{text-align:left}.lg\:uppercase{text-transform:uppercase}.lg\:w-48{width:12rem}.lg\:w-auto{width:auto}.lg\:w-1\/2{width:50%}}@media (min-width:1280px){.xl\:container{width:100%;margin-right:auto;margin-left:auto;padding-right:1rem;padding-left:1rem}@media (min-width:1200px){.xl\:container{max-width:1200px}}.xl\:text-base{font-size:1rem;line-height:1.5rem}.xl\:w-64{width:16rem}}@media (min-width:1536px){.\32xl\:container{width:100%;margin-right:auto;margin-left:auto;padding-right:1rem;padding-left:1rem}@media (min-width:1200px){.\32xl\:container{max-width:1200px}}}</style><style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BJH1RZMKC6"></script>
+<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'G-BJH1RZMKC6');
+	</script>
+
+<script type="text/javascript">
+	var _qevents = _qevents || [];
+
+	(function() {
+	var elem = document.createElement('script');
+	elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+	elem.async = true;
+	elem.type = "text/javascript";
+	var scpt = document.getElementsByTagName('script')[0];
+	scpt.parentNode.insertBefore(elem, scpt);
+	})();
+
+	_qevents.push({
+	qacct:"p-2zxhRHWDb3xS-",
+	uid:"admin@theconservativetreehouse.com"
+	});
+	</script>
+<noscript>
+	<div style="display:none;">
+	<img src="//pixel.quantserve.com/pixel/p-2zxhRHWDb3xS-.gif" border="0" height="1" width="1" alt="Quantcast"/>
+	</div>
+	</noscript>
+
+<link rel="icon" href="https://theconservativetreehouse.com/wp-content/uploads/2020/11/cth-icon-150x150.png" sizes="32x32" />
+<link rel="icon" href="https://theconservativetreehouse.com/wp-content/uploads/2020/11/cth-icon.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://theconservativetreehouse.com/wp-content/uploads/2020/11/cth-icon.png" />
+<meta name="msapplication-TileImage" content="https://theconservativetreehouse.com/wp-content/uploads/2020/11/cth-icon.png" />
+</head>
+<body class="post-template-default single single-post postid-189588 single-format-standard font-sans font-normal text-black leading-normal text-base min-h-screen flex flex-col" x-data="{drawerIsOpen: false}">
+<header>
+<div class="bg-white py-4">
+<div class="container flex flex-col lg:flex-row items-center justify-between">
+<div class="mb-2 lg:mb-0 lg:w-1/2">
+<a href="https://theconservativetreehouse.com/" class="" rel="home" aria-label="home">
+<h1 class="my-0">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 450.9 22.9" xml:space="preserve"><style>.st0{fill:#5e0e1b}.st1{fill:#394d58}</style><path class="st0" d="M0 .4h18v5.1H0V.4zm5.8 6.4h6.4v15.6H5.8V6.8zM20.5.4h6.4v22h-6.4V.4zM32.8 14h-4.6V8.8h4.6V.4h6.4v22h-6.4V14zM42.9.4h6.4v22h-6.4V.4zm7.8 0h8.1v4.9h-8.1V.4zm0 8.5h6.6v4.9h-6.6V8.9zm0 8.6h8.1v4.9h-8.1v-4.9zM70.9.4h6.4v22h-6.4V.4zm7.8 16.9h6.8v5.1h-6.8v-5.1zM94.2.4h.5l2.5 8.8-3.7 13.2h-6.4l7.1-22zm7.2 18.1h-5.3l1.3-4.9h2.6L96.2.4h5.9l7 22h-6.5l-1.2-3.9zM121.5 15.9c0-.5 0-.8-.1-1-.1-.2-.2-.3-.3-.4-.1-.1-.4-.1-.8-.2l-3.9-.5c-2.3-.3-3.9-1-4.7-2.3-.4-.5-.6-1.2-.7-2s-.2-1.7-.2-2.8c0-2.4.6-4.1 1.8-5.1 1-.9 2.5-1.4 4.6-1.5V7.2c0 .2.1.3.1.5l.3.3c.1 0 .4.1.7.1l4.4.5c.9.1 1.7.3 2.2.5.6.2 1.1.5 1.5.9 1 1 1.4 2.8 1.4 5.3 0 2.7-.6 4.6-1.8 5.7-.5.5-1.2.8-1.9 1.1-.8.2-1.6.4-2.7.4l.1-6.6zm-7.7 6.5c-1.1-.1-1.9-.2-2.5-.3v-4.7c1.3.1 2.7.2 4.3.3 1 0 1.8.1 2.2.1 1.1 0 1.9 0 2.3-.1v5h-.4c-2.1 0-4-.1-5.9-.3zM123 5.1c-1 0-1.8-.1-2.4-.1-.8 0-1.5 0-2.2.1v-5h.8c1.8 0 3.6.1 5.4.4.6.1 1.3.2 2 .4v4.6c-.6-.1-1.8-.2-3.6-.4zM129.4.4h18v5.1h-18V.4zm5.8 6.4h6.4v15.6h-6.4V6.8zM158.1.4h6.4v22h-6.4V.4zm9 14.5h-1.3V10h1.1c.7 0 1.2 0 1.5-.1s.6-.1.8-.3c.2-.1.3-.4.4-.7.1-.3.1-.7.1-1.3s0-1-.1-1.3c-.1-.3-.2-.5-.4-.7-.2-.1-.4-.2-.8-.3s-.9-.1-1.6-.1h-1.1V.4h3.3c1.5 0 2.7.1 3.7.4.9.3 1.7.8 2.2 1.4.5.6.8 1.3.9 2.1.2.9.2 2 .2 3.3 0 1.7-.2 3.1-.5 4-.4 1.2-1.2 2-2.4 2.5l3.3 8.2h-6.7l-2.6-7.4zM179.4.4h6.4v22h-6.4V.4zm7.8 0h8.1v4.9h-8.1V.4zm0 8.5h6.6v4.9h-6.6V8.9zm0 8.6h8.1v4.9h-8.1v-4.9zM198.6.4h6.4v22h-6.4V.4zm7.8 0h7.5v4.9h-7.5V.4zm0 9.1h6.3v4.9h-6.3V9.5zM220.6 22.1c-1.2-.4-2.1-1-2.7-1.8-.5-.8-.9-1.7-1-2.8-.1-1.2-.2-2.9-.2-5.2V.3h6.4v13.2c0 .8 0 1.5.1 2.3 0 .6.1 1 .3 1.2.1.3.4.4.8.5.3.1.8.1 1.5.1h.7c.2 0 .4 0 .6-.1v4.9H225.8c-2.3.3-4 .1-5.2-.3zM228.4.4h6.4v12c0 2.1 0 3.7-.1 4.7-.1 1.1-.3 2-.7 2.7-.4.8-1.1 1.5-1.9 1.9-.9.5-2.1.7-3.6.9V.4zM242.7 22.2c-1.3-.3-2.3-.9-3-1.7-.7-.8-1.2-1.9-1.5-3.4-.3-1.4-.4-3.3-.4-5.7 0-2 .1-3.7.3-5 .2-1.3.5-2.4 1-3.2.5-.9 1.1-1.5 2-1.9s1.9-.8 3.3-.9v11.1c0 1.5 0 2.7.1 3.5.1.8.2 1.4.5 1.8.3.5.6.8 1.1.9.5.2 1.2.3 2.1.3v4.8h-.3c-2.2-.1-3.9-.3-5.2-.6zm3-22c.9 0 1.6-.1 2.1-.1 1.9 0 3.7.1 5.3.4.8.1 1.6.2 2.3.4v4.6c-.9-.1-1.6-.2-2-.2-.4 0-1-.1-1.8-.2-.8 0-1.3-.1-1.6-.1-1.3 0-2.3 0-2.9.1-.6 0-1.1.2-1.5.4V.2zm3.8 13.8h-2.3V9.4h8.3v12.5c-1 .2-2.2.4-3.7.5-.7.1-1.5.2-2.3.2V14zM259.1.4h6.4v22h-6.4V.4zm7.8 0h8.1v4.9h-8.1V.4zm0 8.5h6.6v4.9h-6.6V8.9zm0 8.6h8.1v4.9h-8.1v-4.9z" /><g><path class="st1" d="M285.4.1h2.8v9.6h-2.8V.1zm3.9 6.4h-.6V4.3h1.2c.1 0 .3-.1.4-.1.1-.1.1-.2.1-.3v-.6-.6c0-.1-.1-.2-.1-.3-.1-.1-.2-.1-.3-.1h-1.2V.1h1.4c.7 0 1.2.1 1.6.2.4.1.7.3 1 .6.2.2.3.6.4.9.1.4.1.9.1 1.4 0 .8-.1 1.3-.2 1.8-.2.5-.5.9-1 1.1l1.5 3.6h-2.9l-1.4-3.2zM297.7.1h.2l1.1 3.8-1.6 5.8h-2.8l3.1-9.6zm3.2 7.9h-2.3l.6-2.2h1.1L298.7 0h2.6l3.1 9.6h-2.9l-.6-1.6zM307.2 9.7c-.6-.1-1-.4-1.3-.7-.3-.4-.5-.8-.6-1.5-.1-.6-.2-1.5-.2-2.5 0-.9 0-1.6.1-2.2.1-.6.2-1 .4-1.4.2-.4.5-.7.9-.9.4-.2.8-.3 1.4-.4v4.8c0 .7 0 1.2.1 1.5s.1.6.2.8c.1.2.3.3.5.4s.5.1.9.1v2.1h-.1c-1 .1-1.7 0-2.3-.1zm1.3-9.7h.9c.8 0 1.6.1 2.3.2.4 0 .7.1 1 .2v2c-.4 0-.7-.1-.9-.1-.2 0-.4 0-.8-.1h-1.9c-.3 0-.5.1-.6.2V0zm1.7 6.1h-1V4h3.6v5.5c-.4.1-1 .2-1.6.2-.3 0-.6.1-1 .1V6.1zM318 .1h7.9v2.2H318V.1zm2.5 2.8h2.8v6.8h-2.8V2.9zM328.8.1h.2l1.1 3.8-1.6 5.8h-2.8l3.1-9.6zM332 8h-2.3l.6-2.2h1.1L329.8 0h2.6l3.1 9.6h-2.9L332 8zM338.3 9.7c-.6-.1-1-.4-1.3-.7-.3-.4-.5-.8-.6-1.5-.1-.6-.2-1.5-.2-2.5 0-.9 0-1.6.1-2.2.1-.6.2-1 .4-1.4.2-.4.5-.7.9-.9.4-.2.8-.3 1.4-.4v4.8c0 .7 0 1.2.1 1.5s.1.6.2.8c.1.2.3.3.5.4s.5.1.9.1v2.1h-.1c-1 .1-1.7 0-2.3-.1zm1.3-9.7h.9c.8 0 1.6.1 2.3.2.4 0 .7.1 1 .2v2c-.4 0-.7-.1-.9-.1-.2 0-.4 0-.8-.1h-1.9c-.3 0-.5.1-.6.2V0zm1.7 6.1h-1V4h3.6v5.5c-.4.1-1 .2-1.6.2-.3 0-.6.1-1 .1V6.1zM349.9.1h2.8v9.6h-2.8V.1zm3.4 7.5h1.2c.1 0 .2 0 .3-.1s.1-.1.1-.2v-.5-.5c0-.1-.1-.2-.1-.2-.2-.1-.5-.1-1-.1h-.6V3.8h1.1c.1 0 .2 0 .3-.1s.1-.1.1-.2v-.4-.4c0-.1-.1-.2-.1-.2-.1-.1-.2-.1-.3-.1h-1.1V.1h1.6c1.9 0 2.8.8 2.8 2.4 0 .7-.1 1.2-.4 1.5-.3.4-.7.6-1.3.7v.1c.6.1 1 .4 1.3.7.3.4.5.9.5 1.6 0 .9-.2 1.5-.7 1.9s-1.2.6-2.2.6h-1.6l.1-2zM361.1 9.6c-.5-.2-.9-.4-1.2-.8-.2-.3-.4-.7-.4-1.2s-.1-1.2-.1-2.2V.1h2.8v6.8c0 .2.1.4.1.5.1.1.2.2.3.2.1 0 .4.1.7.1h.5v2.2h-.6c-.8 0-1.6-.1-2.1-.3zm3.4-9.5h2.8v5.2c0 .9 0 1.6-.1 2.1 0 .5-.1.9-.3 1.2-.2.4-.5.6-.9.8s-.9.3-1.6.4V.1zM369.3.5V.1h2.8l5.4 9.2v.4h-2.8L369.3.5zm0 1.2l2.7 4.6v3.5h-2.7V1.7zm5.5 1.9V.1h2.7v8.1l-2.7-4.6zM381.2 9.6c-.5-.2-1-.4-1.2-.8-.3-.4-.5-.9-.5-1.5-.1-.6-.1-1.4-.1-2.4 0-.9 0-1.6.1-2.2.1-.6.2-1 .4-1.4.2-.4.5-.7.9-.9.4-.2.9-.4 1.5-.4v6.4c0 .4.1.6.2.8s.3.3.6.4c.3.1.6.1 1.2.1.5 0 1 0 1.4-.1.1 0 .3 0 .5-.1v2c-.5.1-1 .2-1.5.2h-1c-1.3.2-2 .1-2.5-.1zm1.5-9.6h.8c.6 0 1.2.1 1.8.1.3.1.5.1.7.1v2c-.1 0-.4 0-.7-.1-.4-.1-.8-.1-1.1-.1h-.9c-.2 0-.4.1-.5.1l-.1-2.1zM387.6.1h2.8v9.6h-2.8V.1zM393 6h-2V3.8h2V.1h2.8v9.6H393V6zM402.9 9.4c-.3-.1-.5-.4-.7-.6-.2-.2-.3-.6-.4-.9-.1-.3-.1-.7-.1-1.1V5c0-1 0-1.7.1-2.2s.1-1 .3-1.3c.2-.4.5-.7.9-.9.4-.2.9-.4 1.6-.4v6.5c0 .4.1.7.1.8s.2.3.4.3.4.1.8.1h.8v2.2h-.8c-1.4-.2-2.4-.4-3-.7zm4.3-4.5V3.3c0-.4-.1-.7-.1-.8s-.2-.3-.4-.3h-.8c-.4 0-.7 0-.8.1V0h.8c1 0 1.9.1 2.4.2.6.2 1 .4 1.2.8.2.4.4.8.5 1.4.1.6.1 1.4.1 2.5 0 1 0 1.7-.1 2.3s-.1 1-.3 1.3c-.2.4-.5.7-.9.9-.4.2-.9.3-1.6.4V4.9zM411.9.1h2.8v9.6h-2.8V.1zm3.3 0h3.3v2.1h-3.3V.1zm0 4h2.8v2.1h-2.8V4.1zM287.1 22.6c-.5-.2-1-.4-1.2-.8-.3-.4-.5-.8-.5-1.5s-.1-1.4-.1-2.4c0-.9 0-1.6.1-2.2.1-.5.2-1 .4-1.4.2-.4.5-.7.9-.9s.9-.4 1.5-.4v6.4c0 .4.1.7.2.8s.3.3.6.3c.3.1.6.1 1.2.1.5 0 1 0 1.4-.1.1 0 .3 0 .5-.1v2c-.5.1-1 .2-1.5.2h-1c-1.2.3-2 .2-2.5 0zm1.5-9.6h.8c.6 0 1.2 0 1.8.1.3 0 .5.1.7.1v2c-.1 0-.4 0-.7-.1-.4 0-.8-.1-1.1-.1h-.9c-.2 0-.4.1-.5.1l-.1-2.1zM294.7 22.4c-.3-.2-.5-.3-.7-.6-.2-.2-.3-.6-.4-.9-.1-.3-.1-.7-.1-1.1V18c0-1 0-1.7.1-2.3 0-.5.1-1 .3-1.3.2-.4.5-.7.9-.9.4-.2.9-.4 1.6-.4v6.5c0 .4.1.7.1.8s.2.3.4.3.4.1.8.1h.8V23h-.8c-1.5-.1-2.4-.3-3-.6zm4.3-4.5v-1.6c0-.4-.1-.7-.1-.8s-.2-.3-.4-.3h-.8c-.4 0-.7 0-.8.1V13h.8c1 0 1.9.1 2.4.2.6.2 1 .4 1.2.8.2.4.4.8.5 1.4s.1 1.4.1 2.5c0 1 0 1.7-.1 2.3s-.1 1-.3 1.3c-.2.4-.5.7-.9.9-.4.2-.9.3-1.6.4v-4.9zM303.6 13.5v-.4h2.8l5.4 9.2v.4H309l-5.4-9.2zm0 1.2l2.7 4.5v3.5h-2.7v-8zm5.6 1.9v-3.5h2.7v8.1l-2.7-4.6zM318.2 19.9v-.4c0-.1-.1-.2-.1-.2s-.2-.1-.3-.1l-1.7-.2c-1-.1-1.7-.4-2.1-1-.2-.2-.3-.5-.3-.9-.1-.3-.1-.8-.1-1.2 0-1 .3-1.8.8-2.2.4-.4 1.1-.6 2-.7V16.1c0 .1 0 .1.1.2 0 .1.1.1.1.1h.3l1.9.2c.4.1.7.1 1 .2.2.1.5.2.6.4.4.4.6 1.2.6 2.3 0 1.2-.3 2-.8 2.5-.2.2-.5.4-.9.5-.3.1-.7.2-1.2.2v-2.8zm-3.4 2.8c-.5 0-.8-.1-1.1-.1v-2c.5 0 1.2.1 1.9.1h2v2.2h-.1c-1 0-1.9-.1-2.7-.2zm4.1-7.5h-2V13h.4c.8 0 1.6 0 2.4.1.3 0 .5.1.9.1v2c-.4.1-1 0-1.7 0zM322.6 13.1h2.8v9.6h-2.8v-9.6zm3.4 0h3.6v2.1H326v-2.1zm0 3.7h2.9V19H326v-2.2zm0 3.8h3.6v2.1H326v-2.1zM331.4 13.1h2.8v9.6h-2.8v-9.6zm4 6.4h-.6v-2.1h1.2c.1 0 .3-.1.4-.1.1-.1.1-.2.1-.3v-.6-.6c0-.1-.1-.2-.1-.3-.1-.1-.2-.1-.3-.1h-1.2v-2.1h1.4c.7 0 1.2.1 1.6.2.4.1.7.3 1 .6.2.2.3.6.4.9.1.4.1.9.1 1.4 0 .8-.1 1.3-.2 1.8-.2.5-.5.9-1 1.1l1.5 3.6h-2.9l-1.4-3.4zM343.1 22.3c-.1-.4-.2-.7-.3-1.1l-.5-1.5c-.1-.5-.3-.9-.4-1.1-.1-.3-.1-.5-.2-.6l-1.4-4.8h2.9l2.6 9.6h-2.6l-.1-.5zm2.2-3.8l1.4-5.4h2.8L348 18l-.5 1.8c-.2.5-.3 1-.5 1.5-.1.3-.2.7-.3 1.1l-.1.4h-.2l-1.1-4.3zM352.2 13.1h.2l1.1 3.8-1.6 5.8h-2.8l3.1-9.6zm3.2 7.9H353l.6-2.2h1.1l-1.6-5.8h2.6l3.1 9.6h-2.9l-.5-1.6zM358.6 13.1h7.9v2.2h-7.9v-2.2zm2.5 2.8h2.8v6.8h-2.8v-6.8zM367.9 13.1h2.8v9.6h-2.8v-9.6zM374.9 22.3c-.1-.4-.2-.7-.3-1.1l-.5-1.5c-.1-.5-.3-.9-.4-1.1-.1-.3-.1-.5-.2-.6l-1.4-4.8h2.9l2.6 9.6H375l-.1-.5zm2.2-3.8l1.4-5.4h2.8l-1.4 4.8-.5 1.8c-.2.5-.3 1-.5 1.5-.1.3-.2.7-.3 1.1l-.1.4h-.2l-1.2-4.2zM382.7 13.1h2.8v9.6h-2.8v-9.6zm3.4 0h3.6v2.1h-3.6v-2.1zm0 3.7h2.9V19h-2.9v-2.2zm0 3.8h3.6v2.1h-3.6v-2.1zM395.5 13.5v-.4h2.6l4 8.6-.5 1.1h-1.8l-4.3-9.3zm0 1.4l2.6 5.5v2.3h-2.6v-7.8zm7.9 3.8l-1 2.3-1.2-2.6 2.2-5.3h2.7v9.6h-2.7v-4zM408.1 13.1h2.8v9.6h-2.8v-9.6zM417.2 19.9v-.4c0-.1-.1-.2-.1-.2s-.2-.1-.3-.1L415 19c-1-.1-1.7-.4-2.1-1-.2-.2-.3-.5-.3-.9-.1-.3-.1-.8-.1-1.2 0-1 .3-1.8.8-2.2.4-.4 1.1-.6 2-.7V16.1c0 .1 0 .1.1.2 0 .1.1.1.1.1h.3l1.9.2c.4.1.7.1 1 .2.2.1.5.2.6.4.4.4.6 1.2.6 2.3 0 1.2-.3 2-.8 2.5-.2.2-.5.4-.9.5-.3.1-.7.2-1.2.2v-2.8zm-3.3 2.8c-.5 0-.8-.1-1.1-.1v-2c.5 0 1.2.1 1.9.1h2v2.2h-.1c-1 0-1.9-.1-2.7-.2zm4-7.5h-2V13h.4c.8 0 1.6 0 2.4.1.3 0 .5.1.9.1v2c-.4.1-.9 0-1.7 0zM421.7 13.1h2.8v9.6h-2.8v-9.6zm3.4 0h3.3v2.1h-3.3v-2.1zm0 4h2.8v2.1h-2.8v-2.1zM430 13.1h2.8v9.6H430v-9.6zM434.2 13.1h7.9v2.2h-7.9v-2.2zm2.6 2.8h2.8v6.8h-2.8v-6.8zM448.1 19.9v-.4c0-.1-.1-.2-.1-.2s-.2-.1-.3-.1L446 19c-1-.1-1.7-.4-2.1-1-.2-.2-.3-.5-.3-.9-.1-.3-.1-.8-.1-1.2 0-1 .3-1.8.8-2.2.4-.4 1.1-.6 2-.7V16.1c0 .1 0 .1.1.2 0 .1.1.1.1.1h.3l1.9.2c.4.1.7.1 1 .2.2.1.5.2.6.4.4.4.6 1.2.6 2.3 0 1.2-.3 2-.8 2.5-.2.2-.5.4-.9.5-.3.1-.7.2-1.2.2v-2.8zm-3.4 2.8c-.5 0-.8-.1-1.1-.1v-2c.5 0 1.2.1 1.9.1h2v2.2h-.1c-1 0-1.9-.1-2.7-.2zm4.1-7.5h-2V13h.4c.8 0 1.6 0 2.4.1.3 0 .5.1.9.1v2c-.4.1-1 0-1.7 0z" /></g></svg>
+</h1>
+</a>
+</div>
+<div class="text-sm text-center lg:text-left flex lg:block items-center mt-1 lg:mt-0">
+<div class="font-serif lg:font-sans text-cth-blue lg:font-bold text-xs lg:text-2xl lg:uppercase leading-none">Say Hello:</div>
+<div class="font-serif text-xs lg:text-base ml-1 lg:ml-0">
+<a href="/cdn-cgi/l/email-protection#4c182429002d3f381e292a392b290c3e292d2b2d22622f2321" class="text-cth-red underline"><span class="__cf_email__" data-cfemail="4b1f232e072a383f192e2d3e2c2e0b392e2a2c2a2565282426">[email&#160;protected]</span></a>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-cth-blue">
+<div class="container flex md:flex-row items-center justify-between">
+<ul id="menu-main-menu" class="main-menu list-none hidden lg:flex flex-row pt-4 lg:pt-0 lg:text-sm z-10"><li id="menu-item-208429" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-208429"><a href="https://theconservativetreehouse.com/">Home</a></li>
+<li id="menu-item-208430" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-208430"><a href="https://theconservativetreehouse.com/about/">About Us</a></li>
+<li id="menu-item-208431" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-208431"><a href="https://theconservativetreehouse.com/e-mail-request-guidelines/">E-Mail Guidelines</a></li>
+<li id="menu-item-208432" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-208432"><a href="https://theconservativetreehouse.com/guidelines-for-comments/">Guidelines For Comments</a></li>
+<li id="menu-item-208433" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-208433"><a href="https://theconservativetreehouse.com/we-get-questions/">We Get Questions ….</a></li>
+</ul>
+<form action="/" method="get" class="relative lg:order-3 my-2 lg:my-0 w-full lg:w-auto">
+<label class="block">
+<span class="hidden" aria-hidden="true">Search</span>
+<input type="search" name="s" id="s" class="form-input text-black text-xs placeholder-gray-800
+							pr-10 w-full lg:w-48 xl:w-64" placeholder="Search" value="" />
+</label>
+<button aria-label="submit" type="submit" class="absolute right-0 text-secondary transform
+						-translate-y-1/2 mr-2" value="Submit" style="top:50%">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg> </button>
+</form>
+<button @click="drawerIsOpen=true" aria-label="toggle mobile menu" id="toggle-header-menu" class="menu-toggle text-primary block lg:hidden ml-4 text-white">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg> </button>
+</div>
+</div>
+</header>
+<main class="flex-grow py-0 lg:py-12">
+<div id="content" class="container px-0 lg:grid bg-white">
+<div class="">
+<article class="post-single mx-8 py-8">
+<div class="">
+<a href="https://theconservativetreehouse.com/2020/04/20/senate-constructs-500-billion-state-bailout-to-fund-coronavirus-lock-down-irony-taxpayers-pay-for-their-confinement/">
+<h1 class="font-bold text-primary  text-3xl leading-tight mb-4">
+Senate Constructs $500 Billion State Bailout to Fund Coronavirus Lock Down &#8211; Irony: Taxpayers Pay for Their Confinement&#8230; </h1>
+</a>
+<div class="post-meta text-sm mb-4 font-serif">
+<time datetime="2020-04-20T16:02:17-04:00">April 20, 2020</time> |
+<a href="https://theconservativetreehouse.com/author/admin/" class="underline">Sundance</a>
+|
+<span class="comments-link"><a href="https://theconservativetreehouse.com/2020/04/20/senate-constructs-500-billion-state-bailout-to-fund-coronavirus-lock-down-irony-taxpayers-pay-for-their-confinement/#comments">244 Comments</a></span>
+</div>
+</div>
+<div class="post-content font-serif">
+<p>Comrades, senators within the United States government have proposed a terrific scheme to force taxpayers to fund their own confinement.   According to the plan $500 billion will be provided to state and local officials in an effort to offset lost revenue as a result of keeping citizens under house arrest.  Under the remarkable plan, taxpayers will now be paying for their own confinement.</p>
+<p>Under the proposal, citizens who are not permitted to work; and who cannot leave the confinement of their homes or residence to earn a living; are now going to be compelled by the authority of the government, to pay the continued salaries of government workers.</p>
+<p><a href="https://theconservativetreehouse.files.wordpress.com/2016/08/gadsden-flag-2.jpg"><img loading="lazy" class="aligncenter size-full wp-image-119815" src="https://theconservativetreehouse.files.wordpress.com/2016/08/gadsden-flag-2.jpg" alt="" width="634" height="423" srcset="https://theconservativetreehouse.com/wp-content/uploads/2016/08/gadsden-flag-2.jpg 634w, https://theconservativetreehouse.com/wp-content/uploads/2016/08/gadsden-flag-2-300x200.jpg 300w" sizes="(max-width: 634px) 100vw, 634px" /></a></p>
+<p>Meanwhile, in a brilliant twist to benefit the State, as a result of their dictatorial power there is no currently functioning system of representation for any citizen to petition their unwarranted house-arrest.  You just can&#8217;t make this stuff up folks&#8230; unfortunately.</p>
+<blockquote><p><a href="https://www.reuters.com/article/us-health-coronavirus-usa-local-idUSKBN2222IK?taid=5e9df607bea27e00015dfb81&amp;utm_campaign=trueAnthem%3A+Trending+Content&amp;utm_medium=trueAnthem&amp;utm_source=twitter" target="_blank" rel="noopener noreferrer"><em>WASHINGTON (Reuters)</em></a> &#8211; A U.S. Senate Republican and a Democrat proposed a $500 billion rescue package for state and municipal governments on Monday, as it became increasingly clear that the next coronavirus relief bill will not include money for reeling local authorities.</p></blockquote>
+<p><span id="more-189588"></span></p>
+<blockquote><p>[&#8230;] Bill Cassidy (R), of Louisiana, and New Jersey Democrat Bob Menendez, who represent two of the states hit hardest by the pandemic, said their bill would allocate money based on states’ populations, infection rates and revenue losses in order to ensure that money goes where it is needed most.</p>
+<p>[&#8230;] State governors and local officials across the United States have been pleading for more federal aid to provide essential services, as Americans stay home and businesses have closed because of the coronavirus outbreak. <a href="https://www.reuters.com/article/us-health-coronavirus-usa-local-idUSKBN2222IK?taid=5e9df607bea27e00015dfb81&amp;utm_campaign=trueAnthem%3A+Trending+Content&amp;utm_medium=trueAnthem&amp;utm_source=twitter" target="_blank" rel="noopener noreferrer">(read more)</a></p></blockquote>
+<p>These are remarkable times&#8230;.</p>
+<p>I can&#8217;t wait to see who lines up to support this scheme.</p>
+<p>I can also sense a disturbance in the force.</p>
+<p>.</p>
+<p><a href="https://theconservativetreehouse.files.wordpress.com/2015/08/tea-party-dc.jpg"><img loading="lazy" class="aligncenter size-full wp-image-104903" src="https://theconservativetreehouse.files.wordpress.com/2015/08/tea-party-dc.jpg" alt="" width="634" height="330" srcset="https://theconservativetreehouse.com/wp-content/uploads/2015/08/tea-party-dc.jpg 634w, https://theconservativetreehouse.com/wp-content/uploads/2015/08/tea-party-dc-300x156.jpg 300w" sizes="(max-width: 634px) 100vw, 634px" /></a></p>
+<div class="cat-links text-sm mb-4">
+<span class="entry-utility-prep entry-utility-prep-cat-links">Posted in</span> <a href="https://theconservativetreehouse.com/category/1st-amendment/" rel="category tag">1st Amendment</a>, <a href="https://theconservativetreehouse.com/category/6th-amendment/" rel="category tag">6th Amendment</a>, <a href="https://theconservativetreehouse.com/category/bailouts/" rel="category tag">Bailouts</a>, <a href="https://theconservativetreehouse.com/category/big-government/" rel="category tag">Big Government</a>, <a href="https://theconservativetreehouse.com/category/big-stupid-government/" rel="category tag">Big Stupid Government</a>, <a href="https://theconservativetreehouse.com/category/cdc/coronavirus/" rel="category tag">Coronavirus</a>, <a href="https://theconservativetreehouse.com/category/decepticons/" rel="category tag">Decepticons</a>, <a href="https://theconservativetreehouse.com/category/deep-state/" rel="category tag">Deep State</a>, <a href="https://theconservativetreehouse.com/category/economy/" rel="category tag">Economy</a>, <a href="https://theconservativetreehouse.com/category/infectious-disease/" rel="category tag">Infectious Disease</a>, <a href="https://theconservativetreehouse.com/category/legislation/" rel="category tag">Legislation</a>, <a href="https://theconservativetreehouse.com/category/media-bias/" rel="category tag">media bias</a>, <a href="https://theconservativetreehouse.com/category/mitch-mcconnell/" rel="category tag">Mitch McConnell</a>, <a href="https://theconservativetreehouse.com/category/occupy-type-moonbats/" rel="category tag">Occupy Type Moonbats</a>, <a href="https://theconservativetreehouse.com/category/professional-idiots/" rel="category tag">Professional Idiots</a>, <a href="https://theconservativetreehouse.com/category/propaganda/" rel="category tag">propaganda</a>, <a href="https://theconservativetreehouse.com/category/typical-prog-behavior/" rel="category tag">Typical Prog Behavior</a>, <a href="https://theconservativetreehouse.com/category/uncategorized/" rel="category tag">Uncategorized</a>, <a href="https://theconservativetreehouse.com/category/us-treasury/" rel="category tag">US Treasury</a>, <a href="https://theconservativetreehouse.com/category/usa/" rel="category tag">USA</a> </div>
+<div class='heateorSssClear'></div><div class='heateor_sss_sharing_container heateor_sss_horizontal_sharing' heateor-sss-data-href='https://theconservativetreehouse.com/2020/04/20/senate-constructs-500-billion-state-bailout-to-fund-coronavirus-lock-down-irony-taxpayers-pay-for-their-confinement/'><div class='heateor_sss_sharing_title' style="font-weight:bold">Share</div><ul class="heateor_sss_sharing_ul"><li class="heateorSssSharingRound"><i style="width:35px;height:35px;" alt="Facebook" Title="Facebook" class="heateorSssSharing heateorSssFacebookBackground" onclick='heateorSssPopup("https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftheconservativetreehouse.com%2F2020%2F04%2F20%2Fsenate-constructs-500-billion-state-bailout-to-fund-coronavirus-lock-down-irony-taxpayers-pay-for-their-confinement%2F")'><ss style="display:block;" class="heateorSssSharingSvg heateorSssFacebookSvg"></ss></i></li><li class="heateorSssSharingRound"><i style="width:35px;height:35px;" alt="Twitter" Title="Twitter" class="heateorSssSharing heateorSssTwitterBackground" onclick='heateorSssPopup("http://twitter.com/intent/tweet?text=Senate%20Constructs%20%24500%20Billion%20State%20Bailout%20to%20Fund%20Coronavirus%20Lock%20Down%20-%20Irony%3A%20Taxpayers%20Pay%20for%20Their%20Confinement...&url=https%3A%2F%2Ftheconservativetreehouse.com%2F2020%2F04%2F20%2Fsenate-constructs-500-billion-state-bailout-to-fund-coronavirus-lock-down-irony-taxpayers-pay-for-their-confinement%2F")'><ss style="display:block;" class="heateorSssSharingSvg heateorSssTwitterSvg"></ss></i></li><li class="heateorSssSharingRound"><i style="width:35px;height:35px;" alt="Linkedin" Title="Linkedin" class="heateorSssSharing heateorSssLinkedinBackground" onclick='heateorSssPopup("http://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Ftheconservativetreehouse.com%2F2020%2F04%2F20%2Fsenate-constructs-500-billion-state-bailout-to-fund-coronavirus-lock-down-irony-taxpayers-pay-for-their-confinement%2F&title=Senate%20Constructs%20%24500%20Billion%20State%20Bailout%20to%20Fund%20Coronavirus%20Lock%20Down%20-%20Irony%3A%20Taxpayers%20Pay%20for%20Their%20Confinement...")'><ss style="display:block;" class="heateorSssSharingSvg heateorSssLinkedinSvg"></ss></i></li><li class="heateorSssSharingRound"><i style="width:35px;height:35px;" alt="Pinterest" Title="Pinterest" class="heateorSssSharing heateorSssPinterestBackground" onclick="javascript:void( (function() {var e=document.createElement('script' );e.setAttribute('type','text/javascript' );e.setAttribute('charset','UTF-8' );e.setAttribute('src','//assets.pinterest.com/js/pinmarklet.js?r='+Math.random()*99999999);document.body.appendChild(e)})());"><ss style="display:block;" class="heateorSssSharingSvg heateorSssPinterestSvg"></ss></i></li><li class="heateorSssSharingRound"><i style="width:35px;height:35px;" alt="Reddit" Title="Reddit" class="heateorSssSharing heateorSssRedditBackground" onclick='heateorSssPopup("http://reddit.com/submit?url=https%3A%2F%2Ftheconservativetreehouse.com%2F2020%2F04%2F20%2Fsenate-constructs-500-billion-state-bailout-to-fund-coronavirus-lock-down-irony-taxpayers-pay-for-their-confinement%2F&title=Senate%20Constructs%20%24500%20Billion%20State%20Bailout%20to%20Fund%20Coronavirus%20Lock%20Down%20-%20Irony%3A%20Taxpayers%20Pay%20for%20Their%20Confinement...")'><ss style="display:block;" class="heateorSssSharingSvg heateorSssRedditSvg"></ss></i></li><li class="heateorSssSharingRound"><i style="width:35px;height:35px;" alt="Whatsapp" Title="Whatsapp" class="heateorSssSharing heateorSssWhatsappBackground" onclick='heateorSssPopup("https://web.whatsapp.com/send?text=Senate%20Constructs%20%24500%20Billion%20State%20Bailout%20to%20Fund%20Coronavirus%20Lock%20Down%20-%20Irony%3A%20Taxpayers%20Pay%20for%20Their%20Confinement... https%3A%2F%2Ftheconservativetreehouse.com%2F2020%2F04%2F20%2Fsenate-constructs-500-billion-state-bailout-to-fund-coronavirus-lock-down-irony-taxpayers-pay-for-their-confinement%2F")'><ss style="display:block" class="heateorSssSharingSvg heateorSssWhatsappSvg"></ss></i></li><li class="heateorSssSharingRound"><i style="width:35px;height:35px;" alt="Tumblr" Title="Tumblr" class="heateorSssSharing heateorSssTumblrBackground" onclick='heateorSssPopup("https://www.tumblr.com/widgets/share/tool?posttype=link&canonicalUrl=https%3A%2F%2Ftheconservativetreehouse.com%2F2020%2F04%2F20%2Fsenate-constructs-500-billion-state-bailout-to-fund-coronavirus-lock-down-irony-taxpayers-pay-for-their-confinement%2F&title=Senate%20Constructs%20%24500%20Billion%20State%20Bailout%20to%20Fund%20Coronavirus%20Lock%20Down%20-%20Irony%3A%20Taxpayers%20Pay%20for%20Their%20Confinement...&caption=")'><ss style="display:block;" class="heateorSssSharingSvg heateorSssTumblrSvg"></ss></i></li><li class="heateorSssSharingRound"><i style="width:35px;height:35px;" title="More" alt="More" class="heateorSssSharing heateorSssMoreBackground" onclick="heateorSssMoreSharingPopup(this, 'https://theconservativetreehouse.com/2020/04/20/senate-constructs-500-billion-state-bailout-to-fund-coronavirus-lock-down-irony-taxpayers-pay-for-their-confinement/', 'Senate%20Constructs%20%24500%20Billion%20State%20Bailout%20to%20Fund%20Coronavirus%20Lock%20Down%20-%20Irony%3A%20Taxpayers%20Pay%20for%20Their%20Confinement...', '' )"><ss style="display:block" class="heateorSssSharingSvg heateorSssMoreSvg"></ss></i></li></ul><div class="heateorSssClear"></div></div><div class='heateorSssClear'></div> </div>
+<div class="post-comments font-serif">
+<div class="wpdiscuz_top_clearing"></div>
+<div id='comments' class='comments-area'><div id='respond' style='width: 0;height: 0;clear: both;margin: 0;padding: 0;'></div> <div id="wpdcom" class="wpdiscuz_unauth wpd-minimal wpd-layout-1 wpd-comments-closed">
+<div id="wpd-threads" class="wpd-thread-wrapper">
+<div class="wpd-thread-head">
+<div class="wpd-thread-info ">
+<span class='wpdtc' title='244'>244</span> Comments </div>
+<div class="wpd-space"></div>
+<div class="wpd-thread-filter">
+<div class="wpd-filter wpdf-reacted wpd_not_clicked" wpd-tooltip="Most reacted comment"><i class="fas fa-bolt"></i></div>
+<div class="wpd-filter wpdf-hottest wpd_not_clicked" wpd-tooltip="Hottest comment thread"><i class="fas fa-fire"></i></div>
+</div>
+</div>
+<div class="wpd-comment-info-bar">
+<div class="wpd-current-view"><i class="fas fa-quote-left"></i> Inline Feedbacks</div>
+<div class="wpd-filter-view-all">View all comments</div>
+</div>
+<div class="wpd-thread-list">
+<div class="wpdiscuz-comment-pagination">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="wpdiscuz-loading-bar" class="wpdiscuz-loading-bar-unauth"></div>
+<div id="wpdiscuz-comment-message" class="wpdiscuz-comment-message-unauth"></div>
+</div>
+<div class="clear-both"></div>
+</article>
+</div>
+<div class="py-2 lg:py-0 px-8 bg-white lg:border-l lg:border-black">
+<aside id="sidebar" class="widget-area" role="complementary" aria-label="Blog Sidebar">
+<ul class="list-none">
+<li id="media_image-2" class="widget-container widget_media_image"><h3 class="widget-title">Prayer Requests</h3><a href="https://theconservativetreehouse.com/2011/02/01/prayer-requests-11/"><img width="81" height="120" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="image wp-image-7  attachment-full size-full lazyload blur-up" alt="" loading="lazy" style="max-width: 100%; height: auto;" data-src="https://theconservativetreehouse.com/wp-content/uploads/2020/11/animated_candle_short.gif" /></a></li><li id="media_image-3" class="widget-container widget_media_image"><h3 class="widget-title">Support The Treehouse</h3><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&#038;hosted_button_id=RZ4BWXR87UTLW"><img class="image " src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" alt="" width="147" height="47" /></a></li><li id="text-8" class="widget-container widget_text"> <div class="textwidget"><p><a href="https://forms.feedblitz.com/cqq" target="_blank" rel="noopener">Sign Up For Email Delivery!</a></p>
+</div>
+</li><li id="recent-comments-2" class="widget-container widget_recent_comments"><h3 class="widget-title">Recent Comments</h3><ul id="recentcomments"><li class="recentcomments"><span class="comment-author-link">Ann</span> on <a href="https://theconservativetreehouse.com/2021/04/16/biden-administration-conduct-hot-mess-of-diplomatic-blunders-during-japanese-prime-minister-visit/#comment-7704522">Biden Administration Conduct Hot Mess of Diplomatic Blunders During Japanese Prime Minister Visit</a></li><li class="recentcomments"><span class="comment-author-link">Jason Ross</span> on <a href="https://theconservativetreehouse.com/2021/04/17/april-17th-2021-presidential-politics-resistance-day-88/#comment-7704521">April 17th &#8211; 2021 Presidential Politics &#8211; Resistance Day 88</a></li><li class="recentcomments"><span class="comment-author-link">TEAFORALL</span> on <a href="https://theconservativetreehouse.com/2021/04/16/buried-lead-washington-post-outlines-ag-barr-as-key-figure-who-blocked-declassification-of-spygate-documents/#comment-7704520">Buried Lead &#8211; Washington Post Outlines AG Barr As Key Figure Who Blocked Declassification of Spygate Documents</a></li><li class="recentcomments"><span class="comment-author-link">Ann</span> on <a href="https://theconservativetreehouse.com/2021/04/16/buried-lead-washington-post-outlines-ag-barr-as-key-figure-who-blocked-declassification-of-spygate-documents/#comment-7704519">Buried Lead &#8211; Washington Post Outlines AG Barr As Key Figure Who Blocked Declassification of Spygate Documents</a></li><li class="recentcomments"><span class="comment-author-link">mungral</span> on <a href="https://theconservativetreehouse.com/2021/04/17/april-17th-2021-presidential-politics-resistance-day-88/#comment-7704517">April 17th &#8211; 2021 Presidential Politics &#8211; Resistance Day 88</a></li><li class="recentcomments"><span class="comment-author-link">104MAGA104</span> on <a href="https://theconservativetreehouse.com/2021/04/17/april-17th-2021-presidential-politics-resistance-day-88/#comment-7704515">April 17th &#8211; 2021 Presidential Politics &#8211; Resistance Day 88</a></li><li class="recentcomments"><span class="comment-author-link">104MAGA104</span> on <a href="https://theconservativetreehouse.com/2021/04/17/april-17th-2021-presidential-politics-resistance-day-88/#comment-7704514">April 17th &#8211; 2021 Presidential Politics &#8211; Resistance Day 88</a></li><li class="recentcomments"><span class="comment-author-link">mungral</span> on <a href="https://theconservativetreehouse.com/2021/04/17/april-17th-2021-presidential-politics-resistance-day-88/#comment-7704513">April 17th &#8211; 2021 Presidential Politics &#8211; Resistance Day 88</a></li><li class="recentcomments"><span class="comment-author-link">104MAGA104</span> on <a href="https://theconservativetreehouse.com/2021/04/17/april-17th-2021-presidential-politics-resistance-day-88/#comment-7704512">April 17th &#8211; 2021 Presidential Politics &#8211; Resistance Day 88</a></li><li class="recentcomments"><span class="comment-author-link">MoodyPelican</span> on <a href="https://theconservativetreehouse.com/2021/04/16/representative-markwayne-mullin-confronts-fbi-director-christopher-wray-about-difference-between-prosecuting-capitol-hill-protestors-vs-blm-antifa-violence-thus-almost-hitting-a-point-many-miss-blm/#comment-7704511">Representative Markwayne Mullin Confronts FBI Director Christopher Wray About Difference Between Prosecuting Capitol Hill Protestors vs BLM/ANTIFA Violence &#8211; Thus Almost Hitting a Point Many Miss, BLM Funded Joe Biden</a></li><li class="recentcomments"><span class="comment-author-link">Stillwater</span> on <a href="https://theconservativetreehouse.com/2021/04/17/april-17th-2021-presidential-politics-resistance-day-88/#comment-7704510">April 17th &#8211; 2021 Presidential Politics &#8211; Resistance Day 88</a></li><li class="recentcomments"><span class="comment-author-link">Dora</span> on <a href="https://theconservativetreehouse.com/2021/04/17/saturday-april-17th-open-thread/#comment-7704509">Saturday April 17th &#8211; Open Thread</a></li><li class="recentcomments"><span class="comment-author-link">Janie M.</span> on <a href="https://theconservativetreehouse.com/2021/04/17/april-17th-2021-presidential-politics-resistance-day-88/#comment-7704508">April 17th &#8211; 2021 Presidential Politics &#8211; Resistance Day 88</a></li><li class="recentcomments"><span class="comment-author-link">A2n8g2e0l</span> on <a href="https://theconservativetreehouse.com/2021/04/16/buried-lead-washington-post-outlines-ag-barr-as-key-figure-who-blocked-declassification-of-spygate-documents/#comment-7704507">Buried Lead &#8211; Washington Post Outlines AG Barr As Key Figure Who Blocked Declassification of Spygate Documents</a></li><li class="recentcomments"><span class="comment-author-link">A2n8g2e0l</span> on <a href="https://theconservativetreehouse.com/2021/04/16/buried-lead-washington-post-outlines-ag-barr-as-key-figure-who-blocked-declassification-of-spygate-documents/#comment-7704506">Buried Lead &#8211; Washington Post Outlines AG Barr As Key Figure Who Blocked Declassification of Spygate Documents</a></li></ul></li>
+<li id="recent-posts-2" class="widget-container widget_recent_entries">
+<h3 class="widget-title">Recent Posts</h3>
+<ul>
+<li>
+<a href="https://theconservativetreehouse.com/2021/04/17/april-17th-2021-presidential-politics-resistance-day-88/">April 17th &#8211; 2021 Presidential Politics &#8211; Resistance Day 88</a>
+<span class="post-date">April 17, 2021</span>
+</li>
+<li>
+<a href="https://theconservativetreehouse.com/2021/04/17/saturday-april-17th-open-thread/">Saturday April 17th &#8211; Open Thread</a>
+<span class="post-date">April 17, 2021</span>
+</li>
+<li>
+<a href="https://theconservativetreehouse.com/2021/04/16/buried-lead-washington-post-outlines-ag-barr-as-key-figure-who-blocked-declassification-of-spygate-documents/">Buried Lead &#8211; Washington Post Outlines AG Barr As Key Figure Who Blocked Declassification of Spygate Documents</a>
+<span class="post-date">April 16, 2021</span>
+</li>
+<li>
+<a href="https://theconservativetreehouse.com/2021/04/16/biden-administration-conduct-hot-mess-of-diplomatic-blunders-during-japanese-prime-minister-visit/">Biden Administration Conduct Hot Mess of Diplomatic Blunders During Japanese Prime Minister Visit</a>
+<span class="post-date">April 16, 2021</span>
+</li>
+<li>
+<a href="https://theconservativetreehouse.com/2021/04/16/ron-desantis-questions-covid-vaccine-messaging-if-you-get-a-vaccine-but-still-have-to-social-distance-wear-a-mask-and-isolate-then-whats-the-purpose-of-a-vaccine/">Ron DeSantis Questions COVID Vaccine Messaging &#8211; If You Get a Vaccine But Still Have to Social Distance, Wear a Mask and Isolate Then What&#8217;s The Purpose of a Vaccine</a>
+<span class="post-date">April 16, 2021</span>
+</li>
+</ul>
+</li><li id="archives-3" class="widget-container widget_archive"><h3 class="widget-title">Historical Campfire Conversations</h3> <label class="screen-reader-text" for="archives-dropdown-3">Historical Campfire Conversations</label>
+<select id="archives-dropdown-3" name="archive-dropdown">
+<option value="">Select Month</option>
+<option value='https://theconservativetreehouse.com/2021/04/'> April 2021 </option>
+<option value='https://theconservativetreehouse.com/2021/03/'> March 2021 </option>
+<option value='https://theconservativetreehouse.com/2021/02/'> February 2021 </option>
+<option value='https://theconservativetreehouse.com/2021/01/'> January 2021 </option>
+<option value='https://theconservativetreehouse.com/2020/12/'> December 2020 </option>
+<option value='https://theconservativetreehouse.com/2020/11/'> November 2020 </option>
+<option value='https://theconservativetreehouse.com/2020/10/'> October 2020 </option>
+<option value='https://theconservativetreehouse.com/2020/09/'> September 2020 </option>
+<option value='https://theconservativetreehouse.com/2020/08/'> August 2020 </option>
+<option value='https://theconservativetreehouse.com/2020/07/'> July 2020 </option>
+<option value='https://theconservativetreehouse.com/2020/06/'> June 2020 </option>
+<option value='https://theconservativetreehouse.com/2020/05/'> May 2020 </option>
+<option value='https://theconservativetreehouse.com/2020/04/'> April 2020 </option>
+<option value='https://theconservativetreehouse.com/2020/03/'> March 2020 </option>
+<option value='https://theconservativetreehouse.com/2020/02/'> February 2020 </option>
+<option value='https://theconservativetreehouse.com/2020/01/'> January 2020 </option>
+<option value='https://theconservativetreehouse.com/2019/12/'> December 2019 </option>
+<option value='https://theconservativetreehouse.com/2019/11/'> November 2019 </option>
+<option value='https://theconservativetreehouse.com/2019/10/'> October 2019 </option>
+<option value='https://theconservativetreehouse.com/2019/09/'> September 2019 </option>
+<option value='https://theconservativetreehouse.com/2019/08/'> August 2019 </option>
+<option value='https://theconservativetreehouse.com/2019/07/'> July 2019 </option>
+<option value='https://theconservativetreehouse.com/2019/06/'> June 2019 </option>
+<option value='https://theconservativetreehouse.com/2019/05/'> May 2019 </option>
+<option value='https://theconservativetreehouse.com/2019/04/'> April 2019 </option>
+<option value='https://theconservativetreehouse.com/2019/03/'> March 2019 </option>
+<option value='https://theconservativetreehouse.com/2019/02/'> February 2019 </option>
+<option value='https://theconservativetreehouse.com/2019/01/'> January 2019 </option>
+<option value='https://theconservativetreehouse.com/2018/12/'> December 2018 </option>
+<option value='https://theconservativetreehouse.com/2018/11/'> November 2018 </option>
+<option value='https://theconservativetreehouse.com/2018/10/'> October 2018 </option>
+<option value='https://theconservativetreehouse.com/2018/09/'> September 2018 </option>
+<option value='https://theconservativetreehouse.com/2018/08/'> August 2018 </option>
+<option value='https://theconservativetreehouse.com/2018/07/'> July 2018 </option>
+<option value='https://theconservativetreehouse.com/2018/06/'> June 2018 </option>
+<option value='https://theconservativetreehouse.com/2018/05/'> May 2018 </option>
+<option value='https://theconservativetreehouse.com/2018/04/'> April 2018 </option>
+<option value='https://theconservativetreehouse.com/2018/03/'> March 2018 </option>
+<option value='https://theconservativetreehouse.com/2018/02/'> February 2018 </option>
+<option value='https://theconservativetreehouse.com/2018/01/'> January 2018 </option>
+<option value='https://theconservativetreehouse.com/2017/12/'> December 2017 </option>
+<option value='https://theconservativetreehouse.com/2017/11/'> November 2017 </option>
+<option value='https://theconservativetreehouse.com/2017/10/'> October 2017 </option>
+<option value='https://theconservativetreehouse.com/2017/09/'> September 2017 </option>
+<option value='https://theconservativetreehouse.com/2017/08/'> August 2017 </option>
+<option value='https://theconservativetreehouse.com/2017/07/'> July 2017 </option>
+<option value='https://theconservativetreehouse.com/2017/06/'> June 2017 </option>
+<option value='https://theconservativetreehouse.com/2017/05/'> May 2017 </option>
+<option value='https://theconservativetreehouse.com/2017/04/'> April 2017 </option>
+<option value='https://theconservativetreehouse.com/2017/03/'> March 2017 </option>
+<option value='https://theconservativetreehouse.com/2017/02/'> February 2017 </option>
+<option value='https://theconservativetreehouse.com/2017/01/'> January 2017 </option>
+<option value='https://theconservativetreehouse.com/2016/12/'> December 2016 </option>
+<option value='https://theconservativetreehouse.com/2016/11/'> November 2016 </option>
+<option value='https://theconservativetreehouse.com/2016/10/'> October 2016 </option>
+<option value='https://theconservativetreehouse.com/2016/09/'> September 2016 </option>
+<option value='https://theconservativetreehouse.com/2016/08/'> August 2016 </option>
+<option value='https://theconservativetreehouse.com/2016/07/'> July 2016 </option>
+<option value='https://theconservativetreehouse.com/2016/06/'> June 2016 </option>
+<option value='https://theconservativetreehouse.com/2016/05/'> May 2016 </option>
+<option value='https://theconservativetreehouse.com/2016/04/'> April 2016 </option>
+<option value='https://theconservativetreehouse.com/2016/03/'> March 2016 </option>
+<option value='https://theconservativetreehouse.com/2016/02/'> February 2016 </option>
+<option value='https://theconservativetreehouse.com/2016/01/'> January 2016 </option>
+<option value='https://theconservativetreehouse.com/2015/12/'> December 2015 </option>
+<option value='https://theconservativetreehouse.com/2015/11/'> November 2015 </option>
+<option value='https://theconservativetreehouse.com/2015/10/'> October 2015 </option>
+<option value='https://theconservativetreehouse.com/2015/09/'> September 2015 </option>
+<option value='https://theconservativetreehouse.com/2015/08/'> August 2015 </option>
+<option value='https://theconservativetreehouse.com/2015/07/'> July 2015 </option>
+<option value='https://theconservativetreehouse.com/2015/06/'> June 2015 </option>
+<option value='https://theconservativetreehouse.com/2015/05/'> May 2015 </option>
+<option value='https://theconservativetreehouse.com/2015/04/'> April 2015 </option>
+<option value='https://theconservativetreehouse.com/2015/03/'> March 2015 </option>
+<option value='https://theconservativetreehouse.com/2015/02/'> February 2015 </option>
+<option value='https://theconservativetreehouse.com/2015/01/'> January 2015 </option>
+<option value='https://theconservativetreehouse.com/2014/12/'> December 2014 </option>
+<option value='https://theconservativetreehouse.com/2014/11/'> November 2014 </option>
+<option value='https://theconservativetreehouse.com/2014/10/'> October 2014 </option>
+<option value='https://theconservativetreehouse.com/2014/09/'> September 2014 </option>
+<option value='https://theconservativetreehouse.com/2014/08/'> August 2014 </option>
+<option value='https://theconservativetreehouse.com/2014/07/'> July 2014 </option>
+<option value='https://theconservativetreehouse.com/2014/06/'> June 2014 </option>
+<option value='https://theconservativetreehouse.com/2014/05/'> May 2014 </option>
+<option value='https://theconservativetreehouse.com/2014/04/'> April 2014 </option>
+<option value='https://theconservativetreehouse.com/2014/03/'> March 2014 </option>
+<option value='https://theconservativetreehouse.com/2014/02/'> February 2014 </option>
+<option value='https://theconservativetreehouse.com/2014/01/'> January 2014 </option>
+<option value='https://theconservativetreehouse.com/2013/12/'> December 2013 </option>
+<option value='https://theconservativetreehouse.com/2013/11/'> November 2013 </option>
+<option value='https://theconservativetreehouse.com/2013/10/'> October 2013 </option>
+<option value='https://theconservativetreehouse.com/2013/09/'> September 2013 </option>
+<option value='https://theconservativetreehouse.com/2013/08/'> August 2013 </option>
+<option value='https://theconservativetreehouse.com/2013/07/'> July 2013 </option>
+<option value='https://theconservativetreehouse.com/2013/06/'> June 2013 </option>
+<option value='https://theconservativetreehouse.com/2013/05/'> May 2013 </option>
+<option value='https://theconservativetreehouse.com/2013/04/'> April 2013 </option>
+<option value='https://theconservativetreehouse.com/2013/03/'> March 2013 </option>
+<option value='https://theconservativetreehouse.com/2013/02/'> February 2013 </option>
+<option value='https://theconservativetreehouse.com/2013/01/'> January 2013 </option>
+<option value='https://theconservativetreehouse.com/2012/12/'> December 2012 </option>
+<option value='https://theconservativetreehouse.com/2012/11/'> November 2012 </option>
+<option value='https://theconservativetreehouse.com/2012/10/'> October 2012 </option>
+<option value='https://theconservativetreehouse.com/2012/09/'> September 2012 </option>
+<option value='https://theconservativetreehouse.com/2012/08/'> August 2012 </option>
+<option value='https://theconservativetreehouse.com/2012/07/'> July 2012 </option>
+<option value='https://theconservativetreehouse.com/2012/06/'> June 2012 </option>
+<option value='https://theconservativetreehouse.com/2012/05/'> May 2012 </option>
+<option value='https://theconservativetreehouse.com/2012/04/'> April 2012 </option>
+<option value='https://theconservativetreehouse.com/2012/03/'> March 2012 </option>
+<option value='https://theconservativetreehouse.com/2012/02/'> February 2012 </option>
+<option value='https://theconservativetreehouse.com/2012/01/'> January 2012 </option>
+<option value='https://theconservativetreehouse.com/2011/12/'> December 2011 </option>
+<option value='https://theconservativetreehouse.com/2011/11/'> November 2011 </option>
+<option value='https://theconservativetreehouse.com/2011/10/'> October 2011 </option>
+<option value='https://theconservativetreehouse.com/2011/09/'> September 2011 </option>
+<option value='https://theconservativetreehouse.com/2011/08/'> August 2011 </option>
+<option value='https://theconservativetreehouse.com/2011/07/'> July 2011 </option>
+<option value='https://theconservativetreehouse.com/2011/06/'> June 2011 </option>
+<option value='https://theconservativetreehouse.com/2011/05/'> May 2011 </option>
+<option value='https://theconservativetreehouse.com/2011/04/'> April 2011 </option>
+<option value='https://theconservativetreehouse.com/2011/03/'> March 2011 </option>
+<option value='https://theconservativetreehouse.com/2011/02/'> February 2011 </option>
+</select>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/javascript">
+/* <![CDATA[ */
+(function() {
+	var dropdown = document.getElementById( "archives-dropdown-3" );
+	function onSelectChange() {
+		if ( dropdown.options[ dropdown.selectedIndex ].value !== '' ) {
+			document.location.href = this.options[ this.selectedIndex ].value;
+		}
+	}
+	dropdown.onchange = onSelectChange;
+})();
+/* ]]> */
+</script>
+</li> </ul>
+</aside>
+</div>
+</div>
+</main>
+<footer class="bg-cth-blue py-6 text-white px-4 text-center text-sm">&copy; 2021 The Conservative Treehouse</footer>
+<a href='javascript:void(0);' id='wpdUserContentInfoAnchor' style='display:none;' rel='#wpdUserContentInfo' data-wpd-lity>wpDiscuz</a><div id='wpdUserContentInfo' style='overflow:auto;background:#FDFDF6;padding:20px;width:600px;max-width:100%;border-radius:6px;' class='lity-hide'></div><div id='wpd-editor-source-code-wrapper-bg'></div><div id='wpd-editor-source-code-wrapper'><textarea id='wpd-editor-source-code'></textarea><button id='wpd-insert-source-code'>Insert</button><input type='hidden' id='wpd-editor-uid' /></div>
+<div id="drawer" class="fixed flex item-center justify-center h-full w-full top-0 bg-cth-blue text-xl font-sans" style="display: none; z-index:100000;" x-show.transition.origin.top.right="drawerIsOpen">
+<nav @click.away="drawerIsOpen = false" class="pb-2 my-auto" aria-label="mobile">
+<ul id="menu-main-menu-1" class="flex flex-col justify-center items-center list-none"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-208429"><a href="https://theconservativetreehouse.com/">Home</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-208430"><a href="https://theconservativetreehouse.com/about/">About Us</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-208431"><a href="https://theconservativetreehouse.com/e-mail-request-guidelines/">E-Mail Guidelines</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-208432"><a href="https://theconservativetreehouse.com/guidelines-for-comments/">Guidelines For Comments</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-208433"><a href="https://theconservativetreehouse.com/we-get-questions/">We Get Questions ….</a></li>
+</ul> </nav>
+<button @click="drawerIsOpen = false" class="fixed top-4 right-4 text-white" style="z-index:100000;" aria-label="close">
+X
+</button>
+</div>
+<script type="text/javascript">
+		/* MonsterInsights Scroll Tracking */
+			if ( typeof(jQuery) !== 'undefined' ) {
+				jQuery( document ).ready(function(){
+					function monsterinsights_scroll_tracking_load() {
+						if ( ( typeof(__gaTracker) !== 'undefined' && __gaTracker && __gaTracker.hasOwnProperty( "loaded" ) && __gaTracker.loaded == true ) || ( typeof(__gtagTracker) !== 'undefined' && __gtagTracker ) ) {
+							(function(factory) {
+								factory(jQuery);
+							}(function($) {
+
+								/* Scroll Depth */
+								"use strict";
+								var defaults = {
+									percentage: true
+								};
+
+								var $window = $(window),
+									cache = [],
+									scrollEventBound = false,
+									lastPixelDepth = 0;
+
+								/*
+								 * Plugin
+								 */
+
+								$.scrollDepth = function(options) {
+
+									var startTime = +new Date();
+
+									options = $.extend({}, defaults, options);
+
+									/*
+									 * Functions
+									 */
+
+									function sendEvent(action, label, scrollDistance, timing) {
+                                                                                    var type        = 'event';
+                                            var eventName   = action;
+                                            var fieldsArray = {
+                                                event_category : 'Scroll Depth',
+                                                event_label    : label,
+                                                value          : 1,
+                                                non_interaction: true
+                                            };
+
+                                            if ( 'undefined' === typeof MonsterInsightsObject || 'undefined' === typeof MonsterInsightsObject.sendEvent ) {
+                                                return;
+                                            }
+
+                                            MonsterInsightsObject.sendEvent( type, eventName, fieldsArray );
+                                            if (arguments.length > 3) {
+                                                var type        = 'event';
+                                                var eventName   = 'timing_complete';
+                                                fieldsArray = {
+                                                    event_category : 'Scroll Depth',
+                                                    name           : action,
+                                                    event_label    : label,
+                                                    value          : timing,
+                                                    non_interaction: 1
+                                                };
+                                                MonsterInsightsObject.sendEvent( type, eventName, fieldsArray );
+                                            }
+                                        									}
+
+									function calculateMarks(docHeight) {
+										return {
+											'25%' : parseInt(docHeight * 0.25, 10),
+											'50%' : parseInt(docHeight * 0.50, 10),
+											'75%' : parseInt(docHeight * 0.75, 10),
+											/* Cushion to trigger 100% event in iOS */
+											'100%': docHeight - 5
+										};
+									}
+
+									function checkMarks(marks, scrollDistance, timing) {
+										/* Check each active mark */
+										$.each(marks, function(key, val) {
+											if ( $.inArray(key, cache) === -1 && scrollDistance >= val ) {
+												sendEvent('Percentage', key, scrollDistance, timing);
+												cache.push(key);
+											}
+										});
+									}
+
+									function rounded(scrollDistance) {
+										/* Returns String */
+										return (Math.floor(scrollDistance/250) * 250).toString();
+									}
+
+									function init() {
+										bindScrollDepth();
+									}
+
+									/*
+									 * Public Methods
+									 */
+
+									/* Reset Scroll Depth with the originally initialized options */
+									$.scrollDepth.reset = function() {
+										cache = [];
+										lastPixelDepth = 0;
+										$window.off('scroll.scrollDepth');
+										bindScrollDepth();
+									};
+
+									/* Add DOM elements to be tracked */
+									$.scrollDepth.addElements = function(elems) {
+
+										if (typeof elems == "undefined" || !$.isArray(elems)) {
+											return;
+										}
+
+										$.merge(options.elements, elems);
+
+										/* If scroll event has been unbound from window, rebind */
+										if (!scrollEventBound) {
+											bindScrollDepth();
+										}
+
+									};
+
+									/* Remove DOM elements currently tracked */
+									$.scrollDepth.removeElements = function(elems) {
+
+										if (typeof elems == "undefined" || !$.isArray(elems)) {
+											return;
+										}
+
+										$.each(elems, function(index, elem) {
+
+											var inElementsArray = $.inArray(elem, options.elements);
+											var inCacheArray = $.inArray(elem, cache);
+
+											if (inElementsArray != -1) {
+												options.elements.splice(inElementsArray, 1);
+											}
+
+											if (inCacheArray != -1) {
+												cache.splice(inCacheArray, 1);
+											}
+
+										});
+
+									};
+
+									/*
+									 * Throttle function borrowed from:
+									 * Underscore.js 1.5.2
+									 * http://underscorejs.org
+									 * (c) 2009-2013 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
+									 * Underscore may be freely distributed under the MIT license.
+									 */
+
+									function throttle(func, wait) {
+										var context, args, result;
+										var timeout = null;
+										var previous = 0;
+										var later = function() {
+											previous = new Date;
+											timeout = null;
+											result = func.apply(context, args);
+										};
+										return function() {
+											var now = new Date;
+											if (!previous) previous = now;
+											var remaining = wait - (now - previous);
+											context = this;
+											args = arguments;
+											if (remaining <= 0) {
+												clearTimeout(timeout);
+												timeout = null;
+												previous = now;
+												result = func.apply(context, args);
+											} else if (!timeout) {
+												timeout = setTimeout(later, remaining);
+											}
+											return result;
+										};
+									}
+
+									/*
+									 * Scroll Event
+									 */
+
+									function bindScrollDepth() {
+
+										scrollEventBound = true;
+
+										$window.on('scroll.scrollDepth', throttle(function() {
+											/*
+											 * We calculate document and window height on each scroll event to
+											 * account for dynamic DOM changes.
+											 */
+
+											var docHeight = $(document).height(),
+												winHeight = window.innerHeight ? window.innerHeight : $window.height(),
+												scrollDistance = $window.scrollTop() + winHeight,
+
+												/* Recalculate percentage marks */
+												marks = calculateMarks(docHeight),
+
+												/* Timing */
+												timing = +new Date - startTime;
+
+											checkMarks(marks, scrollDistance, timing);
+										}, 500));
+
+									}
+
+									init();
+								};
+
+								/* UMD export */
+								return $.scrollDepth;
+
+							}));
+
+							jQuery.scrollDepth();
+						} else {
+							setTimeout(monsterinsights_scroll_tracking_load, 200);
+						}
+					}
+					monsterinsights_scroll_tracking_load();
+				});
+			}
+		/* End MonsterInsights Scroll Tracking */
+		
+</script><div class='wv-view-all'></div><div class='wv-all-html'></div><div class='wpdiscuz-fem-email' style='display: none;'></div><div class='wpdiscuz-fem-email-form' style='display: none;'><span class='wpdiscuz-fem-author'>You are going to send email to <em></em></span><i class='fas fa-times'></i><div class='wpdiscuz_clear'></div><input placeholder='Email Subject' type='text' class='wpdiscuz-fem-subj' value='' /><textarea class='wpdiscuz-fem-msg' placeholder='Enter your message here'></textarea><br /><div class='wpdiscuz-fem-button-align'><button type='button' class='wpdiscuz-fem-send'>Send</button></div><input type='hidden' id='wpdiscuz_fem_email_comment_id' /></div><div class='wpdiscuz-fem-moving' style='display: none;'></div><div class='wpdiscuz-fem-move-form' style='display: none;'><span class='wpdiscuz-fem-author'>Move Comment<br /><em></em></span><i class='fas fa-times'></i><div class='wpdiscuz_clear'></div><div class='wpdiscuz-fem-posts-search'><input type='text' class='wpdiscuz-fem-post' placeholder='Enter post title...' /><div class='wpdiscuz-fem-posts'></div></div><div class='wpdiscuz-fem-button-align'><button type='button' class='wpdiscuz-fem-move'>Move</button></div><input type='hidden' id='wpdiscuz_fem_move_comment_id' /></div><script type='text/javascript' id='wpdiscuz-combo-js-js-extra'>
+/* <![CDATA[ */
+var wpdiscuzAjaxObj = {"wc_hide_replies_text":"Hide Replies","wc_show_replies_text":"View Replies","wc_msg_required_fields":"Please fill out required fields","wc_invalid_field":"Some of field value is invalid","wc_error_empty_text":"please fill out this field to comment","wc_error_url_text":"url is invalid","wc_error_email_text":"email address is invalid","wc_invalid_captcha":"Invalid Captcha Code","wc_login_to_vote":"You Must Be Logged In To Vote","wc_deny_voting_from_same_ip":"You are not allowed to vote for this comment","wc_self_vote":"You cannot vote for your comment","wc_vote_only_one_time":"You've already voted for this comment","wc_voting_error":"Voting Error","wc_comment_edit_not_possible":"Sorry, this comment is no longer possible to edit","wc_comment_not_updated":"Sorry, the comment was not updated","wc_comment_not_edited":"You've not made any changes","wc_msg_input_min_length":"Input is too short","wc_msg_input_max_length":"Input is too long","wc_spoiler_title":"Spoiler Title","wc_cannot_rate_again":"You cannot rate again","wc_not_allowed_to_rate":"You're not allowed to rate here","wc_follow_user":"Follow this user","wc_unfollow_user":"Unfollow this user","wc_follow_success":"You started following this comment author","wc_follow_canceled":"You stopped following this comment author.","wc_follow_email_confirm":"Please check your email and confirm the user following request.","wc_follow_email_confirm_fail":"Sorry, we couldn't send confirmation email.","wc_follow_login_to_follow":"Please login to follow users.","wc_follow_impossible":"We are sorry, but you can't follow this user.","wc_follow_not_added":"Following failed. Please try again later.","is_user_logged_in":"","commentListLoadType":"0","commentListUpdateType":"0","commentListUpdateTimer":"30","liveUpdateGuests":"0","wordpressThreadCommentsDepth":"8","wordpressIsPaginate":"1","commentTextMaxLength":null,"commentTextMinLength":"1","storeCommenterData":"100000","socialLoginAgreementCheckbox":"0","enableFbLogin":"0","enableFbShare":"0","facebookAppID":"","facebookUseOAuth2":"0","enableGoogleLogin":"0","googleClientID":"","googleClientSecret":"","cookiehash":"31f14a0f9a3108e412adbb3dc83f5539","isLoadOnlyParentComments":"0","scrollToComment":"1","commentFormView":"collapsed","enableDropAnimation":"1","isNativeAjaxEnabled":"1","enableBubble":"0","bubbleLiveUpdate":"0","bubbleHintTimeout":"45","bubbleHintHideTimeout":"10","cookieHideBubbleHint":"wpdiscuz_hide_bubble_hint","bubbleShowNewCommentMessage":"0","bubbleLocation":"content_left","firstLoadWithAjax":"0","wc_copied_to_clipboard":"Copied to clipboard!","inlineFeedbackAttractionType":"blink","loadRichEditor":"1","wpDiscuzReCaptchaSK":"","wpDiscuzReCaptchaTheme":"light","wpDiscuzReCaptchaVersion":"2.0","wc_captcha_show_for_guest":"0","wc_captcha_show_for_members":"0","wpDiscuzIsShowOnSubscribeForm":"0","wmuEnabled":"0","wmuInput":"wmu_files","wmuMaxFileCount":"1","wmuMaxFileSize":"2097152","wmuPostMaxSize":"1610612736","wmuIsLightbox":"0","wmuMimeTypes":{"jpg":"image\/jpeg","jpeg":"image\/jpeg","jpe":"image\/jpeg","gif":"image\/gif","png":"image\/png","bmp":"image\/bmp","tiff":"image\/tiff","tif":"image\/tiff","ico":"image\/x-icon"},"wmuPhraseConfirmDelete":"Are you sure you want to delete this attachment?","wmuPhraseNotAllowedFile":"Not allowed file type","wmuPhraseMaxFileCount":"Maximum number of uploaded files is 1","wmuPhraseMaxFileSize":"Maximum upload file size is 2MB","wmuPhrasePostMaxSize":"Maximum post size is 1536MB","msgEmptyFile":"File is empty. Please upload something more substantial. This error could also be caused by uploads being disabled in your php.ini or by post_max_size being defined as smaller than upload_max_filesize in php.ini.","msgPostIdNotExists":"Post ID not exists","msgUploadingNotAllowed":"Sorry, uploading not allowed for this post","msgPermissionDenied":"You do not have sufficient permissions to perform this action","wmuSecurity":"4e0d8250e8","wmuKeyImages":"images","wmuSingleImageWidth":"auto","wmuSingleImageHeight":"200","version":"7.1.5","wc_post_id":"189588","loadLastCommentId":"0","isCookiesEnabled":"1","dataFilterCallbacks":[],"is_email_field_required":"1","primaryColor":"#3d4d57","wvRealTime":"1","fem_confirm_approve":"Are you sure you want to set this comment as approved?","fem_confirm_unapprove":"Are you sure you want to set this comment as unapproved?","fem_confirm_trash":"Are you sure you want to set this comment as trashed?","fem_confirm_spam":"Are you sure you want to set this comment as spam?","fem_confirm_blacklist":"Are you sure you want to move this user into blacklist?","fem_confirm_delete":"Are you sure you want to delete this comment?","fem_please_fill":"Please fill out the field","fem_choose_post":"Please choose post","url":"https:\/\/theconservativetreehouse.com\/wp-admin\/admin-ajax.php","customAjaxUrl":"https:\/\/theconservativetreehouse.com\/wp-content\/plugins\/wpdiscuz\/utils\/ajax\/wpdiscuz-ajax.php","bubbleUpdateUrl":"https:\/\/theconservativetreehouse.com\/wp-json\/wpdiscuz\/v1\/update","restNonce":"df881daa00"};
+var wpdiscuzUCObj = {"msgConfirmDeleteComment":"Are you sure you want to delete this comment?","msgConfirmCancelSubscription":"Are you sure you want to cancel this subscription?","msgConfirmCancelFollow":"Are you sure you want to cancel this follow?","additionalTab":"0"};
+/* ]]> */
+</script>
+<script type='text/javascript' id='wpdiscuz-combo-js-js-before'>
+        var wpdiscuzEditorOptions = {
+        modules: {
+        toolbar: "",
+        counter: {
+        uniqueID: "",
+        maxcount : 0,
+        mincount : 1,
+        },
+		        },
+        placeholder: "Join the discussion",
+        theme: 'snow',
+        debug: 'error'
+        };
+		
+</script>
+<script type='text/javascript' src='https://theconservativetreehouse.com/wp-content/plugins/wpdiscuz/assets/js/wpdiscuz-combo.min.js?ver=7.1.5' id='wpdiscuz-combo-js-js'></script>
+<script type='text/javascript' src='https://theconservativetreehouse.com/wp-content/plugins/wpdiscuz-report-flagging/assets/js/flag.min.js?ver=7.0.5' id='wpdiscuz-flag-js-js'></script>
+<script type='text/javascript' src='https://theconservativetreehouse.com/wp-content/plugins/wpdiscuz-advanced-likers/assets/js/wv.min.js?ver=7.0.4' id='wpdiscuz-voters-script-js'></script>
+<script type='text/javascript' src='https://theconservativetreehouse.com/wp-content/themes/cth-2/dist/bundle.js?ver=0.13' id='app-js-js'></script>
+<script type='text/javascript' src='https://theconservativetreehouse.com/wp-content/themes/cth-2/dist/alpine.js?ver=0.13' id='alpine-js'></script>
+<script type='text/javascript' id='heateor_sss_sharing_js-js-before'>
+function heateorSssLoadEvent(e) {var t=window.onload;if (typeof window.onload!="function") {window.onload=e}else{window.onload=function() {t();e()}}};	var heateorSssSharingAjaxUrl = 'https://theconservativetreehouse.com/wp-admin/admin-ajax.php', heateorSssCloseIconPath = 'https://theconservativetreehouse.com/wp-content/plugins/sassy-social-share/public/../images/close.png', heateorSssPluginIconPath = 'https://theconservativetreehouse.com/wp-content/plugins/sassy-social-share/public/../images/logo.png', heateorSssHorizontalSharingCountEnable = 0, heateorSssVerticalSharingCountEnable = 0, heateorSssSharingOffset = -10; var heateorSssMobileStickySharingEnabled = 0;var heateorSssCopyLinkMessage = "Link copied.";var heateorSssUrlCountFetched = [], heateorSssSharesText = 'Shares', heateorSssShareText = 'Share';function heateorSssPopup(e) {window.open(e,"popUpWindow","height=400,width=600,left=400,top=100,resizable,scrollbars,toolbar=0,personalbar=0,menubar=no,location=no,directories=no,status")};var heateorSssWhatsappShareAPI = "web";
+</script>
+<script type='text/javascript' src='https://theconservativetreehouse.com/wp-content/plugins/sassy-social-share/public/js/sassy-social-share-public.js?ver=3.3.20' id='heateor_sss_sharing_js-js'></script>
+<script type='text/javascript' src='https://theconservativetreehouse.com/wp-includes/js/wp-embed.min.js?ver=5.7' id='wp-embed-js'></script>
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam-cell.nr-data.net","licenseKey":"NRJS-348f5968cb8f6767d0b","applicationID":"700434721","transactionName":"NQNTbBdXXRUCAhJbXQxJcFsRX1wITBIPXFUOAw==","queueTime":0,"applicationTime":141,"atts":"GURQGl9NThs=","errorBeacon":"bam-cell.nr-data.net","agent":""}</script></body>
+</html>

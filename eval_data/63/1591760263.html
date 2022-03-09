@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Data Scientists Predict COVID-19’s Urban Impact</title>
+<meta name="viewport" content="width=device-width">
+<meta name="designer" content="The UK Edge - http://www.theukedge.com">
+<link rel="shortcut icon" href="https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/themes/datanami/img/Datanami_favicon.png" />
+
+<meta name="description" content="How will COVID-19 impact vulnerable populations, like the elderly and folks with preexisting conditions? The folks at RS-21, a data science consultancy" />
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+<link rel="canonical" href="https://www.datanami.com/2020/03/25/data-scientists-predict-covid-19s-urban-impact/" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Data Scientists Predict COVID-19’s Urban Impact" />
+<meta property="og:description" content="How will COVID-19 impact vulnerable populations, like the elderly and folks with preexisting conditions? The folks at RS-21, a data science consultancy" />
+<meta property="og:url" content="https://www.datanami.com/2020/03/25/data-scientists-predict-covid-19s-urban-impact/" />
+<meta property="og:site_name" content="Datanami" />
+<meta property="article:publisher" content="https://www.facebook.com/pages/Datanami/124760547631010" />
+<meta property="article:published_time" content="2020-03-25T18:35:50+00:00" />
+<meta property="og:image" content="https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/uploads/2020/03/RS21_map.png" />
+<meta property="og:image:width" content="1293" />
+<meta property="og:image:height" content="961" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:creator" content="@datanami" />
+<meta name="twitter:site" content="@datanami" />
+<meta name="twitter:label1" content="Written by">
+<meta name="twitter:data1" content="Alex Woodie">
+<meta name="twitter:label2" content="Est. reading time">
+<meta name="twitter:data2" content="2 minutes">
+<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://www.datanami.com/#website","url":"https://www.datanami.com/","name":"Datanami","description":"Data Science \u2022 AI \u2022 Advanced Analytics","potentialAction":[{"@type":"SearchAction","target":"https://www.datanami.com/?s={search_term_string}","query-input":"required name=search_term_string"}],"inLanguage":"en-US"},{"@type":"ImageObject","@id":"https://www.datanami.com/2020/03/25/data-scientists-predict-covid-19s-urban-impact/#primaryimage","inLanguage":"en-US","url":"https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/uploads/2020/03/RS21_map.png","width":1293,"height":961,"caption":"New York City, as viewed through RS21's Urban Health Vulnerability Index"},{"@type":"WebPage","@id":"https://www.datanami.com/2020/03/25/data-scientists-predict-covid-19s-urban-impact/#webpage","url":"https://www.datanami.com/2020/03/25/data-scientists-predict-covid-19s-urban-impact/","name":"Data Scientists Predict COVID-19\u2019s Urban Impact","isPartOf":{"@id":"https://www.datanami.com/#website"},"primaryImageOfPage":{"@id":"https://www.datanami.com/2020/03/25/data-scientists-predict-covid-19s-urban-impact/#primaryimage"},"datePublished":"2020-03-25T18:35:50+00:00","dateModified":"2020-03-25T18:35:50+00:00","author":{"@id":"https://www.datanami.com/#/schema/person/e72504f688134b83bdcb060f54ad8f9b"},"description":"How will COVID-19 impact vulnerable populations, like the elderly and folks with preexisting conditions? The folks at RS-21, a data science consultancy","inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https://www.datanami.com/2020/03/25/data-scientists-predict-covid-19s-urban-impact/"]}]},{"@type":"Person","@id":"https://www.datanami.com/#/schema/person/e72504f688134b83bdcb060f54ad8f9b","name":"Alex Woodie","image":{"@type":"ImageObject","@id":"https://www.datanami.com/#personlogo","inLanguage":"en-US","url":"https://secure.gravatar.com/avatar/b0307dd70ffe024a023722c06b737966?s=96&d=mm&r=g","caption":"Alex Woodie"},"description":"Alex Woodie is the managing editor of Datanami"}]}</script>
+
+<link rel='dns-prefetch' href='//securepubads.g.doubleclick.net' />
+<link rel='dns-prefetch' href='//secure.gravatar.com' />
+<link rel='dns-prefetch' href='//ajax.googleapis.com' />
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel='dns-prefetch' href='//v0.wordpress.com' />
+<link rel="alternate" type="application/rss+xml" title="Datanami &raquo; Data Scientists Predict COVID-19’s Urban Impact Comments Feed" href="https://www.datanami.com/2020/03/25/data-scientists-predict-covid-19s-urban-impact/feed/" />
+
+<script type="text/javascript" data-cfasync="false">
+    (window.gaDevIds=window.gaDevIds||[]).push("dZGIzZG");
+	var mi_version         = '7.13.2';
+	var mi_track_user      = true;
+	var mi_no_track_reason = '';
+	
+	var disableStr = 'ga-disable-UA-1289278-8';
+
+	/* Function to detect opted out users */
+	function __gaTrackerIsOptedOut() {
+		return document.cookie.indexOf(disableStr + '=true') > -1;
+	}
+
+	/* Disable tracking if the opt-out cookie exists. */
+	if ( __gaTrackerIsOptedOut() ) {
+		window[disableStr] = true;
+	}
+
+	/* Opt-out function */
+	function __gaTrackerOptout() {
+	  document.cookie = disableStr + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
+	  window[disableStr] = true;
+	}
+
+	if ( 'undefined' === typeof gaOptout ) {
+		function gaOptout() {
+			__gaTrackerOptout();
+		}
+	}
+	
+	if ( mi_track_user ) {
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','__gaTracker');
+
+		__gaTracker('create', 'UA-1289278-8', 'auto');
+		__gaTracker('set', 'forceSSL', true);
+		__gaTracker('set', 'anonymizeIp', true);
+		__gaTracker('require', 'displayfeatures');
+		__gaTracker('send','pageview');
+	} else {
+		console.log( "" );
+		(function() {
+			/* https://developers.google.com/analytics/devguides/collection/analyticsjs/ */
+			var noopfn = function() {
+				return null;
+			};
+			var noopnullfn = function() {
+				return null;
+			};
+			var Tracker = function() {
+				return null;
+			};
+			var p = Tracker.prototype;
+			p.get = noopfn;
+			p.set = noopfn;
+			p.send = noopfn;
+			var __gaTracker = function() {
+				var len = arguments.length;
+				if ( len === 0 ) {
+					return;
+				}
+				var f = arguments[len-1];
+				if ( typeof f !== 'object' || f === null || typeof f.hitCallback !== 'function' ) {
+					console.log( 'Not running function __gaTracker(' + arguments[0] + " ....) because you are not being tracked. " + mi_no_track_reason );
+					return;
+				}
+				try {
+					f.hitCallback();
+				} catch (ex) {
+
+				}
+			};
+			__gaTracker.create = function() {
+				return new Tracker();
+			};
+			__gaTracker.getByName = noopnullfn;
+			__gaTracker.getAll = function() {
+				return [];
+			};
+			__gaTracker.remove = noopfn;
+			window['__gaTracker'] = __gaTracker;
+					})();
+		}
+</script>
+
+<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.0.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.0.0\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/www.datanami.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.5.3"}};
+			!function(e,a,t){var r,n,o,i,p=a.createElement("canvas"),s=p.getContext&&p.getContext("2d");function c(e,t){var a=String.fromCharCode;s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,e),0,0);var r=p.toDataURL();return s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,t),0,0),r===p.toDataURL()}function l(e){if(!s||!s.fillText)return!1;switch(s.textBaseline="top",s.font="600 32px Arial",e){case"flag":return!c([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])&&(!c([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!c([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]));case"emoji":return!c([55357,56424,8205,55356,57212],[55357,56424,8203,55356,57212])}return!1}function d(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(i=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},o=0;o<i.length;o++)t.supports[i[o]]=l(i[o]),t.supports.everything=t.supports.everything&&t.supports[i[o]],"flag"!==i[o]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[i[o]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(r=t.source||{}).concatemoji?d(r.concatemoji):r.wpemoji&&r.twemoji&&(d(r.twemoji),d(r.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='nivo-slider-css' href='https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/themes/datanami/functions/shortcodes-ultimate/css/nivoslider.css' type='text/css' media='all' />
+<link rel='stylesheet' id='jcarousel-css' href='https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/themes/datanami/functions/shortcodes-ultimate/css/jcarousel.css' type='text/css' media='all' />
+<link rel='stylesheet' id='shortcodes-ultimate-css' href='https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/themes/datanami/functions/shortcodes-ultimate/css/style.css' type='text/css' media='all' />
+<link rel='stylesheet' id='tribe-common-skeleton-style-css' href='https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/plugins/the-events-calendar/common/src/resources/css/common-skeleton.min.css?ver=4.12.14' type='text/css' media='all' />
+<link rel='stylesheet' id='tribe-tooltip-css' href='https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/plugins/the-events-calendar/common/src/resources/css/tooltip.min.css?ver=4.12.14' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-block-library-css' href='https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-includes/css/dist/block-library/style.min.css?ver=5.5.3' type='text/css' media='all' />
+<style id='wp-block-library-inline-css' type='text/css'>
+.has-text-align-justify{text-align:justify;}
+</style>
+<link rel='stylesheet' id='cookie-law-info-css' href='https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/plugins/cookie-law-info/public/css/cookie-law-info-public.css?ver=1.9.4' type='text/css' media='all' />
+<link rel='stylesheet' id='cookie-law-info-gdpr-css' href='https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/plugins/cookie-law-info/public/css/cookie-law-info-gdpr.css?ver=1.9.4' type='text/css' media='all' />
+<link rel='stylesheet' id='subscribe-bar-css' href='https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/plugins/datanami-functionality-plugin/css/sub-bar.css?ver=5.5.3' type='text/css' media='all' />
+<link rel='stylesheet' id='et-gf-open-sans-css' href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' type='text/css' media='all' />
+<link rel='stylesheet' id='et_monarch-css-css' href='https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/plugins/monarch/css/style.css?ver=1.2.5' type='text/css' media='all' />
+<link rel='stylesheet' id='wpos-font-awesome-css' href='https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/plugins/wp-team-showcase-and-slider-pro/assets/css/font-awesome.min.css?ver=1.4.4' type='text/css' media='all' />
+<link rel='stylesheet' id='wpos-slick-style-css' href='https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/plugins/wp-team-showcase-and-slider-pro/assets/css/slick.css?ver=1.4.4' type='text/css' media='all' />
+<link rel='stylesheet' id='wpos-magnific-style-css' href='https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/plugins/wp-team-showcase-and-slider-pro/assets/css/magnific-popup.css?ver=1.4.4' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-tsasp-public-css-css' href='https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/plugins/wp-team-showcase-and-slider-pro/assets/css/wp-tsasp-public.min.css?ver=1.4.4' type='text/css' media='all' />
+<link rel='stylesheet' id='monsterinsights-popular-posts-style-css' href='https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/plugins/google-analytics-for-wordpress/assets/css/frontend.min.css?ver=7.13.2' type='text/css' media='all' />
+<link rel='stylesheet' id='wordpress-popular-posts-css-css' href='https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/plugins/wordpress-popular-posts/assets/css/wpp.css?ver=5.2.4' type='text/css' media='all' />
+<link rel='stylesheet' id='bootstrap-css' href='https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/themes/datanami/css/bootstrap.min.css?ver=5.5.3' type='text/css' media='all' />
+<link rel='stylesheet' id='bootstrap-responsive-css' href='https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/themes/datanami/css/bootstrap-responsive.min.css?ver=5.5.3' type='text/css' media='all' />
+<link rel='stylesheet' id='font-awesome-css' href='https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/themes/datanami/css/font-awesome.css?ver=5.5.3' type='text/css' media='all' />
+
+<style id='jetpack_facebook_likebox-inline-css' type='text/css'>
+.widget_facebook_likebox {
+	overflow: hidden;
+}
+
+</style>
+<link rel='stylesheet' id='datanami-theme-css' href='https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/themes/datanami/css/datanami.css?ver=1602633441' type='text/css' media='all' />
+<link rel='stylesheet' id='social-logos-css' href='https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/plugins/jetpack/_inc/social-logos/social-logos.min.css?ver=9.2' type='text/css' media='all' />
+<link rel='stylesheet' id='jetpack_css-css' href='https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/plugins/jetpack/css/jetpack.css?ver=9.2' type='text/css' media='all' />
+<script type='text/javascript' src='https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/plugins/enable-jquery-migrate-helper/js/jquery-1.12.4-wp.js?ver=1.12.4-wp' id='jquery-core-js'></script>
+<script type='text/javascript' src='https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/plugins/enable-jquery-migrate-helper/js/jquery-migrate-1.4.1-wp.js?ver=1.4.1-wp' id='jquery-migrate-js'></script>
+<script type='text/javascript' src='https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/themes/datanami/functions/shortcodes-ultimate/js/flowplayer-3.2.6.min.js' id='flowplayer-js'></script>
+<script type='text/javascript' src='https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/themes/datanami/functions/shortcodes-ultimate/js/nivoslider.js' id='nivo-slider-js'></script>
+<script type='text/javascript' src='https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/themes/datanami/functions/shortcodes-ultimate/js/jcarousel.js' id='jcarousel-js'></script>
+<script type='text/javascript' src='https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/themes/datanami/functions/shortcodes-ultimate/js/init.js' id='shortcodes-ultimate-js'></script>
+<script type='text/javascript' src='https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/themes/datanami/functions/shortcodes-ultimate/js/jquery.minitwitter.js' id='tweets-js'></script>
+<script type='text/javascript' id='monsterinsights-frontend-script-js-extra'>
+/* <![CDATA[ */
+var monsterinsights_frontend = {"js_events_tracking":"true","download_extensions":"doc,pdf,ppt,zip,xls,docx,pptx,xlsx","inbound_paths":"[]","home_url":"https:\/\/www.datanami.com","hash_tracking":"false"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/plugins/google-analytics-for-wordpress/assets/js/frontend.min.js?ver=7.13.2' id='monsterinsights-frontend-script-js'></script>
+<script type='text/javascript' id='cookie-law-info-js-extra'>
+/* <![CDATA[ */
+var Cli_Data = {"nn_cookie_ids":[],"cookielist":[],"ccpaEnabled":"","ccpaRegionBased":"","ccpaBarEnabled":"","ccpaType":"gdpr","js_blocking":"","custom_integration":"","triggerDomRefresh":""};
+var cli_cookiebar_settings = {"animate_speed_hide":"500","animate_speed_show":"500","background":"#fff","border":"#444","border_on":"","button_1_button_colour":"#000","button_1_button_hover":"#000000","button_1_link_colour":"#fff","button_1_as_button":"1","button_1_new_win":"","button_2_button_colour":"#333","button_2_button_hover":"#292929","button_2_link_colour":"#444","button_2_as_button":"","button_2_hidebar":"1","button_3_button_colour":"#000","button_3_button_hover":"#000000","button_3_link_colour":"#fff","button_3_as_button":"1","button_3_new_win":"","button_4_button_colour":"#000","button_4_button_hover":"#000000","button_4_link_colour":"#fff","button_4_as_button":"1","font_family":"inherit","header_fix":"","notify_animate_hide":"","notify_animate_show":"","notify_div_id":"#cookie-law-info-bar","notify_position_horizontal":"right","notify_position_vertical":"bottom","scroll_close":"","scroll_close_reload":"","accept_close_reload":"","reject_close_reload":"","showagain_tab":"","showagain_background":"#fff","showagain_border":"#000","showagain_div_id":"#cookie-law-info-again","showagain_x_position":"100px","text":"#000","show_once_yn":"","show_once":"10000","logging_on":"","as_popup":"","popup_overlay":"1","bar_heading_text":"","cookie_bar_as":"banner","popup_showagain_position":"bottom-right","widget_position":"left"};
+var log_object = {"ajax_url":"https:\/\/www.datanami.com\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/plugins/cookie-law-info/public/js/cookie-law-info-public.js?ver=1.9.4' id='cookie-law-info-js'></script>
+<script type='text/javascript' async="async" src='https://securepubads.g.doubleclick.net/tag/js/gpt.js?ver=5.5.3' id='google-ad-manager-js'></script>
+<script type='text/javascript' src='https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/plugins/datanami-dfp-integration/js/ros-dfp.js?ver=1598025531' id='dfp-head-js'></script>
+<script type='text/javascript' src='https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/plugins/datanami-functionality-plugin/js/pardot.js?ver=1494006101' id='pardot-js'></script>
+<script type='application/json' id='wpp-json'>
+{"sampling_active":1,"sampling_rate":20,"ajax_url":"https:\/\/www.datanami.com\/wp-json\/wordpress-popular-posts\/v1\/popular-posts","ID":30839,"token":"857a16f1be","lang":0,"debug":0}
+</script>
+<script type='text/javascript' src='https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/plugins/wordpress-popular-posts/assets/js/wpp.min.js?ver=5.2.4' id='wpp-js-js'></script>
+<script type='text/javascript' src='https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/themes/datanami/js/bootstrap.min.js?ver=1' id='bootstrap-js-js'></script>
+<script type='text/javascript' src='https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/themes/datanami/js/holder.js?ver=1' id='holder-js'></script>
+<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js?ver=5.5.3' id='jQueryUI-js'></script>
+<link rel="https://api.w.org/" href="https://www.datanami.com/wp-json/" /><link rel="alternate" type="application/json" href="https://www.datanami.com/wp-json/wp/v2/posts/30839" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.datanami.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-includes/wlwmanifest.xml" />
+<link rel='shortlink' href='https://wp.me/p4AgBk-81p' />
+<link rel="alternate" type="application/json+oembed" href="https://www.datanami.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.datanami.com%2F2020%2F03%2F25%2Fdata-scientists-predict-covid-19s-urban-impact%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://www.datanami.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.datanami.com%2F2020%2F03%2F25%2Fdata-scientists-predict-covid-19s-urban-impact%2F&#038;format=xml" />
+<style type="text/css" id="et-social-custom-css">
+				 
+			</style>
+<meta name="tec-api-version" content="v1"><meta name="tec-api-origin" content="https://www.datanami.com"><link rel="https://theeventscalendar.com/" href="https://www.datanami.com/wp-json/tribe/events/v1/" />
+<script type="text/javascript">
+			window.onerror = function( msg, url, line, col, error ) {
+				var xhr = new XMLHttpRequest();
+				var nonce = 'b006d2b7a4';
+
+				xhr.open( 'POST', 'https://www.datanami.com/wp-admin/admin-ajax.php' );
+				xhr.setRequestHeader( 'Content-Type', 'application/x-www-form-urlencoded' );
+				xhr.onload = function () {
+					var response,
+                        reload = false;
+
+					if ( 200 === xhr.status ) {
+                        try {
+                        	response = JSON.parse( xhr.response );
+
+                        	reload = response.data.reload;
+                        } catch ( e ) {
+                        	reload = false;
+                        }
+                    }
+
+					// Automatically reload the page if a deprecation caused an automatic downgrade, ensure visitors get the best possible experience.
+					if ( reload ) {
+						location.reload();
+                    }
+				};
+
+				xhr.send( encodeURI( 'action=jquery-migrate-downgrade-version&_wpnonce=' + nonce + '&msg=' + msg ) );
+
+				// Suppress error alerts in older browsers
+				return true;
+			}
+        </script>
+<style type="text/css">
+.wp-tsasp-design-14 .wp-tsasp-team-member .wp-tsasp-team-img {
+    height: auto !important;
+    position: relative;
+}
+
+a.wp-tsasp-popup-link .fa {
+    background: #1B5E5C;
+}
+
+.wp-tsasp-design-14 .wp-tsasp-team-member:hover .wp-tsasp-team-name {
+    color: #1B5E5C;
+}
+
+.wp-tsasp-popup-header {
+    height: 500px !important;
+}
+</style>
+<link rel="icon" href="https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/uploads/2019/01/cropped-dat_favicon_512x512-32x32.png" sizes="32x32" />
+<link rel="icon" href="https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/uploads/2019/01/cropped-dat_favicon_512x512-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/uploads/2019/01/cropped-dat_favicon_512x512-180x180.png" />
+<meta name="msapplication-TileImage" content="https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/uploads/2019/01/cropped-dat_favicon_512x512-270x270.png" />
+<style type="text/css" id="wp-custom-css">
+			div.meta-in {
+	display:none;
+}
+
+#post-content-no-right {
+	width: 82.5532239% !important;
+	margin-left: 3% !important;
+}
+#masthead nav.menu-main-menu-container a {
+    padding: 8px 15px !important;
+}
+/*padding:8px 18px*/		</style>
+</head>
+<body class="post-template-default single single-post postid-30839 single-format-standard et_monarch tribe-no-js">
+<div id="main" class="container">
+<header id="masthead">
+<div class="row-fluid">
+<div class="span12 ad-unit" style="overflow:hidden;">
+<div id="text-16" class="widget widget_text"> <div class="textwidget"><p></p>
+<div id='div-gpt-ad-1597872020012-0'>
+<script>
+    googletag.cmd.push(function() { googletag.display('div-gpt-ad-1597872020012-0'); });
+  </script>
+</div>
+</div>
+</div> </div>
+</div>
+<div id="main-head" class="row-fluid">
+<div class="span5">
+<div id="branding">
+<a href="https://www.datanami.com" alt="Datanami"><img src="https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/themes/datanami/img/datanami-logo-2018.png"></a>
+</div>
+</div>
+<div id="right-of-logo" class="span7">
+
+<div style="">
+<img src="https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/themes/datanami/img/sixFlags.png" alt="Language Flags" style="width:154px; height:14px; border:none; margin-bottom:5px; display:inline;" />
+<div id="google_translate_element" style="margin-bottom:5px;"></div>
+<p style="padding:0px; margin:0px; font-size:12px;"><a href="/termsofuse.html#translation">Translation Disclaimer</a></p>
+<script>
+            function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+            pageLanguage: 'en',
+            includedLanguages: 'zh-CN,fr,de,ja,ko,es',
+            gaTrack: true,
+            gaId: 'UA-1289278-7',
+            layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+            }
+            </script>
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</div>
+<div id="search-2" class="widget widget_search"><form method="get" id="searchform" class="form-inline" action="https://www.datanami.com/">
+<div><input type="text" value="Search this site" name="s" id="s" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;" /><input type="submit" id="searchsubmit" class="btn" value="Search" />
+</div>
+</form></div> </div>
+</div>
+<div id="utilities" class="row-fluid">
+<div class="span8">
+<nav class="menu-secondary-menu-container"><ul id="menu-secondary-menu" class="nav nav-pills"><li id="menu-item-11990" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-11990"><a href="https://www.datanami.com/about/">About</a></li>
+<li id="menu-item-2699" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2699"><a href="https://www.datanami.com/whitepaper/">Resources</a></li>
+<li id="menu-item-2700" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2700"><a href="https://www.datanami.com/events/">Events</a></li>
+<li id="menu-item-11993" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-11993"><a href="https://www.datanami.com/subscribe/">Subscribe</a></li>
+</ul></nav> </div>
+<div class="span4">
+<div id="text-9" class="widget widget_text"> <div class="textwidget"><div id="follow-datanami">Follow Datanami: <a href="https://www.facebook.com/pages/Datanami/124760547631010"><i class="icon-facebook"></i></a> <a href="https://www.twitter.com/datanami"><i class="icon-twitter"></i></a> <a href="https://www.linkedin.com/groups/Big-Data-News-Network-4166980"><i class="icon-linkedin"></i></a> <a href="https://www.datanami.com/feed/"><i class="icon-rss"></i></a></div>
+</div>
+</div> </div>
+</div>
+<div id="nav-toggler-wrap">
+<span class="nav-text-span">Menu</span>
+<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".menu-main-menu-container.nav-collapse">
+<span class="icon-align-justify">
+</button>
+<div class="clearfix"></div>
+</div>
+<nav class="menu-main-menu-container nav-collapse collapse">
+<ul id="menu-main-menu" class="nav nav-pills"><li id="menu-item-11992" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-11992"><a href="https://www.datanami.com/">Home</a></li>
+<li id="menu-item-30891" class="menu-item menu-item-type-taxonomy menu-item-object-post_tag menu-item-30891"><a href="https://www.datanami.com/tag/covid-19/">COVID-19</a></li>
+<li id="menu-item-41" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-41 dropdown"><a href="#" data-toggle="dropdown" data-target="#" class="dropdown-toggle">Features <span class="caret"></span></a>
+<ul class="dropdown-menu">
+<li id="menu-item-43" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-43"><a href="https://www.datanami.com/category/features/">Features Archive</a></li>
+<li id="menu-item-44" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-44"><a href="https://www.datanami.com/category/news-in-brief/">News Archive</a></li>
+<li id="menu-item-45" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-45"><a href="https://www.datanami.com/this-just-in/">This Just In</a></li>
+<li id="menu-item-19195" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-19195 dropdown-submenu"><a data-toggle="dropdown" data-target="#" class="dropdown-toggle">Strata</a>
+<ul class="dropdown-menu">
+<li id="menu-item-21741" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-21741"><a href="https://www.datanami.com/fall-strata-2018/">Fall 2018</a></li>
+<li id="menu-item-19194" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-19194"><a href="https://www.datanami.com/spring-strata-2018/">Spring 2018</a></li>
+<li id="menu-item-17538" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-17538"><a href="https://www.datanami.com/fall-strata-2017-coverage/">Fall 2017</a></li>
+<li id="menu-item-17539" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-17539"><a href="https://www.datanami.com/spring-strata-2017-coverage/">Spring 2017</a></li>
+<li id="menu-item-13409" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13409"><a href="https://www.datanami.com/fall-strata-2016-coverage/">Fall 2016</a></li>
+<li id="menu-item-11239" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-11239"><a href="https://www.datanami.com/spring-strata-2016-coverage/">Spring 2016</a></li>
+<li id="menu-item-9293" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9293"><a href="https://www.datanami.com/fall-strata-2015-coverage/">Fall 2015</a></li>
+<li id="menu-item-7096" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7096"><a href="https://www.datanami.com/spring-strata-2015-coverage/">Spring 2015</a></li>
+</ul>
+</li>
+<li id="menu-item-19197" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-19197 dropdown-submenu"><a data-toggle="dropdown" data-target="#" class="dropdown-toggle">People to Watch</a>
+<ul class="dropdown-menu">
+<li id="menu-item-29885" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-29885"><a href="https://www.datanami.com/people-to-watch-2020/">2020</a></li>
+<li id="menu-item-28808" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-28808"><a href="https://www.datanami.com/people-to-watch-2019/">2019</a></li>
+<li id="menu-item-19290" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-19290"><a href="https://www.datanami.com/people-to-watch-2018/">2018</a></li>
+ <li id="menu-item-15684" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15684"><a href="https://www.datanami.com/people-to-watch-2017/">2017</a></li>
+</ul>
+</li>
+<li id="menu-item-19196" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-19196 dropdown-submenu"><a data-toggle="dropdown" data-target="#" class="dropdown-toggle">Readers&#8217; Choice Awards</a>
+<ul class="dropdown-menu">
+<li id="menu-item-37279" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-37279"><a href="https://www.datanami.com/2020-datanami-readers-choice-awards/">2020</a></li>
+<li id="menu-item-28809" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-28809"><a href="https://www.datanami.com/2019-datanami-readers-and-editors-choice-awards/">2019</a></li>
+<li id="menu-item-21075" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-21075"><a href="https://www.datanami.com/2018-datanami-readers-editors-choice-awards/">2018</a></li>
+<li id="menu-item-17523" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-17523"><a href="https://www.datanami.com/2017-datanami-readers-editors-choice-awards/">2017</a></li>
+<li id="menu-item-15220" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15220"><a href="https://www.datanami.com/2016-readers-choice-awards/">2016</a></li>
+</ul>
+</li>
+<li id="menu-item-7282" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7282"><a href="https://www.datanami.com/leverage-big-data-2015/">Leverage Big Data 2015</a></li>
+</ul>
+</li>
+<li id="menu-item-48" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-48 dropdown"><a href="#" data-toggle="dropdown" data-target="#" class="dropdown-toggle">Sectors <span class="caret"></span></a>
+<ul class="dropdown-menu">
+<li id="menu-item-64" class="menu-item menu-item-type-taxonomy menu-item-object-sector menu-item-64"><a href="https://www.datanami.com/sector/academia/">Academia</a></li>
+<li id="menu-item-65" class="menu-item menu-item-type-taxonomy menu-item-object-sector menu-item-65"><a href="https://www.datanami.com/sector/biosciences/">Biosciences</a></li>
+<li id="menu-item-66" class="menu-item menu-item-type-taxonomy menu-item-object-sector menu-item-66"><a href="https://www.datanami.com/sector/financial-services/">Financial Services</a></li>
+<li id="menu-item-67" class="menu-item menu-item-type-taxonomy menu-item-object-sector current-post-ancestor current-menu-parent current-post-parent menu-item-67"><a href="https://www.datanami.com/sector/government/">Government</a></li>
+<li id="menu-item-68" class="menu-item menu-item-type-taxonomy menu-item-object-sector menu-item-68"><a href="https://www.datanami.com/sector/healthcare/">Healthcare</a></li>
+<li id="menu-item-69" class="menu-item menu-item-type-taxonomy menu-item-object-sector menu-item-69"><a href="https://www.datanami.com/sector/manufacturing/">Manufacturing</a></li>
+<li id="menu-item-71" class="menu-item menu-item-type-taxonomy menu-item-object-sector menu-item-71"><a href="https://www.datanami.com/sector/retail/">Retail</a></li>
+<li id="menu-item-72" class="menu-item menu-item-type-taxonomy menu-item-object-sector menu-item-72"><a href="https://www.datanami.com/sector/science/">Science</a></li>
+<li id="menu-item-70" class="menu-item menu-item-type-taxonomy menu-item-object-sector menu-item-70"><a href="https://www.datanami.com/sector/other/">Other</a></li>
+</ul>
+</li>
+<li id="menu-item-49" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-49 dropdown"><a href="#" data-toggle="dropdown" data-target="#" class="dropdown-toggle">Applications <span class="caret"></span></a>
+<ul class="dropdown-menu">
+<li id="menu-item-19452" class="menu-item menu-item-type-taxonomy menu-item-object-application menu-item-19452"><a href="https://www.datanami.com/application/artificial-intelligence/">Artificial Intelligence</a></li>
+<li id="menu-item-58" class="menu-item menu-item-type-taxonomy menu-item-object-application menu-item-58"><a href="https://www.datanami.com/application/complex-event-processing/">Complex Event Processing</a></li>
+<li id="menu-item-59" class="menu-item menu-item-type-taxonomy menu-item-object-application current-post-ancestor current-menu-parent current-post-parent menu-item-59"><a href="https://www.datanami.com/application/data-mining/">Data Mining</a></li>
+<li id="menu-item-60" class="menu-item menu-item-type-taxonomy menu-item-object-application current-post-ancestor current-menu-parent current-post-parent menu-item-60"><a href="https://www.datanami.com/application/enterprise-analytics/">Enterprise Analytics</a></li>
+<li id="menu-item-61" class="menu-item menu-item-type-taxonomy menu-item-object-application menu-item-61"><a href="https://www.datanami.com/application/predictive-analytics/">Predictive Analytics</a></li>
+<li id="menu-item-62" class="menu-item menu-item-type-taxonomy menu-item-object-application menu-item-62"><a href="https://www.datanami.com/application/research-analytics/">Research Analytics</a></li>
+<li id="menu-item-63" class="menu-item menu-item-type-taxonomy menu-item-object-application menu-item-63"><a href="https://www.datanami.com/application/visualization/">Visualization</a></li>
+</ul>
+</li>
+<li id="menu-item-50" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-50 dropdown"><a href="#" data-toggle="dropdown" data-target="#" class="dropdown-toggle">Technologies <span class="caret"></span></a>
+<ul class="dropdown-menu">
+<li id="menu-item-51" class="menu-item menu-item-type-taxonomy menu-item-object-technology menu-item-51"><a href="https://www.datanami.com/technology/cloud/">Cloud</a></li>
+<li id="menu-item-52" class="menu-item menu-item-type-taxonomy menu-item-object-technology current-post-ancestor current-menu-parent current-post-parent menu-item-52"><a href="https://www.datanami.com/technology/frameworks/">Frameworks</a></li>
+<li id="menu-item-53" class="menu-item menu-item-type-taxonomy menu-item-object-technology current-post-ancestor current-menu-parent current-post-parent menu-item-53"><a href="https://www.datanami.com/technology/middleware/">Middleware</a></li>
+<li id="menu-item-54" class="menu-item menu-item-type-taxonomy menu-item-object-technology menu-item-54"><a href="https://www.datanami.com/technology/network/">Network</a></li>
+<li id="menu-item-55" class="menu-item menu-item-type-taxonomy menu-item-object-technology menu-item-55"><a href="https://www.datanami.com/technology/processors/">Processors</a></li>
+<li id="menu-item-56" class="menu-item menu-item-type-taxonomy menu-item-object-technology menu-item-56"><a href="https://www.datanami.com/technology/storage/">Storage</a></li>
+<li id="menu-item-57" class="menu-item menu-item-type-taxonomy menu-item-object-technology menu-item-57"><a href="https://www.datanami.com/technology/systems/">Systems</a></li>
+</ul>
+</li>
+<li id="menu-item-35628" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-35628"><a href="https://www.datanami.com/vendors/">Vendors</a></li>
+<li id="menu-item-10271" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-10271"><a href="https://www.datanami.com/job-bank/">Job Bank</a></li>
+<li id="menu-item-20202" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-20202 dropdown"><a href="#" data-toggle="dropdown" data-target="#" class="dropdown-toggle">Events <span class="caret"></span></a>
+<ul class="dropdown-menu">
+<li id="menu-item-20203" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-20203"><a href="https://www.datanami.com/events/">Events</a></li>
+<li id="menu-item-20204" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-20204"><a target="_blank" href="https://www.advancedscaleforum.com/">Advanced Scale Forum</a></li>
+<li id="menu-item-20205" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-20205"><a target="_blank" href="https://www.hpcaiwallstreet.com/">HPC + AI Wall St</a></li>
+</ul>
+</li>
+</ul> </nav>
+</header>
+<div id="content">
+<div class="row-fluid">
+<div id="post-content" class="span8">
+<div id="post-30839" class="post-30839 post type-post status-publish format-standard has-post-thumbnail hentry category-news-in-brief tag-coronavirus tag-covid-19 tag-disease tag-mapbox tag-outbreak tag-rs21 tag-urban-health-vulnerability-index tag-visualization-2 application-data-mining application-enterprise-analytics technology-frameworks technology-middleware sector-government vendor-mapbox vendor-rs21">
+<div class="post-header">
+<div class="date">
+March 25, 2020 </div>
+<h1>Data Scientists Predict COVID-19’s Urban Impact</h1>
+<div class="author">
+Alex Woodie </div>
+</div>
+<div class="entry clear">
+<div class="post-thumbnail">
+<img width="300" height="223" src="https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/uploads/2020/03/RS21_map-300x223.png" class="attachment-medium size-medium wp-post-image" alt="" loading="lazy" srcset="https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/uploads/2020/03/RS21_map-300x223.png 300w, https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/uploads/2020/03/RS21_map-1024x761.png 1024w, https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/uploads/2020/03/RS21_map-768x571.png 768w, https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/uploads/2020/03/RS21_map-200x149.png 200w, https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/uploads/2020/03/RS21_map-100x74.png 100w, https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/uploads/2020/03/RS21_map-120x89.png 120w, https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/uploads/2020/03/RS21_map.png 1293w" sizes="(max-width: 300px) 100vw, 300px" /> <p class="caption">New York City, as viewed through RS21's Urban Health Vulnerability Index </p>
+</div>
+<p>How will COVID-19 impact vulnerable populations, like the elderly and folks with preexisting conditions? The folks at RS-21, a data science consultancy based in New Mexico, assembled relevant data sets into an interactive map that allows users to explore where the most vulnerable among us live across 13 American cities.</p>
+<p>On March 24, <a href="http://www.rs21.io/">RS21</a> unveiled the <a href="https://covid.rs21.io/map">Urban Health Vulnerability Index</a>, a map that allows users to view the location and density of those deemed most at-risk for COVID-19, the pneumonia-like disease caused by the novel coronavirus that emerged late last year from Wuhan, China.</p>
+<p>The map combines data sourced from Centers for Disease Control and Prevention (CDC), the United States Census, reports of COVID-19 cases, healthcare facilities, and other disparate data source, the company says. Users can filter the map across several variables, such as age and the presence of diseases, such as diabetes, chronic obstructive pulmonary disorder (COPD), asthma, and coronary heart disease.</p>
+<p>Users can plot the map according to two indexes. The UHVI includes 10 variables, including asthma, COPD, diabetes, cancer, smoking, coronary heart disease, hypertension, stroke, kidney disease, and old age. It also includes a “social vulnerability index” that includes other variables, which were not explained.</p>
+<p>The map, which is based on open source mapping software from <a href="https://www.mapbox.com">Mapbox</a>, shows that people with the highest risk of developing COVID-19 tend to congregate in bunches. In New York City, for example, the Bronx is lit up in reds and yellows for the UHVI, while Manhattan remains green. (It’s also worth noting that the city of New Rochelle, which is just north of The Bronx, is the epicenter of the COVID-19 outbreak in the United States.)</p>
+<div id="attachment_30843" style="width: 297px" class="wp-caption alignright"><a href="https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/uploads/2020/03/RS21_Chicago.png"><img aria-describedby="caption-attachment-30843" loading="lazy" class=" wp-image-30843" src="https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/uploads/2020/03/RS21_Chicago-300x251.png" alt="" width="287" height="240" srcset="https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/uploads/2020/03/RS21_Chicago-300x251.png 300w, https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/uploads/2020/03/RS21_Chicago-1024x858.png 1024w, https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/uploads/2020/03/RS21_Chicago-768x643.png 768w, https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/uploads/2020/03/RS21_Chicago-200x168.png 200w, https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/uploads/2020/03/RS21_Chicago-100x84.png 100w, https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/uploads/2020/03/RS21_Chicago-120x101.png 120w, https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/uploads/2020/03/RS21_Chicago.png 1073w" sizes="(max-width: 287px) 100vw, 287px" /></a></p>
+<p id="caption-attachment-30843" class="wp-caption-text"><em>COVID-19 impact for Chicago, according to the UHVI</em></p>
+</div>
+<p>“In our mission to do good with data, a team of passionate RS21 data scientists and developers created this application that uncovers the most vulnerable parts of our communities,” Charles Rath, the president and CEO of RS21, stated in a press release. “When leaders in healthcare, government, business, and communities look at the impact holistically, we can make better decisions now and in the coming months.”</p>
+<p>The UHVI map (<a href="http://covid.rs21.io">covid.rs21.io</a>) currently covers Albuquerque, Las Cruces, and Santa Fe, New Mexico; Aurora, Colorado Springs, and Denver, Colorado; Atlanta, Georgia; Chicago, Illinois; New Orleans, Louisiana; New York; Phoenix, Arizona; and Washington, D.C.</p>
+<p>RS21 is based in Albuquerque and also has an office in Washington D.C. The company serves a number of state and federal agencies, including Homeland Security, the Department of Energy, and State of New Mexico.</p>
+<p><strong>Related Items:</strong></p>
+<p><a href="https://www.datanami.com/2020/03/23/can-ai-find-a-cure-for-covid-19/">Can AI Find a Cure for COVID-19?</a></p>
+<p><a href="https://www.datanami.com/2020/03/24/community-transmission-counties-are-front-lines-in-virus-battle/">Community Transmission: Counties Are the Front Lines in Virus Battle</a></p>
+<p><a href="https://www.datanami.com/2020/03/19/balancing-hard-data-panic-to-combat-pandemic/">Balancing Hard Data, Panic to Combat Pandemic</a></p>
+<p>&nbsp;</p>
+<div class="sharedaddy sd-sharing-enabled">
+<div class="robots-nocontent sd-block sd-social sd-social-icon sd-sharing">
+<h3 class="sd-title">Share this:</h3>
+<div class="sd-content">
+<ul>
+<li class="share-twitter"><a rel="nofollow noopener noreferrer" data-shared="sharing-twitter-30839" class="share-twitter sd-button share-icon no-text" href="https://www.datanami.com/2020/03/25/data-scientists-predict-covid-19s-urban-impact/?share=twitter" target="_blank" title="Click to share on Twitter"><span></span><span class="sharing-screen-reader-text">Click to share on Twitter (Opens in new window)</span></a></li>
+<li class="share-facebook"><a rel="nofollow noopener noreferrer" data-shared="sharing-facebook-30839" class="share-facebook sd-button share-icon no-text" href="https://www.datanami.com/2020/03/25/data-scientists-predict-covid-19s-urban-impact/?share=facebook" target="_blank" title="Click to share on Facebook"><span></span><span class="sharing-screen-reader-text">Click to share on Facebook (Opens in new window)</span></a></li>
+<li class="share-linkedin"><a rel="nofollow noopener noreferrer" data-shared="sharing-linkedin-30839" class="share-linkedin sd-button share-icon no-text" href="https://www.datanami.com/2020/03/25/data-scientists-predict-covid-19s-urban-impact/?share=linkedin" target="_blank" title="Click to share on LinkedIn"><span></span><span class="sharing-screen-reader-text">Click to share on LinkedIn (Opens in new window)</span></a></li>
+<li class="share-reddit"><a rel="nofollow noopener noreferrer" data-shared="" class="share-reddit sd-button share-icon no-text" href="https://www.datanami.com/2020/03/25/data-scientists-predict-covid-19s-urban-impact/?share=reddit" target="_blank" title="Click to share on Reddit"><span></span><span class="sharing-screen-reader-text">Click to share on Reddit (Opens in new window)</span></a></li>
+<li class="share-email"><a rel="nofollow noopener noreferrer" data-shared="" class="share-email sd-button share-icon no-text" href="https://www.datanami.com/2020/03/25/data-scientists-predict-covid-19s-urban-impact/?share=email" target="_blank" title="Click to email this to a friend"><span></span><span class="sharing-screen-reader-text">Click to email this to a friend (Opens in new window)</span></a></li>
+<li class="share-end"></li>
+</ul>
+</div>
+</div>
+</div>
+<span class="et_social_bottom_trigger"></span> <div class="tags">
+Tags: <a href="https://www.datanami.com/tag/coronavirus/" rel="tag">coronavirus</a>, <a href="https://www.datanami.com/tag/covid-19/" rel="tag">COVID-19</a>, <a href="https://www.datanami.com/tag/disease/" rel="tag">disease</a>, <a href="https://www.datanami.com/tag/mapbox/" rel="tag">Mapbox</a>, <a href="https://www.datanami.com/tag/outbreak/" rel="tag">outbreak</a>, <a href="https://www.datanami.com/tag/rs21/" rel="tag">RS21</a>, <a href="https://www.datanami.com/tag/urban-health-vulnerability-index/" rel="tag">Urban Health Vulnerability Index</a>, <a href="https://www.datanami.com/tag/visualization-2/" rel="tag">visualization</a> </div>
+</div>
+<div class="post-footer">
+<div id="comments" class="clearfix">
+<div id="comment_form_wrapper" style="display:none;">
+<div id="respond" class="comment-respond">
+<h3 id="reply-title" class="comment-reply-title">Join the discussion <small><a rel="nofollow" id="cancel-comment-reply-link" href="/2020/03/25/data-scientists-predict-covid-19s-urban-impact/#respond" style="display:none;">Cancel reply</a></small></h3><form action="https://www.datanami.com/wp-comments-post.php?wpe-comment-post=datanami" method="post" id="commentform" class="comment-form"><p class="comment-notes"><span id="email-notes">Your email address will not be published.</span> Required fields are marked <span class="required">*</span></p><p class="comment-form-comment"><label for="comment">Comment</label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea></p><p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" required='required' /></p>
+<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="text" value="" size="30" maxlength="100" aria-describedby="email-notes" required='required' /></p>
+<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="text" value="" size="30" maxlength="200" /></p>
+<p class="comment-subscription-form"><input type="checkbox" name="subscribe_comments" id="subscribe_comments" value="subscribe" style="width: auto; -moz-appearance: checkbox; -webkit-appearance: checkbox;" /> <label class="subscribe-label" id="subscribe-label" for="subscribe_comments">Notify me of follow-up comments by email.</label></p><p class="comment-subscription-form"><input type="checkbox" name="subscribe_blog" id="subscribe_blog" value="subscribe" style="width: auto; -moz-appearance: checkbox; -webkit-appearance: checkbox;" /> <label class="subscribe-label" id="subscribe-blog-label" for="subscribe_blog">Notify me of new posts by email.</label></p><p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment" /> <input type='hidden' name='comment_post_ID' value='30839' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="7775e84f45" /></p><p style="display: none;"><input type="hidden" id="ak_js" name="ak_js" value="232" /></p></form> </div>
+</div>
+<div id="gravity_form_wrapper" style="display:none;">
+<h4>Only registered users may comment. Register using the form below.</h4>
+<div class='gf_browser_unknown gform_wrapper' id='gform_wrapper_2' style='display:none'><div id='gf_2' class='gform_anchor' tabindex='-1'></div><form method='post' enctype='multipart/form-data' target='gform_ajax_frame_2' id='gform_2' action='https://www.datanami.com/2020/03/25/data-scientists-predict-covid-19s-urban-impact/'>
+<div class='gform_body'><ul id='gform_fields_2' class='gform_fields top_label form_sublabel_below description_below'><li id='field_2_9' class='gfield gfield_contains_required field_sublabel_below field_description_below gfield_visibility_visible'><label class='gfield_label'>Check off newsletters you would like to receive<span class='gfield_required'>*</span></label><div class='ginput_container ginput_container_checkbox'><ul class='gfield_checkbox' id='input_2_9'><li class='gchoice_2_9_1'>
+<input name='input_9.1' type='checkbox' value='hpcwire' id='choice_2_9_1' />
+<label for='choice_2_9_1' id='label_2_9_1'>HPCwire</label>
+</li><li class='gchoice_2_9_2'>
+<input name='input_9.2' type='checkbox' value='et' id='choice_2_9_2' />
+<label for='choice_2_9_2' id='label_2_9_2'>EnterpriseTech</label>
+</li><li class='gchoice_2_9_3'>
+<input name='input_9.3' type='checkbox' value='datanami' checked='checked' id='choice_2_9_3' />
+<label for='choice_2_9_3' id='label_2_9_3'>Datanami</label>
+</li><li class='gchoice_2_9_4'>
+<input name='input_9.4' type='checkbox' value='tce' id='choice_2_9_4' />
+<label for='choice_2_9_4' id='label_2_9_4'>Technology Conferences & Events</label>
+</li><li class='gchoice_2_9_5'>
+<input name='input_9.5' type='checkbox' value='acjb' id='choice_2_9_5' />
+<label for='choice_2_9_5' id='label_2_9_5'>Advanced Computing Job Bank</label>
+</li><li class='gchoice_2_9_6'>
+<input name='input_9.6' type='checkbox' value='tps' id='choice_2_9_6' />
+<label for='choice_2_9_6' id='label_2_9_6'>Technology Product Showcase</label>
+</li></ul></div></li><li id='field_2_1' class='gfield gfield_contains_required field_sublabel_below field_description_below gfield_visibility_visible'><label class='gfield_label' for='input_2_1'>Email<span class='gfield_required'>*</span></label><div class='ginput_container ginput_container_email'>
+<input name='input_1' id='input_2_1' type='text' value='' class='medium' aria-required="true" aria-invalid="false" />
+</div></li><li id='field_2_2' class='gfield gfield_contains_required field_sublabel_below field_description_below gfield_visibility_visible'><label class='gfield_label gfield_label_before_complex'>Name<span class='gfield_required'>*</span></label><div class='ginput_complex ginput_container no_prefix has_first_name no_middle_name has_last_name no_suffix gf_name_has_2 ginput_container_name' id='input_2_2'>
+<span id='input_2_2_3_container' class='name_first'>
+<input type='text' name='input_2.3' id='input_2_2_3' value='' aria-label='First name' aria-required="true" aria-invalid="false" />
+<label for='input_2_2_3'>First</label>
+</span>
+ <span id='input_2_2_6_container' class='name_last'>
+<input type='text' name='input_2.6' id='input_2_2_6' value='' aria-label='Last name' aria-required="true" aria-invalid="false" />
+<label for='input_2_2_6'>Last</label>
+</span>
+<div class='gf_clear gf_clear_complex'></div>
+</div></li><li id='field_2_3' class='gfield gfield_contains_required field_sublabel_below field_description_below gfield_visibility_visible'><label class='gfield_label' for='input_2_3'>Organization<span class='gfield_required'>*</span></label><div class='ginput_container ginput_container_text'><input name='input_3' id='input_2_3' type='text' value='' class='medium' aria-required="true" aria-invalid="false" /></div></li><li id='field_2_4' class='gfield gfield_contains_required field_sublabel_below field_description_below gfield_visibility_visible'><label class='gfield_label' for='input_2_4'>Job Function<span class='gfield_required'>*</span></label><div class='ginput_container ginput_container_select'><select name='input_4' id='input_2_4' class='medium gfield_select' aria-required="true" aria-invalid="false"><option value='Technology: CIO/CTO/CSO'>Technology: CIO/CTO/CSO</option><option value='Technology: Consultant'>Technology: Consultant</option><option value='Technology: Developer'>Technology: Developer</option><option value='Technology: Data Center Management'>Technology: Data Center Management</option><option value='Technology: Data Center Operations'>Technology: Data Center Operations</option><option value='Technology: Data Intelligence Management'>Technology: Data Intelligence Management</option><option value='Technology: Data Scientist/Analyst'>Technology: Data Scientist/Analyst</option><option value='Technology: Engineering'>Technology: Engineering</option><option value='Technology: HPC Managements'>Technology: HPC Managements</option><option value='Technology: HPC Operations'>Technology: HPC Operations</option><option value='Technology: IT Managements'>Technology: IT Managements</option><option value='Technology: IT Operations'>Technology: IT Operations</option><option value='Business: Business Development/Sales'>Business: Business Development/Sales</option><option value='Business: CEO/President/Owner'>Business: CEO/President/Owner</option><option value='Business: EVP/SVP/VP'>Business: EVP/SVP/VP</option><option value='Business: Management'>Business: Management</option><option value='Business: Marketing'>Business: Marketing</option><option value='Business: Operations'>Business: Operations</option><option value='Business: Product Management'>Business: Product Management</option><option value='Business: Other'>Business: Other</option><option value='Academia/Education'>Academia/Education</option><option value='Science'>Science</option><option value='Research &amp; Development'>Research &amp; Development</option><option value='Other'>Other</option></select></div></li><li id='field_2_5' class='gfield gfield_contains_required field_sublabel_below field_description_below gfield_visibility_visible'><label class='gfield_label' for='input_2_5'>Industry<span class='gfield_required'>*</span></label><div class='ginput_container ginput_container_select'><select name='input_5' id='input_2_5' class='medium gfield_select' aria-required="true" aria-invalid="false"><option value='Aerospace'>Aerospace</option><option value='Automotive'>Automotive</option><option value='Education'>Education</option><option value='Financial Services'>Financial Services</option><option value='Government'>Government</option><option value='Hardware Vendor'>Hardware Vendor</option><option value='Healthcare/Life Sciences'>Healthcare/Life Sciences</option><option value='Manufacturing'>Manufacturing</option><option value='Media/Entertainment'>Media/Entertainment</option><option value='Oil/Gas/Energy'>Oil/Gas/Energy</option><option value='Research Center'>Research Center</option><option value='Retail'>Retail</option><option value='Software Vendor/ISV'>Software Vendor/ISV</option><option value='Transportation/Utilities'>Transportation/Utilities</option><option value='Telecom'>Telecom</option><option value='VAR/VAD/Integrator'>VAR/VAD/Integrator</option><option value='Other'>Other</option></select></div></li><li id='field_2_6' class='gfield gfield_contains_required field_sublabel_below field_description_below gfield_visibility_visible'><label class='gfield_label' for='input_2_6'>Country<span class='gfield_required'>*</span></label><div class='ginput_container ginput_container_select'><select name='input_6' id='input_2_6' class='medium gfield_select' aria-required="true" aria-invalid="false"><option value='United States'>United States</option><option value='Canada'>Canada</option><option value='Afghanistan'>Afghanistan</option><option value='Albania'>Albania</option><option value='Algeria'>Algeria</option><option value='American Samoa'>American Samoa</option><option value='Andorra'>Andorra</option><option value='Angola'>Angola</option><option value='Antigua and Barbuda'>Antigua and Barbuda</option><option value='Argentina'>Argentina</option><option value='Armenia'>Armenia</option><option value='Australia'>Australia</option><option value='Austria'>Austria</option><option value='Azerbaijan'>Azerbaijan</option><option value='Bahamas'>Bahamas</option><option value='Bahrain'>Bahrain</option><option value='Bangladesh'>Bangladesh</option><option value='Barbados'>Barbados</option><option value='Belarus'>Belarus</option><option value='Belgium'>Belgium</option><option value='Belize'>Belize</option><option value='Benin'>Benin</option><option value='Bermuda'>Bermuda</option><option value='Bhutan'>Bhutan</option><option value='Bolivia'>Bolivia</option><option value='Bosnia and Herzegovina'>Bosnia and Herzegovina</option><option value='Botswana'>Botswana</option><option value='Brazil'>Brazil</option><option value='Brunei'>Brunei</option><option value='Bulgaria'>Bulgaria</option><option value='Burkina Faso'>Burkina Faso</option><option value='Burundi'>Burundi</option><option value='Cambodia'>Cambodia</option><option value='Cameroon'>Cameroon</option><option value='Cape Verde'>Cape Verde</option><option value='Central African Republic'>Central African Republic</option><option value='Chad'>Chad</option><option value='Chile'>Chile</option><option value='China'>China</option><option value='Colombia'>Colombia</option><option value='Comoros'>Comoros</option><option value='Congo, Democratic Republic of the'>Congo, Democratic Republic of the</option><option value='Congo, Republic of the'>Congo, Republic of the</option><option value='Costa Rica'>Costa Rica</option><option value='C&ocirc;te d&#039;Ivoire'>C&ocirc;te d&#039;Ivoire</option><option value='Croatia'>Croatia</option><option value='Cuba'>Cuba</option><option value='Cyprus'>Cyprus</option><option value='Czech Republic'>Czech Republic</option><option value='Denmark'>Denmark</option><option value='Djibouti'>Djibouti</option><option value='Dominica'>Dominica</option><option value='Dominican Republic'>Dominican Republic</option><option value='East Timor'>East Timor</option><option value='Ecuador'>Ecuador</option><option value='Egypt'>Egypt</option><option value='El Salvador'>El Salvador</option><option value='Equatorial Guinea'>Equatorial Guinea</option><option value='Eritrea'>Eritrea</option><option value='Estonia'>Estonia</option><option value='Ethiopia'>Ethiopia</option><option value='Fiji'>Fiji</option><option value='Finland'>Finland</option><option value='France'>France</option><option value='Gabon'>Gabon</option><option value='Gambia'>Gambia</option><option value='Georgia'>Georgia</option><option value='Germany'>Germany</option><option value='Ghana'>Ghana</option><option value='Greece'>Greece</option><option value='Greenland'>Greenland</option><option value='Grenada'>Grenada</option><option value='Guam'>Guam</option><option value='Guatemala'>Guatemala</option><option value='Guinea'>Guinea</option><option value='Guinea-Bissau'>Guinea-Bissau</option><option value='Guyana'>Guyana</option><option value='Haiti'>Haiti</option><option value='Honduras'>Honduras</option><option value='Hong Kong'>Hong Kong</option><option value='Hungary'>Hungary</option><option value='Iceland'>Iceland</option><option value='India'>India</option><option value='Indonesia'>Indonesia</option><option value='Iran'>Iran</option><option value='Iraq'>Iraq</option><option value='Ireland'>Ireland</option><option value='Israel'>Israel</option><option value='Italy'>Italy</option><option value='Jamaica'>Jamaica</option><option value='Japan'>Japan</option><option value='Jordan'>Jordan</option><option value='Kazakhstan'>Kazakhstan</option><option value='Kenya'>Kenya</option><option value='Kiribati'>Kiribati</option><option value='North Korea'>North Korea</option><option value='South Korea'>South Korea</option><option value='Kuwait'>Kuwait</option><option value='Kyrgyzstan'>Kyrgyzstan</option><option value='Laos'>Laos</option><option value='Latvia'>Latvia</option><option value='Lebanon'>Lebanon</option><option value='Lesotho'>Lesotho</option><option value='Liberia'>Liberia</option><option value='Libya'>Libya</option><option value='Liechtenstein'>Liechtenstein</option><option value='Lithuania'>Lithuania</option><option value='Luxembourg'>Luxembourg</option><option value='Macedonia'>Macedonia</option><option value='Madagascar'>Madagascar</option><option value='Malawi'>Malawi</option><option value='Malaysia'>Malaysia</option><option value='Maldives'>Maldives</option><option value='Mali'>Mali</option><option value='Malta'>Malta</option><option value='Marshall Islands'>Marshall Islands</option><option value='Mauritania'>Mauritania</option><option value='Mauritius'>Mauritius</option><option value='Mexico'>Mexico</option><option value='Micronesia'>Micronesia</option><option value='Moldova'>Moldova</option><option value='Monaco'>Monaco</option><option value='Mongolia'>Mongolia</option><option value='Montenegro'>Montenegro</option><option value='Morocco'>Morocco</option><option value='Mozambique'>Mozambique</option><option value='Myanmar'>Myanmar</option><option value='Namibia'>Namibia</option><option value='Nauru'>Nauru</option><option value='Nepal'>Nepal</option><option value='Netherlands'>Netherlands</option><option value='New Zealand'>New Zealand</option><option value='Nicaragua'>Nicaragua</option><option value='Niger'>Niger</option><option value='Nigeria'>Nigeria</option><option value='Norway'>Norway</option><option value='Northern Mariana Islands'>Northern Mariana Islands</option><option value='Oman'>Oman</option><option value='Pakistan'>Pakistan</option><option value='Palau'>Palau</option><option value='Palestine'>Palestine</option><option value='Panama'>Panama</option><option value='Papua New Guinea'>Papua New Guinea</option><option value='Paraguay'>Paraguay</option><option value='Peru'>Peru</option><option value='Philippines'>Philippines</option><option value='Poland'>Poland</option><option value='Portugal'>Portugal</option><option value='Puerto Rico'>Puerto Rico</option><option value='Qatar'>Qatar</option><option value='Romania'>Romania</option><option value='Russia'>Russia</option><option value='Rwanda'>Rwanda</option><option value='Saint Kitts and Nevis'>Saint Kitts and Nevis</option><option value='Saint Lucia'>Saint Lucia</option><option value='Saint Vincent and the Grenadines'>Saint Vincent and the Grenadines</option><option value='Samoa'>Samoa</option><option value='San Marino'>San Marino</option><option value='Sao Tome and Principe'>Sao Tome and Principe</option><option value='Saudi Arabia'>Saudi Arabia</option><option value='Senegal'>Senegal</option><option value='Serbia and Montenegro'>Serbia and Montenegro</option><option value='Seychelles'>Seychelles</option><option value='Sierra Leone'>Sierra Leone</option><option value='Singapore'>Singapore</option><option value='Slovakia'>Slovakia</option><option value='Slovenia'>Slovenia</option><option value='Solomon Islands'>Solomon Islands</option><option value='Somalia'>Somalia</option><option value='South Africa'>South Africa</option><option value='Spain'>Spain</option><option value='Sri Lanka'>Sri Lanka</option><option value='Sudan'>Sudan</option><option value='Sudan, South'>Sudan, South</option><option value='Suriname'>Suriname</option><option value='Swaziland'>Swaziland</option><option value='Sweden'>Sweden</option><option value='Switzerland'>Switzerland</option><option value='Syria'>Syria</option><option value='Taiwan'>Taiwan</option><option value='Tajikistan'>Tajikistan</option><option value='Tanzania'>Tanzania</option><option value='Thailand'>Thailand</option><option value='Togo'>Togo</option><option value='Tonga'>Tonga</option><option value='Trinidad and Tobago'>Trinidad and Tobago</option><option value='Tunisia'>Tunisia</option><option value='Turkey'>Turkey</option><option value='Turkmenistan'>Turkmenistan</option><option value='Tuvalu'>Tuvalu</option><option value='Uganda'>Uganda</option><option value='Ukraine'>Ukraine</option><option value='United Arab Emirates'>United Arab Emirates</option><option value='United Kingdom'>United Kingdom</option><option value='Uruguay'>Uruguay</option><option value='Uzbekistan'>Uzbekistan</option><option value='Vanuatu'>Vanuatu</option><option value='Vatican City'>Vatican City</option><option value='Venezuela'>Venezuela</option><option value='Vietnam'>Vietnam</option><option value='Virgin Islands, British'>Virgin Islands, British</option><option value='Virgin Islands, U.S.'>Virgin Islands, U.S.</option><option value='Yemen'>Yemen</option><option value='Zambia'>Zambia</option><option value='Zimbabwe'>Zimbabwe</option></select></div></li><li id='field_2_7' class='gfield gfield_contains_required field_sublabel_below field_description_below gfield_visibility_visible'><label class='gfield_label' for='input_2_7'>City<span class='gfield_required'>*</span></label><div class='ginput_container ginput_container_text'><input name='input_7' id='input_2_7' type='text' value='' class='medium' aria-required="true" aria-invalid="false" /></div></li><li id='field_2_10' class='gfield gfield_contains_required field_sublabel_below field_description_below gfield_visibility_visible'><label class='gfield_label' for='input_2_10'>State<span class='gfield_required'>*</span></label><div class='ginput_container ginput_container_select'><select name='input_10' id='input_2_10' class='medium gfield_select' aria-required="true" aria-invalid="false"><option value='Alabama'>Alabama</option><option value='Alaska'>Alaska</option><option value='Arizona'>Arizona</option><option value='Arkansas'>Arkansas</option><option value='California'>California</option><option value='Colorado'>Colorado</option><option value='Connecticut'>Connecticut</option><option value='Delaware'>Delaware</option><option value='District of Columbia'>District of Columbia</option><option value='Florida'>Florida</option><option value='Georgia'>Georgia</option><option value='Hawaii'>Hawaii</option><option value='Idaho'>Idaho</option><option value='Illinois'>Illinois</option><option value='Indiana'>Indiana</option><option value='Iowa'>Iowa</option><option value='Kansas'>Kansas</option><option value='Kentucky'>Kentucky</option><option value='Louisiana'>Louisiana</option><option value='Maine'>Maine</option><option value='Maryland'>Maryland</option><option value='Massachusetts'>Massachusetts</option><option value='Michigan'>Michigan</option><option value='Minnesota'>Minnesota</option><option value='Mississippi'>Mississippi</option><option value='Missouri'>Missouri</option><option value='Montana'>Montana</option><option value='Nebraska'>Nebraska</option><option value='Nevada'>Nevada</option><option value='New Hampshire'>New Hampshire</option><option value='New Jersey'>New Jersey</option><option value='New Mexico'>New Mexico</option><option value='New York'>New York</option><option value='North Carolina'>North Carolina</option><option value='North Dakota'>North Dakota</option><option value='Ohio'>Ohio</option><option value='Oklahoma'>Oklahoma</option><option value='Oregon'>Oregon</option><option value='Pennsylvania'>Pennsylvania</option><option value='Rhode Island'>Rhode Island</option><option value='South Carolina'>South Carolina</option><option value='South Dakota'>South Dakota</option><option value='Tennessee'>Tennessee</option><option value='Texas'>Texas</option><option value='Utah'>Utah</option><option value='Vermont'>Vermont</option><option value='Virginia'>Virginia</option><option value='Washington'>Washington</option><option value='West Virginia'>West Virginia</option><option value='Wisconsin'>Wisconsin</option><option value='Wyoming'>Wyoming</option><option value='Armed Forces Americas'>Armed Forces Americas</option><option value='Armed Forces Europe'>Armed Forces Europe</option><option value='Armed Forces Pacific'>Armed Forces Pacific</option></select></div></li><li id='field_2_11' class='gfield gfield_contains_required field_sublabel_below field_description_below gfield_visibility_visible'><label class='gfield_label' for='input_2_11'>Province<span class='gfield_required'>*</span></label><div class='ginput_container ginput_container_select'><select name='input_11' id='input_2_11' class='medium gfield_select' aria-required="true" aria-invalid="false"><option value='Alberta'>Alberta</option><option value='British Columbia'>British Columbia</option><option value='Manitoba'>Manitoba</option><option value='New Brunswick'>New Brunswick</option><option value='Newfoundland &amp; Labrador'>Newfoundland &amp; Labrador</option><option value='Northwest Territories'>Northwest Territories</option><option value='Nova Scotia'>Nova Scotia</option><option value='Nunavut'>Nunavut</option><option value='Ontario'>Ontario</option><option value='Prince Edward Island'>Prince Edward Island</option><option value='Quebec'>Quebec</option><option value='Saskatchewan'>Saskatchewan</option><option value='Yukon'>Yukon</option></select></div></li><li id='field_2_8' class='gfield field_sublabel_below field_description_below gfield_visibility_visible'><label class='gfield_label'></label><div class='ginput_container ginput_container_checkbox'><ul class='gfield_checkbox' id='input_2_8'><li class='gchoice_2_8_1'>
+<input name='input_8.1' type='checkbox' value='namiss' checked='checked' id='choice_2_8_1' />
+<label for='choice_2_8_1' id='label_2_8_1'>Please check here to receive valuable email offers from Datanami on behalf of our select partners.</label>
+</li></ul></div></li>
+</ul></div>
+<div class='gform_footer top_label'> <input type='submit' id='gform_submit_button_2' class='gform_button button' value='Submit' onclick='if(window["gf_submitting_2"]){return false;}  window["gf_submitting_2"]=true;  ' onkeypress='if( event.keyCode == 13 ){ if(window["gf_submitting_2"]){return false;} window["gf_submitting_2"]=true;  jQuery("#gform_2").trigger("submit",[true]); }' /> <input type='hidden' name='gform_ajax' value='form_id=2&amp;title=&amp;description=&amp;tabindex=0' />
+<input type='hidden' class='gform_hidden' name='is_submit_2' value='1' />
+<input type='hidden' class='gform_hidden' name='gform_submit' value='2' />
+<input type='hidden' class='gform_hidden' name='gform_unique_id' value='' />
+<input type='hidden' class='gform_hidden' name='state_2' value='WyJbXSIsIjMwNmQ0MDk5MzMxYWJlNGVjNzNhYTU4YjAxYzM4NGEzIl0=' />
+<input type='hidden' class='gform_hidden' name='gform_target_page_number_2' id='gform_target_page_number_2' value='0' />
+<input type='hidden' class='gform_hidden' name='gform_source_page_number_2' id='gform_source_page_number_2' value='1' />
+<input type='hidden' name='gform_field_values' value='' />
+</div>
+</form>
+</div>
+<iframe style='display:none;width:0px;height:0px;' src='about:blank' name='gform_ajax_frame_2' id='gform_ajax_frame_2' title='This iframe contains the logic required to handle Ajax powered Gravity Forms.'></iframe>
+<script type='text/javascript'>jQuery(document).ready(function($){gformInitSpinner( 2, 'https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/plugins/gravityforms/images/spinner.gif' );jQuery('#gform_ajax_frame_2').on('load',function(){var contents = jQuery(this).contents().find('*').html();var is_postback = contents.indexOf('GF_AJAX_POSTBACK') >= 0;if(!is_postback){return;}var form_content = jQuery(this).contents().find('#gform_wrapper_2');var is_confirmation = jQuery(this).contents().find('#gform_confirmation_wrapper_2').length > 0;var is_redirect = contents.indexOf('gformRedirect(){') >= 0;var is_form = form_content.length > 0 && ! is_redirect && ! is_confirmation;var mt = parseInt(jQuery('html').css('margin-top'), 10) + parseInt(jQuery('body').css('margin-top'), 10) + 100;if(is_form){jQuery('#gform_wrapper_2').html(form_content.html());if(form_content.hasClass('gform_validation_error')){jQuery('#gform_wrapper_2').addClass('gform_validation_error');} else {jQuery('#gform_wrapper_2').removeClass('gform_validation_error');}setTimeout( function() { /* delay the scroll by 50 milliseconds to fix a bug in chrome */ jQuery(document).scrollTop(jQuery('#gform_wrapper_2').offset().top - mt); }, 50 );if(window['gformInitDatepicker']) {gformInitDatepicker();}if(window['gformInitPriceFields']) {gformInitPriceFields();}var current_page = jQuery('#gform_source_page_number_2').val();gformInitSpinner( 2, 'https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/plugins/gravityforms/images/spinner.gif' );jQuery(document).trigger('gform_page_loaded', [2, current_page]);window['gf_submitting_2'] = false;}else if(!is_redirect){var confirmation_content = jQuery(this).contents().find('.GF_AJAX_POSTBACK').html();if(!confirmation_content){confirmation_content = contents;}setTimeout(function(){jQuery('#gform_wrapper_2').replaceWith(confirmation_content);jQuery(document).scrollTop(jQuery('#gf_2').offset().top - mt);jQuery(document).trigger('gform_confirmation_loaded', [2]);window['gf_submitting_2'] = false;}, 50);}else{jQuery('#gform_2').append(contents);if(window['gformRedirect']) {gformRedirect();}}jQuery(document).trigger('gform_post_render', [2, current_page]);} );} );</script><script type='text/javascript'> jQuery(document).bind('gform_post_render', function(event, formId, currentPage){if(formId == 2) {gf_global["number_formats"][2] = {"9":{"price":false,"value":false},"1":{"price":false,"value":false},"2":{"price":false,"value":false},"3":{"price":false,"value":false},"4":{"price":false,"value":false},"5":{"price":false,"value":false},"6":{"price":false,"value":false},"7":{"price":false,"value":false},"10":{"price":false,"value":false},"11":{"price":false,"value":false},"8":{"price":false,"value":false}};if(window['jQuery']){if(!window['gf_form_conditional_logic'])window['gf_form_conditional_logic'] = new Array();window['gf_form_conditional_logic'][2] = { logic: { 3: {"field":{"actionType":"show","logicType":"all","rules":[{"fieldId":"1","operator":"isnot","value":""},{"fieldId":"1","operator":"contains","value":"@"}]},"nextButton":null,"section":null},4: {"field":{"actionType":"show","logicType":"all","rules":[{"fieldId":"3","operator":"isnot","value":""}]},"nextButton":null,"section":null},5: {"field":{"actionType":"show","logicType":"all","rules":[{"fieldId":"3","operator":"isnot","value":""}]},"nextButton":null,"section":null},6: {"field":{"actionType":"show","logicType":"all","rules":[{"fieldId":"1","operator":"isnot","value":""},{"fieldId":"1","operator":"contains","value":"@"}]},"nextButton":null,"section":null},7: {"field":{"actionType":"show","logicType":"all","rules":[{"fieldId":"1","operator":"isnot","value":""},{"fieldId":"1","operator":"contains","value":"@"}]},"nextButton":null,"section":null},10: {"field":{"actionType":"show","logicType":"all","rules":[{"fieldId":"6","operator":"is","value":"United States"},{"fieldId":"1","operator":"isnot","value":""},{"fieldId":"1","operator":"contains","value":"@"}]},"nextButton":null,"section":null},11: {"field":{"actionType":"show","logicType":"all","rules":[{"fieldId":"6","operator":"is","value":"Canada"},{"fieldId":"1","operator":"isnot","value":""},{"fieldId":"1","operator":"contains","value":"@"}]},"nextButton":null,"section":null},8: {"field":{"actionType":"show","logicType":"all","rules":[{"fieldId":"1","operator":"isnot","value":""},{"fieldId":"1","operator":"contains","value":"@"}]},"nextButton":null,"section":null} }, dependents: { 3: ["3"],4: ["4"],5: ["5"],6: ["6"],7: ["7"],10: ["10"],11: ["11"],8: ["8"] }, animation: 0, defaults: {"9":["choice_2_9_3"],"2":{"2.3":"","2.6":""},"8":["choice_2_8_1"]}, fields: {"9":[],"1":[3,6,7,10,11,8],"2":[],"3":[4,5],"4":[],"5":[],"6":[10,11],"7":[],"10":[],"11":[],"8":[]} }; if(!window['gf_number_format'])window['gf_number_format'] = 'decimal_dot';jQuery(document).ready(function(){gf_apply_rules(2, ["3","4","5","6","7","10","11","8"], true);jQuery('#gform_wrapper_2').show();jQuery(document).trigger('gform_post_conditional_logic', [2, null, true]);} );} } } );jQuery(document).bind('gform_post_conditional_logic', function(event, formId, fields, isInit){} );</script><script type='text/javascript'> jQuery(document).ready(function(){jQuery(document).trigger('gform_post_render', [2, 1]) } ); </script> </div>
+</div> </div>
+</div>
+
+<div class="navigation index">
+<div class="alignleft"></div>
+<div class="alignright"></div>
+</div>
+
+</div>
+<div id="right-sidebar" class="span4">
+<ul class="nav nav-tabs" id="myTab">
+<li class="active"><a href="#offTheWire" data-toggle="tab">This Just In</a></li>
+<li><a href="#mostRead" data-toggle="tab">Most Read</a></li>
+
+</ul>
+<div class="tab-content">
+<div class="tab-pane active" id="offTheWire">
+<div id="text-3" class="widget widget_text"> <div class="textwidget"><div class="this-just-in-widget">
+<h4 class="sidebar-title">December 9, 2020</h4>
+<ul class="triangle">
+<li>
+<span class="this-just-in-title"><a href="https://www.datanami.com/this-just-in/datarobot-announces-key-strategic-investment-and-partnership-with-snowflake/" title="DataRobot Announces Key Strategic Investment and Partnership with Snowflake">DataRobot Announces Key Strategic Investment and Partnership with Snowflake</a></span>
+</li>
+<li>
+<span class="this-just-in-title"><a href="https://www.datanami.com/this-just-in/c3-ai-announces-pricing-of-initial-public-offering/" title="C3.ai Announces Pricing of Initial Public Offering">C3.ai Announces Pricing of Initial Public Offering</a></span>
+</li>
+<li>
+<span class="this-just-in-title"><a href="https://www.datanami.com/this-just-in/fetch-ai-launches-collective-learning-ai-to-assist-in-diagnosing-covid-19-in-x-rays/" title="Fetch.ai Launches Collective Learning AI to Assist In Diagnosing COVID-19 in X-Rays">Fetch.ai Launches Collective Learning AI to Assist In Diagnosing COVID-19 in X-Rays</a></span>
+</li>
+<li>
+<span class="this-just-in-title"><a href="https://www.datanami.com/this-just-in/virtualization-startup-sunlight-raises-6m-in-funding-to-make-high-performance-cloud-a-reality/" title="Virtualization Startup Sunlight Raises $6M in Funding to Make High-Performance Cloud a Reality">Virtualization Startup Sunlight Raises $6M in Funding to Make High-Performance Cloud a Reality</a></span>
+</li>
+<li>
+<span class="this-just-in-title"><a href="https://www.datanami.com/this-just-in/qlik-expands-relationship-with-aws-debuts-qlik-sense-enterprise-saas-in-aws-marketplace/" title="Qlik Expands Relationship with AWS, Debuts Qlik Sense Enterprise SaaS in AWS Marketplace">Qlik Expands Relationship with AWS, Debuts Qlik Sense Enterprise SaaS in AWS Marketplace</a></span>
+</li>
+</ul>
+<h4 class="sidebar-title">December 8, 2020</h4>
+<ul class="triangle">
+<li>
+<span class="this-just-in-title"><a href="https://www.datanami.com/this-just-in/varadas-new-data-platform-brings-order-to-data-lake-query-acceleration-chaos/" title="Varada&#8217;s New Data Platform Brings Order to Data Lake Query Acceleration Chaos">Varada&#8217;s New Data Platform Brings Order to Data Lake Query Acceleration Chaos</a></span>
+</li>
+<li>
+<span class="this-just-in-title"><a href="https://www.datanami.com/this-just-in/c3-ai-announces-covid-19-grand-challenge-winners/" title="C3.ai Announces COVID-19 Grand Challenge Winners">C3.ai Announces COVID-19 Grand Challenge Winners</a></span>
+</li>
+<li>
+<span class="this-just-in-title"><a href="https://www.datanami.com/this-just-in/alation-2020-4-delivers-new-data-governance-capabilities-and-enhanced-user-experience/" title="Alation 2020.4 Delivers New Data Governance Capabilities and Enhanced User Experience">Alation 2020.4 Delivers New Data Governance Capabilities and Enhanced User Experience</a></span>
+</li>
+<li>
+<span class="this-just-in-title"><a href="https://www.datanami.com/this-just-in/singlestore-announces-80m-series-e-investment-global-strategic-relationship-with-sas/" title="SingleStore Announces $80M Series E Investment, Global Strategic Relationship with SAS">SingleStore Announces $80M Series E Investment, Global Strategic Relationship with SAS</a></span>
+</li>
+<li>
+<span class="this-just-in-title"><a href="https://www.datanami.com/this-just-in/couchbase-launches-free-self-service-trial-of-cloud-dbaas-offering/" title="Couchbase Launches Free Self-Service Trial of Cloud DBaaS Offering">Couchbase Launches Free Self-Service Trial of Cloud DBaaS Offering</a></span>
+</li>
+<li>
+<span class="this-just-in-title"><a href="https://www.datanami.com/this-just-in/adapdix-secures-8m-series-a-to-accelerate-growth-of-ai-powered-automation-software/" title="Adapdix Secures $8M Series A to Accelerate Growth of AI-Powered Automation Software">Adapdix Secures $8M Series A to Accelerate Growth of AI-Powered Automation Software</a></span>
+</li>
+<li>
+<span class="this-just-in-title"><a href="https://www.datanami.com/this-just-in/erwin-expands-collaboration-with-microsoft-to-strengthen-data-management-enterprise-architecture/" title="erwin Expands Collaboration with Microsoft to Strengthen Data Management, Enterprise Architecture">erwin Expands Collaboration with Microsoft to Strengthen Data Management, Enterprise Architecture</a></span>
+</li>
+<li>
+<span class="this-just-in-title"><a href="https://www.datanami.com/this-just-in/sumo-logic-announces-third-quarter-fiscal-2021-financial-results/" title="Sumo Logic Announces Third Quarter Fiscal 2021 Financial Results">Sumo Logic Announces Third Quarter Fiscal 2021 Financial Results</a></span>
+</li>
+</ul>
+<h4 class="sidebar-title">December 7, 2020</h4>
+<ul class="triangle">
+<li>
+<span class="this-just-in-title"><a href="https://www.datanami.com/this-just-in/aruba-announces-new-orchestration-software-switch-models-for-the-distributed-data-center/" title="Aruba Announces New Orchestration Software, Switch Models for the Distributed Data Center">Aruba Announces New Orchestration Software, Switch Models for the Distributed Data Center</a></span>
+</li>
+<li>
+<span class="this-just-in-title"><a href="https://www.datanami.com/this-just-in/esri-releases-new-book-showcasing-gis-in-scientific-research/" title="Esri Releases New Book Showcasing GIS in Scientific Research">Esri Releases New Book Showcasing GIS in Scientific Research</a></span>
+</li>
+<li>
+<span class="this-just-in-title"><a href="https://www.datanami.com/this-just-in/comet-ml-debuts-collaborative-workspaces-for-data-science-and-mlops-teams/" title="Comet ML Debuts Collaborative Workspaces for Data Science and MLOps Teams">Comet ML Debuts Collaborative Workspaces for Data Science and MLOps Teams</a></span>
+</li>
+<li>
+<span class="this-just-in-title"><a href="https://www.datanami.com/this-just-in/cambridge-launches-uks-first-masters-programme-on-managing-the-risks-of-ai/" title="Cambridge Launches UK&#8217;s First Master’s Programme on Managing the Risks of AI">Cambridge Launches UK&#8217;s First Master’s Programme on Managing the Risks of AI</a></span>
+</li>
+<li>
+<span class="this-just-in-title"><a href="https://www.datanami.com/this-just-in/eu-commission-publishes-guidelines-to-increase-transparency-of-online-search-results/" title="EU Commission Publishes Guidelines to Increase Transparency of Online Search Results">EU Commission Publishes Guidelines to Increase Transparency of Online Search Results</a></span>
+</li>
+<li>
+<span class="this-just-in-title"><a href="https://www.datanami.com/this-just-in/iri-and-1010data-partner-to-develop-new-data-democratizing-solutions/" title="IRI and 1010data Partner to Develop New Data Democratizing Solutions">IRI and 1010data Partner to Develop New Data Democratizing Solutions</a></span>
+</li>
+<li>
+<span class="this-just-in-title"><a href="https://www.datanami.com/this-just-in/dremio-to-support-the-launch-of-professional-services-in-aws-marketplace/" title="Dremio to Support the Launch of Professional Services in AWS Marketplace">Dremio to Support the Launch of Professional Services in AWS Marketplace</a></span>
+</li>
+</ul>
+<ul class="triangle">
+<li>
+<a href="https://www.datanami.com/this-just-in/">More This Just In&hellip;</a>
+</li>
+</ul></div>
+</div>
+</div> </div>
+<div class="tab-pane" id="mostRead">
+<div id="wpp-2" class="widget popular-posts">
+<h3 class="sidebar-title">Most Read Features</h3>
+
+<ul class="triangle">
+<li><a href="https://www.datanami.com/2020/11/17/snowflake-extends-its-data-warehouse-with-pipelines-services/" class="wpp-post-title" target="_self">Snowflake Extends Its Data Warehouse with Pipelines, Services</a></li>
+<li><a href="https://www.datanami.com/2018/05/16/big-data-file-formats-demystified/" class="wpp-post-title" target="_self">Big Data File Formats Demystified</a></li>
+<li><a href="https://www.datanami.com/2020/11/05/data-lakes-are-legacy-tech-fivetran-ceo-says/" class="wpp-post-title" target="_self">Data Lakes Are Legacy Tech, Fivetran CEO Says</a></li>
+<li><a href="https://www.datanami.com/2020/11/16/why-data-science-is-still-a-top-job/" class="wpp-post-title" target="_self">Why Data Science Is Still a Top Job</a></li>
+<li><a href="https://www.datanami.com/2020/11/19/snowflake-not-what-you-may-think-it-is/" class="wpp-post-title" target="_self">Snowflake: Not What You May Think It Is</a></li>
+<li><a href="https://www.datanami.com/2020/11/25/the-maturation-of-data-science/" class="wpp-post-title" target="_self">The Maturation of Data Science</a></li>
+<li><a href="https://www.datanami.com/2020/11/12/data-lake-or-warehouse-databricks-offers-a-third-way/" class="wpp-post-title" target="_self">Data Lake or Warehouse? Databricks Offers a Third Way</a></li>
+<li><a href="https://www.datanami.com/2018/09/05/how-to-build-a-better-machine-learning-pipeline/" class="wpp-post-title" target="_self">How to Build a Better Machine Learning Pipeline</a></li>
+<li><a href="https://www.datanami.com/2019/08/15/is-python-strangling-r-to-death/" class="wpp-post-title" target="_self">Is Python Strangling R to Death?</a></li>
+<li><a href="https://www.datanami.com/2020/12/02/whos-winning-the-cloud-database-war/" class="wpp-post-title" target="_self">Who’s Winning the Cloud Database War</a></li>
+<li><a href="https://www.datanami.com/category/features/">More Features&hellip;</a></li></ul>
+</div>
+<div id="wpp-3" class="widget popular-posts">
+<h3 class="sidebar-title">Most Read News In Brief</h3>
+
+<ul class="triangle">
+<li><a href="https://www.datanami.com/2020/11/13/c3-ai-files-to-go-public/" class="wpp-post-title" target="_self">C3.ai Files to Go Public</a></li>
+<li><a href="https://www.datanami.com/2020/11/17/datarobot-eyes-ipo-after-another-vc-haul/" class="wpp-post-title" target="_self">DataRobot Eyes IPO After Another VC Haul</a></li>
+<li><a href="https://www.datanami.com/2020/10/13/qubole-is-latest-acquisition-target/" class="wpp-post-title" target="_self">Qubole is Latest Acquisition Target</a></li>
+<li><a href="https://www.datanami.com/2020/11/24/big-blue-taps-into-streaming-data-with-confluent-connection/" class="wpp-post-title" target="_self">Big Blue Taps Into Streaming Data with Confluent Connection</a></li>
+<li><a href="https://www.datanami.com/2020/11/17/data-exchange-maker-harbr-closes-series-a/" class="wpp-post-title" target="_self">Data Exchange Maker Harbr Closes Series A</a></li>
+<li><a href="https://www.datanami.com/2020/11/12/stanford-covid-19-model-identifies-superspreader-sites-socioeconomic-disparities/" class="wpp-post-title" target="_self">Stanford COVID-19 Model Identifies Superspreader Sites, Socioeconomic Disparities</a></li>
+<li><a href="https://www.datanami.com/2020/11/18/multi-cloud-driving-database-monitoring-services/" class="wpp-post-title" target="_self">Multi-Cloud Driving Database Monitoring Services</a></li>
+<li><a href="https://www.datanami.com/2020/09/29/testing-data-literacy-on-main-street/" class="wpp-post-title" target="_self">Testing Data Literacy on Main Street</a></li>
+<li><a href="https://www.datanami.com/2020/11/12/aws-launches-visual-data-prep-tool/" class="wpp-post-title" target="_self">AWS Launches Visual Data Prep Tool</a></li>
+<li><a href="https://www.datanami.com/2020/11/05/the-shifting-landscape-of-database-systems/" class="wpp-post-title" target="_self">The Shifting Landscape of Database Systems</a></li>
+<li><a href="https://www.datanami.com/category/news-in-brief/">More News In Brief&hellip;</a></li></ul>
+</div>
+<div id="wpp-4" class="widget popular-posts">
+<h3 class="sidebar-title">Most Read This Just In</h3>
+
+<ul class="triangle">
+<li><a href="https://www.datanami.com/this-just-in/logicmonitor-makes-log-analytics-smarter-with-new-offering/" class="wpp-post-title" target="_self">LogicMonitor Makes Log Analytics Smarter with New Offering</a></li>
+<li><a href="https://www.datanami.com/this-just-in/accenture-to-acquire-end-to-end-analytics/" class="wpp-post-title" target="_self">Accenture to Acquire End-to-End Analytics</a></li>
+<li><a href="https://www.datanami.com/this-just-in/dynatrace-named-a-leader-in-aiops-report-by-independent-research-firm/" class="wpp-post-title" target="_self">Dynatrace Named a Leader in AIOps Report by Independent Research Firm</a></li>
+<li><a href="https://www.datanami.com/this-just-in/gooddata-adds-enhanced-self-service-tools-to-drive-business-intelligence-adoption-2/" class="wpp-post-title" target="_self">GoodData Open-sources Next Gen Analytics Framework</a></li>
+<li><a href="https://www.datanami.com/this-just-in/snowflake-reports-financial-results-for-q3-of-fiscal-2021/" class="wpp-post-title" target="_self">Snowflake Reports Financial Results for Q3 of Fiscal 2021</a></li>
+<li><a href="https://www.datanami.com/this-just-in/datarobot-announces-270m-in-funding-led-by-altimeter-capital/" class="wpp-post-title" target="_self">DataRobot Announces $270M in Funding Led by Altimeter Capital</a></li>
+<li><a href="https://www.datanami.com/this-just-in/c3-ai-announces-launch-of-initial-public-offering/" class="wpp-post-title" target="_self">C3.ai Announces Launch of Initial Public Offering</a></li>
+<li><a href="https://www.datanami.com/this-just-in/informatica-announces-new-governed-data-lake-management-for-aws-customers/" class="wpp-post-title" target="_self">Informatica Announces New Governed Data Lake Management for AWS Customers</a></li>
+<li><a href="https://www.datanami.com/this-just-in/teradata-named-a-cloud-database-management-leader-in-2020-gartner-magic-quadrant/" class="wpp-post-title" target="_self">Teradata Named a Cloud Database Management Leader in 2020 Gartner Magic Quadrant</a></li>
+<li><a href="https://www.datanami.com/this-just-in/instaclustr-joins-the-cloud-native-computing-foundation/" class="wpp-post-title" target="_self">Instaclustr Joins the Cloud Native Computing Foundation</a></li>
+<li><a href="https://www.datanami.com/this-just-in/">More This Just In&hellip;</a></li></ul>
+</div>
+</div>
+
+</div>
+<div id="text-17" class="widget widget_text"> <div class="textwidget"><div class="ad-unit">
+</p>
+<div id='div-gpt-ad-1597871833281-0'>
+<script>
+    googletag.cmd.push(function() { googletag.display('div-gpt-ad-1597871833281-0'); });
+  </script>
+</div>
+</div>
+</div>
+</div><div id="text-48" class="widget widget_text"><h3 class="sidebar-title">Sponsored Partner Content</h3> <div class="textwidget">
+<div class="sponsored-links-widget">
+<ul>
+<li>
+<h4>
+<a href="https://tci.taborcommunications.com/l/21812/2020-11-30/726jk8" title="Move beyond extracts &#8211; Instantly analyze all your data with Smart OLAP™">
+Move beyond extracts &#8211; Instantly analyze all your data with Smart OLAP™ </a>
+</h4>
+</li>
+<li>
+<h4>
+<a href="https://tci.taborcommunications.com/l/21812/2020-11-05/71j8bj" title="CDATA | Universal Connectivity to SaaS/Cloud, NoSQL, &#038; Big Data">
+CDATA | Universal Connectivity to SaaS/Cloud, NoSQL, &#038; Big Data </a>
+</h4>
+</li>
+<li>
+<h4>
+<a href="https://tci.taborcommunications.com/l/21812/2020-09-17/6y69zz" title="Big Data analytics with Vertica: Game changer for data-driven insights">
+Big Data analytics with Vertica: Game changer for data-driven insights </a>
+</h4>
+</li>
+</ul>
+</div>
+</div>
+</div><div id="text-47" class="widget widget_text"><h3 class="sidebar-title">Solution Providers</h3> <div class="textwidget">
+<div class="datanami-solution-providers">
+<div class="provider">
+<a href="https://tci.taborcommunications.com/sponsor-DN-Anaconda" title="Anaconda">
+<img src="https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/uploads/2020/08/anaconda_90x45.png" />
+</a>
+</div>
+<div class="provider">
+<a href="https://tci.taborcommunications.com/l/21812/2020-11-05/71j8bn" title="CData">
+<img src="https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/uploads/2020/11/CData_90x45.png" />
+</a>
+</div>
+<div class="provider">
+<a href="https://tci.taborcommunications.com/sponsor-DN-DataRobot" title="DataRobot">
+<img src="https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/uploads/2020/08/DataRobot_90x45.png" />
+</a>
+</div>
+<div class="provider">
+<a href="https://tci.taborcommunications.com/sponsor-DN-DDN" title="DDN">
+<img src="https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/uploads/2020/08/DDN-new2020_90x45.png" />
+</a>
+</div>
+<div class="provider">
+<a href="https://tci.taborcommunications.com/sponsor-DN-DellEMC" title="Dell EMC">
+<img src="https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/uploads/2020/08/DellEMC_90x45.png" />
+</a>
+</div>
+<div class="provider">
+<a href="https://tci.taborcommunications.com/sponsor-DN-Flux7" title="Flux7">
+<img src="https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/uploads/2020/08/Flux7_90x45.png" />
+</a>
+</div>
+<div class="provider">
+<a href="https://tci.taborcommunications.com/sponsor-DN-GoodData" title="GoodData">
+<img src="https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/uploads/2020/08/GoodData_90x45.png" />
+</a>
+</div>
+<div class="provider">
+<a href="https://tci.taborcommunications.com/sponsor-DN-H2O" title="H2O.ai">
+<img src="https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/uploads/2020/08/h2o_90x45.png" />
+</a>
+</div>
+<div class="provider">
+<a href="https://tci.taborcommunications.com/sponsor-DN-Instaclustr" title="Instaclustr">
+<img src="https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/uploads/2020/08/instaclustr_90x45.png" />
+</a>
+</div>
+<div class="provider">
+<a href="https://tci.taborcommunications.com/sponsor-DN-Intel" title="Intel">
+<img src="https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/uploads/2020/09/intel-New2020-90x45-1.png" />
+</a>
+</div>
+<div class="provider">
+<a href="https://tci.taborcommunications.com/l/21812/2020-11-30/726jln" title="Kyvos">
+<img src="https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/uploads/2020/11/kyvos-logo_90x45.jpg" />
+</a>
+</div>
+<div class="provider">
+<a href="https://tci.taborcommunications.com/sponsor-DN-Matillion" title="Matillion">
+<img src="https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/uploads/2020/08/matillion_90x45.png" />
+</a>
+</div>
+<div class="provider">
+<a href="https://tci.taborcommunications.com/l/21812/2020-09-15/6y5v57" title="MinIO">
+<img src="https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/uploads/2020/09/MinIO_90x45.jpg" />
+</a>
+</div>
+<div class="provider">
+<a href="https://tci.taborcommunications.com/sponsor-DN-Neo4j" title="Neo4j">
+<img src="https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/uploads/2020/08/neo4j_90x45.png" />
+</a>
+</div>
+<div class="provider">
+<a href="https://tci.taborcommunications.com/sponsor-DN-Tamr" title="Tamr">
+<img src="https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/uploads/2020/08/tamr_90x45.png" />
+</a>
+</div>
+<div class="provider">
+<a href="https://tci.taborcommunications.com/sponsor-DN-TigerGraph" title="TigerGraph">
+<img src="https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/uploads/2020/08/TigerGraph_90x45.png" />
+</a>
+</div>
+<div class="provider">
+<a href="https://tci.taborcommunications.com/sponsor-DN-Trifacta" title="Trifacta">
+<img src="https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/uploads/2020/08/trifacta_90x45.png" />
+</a>
+</div>
+</div>
+</div>
+</div><div id="text-46" class="widget widget_text"><h3 class="sidebar-title">Tabor Network</h3> <div class="textwidget"><div style="width: 90px; margin-right: 10px; display: inline-block;"><a href="https://hpcwire.com/" target="new" rel="noopener noreferrer"><img loading="lazy" src="https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/uploads/2014/06/hpcwire_button.png" alt="HPCwire" width="120" height="37" /></a></div>
+<div style="width: 90px; margin-right: 10px; display: inline-block;"><a href="http://www.enterpriseai.news/" target="new" rel="noopener noreferrer"><img style="width: 120px; height: auto; margin-top: 0; margin-bottom: 0;" src="https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/uploads/2019/03/eai.png" alt="EnterpriseAI" /></a></div>
+<div style="width: 90px; display: inline-block;"><a href="http://www.hpcwire.jp/" target="new" rel="noopener noreferrer"><img loading="lazy" src="https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/uploads/2014/06/HPCwire_Japan_Logo.gif" alt="HPCwire Japan" width="120" height="59" /></a></div>
+</div>
+</div><div id="text-10" class="widget widget_text"><h3 class="sidebar-title">Sponsored Whitepapers</h3> <div class="textwidget">
+<div class="whitepapers-widget">
+<ul>
+<li>
+<h4>
+<a href="https://tci.taborcommunications.com/l/21812/2020-12-01/726p1x" title="The Seven Tenets of Scalable Data Unification">
+The Seven Tenets of Scalable Data Unification </a>
+</h4>
+</li>
+<li>
+<h4>
+<a href="https://tci.taborcommunications.com/l/21812/2020-11-24/725hbj" title="The Guide to External Data for Better User Experiences in Financial Services">
+The Guide to External Data for Better User Experiences in Financial Services </a>
+</h4>
+</li>
+</ul>
+<ul class="triangle">
+<li>
+<a href="https://www.datanami.com/whitepaper/">View the Whitepaper Library</a>
+</li>
+</ul>
+</div>
+</div>
+</div><div id="pw_multimedia_widget-2" class="widget widget_pw_multimedia_widget"> <div class="widgetz">
+<h3 class="sidebar-title">Sponsored Multimedia</h3> <div id="multimedia-s" class="carousel slide">
+<div class="carousel-inner">
+<div class="item active">
+<div class="row-fluid">
+<div class="span6">
+<div id="post-37967" class="post-37967 multimedia type-multimedia status-publish has-post-thumbnail hentry mediatype-webinar">
+<div class="entry">
+<a href="https://tci.taborcommunications.com/l/21812/2020-11-11/71k3zb" title="How to Accelerate Executive Decision-Making from 6 weeks to 1 day" class="thumbnail">
+<img width="111" height="111" src="https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/uploads/2020/11/201112AtScale_111x111.png" class="attachment-thumbnail size-thumbnail wp-post-image" alt="" loading="lazy" srcset="https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/uploads/2020/11/201112AtScale_111x111.png 111w, https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/uploads/2020/11/201112AtScale_111x111-100x100.png 100w" sizes="(max-width: 111px) 100vw, 111px" /> </a>
+<h4><a href="https://tci.taborcommunications.com/l/21812/2020-11-11/71k3zb" title="How to Accelerate Executive Decision-Making from 6 weeks to 1 day" class="thumbnail">
+How to Accelerate Executive Decision-Making from 6 weeks to 1 day <div class="meta-in"><i class="icon-comment"></i> No Comments</div>
+</a></h4>
+</div>
+</div>
+</div>
+<div class="span6">
+<div id="post-36251" class="post-36251 multimedia type-multimedia status-publish has-post-thumbnail hentry mediatype-webcast">
+<div class="entry">
+<a href="https://tci.taborcommunications.com/l/21812/2020-09-09/6y4ryy" title="Accelerating Research Innovation with Qumulo’s File Data Platform" class="thumbnail">
+<img width="150" height="150" src="https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/uploads/2020/09/200902QumuloWebinar_cover-150x150.png" class="attachment-thumbnail size-thumbnail wp-post-image" alt="" loading="lazy" /> </a>
+<h4><a href="https://tci.taborcommunications.com/l/21812/2020-09-09/6y4ryy" title="Accelerating Research Innovation with Qumulo’s File Data Platform" class="thumbnail">
+Accelerating Research Innovation with Qumulo’s File Data Platform <div class="meta-in"><i class="icon-comment"></i> No Comments</div>
+</a></h4>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="item ">
+<div class="row-fluid">
+<div class="span6">
+<div id="post-33400" class="post-33400 multimedia type-multimedia status-publish has-post-thumbnail hentry mediatype-webinar">
+<div class="entry">
+<a href="https://tci.taborcommunications.com/l/21812/2020-06-10/6t3kkh" title="Data + AI Lessons Learned from Covid-19" class="thumbnail">
+<img width="111" height="111" src="https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/uploads/2020/06/200610H2OWebinar_111x111.png" class="attachment-thumbnail size-thumbnail wp-post-image" alt="" loading="lazy" srcset="https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/uploads/2020/06/200610H2OWebinar_111x111.png 111w, https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/uploads/2020/06/200610H2OWebinar_111x111-100x100.png 100w" sizes="(max-width: 111px) 100vw, 111px" /> </a>
+<h4><a href="https://tci.taborcommunications.com/l/21812/2020-06-10/6t3kkh" title="Data + AI Lessons Learned from Covid-19" class="thumbnail">
+Data + AI Lessons Learned from Covid-19 <div class="meta-in"><i class="icon-comment"></i> No Comments</div>
+</a></h4>
+</div>
+</div>
+</div>
+<div class="span6">
+<div id="post-19330" class="post-19330 multimedia type-multimedia status-publish has-post-thumbnail hentry mediatype-webinar">
+<div class="entry">
+<a href="http://tci.taborcommunications.com/l/21812/2018-03-05/67p7rm" title="Real-Time Connected Customer Experiences &#8211;  Easier Than You Think" class="thumbnail">
+<img width="111" height="111" src="https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/uploads/2018/03/180214SASHIWebinar2_111x111.png" class="attachment-thumbnail size-thumbnail wp-post-image" alt="Real-Time Connected Customer Experiences - Easier Than You Think" loading="lazy" srcset="https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/uploads/2018/03/180214SASHIWebinar2_111x111.png 111w, https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/uploads/2018/03/180214SASHIWebinar2_111x111-100x100.png 100w" sizes="(max-width: 111px) 100vw, 111px" /> </a>
+<h4><a href="http://tci.taborcommunications.com/l/21812/2018-03-05/67p7rm" title="Real-Time Connected Customer Experiences &#8211;  Easier Than You Think" class="thumbnail">
+Real-Time Connected Customer Experiences &#8211; Easier Than You Think <div class="meta-in"><i class="icon-comment"></i> No Comments</div>
+</a></h4>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="item ">
+<div class="row-fluid">
+<div class="span6">
+<div id="post-18383" class="post-18383 multimedia type-multimedia status-publish has-post-thumbnail hentry mediatype-webinar">
+<div class="entry">
+<a href="http://tci.taborcommunications.com/l/21812/2017-11-14/65lrgg" title="Improving Manufacturing Quality and Asset Performance with Industrial Internet of Things" class="thumbnail">
+<img width="111" height="111" src="https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/uploads/2017/12/171213SASHIWebinar_111x111.png" class="attachment-thumbnail size-thumbnail wp-post-image" alt="" loading="lazy" srcset="https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/uploads/2017/12/171213SASHIWebinar_111x111.png 111w, https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/uploads/2017/12/171213SASHIWebinar_111x111-100x100.png 100w" sizes="(max-width: 111px) 100vw, 111px" /> </a>
+<h4><a href="http://tci.taborcommunications.com/l/21812/2017-11-14/65lrgg" title="Improving Manufacturing Quality and Asset Performance with Industrial Internet of Things" class="thumbnail">
+Improving Manufacturing Quality and Asset Performance with Industrial Internet of Things <div class="meta-in"><i class="icon-comment"></i> No Comments</div>
+</a></h4>
+</div>
+</div>
+</div>
+<div class="span6">
+<div id="post-17998" class="post-17998 multimedia type-multimedia status-publish has-post-thumbnail hentry mediatype-webinar">
+<div class="entry">
+<a href="http://tci.taborcommunications.com/l/21812/2017-11-03/6545vj" title="Enable Connected Data Access and Analytics on Demand- Presenting Anzo Smart Data Lake®" class="thumbnail">
+<img width="111" height="111" src="https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/uploads/2017/11/CambridgeSemanticsDataLakesWebinarCS_111x111.png" class="attachment-thumbnail size-thumbnail wp-post-image" alt="" loading="lazy" srcset="https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/uploads/2017/11/CambridgeSemanticsDataLakesWebinarCS_111x111.png 111w, https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/uploads/2017/11/CambridgeSemanticsDataLakesWebinarCS_111x111-100x100.png 100w" sizes="(max-width: 111px) 100vw, 111px" /> </a>
+<h4><a href="http://tci.taborcommunications.com/l/21812/2017-11-03/6545vj" title="Enable Connected Data Access and Analytics on Demand- Presenting Anzo Smart Data Lake®" class="thumbnail">
+Enable Connected Data Access and Analytics on Demand- Presenting Anzo Smart Data Lake® <div class="meta-in"><i class="icon-comment"></i> No Comments</div>
+</a></h4>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<a class="left carousel-control" href="#multimedia-s" data-slide="prev">‹</a>
+<a class="right carousel-control" href="#multimedia-s" data-slide="next">›</a>
+</div>
+</div>
+</div><div id="text-18" class="widget widget_text"> <div class="textwidget"><div class="ad-unit">
+</p>
+<div id='div-gpt-ad-1597871958153-0'>
+<script>
+    googletag.cmd.push(function() { googletag.display('div-gpt-ad-1597871958153-0'); });
+  </script>
+</div>
+</div>
+</div>
+</div><div id="custom_html-2" class="widget_text widget widget_custom_html"><h3 class="sidebar-title">Contributors</h3><div class="textwidget custom-html-widget"><p><a href="https://www.datanami.com/about-our-authors/"></p>
+<div style="overflow-y:auto;overflow-x:hidden;">
+<div class="contributor">
+<img src="https://www.enterpriseai.news/wp-content/uploads/2020/04/awoodie50x67.jpg" width="50px" height="67px" style="height: 67px !important;" alt="Alex Woodie" /></p>
+<div class="contributor-name">Alex Woodie</div>
+<p></p>
+<div class="contributor-title">Managing Editor</div>
+</p></div>
+<div class="contributor">
+<img src="https://www.enterpriseai.news/wp-content/uploads/2020/04/gleopold50x67.jpg" width="50px" height="67px" style="height: 67px !important;" alt="George Leopold" /></p>
+<div class="contributor-name">George Leopold</div>
+<p></p>
+<div class="contributor-title">Senior Editor</div>
+</p></div>
+<div class="contributor">
+<img src="https://www.enterpriseai.news/wp-content/uploads/2020/04/opeckman50x67.jpg" width="50px" height="67px" style="height: 67px !important;" alt="Oliver Peckham" /></p>
+<div class="contributor-name">Oliver Peckham</div>
+<p></p>
+<div class="contributor-title">Editor</div>
+</p></div>
+<div class="contributor">
+<img src="https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/uploads/2020/04/sconway50x67.jpg" width="50px" height="67px" style="height: 67px !important;" alt="Steve Conway" /></p>
+<div class="contributor-name">Steve Conway</div>
+<p></p>
+<div class="contributor-title">Contributing Editor</div>
+</p></div>
+<div class="contributor">
+<img src="https://www.enterpriseai.news/wp-content/uploads/2020/04/ttrader50x67.jpg" width="50px" height="67px" style="height: 67px !important;" alt="Tiffany Trader" /></p>
+<div class="contributor-name">Tiffany Trader</div>
+<p></p>
+<div class="contributor-title">Editorial Director</div>
+</p></div>
+<div class="contributor">
+<img src="https://www.enterpriseai.news/wp-content/uploads/2020/04/jrussell50x67.jpg" width="50px" height="67px" style="height: 67px !important;" alt="John Russell" /></p>
+<div class="contributor-name">John Russell</div>
+<p></p>
+<div class="contributor-title">Contributing Editor</div>
+</p></div>
+<div class="contributor">
+<img src="https://www.enterpriseai.news/wp-content/uploads/2020/08/ToddWeiss50x67.jpg" width="50px" height="67px" style="height: 67px !important;" alt="Todd Weiss" /></p>
+<div class="contributor-name">Todd R. Weiss</div>
+<p></p>
+<div class="contributor-title">Contributing Editor</div>
+</p></div>
+<div class="contributor">
+<img src="https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/uploads/2020/04/jkobielus50x67.jpg" width="50px" height="67px" style="height: 67px !important;" alt="James Kobielus" /></p>
+<div class="contributor-name">James Kobielus</div>
+<p></p>
+<div class="contributor-title">Contributing Editor</div>
+</p></div>
+</p></div>
+<p></a></p>
+</div></div><div id="tribe-events-adv-list-widget-2" class="widget tribe-events-adv-list-widget"><h3 class="sidebar-title">Featured Events</h3> <ol class="hfeed vcalendar">
+<li class="type-tribe_events post-35190 tribe-clearfix tribe-events-category-conference-2 tribe-events-category-expo tribe-events-venue-35192">
+<h4 class="entry-title summary">
+<a href="https://www.datanami.com/event/leap/" rel="bookmark">LEAP</a>
+</h4>
+<img width="120" height="60" src="https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/uploads/2020/08/leap_120x60.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" loading="lazy" srcset="https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/uploads/2020/08/leap_120x60.png 120w, https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/uploads/2020/08/leap_120x60-100x50.png 100w" sizes="(max-width: 120px) 100vw, 120px" />
+<div class="duration">
+<span class="tribe-event-date-start">February 1, 2021</span> - <span class="tribe-event-date-end">February 3, 2021</span> </div>
+<div class="vcard adr location">
+<span class="country-name">Saudi Arabia</span>
+</div>
+</li>
+<li class="type-tribe_events post-31724 tribe-clearfix tribe-events-category-expo tribe-events-venue-8251">
+<h4 class="entry-title summary">
+<a href="https://www.datanami.com/event/ai-big-data-expo-global-2021/" rel="bookmark">AI &#038; Big Data Expo Global 2021</a>
+</h4>
+<img width="120" height="60" src="https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/uploads/2020/04/ai-bigdata-expo_120x60.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" loading="lazy" srcset="https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/uploads/2020/04/ai-bigdata-expo_120x60.png 120w, https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/uploads/2020/04/ai-bigdata-expo_120x60-100x50.png 100w" sizes="(max-width: 120px) 100vw, 120px" />
+<div class="duration">
+<span class="tribe-event-date-start">March 17, 2021</span> - <span class="tribe-event-date-end">March 18, 2021</span> </div>
+<div class="vcard adr location">
+<span class="locality">Kensington</span>
+<span class="region">London</span>
+<span class="country-name">United Kingdom</span>
+</div>
+</li>
+</ol>
+<p class="tribe-events-widget-link">
+<a href="https://www.datanami.com/events/" rel="bookmark">
+View More&hellip; </a>
+</p>
+</div><script type="application/ld+json">
+[{"@context":"http://schema.org","@type":"Event","name":"LEAP","description":"&lt;p&gt;ONE GIANT LEAP Technology is rapidly transforming the reality of today\u2019s status quo. It\u2019s the foundation for many industries looking to develop, advance and leap forward; and it is increasingly becoming an intrinsic part of our everyday lives. With this in mind, we bring you LEAP. Connecting the\u00a0cr\u00e8me de la cr\u00e8me\u00a0of ideas, innovative developments and &lt;a class=&quot;read-more&quot; href=&quot;https://www.datanami.com/event/leap/&quot;&gt;Read more&hellip;&lt;/a&gt;&lt;/p&gt;\\n","image":"https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/uploads/2020/08/leap_120x60.png","url":"https://www.datanami.com/event/leap/","startDate":"2021-02-01T00:00:00-08:00","endDate":"2021-02-03T23:59:59-08:00","location":{"@type":"Place","name":"Riyadh Front Expo Centre","description":"","url":"https://www.datanami.com/venue/riyadh-front-expo-centre/","address":{"@type":"PostalAddress","addressCountry":"Saudi Arabia"},"telephone":"","sameAs":""},"performer":"Organization"},{"@context":"http://schema.org","@type":"Event","name":"AI &#038; Big Data Expo Global 2021","description":"&lt;p&gt;The AI &amp; Big Data Expo Global, the leading Artificial Intelligence &amp; Big Data Conference &amp; Exhibition event will take place on 17-18th March 2021 at the Olympia London. It is a showcase of next generation technologies and strategies from the world of Artificial Intelligence &amp; Big Data, an opportunity to explore and discover the &lt;a class=&quot;read-more&quot; href=&quot;https://www.datanami.com/event/ai-big-data-expo-global-2021/&quot;&gt;Read more&hellip;&lt;/a&gt;&lt;/p&gt;\\n","image":"https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/uploads/2020/04/ai-bigdata-expo_120x60.png","url":"https://www.datanami.com/event/ai-big-data-expo-global-2021/","startDate":"2021-03-17T00:00:00-07:00","endDate":"2021-03-18T23:59:59-07:00","location":{"@type":"Place","name":"Olympia London","description":"","url":"https://www.datanami.com/venue/olympia-london/","address":{"@type":"PostalAddress","streetAddress":"Hammersmith Rd","addressLocality":"Kensington","addressRegion":"London","postalCode":"W14 8UX","addressCountry":"United Kingdom"},"geo":{"@type":"GeoCoordinates","latitude":51.4946748,"longitude":-0.2124229},"telephone":"","sameAs":"http://olympia.london/"},"performer":"Organization"}]
+</script>
+<div class="row-fluid">
+<div id="rs-bl" class="span6">
+</div>
+<div id="rs-br" class="span6">
+</div>
+</div>
+</div>
+</div>
+</div>
+<footer class="row-fluid">
+<div class="span6 copyrights">
+&copy; 2020 Datanami. All Rights Reserved. A Tabor Communications Publication
+</div>
+<div class="span6 disclaimer">
+<div class="menu-footer-container"><ul id="menu-footer" class="menu"><li id="menu-item-4068" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4068"><a href="#top">Back to Top</a></li>
+<li id="menu-item-4067" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4067"><a href="https://www.datanami.com/about/contact/">Contact</a></li>
+<li id="menu-item-19911" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-privacy-policy menu-item-19911"><a href="https://www.datanami.com/about/privacypolicy/">Privacy Policy</a></li>
+<li id="menu-item-19912" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-19912"><a href="https://www.datanami.com/about/cookie-policy/">Cookie Policy</a></li>
+<li id="menu-item-4066" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4066"><a href="https://www.datanami.com/about/">About Datanami</a></li>
+<li id="menu-item-29453" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-29453"><a href="https://tci.taborcommunications.com/Tabor_preferences?epc_hash=LEgPAkeDP1kXsT9n0OZSuywC59YR6HghuZYfFCvgtPU">Update Subscription Preferences</a></li>
+<li id="menu-item-29601" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-29601"><a href="https://www.hpcwire.com/about-hpcwire/privacy-policy/#california_info">California Consumers</a></li>
+</ul></div> </div>
+</footer>
+</div>
+<script>
+			jQuery(document).ready(function($){
+				var required = $('.gfield_contains_required');
+				var controlGroup = $('.gfield');
+				required.each(function(){
+					$(this).find('input').attr('required', 'true');
+					$(this).find('textarea').attr('required', 'true');
+					$(this).find('select').attr('required', 'true');
+				});
+				controlGroup.each(function(){
+					$(this).addClass('control-group');
+					$(this).find('input').after('<p class="help-block"></p>');
+					$(this).find('textarea').after('<p class="help-block"></p>');
+				});
+				$('.gfield_label').each(function(){
+					$(this).addClass('control-label');
+				});
+				$('.ginput_container').each(function(){
+					$(this).addClass('controls');
+				});
+				$(this).bind('gform_post_render',function(){
+					$("input,select,textarea").not("[type=submit]").jqBootstrapValidation({
+						filter: function () {
+							return $(this).is(":visible");
+						},
+						preventSubmit: false,
+					});
+					$(this).find('.gfield_error').removeClass('gfield_error').addClass('error');
+					$('.validation_message').each(function(){
+						var sib = $(this).prev();
+						$(this).appendTo(sib);
+					});
+				});
+			});
+		</script>
+<a rel="nofollow" style="display:none;" href="https://www.datanami.com/?blackhole=90542aa4f0" title="Blackhole for Bad Bots">Do NOT follow this link or you will be banned from the site!</a>
+<!--googleoff: all--><div id="cookie-law-info-bar" data-nosnippet="true"><span>This website uses cookies to improve your experience. We'll assume you're ok with this, but you can opt-out if you wish.<a role='button' tabindex='0' data-cli_action="accept" id="cookie_action_close_header" class="medium cli-plugin-button cli-plugin-main-button cookie_action_close_header cli_action_button" style="display:inline-block; ">Accept</a> <a href='https://www.datanami.com/about/cookie-policy/' id="CONSTANT_OPEN_URL" target="_blank" class="cli-plugin-main-link" style="display:inline-block;">Read More</a></span></div><div id="cookie-law-info-again" style="display:none;" data-nosnippet="true"><span id="cookie_hdr_showagain">Privacy & Cookies Policy</span></div><div class="cli-modal" data-nosnippet="true" id="cliSettingsPopup" tabindex="-1" role="dialog" aria-labelledby="cliSettingsPopup" aria-hidden="true">
+<div class="cli-modal-dialog" role="document">
+<div class="cli-modal-content cli-bar-popup">
+<button type="button" class="cli-modal-close" id="cliModalClose">
+<svg class="" viewBox="0 0 24 24"><path d="M19 6.41l-1.41-1.41-5.59 5.59-5.59-5.59-1.41 1.41 5.59 5.59-5.59 5.59 1.41 1.41 5.59-5.59 5.59 5.59 1.41-1.41-5.59-5.59z"></path><path d="M0 0h24v24h-24z" fill="none"></path></svg>
+<span class="wt-cli-sr-only">Close</span>
+</button>
+<div class="cli-modal-body">
+<div class="cli-container-fluid cli-tab-container">
+<div class="cli-row">
+<div class="cli-col-12 cli-align-items-stretch cli-px-0">
+<div class="cli-privacy-overview">
+<h4>Privacy Overview</h4> <div class="cli-privacy-content">
+<div class="cli-privacy-content-text">This website uses cookies to improve your experience while you navigate through the website. Out of these, the cookies that are categorized as necessary are stored on your browser as they are essential for the working of basic functionalities of the website. We also use third-party cookies that help us analyze and understand how you use this website. These cookies will be stored in your browser only with your consent. You also have the option to opt-out of these cookies. But opting out of some of these cookies may affect your browsing experience.</div>
+</div>
+<a class="cli-privacy-readmore" data-readmore-text="Show more" data-readless-text="Show less"></a> </div>
+</div>
+<div class="cli-col-12 cli-align-items-stretch cli-px-0 cli-tab-section-container">
+<div class="cli-tab-section">
+<div class="cli-tab-header">
+<a role="button" tabindex="0" class="cli-nav-link cli-settings-mobile" data-target="necessary" data-toggle="cli-toggle-tab">
+Necessary </a>
+<div class="wt-cli-necessary-checkbox">
+<input type="checkbox" class="cli-user-preference-checkbox" id="wt-cli-checkbox-necessary" data-id="checkbox-necessary" checked="checked" />
+<label class="form-check-label" for="wt-cli-checkbox-necessary">Necessary</label>
+</div>
+<span class="cli-necessary-caption">Always Enabled</span> </div>
+<div class="cli-tab-content">
+<div class="cli-tab-pane cli-fade" data-id="necessary">
+<p>Necessary cookies are absolutely essential for the website to function properly. This category only includes cookies that ensures basic functionalities and security features of the website. These cookies do not store any personal information.</p>
+</div>
+</div>
+</div>
+<div class="cli-tab-section">
+<div class="cli-tab-header">
+<a role="button" tabindex="0" class="cli-nav-link cli-settings-mobile" data-target="non-necessary" data-toggle="cli-toggle-tab">
+Non-necessary </a>
+<div class="cli-switch">
+<input type="checkbox" id="wt-cli-checkbox-non-necessary" class="cli-user-preference-checkbox" data-id="checkbox-non-necessary" checked='checked' />
+<label for="wt-cli-checkbox-non-necessary" class="cli-slider" data-cli-enable="Enabled" data-cli-disable="Disabled"><span class="wt-cli-sr-only">Non-necessary</span></label>
+</div> </div>
+<div class="cli-tab-content">
+<div class="cli-tab-pane cli-fade" data-id="non-necessary">
+<p>Any cookies that may not be particularly necessary for the website to function and is used specifically to collect user personal data via analytics, ads, other embedded contents are termed as non-necessary cookies. It is mandatory to procure user consent prior to running these cookies on your website.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cli-modal-backdrop cli-fade cli-settings-overlay"></div>
+<div class="cli-modal-backdrop cli-fade cli-popupbar-overlay"></div>
+<!--googleon: all--><div class="et_social_sidebar_networks et_social_visible_sidebar et_social_slideright et_social_animated et_social_rectangle et_social_sidebar_flip et_social_mobile_on">
+<ul class="et_social_icons_container"><li class="et_social_twitter">
+<a href="https://twitter.com/share?text=Data%20Scientists%20Predict%20COVID-19%E2%80%99s%20Urban%20Impact&#038;url=https%3A%2F%2Fwww.datanami.com%2F2020%2F03%2F25%2Fdata-scientists-predict-covid-19s-urban-impact%2F&#038;via=datanami" class="et_social_share" rel="nofollow" data-social_name="twitter" data-post_id="30839" data-social_type="share" data-location="sidebar">
+<i class="et_social_icon et_social_icon_twitter"></i>
+<span class="et_social_overlay"></span>
+</a>
+</li><li class="et_social_facebook">
+<a href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fwww.datanami.com%2F2020%2F03%2F25%2Fdata-scientists-predict-covid-19s-urban-impact%2F&#038;t=Data%20Scientists%20Predict%20COVID-19%E2%80%99s%20Urban%20Impact" class="et_social_share" rel="nofollow" data-social_name="facebook" data-post_id="30839" data-social_type="share" data-location="sidebar">
+<i class="et_social_icon et_social_icon_facebook"></i>
+<span class="et_social_overlay"></span>
+</a>
+</li><li class="et_social_linkedin">
+<a href="https://www.linkedin.com/shareArticle?mini=true&#038;url=https%3A%2F%2Fwww.datanami.com%2F2020%2F03%2F25%2Fdata-scientists-predict-covid-19s-urban-impact%2F&#038;title=Data%20Scientists%20Predict%20COVID-19%E2%80%99s%20Urban%20Impact" class="et_social_share" rel="nofollow" data-social_name="linkedin" data-post_id="30839" data-social_type="share" data-location="sidebar">
+<i class="et_social_icon et_social_icon_linkedin"></i>
+<span class="et_social_overlay"></span>
+</a>
+</li><li class="et_social_reddit">
+<a href="https://www.reddit.com/submit?url=https%3A%2F%2Fwww.datanami.com%2F2020%2F03%2F25%2Fdata-scientists-predict-covid-19s-urban-impact%2F&#038;title=Data%20Scientists%20Predict%20COVID-19%E2%80%99s%20Urban%20Impact" class="et_social_share" rel="nofollow" data-social_name="reddit" data-post_id="30839" data-social_type="share" data-location="sidebar">
+<i class="et_social_icon et_social_icon_reddit"></i>
+<span class="et_social_overlay"></span>
+</a>
+</li><li class="et_social_printfriendly">
+<a href="https://www.printfriendly.com/print?url=https%3A%2F%2Fwww.datanami.com%2F2020%2F03%2F25%2Fdata-scientists-predict-covid-19s-urban-impact%2F&#038;title=Data%20Scientists%20Predict%20COVID-19%E2%80%99s%20Urban%20Impact" class="et_social_share" rel="nofollow" data-social_name="printfriendly" data-post_id="30839" data-social_type="share" data-location="sidebar">
+<i class="et_social_icon et_social_icon_printfriendly"></i>
+<span class="et_social_overlay"></span>
+</a>
+</li></ul>
+<span class="et_social_hide_sidebar et_social_icon"></span>
+</div><div class="et_social_mobile_button"></div>
+<div class="et_social_mobile et_social_fadein">
+<div class="et_social_heading">Share This</div>
+<span class="et_social_close"></span>
+<div class="et_social_networks et_social_simple et_social_rounded et_social_left">
+<ul class="et_social_icons_container"><li class="et_social_twitter">
+<a href="https://twitter.com/share?text=Data%20Scientists%20Predict%20COVID-19%E2%80%99s%20Urban%20Impact&#038;url=https%3A%2F%2Fwww.datanami.com%2F2020%2F03%2F25%2Fdata-scientists-predict-covid-19s-urban-impact%2F&#038;via=datanami" class="et_social_share" rel="nofollow" data-social_name="twitter" data-post_id="30839" data-social_type="share" data-location="sidebar">
+<i class="et_social_icon et_social_icon_twitter"></i>
+<div class="et_social_network_label"><div class="et_social_networkname">Twitter</div></div>
+<span class="et_social_overlay"></span>
+</a>
+</li><li class="et_social_facebook">
+<a href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fwww.datanami.com%2F2020%2F03%2F25%2Fdata-scientists-predict-covid-19s-urban-impact%2F&#038;t=Data%20Scientists%20Predict%20COVID-19%E2%80%99s%20Urban%20Impact" class="et_social_share" rel="nofollow" data-social_name="facebook" data-post_id="30839" data-social_type="share" data-location="sidebar">
+<i class="et_social_icon et_social_icon_facebook"></i>
+<div class="et_social_network_label"><div class="et_social_networkname">Facebook</div></div>
+<span class="et_social_overlay"></span>
+</a>
+</li><li class="et_social_linkedin">
+<a href="https://www.linkedin.com/shareArticle?mini=true&#038;url=https%3A%2F%2Fwww.datanami.com%2F2020%2F03%2F25%2Fdata-scientists-predict-covid-19s-urban-impact%2F&#038;title=Data%20Scientists%20Predict%20COVID-19%E2%80%99s%20Urban%20Impact" class="et_social_share" rel="nofollow" data-social_name="linkedin" data-post_id="30839" data-social_type="share" data-location="sidebar">
+<i class="et_social_icon et_social_icon_linkedin"></i>
+<div class="et_social_network_label"><div class="et_social_networkname">LinkedIn</div></div>
+<span class="et_social_overlay"></span>
+</a>
+</li><li class="et_social_reddit">
+<a href="https://www.reddit.com/submit?url=https%3A%2F%2Fwww.datanami.com%2F2020%2F03%2F25%2Fdata-scientists-predict-covid-19s-urban-impact%2F&#038;title=Data%20Scientists%20Predict%20COVID-19%E2%80%99s%20Urban%20Impact" class="et_social_share" rel="nofollow" data-social_name="reddit" data-post_id="30839" data-social_type="share" data-location="sidebar">
+<i class="et_social_icon et_social_icon_reddit"></i>
+<div class="et_social_network_label"><div class="et_social_networkname">reddit</div></div>
+<span class="et_social_overlay"></span>
+</a>
+</li><li class="et_social_printfriendly">
+<a href="https://www.printfriendly.com/print?url=https%3A%2F%2Fwww.datanami.com%2F2020%2F03%2F25%2Fdata-scientists-predict-covid-19s-urban-impact%2F&#038;title=Data%20Scientists%20Predict%20COVID-19%E2%80%99s%20Urban%20Impact" class="et_social_share" rel="nofollow" data-social_name="printfriendly" data-post_id="30839" data-social_type="share" data-location="sidebar">
+<i class="et_social_icon et_social_icon_printfriendly"></i>
+<div class="et_social_network_label"><div class="et_social_networkname">Print Friendly</div></div>
+<span class="et_social_overlay"></span>
+</a>
+</li></ul>
+</div>
+</div>
+<div class="et_social_mobile_overlay"></div> <script>
+		( function ( body ) {
+			'use strict';
+			body.className = body.className.replace( /\btribe-no-js\b/, 'tribe-js' );
+		} )( document.body );
+		</script>
+<script type="text/javascript">
+<!--
+piCId = '1116';
+piAId = '22812';
+
+piHostname = 'pi.pardot.com';
+
+(function() {
+	function async_load(){
+		var s = document.createElement('script'); s.type = 'text/javascript';
+		s.src = ('https:' == document.location.protocol ? 'https://pi' : 'http://cdn') + '.pardot.com/pd.js';
+		var c = document.getElementsByTagName('script')[0]; c.parentNode.insertBefore(s, c);
+	}
+	if(window.attachEvent) { window.attachEvent('onload', async_load); }
+	else { window.addEventListener('load', async_load, false); }
+})();
+-->
+</script><script> /* <![CDATA[ */var tribe_l10n_datatables = {"aria":{"sort_ascending":": activate to sort column ascending","sort_descending":": activate to sort column descending"},"length_menu":"Show _MENU_ entries","empty_table":"No data available in table","info":"Showing _START_ to _END_ of _TOTAL_ entries","info_empty":"Showing 0 to 0 of 0 entries","info_filtered":"(filtered from _MAX_ total entries)","zero_records":"No matching records found","search":"Search:","all_selected_text":"All items on this page were selected. ","select_all_link":"Select all pages","clear_selection":"Clear Selection.","pagination":{"all":"All","next":"Next","previous":"Previous"},"select":{"rows":{"0":"","_":": Selected %d rows","1":": Selected 1 row"}},"datepicker":{"dayNames":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"dayNamesShort":["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],"dayNamesMin":["S","M","T","W","T","F","S"],"monthNames":["January","February","March","April","May","June","July","August","September","October","November","December"],"monthNamesShort":["January","February","March","April","May","June","July","August","September","October","November","December"],"monthNamesMin":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"nextText":"Next","prevText":"Prev","currentText":"Today","closeText":"Done","today":"Today","clear":"Clear"}};/* ]]> */ </script> <div id="sharing_email" style="display: none;">
+<form action="/2020/03/25/data-scientists-predict-covid-19s-urban-impact/" method="post">
+<label for="target_email">Send to Email Address</label>
+<input type="email" name="target_email" id="target_email" value="" />
+<label for="source_name">Your Name</label>
+<input type="text" name="source_name" id="source_name" value="" />
+<label for="source_email">Your Email Address</label>
+<input type="email" name="source_email" id="source_email" value="" />
+<input type="text" id="jetpack-source_f_name" name="source_f_name" class="input" value="" size="25" autocomplete="off" title="This field is for validation and should not be changed" />
+<img style="float: right; display: none" class="loading" src="https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/plugins/jetpack/modules/sharedaddy/images/loading.gif" alt="loading" width="16" height="16" />
+<input type="submit" value="Send Email" class="sharing_send" />
+<a rel="nofollow" href="#cancel" class="sharing_cancel" role="button">Cancel</a>
+<div class="errors errors-1" style="display: none;">
+Post was not sent - check your email addresses! </div>
+<div class="errors errors-2" style="display: none;">
+Email check failed, please try again </div>
+<div class="errors errors-3" style="display: none;">
+Sorry, your blog cannot share posts by email. </div>
+</form>
+</div>
+<link rel='stylesheet' id='gforms_reset_css-css' href='https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/plugins/gravityforms/css/formreset.min.css?ver=2.4.21' type='text/css' media='all' />
+<link rel='stylesheet' id='gforms_formsmain_css-css' href='https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/plugins/gravityforms/css/formsmain.min.css?ver=2.4.21' type='text/css' media='all' />
+<link rel='stylesheet' id='gforms_ready_class_css-css' href='https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/plugins/gravityforms/css/readyclass.min.css?ver=2.4.21' type='text/css' media='all' />
+<link rel='stylesheet' id='gforms_browsers_css-css' href='https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/plugins/gravityforms/css/browsers.min.css?ver=2.4.21' type='text/css' media='all' />
+<link rel='stylesheet' id='widget-calendar-pro-style-css' href='https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/plugins/events-calendar-pro/src/resources/css/widget-theme.min.css?ver=5.2.0' type='text/css' media='all' />
+<script type='text/javascript' src='https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/plugins/monarch/js/idle-timer.min.js?ver=1.2.5' id='et_monarch-idle-js'></script>
+<script type='text/javascript' id='et_monarch-custom-js-js-extra'>
+/* <![CDATA[ */
+var monarchSettings = {"ajaxurl":"https:\/\/www.datanami.com\/wp-admin\/admin-ajax.php","pageurl":"https:\/\/www.datanami.com\/2020\/03\/25\/data-scientists-predict-covid-19s-urban-impact\/","stats_nonce":"6ec66e9d85","share_counts":"9314d2c20f","follow_counts":"9ae462d307","total_counts":"0fb804791f","media_single":"5ad59d8fc1","media_total":"a9b0e1a767","generate_all_window_nonce":"c6617b1d9f","no_img_message":"No images available for sharing on this page"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/plugins/monarch/js/custom.js?ver=1.2.5' id='et_monarch-custom-js-js'></script>
+<script type='text/javascript' id='jetpack-facebook-embed-js-extra'>
+/* <![CDATA[ */
+var jpfbembed = {"appid":"249643311490","locale":"en_US"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/plugins/jetpack/_inc/build/facebook-embed.min.js' id='jetpack-facebook-embed-js'></script>
+<script type='text/javascript' src='https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/plugins/jetpack/_inc/build/twitter-timeline.min.js?ver=4.0.0' id='jetpack-twitter-timeline-js'></script>
+<script type='text/javascript' src='https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-includes/js/wp-embed.min.js?ver=5.5.3' id='wp-embed-js'></script>
+<script async="async" type='text/javascript' src='https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/plugins/akismet/_inc/form.js?ver=4.1.7' id='akismet-form-js'></script>
+<script type='text/javascript' src='https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/plugins/gravityforms/js/jquery.json.min.js?ver=2.4.21' id='gform_json-js'></script>
+<script type='text/javascript' id='gform_gravityforms-js-extra'>
+/* <![CDATA[ */
+var gf_global = {"gf_currency_config":{"name":"U.S. Dollar","symbol_left":"$","symbol_right":"","symbol_padding":"","thousand_separator":",","decimal_separator":".","decimals":2},"base_url":"https:\/\/www.datanami.com\/wp-content\/plugins\/gravityforms","number_formats":[],"spinnerUrl":"https:\/\/www.datanami.com\/wp-content\/plugins\/gravityforms\/images\/spinner.gif"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/plugins/gravityforms/js/gravityforms.min.js?ver=2.4.21' id='gform_gravityforms-js'></script>
+<script type='text/javascript' src='https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/plugins/gravityforms/js/conditional_logic.min.js?ver=2.4.21' id='gform_conditional_logic-js'></script>
+<script type='text/javascript' id='icegram_main_js-js-extra'>
+/* <![CDATA[ */
+var icegram_pre_data = {"ajax_url":"https:\/\/www.datanami.com\/wp-admin\/admin-ajax.php","post_obj":{"is_home":false,"page_id":30839,"action":"display_messages","shortcodes":[],"cache_compatibility":"yes","device":"laptop"}};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/plugins/icegram/assets/js/main.min.js?ver=1.10.45' id='icegram_main_js-js'></script>
+<script type='text/javascript' src='https://2s7gjr373w3x22jf92z99mgm5w-wpengine.netdna-ssl.com/wp-content/plugins/pardot/js/asyncdc.min.js?ver=5.5.3' id='pddc-js'></script>
+<script type='text/javascript' src='https://stats.wp.com/e-202050.js' async='async' defer='defer'></script>
+<script type='text/javascript'>
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:9.2',blog:'67748970',post:'30839',tz:'-8',srv:'www.datanami.com'} ]);
+	_stq.push([ 'clickTrackerInit', '67748970', '30839' ]);
+</script>
+</body>
+</html>

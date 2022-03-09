@@ -1,0 +1,1118 @@
+<!--
+Document  Name: gen_art.pbs 
+Purpose:  General Article template (loads header, content, and footer)
+Created:  20161128 MCD
+Modified: 201611128 MCD	Migrated MWP newsletter source to NCSDigital
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <!-- Start Marfeel -->
+  <script>window.mrf={host:"b.marfeel.com",dt:3},function(e,t,o,a,i,n,r){function s(){l&&(e.cookie="fromt=yes;path=/;expires="+new Date(Date.now()+18e5).toGMTString(),o.reload())}var l=!/marfeelgarda=no|fromt=yes/i.test(n+";"+i);if((/(ipad.*?OS )(?!1_|2_|3_|4_|X)|mozilla.*android (?!(1|2|3)\.)[0-9](?!.*mobile)|\bSilk\b/i.test(a)&&2&r.dt||/(ip(hone|od).*?OS )(?!1_|2_|3_|4_|X)|mozilla.*android (?!(1|2|3)\.)[0-9].*mobile|bb10/i.test(a)&&1&r.dt||/marfeelgarda=off/i.test(n))&&t===t.top){l&&e.write('<plaintext style="display:none">');var m="script",d=setTimeout(s,1e4),c=e.createElement(m),f=e.getElementsByTagName(m)[0];c.src="https://"+t.mrf.host+"/statics/marfeel/gardac.js",c.onerror=s,c.onload=function(){clearTimeout(d)},f.parentNode.insertBefore(c,f)}else{var p=o.pathname.split("/"),m=e.createElement("script");m.src="https://"+t.mrf.host+"/"+o.hostname+(r.multi&&p.length>1&&p[1].length?"/"+p[1]:"")+"/main.d.js",m.async=!0,e.head.appendChild(m)}}(document,window,location,navigator.userAgent,document.cookie,location.search,window.mrf);</script>
+  <!-- End Marfeel -->
+  <head>
+  <!-- Quantcast Choice. Consent Manager Tag v2.0 (for TCF 2.0) -->
+<script type="text/javascript" async=true>
+  (function() {
+    var host = window.location.hostname;
+    var element = document.createElement('script');
+    var firstScript = document.getElementsByTagName('script')[0];
+    var url = 'https://quantcast.mgr.consensu.org'
+      .concat('/choice/', '3cgCs_SRrMyyA', '/', host, '/choice.js')
+    var uspTries = 0;
+    var uspTriesLimit = 3;
+    element.async = true;
+    element.type = 'text/javascript';
+    element.src = url;
+    firstScript.parentNode.insertBefore(element, firstScript);
+    function makeStub() {
+      var TCF_LOCATOR_NAME = '__tcfapiLocator';
+      var queue = [];
+      var win = window;
+      var cmpFrame;
+      function addFrame() {
+        var doc = win.document;
+        var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+        if (!otherCMP) {
+          if (doc.body) {
+            var iframe = doc.createElement('iframe');
+            iframe.style.cssText = 'display:none';
+            iframe.name = TCF_LOCATOR_NAME;
+            doc.body.appendChild(iframe);
+          } else {
+            setTimeout(addFrame, 5);
+          }
+        }
+        return !otherCMP;
+      }
+      function tcfAPIHandler() {
+        var gdprApplies;
+        var args = arguments;
+        if (!args.length) {
+          return queue;
+        } else if (args[0] === 'setGdprApplies') {
+          if (
+            args.length > 3 &&
+            args[2] === 2 &&
+            typeof args[3] === 'boolean'
+          ) {
+            gdprApplies = args[3];
+            if (typeof args[2] === 'function') {
+              args[2]('set', true);
+            }
+          }
+        } else if (args[0] === 'ping') {
+          var retr = {
+            gdprApplies: gdprApplies,
+            cmpLoaded: false,
+            cmpStatus: 'stub'
+          };
+          if (typeof args[2] === 'function') {
+            args[2](retr);
+          }
+        } else {
+          queue.push(args);
+        }
+      }
+      function postMessageEventHandler(event) {
+        var msgIsString = typeof event.data === 'string';
+        var json = {};
+        try {
+          if (msgIsString) {
+            json = JSON.parse(event.data);
+          } else {
+            json = event.data;
+          }
+        } catch (ignore) {}
+        var payload = json.__tcfapiCall;
+        if (payload) {
+          window.__tcfapi(
+            payload.command,
+            payload.version,
+            function(retValue, success) {
+              var returnMsg = {
+                __tcfapiReturn: {
+                  returnValue: retValue,
+                  success: success,
+                  callId: payload.callId
+                }
+              };
+              if (msgIsString) {
+                returnMsg = JSON.stringify(returnMsg);
+              }
+              event.source.postMessage(returnMsg, '*');
+            },
+            payload.parameter
+          );
+        }
+      }
+      while (win) {
+        try {
+          if (win.frames[TCF_LOCATOR_NAME]) {
+            cmpFrame = win;
+            break;
+          }
+        } catch (ignore) {}
+        if (win === window.top) {
+          break;
+        }
+        win = win.parent;
+      }
+      if (!cmpFrame) {
+        addFrame();
+        win.__tcfapi = tcfAPIHandler;
+        win.addEventListener('message', postMessageEventHandler, false);
+      }
+    };
+    makeStub();
+    var uspStubFunction = function() {
+      var arg = arguments;
+      if (typeof window.__uspapi !== uspStubFunction) {
+        setTimeout(function() {
+          if (typeof window.__uspapi !== 'undefined') {
+            window.__uspapi.apply(window.__uspapi, arg);
+          }
+        }, 500);
+      }
+    };
+    var checkIfUspIsReady = function() {
+      uspTries++;
+      if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) {
+        console.warn('USP is not accessible');
+      } else {
+        clearInterval(uspInterval);
+      }
+    };
+    if (typeof window.__uspapi === 'undefined') {
+      window.__uspapi = uspStubFunction;
+      var uspInterval = setInterval(checkIfUspIsReady, 6000);
+    }
+  })();
+  </script>
+  <!-- End Quantcast Choice. Consent Manager Tag v2.0 (for TCF 2.0) -->
+    <style>
+    </style>
+    <!-- -->
+<!-- Start Alexa Certify Javascript -->
+<script type="text/javascript">
+_atrk_opts = { atrk_acct:"mWc6u1hNdI20fn", domain:"jamaicaobserver.com",dynamic: true};
+(function() { var as = document.createElement('script'); as.type = 'text/javascript'; as.async = true; as.src = "https://certify-js.alexametrics.com/atrk.js"; var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(as, s); })();
+</script>
+<noscript><img src="https://certify.alexametrics.com/atrk.gif?account=mWc6u1hNdI20fn" style="display:none" height="1" width="1" alt="" /></noscript>
+<!-- End Alexa Certify Javascript -->  
+<!-- NEWSROOM SCRIPT -->
+<script>
+    window._newsroom = window._newsroom || [];
+    !function (e, f, u) {
+        e.async = 1;
+        e.src = u;
+        f.parentNode.insertBefore(e, f);
+    }(document.createElement('script'),
+            document.getElementsByTagName('script')[0], '//c2.taboola.com/nr/jamaicaobserver/newsroom.js');
+</script>
+<!-- END NEWSROOM SCRIPT -->
+    <meta name="alexaVerifyID" content="rSmiGOPEjbvIe54g6VDdjp7fxDQ" />
+    <meta name="google-site-verification" content="yc7ZVsD5gtxqAQNNEofsEYoEzmgFpOs1wXLNRIu5BV8" />
+    <meta name="google-site-verification" content="yGWL0JARPWTYZuQO6SyybESnW5Tn5sn_mj5vRQhwZq8" />
+    <meta name="y_key" content="b1206159d404874b" />
+    <meta name="msvalidate.01" content="F356DE1E2BCA8CFA747B5120592BE455" />
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<script>
+  window.mobileAndTabletcheck = function() {
+    var check = false;
+    (function(a){if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino|android|ipad|playbook|silk/i.test(a)||/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0,4))) check = true;})(navigator.userAgent||navigator.vendor||window.opera);
+    return check;
+  };
+  function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
+  var XIgnoreUserAgent = getCookie("X-IgnoreUserAgent");
+  var isMobile = window.mobileAndTabletcheck();
+  if (isMobile == true && XIgnoreUserAgent != 1)
+    window.location.replace(window.location+"&template=MobileArticle");
+</script>
+  <title>Two hospitalised, one dead in Manchester gun attack</title>
+<meta name="description" content="MANDEVILLE, Manchester &#8212; The police have released the identity of a man who was sho..." />
+<meta name="keywords" content="General NewsInternationalLocal NewsToday's Headlines" />
+<meta property="og:title" content="Two hospitalised, one dead in Manchester gun attack" />
+<meta property="og:site_name" content="Jamaica Observer" />
+<meta property="og:image" content="http://www.jamaicaobserver.com/apps/pbcsi.dll/storyimage/JO/20200406/ARTICLE/304069938/AR/0/AR-304069938.jpg" />
+<link rel="amphtml" href="http://amp.jamaicaobserver.com/news/two-hospitalised-one-dead-in-manchester-gun-attack_191473?profile=1470">
+<meta name="revisit-after" content="1 days" />
+<meta content="Jamaica Observer Limited" name="Author" />
+<meta content="Jamaica, Observer" name="DC.Subject" />
+<meta content="Jamaica Observer Limited" name="DC.Title" />
+<meta content="Follow,Index" name="ROBOTS" />
+<meta content=GENERAL name="rating" />
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@JamaicaObserver">
+<meta name="twitter:creator" content="@JamaicaObserver">
+<meta name="twitter:title" content="Two hospitalised, one dead in Manchester gun attack">
+<meta name="twitter:description" content="MANDEVILLE, Manchester &#8212; The police have released the identity of a man who was sho...">
+<meta name="twitter:image" content="http://www.jamaicaobserver.com/apps/pbcsi.dll/storyimage/JO/20200406/ARTICLE/304069938/AR/0/AR-304069938.jpg">
+  <link rel="alternate" type="application/rss xml" title="Jamaica Observer News Feed" href="/rss/news/" />
+  <link rel="shortcut icon" href="/images/favicon.ico" />
+  <link rel="image_src" type="image/gif" href="/images/icon-facebook.gif" />
+  <link rel="stylesheet" href="/style/2014/styles.css" type="text/css" />
+  <link rel="stylesheet" href="/style/2014/slider_style.css" />
+  <link href="/style/2014/jquery.zweatherfeed.css" rel="stylesheet" type="text/css" />
+  <link href="/style/2014/ticker-style.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" type="text/css" href="/style/anylinkcssmenu.css" />
+  <link rel="stylesheet" href="/scripts/fancybox/jquery.fancybox-1.3.4.css" type="text/css" media="screen" />
+  <!-- DC Pagination CSS
+  <link type="text/css" rel="stylesheet" href="/style/2014/tsc_pagination.css" /> -->
+  <!-- load jQuery-->
+  <script type="text/javascript">
+    if(window.location.hostname == "m.jamaicaobserver.com" && window.location.pathname == "/") {
+      window.location = "http://m.jamaicaobserver.com/mobile/";
+    }
+  </script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+  <script src="/scripts/2014/jquery.zweatherfeed.js" type="text/javascript"></script>
+  <script type="text/javascript" src="/scripts/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+  <script type="text/javascript" src="/scripts/anylinkcssmenu.js"></script> 
+  <!-- load Galleria -->
+  <script src="/scripts/2014/jquery.ticker.js" type="text/javascript"></script>
+  <script src="/scripts/2014/site.js" type="text/javascript"></script>  
+  <script src="/scripts/2014/galleria/galleria-1.3.3.min.js"></script>
+  <script type="text/javascript" src="/scripts/2014/jquery.aw-showcase.min.js"></script>
+  <script type="text/javascript" src="/jquery/2014/"></script>
+  <!--  -->
+<!--  -->
+<!--  -->
+<!--  -->
+<!--  -->
+<!--  -->
+<!--  -->
+<!--  -->
+<!--  -->
+<!--  -->
+<!--  -->
+<!--  -->
+<!--  -->
+<!--  -->
+<!--  -->
+<!--  -->
+<!--  -->
+<!--  -->
+<!--  -->
+<!--  -->
+<!--  -->
+<!--  -->
+<!--  -->
+<!--  -->
+<!--  -->
+<!--  -->
+ <!--  -->
+<!--   -->
+<!--  -->
+
+  <!---Shareaholic------>
+  <!--script type="text/javascript">
+  //<![CDATA[
+    (function() {
+      var shr = document.createElement('script');
+      shr.setAttribute('data-cfasync', 'false');
+      shr.src = '//dsms0mj1bbhn4.cloudfront.net/assets/pub/shareaholic.js';
+      shr.type = 'text/javascript'; shr.async = 'true';
+      shr.onload = shr.onreadystatechange = function() {
+        var rs = this.readyState;
+        if (rs && rs != 'complete' && rs != 'loaded') return;
+        var apikey = '062cdd4539faae68050cd3e3edf20cd1';
+        try { Shareaholic.init(apikey); } catch (e) {}
+      };
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(shr, s);
+    })();
+  //]]>
+  </script-->
+  <!---//Shareaholic------> 
+  <script type="text/javascript" src="http://partner.googleadservices.com/gampad/google_service.js"></script> 
+  <script type="text/javascript">
+    GS_googleAddAdSenseService("ca-pub-5360626267028511");
+    GS_googleEnableAllServices();
+  </script> 
+  <!--  GOOGLE ADS SPOTS ONLY -->
+  <script async='async' src='https://www.googletagservices.com/tag/js/gpt.js'></script>
+<script>
+  var googletag = googletag || {};
+  googletag.cmd = googletag.cmd || [];
+</script>
+<script>
+ googletag.cmd.push(function() {
+   // GAsection: others --
+  // GA_googleAddSlot("ca-pub-5360626267028511", "120x60_front");
+  // GA_googleAddSlot("ca-pub-5360626267028511", "468X60-2_front");
+  // GA_googleAddSlot("ca-pub-5360626267028511", "460x100_adside");
+  // GA_googleAddSlot("ca-pub-5360626267028511", "300x250_inner_stories");
+  // GA_googleAddSlot("ca-pub-5360626267028511", "336x280_innerStories");
+  googletag.defineSlot('/1140529/336x280_innerStories', [[300, 250], [336, 280]], 'div-gpt-ad-1547792521324-0').addService(googletag.pubads());
+  // GA_googleAddSlot("ca-pub-5360626267028511", "120x600_inner_stories");
+  googletag.defineSlot('/1140529/120x600_inner_stories', [120, 600], 'div-gpt-ad-1547793162067-0').addService(googletag.pubads());
+  <!-- GA_googleAddSlot("ca-pub-5360626267028511", "Homepage_Promo_Spot_970x90"); -->
+  // GA_googleAddSlot("ca-pub-5360626267028511", "300X250-1_others");
+  // GA_googleAddSlot("ca-pub-5360626267028511", "300X250-2_others");
+  // GA_googleAddSlot("ca-pub-5360626267028511", "300X250-3_others");
+  // GA_googleAddSlot("ca-pub-5360626267028511", "leaderbottom_others");
+  // GA_googleAddSlot("ca-pub-5360626267028511", "leader_others");
+  // GA_googleAddSlot("ca-pub-5360626267028511", "Largeleader_others");
+  // GA_googleAddSlot("ca-pub-5360626267028511", "Largeleaderbottom_others");
+  // GA_googleAddSlot("ca-pub-5360626267028511", "300x600_others");
+  // GA_googleAddSlot("ca-pub-5360626267028511", "300x600-1_cmrc");
+  // GA_googleAddSlot("ca-pub-5360626267028511", "170x30_front");
+ googletag.pubads().enableSingleRequest();
+ googletag.enableServices();
+  });
+</script>
+
+  <!-- END GOOGLE ADS SPOTS --> 
+  <!-- JavaScript --> 
+  <!-- END OF TAG FOR head SECTION -->
+  <!-- Taboola -->
+  <script type="text/javascript">
+    window._taboola = window._taboola || [];
+    _taboola.push({article:'auto'});
+    !function (e, f, u) {
+      e.async = 1;
+      e.src = u;
+      f.parentNode.insertBefore(e, f);
+    }(document.createElement('script'),
+    document.getElementsByTagName('script')[0],
+    'http://cdn.taboola.com/libtrc/jamaicaobserver/loader.js');
+  </script>
+  <!-- End of Taboola -->
+  <script type="text/javascript" src="/scripts/pollMiniAjax.js"></script> 
+</head>
+<body>
+
+<body>
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=414489941900627";
+    fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+  </script>
+  <div id="container">
+    <div id="header">
+      <div id="c1">
+        <h3><script type="text/javascript" src="/scripts/datetop.js"></script></h3>
+        <p id="the_weather"></p><br />
+        <!-- Google Translate -->
+        <div id="google_translate_element"></div>
+        <script type="text/javascript">
+          function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, gaTrack: true, gaId: 'UA-7266247-1'}, 'google_translate_element');
+          }
+        </script>
+        <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+        <!-- End Google Translate -->
+      </div>
+      <div id="c2"> 
+        <a href="/" target="_self"><img src="/images/2014/jol_logo_default.jpg" alt="Jamaica Observer" border="0" /></a>
+      </div>
+      <div id="c3">
+        <div id="search_social">
+          <div id="search">
+            <script type="text/javascript">
+              function submitform() {
+                document.getElementById('search_text').value = processText(document.getElementById('search_text').value);
+                document.forms["searchbox"].submit();
+              }
+              function processText(startText) {
+                var endText = new String();
+                if (startText.substr(0, 1) == '"') {
+                  endText = startText;
+                } else {
+                  var wordArray = startText.split(" ");
+                  var i = 0;
+                  for (i = 0; i < wordArray.length; i++) {
+                    if (wordArray[i].length > 3) {
+                      endText = endText + wordArray[i] + " ";
+                    }
+                  }
+                }
+                return endText;
+              }
+            </script>
+            <form class="search-form" action="/results/" id="searchbox">
+              <input type="text" placeholder="Search" name="text" class="search_text" size="15" id="search_text"/>
+              <input type="submit" value="GO" name="sa" />
+            </form>
+          </div>
+          <div id="social_icons">
+            <img src="/images/2014/social_icons.png" alt="Social Media Links" width="90" height="25" border="0" usemap="#Map" />
+            <map name="Map" id="Map">
+              <area shape="rect" coords="4,3,21,23" href="http://twitter.com/jamaicaobserver" target="_blank" alt="Follow us on Twitter" />
+              <area shape="rect" coords="25,4,42,22" href="https://www.facebook.com/jamaicaobserver" target="_blank" alt="Follow us on Facebook" />
+              <area shape="rect" coords="45,4,64,23" href="http://www.youtube.com/user/TheJamaicaObserver" target="_blank" alt="Follow us on YouTube" />
+              <area shape="rect" coords="66,5,84,23" href="http://www.instagram.com/jamaicaobserver" target="_blank" alt="Follow us on Instagram" />
+            </map>
+          </div>
+        </div>
+        <div id="mini_menu">
+          <script type="text/javascript">
+            $(document).ready(function () {
+              $('#drop_down_nav li').hover(
+                function () {
+                  //show its submenu
+                  $('ul', this).stop(true, true).slideDown(100);
+                }, 
+                function () {
+                  //hide its submenu
+                  $('ul', this).stop(true, true).slideUp(100);
+                }
+              );
+            });
+          </script>
+          <style type="text/css">
+            #drop_down_nav li {
+              float:left; 
+              position:relative;
+              z-index:500; 
+              margin:0 1px;
+            }
+            #drop_down_nav2 li {
+              float:left; 
+              display:block; 
+              width:100px; 
+              background:#ccc; 
+              position:relative;
+              z-index:500; 
+              margin:0 1px;
+            }
+            /* this is the parent menu */
+            /* you can make a different style for default selected value */
+            /* submenu, it's hidden by default */
+            #drop_down_nav ul {
+              position:absolute; 
+              left:0; 
+              display:none; 
+              margin:0 0 0 -1px; 
+              padding:0; 
+              list-style:none;
+            }
+            #drop_down_nav ul li {
+              width:100px; 
+              float:left; 
+              border-top:1px solid #fff;
+            }
+            /* display block will make the link fill the whole area of LI */
+            #drop_down_nav ul a {
+              display:block;  
+              height:15px;
+              padding: 8px 5px; 
+              color:#666;
+            }
+            #drop_down_nav ul a:hover {
+              text-decoration:underline;
+            }
+          </style>
+          <ul id="drop_down_nav">
+            <li><a href="http://m.jamaicaobserver.com/" target="_self">Mobile Site</a></li>
+            <li class="menu_divider">|</li>
+            <li> <a href="#" target="_self">About</a>
+              <ul id="drop_down_nav2">
+                <li><a href="/advertising/">Advertise with us</a></li>
+                <li><a href="/a-z/">A-Z</a></li>
+                <li><a href="https://janus.jamaicaobserver.com/epaperlive/">E-Paper</a></li>
+                <li><a href="http://jamaicaobserver.mycapture.com/mycapture/index.asp">Buy Photos</a></li>
+                <li><a href="/sitemap/">Site map</a></li>
+                <li><a href="/privacy/" id="ftlink">Privacy Policy</a></li>
+                <li><a href="/termsconditions/" id="ftlink">Terms & Conditions</a></li>
+                <li><a href="http://test.jamaicaobserver.com/xapps/bbapp.php" id="fullscreen">Blackberry App</a></li>
+                <li><a href="/contactus/">Contact Us</a></li>
+              </ul>
+              <div class="clear"></div>
+            </li>
+            <li class="menu_divider">|</li>
+            <li><a href="/subscription/newsletters/" target="_self">Newsletter</a></li>
+            <li class="menu_divider">|</li>
+            <li><a href="https://janus.jamaicaobserver.com/epaperlive/" target="_self">E-Paper</a></li>
+            <li style="margin-left:2px; margin-top:-7px;"><a href="http://www.fyah105.com/" target="_blank"><img src="/images/livestream2.jpg" alt="Fyah 105 FM Live Stream" border="0"/></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+jQuery(document).ready(function() {
+  $("#menu_home").addClass("current");
+/*---------------------------------------------*/
+});
+</script>
+<div id="main_menu">
+  <ul>
+    <li><a href="/" target="_self" id="menu_home">HOME</a></li>
+    <li class="menu_divider">|</li>
+    <li><a href="/news/" target="_self" id="menu_news">NEWS</a></li>
+    <li class="menu_divider">|</li>
+    <li><a href="/business/" target="_self" id="menu_business">BUSINESS</a></li>
+    <li class="menu_divider">|</li>
+    <li><a href="/sport/" target="_self" id="menu_sport">SPORT</a></li>
+    <li class="menu_divider">|</li>
+    <li><a href="/lifestyle/" target="_self" id="menu_lifestyle">LIFESTYLE</a></li>
+    <li class="menu_divider">|</li>
+    <li><a href="/magazines/allwoman/" target="_self" id="menu_allwoman">ALL WOMAN</a></li>
+    <li class="menu_divider">|</li>
+    <li><a href="/webinars/" target="_self" id="menu_webinars" style="color:#3246a8">WEBINARS</a></li>
+    <li class="menu_divider">|</li>
+    <!-- li><a href="/regional/" target="_self" id="menu_regional">REGIONAL</a></li -->
+    <li><a href="/covid-19/" target="_self" id="menu_covid-19" style="color:#ec1d25;">COVID-19</a></li>
+    <li class="menu_divider">|</li>
+    <li><a href="/entertainment/" target="_self" id="menu_entertainment">ENTERTAINMENT</a></li>
+    <li class="menu_divider">|</li>
+    <!-- <li><a href="/health/" target="_self" id="menu_video">HEALTH</a></li> -->
+    <!-- li><a href="/jamaicadecides/" target="_self" id="menu_video">ELECTIONS</a></li -->
+    <li><a href="https://janus.jamaicaobserver.com/epaperlive/login.asp" target="_self" id="menu_video">E-PAPER</a></li>
+    <li class="menu_divider">|</li>
+    <li><a href="http://classifieds.jamaicaobserver.com/" target="_self" id="menu_classifieds" class="anchorclass" rel="submenu1">CLASSIFIEDS</a></li>
+  </ul>
+  <div id="submenu1" class="anylinkcss">
+    <ul>
+      <li><a href="http://jamaicaobserver.adperfect.com/">PLACE AN AD</a></li>
+      <li><a href="http://classifieds.jamaicaobserver.com/">Miscellaneous</a></li>
+      <li><a href="http://classifieds.jamaicaobserver.com/kingston/real-estate/search">Real Estate</a></li>
+      <li><a href="http://classifieds.jamaicaobserver.com/kingston/auto/search?">Motor Vehicles</a></li>
+      <li><a href="http://classifieds.jamaicaobserver.com/kingston/employment/search?">Jobs</a></li>
+    </ul>
+  </div>
+  <ul id="sub_menu">
+    <li><a href="/editorial/" target="_self">Editorial</a></li>
+    <li class="menu_divider">|</li>
+    <li><a href="/columns/" target="_self">Columns</a></li>
+    <li class="menu_divider">|</li>
+    <!-- <li><a href="/magazines/career/" target="_self">Career</a></li> -->
+    <li><a id="news_regional"href="/regional/" target="_self">Regional</a></li>
+    <li class="menu_divider">|</li>
+    <li><a id="news_regional"href="/health/" target="_self">Health</a></li>
+    <li class="menu_divider">|</li>
+    <li><a href="/magazines/food/" target="_self">Food</a></li>
+    <!-- li class="menu_divider">|</li>
+    <li><a href="/teenage/" target="_self">teenAGE</a></li -->
+    <li class="menu_divider">|</li>
+    <li><a href="/letters/" target="_self">Letters</a></li>
+    <li class="menu_divider">|</li>
+    <li><a href="/auto/" target="_self">Auto</a></li>
+    <li class="menu_divider">|</li>
+    <li><a href="/tools/cartoons/" target="_self">Clovis Toons</a></li>
+    <li class="menu_divider">|</li>
+    <li><a href="/page2/" target="_self">Page2</a></li>
+    <!-- li class="menu_divider">|</li -->
+    <!-- li><a href="https://janus.jamaicaobserver.com/epaperlive/" target="_self">E-Paper</a></li -->
+    <li class="menu_divider">|</li>
+    <li><a href="/supplements/" target="_self">Supplements</a></li>
+    <li class="menu_divider">|</li>
+    <li><a href="/studycentre/" target="_self">Study Centre</a></li>
+  </ul>
+</div>
+<div id="latest_news">
+  <ul id="js-news" class="js-hidden">
+          <li class="news-item"><a href ="/latestnews/COVID-19:_January_15_2021?profile=1228">COVID-19: Here's what you need to know today</a> <!--Y--><span class="time_stamp">9:36 am</span></li>
+      <li class="news-item"><a href ="/latestnews/77_new_COVID_cases,_one_death?profile=1228">77 new COVID cases, one death</a> <!--Y--><span class="time_stamp">9:34 am</span></li>
+      <li class="news-item"><a href ="/latestnews/14-y-o_Careem_Bishop_reported_missing?profile=1228">14-y-o Careem Bishop reported missing</a> <!--Y--><span class="time_stamp">9:28 am</span></li>
+      <li class="news-item"><a href ="/latestnews/Barbados_PM,_7_others_take_COVID-19_vaccine?profile=1228">Barbados PM, 7 others take COVID-19 vaccine</a> <!--Y--><span class="time_stamp">8:52 am</span></li>
+      <li class="news-item"><a href ="/latestnews/Caricom_could_source_COVID-19_vaccines_through_Africa?profile=1228">Caricom could source COVID-19 vaccines through Africa</a> <!--Y--><span class="time_stamp">8:42 am</span></li>
+      <li class="news-item"><a href ="/latestnews/Mexico_to_host_rescheduled_CONCACAF_Olympic_qualifying?profile=1228">Mexico to host rescheduled CONCACAF Olympic qualifying</a> <!--Y--><span class="time_stamp">8:27 am</span></li>
+  </ul>
+</div>
+<!-- there are no items in this newslist -->
+    <div id="top_leaderboard">
+    </div>
+
+
+        <link href="/style/2014/fotorama.css" rel="stylesheet">
+<script src="/scripts/2014/fotorama.js"></script>
+<div id="main_content_area">
+  <div id="news_articles_section">
+    <img src="/images/2014/line_story.png" width="505" height="1"/>
+<h1></h1>
+<div id="story">
+  <h2>Two hospitalised, one dead in Manchester gun attack</h2>
+  <div id="byline">
+    <p>Monday, April 06, 2020 <!----> <a href="#disqus_thread"
+                                                                data-disqus-identifier="20200406ARTICLE304069938"
+                                                                style="font-size:12px; color: #C51D02"></a></p>
+  </div>
+  <!--share icons------->
+  <div>
+    <div style="height:20px; width:255px; padding-bottom:5px; float:left; text-align:right;">
+      <div style="float:left; padding-right:20px;">
+        <div id="fb-root"></div>
+        <script src="http://connect.facebook.net/en_US/all.js#appId=183583451703473&xfbml=1"></script>
+        <fb:like
+            href="http://www.jamaicaobserver.com/news/two-hospitalised-one-dead-in-manchester-gun-attack_191473"
+            send="true" layout="button_count" show_faces="false" font="arial"></fb:like>
+      </div>
+      <div style="float:left;">
+        <a href="http://twitter.com/share" class="twitter-share-button"
+           data-url="http://www.jamaicaobserver.com/news/two-hospitalised-one-dead-in-manchester-gun-attack_191473"
+           data-count="horizontal" data-via="jamaicaobserver">Tweet</a>
+        <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+      </div>
+    </div>
+    <div style="float:left">
+      <a href="/news/two-hospitalised-one-dead-in-manchester-gun-attack_191473?profile=&template=PrinterVersion" id="printerversion"
+         title="Two hospitalised, one dead in Manchester gun attack"><img src="/images/printer_16x16.png" width="16" height="16" alt="Print this page"
+                                            align="left" style="border:0; padding-right:30px;"/></a>
+      <a href="mailto:?subject=Two hospitalised, one dead in Manchester gun attack&body=Link: http://www.jamaicaobserver.com/news/two-hospitalised-one-dead-in-manchester-gun-attack_191473 | Jamaican News Online - JamaicaObserver.com"><img
+          src="/images/email_16x16.png" width="16" height="16" alt="Email A Friend!" align="left"
+          style="border:0; padding-right:20px;"/></a>
+    </div>
+  </div>
+  <!------//share icons ----->
+  <br/><br/>
+  <div class="fotorama" data-width="100%" data-transition="crossfade" data-fit="cover">
+    <a href="http://www.jamaicaobserver.com/apps/pbcsi.dll/storyimage/JO/20200406/ARTICLE/304069938/AR/0/AR-304069938.jpg&maxh=332&maxw=504" data-title="The entrance of Rembrandt Close in Mandeville, Manchester (Photo: Gregory Bennett "><img src="http://www.jamaicaobserver.com/apps/pbcsi.dll/storyimage/JO/20200406/ARTICLE/304069938/AR/0/AR-304069938.jpg&maxh=332&maxw=504"></a>
+  </div>
+  <p class="fotorama-caption"
+     style="font-size:12px; background-color:#E5E5E5; margin-top:-31px; padding:8px; padding-top:23px"></p>
+  <style type="text/css">
+    .remove_caption {
+      display: none;
+    }
+  </style>
+  <script type="text/javascript">
+      $('.fotorama').on('fotorama:show', function (e, fotorama) {
+          fotorama.$caption = fotorama.$caption || $(this).next('.fotorama-caption');
+          var activeFrame = fotorama.activeFrame;
+          if (activeFrame.title != "") {
+              $(".fotorama-caption").removeClass("remove_caption");
+              fotorama.$caption.html('<div style="height:10px"></div>' + activeFrame.title + '<br>');
+          } else {
+              $(".fotorama-caption").addClass("remove_caption");
+          }
+      })
+          .fotorama();
+  </script>
+  <div id="story">
+    <p><strong>MANDEVILLE, Manchester &#8212; The police have released the identity of a man who was shot dead during a gun attack at his apartment in Mandeville, Saturday evening. </strong>
+<p>Two other men were shot and injured.</p><p>
+<p>The murder victim was identified as 22-year-old Chanderpaul Gayle, a resident of Rembrandt Close.</p><p>
+<p>Police reports are that shortly before 7:00 pm, Gayle and two men were at an apartment complex when armed men entered the premises opening fire on the group.</p><p>
+<p>They were taken to hospital where Gayle was pronounced dead on arrival and the other two men hospitalised.</p><p>
+<p>Aspiring Jamaica Labour Party caretaker/candidate for the Mandeville Division, businessman Simon Sangster, who visited the crime scene, expressed concern about recent criminal activities in Mandeville during the COVID-19 crisis.</p><p>
+<p>&#8220;There seems to have been a slight uptick in criminal activities in the Mandeville area within the last two weeks. This latest incident shows the brazenness of criminals in the area. It seems to me that persons might be using the current health crisis as a way of doing their dirty deeds,&#8221; he said.</p><p><!--Taboola-->
+<div id="taboola-mid-article-reco-reel" style="margin: 20px 0"></div>
+<script type="text/javascript"> 
+  window._taboola = window._taboola || [];
+  _taboola.push({
+    mode: 'rec-reel-2n5-a',
+    container: 'taboola-mid-article-reco-reel',
+    placement: 'Mid Article Reco Reel',
+    target_type: 'mix'
+  });
+</script>
+<!-- End Taboola-->
+<p>He believes that members of the business community are being targeted by criminals.</p><p>
+<p>&#8220;During this time persons are asked to stay home, but the criminal elements are using that as an opportunity to go to people's homes and business places and take advantage of the situation. There was another murder last week and robberies as well,&#8221; he added.</p><p>
+<p>&#8212; Kasey Williams</p><p></p><p>
+  </div>
+  <hr />
+  <p><b>Now you can read the Jamaica Observer ePaper anytime, anywhere. The Jamaica Observer ePaper is available to you at home or at work, and is the same edition as the printed copy available at <a href="http://bit.ly/epaper-login" target="_self">http://bit.ly/epaper-login</a>
+  </p> </b>
+  <br />
+  <div id="advetisement_300x250" class="decrease_top_margin">
+    <h5>ADVERTISEMENT</h5>
+    <!-- script type="text/javascript">
+        GA_googleFillSlot("336x280_innerStories");
+    </script -->
+    <!-- /1140529/336x280_innerStories -->
+<div id='div-gpt-ad-1547792521324-0'>
+<script>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1547792521324-0'); });
+</script>
+</div>
+  </div>
+  <div class='shareaholic-canvas' data-app='share_buttons' data-app-id='4712848'></div>
+  <div id="disqus">
+    <br/><br/>
+    <!-- Taboola -->
+    <div id="taboola-below-article-thumbnails"></div>
+    <script type="text/javascript">
+        window._taboola = window._taboola || [];
+        _taboola.push({
+            mode: 'thumbnails-a',
+            container: 'taboola-below-article-thumbnails',
+            placement: 'Below Article Thumbnails',
+            target_type: 'mix'
+        });
+    </script>
+    <!-- End of Taboola -->
+    <br/><br/>
+    <div style="background-color: #F9F9F9; padding-left:5PX; padding-right:5px; padding-top:5PX;margin-bottom:10px; border-top:5px solid #666">
+      <div>
+        <p style="font-weight:bold; font-size:16px">POST A COMMENT</p>
+      </div>
+      <style type="text/css">
+        #comment_rules {
+          font-size: 11px;
+          line-height: 14px;
+        }
+        #comment_rules p {
+          margin: 0px;
+          font-size: 11px;
+        }
+      </style>
+      <div id="comment_rules">
+        <p>HOUSE RULES</p>
+        <p></p>
+        <p>1. We welcome reader comments on the top stories of the day. Some comments may be republished on the website
+          or in the newspaper ï¿½ email addresses will not be published. </p>
+        <p>2. Please understand that comments are moderated and it is not always possible to publish all that have been
+          submitted. We will, however, try to publish comments that are representative of all received.</p>
+        <p>3. We ask that comments are civil and free of libellous or hateful material. Also please stick to the topic
+          under discussion. </p>
+        <p>4. Please do not write in block capitals since this makes your comment hard to read.</p>
+        <p>5. Please don't use the comments to advertise. However, our advertising department can be more than
+          accommodating if emailed:<a href="mailto:advertising@jamaicaobserver.com"> advertising@jamaicaobserver.com</a>.
+        </p>
+        <p>6. If readers wish to report offensive comments, suggest a correction or share a story then please email: <a
+            href="mailto:community@jamaicaobserver.com">community@jamaicaobserver.com</a>.</p>
+        <p>7. Lastly, read our<a href="/termsconditions/" target="_blank"> Terms and Conditions</a> and <a
+            href="/privacy/" target="_blank">Privacy Policy</a></p>
+        <br/><br/>
+      </div>
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'jamaicaobserver'; // required: replace example with your forum shortname
+        var disqus_identifier = '20200406ARTICLE304069938';
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function () {
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+        Disqus.</a></noscript>
+      <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+    <style type="text/css">
+      .disqus-cnt-txt {
+        background-image: url(/images/comment.jpg);
+        background-repeat: no-repeat;
+        padding-left: 13px;
+        margin-top: 5px;
+        background-position: 0px 3px;
+        color: #C51D02;
+        font-weight: 300;
+      }
+    </style>
+  </div>
+  </div>
+<div id="other_stories">
+  <h3></h3>
+  <ul>
+  <li>
+  <p><a href="/news/mps-argue-over-invitees-to-discuss-proposed-portmore-parish-status_212246?profile=1470">MPs argue over invitees to discuss proposed Portmore parish status</a> <br />
+  <!-- Used to show comments count --> <!-- a href="/news/mps-argue-over-invitees-to-discuss-proposed-portmore-parish-status_212246?profile=1470#disqus_thread" data-disqus-identifier="301159942" style = "font-size:12px; color: #C51D02">
+    <span class="disqus-cnt-txt"></span>
+  </a --> </p>
+</li><li>
+  <p><a href="/news/advertising-industry-giant-gurney-beckford-passes_212244?profile=1470">Advertising industry giant Gurney Beckford passes</a> <br />
+  <!-- Used to show comments count --> <!-- a href="/news/advertising-industry-giant-gurney-beckford-passes_212244?profile=1470#disqus_thread" data-disqus-identifier="301159943" style = "font-size:12px; color: #C51D02">
+    <span class="disqus-cnt-txt"></span>
+  </a --> </p>
+</li><li>
+  <p><a href="/news/-we-are-killing-our-own-selves-for-the-sake-of-money-councillors-worry-about-virus-spread-with-nightclubs-open-parties-and-funerals_212230?profile=1470">'We are killing our own selves for the sake of money' </a> <br />
+  <!-- Used to show comments count --> <!-- a href="/news/-we-are-killing-our-own-selves-for-the-sake-of-money-councillors-worry-about-virus-spread-with-nightclubs-open-parties-and-funerals_212230?profile=1470#disqus_thread" data-disqus-identifier="301159948" style = "font-size:12px; color: #C51D02">
+    <span class="disqus-cnt-txt"></span>
+  </a --> </p>
+</li><li>
+  <p><a href="/front-page/big-covid-response-hotels-offer-free-pre-departure-tests-to-visitors-health-ministry-donates-30-000-kits-to-six-private-labs_212218?profile=1470">BIG COVID RESPONSE</a> <br />
+  <!-- Used to show comments count --> <!-- a href="/front-page/big-covid-response-hotels-offer-free-pre-departure-tests-to-visitors-health-ministry-donates-30-000-kits-to-six-private-labs_212218?profile=1470#disqus_thread" data-disqus-identifier="301159949" style = "font-size:12px; color: #C51D02">
+    <span class="disqus-cnt-txt"></span>
+  </a --> </p>
+</li><li>
+  <p><a href="/news/figueroa-sees-trouble-ahead-for-vaccines-under-covax_212200?profile=1470">Figueroa sees trouble ahead for vaccines under COVAX</a> <br />
+  <!-- Used to show comments count --> <!-- a href="/news/figueroa-sees-trouble-ahead-for-vaccines-under-covax_212200?profile=1470#disqus_thread" data-disqus-identifier="301159950" style = "font-size:12px; color: #C51D02">
+    <span class="disqus-cnt-txt"></span>
+  </a --> </p>
+</li><li>
+  <p><a href="/news/public-invited-to-submit-written-comments-on-nids-by-jan-29_212202?profile=1470">Public invited to submit written comments on NIDS by Jan 29</a> <br />
+  <!-- Used to show comments count --> <!-- a href="/news/public-invited-to-submit-written-comments-on-nids-by-jan-29_212202?profile=1470#disqus_thread" data-disqus-identifier="301159951" style = "font-size:12px; color: #C51D02">
+    <span class="disqus-cnt-txt"></span>
+  </a --> </p>
+</li><li>
+  <p><a href="/news/access-to-covid-19-vaccines-not-equitable-says-caricom_212185?profile=1470">Access to COVID-19 vaccines not equitable, says Caricom</a> <br />
+  <!-- Used to show comments count --> <!-- a href="/news/access-to-covid-19-vaccines-not-equitable-says-caricom_212185?profile=1470#disqus_thread" data-disqus-identifier="301159952" style = "font-size:12px; color: #C51D02">
+    <span class="disqus-cnt-txt"></span>
+  </a --> </p>
+</li><li>
+  <p><a href="/news/trump-impeachment-trial-could-begin-on-inauguration-day_212205?profile=1470">Trump impeachment trial could begin on Inauguration Day</a> <br />
+  <!-- Used to show comments count --> <!-- a href="/news/trump-impeachment-trial-could-begin-on-inauguration-day_212205?profile=1470#disqus_thread" data-disqus-identifier="301159956" style = "font-size:12px; color: #C51D02">
+    <span class="disqus-cnt-txt"></span>
+  </a --> </p>
+</li><li>
+  <p><a href="/news/police-seek-more-powers-to-operate-in-zosos_212193?profile=1470">Police seek more powers to operate in ZOSOs</a> <br />
+  <!-- Used to show comments count --> <!-- a href="/news/police-seek-more-powers-to-operate-in-zosos_212193?profile=1470#disqus_thread" data-disqus-identifier="301159957" style = "font-size:12px; color: #C51D02">
+    <span class="disqus-cnt-txt"></span>
+  </a --> </p>
+</li><li>
+  <p><a href="/news/cpfsa-now-better-equipped-to-provide-psychosocial-support-to-at-risk-wards-of-state_212189?profile=1470">CPFSA now better equipped to provide psychosocial support to at-risk wards of state</a> <br />
+  <!-- Used to show comments count --> <!-- a href="/news/cpfsa-now-better-equipped-to-provide-psychosocial-support-to-at-risk-wards-of-state_212189?profile=1470#disqus_thread" data-disqus-identifier="301159958" style = "font-size:12px; color: #C51D02">
+    <span class="disqus-cnt-txt"></span>
+  </a --> </p>
+</li><li>
+  <p><a href="/history/history_212240?profile=1470">This Day in History &#8212; January 15</a> <br />
+  <!-- Used to show comments count --> <!-- a href="/history/history_212240?profile=1470#disqus_thread" data-disqus-identifier="301159960" style = "font-size:12px; color: #C51D02">
+    <span class="disqus-cnt-txt"></span>
+  </a --> </p>
+</li><li>
+  <p><a href="/news/41st-national-leadership-prayer-breakfast-to_212238?profile=1470">41st National Leadership Prayer Breakfast to focus on resilience</a> <br />
+  <!-- Used to show comments count --> <!-- a href="/news/41st-national-leadership-prayer-breakfast-to_212238?profile=1470#disqus_thread" data-disqus-identifier="301159961" style = "font-size:12px; color: #C51D02">
+    <span class="disqus-cnt-txt"></span>
+  </a --> </p>
+</li><li>
+  <p><a href="/news/child-injured-by-stone-aunt-arrested_212099?profile=1470">Child injured by stone; aunt arrested</a> <br />
+  <!-- Used to show comments count --> <!-- a href="/news/child-injured-by-stone-aunt-arrested_212099?profile=1470#disqus_thread" data-disqus-identifier="301159963" style = "font-size:12px; color: #C51D02">
+    <span class="disqus-cnt-txt"></span>
+  </a --> </p>
+</li><li>
+  <p><a href="/tea-time/_210935?profile=1470">Today's Horoscope &#8212; January 15, 2021</a> <br />
+  <!-- Used to show comments count --> <!-- a href="/tea-time/_210935?profile=1470#disqus_thread" data-disqus-identifier="301159990" style = "font-size:12px; color: #C51D02">
+    <span class="disqus-cnt-txt"></span>
+  </a --> </p>
+</li><li>
+  <p><a href="/news/caricom-says-us-designation-of-cuba-as-state-sponsor-of-terrorism-unwarranted_212186?profile=1470">Caricom says US designation of Cuba as state sponsor of terrorism unwarranted</a> <br />
+  <!-- Used to show comments count --> <!-- a href="/news/caricom-says-us-designation-of-cuba-as-state-sponsor-of-terrorism-unwarranted_212186?profile=1470#disqus_thread" data-disqus-identifier="301159991" style = "font-size:12px; color: #C51D02">
+    <span class="disqus-cnt-txt"></span>
+  </a --> </p>
+</li><li>
+  <p><a href="/news/clarke-opens-debate-on-new-fiscal-oversight-body_212134?profile=1470">Clarke opens debate on new fiscal oversight body</a> <br />
+  <!-- Used to show comments count --> <!-- a href="/news/clarke-opens-debate-on-new-fiscal-oversight-body_212134?profile=1470#disqus_thread" data-disqus-identifier="301159992" style = "font-size:12px; color: #C51D02">
+    <span class="disqus-cnt-txt"></span>
+  </a --> </p>
+</li><li>
+  <p><a href="/news/J%26%238217;can_faces_up_to_40_years_in_US_prison_for_cocaine_smuggling?profile=1470">J'can faces up to 40 years in US prison for cocaine smuggling</a> <br />
+  <!-- Used to show comments count --> <!-- a href="/news/J%26%238217;can_faces_up_to_40_years_in_US_prison_for_cocaine_smuggling?profile=1470#disqus_thread" data-disqus-identifier="210119792" style = "font-size:12px; color: #C51D02">
+    <span class="disqus-cnt-txt"></span>
+  </a --> </p>
+</li><li>
+  <p><a href="/news/mobay-chamber-pleads-for-gov-t-to-urgently-start-bypass_212129?profile=1470">MoBay Chamber pleads for Gov't to urgently start bypass</a> <br />
+  <!-- Used to show comments count --> <!-- a href="/news/mobay-chamber-pleads-for-gov-t-to-urgently-start-bypass_212129?profile=1470#disqus_thread" data-disqus-identifier="301149954" style = "font-size:12px; color: #C51D02">
+    <span class="disqus-cnt-txt"></span>
+  </a --> </p>
+</li><li>
+  <p><a href="/front-page/impeached-again-historic-second-charge-against-us-president-trump-comes-after-capitol-riot_212140?profile=1470">Impeached again! </a> <br />
+  <!-- Used to show comments count --> <!-- a href="/front-page/impeached-again-historic-second-charge-against-us-president-trump-comes-after-capitol-riot_212140?profile=1470#disqus_thread" data-disqus-identifier="301149957" style = "font-size:12px; color: #C51D02">
+    <span class="disqus-cnt-txt"></span>
+  </a --> </p>
+</li><li>
+  <p><a href="/news/new-board-to-be-named-shortly-for-heart-nsta-trust_212081?profile=1470">New board to be named shortly for HEART/NSTA Trust</a> <br />
+  <!-- Used to show comments count --> <!-- a href="/news/new-board-to-be-named-shortly-for-heart-nsta-trust_212081?profile=1470#disqus_thread" data-disqus-identifier="301149963" style = "font-size:12px; color: #C51D02">
+    <span class="disqus-cnt-txt"></span>
+  </a --> </p>
+</li>   
+</ul>
+  <br />
+  <div style="margin: 0 auto; width:120px; padding-bottom:10px">
+    <!-- script type="text/javascript">
+      GA_googleFillSlot("120x600_inner_stories");
+    </script --> 
+    <!-- /1140529/120x600_inner_stories -->
+<div id='div-gpt-ad-1547793162067-0' style='height:600px; width:120px;'>
+<script>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1547793162067-0'); });
+</script>
+</div>
+  </div>
+  <!--Taboola -->
+  <br />
+  <div id="taboola-mid-rail-text-links"></div>
+  <script type="text/javascript">
+    window._taboola = window._taboola || [];
+    _taboola.push({
+      mode: 'alternating-thumbnails-b',
+      container: 'taboola-mid-rail-text-links',
+      placement: 'Mid Rail Text Links',
+      target_type: 'mix'
+    });
+  </script>
+  <!-- End of Taboola -->
+</div>
+
+        </div>
+<div id="right_column" class="column_overflow">
+  <div id="advetisement_300x250" class="decrease_top_margin">
+    <h5>ADVERTISEMENT</h5>
+    <!-- script type="text/javascript">
+      GA_googleFillSlot("300X250-1_others");
+    </script -->
+  </div>
+  <div id="poll">
+  <h4>Poll</h4>
+  <div class="pollmini-section" name="pollMini" id="pollMini51"></div>
+  <script>
+    var doLoad = true;
+    if (doLoad) {
+      updatePollMini("/apps/pbcs.dll/miniquery?NoStat=1&TARGET=_top&W=130&H=60&Labels=leading&Category=ARTICLE&ObjectClass=-1&BGColor=&LabelTrim=");
+    }
+  </script>
+</div>
+  <div id="advetisement_300x250">
+    <h5>ADVERTISEMENT</h5>
+    <!-- script type="text/javascript">
+      GA_googleFillSlot("300x250-2_othersstory");
+    </script -->
+  </div>
+  <!--Taboola-->
+  <div id="taboola-right-rail-thumbnails"></div> 
+  <script type="text/javascript"> 
+    window._taboola = window._taboola || []; 
+    _taboola.push({ 
+      mode: 'thumbnails-rr',
+      container: 'taboola-right-rail-thumbnails',
+      placement: 'Right Rail Thumbnails',
+      target_type: 'mix'
+    }); 
+  </script> 
+  <!--End Taboola-->          
+  <div id="advetisement_300x250">
+    <h5>ADVERTISEMENT</h5>
+    <!-- script type="text/javascript">
+      GA_googleFillSlot("300X250-3_others");
+    </script -->
+  </div> 
+  <div id="todays_cartoon">
+  <h4>Today's Cartoon</h4>
+  <a href="/tools/cartoons/20210115?profile=1566"><img alt="Click image to view full size editorial cartoon" src="http://www.jamaicaobserver.com/apps/pbcsi.dll/storyimage/JO/20210115/ARTICLE/210119730/AR/0/AR-210119730.jpg&maxw=303&maxh=230" /></a>
+  <div id="previous_cartoons">
+    <a href="/tools/cartoons/">View Previous Cartoons &raquo;</a>
+  </div>
+</div>
+
+  <div id="advetisement_300x250">
+    <h5>ADVERTISEMENT</h5>
+    <!-- script type="text/javascript">
+      GA_googleFillSlot("300x600_others");
+    </script -->
+  </div>
+  <!-- Newsmax Old code Start -->
+  <!-- div id="NmWg4333" ></div>
+  <script type="text/javascript" src ='https://cdn.nmcdn.us/js/connectV3.js'></script>
+  <script type="text/javascript">NM.init({WidgetID: 4333})</script -->
+  <!-- Newsmax Old code End -->
+<!-- Newsmax New code start
+  <div id="OagBrXxtH2jTZbqMLQxs9J4pPsFunGp8iiKVXj7y"></div>
+<script src="https://s.newsmaxfeednetwork.com/static/js/connectV5.js"></script>
+<script type="text/javascript">
+NM.init({
+widgetId: "OagBrXxtH2jTZbqMLQxs9J4pPsFunGp8iiKVXj7y",
+template: "NM06"
+});
+</script>
+Newsmax New code end -->
+  <div id="observer_tweets">
+    <div>
+      <div id="unit_88515"><a href="http://idealmedia.com/"></a></div>
+      <script type="text/javascript" charset="utf-8">
+        (function() {
+          var sc = document.createElement('script'); sc.type = 'text/javascript'; sc.async = true;
+          sc.src = '//news.fark.com/data/js/88515.js'; sc.charset = 'utf-8';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(sc, s);
+        }()); 
+      </script>
+    </div>
+  </div>
+</div>
+
+      </div>
+      <div id="bottom_leaderboard">
+  <script type="text/javascript">
+      var ABNORMALLY_PREFIXED_BOTTOM_AD_GASECTIONS = ["fno", "mogulsinthemaking"];
+      var STORY_AND_SECTION_SUFFIXED_BOTTON_AD_GASECTIONS = ["business", "news", "sport"];
+      var GAsection = "others";
+      var storyid = "304069938";
+      var bottom_ad_prefix = "Largeleaderbottom_";
+      var bottom_ad_base = "news";
+      var bottom_ad_suffix = "";
+      //only 2 GAsections do not start with the normal prefix, the rest get the default defined above
+      if (ABNORMALLY_PREFIXED_BOTTOM_AD_GASECTIONS.indexOf(GAsection) > -1) {
+          bottom_ad_prefix = "leaderbottom_";
+      }
+      //if there is a GAsection, use that for the base, else keep the default set above
+      if (!!GAsection) {
+          bottom_ad_base = GAsection;
+      }
+      //story bottom ads in these GAsections end with the word story
+      if (!!storyid && (STORY_AND_SECTION_SUFFIXED_BOTTON_AD_GASECTIONS.indexOf(bottom_ad_base) > -1)) {
+          bottom_ad_suffix = "story";
+      }
+      //section bottom ads in these GAsections end with the word section
+      if (!storyid && (STORY_AND_SECTION_SUFFIXED_BOTTON_AD_GASECTIONS.indexOf(bottom_ad_base) > -1)) {
+          bottom_ad_suffix = "section";
+      }
+      GA_googleFillSlot(bottom_ad_prefix + bottom_ad_base + bottom_ad_suffix);
+  </script>
+</div>
+<div id="footer">
+  <div id="footer-menu" class="first_space">
+    <ul>
+      <li class="special"><a href="/">HOME</a></li>
+      <li><a href="/news/">NEWS</a></li>
+      <li><a href="/business/">BUSINESS</a></li>
+      <li><a href="/sport/">SPORT</a></li>
+      <li><a href="/lifestyle/">LIFESTYLE</a></li>
+      <li><a href="/magazines/allwoman/">ALL WOMAN</a></li>
+      <li><a href="/regional/">REGIONAL NEWS</a></li>
+      <li><a href="/entertainment/">ENTERTAINMENT</a></li>
+      <li><a href="/environment/">ENVIRONMENT</a></li>
+      <li><a href="/auto/">AUTO</a></li>
+    </ul>
+  </div>
+  <div id="footer-menu" class="space">
+    <ul>
+      <li class="special"><a href="/editorial/">Editorial</a></li>
+      <li><a href="/teenage/">Teenage</a></li>
+      <li><a href="/columns/">Columns</a></li>
+      <li><a href="/magazines/career/">Career</a></li>
+      <li><a href="/magazines/food/">Food</a></li>
+      <li><a href="/letters/">Letters</a></li>
+      <li><a href="https://mail.jamaicaobserver.com/epaperlive/login.asp">E-Paper</a></li>
+      <li><a href="/weather/">Weather</a></li>
+    </ul>
+  </div>
+  <div id="footer-menu" class="space">
+    <ul>
+      <li class="special"><a href="/a-z/">A-Z</a></li>
+      <li><a href="/rss/"><img src="/images/2014/rss_icon.png" width="11" height="11" alt="RSS Feeds" border="0" /> RSS Feeds</a></li>
+      <li><a href="/contactus/">Contact Us</a></li>
+      <li><a href="/feedback/">Feedback</a></li>
+      <li><a href="/privacy/">Privacy Policy</a></li>
+        <!-- <li><a class="change-consent" onclick="window.__cmp('displayConsentUi');">Change Consent</a></li> -->
+      <li><a href="/sitemap/">Site Map</a></li>
+      <li><a href="/termsconditions/">Terms and Conditions</a></li>
+      <li><a href="/editorialcodeconduct/">Editorial Code of Conduct</a></li>
+      <li><a href="/mobileobserver/">Mobile Observer</a></li>
+      <li><a href="/advertising/">Advertising</a></li> 
+    </ul>
+  </div>
+  <div id="copyright">
+    <div id="logo_overlay"><a href="/" target="_self"><img src="/images/2014/Logo_overlay.png" width="360" height="73" border="0" /></a></div>
+    <p>Copyright &copy; 2013 Jamaica Observer. All Rights Reserved. <br /> <a href="/termsconditions/" title="Terms" target="_blank">Terms</a> under which this service is provided to you.</p>
+  </div>
+</div>
+
+    </div>
+  </div>
+  <a href="#" class="scrollup">Scroll</a>
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'jamaicaobserver'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+      var s = document.createElement('script'); s.async = true;
+      s.type = 'text/javascript';
+      s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+      (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+  </script>
+  <!-- script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-7266247-1']);
+  _gaq.push(['_setDomainName', 'jamaicaobserver.com']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-7266247-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-7266247-1');
+  gtag('config', 'UA-7266247-4');
+</script>
+
+  <!-- Taboola -->
+  <script type="text/javascript">
+    window._taboola = window._taboola || [];
+    _taboola.push({flush: true});
+  </script>
+  <!-- End of Taboola -->
+  <!-- include template="Overlay Ad" -->
+</body>
+</html>

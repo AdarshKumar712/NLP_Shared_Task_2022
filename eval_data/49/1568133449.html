@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="de" class="no-js co-rectangle-disabled has-headcrumb has-socialbar css-loading">
+<head>
+<script>
+window.ui = window.ui || {};
+ui.consentPageUrl = 'https://www.gmx.net/magazine/consent-management/';
+(function() {
+if (checkIfConsentCookieIsPresent()) {
+return;
+}
+if (checkBypassCookiePresent()) {
+return;
+}
+if (checkIfCookiesAreWritable()) {
+saveHashAndQueryStringInSessionStorage();
+saveReferrers();
+redirectToInterceptionPage();
+}
+// Helper functions
+/**
+* Checks if the consent cookie is present
+* @returns {boolean} Whether the consent cookie is present or not
+*/
+function checkIfConsentCookieIsPresent() {
+var localTCString = getCookie('euconsent-v2');
+return (localTCString && localTCString.length > 0);
+}
+/**
+* Checks if the bypass cookie is present
+* @returns {boolean} Whether the bypass cookie is present or not
+*/
+function checkBypassCookiePresent() {
+var bypassCookieName = 'euconsent-bypass';
+var bypassCookieValue = getCookie(bypassCookieName);
+return (bypassCookieValue && bypassCookieValue === '1');
+}
+/**
+* Gets a cookie value
+* @param {string} cname The name of the cookie to get the value of
+* @returns {string} The cookie value or empty string if not found
+*/
+function getCookie(cname) {
+var name = cname + '=';
+var decodedCookie = decodeURIComponent(document.cookie);
+var ca = decodedCookie.split(';');
+for (var i = 0; i < ca.length; i++) {
+var c = ca[i];
+while (c.charAt(0) === ' ') {
+c = c.substring(1);
+}
+if (c.indexOf(name) === 0) {
+return c.substring(name.length, c.length);
+}
+}
+return '';
+}
+/**
+* Checks if cookies are enabled or not
+* @returns {boolean}
+*/
+function checkIfCookiesAreWritable() {
+try {
+// Create cookie
+document.cookie = 'cookietest=1';
+var ret = document.cookie.indexOf('cookietest=') !== -1;
+// Delete cookie
+document.cookie = 'cookietest=1; expires=Thu, 01-Jan-1970 00:00:01 GMT';
+return ret;
+} catch (e) {
+return false;
+}
+}
+/**
+* Save URL info in session storage
+*/
+function saveHashAndQueryStringInSessionStorage() {
+var qs = window.location.search;
+var hash = window.location.hash;
+window.sessionStorage.setItem('redirectHash', hash);
+window.sessionStorage.setItem('redirectQueryString', qs);
+}
+/**
+* Save referrers in session storage
+*/
+function saveReferrers() {
+// store the page to redirect to once the user has given its consent preference,
+// i.e. the current page
+var redirectReferrer = window.location.origin + window.location.pathname + window.location.search;
+window.sessionStorage.setItem('redirectReferrer', encodeURI(redirectReferrer));
+// the page where the user came from
+window.sessionStorage.setItem('originalReferrer', document.referrer);
+}
+/**
+* Perform a redirection to the consent page
+*/
+function redirectToInterceptionPage() {
+window.location.href = window.ui.consentPageUrl;
+}
+})();
+</script>
+<meta charset="utf-8" />
+<meta property="twitter:image:src" content="https://i0.gmx.net/image/660/34506660,pd=3,f=opengraph/vorwahlen-usa-biden.jpg" />
+<meta name="twitter:title" content="US-Vorwahlen: Joe Bidens Siegesserie h&auml;lt an - &Uuml;berraschungserfolg in Michigan" />
+<meta name="twitter:description" content="Nach dem &quot;Super Tuesday&quot; fand in der Nacht die n&auml;chste gr&ouml;&szlig;ere Vorwahlrunde der US-Demokraten statt, wieder r&auml;umt Joe Biden ab: Der moderate Kandidat gewinnt wohl in Mississippi, Missouri, Michigan u" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="og:image" content="https://i0.gmx.net/image/660/34506660,pd=3,f=opengraph/vorwahlen-usa-biden.jpg" />
+<meta property="og:description" content="Nach dem &quot;Super Tuesday&quot; fand in der Nacht die n&auml;chste gr&ouml;&szlig;ere Vorwahlrunde der US-Demokraten statt, wieder r&auml;umt Joe Biden ab: Der moderate Kandidat gewinnt wohl in Mississippi, Missouri, Michigan und auch in Idaho. Noch ist das Rennen nicht gelaufen - f&uuml;r Bernie Sanders wird es langsam eng." />
+<meta property="og:title" content="US-Vorwahlen: Joe Bidens Siegesserie h&auml;lt an - &Uuml;berraschungserfolg in Michigan" />
+<meta property="fb:admins" content="187741777922914" />
+<meta property="og:site_name" content="GMX News" />
+<meta property="article:section" content="US-Wahl 2020 - alles im &Uuml;berblick" />
+<meta property="og:url" content="https://www.gmx.net/magazine/politik/wahlen/us-wahl/us-vorwahlen-joe-bidens-siegesserie-haelt-ueberraschungserfolg-michigan-34506658" />
+<link rel="search" href="https://img.ui-portal.de/search-int/osd/news/gmx_opensearch.xml" title="GMX News" type="application/opensearchdescription+xml" />
+<link rel="manifest" href="https://www.gmx.net/magazine/manifest.webmanifest" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+<meta name="msapplication-starturl" content="/" />
+<meta name="apple-mobile-web-app-title" content="GMX" />
+<meta name="application-name" content="" />
+<meta name="description" content="Nach dem &quot;Super Tuesday&quot; die n&auml;chste gr&ouml;&szlig;ere Vorwahlrunde der US-Demokraten, und wieder r&auml;umt Joe Biden ab. Noch ist das Rennen um die Pr&auml;sidentschaftskandidatur nicht entschieden - f&uuml;r Bidens linken Konkurrenten Bernie Sanders wird es aber eng." />
+<title>US-Vorwahlen: Joe Bidens Siegesserie h&auml;lt an - &Uuml;berraschungserfolg in Michigan | GMX</title>
+<meta name="robots" content="index,follow,noarchive,max-snippet:-1,max-video-preview:-1,max-image-preview:large" />
+<meta name="theme-color" content="#1c449b" />
+<link rel="dns-prefetch" href="https://s.uicdn.com/uimag/4.2113.0/assets/logo/logo-gmx.png" />
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=5" />
+<link rel="canonical" href="https://web.de/magazine/politik/wahlen/us-wahl/us-vorwahlen-joe-bidens-siegesserie-haelt-ueberraschungserfolg-michigan-34506658" />
+<meta name="msapplication-TileImage" content="https://s.uicdn.com/uimag/4.2113.0/assets/favicon/gmx/mstile-144x144.png" />
+<meta name="msapplication-TileColor" content="#1c449b" />
+<meta name="msapplication-config" content="https://s.uicdn.com/uimag/4.2113.0/assets/favicon/gmx/browserconfig.xml" />
+<meta name="msapplication-navbutton-color" content="#1c449b" />
+<link rel="shortcut icon" href="https://s.uicdn.com/uimag/4.2113.0/assets/favicon/gmx/favicon.ico" />
+<link sizes="180x180" rel="apple-touch-icon" href="https://s.uicdn.com/uimag/4.2113.0/assets/favicon/gmx/apple-touch-icon.png" />
+<link sizes="16x16" rel="icon" href="https://s.uicdn.com/uimag/4.2113.0/assets/favicon/gmx/favicon-16x16.png" type="image/png" />
+<link sizes="32x32" rel="icon" href="https://s.uicdn.com/uimag/4.2113.0/assets/favicon/gmx/favicon-32x32.png" type="image/png" />
+<link sizes="192x192" rel="icon" href="https://s.uicdn.com/uimag/4.2113.0/assets/favicon/gmx/android-chrome-192x192.png" type="image/png" />
+<link rel="apple-touch-startup-image" href="https://s.uicdn.com/uimag/4.2113.0/assets/pwa/gmx_iphone5_splash.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" />
+<link rel="apple-touch-startup-image" href="https://s.uicdn.com/uimag/4.2113.0/assets/pwa/gmx_iphone6_splash.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" />
+<link rel="apple-touch-startup-image" href="https://s.uicdn.com/uimag/4.2113.0/assets/pwa/gmx_iphoneplus_splash.png" media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)" />
+<link rel="apple-touch-startup-image" href="https://s.uicdn.com/uimag/4.2113.0/assets/pwa/gmx_iphonex_splash.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" />
+<link rel="apple-touch-startup-image" href="https://s.uicdn.com/uimag/4.2113.0/assets/pwa/gmx_iphonexr_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)" />
+<link rel="apple-touch-startup-image" href="https://s.uicdn.com/uimag/4.2113.0/assets/pwa/gmx_iphonexsmax_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)" />
+<link rel="apple-touch-startup-image" href="https://s.uicdn.com/uimag/4.2113.0/assets/pwa/gmx_ipad_splash.png" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)" />
+<link rel="apple-touch-startup-image" href="https://s.uicdn.com/uimag/4.2113.0/assets/pwa/gmx_ipadpro1_splash.png" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)" />
+<link rel="apple-touch-startup-image" href="https://s.uicdn.com/uimag/4.2113.0/assets/pwa/gmx_ipadpro3_splash.png" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)" />
+<link rel="apple-touch-startup-image" href="https://s.uicdn.com/uimag/4.2113.0/assets/pwa/gmx_ipadpro2_splash.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)" />
+<link color="#333333" rel="mask-icon" href="https://s.uicdn.com/uimag/4.2113.0/assets/favicon/gmx/safari-pinned-tab.svg" />
+<meta property="article:publisher" content="https://www.facebook.com/GMX.de" />
+<meta property="article:published_time" content="2020-03-11T06:45:00+01:00" />
+<meta property="article:modified_time" content="2020-03-11T06:45:00+01:00" />
+<meta property="article:tag" content="Joe Biden" /><meta property="article:tag" content="Bernie Sanders" /><meta property="article:tag" content="Michigan" /><meta property="article:tag" content="Siegesserie" /><meta property="article:tag" content="Mississippi" />
+<meta name="keywords" content="Joe Biden,Bernie Sanders,Michigan,Siegesserie,Mississippi" />
+<meta name="news_keywords" content="Joe Biden,Bernie Sanders,Michigan,Siegesserie,Mississippi" />
+<meta property="og:type" content="article" />
+<link rel="amphtml" href="https://www.gmx.net/amp/34506658" />
+<script>
+window.ui = window.ui || {};
+ui.staticBasePath="https://s.uicdn.com/uimag/4.2113.0/";
+ui.AdServiceConfig = {
+enabled: true,
+init: {
+portal: 'gmx',
+category: 'magazine',
+section: 'content',
+sectionshort: 'news',
+sectionlong: 'news/politik/wahlen/us-wahl/_archiv/2020-03/us-vorwahlen-joe-bidens-siegesserie-haelt-ueberraschungserfolg-michigan',
+categorytype: 'article',
+ngserious: 'CNC',
+agofid: '241',
+conpartner: '32930524',
+pagev: '1',
+nw: '42',
+cc: 'DE',
+pp: '___NULL',
+hid: '',
+tms_produkt: '',
+ipt: '0',
+pa: '-1',
+optout: '1',
+nguserid: 'TGP-OPT-OUT',
+external_uid: 'null',
+tms_ereignis: '',
+tms_schlagwort: ',Siegesserie,Vorwahlrunde,Vorwahl,Wahlkampf,',
+pg: 'null',
+tms_ort: ',Michigan,Mississippi,Missouri,Idaho,USA,',
+tms_orga: ',Fox News,CNN,NBC,Twitter,',
+tms_person: ',Joe Biden,Bernie Sanders,Bernie Sander,'
+}, pageCategory: 'magazine',
+biddingEnabled: true,
+biddingConfigUrls: {
+'b': 'https://dl.gmx.net/uim/live/config_magazine.js',
+'s': 'https://dl.gmx.net/uim/live/config_magazine_mobile.js',
+'m': 'https://dl.gmx.net/uim/live/config_magazine.js'
+}
+};
+ui.pppUrl = 'https://dl.gmx.net/permission/live/v1/ppp/js/permission-client.js';
+ui.pppCompatUrl = 'https://dl.gmx.net/permission/live/v1/ppp/js/permission-client-compat.js';
+ui.tcfUrl = 'https://dl.gmx.net/tcf/live/v1/js/tcf-api.js';
+ui.tifConfig = {};
+ui.tifConfig.brand = "gmx";
+ui.tifConfig.pageidentifier = "themen/news/politik/wahlen/us-wahl/_archiv/2020-03/34506658";
+ui.tifConfig.region = "de";
+ui.tifConfig.category = "Article";
+ui.tifConfig.partner = "Dep%20Frontpage";
+ui.tifConfig.partnerid = "32930524";
+ui.tifConfig.coremid = "34506658";
+ui.tifConfig.contentclass = "241";
+ui.tifConfig.sktg = "RedCont/Politik/Politikueberblick";
+ui.tifConfig.fireconversion = "false";
+ui.tifConfig.tifUrl = "//uim.tifbs.net/js/3936.js";
+ui.pageinfo={"brand":"gmx","coremid":34506658,"deviceclient":"browser","fbAppId":"925652430787550","home":"https://www.gmx.net/","region":"de","tenant":"gmx","version":"4.2113.0"};
+ui.tcfInfo={"uiConsent":{"status":"EMPTY"},"euConsent":{"status":"EMPTY"},"mode":"PRIVACY_BY_DEFAULT"};
+ui.sentryLog = [];
+ui.logging=false;
+ui.csrfUrl = 'https://www.gmx.net/magazine/ajax/csrf';
+ui.storePageMetadata=true;
+ui.serviceWorkerEnabled=true;
+ui.pushNotification=true;
+ui.publicVapidKey='BISAZvWyNTmm6kXjlxjLk8eI2lcyttgHyexOX_sx--jLm-MqZUkrLTTIJLaN857JSnl42w4n3R5FRI9LUnm3ons';
+ui.messagingSenderId='639363531159';
+ui.brain = {};
+ui.brain.piUrl = "https://wa.gmx.net/gmx/gmx/s?name=themen.news.pi.article.politik.wahlen.us-wahl._archiv.2020-03.34506658&partner=_Dep%20Frontpage&country=de&type=view&category=article&teaserheadline=Joe%20Biden%20setzt%20Siegesserie%20fort%20-%20f%C3%BCr%20Sanders%20wird%20es%20langsam%20eng&coremid=34506658&agof=241&oewa=RedCont/Politik/Politikueberblick&has_video=0&pagecount=0";
+ui.brain.eventUrl = "https://wa.gmx.net/gmx/gmx/s?name=themen.news.event.article.politik.wahlen.us-wahl._archiv.2020-03.34506658&partner=_Dep%20Frontpage&country=de&type=hidden&category=article&teaserheadline=Joe%20Biden%20setzt%20Siegesserie%20fort%20-%20f%C3%BCr%20Sanders%20wird%20es%20langsam%20eng&coremid=34506658&agof=241&oewa=RedCont/Politik/Politikueberblick&has_video=0&pagecount=0";
+ui.links = {"pwaExplanationArticle":"https://www.gmx.net/magazine/in-eigener-sache/progressive-web-app/","thirdPartyPrivacy":"https://www.gmx.net/datenschutz/homepage/#dritte","externalEmbedSettings":"https://www.gmx.net/magazine/in-eigener-sache/externe-inhalte/","pushUrl":"https://www.gmx.net/magazine/ajax/messaging"};
+ui.variant = {"experimentId":"none","variantName":"none","mode":"OPTOUT"};
+</script>
+<script>
+window.performance = window.performance || {
+mark: function () {
+}
+};
+</script>
+<script>window.performance.mark('css-load-start');</script>
+<style>[data-mod-name=teaser] .icon{position:absolute}[data-mod-name=teaser] .teaser-image-icon{background:#333;color:#fff;bottom:0;left:0;font-size:3.6rem}[data-mod-name=teaser] .time{color:#888}[data-mod-name=teaser] .time .icon{top:auto;bottom:0;right:0;left:auto;background:none;color:#ddd;font-size:2rem}[data-mod-name=teaser].extension-promotion .teaser-description,[data-mod-name=teaser].extension-promotion .teaser-headline{padding-right:3rem}[data-mod-name=teaser].extension-promotion .teaser-headline{margin-bottom:.5rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}[data-mod-name=teaser].extension-promotion .promotion-bar{background:#888;color:#fff;bottom:0;width:1.6rem;position:absolute;right:0;top:0;overflow:hidden}[data-mod-name=teaser].extension-promotion .promotion-text{transform:rotate(-90deg);transform-origin:0 center;position:absolute;left:.8rem;bottom:.4rem;font-size:1.2rem;line-height:2}.extensions-in-small-teaser.extension-promotion .teaser-text .teaser-description,.extensions-in-small-teaser.extension-promotion .teaser-text .teaser-headline{padding-right:1rem}.extensions-in-small-teaser .teaser-image .icon{font-size:3rem}.extensions-in-stage-teaser .time{color:#ddd}.extensions-in-stage-teaser .teaser-image-icon{position:relative;margin-bottom:1rem}@media (min-width:48em){.extensions-in-stage-teaser:first-of-type .teaser-image-icon{width:5.4rem;height:5.4rem;font-size:5.4rem;margin-bottom:2rem}}.extensions-in-long-teaser .teaser-image-icon{bottom:0;top:auto}.extensions-in-long-teaser .time .icon{bottom:0}.teaser-stage{overflow:hidden;position:relative}html{overflow-x:hidden;font-family:sans-serif;font-size:10px;scroll-behavior:smooth}body{margin:0;font-size:1.6rem;line-height:2.4rem;color:#333;background-color:#e7e7e7}a,address,form,html,li,ol,ul{font-style:normal}a,figure,form,li,ol,ul{margin:0;padding:0;text-decoration:none;list-style:none;font-style:normal}table{border-collapse:collapse;border-spacing:0}address{display:inline}img{max-width:100.25%;vertical-align:middle}figure img{width:100%}a{color:#1c449b}label{line-height:3.8rem}.button,button,input,select,textarea{font-size:1.6rem;line-height:3.8rem;border-radius:.4rem;border:.1rem solid transparent;padding:0 1.6rem;box-sizing:border-box;float:left;margin:0 1.6rem 1.6rem 0}.button,button{font-weight:700;text-align:center;background-color:#fff;color:#999;border-color:#999}.button-center .button{float:none;display:inline-block;height:auto;line-height:2.2rem;padding:.8rem 1.6rem}.button-right{text-align:center}@media (min-width:48em){.button-right{text-align:right}}.button-right .button{display:inline-block;float:none;margin:0}h1{font-size:2.4rem;margin:.67em 0;margin-bottom:.8rem}.h2,h2{font-size:2rem;line-height:2.6rem;margin:1.6rem 0 1.2rem}.clearfix:after,.clearfix:before{content:" ";display:table}.ie11 .clearfix:after,.ie11 .clearfix:before{display:block}.clearBoth,.clearfix:after{clear:both}.hidden{display:none!important}.col{padding:0 .5rem;min-height:1px}.row .row{margin:0 -.5rem}.row:after,.row:before{content:"";display:table}.row:after{clear:both}@media only screen{.col{float:left;width:100%;box-sizing:border-box}}.wrapper{position:relative;z-index:1;padding-top:5rem;width:100%;box-sizing:border-box}.wrapper.mainview{overflow-y:scroll}.wrapper .main{width:100%}.wrapper .main .coc-sky{display:none}.wrapper .main .content-wrapper{width:100%}.wrapper .main .content-wrapper.tc{display:table;box-sizing:border-box;table-layout:fixed}@media (min-width:64em){.wrapper .main .content-wrapper{padding:0 1rem 0 0}}.wrapper .main .content{width:100%;height:auto;background-color:#fff;position:relative}@media (min-width:64em){.has-headcrumb .wrapper .main .content,.has-socialbar .wrapper .main .content{padding-top:4.9rem}}.homepage .wrapper .main .content,.overview-page .wrapper .main .content{box-shadow:none;background-color:transparent}@media (min-width:64em){.wrapper{padding-left:33.6rem;max-width:192rem}.js-navi-open .wrapper,.js-tab-open .wrapper,.wrapper{padding-top:0}}.wrapper.wrapper_new{margin:5rem 0 0;padding-top:0}.mod-inapp .wrapper.wrapper_new{margin-top:0}.left-col,.wrapper.wrapper_new .coc-sky{display:none}@media (min-width:64em){.wrapper.wrapper_new{margin:6.6rem 0 0;padding:0 0 0 33.6rem;box-sizing:border-box}.wrapper.wrapper_new.tb{display:table}.left-col{display:flex;flex-direction:column;position:fixed;top:6.6rem;left:0;width:32rem;bottom:0;background:#fff;z-index:10}}@media (min-width:80em){.wrapper.wrapper_new .coc-sky.tc{display:table-cell;padding-top:0}}.content-padding{padding-left:2rem;padding-right:2rem}@media (min-width:480px){.content-padding{padding-left:6.25%;padding-right:6.25%}}@media (min-width:90em){.content-padding{padding-left:12.5%;padding-right:12.5%}}@media (min-width:105em){.content-padding{padding-left:18.75%;padding-right:18.75%}}.content-padding.left{padding:0}@media (max-width:767px){[data-mod-name=sement].content-padding{padding:0}}.table-wrapper tr:nth-child(2n){background-color:#f8f8f8}.table-wrapper tr:nth-child(odd){background-color:#e7e7e7}.icon{font-family:icons;font-style:normal;font-weight:400;text-transform:none;display:inline-block;line-height:100%}.login-button{border:0;font-weight:400;background:transparent}.page__headline{padding-top:3.2rem;margin-top:0;font-size:2.4rem;line-height:3.2rem;line-height:2.8rem}@media (max-width:767px){.page__headline{padding-top:1.6rem}}.article__featured-image{overflow:hidden}.css-loading .article__featured-image figure{position:relative;margin-bottom:2.8rem}.css-loading .article__featured-image figcaption{height:2.8rem}.article__featured-image figure{height:0;padding-bottom:66.7%;background-color:#c2c2c2}.article__featured-image figcaption{background-color:#333;position:absolute;right:0;bottom:-2.8rem;width:100%}.article__featured-image figcaption .description{display:none}.article__featured-image figcaption .copyright{color:#888;text-align:right;padding-right:6.25%}.article__featured-image figcaption .copyright:first-letter{font-size:13px}.article__featured-video{background:#333}.video_responsive{padding-bottom:56.25%}.article__video-copyright{display:block;background:#333;color:#888;text-align:right;padding:0 2rem;height:2.8rem;line-height:2.8rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.article-header+.co-teaserline{display:none}.content__headline{margin-top:0;margin-bottom:.8rem;font-size:2.4rem;line-height:2.8rem}@media (min-width:48em){.content__headline{font-size:4rem;line-height:4.8rem}}@media (min-width:90em){.content__headline{font-size:4.8rem;line-height:5.6rem}}@media (min-width:120em){.content__headline{font-size:5.6rem;line-height:6.4rem}}@media (max-width:767px){.content__headline{padding-top:1.6rem;margin-top:0;font-size:2.6rem;line-height:3.2rem}}.content__cooperation{padding:1.4rem 2rem 0;font-size:1.4rem}@media (min-width:480px){.content__cooperation{padding:1.4rem 6.25% 0}}@media (min-width:48em){.content__cooperation{padding:0}}.content__cooperation img{padding-left:.8rem;margin-top:-.4rem}.content__info{padding-top:1.2rem}.content__comments,.content__info__author p{display:none}.content__info__author{font-size:1.4rem;line-height:1.6rem}.content__author{font-weight:700}.content__author:after{content:",";font-size:1.4rem;line-height:2rem;padding:0;color:#333}.content__author-title{float:left;padding-right:.4rem}.content__author-image{display:none}.content__time{font-size:1.4rem;line-height:2rem}.content__description{margin-top:1rem;font-weight:700}.content__rating{display:none}.keywords{padding-top:.8rem;line-height:1.8rem}.keywords .tags{margin:.5rem 0 2.8rem -1.6rem}@media (min-width:48em){.keywords .tags{margin:0 0 2.8rem -1.6rem}}.keywords .tags li{float:left}.keywords .tags li:before{content:"\2022";width:1.6rem;text-align:center;display:inline-block}.article-body ul{display:table;margin-bottom:1.6rem}.article-body li{display:table-row}.article-body li:before{display:table-cell;content:"\e64b";padding-top:.8rem}.breadcrumb{clear:both;margin:1.2rem 0;padding:0 2.4rem;overflow:hidden}.breadcrumb .title{transform:translateY(10px);opacity:0;transition:all .25s;font-family:Roboto,sans-serif;font-weight:700;padding:0 20rem 0 0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.breadcrumb.has-headline .title{transform:translateY(-24px);opacity:1}.breadcrumb.has-headline .ul-breadcrumb{transform:translateY(-34px);opacity:0}.ul-breadcrumb{list-style-type:none;margin:0;padding:0 20rem 0 0;transition:all .25s}.ul-breadcrumb .li-breadcrumb{display:inline}.ul-breadcrumb .li-breadcrumb .a-breadcrumb{font-size:1.4rem;line-height:1.8rem;color:#888;display:inline-block;font-weight:400}.ul-breadcrumb .li-breadcrumb .icon-home{font-size:1.6rem}.ul-breadcrumb .li-breadcrumb .icon-arrow-right{color:#888;font-size:.8rem;margin:0 .4rem;width:.8rem;white-space:nowrap;overflow:hidden}.ul-breadcrumb.upper{white-space:nowrap;overflow:hidden;min-height:2.4rem;margin-right:20rem;padding:0;transform:translateY(0);opacity:1}.view-gteTablet{display:none}@media (min-width:48em){.view-gteTablet{display:block}}.co-container{line-height:0;font-size:0}@media (max-width:767px){.coc-top .co-container{min-height:75px}}.channel-bar{height:4.4rem;background-color:#fff;border-bottom:.1rem solid #ddd;z-index:100}@media (min-width:48em){.channel-bar{height:5.7rem}}.channel-bar .channel-headline{position:absolute;width:100%;box-sizing:border-box;margin:0;padding:0 2.4rem;font-size:1.8rem;line-height:4.4rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}@media (min-width:48em){.channel-bar .channel-headline{font-size:2.4rem;line-height:5.6rem}}.css-loading [data-mod-name=sticky]{display:none}.breakingnews:before{content:" Eilmeldung \000a";white-space:pre;background:#c10;color:#fff;font-size:1.8rem;line-height:3.2rem;font-style:italic;text-transform:uppercase;text-shadow:none}.additionalArticles{background:#fff}.new-header{position:fixed;top:0;left:0;right:0;height:5rem;display:flex;z-index:1500;background:#1c449b}.new-header__hamburger{flex:0 0 5rem}.new-header__navtrigger{display:flex;float:none;line-height:0;width:100%;height:100%;cursor:pointer;outline:0}.burger-icon{position:relative;margin:auto 16px}.burger-icon,.burger-icon:after,.burger-icon:before{display:block;width:18px;height:2px;background-color:#fff}.burger-icon:after,.burger-icon:before{content:"";position:absolute}.burger-icon:before{top:-6px}.burger-icon:after{bottom:-6px}.new-header__logo{display:flex;flex:0 0}.new-header__logo .logo-link{display:block;width:100%}.new-header__logo .logo-image{display:block;background-repeat:no-repeat;background-position:0 50%;width:100%;height:100%;background-image:url(https://s.uicdn.com/uimag/1/assets/logo/logo-gmx.svg);background-size:100% 2.2rem}.new-header__span{flex:1}.new-header__search{max-width:calc(50% - 4.6rem)}.hsearchbox{height:100%;display:flex;align-items:center;position:relative}.hsearchbox__field{margin:0;float:none;border:1px solid #fff;border-right:0;border-radius:4px 0 0 4px;height:3rem;font-size:1.6rem;line-height:3rem;flex:1;padding:0 .8rem;min-width:8rem;-webkit-appearance:none}.hsearchbox__field::placeholder{font-style:normal;color:#999}.hsearchbox__btn{background:#fff;border:1px solid #fff;border-left:0;border-radius:0 4px 4px 0;width:3.2rem;height:3rem;text-align:center;float:none;margin:0;position:relative}.hsearchbox__btn .icon-search{display:inline-block;position:absolute;top:0;left:-2px;width:100%;color:#333;font-size:2.4rem;line-height:2.8rem;color:#1c449b}.new-header .login-wrapper{height:100%;min-width:5.6rem;display:flex;flex-direction:column;justify-content:center;padding:0}.new-header .login-wrapper a{line-height:0;text-align:center}.new-header .login-wrapper .login-button{display:block;float:none;margin:0;padding:0;border:0;background:none;box-shadow:none;font-weight:400;font-size:1.6rem;line-height:2.4rem;height:auto}.new-header .login-text{display:none}.new-header .icon-freemail{height:4.6rem;line-height:4.6rem;padding:0;margin:0 1.6rem;font-size:2.6rem;color:#fff}.left-col footer,[data-mod-name=navigation] footer{font-size:1.2rem;height:3rem;line-height:3rem;color:#dadada;padding:0 0 0 1rem}.left-col footer a,[data-mod-name=navigation] footer a{color:#888}@media (min-width:48em){.new-header__search{max-width:17rem}}@media (min-width:64em){.new-header__search{max-width:67rem;width:67rem}.teasers{flex:1;overflow-y:scroll;-webkit-overflow-scrolling:touch}.left-col__bottom{display:flex;align-items:center;justify-content:center;height:27rem;position:relative}.co-rectangle-disabled .left-col__bottom{height:0}}[data-mod-name=teaser]{position:relative;box-sizing:border-box}[data-mod-name=teaser] a{color:#333}[data-mod-name=teaser] img{position:absolute;width:100%;min-height:100%}[data-mod-name=teaser] .teaser-image .teaser-image-inner{padding-bottom:66.7%;background-color:#c2c2c2}[data-mod-name=teaser].teaser-ctx-indexpage{padding:.8rem;border-bottom:.1rem solid #ddd;border-top:.1rem solid #ddd;margin-top:-.1rem}.css-loading [data-mod-name=teaser].teaser-ctx-indexpage{height:10.1rem}[data-mod-name=teaser].teaser-ctx-indexpage .teaser-image{float:left;overflow:hidden;width:8.4rem;height:8.4rem}.css-loading [data-mod-name=teaser].teaser-ctx-indexpage .teaser-image{margin-right:1.1rem}[data-mod-name=teaser].teaser-ctx-indexpage .teaser-image .teaser-image-inner{position:relative;overflow:hidden;margin:0;width:100%}.css-loading [data-mod-name=teaser].teaser-ctx-indexpage .teaser-image .teaser-image-inner{padding-bottom:100%}[data-mod-name=teaser].teaser-ctx-indexpage .teaser-text{font-size:1.4rem;line-height:1.8rem}@media (max-width:767px){[data-mod-name=teaser].teaser-ctx-indexpage .teaser-text{height:7.1rem;overflow:hidden}}[data-mod-name=teaser].teaser-ctx-indexpage .teaser-text .teaser-headline{font-weight:700}[data-mod-name=teaser].teaser-ctx-indexpage .teaser-text .teaser-description{margin:0}.rubrikplus [data-mod-name=teaser].teaser-ctx-indexpage .teaser-text .teaser-description{margin-top:2px}[data-mod-name=teaser] .time{position:absolute;right:.1rem;bottom:0;color:#ddd;font-size:1.2rem;white-space:nowrap;padding-right:2.4rem;line-height:1.6rem;font-style:italic}.teaser-ctx-homepage-stage,.teaser-ctx-stage{position:relative;width:100%}.teaser-ctx-homepage-stage:after,.teaser-ctx-homepage-stage:before,.teaser-ctx-stage:after,.teaser-ctx-stage:before{content:" ";display:table}.teaser-ctx-homepage-stage:after,.teaser-ctx-stage:after{clear:both}@media (max-width:767px){.teaser-ctx-homepage-stage,.teaser-ctx-stage{margin-top:.4rem}.teaser-ctx-homepage-stage:first-of-type,.teaser-ctx-stage:first-of-type{margin-top:0}}.teaser-ctx-homepage-stage .teaser-text,.teaser-ctx-stage .teaser-text{background-image:linear-gradient(180deg,transparent 0,rgba(0,0,0,.5) 25%,rgba(0,0,0,.8) 75%);position:absolute;bottom:0;left:0;padding:1.6rem 1.6rem 2.5rem;width:100%;box-sizing:border-box}.teaser-ctx-homepage-stage .teaser-text .teaser-image-icon,.teaser-ctx-stage .teaser-text .teaser-image-icon{position:absolute;top:-3.2rem;left:1.6rem;bottom:auto;margin-bottom:auto}.teaser-ctx-homepage-stage .teaser-text .teaser-headline,.teaser-ctx-stage .teaser-text .teaser-headline{font-size:2rem;line-height:2.2rem;text-shadow:0 0 2.4rem rgba(0,0,0,.8);padding-bottom:.4rem;font-weight:700;color:#fff}.teaser-ctx-homepage-stage .teaser-text .teaser-headline a,.teaser-ctx-stage .teaser-text .teaser-headline a{color:#fff}.teaser-ctx-homepage-stage .teaser-text .teaser-description,.teaser-ctx-stage .teaser-text .teaser-description{max-height:6.6rem;overflow:hidden;margin:0;color:#fff;font-size:1.6rem;line-height:2.2rem;text-shadow:0 0 2.4rem rgba(0,0,0,.8)}.teaser-ctx-homepage-stage:first-of-type,.teaser-ctx-stage:first-of-type{margin-top:0}@media (max-width:767px){[data-mod-name=teaser].teaser-ctx-homepage{height:10.1rem;padding:.8rem;border-bottom:.1rem solid #ddd;border-top:.1rem solid #ddd;margin-top:-.1rem;font-size:1.4rem;line-height:1.8rem;background:#fff}[data-mod-name=teaser].teaser-ctx-homepage .teaser-image{float:left;overflow:hidden;width:8.4rem;height:8.4rem;margin-right:1.1rem}[data-mod-name=teaser].teaser-ctx-homepage .teaser-text{height:7.1rem;overflow:hidden}}[data-mod-name=teaser].teaser-ctx-homepage .teaser-headline{font-size:1.4rem;line-height:1.8rem;font-weight:700}@media (max-width:767px){[data-mod-name=teaser].teaser-ctx-tablist .teaser-image{width:8.4rem}}@media (min-width:64em){[data-mod-name=teaser].teaser-ctx-tablist .teaser-image{width:8.4rem}}@media (max-width:767px){[data-mod-name=teaser].teaser-ctx-ad .teaser-image,[data-mod-name=teaser].teaser-ctx-additional .teaser-image,[data-mod-name=teaser].teaser-ctx-article-left .teaser-image,[data-mod-name=teaser].teaser-ctx-startpage-column .teaser-image{width:8.4rem}}.standalone{background:#333;color:#fff}.standalone p{margin-top:1rem;line-height:2.6rem}.standalone__image{padding-bottom:1.2rem}.standalone__image figure{height:0;padding-bottom:66.7%}.standalone__video{padding-bottom:1.2rem}[data-mod-name=newvideo]{height:0;padding-bottom:56.3%}.standalone__cooperation__img{width:2rem}.standalone__title{margin-bottom:1rem;line-height:2.8rem}.standalone__author__img,.standalone__comments{display:none}.standalone__author__label{display:inline-block}.standalone__time{font-size:1.4rem;line-height:2rem}.standalone__body{padding-bottom:.8rem}.standalone__body__copyright{display:inline-block;margin-left:.7rem;font-size:1.4rem}.standalone__btn{display:none}.standalone__copyright{line-height:2.8rem}.standalone__slides{display:none}[data-mod-name=routenplaner] .page__headline{font-size:2.2rem;line-height:2.6rem}[data-mod-name=routenplaner] label{font-weight:700}[data-mod-name=routenplaner] form input[type=text]{width:100%}[data-mod-name=routenplaner] .err-hint{display:none}[data-mod-name=routenplaner] .clearBoth{height:1.6rem}[data-mod-name=routenplaner] .carSharing .note,[data-mod-name=routenplaner] .carSharing input{display:none}[data-mod-name=routenplaner] .sendWrapper{padding-top:.5rem}[data-mod-name=routenplaner] .note{display:table;padding-left:1rem;font-size:1.4rem;line-height:2rem}[data-mod-name=routenplaner] .premiumPartner{float:left;margin-top:2rem;margin-bottom:3.2rem;text-align:center}[data-mod-name=routenplaner] .premiumPartner img{border:.1rem solid #ddd;margin-bottom:2.4rem}[data-mod-name=routenplaner] .premiumPartner .partnerText{text-align:left;font-size:1.4rem;line-height:1.8rem}[data-mod-name=intro]{overflow:hidden;background:#fff}[data-mod-name=intro].closed:not(.is-author) .collapsible-wrapper{max-height:10rem}[data-mod-name=intro].closed.is-taglist .collapsible-wrapper{max-height:7rem}[data-mod-name=intro] .collapsible-wrapper{margin-bottom:1.4rem;margin-top:1.4rem;overflow:hidden;font-style:italic}[data-mod-name=intro] .collapsible{margin:0}.overview [data-mod-name=intro]{border-bottom:.1rem solid #ddd}.overview-page [data-mod-name=intro]{padding:0 2.4rem}[data-mod-name=intro] .icon{display:block;margin-bottom:1rem;color:#888;font-size:2rem;text-align:center;transition:all .4s}[data-mod-name=intro].closed .icon{transform:rotate(0)}@media (min-width:48em){[data-mod-name=intro] .icon{font-size:1.6rem}}.taglist{padding:.6rem 0 0}.taglist .tag{float:left;max-width:28rem;margin:0 .8rem .8rem 0;padding:.2rem 0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.taglist .tag a{padding:.2rem 1rem;background-color:rgba(34,105,195,.1)}[data-mod-name=homepage] .channel-block .label-wrapper,[data-mod-name=homepage] .point-of-view .label-wrapper{border-bottom:.1rem solid #ddd}[data-mod-name=homepage] .channel-block .label-wrapper .block-label,[data-mod-name=homepage] .point-of-view .label-wrapper .block-label{padding:0 1rem;font-size:1.6rem;line-height:4rem;font-family:Roboto,sans-serif;font-weight:700;color:#888}[data-mod-name=homepage] .channel-block .label-wrapper .block-label a,[data-mod-name=homepage] .point-of-view .label-wrapper .block-label a{color:#888;text-decoration:none}[data-mod-name=homepage] .tool-block{margin-bottom:.4rem}[data-mod-name=homepage] .tool-block .tools-link{background-color:#fff;width:100%;height:4rem;line-height:4rem;margin-bottom:.2rem;padding:0 1.6rem;text-align:left;float:left;box-sizing:border-box}[data-mod-name=homepage] .tool-block .tools-link a{font-size:1.6rem;line-height:2.4rem;font-weight:500;color:#888}[data-mod-name=homepage] .top-editorial .tool-block .tools-link a{color:#000;display:block;height:4rem;line-height:4rem}[data-mod-name=homepage] .tools{width:100%;height:20rem;line-height:20rem;background-color:#fff;color:#888;text-align:center;font-weight:500}[data-mod-name=homepage] .hp-promo-teaser{clear:both;overflow:hidden}.mod-sponsoring-row{position:absolute;right:0;top:0}@media (min-width:48em){.mod-sponsoring-row{margin-top:6px}}.mod-sponsoring-row .mod-sponsoring-middle{display:table-cell;height:45px;vertical-align:middle}.mod-weather .check-position,.mod-weather .geoloc-error,.mod-weather .long-titel,.mod-weather .pagination{display:none}.mod-weather .search-block{margin:1.6rem 0 0}.mod-weather .searchbox{padding-left:5rem;position:relative}.mod-weather button{margin:0}.mod-weather .map{text-align:center}.mod-weather .countries{display:inline-block;padding:.8rem 0}.mod-weather .countries li{float:left;border-right:.1rem solid;padding:0 .5rem;line-height:1.4rem}.mod-weather .countries a{font-size:1.4rem;line-height:1.8rem}.mod-weather .button-center .button{margin-top:1.6rem}.mod-weather .search-results .title{font-size:2rem;line-height:3.2rem;padding:1rem 0}.mod-weather .search-results li{font-size:1.4rem;line-height:1.8rem}.mod-weather .center{text-align:center}.mod-weather .center .button{float:none;display:inline-block;margin-right:0}.overview__rubric-teasers{padding:0}.overview__header{height:4.4rem;background-color:#fff;border-bottom:.1rem solid #ddd}.overview__headline{margin:0;padding:0 2.4rem;font-size:1.8rem;line-height:4.4rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.page__bar.sportticker-bar{height:inherit;border:0}.page__bar.sportticker-bar .page__headline{position:relative;padding:1.2rem 2.4rem .4rem;white-space:normal;font-size:1.8rem;line-height:2.4rem}@media (min-width:48em){.page__bar.sportticker-bar .page__headline{font-size:2.4rem;line-height:3.2rem}}.timestamp{display:block;padding:0 2.4rem 1.2rem;font-size:1.4rem;line-height:1.8rem;color:#888}[data-mod-name=sportticker] .menu{margin-bottom:2rem}[data-mod-name=sportticker] [data-mod-name=sporttickertool] .tool-footer,[data-mod-name=sportticker] [data-mod-name=sporttickertool] .tool-header{display:none}[data-mod-name=sportticker] [data-mod-name=sporttickertool] .game-list,[data-mod-name=sportticker] [data-mod-name=sporttickertool] .tool-content{height:10rem;min-height:10rem}[data-mod-name=sportticker] [data-mod-name=sporttickertool] .results{background-color:#333}[data-mod-name=sportticker] .ticker-controls{padding-left:2rem;padding-right:2rem;padding-bottom:1.6rem}[data-mod-name=sportticker] .ticker-controls .ticker-link{font-size:1.4rem}[data-mod-name=sportticker] .ticker-controls .ticker-link:first-child{margin-top:.4rem}[data-mod-name=sportticker] .ticker-controls .ticker-link:after{clear:both}[data-mod-name=sportticker] .ticker-controls .ticker-link a{float:right;color:#333}[data-mod-name=sportticker] .ticker-controls .reload{border-bottom:1px solid #ddd;clear:both}[data-mod-name=sportticker] .ticker-controls .reload-btn{padding:.8rem 0;font-weight:700}[data-mod-name=sportticker] .detail{padding-left:2rem;padding-right:2rem}[data-mod-name=sportticker] .detail .event-wrapper{float:left}[data-mod-name=sportticker] .detail .event{display:inline-block;width:100%;padding:.8rem 0;overflow:hidden;border-bottom:.1rem solid #ddd}[data-mod-name=sportticker] .detail .event:first-of-type{padding-top:0}[data-mod-name=sportticker] .detail .minute{font-size:2rem;color:#888}[data-mod-name=sportticker] .detail .headline{padding-left:4rem;font-size:1.8rem;font-weight:700}[data-mod-name=sportticker] .detail p{margin:0;padding-left:4rem;line-height:2.6rem}[data-mod-name=sportticker] .table-wrapper{padding:0 2rem}[data-mod-name=sportticker] .table-wrapper table{width:100%}@media (max-width:767px){[data-mod-name=sportticker] .table-wrapper.rankings th{display:none}[data-mod-name=sportticker] .table-wrapper.rankings td{padding:1.2rem .5rem;font-size:1.4rem;line-height:1.8rem}}[data-mod-name=sportticker] .table-wrapper.rankings .rank{text-align:right}.css-loading [data-mod-name=sportticker] .table-wrapper.rankings .clubs img{display:none}[data-mod-name=sportticker] .additional-text{padding:0 2rem}[data-mod-name=sportticker] .matchlink{display:table-row;color:#fff;background-color:#333}[data-mod-name=sportticker] .matchlink>*{display:table-cell;vertical-align:middle}[data-mod-name=sportticker] .results .score{font-size:3.2rem;font-weight:700;min-width:7rem;padding:0 0 1.6rem}[data-mod-name=sportticker] .results .date{padding:1rem .8rem .8rem;font-weight:700;font-size:1.2rem;line-height:1.6rem;color:#888}[data-mod-name=sportticker] .results .game{border-spacing:0 .2rem;text-align:center}[data-mod-name=sportticker] .results .game .team1,[data-mod-name=sportticker] .results .game .team2{width:50%}@media (max-width:767px){[data-mod-name=sportticker] .results .game .team1,[data-mod-name=sportticker] .results .game .team2{display:table-cell;font-weight:400;font-size:1.4rem;line-height:1.8rem}[data-mod-name=sportticker] .results .game .team1 .teamname,[data-mod-name=sportticker] .results .game .team2 .teamname{display:block}}[data-mod-name=sportticker] .results .game .teamlogo.desktop{display:none}[data-mod-name=sportticker] .results .game .teamlogo.mobile{padding-bottom:.8rem}@media (max-width:767px){[data-mod-name=sportticker] .results .game .teamlogo{padding-left:0;float:none}}.offline-page .coc-top,.offline-page .left-col__bottom{display:none}.offline-page .breadcrumb,.offline-page [data-mod-name=infinitescroll],.offline-page [data-mod-name=social],.offline-page [data-mod-name=sticky]{display:none!important}.offline-page .left-col .teaser__imagewrapper{display:none}@media (max-width:767px){.offline-page .content-padding{padding-left:.8rem;padding-right:.8rem}}.offline-page .no-internet-icon{display:block;height:110px;padding:4rem 0;margin:0 auto}@media (min-width:64em){.offline-page .no-internet-icon{height:170px;padding:5rem 0}}.offline-page .content__headline{padding-top:0;margin-bottom:2rem}.offline-page .content__headline2{display:block}.offline-page .button-center{margin-top:3rem;padding-bottom:3rem}.offline-page .button-center .button{margin-right:0}.mod-offlineteasers{padding-top:3rem;padding-bottom:3rem}[data-mod-name=promotion] .article__featured-image{height:auto;padding-bottom:0}[data-mod-name=promotion] .promotionWrapper{position:relative;margin:0;border-bottom:.1rem solid #ddd;padding-top:1.6rem;overflow:hidden}[data-mod-name=promotion] .promotionWrapper .coopLogo{max-width:12rem;float:right}[data-mod-name=promotion] .promotionWrapper .coopPartner{padding:0 1.6rem .8rem;line-height:2rem}[data-mod-name=promotion] .promotionWrapper .promotionTag{background-color:#dfdfdf;color:#333;padding:.4rem .8rem .3rem;font-size:1.2rem;line-height:1.2rem}[data-mod-name=newteaser]{box-sizing:border-box;background-color:#fff}[data-mod-name=newteaser]>a,[data-mod-name=newteaser]>a:visited{color:#333}[data-mod-name=newteaser] .teaser__link{display:flex;flex-direction:column;height:100%}[data-mod-name=newteaser] .teaser__imagewrapper{width:136px;height:76.5px;flex-shrink:0;position:relative;overflow:hidden}@media (min-width:48em){[data-mod-name=newteaser] .teaser__imagewrapper{width:100%;height:auto}}[data-mod-name=newteaser] .teaser__imagewrapper:after{display:block;content:"";padding-bottom:56%;overflow:hidden}[data-mod-name=newteaser] .teaser__imagewrapper img{width:100%;height:auto;position:absolute;top:0;left:0}[data-mod-name=newteaser] .teaser__imagewrapper .icon{display:none}[data-mod-name=newteaser] .teaser__text{padding:1rem;display:flex;flex:1;flex-direction:column;min-width:0}[data-mod-name=newteaser] .teaser__headline{font-size:1.5rem;line-height:1.9rem;margin:0 0 1rem;flex:1;word-break:break-word}[data-mod-name=newteaser] .teaser__meta{font-size:1.2rem;line-height:1.2rem;color:#999}[data-mod-name=newteaser] .kicker{display:flex;font-size:1.2rem;line-height:2rem;margin:0 0 .3rem}[data-mod-name=newteaser] .kicker span{display:inline-block}[data-mod-name=newteaser] .kicker__label{color:#166eae;background-color:#d6eaf8;border-radius:2px;padding:0 4px;margin:0 .5rem 0 0}[data-mod-name=newteaser] .kicker__label_red{color:#fff;background-color:#d40000}[data-mod-name=newteaser] .kicker__label_grey{color:#fff;background-color:#515151}[data-mod-name=newteaser] .kicker__label_lightgrey{color:#717171;background-color:#f3f3f3}[data-mod-name=newteaser] .kicker__text{color:#707070}[data-mod-name=newteaser].teaser-sidecol{border:0;margin:0 0 1.6rem}[data-mod-name=newteaser].teaser-sidecol:first-of-type{margin:1.6rem .3rem 1.6rem 0}[data-mod-name=newteaser].teaser-sidecol .teaser__imagewrapper{width:11.6rem;height:7.2rem}[data-mod-name=newteaser].teaser-sidecol .teaser__imagewrapper .icon,[data-mod-name=newteaser].teaser-sidecol .teaser__meta{display:none}[data-mod-name=newteaser].teaser-sidecol .teaser__link{flex-direction:row}[data-mod-name=newteaser].teaser-sidecol .teaser__headline{line-height:1.8rem;margin:0}[data-mod-name=newteaser].teaser-sidecol .teaser__text{padding:0 .5rem 0 1rem}[data-mod-name=newteaser].teaser-sidecol .kicker{line-height:1.6rem;display:flex;align-items:center}[data-mod-name=newteaser].teaser-sidecol .kicker__label{white-space:nowrap}[data-mod-name=newteaser].teaser-sidecol .kicker__text{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}[data-mod-name=newteaser].teaser-article__full{margin-bottom:2rem}[data-mod-name=newteaser].teaser-article__full .teaser__link{flex-direction:row}[data-mod-name=newteaser].teaser-article__full .teaser__imagewrapper{margin:0 1rem 0 0}@media (min-width:48em){[data-mod-name=newteaser].teaser-article__full .teaser__imagewrapper{width:31%}}@media (min-width:48em){[data-mod-name=newteaser].teaser-article__full .teaser__text{padding:0 1rem 0 0}}[data-mod-name=newteaser].teaser-article__full .teaser__meta{display:none}[data-mod-name=channel] .overview__block{margin-top:3rem}[data-mod-name=channel] .overview__block:first-of-type{margin-top:0}[data-mod-name=channel] .overview__block .block__content>*{margin-bottom:2rem}[data-mod-name=channel] .teaser{padding-left:1rem;padding-right:1rem}[data-mod-name=channel] .teaser__link{display:flex;flex-direction:row}[data-mod-name=channel] .teaser__text{padding:0 0 0 1rem}[data-mod-name=channel] .teaser__kicker{margin-bottom:.2rem;font-size:1.4rem}[data-mod-name=channel] .teaser__headline{font-size:1.5rem;line-height:1.9rem}[data-mod-name=channel] .teaser__meta{display:none;font-size:1.4rem;margin-top:1rem}[data-mod-name=channel] .teaser__headline{margin-bottom:0}@media (min-width:48em){[data-mod-name=channel] .teaser{padding-left:0}[data-mod-name=channel] .teaser__link{display:block}[data-mod-name=channel] .teaser .teaser__imagewrapper{width:100%;height:auto}[data-mod-name=channel] .teaser__text{padding:1rem 0 0}[data-mod-name=channel] .teaser__kicker{margin-bottom:.6rem}[data-mod-name=channel] .teaser__headline{font-size:1.8rem;line-height:2.2rem}}[data-mod-name=channel]{background:#fff;overflow:auto}@media (min-width:48em){[data-mod-name=channel]{border-top:1px solid #dadada;padding-top:2rem}}[data-mod-name=channel] .teaser-stage .teaser{padding:0}[data-mod-name=channel] .teaser-stage .teaser__link{display:block}[data-mod-name=channel] .teaser-stage .teaser__imagewrapper{width:100%;height:auto}[data-mod-name=channel] .teaser-stage .teaser__text{display:block;padding:1rem 0 0}[data-mod-name=channel] .teaser-stage .teaser__headline{font-size:1.8rem;line-height:2.2rem}[data-mod-name=channel] .teaser-stage .teaser__kicker{margin-bottom:.6rem;font-size:1.4rem}[data-mod-name=channel] .teaser-stage .teaser__meta{display:block;margin-top:1rem;font-size:1.4rem}[data-mod-name=channel] .teaser-stage .teaser{margin-bottom:2rem}@media (min-width:48em){[data-mod-name=channel] .teaser-stage .teaser{margin-bottom:3rem}}@media (max-width:767px){[data-mod-name=channel] .teaser-stage .teaser__text{padding:1rem}}[data-mod-name=channel] .teaser-stage .teaser__headline{font-size:2.2rem;line-height:2.6rem}[data-mod-name=channel] .teaser-stage .teaser__copy{display:none}@media (min-width:48em){[data-mod-name=channel] .teaser-stage{padding:0 2rem;display:flex;flex-direction:column}[data-mod-name=channel] .teaser-stage>.teaser{width:100%}[data-mod-name=channel] .teaser-stage>.teaser .teaser__headline{margin-bottom:.5rem}[data-mod-name=channel] .teaser-stage>.teaser .teaser__copy{display:block;line-height:2.2rem}[data-mod-name=channel] .teaser-stage .teaser-stage__column{display:flex;width:100%}[data-mod-name=channel] .teaser-stage .teaser-stage__column .teaser{width:calc(50% - 2rem / 2)}[data-mod-name=channel] .teaser-stage .teaser-stage__column .teaser:first-child{margin-right:2rem}}@media (min-width:90em){[data-mod-name=channel] .teaser-stage{flex-direction:row;padding:0 2rem}[data-mod-name=channel] .teaser-stage>.teaser{width:calc(100% / 3 * 2 - 2rem);flex-grow:1;margin-right:2rem}[data-mod-name=channel] .teaser-stage>.teaser .teaser__headline{font-size:3rem;line-height:3.4rem}[data-mod-name=channel] .teaser-stage .teaser-stage__column{display:block;width:calc(100% / 3 - 2rem);flex-grow:1}[data-mod-name=channel] .teaser-stage .teaser-stage__column .teaser{width:100%}[data-mod-name=channel] .teaser-stage .teaser-stage__column .teaser:first-child{margin:0 0 2rem}}[data-mod-name=homepage] .teaser{padding-right:1rem}[data-mod-name=homepage] .teaser-stage>.teaser{padding:0}[data-mod-name=homepage] .teaser-stage>.teaser .teaser__link{display:flex;flex-direction:column-reverse}[data-mod-name=homepage] .teaser-stage>.teaser .teaser__meta{display:none}[data-mod-name=homepage] .teaser-stage .teaser-stage__column .teaser{padding-left:1rem;padding-right:1rem}[data-mod-name=homepage] .teaser-stage .teaser-stage__column .teaser__link{display:flex;flex-direction:row}[data-mod-name=homepage] .teaser-stage .teaser-stage__column .teaser__text{padding:0 0 0 1rem}[data-mod-name=homepage] .teaser-stage .teaser-stage__column .teaser__kicker{margin-bottom:.2rem;font-size:1.4rem}[data-mod-name=homepage] .teaser-stage .teaser-stage__column .teaser__headline{font-size:1.5rem;line-height:1.9rem}[data-mod-name=homepage] .teaser-stage .teaser-stage__column .teaser__meta{display:none;font-size:1.4rem;margin-top:1rem}[data-mod-name=homepage] .teaser-stage .teaser-stage__column .teaser__imagewrapper{width:136px}@media (min-width:48em){[data-mod-name=homepage] .teaser-stage .teaser-stage__column{display:block}[data-mod-name=homepage] .teaser-stage .teaser-stage__column .teaser{width:100%}}
+/*# sourceMappingURL=index-above-the-fold.css.map */
+</style>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+var l = document.createElement('link');
+l.rel = 'stylesheet';
+l.href = 'https://s.uicdn.com/uimag/4.2113.0/assets/_sn_/css/gmx/index.css';
+l.crossOrigin = 'anonymous';
+document.head.appendChild(l);
+l.onload = function () {
+document.documentElement.classList.remove('css-loading');
+}
+});
+</script>
+<noscript>
+<link rel="stylesheet" href="https://s.uicdn.com/uimag/4.2113.0/assets/_sn_/css/gmx/index.css" />
+</noscript>
+<script>window.performance.mark('css-load-end');</script>
+</head>
+<body
+>
+<div id="esp"></div>
+<main class="wrapper wrapper_new tb">
+<div class="coc-top tr">
+<div class="tc">
+<div class="co-container co-topbanner js-co-static" data-adservice-param-tagid="topbanner" ></div>
+</div>
+<div class="tc"></div>
+</div>
+<noscript>
+<div class="no-js-warning">
+<span class="icon icon-warning"></span>
+<span class="text"></span>
+</div>
+</noscript>
+<div class="main tr">
+<div class="content-wrapper tc">
+<div class="content">
+<div class="topicWrapper view-gteTablet" data-mod-name="sticky">
+<div class="breadcrumb" data-mod-name="breadcrumb" data-mod-nojs>
+<ul class="ul-breadcrumb upper">
+<li class="li-breadcrumb"><a href="https://www.gmx.net/" data-brain-zone=".34506658.content.headcrumb.1" class="a-breadcrumb icon icon-home" aria-label="Startseite"></a>
+<span class="icon icon-arrow-right"></span>
+</li>
+<li class="li-breadcrumb">
+<a href="https://www.gmx.net/magazine/" data-brain-zone=".34506658.content.headcrumb.2" class="a-breadcrumb">News</a>
+<span class="icon icon-arrow-right"></span>
+</li>
+<li class="li-breadcrumb">
+<a href="https://www.gmx.net/magazine/news/" data-brain-zone=".34506658.content.headcrumb.3" class="a-breadcrumb">Aktuelle News </a>
+<span class="icon icon-arrow-right"></span>
+</li>
+<li class="li-breadcrumb">
+<a href="https://www.gmx.net/magazine/politik/" data-brain-zone=".34506658.content.headcrumb.4" class="a-breadcrumb">Politik</a>
+<span class="icon icon-arrow-right"></span>
+</li>
+<li class="li-breadcrumb">
+<a href="https://www.gmx.net/magazine/politik/wahlen/" data-brain-zone=".34506658.content.headcrumb.5" class="a-breadcrumb">Aktuelle Wahlen im Überblick</a>
+<span class="icon icon-arrow-right"></span>
+</li>
+<li class="li-breadcrumb">
+<a href="https://www.gmx.net/magazine/politik/wahlen/us-wahl/" data-brain-zone=".34506658.content.headcrumb.6" class="a-breadcrumb">US-Wahl 2020 - alles im Überblick</a>
+</li>
+</ul>
+<div class="title"></div>
+</div>
+<div data-mod-name="social" class="clearfix" data-headline="US-Vorwahlen: Joe Bidens Siegesserie hält an - Überraschungserfolg in Michigan" data-mandant=GMX>
+<div class="social-buttons">
+<div class="sb sb-facebook js-sb-facebook"><span class="icon-facebook" title="Auf Facebook teilen"></span></div>
+<div class="sb sb-twitter js-sb-twitter" data-account="" data-text="US-Vorwahlen: Joe Bidens Siegesserie hält an - Überraschungserfolg in Michigan" data-via=" - via GMX"><span class="icon-twitter" title="Auf Twitter teilen"></span></div>
+<div class="sb sb-pocket js-sb-pocket"><span class="icon-pocket" title="Bei Pocket speichern"></span></div>
+<div class="sb sb-mail js-sb-mail"><span class="icon-mail" title="Per E-Mail versenden"></span></div>
+<div class="sb sb-whatsapp js-sb-whatsapp"><span class="icon-whatsapp" title="Auf WhatsApp teilen"></span></div>
+</div>
+</div>
+</div>
+<article data-mod-name="article">
+<div data-mod-name="content">
+<div class="article-header">
+<div class="article__featured-image">
+<figure class=" js-zoomable" data-mod-name="image" data-mod-nocss data-alt="Bild zu Vorwahlen in den USA - Biden" data-fullsize-width="1839" data-fullsize-height="1048" data-zoomable-href="https://i0.gmx.net/image/660/34506660,pd=3,f=:FORMAT:/vorwahlen-usa-biden.jpg"><a href="https://i0.gmx.net/image/660/34506660,pd=3/vorwahlen-usa-biden.jpg"> <span data-picture data-base="https://i0.gmx.net/image/660/34506660,pd=3,f=:FORMAT:/vorwahlen-usa-biden.jpg" data-images="lead">
+<noscript>
+<img crossorigin src="https://i0.gmx.net/image/660/34506660,pd=3/vorwahlen-usa-biden.jpg" alt="Bild zu Vorwahlen in den USA - Biden" />
+</noscript>
+</span>
+</a> <figcaption data-mod-name="imagecaption" data-mod-nocss>
+<span class="description"><span class="icon icon-glass-plus"></span>Joe Biden setzt seine Siegesserie in den US-Vorwahlen der Demokraten auch in den Bundesstaaten Michigan, Missouri, Mississippi und Idaho fort.</span>
+<div class="copyright">&copy;&nbsp;<span class="copyrightHolder">Chris Carlson/AP/dpa</span> <span class="icon-subtext icon"></span></div>
+</figcaption>
+</figure>
+</div>
+<h1 class="content__headline content-padding">US-Vorwahlen: Joe Bidens Siegesserie hält an - Überraschungserfolg in Michigan</h1>
+</div>
+<div class="content__time content-padding">
+<time datetime="2020-03-11T06:45:00+01:00" data-shortdate="Aktualisiert am 11.03.2020, 06:45 Uhr">
+Aktualisiert am 11. März 2020, 06:45 Uhr</time>
+</div>
+<div class="article-body content-padding">
+<p class="content__description" data-speakable="">Nach dem "Super Tuesday" fand in der Nacht die nächste größere Vorwahlrunde der US-Demokraten statt - und wieder räumt Joe Biden ab. Noch ist das Rennen um die Präsidentschaftskandidatur nicht entschieden, für Bidens linken Konkurrenten Bernie Sanders wird es aber eng. Sieben Erkenntnisse aus den jüngsten US-Vorwahlen.</p><p class="p--contentbutton button-center secondary" data-speakable=""><a class="button secondary" data-brain-zone=".34506658.content.textlink_1" href="https://www.gmx.net/magazine/news/">Mehr aktuelle News finden Sie hier</a></p><p data-speakable="">Im Rennen um die Präsidentschaftskandidatur der US-Demokraten hat der frühere US-Vizepräsident <a data-brain-zone=".34506658.content.textlink_2" href="https://www.gmx.net/magazine/politik/thema/joe-biden">Joe Biden</a> seine Siegesserie fortgesetzt. Nach Prognosen konnte der gemäßigte Kandidat sich im wichtigen Vorwahlstaat Michigan gegen seinen Konkurrenten, den linken Senator Bernie Sanders, durchsetzen. Das berichteten die Fernsehsender Fox News, CNN und NBC am Dienstagabend übereinstimmend.</p><p data-speakable="">Biden siegte demnach bei den Vorwahlen in insgesamt sechs Bundesstaaten auch in Mississippi und Missouri. Ersten Prognosen zufolge liegt Biden auch in Idaho vorne.Keinen eindeutigen Gewinner sahen TV-Sender in der Nacht zu Mittwoch zunächst in den Bundesstaaten Washington und North Dakota.</p> <div class="co-content-container">
+<div class="co-container co-content js-co-static" data-adservice-param-tagid="contentad" ></div>
+</div>
+<p data-speakable="">Die Abstimmung in Michigan - ein Industriestaat im Mittleren Westen der USA - galt bei dem Rennen als wichtiger Indikator für die Stärke der Bewerber. Sein Sieg in Michigan bringt Biden (77) einen besonderen Schub - und bedeutet für Sanders (78) einen herben Rückschlag. Biden sprach auf Twitter von "einer großartigen Nacht".</p><p data-speakable="">Sieben Erkenntnisse aus den jüngsten Vorwahlen:</p><h2 data-speakable="">Joe Bidens Comeback ist kein Strohfeuer</h2><p data-speakable="">Keine zwei Wochen ist es her, da war Bidens Wahlkampf beinahe schon totgesagt worden. Nach Niederlagen bei den Vorwahlen in Iowa, New Hampshire und Nevada schien seine letzte Chance in South Carolina zu liegen.</p><p data-speakable="">Diese Chance konnte Biden dort Ende vergangenen Monats in einen <a data-brain-zone=".34506658.content.textlink_3" href="https://www.gmx.net/magazine/politik/wahlen/us-wahl/us-vorwahlen-lief-super-tuesday-kalifornien-texas-34487478">spektakulären Erfolg verwandeln, dem am "Super Tuesday"</a> eine ganze Siegesserie folgte: Biden gewann am Dienstag vergangener Woche in 10 von 14 Bundesstaaten gegen <a data-brain-zone=".34506658.content.textlink_4" href="https://www.gmx.net/magazine/politik/thema/bernie-sanders">Sanders</a>. Die Fortsetzung folgte an diesem Dienstag vor allem mit dem Erfolg in Michigan.</p> <div class="co-content-container">
+<div class="co-container co-content js-co-static" data-adservice-param-tagid="contentad" ></div>
+</div>
+<p data-speakable="">Auch in nationalen Umfragen hat Biden wieder klar die Führung übernommen.</p><h2 data-speakable="">Sozialist Bernie Sanders strauchelt</h2><p data-speakable="">Im Februar hatte es für Sanders noch rosig ausgesehen: Über längere Zeit führte er in nationalen Umfragen und startete stark in die Vorwahlserie. Doch Bidens plötzliches Comeback erwischte auch Sanders kalt und bremste seinen Lauf jäh aus.</p><p data-speakable="">Seine Konkurrentin Elizabeth Warren, die wie Sanders für eine linke Agenda steht, machte diesem am "Super Tuesday" noch Stimmen streitig und schied erst danach aus. Außerdem sprach sie ihm - zumindest bislang - nicht die erhoffte öffentliche Unterstützung aus.</p><p data-speakable="">Sanders hatte sehr auf einen Sieg in dem wichtigen Vorwahlstaat Michigan gehofft, um das Rennen zu drehen und zu Biden aufzuholen. 2016 hatte er dort bei der Vorwahl noch gewonnen. Doch der Befreiungsschlag für ihn blieb aus.</p> <div class="co-content-container">
+<div class="co-container co-content js-co-static" data-adservice-param-tagid="contentad" ></div>
+</div>
+<h2 data-speakable="">Noch ist das Rennen nicht gelaufen</h2><p data-speakable="">Bei den Vorwahlen wurden bisher die Stimmen von knapp 47 Prozent der 3.979 regulären Delegierten für den Parteitag der Demokraten im Juli vergeben, auf dem der Präsidentschaftskandidat gekürt wird. Derzeit hat Biden mehr Delegiertenstimmen als Sanders. </p><p data-speakable=""><br/></p><p data-speakable="">Die Mehrheit der Delegiertenstimmen wird in den kommenden Wochen aber erst noch verteilt. 1.991 Delegiertenstimmen sind am Ende nötig für eine Nominierung.</p><p data-speakable="">Am kommenden Dienstag steht wieder eine wichtige Vorwahl-Runde mit Abstimmungen in vier Bundesstaaten an: Arizona, Florida, Illinois und Ohio. Insgesamt geht es um 577 Delegiertenstimmen - allein 219 davon in <a data-brain-zone=".34506658.content.textlink_5" href="https://www.gmx.net/magazine/reise/thema/florida">Florida</a>. Dort liegt Biden in Umfragen weit in Führung.</p><p data-speakable="">Sollte Biden in Florida und auch in den anderen Staaten siegen, könnte dies das Aus für Sanders bedeuten.</p><h2 data-speakable="">Die Debatten-Bühne ist Bernie Sanders' Chance</h2><p data-speakable="">Am kommenden Sonntag steht in Arizona die nächste Fernsehdebatte an - dann nur noch zwischen Biden und Sanders. Biden hat sich in den vergangenen Monaten <a data-brain-zone=".34506658.content.textlink_6" href="https://www.gmx.net/magazine/politik/donald-trump/tv-debatte-demokraten-joe-biden-leistet-aussetzer-34202112">nicht als begnadeter Redner hervorgetan</a> - und das ist noch vorsichtig ausgedrückt.</p><div class="teaser-full">
+<div class="teaser teaser-article__left no-label" data-mod-name="newteaser" data-mod-nojs>
+<a href="https://www.gmx.net/magazine/unterhaltung/stars/trump-jr-verwendet-bild-palina-rojinski-34501748" data-brain-zone=".34506658.content.teaser_1.1" class="teaser__link"> <figure class="teaser__imagewrapper">
+<picture>
+<source media="(min-width: 768px)" srcset="https://i0.gmx.net/image/756/34501756%2cpd=2%2cf=responsive169-w300/trump-jr.jpg 300w,https://i0.gmx.net/image/756/34501756%2cpd=2%2cf=responsive169-w450/trump-jr.jpg 450w,https://i0.gmx.net/image/756/34501756%2cpd=2%2cf=responsive169-w600/trump-jr.jpg 600w" sizes="300px">
+<source media="(max-width: 767px)" srcset="https://i0.gmx.net/image/756/34501756%2cpd=2%2cf=responsive169-w150/trump-jr.jpg 150w,https://i0.gmx.net/image/756/34501756%2cpd=2%2cf=responsive169-w300/trump-jr.jpg 300w" sizes="150px">
+<img src="https://i0.gmx.net/image/756/34501756,pd=2,f=responsive169-w300/trump-jr.jpg" alt=""/>
+</picture>
+<span class="icon icon-video"></span>
+</figure>
+<div class="teaser__text">
+<div class="teaser__kicker kicker">
+<span class="kicker__label kicker__label_grey">Video</span>
+<span class="kicker__text">Twitter</span>
+</div>
+<h3 class="teaser__headline">Trump Jr. verwendet Prank-Bild von Palina Rojinski</h3>
+</div>
+</a> </div>
+</div><p data-speakable="">Mit Patzern, Versprechern und Aussetzern zog er viel Spott auf sich. Dass er durch das zusammengeschrumpfte Format viel Redezeit im TV-Duell mit Sanders bekommen wird, spielt ihm nicht in die Hände.</p><p data-speakable="">Sanders dagegen liegen öffentliche Debatten. Er dürfte dort glänzen und Biden zusetzen. Womöglich könnte ihm das Schwung für die nächsten Vorwahlen geben.</p><h2 data-speakable="">Joe Biden kann auf Schwarze bauen - und aufs Partei-Establishment</h2><p data-speakable="">Schwarze sind bei den Demokraten eine wichtige Wählergruppe. Bidens Erfolge haben gezeigt, dass er auf ihre Unterstützung setzen kann. In südlichen Bundesstaaten, in denen relativ viele Schwarze leben, konnte er teils fulminante Siege verbuchen: etwa in South Carolina oder nun in <a data-brain-zone=".34506658.content.textlink_7" href="https://www.gmx.net/magazine/reise/thema/mississippi">Mississippi</a>.</p><p data-speakable="">Auch die Parteiführung sähe lieber Biden als den selbst ernannten "demokratischen Sozialisten" Sanders als Kandidaten. Sanders sagte dem Sender ABC am Sonntag, er glaube, "das Establishment" der Demokraten habe die Ex-Präsidentschaftsbewerber Pete Buttigieg und Amy Klobuchar zur Aufgabe gedrängt, um Biden zu stärken.</p> <div class="co-content-container">
+<div class="co-container co-content js-co-static" data-adservice-param-tagid="contentad" ></div>
+</div>
+<p data-speakable="">Buttigieg, Klobuchar und andere Ex-Mitbewerber schlugen sich nach ihrem Ausscheiden auf Bidens Seite. Das gab ihm einigen Schub.</p><h2 data-speakable="">Trump hat gewaltigen Rückhalt bei den Republikanern</h2><p data-speakable="">Die Republikaner hielten am Dienstag zwar ebenfalls Vorwahlen ab, das aber pro forma. Trump hat intern keinen ernsthaften Herausforderer und ist als Kandidat seiner Partei für die Wahl im November gesetzt.</p><p data-speakable="">Die Republikaner haben daher in mehreren Bundesstaaten die Vorwahlen gleich ganz abgesagt. Von den bislang bei den Republikaner-Vorwahlen vergebenen Delegiertenstimmen für den Nominierungsparteitag im August hat Trump so gut wie alle gewonnen.</p><h2 data-speakable="">Der unbekannte Faktor im US-Wahlkampf: das Coronavirus</h2><p data-speakable="">Das Coronavirus breitet sich auch in den <a data-brain-zone=".34506658.content.textlink_8" href="https://www.gmx.net/magazine/politik/thema/usa">USA</a> aus und beeinflusst dort inzwischen den Wahlkampf. Sowohl Biden als auch Sanders <a data-brain-zone=".34506658.content.textlink_9" href="https://www.gmx.net/magazine/panorama/coronavirus-epidemie-sanders-biden-wahlkampfauftritte-34506286">sagten am Dienstagabend Wahlkampfauftritte ab</a>, zunächst im US-Bundesstaat Ohio wegen Warnungen der dortigen Behörden vor Großveranstaltung. Zudem wird die TV-Debatte zwischen Biden und Sanders am Sonntag in Phoenix entgegen der Planungen nun ohne Studiopublikum stattfinden.</p><p data-speakable="">Trump sagte am Samstag zwar noch, er wolle weiterhin "gewaltige" Wahlkampfveranstaltungen abhalten. Sein jüngster Wahlkampfauftritt liegt allerdings bereits mehr als eine Woche zurück - und neue Veranstaltungen sind derzeit nicht angekündigt. (jwo/dpa)</p><div class="article-newvideo">
+<div class="article-video-object">
+<div class="article-inner-video-object">
+<figure data-mod-name="newvideo" data-playerid="player_2ba01ba0-a806-471c-961e-ad36d3a76e82" data-prebid="true"
+data-recommendnext="https://www.gmx.net/magazine/ajax/video/recommendnext/34402248"
+data-videoconfig="{
+'vastConfig': {
+'portal': 'gmx',
+'category': 'magazine',
+'section': 'content',
+'sectionlong': 'news/politik/wahlen/us-wahl/_archiv/2020-02/us-wahl-wie-sie-funktioniert-begriffe-erklaert',
+'categorytype': 'video',
+'ngserious': 'CNC',
+'agofid': '241',
+'conpartner': '17103072'
+},
+'homad': 'true',
+'brainVidUrl': 'aHR0cHM6Ly93YS5nbXgubmV0L2dteC9nbXgvcz9uYW1lPXRoZW1lbi5uZXdzLnZpZC52aWRlby5wb2xpdGlrLndhaGxlbi51cy13YWhsLl9hcmNoaXYuMjAyMC0wMi4zNDQwMjI0OCZwYXJ0bmVyPV9EZXBfVmlkZW8mY291bnRyeT1kZSZ0eXBlPWhpZGRlbiZjYXRlZ29yeT12aWRlbyZ0ZWFzZXJoZWFkbGluZT1UaGUlMjB3aW5uZXIlMjB0YWtlcyUyMGl0JTIwYWxsOiUyMFNvJTIwZnVua3Rpb25pZXJ0JTIwZGllJTIwVVMtV2FobCZjb3JlbWlkPTM0NDAyMjQ4JmFnb2Y9MjQxJm9ld2E9UmVkQ29udC9Qb2xpdGlrL1BvbGl0aWt1ZWJlcmJsaWNrJmhhc192aWRlbz0xJmF1aWQ9MzMyNzcxMDYmcGFnZWNvdW50PTA=',
+'autostart': false,
+'mute': false,
+'abouttext': 'Videoplayer www.gmx.net',
+'playlist': [{
+'mediaid': 'player_2ba01ba0-a806-471c-961e-ad36d3a76e82'
+,'sources': [{
+'file': 'https://v.gmx.net/34402248_MSD.mp4',
+'label': '272p'
+},{
+'file': 'https://v.gmx.net/34402248_MD.mp4',
+'label': '480p',
+'default': true
+},{
+'file': 'https://v.gmx.net/34402248_HD.mp4',
+'label': '1080p <sup>HD</sup>'
+}]
+}]
+}">
+<div class="video-inner" id="player_2ba01ba0-a806-471c-961e-ad36d3a76e82"></div>
+<div class="newvideo__revolver"></div>
+</figure>
+</div>
+<h2 class="video-headline"><a href="https://www.gmx.net/magazine/politik/wahlen/us-wahl/us-wahl-wie-sie-funktioniert-begriffe-erklaert-34402248" data-brain-zone=".34506658.content.teaser_2.1"> The winner takes it all: So funktioniert die US-Wahl</a></h2>
+</div>
+<div class="video-description">
+Die Stimmen sind abgegeben, nun wird ausgezählt. Aber wie funktioniert die indirekten Wahl des Präsidenten der Vereinigten Staaten und wieso kann man ohne Mehrheit der Wählerstimmen US-Präsident werden? Alle Infos im Video. </div>
+</div>
+</div>
+<div class="content__meta row content-padding">
+<div class="col keywords">Passende Suchen
+<ul class="tags clearfix" data-searchbaseurl="aHR0cHM6Ly9zdWNoZS5nbXgubmV0L3dlYi9yZXN1bHQ/bG9jYWxlPURFJnJxPXRydWUmZnE9TmFjaHJpY2h0ZW4mb3JpZ2luPWhvdHNwb3RzJnE9">
+<li><span>Elizabeth Warren</span></li>
+<li><span>Arizona</span></li>
+<li><span>Ohio</span></li>
+<li><span>North Dakota</span></li>
+<li><span>Pete Buttigieg</span></li>
+</ul>
+</div>
+<div class="col content__feedback">
+<span class="content__feedback-headline">Senden Sie uns Ihr Feedback</span>
+<a class="content__feedback-button"
+data-headline="US-Vorwahlen: Joe Bidens Siegesserie hält an - Überraschungserfolg in Michigan"
+data-sendfeedbackaction="https://www.gmx.net/magazine/ajax/feedback/article?contentId=34506658"
+data-privacy="https://www.gmx.net/datenschutz/"
+href="#">Kontakt in die Redaktion</a>
+<div data-mod-name="dialog"></div>
+</div>
+</div>
+<div class="co-container co-relatedbox content-padding js-co-static" data-adservice-param-tagid="relatedbox" ></div>
+</div>
+</article>
+<div class="co-container co-teaserline js-co-static content-padding" data-adservice-param-tagid="teaserline" ></div>
+</div>
+<div class="breadcrumb" data-mod-name="breadcrumb" data-mod-nojs>
+<ul class="ul-breadcrumb lower">
+<li class="li-breadcrumb"><a href="https://www.gmx.net/" data-brain-zone=".34506658.content.breadcrumb.1" class="a-breadcrumb icon icon-home" aria-label="Startseite"></a>
+<span class="icon icon-arrow-right"></span>
+</li>
+<li class="li-breadcrumb">
+<a href="https://www.gmx.net/magazine/" data-brain-zone=".34506658.content.breadcrumb.2" class="a-breadcrumb">News</a>
+<span class="icon icon-arrow-right"></span>
+</li>
+<li class="li-breadcrumb">
+<a href="https://www.gmx.net/magazine/news/" data-brain-zone=".34506658.content.breadcrumb.3" class="a-breadcrumb">Aktuelle News </a>
+<span class="icon icon-arrow-right"></span>
+</li>
+<li class="li-breadcrumb">
+<a href="https://www.gmx.net/magazine/politik/" data-brain-zone=".34506658.content.breadcrumb.4" class="a-breadcrumb">Politik</a>
+<span class="icon icon-arrow-right"></span>
+</li>
+<li class="li-breadcrumb">
+<a href="https://www.gmx.net/magazine/politik/wahlen/" data-brain-zone=".34506658.content.breadcrumb.5" class="a-breadcrumb">Aktuelle Wahlen im Überblick</a>
+<span class="icon icon-arrow-right"></span>
+</li>
+<li class="li-breadcrumb">
+<a href="https://www.gmx.net/magazine/politik/wahlen/us-wahl/" data-brain-zone=".34506658.content.breadcrumb.6" class="a-breadcrumb">US-Wahl 2020 - alles im Überblick</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="coc-sky tc">
+<div class="co-container co-sky js-co-static" data-adservice-param-tagid="right" ></div>
+</div>
+</div>
+</main>
+<div data-mod-name="infinitescroll" data-uri="https://www.gmx.net/magazine/ajax/infinitescroll/34506658" data-uri-params="clickZone=34506658">
+<div class="wrapper tb infiniteScrollWrapper"></div>
+</div>
+<header class="new-header" data-mod-name="header">
+<div class="new-header__hamburger">
+<label class="new-header__navtrigger" tabindex="0" for="nav-check" aria-label="Navigation">
+<span class="burger-icon"></span>
+</label>
+</div>
+<div id="organization" class="new-header__logo">
+<a href="https://www.gmx.net/" data-brain-zone=".34506658.header.logo" class="logo-link" aria-label="Startseite"> <span class="logo-image "></span>
+</a>
+</div>
+<div class="new-header__span"></div>
+<div data-mod-name="search" data-mod-nojs>
+<form class="hsearchbox" id="websearch" action="https://suche.gmx.net/web/result">
+<input type="hidden" name="origin" value="magazin" /> <input class="hsearchbox__field" placeholder="" name="q" aria-label="Suche"/>
+<button type="submit" class="hsearchbox__btn" aria-label="Suche ausführen">
+<span class="icon icon-search"></span>
+</button>
+</form>
+</div>
+<div class="login-wrapper">
+<a href="https://www.gmx.net/" data-brain-zone=".34506658.header.login" class="login-link" aria-label="E-Mail Login"> <span class="login-text">Login</span>
+<span class="icon icon-freemail"></span>
+</a>
+</div>
+</header>
+<aside class="left-col" data-teasers="https://www.gmx.net/magazine/ajax/navigation/aside/34506658?clickZone=34506658">
+<div class="teasers">
+</div>
+<div class="left-col__bottom">
+<div class="co-container co-rectangle js-co-static ad-disabled" data-adservice-param-tagid="rectangle" ></div>
+</div>
+<footer>
+<a href="https://www.gmx.net/impressum/" data-brain-zone=".34506658.header.imprint">Impressum</a>
+&nbsp;|&nbsp;
+<a href="https://www.gmx.net/datenschutz/" data-brain-zone=".34506658.header.dataprotection">Datenschutz</a>
+&nbsp;|&nbsp;
+<a href="https://www.gmx.net/magazine/start/" data-brain-zone=".34506658.header.sitemap">Sitemap</a>
+&nbsp;|&nbsp;
+<a href="https://www.gmx.net/magazine/in-eigener-sache/jugendschutz/" data-brain-zone=".34506658.header.jugendschutz">Jugendschutz</a>
+</footer>
+</aside>
+<input type="checkbox" class="show-nav" id="nav-check"/>
+<nav class="nav" data-mod-name="navigation" data-navigation="https://www.gmx.net/magazine/ajax/navigation">
+<div class="nav__header">
+<div class="new-header__hamburger">
+<label class="new-header__navtrigger" tabindex="0" for="nav-check" aria-label="Navigation">
+<span class="burger-icon"></span>
+</label>
+</div>
+<div class="new-header__logo">
+<a href="https://www.gmx.net/" data-brain-zone=".34506658.header.logo" class="logo-link" aria-label="Startseite"> <span class="logo-image "></span>
+</a>
+</div>
+</div>
+<div class="navi">
+<ul class="lvlone__list innernav">
+<li class="lvlone__item"><div class="lvltwo__header"><span class="header-spacer"><a href="https://registrierung.gmx.net/#.pc_page.homepage.mobil.nav.registrierung" data-brain-zone=".34506658.header.1">Kostenlos registrieren</a></span></div></li>
+<li class="lvlone__item"><div class="lvltwo__header"><span class="header-spacer"><a href="https://www.gmx.net/mail/#.pc_page.homepage.mobil.nav.mail" data-brain-zone=".34506658.header.2">E-Mail</a></span></div></li>
+<li class="lvlone__item"><div class="lvltwo__header"><span class="header-spacer"><a href="https://www.gmx.net/cloud/#.pc_page.homepage.mobil.nav.online-speicher" data-brain-zone=".34506658.header.3">Cloud</a></span></div></li>
+<li class="lvlone__item"><div class="lvltwo__header"><span class="header-spacer"><a href="https://www.gmx.net/handy/?mc=05560239" data-brain-zone=".34506658.header.4">Mobilfunk &amp; DSL</a></span></div></li>
+<li class="lvlone__item"><div class="lvltwo__header"><span class="header-spacer"><a href="https://www.energie.gmx.net/?mc=05570056" data-brain-zone=".34506658.header.5">Energie</a></span></div></li>
+<li class="lvlone__item"><div class="lvltwo__header"><span class="header-spacer"><a href="https://www.gmx.net/magazine/" data-brain-zone=".34506658.header.6">News</a></span> <ul class="lvltwo__list">
+<li class="lvltwo__item"><div class="lvlthree__header"><span class="header-spacer"><a href="https://www.gmx.net/magazine/thema/" data-brain-zone=".34506658.header.7">Alle Themen von A-Z</a></span></div></li>
+<li class="lvltwo__item"><div class="lvlthree__header"><span class="header-spacer"><a href="https://www.gmx.net/magazine/news/coronavirus/" data-brain-zone=".34506658.header.8">Coronavirus</a></span></div></li>
+<li class="lvltwo__item"><div class="lvlthree__header"><span class="header-spacer"><a href="https://www.gmx.net/magazine/regio/" data-brain-zone=".34506658.header.9">Regionales</a></span></div></li>
+<li class="lvltwo__item"><div class="lvlthree__header"><span class="header-spacer"><a href="https://www.gmx.net/magazine/politik/" data-brain-zone=".34506658.header.10">Politik</a></span> <ul class="lvlthree__list">
+<li class="lvlthree__item"><div class="lvlthree__header"><span class="header-spacer"><a href="https://www.gmx.net/magazine/politik/grossbritannien-brexit/" data-brain-zone=".34506658.header.11">Brexit</a></span></div></li>
+<li class="lvlthree__item"><div class="lvlthree__header"><span class="header-spacer"><a href="https://www.gmx.net/magazine/politik/nahostkonflikt/" data-brain-zone=".34506658.header.12">Nahostkonflikt</a></span></div></li>
+<li class="lvlthree__item"><div class="lvlthree__header"><span class="header-spacer"><a href="https://www.gmx.net/magazine/politik/wahlen/" data-brain-zone=".34506658.header.13">Wahlen 2021</a></span></div></li>
+<li class="lvlthree__item"><div class="lvlthree__header"><span class="header-spacer"><a href="https://www.gmx.net/magazine/politik/politische-talkshows/" data-brain-zone=".34506658.header.14">Politische Talkshows</a></span></div></li>
+<li class="lvlthree__item"><div class="lvlthree__header"><span class="header-spacer"><a href="https://www.gmx.net/magazine/politik/us-politik/" data-brain-zone=".34506658.header.15">US-Politik</a></span></div></li>
+</ul></div></li>
+<li class="lvltwo__item"><div class="lvlthree__header"><span class="header-spacer"><a href="https://www.gmx.net/magazine/wirtschaft/" data-brain-zone=".34506658.header.16">Wirtschaft</a></span></div></li>
+<li class="lvltwo__item"><div class="lvlthree__header"><span class="header-spacer"><a href="https://www.gmx.net/magazine/panorama/" data-brain-zone=".34506658.header.17">Panorama</a></span></div></li>
+<li class="lvltwo__item"><div class="lvlthree__header"><span class="header-spacer"><a href="https://www.gmx.net/magazine/ratgeber/" data-brain-zone=".34506658.header.18">Ratgeber</a></span></div></li>
+<li class="lvltwo__item"><div class="lvlthree__header"><span class="header-spacer"><a href="https://www.gmx.net/magazine/bestenliste/" data-brain-zone=".34506658.header.19">Bestenlisten</a></span></div></li>
+<li class="lvltwo__item"><div class="lvlthree__header"><span class="header-spacer"><a href="https://www.gmx.net/magazine/unterhaltung/" data-brain-zone=".34506658.header.20">Unterhaltung</a></span></div></li>
+<li class="lvltwo__item"><div class="lvlthree__header"><span class="header-spacer"><a href="https://www.gmx.net/magazine/sport/" data-brain-zone=".34506658.header.21">Sport</a></span></div></li>
+<li class="lvltwo__item"><div class="lvlthree__header"><span class="header-spacer"><a href="https://www.gmx.net/magazine/wissen/" data-brain-zone=".34506658.header.22">Wissen</a></span></div></li>
+<li class="lvltwo__item"><div class="lvlthree__header"><span class="header-spacer"><a href="https://www.gmx.net/magazine/kolumnen/" data-brain-zone=".34506658.header.23">Kolumnen</a></span></div></li>
+<li class="lvltwo__item"><div class="lvlthree__header"><span class="header-spacer"><a href="https://www.gmx.net/magazine/gesundheit/" data-brain-zone=".34506658.header.24">Gesundheit</a></span></div></li>
+<li class="lvltwo__item"><div class="lvlthree__header"><span class="header-spacer"><a href="https://www.gmx.net/magazine/services/" data-brain-zone=".34506658.header.25">Service</a></span></div></li>
+<li class="lvltwo__item"><div class="lvlthree__header"><span class="header-spacer"><a href="https://www.gmx.net/magazine/in-eigener-sache/" data-brain-zone=".34506658.header.26">In eigener Sache</a></span></div></li>
+<li class="lvltwo__item"><div class="lvlthree__header"><span class="header-spacer"><a href="https://www.gmx.net/magazine/unicef/" data-brain-zone=".34506658.header.27">United Internet for UNICEF</a></span></div></li>
+</ul></div></li>
+<li class="lvlone__item"><div class="lvltwo__header"><span class="header-spacer"><a href="https://t.uimserv.net/drp_r/?md=uid&amp;et=WR&amp;evtid=864&amp;mediaID=929&amp;mpID=4&amp;site=gmx&amp;region=de&amp;sc=vw_uebersichtsseite/vw_startseite&amp;lpos=text_link&amp;att1=gmx_hp&amp;durl=https%3A%2F%2Fvorteile.gmx.net%2F" data-brain-zone=".34506658.header.28" data-co="microstrategy_conversion" data-tif-dsec="extern/" data-tif-durl="https://t.uimserv.net/drp_r/?md=uid&amp;et=WR&amp;evtid=864&amp;mediaID=929&amp;mpID=4&amp;site=gmx&amp;region=de&amp;sc=vw_uebersichtsseite/vw_startseite&amp;lpos=text_link&amp;att1=gmx_hp&amp;durl=https%3A%2F%2Fvorteile.gmx.net%2F" data-tif-lpos="Shopping_Vorteilswelt_link_GMXDE">Shop</a></span></div></li>
+<li class="lvlone__item"><div class="lvltwo__header"><span class="header-spacer"><a href="https://wa.gmx.net/gmx/gmx/s?name=themen.news.clickout.article.politik.wahlen.us-wahl._archiv.2020-03.34506658&amp;partner=_Dep%20Frontpage&amp;country=de&amp;type=clickout&amp;destpartner=1%261%20nicht%20exklusiv&amp;click1=34506658&amp;click2=header&amp;click3=29&amp;click4=undef&amp;_u=https://www.gmx.net/produkte/apps/%23.hp_mobile.int.nav.apps&amp;_hs=cce020807ef01b012d62b5a2817b74d3" data-brain-zone=".34506658.header.29" data-co="brain">Apps</a></span></div></li>
+<li class="lvlone__item"><div class="lvltwo__header"><span class="header-spacer"><a href="https://www.gmx.net/versicherung/?mc=01881490" data-brain-zone=".34506658.header.30">Versicherung</a></span></div></li>
+<li class="lvlone__item"><div class="lvltwo__header"><span class="header-spacer"><a href="https://lotto.gmx.net/webshop/home.htm?partnerId=1GMMOBHNAV&amp;advertisementId=0NAVIGA000000000LOTTOSERVI0007700mobilehome" data-brain-zone=".34506658.header.31" data-co="microstrategy_conversion" data-tif-durl="https://lotto.gmx.net/webshop/home.htm?partnerId=1GMMOBHNAV&amp;advertisementId=0NAVIGA000000000LOTTOSERVI0007700mobilehome" data-tif-lpos="lotto_link_GMXDE">Lotto</a></span></div></li>
+<li class="lvlone__item"><div class="lvltwo__header"><span class="header-spacer"><a href="https://games.gmx.net/?mc=05577202" data-brain-zone=".34506658.header.32" data-co="microstrategy_conversion" data-tif-dsec="extern/" data-tif-durl="https://games.gmx.net/?mc=05577202" data-tif-lpos="Gamesrubrik_link_GMXDE">Games</a></span></div></li>
+<li class="lvlone__item"><div class="lvltwo__header"><span class="header-spacer"><a href="https://www.gmx.net/sitemap/" data-brain-zone=".34506658.header.33">Über GMX</a></span></div></li>
+</ul>
+</div>
+</nav>
+<div data-mod-name="cookielayer"></div>
+<div class="co-container co-ambient js-co-static" data-adservice-param-tagid="ambient" ></div>
+<div class="mod-installprompt collapsed" data-mod-name="installprompt">
+</div>
+<script type="application/ld+json">
+{
+"@graph" : [ {
+"name" : "GMX",
+"url" : "https://www.gmx.net/magazine/",
+"logo" : {
+"url" : "https://s.uicdn.com/uimag/4.2113.0/assets/logo/logo-gmx.png",
+"@id" : "https://www.gmx.net/magazine/#logo",
+"@type" : "ImageObject"
+},
+"@id" : "https://www.gmx.net/magazine/#organization",
+"@type" : "Organization"
+}, {
+"url" : "https://www.gmx.net/magazine/politik/wahlen/us-wahl/us-vorwahlen-joe-bidens-siegesserie-haelt-ueberraschungserfolg-michigan-34506658",
+"publisher" : {
+"@id" : "https://www.gmx.net/magazine/#organization"
+},
+"breadcrumb" : {
+"itemListElement" : [ {
+"item" : {
+"name" : "www.gmx.net",
+"@id" : "https://www.gmx.net/",
+"@type" : "WebPage"
+},
+"position" : 1,
+"@type" : "ListItem"
+}, {
+"item" : {
+"name" : "News",
+"@id" : "https://www.gmx.net/magazine/",
+"@type" : "WebPage"
+},
+"position" : 2,
+"@type" : "ListItem"
+}, {
+"item" : {
+"name" : "Aktuelle News ",
+"@id" : "https://www.gmx.net/magazine/news/",
+"@type" : "WebPage"
+},
+"position" : 3,
+"@type" : "ListItem"
+}, {
+"item" : {
+"name" : "Politik",
+"@id" : "https://www.gmx.net/magazine/politik/",
+"@type" : "WebPage"
+},
+"position" : 4,
+"@type" : "ListItem"
+}, {
+"item" : {
+"name" : "Aktuelle Wahlen im Überblick",
+"@id" : "https://www.gmx.net/magazine/politik/wahlen/",
+"@type" : "WebPage"
+},
+"position" : 5,
+"@type" : "ListItem"
+}, {
+"item" : {
+"name" : "US-Wahl 2020 - alles im Überblick",
+"@id" : "https://www.gmx.net/magazine/politik/wahlen/us-wahl/",
+"@type" : "WebPage"
+},
+"position" : 6,
+"@type" : "ListItem"
+} ],
+"@id" : "#breadcrumb",
+"@type" : "BreadcrumbList"
+},
+"@id" : "https://www.gmx.net/magazine/politik/wahlen/us-wahl/us-vorwahlen-joe-bidens-siegesserie-haelt-ueberraschungserfolg-michigan-34506658",
+"@type" : "WebPage"
+}, {
+"url" : "https://i0.gmx.net/image/660/34506660,pd=3/vorwahlen-usa-biden.jpg",
+"copyrightHolder" : {
+"name" : "Chris Carlson/AP/dpa"
+},
+"height" : 1048,
+"width" : 1839,
+"caption" : "Joe Biden setzt seine Siegesserie in den US-Vorwahlen der Demokraten auch in den Bundesstaaten Michigan, Missouri, Mississippi und Idaho fort.",
+"@id" : "https://i0.gmx.net/image/660/34506660,pd=3/vorwahlen-usa-biden.jpg",
+"@type" : "ImageObject"
+}, {
+"name" : "US-Vorwahlen: Joe Bidens Siegesserie hält an - Überraschungserfolg in Michigan",
+"description" : "Nach dem \"Super Tuesday\" fand in der Nacht die nächste größere Vorwahlrunde der US-Demokraten statt, wieder räumt Joe Biden ab: Der moderate Kandidat gewinnt wohl in Mississippi, Missouri, Michigan und auch in Idaho. Noch ist das Rennen nicht gelaufen - für Bernie Sanders wird es langsam eng.",
+"mainEntityOfPage" : {
+"@id" : "https://www.gmx.net/magazine/politik/wahlen/us-wahl/us-vorwahlen-joe-bidens-siegesserie-haelt-ueberraschungserfolg-michigan-34506658"
+},
+"image" : [ "https://i0.gmx.net/image/660/34506660,pd=3,f=sdata169/vorwahlen-usa-biden.jpg", "https://i0.gmx.net/image/660/34506660,pd=3,f=sdata43/vorwahlen-usa-biden.jpg", "https://i0.gmx.net/image/660/34506660,pd=3,f=sdata11/vorwahlen-usa-biden.jpg" ],
+"publisher" : {
+"@id" : "https://www.gmx.net/magazine/#organization"
+},
+"headline" : "US-Vorwahlen: Joe Bidens Siegesserie hält an - Überraschungserfolg in Michigan",
+"dateModified" : "2020-03-11T06:45:00+01:00",
+"datePublished" : "2020-03-11T06:45:00+01:00",
+"dateCreated" : "2020-03-11T06:45:08+01:00",
+"video" : [ ],
+"hasPart" : [ {
+"@id" : "https://i0.gmx.net/image/660/34506660,pd=3/vorwahlen-usa-biden.jpg"
+} ],
+"author" : [ {
+"@id" : "https://www.gmx.net/magazine/#organization"
+} ],
+"keywords" : "Joe Biden,Bernie Sanders,Michigan,Siegesserie,Mississippi",
+"alternativeHeadline" : "",
+"articleSection" : "US-Wahl 2020 - alles im Überblick",
+"speakable" : {
+"cssSelector" : [ ".content__headline", "[data-speakable]" ],
+"@id" : "https://www.gmx.net/magazine/politik/wahlen/us-wahl/us-vorwahlen-joe-bidens-siegesserie-haelt-ueberraschungserfolg-michigan-34506658#speakable",
+"@type" : "SpeakableSpecification"
+},
+"@id" : "https://www.gmx.net/magazine/politik/wahlen/us-wahl/us-vorwahlen-joe-bidens-siegesserie-haelt-ueberraschungserfolg-michigan-34506658#content",
+"@type" : "NewsArticle"
+} ],
+"@context" : [ "https://schema.org/", {
+"@base" : "https://www.gmx.net/magazine/politik/wahlen/us-wahl/us-vorwahlen-joe-bidens-siegesserie-haelt-ueberraschungserfolg-michigan-34506658"
+} ]
+}</script>
+<script id="teaserInfo" type="application/json">{"headline":"Joe Biden setzt Siegesserie fort - für Sanders wird es langsam eng","kicker":"US-Vorwahlen","label":null,"icon":null,"labeltype":null,"image":"https://i0.gmx.net/image/660/34506660,pd=3,f=responsive169-w450/vorwahlen-usa-biden.jpg","metadata":null,"description":"Nach dem \"Super Tuesday\" fand in der Nacht die nächste größere Vorwahlrunde der US-Demokraten statt, wieder räumt Joe Biden ab: Der moderate Kandidat gewinnt wohl in Mississippi, Missouri, Michigan und auch in Idaho. Noch ist das Rennen nicht gelaufen - für Bernie Sanders wird es langsam eng.","link":"https://www.gmx.net/magazine/politik/wahlen/us-wahl/us-vorwahlen-joe-bidens-siegesserie-haelt-ueberraschungserfolg-michigan-34506658"}</script>
+<script type="module" src="https://s.uicdn.com/uimag/4.2113.0/assets/_sn_/lod/entry3.js"></script>
+<script nomodule src="https://s.uicdn.com/uimag/4.2113.0/assets/_sn_/js/main.min.js" async></script>
+<div class="mod-pushnotification collapsed" data-mod-name="pushnotification"></div>
+</body>
+</html>

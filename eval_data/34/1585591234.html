@@ -1,0 +1,1515 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl" xml:lang="pl">
+<head>
+<!-- Quantcast Choice. Consent Manager Tag v2.0 (for TCF 2.0) -->
+<script type="text/javascript" async=true>
+(function() {
+  var host = 'egospodarka.pl';
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://quantcast.mgr.consensu.org'
+    .concat('/choice/', 'nQ5cr5khFxMPz', '/', host, '/choice.js')
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+
+  firstScript.parentNode.insertBefore(element, firstScript);
+
+  function makeStub() {
+    var TCF_LOCATOR_NAME = '__tcfapiLocator';
+    var queue = [];
+    var win = window;
+    var cmpFrame;
+
+    function addFrame() {
+      var doc = win.document;
+      var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+
+      if (!otherCMP) {
+        if (doc.body) {
+          var iframe = doc.createElement('iframe');
+
+          iframe.style.cssText = 'display:none';
+          iframe.name = TCF_LOCATOR_NAME;
+          doc.body.appendChild(iframe);
+        } else {
+          setTimeout(addFrame, 5);
+        }
+      }
+      return !otherCMP;
+    }
+
+    function tcfAPIHandler() {
+      var gdprApplies;
+      var args = arguments;
+
+      if (!args.length) {
+        return queue;
+      } else if (args[0] === 'setGdprApplies') {
+        if (
+          args.length > 3 &&
+          args[2] === 2 &&
+          typeof args[3] === 'boolean'
+        ) {
+          gdprApplies = args[3];
+          if (typeof args[2] === 'function') {
+            args[2]('set', true);
+          }
+        }
+      } else if (args[0] === 'ping') {
+        var retr = {
+          gdprApplies: gdprApplies,
+          cmpLoaded: false,
+          cmpStatus: 'stub'
+        };
+
+        if (typeof args[2] === 'function') {
+          args[2](retr);
+        }
+      } else {
+        queue.push(args);
+      }
+    }
+
+    function postMessageEventHandler(event) {
+      var msgIsString = typeof event.data === 'string';
+      var json = {};
+
+      try {
+        if (msgIsString) {
+          json = JSON.parse(event.data);
+        } else {
+          json = event.data;
+        }
+      } catch (ignore) {}
+
+      var payload = json.__tcfapiCall;
+
+      if (payload) {
+        window.__tcfapi(
+          payload.command,
+          payload.version,
+          function(retValue, success) {
+            var returnMsg = {
+              __tcfapiReturn: {
+                returnValue: retValue,
+                success: success,
+                callId: payload.callId
+              }
+            };
+            if (msgIsString) {
+              returnMsg = JSON.stringify(returnMsg);
+            }
+            event.source.postMessage(returnMsg, '*');
+          },
+          payload.parameter
+        );
+      }
+    }
+
+    while (win) {
+      try {
+        if (win.frames[TCF_LOCATOR_NAME]) {
+          cmpFrame = win;
+          break;
+        }
+      } catch (ignore) {}
+
+      if (win === window.top) {
+        break;
+      }
+      win = win.parent;
+    }
+    if (!cmpFrame) {
+      addFrame();
+      win.__tcfapi = tcfAPIHandler;
+      win.addEventListener('message', postMessageEventHandler, false);
+    }
+  };
+
+  makeStub();
+
+  var uspStubFunction = function() {
+    var arg = arguments;
+    if (typeof window.__uspapi !== uspStubFunction) {
+      setTimeout(function() {
+        if (typeof window.__uspapi !== 'undefined') {
+          window.__uspapi.apply(window.__uspapi, arg);
+        }
+      }, 500);
+    }
+  };
+
+  var checkIfUspIsReady = function() {
+    uspTries++;
+    if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) {
+      console.warn('USP is not accessible');
+    } else {
+      clearInterval(uspInterval);
+    }
+  };
+
+  if (typeof window.__uspapi === 'undefined') {
+    window.__uspapi = uspStubFunction;
+    var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+})();
+</script>
+<!-- End Quantcast Choice. Consent Manager Tag v2.0 (for TCF 2.0) -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-12911388-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-12911388-1');
+  gtag('config', 'AW-1044289258');
+</script>
+<title>Tarcza antykryzysowa: odliczenie straty 2020 w PIT/CIT za rok 2019 - eGospodarka.pl - Aktualności podatkowe</title>
+<meta name="Author" content="Kasat Sp. z o.o.">
+<meta name="description" content="W związku z kryzysem gospodarczym wywołanym pandemią koronawirusa do ustawy o podatku dochodowym od osób prawnych (dalej: ustawa o PDOP) oraz ustawy o podatku dochodowym od osób fizycznych ...">
+<meta name="distribution" content="GLOBAL">
+<meta name="keywords" content="podatek dochodowy od osób fizycznych, podatek PIT, podatek od firmy, podatek CIT, rozliczenia podatkowe, odliczenia podatkowe, ulgi podatkowe, koronawirus, specustawa, deklaracje podatkowe, strata podatkowa">
+<meta name="revisit-after" content="7 Days">
+<meta name="robots" content="all, follow, index">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="expires" content="Wed, 26 Feb 1997 08:21:57 GMT">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="alternate" type="application/rss+xml" title="eGospodarka.pl - Aktualności" href="https://www.partner.egospodarka.pl/rss/wiadomosci/wszystkie/" />
+<link rel="shortcut icon" href="https://s3.egospodarka.pl/images-local/layout/favicon.ico" />
+<style>
+#footer,.ego-stopka-logo{margin:0 auto;text-align:left;width:980px;clear:both;overflow:hidden;color:#000}#container{margin:0 auto;text-align:left;width:980px;clear:both;color:#000;padding:5px;background-color:#fff;overflow:hidden}#fbook{width:470px;float:left}h1,h2,h3,h4,h5,p{margin:0;padding:0}a{text-decoration:none}a:hover{text-decoration:underline}img{border:0}.link{cursor:pointer;display:inline-block}.link:hover{text-decoration:underline}#container h1,#container h2,#container h3{margin:0;padding:0}#container a{color:#1a3473}.ego-scr{margin:0 auto;position:relative;width:990px}div.ego-scr .ad-sky{left:995px!important}.nag1{background:#f9f6eb;font-size:18px;font-weight:700;padding:8px 10px!important;border:1px solid #d6cfb8;width:100%;box-sizing:border-box;clear:both}.nag2{font-weight:700;width:100%;box-sizing:border-box;clear:both;line-height:160%;text-align:center}.nag2 span{font-size:80%;margin:0 30px;color:#197aa0;white-space:nowrap}.eego-news-dots img{float:left}.tabela{margin:5px auto;border:1px solid #d6cfb8;box-sizing:border-box}.tabela .tabelahead,.tabela th,.tabela th h4{background-color:#4e6599;font-size:14px!important;color:#fff;text-align:center}.tabela th a{color:#fff!important}.tabela td,.tabela th{font-size:12px;padding:7px 10px;line-height:16px;border-top:1px solid #d6cfb8;box-sizing:border-box}.tabela .tabelanag{background-color:#f9f6eb;text-align:center;font-weight:bolder}.tabela td{text-align:right}.tabela tr.ac td{text-align:center}.tabela .odd{background-color:#f9f6eb}.tabela .rozwin,.tabela a.rozwin{font-size:18px;display:inline-block;margin:0 10px;color:#b8001a!important}.tabela .rozwin a{color:#b8001a!important}.tabela .nag-big th{font-size:16px!important;padding:12px 10px}.tabela-small{margin:5px auto;border:1px solid #d6cfb8;width:100%}.tabela-small th{background-color:#4e6599;font-size:12px;color:#fff;text-align:center}.tabela-small th a{color:#fff!important}.tabela-small td,.tabela-small th{font-size:12px;padding:7px 3px;line-height:14px;border-top:1px solid #d6cfb8}.tabela-small td{text-align:right}table.zm tr:nth-child(even){background:#fff}table.zm tr:nth-child(odd){background:#f9f6eb}table.al td{text-align:left}table.f13 td{font-size:13px!important}table.f14 td{font-size:14px!important}table.f16 td{font-size:16px!important}table.lh-150 td{line-height:150%}table .ct{border-left:2px solid #d6cfb8;border-right:2px solid #d6cfb8;border-top:2px solid #d6cfb8;border-radius:8px 8px 0 0}table .cb{border-left:2px solid #d6cfb8;border-right:2px solid #d6cfb8;border-bottom:2px solid #d6cfb8;border-radius:0 0 8px 8px}table .cm{border-left:2px solid #d6cfb8;border-right:2px solid #d6cfb8}table .ct-rec{border-left:3px solid #cc4e0b;border-right:3px solid #cc4e0b;border-top:3px solid #cc4e0b;border-radius:8px 8px 0 0}table .cb-rec{border-left:3px solid #cc4e0b;border-right:3px solid #cc4e0b;border-bottom:3px solid #cc4e0b;border-radius:0 0 8px 8px}table .cm-rec{border-left:3px solid #cc4e0b;border-right:3px solid #cc4e0b}table tr.podsw td{background:#fff4cc!important}select.wybierz{border:1px solid #d6cfb8;background-color:#fff;font-size:12px;color:#6a6a6a;padding:2px 0 2px 4px;margin:0 10px}.ramka{border:1px dotted #d6cfb8;padding:0 5px}.ramka-dol{border-bottom:1px solid #d6cfb8;padding:10px 15px;margin-bottom:25px;overflow:hidden}.ramka-srodek{padding:5px 0;margin:10px;overflow:hidden;background-color:#fff;border:1px solid #d6cfb8}.tekst-normal,p.news{line-height:140%;padding:7px 0}.tekst,p.tekst{line-height:160%;padding:15px 0;font-size:14px}.tekst h1{font-size:18px;margin:6px 0}.tekst ul,ul.tekst,ul.tekst-normal{margin:10px 0 10px 20px;padding:0}.tekst ul li,ul.tekst li,ul.tekst-normal li{line-height:20px;margin:0;padding:0 10px 10px 15px!important;background:url(https://s3.egospodarka.pl/images-local/layout/ar3.gif) no-repeat 5px 8px;list-style-type:none;font-size:14px}ul.f16 li{font-size:16px}.ramka-zarowka{padding:10px 85px 10px 10px;border-left:10px solid #afa482;border-right:10px solid #ece7d6;border-top:0;border-bottom:0;background-image:url(https://s3.egospodarka.pl/images-local/layout/zarowka.gif);background-repeat:no-repeat;background-position:right}.ramka-zarowka ul{margin:0 10px;padding:0}.ui-tooltip{padding:5px 10px;position:absolute;background-color:#fff;border:1px solid #000;border:1px solid #000;font-size:14px;line-height:140%;z-index:9999;max-width:300px;color:#000;text-align:left;opacity:1;-moz-box-shadow:0 0 10px #000;-webkit-box-shadow:0 0 10px #000}.menu-proste{padding:10px 0;color:#aeaeae;border-bottom:1px solid #d6cfb8}.menu-proste a{padding:0 8px}.menu-proste span{padding:0 8px;font-weight:700;color:#000;text-decoration:underline}.but-big,.but-big-green,.but-big-red,.but-s,.but-s-green,.but-s-red{background:-moz-linear-gradient(top,#1f3d83 0,#0e2252 100%);background:-webkit-gradient(linear,left top,left bottom,color-stop(0,#1f3d83),color-stop(100%,#0e2252));background:-webkit-linear-gradient(top,#1f3d83 0,#0e2252 100%);background:-o-linear-gradient(top,#1f3d83 0,#0e2252 100%);background:-ms-linear-gradient(top,#1f3d83 0,#0e2252 100%);background:linear-gradient(top,#1f3d83 0,#0e2252 100%);color:#fff!important;font-size:12px;text-align:center;padding:6px 10px;border-radius:5px;text-transform:uppercase;border:1px solid #0f2354;margin:0 10px}.but-big-red,.but-s-red{background:-moz-linear-gradient(top,#9d0016 0,#730010 100%);background:-webkit-gradient(linear,left top,left bottom,color-stop(0,#9d0016),color-stop(100%,#730010));background:-webkit-linear-gradient(top,#9d0016 0,#730010 100%);background:-o-linear-gradient(top,#9d0016 0,#730010 100%);background:-ms-linear-gradient(top,#9d0016 0,#730010 100%);background:linear-gradient(top,#9d0016 0,#730010 100%);border:1px solid #730010}.but-big:hover,.but-s:hover{background:#3d5ea9!important;text-decoration:none}.but-big-red:hover,.but-s-red:hover{background:#730010!important;text-decoration:none}.but-big-green,.but-s-green{background:-moz-linear-gradient(top,#080 0,#005100 100%);background:-webkit-gradient(linear,left top,left bottom,color-stop(0,#080),color-stop(100%,#005100));background:-webkit-linear-gradient(top,#080 0,#005100 100%);background:-o-linear-gradient(top,#080 0,#005100 100%);background:-ms-linear-gradient(top,#080 0,#005100 100%);background:linear-gradient(top,#080 0,#005100 100%);border:1px solid #005100}.but-big-green:hover,.but-s-green:hover{background:#090!important;text-decoration:none}.but-s,.but-s-green,.but-s-red{padding:4px 10px;font-size:11px}a.but-big,a.but-big-green,a.but-big-red,a.but-s,a.but-s-green,a.but-s-red{display:inline-block}.col-box .ego-box-tabs .but-s{float:right}.print-butt{padding:0 0 10px 30px;font-size:11px;width:30px;cursor:pointer;border:0;margin:5px 5px 10px 10px;text-decoration:none;background:#fff url(https://s3.egospodarka.pl/images-local/layout/art-soc/lee-print.gif) no-repeat left top;color:#666!important}a.print-butt{display:block}div.print{float:right}div.print a.print-butt{width:60px}.nobr{white-space:nowrap}.ego-path{clear:both;padding:10px 0;border-bottom:1px solid #f1ecdd;margin-bottom:15px}.ego-path{font-size:11px!important;color:#0096d4}.ego-path a{color:#000!important}.ads-text{font-size:9px;color:#aeaeae;padding:5px 0}#container h2.ego-nag-tab,#container h2.ego-nag-tab-2{font-size:11px;font-weight:400;float:left;margin-bottom:-1px;position:relative;margin-left:15px;padding:0;text-transform:uppercase;background:#fff url(https://s3.egospodarka.pl/images-local/layout/tab-left.gif) 0 0 no-repeat;clear:both}#container h2.ego-nag-tab-2.bld,#container h2.ego-nag-tab.bld{font-weight:bolder}#container h2.ego-nag-tab a,#container h2.ego-nag-tab-2 a{display:block;color:#000;padding:6px 25px 6px 10px;background:url(https://s3.egospodarka.pl/images-local/layout/tab-right.gif) 100% 0 no-repeat}#container h2.ego-nag-tab span.none-link,#container h2.ego-nag-tab-2 span.none-link{display:block;color:#000;padding:6px 10px 6px 10px;background:url(https://s3.egospodarka.pl/images-local/layout/tab-right-span.gif) 100% 0 no-repeat}#container h2.ego-nag-tab-2{background:#4e6599 url(https://s3.egospodarka.pl/images-local/layout/tab-left2.gif) 0 0 no-repeat}#container h2.ego-nag-tab-2 a{color:#fff;background:url(https://s3.egospodarka.pl/images-local/layout/tab-right2.gif) 100% 0 no-repeat}#container h2.ego-nag-tab-2 span.none-link{color:#fff;background:url(https://s3.egospodarka.pl/images-local/layout/tab-right3.gif) 100% 0 no-repeat}.ego-nag-border{border-top:1px solid #d6cfb8;clear:both}.ego-art-pozostale .lazyload,.ego-art-pozostale .lazyloading{background:#f7f7f7;width:150px;height:100px}.ego-list-border .lazyload,.ego-list-border .lazyloading{background:#f7f7f7;width:100px;height:67px}.ego-expert-ul .lazyload,.ego-expert-ul .lazyloading{background:#f7f7f7;width:100px;height:70px}.ego-art-podobne .lazyload,.ego-art-podobne .lazyloading{background:#f7f7f7;width:198px;height:132px}.ego-news-dots{background:url(https://s3.egospodarka.pl/images-local/layout/news-dots.gif) repeat-y;width:100%;overflow:hidden;margin:10px 0;margin-bottom:25px}.ego-list-border-big img.ego-news-img,.ego-news-dots img.ego-news-img{margin:0 20px 15px 0;float:left}.ego-hp-zajawka2{line-height:18px}.ego-hp-zajawka2 h3{font-size:14px}.ego-hp-zajawka2 .ego-data{font-size:10px;color:#aeaeae;padding:5px 0}.ego-zaznacz{background:#eee8d9;padding:2px 5px;font-weight:bolder;font-style:italic;margin:2px 0}.ego-news-dots ul{margin:0;padding:0}.ego-news-dots ul li{list-style-type:none;padding:1px 0 5px 15px;line-height:18px}.ego-news-dots ul.news li span.dat{color:#999;margin-right:5px}li span.col1,li span.col2{float:left;display:block;padding-left:2px;line-height:14px}li span.col3{float:right;display:block;text-align:left;padding-left:5px}.ego-li-porady li span.col1{width:480px}.ego-li-porady li span.col3{width:100px}.ego-li-porady li span.col3 a{color:#000!important}.ul-2col{padding:5px 0!important;overflow:hidden}ul.ul-2col li{width:45%;float:left;padding:1px 10px 7px 15px!important;background:url(https://s3.egospodarka.pl/images-local/layout/ar3.gif) no-repeat 5px 8px;list-style:none}ul.ul-2col li span.count{color:#9a9a9a;padding-left:5px;white-space:nowrap}ul.ul-2col li:nth-child(2n+1){clear:both}.ul-3col{padding:5px 0!important;overflow:hidden}ul.ul-3col li{width:30%;box-sizing:border-box;float:left;padding:1px 5px 7px 15px!important;background:url(https://s3.egospodarka.pl/images-local/layout/ar3.gif) no-repeat 5px 8px;list-style:none}.ul-4col{padding:5px 0!important;overflow:hidden}ul.ul-4col li{width:21%;float:left;padding:1px 5px 7px 15px!important;background:url(https://s3.egospodarka.pl/images-local/layout/ar3.gif) no-repeat 5px 8px;list-style:none}#dictionary h3{background:#f9f6eb;font-size:18px;font-weight:700;padding:3px 2px 3px 15px;border-bottom:1px dotted #d6cfb8}#dictionary span{margin:10px 0 25px 0;text-align:center;display:block}#dictionary span a{color:#b8001a;font-weight:700;font-size:14px;padding:0 3px}.ego-nag-experci{display:block;float:right}.ego-nag-experci a{display:block;float:left;width:13px;height:13px;background-color:#dfd9c6;border:1px solid #dfd9c6;margin-left:5px;text-indent:-100000px}.ego-nag-experci a.ego-expert-sel,.ego-nag-experci a:hover{background-color:#f9f6eb}.ego-art-pozostale,.ego-expert-ul{margin:1px 0 25px 0;padding:0;width:100%;overflow:hidden;border-bottom:3px solid #efecde}.ego-art-pozostale li,.ego-expert-ul li{float:left;list-style-type:none;margin:0;padding:0;width:110px;padding:12px 10px 12px 11px;margin-right:1px;word-wrap:break-word}.ego-art-pozostale li{width:140px!important}.ego-expert-ul-300 li{margin-left:10px}.ego-art-pozostale p,.ego-expert-ul li p{padding:5px 0 10px 0;font-size:14px}.ego-expert-ul li p{min-height:40px}.ego-expert-ul li a p,.ego-expert-ul li p a{font-size:11px;color:#000!important;text-transform:uppercase}.ego-art-pozostale p a,.ego-expert-ul li h3 a{font-size:14px;color:#000;font-weight:400;line-height:18px}.ego-art-pozostale p{font-size:14px;line-height:150%;font-family:arial}.ego-art-pozostale a{color:#000!important}.ego-art-line{clear:both;width:100%;overflow:hidden;margin-bottom:10px}.ego-art h1{font-size:30px;font-weight:400;line-height:36px;padding:0 0 10px 0!important}.art-polecamy .ego-art h1{font-size:34px;font-weight:bolder;line-height:150%;padding:20px 0 30px 0!important}.ego-art-zobacz-takze h2,.ego-art-zobacz-takze-h2{font-size:14px;line-height:20px;padding:0 0 10px 0!important}.art-p h2,.ego-art h2{font-size:18px;line-height:24px;padding:15px 0 0 0!important}.art-polecamy .art-p h2,.art-polecamy .ego-art h2{font-size:22px}.ego-art-zobacz-takze h2,.ego-art-zobacz-takze-h2 h2{padding:0!important}.link-next{padding-bottom:10px;text-transform:uppercase;font-size:10px}.link-prev img.ego-news-img{float:right!important;margin:0 0 15px 20px!important}.ego-art a{color:#0096d4!important;border-bottom:1px dotted}.ego-art a:hover{color:red!important;text-decoration:none}.art-p .ramka-zarowka{clear:both;padding:10px 85px 10px 10px;border-left:10px solid #afa482;border-right:0;border-top:0;border-bottom:0;background-image:url(https://s3.egospodarka.pl/images-local/layout/zarowka.gif);background-repeat:no-repeat;background-position:right;-moz-box-shadow:2px 2px 15px #c9c0a7;-webkit-box-shadow:2px 2px 15px #c9c0a7;box-shadow:2px 2px 15px #c9c0a7;margin:20px 0 10px}.art-p .ramka-zarowka ul{margin:0 10px;padding:0}.ego-art blockquote{display:block;clear:both;background:#fff;padding:15px 0 15px 45px;margin:20px 0 20px 50px;position:relative;font-family:Georgia,serif;font-size:16px;line-height:1.4;color:#666;text-align:justify;font-style:italic;border-left:15px solid #93b8e6}.art-polecamy blockquote{font-size:18px}.ego-art blockquote:first-letter{float:left;margin:.2em .3em .1em 0;font-family:"Monotype Corsiva","Apple Chancery",fantasy;font-size:220%;font-weight:700;color:#6298db}.ego-art blockquote:first-line{font-variant:small}.ego-art blockquote::before{content:"\201C";font-family:Georgia,serif;font-size:60px;font-weight:700;color:#999;position:absolute;left:10px;top:5px}.ego-art blockquote::after{content:""}.ego-art blockquote a{text-decoration:none;cursor:pointer;padding:0 3px}.ego-art blockquote em{font-style:italic}.art-data,.art-data a{font-size:11px!important;color:#959594!important;border-bottom:0}.art-data{float:right}.fb-like{clear:both}.art-p,.ego-art p{font-size:16px;line-height:140%;padding:5px 0}.art-polecamy .art-p,.art-polecamy .ego-art p{font-size:18px;line-height:160%}.art-p{text-align:justify;word-wrap:break-word!important}.art-p ol li,.art-p ul li{list-style-position:inside;font-size:16px;line-height:140%}.art-polecamy .art-p ol li,.art-polecamy .art-p ul li{font-size:18px;line-height:160%}.ego-art-img{background-color:#f9f6eb;width:200px;padding:15px 15px 5px 15px;float:left;clear:both!important;margin:10px 20px 20px 0}.ego-art-zajawka{font-weight:bolder;padding-bottom:15px}.art-img-mid a,.ego-art-img a{border-bottom:0!important}.ego-art-img p{font-size:11px!important}.ego-art-img .art-img-autor{color:#959594}.ego-art-img .art-img-galeria{border-top:1px dotted #d2d0c9;text-align:right}.ego-art-img .art-img-galeria a{font-size:10px!important;color:#0096d4!important}.ego-art-img .art-img-galeria a:hover{color:red!important}.art-pion1{float:right;width:265px}.ego-art .art-spons{text-transform:uppercase;font-weight:400!important;font-size:10px!important;color:gray}.art-img-mid{border:1px solid #d6cfb8;padding:10px;width:500px;margin:15px auto 10px;overflow:hidden;display:table}.art-img-box{float:left;margin-right:25px;width:200px;font-size:11px;color:#959594;line-height:20px}.art-img-tytul{font-weight:bolder;padding:0!important;text-align:left}.art-img-opis{color:#8c8c8c;line-height:14px;font-size:12px!important;text-align:left}.art-img-autor{font-size:11px!important;color:#8c8c8c}.art-img-link a,.art-img-mid a{color:#0096d4!important;font-size:10px!important;text-transform:uppercase}.art-img-zoom{background:url(https://s3.egospodarka.pl/images-local/layout/lupka.png) no-repeat;width:32px;height:32px;position:absolute;bottom:0;right:0}.art-img-zoom a{display:block;width:32px;height:32px;text-indent:-10000000px}.art-ramka{float:left;width:250px;border:3px solid #4e6599;background-color:#f9f6eb;padding:5px 15px;margin:15px 20px 10px 0;font-size:12px!important;line-height:180%!important}.art-ramka p{font-size:12px!important;line-height:180%!important}.art-ramka li{font-size:12px!important}.ego-art table{margin:15px auto;border:1px solid #d6cfb8}.ego-art table th,.ego-art table th h4{background-color:#4e6599;font-size:14px!important;color:#fff;text-align:center}.ego-art table td,.ego-art table th{font-size:16px;padding:7px 10px;line-height:140%;border-bottom:1px dotted #d6cfb8}.ego-art table tr:last-child td{border-bottom:none}.ego-art table .art-tab-head,.ego-art table .przetargihead{background-color:#f9f6eb;text-align:center;font-weight:bolder}.ego-art table ol,.ego-art table ul{margin:0;padding-left:10px}.ego-art table ol li,.ego-art table ul li{font-size:12px;line-height:16px}.art-polecamy .ego-art table{font-size:16px}.ego-art table .center{text-align:center}.ego-art ol,.ego-art ul{margin:10px 0 0 30px;padding:0}.ego-art li{font-size:14px;line-height:18px;padding:3px 0 8px 0}.ego-art-zobacz-takze li{padding:3px 0 5px 0}.ego-art-podobne{margin:1px 0 0 0;padding:0;width:100%;overflow:hidden}.ego-art-podobne li{float:left;list-style-type:none;margin:0;width:33%;box-sizing:border-box;padding:12px 10px 12px 10px}.ego-art-podobne li:nth-child(3n+1){clear:both}.ego-art-podobne li img{width:95%}.ego-art-podobne p{padding:5px 0 10px 0;font-size:15px;line-height:150%;font-weight:700}.ego-art-paginator{width:100%;overflow:hidden;padding:10px 0}.ego-art-paginator a{border:1px solid #e3ddcd;background-color:#f9f6eb;padding:3px 7px;font-size:12px;margin:0 2px;color:#000!important}.ego-art-paginator p.art-pag-1{float:left;width:100px}.ego-art-paginator p.art-pag-2{float:left;width:455px;text-align:center}.ego-art-paginator p.art-pag-2 span.sel{border:1px solid #e3ddcd;padding:3px 7px;font-size:12px;margin:0 2px;background-color:#fff}.ego-art-paginator p.art-pag-3{float:right;width:100px;text-align:right}.ego-art-paginator p.art-pag-1 a,.ego-art-paginator p.art-pag-3 a{background:#dcd6c5 url(https://s3.egospodarka.pl/images-local/layout/button.gif) 0 0 repeat-x;cursor:pointer;text-transform:uppercase;padding:5px 10px;text-transform:uppercase;font-size:10px}.ego-art-paginator a:hover{background:#fff!important}.ego-art-autor{clear:both;padding:20px 0;overflow:hidden;width:100%}.ego-art-autor a{color:#0096d4!important}.ego-art-autor span{display:block;float:left}.ego-art-autor img{float:right;margin-bottom:5px}.art-wiecej-temat{clear:both;width:640px;overflow:hidden;font-size:11px;background-color:#fdfcf8;padding:10px;margin:0;border-top:3px solid #efecde}.art-polecamy .art-wiecej-temat{width:100%;box-sizing:border-box}.art-wiecej-temat span{display:block;padding:0 0 6px 5px}.art-wiecej-temat a{color:#1a3473!important;line-height:16px;font-size:12px;margin-left:5px}.powrot{padding:5px 10px}.powrot a{color:#1a3473!important;font-weight:bolder;line-height:16px!important;font-size:12px}.ramka-wazne,.ramka-wazne2{padding:10px 15px;margin-bottom:25px;vertical-align:middle}.ramka-wazne img{margin:0 10px 0 20px;vertical-align:middle}.ramka-wazne{border:2px solid #4e6599}.ramka-wazne2{border:4px solid #b8001a;font-size:14px}.ramka-wazne2 img{margin:0 10px 0 0;vertical-align:middle}#oferta-podobne{width:100%;clear:both;overflow:hidden;margin-bottom:25px;box-sizing:border-box}#oferta-podobne h4{font-size:16px;font-weight:700;padding:0 0 0 5px;color:#899dca}#oferta-podobne h4 a{color:#899dca}#oferta-podobne ul{margin:5px 0 10px 0;padding:0;border-top:2px solid #d6cfb8}#oferta-podobne ul li{line-height:20px;margin:0;padding:8px 0;list-style-type:none;font-size:13px;overflow:hidden;border-bottom:1px solid #f1ecdd}#oferta-podobne ul li a{margin:0;display:block}#oferta-podobne ul li a:link{font-weight:700}#oferta-podobne ul li a:visited{color:#a0a0a0}#oferta-podobne ul li span{display:block;float:left}#oferta-podobne ul li span.dat{width:75px;padding-left:5px;font-size:11px;color:#666}#oferta-podobne ul li span.tyt{width:580px}#oferta-podobne ul li span.opis{width:580px;float:right;padding-top:5px}#oferta-podobne p.sym{text-align:right;font-weight:700;color:#b8001a}#oferta-podobne p.sym a{color:#b8001a;display:inline-block}#oferta-podobne li.sym{text-align:right;font-weight:700;color:#000;border-top:2px solid #d6cfb8;border-bottom:none}#oferta-podobne li.sym a{color:#b8001a;display:inline-block;margin-left:15px}#oferta-podobne li.sym a:visited{color:#b8001a}.social{box-sizing:border-box;background:#ebebeb;margin:0;border-radius:5px;overflow:hidden;font-family:tahoma}.scbox{box-sizing:border-box;background-color:#fff;border:1px solid #e3e3e3;border-radius:5px;display:block;padding:4px 6px;overflow:hidden;width:auto;min-height:50px;margin:5px;float:left;text-align:center}.scbox p{padding:0;margin:0}.scramka,.scramka a{font-size:12px;color:#606060;text-align:left}.scramka a:hover,.scramka span:hover{cursor:pointer!important}.scico a{display:block;float:left;width:auto;margin:3px 6px 0 6px}.scup{background:#fff url(https://s3.egospodarka.pl/images-local/layout/art-soc/lee-up.gif) no-repeat 0 3px;padding:3px 0 3px 15px!important;font-size:10px;color:green!important;display:block;width:20px;float:right;text-align:left}.scdown{background:#fff url(https://s3.egospodarka.pl/images-local/layout/art-soc/lee-down.gif) no-repeat 0 3px;padding:3px 0 3px 16px!important;font-size:10px;color:red!important;display:block;width:24px;float:left;text-align:left;margin-left:3px}.sckoment{background:#fff url(https://s3.egospodarka.pl/images-local/layout/art-soc/lee-koment.gif) no-repeat 10px 6px;padding:3px 0 3px 30px!important}.ego-find-tabs,.ego-find-tabs-border,.ego-li-polecamy,.ego-text-tabs{margin:0;padding:0;position:relative;width:100%;overflow:hidden}.ego-find-tabs li,.ego-find-tabs-border li,.ego-text-tabs li{font-size:11px;text-transform:uppercase;list-style-type:none;float:left;margin:0}.ego-find-tabs-border li a,.ego-find-tabs-border li span,.ego-text-tabs li a,.ego-text-tabs li span{display:block;padding:7px 10px 6px 10px;color:#000!important}.ego-find-tabs-border li span,.ego-text-tabs li span{color:#aeaeae!important}.ego-li-porady,.ego-list-koments,.ego-news-list,.ego-tabs-line{width:100%;overflow:hidden;border-top:1px solid #d6cfb8;margin-top:-1px;padding-top:5px}.ego-text-tabs li.ego-tabs-sel{background:url(https://s3.egospodarka.pl/images-local/layout/tab-left.gif) 0 0 no-repeat}.ego-find-tabs-border li.ego-tabs-sel{background:url(https://s3.egospodarka.pl/images-local/layout/tab-left2.gif) 0 0 no-repeat}.ego-text-tabs li.ego-tabs-sel a{background:url(https://s3.egospodarka.pl/images-local/layout/tab-right.gif) 100% 0 no-repeat;padding-right:23px}.ego-text-tabs li.ego-tabs-sel span.none-link{background:url(https://s3.egospodarka.pl/images-local/layout/tab-right-span.gif) 100% 0 no-repeat;padding-right:23px;color:#000!important}.ego-find-tabs-border li.ego-tabs-sel a{background:url(https://s3.egospodarka.pl/images-local/layout/tab-right2.gif) 100% 0 no-repeat;padding-right:23px;color:#e6edf8!important}.ego-find-tabs-border li.ego-tabs-sel span{background:url(https://s3.egospodarka.pl/images-local/layout/tab-right3.gif) 100% 0 no-repeat;padding-right:23px;color:#e6edf8!important}.ego-box,.ego-box-tabs,.ego-box-tabs-border{border:1px solid #d6cfb8;padding:10px 15px;margin-top:-1px;margin-bottom:25px;overflow:hidden}.box-info .but-big{margin-top:10px}.box-info-2{border:3px solid #d6cfb8;padding:10px 15px;margin-bottom:25px;overflow:hidden}.box-info-2 p{clear:both;width:100%;overflow:hidden;padding:3px 0;line-height:150%}.box-info-2 p.podobne a{margin:5px 20px 5px 0}.box-info-2 ul{padding:0;margin:10px 0 0 0}.box-info-2 ul li{line-height:18px;margin:0;padding:0 10px 10px 15px!important;background:url(https://s3.egospodarka.pl/images-local/layout/ar3.gif) no-repeat 5px 8px;list-style-type:none}.box-info-2 ol{padding:0;margin:10px 0 0 15px}.box-info-2 ol li{line-height:18px;margin:0;padding:0 10px 10px 5px}.ego-box-tabs ul,.ego-box-tabs-bord ul,.ego-box-tabs-border ul{padding:0 0;margin:0;width:100%;overflow:hidden}.ego-ul-2col{padding:5px 0!important;width:325px;overflow:hidden;background-color:#fff;float:right;border:1px solid #d6cfb8}.ego-box-tabs ul li,ul.ego-ul-2col li{list-style-type:none;width:50%;float:left;padding:3px 0}ul.ego-ul-2col li{width:45%}.ego-box-tabs ul li a{font-size:12px}ul.ego-ul-2col li a{font-size:12px}.ego-box-tabs form,.ego-box-tabs-bord form,.ego-box-tabs-border form{margin:0;padding:10px 0;font-size:11px}.ego-box-tabs label,.ego-box-tabs-bord label,.ego-box-tabs-border label{text-align:left;padding:6px 0 0 0;float:left}.w660 .ego-box-tabs label,.w660 .ego-box-tabs-bord label,.w660 .ego-box-tabs-border label{width:80px}.ego-box-tabs .ego-input,.ego-box-tabs-bord .ego-input,.ego-box-tabs-border .ego-input{border:1px solid #d6cfb8;font-size:11px;padding:4px 5px;width:140px}.ego-box-tabs-border select{font-size:11px;padding:3px 5px}.ego-box-tabs-bord,.ego-box-tabs-border{border:3px solid #4e6599}.ego-box-tab-border-gray{border:1px solid #d6cfb8!important}.ego-box-tabs-bord{margin-bottom:25px;padding:10px 15px;overflow:hidden}.ego-box-tabs-bord .ego-ul-2col{padding:5px 15px!important;width:288px!important;overflow:hidden;background-color:#fff;float:right;border:1px solid #d6cfb8}.ego-box-tabs-bord p,.ego-box-tabs-border p,.w300 .ego-box-tabs form p{clear:both;width:100%;overflow:hidden;padding:3px 0;line-height:150%}.ego-box-tabs-border p.more{text-transform:uppercase;font-size:10px;border-top:1px dotted #030303;padding-top:10px;text-align:right}.img-kodeks{background:url(https://s3.egospodarka.pl/images-local/layout/kodeks.png) no-repeat 100% 0}.img-kodeks p.more{border-top:1px dotted #d6cfb8;margin-top:5px}.ego-cal-niez{text-align:right;margin-bottom:25px}.ego-cal-niez a{display:block;text-transform:uppercase;padding:8px 80px 9px 0;margin-bottom:2px}.ego-cal-niez .ego-cal1{background:url(https://s3.egospodarka.pl/images-local/layout/niezbednik.gif) 0 0 no-repeat}.ego-cal-niez .ego-cal2{background:url(https://s3.egospodarka.pl/images-local/layout/kalkulator.gif) 0 0 no-repeat}.ego-cal-niez a:hover{text-decoration:none;background-position:bottom}.kalkulatory{background:#f9f6eb url(https://s3.egospodarka.pl/images-local/layout/kalkulatory.gif) no-repeat 0 50%;border:2px solid #f1ecdd;padding:10px 15px 10px 120px;margin-bottom:25px}#pkd_szukaj label{width:30%}form input,form select,form textarea{font-family:tahoma}.ego-find-tabs li{margin:0}.ego-find-tabs li a{display:block;padding:7px 10px;color:#000!important;font-weight:bolder}.ego-find-tabs li.ego-tabs-sel{background:url(https://s3.egospodarka.pl/images-local/layout/tab-gray-left.gif) 0 0 no-repeat}.ego-find-tabs li.ego-tabs-sel a{background:url(https://s3.egospodarka.pl/images-local/layout/tab-gray-right.gif) 100% 0 no-repeat;padding-right:23px}.ego-find-text,.ego-kalk-text{background-color:#f9f6eb;border:1px solid #f1ecdd;width:100%;overflow:hidden;margin-top:-1px;padding:5px 0 0 0;margin-bottom:25px}.ego-find-text form{margin:0;padding:2px 0 1px 15px}.ego-find-text p{clear:both;width:100%;overflow:hidden;padding:3px 0}.ego-find-text label{width:80px;text-align:right;padding:4px 15px 0 0;float:left}.ego-box-tabs-bord select,.ego-find-text form input.ego-input,.ego-find-text form select{border:1px solid #d6cfb8;background-color:#fff}.w660 .ego-find-text form input.ego-input,.w660 .ego-find-text form select.ego-input{padding:2px 3px}.ego-find-text form input.ego-input-s{border:1px solid #d6cfb8;background-color:#fff;padding:3px 5px;font-size:11px;color:#6a6a6a;width:40px}.button_submit,form input.ego-submit{background:#dcd6c5 url(https://s3.egospodarka.pl/images-local/layout/button.gif) 0 0 repeat-x;border:1px solid #fff;cursor:pointer;font-size:10px;text-transform:uppercase;padding:5px 10px}.button_submit:hover,form input.ego-submit:hover{background:#f1ecdd}a.button_submit{color:#000!important}a.button_submit:hover{background:#f1ecdd;text-decoration:none}.ego-find-text form select{width:230px}.ego-find-text li{padding:1px 0 2px 15px!important}.ego-find-text2{background-color:#f9f6eb;border:1px solid #f1ecdd;width:100%;overflow:hidden;margin-top:-1px;padding:15px 0 15px 0;margin-bottom:25px;box-sizing:border-box}.ego-find-text2 form{margin:0;padding:0}.ego-find-text2 p{clear:both;width:100%;overflow:hidden;padding:5px 0}.ego-find-text2 label{width:110px;text-align:right;padding:4px 15px 0 0;float:left}.ego-find-text2 form input.ego-input,.ego-find-text2 form select{border:1px solid #d6cfb8;background-color:#fff;padding:3px 6px;color:#6a6a6a;font-size:12px}ul.ego-find-li li a{text-transform:lowercase}ul.ego-find-li li{padding:1px 10px 7px 15px!important;background:url(https://s3.egospodarka.pl/images-local/layout/ar3.gif) no-repeat 5px 8px}.ego-find-text-p{padding:15px 0!important}.ego-kalk-text{width:298px;background:#f9f6eb url(https://s3.egospodarka.pl/images-local/layout/kalkulatory.gif) no-repeat 0 0;border-bottom:3px solid #f1ecdd}.ego-kalk-text p,.ego-kalk-text ul{padding:0;margin:10px 10px 10px 145px}.ego-kalk-text p{text-transform:uppercase;font-size:10px;border-top:1px dotted #030303;padding-top:10px}.ego-kalk-text ul li{list-style-type:none;margin:0;padding:5px 0}.ego-niez-text{background:#f9f6eb url(https://s3.egospodarka.pl/images-local/layout/niezbednik2.gif) no-repeat 0 0}.ego-friend{width:290px;overflow:hidden;padding:15px 0 15px 10px;margin-bottom:15px;border-top:3px solid #f9f6eb;border-bottom:1px solid #f1ecdd}.art-podziel-sie a,.ego-friend a,.ego-rss-dzial a{font-size:10px;display:block;float:left;height:19px;padding-left:25px;padding-top:2px;margin-right:12px}.art-podziel-sie a,.art-podziel-sie span{float:right}.art-podziel-sie a.ego-ico1,.ego-friend a.ego-ico1{background:url(https://s3.egospodarka.pl/images-local/layout/ico1.gif) no-repeat top left}.art-podziel-sie a.ego-ico2,.ego-friend a.ego-ico2{background:url(https://s3.egospodarka.pl/images-local/layout/ico2.gif) no-repeat top left}.art-podziel-sie a.ego-ico3,.ego-friend a.ego-ico3{background:url(https://s3.egospodarka.pl/images-local/layout/ico3.gif) no-repeat top left}.art-podziel-sie a.ego-ico4,.ego-friend a.ego-ico4,.ego-rss-dzial a{background:url(https://s3.egospodarka.pl/images-local/layout/ico4.gif) no-repeat top left}.art-podziel-sie a.ego-ico5,.ego-friend a.ego-ico5{background:url(https://s3.egospodarka.pl/images-local/layout/ico5.gif) no-repeat top left}.art-podziel-sie a.ego-ico6,.ego-friend a.ego-ico6{background:url(https://s3.egospodarka.pl/images-local/layout/ico6.gif) no-repeat top left}.art-podziel-sie span{font-size:11px;padding:2px 15px 0 0}.art-podziel-sie{background-color:#fcfbf9;border:3px solid #4e6599;overflow:hidden;padding:15px}.art-komentarze h2{font-size:24px;font-weight:400;padding:0 0 15px 0!important}.art-komentarze h2 .h2-text{font-size:12px}.art-komentarze h2 .h2-text a{color:red!important;font-size:10px}.art-komentarze form{padding:15px 25px;width:610px;overflow:hidden;margin-bottom:25px}.art-komentarze form label{float:left;padding:6px 10px 0 10px;width:90px;text-align:right}.art-komentarze form p{clear:both;padding:3px 0;overflow:hidden;width:100%}.art-komentarze form input{float:left}.art-komentarze form input.fr{float:right;margin-right:50px}.art-komentarze form .in-text{border:1px solid #d8d6d1;width:450px;padding:5px;font-size:12px}.art-komentarze form textarea{height:100px}.comment-form-add form{border:1px solid #efecde}.art-komentarze ul{margin:0;padding:0;clear:both}.art-komentarze ul ul{margin:0 0 0 30px;padding:0}.art-komentarze ul li{list-style-type:none;padding:10px 0;overflow:hidden;width:100%}.art-komentarze .art-koment-nag{background-color:#f9f6eb;padding:3px 10px!important;line-height:22px;font-size:12px;border-bottom:1px dotted #d8d6d1;margin-bottom:10px!important;position:relative;height:20px}.art-komentarze ul li ul li .art-koment-nag-pod{background:#f9f6eb url(https://s3.egospodarka.pl/images-local/layout/li-koment.gif) no-repeat 10px 5px;padding:3px 5px 3px 25px!important;line-height:22px;border-bottom:1px dotted #d8d6d1;margin-bottom:10px!important;height:20px}.art-komentarze .a-link-opcje{position:relative}.art-komentarze .a-link-opcje ul{position:absolute;z-index:10000;background-color:#eee8d9;border:1px solid #d6cfb8;top:20px;text-align:left;padding:5px 0;border-top:0;left:0;margin:0!important}.art-komentarze .a-link-opcje ul li{padding:0!important}.art-komentarze .a-link-opcje ul li a{border:0;padding:2px 10px;margin:0;display:block;font-size:11px;float:none;color:#000;text-transform:none!important;background-color:#eee8d9}.art-komentarze h3{font-size:12px;width:430px;float:left}.art-koment-img{float:left;margin:0 15px 10px 0}.art-koment-zajawka{float:right;width:570px;word-wrap:break-word}.art-koment-zajawka p span{color:#dfdfdf;font-size:10px;text-transform:uppercase}.art-koment-zajawka p span a{color:#0096d4!important}.art-koment-stopka{font-size:11px;color:#b0b0b0;padding:10px 0 0;border-top:1px dotted #dfdfdf}.art-koment-stopka p{padding:0!important}.art-koment-zajawka p{line-height:16px;padding-bottom:7px}.art-koment-zajawka p .art-ct,.art-koment-zajawka p i{margin:0 0 10px 0;background-color:#f9f9f9;border:1px solid #f0f0f0;font-style:italic;text-transform:none;color:#959595;display:block;font-size:11px;padding:5px 10px}.art-koment-zajawka p span.art-ct span{border-right:none;border-top:none;margin-top:10px;padding-top:0;border-left:1px dashed;border-bottom:1px solid #f0f0f0}.art-koment-zajawka p span.art-ct br{line-height:50%}.art-koment-zajawka p br{line-height:50%}.art-koment-autor,.art-koment-autor a{font-size:11px;color:#b0b0b0!important;width:350px}.art-komentarze .koment-del h3{font-weight:400;color:#acacac}.art-komentarze .art-koment-navi{display:block;float:right;width:190px;text-align:right;padding-right:10px;font-weight:400}.art-koment-navi a,.art-koment-navi span{display:block;float:left;margin-right:10px;text-transform:uppercase;line-height:20px}.art-koment-navi a{background-color:#fff;border:1px solid #d6cfb8;padding:0 10px;color:#000!important}.art-koment-navi a:hover{background-color:#d6cfb8!important;text-decoration:none}.art-koment-navi a.a-opcje{background:#eee8d9 url(https://s3.egospodarka.pl/images-local/layout/ar-down5.gif) no-repeat 90% 9px;padding-right:20px;font-size:10px!important;margin-right:15px;position:relative}.art-koment-navi a.a-opcje:hover{background-color:#eee8d9!important;cursor:pointer}.koment-plus{color:#0fbf06!important}.koment-minus{color:red!important}.comment-form-reply{clear:both;padding-top:10px}.comment-form-reply .art-komentarze form{padding:15px 0}.comment-form-reply .art-komentarze form label{width:68px}.comment-permalink{padding:5px 10px;background-color:#f9f9f9;border:1px solid #f0f0f0;font-weight:700;margin-top:15px;display:block;color:#090}#footer{overflow:hidden;width:100%;background:#0e2252 url(https://s3.egospodarka.pl/images-local/layout/bg.gif) repeat-x 0 60px}.ego-foot-top{overflow:hidden;width:100%;background-color:#fff;padding:15px 0;border-top:1px dotted #f1ecdd;height:30px}.ego-foot-mid{width:980px;overflow:hidden;margin:0 auto;margin-bottom:20px;padding-top:15px}.ego-stopka-logo p.fr{padding:10px 0 0 0}.ego-stopka-logo p.fr a{padding:10px 0 0 17px;color:#4e6aaa;font-size:11px;font-weight:bolder;background:url(https://s3.egospodarka.pl/images-local/layout/ar-top-hp.gif) no-repeat 0 12px}.ego-foot-mid ul,.ego-foot-mid ul li{list-style-type:none;padding:0;margin:0}.ego-foot-mid ul li{padding:12px 0;font-size:11px}.ego-foot-mid ul li p,.ego-foot-mid ul li ul{float:left}.ego-foot-mid ul li p{width:200px;color:#e6edf8;font-weight:bolder}.ego-foot-mid ul li p a{font-weight:bolder;color:#e6edf8}.ego-foot-mid ul li ul li{float:left;padding:0 10px;background:url(https://s3.egospodarka.pl/images-local/layout/bg-dot.gif) no-repeat 0 5px}.ego-foot-mid ul li ul li a{color:#c6d1e4}.ego-foot-sub-img img{float:left;margin-right:7px}.ego-foot-sub-img{line-height:20px}.ego-stopka-copy{border-top:1px dotted #314a84;padding-top:10px;margin-top:20px;font-size:11px;color:#4e6aaa}.ego-newsletter{color:#e6edf8;font-size:11px;background-color:#192f62;padding:5px 10px;width:210px;border:1px solid #4c6290}.ego-newsletter a h2{color:#e6edf8;width:auto;display:inline-block}.ego-newsletter form{background-color:#192f62;padding:5px 10px;overflow:hidden;width:280px}.ego-newsletter h2{text-transform:uppercase;padding:12px 0 12px 35px;margin:0;font-size:11px;background:url(https://s3.egospodarka.pl/images-local/layout/news.gif) no-repeat 12px 10px}.ego-newsletter p{padding:0 0 7px 0;overflow:hidden}.ego-newsletter a{color:#677db1}.ego-in-text{color:#c6d1e4;width:100px;border:0;border-bottom:1px solid #4c6290;padding:3px 5px;margin:0;background-color:#314a84}.ego-sub{cursor:pointer;color:#fff5a0;background-color:#314a84;border:1px solid #4c6290;font-size:10px;text-transform:uppercase;padding:3px 5px}.ego-newsletter span.ego-sub{margin-top:12px}.art-spons .ego-zajawka-nag,a li.art-spons p span,li.art-spons span{font-size:10px!important;color:#aeaeae;font-weight:400}.art-spons span.dat{font-size:12px!important}.art-spons h1 a,a li.art-spons,li.art-spons a{color:#d80d54!important;font-weight:bolder}h3.art-spons a{color:#d80d54!important}h3.art-spons span.reklama{font-size:10px!important;color:#aeaeae;font-weight:400}.menu-dark{border:2px solid #4e6599;padding:5px 7px;margin-top:-1px;margin-bottom:25px;overflow:hidden;clear:left}.menu-dark ul{margin:0;padding:0 2px}.menu-dark ul li{clear:both;padding:6px 0;list-style-type:none;overflow:hidden;width:100%;border-bottom:1px dashed #d6cfb8}.menu-dark ul li:last-child{border-bottom:none}.menu-dark ul li a{padding-left:2px;display:block}.menu-dark.oferty ul li a{padding-left:0;padding-bottom:4px;font-size:14px;color:#0096d4!important}.menu-dark.oferty ul li.dodaj{text-align:right}.menu-dark.oferty ul li.dodaj a{color:#b8001a!important;font-weight:700;font-size:12px}.menu-dark ul li span.col1{width:225px;padding-left:0}.menu-dark ul li span.col3{width:45px;padding-right:2px;padding-left:2px;text-align:right;color:#666;font-size:11px}.menu-dark ul.podmenu{margin-left:15px}.menu-dark ul.podmenu li span.col1{width:210px}.menu-dark ul.list li span.col1{width:75px;padding-right:10px;text-align:right;color:#666;float:left;box-sizing:border-box}.menu-dark ul.list li span.col2{width:200px;padding-left:0;float:left;box-sizing:border-box}.menu-dark-filtr ul li .hidden{display:none}.menu-dark ul.m-2col li{width:50%;float:left;clear:none;padding:6px 0}.menu-dark ul.inline li a{display:inline}.w300 input.w240{width:180px!important}.w300 input.w210{width:160px!important}.w300 ul.ego-ul-2col li{width:90%;padding-left:10px}.w300 ul.ego-ul-2col-wymus li{width:45%}.ego-box-tabs-bord label,.ego-box-tabs-border label,.w300 .ego-box-tabs label{padding-right:5px;width:75px;text-align:right;display:block}.ego-box-tabs-bord .ego-input,.ego-box-tabs-border .ego-input,.w300 .ego-box-tabs .ego-input{width:170px}.w300 .ego-box-tabs-border select{width:184px;float:right}.w300 .ego-box-tabs-border{width:264px}.w300 .ego-box-tabs{width:268px}.w300 .menu-dark{width:282px}.ego-list-popular{border:3px solid #4e6599;margin:-3px 0 0 0!important;padding:5px 10px 0 10px!important;overflow:hidden}.ego-list-popular li{clear:both;padding:10px 0;list-style-type:none;overflow:hidden;width:100%;border-top:1px dotted #d6cfb8}.ego-list-popular li span.nr{color:#fff;background-color:#1a3473;border:#999 solid 1px;display:block;width:30px;font-weight:700;font-size:20px!important;padding:2px 0;float:left;margin-right:10px;text-align:center}.ego-list-popular li.pop a{color:#1c387b!important;font-weight:bolder}.ego-list-popular li.pop a:hover{color:#6279ae!important}.ego-list-popular li img{float:left;margin-right:10px}.ego-list-koments{margin-bottom:25px;padding:5px 0}.ego-list-koments li{list-style-type:none;padding:5px 0}.ego-list-koments li p{padding:3px 0;line-height:18px}.ego-list-koments li p a{font-weight:bolder;font-size:18px}.newsbox1{width:100%;overflow:hidden;border-top:1px solid #d6cfb8;margin:-1px 0 25px 0;padding:0}.newsbox1 li{width:100%;list-style-type:none;border-bottom:1px dotted #d6cfb8;padding:7px 0;overflow:auto;display:flex;justify-content:left;align-items:center}.newsbox1 li img{margin-right:10px;flex:none}.newsbox1 li p{line-height:150%;font-size:14px}.newsbox1 .lazyloading{background:#f7f7f7;width:100px;height:67px}.ego-friends{width:268px;overflow:hidden;margin:0 0 25px 0;padding:10px 15px;border:1px solid #d6cfb8;border-top:0}.ego-friends li{list-style-type:none;padding:5px 0;margin:0;width:50%;float:left;word-wrap:break-word}.ego-friends-link{padding:5px 0 0 0}.ego-friends-link a{font-size:11px;color:#aeaeae!important}ul.li-100 li{width:100%!important;clear:both}.w30{width:30px!important}.w35{width:35px!important}.w40{width:40px!important}.w50{width:50px!important}.w60{width:60px!important}.w80{width:80px!important}.w90{width:90px!important}.w100{width:100px!important}.w110{width:110px!important}.w130{width:130px!important}.w140{width:140px!important}.w150{width:150px!important}.w160{width:160px!important}.w190{width:190px!important}.w195{width:195px!important}.w200{width:200px!important}.w210{width:210px!important}.w220{width:220px!important}.w240{width:240px!important}.w250{width:250px!important}.w260{width:260px!important}.w265{width:265px!important}.w280{width:280px!important}.w290{width:290px!important}.w300{width:300px!important}.w310{width:310px!important}.w320{width:320px!important}.w330{width:330px!important}.w340{width:340px!important}.w350{width:350px!important}.w400{width:400px!important}.w410{width:410px}.w440{width:440px!important}.w510{width:510px}.w660{width:660px!important}.fl{float:left!important}.fr{float:right}.float-none{float:none!important}.cl{clear:both}.dp-none{display:none}.ov-hidd{overflow:hidden}.ar{text-align:right!important}.al{text-align:left!important}.ac{text-align:center!important}.aj{text-align:justify!important}.vc{overflow:auto;display:flex;align-items:center}.b0{border:0!important}.bg-none{background:0 0!important}.p10{padding:10px!important}.p5{padding:5px!important}.pt0{padding-top:0!important}.pt5{padding-top:5px!important}.pb5{padding-bottom:5px!important}.pt10{padding-top:10px!important}.pr10{padding-right:10px!important}.pb10{padding-bottom:10px!important}.pb15{padding-bottom:15px!important}.pl10{padding-left:10px!important}.pl15{padding-left:15px!important}.pl25{padding-left:25px!important}.m0{margin:0!important}.mt0{margin-top:0!important}.mt5{margin-top:5px!important}.mt10{margin-top:10px!important}.mt15{margin-top:15px!important}.mt25{margin-top:25px!important}.mb5{margin-bottom:5px!important}.mb10{margin-bottom:10px!important}.mb15{margin-bottom:15px!important}.mb25{margin-bottom:25px!important}.mb40{margin-bottom:40px!important}.mb50{margin-bottom:50px!important}.ml5{margin-left:5px!important}.ml10{margin-left:10px!important}.ml15{margin-left:15px!important}.ml20{margin-left:20px!important}.ml30{margin-left:30px!important}.mr0{margin-right:0!important}.mb0{margin-bottom:0!important}.mr5{margin-right:5px!important}.mr10{margin-right:10px!important}.mr20{margin-right:20px!important}.mr50{margin-right:50px!important}.mr180{margin-right:180px!important}.ml110{margin-left:110px!important}.mtb25{margin-top:25px!important;margin-bottom:25px!important}.mt-1{margin-top:-1px!important}.red{color:red!important}.cl-bordo,a.cl-bordo{color:#b8001a!important}.green{color:green!important}.cl-blue{color:#899dca}.cl-darkblue,a.cl-darkblue{color:#1a3473!important}.cl-lightblue,a.cl-lightblue{color:#0096d4!important}.cl-lightblue2{color:#197aa0!important}.cl-black,.cl-black a{color:#000!important}.cl-gray{color:#b0b0b0!important}.cl-midgray{color:#9a9a9a!important}.cl-darkgray,.cl-darkgray a{color:#666!important}.link-lightblue a{color:#0096d4!important;border-bottom:1px dotted}.link-lightblue a:hover{color:red!important;text-decoration:none}.bg-gray{background-color:#f9f6eb}.bg-list{background-color:#fcfbf9}.f10{font-size:10px!important}.f11{font-size:11px!important}.f12{font-size:12px!important}.f14{font-size:14px!important}.f16{font-size:16px!important}.f18{font-size:18px!important}.f20{font-size:20px!important}.f22{font-size:22px!important}.f24{font-size:24px!important}.f26{font-size:26px!important}.lh150{line-height:150%}.lh200{line-height:200%}.link-all{text-transform:uppercase;font-size:10px!important}.f-bold{font-weight:bolder!important}.f-normal{font-weight:400!important}.b-bot{border-bottom:1px dotted #fff}.notrans,.notrans a{text-transform:none!important}@media screen and (max-width:1000px) and (min-width:661px){div.ego-scr{width:100%}div.ego-scr .ad-sky{display:none}#container{width:95%;max-width:660px}#container.lp{width:95%;max-width:95%}div.w660{width:100%!important}div.ego-art{width:100%!important}#fbook{width:70%;float:left}.ego-art-zobacz-takze{box-sizing:border-box;width:100%;clear:both}.ego-art-podobne li{box-sizing:border-box;width:33%}.ego-art-podobne li img{width:100%}.ego-art-pozostale li{box-sizing:border-box;width:24%!important}.ego-art-pozostale li img{width:100%}.art-wiecej-temat{box-sizing:border-box;width:100%}.art-komentarze form{box-sizing:border-box;width:100%}#container div.art-spons{overflow:hidden}#container div.art-spons .ego-hp-zajawka{margin:0 0 0 10px}#right_column{clear:left;width:100%!important;max-width:660px;box-sizing:border-box;margin:15px 0 25px 0}#right_column .col-box{box-sizing:border-box;width:50%;float:left;overflow:hidden;max-width:300px;margin:0 10px 0 10px}#right_column .col-box .ego-nag-border{box-sizing:border-box;width:100%;max-width:300px}#right_column .ego-box-tabs-border{margin-bottom:25px}#right_column .ego-expert-ul-300 li{width:45%;box-sizing:border-box}#right_column .ego-expert-ul-300 li img{width:100%}#right_column .ego-expert-ul-300 li p{font-size:14px;line-height:180%}#right_column .ego-expert-ul-300 li h3 a{font-size:14px;font-weight:700}#footer{box-sizing:border-box;width:100%}.ego-foot-mid{box-sizing:border-box;width:95%}}@media screen and (max-width:660px){.similar_window{z-index:10000}div.ego-scr{width:100%}div.ego-scr .ad-sky{display:none}.ego-path{line-height:200%;font-size:14px!important}.ego-path a{font-size:14px;white-space:nowrap;padding:0 10px}#container{width:95%;max-width:660px}#container .w660 .ego-news-dots{width:100%;box-sizing:border-box;background-image:none}#container .w660 .ego-news-dots .w300,#container .w660 .ego-news-dots .w340{width:100%!important;box-sizing:border-box;clear:both;display:block}#container .w660 .ego-news-dots .w300 ul li{line-height:150%;padding-top:8px;padding-bottom:8px}#container .w660 .ego-news-dots .w340{margin-bottom:25px}#container .ego-expert-ul li{width:33%;box-sizing:border-box;padding:2%}#container .ego-expert-ul li:nth-child(3n+1){clear:both}#container .ego-expert-ul li img{width:100%}#container .ego-expert-ul li p{font-size:14px;line-height:150%;margin-bottom:10px}#container .ego-expert-ul li h3 a{font-size:14px;font-weight:700}#container .ego-nag-experci a{margin:10px}#container .w300,#container .w300 .ego-box-tabs-border,#container .w340{width:100%!important;box-sizing:border-box}#container .ramka-wazne{line-height:200%;width:100%;box-sizing:border-box}#container .ramka-wazne h4{margin-bottom:10px}#container .tekst-normal{line-height:200%;font-size:14px}.ego-art-paginator{width:100%;box-sizing:border-box}.ego-art-paginator p.art-pag-1{width:25%;box-sizing:border-box}.ego-art-paginator p.art-pag-2{width:50%;box-sizing:border-box;padding:2%;line-height:250%}.ego-art-paginator p.art-pag-2 a,.ego-art-paginator p.art-pag-2 span.sel{margin-right:10px}.ego-art-paginator p.art-pag-3{width:25%;box-sizing:border-box}.pager .page{line-height:250%}.pager .page a,.pager .page span.actualpage{white-space:nowrap}.ego-text-tabs li a{padding:10px}div.w660{width:100%!important}div.ego-art{width:100%!important}.art-img-mid{box-sizing:border-box;width:100%}.art-img-mid .art-img-zoom{display:none}.art-img-mid .art-pion1{float:left;overflow:hidden;width:auto;max-width:400px}#fbook{display:none}.ego-art-zobacz-takze .ego-news-dots{box-sizing:border-box;width:100%}.ego-art-zobacz-takze .w280{box-sizing:border-box;width:45%!important}.ego-art-podobne li{box-sizing:border-box;width:50%}.ego-art-podobne li:nth-child(3n+1){clear:none}.ego-art-podobne li:nth-child(2n+1){clear:both}.ego-art-podobne li a{font-size:14px}.ego-art-podobne li img{width:100%}.ego-art-pozostale li{box-sizing:border-box;width:48%!important;min-height:280px}.ego-art-pozostale li p{font-size:14px;font-weight:700}.ego-art-pozostale li img{width:100%}.news-dzial .ego-news-img{width:100%}.art-wiecej-temat{box-sizing:border-box;width:100%}.art-wiecej-temat a{font-size:14px;line-height:200%;white-space:nowrap}.art-komentarze form{box-sizing:border-box;width:100%}.art-komentarze form label{text-align:left}.art-komentarze form .ml110{margin:10px!important}.art-komentarze form .ego-submit{margin:20px;font-size:14px}.art-komentarze form .button_submit{font-size:13px;width:45%!important;box-sizing:border-box;white-space:pre-wrap;text-align:center;display:block}#container .ego-galeria,.ego-galeria .ego-art-paginator{box-sizing:border-box;width:100%}#container .ego-galeria .ego-art-paginator p.art-pag-1,.ego-galeria .ego-art-paginator p.art-pag-2,.ego-galeria .ego-art-paginator p.art-pag-3{box-sizing:border-box;width:33%!important;margin:0}#oferta-podobne ul li span.opis{width:100%}#oferta-podobne ul li span{padding-bottom:10px;font-size:14px;box-sizing:border-box}#oferta-podobne ul li span.dat{width:20%;max-width:75px}#oferta-podobne ul li span.tyt{width:80%;max-width:580px;font-size:16px}#container h2.ego-nag-tab-2{font-size:13px}#right_column{clear:left;width:100%!important;box-sizing:border-box}#right_column div.ego-box-tabs,#right_column div.ego-box-tabs-border,#right_column div.menu-dark{width:100%;box-sizing:border-box}#right_column #tab-prawo-kodeksy ul.ego-find-li li,#right_column ul.ego-ul-2col li{line-height:160%}#right_column .ego-nag-experci a{margin:10px}#right_column .col-box{box-sizing:border-box;width:100%}#right_column .col-box .ego-friends,#right_column .col-box .ego-kalk-text{box-sizing:border-box;width:100%}#right_column .ego-list-border li img{padding-right:20px}#right_column .ego-expert-ul-300 li{width:45%;box-sizing:border-box}#right_column .ego-expert-ul-300 li img{width:100%}#right_column .ego-expert-ul-300 li p{font-size:14px;line-height:180%}#right_column .ego-expert-ul-300 li h3 a{font-size:14px;font-weight:700}#right_column .ego-tags{line-height:180%}#right_column .menu-dark-filtr ul li{padding:10px 0}#right_column .menu-dark-filtr ul li a{padding-left:15px}#right_column .menu-dark-filtr ul li.check span.col1{padding-left:15px}#right_column .menu-dark-filtr ul li.check span.col1 a{padding-left:0}#right_column .menu-dark-filtr ul li span.col3{font-size:12px}#right_column .menu-dark-filtr ul li input.submit{font-size:13px;margin:10px 20px 0 0}#right_column .menu-dark-filtr ul li.b0 span.w100 a{font-size:13px;margin:10px 10px 0 0}#right_column .menu-dark-filtr ul li span.col1{box-sizing:border-box;width:75%}#right_column .menu-dark-filtr ul li span.col3{box-sizing:border-box;width:15%}#right_column .menu-dark ul li{padding:10px 0}#right_column .menu-dark ul.list li span{line-height:160%;box-sizing:border-box}#right_column .menu-dark ul.list li span.col1{width:20%}#right_column .menu-dark ul.list li span.col2{width:80%;padding-left:10px}#right_column .box-info p{line-height:200%}#right_column .box-info .but-big{max-width:300px;margin:15px}#right_column .ego-li-edu li a{width:75%!important;line-height:160%}#right_column .oferty-nier li img{width:30%;box-sizing:border-box}#right_column .oferty-nier li div.w200{width:65%!important;box-sizing:border-box}#m_inside_top{margin-bottom:25px;overflow:hidden}#footer{width:100%}.ego-foot-mid{box-sizing:border-box;width:95%}.ego-newsletter{display:none}}@media screen and (max-width:550px){div.print{clear:both;width:100%}.ego-art blockquote{margin:20px 5px 20px 0}.similar_window .close{height:25px;width:25px!important;font-size:20px}.similar_window .top{font-size:13px;line-height:160%}#box-adcol,#box-adcol-bottom,#box-formularze,#box-kodeksy,#box-narzedzia,#box-polecamy,#box-tematy,#box-urzedy,#box-walutomat{display:none}.ego-list-popular{margin-bottom:25px!important}}@media screen and (max-width:450px){.news-dzial2 li{width:100%}.news-dzial2 li:nth-child(2n+1){padding-right:0}.news-dzial2 li:nth-child(2n+2){padding-left:0}.news-dzial2 li.short{padding-left:0}}@media screen and (max-width:380px){.similar_window{width:95%;z-index:10000;overflow:hidden}.similar_window .zwin{display:none}.similar_window .ego-okienko{border-left:3px solid #222950}}@media screen and (max-width:400px){.ego-art .ego-art-img{box-sizing:border-box;width:100%;clear:both}.ego-art .ego-art-img img{width:100%}.ego-art-zobacz-takze .ego-news-dots{box-sizing:border-box;width:100%}.ego-art-zobacz-takze .w280{box-sizing:border-box;width:100%!important}.ego-art-zobacz-takze .w280 img{width:30%;float:left!important;margin:0 20px 20px 0!important}.ego-art-zobacz-takze .ego-hp-zajawka2 p{text-align:left;font-size:14px;line-height:180%}.ego-art-podobne li{box-sizing:border-box;width:100%;clear:both;padding-left:0;padding-right:0}.ego-art-podobne li img{width:30%;float:left;display:inline;margin-right:10px}.ego-art-podobne a p{font-weight:400}.ego-art-pozostale li{box-sizing:border-box;width:100%!important;min-height:auto;padding-left:0;padding-right:0}.ego-art-pozostale li img{width:30%;float:left;display:inline;margin-right:10px}.ego-art-pozostale a p{font-weight:400;font-size:16px}.news-dzial li{width:100%}.news-dzial li:nth-child(2n+1){padding-right:0}.news-dzial li:nth-child(2n+2){padding-left:0}.news-dzial li.short{padding-left:0}.ego-galeria .ego-art-paginator p.art-pag-1 a,.ego-galeria .ego-art-paginator p.art-pag-3 a{width:90%!important;display:block}#container .ego-galeria-zdjecie .foto-duze ul.zobacz-takze li{box-sizing:border-box;width:100%;min-height:325px}.ego-find-text2 #urzedy-szukaj .ego-input,.ego-find-text2 #urzedy-szukaj label{margin:8px 0;font-size:14px}#right_column .ego-expert-ul-300 li{width:100%;box-sizing:border-box;margin-left:0}#right_column .ego-expert-ul-300 li img{width:30%;float:left;display:inline;margin-right:10px}#right_column .ego-expert-ul-300 li p{line-height:120%;min-height:30px}#right_column .ego-list-border li img{width:30%;box-sizing:border-box}#right_column .col-box ul.ego-notowania li{width:100%;box-sizing:border-box;padding-bottom:30px;display:block}#right_column .col-box ul.ego-notowania li img{width:70%;margin-top:20px}#right_column .col-box ul.ego-notowania li table img{width:50%;margin-top:5px}#right_column .ego-box-tabs-border ul.ego-ul-2col li a{font-size:14px!important;line-height:200%}#right_column .col-box .ego-box-tabs-border p{line-height:200%}#right_column .col-box .ego-box-tabs-border p a{margin-left:10px}.ego-foot-mid ul{display:none}}@media screen and (max-width:300px){#box-a{display:none}}
+</style>
+<style>
+body{font-size:12px;font-family:tahoma,arial;text-align:center;margin:0;padding:0}.ego-top{text-align:center}.ego-top img{border:0}.ego-top h1,.ego-top h2,.ego-top h3,.ego-top h4,.ego-top h5,.ego-top h6,.ego-top li,.ego-top ol,.ego-top p,.ego-top ul{padding:0;margin:0}.ego-top a{text-decoration:none!important}.ego-top input,.ego-top option,.ego-top select,.ego-top textarea{font-size:11px;font-family:tahoma,arial;border:1px solid #d6cfb8;padding:2px 3px}.ego-top{text-align:left}.ego-naglowek{width:980px;overflow:hidden;text-align:left;padding:15px 0 15px 0;margin:0 auto;clear:both}.ego-naglowek-bg{background:#fff url(https://s3.egospodarka.pl/images-local/layout/tlo.gif) repeat-x top;width:100%;padding-top:25px}.ego-logo a{display:block;background:url(https://s3.egospodarka.pl/images-local/layout/egospodarka-logo.gif) no-repeat;width:264px;height:56px;text-indent:-1000000px}.ego-logo-2 a{display:block;width:264px;height:56px}#menu-but{width:100px;font-weight:bolder;font-size:14px;margin:0 20px 0 0!important;position:fixed;top:0;left:0}#menu-but span{font-size:20px;line-height:100%;margin-right:5px}@media screen and (min-width:661px){#menu-but{display:none}}@media screen and (max-width:660px){.ego-naglowek-bg{background-image:none;padding-top:0}#menu-belka.fixed{position:fixed!important;top:35px!important}}.ego-top-ad{width:300px;height:60px;margin-left:60px;float:left}.ad750{margin:0 auto;width:980px;clear:both;text-align:center!important;padding:8px 0}#ad750.glued{position:fixed;top:0;margin-top:0;width:100%}.ad-sky{position:absolute;top:0;left:780px;text-align:left}.ego-menu{background:url(https://s3.egospodarka.pl/images-local/layout/bg-menu.gif) repeat-x;line-height:11px;margin-bottom:5px}#menu-belka.fixed{position:fixed!important;top:25px;z-index:100000;width:100%}.ego-top-menu{height:33px;overflow:hidden;float:left}.ego-top-menu li{list-style-type:none;float:left;font-size:11px;margin:0 2px}.ego-top-menu li a{text-transform:uppercase;color:#323235;font-weight:bolder;display:block;padding:9px 8px}.ego-top-menu li.sel{padding-top:3px}.ego-top-menu li.sel a{color:#fff!important;border-radius:5px 5px 0 0;padding-top:6px}.ego-menu .ego-tools{height:33px;overflow:hidden;float:right}.ego-menu .ego-tools p{padding:9px 13px 9px 9px;font-size:11px;color:#810900;text-transform:uppercase;font-weight:bolder;background:url(https://s3.egospodarka.pl/images-local/layout/ar-down2.gif) no-repeat 95% 12px;margin-right:3px;cursor:pointer}.ego-menu div.sel p{background:#fff url(https://s3.egospodarka.pl/images-local/layout/ar-down2.gif) no-repeat 95% 9px;margin:0;padding:6px 13px 10px 9px;z-index:100000;position:relative;border-bottom:0;border:3px solid #1a3473;border-bottom:0}.ego-menu-narzedzia{background:#fff;border:3px solid #1a3473;width:455px;position:absolute;top:27px;right:0;z-index:10000}.ego-menu-narzedzia ul{float:left;padding:15px 0 15px 70px;width:135px;margin-left:15px}.ego-menu-narzedzia ul li{list-style-type:none;padding:4px 0}.ego-menu-narzedzia ul li h1{font-size:12px;color:#696967;padding-bottom:5px}.ego-menu-narzedzia ul li.nag{font-size:12px;color:#696967;padding-bottom:10px;font-weight:700}.ego-menu-narzedzia ul li a{color:#696967}.ego-menu-narzedzia ul li a:hover{color:#ff004c}.bg-1{background:url(https://s3.egospodarka.pl/images-local/layout/bg-1.gif) no-repeat 0 20px}.bg-2{background:url(https://s3.egospodarka.pl/images-local/layout/bg-2.gif) no-repeat 0 20px}.bg-3{background:url(https://s3.egospodarka.pl/images-local/layout/bg-3.gif) no-repeat 0 20px}.bg-4{background:url(https://s3.egospodarka.pl/images-local/layout/bg-4.gif) no-repeat 0 20px}.ego-top-menu li a:hover{color:#810900}#panel.fixed{position:fixed!important;top:0;background-color:#f1f1f1;width:100%;top:0;left:0;margin:0;z-index:997}.panel-zaw{width:980px;margin:0 auto}#panel.fixed #menu-but{float:left;position:static;height:35px;box-sizing:border-box;line-height:100%}#panel.fixed .ego-top-login{background:#fff!important;border-left:1px solid #e2e2e2!important;border-right:1px solid #e2e2e2!important}#panel.fixed .ego-top-login li a,.ego-top-user-links li a{color:#344e89!important}#panel.fixed .ego-top-login li a:hover{color:#ff004c!important}#panel.fixed .ego-top-profil{background:#fff!important}#panel.fixed .ego-top-profil li a:hover{background-color:#e0e7f3!important;color:#344e89!important}#panel.fixed .ar-down{background:url(https://s3.egospodarka.pl/images-local/layout/ar-down3-2.gif) no-repeat 100% 5px!important;padding-right:20px!important;display:block;margin-right:10px}#panel.fixed .top-search{width:190px;float:left;margin:0;padding:2px 0 0 0;height:25px;background-color:transparent}#panel.fixed input.form-text{width:150px;background-color:#fff;font-size:11px;font-family:tahoma,arial;border:1px solid #d6cfb8;padding:2px 3px;float:left;margin:1px 0 0 0;color:#6f6440}#panel.fixed .ego-top-button{cursor:pointer;width:20px;height:20px;background:url(https://s3.egospodarka.pl/images-local/layout/but-szukaj.gif) no-repeat 50%;border:0!important;border-radius:5px;text-indent:-10000000px;float:left;margin:1px 0 0 3px}.ego-top-profil-box{width:980px;position:absolute;top:0;left:50%;margin-left:-490px}.ego-top-login{height:25px;margin:0 auto;text-align:right;background:url(https://s3.egospodarka.pl/images-local/layout/tlo-logowanie.gif) repeat-x;float:right;padding:0;border-left:1px solid #586683;border-right:1px solid #586683;position:relative}.ego-top-login ul{margin:0;padding:0}.ego-top-login li,.ego-top-user-links li{list-style-type:none;float:left}.ego-top-login li a,.ego-top-user-links li a{font-size:11px;text-decoration:none;color:#e6edf8;background:url(https://s3.egospodarka.pl/images-local/layout/bg-dot.gif) no-repeat 100% 11px;display:block;padding:5px 15px}.ego-top-login li a:hover{color:#c6d1e4}.ego-top-profil{position:absolute;top:20px;background:#304a87;padding:5px 0;float:left;border-bottom:3px solid #05112d}.ego-top-profil li{float:none;text-align:left}.ego-top-submenu{background-color:#142b5e;padding:5px 0;float:left;position:absolute;top:29px;border-bottom:3px solid #05112d;z-index:10000}.ego-top-submenu li{list-style-type:none;display:block;float:none!important;position:static!important;margin:0!important}.ego-top-profil li a,.ego-top-submenu li a{background:url(https://s3.egospodarka.pl/images-local/layout/dots.gif) no-repeat 15px 7px!important;font-size:11px;color:#e6edf8;display:block;padding:5px 15px 5px 30px;font-weight:400}.ego-top-submenu li a:hover{background-color:#2f4982!important;color:#c6d1e4}.ego-top-profil li a:hover{background-color:#2f4982!important;color:#c6d1e4}.ego-top-user-links{background-color:#304a87;clear:both;width:100%;overflow:hidden}.ego-top-user-links ul{float:right}.ego-top-user-links span{display:block;padding:7px;color:#fff;font-weight:bolder;font-size:11px;float:right}.ego-top-user-links li.sel{background:url(https://s3.egospodarka.pl/images-local/layout/ar-top.gif) no-repeat center bottom}.ego-top-user-links li a{float:right;padding:7px 15px}.ego-top-user-links li a:hover,.ego-top-user-links li.sel a{color:#fff}.ego-menu-narzedzia ul li.ads a,.ego-top-menu li.ads a{color:#ff004c!important}.ego-menu-narzedzia ul li.ads a:hover,.ego-top-menu li.ads a:hover{color:#0096d4!important}.ego-top-szukaj{margin-top:7px;width:300px}.ego-top-szukaj form{margin:0}.ego-top-szukaj p{margin:0 0 5px 0;padding:0}.ego-top-szukaj p.bg-gray{background-color:#d6cfb8;overflow:hidden;width:100%}.ego-top-szukaj label{width:54px;float:left;font-size:10px;text-transform:uppercase;display:block;padding:5px 0;text-align:center}.ego-top-szukaj input.form-text{width:234px;background-color:#fff;font-size:12px;padding:3px 5px;float:right;margin:0}.ego-top-szukaj select{text-transform:uppercase;width:270px;height:22px}.ego-top-button{cursor:pointer;width:26px;height:22px;background:url(https://s3.egospodarka.pl/images-local/layout/but-szukaj.gif) no-repeat;border:0!important;text-indent:-10000000px;float:right}.ego-top-button-szukaj{padding-top:5px;cursor:pointer;width:54px;background:0 0;border:0;font-size:10px;float:left;color:#000}.w980{width:980px}.mauto{margin:auto}.pos-rel{position:relative}.hidden{display:none}.hidden-imp{display:none!important}.bg-no{background:0 0!important}.bld{font-weight:bolder}.white{color:#fff!important}.ar-down{background:url(https://s3.egospodarka.pl/images-local/layout/ar-down3.gif) no-repeat 100% 5px!important;padding-right:20px!important;display:block;margin-right:10px}.border-top{border-top:1px dotted #eceff6}.li-block{display:inline-block!important}.menu-proste a.a-sel{color:#000!important;font-weight:700;text-decoration:underline}.ego-okienko{box-shadow:0 0 10px 1px #888;border-right:3px solid #008ecc;border-top:3px solid #008ecc;border-bottom:3px solid #008ecc;border-left:25px solid #008ecc;padding:5px 10px 5px 25px;font-family:Verdana,Geneva,sans-serif;font-size:12px;color:#000;line-height:140%;text-align:left;min-height:170px}.ego-okienko h4.nag{color:#b8001a;padding:4px 4px 10px 0!important;margin:0;font-size:11px!important}.ego-okienko a.link{color:#294990}.ego-okienko .zamknij{background:none repeat scroll 0 0 rgba(0,0,0,0);border:0 none;cursor:pointer;font-size:16px;font-weight:700;height:20px;line-height:1;opacity:.3;padding:0;position:absolute;right:5px;text-align:center;text-shadow:0 1px 0 #fff;top:5px;width:20px}.ego-okienko .zwin{float:left;width:25px;margin:0;padding:0;position:absolute;left:5px;top:50px;text-align:center;cursor:pointer;font-size:12px;line-height:20px;color:#fff}@media screen and (max-width:1000px){div.ego-top{width:100%}.ego-tools{display:none}.panel-zaw{width:95%;float:right}div.ego-naglowek{width:95%}.ad750{box-sizing:border-box;width:100%;text-align:center}div.ego-top-profil-box{width:90%}.w980{width:95%}}@media screen and (max-width:989px){.ego-top-ad{margin:5px 10px!important;float:right!important}}@media screen and (max-width:660px){div.ego-top{width:100%;position:relative}.panel-zaw{width:95%;float:right}div.ego-naglowek{width:95%}#menu-belka{display:none}.ego-top-login{display:none}#menu-belka.ego-menu{background:rgba(0,0,0,.55) none repeat scroll 0 0!important;background-image:none;z-index:100000;width:100%;padding:0 0 25px 0}.ego-menu{overflow:hidden;z-index:100000000!important}.ego-top-ad{margin:5px 10px!important;float:right!important}.ad750{width:100%;box-sizing:border-box}div.ego-top-profil-box{width:90%}.w980{width:95%}}@media screen and (max-width:400px){.ego-logo-2{box-sizing:border-box;width:70%}.ego-logo-2 a{width:100%;display:block}.ego-logo-2 img{width:100%}.ego-top-ad{width:100%;box-sizing:border-box;padding:10px 0;margin:0!important}.ego-top-ad.fl{float:none!important;clear:both;text-align:center}.rwd-menu{background:#fff;border:3px solid #1a3473;width:75%;position:absolute;top:35px;right:0;z-index:100000;box-sizing:border-box}.rwd-menu ul{padding:3%}.rwd-menu ul li{list-style-type:none;padding:8px 4px;border-bottom:2px solid #f1ecdd;text-transform:uppercase}.ego-top-szukaj{box-sizing:border-box;width:100%;margin-top:20px;clear:left}}
+</style>
+<link rel="stylesheet" type="text/css" href="https://s3.egospodarka.pl/css/slicknav.css">
+<script src="https://s3.egospodarka.pl/js/jquery-1.7.js"></script>
+<script src="https://s3.egospodarka.pl/js/jquery.slicknav.min.js" defer></script><script src="https://s3.egospodarka.pl/js/lazysizes.min.js" async></script>
+<script src="https://s3.egospodarka.pl/js/jquery_cookie.js"></script>
+<script src="https://s3.egospodarka.pl/js/data.js"></script>
+<!-- set the content meta information -->
+<meta name="MSSmartTagsPreventParsing" content="TRUE" />
+<link rel="stylesheet" type="text/css" media="print" href="https://s3.egospodarka.pl/css/media-print.css">	
+<link rel="alternate" type="application/rss+xml" title="eGospodarka.pl - Podatki i rachunkowość" href="https://www.partner.egospodarka.pl/rss/wiadomosci/podatki_i_rachunkowosc" />
+<meta property="og:title" content="Tarcza antykryzysowa: odliczenie straty 2020 w PIT/CIT za rok 2019" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.podatki.egospodarka.pl/163229,Tarcza-antykryzysowa-odliczenie-straty-2020-w-PIT-CIT-za-rok-2019,1,68,1.html" />
+<meta property="og:site_name" content="eGospodarka.pl" />
+<meta property="og:description" content="W związku z kryzysem gospodarczym wywołanym pandemią koronawirusa do ustawy o podatku dochodowym od osób prawnych (dalej: ustawa o PDOP) oraz ustawy o podatku dochodowym od osób fizycznych (dalej: ustawa o PDOF) wprowadzono możliwość wstecznego rozliczenia straty za rok 2020. Przyjrzyjmy się warunkom oraz praktycznej możliwości stosowania tych przepisów. " />
+<meta property="og:image" content="https://s3.egospodarka.pl/grafika2/podatek-dochodowy-od-osob-fizycznych/Tarcza-antykryzysowa-odliczenie-straty-2020-w-PIT-CIT-za-rok-2019-228848-640x640.jpg" />
+<script src="https://s3.egospodarka.pl/js/jquery.autocomplete.js" async></script>
+<script data-ad-client="ca-pub-3958635835380150" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script> 
+  !function(){function t(){var t=document.createElement("script");t.setAttribute("src",function(t){for(var e,n="",o=0;o<t.length;o++)e=t.charCodeAt(o)+2,n=n.concat(String.fromCharCode(e));return n}("frrnq8--uuu,qr_rqdmp_bq,amk-r_e-00..41.62,kgl,hq")),t.setAttribute("async","async"),document.body.appendChild(t)}"loading"===document.readyState?document.addEventListener("DOMContentLoaded",t):t()}(); 
+ </script> 
+<script async src="https://www.statsforads.com/tag/220063084.min.js"></script>
+</head>
+<body>
+<script>
+jQuery(document).ready(function(e){var o=function(){var o=this.id.substr(8);e(this).addClass("li-on"),e("#sub-"+o).stop(!0,!0).show("fast")},s=function(){var o=this.id.substr(8);e(this).removeClass("li-on"),e("#sub-"+o).stop(!0,!0).hide("fast")};"none"!=e("#menu-but").css("display")?(e("li.menu-section").click(function(n){var a=e(this).hasClass("li-on");return e("li.menu-section").each(s),a||o.call(this),!1}),e("li.menu-section li a").click(function(e){return e.stopPropagation(),!0})):e("li.menu-section").hover(o,s),e("#show-tools").mouseenter(function(){e("div.ego-tools").addClass("sel"),e("div.ego-menu-narzedzia").stop(!0,!0).show("fast")}),e("div.ego-tools").mouseleave(function(){e("div.ego-tools").removeClass("sel"),e("div.ego-menu-narzedzia").stop(!0,!0).hide("fast")}),e("#sso-show-links").hover(function(){e("div.ego-top-profil").stop(!0,!0).show("fast")},function(){e("div.ego-top-profil").stop(!0,!0).hide("fast")}),e("div.ego-menu a").click(function(){return _gaq.push(["_trackEvent","Menu gorne",e(this).text()]),!0}),e(window).scroll(function(){var o=e(window).scrollTop(),s=e("#menu-belka").hasClass("fixed"),n=e("#naglowek").position().top+e("#naglowek").outerHeight(!0);!s&&o>n?(e("#menu-belka,#panel,#lee-social").addClass("fixed"),e("#sso-search").show()):s&&o<n&&(e("#menu-belka,#panel,#lee-social").removeClass("fixed"),e("#sso-search").hide())}),e("#sso-search-form").submit(function(){var o=window.location.hostname.replace(/^www\./,"").replace(/\..*/,"");return"przetargi"==o?(e("#sso-search-form input[name='kategoria']").val(o),wyslij(this)):(_gaq.push(["_trackEvent","Belka sso","Wyszukiwarka"]),!0)}),e("#menu-but").click(function(o){o.preventDefault(),e("#menu-belka").toggle()}),e("#panelmenu").slicknav({allowParentLinks:!0,label:"moje konto",removeClasses:!0}),e("#podmenu").slicknav({allowParentLinks:!0,label:"MENU",prependTo:"#main-menu-placeholder"});var n=e(window).height();e(".slicknav_nav").css({"max-height":n,"overflow-y":"scroll"})});
+</script>
+<script async src="//get.optad360.io/sf/1caac37c-61db-11e9-90af-02b353d38134/plugin.min.js"></script>
+<div id="main-menu-placeholder"></div>
+<div class="ego-top">
+<div class="ego-naglowek-bg">
+<div class="ego-naglowek" id="naglowek">
+<div class="ego-logo-2 fl"><a href="https://www.egospodarka.pl/"><img src="https://s3.egospodarka.pl/images-local/layout/egospodarka-logo.gif" alt="eGospodarka.pl" title="eGospodarka.pl" /></a></div>
+<div class="ego-top-ad fl">
+<script language='JavaScript' async='true' type='text/javascript'>
+<!--
+   if (!document.phpAds_used) document.phpAds_used = ',';
+   phpAds_random = new String (Math.random()); phpAds_random = phpAds_random.substring(2,11);
+
+   document.write ("<" + "script language='JavaScript' type='text/javascript' src='");
+   document.write ("https://adserver.egospodarka.pl/adjs.php?n=" + phpAds_random);
+   document.write ("&amp;what=zone:101");
+   document.write ("&amp;exclude=" + document.phpAds_used);
+   if (document.referer)
+      document.write ("&amp;referer=" + escape(document.referer));
+   document.write ("'><" + "/script>");
+//-->
+</script><noscript><a href="https://adserver.egospodarka.pl/adclick.php" target="_blank"><img src="https://adserver.egospodarka.pl/adview.php?what=zone:101" border="0" alt=""></a></noscript>							</div>
+<div class="ego-top-szukaj fr">
+<FORM name="szukaj" onSubmit='wyslij(this)' method="POST">
+<input type="hidden" name="input_charset" value="UTF-8">
+<input type="hidden" name="submitted" value="1">
+<INPUT type=hidden name=cof VALUE="">
+<p class="bg-gray"><input type="submit" class="ego-top-button-szukaj" value="SZUKAJ" /> <input type="text" name="q" class="form-text" /></p>
+<p>
+<select name="kategoria">
+<option value="serwis" selected>w artykułach eGospodarka.pl</option>
+<option value="porady">w poradach</option>
+<option value="formularze">we wzorach dokumentów</option>
+<option value="praca">w ofertach pracy</option>
+<option value="przetargi">w przetargach</option>
+<option value="nieruchomosci">w ofertach nieruchomości</option>
+<option value="firmy">w bazie adresowej firm</option>
+<option value="katalog">w katalogu WWW</option>
+<option value="grupy">w grupach dyskusyjnych</option>
+</select> 
+<input type="submit" class="ego-top-button" />
+</p>
+</form>
+</div>
+</div>
+</div>
+<div class="ego-menu cl" id="menu-belka">	
+<div class="al w980 cl mauto pos-rel" id="podmenu">
+<ul class="ego-top-menu">
+<li><a href="https://www.egospodarka.pl"><img src="https://s3.egospodarka.pl/images-local/layout/home2.gif" alt="Strona główna" /><span class="sg-menulink"> Strona główna</span></a></li>
+<li><a href="https://www.wiadomosci.egospodarka.pl/artykuly/">Wiadomości</a></li>
+<li><a href="https://www.firma.egospodarka.pl/">Firma</a></li>
+<li class="sel"><a href="https://www.podatki.egospodarka.pl/">Podatki</a></li>
+<li><a href="https://www.finanse.egospodarka.pl/">Finanse</a></li>
+<li><a href="https://www.nieruchomosci.egospodarka.pl/">Nieruchomości</a></li>
+<li><a href="https://www.przetargi.egospodarka.pl/">Przetargi</a></li>
+<li><a href="https://www.praca.egospodarka.pl/">Praca</a></li>
+<li><a href="https://www.prawo.egospodarka.pl/">Prawo</a></li>
+<li><a href="https://www.zakupy.egospodarka.pl/">Zakupy</a></li>
+<li><a href="https://www.porady.egospodarka.pl/">Porady</a></li>
+<li><a href="https://www.finanse.egospodarka.pl/kantor-walut">Kantor</a></li>
+</ul>
+<div class="ego-tools">
+<p id="show-tools">Narzędzia</p>
+<div class="ego-menu-narzedzia hidden">
+<ul class="bg-1">
+<li class="nag">Dla firm</li>
+<li><a href="https://www.firma.egospodarka.pl/niezbednik-firmowy/">Niezbędnik firmowy</a></li>
+<li><a href="https://www.firma.egospodarka.pl/kalkulatory/">Kalkulatory</a></li>
+<li><a href="https://www.firma.egospodarka.pl/formularze/">Wzory dokumentów</a></li>
+</ul>
+<ul class="bg-2">
+<li class="nag">Wyszukiwarki</li>
+<li><a href="https://www.praca.egospodarka.pl/oferty-pracy/">Znajdź pracę</a></li>
+<li><a href="https://www.przetargi.egospodarka.pl/">Znajdź przetarg</a></li>
+<li><a href="https://www.firma.egospodarka.pl/raporty-o-firmach">Baza adresowa firm</a></li> 
+<li><a href="https://www.finanse.egospodarka.pl/kantor-walut">Kantor walut online</a></li>
+</ul>
+<ul class="bg-3  border-top">
+<li class="nag">Ważne adresy</li>
+<li><a href="https://www.podatki.egospodarka.pl/urzedy-skarbowe/">Urzędy skarbowe</a></li>
+<li><a href="https://www.firma.egospodarka.pl/zus/">Adresy ZUS</a></li>
+<li><a href="https://www.praca.egospodarka.pl/urzedy-pracy/">Urzędy Pracy</a></li>
+<li><a href="https://www.finanse.egospodarka.pl/banki/adresy">Adresy banków</a></li>
+<li><a href="https://www.firma.egospodarka.pl/zlikwidowane/">Firmy zlikwidowane</a></li>
+</ul>
+<ul class="bg-4  border-top">
+<li class="nag">Centrum Webmastera</li>
+<li><a href="https://www.partner.egospodarka.pl/">Centrum Webmastera</a></li>
+<li><a href="https://www.partner.egospodarka.pl/wiadomosci">Newsy na Twoją stronę</a></li>
+</ul>
+</div>
+</div>
+<div class="pos-rel cl" id="podmenu">
+<ul class="ego-top-podmenu cl" id="ego-top-podmenu">
+<li class="menu-section sel" id="section-Artykuly">
+<a href="https://www.podatki.egospodarka.pl/artykuly">Artykuły</a>
+<ul>
+<li><a href="https://www.podatki.egospodarka.pl/aktualnosci">Aktualności podatkowe</a></li>
+<li><a href="https://www.podatki.egospodarka.pl/porady-podatkowe">Porady podatkowe</a></li>
+<li><a href="https://www.podatki.egospodarka.pl/interpretacje-i-wyjasnienia">Interpretacje i wyjaśnienia</a></li>
+<li><a href="https://www.podatki.egospodarka.pl/rachunkowosc">Rachunkowość</a></li>
+</ul>
+</li>
+<li class="none-menu" id="section-Formularze-podatkowe">
+<a href="https://www.podatki.egospodarka.pl/formularze-podatkowe">Formularze podatkowe</a>
+</li>
+<li class="none-menu" id="section-Urzedy-skarbowe">
+<a href="https://www.podatki.egospodarka.pl/urzedy-skarbowe">Urzędy skarbowe</a>
+</li>
+<li class="menu-section" id="section-Kalkulatory-podatkowe">
+<a href="https://www.podatki.egospodarka.pl/kalkulator">Kalkulatory podatkowe</a>
+<ul>
+<li><a href="https://www.podatki.egospodarka.pl/kalkulator/podatek-dochodowy">Podatek dochodowy</a></li>
+<li><a href="https://www.podatki.egospodarka.pl/kalkulator/zaliczka-na-podatek-dochodowy">Zaliczka na podatek dochodowy, zasady ogólne</a></li>
+<li><a href="https://www.podatki.egospodarka.pl/kalkulator/zaliczka-na-podatek-dochodowy-podatek-liniowy">Zaliczka na podatek dochodowy, podatek liniowy</a></li>
+<li><a href="https://www.podatki.egospodarka.pl/kalkulator/ryczalt-ewidencjonowany-zaliczka-na-podatek">Zaliczka na podatek dochodowy, ryczałt ewidencjonowany</a></li>
+<li><a href="https://www.podatki.egospodarka.pl/kalkulator/wynagrodzen-placowy">Kalkulator wynagrodzeń (kalkulator płacowy)</a></li>
+<li><a href="https://www.podatki.egospodarka.pl/kalkulator/umowa-zlecenie-o-dzielo-ryczalt">Kalkulator umów opodatkowanych ryczałtem</a></li>
+<li><a href="https://www.podatki.egospodarka.pl/przelicznik-walut">Przelicznik walut</a></li>
+<li><a href="https://www.podatki.egospodarka.pl/kalkulator/kilometrowka">Kilometrówka</a></li>
+<li><a href="https://www.podatki.egospodarka.pl/kalkulator/ryczalt-samochodowy">Ryczałt samochodowy</a></li>
+<li><a href="https://www.podatki.egospodarka.pl/kalkulator/amortyzacja-srodkow-trwalych">Amortyzacja środków trwałych</a></li>
+<li><a href="https://www.podatki.egospodarka.pl/kalkulator/umorzenie-srodkow-trwalych">Umorzenie środków trwałych</a></li>
+<li><a href="https://www.podatki.egospodarka.pl/kalkulator/odsetek-od-zaleglosci-podatkowych">Kalkulator odsetek od zaległości podatkowych</a></li>
+<li><a href="https://www.podatki.egospodarka.pl/kalkulator/podatek-vat">Kalkulator podatku VAT</a></li>
+<li><a href="https://www.podatki.egospodarka.pl/kalkulator/zwrot-podatku-vat-w-budownictwie">Zwrot podatku VAT w budownictwie</a></li>
+<li><a href="https://www.podatki.egospodarka.pl/kalkulator/podatek-od-spadku-i-darowizny">Podatek od spadku i darowizny</a></li>
+<li><a href="https://www.podatki.egospodarka.pl/kalkulator/podatek-od-sprzedazy-nieruchomosci">Podatek od sprzedaży nieruchomości</a></li>
+<li><a href="https://www.podatki.egospodarka.pl/kalkulator/vat-w-rolnictwie-ryczalt-czy-vat">VAT w rolnictwie: ryczałt czy VAT</a></li>
+<li><a href="https://www.firma.egospodarka.pl/kalkulatory/">Więcej kalkulatorów</a></li>
+</ul>
+</li>
+<li class="none-menu" id="section-Baza-OPP-1-podatku">
+<a href="https://www.podatki.egospodarka.pl/opp">Baza OPP - 1% podatku</a>
+</li>
+<li class="menu-section ads" id="section-Rozliczenia-roczne-PIT">
+<a href="https://www.podatki.egospodarka.pl/rozliczenie-roczne/pit-2017">Rozliczenia roczne PIT</a>
+<ul>
+<li class="ads"><a href="https://www.podatki.egospodarka.pl/rozliczenie-roczne/pit-2020">PIT za 2020</a></li>
+<li><a href="https://www.podatki.egospodarka.pl/rozliczenie-roczne/pit-2019">PIT za 2019</a></li>
+<li><a href="https://www.podatki.egospodarka.pl/rozliczenie-roczne/pit-2018">PIT za 2018</a></li>
+<li><a href="https://www.podatki.egospodarka.pl/rozliczenie-roczne/pit-2017">PIT za 2017</a></li>
+<li><a href="https://www.podatki.egospodarka.pl/rozliczenie-roczne/pit-2016">PIT za 2016</a></li>
+<li><a href="https://www.podatki.egospodarka.pl/rozliczenie-roczne/pit-2015">PIT za 2015</a></li>
+<li><a href="https://www.podatki.egospodarka.pl/rozliczenie-roczne/pit-2014">PIT za 2014</a></li>
+<li><a href="https://www.podatki.egospodarka.pl/rozliczenie-roczne/pit-2013">PIT za 2013</a></li>
+<li><a href="https://www.podatki.egospodarka.pl/rozliczenie-roczne/pit-2012">PIT za 2012</a></li>
+<li><a href="https://www.podatki.egospodarka.pl/rozliczenie-roczne/pit-2011">PIT za 2011</a></li>
+<li><a href="https://www.podatki.egospodarka.pl/rozliczenie-roczne/pit-2010">PIT za 2010</a></li>
+</ul>
+</li>
+<li class="menu-section" id="section-Baza-wiedzy">
+<span>Baza wiedzy</span>
+<ul>
+<li><a href="https://www.podatki.egospodarka.pl/podatek-dochodowy-od-osob-fizycznych-pit">Podatek PIT</a></li>
+<li><a href="https://www.podatki.egospodarka.pl/podatek-vat">Podatek VAT</a></li>
+<li><a href="https://www.podatki.egospodarka.pl/podatek-dochodowy-od-osob-prawnych-cit">Podatek CIT</a></li>
+<li><a href="https://www.podatki.egospodarka.pl/podatek-od-czynnosci-cywilnoprawnych-pcc">Podatek PCC</a></li>
+<li><a href="https://www.podatki.egospodarka.pl/podatek-od-spadku-i-darowizny">Spadki i darowizny (SD)</a></li>
+<li><a href="https://www.podatki.egospodarka.pl/porady">Porady - podatki</a></li>
+<li><a href="https://www.podatki.egospodarka.pl/grupy">Grupy dyskusyjne</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="ad750" id="bill"><script language='JavaScript' async='true' type='text/javascript'>
+<!--
+   if (!document.phpAds_used) document.phpAds_used = ',';
+   phpAds_random = new String (Math.random()); phpAds_random = phpAds_random.substring(2,11);
+
+   document.write ("<" + "script language='JavaScript' type='text/javascript' src='");
+   document.write ("https://adserver.egospodarka.pl/adjs.php?n=" + phpAds_random);
+   if (window.innerWidth > 749) document.write ("&amp;what=zone:75"); else document.write ("&amp;what=zone:170");
+   document.write ("&amp;exclude=" + document.phpAds_used);
+   if (document.referer)
+      document.write ("&amp;referer=" + escape(document.referer));
+   document.write ("'><" + "/script>");
+//-->
+</script><noscript><a href="https://adserver.egospodarka.pl/adclick.php" target="_blank"><img src="https://adserver.egospodarka.pl/adview.php?what=zone:75" border="0" alt=""></a></noscript></div>
+<div class="ad750" id="belka980"></div>
+</div>
+<script>
+
+jQuery(document).ready(function($) {
+	var expertTimer;
+
+	$("a.article_popular_link").click(function (e) {
+		_gaq.push(['_trackEvent', 'Artykuły', 'Popularne']);
+		return true;
+	});
+
+	$("a.tab-selector").click(function(e) {
+		var parts = this.id.split('-');
+		var tab_group = parts[1];
+		var tab_id = parts[2];
+
+		if ($(this).parent().hasClass("ego-tabs-sel")){
+			if ($(this).attr("href") == "#"){
+				e.preventDefault();
+				return false;
+			}
+
+			return true;
+		}
+
+		e.preventDefault();
+
+		$(this).parent().siblings().removeClass("ego-tabs-sel");
+		$(this).parent().addClass("ego-tabs-sel");
+
+		$(".tabs-" + tab_group).hide();
+
+		$("#tab-" + tab_group + "-" + tab_id).show();
+
+		return false;
+	});
+
+	$("a.group-selector").click(function(e, src) {
+		e.preventDefault();
+
+		var group_id = $(this).attr("href").substr(1);
+
+		$(this).siblings().removeClass("ego-expert-sel");
+		$(this).addClass("ego-expert-sel");
+	
+		$("ul.expert-groups").hide();
+		$("#expert-group-" + group_id).show();
+
+		if (src != "timer" && expertTimer)
+			clearInterval(expertTimer);
+			
+		return false;
+	});
+
+	$("a.slide-selector").click(function(e) {
+		e.preventDefault();
+
+		var current = $(this).parent().siblings(".slide-targets").filter(":visible");
+
+		current.hide();
+
+		if ($(this).attr("href") == "#next"){
+			var next = current.next(".slide-targets")
+		
+			if (next.length == 0)
+				current.siblings(".slide-targets").first().show();
+			else
+				next.show();
+		}else{
+			var prev = current.prev(".slide-targets")
+		
+			if (prev.length == 0)
+				current.siblings(".slide-targets").last().show();
+			else
+				prev.show();
+		}
+
+		return false;
+	});
+
+	if ($("a.group-selector-auto").length > 1){
+		expertTimer = setInterval(function(){
+			var current = $("a.ego-expert-sel");
+			var next = current.next();
+		
+			if (next.length == 0)
+				next = current.siblings().first();
+	
+			next.triggerHandler("click", "timer");
+		}, 10000);
+	}
+	
+
+	
+	
+});
+
+</script>
+<div class="ego-scr">
+<div id="container">
+<div class="ego-path">
+<a href="https://www.egospodarka.pl/">eGospodarka.pl</a> 
+&rsaquo; <a href="https://www.podatki.egospodarka.pl/">Podatki</a>			&rsaquo; <a href="/aktualnosci/">Aktualności podatkowe</a>			&rsaquo; Tarcza antykryzysowa: odliczenie straty 2020 w PIT/CIT za rok 2019	</div>
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "eGospodarka.pl",
+        "item": "https://www.egospodarka.pl/"
+      }
+
+  
+							  ,{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Podatki",
+        "item": "https://www.podatki.egospodarka.pl/"
+      }
+  
+							  ,{
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Aktualności podatkowe",
+        "item": "https://www.podatki.egospodarka.pl/aktualnosci/"
+      }
+  
+							  ,{
+        "@type": "ListItem",
+        "position": 4,
+        "name": "Tarcza antykryzysowa: odliczenie straty 2020 w PIT/CIT za rok 2019"
+      }
+	  
+	  ]
+    }
+</script>		<div class="w660 fl">
+<link rel="stylesheet" type="text/css" href="https://s3.egospodarka.pl/css/colorbox.css"><script src="https://s3.egospodarka.pl/js/jquery.colorbox-min.js"></script>
+<script>
+jQuery(document).ready(function($) {
+	$("div.art-img-zoom a").colorbox({rel: 'nofollow', title: function() {
+		var id = $(this).attr("id");
+		var name = "#" + id.replace('zoom', 'name');
+		var caption = "#" + id.replace('zoom', 'caption');
+		return $(name).html() + "<br>" + $(caption).html();
+	}});
+});
+</script>
+<div class="ego-art">
+<div class="ego-art-line">
+<h1>Tarcza antykryzysowa: odliczenie straty 2020 w PIT/CIT za rok 2019</h1>
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/pl_PL/sdk.js#xfbml=1&version=v8.0" nonce="pdjzqSEa"></script>
+<div class="fb-like" data-href="https://www.podatki.egospodarka.pl/163229,Tarcza-antykryzysowa-odliczenie-straty-2020-w-PIT-CIT-za-rok-2019,1,68,1.html" data-width="210" data-layout="button_count" data-action="like" data-size="small" data-share="true"></div>
+<p class="art-data">
+<a href="https://www.dziennik.egospodarka.pl/2020-04-22.html">2020-04-22</a> 
+12:43
+</p>
+</div>
+<div class="ego-art-img">
+<img data-sizes="auto" data-src="https://s3.egospodarka.pl/grafika2/podatek-dochodowy-od-osob-fizycznych/Tarcza-antykryzysowa-odliczenie-straty-2020-w-PIT-CIT-za-rok-2019-228848-200x133crop.jpg" class="lazyload" alt="Tarcza antykryzysowa: odliczenie straty 2020 w PIT/CIT za rok 2019" title="Tarcza antykryzysowa: odliczenie straty 2020 w PIT/CIT za rok 2019 [&copy; apops - Fotolia.com]" />
+<p>COVID-19: czy szybciej rozliczysz stratę podatkową za 2020 r.? <span class="art-img-autor">&copy;&nbsp;apops - Fotolia.com</span></p>
+</div>
+<div class="art-p">
+<div class="ego-art-zajawka">W związku z kryzysem gospodarczym wywołanym pandemią koronawirusa do ustawy o podatku dochodowym od osób prawnych (dalej: ustawa o PDOP) oraz ustawy o podatku dochodowym od osób fizycznych (dalej: ustawa o PDOF) wprowadzono możliwość wstecznego rozliczenia straty za rok 2020. Przyjrzyjmy się warunkom oraz praktycznej możliwości stosowania tych przepisów. </div>
+<style>
+.newsbox2 a {width:100%;padding:0; overflow: auto;display: flex;justify-content: left;align-items: center;line-height:150%;font-size:14px;border-bottom:none;color:#1A3473 !important;}
+.newsbox2 img {margin-right:10px;flex: none;}
+.newsbox2 .lazyloading {background: #f7f7f7;width:60px;height:40px;font-size:11px !important;font-weight:normal;color:#959594 !important;} 
+</style>
+<p class="mt10 mb25 al cl"> 
+<span class="art-data fl mr10">Przeczytaj także:</span>
+<a href="https://www.podatki.egospodarka.pl/165241,Rezygnacja-z-zaliczek-uproszczonych-w-podatku-dochodowym,1,68,1.html" class="bld" onClick="gtag('event', 'Zobacz także', {event_category: 'Artykuły', event_label: 'klik-artop'})">
+Rezygnacja z zaliczek uproszczonych w podatku dochodowym</a>
+</p>
+Nowe przepisy zostały zamieszczone w art. 38f ustawy o PDOP i art. 52k ustawy o PDOF. Istota rozwiązania sprowadza się do tego, że stratę poniesioną w 2020 roku, podatnik będzie mógł odliczyć od dochodu uzyskanego w 2019 roku, poprzez <a href="http://www.podatki.egospodarka.pl/161991,Formularze-zeznan-podatkowych-PIT-za-rok-2019,1,68,1.html" target="" >złożenie korekty zeznania</a>. Oczywiście, pod pewnymi warunkami. Otóż podatnicy muszą w roku 2020:<ul>
+<li>
+ponieść stratę 
+</li>
+<li>
+osiągnąć przychody niższe o co najmniej 50% od przychodów uzyskanych w poprzednim roku podatkowym. <b>W przypadku ustawy o PDOF jest dodatkowe zastrzeżenie, że porównaniu podlegają tylko <a href="http://www.podatki.egospodarka.pl/162194,Przychody-z-dzialalnosci-nierejestrowej-na-PIT-36,1,68,1.html" target="" >przychody z pozarolniczej działalności gospodarczej</a>.</b>
+</li>
+</ul>
+<br>
+W przypadku podatników PDOP, przepis odnosi się do również przesuniętego roku podatkowego, który rozpoczął się przed dniem 1 stycznia 2020 r., a zakończy się po dniu 31 grudnia 2019 r., lub rozpoczął się po dniu 31 grudnia 2019 r., a przed dniem 1 stycznia 2021 r.<br>
+<br>
+<h2>Z powodu COVID-19</h2><br>
+Przepis stanowi, że obydwa warunki, tj. i poniesienie straty i spadek przychodów, <b> muszą nastąpić „z powodu COVID-19”, w rozumieniu ustawy z dnia 2 marca 2020 r. o szczególnych rozwiązaniach związanych z zapobieganiem, przeciwdziałaniem i zwalczaniem COVID-19, innych chorób zakaźnych oraz wywołanych nimi sytuacji kryzysowych</b> (Dz. U. poz. 374 i 567), zwanej dalej "ustawą o COVID-19". Ustawa ta, przez pojęcie „COVID-19” rozumie chorobę zakaźną wywołaną wirusem SARS-CoV-2 (art. 2 ust. 1 ustawy o COVID-19)<br>
+<div class="art-img-mid">
+<div class="art-img-box">
+<div class="pos-rel">
+<img src="https://s3.egospodarka.pl/grafika2/podatek-dochodowy-od-osob-fizycznych/Tarcza-antykryzysowa-odliczenie-straty-2020-w-PIT-CIT-za-rok-2019-228848-200x200.jpg" alt="COVID-19: czy szybciej rozliczysz stratę podatkową za 2020 r.?" title="COVID-19: czy szybciej rozliczysz stratę podatkową za 2020 r.?" />
+<div class="art-img-zoom"><a id="img-zoom-228848" href="https://s3.egospodarka.pl/grafika2/podatek-dochodowy-od-osob-fizycznych/Tarcza-antykryzysowa-odliczenie-straty-2020-w-PIT-CIT-za-rok-2019-228848-900x900.jpg" title="Kliknij, aby powiekszyć">Kliknij, aby powiekszyć</a></div>
+</div>
+<p class="art-img-autor">fot. apops - Fotolia.com</p>
+</div>
+<div class="art-pion1">
+<p id="img-name-228848" class="art-img-tytul">COVID-19: czy szybciej rozliczysz stratę podatkową za 2020 r.?</p>
+<p id="img-caption-228848" class="art-img-opis">Tarcza antykryzysowa wprowadziła zmiany w prawie, które w PIT/CIT za 2019 r. pozwalają odliczyć stratę poniesioną w roku 2020 (a więc przyszłą). Rozwiązanie, jak najbardziej słuszne, nie jest niestety doprecyzowane. Ustawodawca spiesząc się w procesie legislacyjnym popełnił bowiem kardynalne błędy które mogą niekorzystnie odbić się na przedsiębiorcach.</p>
+</div>
+</div>
+<br>
+<b>Zatem literalne brzmienie przepisu mówi o tym, że podatnik musi ponieść stratę z powodu… choroby.</b> Nie ma mowy o zagrożeniu chorobą, o stanie zagrożenia epidemicznego lub o stanie epidemii. Oczywiście, wiemy, że wszystkie te sytuacje są związane z przeciwdziałaniem COVID-19, lecz wówczas jest ona tylko przyczyną pośrednią.<br>
+<div class="ramka-zarowka">
+Biorąc pod uwagę, że ustalanie związku przyczynowo- skutkowego jest częstym polem sporu z fiskusem istnieje ryzyko, że przepis ten będzie rozumiany wąsko, tzn. jako odnoszący się tylko do strat, które powstały bezpośrednio z powodu choroby.
+</div><br>
+Zwłaszcza, że art. 2 ust. 2 ustawy o COVID-19 definiuje pojęcie „przeciwdziałania COVID-19”, przez które rozumie wszelkie czynności związane ze zwalczaniem zakażenia, zapobieganiem rozprzestrzenianiu się, profilaktyką oraz zwalczaniem skutków, w tym społeczno-gospodarczych, choroby COVID-19. Więc czym innym będzie strata „z powodu COVID-19”, a czym innym strata z powodu „przeciwdziałania COVID-19” i gdyby ustawodawca miał na myśli również ten drugi rodzaj strat, to uwzględniłby to w przepisie. <br>
+<br>
+Zatem, jeżeli przedsiębiorca prowadzący hotel i restauracje nie zachorował na COVID-19, a jego straty są związane z tym, że musiał zaprzestać świadczenia usług z powodu epidemii, to jego strata nie jest związana z COVID-19, tylko z przeciwdziałaniem COVID-19, więc nie spełnia podstawowego warunku wymienionego w przepisie. Tymczasem większość strat ma taki właśnie charakter – ich przyczyną nie jest sam COVID-19, tylko ograniczenia związane z przeciwdziałaniem się jego rozpowszechnianiu. Oczywiście z pomocą przychodzi wykładnia funkcjonalna, bo wszyscy wiemy, że nie o to chodziło ustawodawcy. Ale czy fiskus też będzie to wiedział? Zwłaszcza, że wsteczne rozliczenie straty oznacza powstanie nadpłaty i konieczność <a href="http://www.podatki.egospodarka.pl/162502,Ulga-na-dzieci-zwrot-przy-malej-kwocie-podatku,1,68,1.html" target="" >zwrotu podatku</a>.<br>
+<br>
+<h2>Limit 5 mln</h2><br>
+Zgodnie z przepisami, obniżenie dochodu za rok 2019 nie może być wyższe niż o kwotę 5 000 000 zł. Taki sam limit jednorazowego rozliczenia straty obowiązuje przy standardowym sposobie jej rozliczenia, o którym mówi art. 7 ust. 5 ustawy o PDOP i art. 9 ust. 3 ustawy o PDOF. Wątpliwość może pojawić się odnośnie relacji między tymi przepisami, a wprowadzonymi nowymi zasadami. <br>
+<br>
+Wyobraźmy sobie, że podatnik w 2018 roku poniósł stratę w wysokości 10 mln zł. W roku 2019 osiągnął dochód w wysokości 15 mln zł, który obniżył o stratę za rok 2018, ale tylko do ustawowego limitu 5 mln. Zatem dochód do opodatkowania za 2019 wyniósł 10mln, a pozostała strata do rozliczenia to 5 mln. W 2020 roku, z powodu COVID-19, podatnik poniósł stratę w wysokości 5 mln. Czy może odjąć ją od dochodu za 2019, skoro tam już raz był zastosowany limit 5 mln?<br>
+<br>
+Poprawnym podejściem do nowych przepisów (art. 38f ustawy o PDOP i art. 52k ustawy o PDOF), będzie potraktowanie ich jako lex specialis wobec zasad ogólnych i nadanie im pierwszeństwa stosowania. Zasady ogólne odnoszą się do wszystkich strat w ogóle i wprowadzają możliwość ich odliczenia jedynie w przyszłości. Nowe przepisy są w tym względzie szczególne, bo po pierwsze odnoszą się tylko do określonego rodzaju strat, mianowicie spowodowanych COVID-19 (przy całej trudności z ich zidentyfikowaniem, o czym mowa powyżej), a po drugie wprowadzają możliwość jej rozliczenia w latach poprzedzających. W związku z tym, jako przepisy szczególne mają pierwszeństwo stosowania przed zasadami ogólnymi, co oznacza, że strata może być rozliczona, nawet jeśli wcześniej został wykorzystany limit określony zasadami ogólnymi. Zatem podatnik będzie mógł po raz drugi obniżyć swój dochód za 2019 o 5 mln zł.<br>
+<div class="newsbox2 mt25 mb10"> 
+<span class="art-data fl">Przeczytaj także:</span>
+<a href="https://www.podatki.egospodarka.pl/163271,Tarcza-antykryzysowa-kto-moze-zrezygnowac-z-zaliczek-uproszczonych,1,68,1.html" class="bld" onClick="gtag('event', 'Zobacz także', {event_category: 'Artykuły', event_label: 'klik-artbottom'})">
+<img data-src="https://s3.egospodarka.pl/grafika2/podatek-dochodowy-od-osob-fizycznych/Tarcza-antykryzysowa-kto-moze-zrezygnowac-z-zaliczek-uproszczonych-228844-150x100crop.jpg" alt="Tarcza antykryzysowa: kto może zrezygnować z zaliczek uproszczonych?" title="Tarcza antykryzysowa: kto może zrezygnować z zaliczek uproszczonych? [&copy; Rostislav Sedlacek - Fotolia.com]" class="ego-news-img lazyload" width="60" />
+<noscript><img src="https://s3.egospodarka.pl/grafika2/podatek-dochodowy-od-osob-fizycznych/Tarcza-antykryzysowa-kto-moze-zrezygnowac-z-zaliczek-uproszczonych-228844-150x100crop.jpg" alt="Tarcza antykryzysowa: kto może zrezygnować z zaliczek uproszczonych?" title="Tarcza antykryzysowa: kto może zrezygnować z zaliczek uproszczonych? [&copy; Rostislav Sedlacek - Fotolia.com]" class="ego-news-img" width="60" /></noscript>
+Tarcza antykryzysowa: kto może zrezygnować z zaliczek uproszczonych?</a>
+</div>
+</div>
+</div>
+<div class="nooptad360">
+<div class="ego-art-autor" id="art-oprac">
+<p><span>oprac. : 					<a href="https://www.wiadomosci.egospodarka.pl/art/zrodlo/Grupa-ECDP,256.html">Grupa ECDP</a>				</span>
+<a href="https://www.wiadomosci.egospodarka.pl/art/zrodlo/Grupa-ECDP,256.html"><img data-sizes="auto" data-src="https://s3.egospodarka.pl/grafika/zrodlo/Grupa-ECDP-NOOX3l.jpg" class="lazyload"></a>						</p>
+<div class="social cl">
+<div class="scbox" id="fb" style="overflow: auto;display: flex;justify-content: left;align-items: center;">
+<div class="fb-like" data-href="https://www.podatki.egospodarka.pl/163229,Tarcza-antykryzysowa-odliczenie-straty-2020-w-PIT-CIT-za-rok-2019,1,68,1.html" data-width="210" data-layout="button_count" data-action="recommend" data-size="small" data-share="true"></div>
+</div>
+<div class="scbox">Skomentuj 
+<a onclick="window.open('https://www.podatki.egospodarka.pl/163229,Tarcza-antykryzysowa-odliczenie-straty-2020-w-PIT-CIT-za-rok-2019,1,68,1.html#komentarz-new','_self')" href="javascript:void(0)">
+<p class="scramka sckoment">0</p>
+</a>
+</div>
+<div class="scbox">Oceń
+<p class="scramka"> 
+<span onclick="window.open('https://www.podatki.egospodarka.pl/163229,Tarcza-antykryzysowa-odliczenie-straty-2020-w-PIT-CIT-za-rok-2019,1,68,1.html?vote=down','_self')" href="javascript:void(0)" class="scdown" alt="kiepski artykuł, nie polecam" title="kiepski artykuł, nie polecam">1</span>
+<span onclick="window.open('https://www.podatki.egospodarka.pl/163229,Tarcza-antykryzysowa-odliczenie-straty-2020-w-PIT-CIT-za-rok-2019,1,68,1.html?vote=up','_self')" href="javascript:void(0)" class="scup" alt="dobry artykuł, polecam" title="dobry artykuł, polecam">0</span>
+</p>
+</div>
+<div class="scbox">Podziel się 
+<p class="scramka scico">
+<a rel="nofollow" onclick="window.open('https://www.wykop.pl/dodaj/link/?url=https%3A%2F%2Fwww.podatki.egospodarka.pl%2F163229%2CTarcza-antykryzysowa-odliczenie-straty-2020-w-PIT-CIT-za-rok-2019%2C1%2C68%2C1.html&title=&desc=W+zwi%C4%85zku+z+kryzysem+gospodarczym+wywo%C5%82anym+pandemi%C4%85+koronawirusa+do+ustawy+o+podatku+dochodowym+od+os%C3%B3b+prawnych+%28dalej%3A+ustawa+o+PDOP%29+oraz+ustawy+o+podatku+dochodowym+od+os%C3%B3b+fizycznych+%28dalej%3A+ustawa+o+PDOF%29+wprowadzono+mo%C5%BCliwo%C5%9B%C4%87+wstecznego+rozliczenia+straty+za+rok+2020.+Przyjrzyjmy+si%C4%99+warunkom+oraz+praktycznej+mo%C5%BCliwo%C5%9Bci+stosowania+tych+przepis%C3%B3w.+','_blank')" href="javascript:void(0)"><img src="https://s3.egospodarka.pl/images-local/layout/art-soc/lee-wykop.gif" alt="Poleć na Wykopie" title="Poleć na Wykopie" /></a> 
+<a rel="nofollow" href="https://www.podatki.egospodarka.pl/art/polec-znajomemu/163229,Tarcza-antykryzysowa-odliczenie-straty-2020-w-PIT-CIT-za-rok-2019,1,68,1.html"><img src="https://s3.egospodarka.pl/images-local/layout/art-soc/lee-friend.gif" alt="Poleć artykuł znajomemu" title="Poleć artykuł znajomemu" /></a> 
+<a rel="nofollow" onclick="window.open('https://www.podatki.egospodarka.pl/art/drukuj/163229,Tarcza-antykryzysowa-odliczenie-straty-2020-w-PIT-CIT-za-rok-2019,1,68,1.html','_blank')" href="javascript:void(0)"><img src="https://s3.egospodarka.pl/images-local/layout/art-soc/lee-print.gif" alt="Wydrukuj" title="Wydrukuj" /></a>
+</p>
+</div>
+</div>
+</div>
+<div class="art-wiecej-temat mb25">
+<span>Więcej na ten temat:</span>
+<a href="https://www.egospodarka.pl/tematy/podatek-dochodowy-od-osob-fizycznych">podatek dochodowy od osób fizycznych</a>, 							<a href="https://www.egospodarka.pl/tematy/podatek-PIT">podatek PIT</a>, 							<a href="https://www.egospodarka.pl/tematy/podatek-od-firmy">podatek od firmy</a>, 							<a href="https://www.egospodarka.pl/tematy/podatek-CIT">podatek CIT</a>, 							<a href="https://www.egospodarka.pl/tematy/rozliczenia-podatkowe">rozliczenia podatkowe</a>, 							<a href="https://www.egospodarka.pl/tematy/odliczenia-podatkowe">odliczenia podatkowe</a>, 							<a href="https://www.egospodarka.pl/tematy/ulgi-podatkowe">ulgi podatkowe</a>, 							<a href="https://www.egospodarka.pl/tematy/koronawirus">koronawirus</a>, 							<a href="https://www.egospodarka.pl/tematy/specustawa">specustawa</a>, 							<a href="https://www.egospodarka.pl/tematy/deklaracje-podatkowe">deklaracje podatkowe</a>, 							<a href="https://www.egospodarka.pl/tematy/strata-podatkowa">strata podatkowa</a>					</div>
+</div>
+<div class="cl w660" id="zobacz-podobne">
+<h2 class="ego-art-zobacz-takze-h2">Przeczytaj także</h2>
+<div class="ego-nag-border"></div>
+<ul class="ego-art-podobne">
+<li>
+<a href="https://www.podatki.egospodarka.pl/169164,Podatkowa-grupa-kapitalowa-rozliczenie-straty-podatkowej-po-jej-ustaniu,1,69,1.html" class="article_similar_link" onClick="gtag('event', 'Zobacz także', {event_category: 'Artykuły', event_label: 'klik'})">
+<img data-src="https://s3.egospodarka.pl/grafika2/podatek-od-firmy/Podatkowa-grupa-kapitalowa-rozliczenie-straty-podatkowej-po-jej-ustaniu-236419-150x100crop.jpg" alt="Podatkowa grupa kapitałowa: rozliczenie straty podatkowej po jej ustaniu" title="Podatkowa grupa kapitałowa: rozliczenie straty podatkowej po jej ustaniu [&copy; apops - Fotolia.com]" class="ego-news-img lazyload" />
+<noscript><img src="https://s3.egospodarka.pl/grafika2/podatek-od-firmy/Podatkowa-grupa-kapitalowa-rozliczenie-straty-podatkowej-po-jej-ustaniu-236419-150x100crop.jpg" alt="Podatkowa grupa kapitałowa: rozliczenie straty podatkowej po jej ustaniu" title="Podatkowa grupa kapitałowa: rozliczenie straty podatkowej po jej ustaniu [&copy; apops - Fotolia.com]" class="ego-news-img" /></noscript>
+<p>Podatkowa grupa kapitałowa: rozliczenie straty podatkowej po jej ustaniu</p>
+</a>
+</li>
+<li>
+<a href="https://www.podatki.egospodarka.pl/162862,COVID-19-tarcza-antykryzysowa-w-podatkach-dla-przedsiebiorcow,1,68,1.html" class="article_similar_link" onClick="gtag('event', 'Zobacz także', {event_category: 'Artykuły', event_label: 'klik'})">
+<img data-src="https://s3.egospodarka.pl/grafika2/koronawirus/COVID-19-tarcza-antykryzysowa-w-podatkach-dla-przedsiebiorcow-228327-150x100crop.jpg" alt="COVID-19: tarcza antykryzysowa w podatkach dla przedsiębiorców" title="COVID-19: tarcza antykryzysowa w podatkach dla przedsiębiorców [&copy; Michail Petrov - Fotolia.com]" class="ego-news-img lazyload" />
+<noscript><img src="https://s3.egospodarka.pl/grafika2/koronawirus/COVID-19-tarcza-antykryzysowa-w-podatkach-dla-przedsiebiorcow-228327-150x100crop.jpg" alt="COVID-19: tarcza antykryzysowa w podatkach dla przedsiębiorców" title="COVID-19: tarcza antykryzysowa w podatkach dla przedsiębiorców [&copy; Michail Petrov - Fotolia.com]" class="ego-news-img" /></noscript>
+<p>COVID-19: tarcza antykryzysowa w podatkach dla przedsiębiorców</p>
+</a>
+</li>
+<li>
+<a href="https://www.podatki.egospodarka.pl/162855,Termin-zlozenia-CIT-8-za-2019-rok-przedluzony,1,68,1.html" class="article_similar_link" onClick="gtag('event', 'Zobacz także', {event_category: 'Artykuły', event_label: 'klik'})">
+<img data-src="https://s3.egospodarka.pl/grafika2/koronawirus/Termin-zlozenia-CIT-8-za-2019-rok-przedluzony-228313-150x100crop.jpg" alt="Termin złożenia CIT-8 za 2019 rok przedłużony" title="Termin złożenia CIT-8 za 2019 rok przedłużony [&copy; Piotr Adamowicz - Fotolia.com]" class="ego-news-img lazyload" />
+<noscript><img src="https://s3.egospodarka.pl/grafika2/koronawirus/Termin-zlozenia-CIT-8-za-2019-rok-przedluzony-228313-150x100crop.jpg" alt="Termin złożenia CIT-8 za 2019 rok przedłużony" title="Termin złożenia CIT-8 za 2019 rok przedłużony [&copy; Piotr Adamowicz - Fotolia.com]" class="ego-news-img" /></noscript>
+<p>Termin złożenia CIT-8 za 2019 rok przedłużony</p>
+</a>
+</li>
+<li>
+<a href="https://www.podatki.egospodarka.pl/166175,Podatek-od-dofinansowania-kosztow-dzialalnosci-gospodarczej,1,69,1.html" class="article_similar_link" onClick="gtag('event', 'Zobacz także', {event_category: 'Artykuły', event_label: 'klik'})">
+<img data-src="https://s3.egospodarka.pl/grafika2/koronawirus/Podatek-od-dofinansowania-kosztow-dzialalnosci-gospodarczej-232618-150x100crop.jpg" alt="Podatek od dofinansowania kosztów działalności gospodarczej" title="Podatek od dofinansowania kosztów działalności gospodarczej [&copy; thodonal - Fotolia.com]" class="ego-news-img lazyload" />
+<noscript><img src="https://s3.egospodarka.pl/grafika2/koronawirus/Podatek-od-dofinansowania-kosztow-dzialalnosci-gospodarczej-232618-150x100crop.jpg" alt="Podatek od dofinansowania kosztów działalności gospodarczej" title="Podatek od dofinansowania kosztów działalności gospodarczej [&copy; thodonal - Fotolia.com]" class="ego-news-img" /></noscript>
+<p>Podatek od dofinansowania kosztów działalności gospodarczej</p>
+</a>
+</li>
+<li>
+<a href="https://www.podatki.egospodarka.pl/164194,COVID-19-a-umorzenie-zaleglosci-podatkowej-i-odsetek-za-zwloke,1,68,1.html" class="article_similar_link" onClick="gtag('event', 'Zobacz także', {event_category: 'Artykuły', event_label: 'klik'})">
+<img data-src="https://s3.egospodarka.pl/grafika2/koronawirus/COVID-19-a-umorzenie-zaleglosci-podatkowej-i-odsetek-za-zwloke-230015-150x100crop.jpg" alt="COVID-19 a umorzenie zaległości podatkowej i odsetek za zwłokę" title="COVID-19 a umorzenie zaległości podatkowej i odsetek za zwłokę [&copy; nanantachoke - Fotolia.com]" class="ego-news-img lazyload" />
+<noscript><img src="https://s3.egospodarka.pl/grafika2/koronawirus/COVID-19-a-umorzenie-zaleglosci-podatkowej-i-odsetek-za-zwloke-230015-150x100crop.jpg" alt="COVID-19 a umorzenie zaległości podatkowej i odsetek za zwłokę" title="COVID-19 a umorzenie zaległości podatkowej i odsetek za zwłokę [&copy; nanantachoke - Fotolia.com]" class="ego-news-img" /></noscript>
+<p>COVID-19 a umorzenie zaległości podatkowej i odsetek za zwłokę</p>
+</a>
+</li>
+<li>
+<a href="https://www.podatki.egospodarka.pl/163469,Premier-Morawiecki-za-kryzys-gospodarczy-zaplaca-przedsiebiorcy,1,68,1.html" class="article_similar_link" onClick="gtag('event', 'Zobacz także', {event_category: 'Artykuły', event_label: 'klik'})">
+<img data-src="https://s3.egospodarka.pl/grafika2/koronawirus/Premier-Morawiecki-za-kryzys-gospodarczy-zaplaca-przedsiebiorcy-229101-150x100crop.jpg" alt="Premier Morawiecki: za kryzys gospodarczy zapłacą przedsiębiorcy" title="Premier Morawiecki: za kryzys gospodarczy zapłacą przedsiębiorcy [&copy; Daniel Krasoń - Fotolia.com]" class="ego-news-img lazyload" />
+<noscript><img src="https://s3.egospodarka.pl/grafika2/koronawirus/Premier-Morawiecki-za-kryzys-gospodarczy-zaplaca-przedsiebiorcy-229101-150x100crop.jpg" alt="Premier Morawiecki: za kryzys gospodarczy zapłacą przedsiębiorcy" title="Premier Morawiecki: za kryzys gospodarczy zapłacą przedsiębiorcy [&copy; Daniel Krasoń - Fotolia.com]" class="ego-news-img" /></noscript>
+<p>Premier Morawiecki: za kryzys gospodarczy zapłacą przedsiębiorcy</p>
+</a>
+</li>
+<li>
+<a href="https://www.podatki.egospodarka.pl/160536,Przechowywanie-dokumentow-za-rok-ze-strata-podatkowa,1,68,1.html" class="article_similar_link" onClick="gtag('event', 'Zobacz także', {event_category: 'Artykuły', event_label: 'klik'})">
+<img data-src="https://s3.egospodarka.pl/grafika2/podatek-dochodowy-od-osob-prawnych/Przechowywanie-dokumentow-za-rok-ze-strata-podatkowa-225156-150x100crop.jpg" alt="Przechowywanie dokumentów za rok ze stratą podatkową" title="Przechowywanie dokumentów za rok ze stratą podatkową [&copy; contrastwerkstatt - Fotolia.com]" class="ego-news-img lazyload" />
+<noscript><img src="https://s3.egospodarka.pl/grafika2/podatek-dochodowy-od-osob-prawnych/Przechowywanie-dokumentow-za-rok-ze-strata-podatkowa-225156-150x100crop.jpg" alt="Przechowywanie dokumentów za rok ze stratą podatkową" title="Przechowywanie dokumentów za rok ze stratą podatkową [&copy; contrastwerkstatt - Fotolia.com]" class="ego-news-img" /></noscript>
+<p>Przechowywanie dokumentów za rok ze stratą podatkową</p>
+</a>
+</li>
+<li>
+<a href="https://www.podatki.egospodarka.pl/160145,Podwazanie-straty-podatkowej-a-termin-przedawnienia,1,69,1.html" class="article_similar_link" onClick="gtag('event', 'Zobacz także', {event_category: 'Artykuły', event_label: 'klik'})">
+<img data-src="https://s3.egospodarka.pl/grafika2/podatek-dochodowy-od-osob-prawnych/Podwazanie-straty-podatkowej-a-termin-przedawnienia-224521-150x100crop.jpg" alt="Podważanie straty podatkowej a termin przedawnienia" title="Podważanie straty podatkowej a termin przedawnienia [&copy; Kurhan - Fotolia.com]" class="ego-news-img lazyload" />
+<noscript><img src="https://s3.egospodarka.pl/grafika2/podatek-dochodowy-od-osob-prawnych/Podwazanie-straty-podatkowej-a-termin-przedawnienia-224521-150x100crop.jpg" alt="Podważanie straty podatkowej a termin przedawnienia" title="Podważanie straty podatkowej a termin przedawnienia [&copy; Kurhan - Fotolia.com]" class="ego-news-img" /></noscript>
+<p>Podważanie straty podatkowej a termin przedawnienia</p>
+</a>
+</li>
+<li>
+<a href="https://www.podatki.egospodarka.pl/169196,Rozliczenie-straty-podatkowej-z-dzialalnosci-gospodarczej,1,69,1.html" class="article_similar_link" onClick="gtag('event', 'Zobacz także', {event_category: 'Artykuły', event_label: 'klik'})">
+<img data-src="https://s3.egospodarka.pl/grafika2/strata-z-dzialalnosci-gospodarczej/Rozliczenie-straty-podatkowej-z-dzialalnosci-gospodarczej-236460-150x100crop.jpg" alt="Rozliczenie straty podatkowej z działalności gospodarczej" title="Rozliczenie straty podatkowej z działalności gospodarczej [&copy; FotolEdhar - Fotolia.com]" class="ego-news-img lazyload" />
+<noscript><img src="https://s3.egospodarka.pl/grafika2/strata-z-dzialalnosci-gospodarczej/Rozliczenie-straty-podatkowej-z-dzialalnosci-gospodarczej-236460-150x100crop.jpg" alt="Rozliczenie straty podatkowej z działalności gospodarczej" title="Rozliczenie straty podatkowej z działalności gospodarczej [&copy; FotolEdhar - Fotolia.com]" class="ego-news-img" /></noscript>
+<p>Rozliczenie straty podatkowej z działalności gospodarczej</p>
+</a>
+</li>
+</ul>
+<script>
+__tcfapi('addEventListener', 2, function(tcData, success) {
+    if (success && tcData.gdprApplies) {
+        if (tcData.eventStatus == 'useractioncomplete' || tcData.eventStatus == 'tcloaded') {
+            var hasStoreOnDeviceConsent = tcData.purpose.consents[1] || false;
+
+            if (hasStoreOnDeviceConsent) {
+                var adsbygoogle_script = document.createElement('script');
+				adsbygoogle_script.async = true; 
+                adsbygoogle_script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
+                document.head.appendChild(adsbygoogle_script);
+            }
+        }
+    }
+});
+</script>
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-format="autorelaxed"
+data-ad-client="ca-pub-0125643119403987"
+data-ad-slot="3599475694"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<br>
+</div>
+<div class="ego-art-zobacz-takze">			
+<div class="ego-news-dots bg-no mb0">
+<div class="w280 fl link-prev">
+<p class="link-next ar">Poprzedni artykuł</p>				
+<a href="https://www.podatki.egospodarka.pl/163271,Tarcza-antykryzysowa-kto-moze-zrezygnowac-z-zaliczek-uproszczonych,1,68,1.html">			<img data-src="https://s3.egospodarka.pl/grafika2/podatek-dochodowy-od-osob-fizycznych/Tarcza-antykryzysowa-kto-moze-zrezygnowac-z-zaliczek-uproszczonych-228844-150x100crop.jpg" alt="Tarcza antykryzysowa: kto może zrezygnować z zaliczek uproszczonych?" title="Tarcza antykryzysowa: kto może zrezygnować z zaliczek uproszczonych? [&copy; Rostislav Sedlacek - Fotolia.com]" class="ego-news-img lazyload" width="80" />
+<noscript><img src="https://s3.egospodarka.pl/grafika2/podatek-dochodowy-od-osob-fizycznych/Tarcza-antykryzysowa-kto-moze-zrezygnowac-z-zaliczek-uproszczonych-228844-150x100crop.jpg" alt="Tarcza antykryzysowa: kto może zrezygnować z zaliczek uproszczonych?" title="Tarcza antykryzysowa: kto może zrezygnować z zaliczek uproszczonych? [&copy; Rostislav Sedlacek - Fotolia.com]" class="ego-news-img" width="80" /></noscript>
+</a>
+<div class="ego-hp-zajawka2 ar">						
+<p><a href="https://www.podatki.egospodarka.pl/163271,Tarcza-antykryzysowa-kto-moze-zrezygnowac-z-zaliczek-uproszczonych,1,68,1.html">Tarcza antykryzysowa: kto może zrezygnować z zaliczek uproszczonych?</a></p>
+</div>
+</div>
+<div class="w280 fr">	
+<p class="link-next">Następny artykuł</p>
+<a href="https://www.podatki.egospodarka.pl/163230,Faktura-z-VAT-przy-imporcie-uslug,1,68,1.html">			<img data-src="https://s3.egospodarka.pl/grafika2/import-uslug/Faktura-z-VAT-przy-imporcie-uslug-228849-150x100crop.jpg" alt="Faktura z VAT przy imporcie usług" title="Faktura z VAT przy imporcie usług [&copy; apops - Fotolia.com]" class="ego-news-img lazyload" width="80" />
+<noscript><img src="https://s3.egospodarka.pl/grafika2/import-uslug/Faktura-z-VAT-przy-imporcie-uslug-228849-150x100crop.jpg" alt="Faktura z VAT przy imporcie usług" title="Faktura z VAT przy imporcie usług [&copy; apops - Fotolia.com]" class="ego-news-img" width="80" /></noscript>
+</a>
+<div class="ego-hp-zajawka2">						
+<p><a href="https://www.podatki.egospodarka.pl/163230,Faktura-z-VAT-przy-imporcie-uslug,1,68,1.html">Faktura z VAT przy imporcie usług</a></p>
+</div>
+</div>
+</div>
+</div>
+<script>
+jQuery(document).ready(function($) {
+
+	var article_url = 'https\x3a\x2f\x2fwww\x2epodatki\x2eegospodarka\x2epl\x2f163229\x2cTarcza\x2dantykryzysowa\x2dodliczenie\x2dstraty\x2d2020\x2dw\x2dPIT\x2dCIT\x2dza\x2drok\x2d2019\x2c1\x2c68\x2c1\x2ehtml';
+	
+	$("a.comment-options-show").mouseenter(function () {
+		$(this).next("ul").show();
+	});
+
+	$("div.comment-options").mouseleave(function () {
+		$(this).children("ul").hide();
+	});
+
+	$("a.comment-open-editreply").click(function (e) {
+		e.preventDefault();
+
+		var comment_id = this.id.substr(4);
+		var prefix = this.id.substr(0,3);
+
+		var variant = "reply";
+	
+		if (prefix == "coe")
+			variant = "edit"
+		else if (prefix == "crp")
+			variant= "report";
+
+		$("div.comment-form-edit,div.comment-form-reply,div.comment-form-report").remove();
+
+		$.ajax({
+			type: "GET",
+			url: "/art/comment-ajax/getform", 
+			dataType: "html",
+			cache: false,
+			data: {comment: comment_id, variant: variant, cite: (prefix == "coc") ? 1 : 0} 
+		}).done(function(form_html) {
+			var form = $(form_html);
+			$("#comment-body-div-" + comment_id).after(form);
+	
+			if (variant == "edit" || variant == "report"){
+				$("html, body").scrollTop(form.offset().top - 100);
+			}
+		});
+	});
+
+	$("a.comment-show-hidden").click(function (e) {
+		e.preventDefault();
+
+		var comment_id = this.id.substr(4);
+		
+		$(".comment-hidden-" + comment_id).show();
+		$(this).hide();
+	});
+
+	$("a.comment-vote").click(function (e) {
+		e.preventDefault();
+
+		var comment_id = this.id.substr(4);
+		var vote = (this.id.substr(0, 3) == "cvd") ? "down" : "up";
+
+		var set_cookie = function (id) {
+			var cookie_name = "articles_commented";
+
+			var val = jQuery.cookie(cookie_name);
+
+			if (val)
+				val += "_" + id;
+			else
+				val = id;
+
+			if (val.length > 2000){
+				val = val.replace(/^[^_]+_/, "");
+			}
+
+			jQuery.cookie(cookie_name, val, {expires: 30, domain: ".egospodarka.pl", path: "/"});
+		};
+
+		$.ajax({
+			type: "GET",
+			url: "/art/comment-ajax/vote", 
+			dataType: "text",
+			cache: false,
+			data: {comment: comment_id, vote: vote} 
+		}).done(function(rating) {
+			$("#comment-rating-" + comment_id).text(rating).show();
+			$("#cvu-" + comment_id).hide();
+			$("#cvd-" + comment_id).hide();
+
+			set_cookie(comment_id);
+		});
+	});
+
+	$("a.comment-show-permalink").click(function (e) {
+		e.preventDefault();
+
+		var comment_id = this.id.substr(4);
+
+		var permalink = $('<div class="comment-permalink cl"></div>').text("Permalink: " + article_url + "#komentarz-" + comment_id);
+
+		$("#comment-body-div-" + comment_id).after(permalink);
+		$("html, body").scrollTop(permalink.offset().top - 100);
+	});
+});
+</script>
+<div class="art-komentarze">
+<a name="komentarz-new"></a>
+<h2> Skomentuj artykuł
+<span class="h2-text">Opcja dostępna dla zalogowanych użytkowników - 
+<a href="https://login.egospodarka.pl/auth/?ret=https%3A%2F%2Fwww.podatki.egospodarka.pl%2F163229%2CTarcza-antykryzysowa-odliczenie-straty-2020-w-PIT-CIT-za-rok-2019%2C1%2C68%2C1.html&amp;ts=1615917566&amp;realm=articles&amp;mac=ACaRYVCcOkAQOtlXuKLOeohn-BE4sbeWrFyfN5l5WFjINcQXgIZKq3CfNPhA0Fyj5fszvwDhOh9TEVBi76GxDA,," rel="nofollow">ZALOGUJ SIĘ</a>  /  <a href="https://login.egospodarka.pl/user/register/?ret=https%3A%2F%2Fwww.podatki.egospodarka.pl%2F163229%2CTarcza-antykryzysowa-odliczenie-straty-2020-w-PIT-CIT-za-rok-2019%2C1%2C68%2C1.html&amp;ts=1615917566&amp;realm=articles&amp;mac=-OJfyUKObQzTXyR7YLOgN6yngCCKlHIFiv4TUlMyML1Bu5DA5lW5_Z9GEcd0HBmMNOEDcfvq80ok_fTbHRCztw,," rel="nofollow">ZAREJESTRUJ SIĘ</a></span>
+</h2>
+<div class="comment-form-add cl">
+<form action="#komentarz-new" method="post">
+<input type="hidden" name="submitted" value="1">
+<input type="hidden" name="action" value="add_comment">
+<p><label for="add_title">Tytuł:</label><input type="text" name="add_title" class="in-text" value=""></p>
+<p><label for="add_text">Komentarz:</label><textarea name="add_text" class="in-text" id="add_text"></textarea></p>
+<p>
+<input type="checkbox" name="add_notify" value="1" class="fl ml110" /><label class="w250 al f11">Poinformuj mnie o nowych komentarzach</label>
+<input type="submit" value="dodaj komentarz" class="ego-submit fr" /></p>
+</form>
+</div>
+<h2>Komentarze <span class="cl-gray">(0)</span></h2>
+<ul>
+</ul>
+<p class="ar mb25">
+<form action="" method="POST">
+<input type="hidden" name="action" value="add_watchlist">
+<input type="submit" name="submit_watchlist" value="SUBSKRYBUJ KOMENTARZE" class="button_submit">
+<a href="#komentarz-new" class="button_submit fr bld" rel="nofollow">DODAJ SWÓJ KOMENTARZ</a>
+</form>
+</p>
+</div>
+<div class="cl w660">
+<h2 class="ego-nag-tab fl"><a href="https://www.podatki.egospodarka.pl/">Najnowsze w dziale Podatki</a></h2>
+<div class="ego-nag-border"></div>
+<ul class="ego-art-pozostale">
+<li>
+<a href="https://www.podatki.egospodarka.pl/169210,Ulga-termomodernizacyjna-data-poniesienia-wydatku,1,68,1.html">
+<img data-src="https://s3.egospodarka.pl/grafika2/PIT-y/Ulga-termomodernizacyjna-data-poniesienia-wydatku-236480-150x100crop.jpg" alt="Ulga termomodernizacyjna: data poniesienia wydatku" title="Ulga termomodernizacyjna: data poniesienia wydatku [&copy; pixabay.com]" class="ego-news-img lazyload" />
+<noscript><img src="https://s3.egospodarka.pl/grafika2/PIT-y/Ulga-termomodernizacyjna-data-poniesienia-wydatku-236480-150x100crop.jpg" alt="Ulga termomodernizacyjna: data poniesienia wydatku" title="Ulga termomodernizacyjna: data poniesienia wydatku [&copy; pixabay.com]" class="ego-news-img" /></noscript>
+<p>Ulga termomodernizacyjna: data poniesienia wydatku</p>
+</a>
+</li>
+<li>
+<a href="https://www.podatki.egospodarka.pl/169213,Data-powstania-przychodu-w-CIT-przede-wszystkim-interes-fiskalny-panstwa,1,69,1.html">
+<img data-src="https://s3.egospodarka.pl/grafika2/obowiazek-podatkowy/Data-powstania-przychodu-w-CIT-przede-wszystkim-interes-fiskalny-panstwa-236487-150x100crop.jpg" alt="Data powstania przychodu w CIT: przede wszystkim interes fiskalny państwa" title="Data powstania przychodu w CIT: przede wszystkim interes fiskalny państwa [&copy; Piotr Adamowicz - Fotolia.com]" class="ego-news-img lazyload" />
+<noscript><img src="https://s3.egospodarka.pl/grafika2/obowiazek-podatkowy/Data-powstania-przychodu-w-CIT-przede-wszystkim-interes-fiskalny-panstwa-236487-150x100crop.jpg" alt="Data powstania przychodu w CIT: przede wszystkim interes fiskalny państwa" title="Data powstania przychodu w CIT: przede wszystkim interes fiskalny państwa [&copy; Piotr Adamowicz - Fotolia.com]" class="ego-news-img" /></noscript>
+<p>Data powstania przychodu w CIT: przede wszystkim interes fiskalny państwa</p>
+</a>
+</li>
+<li>
+<a href="https://www.podatki.egospodarka.pl/169211,Utrata-ulgi-mieszkaniowej-w-podatku-od-spadkow-i-darowizn,1,70,1.html">
+<img data-src="https://s3.egospodarka.pl/grafika2/ulga-mieszkaniowa/Utrata-ulgi-mieszkaniowej-w-podatku-od-spadkow-i-darowizn-236481-150x100crop.jpg" alt="Utrata ulgi mieszkaniowej w podatku od spadków i darowizn" title="Utrata ulgi mieszkaniowej w podatku od spadków i darowizn [&copy;  BillionPhotos.com - Fotolia.com]" class="ego-news-img lazyload" />
+<noscript><img src="https://s3.egospodarka.pl/grafika2/ulga-mieszkaniowa/Utrata-ulgi-mieszkaniowej-w-podatku-od-spadkow-i-darowizn-236481-150x100crop.jpg" alt="Utrata ulgi mieszkaniowej w podatku od spadków i darowizn" title="Utrata ulgi mieszkaniowej w podatku od spadków i darowizn [&copy;  BillionPhotos.com - Fotolia.com]" class="ego-news-img" /></noscript>
+<p>Utrata ulgi mieszkaniowej w podatku od spadków i darowizn</p>
+</a>
+</li>
+<li>
+<a href="https://www.podatki.egospodarka.pl/169198,Ograniczenie-ulgi-abolicyjnej-od-2021-roku,1,68,1.html">
+<img data-src="https://s3.egospodarka.pl/grafika2/PIT-36/Ograniczenie-ulgi-abolicyjnej-od-2021-roku-236462-150x100crop.jpg" alt="Ograniczenie ulgi abolicyjnej od 2021 roku" title="Ograniczenie ulgi abolicyjnej od 2021 roku [&copy; apops - Fotolia.com]" class="ego-news-img lazyload" />
+<noscript><img src="https://s3.egospodarka.pl/grafika2/PIT-36/Ograniczenie-ulgi-abolicyjnej-od-2021-roku-236462-150x100crop.jpg" alt="Ograniczenie ulgi abolicyjnej od 2021 roku" title="Ograniczenie ulgi abolicyjnej od 2021 roku [&copy; apops - Fotolia.com]" class="ego-news-img" /></noscript>
+<p>Ograniczenie ulgi abolicyjnej od 2021 roku</p>
+</a>
+</li>
+</ul>
+</div>
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.podatki.egospodarka.pl/163229,Tarcza-antykryzysowa-odliczenie-straty-2020-w-PIT-CIT-za-rok-2019,1,68,1.html"
+      },
+      "headline": "Tarcza antykryzysowa: odliczenie straty 2020 w PIT/CIT za rok 2019",
+      "image": [
+        "https://s3.egospodarka.pl/grafika2/podatek-dochodowy-od-osob-fizycznych/Tarcza-antykryzysowa-odliczenie-straty-2020-w-PIT-CIT-za-rok-2019-228848-900x900.jpg"
+       ],
+      "datePublished": "2020-04-22T12:43:27+02:00",
+      "author": {
+        "@type": "Person",
+        "name": "Redakcja"
+      },
+       "publisher": {
+        "@type": "Organization",
+        "name": "eGospodarka.pl",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://s3.egospodarka.pl/images-local/layout/egospodarka-logo.gif"
+        }
+      },
+      "description": "W związku z kryzysem gospodarczym wywołanym pandemią koronawirusa do ustawy o podatku dochodowym od osób prawnych (dalej: ustawa o PDOP) oraz ustawy o podatku dochodowym od osób fizycznych (dalej: ustawa o PDOF) wprowadzono możliwość wstecznego rozliczenia straty za rok 2020. Przyjrzyjmy się warunkom oraz praktycznej możliwości stosowania tych przepisów. "
+    }
+</script>
+</div>
+<div class="w300 fr" id="right_column">
+<div id="partner_dzialu">
+<p class="ads-text f12">PARTNER DZIAŁU PODATKI:</p>
+<div class="mb25"><a href="https://www.podatki.egospodarka.pl/formularze-podatkowe/Programy-do-rozliczenia-PIT/Program-PIT-2020/2,Bezplatny-program-PIT-2020,1485.html" target="_blank"><img src="https://s3.egospodarka.pl/images-local/add/pit2020/button300x80_v2.png" alt="rozlicz swój PIT i pomóż dzieciom zapomnieć o chorobie" title="rozlicz swój PIT i pomóż dzieciom zapomnieć o chorobie" /></a></div>
+</div>
+<div class="mb10 col-box" id="box-adcol-top">
+</div><div class="col-box">
+<h2 class="ego-nag-tab">
+<a href="https://www.wiadomosci.egospodarka.pl/polecamy">Polecamy</a></h2>
+<div class="ego-nag-border"></div>
+<ul class="newsbox1">
+<a href="https://www.egospodarka.pl/154773,Skuteczny-artykul-sponsorowany-jak-napisac-i-gdzie-publikowac,1,118,1.html" class="bld">
+<li>
+<img data-src="https://s3.egospodarka.pl/grafika2/artykul-sponsorowany/Skuteczny-artykul-sponsorowany-jak-napisac-i-gdzie-publikowac-216067-150x100crop.jpg" alt="Skuteczny artykuł sponsorowany - jak napisać i gdzie publikować?" title="Skuteczny artykuł sponsorowany - jak napisać i gdzie publikować? [&copy; Tierney - Fotolia.com]" class="ego-news-img lazyload" width="100" />
+<noscript><img src="https://s3.egospodarka.pl/grafika2/artykul-sponsorowany/Skuteczny-artykul-sponsorowany-jak-napisac-i-gdzie-publikowac-216067-150x100crop.jpg" alt="Skuteczny artykuł sponsorowany - jak napisać i gdzie publikować?" title="Skuteczny artykuł sponsorowany - jak napisać i gdzie publikować? [&copy; Tierney - Fotolia.com]" class="ego-news-img" width="100" /></noscript>
+<p>Skuteczny artykuł sponsorowany - jak napisać i gdzie publikować?</p>
+</li>
+</a>
+<a href="https://www.egospodarka.pl/158664,Artykul-sponsorowany-vs-natywny-8-roznic-ktore-wplywaja-na-skutecznosc-publikacji,1,118,1.html" class="bld">
+<li>
+<img data-src="https://s3.egospodarka.pl/grafika2/content-marketing/Artykul-sponsorowany-vs-natywny-8-roznic-ktore-wplywaja-na-skutecznosc-publikacji-222399-150x100crop.jpg" alt="Artykuł sponsorowany vs natywny. 8 różnic, które wpływają na skuteczność publikacji" title="Artykuł sponsorowany vs natywny. 8 różnic, które wpływają na skuteczność publikacji [&copy; DDRockstar - Fotolia.com]" class="ego-news-img lazyload" width="100" />
+<noscript><img src="https://s3.egospodarka.pl/grafika2/content-marketing/Artykul-sponsorowany-vs-natywny-8-roznic-ktore-wplywaja-na-skutecznosc-publikacji-222399-150x100crop.jpg" alt="Artykuł sponsorowany vs natywny. 8 różnic, które wpływają na skuteczność publikacji" title="Artykuł sponsorowany vs natywny. 8 różnic, które wpływają na skuteczność publikacji [&copy; DDRockstar - Fotolia.com]" class="ego-news-img" width="100" /></noscript>
+<p>Artykuł sponsorowany vs natywny. 8 różnic, które wpływają na skuteczność publikacji</p>
+</li>
+</a>
+<a href="https://www.egospodarka.pl/162590,13-najczestszych-bledow-przy-wysylaniu-mailingu,1,118,1.html" class="bld">
+<li>
+<img data-src="https://s3.egospodarka.pl/grafika2/mailing/13-najczestszych-bledow-przy-wysylaniu-mailingu-228007-150x100crop.jpg" alt="13 najczęstszych błędów przy wysyłaniu mailingu" title="13 najczęstszych błędów przy wysyłaniu mailingu [&copy; taramara78 - Fotolia.com]" class="ego-news-img lazyload" width="100" />
+<noscript><img src="https://s3.egospodarka.pl/grafika2/mailing/13-najczestszych-bledow-przy-wysylaniu-mailingu-228007-150x100crop.jpg" alt="13 najczęstszych błędów przy wysyłaniu mailingu" title="13 najczęstszych błędów przy wysyłaniu mailingu [&copy; taramara78 - Fotolia.com]" class="ego-news-img" width="100" /></noscript>
+<p>13 najczęstszych błędów przy wysyłaniu mailingu</p>
+</li>
+</a>
+</ul>
+</div><div class="col-box mb25">
+<h2 class="ego-nag-tab" style="margin-bottom:-2px;">
+<a href="https://www.wiadomosci.egospodarka.pl/">Artykuły promowane</a></h2>
+<div class="ego-nag-border"></div>
+<ul class="newsbox1">
+<a href="https://www.podatki.egospodarka.pl/169092,Doktorzy-Clowni-smiech-biora-na-powaznie,1,68,1.html" class="bld">
+<li>
+<img data-src="https://s3.egospodarka.pl/grafika2//Doktorzy-Clowni-smiech-biora-na-powaznie-236342-150x100crop.png" alt="Doktorzy Clowni śmiech biorą na poważnie!" title="Doktorzy Clowni śmiech biorą na poważnie! " class="ego-news-img lazyload" width="100" />
+<noscript><img src="https://s3.egospodarka.pl/grafika2//Doktorzy-Clowni-smiech-biora-na-powaznie-236342-150x100crop.png" alt="Doktorzy Clowni śmiech biorą na poważnie!" title="Doktorzy Clowni śmiech biorą na poważnie! " class="ego-news-img" width="100" /></noscript>
+<p>Doktorzy Clowni śmiech biorą na poważnie!</p>
+</li>
+</a>
+<li><a href="https://www.podatki.egospodarka.pl/168287,Fundacja-Dr-Clown-usmiech-leczy-na-powaznie,1,68,1.html"><p>Fundacja &quot;Dr Clown&quot; uśmiech leczy na poważnie!</p></a></li>
+<li><a href="https://www.finanse.egospodarka.pl/167439,WEXO-slowacki-kryptowalutowy-FinTech-startup-wchodzi-na-polski-rynek,1,63,1.html"><p>WEXO - słowacki kryptowalutowy FinTech startup wchodzi na polski rynek</p></a></li>
+</ul>
+</div><div class="col-box">
+<ul class="ego-find-tabs-border">
+<li class="ego-tabs-sel"><a href="/100287,System-monitoringu-jako-odrebny-srodek-trwaly,1,69,1.html#" id="select-tbdef-popular" class="f-normal tab-selector">Popularne</a></li>
+<li><a href="/100287,System-monitoringu-jako-odrebny-srodek-trwaly,1,69,1.html#" id="select-tbdef-commented" class="f-normal tab-selector">Komentowane</a></li>
+</ul>
+<ul class="ego-list-popular tabs-tbdef" id="tab-tbdef-popular">
+<li class="pop"><span class="nr">1</span> <a class="article_popular_link" href="https://www.podatki.egospodarka.pl/169082,SLIM-VAT-Faktury-korygujace-in-minus-w-2021-roku-w-przykladach,1,68,1.html">SLIM VAT: Faktury korygujące in minus w 2021 roku w przykładach</a> </li>
+<li class="pop"><span class="nr">2</span> <a class="article_popular_link" href="https://www.podatki.egospodarka.pl/168505,Leasing-samochodu-osobowego-2021,1,68,1.html">Leasing samochodu osobowego 2021</a> </li>
+<li class="pop"><span class="nr">3</span> <a class="article_popular_link" href="https://www.podatki.egospodarka.pl/166175,Podatek-od-dofinansowania-kosztow-dzialalnosci-gospodarczej,1,69,1.html">Podatek od dofinansowania kosztów działalności gospodarczej</a> </li>
+<li class="pop"><span class="nr">4</span> <a class="article_popular_link" href="https://www.podatki.egospodarka.pl/169140,Mechanizm-podzielonej-platnosci-w-2021-roku,1,68,1.html">Mechanizm podzielonej płatności w 2021 roku</a> </li>
+<li class="pop"><span class="nr">5</span> <a class="article_popular_link" href="https://www.podatki.egospodarka.pl/166283,Instalacja-fotowoltaiczna-jako-amortyzowany-srodek-trwaly-firmy,1,69,1.html">Instalacja fotowoltaiczna jako amortyzowany środek trwały firmy</a> </li>
+<li class="pop"><span class="nr">6</span> <a class="article_popular_link" href="https://www.podatki.egospodarka.pl/167701,Wymiana-dachu-i-rynien-z-ulga-termomodernizacyjna,1,70,1.html">Wymiana dachu i rynien z ulgą termomodernizacyjną </a> </li>
+<li class="pop"><span class="nr">7</span> <a class="article_popular_link" href="https://www.podatki.egospodarka.pl/169002,Ulga-termomodernizacyjna-na-wymiane-dachu,1,70,1.html">Ulga termomodernizacyjna na wymianę dachu?</a> </li>
+</ul>
+<ul class="ego-list-popular tabs-tbdef hidden" id="tab-tbdef-commented">
+<li class="bld b0">
+<a href="https://www.nieruchomosci.egospodarka.pl/168059,Rynek-mieszkaniowy-10-prognoz-ktore-moga-szokowac,1,80,1.html" class="cl-darkblue">
+<img src="https://s3.egospodarka.pl/grafika2/rynek-mieszkaniowy/Rynek-mieszkaniowy-10-prognoz-ktore-moga-szokowac-235019-50x33crop.jpg" alt="Rynek mieszkaniowy. 10 prognoz, które mogą szokować [&copy; denphumi - Fotolia.com]" title="Rynek mieszkaniowy. 10 prognoz, które mogą szokować [&copy; denphumi - Fotolia.com]" class="fl" />
+Rynek mieszkaniowy. 10 prognoz, które mogą szokować 
+</a>
+</li>
+<li><a href="https://www.egospodarka.pl/169003,Majowka-2021-TOP-10-lokalizacji,1,39,1.html" class="cl-black">Majówka 2021. TOP 10 lokalizacji </a> </li>
+<li><a href="https://www.finanse.egospodarka.pl/168787,Obligacje-skarbowe-nie-zawsze-chronia-przed-inflacja,1,60,1.html" class="cl-black">Obligacje skarbowe nie zawsze chronią przed inflacją</a> </li>
+<li><a href="https://www.podatki.egospodarka.pl/168891,Zyski-z-nielegalnych-gier-hazardowych-bez-podatku-dochodowego,1,69,1.html" class="cl-black">Zyski z nielegalnych gier hazardowych bez podatku dochodowego</a> </li>
+<li><a href="https://www.nieruchomosci.egospodarka.pl/167381,Nowe-mieszkania-w-Pruszczu-Gdanskim-INPRO-buduje-osiedle-Debiut-IV,1,80,1.html" class="cl-black">Nowe mieszkania w Pruszczu Gdańskim. INPRO buduje osiedle Debiut IV</a> </li>
+<li><a href="https://www.nieruchomosci.egospodarka.pl/168427,Kamienice-w-Warszawie-Jakie-wady-i-zalety-Jakie-ceny-mieszkan,1,80,1.html" class="cl-black">Kamienice w Warszawie. Jakie wady i zalety? Jakie ceny mieszkań?</a> </li>
+<li><a href="https://www.nieruchomosci.egospodarka.pl/168546,Zakup-mieszkania-bardziej-oplacalny-niz-wynajem,1,80,1.html" class="cl-black">Zakup mieszkania bardziej opłacalny niż wynajem</a> </li>
+</ul>
+</div><div class="ac pt5 col-box">
+</div><div class="col-box">
+<div class="ego-friend">
+<a rel="nofollow" href="https://www.egospodarka.pl/bulkmail/info" class="ego-ico3">newsletter</a>
+<a href="https://www.partner.egospodarka.pl/rss/wiadomosci/wszystkie/" class="ego-ico4">rss</a>
+<a href="https://www.partner.egospodarka.pl/rss/wiadomosci/podatki_i_rachunkowosc" class="ego-ico4">rss Podatki</a>
+</div>
+</div><h2 class="ego-nag-tab"><a href="https://www.porady.egospodarka.pl">Eksperci egospodarka.pl</a> </h2>
+<p><span class="ego-nag-experci">
+<a href="#1" class="group-selector ego-expert-sel">1</a>
+<a href="#2" class="group-selector">1</a>
+<a href="#3" class="group-selector">1</a>
+</span></p>
+<div class="ego-nag-border"></div>
+<ul class="ego-expert-ul expert-groups ego-expert-ul-300" id="expert-group-1">
+<li>
+<a href="https://www.porady.egospodarka.pl/profil/35998/eGospodarka-pl-Dzial-Podatkowy/">
+<img data-src="https://s3.egospodarka.pl/images-local/porady/experts_logos/35998_100x70.jpg?1360319322" alt="eGospodarka.pl - Dział Podatkowy" class="lazyload" /><noscript><img src="https://s3.egospodarka.pl/images-local/porady/experts_logos/35998_100x70.jpg?1360319322" alt="eGospodarka.pl - Dział Podatkowy" /></noscript>
+</a>
+<p><a href="https://www.porady.egospodarka.pl/profil/35998/eGospodarka-pl-Dzial-Podatkowy/">eGospodarka.pl - Dział Podatkowy</a></p>
+<h3><a href="https://www.porady.egospodarka.pl/Rozliczenia-roczne/40639-PIT-mlodocianego-pracownika-jak-rozliczyc.html">PIT młodocianego pracownika- jak rozliczyć?</a></h3>
+</li>
+<li>
+<a href="https://www.porady.egospodarka.pl/profil/1034688/Dorota-L/">
+<img data-src="https://s3.egospodarka.pl/images-local/porady/experts_logos/1034688_100x70.jpg?1556571278" alt="Dorota Ł." class="lazyload" /><noscript><img src="https://s3.egospodarka.pl/images-local/porady/experts_logos/1034688_100x70.jpg?1556571278" alt="Dorota Ł." /></noscript>
+</a>
+<p><a href="https://www.porady.egospodarka.pl/profil/1034688/Dorota-L/">Dorota Ł.</a></p>
+<h3><a href="https://www.porady.egospodarka.pl/Rozliczenia-roczne/40664-Rozliczenie-PIT-jako-osoba-samotnie-wychowujaca-dziecko.html">Rozliczenie PIT jako osoba samotnie wychowująca dziecko</a></h3>
+</li>
+</ul>
+<ul class="ego-expert-ul expert-groups hidden ego-expert-ul-300" id="expert-group-2">
+<li>
+<a href="https://www.porady.egospodarka.pl/profil/35998/eGospodarka-pl-Dzial-Podatkowy/">
+<img data-src="https://s3.egospodarka.pl/images-local/porady/experts_logos/35998_100x70.jpg?1360319322" alt="eGospodarka.pl - Dział Podatkowy" class="lazyload" /><noscript><img src="https://s3.egospodarka.pl/images-local/porady/experts_logos/35998_100x70.jpg?1360319322" alt="eGospodarka.pl - Dział Podatkowy" /></noscript>
+</a>
+<p><a href="https://www.porady.egospodarka.pl/profil/35998/eGospodarka-pl-Dzial-Podatkowy/">eGospodarka.pl - Dział Podatkowy</a></p>
+<h3><a href="https://www.porady.egospodarka.pl/Rozliczenia-roczne/40644-PIT-jaki-formularz.html">PIT - jaki formularz</a></h3>
+</li>
+<li>
+<a href="https://www.porady.egospodarka.pl/profil/1034688/Dorota-L/">
+<img data-src="https://s3.egospodarka.pl/images-local/porady/experts_logos/1034688_100x70.jpg?1556571278" alt="Dorota Ł." class="lazyload" /><noscript><img src="https://s3.egospodarka.pl/images-local/porady/experts_logos/1034688_100x70.jpg?1556571278" alt="Dorota Ł." /></noscript>
+</a>
+<p><a href="https://www.porady.egospodarka.pl/profil/1034688/Dorota-L/">Dorota Ł.</a></p>
+<h3><a href="https://www.porady.egospodarka.pl/Rozliczenia-roczne/40665-Darowizna-krwiodawstwo.html">Darowizna - krwiodawstwo</a></h3>
+</li>
+</ul>
+<ul class="ego-expert-ul expert-groups hidden ego-expert-ul-300" id="expert-group-3">
+<li>
+<a href="https://www.porady.egospodarka.pl/profil/35998/eGospodarka-pl-Dzial-Podatkowy/">
+<img data-src="https://s3.egospodarka.pl/images-local/porady/experts_logos/35998_100x70.jpg?1360319322" alt="eGospodarka.pl - Dział Podatkowy" class="lazyload" /><noscript><img src="https://s3.egospodarka.pl/images-local/porady/experts_logos/35998_100x70.jpg?1360319322" alt="eGospodarka.pl - Dział Podatkowy" /></noscript>
+</a>
+<p><a href="https://www.porady.egospodarka.pl/profil/35998/eGospodarka-pl-Dzial-Podatkowy/">eGospodarka.pl - Dział Podatkowy</a></p>
+<h3><a href="https://www.porady.egospodarka.pl/Rozliczenia-roczne/40649-UMOWA-ZLECENIE-DZIECKA-PROG-ULGI-PRORODZINNEJ.html">UMOWA ZLECENIE DZIECKA, PRÓG ULGI PRORODZINNEJ</a></h3>
+</li>
+<li>
+<a href="https://www.porady.egospodarka.pl/profil/1034688/Dorota-L/">
+<img data-src="https://s3.egospodarka.pl/images-local/porady/experts_logos/1034688_100x70.jpg?1556571278" alt="Dorota Ł." class="lazyload" /><noscript><img src="https://s3.egospodarka.pl/images-local/porady/experts_logos/1034688_100x70.jpg?1556571278" alt="Dorota Ł." /></noscript>
+</a>
+<p><a href="https://www.porady.egospodarka.pl/profil/1034688/Dorota-L/">Dorota Ł.</a></p>
+<h3><a href="https://www.porady.egospodarka.pl/Rozliczenia-roczne/40643-Ulga-prorodzinna-na-urlopie-wychowawczym.html">Ulga prorodzinna na urlopie wychowawczym</a></h3>
+</li>
+</ul><div class="col-box mb25">
+<h2 class="ego-nag-tab" style="margin-bottom:-2px;">
+<a href="https://www.podatki.egospodarka.pl/art/galeria/">Najpopularniejsze galerie</a></h2>
+<div class="ego-nag-border"></div>
+<ul class="newsbox1">
+<a href="https://www.podatki.egospodarka.pl/art/galeria/130603,Poradnik-PIT-36-i-PIT-ZG-dla-dochodow-z-Holandii-z-ulga-abolicyjna,1,69,1.html">
+<li>
+<img data-src="https://s3.egospodarka.pl/grafika2/PIT-36/Poradnik-PIT-36-i-PIT-ZG-dla-dochodow-z-Holandii-z-ulga-abolicyjna-171703-150x100crop.jpg" alt="Poradnik PIT-36 i PIT/ZG dla dochodów z Holandii z ulgą abolicyjną" title="Poradnik PIT-36 i PIT/ZG dla dochodów z Holandii z ulgą abolicyjną [&copy; shutterfil77 - Fotolia.com]" class="ego-news-img lazyload" width="100" />
+<noscript><img src="https://s3.egospodarka.pl/grafika2/PIT-36/Poradnik-PIT-36-i-PIT-ZG-dla-dochodow-z-Holandii-z-ulga-abolicyjna-171703-150x100crop.jpg" alt="Poradnik PIT-36 i PIT/ZG dla dochodów z Holandii z ulgą abolicyjną" title="Poradnik PIT-36 i PIT/ZG dla dochodów z Holandii z ulgą abolicyjną [&copy; shutterfil77 - Fotolia.com]" class="ego-news-img" width="100" /></noscript>
+<p>Poradnik PIT-36 i PIT/ZG dla dochodów z Holandii z ulgą abolicyjną</p>
+</li>
+</a>
+<a href="https://www.podatki.egospodarka.pl/art/galeria/130757,Poradnik-PIT-36-i-PIT-ZG-dochody-z-Niemiec-wylaczenie-z-progresja,1,69,1.html">
+<li>
+<img data-src="https://s3.egospodarka.pl/grafika2/PIT-36/Poradnik-PIT-36-i-PIT-ZG-dochody-z-Niemiec-wylaczenie-z-progresja-172055-150x100crop.jpg" alt="Poradnik PIT-36 i PIT/ZG: dochody z Niemiec - wyłączenie z progresją" title="Poradnik PIT-36 i PIT/ZG: dochody z Niemiec - wyłączenie z progresją [&copy; Leszek Czerwonka - Fotolia.com]" class="ego-news-img lazyload" width="100" />
+<noscript><img src="https://s3.egospodarka.pl/grafika2/PIT-36/Poradnik-PIT-36-i-PIT-ZG-dochody-z-Niemiec-wylaczenie-z-progresja-172055-150x100crop.jpg" alt="Poradnik PIT-36 i PIT/ZG: dochody z Niemiec - wyłączenie z progresją" title="Poradnik PIT-36 i PIT/ZG: dochody z Niemiec - wyłączenie z progresją [&copy; Leszek Czerwonka - Fotolia.com]" class="ego-news-img" width="100" /></noscript>
+<p>Poradnik PIT-36 i PIT/ZG: dochody z Niemiec - wyłączenie z progresją</p>
+</li>
+</a>
+<a href="https://www.podatki.egospodarka.pl/art/galeria/135989,Jak-wystawic-fakture-korygujaca,1,69,1.html">
+<li>
+<img data-src="https://s3.egospodarka.pl/grafika2/faktura-VAT/Jak-wystawic-fakture-korygujaca-182374-150x100crop.jpg" alt="Jak wystawić fakturę korygującą?" title="Jak wystawić fakturę korygującą? [&copy; Andrey Popov - Fotolia.com]" class="ego-news-img lazyload" width="100" />
+<noscript><img src="https://s3.egospodarka.pl/grafika2/faktura-VAT/Jak-wystawic-fakture-korygujaca-182374-150x100crop.jpg" alt="Jak wystawić fakturę korygującą?" title="Jak wystawić fakturę korygującą? [&copy; Andrey Popov - Fotolia.com]" class="ego-news-img" width="100" /></noscript>
+<p>Jak wystawić fakturę korygującą?</p>
+</li>
+</a>
+<a href="https://www.podatki.egospodarka.pl/art/galeria/155190,Poradnik-PIT-36-i-PIT-ZG-Jak-rozliczyc-dochody-z-pracy-we-Francji-w-polskim-PIT,1,69,1.html">
+<li>
+<img data-src="https://s3.egospodarka.pl/grafika2/PIT-36/Poradnik-PIT-36-i-PIT-ZG-Jak-rozliczyc-dochody-z-pracy-we-Francji-w-polskim-PIT-216776-150x100crop.jpg" alt="Poradnik PIT-36 i PIT/ZG: Jak rozliczyć dochody z pracy we Francji w polskim PIT?" title="Poradnik PIT-36 i PIT/ZG: Jak rozliczyć dochody z pracy we Francji w polskim PIT? [&copy; Piotr Adamowicz - Fotolia.com]" class="ego-news-img lazyload" width="100" />
+<noscript><img src="https://s3.egospodarka.pl/grafika2/PIT-36/Poradnik-PIT-36-i-PIT-ZG-Jak-rozliczyc-dochody-z-pracy-we-Francji-w-polskim-PIT-216776-150x100crop.jpg" alt="Poradnik PIT-36 i PIT/ZG: Jak rozliczyć dochody z pracy we Francji w polskim PIT?" title="Poradnik PIT-36 i PIT/ZG: Jak rozliczyć dochody z pracy we Francji w polskim PIT? [&copy; Piotr Adamowicz - Fotolia.com]" class="ego-news-img" width="100" /></noscript>
+<p>Poradnik PIT-36 i PIT/ZG: Jak rozliczyć dochody z pracy we Francji w polskim PIT?</p>
+</li>
+</a>
+<a href="https://www.podatki.egospodarka.pl/art/galeria/71800,Jak-wystawiac-faktury-zaliczkowe-i-koncowe-VAT,1,65,1.html">
+<li>
+<img data-src="https://s3.egospodarka.pl/grafika2/faktura-VAT/Jak-wystawiac-faktury-zaliczkowe-i-koncowe-VAT-78293-150x100crop.jpg" alt="Jak wystawiać faktury zaliczkowe i końcowe VAT?" title="Jak wystawiać faktury zaliczkowe i końcowe VAT? " class="ego-news-img lazyload" width="100" />
+<noscript><img src="https://s3.egospodarka.pl/grafika2/faktura-VAT/Jak-wystawiac-faktury-zaliczkowe-i-koncowe-VAT-78293-150x100crop.jpg" alt="Jak wystawiać faktury zaliczkowe i końcowe VAT?" title="Jak wystawiać faktury zaliczkowe i końcowe VAT? " class="ego-news-img" width="100" /></noscript>
+<p>Jak wystawiać faktury zaliczkowe i końcowe VAT?</p>
+</li>
+</a>
+</ul>
+</div><div class="mb25 col-box" id="box-adcol">
+<script language='JavaScript' async='true' type='text/javascript'>
+<!--
+   if (window.innerWidth > 660) {
+   if (!document.phpAds_used) document.phpAds_used = ',';
+   phpAds_random = new String (Math.random()); phpAds_random = phpAds_random.substring(2,11);
+
+   document.write ("<" + "script language='JavaScript' type='text/javascript' src='");
+   document.write ("https://adserver.egospodarka.pl/adjs.php?n=" + phpAds_random);
+   document.write ("&amp;what=zone:96");
+   document.write ("&amp;exclude=" + document.phpAds_used);
+   if (document.referer)
+      document.write ("&amp;referer=" + escape(document.referer));
+   document.write ("'><" + "/script>");
+   }
+//-->
+</script><noscript><a href="https://adserver.egospodarka.pl/adclick.php" target="_blank"><img src="https://adserver.egospodarka.pl/adview.php?what=zone:96" border="0" alt=""></a></noscript></div><ul class="ego-text-tabs">
+<li class="ego-tabs-sel"><a class="tab-selector" id="select-porady-keywords" href="https://www.porady.egospodarka.pl/kategoria/Podatki/">Porady podatkowe</a></li>
+<li><a class="tab-selector" id="select-porady-latest" href="https://www.porady.egospodarka.pl/kategoria/Podatki/">Nowe pytania</a></li>
+</ul>        
+<ul class="ego-list-koments tabs-porady" id="tab-porady-keywords">
+<li>
+<a class="bld f14" href="https://www.porady.egospodarka.pl/Rozliczenia-roczne/39456-PIT-ulga-na-dziecko.html">PIT - ulga na dziecko</a>
+<p>Witam,   razem z mężem rozliczaliśmy PIT razem. W tym roku możemy odliczyć ulgę na dziecko natomiast czy ta ulga faktycznie nam przysługuje ...</p>
+</li>
+<li>
+<a class="bld f14" href="https://www.porady.egospodarka.pl/Rozliczenia-roczne/38405-Korekta-PIT-ow.html">Korekta PIT-ów</a>
+<p>Jestem po rozwodzie. Mam 17-letniego syna, na którego odliczam ulgę na dziecko w połowie przysługującego mi limitu. Po rozmowie z matką syna ...</p>
+</li>
+<li class="ar"><a href="https://www.porady.egospodarka.pl/" class="bld">Więcej porad znajdziesz w dziale Porady <img src="https://s3.egospodarka.pl/images-local/layout/ar.gif" alt="WIĘCEJ" /></a></li>
+</ul>
+<ul class="ego-list-koments tabs-porady hidden" id="tab-porady-latest">
+<li><a href="https://www.porady.egospodarka.pl/PIT/40689-PIT-11-do-26-roku-zycia.html" class="bld">PIT-11 do 26 roku życia</a></li>
+<li><a href="https://www.porady.egospodarka.pl/VAT/40674-Sprzedaz-zdjec-droga-mailowa-a-VAT.html">Sprzedaż zdjęć drogą mailową a VAT</a></li>
+<li><a href="https://www.porady.egospodarka.pl/Rozliczenia-roczne/40671-Czy-moge-doliczyc-dochod-dziecka.html">Czy mogę doliczyć dochód dziecka</a></li>
+<li><a href="https://www.porady.egospodarka.pl/VAT/40668-VAT-za-pomnik.html">VAT za pomnik</a></li>
+<li><a href="https://www.porady.egospodarka.pl/Rozliczenia-roczne/40667-Czy-bedac-kilka-miesiecy-w-roku-na-urlopie-wychowawczym-przysluguje-mi-ulga.html">Czy będąc kilka miesięcy w roku na urlopie wychowawczym przysługuje mi ulga?</a></li>
+</ul><div class="col-box">
+<h2 class="ego-nag-tab">
+<a href="https://www.wiadomosci.egospodarka.pl/">Najnowsze w serwisie</a></h2>
+<div class="ego-nag-border"></div>
+<ul class="newsbox1">
+<a href="https://www.praca.egospodarka.pl/169214,Placa-minimalna-na-Ukrainie-o-70-nizsza-niz-w-Polsce,1,55,1.html" class="bld">
+<li>
+<img data-src="https://s3.egospodarka.pl/grafika2/zarobki-na-Ukrainie/Placa-minimalna-na-Ukrainie-o-70-nizsza-niz-w-Polsce-236489-150x100crop.jpg" alt="Płaca minimalna na Ukrainie o 70% niższa niż w Polsce" title="Płaca minimalna na Ukrainie o 70% niższa niż w Polsce [&copy; Lord_Ghost - Fotolia.com]" class="ego-news-img lazyload" width="100" />
+<noscript><img src="https://s3.egospodarka.pl/grafika2/zarobki-na-Ukrainie/Placa-minimalna-na-Ukrainie-o-70-nizsza-niz-w-Polsce-236489-150x100crop.jpg" alt="Płaca minimalna na Ukrainie o 70% niższa niż w Polsce" title="Płaca minimalna na Ukrainie o 70% niższa niż w Polsce [&copy; Lord_Ghost - Fotolia.com]" class="ego-news-img" width="100" /></noscript>
+<p>Płaca minimalna na Ukrainie o 70% niższa niż w Polsce</p>
+</li>
+</a>
+<a href="https://www.egospodarka.pl/169209,Trickbot-nowym-krolem-malware-u,1,12,1.html" class="bld">
+<li>
+<img data-src="https://s3.egospodarka.pl/grafika2/cyberbezpieczenstwo/Trickbot-nowym-krolem-malware-u-236484-150x100crop.jpg" alt="Trickbot nowym królem malware’u" title="Trickbot nowym królem malware’u " class="ego-news-img lazyload" width="100" />
+<noscript><img src="https://s3.egospodarka.pl/grafika2/cyberbezpieczenstwo/Trickbot-nowym-krolem-malware-u-236484-150x100crop.jpg" alt="Trickbot nowym królem malware’u" title="Trickbot nowym królem malware’u " class="ego-news-img" width="100" /></noscript>
+<p>Trickbot nowym królem malware’u</p>
+</li>
+</a>
+<a href="https://www.moto.egospodarka.pl/169208,Ceny-OC-w-lutym-2021-minimalnie-w-dol,1,87,1.html" class="bld">
+<li>
+<img data-src="https://s3.egospodarka.pl/grafika2/ceny-OC/Ceny-OC-w-lutym-2021-minimalnie-w-dol-236483-150x100crop.jpg" alt="Ceny OC w lutym 2021 minimalnie w dół" title="Ceny OC w lutym 2021 minimalnie w dół [&copy; Artur Marciniec - Fotolia.com]" class="ego-news-img lazyload" width="100" />
+<noscript><img src="https://s3.egospodarka.pl/grafika2/ceny-OC/Ceny-OC-w-lutym-2021-minimalnie-w-dol-236483-150x100crop.jpg" alt="Ceny OC w lutym 2021 minimalnie w dół" title="Ceny OC w lutym 2021 minimalnie w dół [&copy; Artur Marciniec - Fotolia.com]" class="ego-news-img" width="100" /></noscript>
+<p>Ceny OC w lutym 2021 minimalnie w dół</p>
+</li>
+</a>
+<a href="https://www.egospodarka.pl/169206,Mniej-opoznionych-platnosci-W-najgorszej-sytuacji-handel,1,39,1.html" class="bld">
+<li>
+<img data-src="https://s3.egospodarka.pl/grafika2/sytuacja-MSP/Mniej-opoznionych-platnosci-W-najgorszej-sytuacji-handel-236479-150x100crop.jpg" alt="Mniej opóźnionych płatności. W najgorszej sytuacji handel" title="Mniej opóźnionych płatności. W najgorszej sytuacji handel [&copy; apops - Fotolia.com]" class="ego-news-img lazyload" width="100" />
+<noscript><img src="https://s3.egospodarka.pl/grafika2/sytuacja-MSP/Mniej-opoznionych-platnosci-W-najgorszej-sytuacji-handel-236479-150x100crop.jpg" alt="Mniej opóźnionych płatności. W najgorszej sytuacji handel" title="Mniej opóźnionych płatności. W najgorszej sytuacji handel [&copy; apops - Fotolia.com]" class="ego-news-img" width="100" /></noscript>
+<p>Mniej opóźnionych płatności. W najgorszej sytuacji handel</p>
+</li>
+</a>
+<a href="https://www.finanse.egospodarka.pl/169205,Rekordowe-wyplaty-z-IKE-i-IKZE,1,63,1.html" class="bld">
+<li>
+<img data-src="https://s3.egospodarka.pl/grafika2/wyplaty-z-IKE/Rekordowe-wyplaty-z-IKE-i-IKZE-236478-150x100crop.jpg" alt="Rekordowe wypłaty z IKE i IKZE" title="Rekordowe wypłaty z IKE i IKZE [&copy; ESCALA - Fotolia.com]" class="ego-news-img lazyload" width="100" />
+<noscript><img src="https://s3.egospodarka.pl/grafika2/wyplaty-z-IKE/Rekordowe-wyplaty-z-IKE-i-IKZE-236478-150x100crop.jpg" alt="Rekordowe wypłaty z IKE i IKZE" title="Rekordowe wypłaty z IKE i IKZE [&copy; ESCALA - Fotolia.com]" class="ego-news-img" width="100" /></noscript>
+<p>Rekordowe wypłaty z IKE i IKZE</p>
+</li>
+</a>
+<a href="https://www.nieruchomosci.egospodarka.pl/169204,Centralna-Ewidencja-Emisyjnosci-Budynkow-czyli-polska-walka-ze-smogiem,1,80,1.html" class="bld">
+<li>
+<img data-src="https://s3.egospodarka.pl/grafika2/Centralna-Ewidencja-Emisyjnosci-Budynkow/Centralna-Ewidencja-Emisyjnosci-Budynkow-czyli-polska-walka-ze-smogiem-236476-150x100crop.jpg" alt="Centralna Ewidencja Emisyjności Budynków, czyli polska walka ze smogiem" title="Centralna Ewidencja Emisyjności Budynków, czyli polska walka ze smogiem " class="ego-news-img lazyload" width="100" />
+<noscript><img src="https://s3.egospodarka.pl/grafika2/Centralna-Ewidencja-Emisyjnosci-Budynkow/Centralna-Ewidencja-Emisyjnosci-Budynkow-czyli-polska-walka-ze-smogiem-236476-150x100crop.jpg" alt="Centralna Ewidencja Emisyjności Budynków, czyli polska walka ze smogiem" title="Centralna Ewidencja Emisyjności Budynków, czyli polska walka ze smogiem " class="ego-news-img" width="100" /></noscript>
+<p>Centralna Ewidencja Emisyjności Budynków, czyli polska walka ze smogiem</p>
+</li>
+</a>
+<a href="https://www.egospodarka.pl/169200,Rekrutacja-pracownikow-w-dobie-pandemii-czego-oczekuja-kandydaci,1,39,1.html" class="bld">
+<li>
+<img data-src="https://s3.egospodarka.pl/grafika2/rekrutacja/Rekrutacja-pracownikow-w-dobie-pandemii-czego-oczekuja-kandydaci-236473-150x100crop.jpg" alt="Rekrutacja pracowników w dobie pandemii: czego oczekują kandydaci?" title="Rekrutacja pracowników w dobie pandemii: czego oczekują kandydaci? [&copy; WavebreakmediaMicro - Fotolia.com]" class="ego-news-img lazyload" width="100" />
+<noscript><img src="https://s3.egospodarka.pl/grafika2/rekrutacja/Rekrutacja-pracownikow-w-dobie-pandemii-czego-oczekuja-kandydaci-236473-150x100crop.jpg" alt="Rekrutacja pracowników w dobie pandemii: czego oczekują kandydaci?" title="Rekrutacja pracowników w dobie pandemii: czego oczekują kandydaci? [&copy; WavebreakmediaMicro - Fotolia.com]" class="ego-news-img" width="100" /></noscript>
+<p>Rekrutacja pracowników w dobie pandemii: czego oczekują kandydaci?</p>
+</li>
+</a>
+</ul>
+</div><div class="col-box" id="box-kodeksy">
+<h2 class="ego-nag-tab"><a href="https://www.prawo.egospodarka.pl/kodeksy">Kodeksy</a></h2>
+<div class="ego-nag-border"></div>
+<div class="ego-box-tabs-border ego-box-tab-border-gray img-kodeks tabs-prawo" id="tab-prawo-kodeksy">
+<ul class="ego-find-li">
+<li><a href="https://www.prawo.egospodarka.pl/kodeksy/ordynacja-podatkowa">Ordynacja podatkowa</a></li>
+<li><a href="https://www.prawo.egospodarka.pl/kodeksy/kodeks-karny-skarbowy">Kodeks karny skarbowy</a></li>
+<li><a href="https://www.prawo.egospodarka.pl/kodeksy/kodeks-spolek-handlowych">Kodeks spółek handlowych</a></li>
+<li><a href="https://www.prawo.egospodarka.pl/kodeksy/prawo-budowlane">Prawo budowlane</a></li>
+<li><a href="https://www.prawo.egospodarka.pl/kodeksy/kodeks-postepowania-administracyjnego">Kodeks postępowania administracyjnego</a></li>
+</ul>
+<p class="more"><a href="https://www.prawo.egospodarka.pl/kodeksy">Pokaż wszystkie</a></p>
+</div>
+</div><div class="col-box" id="box-narzedzia">
+<ul class="ego-find-tabs">
+<li><a href="https://www.firma.egospodarka.pl/niezbednik-firmowy/" class="tab-selector" id="select-firma-niezbednik">NIEZBĘDNIK FIRMOWY</a></li>
+<li class="ego-tabs-sel"><a href="https://www.firma.egospodarka.pl/kalkulatory/" class="tab-selector" id="select-firma-kalkulatory">KALKULATORY</a></li>
+</ul>
+<div class="ego-niez-text ego-kalk-text tabs-firma hidden" id="tab-firma-niezbednik">
+<ul>
+<li><a href="https://www.firma.egospodarka.pl/niezbednik-firmowy/Odsetki-podatkowe.html">Odsetki podatkowe</a></li>
+<li><a href="https://www.firma.egospodarka.pl/niezbednik-firmowy/Odsetki-ustawowe.html">Odsetki ustawowe</a></li>
+<li><a href="https://www.firma.egospodarka.pl/niezbednik-firmowy/Amortyzacja-Stawki-amortyzacji.html">Amortyzacja stawki</a></li>
+</ul>
+<p><a href="https://www.firma.egospodarka.pl/niezbednik-firmowy/">Pokaż wszystkie</a></p>
+</div>
+<div class="ego-kalk-text tabs-firma" id="tab-firma-kalkulatory">
+<ul>
+<li><a href="https://www.podatki.egospodarka.pl/kalkulator/podatek-dochodowy">Podatek dochodowy</a></li>
+<li><a href="https://www.podatki.egospodarka.pl/przelicznik-walut">Przelicznik walut</a></li>
+<li><a href="https://www.podatki.egospodarka.pl/kalkulator/podatek-vat">Kalkulator VAT</a></li>
+<li><a href="https://www.podatki.egospodarka.pl/kalkulator/odsetek-od-zaleglosci-podatkowych">Odsetki podatkowe</a></li>
+</ul>
+<p><a href="https://www.firma.egospodarka.pl/kalkulatory/">Pokaż wszystkie</a></p>
+</div>
+</div><div class="col-box" id="box-urzedy">
+<ul class="ego-find-tabs-border">
+<li class="ego-tabs-sel"><a href="https://www.podatki.egospodarka.pl/urzedy-skarbowe/" class="tab-selector" id="select-urzedy-skarbowe">US</a></li>
+<li><a href="https://www.firma.egospodarka.pl/zus" class="tab-selector" id="select-urzedy-zus">ZUS</a></li>
+<li><a href="https://www.praca.egospodarka.pl/urzedy-pracy/" class="tab-selector" id="select-urzedy-pracy">PUP</a></li>
+<li><a href="https://www.finanse.egospodarka.pl/banki/adresy/" class="tab-selector" id="select-urzedy-banki">Banki</a></li>
+</ul>
+<div class="ego-box-tabs-border tabs-urzedy" id="tab-urzedy-skarbowe">
+<form action="https://www.podatki.egospodarka.pl/urzedy-skarbowe/" method="get">
+<p class="pb10 f12">
+Wpisz nazwę miasta, dla którego chcesz znaleźć urząd skarbowy lub izbę skarbową.
+</p><p>	
+<input type="text" class="ego-input w240" name="city" id="urzedy-urzedy_skarbowe-cityac">
+<input type="submit" class="ego-submit fr" value="SZUKAJ" /></p>
+</form>
+<ul class="ego-ul-2col ego-ul-2col-wymus">
+<li><a href="https://www.podatki.egospodarka.pl/urzedy-skarbowe/wroclaw-urzad-skarbowy">Urząd Skarbowy Wrocław</a></li>
+<li><a href="https://www.podatki.egospodarka.pl/urzedy-skarbowe/warszawa-urzad-skarbowy">Urząd Skarbowy Warszawa</a></li>
+<li><a href="https://www.podatki.egospodarka.pl/urzedy-skarbowe/krakow-urzad-skarbowy">Urząd Skarbowy Kraków</a></li>
+<li><a href="https://www.podatki.egospodarka.pl/urzedy-skarbowe/poznan-urzad-skarbowy">Urząd Skarbowy Poznań</a></li>
+<li><a href="https://www.podatki.egospodarka.pl/urzedy-skarbowe/olsztyn-urzad-skarbowy">Urząd Skarbowy Olsztyn</a></li>
+<li><a href="https://www.podatki.egospodarka.pl/urzedy-skarbowe/gdansk-urzad-skarbowy">Urząd Skarbowy Gdańsk</a></li>
+</ul></div>
+<div class="ego-box-tabs-border tabs-urzedy hidden" id="tab-urzedy-zus">
+<form action="https://www.firma.egospodarka.pl/zus/" method="get">
+<p class="pb10 f12">
+Wpisz nazwę miasta, dla którego chcesz znaleźć jednostkę ZUS.
+</p><p>	
+<input type="text" class="ego-input w240" name="city" id="urzedy-zus-cityac">
+<input type="submit" class="ego-submit fr" value="SZUKAJ" /></p>
+</form>
+<ul class="ego-ul-2col ego-ul-2col-wymus">
+<li><a href="https://www.firma.egospodarka.pl/zus/warszawa-zus">ZUS Warszawa</a></li>
+<li><a href="https://www.firma.egospodarka.pl/zus/krakow-zus">ZUS Kraków</a></li>
+<li><a href="https://www.firma.egospodarka.pl/zus/poznan-zus">ZUS Poznań</a></li>
+<li><a href="https://www.firma.egospodarka.pl/zus/szczecin-zus">ZUS Szczecin</a></li>
+<li><a href="https://www.firma.egospodarka.pl/zus/wroclaw-zus">ZUS Wrocław</a></li>
+<li><a href="https://www.firma.egospodarka.pl/zus/lublin-zus">ZUS Lublin</a></li>
+</ul></div>
+<div class="ego-box-tabs-border tabs-urzedy hidden" id="tab-urzedy-pracy">
+<form action="https://www.praca.egospodarka.pl/urzedy-pracy/" method="get">
+<p class="pb10 f12">
+Wpisz nazwę miasta, dla którego chcesz znaleźć urząd pracy.
+</p><p>	
+<input type="text" class="ego-input w240" name="city" id="urzedy-urzedy_pracy-cityac">
+<input type="submit" class="ego-submit fr" value="SZUKAJ" /></p>
+</form>
+<ul class="ego-ul-2col ego-ul-2col-wymus">
+<li><a href="https://www.praca.egospodarka.pl/urzedy-pracy/bydgoszcz,kujawsko-pomorskie,powiatowy-urzad-pracy,41.html">PUP Bydgoszcz</a></li>
+<li><a href="https://www.praca.egospodarka.pl/urzedy-pracy/katowice,slaskie,powiatowy-urzad-pracy,104.html">PUP Katowice</a></li>
+<li><a href="https://www.praca.egospodarka.pl/urzedy-pracy/opole,opolskie,powiatowy-urzad-pracy,201.html">PUP Opole</a></li>
+<li><a href="https://www.praca.egospodarka.pl/urzedy-pracy/poznan,wielkopolskie,powiatowy-urzad-pracy,225.html">PUP Poznań</a></li>
+<li><a href="https://www.praca.egospodarka.pl/urzedy-pracy/rzeszow,podkarpackie,powiatowy-urzad-pracy,253.html">PUP Rzeszów</a></li>
+<li><a href="https://www.praca.egospodarka.pl/urzedy-pracy/tarnow,malopolskie,powiatowy-urzad-pracy,302.html">PUP Tarnów</a></li>
+</ul></div>
+<div class="ego-box-tabs-border tabs-urzedy hidden" id="tab-urzedy-banki">
+<form action="https://www.finanse.egospodarka.pl/banki/adresy/" method="get">
+<p class="pb10 f12">
+Wpisz nazwę miasta, dla którego chcesz znaleźć bank.
+</p><p>	
+<input type="text" class="ego-input w240" name="city" id="urzedy-banki-cityac">
+<input type="submit" class="ego-submit fr" value="SZUKAJ" /></p>
+</form>
+<ul class="ego-ul-2col ego-ul-2col-wymus">
+<li><a href="https://www.finanse.egospodarka.pl/banki/adresy/warszawa">Banki Warszawa</a></li>
+<li><a href="https://www.finanse.egospodarka.pl/banki/adresy/wroclaw">Banki Wrocław</a></li>
+<li><a href="https://www.finanse.egospodarka.pl/banki/adresy/krakow">Banki Kraków</a></li>
+<li><a href="https://www.finanse.egospodarka.pl/banki/adresy/bydgoszcz">Banki Bydgoszcz</a></li>
+<li><a href="https://www.finanse.egospodarka.pl/banki/adresy/lublin">Banki Lublin</a></li>
+<li><a href="https://www.finanse.egospodarka.pl/banki/adresy/poznan">Banki Poznań</a></li>
+</ul></div>
+</div><div class="col-box" id="box-formularze">
+<h2 class="ego-nag-tab-2"><a href="https://www.firma.egospodarka.pl/formularze">Wzory dokumentów</a></h2>
+<div class="ego-nag-border"></div>
+<div class="ego-box-tabs-border">
+<form action="https://www.firma.egospodarka.pl/formularze/search.php" method='GET'>
+<p class="f12 pb15">Bezpłatne wzory dokumentów i formularzy. <br>
+<strong>Wyszukaj i pobierz za darmo:</strong></p>
+<p>
+<label>Szukane słowa</label>
+<input name="key" type="text" class="ego-input"/>
+</p>
+<p class="ar b-bot pb10"><input type="submit" class="ego-submit" value="SZUKAJ" /></p>
+</form>
+<ul class="ego-ul-2col ego-ul-2col-wymus">
+<li><a href="https://www.podatki.egospodarka.pl/formularze-podatkowe/1,Deklaracje-PIT,6,0.html">Deklaracje PIT</a></li>
+<li><a href="https://www.podatki.egospodarka.pl/formularze-podatkowe/1,Deklaracje-VAT,1,0.html">Deklaracje VAT</a></li>
+<li><a href="https://www.podatki.egospodarka.pl/formularze-podatkowe/1,Deklaracje-CIT,12,0.html">Deklaracje CIT</a></li>
+<li><a href="https://www.podatki.egospodarka.pl/formularze-podatkowe/1,Deklaracje-NIP,10,0.html">Deklaracje NIP</a></li>
+<li><a href="https://www.firma.egospodarka.pl/formularze/1,Formularze-ZUS,24,0.html">Formularze ZUS</a></li>
+<li><a href="https://www.firma.egospodarka.pl/formularze/1,GUS,20,0.html">Formularze GUS</a></li>
+</ul>
+</div>
+</div><div class="col-box" id="box-polecamy">
+<h2 class="ego-nag-tab"><span class="none-link">Na skróty</span></h2>
+<div class="ego-nag-border"></div>
+<ul class="ego-friends">
+<li><a href="https://www.egospodarka.pl/tematy/">tematy</a></li>
+<li><a href="https://www.grupy.egospodarka.pl/">usenet</a></li>
+<li><a href="https://www.prawo.egospodarka.pl/kodeksy/kodeks-pracy">kodeks pracy</a></li>
+<li><a href="https://www.finanse.egospodarka.pl/kurs-euro">Kurs Euro</a></li>
+</ul>
+</div>		
+<script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+<div class="mtb25">
+<div id="gpt-passback">
+<script>
+    window.googletag = window.googletag || {cmd: []};
+    googletag.cmd.push(function() {
+    googletag.defineSlot('/156403860/300x600_ego_bottom', [[300, 600], [300, 250]], 'gpt-passback').addService(googletag.pubads());
+    googletag.enableServices();
+    googletag.display('gpt-passback');
+    });
+  </script>
+</div>
+</div>
+</div>
+</div>
+<div class="ad-sky">
+<script language='JavaScript' async='true' type='text/javascript'>
+<!--
+   if (window.innerWidth > 1160 && window.innerHeight > 620) {
+   if (!document.phpAds_used) document.phpAds_used = ',';
+   phpAds_random = new String (Math.random()); phpAds_random = phpAds_random.substring(2,11);
+
+   document.write ("<" + "script language='JavaScript' type='text/javascript' src='");
+   document.write ("https://adserver.egospodarka.pl/adjs.php?n=" + phpAds_random);
+   document.write ("&amp;what=zone:26");
+   document.write ("&amp;exclude=" + document.phpAds_used);
+   if (document.referer)
+      document.write ("&amp;referer=" + escape(document.referer));
+   document.write ("'><" + "/script>");
+   }
+//-->
+</script><noscript><a href="https://adserver.egospodarka.pl/adclick.php" target="_blank"><img src="https://adserver.egospodarka.pl/adview.php?what=zone:26" border="0" alt=""></a></noscript>	</div>
+</div>
+<div id="footer">
+<div class="ego-foot-top">
+<div class="ego-stopka-logo">
+<p class="fl"><a href="https://www.egospodarka.pl"><img src="https://s3.egospodarka.pl/images-local/layout/logo-small.gif" alt="eGospodarka.pl" /></a></p>
+<p class="fr"><a href="#top">przejdź do góry strony</a></p>
+</div>
+</div>
+<div class="ego-foot-mid">
+<ul class="fl mb25">
+<li class="cl"><p>eGospodarka.pl</p>
+<ul class="ego-foot-sub">
+<li><a href="https://www.egospodarka.pl/serwis/oserwisie.html" rel="nofollow">O serwisie</a></li>
+<li><a href="https://www.egospodarka.pl/mapa.thtml">Mapa serwisu</a></li>
+<li><a href="https://market.egospodarka.pl/" rel="nofollow">Sklep</a></li>
+</ul>
+</li>
+<li class="cl"><p>Warunki prawne</p>
+<ul class="ego-foot-sub">
+<li><a href="https://www.egospodarka.pl/serwis/regulamin.html" rel="nofollow">Regulamin serwisu</a></li>
+<li><a href="https://www.egospodarka.pl/serwis/regulamin_uslug_platnych.html" rel="nofollow">Regulamin usług płatnych</a></li>
+<li><a href="https://www.egospodarka.pl/serwis/polityka_prywatnosci.html" rel="nofollow">Polityka prywatności</a></li>					
+</ul>
+</li>
+<li class="cl"><p>Na skróty</p>
+<ul class="ego-foot-sub">
+<li><a href="https://www.firma.egospodarka.pl/niezbednik-firmowy/">Wskaźniki i stawki</a></li>
+<li><a href="https://www.firma.egospodarka.pl/kalkulatory/">Kalkulatory</a></li>
+<li><a href="https://www.firma.egospodarka.pl/formularze/">Wzory dokumentów</a></li>
+<li><a href="https://www.partner.egospodarka.pl/">Centrum webmastera</a></li>					
+</ul>
+<li class="cl"><p>Twoje konto w serwisie</p>
+<ul class="ego-foot-sub">
+<li><a href="https://www.panel.egospodarka.pl/" rel="nofollow">Panel użytkownika</a></li>
+<li><a href="https://login.egospodarka.pl/user/" rel="nofollow">Zarządzanie kontem</a></li>
+<li><a href="https://www.panel.egospodarka.pl/faq.php" rel="nofollow">FAQ - pomoc</a></li>
+<li><a href="https://login.egospodarka.pl/user/register/" rel="nofollow">Rejestracja</a></li>					
+</ul>
+</li>
+<li class="cl"><p>Kontakt</p>
+<ul class="ego-foot-sub">
+<li><a href="https://www.egospodarka.pl/gosp/kontakt/" rel="nofollow">Kontakt</a></li>
+<li><a href="https://www.egospodarka.pl/gosp/kontakt/" rel="nofollow">Redakcja</a></li>
+<li><a href="javascript:report_problem()" rel="nofollow">Uwagi i błędy</a></li>					
+</ul>
+</li>
+<li class="cl"><p>Reklama i marketing</p>
+<ul class="ego-foot-sub">
+<li><a href="https://www.reklama.egospodarka.pl/" rel="nofollow">Profil użytkowników</a></li>
+<li><a href="https://www.reklama.egospodarka.pl/produkty/mailing" rel="nofollow">Mailing</a></li>
+<li><a href="https://www.reklama.egospodarka.pl/produkty" rel="nofollow">Cennik</a></li>
+<li><a href="https://www.reklama.egospodarka.pl/kontakt">Biuro reklamy</a></li>					
+</ul>
+</li>
+</ul>
+<div class="fr ego-newsletter">
+<a href="https://www.egospodarka.pl/bulkmail/info" rel="nofollow"><h2>Newsletter</h2>
+<span class="ego-sub fr">zapisz się</span></a>
+<p class="cl pt10 cl-blue ar">
+<strong>E-booki w prezencie!</strong> 
+<a href="https://www.egospodarka.pl/bulkmail/info" rel="nofollow">Więcej informacji &rsaquo;</a>
+</p>
+</div>
+<div class="ego-stopka-copy cl">
+<p class="fl" style="padding-top:15px;">&copy; Wszelkie prawa zastrzeżone</p>
+<p class="fr"><span class="fl" style="padding-top:13px;">NASZE PROJEKTY:</span> <a href="http://www.senior.pl" target="_blank"><img src="https://s3.egospodarka.pl/images-local/layout/senior-ego.gif" alt="Senior.pl" /></a> <a href="http://www.e-commerce.pl" target="_blank"><img src="https://s3.egospodarka.pl/images-local/layout/ecommerce-ego.gif" alt="e-commerce.pl" /></a></p>
+</div>
+</div>
+</div>
+<div class="ego-top-profil-box" id="panel">
+<div class="panel-zaw">
+<div class="top-search hidden" id="sso-search">
+<form id="sso-search-form" name="szukajtop" method="POST" action="https://www.egospodarka.pl/art/s/">
+<input name="input_charset" value="UTF-8" type="hidden">
+<input name="submitted" value="1" type="hidden">
+<input name="kategoria" value="" type="hidden">
+<input name="cof" value="" type="hidden">
+<p>
+<input name="q" class="form-text" value="Wyszukaj w serwisie..." onfocus="this.value=''" type="text">
+<input class="ego-top-button" type="submit">
+</p>
+</form>
+</div>
+<div class="ego-top-login" id="panelmenu">
+<ul>
+<li><a href="https://login.egospodarka.pl/auth/?ret=https%3A%2F%2Fwww.podatki.egospodarka.pl%2F163229%2CTarcza-antykryzysowa-odliczenie-straty-2020-w-PIT-CIT-za-rok-2019%2C1%2C68%2C1.html&amp;ts=1615917566&amp;realm=articles&amp;mac=ACaRYVCcOkAQOtlXuKLOeohn-BE4sbeWrFyfN5l5WFjINcQXgIZKq3CfNPhA0Fyj5fszvwDhOh9TEVBi76GxDA,," class="bld" rel="nofollow">Zaloguj się</a></li>
+<li><a href="https://login.egospodarka.pl/user/register/?ret=https%3A%2F%2Fwww.podatki.egospodarka.pl%2F163229%2CTarcza-antykryzysowa-odliczenie-straty-2020-w-PIT-CIT-za-rok-2019%2C1%2C68%2C1.html&amp;ts=1615917566&amp;realm=articles&amp;mac=-OJfyUKObQzTXyR7YLOgN6yngCCKlHIFiv4TUlMyML1Bu5DA5lW5_Z9GEcd0HBmMNOEDcfvq80ok_fTbHRCztw,," class="bg-no" rel="nofollow">Utwórz konto</a></li> 
+</ul>
+</div>
+</div>
+</div>
+<script>
+    function saveConsent() {
+        try {
+            window.__tcfapi('getTCData', null,
+                function(consentdata, success) {
+                    localStorage.setItem('idm_ConsentData', consentdata['tcString']);
+                }
+            );
+        } catch (err) {
+            setTimeout(() => {
+                this.saveConsent();
+            }, 200);
+        }
+    }
+    saveConsent();
+</script>
+<div id="vm_l08xwu1yfk6upti4"></div>
+<script async src="https://mob.vendimob.pl/rp/l08xwu1yfk6upti4/1"></script>
+</body>
+</html>
