@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"103fa8ca15",applicationID:"144794115"};window.NREUM||(NREUM={}),__nr_require=function(n,e,t){function r(t){if(!e[t]){var i=e[t]={exports:{}};n[t][0].call(i.exports,function(e){var i=n[t][1][e];return r(i||e)},i,i.exports)}return e[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(n,e,t){function r(){}function i(n,e,t){return function(){return o(n,[u.now()].concat(f(arguments)),e?null:this,t),e?void 0:this}}var o=n("handle"),a=n(4),f=n(5),c=n("ee").get("tracer"),u=n("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(n,e){s[e]=i(d+e,!0,"api")}),s.addPageAction=i(d+"addPageAction",!0),s.setCurrentRouteName=i(d+"routeName",!0),e.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(n,e){var t={},r=this,i="function"==typeof e;return o(l+"tracer",[u.now(),n,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return e.apply(this,arguments)}catch(n){throw c.emit("fn-err",[arguments,this,n],t),n}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(n,e){m[e]=i(l+e)}),newrelic.noticeError=function(n,e){"string"==typeof n&&(n=new Error(n)),o("err",[n,u.now(),!1,e])}},{}],2:[function(n,e,t){function r(n,e){var t=n.getEntries();t.forEach(function(n){"first-paint"===n.name?a("timing",["fp",Math.floor(n.startTime)]):"first-contentful-paint"===n.name&&a("timing",["fcp",Math.floor(n.startTime)])})}function i(n){if(n instanceof c&&!s){var e,t=Math.round(n.timeStamp);e=t>1e12?Date.now()-t:f.now()-t,s=!0,a("timing",["fi",t,{type:n.type,fid:e}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var o,a=n("handle"),f=n("loader"),c=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){o=new PerformanceObserver(r);try{o.observe({entryTypes:["paint"]})}catch(u){}}if("addEventListener"in document){var s=!1,p=["click","keydown","mousedown","pointerdown","touchstart"];p.forEach(function(n){document.addEventListener(n,i,!1)})}}},{}],3:[function(n,e,t){function r(n,e){if(!i)return!1;if(n!==i)return!1;if(!e)return!0;if(!o)return!1;for(var t=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],4:[function(n,e,t){function r(n,e){var t=[],r="",o=0;for(r in n)i.call(n,r)&&(t[o]=e(r,n[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],5:[function(n,e,t){function r(n,e,t){e||(e=0),"undefined"==typeof t&&(t=n?n.length:0);for(var r=-1,i=t-e||0,o=Array(i<0?0:i);++r<i;)o[r]=n[e+r];return o}e.exports=r},{}],6:[function(n,e,t){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(n,e,t){function r(){}function i(n){function e(n){return n&&n instanceof r?n:n?c(n,f,o):o()}function t(t,r,i,o){if(!d.aborted||o){n&&n(t,r,i);for(var a=e(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function l(n,e){h[n]=v(n).concat(e)}function m(n,e){var t=h[n];if(t)for(var r=0;r<t.length;r++)t[r]===e&&t.splice(r,1)}function v(n){return h[n]||[]}function g(n){return p[n]=p[n]||i(t)}function w(n,e){u(n,function(n,t){e=e||"feature",y[t]=e,e in s||(s[e]=[])})}var h={},y={},b={on:l,addEventListener:l,removeEventListener:m,emit:t,get:g,listeners:v,context:e,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var f="nr@context",c=n("gos"),u=n(4),s={},p={},d=e.exports=i();d.backlog=s},{}],gos:[function(n,e,t){function r(n,e,t){if(i.call(n,e))return n[e];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(n,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return n[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(n,e,t){function r(n,e,t,r){i.buffer([n],r),i.emit(n,e,t)}var i=n("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(n,e,t){function r(n){var e=typeof n;return!n||"object"!==e&&"function"!==e?-1:n===window?0:a(n,o,function(){return i++})}var i=1,o="nr@id",a=n("gos");e.exports=r},{}],loader:[function(n,e,t){function r(){if(!x++){var n=E.info=NREUM.info,e=l.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(n&&n.licenseKey&&n.applicationID&&e))return s.abort();u(y,function(e,t){n[e]||(n[e]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=l.createElement("script");t.src="https://"+n.agent,e.parentNode.insertBefore(t,e)}}function i(){"complete"===l.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=n("handle"),u=n(4),s=n("ee"),p=n(3),d=window,l=d.document,m="addEventListener",v="attachEvent",g=d.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:g,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1158.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=e.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};n(1),n(2),l[m]?(l[m]("DOMContentLoaded",o,!1),d[m]("load",r,!1)):(l[v]("onreadystatechange",i),d[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=n(6)},{}],"wrap-function":[function(n,e,t){function r(n){return!(n&&n instanceof Function&&n.apply&&!n[a])}var i=n("ee"),o=n(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;e.exports=function(n,e){function t(n,e,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){d([u,"",[r,a,i],f])}s(e+"start",[r,a,i],f);try{return c=n.apply(a,r)}catch(p){throw s(e+"err",[r,a,p],f),p}finally{s(e+"end",[r,a,c],f)}}return r(n)?n:(e||(e=""),nrWrapper[a]=n,p(n,nrWrapper),nrWrapper)}function u(n,e,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<e.length;c++)f=e[c],a=n[f],r(a)||(n[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||e){var o=c;c=!0;try{n.emit(t,r,i,e)}catch(a){d([a,t,r,i])}c=o}}function p(n,e){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(n);return t.forEach(function(t){Object.defineProperty(e,t,{get:function(){return n[t]},set:function(e){return n[t]=e,e}})}),e}catch(r){d([r])}for(var i in n)f.call(n,i)&&(e[i]=n[i]);return e}function d(e){try{n.emit("internal-error",e)}catch(t){}}return n||(n=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script>
+	<link rel="pingback" href="https://boston.cbslocal.com/xmlrpc.php" />
+
+<!-- WP Header - Start -->
+<meta name="news_keywords" content="josh mcdaniels, cleveland browns, nfl head coaching vacancies, nfl" />
+<meta name="keywords" content="josh mcdaniels, cleveland browns, nfl head coaching vacancies, nfl" />
+<meta property="fb:pages" content="7446277009" />
+<meta name="google-site-verification" content="44caXBf4kjHeKKAT7ZZ89NaCX25utL_yRSa-qGpwIhY" />
+<title>Cleveland Browns Clear House, May Give Josh McDaniels Complete Control &#8211; CBS Boston</title>
+<!-- Jetpack Site Verification Tags -->
+<meta name="google-site-verification" content="44caXBf4kjHeKKAT7ZZ89NaCX25utL_yRSa-qGpwIhY" />
+<meta name="msvalidate.01" content="FDD12CE797EAB78953FDE9ACF7F312A5" />
+<link rel="dns-prefetch" href="//cdn.cookielaw.org" />
+<script type="text/javascript" charset="UTF-8" src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" data-domain-script="7547764e-53b9-4fff-aef7-ce9cb429c721"></script>
+<link rel="dns-prefetch" href="//production-cmp.isgprivacy.cbsi.com" />
+<script type="text/javascript" charset="UTF-8" src="https://production-cmp.isgprivacy.cbsi.com/dist/optanon.js"></script>
+<script type="text/javascript">!function(n){var o=window,a="cbsoptanon",c="cmd",d="config";o[a]=o[a]?o[a]:{},o[a][c]=o[a][c]?o[a][c]:[],o[a][d]=o[a][d]?o[a][d]:[],["onIframesReady","onFormsReady","onScriptsReady","onAdsReady"].forEach(function(n){o[a][n]=o[a][n]||function(){var d=arguments;o[a][c].push(function(){o[a][n].apply(o[a],d)})}})}();</script>
+<link rel='dns-prefetch' href='//s0.wp.com' />
+<link rel='dns-prefetch' href='//maxcdn.bootstrapcdn.com' />
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//wayne.cbslocal.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="CBS Boston &raquo; Feed" href="https://boston.cbslocal.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="CBS Boston &raquo; Comments Feed" href="https://boston.cbslocal.com/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="CBS Boston &raquo; Cleveland Browns Clear House, May Give Josh McDaniels Complete Control Comments Feed" href="https://boston.cbslocal.com/2019/12/31/josh-mcdaniels-patriots-browns-head-coaching-vacancy-nfl/feed/" />
+<link rel='stylesheet' id='all-css-0' href='https://boston.cbslocal.com/_static/??-eJytj00OAiEMhS8kNsaIYWE8CwN1JFNawk+8vsi4caWTuGr72u/lFR5JOeGKXKHeMWIBNxVF4ixBYEfNv6RS4CZSMe97u4OfIIwT+pVNGUms/w4nanPgAlF8o76xb4Net8PjQEXLdsY8bD4U1UMuVdKGl1aPFie2gRQFXv6fCqlPXMe/13g5nPRZG6PN8Ql17Z9u' type='text/css' media='all' />
+<link crossorigin="anonymous" rel='stylesheet' id='cbs-font-awesome-css'  href='//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css?ver=4.7.0' media='all' />
+<link crossorigin="anonymous" rel='stylesheet' id='cbs-lato-font-css'  href='https://fonts.googleapis.com/css?family=Lato%3A300%2C400%2C700%2C900&#038;ver=1.0.0' media='all' />
+<link rel='stylesheet' id='all-css-4' href='https://boston.cbslocal.com/_static/??-eJyNy0sKgDAMANELWaPFUlyIZ6kxqJB+IBHx9toLiNvhDVzFYE5KSUF3iiSAixjOGBhEb6YWRRr4YkdCPteaRKCEjYxSLBz0x1sX4jcmlarnOPXOD91onbcPIdY5Hg==' type='text/css' media='all' />
+<link rel='stylesheet' id='cbs-custom-css-css'  href='https://wayne.cbslocal.com/cbs-local-custom-css/global/cbslocal_custom_global.css?ver=1.0.0' media='all' />
+<link rel='stylesheet' id='all-css-6' href='https://boston.cbslocal.com/_static/??-eJydkltSwzAMRTeEa0qBfjGsRXFEaiJbHltpyO6R+6ADZaDJ37Wle/QY2TEZx1EwipUdBizWNcUQOyCbaOh8LDZwO5BGDgkmQIQOs3VFf6aEjytVd/YvkI+OhrZ+qWf0LRrBkAgEy0xzgiw3eH52XnacxfGZcnnOKI+hwfboP0hDvohxIEDczRxDp/CO0Owvy/sWbxVtGzX2WqXJkCdbZCJcBR/nT68b71C+tl/1FSQM5mx7R0ng+iv7GzhsmGtLvYqPU0sLSMLJJC6qfkcsuMQAua/oY75j4rzgTv7j8h7zmL3cNHW1n3RNfw0v66ft83a9vt88fAJmpU74' type='text/css' media='all' />
+<script type='text/javascript' src='https://boston.cbslocal.com/_static/??-eJy1kEESwiAMRS8kYnW0K8ezUIg0NYRago63Fzsu7MrWGVeB8P/LJ/reKxtZgEVLCwGStk1SFK0hjWwpu9Lqku4jPc5ItA7I6y6t9FxjN8vRU/bISYfoMpUX40ZzKeq2/SRM0NcMw+NdvgpUQD8YgZ/yjAIVDBsPwws9aagy7yKxX7SYc2YrGDn9IxBQubGkRYmMayHhbd6Git5TbAwtGzEIWoLF372j8yAj4n0siFM4Vvv6UFfVZrfrnnXyCnM='></script>
+<link rel='https://api.w.org/' href='https://boston.cbslocal.com/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://boston.cbslocal.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://boston.cbslocal.com/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 5.3.2" />
+<link rel='shortlink' href='https://cbsloc.al/36hGg1G' />
+<link rel="alternate" type="application/json+oembed" href="https://boston.cbslocal.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fboston.cbslocal.com%2F2019%2F12%2F31%2Fjosh-mcdaniels-patriots-browns-head-coaching-vacancy-nfl%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://boston.cbslocal.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fboston.cbslocal.com%2F2019%2F12%2F31%2Fjosh-mcdaniels-patriots-browns-head-coaching-vacancy-nfl%2F&#038;format=xml" />
+
+<link rel='dns-prefetch' href='//v0.wordpress.com'/>
+<link rel='dns-prefetch' href='//jetpack.wordpress.com'/>
+<link rel='dns-prefetch' href='//s0.wp.com'/>
+<link rel='dns-prefetch' href='//s1.wp.com'/>
+<link rel='dns-prefetch' href='//s2.wp.com'/>
+<link rel='dns-prefetch' href='//public-api.wordpress.com'/>
+<link rel='dns-prefetch' href='//0.gravatar.com'/>
+<link rel='dns-prefetch' href='//1.gravatar.com'/>
+<link rel='dns-prefetch' href='//2.gravatar.com'/>
+<style type='text/css'>img#wpstats{display:none}</style>
+<meta property="og:title" content="Cleveland Browns Clear House, May Give Josh McDaniels Complete Control" /><meta property="og:image" content="https://boston.cbslocal.com/wp-content/uploads/sites/3859903/2019/12/mcdaniels.jpg?w=1500" /><meta property="og:image:secure_url" content="https://boston.cbslocal.com/wp-content/uploads/sites/3859903/2019/12/mcdaniels.jpg?w=1500" /><meta property="og:image:width" content="1500" /><meta property="og:image:height" content="844" /><meta property="og:description" content="The Cleveland Browns are starting over. Again. That could mean a big promotion for Patriots offensive coordinator Josh McDaniels." /><meta property="og:type" content="article" /><meta property="og:url" content="https://boston.cbslocal.com/2019/12/31/josh-mcdaniels-patriots-browns-head-coaching-vacancy-nfl/" /><meta property="article:published_time" content="2019-12-31T15:37:14+00:00" /><meta property="article:suggested-social-copy" content="The Cleveland Browns are starting over. Again. That could mean a big promotion for Patriots offensive coordinator Josh McDaniels." /><meta property="article:publisher" content="http://www.facebook.com/CBSBoston" /><meta property="article:author" content="http://www.facebook.com/CBSBoston" />
+
+<meta name="twitter:card" content="summary_large_image"/><meta name="twitter:image" content="https://boston.cbslocal.com/wp-content/uploads/sites/3859903/2019/12/mcdaniels.jpg?w=1500"><meta name="twitter:title" content="Cleveland Browns Clear House, May Give Josh McDaniels Complete Control"/><meta name="twitter:description" content="The Cleveland Browns are starting over. Again. That could mean a big promotion for Patriots offensive coordinator Josh McDaniels."/><meta name="twitter:site" content="/wbz"/>
+<link rel="canonical" href="https://boston.cbslocal.com/2019/12/31/josh-mcdaniels-patriots-browns-head-coaching-vacancy-nfl/" />
+				<style>
+					.main-story-wrapper .basicsection { margin-bottom: 20px; }
+					.main-story-wrapper .basicsection span strong { display: block; font-size: 18px; margin: 0 auto 15px; }
+					.main-story-wrapper .basicsection img { float: none !important; margin: 0 auto 15px; }
+					.main-story-wrapper .basicsection br { margin-bottom: 5px; }
+				</style>
+						<style type="text/css">
+				/* If html does not have either class, do not show lazy loaded images. */
+				html:not( .jetpack-lazy-images-js-enabled ):not( .js ) .jetpack-lazy-image {
+					display: none;
+				}
+			</style>
+			<script>
+				document.documentElement.classList.add(
+					'jetpack-lazy-images-js-enabled'
+				);
+			</script>
+		<link rel="amphtml" href="https://boston.cbslocal.com/2019/12/31/josh-mcdaniels-patriots-browns-head-coaching-vacancy-nfl/amp/">
+<script type="application/ld+json">{"@context":"http:\/\/schema.org","@type":"NewsArticle","publisher":{"@context":"http:\/\/schema.org","@type":"NewsMediaOrganization","@id":"https:\/\/boston.cbslocal.com","url":"https:\/\/boston.cbslocal.com","name":"CBS Boston","foundingDate":"1941-07-01T14:30:00+00:00","logo":{"@type":"ImageObject","url":"https:\/\/boston.cbslocal.com\/wp-content\/uploads\/sites\/3859903\/2018\/02\/4_boston_wbz.png?w=220"}},"url":"https:\/\/boston.cbslocal.com\/2019\/12\/31\/josh-mcdaniels-patriots-browns-head-coaching-vacancy-nfl\/","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/boston.cbslocal.com\/2019\/12\/31\/josh-mcdaniels-patriots-browns-head-coaching-vacancy-nfl\/"},"headline":"Cleveland Browns Clear House, May Give Josh McDaniels Complete Control","description":"The Cleveland Browns are starting over. Again. That could mean a big promotion for Patriots offensive coordinator Josh McDaniels.","image":"https:\/\/boston.cbslocal.com\/wp-content\/uploads\/sites\/3859903\/2019\/12\/mcdaniels.jpg?w=200","keywords":["NFL","Patriots","Sports","Syndicated Sports","Josh McDaniels","sports","Cleveland Browns Clear House, May Give Josh McDaniels Complete Control"],"datePublished":"2019-12-31T15:37:14+00:00","dateModified":"2019-12-31T15:37:14+00:00","author":{"@type":"Organization","name":"CBS Boston"}}</script>
+
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Cleveland Browns Clear House, May Give Josh McDaniels Complete Control" />
+<meta property="og:url" content="https://boston.cbslocal.com/2019/12/31/josh-mcdaniels-patriots-browns-head-coaching-vacancy-nfl/" />
+<meta property="og:description" content="The Cleveland Browns are starting over. Again. That could mean a big promotion for Patriots offensive coordinator Josh McDaniels." />
+<meta property="article:published_time" content="2019-12-31T20:37:14+00:00" />
+<meta property="article:modified_time" content="2019-12-31T20:37:14+00:00" />
+<meta property="og:site_name" content="CBS Boston" />
+<meta property="og:image" content="https://boston.cbslocal.com/wp-content/uploads/sites/3859903/2019/12/mcdaniels.jpg" />
+<meta property="og:image:width" content="420" />
+<meta property="og:image:height" content="236" />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:text:title" content="Cleveland Browns Clear House, May Give Josh McDaniels Complete Control" />
+<meta name="twitter:image" content="https://boston.cbslocal.com/wp-content/uploads/sites/3859903/2019/12/mcdaniels.jpg?w=640" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<!-- End Jetpack Open Graph Tags -->
+<script>cbs_lib.load_script("//launch.newsinc.com/js/embed.js");</script><script type="text/javascript">cbs_ads.partners.add("amazon", "3063");if(!window["apstag"]){window["apstag"]={init:function(){window["apstag"]._Q.push(["i",arguments]);},fetchBids:function(){window["apstag"]._Q.push(["f",arguments]);},setDisplayBids:function(){},_Q:[]};}</script>
+
+<script type="text/javascript">cbs_ads.partners.add("sharethrough", true);</script>
+<script>cbs_ads.init("4128","CBS.BOSTON","sports",["clevelandbrownsclearhousemaygivejoshmcdanielscompletecontrol","post","article","nfl","patriots","sports","syndicatedsports","joshmcdaniels","featuredvideo"],{"page_type":"article"});cbs_ads.refresh.set_timer("1");</script>
+
+<link rel="dns-prefetch" href="//www.googletagmanager.com" />
+<script type="text/plain" class="optanon-category-4" src="https://www.googletagmanager.com/gtag/js?id=UA-2438645-63" async></script>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=UA-2438645-63" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script type="text/plain" class="optanon-category-4">window.dataLayer=window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("set",{"dimension1":"nfl;patriots;sports;syndicated-sports;","dimension2":"article"});gtag("config","UA-2438645-63");</script>
+
+<link rel="icon" href="https://boston.cbslocal.com/wp-content/uploads/sites/3859903/2019/07/cropped-boston-favicon-5121.png?w=32" sizes="32x32" />
+<link rel="icon" href="https://boston.cbslocal.com/wp-content/uploads/sites/3859903/2019/07/cropped-boston-favicon-5121.png?w=192" sizes="192x192" />
+<link rel="apple-touch-icon-precomposed" href="https://boston.cbslocal.com/wp-content/uploads/sites/3859903/2019/07/cropped-boston-favicon-5121.png?w=180" />
+<meta name="msapplication-TileImage" content="https://boston.cbslocal.com/wp-content/uploads/sites/3859903/2019/07/cropped-boston-favicon-5121.png?w=270" />
+		<style type="text/css" id="wp-custom-css">
+			.single-post sup {
+	vertical-align: super;
+	font-size: 10px;
+}		</style>
+		<!-- WP Header - End -->
+
+	<meta name="description" content="The Cleveland Browns are starting over. Again. That could mean a big promotion for Patriots offensive coordinator Josh McDaniels." />
+<script>//<![CDATA[
+//]]></script>
+
+</head>
+
+<body class="post-template-default single single-post postid-1034224 single-format-standard desktop-display-type  and-temp-wide"><div id="wrapper" class="body-wrapper">
+
+<div id="reptile_skin_1" class="cbs-ad-unit ad_gpt cbs-ad-skin" data-ad_location="skin"><script>cbs_load_skin_by_tile(1);</script></div><header id="page-header" class=""><div class="wrapper">
+
+				<a href="https://boston.cbslocal.com" id="header-logo"><img src="https://boston.cbslocal.com/wp-content/uploads/sites/3859903/2018/02/4_boston_wbz.png?w=220" alt="CBS Boston" /></a>
+	
+	<nav id="navigation-main" data-item-count="7"><ul class="top"><li class="menu-top-item item-0 section-item w-submenu"><div class="cbs-thumbnail-link wo-hover" ><div class="title-wrapper"><strong class="title">Menu</strong></div></div><div class="submenu"><div class="wrapper">
+<section class="items-grid column-count-2 block-type-wpmenu layout-compact aspect-ratio-16-9" id="" >
+		<header class="column-header">
+				<h4 class="title"><a href="http://boston.cbslocal.com/category/Sports/">Sports</a></h4>
+	</header>
+	
+		
+			<div class="article-buckets-list">
+			<a href="https://boston.cbslocal.com/category/sports/" title="Latest" class="cbs-thumbnail-link item-0" ><div class="title-wrapper"><strong class="title">Latest</strong></div></a><a href="https://boston.cbslocal.com/category/sports/patriots/" title="Patriots" class="cbs-thumbnail-link item-1" ><div class="title-wrapper"><strong class="title">Patriots</strong></div></a><a href="https://boston.cbslocal.com/category/sports/red-sox/" title="Red Sox" class="cbs-thumbnail-link item-2" ><div class="title-wrapper"><strong class="title">Red Sox</strong></div></a><a href="https://boston.cbslocal.com/category/sports/bruins/" title="Bruins" class="cbs-thumbnail-link item-3" ><div class="title-wrapper"><strong class="title">Bruins</strong></div></a><a href="https://boston.cbslocal.com/category/sports/celtics/" title="Celtics" class="cbs-thumbnail-link item-4" ><div class="title-wrapper"><strong class="title">Celtics</strong></div></a><a href="http://boston.cbslocal.com/live-streaming-video-from-cbs-sports/" title="CBS Sports HQ Live" class="cbs-thumbnail-link item-5" ><div class="title-wrapper"><strong class="title">CBS Sports HQ Live</strong></div></a>		</div>
+	</section>
+
+<section class="items-grid column-count-1 block-type-wpmenu layout-compact aspect-ratio-16-9" id="" >
+		<header class="column-header">
+				<h4 class="title"><a href="http://boston.cbslocal.com/video/">Video</a></h4>
+	</header>
+	
+		
+			<div class="article-buckets-list">
+			<a href="https://boston.cbslocal.com/live/" title="CBSN Boston" class="cbs-thumbnail-link item-0" ><div class="title-wrapper"><strong class="title">CBSN Boston</strong></div></a><a href="https://boston.cbslocal.com/cbsn-live-streaming-video-from-cbs-news/" title="CBSN National" class="cbs-thumbnail-link item-1" ><div class="title-wrapper"><strong class="title">CBSN National</strong></div></a><a href="http://boston.cbslocal.com/live-streaming-video-from-cbs-sports/" title="CBS Sports HQ Live" class="cbs-thumbnail-link item-2" ><div class="title-wrapper"><strong class="title">CBS Sports HQ Live</strong></div></a><a href="http://boston.cbslocal.com/video/category/news/" title="All News Video" class="cbs-thumbnail-link item-3" ><div class="title-wrapper"><strong class="title">All News Video</strong></div></a><a href="http://boston.cbslocal.com/video/category/sports/" title="All Sports Video" class="cbs-thumbnail-link item-4" ><div class="title-wrapper"><strong class="title">All Sports Video</strong></div></a><a href="http://boston.cbslocal.com/video/category/news-weather-forecast/" title="Weather Forecast" class="cbs-thumbnail-link item-5" ><div class="title-wrapper"><strong class="title">Weather Forecast</strong></div></a>		</div>
+	</section>
+</div></div></li><li class="menu-top-item item-1 w-link w-submenu"><a href="http://boston.cbslocal.com/category/news/" title="News" class="cbs-thumbnail-link wo-hover" ><div class="title-wrapper"><strong class="title">News</strong></div></a><div class="submenu"><div class="wrapper">
+<section class="items-grid column-count-2 block-type-wpmenu layout-compact aspect-ratio-16-9" id="" >
+		<header class="column-header">
+				<h4 class="title">News Sections</h4>
+	</header>
+	
+		
+			<div class="article-buckets-list">
+			<a href="https://boston.cbslocal.com/category/news/" title="All News" class="cbs-thumbnail-link item-0" ><div class="title-wrapper"><strong class="title">All News</strong><em class="description">Local Boston News From WBZ Channel 4 CBS</em></div></a><a href="https://boston.cbslocal.com/category/news/local/" title="Boston News" class="cbs-thumbnail-link item-1" ><div class="title-wrapper"><strong class="title">Boston News</strong></div></a><a href="http://boston.cbslocal.com/category/health/" title="HealthWatch" class="cbs-thumbnail-link item-2" ><div class="title-wrapper"><strong class="title">HealthWatch</strong></div></a><a href="https://boston.cbslocal.com/category/politics/" title="Politics" class="cbs-thumbnail-link item-3" ><div class="title-wrapper"><strong class="title">Politics</strong></div></a><a href="https://boston.cbslocal.com/category/news/business/" title="Business" class="cbs-thumbnail-link item-4" ><div class="title-wrapper"><strong class="title">Business</strong></div></a><a href="https://boston.cbslocal.com/category/news/education/" title="Education" class="cbs-thumbnail-link item-5" ><div class="title-wrapper"><strong class="title">Education</strong></div></a><a href="https://boston.cbslocal.com/category/news/consumer/" title="Consumer" class="cbs-thumbnail-link item-6" ><div class="title-wrapper"><strong class="title">Consumer</strong></div></a><a href="https://boston.cbslocal.com/category/news/entertainment/" title="Entertainment" class="cbs-thumbnail-link item-7" ><div class="title-wrapper"><strong class="title">Entertainment</strong></div></a><a href="https://boston.cbslocal.com/category/only-cbs/" title="Only CBS" class="cbs-thumbnail-link item-8" ><div class="title-wrapper"><strong class="title">Only CBS</strong></div></a><a href="https://boston.cbslocal.com/category/cbs-boston-blogs/blogs/" title="Blogs" class="cbs-thumbnail-link item-9" ><div class="title-wrapper"><strong class="title">Blogs</strong><em class="description">CBS Boston Blogs</em></div></a>		</div>
+	</section>
+
+<section class="items-grid column-count-1 block-type-wpmenu layout-compact aspect-ratio-16-9" id="" >
+		<header class="column-header">
+				<h4 class="title">Exclusively WBZ</h4>
+	</header>
+	
+		
+			<div class="article-buckets-list">
+			<a href="https://boston.cbslocal.com/category/i-team/" title="I-Team" class="cbs-thumbnail-link item-0" ><div class="title-wrapper"><strong class="title">I-Team</strong></div></a><a href="https://boston.cbslocal.com/call-for-action/" title="Call 4 Action" class="cbs-thumbnail-link item-1" ><div class="title-wrapper"><strong class="title">Call 4 Action</strong></div></a><a href="https://boston.cbslocal.com/category/wednesdays-child/" title="Wednesday&#039;s Child" class="cbs-thumbnail-link item-2" ><div class="title-wrapper"><strong class="title">Wednesday&#039;s Child</strong></div></a><a href="https://boston.cbslocal.com/podcasts/studio-bz/" title="Studio BZ Podcast" class="cbs-thumbnail-link item-3" ><div class="title-wrapper"><strong class="title">Studio BZ Podcast</strong></div></a><a href="https://boston.cbslocal.com/tag/it-happens-here/" title="It Happens Here" class="cbs-thumbnail-link item-4" ><div class="title-wrapper"><strong class="title">It Happens Here</strong></div></a><a href="https://boston.cbslocal.com/tag/boston-next/" title="Boston Next" class="cbs-thumbnail-link item-5" ><div class="title-wrapper"><strong class="title">Boston Next</strong></div></a>		</div>
+	</section>
+
+<section class="items-grid enable-type-icons column-count-3 block-type-grid layout-3_column aspect-ratio-16-9" id="" >
+		<header class="column-header">
+				<h4 class="title">Latest Headlines</h4>
+	</header>
+	
+		
+			<div class="article-buckets-list">
+			<a href="https://boston.cbslocal.com/2020/01/01/hanson-mass-firefighters-water-rescue-maquan-pond/" title="Hanson Firefighters Save 2 Men Trapped In Icy Pond" class="cbs-thumbnail-link item-1577880459 content-type-video" ><div class="thumbnail-wrapper"><span class="balance"><img src="https://boston.cbslocal.com/wp-content/themes/cbs-local/images/global/blank_1x1.gif" data-src="https://boston.cbslocal.com/wp-content/uploads/sites/3859903/2020/01/hanson2.jpg?w=310&#038;h=174&#038;crop=1"></span></div><div class="title-wrapper"><strong class="title">Hanson Firefighters Save 2 Men Trapped In Icy Pond</strong><em class="description">Hanson firefighters saved two men from an icy pond on New Year’s Eve.</em></div></a><a href="https://boston.cbslocal.com/2020/01/01/first-baby-of-the-year-boston-2020-new-years-day-dominick-brigham-and-womens-hospital/" title="First Boston Baby Of 2020 Born At Midnight At Brigham and Women&#039;s Hospital" class="cbs-thumbnail-link item-1577876653 content-type-video" ><div class="thumbnail-wrapper"><span class="balance"><img src="https://boston.cbslocal.com/wp-content/themes/cbs-local/images/global/blank_1x1.gif" data-src="https://boston.cbslocal.com/wp-content/uploads/sites/3859903/2020/01/baby1.jpg?w=310&#038;h=174&#038;crop=1"></span></div><div class="title-wrapper"><strong class="title">First Boston Baby Of 2020 Born At Midnight At Brigham and Women&#039;s Hospital</strong><em class="description">The first baby of 2020 in Boston arrived just as the new year began on Wednesday, January 1.</em></div></a><a href="https://boston.cbslocal.com/2020/01/01/wednesdays-child-adoption-mariyah-2/" title="Wednesday&#039;s Child: 8-Year-Old Mariyah" class="cbs-thumbnail-link item-1577872849 content-type-video" ><div class="thumbnail-wrapper"><span class="balance"><img src="https://boston.cbslocal.com/wp-content/themes/cbs-local/images/global/blank_1x1.gif" data-src="https://boston.cbslocal.com/wp-content/uploads/sites/3859903/2019/12/Mariyah-still.jpg?w=310&#038;h=174&#038;crop=1"></span></div><div class="title-wrapper"><strong class="title">Wednesday&#039;s Child: 8-Year-Old Mariyah</strong><em class="description">Those who know Mariyah best would say she is helpful, bright and very caring.</em></div></a>		</div>
+	</section>
+</div></div></li><li class="menu-top-item item-2 w-link w-submenu"><a href="http://boston.cbslocal.com/category/weather/" title="Weather" class="cbs-thumbnail-link wo-hover" ><div class="title-wrapper"><strong class="title">Weather</strong></div></a><div class="submenu"><div class="wrapper">
+<section class="items-grid column-count-1 block-type-wpmenu layout-compact aspect-ratio-16-9" id="" >
+		<header class="column-header">
+				<h4 class="title">Weather Links</h4>
+	</header>
+	
+		
+			<div class="article-buckets-list">
+			<a href="http://boston.cbslocal.com/closings/" title="School Closings" class="cbs-thumbnail-link item-0" ><div class="title-wrapper"><strong class="title">School Closings</strong></div></a><a href="http://boston.cbslocal.com/category/weather/#section-weather-map-3" title="Interactive Radar" class="cbs-thumbnail-link item-1" ><div class="title-wrapper"><strong class="title">Interactive Radar</strong></div></a><a href="http://boston.cbslocal.com/category/beyond-the-forecast/" title="Weather Blog" class="cbs-thumbnail-link item-2" ><div class="title-wrapper"><strong class="title">Weather Blog</strong></div></a><a href="http://apps.cbslocal.com/weather/boston/" title="Weather App" class="cbs-thumbnail-link item-3" ><div class="title-wrapper"><strong class="title">Weather App</strong></div></a>		</div>
+	</section>
+
+<section class="items-grid enable-type-icons column-count-2 block-type-grid layout-3_column aspect-ratio-16-9" id="" >
+		<header class="column-header">
+				<h4 class="title">Video Forecast</h4>
+	</header>
+	
+		
+			<div class="article-buckets-list">
+			<a href="https://boston.cbslocal.com/video/4346430-wbz-morning-forecast-for-january-1-2020/" title="WBZ Morning Forecast For January 1, 2020" class="cbs-thumbnail-link item-1577874941 content-type-video" ><div class="thumbnail-wrapper"><span class="balance"><img src="https://boston.cbslocal.com/wp-content/themes/cbs-local/images/global/blank_1x1.gif" data-src="https://xheimmxl4gfvfghng2jjos4qhb.gcdn.anvato.net/anv-iupl/5A9/89A/5A989A42844E41A8B689B546209E0B87.jpg?Expires=1672491583&#038;KeyName=mcpkey1&#038;Signature=OEMp_1GsoWwE6ITl1qOrHHpVIQA"></span></div><div class="title-wrapper"><strong class="title">WBZ Morning Forecast For January 1, 2020</strong><em class="description">Sarah Wroblewski has your latest weather forecast.</em></div><time datetime="2020-01-01T10:35:41+00:00" title="January 1, 2020 at 5:35 am">2 hours ago</time></a><a href="https://boston.cbslocal.com/video/4345002-wbz-forecast/" title="WBZ Forecast" class="cbs-thumbnail-link item-1577852546 content-type-video" ><div class="thumbnail-wrapper"><span class="balance"><img src="https://boston.cbslocal.com/wp-content/themes/cbs-local/images/global/blank_1x1.gif" data-src="https://xheimmxl4gfvfghng2jjos4qhb.gcdn.anvato.net/captures/400/021/400021E1D1964E6591D5F66DBDD03404.jpg?Expires=1672491583&#038;KeyName=mcpkey1&#038;Signature=zv03HsxTwuS9CXttEhwEmdvOyh8"></span></div><div class="title-wrapper"><strong class="title">WBZ Forecast</strong><em class="description">Barry Burbank has an updated weather forecast.</em></div><time datetime="2020-01-01T04:22:26+00:00" title="December 31, 2019 at 11:22 pm">9 hours ago</time></a>		</div>
+	</section>
+
+<section class="items-grid enable-type-icons column-count-2 block-type-grid layout-3_column aspect-ratio-16-9" id="" >
+		<header class="column-header">
+				<h4 class="title">Weather Blog</h4>
+	</header>
+	
+		
+			<div class="article-buckets-list">
+			<a href="https://boston.cbslocal.com/2019/12/29/ice-storm-warning-sleet-freezing-rain-snow/" title="Icing Possible As Sleet, Freezing Rain Fall Until Tuesday Morning" class="cbs-thumbnail-link item-1577681895 content-type-video" ><div class="thumbnail-wrapper"><span class="balance"><img src="https://boston.cbslocal.com/wp-content/themes/cbs-local/images/global/blank_1x1.gif" data-src="https://boston.cbslocal.com/wp-content/uploads/sites/3859903/2019/12/types.jpg?w=310&#038;h=174&#038;crop=1"></span></div><div class="title-wrapper"><strong class="title">Icing Possible As Sleet, Freezing Rain Fall Until Tuesday Morning</strong><em class="description">Precipitation will vary depending on location and surface temperature.</em></div></a><a href="https://boston.cbslocal.com/2019/12/28/winter-storm-barry-burbank-beyond-the-forecast-boston-weather/" title="Messy Winter Storm Arrives Sunday Evening" class="cbs-thumbnail-link item-1577590429 content-type-video" ><div class="thumbnail-wrapper"><span class="balance"><img src="https://boston.cbslocal.com/wp-content/themes/cbs-local/images/global/blank_1x1.gif" data-src="https://boston.cbslocal.com/wp-content/uploads/sites/3859903/2019/12/A2020-Snowmap-Forecast-ZOOM.jpg?w=310&#038;h=174&#038;crop=1"></span></div><div class="title-wrapper"><strong class="title">Messy Winter Storm Arrives Sunday Evening</strong><em class="description">The WBZ Weather Team has issued a Storm Watch Weather Alert and the National Weather Service has issued a Winter Storm Watch for a messy, wintry mix starting Sunday evening.</em></div></a>		</div>
+	</section>
+</div></div></li><li class="menu-top-item item-3 w-link w-submenu"><a href="http://boston.cbslocal.com/category/sports/" title="Sports" class="cbs-thumbnail-link wo-hover" ><div class="title-wrapper"><strong class="title">Sports</strong></div></a><div class="submenu"><div class="wrapper">
+<section class="items-grid column-count-1 block-type-wpmenu layout-compact aspect-ratio-16-9" id="" >
+		<header class="column-header">
+				<h4 class="title"><a href="http://boston.cbslocal.com/category/sports/">All Sports</a></h4>
+	</header>
+	
+		
+			<div class="article-buckets-list">
+			<a href="https://boston.cbslocal.com/category/sports/" title="Latest" class="cbs-thumbnail-link item-0" ><div class="title-wrapper"><strong class="title">Latest</strong></div></a><a href="https://boston.cbslocal.com/category/sports/patriots/" title="Patriots" class="cbs-thumbnail-link item-1" ><div class="title-wrapper"><strong class="title">Patriots</strong></div></a><a href="https://boston.cbslocal.com/category/sports/red-sox/" title="Red Sox" class="cbs-thumbnail-link item-2" ><div class="title-wrapper"><strong class="title">Red Sox</strong></div></a><a href="https://boston.cbslocal.com/category/sports/bruins/" title="Bruins" class="cbs-thumbnail-link item-3" ><div class="title-wrapper"><strong class="title">Bruins</strong></div></a><a href="https://boston.cbslocal.com/category/sports/celtics/" title="Celtics" class="cbs-thumbnail-link item-4" ><div class="title-wrapper"><strong class="title">Celtics</strong></div></a><a href="http://boston.cbslocal.com/live-streaming-video-from-cbs-sports/" title="CBS Sports HQ Live" class="cbs-thumbnail-link item-5" ><div class="title-wrapper"><strong class="title">CBS Sports HQ Live</strong></div></a>		</div>
+	</section>
+
+<section class="items-grid enable-type-icons column-count-5 block-type-grid layout-3_column aspect-ratio-16-9" id="" >
+		<header class="column-header">
+				<h4 class="title">Latest Headlines</h4>
+	</header>
+	
+		
+			<div class="article-buckets-list">
+			<a href="https://boston.cbslocal.com/2019/12/31/7-patriots-limited-at-first-practice-of-wild-card-week/" title="7 Patriots Limited At First Practice Of Wild Card Week" class="cbs-thumbnail-link item-1577837380 content-type-video" ><div class="thumbnail-wrapper"><span class="balance"><img src="https://boston.cbslocal.com/wp-content/themes/cbs-local/images/global/blank_1x1.gif" data-src="https://boston.cbslocal.com/wp-content/uploads/sites/3859903/2019/12/GettyImages-1196536268.jpg?w=310&#038;h=174&#038;crop=1"></span></div><div class="title-wrapper"><strong class="title">7 Patriots Limited At First Practice Of Wild Card Week</strong><em class="description">The New England Patriots held a light practice on Tuesday, their first of the week as they gear up for Saturday night&#039;s Wild Card matchup with the Tennessee Titans at Gillette Stadium.</em></div></a><a href="https://boston.cbslocal.com/2019/12/31/tatum-walker-help-celtics-beat-slumping-hornets-109-92/" title="Tatum, Walker Help Celtics Beat Slumping Hornets 109-92" class="cbs-thumbnail-link item-1577831489 content-type-video" ><div class="thumbnail-wrapper"><span class="balance"><img src="https://boston.cbslocal.com/wp-content/themes/cbs-local/images/global/blank_1x1.gif" data-src="https://boston.cbslocal.com/wp-content/uploads/sites/3859903/2019/12/Tatum.jpg?w=310&#038;h=174&#038;crop=1"></span></div><div class="title-wrapper"><strong class="title">Tatum, Walker Help Celtics Beat Slumping Hornets 109-92</strong><em class="description">Jayson Tatum scored 24 points, Kemba Walker had 22 and Gordon Hayward added 21 as the Boston Celtics beat the Charlotte Hornets 109-92 Tuesday.</em></div></a><a href="https://boston.cbslocal.com/2019/12/31/celtics-teammates-give-marcus-smart-a-new-nickname/" title="Celtics Teammates Give Marcus Smart A New Nickname" class="cbs-thumbnail-link item-1577827314 content-type-video" ><div class="thumbnail-wrapper"><span class="balance"><img src="https://boston.cbslocal.com/wp-content/themes/cbs-local/images/global/blank_1x1.gif" data-src="https://boston.cbslocal.com/wp-content/uploads/sites/3859903/2019/12/Marcus-Smart.jpg?w=310&#038;h=174&#038;crop=1"></span></div><div class="title-wrapper"><strong class="title">Celtics Teammates Give Marcus Smart A New Nickname</strong><em class="description">Marcus Smart takes a beating on the court, but he always gets back up. That has earned him a new nickname among his Celtics teammates, one that will have comic book fans nodding in approval.</em></div></a><a href="https://boston.cbslocal.com/2019/12/31/bruins-blow-third-period-lead-fall-to-devils-in-shootout/" title="Bruins Blow Third Period Lead, Fall To Devils In Shootout" class="cbs-thumbnail-link item-1577827245 content-type-video" ><div class="thumbnail-wrapper"><span class="balance"><img src="https://boston.cbslocal.com/wp-content/themes/cbs-local/images/global/blank_1x1.gif" data-src="https://boston.cbslocal.com/wp-content/uploads/sites/3859903/2019/12/bruins-2.jpg?w=310&#038;h=174&#038;crop=1"></span></div><div class="title-wrapper"><strong class="title">Bruins Blow Third Period Lead, Fall To Devils In Shootout</strong><em class="description">The loss snapped the Bruins&#039; winning streak at three but they did extend their points streak to eight games (4-0-4).</em></div></a><a href="https://boston.cbslocal.com/2019/12/31/josh-mcdaniels-patriots-browns-head-coaching-vacancy-nfl/" title="Cleveland Browns Clear House, May Give Josh McDaniels Complete Control" class="cbs-thumbnail-link item-1577824634 content-type-video" ><div class="thumbnail-wrapper"><span class="balance"><img src="https://boston.cbslocal.com/wp-content/themes/cbs-local/images/global/blank_1x1.gif" data-src="https://boston.cbslocal.com/wp-content/uploads/sites/3859903/2019/12/mcdaniels.jpg?w=310&#038;h=174&#038;crop=1"></span></div><div class="title-wrapper"><strong class="title">Cleveland Browns Clear House, May Give Josh McDaniels Complete Control</strong><em class="description">The Cleveland Browns are starting over. Again. That could mean a big promotion for Patriots offensive coordinator Josh McDaniels.</em></div></a>		</div>
+	</section>
+</div></div></li><li class="menu-top-item item-4 w-link w-submenu"><a href="http://boston.cbslocal.com/video/" title="Video" class="cbs-thumbnail-link wo-hover" ><div class="title-wrapper"><strong class="title">Video</strong></div></a><div class="submenu"><div class="wrapper">
+<section class="items-grid column-count-1 block-type-wpmenu layout-compact aspect-ratio-16-9" id="" >
+		<header class="column-header">
+				<h4 class="title"><a href="http://boston.cbslocal.com/video/">All Videos</a></h4>
+	</header>
+	
+		
+			<div class="article-buckets-list">
+			<a href="https://boston.cbslocal.com/live/" title="CBSN Boston" class="cbs-thumbnail-link item-0" ><div class="title-wrapper"><strong class="title">CBSN Boston</strong></div></a><a href="https://boston.cbslocal.com/cbsn-live-streaming-video-from-cbs-news/" title="CBSN National" class="cbs-thumbnail-link item-1" ><div class="title-wrapper"><strong class="title">CBSN National</strong></div></a><a href="http://boston.cbslocal.com/live-streaming-video-from-cbs-sports/" title="CBS Sports HQ Live" class="cbs-thumbnail-link item-2" ><div class="title-wrapper"><strong class="title">CBS Sports HQ Live</strong></div></a><a href="http://boston.cbslocal.com/video/category/news/" title="All News Video" class="cbs-thumbnail-link item-3" ><div class="title-wrapper"><strong class="title">All News Video</strong></div></a><a href="http://boston.cbslocal.com/video/category/sports/" title="All Sports Video" class="cbs-thumbnail-link item-4" ><div class="title-wrapper"><strong class="title">All Sports Video</strong></div></a><a href="http://boston.cbslocal.com/video/category/news-weather-forecast/" title="Weather Forecast" class="cbs-thumbnail-link item-5" ><div class="title-wrapper"><strong class="title">Weather Forecast</strong></div></a>		</div>
+	</section>
+
+<section class="items-grid enable-type-icons column-count-5 block-type-grid layout-3_column aspect-ratio-16-9" id="" >
+		<header class="column-header">
+				<h4 class="title">On Demand Video</h4>
+	</header>
+	
+		
+			<div class="article-buckets-list">
+			<a href="https://boston.cbslocal.com/video/4347395-best-of-2019-the-robot-heroes-of-disaster-response/" title="Best Of 2019: The Robot Heroes Of Disaster Response" class="cbs-thumbnail-link item-1577882771 content-type-video" ><div class="thumbnail-wrapper"><span class="balance"><img src="https://boston.cbslocal.com/wp-content/themes/cbs-local/images/global/blank_1x1.gif" data-src="https://xheimmxl4gfvfghng2jjos4qhb.gcdn.anvato.net/captures/B55/379/B5537939CC5942F6B5715D090076C229.jpg?Expires=1672491595&#038;KeyName=mcpkey1&#038;Signature=0D9ZoEo92CqDgRjzRqsqHksyo30"></span></div><div class="title-wrapper"><strong class="title">Best Of 2019: The Robot Heroes Of Disaster Response</strong><em class="description">WBZ-TV&#039;s Liam Martin reports.</em></div><time datetime="2020-01-01T12:46:11+00:00" title="January 1, 2020 at 7:46 am">16 minutes ago</time></a><a href="https://boston.cbslocal.com/video/4346827-hanson-firefighters-save-2-men-trapped-in-icy-pond/" title="Hanson Firefighters Save 2 Men Trapped In Icy Pond" class="cbs-thumbnail-link item-1577878455 content-type-video" ><div class="thumbnail-wrapper"><span class="balance"><img src="https://boston.cbslocal.com/wp-content/themes/cbs-local/images/global/blank_1x1.gif" data-src="https://xheimmxl4gfvfghng2jjos4qhb.gcdn.anvato.net/captures/342/9D0/3429D0C0A400454FA5275C70D1F534E8.jpg?Expires=1672491595&#038;KeyName=mcpkey1&#038;Signature=tTayn8aViiVkHpt9RcrftzVIT3I"></span></div><div class="title-wrapper"><strong class="title">Hanson Firefighters Save 2 Men Trapped In Icy Pond</strong><em class="description">WBZ TV&#039;s Michelle Fisher reports.</em></div><time datetime="2020-01-01T11:34:15+00:00" title="January 1, 2020 at 6:34 am">1 hour ago</time></a><a href="https://boston.cbslocal.com/video/4346653-first-boston-baby-of-2020-born-at-midnight-at-brigham-and-womens-hospital/" title="First Boston Baby Of 2020 Born At Midnight At Brigham and Women&#039;s Hospital" class="cbs-thumbnail-link item-1577876625 content-type-video" ><div class="thumbnail-wrapper"><span class="balance"><img src="https://boston.cbslocal.com/wp-content/themes/cbs-local/images/global/blank_1x1.gif" data-src="https://xheimmxl4gfvfghng2jjos4qhb.gcdn.anvato.net/captures/786/B2B/786B2BDDF9BF4E54B4CAC23EBF1F10AB.jpg?Expires=1672491595&#038;KeyName=mcpkey1&#038;Signature=gvb466ENtTQ6_7Xv7Z5_aTrljOs"></span></div><div class="title-wrapper"><strong class="title">First Boston Baby Of 2020 Born At Midnight At Brigham and Women&#039;s Hospital</strong><em class="description">WBZ TV&#039;s Breana Pitts reports.</em></div><time datetime="2020-01-01T11:03:45+00:00" title="January 1, 2020 at 6:03 am">2 hours ago</time></a><a href="https://boston.cbslocal.com/video/4346430-wbz-morning-forecast-for-january-1-2020/" title="WBZ Morning Forecast For January 1, 2020" class="cbs-thumbnail-link item-1577874941 content-type-video" ><div class="thumbnail-wrapper"><span class="balance"><img src="https://boston.cbslocal.com/wp-content/themes/cbs-local/images/global/blank_1x1.gif" data-src="https://xheimmxl4gfvfghng2jjos4qhb.gcdn.anvato.net/anv-iupl/5A9/89A/5A989A42844E41A8B689B546209E0B87.jpg?Expires=1672491595&#038;KeyName=mcpkey1&#038;Signature=GjhDOZEfKS4CnalTMmS1h8qpCZ8"></span></div><div class="title-wrapper"><strong class="title">WBZ Morning Forecast For January 1, 2020</strong><em class="description">Sarah Wroblewski has your latest weather forecast.</em></div><time datetime="2020-01-01T10:35:41+00:00" title="January 1, 2020 at 5:35 am">2 hours ago</time></a><a href="https://boston.cbslocal.com/video/4259675-wednesdays-child-8-year-old-mariyah/" title="Wednesday&#039;s Child: 8-Year-Old Mariyah" class="cbs-thumbnail-link item-1577871120 content-type-video" ><div class="thumbnail-wrapper"><span class="balance"><img src="https://boston.cbslocal.com/wp-content/themes/cbs-local/images/global/blank_1x1.gif" data-src="https://xheimmxl4gfvfghng2jjos4qhb.gcdn.anvato.net/anv-iupl/B61/628/B6162842182649F2B6E2316C3F37D010.jpg?Expires=1672491595&#038;KeyName=mcpkey1&#038;Signature=8wEDmLOIZlz23Tmyvea9M4-0YQk"></span></div><div class="title-wrapper"><strong class="title">Wednesday&#039;s Child: 8-Year-Old Mariyah</strong><em class="description">Those who know Mariyah best would say she is helpful, bright and very caring.</em></div><time datetime="2020-01-01T09:32:00+00:00" title="January 1, 2020 at 4:32 am">3 hours ago</time></a>		</div>
+	</section>
+</div></div></li><li class="menu-top-item item-5 w-link w-submenu"><a href="https://boston.cbslocal.com/category/bostons-best/" title="Boston’s Best" class="cbs-thumbnail-link wo-hover" ><div class="title-wrapper"><strong class="title">Boston’s Best</strong></div></a><div class="submenu"><div class="wrapper">
+<section class="items-grid enable-type-icons column-count-6 block-type-grid layout-3_column aspect-ratio-16-9" id="" >
+		<header class="column-header">
+				<h4 class="title"><a href="https://boston.cbslocal.com/category/bostons-best/">Latest Headlines</a></h4>
+	</header>
+	
+		
+			<div class="article-buckets-list">
+			<a href="https://boston.cbslocal.com/2019/12/26/boston-top-stories-talkers-2019-tom-brady-protection-stones/" title="Tom Brady Uses Protection Stones, And Other Top &#039;Talkers&#039; Of 2019" class="cbs-thumbnail-link item-1577366516 content-type-video" ><div class="thumbnail-wrapper"><span class="balance"><img src="https://boston.cbslocal.com/wp-content/themes/cbs-local/images/global/blank_1x1.gif" data-src="https://boston.cbslocal.com/wp-content/uploads/sites/3859903/2019/02/gettyimages-1093458334.jpg?w=310&#038;h=174&#038;crop=1"></span></div><div class="title-wrapper"><strong class="title">Tom Brady Uses Protection Stones, And Other Top &#039;Talkers&#039; Of 2019</strong><em class="description">That time the six-time Super Bowl champion revealed that his supermodel wife has him use protection stones...</em></div></a><a href="https://boston.cbslocal.com/2019/12/23/bostons-favorite-restaurants-inexpensive-italian-food/" title="Boston&#039;s Favorite Spots For Inexpensive Italian Food" class="cbs-thumbnail-link item-1577115659 content-type-video" ><div class="thumbnail-wrapper"><span class="balance"><img src="https://boston.cbslocal.com/wp-content/themes/cbs-local/images/global/blank_1x1.gif" data-src="https://boston.cbslocal.com/wp-content/uploads/sites/3859903/2019/12/umberto.jpg?w=310&#038;h=174&#038;crop=1"></span></div><div class="title-wrapper"><strong class="title">Boston&#039;s Favorite Spots For Inexpensive Italian Food</strong><em class="description">Looking to satisfy your appetite for Italian fare without breaking the bank?</em></div></a><a href="https://boston.cbslocal.com/2019/12/20/bostons-best-day-spas/" title="Boston&#039;s Best Day Spas" class="cbs-thumbnail-link item-1576851903 content-type-video" ><div class="thumbnail-wrapper"><span class="balance"><img src="https://boston.cbslocal.com/wp-content/themes/cbs-local/images/global/blank_1x1.gif" data-src="https://boston.cbslocal.com/wp-content/uploads/sites/3859903/2019/12/bestspas.jpg?w=310&#038;h=174&#038;crop=1"></span></div><div class="title-wrapper"><strong class="title">Boston&#039;s Best Day Spas</strong><em class="description">If you are looking for some pampering and relaxation, maybe a day spa in the place for you. Here are the top rated spots in Boston.</em></div></a><a href="https://boston.cbslocal.com/2019/12/19/boston-events-holiday-pops-harlem-globetrotters-outdoor-skating/" title="To Do List: Holiday Pops, Harlem Globetrotters &amp; Outdoor Skating" class="cbs-thumbnail-link item-1576798027 content-type-video" ><div class="thumbnail-wrapper"><span class="balance"><img src="https://boston.cbslocal.com/wp-content/themes/cbs-local/images/global/blank_1x1.gif" data-src="https://boston.cbslocal.com/wp-content/uploads/sites/3859903/2019/12/Boston-Pops-Conductor-Keith-Lockhart-with-Santa-Claus-at-the-Opening-Night-of-Holiday-Pops-12.2.15-Winslow-Townson.jpg?w=310&#038;h=174&#038;crop=1"></span></div><div class="title-wrapper"><strong class="title">To Do List: Holiday Pops, Harlem Globetrotters &amp; Outdoor Skating</strong><em class="description">The kids are just about on Christmas break and you’ll be looking for ideas to get everybody out of the house and moving.</em></div></a><a href="https://boston.cbslocal.com/2019/12/13/national-cupcake-day-boston/" title="Small Bites: Where To Celebrate National Cupcake Day In Boston" class="cbs-thumbnail-link item-1576249321 content-type-video" ><div class="thumbnail-wrapper"><span class="balance"><img src="https://boston.cbslocal.com/wp-content/themes/cbs-local/images/global/blank_1x1.gif" data-src="https://boston.cbslocal.com/wp-content/uploads/sites/3859903/2019/12/Georgetown_Cupcake_Photo_2_Enhanced.jpg?w=310&#038;h=174&#038;crop=1"></span></div><div class="title-wrapper"><strong class="title">Small Bites: Where To Celebrate National Cupcake Day In Boston</strong><em class="description">Cupcakes are having a moment, and with good reason. Here are some of the best in Boston.</em></div></a><a href="https://boston.cbslocal.com/2019/12/12/boston-weekend-events-w-ski-chalet-cambridge-holiday-market-boston-tea-party-reenactment/" title="Weekend To Do List: Ski Chalet In The City, Holiday Market, Tea Party Reenactment" class="cbs-thumbnail-link item-1576185636 content-type-video" ><div class="thumbnail-wrapper"><span class="balance"><img src="https://boston.cbslocal.com/wp-content/themes/cbs-local/images/global/blank_1x1.gif" data-src="https://boston.cbslocal.com/wp-content/uploads/sites/3859903/2019/12/chalet.jpg?w=310&#038;h=174&#038;crop=1"></span></div><div class="title-wrapper"><strong class="title">Weekend To Do List: Ski Chalet In The City, Holiday Market, Tea Party Reenactment</strong><em class="description">Want to cozy up by the fire of an après ski chalet – in the city? It&#039;s just one option on this weekend&#039;s To Do List.</em></div></a>		</div>
+	</section>
+</div></div></li><li class="menu-top-item item-6 w-submenu"><div class="cbs-thumbnail-link wo-hover" ><div class="title-wrapper"><strong class="title">More</strong></div></div><div class="submenu"><div class="wrapper">
+<section class="items-grid column-count-1 block-type-wpmenu layout-compact aspect-ratio-16-9" id="" >
+		<header class="column-header">
+				<h4 class="title"><a href="https://boston.cbslocal.com/learn-about-us/">Station Info</a></h4>
+	</header>
+	
+		
+			<div class="article-buckets-list">
+			<a href="http://boston.cbslocal.com/station/wbz-tv/" title="WBZ-TV" class="cbs-thumbnail-link item-0" ><div class="title-wrapper"><strong class="title">WBZ-TV</strong></div></a><a href="https://boston.cbslocal.com/about-us/advertising-basics/" title="Advertise" class="cbs-thumbnail-link item-1" ><div class="title-wrapper"><strong class="title">Advertise</strong></div></a><a href="http://boston.cbslocal.com/station/wbz-tv/" title="WBZ-TV Team" class="cbs-thumbnail-link item-2" ><div class="title-wrapper"><strong class="title">WBZ-TV Team</strong></div></a><a href="http://boston.cbslocal.com/station/wbz-tv/" title="Jobs &amp; Internships" class="cbs-thumbnail-link item-3" ><div class="title-wrapper"><strong class="title">Jobs &amp; Internships</strong></div></a><a href="https://boston.cbslocal.com/category/contests-and-promotions/" title="Contests" class="cbs-thumbnail-link item-4" ><div class="title-wrapper"><strong class="title">Contests</strong></div></a>		</div>
+	</section>
+
+<section class="items-grid column-count-1 block-type-wpmenu layout-compact aspect-ratio-16-9" id="" >
+		<header class="column-header">
+				<h4 class="title">Connect</h4>
+	</header>
+	
+		
+			<div class="article-buckets-list">
+			<a href="http://boston.cbslocal.com/contact/" title="Contact WBZ-TV" class="cbs-thumbnail-link item-0" ><div class="title-wrapper"><strong class="title">Contact WBZ-TV</strong></div></a><a href="https://boston.cbslocal.com/station/wbz-tv/" title="Social Media" class="cbs-thumbnail-link item-1" ><div class="title-wrapper"><strong class="title">Social Media</strong></div></a><a href="http://apps.cbslocal.com/" title="CBS Local App" class="cbs-thumbnail-link item-2" ><div class="title-wrapper"><strong class="title">CBS Local App</strong></div></a><a href="http://apps.cbslocal.com/weather/boston/" title="Weather App" class="cbs-thumbnail-link item-3" ><div class="title-wrapper"><strong class="title">Weather App</strong></div></a><a href="http://boston.cbslocal.com/callforaction/" title="Call For Action" class="cbs-thumbnail-link item-4" ><div class="title-wrapper"><strong class="title">Call For Action</strong></div></a>		</div>
+	</section>
+
+<section class="items-grid enable-type-icons column-count-4 block-type-grid layout-3_column aspect-ratio-16-9" id="" >
+		<header class="column-header">
+				<h4 class="title">More</h4>
+	</header>
+	
+		
+			<div class="article-buckets-list">
+			<a href="https://boston.cbslocal.com/category/podcasts/" title="Podcasts" class="cbs-thumbnail-link item-1518816596" ><div class="thumbnail-wrapper"><span class="balance"><img src="https://boston.cbslocal.com/wp-content/themes/cbs-local/images/global/blank_1x1.gif" data-src="https://boston.cbslocal.com/wp-content/uploads/sites/3859903/2018/02/podcast.jpg?w=310&#038;h=174&#038;crop=1"></span></div><div class="title-wrapper"><strong class="title">Podcasts</strong></div></a><a href="http://boston.cbslocal.com/category/travel/" title="Travel" class="cbs-thumbnail-link item-1484232790" ><div class="thumbnail-wrapper"><span class="balance"><img src="https://boston.cbslocal.com/wp-content/themes/cbs-local/images/global/blank_1x1.gif" data-src="https://boston.cbslocal.com/wp-content/uploads/sites/3859903/2014/06/airplane_-_thinsktock3.jpg?w=310&#038;h=174&#038;crop=1"></span></div><div class="title-wrapper"><strong class="title">Travel</strong></div></a><a href="http://boston.cbslocal.com/category/only-cbs/" title="CBS Entertainment" class="cbs-thumbnail-link item-1484232704" ><div class="thumbnail-wrapper"><span class="balance"><img src="https://boston.cbslocal.com/wp-content/themes/cbs-local/images/global/blank_1x1.gif" data-src="https://boston.cbslocal.com/wp-content/uploads/sites/3859903/2017/01/onlycbs.png?w=310&#038;h=174&#038;crop=1"></span></div><div class="title-wrapper"><strong class="title">CBS Entertainment</strong></div></a>		</div>
+	</section>
+</div></div></li></ul></nav>
+	<a id="live" class="v2" href="https://boston.cbslocal.com/live/" data-source_url="https://feeds-cbsn.cbsnews.com/2.0/rundown/?partner=cbsnsite&#038;edition=CBSN-BOS"><span class="button"><strong>CBSN Boston</strong><em>Watch Now</em></span></a>
+	<a href="http://boston.cbslocal.com/category/weather/" id="info-weather"><div id="weather-widget-sticker" class="embed-item embed-weather weather-widget-wrap" ><div class="wrapper">
+<wx-widget type="current-conditions" latitude="42.360082" longitude="-71.058880" header="false"></wx-widget>
+</div></div></a>
+	<div id="info-search"><form action="https://boston.cbslocal.com/search/" class="form"><input type="text" class="query" name="q" id="s" size="31" placeholder="Search..." /><input type="reset" class="reset" value="Reset" /><input type="submit" class="submit" value="&#xf002" /></form><span class="open-close" onclick="jQuery(document).ready(function(){jQuery('#info-search').toggleClass('open');});"></span></div>
+</div></header>		<section class="page-ad-container page-pencil-ad-container-top">
+			<div id="reptile_1_wrapper" class="ad-block-wrapper cbs-ad-unit-wrapper"><span id="ad_1"><div id="reptile_1" class="ad-block" data-ad_size="[[970,250],[970,66],[728,90]]" data-ad_location="top"><script>cbs_load_ad_by_tile("1");</script></div></span></div>		</section>
+		
+<div id="page-content" class="main-white page-block-container and-w-sidebar">
+<header id="page-rubric" class="">
+
+			<div class="banner-title-wrapper">
+							<h1 class="title">Cleveland Browns Clear House, May Give Josh McDaniels Complete Control</h1>
+					</div>
+	
+	
+	
+	
+	
+</header>
+<section class="page-columns"><section class="page-column three-column" id="article-entry-date-and-tags"><div class="column-header"><time class="post-date">December 31, 2019 at 3:37 pm</time><div class="column-header-metadata"><strong>Filed Under:</strong><span><a href="https://boston.cbslocal.com/tag/josh-mcdaniels/">Josh McDaniels</a></div></div></section><section id="column_block_1" class="page-column and-content-column two-column"><div class="column-item story" id="main-story"><section class="column-item media-type-anvato-program  close-btn" id="featured-media"><div id="floating-player-container" class="video-wrapper anvato"><div id='p0'></div><script type="text/plain" class="optanon-category-4" async data-anvp='{&quot;mcp&quot;:&quot;cbs&quot;,&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:&quot;100%&quot;,&quot;video&quot;:&quot;4336690&quot;,&quot;autoplay&quot;:true,&quot;titleVisible&quot;:false,&quot;accessKey&quot;:&quot;DVzl9QRzox3ZZsP9bNu5Li3X7obQOnqP&quot;,&quot;accessControl&quot;:{&quot;preview&quot;:false},&quot;pInstance&quot;:&quot;p0&quot;,&quot;plugins&quot;:{&quot;heartbeat&quot;:{&quot;account&quot;:&quot;cbslocal-global-unified&quot;,&quot;publisherId&quot;:&quot;cbslocal&quot;,&quot;jobId&quot;:&quot;sc_va&quot;,&quot;marketingCloudId&quot;:&quot;823BA0335567497F7F000101@AdobeOrg&quot;,&quot;trackingServer&quot;:&quot;cbsdigitalmedia.hb.omtrdc.net&quot;,&quot;customTrackingServer&quot;:&quot;cbsdigitalmedia.d1.sc.omtrdc.net&quot;,&quot;chapterTracking&quot;:false,&quot;version&quot;:&quot;1.5&quot;},&quot;comscore&quot;:{&quot;clientId&quot;:&quot;3000023&quot;,&quot;c3&quot;:&quot;Boston.cbslocal.com&quot;},&quot;dfp&quot;:{&quot;clientSide&quot;:{&quot;adTagUrl&quot;:&quot;http:\/\/pubads.g.doubleclick.net\/gampad\/ads?sz=2x2&amp;iu=\/4128\/CBS.BOSTON&amp;ciu_szs&amp;impl=s&amp;gdfp_req=1&amp;env=vp&amp;output=xml_vast2&amp;unviewed_position_start=1&amp;url=[referrer_url]&amp;description_url=[description_url]&amp;correlator=[timestamp]&quot;,&quot;keyValues&quot;:{&quot;categories&quot;:&quot;[[CATEGORIES]]&quot;,&quot;program&quot;:&quot;[[PROGRAM_NAME]]&quot;,&quot;siteSection&quot;:&quot;featured&quot;}}}},&quot;shareLink&quot;:&quot;https:\/\/cbsloc.al\/36hGg1G&quot;,&quot;video-type&quot;:&quot;featured&quot;,&quot;token&quot;:&quot;default&quot;,&quot;expectPreroll&quot;:true,&quot;expectPrerollTimeout&quot;:5,&quot;recom&quot;:true,&quot;maxRecomPages&quot;:3}' src='https://w3.cdn.anvato.net/player/prod/v3/scripts/anvload.js'></script></div></section>
+<div id="ott-promotion-block" class="embed-item embed-ottplayer" ><div class="wrapper">
+<span class="adhesive-wrapper"><div class="logo-container"><a href="https://boston.cbslocal.com/live/cbsn-boston/"><img src="https://boston.cbslocal.com/wp-content/uploads/sites/3859903/2019/09/30h-BOS-white-horizontal.png?w=408"/></a></div></span><div class="dvr-container"><div class="dvr-wrapper embed-item embed-slider w-action-manual" data-up_url="https://feeds-cbsn.cbsnews.com/2.0/rundown/?partner=cbsnsite&#038;edition=CBSN-BOS" data-channel_slug="cbsn-boston" data-w-live="true" data-dvr-live-thumb_url="https://boston.cbslocal.com/wp-content/uploads/sites/3859903/2019/09/60h-BOS-white-stacked.png?w=161&#038;h=60&#038;crop=1"></div></div><script>jQuery(function($){jQuery(window).load(function(){cbs_embed_ottplayer.update_dvr("#ott-promotion-block .dvr-container .dvr-wrapper");setInterval(function(){cbs_embed_ottplayer.update_dvr("#ott-promotion-block .dvr-container .dvr-wrapper");},30000);});});</script>
+</div></div><div class="main-story-wrapper"><p>BOSTON (CBS) &#8212; The Cleveland Browns are starting over. Again. That could mean a big promotion for Patriots offensive coordinator Josh McDaniels.</p>
+<p>After a disappointing 6-10 season, followed by the firing of head coach Freddie Kitchens on Monday, Cleveland has now parted ways with GM John Dorsey. Owner Jimmy Haslam wants a new front office structure, and Dorsey didn&#8217;t want to be part of it after running the Browns for the last two years.</p>
+<p>Enter McDaniels. The Ohio native is always connected to the Browns when they begin their annual head coaching search, and this time is no different. Cleveland reportedly requested a head coaching interview with McDaniels on Monday, but that may not be the only job they offer him when they get a chance to chat.</p>
+<p>According to NFL analyst Gil Brandy, the Browns may give McDaniels complete control of the team, very much like Bill Belichick has control of the New England Patriots.</p>
+<blockquote class="twitter-tweet" data-width="420" data-dnt="true">
+<p lang="en" dir="ltr">Don&#39;t be surprised if Browns target Josh McDaniels and hand him Belichick-like role with complete control of the groceries and menu.</p>
+<p>&mdash; Gil Brandt (@Gil_Brandt) <a href="https://twitter.com/Gil_Brandt/status/1212097701409521664?ref_src=twsrc%5Etfw">December 31, 2019</a></p></blockquote>
+<p><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></p>
+<p>McDaniels has been itching to get another head coaching gig since last offseason, but he only interviewed for the Green Bay Packers opening and was not considered a finalist for the job. He was a hot commodity two years ago and was prepared to leave New England for the Indianapolis head coaching job, but Robert Kraft stepped in at the last minute and made McDaniels and offer he couldn&#8217;t refuse. McDaniels returned as New England&#8217;s offensive coordinator with a big raise, but is now ready to move on again.</p>
+<p>He got his first shot as a head coach with the Denver Broncos in 2009, but that did not go well for either party. McDaniels explored trading for Patriots backup QB Matt Cassel when he arrived in Denver, which upset Broncos starting QB Jay Cutler. The two sides couldn&#8217;t mend fences, and the Broncos were forced to trade Cutler to the Bears that offseason. McDaniels also drafted quarterback Tim Tebow in the first round in 2010, a questionable pick that was met with quite a bit of criticism.</p>
+<p>Though the Broncos started McDaniels&#8217; first season on the sideline with six straight wins, they stumbled the rest of the way and missed the playoffs with an 8-8 record. He was fired after a 3-9 start to the 2010 season. He spent some time as an offensive assistant in St. Louis before returning to the Patriots in 2012, winning three more Super Bowls in the process.</p>
+<p>Now he&#8217;s ready to have another team of his own, and the Browns may be willing to give that and more to him. While Cleveland is a mess once again they have a promising roster, especially on offense with quarterback Baker Mayfield, running back Nick Chubb and wide receivers Odell Beckham Jr. and Jarvis Landry.</p>
+<p>And if Cleveland gives him full control, it may be an offer too good to turn down &#8212; or back out of &#8212; for McDaniels.</p>
+<div class="social-buttons">
+	<div class="social-media-container vertical">
+					<div class="social-share-items addthis_toolbox addthis_default_style addthis_32x32_style">
+				<span><a class="addthis_button_facebook"  addthis:url="https://cbsloc.al/36hGg1G"></a><a class="addthis_button_twitter"  addthis:url="https://cbsloc.al/36hGg1G"></a><a href="#" class="addthis_button_linkedin"></a><a href="#" class="addthis_button_reddit"></a><a class="addthis_button_compact"  addthis:url="https://cbsloc.al/36hGg1G"></a></span>
+			</div>
+		
+			</div>
+</div></div></div><a href="#" id="enable-comments-button" class="generic-button-v1" onclick="document.getElementById('story-comments').style.display=(document.getElementById('story-comments').style.display==='block')?'none':'block';return false;">Comments</a>
+	<style>
+	#comments .comments-title,
+	#comments #respond #reply-title {
+		color: black;
+		font-size: 16px;
+		font-weight: normal;
+		margin-bottom: 20px;
+	}
+	#comments a:hover {
+		text-decoration: underline;
+	}
+	#comments .comment-list,
+	#comments .comment-list .children {
+		list-style: none;
+		margin: 0;
+	}
+		#comments .comment-list .comment {
+			border-top: 1px solid #eaeaea;
+			padding: 20px 10px;
+		}
+			#comments .comment-list .comment .comment-body {
+				color: black;
+				font-size: 13px;
+				position: relative;
+			}
+				#comments .comment-list .comment .comment-body p {
+					margin: 5px 0 7px 0;
+					overflow: hidden;
+					padding: 0;
+				}
+			#comments .comment-list .comment .comment-author .avatar {
+				float: left;
+				height: 42px;
+				margin-bottom: 10px;
+				margin-right: 15px;
+				width: 42px;
+			}
+			#comments .comment-list .comment .comment-author .fn {
+				color: black;
+				font-size: 13px;
+				font-style: normal;
+				font-weight: bold;
+			}
+			#comments .comment-list .comment .comment-author .says {
+				display: none;
+			}
+
+			#comments .comment-list .comment .comment-meta {
+				position: absolute;
+				right: 0;
+				top: 0;
+			}
+			#comments .comment-list .comment .reply {
+				margin-left: 57px;
+			}
+			#comments .comment-list .comment .comment-meta a,
+			#comments .comment-list .comment .reply a {
+				color: #808080;
+				font-size: 11px;
+			}
+				#comments .comment-list:hover .comment .comment-meta a,
+				#comments .comment-list:hover .comment .reply a {
+					color: #333;
+				}
+			#comments .comment-list .comment .reply .safe-comments-report-link:last-of-type {
+				display: none;
+			}
+	#comments .comment-list .children {
+		margin-left: 20px;
+		margin-top: 20px;
+	}
+		#comments .comment-list .children .comment {
+			border-top: none;
+			padding-right: 0;
+			padding-top: 0;
+		}
+
+	#comments #reply-title a {
+		color: black;
+		font-size: 13px;
+		padding: 0 5px;
+	}
+		#comments #reply-title small a {
+			font-weight: normal;
+		}
+	
+
+
+
+</style>
+
+<div class="commenting-container">
+	<a name="comments" class="comments-location-beacon"></a>
+	<section id="story-comments" class="column-item">
+
+		<div id="comments" class="comments-area">
+
+			
+							
+		<div id="respond" class="comment-respond">
+							<h3 id="reply-title" class="comment-reply-title">Leave a Reply					<small><a rel="nofollow" id="cancel-comment-reply-link" href="/2019/12/31/josh-mcdaniels-patriots-browns-head-coaching-vacancy-nfl/#respond" style="display:none;">Cancel reply</a></small>
+				</h3>
+						<form id="commentform" class="comment-form">
+				<iframe title="Comment Form" src="https://jetpack.wordpress.com/jetpack-comment/?blogid=162246121&#038;postid=1034224&#038;comment_registration=0&#038;require_name_email=1&#038;stc_enabled=1&#038;stb_enabled=1&#038;show_avatars=1&#038;avatar_default=mystery&#038;greeting=Leave+a+Reply&#038;greeting_reply=Leave+a+Reply+to+%25s&#038;color_scheme=light&#038;lang=en_US&#038;jetpack_version=8.0&#038;show_cookie_consent=10&#038;has_cookie_consent=0&#038;token_key=%3Bnormal%3B&#038;sig=62ae923f818629eb93161b2eb0d5a2a48a65aa5d#parent=https%3A%2F%2Fboston.cbslocal.com%2F2019%2F12%2F31%2Fjosh-mcdaniels-patriots-browns-head-coaching-vacancy-nfl%2F" style="width:100%; height: 430px; border:0;" name="jetpack_remote_comment" class="jetpack_remote_comment" id="jetpack_remote_comment" sandbox="allow-same-origin allow-top-navigation allow-scripts allow-forms allow-popups"></iframe>
+									<!--[if !IE]><!-->
+					<script>
+						document.addEventListener('DOMContentLoaded', function () {
+							var commentForms = document.getElementsByClassName('jetpack_remote_comment');
+							for (var i = 0; i < commentForms.length; i++) {
+								commentForms[i].allowTransparency = false;
+								commentForms[i].scrolling = 'no';
+							}
+						});
+					</script>
+					<!--<![endif]-->
+							</form>
+		</div>
+
+		
+		<input type="hidden" name="comment_parent" id="comment_parent" value="" />
+
+					
+		</div>
+
+	</section>
+</div>
+<div id="reptile_30_wrapper" class="ad-block-wrapper cbs-ad-unit-wrapper partner-container partner-sharethrough"><span id="ad_30"><div id="reptile_30" class="ad-block" data-ad_size="[[1,5]]" data-ad_location="partner-injected" data-ad_targets={"strnativekey":"d3da4d50"}><script>cbs_load_ad_by_tile("30");</script></div></span></div><div class="partner-container partner-taboola"><div id="taboola-block-2"></div></div></section><aside class="sidebar right-bar" rel="modular+"><div id="reptile_2_wrapper" class="ad-block-wrapper cbs-ad-unit-wrapper"><span id="ad_2"><div id="reptile_2" class="ad-block" data-ad_size="[[300,250],[300,600],[300,1050]]" data-ad_location="top"><script>cbs_load_ad_by_tile("2");</script></div></span></div><div id="" class="block sidebar-widget widget_cbs_follow_us_widget"><h3 class="title">Follow Us</h3>
+		<div class="widget-content-wrapper">
+			<a href="http://www.facebook.com/CBSBoston" target="_blank" title="facebook_url" class="cbs-thumbnail-link facebook_url" ><div class="title-wrapper"><strong class="title">facebook_url</strong></div></a><a href="https://twitter.com/wbz" target="_blank" title="twitter_url" class="cbs-thumbnail-link twitter_url" ><div class="title-wrapper"><strong class="title">twitter_url</strong></div></a><a href="https://www.youtube.com/cbsboston" target="_blank" title="youtube_url" class="cbs-thumbnail-link youtube_url" ><div class="title-wrapper"><strong class="title">youtube_url</strong></div></a><a href="https://www.instagram.com/wbztv/" target="_blank" title="instagram_url" class="cbs-thumbnail-link instagram_url" ><div class="title-wrapper"><strong class="title">instagram_url</strong></div></a><a href="https://www.reddit.com/user/wbz-tv" target="_blank" title="reddit_url" class="cbs-thumbnail-link reddit_url" ><div class="title-wrapper"><strong class="title">reddit_url</strong></div></a><a href="https://www.linkedin.com/company/cbs-boston-local-digital-media/" target="_blank" title="linkedin_url" class="cbs-thumbnail-link linkedin_url" ><div class="title-wrapper"><strong class="title">linkedin_url</strong></div></a>		</div>
+
+		</div><div id="" class="block sidebar-widget widget_cbs_newsletter_widget"><h3 class="title">Our | Newsletter</h3><div class="widget-content-wrapper"><iframe id="newsletter-widget-iframe" width="300" src="https://bh-ems-static-content.s3.amazonaws.com/cbsi/2706/cbs_local_form_f.html?market=boston"></iframe></div></div><div id="" class="block sidebar-widget widget_top-posts"><h3 class="title"><span>Most </span> Viewed</h3><ul class='widgets-list-layout no-grav'>
+					<li>
+						<a href="https://boston.cbslocal.com/2019/12/31/no-name-restaurant-south-boston-closes/" title="No Name Restaurant In South Boston Closes After More Than 100 Years In Business" class="bump-view" data-bump-view="tp">
+								<img width="55" height="55" src="https://i0.wp.com/boston.cbslocal.com/wp-content/uploads/sites/3859903/2019/12/no1.jpg?resize=55%2C55&#038;ssl=1" alt="No Name Restaurant In South Boston Closes After More Than 100 Years In Business" data-pin-nopin="true" class="widgets-list-layout-blavatar"/>
+							</a>
+							<div class="widgets-list-layout-links">
+								<a href="https://boston.cbslocal.com/2019/12/31/no-name-restaurant-south-boston-closes/" title="No Name Restaurant In South Boston Closes After More Than 100 Years In Business" class="bump-view" data-bump-view="tp">No Name Restaurant In South Boston Closes After More Than 100 Years In Business</a>
+							</div>
+													</li>
+										<li>
+						<a href="https://boston.cbslocal.com/2019/12/30/pembroke-crash-route-139-gregory-goodsell-drunk-driving-charges/" title="Accused Drunk Driver Charged In Pembroke Crash That Killed 13-Year-Old Girl" class="bump-view" data-bump-view="tp">
+								<img width="55" height="55" src="https://i2.wp.com/boston.cbslocal.com/wp-content/uploads/sites/3859903/2019/12/claire2.jpg?resize=55%2C55&#038;ssl=1" alt="Accused Drunk Driver Charged In Pembroke Crash That Killed 13-Year-Old Girl" data-pin-nopin="true" class="widgets-list-layout-blavatar"/>
+							</a>
+							<div class="widgets-list-layout-links">
+								<a href="https://boston.cbslocal.com/2019/12/30/pembroke-crash-route-139-gregory-goodsell-drunk-driving-charges/" title="Accused Drunk Driver Charged In Pembroke Crash That Killed 13-Year-Old Girl" class="bump-view" data-bump-view="tp">Accused Drunk Driver Charged In Pembroke Crash That Killed 13-Year-Old Girl</a>
+							</div>
+													</li>
+										<li>
+						<a href="https://boston.cbslocal.com/2019/12/31/boston-first-night-brandon-mcsweeney/" title="Boston First Night Celebration Features Moment Of Silence For Man Killed During Preparations" class="bump-view" data-bump-view="tp">
+								<img width="55" height="55" src="https://i1.wp.com/boston.cbslocal.com/wp-content/uploads/sites/3859903/2019/12/RussellMcSweeney.jpg?resize=55%2C55&#038;ssl=1" alt="Boston First Night Celebration Features Moment Of Silence For Man Killed During Preparations" data-pin-nopin="true" class="widgets-list-layout-blavatar"/>
+							</a>
+							<div class="widgets-list-layout-links">
+								<a href="https://boston.cbslocal.com/2019/12/31/boston-first-night-brandon-mcsweeney/" title="Boston First Night Celebration Features Moment Of Silence For Man Killed During Preparations" class="bump-view" data-bump-view="tp">Boston First Night Celebration Features Moment Of Silence For Man Killed During Preparations</a>
+							</div>
+													</li>
+										<li>
+						<a href="https://boston.cbslocal.com/2019/12/31/chicopee-river-missing-boys-search/" title="Body Of Second Missing Boy Recovered From Chicopee River" class="bump-view" data-bump-view="tp">
+								<img width="55" height="55" src="https://i0.wp.com/boston.cbslocal.com/wp-content/uploads/sites/3859903/2019/12/Chicopee-1.jpg?resize=55%2C55&#038;ssl=1" alt="Body Of Second Missing Boy Recovered From Chicopee River" data-pin-nopin="true" class="widgets-list-layout-blavatar"/>
+							</a>
+							<div class="widgets-list-layout-links">
+								<a href="https://boston.cbslocal.com/2019/12/31/chicopee-river-missing-boys-search/" title="Body Of Second Missing Boy Recovered From Chicopee River" class="bump-view" data-bump-view="tp">Body Of Second Missing Boy Recovered From Chicopee River</a>
+							</div>
+													</li>
+										<li>
+						<a href="https://boston.cbslocal.com/2019/12/31/cohasset-tinder-date-attack-maegan-tapley-recovery/" title="Woman Stabbed During Tinder Date Thanks Cohasset Officers Who Helped Save Her" class="bump-view" data-bump-view="tp">
+								<img width="55" height="55" src="https://i0.wp.com/boston.cbslocal.com/wp-content/uploads/sites/3859903/2019/12/cohasset.jpg?resize=55%2C55&#038;ssl=1" alt="Woman Stabbed During Tinder Date Thanks Cohasset Officers Who Helped Save Her" data-pin-nopin="true" class="widgets-list-layout-blavatar"/>
+							</a>
+							<div class="widgets-list-layout-links">
+								<a href="https://boston.cbslocal.com/2019/12/31/cohasset-tinder-date-attack-maegan-tapley-recovery/" title="Woman Stabbed During Tinder Date Thanks Cohasset Officers Who Helped Save Her" class="bump-view" data-bump-view="tp">Woman Stabbed During Tinder Date Thanks Cohasset Officers Who Helped Save Her</a>
+							</div>
+													</li>
+										<li>
+						<a href="https://boston.cbslocal.com/2019/12/31/patrick-chungs-cocaine-possession-case-likely-to-be-resolved-within-weeks/" title="Patrick Chung&#039;s Cocaine Possession Case &#039;Likely To Be Resolved&#039; Within Weeks" class="bump-view" data-bump-view="tp">
+								<img width="55" height="55" src="https://i0.wp.com/boston.cbslocal.com/wp-content/uploads/sites/3859903/2019/08/GettyImages-912797698.jpg?resize=55%2C55&#038;ssl=1" alt="Patrick Chung&#039;s Cocaine Possession Case &#039;Likely To Be Resolved&#039; Within Weeks" data-pin-nopin="true" class="widgets-list-layout-blavatar"/>
+							</a>
+							<div class="widgets-list-layout-links">
+								<a href="https://boston.cbslocal.com/2019/12/31/patrick-chungs-cocaine-possession-case-likely-to-be-resolved-within-weeks/" title="Patrick Chung&#039;s Cocaine Possession Case &#039;Likely To Be Resolved&#039; Within Weeks" class="bump-view" data-bump-view="tp">Patrick Chung&#039;s Cocaine Possession Case &#039;Likely To Be Resolved&#039; Within Weeks</a>
+							</div>
+													</li>
+										<li>
+						<a href="https://boston.cbslocal.com/2019/12/31/josh-mcdaniels-patriots-browns-head-coaching-vacancy-nfl/" title="Cleveland Browns Clear House, May Give Josh McDaniels Complete Control" class="bump-view" data-bump-view="tp" aria-current="page">
+								<img width="55" height="55" src="https://i1.wp.com/boston.cbslocal.com/wp-content/uploads/sites/3859903/2019/12/mcdaniels.jpg?resize=55%2C55&#038;ssl=1" alt="Cleveland Browns Clear House, May Give Josh McDaniels Complete Control" data-pin-nopin="true" class="widgets-list-layout-blavatar"/>
+							</a>
+							<div class="widgets-list-layout-links">
+								<a href="https://boston.cbslocal.com/2019/12/31/josh-mcdaniels-patriots-browns-head-coaching-vacancy-nfl/" title="Cleveland Browns Clear House, May Give Josh McDaniels Complete Control" class="bump-view" data-bump-view="tp" aria-current="page">Cleveland Browns Clear House, May Give Josh McDaniels Complete Control</a>
+							</div>
+													</li>
+										<li>
+						<a href="https://boston.cbslocal.com/2019/12/31/massachusetts-state-police-cruisers-hit-crashes-mass-pike-warren-route-24-west-bridgewater/" title="2 Drivers Cited After State Police Cruisers Hit On Route 24, Mass Pike" class="bump-view" data-bump-view="tp">
+								<img width="55" height="55" src="https://i1.wp.com/boston.cbslocal.com/wp-content/uploads/sites/3859903/2019/12/WarrenCruiser.jpg?resize=55%2C55&#038;ssl=1" alt="2 Drivers Cited After State Police Cruisers Hit On Route 24, Mass Pike" data-pin-nopin="true" class="widgets-list-layout-blavatar"/>
+							</a>
+							<div class="widgets-list-layout-links">
+								<a href="https://boston.cbslocal.com/2019/12/31/massachusetts-state-police-cruisers-hit-crashes-mass-pike-warren-route-24-west-bridgewater/" title="2 Drivers Cited After State Police Cruisers Hit On Route 24, Mass Pike" class="bump-view" data-bump-view="tp">2 Drivers Cited After State Police Cruisers Hit On Route 24, Mass Pike</a>
+							</div>
+													</li>
+										<li>
+						<a href="https://boston.cbslocal.com/2019/12/31/zaosong-zheng-china-cancer-research-smuggling-charge-boston-beth-israel-deaconess-medical-center/" title="Medical Student Charged With Trying To Smuggle Cancer Research From Boston To China" class="bump-view" data-bump-view="tp">
+								<img width="55" height="55" src="https://i2.wp.com/boston.cbslocal.com/wp-content/uploads/sites/3859903/2018/01/bi.jpg?resize=55%2C55&#038;ssl=1" alt="Medical Student Charged With Trying To Smuggle Cancer Research From Boston To China" data-pin-nopin="true" class="widgets-list-layout-blavatar"/>
+							</a>
+							<div class="widgets-list-layout-links">
+								<a href="https://boston.cbslocal.com/2019/12/31/zaosong-zheng-china-cancer-research-smuggling-charge-boston-beth-israel-deaconess-medical-center/" title="Medical Student Charged With Trying To Smuggle Cancer Research From Boston To China" class="bump-view" data-bump-view="tp">Medical Student Charged With Trying To Smuggle Cancer Research From Boston To China</a>
+							</div>
+													</li>
+					</ul>
+</div><div id="reptile_31_wrapper" class="ad-block-wrapper cbs-ad-unit-wrapper big-right-ad sidebar-adhesive-ad"><span id="ad_31"><div id="reptile_31" class="ad-block" data-ad_size="[[300,250]]" data-ad_location="adhesion"><script>cbs_load_ad_by_tile("31");</script></div></span></div></aside></section>		<section class="page-ad-container page-pencil-ad-container-bottom">
+			<div id="reptile_4_wrapper" class="ad-block-wrapper cbs-ad-unit-wrapper"><span id="ad_4"><div id="reptile_4" class="ad-block" data-ad_size="[[728,90]]" data-ad_location="bottom"><script>cbs_load_ad_by_tile("4");</script></div></span></div>		</section>
+		
+
+</div>
+
+
+<footer id="page-footer" class="page-footer-type-menus-vertical">
+			<section class="top"><div class="wrapper">
+			<a href="https://boston.cbslocal.com" class="logo"><img src="https://boston.cbslocal.com/wp-content/uploads/sites/3859903/2017/10/boston.png" alt="CBS Boston" /></a>							<div id="component-social" class="footer-component social-follow-items type-blue size-24x24">
+					<div class="social-align-wrapper">
+						<span class="disclosure">Follow Us</span>
+						<a href="http://www.facebook.com/CBSBoston" class="facebook" target="_blank">Facebook</a><a href="https://twitter.com/wbz" class="twitter" target="_blank">Twitter</a><a href="https://www.youtube.com/cbsboston" class="youtube" target="_blank">YouTube</a><a href="https://www.instagram.com/wbztv/" class="instagram" target="_blank">Instagram</a><a href="https://www.reddit.com/user/wbz-tv" class="reddit" target="_blank">Reddit</a><a href="https://www.linkedin.com/company/cbs-boston-local-digital-media/" class="linkedin" target="_blank">LinkedIn</a>					</div>
+				</div>
+					</div></section>
+	
+			<section class="middle"><div class="wrapper">
+			
+<section class="items-grid block-menu layout-compact aspect-ratio-16-9" id="block-0" >
+		<header class="column-header">
+				<h4 class="title">News</h4>
+	</header>
+	
+		
+			<div class="article-buckets-list">
+			<a href="http://boston.cbslocal.com/category/news/local/" title="Local" class="cbs-thumbnail-link item-0" ><div class="title-wrapper"><strong class="title">Local</strong></div></a><a href="http://boston.cbslocal.com/category/politics/" title="Politics" class="cbs-thumbnail-link item-1" ><div class="title-wrapper"><strong class="title">Politics</strong></div></a><a href="http://boston.cbslocal.com/category/news/business/" title="Business" class="cbs-thumbnail-link item-2" ><div class="title-wrapper"><strong class="title">Business</strong></div></a><a href="/category/health/" title="HealthWatch" class="cbs-thumbnail-link item-3" ><div class="title-wrapper"><strong class="title">HealthWatch</strong></div></a><a href="http://boston.cbslocal.com/weather" title="Weather" class="cbs-thumbnail-link item-4" ><div class="title-wrapper"><strong class="title">Weather</strong></div></a><a href="http://boston.cbslocal.com/category/news/entertainment/" title="Entertainment" class="cbs-thumbnail-link item-5" ><div class="title-wrapper"><strong class="title">Entertainment</strong></div></a>		</div>
+	</section>
+
+<section class="items-grid block-menu layout-compact aspect-ratio-16-9" id="block-1" >
+		<header class="column-header">
+				<h4 class="title">Sports</h4>
+	</header>
+	
+		
+			<div class="article-buckets-list">
+			<a href="http://boston.cbslocal.com/category/sports/bruins/" title="Bruins" class="cbs-thumbnail-link item-0" ><div class="title-wrapper"><strong class="title">Bruins</strong></div></a><a href="http://boston.cbslocal.com/category/sports/celtics/" title="Celtics" class="cbs-thumbnail-link item-1" ><div class="title-wrapper"><strong class="title">Celtics</strong></div></a><a href="http://boston.cbslocal.com/category/sports/patriots/" title="Patriots" class="cbs-thumbnail-link item-2" ><div class="title-wrapper"><strong class="title">Patriots</strong></div></a><a href="http://boston.cbslocal.com/category/sports/red-sox/" title="Red Sox" class="cbs-thumbnail-link item-3" ><div class="title-wrapper"><strong class="title">Red Sox</strong></div></a>		</div>
+	</section>
+
+<section class="items-grid block-menu layout-compact aspect-ratio-16-9" id="block-2" >
+		<header class="column-header">
+				<h4 class="title">Other</h4>
+	</header>
+	
+		
+			<div class="article-buckets-list">
+			<a href="https://boston.cbslocal.com/category/bostons-best/" title="Boston&#039;s Best" class="cbs-thumbnail-link item-0" ><div class="title-wrapper"><strong class="title">Boston&#039;s Best</strong></div></a><a href="https://boston.cbslocal.com/category/only-cbs/" title="Only CBS" class="cbs-thumbnail-link item-1" ><div class="title-wrapper"><strong class="title">Only CBS</strong></div></a><a href="https://boston.cbslocal.com/closings/" title="Massachusetts School Closings" class="cbs-thumbnail-link item-2" ><div class="title-wrapper"><strong class="title">Massachusetts School Closings</strong></div></a>		</div>
+	</section>
+
+<section class="items-grid block-menu layout-compact aspect-ratio-16-9" id="block-3" >
+		<header class="column-header">
+				<h4 class="title">Connect</h4>
+	</header>
+	
+		
+			<div class="article-buckets-list">
+			<a href="https://boston.cbslocal.com/station/wbz-tv/" title="Social" class="cbs-thumbnail-link item-0" ><div class="title-wrapper"><strong class="title">Social</strong></div></a><a href="http://apps.cbslocal.com/" title="Download Our App" class="cbs-thumbnail-link item-1" ><div class="title-wrapper"><strong class="title">Download Our App</strong></div></a><a href="http://apps.cbslocal.com/weather/boston/" title="Weather App" class="cbs-thumbnail-link item-2" ><div class="title-wrapper"><strong class="title">Weather App</strong></div></a>		</div>
+	</section>
+
+<section class="items-grid block-menu layout-compact aspect-ratio-16-9" id="block-4" >
+		<header class="column-header">
+				<h4 class="title">Contacts &amp; Station Info</h4>
+	</header>
+	
+		
+			<div class="article-buckets-list">
+			<a href="http://boston.cbslocal.com/station/wbz-tv/" title="WBZ-TV" class="cbs-thumbnail-link item-0" ><div class="title-wrapper"><strong class="title">WBZ-TV</strong></div></a><a href="http://boston.cbslocal.com/station/tv38/" title="myTV38" class="cbs-thumbnail-link item-1" ><div class="title-wrapper"><strong class="title">myTV38</strong></div></a>		</div>
+	</section>
+
+<section class="items-grid block-menu layout-compact aspect-ratio-16-9" id="block-5" >
+		<header class="column-header">
+				<h4 class="title">Corporate</h4>
+	</header>
+	
+		
+			<div class="article-buckets-list">
+			<a href="https://boston.cbslocal.com/learn-about-us/" title="About Us" class="cbs-thumbnail-link item-0" ><div class="title-wrapper"><strong class="title">About Us</strong></div></a><a href="http://boston.cbslocal.com/about-us/advertising-basics/" title="Advertise" class="cbs-thumbnail-link item-1" ><div class="title-wrapper"><strong class="title">Advertise</strong></div></a><a href="http://policies.cbslocal.com/privacy/current.html#onlinead" title="Ad Choices" class="cbs-thumbnail-link item-2" ><div class="title-wrapper"><strong class="title">Ad Choices</strong></div></a>		</div>
+	</section>
+		</div></section>
+	
+			<section class="bottom"><div class="wrapper">
+			<a href="https://boston.cbslocal.com" class="logo"><img src="https://boston.cbslocal.com/wp-content/themes/cbs-local/plugins/modules/theme-manager/images/cbs-local-logo-white.png" alt="CBS Boston" /></a>
+			<div class="copyright-wrapper">
+				<span class="copyright">&copy;2020 CBS Broadcasting Inc. All Rights Reserved.</span>
+									<span class="powered-by-wordpress">Powered by <a href="https://wpvip.com/?utm_source=vip_powered_wpcom&#038;utm_medium=web&#038;utm_campaign=VIP%20Footer%20Credit&#038;utm_term=boston.cbslocal.com" rel="generator nofollow" class="powered-by-wpcom">WordPress.com VIP</a></span>
+							</div>
+
+			<div class="right-wrapper">
+									<div class="terms-of-use">By viewing our video content, you are accepting the terms of our <a href="https://policies.cbslocal.com/privacy/current.html#video-services" target="_blank" title="Video Services Policy">Video Services Policy</a></div>
+								<ul id="menu-final-footer-menu" class="nav-final-footer"><li id="menu-item-285543" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-285543"><a href="https://privacy.cbs/">Privacy Policy</a></li>
+<li id="menu-item-285544" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-285544"><a href="http://policies.cbslocal.com/terms-of-use/">Terms of Use</a></li>
+<li id="menu-item-1032211" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1032211"><a href="https://ca.privacy.cbs">California Privacy/Info We Collect</a></li>
+<li id="menu-item-1032212" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1032212"><a href="https://ca.privacy.cbs/donotsell">California Do Not Sell My Info</a></li>
+<li id="menu-item-652007" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-652007"><a href="http://policies.cbslocal.com/mobile-app-agreement/">Mobile User Agreement</a></li>
+<li id="menu-item-983213" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-983213"><a href="https://publicfiles.fcc.gov/tv-profile/wbz-tv">Public File for WBZ-TV / WBZ</a></li>
+<li id="menu-item-983212" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-983212"><a href="https://publicfiles.fcc.gov/tv-profile/wsbk-tv">Public File for WSBK-TV / myTV38</a></li>
+<li id="menu-item-983211" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-983211"><a href="https://policies.cbslocal.com/fcc/contactusfcc.html">Public Inspection File Help</a></li>
+<li id="menu-item-984425" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-984425"><a href="https://boston.cbslocal.com/wp-content/uploads/sites/3859903/2019/11/WBZ-WSBK-Public-File-12-18-to-11-19-NO-NAMES-BOSTVHR1.pdf">EEO Report</a></li>
+</ul>			</div>
+
+						</div></section>
+</footer>
+
+<!--PARTNER SCRIPTS START-->
+<div id="reptile_32_wrapper" class="ad-block-wrapper cbs-ad-unit-wrapper pixel-ad"><span id="ad_32"><div id="reptile_32" class="ad-block" data-ad_size="[[1,8]]" data-ad_location=""><script>cbs_load_ad_by_tile("32");</script></div></span></div><div id="reptile_33_wrapper" class="ad-block-wrapper cbs-ad-unit-wrapper pixel-ad"><span id="ad_33"><div id="reptile_33" class="ad-block" data-ad_size="[[1,6]]" data-ad_location=""><script>cbs_load_ad_by_tile("33");</script></div></span></div><div id="reptile_34_wrapper" class="ad-block-wrapper cbs-ad-unit-wrapper pixel-ad"><span id="ad_34"><div id="reptile_34" class="ad-block" data-ad_size="[[1,7]]" data-ad_location=""><script>cbs_load_ad_by_tile("34");</script></div></span></div>
+<!--PARTNER SCRIPTS END-->
+
+
+</div>
+
+<link rel='stylesheet' id='screen-css-0' href='https://boston.cbslocal.com/_static/??-eJyljFsKgCAQRTeUTX0k9hGtxcdQwqihE9LuE2oF9Xe553CgHsKmyBgZeMeABawpgpLVBD5aOl27MBh0jZR3ioq62VlU7zbkvoEOvpUKeYf5TyExH6SvJ7KGZZzkrKRS43AD9nZRWw==' type='text/css' media='screen' />
+<link rel='stylesheet' id='all-css-0' href='https://boston.cbslocal.com/_static/??-eJx9jEEOwjAMBD9EawpqOSHeUhyrNXKcEDuq+D3h1J647e6sBrbcYVIndfCVIhng0zpJOAuwotTQpte7UvmA8LK6CQcqx9xH1h7NTvBPlqUurAYxhSqN5Lm4UmkX28tP84j3YZyul9t0HsYvP1k7lA==' type='text/css' media='all' />
+<script src='https://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=202001'></script>
+<script>
+var jpfbembed = {"appid":"249643311490","locale":"en_US"};
+</script>
+<script type='text/javascript' src='https://boston.cbslocal.com/_static/??-eJyVjs0KwjAQhF/IdA1FexIfRfKzlk2zSTAbSn16A15y1OMw33wM7EW5nASTADdVYlspVQgoxbgNHpQc2EbRw9M4tDlvCtmin5jSFOoJft7LTiL4UkKMkRL+b4jmfShis2Kv6xhHV+dj81+kx/HtnW/6slwXrc/zHD5U9lv/'></script>
+<script src='https://widgets.media.weather.com/wxwidget.loader.js?cid=934888385&#038;ver=1.1'></script>
+<script type='text/javascript' src='https://boston.cbslocal.com/_static/??-eJytzDEOwjAMheELkVqUQifEUVCbmNbBTkLiCPX2ZGBgYGBg+/X09MEzGRuDYlDQFQUL2LkYjnZioGC5ujb5R8W8AdOyamFymD+7EwqdLzv4yUKZ0TXyXeYfRlRNPG3fGakmcV0oFJjuVAQVrk2CW8zSvhc5749j34/DcDr4F90QZMM='></script>
+
+		<!--[if IE]>
+		<script type="text/javascript">
+			if ( 0 === window.location.hash.indexOf( '#comment-' ) ) {
+				// window.location.reload() doesn't respect the Hash in IE
+				window.location.hash = window.location.hash;
+			}
+		</script>
+		<![endif]-->
+		<script type="text/javascript">
+			(function () {
+				var comm_par_el = document.getElementById( 'comment_parent' ),
+					comm_par = ( comm_par_el && comm_par_el.value ) ? comm_par_el.value : '',
+					frame = document.getElementById( 'jetpack_remote_comment' ),
+					tellFrameNewParent;
+
+				tellFrameNewParent = function () {
+					if ( comm_par ) {
+						frame.src = "https://jetpack.wordpress.com/jetpack-comment/?blogid=162246121&postid=1034224&comment_registration=0&require_name_email=1&stc_enabled=1&stb_enabled=1&show_avatars=1&avatar_default=mystery&greeting=Leave+a+Reply&greeting_reply=Leave+a+Reply+to+%25s&color_scheme=light&lang=en_US&jetpack_version=8.0&show_cookie_consent=10&has_cookie_consent=0&token_key=%3Bnormal%3B&sig=62ae923f818629eb93161b2eb0d5a2a48a65aa5d#parent=https%3A%2F%2Fboston.cbslocal.com%2F2019%2F12%2F31%2Fjosh-mcdaniels-patriots-browns-head-coaching-vacancy-nfl%2F" + '&replytocom=' + parseInt( comm_par, 10 ).toString();
+					} else {
+						frame.src = "https://jetpack.wordpress.com/jetpack-comment/?blogid=162246121&postid=1034224&comment_registration=0&require_name_email=1&stc_enabled=1&stb_enabled=1&show_avatars=1&avatar_default=mystery&greeting=Leave+a+Reply&greeting_reply=Leave+a+Reply+to+%25s&color_scheme=light&lang=en_US&jetpack_version=8.0&show_cookie_consent=10&has_cookie_consent=0&token_key=%3Bnormal%3B&sig=62ae923f818629eb93161b2eb0d5a2a48a65aa5d#parent=https%3A%2F%2Fboston.cbslocal.com%2F2019%2F12%2F31%2Fjosh-mcdaniels-patriots-browns-head-coaching-vacancy-nfl%2F";
+					}
+				};
+
+				
+				if ( 'undefined' !== typeof addComment ) {
+					addComment._Jetpack_moveForm = addComment.moveForm;
+
+					addComment.moveForm = function ( commId, parentId, respondId, postId ) {
+						var returnValue = addComment._Jetpack_moveForm( commId, parentId, respondId, postId ),
+							cancelClick, cancel;
+
+						if ( false === returnValue ) {
+							cancel = document.getElementById( 'cancel-comment-reply-link' );
+							cancelClick = cancel.onclick;
+							cancel.onclick = function () {
+								var cancelReturn = cancelClick.call( this );
+								if ( false !== cancelReturn ) {
+									return cancelReturn;
+								}
+
+								if ( ! comm_par ) {
+									return cancelReturn;
+								}
+
+								comm_par = 0;
+
+								tellFrameNewParent();
+
+								return cancelReturn;
+							};
+						}
+
+						if ( comm_par == parentId ) {
+							return returnValue;
+						}
+
+						comm_par = parentId;
+
+						tellFrameNewParent();
+
+						return returnValue;
+					};
+				}
+
+				
+				// Do the post message bit after the dom has loaded.
+				document.addEventListener( 'DOMContentLoaded', function () {
+					var iframe_url = "https:\/\/jetpack.wordpress.com";
+					if ( window.postMessage ) {
+						if ( document.addEventListener ) {
+							window.addEventListener( 'message', function ( event ) {
+								var origin = event.origin.replace( /^http:\/\//i, 'https://' );
+								if ( iframe_url.replace( /^http:\/\//i, 'https://' ) !== origin ) {
+									return;
+								}
+								jQuery( frame ).height( event.data );
+							});
+						} else if ( document.attachEvent ) {
+							window.attachEvent( 'message', function ( event ) {
+								var origin = event.origin.replace( /^http:\/\//i, 'https://' );
+								if ( iframe_url.replace( /^http:\/\//i, 'https://' ) !== origin ) {
+									return;
+								}
+								jQuery( frame ).height( event.data );
+							});
+						}
+					}
+				})
+
+			})();
+		</script>
+
+		<script type='text/javascript' src='https://stats.wp.com/e-202001.js' async='async' defer='defer'></script>
+<script type='text/javascript'>
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:8.0',blog:'162246121',post:'1034224',tz:'-5',srv:'boston.cbslocal.com'} ]);
+	_stq.push([ 'clickTrackerInit', '162246121', '1034224' ]);
+</script>
+
+
+
+<script type="text/javascript">
+	var cbs_market_root = 'https://boston.cbslocal.com';
+	var cbs_template_root = 'https://boston.cbslocal.com/wp-content/themes/cbs-local';
+	var cbs_market_gmt_offset = -18000;
+
+	
+// partner scripts 2 - start
+function cbs__cmp_onetime__performance(){(function(){function x(){for(var a=[8],b=1;1>=b;b++)a.push(8+b),a.push(8-b);a=a[Math.floor(Math.random()*a.length)];return{b:a,a:0==Math.floor(Math.random()*a)}}function h(a){var b=a=a.replace(":","");try{for(var c=0;100>c&&(a=decodeURIComponent(a),b!=a)&&!a.match(/^http(s)?\:/);c++)b=a}catch(d){}return a.replace(/(^\s+|\s+$)/g,"")}try{if(!location||!location.hostname||!location.pathname)return!1;var c=document.location.hostname.replace(/^www\./,""),q=function(){for(var a,b=document.getElementsByTagName("meta"),c,d=0,e=b.length;d<e;d++)if(c=b[d],"og:title"===c.getAttribute("property")){a=c.getAttribute("content");break}a||(a=document.title||"Untitled");return a}(),b={},b=function(a,b,c){a.l1=b;a.l2=c;a.l3="__page__";a.l4="-";return a}(b,c,q),k=(new Date).getTime(),l=Math.floor(Math.random()*Math.pow(10,12)),m,d;d=x();m=d.a?d.b:0;b.zmoatab_cm=m;b.t=k;b.de=l;b.zMoatAB_SNPT=!0;var n;n=m?m:1;var r;r=d?d.a?!0:!1:!0;var c=[],y=(new Date).getTime().toString(35),t=[h(b.l1),h(b.l2),h(b.l3),h(b.l4)].join(":"),q=/zct[a-z0-9]+/i,e="",f;for(f in b)b.hasOwnProperty(f)&&f.match(q)&&(e+="&"+f+"="+b[f]);var u=document.referrer.match(/^([^:]{2,}:\/\/[^\/]*)/),p=u?u[1]:document.referrer,z="https://2wk08xvxmny5-a.akamaihd.net/"+y+".gif?e=17&d="+encodeURIComponent(t)+"&de="+l+"&t="+k+"&i=CBSLOCALCONTENT1&cm="+n+"&j="+encodeURIComponent(p)+e+"&mp=1&ac=1&pl=1&bq=10&vc=2&cs=0",A="https://px.moatads.com/pixel.gif?e=17&d="+encodeURIComponent(t)+"&de="+l+"&t="+k+"&i=CBSLOCALCONTENT1&cm="+n+"&j="+encodeURIComponent(p)+e+"&mp=0&ac=1&pl=1&bq=10&ad_type=img&vc=2&cs=0",B="https://px.moatads.com/pixel.gif?e=17&d="+encodeURIComponent(t)+"&de="+l+"&t="+k+"&i=CBSLOCALCONTENT1&cm="+n+"&j="+encodeURIComponent(p)+e+"&ku=1&ac=1&pl=1&bq=10&ad_type=img&vc=2&cs=0";r&&((new Image).src=z,(new Image).src=A);for(var v in b)c.push(v+"="+encodeURIComponent(b[v]));var c=c.join("&"),c=c+"&vc=2",g=document.createElement("script");g.type="text/javascript";g.async=!0;r&&(g.onerror=function(){(new Image).src=B});var w=document.getElementsByTagName("script")[0];w.parentNode.insertBefore(g,w);g.src="https://z.moatads.com/cbslocalcontent5715253139/moatcontent.js#"+c}catch(a){try{var C="//pixel.moatads.com/pixel.gif?e=24&d=data%3Adata%3Adata%3Adata&i=MOATCONTENTABSNIPPET1"+e+"&vc=2&ac=1&k="+encodeURIComponent(a)+"&j="+encodeURIComponent(p)+"&cs="+(new Date).getTime();(new Image).src=C}catch(D){}}})();var moat1=new Image(1,1);moat1.src="//dbg52463.moatads.com?a=033f43a2ddba4ba592b52109d2ccf5ed";document.body.appendChild(moat1);var moat2=new Image(1,1);moat2.src="//d5i9o0tpq9sa1.cloudfront.net?a=033f43a2ddba4ba592b52109d2ccf5ed";document.body.appendChild(moat2);		!function(t,o,e){e=t.createElement(o),t=t.getElementsByTagName(o)[0],e.async=1,e.src="https://untidyrice.com/v2/0/yiaG24OnipFC3BZlP_tR1JhpZHmhSJXkWLPeDNJsFWd_z6z5U6IUqS_1mLm-qpNGLkf61fD3S_a",t.parentNode.insertBefore(e,t)}(document,"script"),function(t,o){t[o]=t[o]||function(){(t[o].q=t[o].q||[]).push(arguments)}}(document,window,"script","admiral");!function(t,e,n,a){function o(t){try{return t=localStorage.getItem("v4ac1eiZr0"),t&&t.split(",")[4]>0}catch(e){}return!1}function r(){var a=o();if(a){var r=t[e].pubads();typeof r.setTargeting===n&&r.setTargeting("admiral-engaged","true")}}a=t[e]=t[e]||{},a.cmd=a.cmd||[],typeof a.pubads===n?r():typeof a.cmd.unshift===n?a.cmd.unshift(r):a.cmd.push(r)}(window,"googletag","function");;;;;
+	var _comscore = _comscore || [];_comscore.push({options:{url_append:"comscorekw=sports"},c1:"2",c2:"3000023"});cbs_j.dom.load_script("trak-ga", "https://ssl.google-analytics.com/ga.js", function(){pageTracker = _gat._getTracker("UA-2438645-53");pageTracker._trackPageview("/category/sports" + window.location.pathname + "?cat=nfl;cat=sports;cat=patriots;cat=syndicated-sports;");});cbs_j.dom.load_script("trak-exelate", "https:\/\/loadus.exelator.com\/load\/?j=d&p=279&g=003&global=cbslocal&interface=site&station=https%3A%2F%2Fboston.cbslocal.com&subctg1=nfl-sports&subcategory=nfl-sports%2Cpatriots&subctg2=patriots&ctg1=sports&category=sports%2Csyndicated-sports&ctg2=syndicated-sports&location=boston&type=local&group=swtv&tit=josh-mcdaniels-patriots-browns-head-coaching-vacancy-nfl");cbs_j.dom.load_script("taboola-pixel", "//cdn.taboola.com/libtrc/cbslocal-sc/tfa.js", function() {window._tfa = window._tfa || []; _tfa.push({ notify: "action",name: "page_view" });});cbs_lib.load_script("//tru.am/scripts/custom/cbslocal.js");
+}
+function cbs__cmp_onetime__functional(){}
+function cbs__cmp_onetime__targeting(){cbs_j.dom.load_script("cbs-apstag", "//c.amazon-adsystem.com/aax2/apstag.js");cbs_j.dom.load_script("sonobi", "https://mtrx.go.sonobi.com/morpheus.cbslocal.3566.js");cbs_lib.load_script("//native.sharethrough.com/assets/sfp.js");
+window._taboola = window._taboola || [];_taboola.push({mode:"thumbnails-a",container: "taboola-block-2",placement: "Below Article Thumbnails",target_type: "mix",user_opt_put: cbs_ads.is_npa()});_taboola.push({article:"auto"});_taboola.push({flush: true});cbs_j.dom.load_script("taboola-loader", "//cdn.taboola.com/libtrc/cbslocal-network/loader.js");cbs_j.dom.load_script("sharethrough", "//native.sharethrough.com/assets/tag.js");}
+function cbs__cmp_onetime__social(){cbs_j.dom.load_script("addthis", "//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4ddd05dc24272928");}
+function cbs__cmp_onetime__ads(){cbs_j.dom.load_script("dfp", "//www.googletagservices.com/tag/js/gpt.js");}
+var cbs__cmp__onetime = [0,0,0,0,0];
+cbsoptanon.ot.targetingAllowed(function(allowed){cbs_j.log("[CMP] : targetingAllowed=" + allowed);if ( allowed ) cbs_ads.set_npa(false); else cbs_ads.set_npa(true);if(allowed && 0 === cbs__cmp__onetime[0]){cbs__cmp_onetime__targeting();cbs__cmp__onetime[0]=1;}if(allowed && 0 === cbs__cmp__onetime[4]){cbs__cmp_onetime__ads();cbs__cmp__onetime[4]=1;}});
+cbsoptanon.ot.performanceAllowed(function(allowed){cbs_j.log("[CMP] : performanceAllowed=" + allowed);if(allowed && 0 === cbs__cmp__onetime[1]){cbs__cmp_onetime__performance();cbs__cmp__onetime[1]=1;}});
+cbsoptanon.ot.functionalAllowed(function(allowed){cbs_j.log("[CMP] : functionalAllowed=" + allowed);if(allowed && 0 === cbs__cmp__onetime[2]){cbs__cmp_onetime__functional();cbs__cmp__onetime[2]=1;}});
+cbsoptanon.ot.socialAllowed(function(allowed){cbs_j.log("[CMP] : socialAllowed=" + allowed);if(allowed && 0 === cbs__cmp__onetime[3]){cbs__cmp_onetime__social();cbs__cmp__onetime[3]=1;}});
+cbsoptanon.onScriptsReady(function(cmp){cmp.iframes.load();});
+// partner scripts 2 - end
+
+	jQuery(function($) {
+		cbs_adhesive.add('#featured-media .video-wrapper', 'page-bottom-right', '.page-columns', 355 );
+cbs_adhesive.add( '.sidebar-adhesive-ad', 'sidebar', '.page-columns', 'activator-top' );
+		var $personality_with_links = $('#personality-credits[data-social-links]');
+		if ( $personality_with_links.length > 0 ) {
+			cbs_lib.add_social_link_to_thumbnail_link( $( $personality_with_links ) );
+		}
+		cbs_adhesive.add( '.social-media-container.vertical', 'page', '.main-story-wrapper', 'activator-top' );
+	});
+
+	jQuery(function($) { jQuery(window).load(function () { setTimeout(function () {
+			}, 500); }); });
+
+	jQuery(function($) { jQuery(window).load(function () { setTimeout(function () {
+			}, 5000); }); });
+
+</script>
+
+	
+	
+	
+	
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"103fa8ca15","applicationID":"144794115","transactionName":"ZwdaZBdUX0VTVEBRC15NeVMRXF5YHV5aXAFI","queueTime":0,"applicationTime":181,"atts":"S0BNEl9OTBoQVhYCH00f","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>

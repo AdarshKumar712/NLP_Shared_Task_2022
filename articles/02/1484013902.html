@@ -1,0 +1,1656 @@
+
+<!doctype html>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8"><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"bb199f70cb",applicationID:"222037236"};window.NREUM||(NREUM={}),__nr_require=function(n,e,t){function r(t){if(!e[t]){var i=e[t]={exports:{}};n[t][0].call(i.exports,function(e){var i=n[t][1][e];return r(i||e)},i,i.exports)}return e[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(n,e,t){function r(){}function i(n,e,t){return function(){return o(n,[u.now()].concat(f(arguments)),e?null:this,t),e?void 0:this}}var o=n("handle"),a=n(4),f=n(5),c=n("ee").get("tracer"),u=n("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(n,e){s[e]=i(d+e,!0,"api")}),s.addPageAction=i(d+"addPageAction",!0),s.setCurrentRouteName=i(d+"routeName",!0),e.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(n,e){var t={},r=this,i="function"==typeof e;return o(l+"tracer",[u.now(),n,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return e.apply(this,arguments)}catch(n){throw c.emit("fn-err",[arguments,this,n],t),n}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(n,e){m[e]=i(l+e)}),newrelic.noticeError=function(n,e){"string"==typeof n&&(n=new Error(n)),o("err",[n,u.now(),!1,e])}},{}],2:[function(n,e,t){function r(n,e){var t=n.getEntries();t.forEach(function(n){"first-paint"===n.name?a("timing",["fp",Math.floor(n.startTime)]):"first-contentful-paint"===n.name&&a("timing",["fcp",Math.floor(n.startTime)])})}function i(n){if(n instanceof c&&!s){var e,t=Math.round(n.timeStamp);e=t>1e12?Date.now()-t:f.now()-t,s=!0,a("timing",["fi",t,{type:n.type,fid:e}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var o,a=n("handle"),f=n("loader"),c=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){o=new PerformanceObserver(r);try{o.observe({entryTypes:["paint"]})}catch(u){}}if("addEventListener"in document){var s=!1,p=["click","keydown","mousedown","pointerdown","touchstart"];p.forEach(function(n){document.addEventListener(n,i,!1)})}}},{}],3:[function(n,e,t){function r(n,e){if(!i)return!1;if(n!==i)return!1;if(!e)return!0;if(!o)return!1;for(var t=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],4:[function(n,e,t){function r(n,e){var t=[],r="",o=0;for(r in n)i.call(n,r)&&(t[o]=e(r,n[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],5:[function(n,e,t){function r(n,e,t){e||(e=0),"undefined"==typeof t&&(t=n?n.length:0);for(var r=-1,i=t-e||0,o=Array(i<0?0:i);++r<i;)o[r]=n[e+r];return o}e.exports=r},{}],6:[function(n,e,t){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(n,e,t){function r(){}function i(n){function e(n){return n&&n instanceof r?n:n?c(n,f,o):o()}function t(t,r,i,o){if(!d.aborted||o){n&&n(t,r,i);for(var a=e(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function l(n,e){h[n]=v(n).concat(e)}function m(n,e){var t=h[n];if(t)for(var r=0;r<t.length;r++)t[r]===e&&t.splice(r,1)}function v(n){return h[n]||[]}function g(n){return p[n]=p[n]||i(t)}function w(n,e){u(n,function(n,t){e=e||"feature",y[t]=e,e in s||(s[e]=[])})}var h={},y={},b={on:l,addEventListener:l,removeEventListener:m,emit:t,get:g,listeners:v,context:e,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var f="nr@context",c=n("gos"),u=n(4),s={},p={},d=e.exports=i();d.backlog=s},{}],gos:[function(n,e,t){function r(n,e,t){if(i.call(n,e))return n[e];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(n,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return n[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(n,e,t){function r(n,e,t,r){i.buffer([n],r),i.emit(n,e,t)}var i=n("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(n,e,t){function r(n){var e=typeof n;return!n||"object"!==e&&"function"!==e?-1:n===window?0:a(n,o,function(){return i++})}var i=1,o="nr@id",a=n("gos");e.exports=r},{}],loader:[function(n,e,t){function r(){if(!x++){var n=E.info=NREUM.info,e=l.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(n&&n.licenseKey&&n.applicationID&&e))return s.abort();u(y,function(e,t){n[e]||(n[e]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=l.createElement("script");t.src="https://"+n.agent,e.parentNode.insertBefore(t,e)}}function i(){"complete"===l.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=n("handle"),u=n(4),s=n("ee"),p=n(3),d=window,l=d.document,m="addEventListener",v="attachEvent",g=d.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:g,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1158.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=e.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};n(1),n(2),l[m]?(l[m]("DOMContentLoaded",o,!1),d[m]("load",r,!1)):(l[v]("onreadystatechange",i),d[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=n(6)},{}],"wrap-function":[function(n,e,t){function r(n){return!(n&&n instanceof Function&&n.apply&&!n[a])}var i=n("ee"),o=n(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;e.exports=function(n,e){function t(n,e,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){d([u,"",[r,a,i],f])}s(e+"start",[r,a,i],f);try{return c=n.apply(a,r)}catch(p){throw s(e+"err",[r,a,p],f),p}finally{s(e+"end",[r,a,c],f)}}return r(n)?n:(e||(e=""),nrWrapper[a]=n,p(n,nrWrapper),nrWrapper)}function u(n,e,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<e.length;c++)f=e[c],a=n[f],r(a)||(n[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||e){var o=c;c=!0;try{n.emit(t,r,i,e)}catch(a){d([a,t,r,i])}c=o}}function p(n,e){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(n);return t.forEach(function(t){Object.defineProperty(e,t,{get:function(){return n[t]},set:function(e){return n[t]=e,e}})}),e}catch(r){d([r])}for(var i in n)f.call(n,i)&&(e[i]=n[i]);return e}function d(e){try{n.emit("internal-error",e)}catch(t){}}return n||(n=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="refresh" content="1200">
+	<link rel="profile" href="https://gmpg.org/xfn/11">
+
+			
+	<!-- OneTrust Cookies Consent Notice start -->
+	<script
+		type="text/javascript"
+		src="https://cdn.cookielaw.org/consent/19f42722-9ea0-4e76-9fdc-f5f418c192fe/OtAutoBlock.js"
+	></script>
+
+	<script
+		src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js"
+		type="text/javascript"
+		charset="UTF-8"
+		data-domain-script="19f42722-9ea0-4e76-9fdc-f5f418c192fe"
+	></script>
+
+	<script type="text/javascript">
+		function OptanonWrapper() { }
+	</script>
+	<!-- OneTrust Cookies Consent Notice end -->
+		
+						<script src="https://cdn.blueconic.net/nexstar.js"></script>
+	
+	
+<!-- BoB -->
+<script async type="text/javascript" id="bob_tag_loader">
+var page_url = "https:\/\/www.kget.com\/news\/crime-watch\/police-search-for-hit-and-run-driver-who-struck-and-killed-a-man-in-southwest-bakersfield\/" || "";
+var cats = "Crime Watch,Local News,News" || "";
+var bob_kw = "" || "";
+var bob_desc = "BAKERSFIELD, Calif. (KGET) \u2014 Update: The Kern County Sheriff&#8217;s Office have identified the man killed as 54-year-old Kirk Conlin Parish. &#8212;- Bakersfield Police are searching for a driver who killed a pedestrian and drove off.&nbsp; According to BPD, this happened at about 1:15 early Wednesday morning at Parker Avenue and Oriole Street.\u00a0 On arrival, they [&hellip;]" || "";
+var bob_story_author = "Karen Cruz-Orduna" || "";
+var cat_data = "&cats=" + encodeURIComponent(cats) + "&bob_kw=" + encodeURIComponent(bob_kw) + "&bob_desc=" + encodeURIComponent(bob_desc) + "&story_author=" + encodeURIComponent(bob_story_author) + "&page_url=" + encodeURIComponent(page_url);
+
+var bob_cb = '1';
+bob_cb = ((new Date()).getTime() + "" + Math.floor(Math.random() * 1000000)).substr(0, 16);
+(function () {
+var bob_tag = document.createElement('script');
+bob_tag.type = 'text/javascript';
+bob_tag.async = true;
+bob_tag.id = "bob_tag";
+bob_tag.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'bob.dmpxs.com/static/bob_001.js?bob_cb=' + bob_cb + cat_data;
+var bts = document.getElementsByTagName('script')[0];
+bts.parentNode.insertBefore(bob_tag, bts);
+})();
+</script>
+
+<script type="text/javascript" id="bob_003_tag_loader">
+var page_url = "https:\/\/www.kget.com\/news\/crime-watch\/police-search-for-hit-and-run-driver-who-struck-and-killed-a-man-in-southwest-bakersfield\/" || "";
+var video_asset_url = "" || "";
+
+var bob_cb = '1';
+bob_cb = ((new Date()).getTime() + "" + Math.floor(Math.random() * 1000000)).substr(0, 16);
+(function() {
+var bob_tag_003 = document.createElement('script');
+bob_tag_003.type = 'text/javascript';
+bob_tag_003.id = "bob_tag_003";
+bob_tag_003.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'bob.dmpxs.com/static/bob_003.js?bob_cb=' + bob_cb + '&page_url=' + page_url  + '&vid_asset_url=' + video_asset_url;
+var bts_003 = document.getElementsByTagName('script')[0];
+bts_003.parentNode.insertBefore(bob_tag_003,bts_003);
+})();
+</script>
+
+			
+	
+				
+<!-- Index Exchange -->
+<script async src="https://js-sec.indexww.com/ht/p/184979-164251977320883.js"></script> 	
+				
+<!-- A9 APS -->
+<script type="text/javascript">
+!function(a9,a,p,s,t,A,g){if(a[a9])return;function q(c,r){a[a9]._Q.push([c,r])}a[a9]={init:function(){q("i",arguments)},fetchBids:function(){q("f",arguments)},setDisplayBids:function(){},targetingKeys:function(){return[]},_Q:[]};A=p.createElement(s);A.async=!0;A.src=t;g=p.getElementsByTagName(s)[0];g.parentNode.insertBefore(A,g)}("apstag",window,document,"script","//c.amazon-adsystem.com/aax2/apstag.js");
+
+apstag.init({"pubID":"3410","adServer":"googletag"});
+</script>
+	
+				
+<!-- Confiant ad fraud protection -->
+<script async="" src="https://confiant-integrations.global.ssl.fastly.net/Y2Nn8JmiAY8HpnF4sl5n7J71jaI/gpt_and_prebid/config.js"></script> 	
+	
+<script type="text/javascript">
+(function() {
+	var _sf_async_config = window._sf_async_config = (window._sf_async_config || {});
+	_sf_async_config.uid = "23192";
+	_sf_async_config.domain = "kerngoldenempire.com";
+	_sf_async_config.flickerControl = false; 	_sf_async_config.useCanonical = true;
+	_sf_async_config.useCanonicalDomain = true;
+})();
+</script>
+<script async src="//static.chartbeat.com/js/chartbeat_mab.js"></script>
+
+	
+<!-- Google Publisher Tag -->
+<script async="async" src="https://www.googletagservices.com/tag/js/gpt.js"></script>
+<script>
+var googletag = googletag || {};
+googletag.cmd = googletag.cmd || [];
+</script>
+<!-- End Google Publisher Tag -->
+
+
+	
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer',"GTM-KJJZHXD");</script>
+<!-- End Google Tag Manager -->
+
+	
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer',"GTM-TSQRR3R");</script>
+<!-- End Google Tag Manager -->
+
+	
+	<title>Police search for hit-and-run driver who struck and killed a man in Southwest Bakersfield | KGET 17</title>
+<link rel='dns-prefetch' href='//s0.wp.com' />
+<link rel='dns-prefetch' href='//s7.addthis.com' />
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="KGET 17 &raquo; Feed" href="https://www.kget.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="KGET 17 &raquo; Comments Feed" href="https://www.kget.com/comments/feed/" />
+<script class="wp-asset-manager page_attributes" type="text/javascript">window.amScripts = window.amScripts || {}; window.amScripts["page_attributes"] = {"page_url":"https:\/\/www.kget.com\/news\/crime-watch\/police-search-for-hit-and-run-driver-who-struck-and-killed-a-man-in-southwest-bakersfield\/","page_slug":"police-search-for-hit-and-run-driver-who-struck-and-killed-a-man-in-southwest-bakersfield","page_type":"story","page_category":"crime_watch","article_id":206812,"subpath":"\/news\/crime_watch"}</script><script class="wp-asset-manager ns-ad-loader-js" type="text/javascript">!function(e){var t={};function n(o){if(t[o])return t[o].exports;var i=t[o]={i:o,l:!1,exports:{}};return e[o].call(i.exports,i,i.exports,n),i.l=!0,i.exports}n.m=e,n.c=t,n.d=function(e,t,o){n.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:o})},n.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},n.t=function(e,t){if(1&t&&(e=n(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var o=Object.create(null);if(n.r(o),Object.defineProperty(o,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var i in e)n.d(o,i,function(t){return e[t]}.bind(null,i));return o},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,"a",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p="/wp-content/themes/nexstar/client/build/",n(n.s=242)}({242:function(e,t,n){e.exports=n(243)},243:function(e,t,n){"use strict";var o=a(n(244)),i=a(n(245));function a(e){return e&&e.__esModule?e:{default:e}}var s=window.amScripts.page_attributes;window.googletag=window.googletag||{},window.googletag.cmd=googletag.cmd||[],googletag.cmd.push(function(){var e=function(e,t,n){var o=void 0;try{o=e.slot[t].apply(e.slot,n)}catch(e){o="[unknown]"}return o};googletag.pubads().addEventListener("slotRenderEnded",function(t){if(t.slot){var n=t.slot,o=t.isEmpty,i=t.size,a=n.getSlotElementId(),s="AD SLOT RENDERED {\n  containerId: "+a+",\n  isEmpty: "+o+",\n  size: "+i+",\n  adUnitPath: "+e(t,"getAdUnitPath")+",\n  position: "+e(t,"getTargeting",["pos"])+",\n}";if(window.setTimeout(function(){console.info(s)},10),a.startsWith("acm-ad-tag-adhesion")&&!o){var r=document.getElementById(a).parentNode;r.classList.remove("pre-render"),r.querySelector(".close-btn-container").addEventListener("click",function(e){e.preventDefault(),r.parentNode.remove()},!1)}if(a.startsWith("acm-ad-tag-oop")&&!o&&document.body.classList.add("has-loaded-super-billboard-ad"),a&&!o&&"function"==typeof document.getElementById(a).closest){var l=document.getElementById(a).closest(".ad-unit");l&&l.classList.add("ad-unit--is-rendered")}}})}),googletag.cmd.push(function(){googletag.pubads().enableSingleRequest(),googletag.pubads().enableAsyncRendering(),googletag.pubads().collapseEmptyDivs(),googletag.companionAds().setRefreshUnfilledSlots(!0),googletag.pubads().disableInitialLoad(),googletag.pubads().enableVideoAds(),googletag.enableServices()}),googletag.cmd.push(function(){var e=googletag.pubads();s.article_id&&e.setTargeting("pid",String(s.article_id)),s.page_type&&e.setTargeting("pagetype",s.page_type)});var r=new o.default(window.googletag,s);window.addEventListener("nsDfpSlotRendered",r.setUpSlot),(0,i.default)(function(){r.initVisibleSlots()}),window.addEventListener("nsDfpRefreshSlots",r.refreshSlots)},244:function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var o=function(){function e(e,t){for(var n=0;n<t.length;n++){var o=t[n];o.enumerable=o.enumerable||!1,o.configurable=!0,"value"in o&&(o.writable=!0),Object.defineProperty(e,o.key,o)}}return function(t,n,o){return n&&e(t.prototype,n),o&&e(t,o),t}}();var i=function(){function e(t,n){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,e),this.apstagSlots=[],this.googletag=t,this.pageAttributes=n,this.setUpSlot=this.setUpSlot.bind(this),this.refreshSlots=this.refreshSlots.bind(this)}return o(e,[{key:"setUpSlot",value:function(e){var t=this,n=e.detail.id,o=document.getElementById(n);if(o){var i=JSON.parse(o.dataset.slot);if(i&&Object.keys(i).length){var a=JSON.parse(o.dataset.unit);if(a&&Object.keys(a).length){var s=o.dataset.path;if(s){var r=JSON.parse(o.dataset.targeting);this.pushCmd(function(){var e=null;if((e=i.is_oop?t.googletag.defineOutOfPageSlot(s,n):t.googletag.defineSlot(s,i.size,n))&&(r&&Object.keys(r).forEach(function(t){e.setTargeting(t,r[t])}),i.sizes.length&&e.defineSizeMapping(i.sizes),i.is_companion&&e.addService(t.googletag.companionAds()),e.addService(t.googletag.pubads())),e){var o=[];e.getSizes?o=e.getSizes(window.innerWidth,window.innerHeight).map(function(e){return[e.getWidth(),e.getHeight()]}):i.sizes.length&&(o=Object.values(i.sizes.reduce(function(e,t){var n=e;return t[1].forEach(function(e){n[e.join(",")]=e}),n},{}))),o.length&&(o=o.filter(function(e){return!(88===e[0]&&31===e[1])})),o.length&&t.apstagSlots.push({sizes:o,slotID:e.getSlotElementId(),slotName:e.getAdUnitPath()})}})}}}}}},{key:"initVisibleSlots",value:function(){var e=this;this.pushCmd(function(){e.googletag.pubads().getSlots().forEach(function(t){e.pushCmd(function(){e.googletag.display(t.getSlotElementId())})})}),this.refreshSlots()}},{key:"refreshSlots",value:function(){var e=this;this.pushCmd(function(){e.initPrebidRequest(function(){e.googletag.pubads().refresh()})})}},{key:"initPrebidRequest",value:function(e){var t=this,n=this.constructor.apstag();n&&this.apstagSlots?n.fetchBids({slots:this.apstagSlots,timeout:2e3},function(){n.setDisplayBids(),t.pushCmd(e)}):this.pushCmd(e)}},{key:"pushCmd",value:function(e){this.googletag.cmd.push(e)}}],[{key:"apstag",value:function(){return window.apstag||null}}]),e}();t.default=i},245:function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.default=function(e){"complete"===document.readyState&&e(),document.addEventListener("DOMContentLoaded",e)}}});
+//# sourceMappingURL=adLoader.8f7662ce15504f3219c3.bundle.min.js.map</script><meta name='description' content='BAKERSFIELD, Calif. (KGET) — Update: The Kern County Sheriff&#8217;s Office have identified the man killed as 54-year-old Kirk Conlin Parish. &#8212;- Bakersfield Police are searching for a driver who killed a pedestrian and drove off.&nbsp; According to BPD, this happened at about 1:15 early Wednesday morning at Parker Avenue and Oriole Street.  On arrival, they [&hellip;]' /><!-- WP SEO -->
+<meta name='google-site-verification' content='JLCX1ff6dRMAi0TeF1mJw74-B4eSQtFXSFTeBcmTHpg' /><!-- WP SEO -->
+<meta name='google-site-verification' content='7e_P0fu5dsFH2z_hyeCoWrb8URmkBZZVd8O77l7i-As' /><!-- WP SEO -->
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/www.kget.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.3.2"}};
+			!function(e,a,t){var r,n,o,i,p=a.createElement("canvas"),s=p.getContext&&p.getContext("2d");function c(e,t){var a=String.fromCharCode;s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,e),0,0);var r=p.toDataURL();return s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,t),0,0),r===p.toDataURL()}function l(e){if(!s||!s.fillText)return!1;switch(s.textBaseline="top",s.font="600 32px Arial",e){case"flag":return!c([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])&&(!c([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!c([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]));case"emoji":return!c([55357,56424,55356,57342,8205,55358,56605,8205,55357,56424,55356,57340],[55357,56424,55356,57342,8203,55358,56605,8203,55357,56424,55356,57340])}return!1}function d(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(i=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},o=0;o<i.length;o++)t.supports[i[o]]=l(i[o]),t.supports.everything=t.supports.everything&&t.supports[i[o]],"flag"!==i[o]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[i[o]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(r=t.source||{}).concatemoji?d(r.concatemoji):r.wpemoji&&r.twemoji&&(d(r.twemoji),d(r.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	
+<style>
+	:root {
+		--primary_color: #013073;
+		--alert_banner_label_sep: '/';
+	}
+</style>
+<link rel='stylesheet' id='all-css-0' href='https://www.kget.com/wp-includes/css/dist/block-library/style.min.css?m=1576710963g' type='text/css' media='all' />
+<link crossorigin="anonymous" rel='stylesheet' id='ns-google-fonts-css'  href='https://fonts.googleapis.com/css?family=Lora%3A400%2C400i%2C700%2C700i%7CRoboto+Condensed%3A400%2C700&#038;ver=1.0' media='all' />
+<link rel='stylesheet' id='all-css-2' href='https://www.kget.com/_static/??-eJyVzMsOwiAQheEXskxwuLkwPssUphUF2hSIPr7WuHTj7uTkzwePdfBLaVwatCtnrlD4WRtt4FPc37HHFMDXCnNaRkoikGOltAtIDs1kg1NB5FjEuznAHx5tLfrE4ojGTEjaoAxWWi0Nnn6CuQ9r6nMsFW7cVvL3j/Pde37JZ6mtddIqo1+ppkwj' type='text/css' media='all' />
+<style id='ns-article-css-inline-css'>
+.article--is-condensed .article-content { max-height: 600px; }
+</style>
+<script type='text/javascript' src='https://www.kget.com/_static/??-eJzTLy/QzcxLzilNSS3WzwKiwtLUokoopZdVrKOPT4FubmZ6UWJJql5uZh5QsX2uraGpuZm5oYGlmUkWACWrILQ='></script>
+<link rel='https://api.w.org/' href='https://www.kget.com/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.kget.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://www.kget.com/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 5.3.2" />
+<link rel="canonical" href="https://www.kget.com/news/crime-watch/police-search-for-hit-and-run-driver-who-struck-and-killed-a-man-in-southwest-bakersfield/" />
+<link rel='shortlink' href='https://www.kget.com/?p=206812' />
+<link rel="alternate" type="application/json+oembed" href="https://www.kget.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.kget.com%2Fnews%2Fcrime-watch%2Fpolice-search-for-hit-and-run-driver-who-struck-and-killed-a-man-in-southwest-bakersfield%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://www.kget.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.kget.com%2Fnews%2Fcrime-watch%2Fpolice-search-for-hit-and-run-driver-who-struck-and-killed-a-man-in-southwest-bakersfield%2F&#038;format=xml" />
+<style id="lakana-art-direction"></style>
+			<meta property="fb:pages" content="84441171313" />
+			
+<link rel='dns-prefetch' href='//v0.wordpress.com'/>
+<style type='text/css'>img#wpstats{display:none}</style><script type="text/javascript" src=""></script><link rel="amphtml" href="https://www.kget.com/news/crime-watch/police-search-for-hit-and-run-driver-who-struck-and-killed-a-man-in-southwest-bakersfield/amp/">
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Police search for hit-and-run driver who struck and killed a man in Southwest Bakersfield" />
+<meta property="og:url" content="https://www.kget.com/news/crime-watch/police-search-for-hit-and-run-driver-who-struck-and-killed-a-man-in-southwest-bakersfield/" />
+<meta property="og:description" content="BAKERSFIELD, Calif. (KGET) — Update: The Kern County Sheriff&#8217;s Office have identified the man killed as 54-year-old Kirk Conlin Parish. &#8212;- Bakersfield Police are searching for a driver …" />
+<meta property="article:published_time" content="2020-01-01T13:59:15+00:00" />
+<meta property="article:modified_time" content="2020-01-01T16:36:51+00:00" />
+<meta property="og:site_name" content="KGET 17" />
+<meta property="og:image:width" content="1280" />
+<meta property="og:image:height" content="720" />
+<meta property="og:image:alt" content="BPD Bakersfield Police Department logo bpd" />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:text:title" content="Police search for hit-and-run driver who struck and killed a man in Southwest Bakersfield" />
+<meta name="twitter:image" content="https://www.kget.com/wp-content/uploads/sites/2/2019/06/Bakersfield-Police-BPD-logo.jpg?w=640" />
+<meta name="twitter:image:alt" content="BPD Bakersfield Police Department logo bpd" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="og:image" content="https://www.kget.com/wp-content/uploads/sites/2/2019/06/Bakersfield-Police-BPD-logo.jpg?w=800&amp;h=450&amp;crop=1&amp;resize=1280,720" />
+<meta property="og:image:secure_url" content="https://www.kget.com/wp-content/uploads/sites/2/2019/06/Bakersfield-Police-BPD-logo.jpg?w=800&#038;h=450&#038;crop=1&#038;resize=1280,720" />
+<meta name="twitter:title" content="Police search for hit-and-run driver who struck and killed a man in Southwest Bakersfield" />
+<meta name="twitter:description" content="BAKERSFIELD, Calif. (KGET) — Update: The Kern County Sheriff&#8217;s Office have identified the man killed as 54-year-old Kirk Conlin Parish. &#8212;- Bakersfield Police are searching for a driver …" />
+
+<!-- End Jetpack Open Graph Tags -->
+<link rel="icon" href="https://www.kget.com/wp-content/uploads/sites/2/2019/05/cropped-favicon-512x512-1.jpg?w=32" sizes="32x32" />
+<link rel="icon" href="https://www.kget.com/wp-content/uploads/sites/2/2019/05/cropped-favicon-512x512-1.jpg?w=192" sizes="192x192" />
+<link rel="apple-touch-icon-precomposed" href="https://www.kget.com/wp-content/uploads/sites/2/2019/05/cropped-favicon-512x512-1.jpg?w=180" />
+<meta name="msapplication-TileImage" content="https://www.kget.com/wp-content/uploads/sites/2/2019/05/cropped-favicon-512x512-1.jpg?w=270" />
+</head>
+
+<body class="post-template-default single single-post postid-206812 single-format-standard wp-custom-logo">
+	
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-KJJZHXDheight="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+	
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-TSQRR3Rheight="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+	<div id="page" class="site">
+		<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+
+		
+<header id="masthead" class="site-header" role="banner" data-component="siteHeader">
+	<div class="site-header__content">
+					<p class="screen-reader-text"><a href="https://www.kget.com/" rel="home">KGET 17</a></p>
+		
+		<div class="site-header__branding">
+			<div class="site-header__branding__content">
+				<div class="site-header__logo">
+					<a href="https://www.kget.com/" rel="home">
+						<img src="https://www.kget.com/wp-content/uploads/sites/2/2019/04/kget-2018.png" alt="Crime Watch" />
+						<div class="site-header__logo-bg" style="background-image: url('https://www.kget.com/wp-content/uploads/sites/2/2019/04/kget-2018.png');"></div>
+					</a>
+				</div>
+				<div class="site-header__weather">
+											<a href="https://www.kget.com/weather/">
+							<span class="site-header__weather-region">Bakersfield</span>
+							<span class="site-header__weather-forecast">
+								<span class="site-header__weather-forecast__text">42&deg;</span>
+								<figure class="site-header__weather-forecast__icon">
+									<span class="weather-icon weather-icon-sm weather-icon-light-97"></span>
+								</figure>
+							</span>
+						</a>
+									</div>
+				<div class="site-header__widget">
+					<div class="site-header__sponsor">
+						<aside class="ad-unit ad-unit--microbar ad-unit--microbar--header">
+															<span class="ad_unit__label">Sponsored By</span>
+														<div class="ad-unit__content">
+								  <div   id="acm-ad-tag-header-microbar-header-microbar"   data-slot='{"pos":"header-microbar","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[88,31],"sizes":[[[900,0],[[88,31]]],[[0,0],[]]],"amp_multi_size":"88x31","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"atf"}'   data-unit='{"tag":"header-microbar","tag_id":"header-microbar","dfp_id":"5678","tag_name":"nx.kget","ad_disabled":"0"}'   data-targeting='{"pos":"header-microbar","fold":"atf","category":"crime_watch","kw":"police-search-for-hit-and-run-driver-who-struck-and-killed-a-man-in-southwest-bakersfield"}'   data-path='/5678/nx.kget/news/crime_watch'  ></div>  <script>  (function () {   try {    var event = new CustomEvent(     "nsDfpSlotRendered",     {      detail: {       id: 'acm-ad-tag-header-microbar-header-microbar'      }     }    );     window.dispatchEvent(event);   } catch (err) {}  })();  </script>  							</div>
+						</aside>
+
+					</div>
+					<button class="site-header__toggle" aria-controls="supernav" aria-expanded="false">
+						<span class="screen-reader-text">Toggle Menu</span>
+						<span class="icon icon--navicon">
+							
+<svg aria-hidden="true" tabindex="-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.969 12.063">
+	<title>Open Navigation</title>
+	<path fill="#fff" d="M.793 1.556h18.363a.778.778 0 1 0 0-1.555H.793a.854.854 0 0 0-.809.778.73.73 0 0 0 .809.777zm18.363 3.695H.793a.778.778 0 1 0 0 1.555h18.363a.778.778 0 1 0 0-1.555zm0 5.25H.793a.779.779 0 1 0 0 1.556h18.363a.779.779 0 1 0 0-1.557z" />
+</svg>
+						</span>
+						<span class="icon icon--close">
+							
+<svg aria-hidden="true" tabindex="-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16.85 16.875">
+	<title>Close Navigation</title>
+	<path fill="#fff" d="M9.65 8.454l6.88-7.063a.809.809 0 0 0 0-1.15.782.782 0 0 0-1.14 0L8.52 7.305 1.37.241a.782.782 0 0 0-1.14 0 .809.809 0 0 0 0 1.15l7.15 7.063-7.15 7.063a.809.809 0 0 0 0 1.15.824.824 0 0 0 .6.219.787.787 0 0 0 .59-.219l7.15-7.063 6.87 7.063a.824.824 0 0 0 .6.219.619.619 0 0 0 .54-.219.792.792 0 0 0 0-1.15z" />
+</svg>
+						</span>
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<nav id="siteNavigation" class="site-header__navigation">
+			<div class="site-header__search-full">
+				
+<form role="search" class="site-header__search-form" action="https://www.kget.com/">
+	<span class="screen-reader-text">Search</span>
+	<input type="search" name="s" placeholder="Site Search..." />
+	<input type="submit" name="submit" value="" />
+</form>
+			</div>
+
+			<div class="site-header__navigation__content">
+				<h2 class="screen-reader-text">Primary Menu</h2>
+
+
+				<ul id="supernav" class="menu">
+	<li id="menu-item-24" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-has-children menu-item-has-articles menu-item-24"><a title="						" href="https://www.kget.com/news/">News</a>
+<div class="dropnav dropnav--4-col dropnav--full-width">
+	<div class="dropnav__section dropnav__section--sub-menu dropnav__section--half">
+		<ul class="sub-menu" data-columns="2">
+	<li id="menu-item-35716" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-35716"><a href="https://www.kget.com/news/hotlink/">Hot Link</a></li>
+	<li id="menu-item-3369" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-3369"><a href="https://www.kget.com/news/local-news/">Local News</a></li>
+	<li id="menu-item-109891" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-109891"><a href="https://www.kget.com/podcast/">KGET Podcasts</a></li>
+	<li id="menu-item-3372" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3372"><a href="https://www.kget.com/sunrise-interviews/">Sunrise Interviews</a></li>
+	<li id="menu-item-200922" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-200922"><a href="https://www.kget.com/news/sunrise-recipes/">Sunrise Recipes</a></li>
+	<li id="menu-item-36530" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-36530"><a href="https://www.kget.com/news/crime-watch/">Crime Watch</a></li>
+	<li id="menu-item-35713" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-35713"><a href="https://www.kget.com/news/business/">Business News</a></li>
+	<li id="menu-item-3377" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3377"><a href="https://www.kget.com/news/politics/">Politics</a></li>
+	<li id="menu-item-159635" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-159635"><a href="https://www.kget.com/news/state-news/">State News</a></li>
+	<li id="menu-item-40607" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-40607"><a href="https://www.kget.com/national-news/">National News</a></li>
+	<li id="menu-item-122262" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-122262"><a href="https://www.borderreport.com/">BorderReport.com</a></li>
+	<li id="menu-item-36180" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-36180"><a href="https://www.kget.com/news/world-news/">World News</a></li>
+	<li id="menu-item-35421" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-35421"><a href="https://www.kget.com/video/">Video Center</a></li>
+</ul>
+</div><div class="dropnav__section dropnav__section--article-list dropnav__section--quarter"><div class="article-list article-list--top-story"><h3 class="article-list__heading">Top Stories</h3><div class="article-list__content"><article class="article-list__article article-list__article--is-stacked article-list__article--has-thumb article-list__article--is-media-type">
+<div
+	class="article-list__article-text"
+	data-article-list-id=""
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[]"
+>
+			<h4 class="article-list__article-title">
+							<a
+					href="https://www.kget.com/news/local-news/patel-foundation-provides-meals-warm-clothes-for-less-fortunate/"
+									>
+			
+				Patel Foundation provides meals, warm clothes for less fortunate
+							</a>
+					</h4>
+	
+	
+	
+	
+	</div>
+
+	<figure class="article-list__article-thumb">
+					<a
+				href="https://www.kget.com/news/local-news/patel-foundation-provides-meals-warm-clothes-for-less-fortunate/"
+							>
+		
+		<div class="article-list__article-image-wrapper">
+			
+<div class="image-wrapper landscape">
+	<img
+		src="https://i1.wp.com/www.kget.com/wp-content/uploads/sites/2/2020/01/vlcsnap-2020-01-01-23h35m47s273.jpg?w=2000&#038;ssl=1"
+		alt=""
+		srcset=""
+		sizes=""
+	/>
+</div>
+
+							
+<span aria-hidden="true" tabindex="-1" class="article-list__article-mediaicon">
+	<span class="article-list__article-mediaicon-svg">
+		<svg viewBox="0 0 24 24">
+			<path d="M8,5.14V19.14L19,12.14L8,5.14Z" />
+		</svg>
+	</span>
+	</span>
+					</div>
+
+					</a>
+			</figure>
+	</article></div></div></div><div class="dropnav__section dropnav__section--article-list dropnav__section--quarter"><div class="article-list article-list--bulleted"><h3 class="article-list__heading article-list__heading--hidden">Top Stories</h3><div class="article-list__content"><article class="article-list__article">
+<div
+	class="article-list__article-text"
+	data-article-list-id=""
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[]"
+>
+			<h4 class="article-list__article-title">
+							<a
+					href="https://www.kget.com/news/local-news/downtown-gym-is-latest-struck-by-vandalism/"
+									>
+			
+				Downtown gym is latest business struck by vandalism
+							</a>
+					</h4>
+	
+	
+	
+	
+	</div>
+
+</article><article class="article-list__article">
+<div
+	class="article-list__article-text"
+	data-article-list-id=""
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[]"
+>
+			<h4 class="article-list__article-title">
+							<a
+					href="https://www.kget.com/news/local-news/alzheimers-disease-association-of-kern-county-to-hold-annual-cinnamon-roll-drive-next-week/"
+									>
+			
+				Alzheimer&#8217;s Disease Association of Kern County to hold annual Cinnamon Roll Drive next week
+							</a>
+					</h4>
+	
+	
+	
+	
+	</div>
+
+</article><article class="article-list__article">
+<div
+	class="article-list__article-text"
+	data-article-list-id=""
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[]"
+>
+			<h4 class="article-list__article-title">
+							<a
+					href="https://www.kget.com/news/local-news/power-outage-affecting-nearly-3700-customers-in-east-bakersfield/"
+									>
+			
+				Power outage affects nearly 3,700 customers in East Bakersfield
+							</a>
+					</h4>
+	
+	
+	
+	
+	</div>
+
+</article><article class="article-list__article">
+<div
+	class="article-list__article-text"
+	data-article-list-id=""
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[]"
+>
+			<h4 class="article-list__article-title">
+							<a
+					href="https://www.kget.com/news/world-news/watch-australia-firefighter-crews-life-or-death-moments-caught-on-camera/"
+									>
+			
+				WATCH: Australia firefighter crew&#8217;s life-or-death moments caught on camera
+							</a>
+					</h4>
+	
+	
+	
+	
+	</div>
+
+</article></div></div></div></div></li>
+<li id="menu-item-25" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-25"><a title="						" href="https://www.kget.com/weather/">Weather</a>
+<div class="dropnav dropnav--1-col">
+	<div class="dropnav__section dropnav__section--sub-menu">
+		<ul class="sub-menu" data-columns="1">
+	<li id="menu-item-37789" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-37789"><a href="https://www.kget.com/forecast/">Forecast</a></li>
+	<li id="menu-item-62636" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-62636"><a href="https://www.kget.com/weather/tank-of-gas-getaway/">Kevin&#8217;s Tank of Gas Getaway</a></li>
+	<li id="menu-item-39067" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-39067"><a href="https://www.kget.com/weather/snapshots/">Weather Snapshots</a></li>
+	<li id="menu-item-37790" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-37790"><a href="https://www.kget.com/almanac/">Almanac</a></li>
+	<li id="menu-item-37788" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-37788"><a href="https://alertline.kern.org/">Closings &#038; Delays</a></li>
+</ul>
+</div></div></li>
+<li id="menu-item-28" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-28"><a title="						" href="https://www.kget.com/sports/">Sports</a>
+<div class="dropnav dropnav--2-col">
+	<div class="dropnav__section dropnav__section--sub-menu">
+		<ul class="sub-menu" data-columns="2">
+	<li id="menu-item-109886" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-109886"><a href="https://www.kget.com/ffx/">FFX</a></li>
+	<li id="menu-item-37794" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-37794"><a href="https://www.kget.com/nfl/">NFL</a></li>
+	<li id="menu-item-117338" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-117338"><a href="https://www.kget.com/nfl/49ers/">49ers</a></li>
+	<li id="menu-item-117339" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-117339"><a href="https://www.kget.com/nfl/raiders/">Raiders</a></li>
+	<li id="menu-item-41053" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-41053"><a href="https://www.kget.com/nba/">NBA</a></li>
+	<li id="menu-item-37795" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-37795"><a href="https://www.kget.com/mlb/">MLB</a></li>
+	<li id="menu-item-41076" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-41076"><a href="https://www.kget.com/nhl/">NHL</a></li>
+	<li id="menu-item-41075" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-41075"><a href="https://www.kget.com/ncaa/">NCAA Basketball</a></li>
+	<li id="menu-item-37796" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-37796"><a href="https://www.kget.com/golf/">Golf</a></li>
+	<li id="menu-item-41074" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-41074"><a href="https://www.kget.com/auto-racing/">NASCAR</a></li>
+</ul>
+</div></div></li>
+<li id="menu-item-3360" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-3360"><a href="https://www.kget.com/features/">Features</a>
+<div class="dropnav dropnav--3-col">
+	<div class="dropnav__section dropnav__section--sub-menu">
+		<ul class="sub-menu" data-columns="3">
+	<li id="menu-item-195060" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-195060"><a href="https://www.kget.com/fire-facts/">Fire Facts</a></li>
+	<li id="menu-item-40606" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-40606"><a href="https://www.kget.com/kern-county-in-depth/">Kern County In Depth</a></li>
+	<li id="menu-item-3363" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3363"><a href="https://www.kget.com/homicide-tracker/">Homicide Tracker</a></li>
+	<li id="menu-item-39247" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-39247"><a href="https://www.kget.com/most-wanted/">Most Wanted</a></li>
+	<li id="menu-item-3364" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3364"><a href="https://www.kget.com/murderedandforgotten/">Murdered and Forgotten</a></li>
+	<li id="menu-item-3365" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3365"><a href="https://www.kget.com/serial-killer/">Bakersfield&#8217;s Secret Serial Killer</a></li>
+	<li id="menu-item-31993" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-31993"><a href="https://www.kget.com/questionable-conviction/">Kern&#8217;s Questionable Conviction</a></li>
+	<li id="menu-item-62695" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-62695"><a href="https://www.kget.com/kern-corruption/">Kern Corruption</a></li>
+	<li id="menu-item-36571" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-36571"><a href="https://www.kget.com/news/local-news/dui-news/">Sober Reality</a></li>
+	<li id="menu-item-36572" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-36572"><a href="https://www.kget.com/news/local-news/meth-epidemic/">Meth Epidemic</a></li>
+	<li id="menu-item-36574" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-36574"><a href="https://www.kget.com/news/local-news/domestic-violence/">Domestic Violence</a></li>
+	<li id="menu-item-36573" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-36573"><a href="https://www.kget.com/news/local-news/safe-sleeping/">Safe Sleeping</a></li>
+	<li id="menu-item-120410" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-120410"><a href="https://www.kget.com/the-mel-robbins-show/">The Mel Robbins Show</a></li>
+	<li id="menu-item-3366" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3366"><a href="https://www.kget.com/kathleen-heisey/">Who Killed Kathleen Heisey</a></li>
+	<li id="menu-item-3367" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3367"><a href="https://www.kget.com/sabrina-limon-trial/">Sabrina Limon Trial Coverage</a></li>
+	<li id="menu-item-3368" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3368"><a href="https://www.kget.com/ecuador/">Ecuador Earthquake</a></li>
+</ul>
+</div></div></li>
+<li id="menu-item-26" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-26"><a title="						" href="https://www.kget.com/traffic/">Traffic</a>
+<div class="dropnav dropnav--1-col">
+	<div class="dropnav__section dropnav__section--sub-menu">
+		<ul class="sub-menu" data-columns="1">
+	<li id="menu-item-25935" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25935"><a href="https://www.kget.com/traffic/north99/">Highway 99 near 7th Standard Road</a></li>
+	<li id="menu-item-25936" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25936"><a href="https://www.kget.com/traffic/airport99/">Highway 99 at Airport Drive Exit</a></li>
+	<li id="menu-item-25937" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25937"><a href="https://www.kget.com/traffic/south99/">Highway 99 near Pacheco Road</a></li>
+	<li id="menu-item-25938" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25938"><a href="https://www.kget.com/traffic/truxtun/">Truxtun Ave near Mohawk Drive</a></li>
+	<li id="menu-item-25939" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25939"><a href="https://www.kget.com/traffic/rosedale/">Rosedale Highway at Mohawk Street</a></li>
+	<li id="menu-item-36202" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-36202"><a href="https://www.kget.com/downtown/">Downtown at Adventist Health</a></li>
+	<li id="menu-item-42538" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-42538"><a href="https://www.kget.com/traffic/gas-tracker/">Gas Tracker</a></li>
+</ul>
+</div></div></li>
+<li id="menu-item-32781" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-32781"><a href="https://www.kget.com/community/">Community</a>
+<div class="dropnav dropnav--2-col">
+	<div class="dropnav__section dropnav__section--sub-menu">
+		<ul class="sub-menu" data-columns="2">
+	<li id="menu-item-35318" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-35318"><a href="https://www.kget.com/community/calendar/">Calendar</a></li>
+	<li id="menu-item-35319" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-35319"><a href="https://www.kget.com/contests/">Contests</a></li>
+	<li id="menu-item-180105" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-180105"><a href="https://www.kget.com/community/vegas-nye/">Vegas NYE</a></li>
+	<li id="menu-item-35281" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-35281"><a href="https://www.kget.com/popkern/">Pop Kern</a></li>
+	<li id="menu-item-56651" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-56651"><a href="https://www.kget.com/together-inspired/">Together Inspired</a></li>
+	<li id="menu-item-35323" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-35323"><a href="https://www.kget.com/community/pet-of-the-week/">Pet of the Week</a></li>
+	<li id="menu-item-40205" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-40205"><a href="https://www.kget.com/dignity-health-medical-updates/">Medical Updates</a></li>
+	<li id="menu-item-40213" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-40213"><a href="https://www.kget.com/cancer-updates/">Cancer Updates</a></li>
+	<li id="menu-item-40218" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-40218"><a href="https://www.kget.com/encompass-health/">Encompass Health</a></li>
+	<li id="menu-item-125208" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-125208"><a href="https://www.kget.com/disaster/">Disaster Preparedness</a></li>
+	<li id="menu-item-35324" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-35324"><a href="https://www.kget.com/web-chats/">Web Chats</a></li>
+	<li id="menu-item-35352" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-35352"><a href="https://www.kget.com/cyber-safe/">Cyber Safe</a></li>
+	<li id="menu-item-35326" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-35326"><a href="https://www.kget.com/community/sunrise-sketches/">Sunrise Sketches</a></li>
+	<li id="menu-item-35351" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-35351"><a href="https://www.kget.com/community/valley-baptist-church/">Valley Baptist Church</a></li>
+</ul>
+</div></div></li>
+<li id="menu-item-37772" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-37772"><a href="https://www.kget.com/pros-who-know/">Pros Who Know</a>
+<div class="dropnav dropnav--1-col">
+	<div class="dropnav__section dropnav__section--sub-menu">
+		<ul class="sub-menu" data-columns="1">
+	<li id="menu-item-101384" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-101384"><a href="https://www.kget.com/pros-who-know/berry-smith-bartell/">Berry, Smith &#038; Bartell</a></li>
+	<li id="menu-item-37784" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-37784"><a href="https://www.kget.com/gg-auto-repair/">G&#038;G Auto Repair</a></li>
+	<li id="menu-item-37783" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-37783"><a href="https://www.kget.com/smileland-dental/">Smileland Dental</a></li>
+	<li id="menu-item-83707" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-83707"><a href="https://www.kget.com/smileland-dental-es/">Smileland Dental &#8211; Español</a></li>
+	<li id="menu-item-37782" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-37782"><a href="https://www.kget.com/rio-bravo-cancer-center/">Rio Bravo Cancer Center</a></li>
+	<li id="menu-item-37781" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-37781"><a href="https://www.kget.com/taraneh-khorrami/">Law Offices of Taraneh Khorrami</a></li>
+	<li id="menu-item-37778" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-37778"><a href="https://www.kget.com/dignity-health/">Dignity Health</a></li>
+</ul>
+</div></div></li>
+<li id="menu-item-68523" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-68523"><a href="https://www.kget.com/get-local/">Get Local</a>
+<div class="dropnav dropnav--1-col">
+	<div class="dropnav__section dropnav__section--sub-menu">
+		<ul class="sub-menu" data-columns="1">
+	<li id="menu-item-68524" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68524"><a href="https://www.kget.com/job-corner/">Job Corner</a></li>
+	<li id="menu-item-68537" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-68537"><a href="http://www.pricetrader.com">Local Deals</a></li>
+</ul>
+</div></div></li>
+<li id="menu-item-29" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-29"><a title="						" href="https://www.kget.com/about-us/">About Us</a>
+<div class="dropnav dropnav--2-col">
+	<div class="dropnav__section dropnav__section--sub-menu">
+		<ul class="sub-menu" data-columns="2">
+	<li id="menu-item-25928" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25928"><a href="https://www.kget.com/meet-the-team/">Meet the Team</a></li>
+	<li id="menu-item-25929" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25929"><a href="https://www.kget.com/news-alerts/">News Alerts</a></li>
+	<li id="menu-item-25930" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25930"><a href="https://www.kget.com/tv-schedule/">KGET – TV Schedule</a></li>
+	<li id="menu-item-25931" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25931"><a href="https://www.kget.com/contact-us/">Contact Information</a></li>
+	<li id="menu-item-25933" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25933"><a href="https://www.kget.com/advertise-with-us/">Advertise With Us</a></li>
+	<li id="menu-item-25934" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25934"><a href="https://www.kget.com/work-for-us/">Work For Us</a></li>
+	<li id="menu-item-122317" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-122317"><a href="https://www.kget.com/telemundo/">Telemundo Valle Central</a></li>
+	<li id="menu-item-50525" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-50525"><a href="http://www.bakersfieldcw.com">The CW Bakersfield</a></li>
+</ul>
+</div></div></li>
+</ul>
+
+				<div class="site-header__search-drop">
+					<a class="site-header__search-drop__toggle" href="#">
+						<span class="screen-reader-text">Search</span>
+						<span class="icon">
+							
+<svg  aria-hidden="true" tabindex="-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 17">
+	<title>Search</title>
+	<path d="M15.72 15.4l-3.75-3.8a7 7 0 0 0 1.72-4.612 6.851 6.851 0 1 0-6.85 6.98 6.713 6.713 0 0 0 3.72-1.127l3.85 3.9a.9.9 0 0 0 .65.276.92.92 0 0 0 .66-.276.965.965 0 0 0 0-1.341zM1.85 6.984a4.991 4.991 0 1 1 4.99 5.087 5.036 5.036 0 0 1-4.99-5.09z" />
+</svg>
+						</span>
+					</a>
+					
+<form role="search" class="site-header__search-form" action="https://www.kget.com/">
+	<span class="screen-reader-text">Search</span>
+	<input type="search" name="s" placeholder="What are you looking for?" />
+	<input type="submit" name="submit" value="Search" />
+</form>
+				</div>
+			</div>
+		</nav>
+	</div>
+</header>
+
+		<div class="site-content-wrapper">
+			
+<div class="alert-banners js-alert-banners has-messages">
+	
+	<div class="weather-alerts" data-react-component="WeatherAlerts"></div>
+</div>
+
+
+			
+<div id="content" class="site-content">
+	<aside class="ad-unit ad-unit--leaderboard">
+		<div class="ad-unit__content">
+			  <div   id="acm-ad-tag-billboard1-billboard1"   data-slot='{"pos":"billboard1","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[320,50],"sizes":[[[1280,0],[[728,90],[970,250],[970,90],[970,30]]],[[1024,0],[[728,90],[970,250],[970,90],[970,30]]],[[768,0],[[728,90]]],[[641,0],[[320,50]]],[[0,0],[[320,50]]]],"amp_multi_size":"320x50","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"atf"}'   data-unit='{"tag":"billboard1","tag_id":"billboard1","dfp_id":"5678","tag_name":"nx.kget","ad_disabled":"0"}'   data-targeting='{"pos":"billboard1","fold":"atf","category":"crime_watch","kw":"police-search-for-hit-and-run-driver-who-struck-and-killed-a-man-in-southwest-bakersfield"}'   data-path='/5678/nx.kget/news/crime_watch'  ></div>  <script>  (function () {   try {    var event = new CustomEvent(     "nsDfpSlotRendered",     {      detail: {       id: 'acm-ad-tag-billboard1-billboard1'      }     }    );     window.dispatchEvent(event);   } catch (err) {}  })();  </script>  		</div>
+	</aside>
+
+	
+	
+	<div class="site-content__layout site-content__layout--has-sidebar">
+		
+		
+		
+		<div id="primary" class="content-area">
+			<main id="main" class="site-main">
+
+				
+<article class="article post-206812 post type-post status-publish format-standard has-post-thumbnail hentry category-crime-watch category-local-news category-news" data-component="article">
+	
+<header class="article-header">
+	<h1 class="article-title">
+		Police search for hit-and-run driver who struck and killed a man in Southwest Bakersfield	</h1>
+
+			<div class="article-eyebrow">
+			<a href="https://www.kget.com/news/crime-watch/">Crime Watch</a>
+		</div>
+	
+	
+	<div class="article-meta">
+					<p>by: <a href="https://www.kget.com/author/karen-cruz-orduna/" title="Posts by Karen Cruz-Orduna" class="author url fn" rel="author">Karen Cruz-Orduna</a></p>
+		
+					Posted: <time datetime="2020-01-01T05:59:15-08:00">Jan 1, 2020 / 05:59 AM PST</time>		
+					<span class="article-meta--sep"> / </span>Updated: <time datetime="2020-01-01T08:36:51-08:00">Jan 1, 2020 / 08:36 AM PST</time>			</div><!-- .article-meta -->
+
+			<figure class="article-featured-media article-featured-media--is-image">
+			
+<div class="image-wrapper landscape">
+	<img
+		src="https://i1.wp.com/www.kget.com/wp-content/uploads/sites/2/2019/06/Bakersfield-Police-BPD-logo.jpg?resize=2560%2C1440&#038;ssl=1"
+		alt="BPD Bakersfield Police Department logo bpd"
+		srcset="https://www.kget.com/wp-content/uploads/sites/2/2019/06/Bakersfield-Police-BPD-logo.jpg?w=320&amp;h=180&amp;crop=1 320w, https://www.kget.com/wp-content/uploads/sites/2/2019/06/Bakersfield-Police-BPD-logo.jpg?w=640&amp;h=360&amp;crop=1 640w, https://i1.wp.com/www.kget.com/wp-content/uploads/sites/2/2019/06/Bakersfield-Police-BPD-logo.jpg?resize=960%2C540&amp;ssl=1 960w, https://i1.wp.com/www.kget.com/wp-content/uploads/sites/2/2019/06/Bakersfield-Police-BPD-logo.jpg?resize=1280%2C720&amp;ssl=1 1280w, https://i1.wp.com/www.kget.com/wp-content/uploads/sites/2/2019/06/Bakersfield-Police-BPD-logo.jpg?resize=1920%2C1080&amp;ssl=1 1920w, https://i1.wp.com/www.kget.com/wp-content/uploads/sites/2/2019/06/Bakersfield-Police-BPD-logo.jpg?resize=2560%2C1440&amp;ssl=1 2560w"
+		sizes="(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px"
+	/>
+</div>
+
+							<figcaption><p>BPD &#8211; Bakersfield Police Department</p>
+</figcaption>
+					</figure>
+	
+	<div class="article-lead-share">
+		
+<div class="social-share addthis">
+	<div class="addthis_inline_share_toolbox"></div>
+</div>
+	</div>
+</header><!-- .article-header -->
+
+	
+	<div class="article-content rich-text">
+		
+		
+
+
+<p>BAKERSFIELD, Calif. (KGET) — Update: The Kern County Sheriff&#8217;s Office have identified the man killed as 54-year-old Kirk Conlin Parish.</p>
+
+
+
+<p>&#8212;-</p>
+
+
+
+<p>Bakersfield Police are searching for a driver who killed a pedestrian and drove off.&nbsp;</p>
+
+
+
+<p>According to BPD, this happened at about 1:15 early Wednesday morning at Parker Avenue and Oriole Street. </p>
+
+
+
+<p>On arrival, they found a man who had been struck by a car. He was transported to Kern Medical where he died from his injuries.&nbsp;</p>
+
+
+
+<p>Officers are searching for a possible two tone paint, black and grey Dodge Challenger or Charger.&nbsp;</p>
+
+
+
+<p>At this time, it is unknown if drugs or alcohol are involved in this incident.&nbsp;</p>
+
+
+
+<p>Anyone with information is urged to call BPD at (661) 327-7111.&nbsp;</p>
+
+		
+	</div><!-- .rich-text -->
+
+	
+<footer class="article-footer">
+			<p class="article-copyright">Copyright 2020 Nexstar Broadcasting, Inc. All rights reserved. This material may not be published, broadcast, rewritten, or redistributed.</p>
+	
+	
+	<div class="article-footer-share">
+					<h2 class="article-footer-share__heading">Share this story</h2>
+				
+<div class="social-share addthis">
+	<div class="addthis_inline_share_toolbox"></div>
+</div>
+	</div>
+
+	</footer><!-- .article-footer -->
+
+	<section id="custom_html-74" class="widget_text widget widget_custom_html"><div class="textwidget custom-html-widget"><div class="rich-text-cascade"><div id="lkqd-outstream"></div></div></div></section></article>
+
+<aside class="ad-unit ad-unit--mr1-mobile">
+	<div class="ad-unit__content">
+		  <div   id="acm-ad-tag-mr1_mobile-mr1_mobile"   data-slot='{"pos":"mr1_mobile","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[300,250],"sizes":[[[900,0],[]],[[0,0],[[300,250]]]],"amp_multi_size":"300x250","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"atf"}'   data-unit='{"tag":"mr1_mobile","tag_id":"mr1_mobile","dfp_id":"5678","tag_name":"nx.kget","ad_disabled":"0"}'   data-targeting='{"pos":"mr1_mobile","fold":"atf","category":"crime_watch","kw":"police-search-for-hit-and-run-driver-who-struck-and-killed-a-man-in-southwest-bakersfield"}'   data-path='/5678/nx.kget/news/crime_watch'  ></div>  <script>  (function () {   try {    var event = new CustomEvent(     "nsDfpSlotRendered",     {      detail: {       id: 'acm-ad-tag-mr1_mobile-mr1_mobile'      }     }    );     window.dispatchEvent(event);   } catch (err) {}  })();  </script>  	</div>
+</aside>
+
+
+	<div
+		id="widget1"
+		data-rc-widget
+		data-widget-host="habitat"
+		data-endpoint="trends.revcontent.com"
+		data-widget-id="114905"
+	></div>
+	<script src="https://assets.revcontent.com/master/delivery.js" defer="defer"></script> 	
+	<aside class="article-list article-list--full-width">
+		
+	<h2 class="article-list__heading article-list__heading--notched">
+		More Crime Watch Stories	</h2>
+
+
+<div class="article-list__content">
+						<a class="article-list__blanketing-link" href="https://www.kget.com/news/crime-watch/man-who-barricaded-himself-inside-burning-residence-arrested-on-charges-of-assaulting-a-peace-officer/">
+		
+		<article
+			class="article-list__article article-list__article--is-stacked article-list__article--has-thumb article-list__article--has-excerpt"
+			data-index="0"
+			data-collection="article-list1"
+			data-anvato-params="null"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list1"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb article-list__article-thumb--is-fullbleed-on-mobile"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px&quot;]"
+>
+			<h3 class="article-list__article-title">
+			
+				Man who barricaded himself inside burning residence arrested on charges of assaulting a peace officer
+					</h3>
+	
+			<footer class="article-list__article-byline">
+			by Jason Kotowski <span class="sep">/</span> <time datetime="2020-01-01T22:26:35-08:00">Jan 1, 2020</time>		</footer>
+	
+			<div class="article-list__article-excerpt article-list__article-excerpt--is-faded rich-text">
+			<p>BAKERSFIELD, Calif. (KGET) -- A man who barricaded himself inside a burning residence Wednesday was arrested on multiple counts of assault on a peace officer in an incident that injured two firefighters, according to sheriff's officials. </p>
+<p>Deputies were called to the 1000 block of  Normandy Drive to assist the Kern County Fire Department with a "combative" man inside a residence that was on fire, officials said. </p>
+		</div>
+	
+			<div class="article-list__read-more article-list__read-more--w-arrow">
+							<span>
+					Read the Full Article
+											<span class="icon icon--arrow">
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17.938 10.94">
+		<path d="M17.944 5.55a.733.733 0 0 1-.032.34v.03c0 .01-.006.01-.008.01a.189.189 0 0 1-.028.05.619.619 0 0 1-.123.17c-.009.01-.013.02-.023.03l-4.927 4.56a.733.733 0 0 1-.5.19.753.753 0 0 1-.54-.23.737.737 0 0 1 .041-1.04l3.547-3.28H.738a.735.735 0 1 1 0-1.47h14.693l-3.74-3.68a.735.735 0 0 1 1.03-1.05l5.022 4.94s0 .01.008.01a.016.016 0 0 0 .017.01.8.8 0 0 1 .163.32c.007.03.009.06.013.09z"/>
+	</svg>
+</span>
+									</span>
+					</div>
+	
+	</div>
+
+	<figure class="article-list__article-thumb article-list__article-thumb--is-fullbleed-on-mobile">
+		
+		<div class="article-list__article-image-wrapper">
+			
+<div class="image-wrapper landscape">
+	<img
+		src="https://i0.wp.com/www.kget.com/wp-content/uploads/sites/2/2020/01/StandoffFire.jpg?resize=2560%2C1440&#038;ssl=1"
+		alt=""
+		srcset="https://www.kget.com/wp-content/uploads/sites/2/2020/01/StandoffFire.jpg?w=320&amp;h=180&amp;crop=1 320w, https://www.kget.com/wp-content/uploads/sites/2/2020/01/StandoffFire.jpg?w=640&amp;h=360&amp;crop=1 640w, https://www.kget.com/wp-content/uploads/sites/2/2020/01/StandoffFire.jpg?w=960&amp;h=540&amp;crop=1 960w, https://i0.wp.com/www.kget.com/wp-content/uploads/sites/2/2020/01/StandoffFire.jpg?resize=1280%2C720&amp;ssl=1 1280w, https://i0.wp.com/www.kget.com/wp-content/uploads/sites/2/2020/01/StandoffFire.jpg?resize=1920%2C1080&amp;ssl=1 1920w, https://i0.wp.com/www.kget.com/wp-content/uploads/sites/2/2020/01/StandoffFire.jpg?resize=2560%2C1440&amp;ssl=1 2560w"
+		sizes="(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px"
+	/>
+</div>
+
+							
+<span aria-hidden="true" tabindex="-1" class="article-list__article-mediaicon">
+	<span class="article-list__article-mediaicon-svg">
+		<svg viewBox="0 0 24 24">
+			<path d="M8,5.14V19.14L19,12.14L8,5.14Z" />
+		</svg>
+	</span>
+	</span>
+					</div>
+
+			</figure>
+			</article>
+
+					</a>
+								<a class="article-list__blanketing-link" href="https://www.kget.com/news/crime-watch/leslie-chance-murder-trial-to-resume-thursday/">
+		
+		<article
+			class="article-list__article article-list__article--is-stacked article-list__article--has-thumb article-list__article--has-excerpt"
+			data-index="1"
+			data-collection="article-list1"
+			data-anvato-params="null"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list1"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb article-list__article-thumb--is-fullbleed-on-mobile"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px&quot;]"
+>
+			<h3 class="article-list__article-title">
+			
+				Leslie Chance murder trial to resume Thursday
+					</h3>
+	
+			<footer class="article-list__article-meta">
+			<time datetime="2020-01-01T12:37:21-08:00">Jan 1, 2020</time>		</footer>
+	
+			<div class="article-list__article-excerpt article-list__article-excerpt--is-faded rich-text">
+			<p>BAKERSFIELD, Calif. (KGET) -- The trial of a former elementary school principal charged with murder in the death of her husband is scheduled to resume Thursday morning after about a two-week break for the holidays. </p>
+<p>Leslie Chance, 52, faces life in prison if found guilty of first-degree murder in the shooting death of Todd Chance, 45.</p>
+		</div>
+	
+			<div class="article-list__read-more article-list__read-more--w-arrow">
+							<span>
+					Read the Full Article
+											<span class="icon icon--arrow">
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17.938 10.94">
+		<path d="M17.944 5.55a.733.733 0 0 1-.032.34v.03c0 .01-.006.01-.008.01a.189.189 0 0 1-.028.05.619.619 0 0 1-.123.17c-.009.01-.013.02-.023.03l-4.927 4.56a.733.733 0 0 1-.5.19.753.753 0 0 1-.54-.23.737.737 0 0 1 .041-1.04l3.547-3.28H.738a.735.735 0 1 1 0-1.47h14.693l-3.74-3.68a.735.735 0 0 1 1.03-1.05l5.022 4.94s0 .01.008.01a.016.016 0 0 0 .017.01.8.8 0 0 1 .163.32c.007.03.009.06.013.09z"/>
+	</svg>
+</span>
+									</span>
+					</div>
+	
+	</div>
+
+	<figure class="article-list__article-thumb article-list__article-thumb--is-fullbleed-on-mobile">
+		
+		<div class="article-list__article-image-wrapper">
+			
+<div class="image-wrapper landscape">
+	<img
+		src="https://i1.wp.com/www.kget.com/wp-content/uploads/sites/2/2019/09/Enos-Lane-187.jpg?resize=2560%2C1440&#038;ssl=1"
+		alt=""
+		srcset="https://www.kget.com/wp-content/uploads/sites/2/2019/09/Enos-Lane-187.jpg?w=320&amp;h=180&amp;crop=1 320w, https://www.kget.com/wp-content/uploads/sites/2/2019/09/Enos-Lane-187.jpg?w=640&amp;h=360&amp;crop=1 640w, https://www.kget.com/wp-content/uploads/sites/2/2019/09/Enos-Lane-187.jpg?w=960&amp;h=540&amp;crop=1 960w, https://www.kget.com/wp-content/uploads/sites/2/2019/09/Enos-Lane-187.jpg?w=1280&amp;h=720&amp;crop=1 1280w, https://i1.wp.com/www.kget.com/wp-content/uploads/sites/2/2019/09/Enos-Lane-187.jpg?resize=1920%2C1080&amp;ssl=1 1920w, https://i1.wp.com/www.kget.com/wp-content/uploads/sites/2/2019/09/Enos-Lane-187.jpg?resize=2560%2C1440&amp;ssl=1 2560w"
+		sizes="(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px"
+	/>
+</div>
+
+					</div>
+
+			</figure>
+			</article>
+
+					</a>
+								<a class="article-list__blanketing-link" href="https://www.kget.com/news/crime-watch/more-charges-filed-against-kidnapping-suspect-matthew-queen/">
+		
+		<article
+			class="article-list__article article-list__article--is-stacked article-list__article--has-thumb article-list__article--has-excerpt"
+			data-index="2"
+			data-collection="article-list1"
+			data-anvato-params="null"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list1"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb article-list__article-thumb--is-fullbleed-on-mobile"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px&quot;]"
+>
+			<h3 class="article-list__article-title">
+			
+				More charges filed against accused kidnapper Matthew Queen
+					</h3>
+	
+			<footer class="article-list__article-byline">
+			by Jason Kotowski <span class="sep">/</span> <time datetime="2020-01-01T11:15:58-08:00">Jan 1, 2020</time>		</footer>
+	
+			<div class="article-list__article-excerpt article-list__article-excerpt--is-faded rich-text">
+			<p>BAKERSFIELD, Calif. (KGET) -- Kidnapping suspect Matthew Queen, accused of multiple crimes and held in custody since July, was charged Christmas Eve with six more felonies, according to court records.</p>
+<p>The new charges against the 43-year-old include two counts each of possession of an assault rifle, possession of a firearm by a felon and possession of ammunition by a felon. </p>
+		</div>
+	
+			<div class="article-list__read-more article-list__read-more--w-arrow">
+							<span>
+					Read the Full Article
+											<span class="icon icon--arrow">
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17.938 10.94">
+		<path d="M17.944 5.55a.733.733 0 0 1-.032.34v.03c0 .01-.006.01-.008.01a.189.189 0 0 1-.028.05.619.619 0 0 1-.123.17c-.009.01-.013.02-.023.03l-4.927 4.56a.733.733 0 0 1-.5.19.753.753 0 0 1-.54-.23.737.737 0 0 1 .041-1.04l3.547-3.28H.738a.735.735 0 1 1 0-1.47h14.693l-3.74-3.68a.735.735 0 0 1 1.03-1.05l5.022 4.94s0 .01.008.01a.016.016 0 0 0 .017.01.8.8 0 0 1 .163.32c.007.03.009.06.013.09z"/>
+	</svg>
+</span>
+									</span>
+					</div>
+	
+	</div>
+
+	<figure class="article-list__article-thumb article-list__article-thumb--is-fullbleed-on-mobile">
+		
+		<div class="article-list__article-image-wrapper">
+			
+<div class="image-wrapper landscape">
+	<img
+		src="https://i2.wp.com/www.kget.com/wp-content/uploads/sites/2/2019/07/Matthew-Queen-file.jpg?resize=2560%2C1440&#038;ssl=1"
+		alt=""
+		srcset="https://www.kget.com/wp-content/uploads/sites/2/2019/07/Matthew-Queen-file.jpg?w=320&amp;h=180&amp;crop=1 320w, https://www.kget.com/wp-content/uploads/sites/2/2019/07/Matthew-Queen-file.jpg?w=640&amp;h=360&amp;crop=1 640w, https://www.kget.com/wp-content/uploads/sites/2/2019/07/Matthew-Queen-file.jpg?w=960&amp;h=540&amp;crop=1 960w, https://www.kget.com/wp-content/uploads/sites/2/2019/07/Matthew-Queen-file.jpg?w=1280&amp;h=720&amp;crop=1 1280w, https://i2.wp.com/www.kget.com/wp-content/uploads/sites/2/2019/07/Matthew-Queen-file.jpg?resize=1920%2C1080&amp;ssl=1 1920w, https://i2.wp.com/www.kget.com/wp-content/uploads/sites/2/2019/07/Matthew-Queen-file.jpg?resize=2560%2C1440&amp;ssl=1 2560w"
+		sizes="(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px"
+	/>
+</div>
+
+					</div>
+
+			</figure>
+			</article>
+
+					</a>
+			</div>
+
+
+	</aside>
+	
+<aside class="ad-unit ad-unit--leader-mr1">
+	<div class="ad-unit__content">
+		  <div   id="acm-ad-tag-leader_mr1-leader_mr1-story-pages"   data-slot='{"pos":"leader_mr1","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[300,250],"sizes":[[[1152,0],[[728,90]]],[[0,0],[[300,250]]]],"amp_multi_size":"300x250","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"btf"}'   data-unit='{"tag":"leader_mr1","tag_id":"leader_mr1 Story pages","dfp_id":"5678","tag_name":"nx.kget","ad_disabled":"0"}'   data-targeting='{"pos":"leader_mr1","fold":"btf","category":"crime_watch","kw":"police-search-for-hit-and-run-driver-who-struck-and-killed-a-man-in-southwest-bakersfield"}'   data-path='/5678/nx.kget/news/crime_watch'  ></div>  <script>  (function () {   try {    var event = new CustomEvent(     "nsDfpSlotRendered",     {      detail: {       id: 'acm-ad-tag-leader_mr1-leader_mr1-story-pages'      }     }    );     window.dispatchEvent(event);   } catch (err) {}  })();  </script>  	</div>
+</aside>
+
+	<aside class="article-list article-list--grid article-list--grid-2">
+		
+	<h2 class="article-list__heading article-list__heading--notched">
+		More Stories	</h2>
+
+
+<div class="article-list__content">
+			
+		<article
+			class="article-list__article article-list__article--is-stacked article-list__article--has-thumb article-list__article--is-media-type"
+			data-index="0"
+			data-collection="article-list2"
+			data-anvato-params="null"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list2"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px&quot;]"
+>
+			<h3 class="article-list__article-title">
+							<a
+					href="https://www.kget.com/news/local-news/alzheimers-disease-association-of-kern-county-to-hold-annual-cinnamon-roll-drive-next-week/"
+									>
+			
+				Alzheimer&#8217;s Disease Association of Kern County to hold annual Cinnamon Roll Drive next week
+							</a>
+					</h3>
+	
+			<footer class="article-list__article-meta">
+			<a href="https://www.kget.com/news/local-news/">Local News</a> / <time datetime="2020-01-01T21:01:16-08:00">8 hours ago</time>		</footer>
+	
+	
+	
+	</div>
+
+	<figure class="article-list__article-thumb">
+					<a
+				href="https://www.kget.com/news/local-news/alzheimers-disease-association-of-kern-county-to-hold-annual-cinnamon-roll-drive-next-week/"
+							>
+		
+		<div class="article-list__article-image-wrapper">
+			
+<div class="image-wrapper landscape square-on-mobile">
+	<img
+		src="https://i1.wp.com/www.kget.com/wp-content/uploads/sites/2/2020/01/vlcsnap-2020-01-01-20h55m38s900.jpg?resize=2560%2C1440&#038;ssl=1"
+		alt=""
+		srcset="https://www.kget.com/wp-content/uploads/sites/2/2020/01/vlcsnap-2020-01-01-20h55m38s900.jpg?w=320&amp;h=180&amp;crop=1 320w, https://www.kget.com/wp-content/uploads/sites/2/2020/01/vlcsnap-2020-01-01-20h55m38s900.jpg?w=640&amp;h=360&amp;crop=1 640w, https://www.kget.com/wp-content/uploads/sites/2/2020/01/vlcsnap-2020-01-01-20h55m38s900.jpg?w=960&amp;h=540&amp;crop=1 960w, https://www.kget.com/wp-content/uploads/sites/2/2020/01/vlcsnap-2020-01-01-20h55m38s900.jpg?w=1280&amp;h=720&amp;crop=1 1280w, https://i1.wp.com/www.kget.com/wp-content/uploads/sites/2/2020/01/vlcsnap-2020-01-01-20h55m38s900.jpg?resize=1920%2C1080&amp;ssl=1 1920w, https://i1.wp.com/www.kget.com/wp-content/uploads/sites/2/2020/01/vlcsnap-2020-01-01-20h55m38s900.jpg?resize=2560%2C1440&amp;ssl=1 2560w"
+		sizes="(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px"
+	/>
+</div>
+
+							
+<span aria-hidden="true" tabindex="-1" class="article-list__article-mediaicon">
+	<span class="article-list__article-mediaicon-svg">
+		<svg viewBox="0 0 24 24">
+			<path d="M8,5.14V19.14L19,12.14L8,5.14Z" />
+		</svg>
+	</span>
+	</span>
+					</div>
+
+					</a>
+			</figure>
+			</article>
+
+					
+		<article
+			class="article-list__article article-list__article--is-stacked article-list__article--has-thumb article-list__article--is-media-type"
+			data-index="1"
+			data-collection="article-list2"
+			data-anvato-params="null"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list2"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px&quot;]"
+>
+			<h3 class="article-list__article-title">
+							<a
+					href="https://www.kget.com/news/local-news/power-outage-affecting-nearly-3700-customers-in-east-bakersfield/"
+									>
+			
+				Power outage affects nearly 3,700 customers in East Bakersfield
+							</a>
+					</h3>
+	
+			<footer class="article-list__article-meta">
+			<a href="https://www.kget.com/news/local-news/">Local News</a> / <time datetime="2020-01-01T22:36:37-08:00">7 hours ago</time>		</footer>
+	
+	
+	
+	</div>
+
+	<figure class="article-list__article-thumb">
+					<a
+				href="https://www.kget.com/news/local-news/power-outage-affecting-nearly-3700-customers-in-east-bakersfield/"
+							>
+		
+		<div class="article-list__article-image-wrapper">
+			
+<div class="image-wrapper landscape square-on-mobile">
+	<img
+		src="https://i1.wp.com/www.kget.com/wp-content/uploads/sites/2/2020/01/outage-PGE-010120.jpg?resize=2560%2C1440&#038;ssl=1"
+		alt=""
+		srcset="https://www.kget.com/wp-content/uploads/sites/2/2020/01/outage-PGE-010120.jpg?w=320&amp;h=180&amp;crop=1 320w, https://www.kget.com/wp-content/uploads/sites/2/2020/01/outage-PGE-010120.jpg?w=640&amp;h=360&amp;crop=1 640w, https://www.kget.com/wp-content/uploads/sites/2/2020/01/outage-PGE-010120.jpg?w=960&amp;h=481&amp;crop=1 960w, https://i1.wp.com/www.kget.com/wp-content/uploads/sites/2/2020/01/outage-PGE-010120.jpg?resize=1280%2C720&amp;ssl=1 1280w, https://i1.wp.com/www.kget.com/wp-content/uploads/sites/2/2020/01/outage-PGE-010120.jpg?resize=1920%2C1080&amp;ssl=1 1920w, https://i1.wp.com/www.kget.com/wp-content/uploads/sites/2/2020/01/outage-PGE-010120.jpg?resize=2560%2C1440&amp;ssl=1 2560w"
+		sizes="(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px"
+	/>
+</div>
+
+					</div>
+
+					</a>
+			</figure>
+			</article>
+
+					
+		<article
+			class="article-list__article article-list__article--is-stacked article-list__article--has-thumb article-list__article--is-media-type"
+			data-index="2"
+			data-collection="article-list2"
+			data-anvato-params="null"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list2"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px&quot;]"
+>
+			<h3 class="article-list__article-title">
+							<a
+					href="https://www.kget.com/news/world-news/watch-australia-firefighter-crews-life-or-death-moments-caught-on-camera/"
+									>
+			
+				WATCH: Australia firefighter crew&#8217;s life-or-death moments caught on camera
+							</a>
+					</h3>
+	
+			<footer class="article-list__article-meta">
+			<a href="https://www.kget.com/news/world-news/">World News</a> / <time datetime="2020-01-01T18:49:44-08:00">10 hours ago</time>		</footer>
+	
+	
+	
+	</div>
+
+	<figure class="article-list__article-thumb">
+					<a
+				href="https://www.kget.com/news/world-news/watch-australia-firefighter-crews-life-or-death-moments-caught-on-camera/"
+							>
+		
+		<div class="article-list__article-image-wrapper">
+			
+<div class="image-wrapper landscape square-on-mobile">
+	<img
+		src="https://i1.wp.com/www.kget.com/wp-content/uploads/sites/2/2020/01/vlcsnap-2020-01-01-18h17m22s645.jpg?resize=2560%2C1440&#038;ssl=1"
+		alt=""
+		srcset="https://www.kget.com/wp-content/uploads/sites/2/2020/01/vlcsnap-2020-01-01-18h17m22s645.jpg?w=320&amp;h=180&amp;crop=1 320w, https://www.kget.com/wp-content/uploads/sites/2/2020/01/vlcsnap-2020-01-01-18h17m22s645.jpg?w=640&amp;h=360&amp;crop=1 640w, https://www.kget.com/wp-content/uploads/sites/2/2020/01/vlcsnap-2020-01-01-18h17m22s645.jpg?w=960&amp;h=540&amp;crop=1 960w, https://www.kget.com/wp-content/uploads/sites/2/2020/01/vlcsnap-2020-01-01-18h17m22s645.jpg?w=1280&amp;h=720&amp;crop=1 1280w, https://i1.wp.com/www.kget.com/wp-content/uploads/sites/2/2020/01/vlcsnap-2020-01-01-18h17m22s645.jpg?resize=1920%2C1080&amp;ssl=1 1920w, https://i1.wp.com/www.kget.com/wp-content/uploads/sites/2/2020/01/vlcsnap-2020-01-01-18h17m22s645.jpg?resize=2560%2C1440&amp;ssl=1 2560w"
+		sizes="(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px"
+	/>
+</div>
+
+							
+<span aria-hidden="true" tabindex="-1" class="article-list__article-mediaicon">
+	<span class="article-list__article-mediaicon-svg">
+		<svg viewBox="0 0 24 24">
+			<path d="M8,5.14V19.14L19,12.14L8,5.14Z" />
+		</svg>
+	</span>
+	</span>
+					</div>
+
+					</a>
+			</figure>
+			</article>
+
+					
+		<article
+			class="article-list__article article-list__article--is-stacked article-list__article--has-thumb article-list__article--is-media-type"
+			data-index="3"
+			data-collection="article-list2"
+			data-anvato-params="null"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list2"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px&quot;]"
+>
+			<h3 class="article-list__article-title">
+							<a
+					href="https://www.kget.com/news/t-s-eliot-letters-to-muse-to-be-unveiled-after-60-years/"
+									>
+			
+				T.S. Eliot letters to muse to be unveiled after 60 years
+							</a>
+					</h3>
+	
+			<footer class="article-list__article-meta">
+			<a href="https://www.kget.com/news/">News</a> / <time datetime="2020-01-01T17:06:05-08:00">12 hours ago</time>		</footer>
+	
+	
+	
+	</div>
+
+	<figure class="article-list__article-thumb">
+					<a
+				href="https://www.kget.com/news/t-s-eliot-letters-to-muse-to-be-unveiled-after-60-years/"
+							>
+		
+		<div class="article-list__article-image-wrapper">
+			
+<div class="image-wrapper landscape square-on-mobile">
+	<img
+		src="https://www.kget.com/wp-content/uploads/sites/2/2020/01/AP19365720843669.jpg?w=2000&#038;h=1440&#038;crop=1"
+		alt=""
+		srcset="https://www.kget.com/wp-content/uploads/sites/2/2020/01/AP19365720843669.jpg?w=320&amp;h=180&amp;crop=1 320w, https://www.kget.com/wp-content/uploads/sites/2/2020/01/AP19365720843669.jpg?w=640&amp;h=360&amp;crop=1 640w, https://www.kget.com/wp-content/uploads/sites/2/2020/01/AP19365720843669.jpg?w=960&amp;h=540&amp;crop=1 960w, https://www.kget.com/wp-content/uploads/sites/2/2020/01/AP19365720843669.jpg?w=1280&amp;h=720&amp;crop=1 1280w, https://www.kget.com/wp-content/uploads/sites/2/2020/01/AP19365720843669.jpg?w=1920&amp;h=1080&amp;crop=1 1920w, https://www.kget.com/wp-content/uploads/sites/2/2020/01/AP19365720843669.jpg?w=2000&amp;h=1440&amp;crop=1 2560w"
+		sizes="(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px"
+	/>
+</div>
+
+					</div>
+
+					</a>
+			</figure>
+			</article>
+
+			</div>
+
+	<div class="article-list__read-more article-list__read-more--w-arrow">
+		<a href="/news/">
+			Read more stories
+							<span class="icon icon--arrow">
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17.938 10.94">
+		<path d="M17.944 5.55a.733.733 0 0 1-.032.34v.03c0 .01-.006.01-.008.01a.189.189 0 0 1-.028.05.619.619 0 0 1-.123.17c-.009.01-.013.02-.023.03l-4.927 4.56a.733.733 0 0 1-.5.19.753.753 0 0 1-.54-.23.737.737 0 0 1 .041-1.04l3.547-3.28H.738a.735.735 0 1 1 0-1.47h14.693l-3.74-3.68a.735.735 0 0 1 1.03-1.05l5.022 4.94s0 .01.008.01a.016.016 0 0 0 .017.01.8.8 0 0 1 .163.32c.007.03.009.06.013.09z"/>
+	</svg>
+</span>
+					</a>
+	</div>
+	
+	</aside>
+	
+			</main>
+		</div>
+
+		
+<section id="secondary" class="widget-area">
+	<!-- Ad Unit Square -->
+	<aside class="ad-unit ad-unit--square">
+		<div class="ad-unit__content">
+			  <div   id="acm-ad-tag-mr_combo1-mr_combo1"   data-slot='{"pos":"mr_combo1","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[300,250],"sizes":[[[1280,0],[[300,600],[300,250]]],[[1024,0],[[300,600],[300,250]]],[[768,0],[[300,250]]],[[641,0],[[300,250]]],[[0,0],[[300,250]]]],"amp_multi_size":"300x250","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"atf"}'   data-unit='{"tag":"mr_combo1","tag_id":"mr_combo1","dfp_id":"5678","tag_name":"nx.kget","ad_disabled":"0"}'   data-targeting='{"pos":"mr_combo1","fold":"atf","category":"crime_watch","kw":"police-search-for-hit-and-run-driver-who-struck-and-killed-a-man-in-southwest-bakersfield"}'   data-path='/5678/nx.kget/news/crime_watch'  ></div>  <script>  (function () {   try {    var event = new CustomEvent(     "nsDfpSlotRendered",     {      detail: {       id: 'acm-ad-tag-mr_combo1-mr_combo1'      }     }    );     window.dispatchEvent(event);   } catch (err) {}  })();  </script>  		</div>
+	</aside>
+	<!-- END Ad Unit Square -->
+
+	
+	
+			<!-- Nativo -->
+		<div id="native-rr"></div>
+		<!-- END Nativo -->
+	
+	<section id="ns-article-bin-9" class="widget widget_ns-article-bin">				<section
+					class="article-list article-list--story-grid article-list--story-grid--one-col"
+					data-component=""
+					data-context="headline_list"
+				>
+					
+	<h2 class="article-list__heading">
+		Latest News	</h2>
+
+
+<div class="article-list__content">
+			
+		<article
+			class="article-list__article article-list__article--is-stacked article-list__article--has-thumb article-list__article--is-media-type"
+			data-index="0"
+			data-collection="article-list3"
+			data-anvato-params="null"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list3"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb article-list__article-thumb--is-fullbleed-on-mobile"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, 300px&quot;]"
+>
+			<h3 class="article-list__article-title">
+							<a
+					href="https://www.kget.com/news/local-news/patel-foundation-provides-meals-warm-clothes-for-less-fortunate/"
+									>
+			
+				Patel Foundation provides meals, warm clothes for less fortunate
+							</a>
+					</h3>
+	
+			<footer class="article-list__article-meta">
+			<a href="https://www.kget.com/news/local-news/">Local News</a> / <time datetime="2020-01-01T23:36:32-08:00">6 hours ago</time>		</footer>
+	
+	
+	
+	</div>
+
+	<figure class="article-list__article-thumb article-list__article-thumb--is-fullbleed-on-mobile">
+					<a
+				href="https://www.kget.com/news/local-news/patel-foundation-provides-meals-warm-clothes-for-less-fortunate/"
+							>
+		
+		<div class="article-list__article-image-wrapper">
+			
+<div class="image-wrapper landscape">
+	<img
+		src="https://i1.wp.com/www.kget.com/wp-content/uploads/sites/2/2020/01/vlcsnap-2020-01-01-23h35m47s273.jpg?resize=2560%2C1440&#038;ssl=1"
+		alt=""
+		srcset="https://www.kget.com/wp-content/uploads/sites/2/2020/01/vlcsnap-2020-01-01-23h35m47s273.jpg?w=320&amp;h=180&amp;crop=1 320w, https://www.kget.com/wp-content/uploads/sites/2/2020/01/vlcsnap-2020-01-01-23h35m47s273.jpg?w=640&amp;h=360&amp;crop=1 640w, https://www.kget.com/wp-content/uploads/sites/2/2020/01/vlcsnap-2020-01-01-23h35m47s273.jpg?w=960&amp;h=540&amp;crop=1 960w, https://www.kget.com/wp-content/uploads/sites/2/2020/01/vlcsnap-2020-01-01-23h35m47s273.jpg?w=1280&amp;h=720&amp;crop=1 1280w, https://i1.wp.com/www.kget.com/wp-content/uploads/sites/2/2020/01/vlcsnap-2020-01-01-23h35m47s273.jpg?resize=1920%2C1080&amp;ssl=1 1920w, https://i1.wp.com/www.kget.com/wp-content/uploads/sites/2/2020/01/vlcsnap-2020-01-01-23h35m47s273.jpg?resize=2560%2C1440&amp;ssl=1 2560w"
+		sizes="(max-width: 899px) 100%, 300px"
+	/>
+</div>
+
+							
+<span aria-hidden="true" tabindex="-1" class="article-list__article-mediaicon">
+	<span class="article-list__article-mediaicon-svg">
+		<svg viewBox="0 0 24 24">
+			<path d="M8,5.14V19.14L19,12.14L8,5.14Z" />
+		</svg>
+	</span>
+	</span>
+					</div>
+
+					</a>
+			</figure>
+			</article>
+
+					
+		<article
+			class="article-list__article article-list__article--is-slat  article-list__article--is-media-type"
+			data-index="1"
+			data-collection="article-list3"
+			data-anvato-params="null"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list3"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb article-list__article-thumb--is-fullbleed-on-mobile"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, 300px&quot;]"
+>
+			<h3 class="article-list__article-title">
+							<a
+					href="https://www.kget.com/news/local-news/downtown-gym-is-latest-struck-by-vandalism/"
+									>
+			
+				Downtown gym is latest business struck by vandalism
+							</a>
+					</h3>
+	
+			<footer class="article-list__article-meta">
+			<a href="https://www.kget.com/news/local-news/">Local News</a> / <time datetime="2020-01-01T23:05:38-08:00">6 hours ago</time>		</footer>
+	
+	
+	
+			
+<span aria-hidden="true" tabindex="-1" class="article-list__article-mediaicon">
+	<span class="article-list__article-mediaicon-svg">
+		<svg viewBox="0 0 24 24">
+			<path d="M8,5.14V19.14L19,12.14L8,5.14Z" />
+		</svg>
+	</span>
+	</span>
+	</div>
+
+		</article>
+
+					
+		<article
+			class="article-list__article article-list__article--is-slat  article-list__article--is-media-type"
+			data-index="2"
+			data-collection="article-list3"
+			data-anvato-params="null"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list3"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb article-list__article-thumb--is-fullbleed-on-mobile"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, 300px&quot;]"
+>
+			<h3 class="article-list__article-title">
+							<a
+					href="https://www.kget.com/news/local-news/alzheimers-disease-association-of-kern-county-to-hold-annual-cinnamon-roll-drive-next-week/"
+									>
+			
+				Alzheimer&#8217;s Disease Association of Kern County to hold annual Cinnamon Roll Drive next week
+							</a>
+					</h3>
+	
+			<footer class="article-list__article-meta">
+			<a href="https://www.kget.com/news/local-news/">Local News</a> / <time datetime="2020-01-01T21:01:16-08:00">8 hours ago</time>		</footer>
+	
+	
+	
+			
+<span aria-hidden="true" tabindex="-1" class="article-list__article-mediaicon">
+	<span class="article-list__article-mediaicon-svg">
+		<svg viewBox="0 0 24 24">
+			<path d="M8,5.14V19.14L19,12.14L8,5.14Z" />
+		</svg>
+	</span>
+	</span>
+	</div>
+
+		</article>
+
+					
+		<article
+			class="article-list__article article-list__article--is-slat  article-list__article--is-media-type"
+			data-index="3"
+			data-collection="article-list3"
+			data-anvato-params="null"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list3"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb article-list__article-thumb--is-fullbleed-on-mobile"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, 300px&quot;]"
+>
+			<h3 class="article-list__article-title">
+							<a
+					href="https://www.kget.com/news/local-news/power-outage-affecting-nearly-3700-customers-in-east-bakersfield/"
+									>
+			
+				Power outage affects nearly 3,700 customers in East Bakersfield
+							</a>
+					</h3>
+	
+			<footer class="article-list__article-meta">
+			<a href="https://www.kget.com/news/local-news/">Local News</a> / <time datetime="2020-01-01T22:36:37-08:00">7 hours ago</time>		</footer>
+	
+	
+	
+	</div>
+
+		</article>
+
+					
+		<article
+			class="article-list__article article-list__article--is-slat  article-list__article--is-media-type"
+			data-index="4"
+			data-collection="article-list3"
+			data-anvato-params="null"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list3"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb article-list__article-thumb--is-fullbleed-on-mobile"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, 300px&quot;]"
+>
+			<h3 class="article-list__article-title">
+							<a
+					href="https://www.kget.com/news/local-news/thrill-seekers-take-polar-bear-plunge-to-celebrate-the-new-year/"
+									>
+			
+				Thrill seekers take Polar Bear Plunge to celebrate the new year
+							</a>
+					</h3>
+	
+			<footer class="article-list__article-meta">
+			<a href="https://www.kget.com/news/local-news/">Local News</a> / <time datetime="2020-01-01T17:03:52-08:00">12 hours ago</time>		</footer>
+	
+	
+	
+			
+<span aria-hidden="true" tabindex="-1" class="article-list__article-mediaicon">
+	<span class="article-list__article-mediaicon-svg">
+		<svg viewBox="0 0 24 24">
+			<path d="M8,5.14V19.14L19,12.14L8,5.14Z" />
+		</svg>
+	</span>
+	</span>
+	</div>
+
+		</article>
+
+			</div>
+
+	<div class="article-list__read-more article-list__read-more--w-arrow">
+		<a href="https://www.kget.com/news/local-news/">
+			More Local News
+							<span class="icon icon--arrow">
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17.938 10.94">
+		<path d="M17.944 5.55a.733.733 0 0 1-.032.34v.03c0 .01-.006.01-.008.01a.189.189 0 0 1-.028.05.619.619 0 0 1-.123.17c-.009.01-.013.02-.023.03l-4.927 4.56a.733.733 0 0 1-.5.19.753.753 0 0 1-.54-.23.737.737 0 0 1 .041-1.04l3.547-3.28H.738a.735.735 0 1 1 0-1.47h14.693l-3.74-3.68a.735.735 0 0 1 1.03-1.05l5.022 4.94s0 .01.008.01a.016.016 0 0 0 .017.01.8.8 0 0 1 .163.32c.007.03.009.06.013.09z"/>
+	</svg>
+</span>
+					</a>
+	</div>
+	
+				</section>
+				</section><section id="custom_html-47" class="widget_text widget widget_custom_html"><div class="textwidget custom-html-widget"><div class="rich-text-cascade"><div style="width: 100%; margin-bottom:20px;"><div style="text-align: center;"><div data-cswidget="8112"></div><script type="text/javascript" async defer src="//portal.CitySpark.com/js/widget.min.js" ></script></div></div></div></div></section>
+	<aside class="ad-unit ad-unit--square ad-unit--sticky">
+		<div class="ad-unit__content">
+			  <div   id="acm-ad-tag-mr_combo2-mr_combo2"   data-slot='{"pos":"mr_combo2","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[300,250],"sizes":[[[1280,0],[[300,600],[300,250]]],[[1024,0],[[300,600],[300,250]]],[[768,0],[[300,250]]],[[641,0],[[300,250]]],[[0,0],[[300,250]]]],"amp_multi_size":"300x250","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"btf"}'   data-unit='{"tag":"mr_combo2","tag_id":"mr_combo2","dfp_id":"5678","tag_name":"nx.kget","ad_disabled":"0"}'   data-targeting='{"pos":"mr_combo2","fold":"btf","category":"crime_watch","kw":"police-search-for-hit-and-run-driver-who-struck-and-killed-a-man-in-southwest-bakersfield"}'   data-path='/5678/nx.kget/news/crime_watch'  ></div>  <script>  (function () {   try {    var event = new CustomEvent(     "nsDfpSlotRendered",     {      detail: {       id: 'acm-ad-tag-mr_combo2-mr_combo2'      }     }    );     window.dispatchEvent(event);   } catch (err) {}  })();  </script>  		</div>
+	</aside>
+	<!-- END Ad Unit Square -->
+</section><!-- #secondary -->
+	</div>
+
+			<aside class="ad-unit ad-unit--leaderboard">
+			<div class="ad-unit__content">
+				  <div   id="acm-ad-tag-leaderboard3-leaderboard3"   data-slot='{"pos":"leaderboard3","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[320,50],"sizes":[[[1280,0],[[728,90]]],[[1024,0],[[728,90]]],[[768,0],[[728,90]]],[[641,0],[[320,50]]],[[0,0],[[320,50]]]],"amp_multi_size":"320x50","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"btf"}'   data-unit='{"tag":"leaderboard3","tag_id":"leaderboard3","dfp_id":"5678","tag_name":"nx.kget","ad_disabled":"0"}'   data-targeting='{"pos":"leaderboard3","fold":"btf","category":"crime_watch","kw":"police-search-for-hit-and-run-driver-who-struck-and-killed-a-man-in-southwest-bakersfield"}'   data-path='/5678/nx.kget/news/crime_watch'  ></div>  <script>  (function () {   try {    var event = new CustomEvent(     "nsDfpSlotRendered",     {      detail: {       id: 'acm-ad-tag-leaderboard3-leaderboard3'      }     }    );     window.dispatchEvent(event);   } catch (err) {}  })();  </script>  			</div>
+		</aside>
+	
+	
+</div><!-- #content -->
+		</div>
+
+		<footer id="footer" class="site-footer">
+	<div class="site-footer__site-branding">
+		<div class="site-footer__logo">
+			<a href="https://www.kget.com/" rel="home">
+				<img src="https://www.kget.com/wp-content/uploads/sites/2/2019/04/kget-2018.png" alt="KGET" />
+			</a>
+		</div>
+	</div>
+
+		<div class="site-footer__social">
+		<h2>Follow Us</h2>
+		
+<aside class="social-links social-links--default">
+	<ul class="social-links__list">
+					<li class="social-links__list-item social-links__list-item--facebook">
+				<a href="http://facebook.com/KGET17News">
+					
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 58 58" style="enable-background:new 0 0 58 58;" xml:space="preserve">
+	<title>Facebook</title>
+	<style type="text/css">
+		.facebook-st0{fill:#4267B2;}
+		.facebook-st1{fill:#FFFFFF;}
+	</style>
+	<path class="facebook-st0" d="M54.8,0H3.2C1.43,0,0,1.43,0,3.2v51.6C0,56.57,1.43,58,3.2,58h0H31V35.57h-7.55v-8.78H31v-6.46
+		c0-7.49,4.58-11.57,11.26-11.57c2.25,0,4.5,0.11,6.74,0.34v7.83h-4.6c-3.64,0-4.35,1.72-4.35,4.26v5.59h8.7l-1.13,8.78H40V58h14.8
+		c1.77,0,3.2-1.43,3.2-3.2l0,0V3.2C58,1.43,56.57,0,54.8,0L54.8,0z"/>
+	<path id="f" class="facebook-st1" d="M40,58V35.57h7.57l1.13-8.78H40V21.2c0-2.54,0.71-4.26,4.35-4.26H49V9.1c-2.24-0.23-4.5-0.35-6.75-0.34
+	C35.56,8.76,31,12.84,31,20.33v6.46h-7.55v8.78H31V58H40z"/>
+</svg>
+				</a>
+			</li>
+							<li class="social-links__list-item social-links__list-item--twitter">
+				<a href="http://twitter.com/kgetnews">
+					
+<svg version="1.1" id="Logo__x2014__FIXED" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 259.77 218.57" style="enable-background:new 0 0 33 33;" xml:space="preserve">
+	<title>Twitter</title>
+	<style type="text/css">
+		.twitter-st0{fill:none;}
+		.twitter-st1{fill:#1DA1F2;}
+	</style>
+	<g>
+		<rect x="-69.49" y="-90.72" class="twitter-st0" width="400" height="400"/>
+		<path class="twitter-st1" d="M84.13,210.87c94.34,0,145.94-78.16,145.94-145.94c0-2.22-0.05-4.43-0.15-6.63
+			c10.01-7.24,18.72-16.27,25.59-26.56c-9.19,4.08-19.08,6.83-29.46,8.07c10.59-6.35,18.72-16.4,22.55-28.37
+			c-9.91,5.88-20.89,10.15-32.57,12.45c-9.36-9.97-22.69-16.21-37.44-16.21c-28.33,0-51.3,22.97-51.3,51.29
+			c0,4.03,0.45,7.94,1.33,11.69C86,68.53,48.2,48.12,22.91,17.09c-4.41,7.58-6.95,16.39-6.95,25.78c0,17.8,9.06,33.5,22.82,42.69
+			c-8.41-0.26-16.32-2.57-23.23-6.42c-0.01,0.21-0.01,0.43-0.01,0.65c0,24.84,17.68,45.58,41.15,50.28c-4.31,1.17-8.84,1.8-13.52,1.8
+			c-3.3,0-6.52-0.33-9.64-0.93c6.53,20.38,25.46,35.21,47.92,35.62c-17.56,13.76-39.67,21.96-63.7,21.96
+			c-4.14,0-8.22-0.24-12.24-0.71C28.21,202.38,55.16,210.87,84.13,210.87"/>
+	</g>
+</svg>
+				</a>
+			</li>
+							<li class="social-links__list-item social-links__list-item--instagram">
+				<a href="https://www.instagram.com/kgetnews/">
+					<img src="https://www.kget.com/wp-content/themes/nexstar/client/src/images/footer/social/instagram.png" alt="Instagram" />
+				</a>
+			</li>
+									<li class="social-links__list-item social-links__list-item--youtube">
+				<a href="https://www.youtube.com/kgetnews">
+					
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 192 192" style="enable-background:new 0 0 192 192;" xml:space="preserve">
+	<title>YouTube</title>
+	<style type="text/css">
+		.youtube-st0{fill:#FF0000;}
+		.youtube-st1{fill:#FFFFFF;}
+	</style>
+	<g id="XMLID_184_">
+		<path id="XMLID_182_" class="youtube-st0" d="M180.32,53.36c-2.02-7.62-7.99-13.62-15.56-15.66C151.04,34,96,34,96,34s-55.04,0-68.76,3.7
+			c-7.57,2.04-13.54,8.04-15.56,15.66C8,67.18,8,96,8,96s0,28.82,3.68,42.64c2.02,7.62,7.99,13.62,15.56,15.66
+			C40.96,158,96,158,96,158s55.04,0,68.76-3.7c7.57-2.04,13.54-8.04,15.56-15.66C184,124.82,184,96,184,96S184,67.18,180.32,53.36z"
+			/>
+		<polygon id="XMLID_1355_" class="youtube-st1" points="78,122.17 124,96 78,69.83 	"/>
+	</g>
+</svg>
+				</a>
+			</li>
+									<li class="social-links__list-item social-links__list-item--email">
+				<a href="mailto:17News@kget.com">
+					
+<svg xmlns="http://www.w3.org/2000/svg" width="29.35" height="22" viewBox="0 0 29.35 22">
+	<title>Email</title>
+	<defs>
+		<style>
+			.email-cls-1 {
+				fill: #eb6823;
+				fill-rule: evenodd;
+			}
+		</style>
+	</defs>
+	<path class="email-cls-1" d="M1168.41,189.824a0.347,0.347,0,0,1,.56.269v11.719a2.75,2.75,0,0,1-2.75,2.751h-23.84a2.75,2.75,0,0,1-2.75-2.751V190.1a0.338,0.338,0,0,1,.55-0.269c1.29,1,2.99,2.263,8.83,6.51,1.21,0.882,3.25,2.739,5.29,2.727,2.04,0.017,4.12-1.879,5.29-2.727C1165.43,192.093,1167.13,190.821,1168.41,189.824Zm-14.11,7.4c1.33,0.023,3.24-1.674,4.2-2.373,7.61-5.518,8.19-6,9.94-7.375a1.381,1.381,0,0,0,.53-1.083v-1.089a2.75,2.75,0,0,0-2.75-2.75h-23.84a2.75,2.75,0,0,0-2.75,2.75V186.4a1.359,1.359,0,0,0,.53,1.083c1.75,1.37,2.33,1.857,9.93,7.375,0.96,0.7,2.88,2.4,4.21,2.373h0Z" transform="translate(-1139.62 -182.562)"/>
+</svg>
+				</a>
+			</li>
+			</ul>
+</aside>
+	</div>
+	
+		<div class="site-footer__apps">
+		<h2>News App</h2>
+		<div class="app-links">
+							<div class="app-link">
+					<a href="https://itunes.apple.com/us/app/kget-17-news/id417457176">
+						<img src="https://www.kget.com/wp-content/themes/nexstar/client/src/images/footer/app-stores/appstore_footer.png" alt="Get the iOS app" />
+					</a>
+				</div>
+										<div class="app-link">
+					<a href="https://play.google.com/store/apps/details?id=com.newssynergy.kget&#038;hl=en_US">
+						<img src="https://www.kget.com/wp-content/themes/nexstar/client/src/images/footer/app-stores/googleplay_footer.png" alt="Get the Android app from Google Play" />
+					</a>
+				</div>
+					</div>
+	</div>
+
+	
+<div class="site-footer__primary-nav">
+	<div class="menu-footer-primary-container"><ul id="menu-footer-primary" class="menu"><li id="menu-item-18" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-18"><a title="						" href="https://www.kget.com/news/">News</a></li>
+<li id="menu-item-19" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-19"><a title="						" href="https://www.kget.com/weather/">Weather</a></li>
+<li id="menu-item-20" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-20"><a title="						" href="https://www.kget.com/traffic/">Traffic</a></li>
+<li id="menu-item-22" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-22"><a title="						" href="https://www.kget.com/sports/">Sports</a></li>
+<li id="menu-item-23" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23"><a title="						" href="https://www.kget.com/about-us/">About Us</a></li>
+</ul></div></div>
+
+<div class="site-footer__secondary-nav">
+	<div class="menu-footer-secondary-container"><ul id="menu-footer-secondary" class="menu"><li id="menu-item-15" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15"><a title="						" href="https://www.kget.com/about-us/terms-of-use/">Terms of Use</a></li>
+<li id="menu-item-16" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-16"><a title="						" href="https://www.kget.com/privacy-policy/">Privacy Policy</a></li>
+<li id="menu-item-17" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-17"><a title="						" href="/privacy-policy/#about-our-ads">About Our Ads</a></li>
+<li id="menu-item-31938" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-31938"><a target="_blank" rel="noopener noreferrer" href="http://media.kget.com/nxsglobal/kerngoldenempire/theme/images/KGET_2018-2019_FCC_EEO_Report.pdf">KGET EEO Report</a></li>
+<li id="menu-item-31936" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-31936"><a target="_blank" rel="noopener noreferrer" href="https://publicfiles.fcc.gov/tv-profile/kget-tv">KGET FCC Public File</a></li>
+<li id="menu-item-31940" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-31940"><a target="_blank" rel="noopener noreferrer" href="https://www.kget.com/wp-content/uploads/sites/2/2019/05/NexstarCCCertification.pdf">Nexstar CC Certification</a></li>
+</ul></div></div>
+
+	<div class="site-footer__network-branding">
+								<a href="https://www.nexstar.tv" title="Go to Nexstar">
+				<img src="https://www.kget.com/wp-content/themes/nexstar/client/src/images/footer/nexstar-logo-white-nmg.png" alt="LAKANA">
+			</a>
+			</div>
+	<div class="site-footer__copyright">
+		&copy; 1998 - 2020 Nexstar Broadcasting, Inc. | All Rights Reserved.	</div>
+</footer>
+	</div><!-- #page -->
+
+	
+<script type='text/javascript'>
+(function() {
+	var _sf_async_config = window._sf_async_config = (window._sf_async_config || {});
+
+	_sf_async_config.sections = "Crime Watch";
+	_sf_async_config.authors = "Karen Cruz-Orduna";
+	function loadChartbeat() {
+			var e = document.createElement('script');
+			var n = document.getElementsByTagName('script')[0];
+			e.type = 'text/javascript';
+			e.async = true;
+			e.src = '//static.chartbeat.com/js/chartbeat.js';
+			n.parentNode.insertBefore(e, n);
+	}
+	loadChartbeat();
+})();
+</script>
+
+	<aside class="ad-unit ad-unit--adhesion">
+		<div class="ad-unit__content pre-render">
+			<div class="close-btn-container">
+				<div class="close-btn" aria-label="Close Viewport Adhesion Ad">&times; Close Ad</div>
+			</div>
+			  <div   id="acm-ad-tag-adhesion-adhesion"   data-slot='{"pos":"adhesion","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[320,50],"sizes":[[[1280,0],[[728,90]]],[[1024,0],[[728,90]]],[[768,0],[[728,90]]],[[480,0],[[320,50]]],[[0,0],[[320,50]]]],"amp_multi_size":"320x50","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"atf"}'   data-unit='{"tag":"adhesion","tag_id":"adhesion","dfp_id":"5678","tag_name":"nx.kget","ad_disabled":"0"}'   data-targeting='{"pos":"adhesion","fold":"atf","category":"crime_watch","kw":"police-search-for-hit-and-run-driver-who-struck-and-killed-a-man-in-southwest-bakersfield"}'   data-path='/5678/nx.kget/news/crime_watch'  ></div>  <script>  (function () {   try {    var event = new CustomEvent(     "nsDfpSlotRendered",     {      detail: {       id: 'acm-ad-tag-adhesion-adhesion'      }     }    );     window.dispatchEvent(event);   } catch (err) {}  })();  </script>  		</div>
+	</aside>
+
+	<div id="aria-dialog-overlay"></div>
+	<script src='https://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=202001'></script>
+<script>
+var wpApiSettings = {"root":"https:\/\/www.kget.com\/wp-json\/","nonce":"e66a2a8c22","versionString":"wp\/v2\/"};
+</script>
+<script>
+var lakana = {"a9":{"aps":{"enabled":"1","ad_server":"googletag","pub_id":"3410"}},"addthis_script_url":"https:\/\/s7.addthis.com\/js\/300\/addthis_widget.js#pubid=ra-5b7190c0239b8829","auto_refresh":{"landing_duration":"10","post_duration":"20","disable_homepage":"0"},"blueconic_enabled":"1","blueconic_script_url":"https:\/\/cdn.blueconic.net\/nexstar.js","chartbeat":{"enabled":"1","uid":"23192"},"confiant":{"script_url":"https:\/\/confiant-integrations.global.ssl.fastly.net\/Y2Nn8JmiAY8HpnF4sl5n7J71jaI\/gpt_and_prebid\/config.js","enabled":"1"},"copyright_text":"Copyright 2020 Nexstar Broadcasting, Inc. All rights reserved. This material may not be published, broadcast, rewritten, or redistributed.","devcon":{"status":"0","data_key":"f0d16886-0300-4694-9b7b-37da481f4449","data_e":"5"},"gtm":{"id":"GTM-KJJZHXD"},"id":"1","index_exchange":{"script_url":"https:\/\/js-sec.indexww.com\/ht\/p\/184979-164251977320883.js"},"nativo_enabled":"1","revcontent":{"status":"1"},"send_to_news":{"enabled":"1"}};
+var nexstar = {"alert_banners":{"l10n":{"nexstar":{"label_sep":"\/"}},"summary_messages":{"Breaking News":[],"Live Now":[],"Weather Alerts":[],"Closings":[]},"messages":{"Breaking News":[],"Live Now":[],"Weather Alerts":[],"Closings":[]},"settings":{"Breaking News":{"id":54,"slug":"breaking-news","term_name":"Breaking News","label":"Breaking News","summary_only":false,"url":"#\/","view_options":"number_of_areas"},"Live Now":{"id":55,"slug":"live-now","term_name":"Live Now","label":"Live Now","summary_only":false,"url":"#\/","view_options":"number_of_areas"},"Weather Alerts":{"id":547,"slug":"weather-alerts","term_name":"Weather Alerts","label":"Weather Alerts","summary_only":false,"url":"https:\/\/www.kget.com\/weather\/weather-alerts\/","view_options":"number_of_areas"},"Closings":{"id":1249,"slug":"closings","term_name":"Closings","label":"Closings","summary_only":false,"url":"#\/","view_options":"number_of_areas"}},"modified_time":{"Breaking News":[],"Live Now":[],"Weather Alerts":[],"Closings":"Jan 2, 2020 \/ 05:12 AM PST"}},"app_links":{"google_play_link":"https:\/\/play.google.com\/store\/apps\/details?id=com.newssynergy.kget&hl=en_US","google_play_weather_link":"","ios_app_store_link":"https:\/\/itunes.apple.com\/us\/app\/kget-17-news\/id417457176","ios_app_store_weather_link":""},"article_bins":{"rest_endpoint":"https:\/\/www.kget.com\/wp-json\/nexstar\/v1\/article-bin"},"auto_refresh":{"landing_duration":"","post_duration":"","disable_homepage":"0"},"blueconic_enabled":"1","call_letters":"KGET","chartbeat":{"domain":"kerngoldenempire.com"},"continue_reading_cta":{"l10n":{"cta_text":"Continue Reading"},"breakpoint":768,"min_content_height":600},"copyright_start_year":"1998","devcon":{"status":"0"},"dfp":{"mobile_desktop_breakpoint":1024,"register_event":"nsDfpSlotRendered","slots":{"adhesion":{"pos":"adhesion","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[320,50],"sizes":[[[1280,0],[[728,90]]],[[1024,0],[[728,90]]],[[768,0],[[728,90]]],[[480,0],[[320,50]]],[[0,0],[[320,50]]]],"amp_multi_size":"320x50","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"atf"},"billboard1":{"pos":"billboard1","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[320,50],"sizes":[[[1280,0],[[728,90],[970,250],[970,90],[970,30]]],[[1024,0],[[728,90],[970,250],[970,90],[970,30]]],[[768,0],[[728,90]]],[[641,0],[[320,50]]],[[0,0],[[320,50]]]],"amp_multi_size":"320x50","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"atf"},"header-microbar":{"pos":"header-microbar","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[88,31],"sizes":[[[900,0],[[88,31]]],[[0,0],[]]],"amp_multi_size":"88x31","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"atf"},"hover":{"pos":"hover","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[1,1],"sizes":[[[900,0],[[1,1]]],[[0,0],[]]],"amp_multi_size":"1x1","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"atf"},"leader_mr1":{"pos":"leader_mr1","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[300,250],"sizes":[[[1152,0],[[728,90]]],[[0,0],[[300,250]]]],"amp_multi_size":"300x250","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"btf"},"leaderboard1":{"pos":"leaderboard1","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[320,50],"sizes":[[[1280,0],[[728,90]]],[[1024,0],[[728,90]]],[[768,0],[[728,90]]],[[641,0],[[320,50]]],[[0,0],[[320,50]]]],"amp_multi_size":"320x50","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"mid"},"leaderboard2":{"pos":"leaderboard2","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[320,50],"sizes":[[[1280,0],[[728,90]]],[[1024,0],[[728,90]]],[[768,0],[[728,90]]],[[641,0],[[320,50]]],[[0,0],[[320,50]]]],"amp_multi_size":"320x50","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"mid"},"leaderboard3":{"pos":"leaderboard3","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[320,50],"sizes":[[[1280,0],[[728,90]]],[[1024,0],[[728,90]]],[[768,0],[[728,90]]],[[641,0],[[320,50]]],[[0,0],[[320,50]]]],"amp_multi_size":"320x50","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"btf"},"microbar":{"pos":"microbar","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[88,31],"sizes":[[[0,0],[[88,31]]]],"amp_multi_size":"88x31","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"mid"},"mr1":{"pos":"mr1","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[300,250],"sizes":[[[1280,0],[[300,250]]],[[1024,0],[[300,250]]],[[768,0],[[300,250]]],[[641,0],[[300,250]]],[[0,0],[[300,250]]]],"amp_multi_size":"300x250","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"mid"},"mr1_mobile":{"pos":"mr1_mobile","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[300,250],"sizes":[[[900,0],[]],[[0,0],[[300,250]]]],"amp_multi_size":"300x250","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"atf"},"mr2":{"pos":"mr2","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[300,250],"sizes":[[[1280,0],[[300,250]]],[[1024,0],[[300,250]]],[[768,0],[[300,250]]],[[641,0],[[300,250]]],[[0,0],[[300,250]]]],"amp_multi_size":"300x250","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"mid"},"mr3":{"pos":"mr3","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[300,250],"sizes":[[[1280,0],[[300,250]]],[[1024,0],[[300,250]]],[[768,0],[[300,250]]],[[641,0],[[300,250]]],[[0,0],[[300,250]]]],"amp_multi_size":"300x250","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"mid"},"mr4":{"pos":"mr4","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[300,250],"sizes":[[[1280,0],[[300,250]]],[[1024,0],[[300,250]]],[[768,0],[[300,250]]],[[641,0],[[300,250]]],[[0,0],[[300,250]]]],"amp_multi_size":"300x250","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"mid"},"mr_combo1":{"pos":"mr_combo1","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[300,250],"sizes":[[[1280,0],[[300,600],[300,250]]],[[1024,0],[[300,600],[300,250]]],[[768,0],[[300,250]]],[[641,0],[[300,250]]],[[0,0],[[300,250]]]],"amp_multi_size":"300x250","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"atf"},"mr_combo2":{"pos":"mr_combo2","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[300,250],"sizes":[[[1280,0],[[300,600],[300,250]]],[[1024,0],[[300,600],[300,250]]],[[768,0],[[300,250]]],[[641,0],[[300,250]]],[[0,0],[[300,250]]]],"amp_multi_size":"300x250","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"btf"},"oop":{"pos":"oop","is_companion":true,"is_oop":true,"refresh_on_resize":true,"size":[1,1],"sizes":[[[0,0],[[1,1]]]],"amp_multi_size":"1x1","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"atf"}}},"extended_scroll":{"l10n":{"more_in_category_read_more":"Read the Full Article","more_in_category_title":"More %s Stories","more_stories_read_more":"Read more stories","more_stories_title":"More Stories"},"max_blocks_per_snippet":2,"more_stories_read_more_link":"\/news\/","num_more_in_category_posts":3,"num_more_stories_posts":4},"footer_logo":"31","ga":{"id":"UA-37144901-42"},"gtm":{"id":"GTM-TSQRR3R"},"home_url":"https:\/\/www.kget.com\/","homepage":{"l10n":{"hero_title":"Headlines","hero_read_more_title":"More Top Stories","headline_list_read_more_title":"More %s News","top_stories_title":"Top Stories","top_stories_read_more_title":"More Top Stories"},"default_hero_read_more_link":"https:\/\/www.kget.com\/news\/","num_headline_lists":6,"num_headline_list_articles":5,"num_hero_articles":5,"num_top_stories_articles":10,"top_stories_read_more_link":"https:\/\/www.kget.com\/news\/"},"id":"2","lead_media":{"allowed_block_types":["lakana\/anvplayer"],"video":{"autoplay":"1"}},"logo":"31","name":"KGET 17","nativo_enabled":"1","onetrust":{"consent_script_src":"https:\/\/cdn.cookielaw.org\/consent\/{domain_guid}\/OtAutoBlock.js","templates_script_src":"https:\/\/cdn.cookielaw.org\/scripttemplates\/otSDKStub.js"},"primary_color":"#013073","related_posts":{"l10n":{"default_title":"Related Content"}},"revcontent":{"status":"1","web_id":"114905","amp_id":"114614","amp_wrapper":"kget_114614","app_code":"<div id=\"rc-widget-554fdd\" data-rc-widget data-widget-host=\"habitat\" data-endpoint=\"\/\/trends.revcontent.com\" data-widget-id=\"116086\"><\/div>\r\n<script type=\"text\/javascript\" src=\"\/\/assets.revcontent.com\/master\/delivery.js\" defer=\"defer\"><\/script>"},"section_fronts":{"l10n":{"headlines":"Headlines","more_headlines_title":"More %s Headlines","top_stories_title":"Top Stories"},"hero_read_more_link":"https:\/\/www.kget.com\/news\/","num_headline_lists":6,"num_headline_list_articles":5,"num_hero_articles":5,"num_top_stories_articles":10,"top_stories_read_more_link":"https:\/\/www.kget.com\/news\/"},"send_to_news":{"url":"http:\/\/embed.sendtonews.com\/oembed\/?fk=k2NaSI50&cid=9365&sound=off&format=json&offsetx=0&offsety=140&floatwidth=400&floatposition=top-right&float=on","enabled":"1"},"sidebar":{"l10n":{"dont_miss_title":"Don't Miss"},"num_dont_miss_articles":7},"social_links":{"email":"17News@kget.com","facebook":"http:\/\/facebook.com\/KGET17News","instagram":"https:\/\/www.instagram.com\/kgetnews\/","pinterest":"","rss":"","twitter":"http:\/\/twitter.com\/kgetnews","youtube":"https:\/\/www.youtube.com\/kgetnews"},"supernav":{"l10n":{"close_navigation":"Close Navigation","open_navigation":"Open Navigation","looking_for?":"What are you looking for?","primary_menu":"Primary Menu","toggle_menu":"Toggle Menu","top_stories":"Top Stories"},"max_depth":2,"nav_menu_location":"supernav","num_children_per_column":7,"num_columns":4,"num_columns_without_thumbnails":1,"num_posts_in_column_with_thumbnails":1,"num_posts_in_column_without_thumbnails":4,"post_type_feature":"supernav"},"template_variables":{"l10n":{"article_date":"M j, Y \/ h:i A T","article_list_by":"by %1$s %2$s %3$s","article_list_category":"%1$s \/ %2$s","author_by":"by: %s","author_sep":", ","infinite_button_text":"Load More","infinite_error_text":"Error loading articles","infinite_loading":"Loading...","more":"More","more_term":"More %s","next_page":"Next page","now_playing":"Now Playing","previous_page":"Previous page","posted":"Posted: %s","read_more_arrow":"Read More &raquo;","relative_date_format":"%s ago","search":"Search","sep":"\/","share_this_story":"Share this story","site_search":"Site Search...","snippet_date":"M j, Y","sponsored_by":"Sponsored By","top_stories_from":"Top Stories From %s","updated":"Updated: %s","up_next":"Up Next","video":"Video","exit_sticky_player":"Exit sticky player","form_processing":"Processing...","form_message_sent":"Message Sent!","form_error":"Error"},"num_404_top_stories_articles":5},"weather":{"city_name":"","latitude":"35.373292","longitude":"-119.018712","zipcode":"93301"},"weather_alerts":{"l10n":{"loading_alerts":"Checking for current alerts","no_current_alerts":"There are no active weather alerts. Check back later."}}};
+</script>
+<script type='text/javascript' src='https://www.kget.com/_static/??-eJydjEkSwiAQAD9kWBIJerB8yzAMCgUkspQ+X3L06rWru/l7n3zG2C1VHiqH3U+FXp1qY8lnFuqJDwW33Cg33p6UhpjpUxsUjtEf1HQf7VE/4mYgMgTUBsw8O0Hg5FURIDM920h/TKE0j6M01lqlhV6lXAQoErS43+s93aTS+iL1eVXhC12STRA='></script>
+<script async src='https://s7.addthis.com/js/300/addthis_widget.js?ver=1.0#pubid=ra-5b7190c0239b8829'></script>
+<script>
+var addthis_config=addthis_config||{};addthis_config.data_track_addressbar=false;addthis_config.data_track_clickback=false;
+</script>
+<script type='text/javascript' src='https://www.kget.com/wp-includes/js/wp-embed.min.js?m=1576710965g'></script>
+<script type='text/javascript' src='https://stats.wp.com/e-202001.js' async='async' defer='defer'></script>
+<script type='text/javascript'>
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:8.0',blog:'161920294',post:'206812',tz:'-8',srv:'www.kget.com'} ]);
+	_stq.push([ 'clickTrackerInit', '161920294', '206812' ]);
+</script>
+
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"bb199f70cb","applicationID":"222037236","transactionName":"MQNTMhdXDxECABBZDAhJchMWQg4PTBQUHxVUSUEJFkISTUtcNAwKAlhqOgFrSks=","queueTime":0,"applicationTime":759,"atts":"HURERF9NHE5BAkYKGBsb","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>

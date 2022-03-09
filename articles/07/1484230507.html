@@ -1,0 +1,2055 @@
+<!DOCTYPE html>
+<html lang="es"  xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es" xmlns:fb="http://www.facebook.com/2008/fbml"
+  itemid="https://www.ellitoral.com.ar/nota/2020-1-1-19-41-0-murio-un-chico-de-21-anos-tras-un-accidente-en-moto"
+  itemtype="http://schema.org/NewsArticle"
+  itemscope  xmlns:og="http://opengraphprotocol.org/schema/">
+
+  <head prefix="og: http://ogp.me/ns#">
+
+
+    <script type="text/javascript">
+    lastUpdate="1577933747711";
+    actual = "/corrientes/2020-1-1-19-41-0-murio-un-chico-de-21-anos-tras-un-accidente-en-moto";
+    staticHost = "";
+    _realTime_time = "";
+    refresh_time = parseInt("2000");
+    timer = '';
+    _refresh_enabled = "";
+    actual_url = "https://www.ellitoral.com.ar";
+    publiIndex = 0;
+    initDiarios = false;
+    </script>
+    <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-messaging.js"></script>
+    
+    <script>
+    var config = {
+    	messagingSenderId: "502091219662"
+    };
+    
+    firebase.initializeApp(config);
+    const messaging = firebase.messaging();
+    messaging.usePublicVapidKey("BG-c2dyg1U9JiJPYCcR7FKIXOwj1fJZ_6fHfnGRDJ4pswcYJ8p7xHl5WNWUz5bNoXHAy5A0YT-HSJnj1JrQHZz4");
+    
+    if ('serviceWorker' in navigator && 'PushManager' in window) {
+    	console.log('Service Worker and Push is supported');
+    	navigator.serviceWorker.register("/sw.js?messagingSenderId=502091219662&version=A")
+    	.then(function(registration) {
+    	  	console.log('Service Worker is registered', registration);
+    		messaging.useServiceWorker(registration);  
+    
+    		messaging
+    			.requestPermission()
+    			.then(function() {
+    				console.log("Notification permission granted firebase.");
+    				messaging.getToken().then(function(currentToken) {
+    				      if (currentToken) {
+    				        sendTokenToServer(currentToken);
+    				      } else {
+    				        console.log('No Instance ID token available. Request permission to generate one.');
+    				        updateUIForPushPermissionRequired();
+    				        setTokenSentToServer(false);
+    				      }
+    			    }).catch(function(err) {
+    			      console.log('An error occurred while retrieving token. ', err);
+    			      setTokenSentToServer(false);
+    			    });
+    			})
+    			.catch(function(err) {
+    				console.log("Unable to get permission to notify.", err);
+    			});
+    	})
+    	.catch(function(error) {
+    	  console.error('Service Worker Error', error);
+    	});
+    } else {
+    	console.warn('Push messaging is not supported');
+    }
+    
+    function doPost(url, body, get) {
+    	var xhr = new XMLHttpRequest();
+    	if (get)
+    		xhr.open("GET", url);
+    	else
+    		xhr.open("POST", url);
+    	xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    	if (body)
+    		xhr.send(JSON.stringify(body));
+    	else
+    		xhr.send("");
+    }
+    
+    messaging.onMessage(function(payload) {
+    	console.log("onMessage" , payload)
+        const notificationTitle = payload.data.body;
+        const notificationOptions = {
+    		icon: 'img/push/notification.png',
+    		badge: 'img/push/badge.png',
+    		vibrate: [100, 50, 100],
+    		data: {
+    			dateOfArrival: Date.now(),
+    			nota: payload.data.nota,
+    			url_destino: payload.data.url_destino,
+    			id_notificacion: payload.data.id_notificacion
+    		}
+        };
+    
+        if (payload.data.image)
+        	notificationOptions.image = payload.data.image
+    
+        if (!("Notification" in window)) {
+            console.log("This browser does not support system notifications");
+        } else if (Notification.permission === "granted") {
+            var notification = new Notification(notificationTitle,notificationOptions);
+            doPost("/webpush/" + payload.data.id_notificacion + "/show", null, true)
+            notification.onclick = function(event) {
+                event.preventDefault();
+    
+                if (payload.data.url_destino){
+                	window.open(payload.data.url_destino, '_blank');
+                }else if (payload.data.nota){
+                	window.open(payload.data.nota, '_blank');
+                }
+                notification.close();
+                doPost("/webpush/" + payload.data.id_notificacion + "/click", null, true)
+            }
+        }
+    });
+    
+    messaging.onTokenRefresh(function() {
+    	messaging
+    		.getToken()
+    		.then(function(refreshedToken) {
+    			console.log("Token refreshed.");
+    			setTokenSentToServer(false);
+    			sendTokenToServer(refreshedToken);
+    		})
+    		.catch(function(err) {
+    			console.log("Unable to retrieve refreshed token ", err);
+    			showToken("Unable to retrieve refreshed token ", err);
+    		});
+    });
+    
+    function sendTokenToServer(currentToken) {
+    	if (!isTokenSentToServer()) {
+    		console.log("Sending token to server...");
+    		setTokenSentToServer(true);
+    
+    		doPost("/webpush/subscribe", {
+    			token: currentToken
+    		});
+    	} else {
+    		console.log(
+    			"Token already sent to server so won't send it again " +
+    				"unless it changes"
+    		);
+    	}
+    }
+    
+    function isTokenSentToServer() {
+    	return window.localStorage.getItem("sentToServer") === 1;
+    }
+    
+    function setTokenSentToServer(sent) {
+    	window.localStorage.setItem("sentToServer", sent ? 1 : 0);
+    }
+    </script>
+    <link rel="manifest" href="/manifest.json">    <meta charset="utf-8">
+    <meta property="og:site_name" content="ellitoral.com.ar " />
+    <meta name="robots" content="index, follow"/>
+    <meta name="distribution" content="global"/>
+    <meta name="rating" content="general"/>
+    <meta itemscope itemprop="mainEntityOfPage" itemType="https://schema.org/WebPage"/>
+    <meta itemprop="genre" content="News" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta itemprop="author" content="ellitoral.com.ar " />
+    <!-- GEO & DC -->
+    <meta name="geo.region" content="AR-W" />
+    <meta name="geo.placename" content="Ciudad de Corrientes" />
+    <meta name="geo.position" content="-27.469213;-58.830635" />
+    <meta name="ICBM" content="-27.469213, -58.830635" />
+    <meta http-equiv="content-language" content="es"/>
+    <meta name="DC.Title" content="ellitoral.com.ar"/>
+    <meta name="DC.Description" content="ellitoral.com.ar | Noticias de Corrientes, Argentina y el mundo. Servicios y contenidos digitales: fotos, videos, comentarios y redes sociales. Clasificados, deportes, policiales y deportes."/>
+    <meta name="DC.Publisher" content="Diario El Litoral | Corrientes"/>
+    <meta name="DC.Type" scheme="DCMIType" content="Text"/>
+    <meta name="DC.Format.Medium" content="text/html"/>
+    <meta name="DC.Relation.isPartOf" content="http://www.ellitoral.com.ar/"/>
+    <meta name="DC.Language" content="es"/>
+    <meta name="DC.Rights" content="(C) 2003-2018 www.ellitoral.com.ar | Corrientes | Todos los Derechos Reservados"/>
+    <meta name="theme-color" content="#00235d">
+    <!-- OG -->
+    
+    
+    <meta name="author" content="ellitoral.com.ar"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@DiarioElLitoral" />
+    <meta name="twitter:creator" content="@DiarioElLitoral" />
+    
+    <meta property="og:title" content="Murió un chico de 21 años tras un accidente en moto" />
+    <meta itemprop="name" content="Murió un chico de 21 años tras un accidente en moto" />
+    <meta name="twitter:title" content="Murió un chico de 21 años tras un accidente en moto" />
+    <title>Murió un chico de 21 años tras un accidente en moto</title>
+    
+    <!-- NOTA  -->
+    <meta name="keywords" content="murió, chico, accidente"/>
+    <meta name="news_keywords" content="murió, chico, accidente"/>
+    
+    <meta property="fb:admins" content="PabloMiguel"/>
+    <meta property="fb:admins" content="nicolasalo"/>
+    <meta property="fb:admins" content="brunoarielgimenez"/>
+    <meta property="fb:admins" content="MiguelSebastianCampos"/>
+    <meta property="fb:admins" content="sebabravo"/>
+    <meta property="fb:admins" content="melive17"/>
+    
+    <meta property="fb:app_id" content="250070788421829"/>
+    <meta property="fb:pages" content="" />
+    <meta itemprop="headline" content="Murió un chico de 21 años tras un accidente en moto"/>
+    <link rel="shortcut icon" href="https://www.ellitoral.com.ar/favicon.ico">
+    <link rel="manifest" href="https://www.ellitoral.com.ar/img/favicons/manifest.json">
+    
+    <meta name="application-name" content="ellitoral.com.ar" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="msapplication-TileImage" content="https://www.ellitoral.com.ar/img/favicons/ms-icon-144x144.png">
+    
+    
+    
+    
+      <link rel="canonical" href="https://www.ellitoral.com.ar/nota/2020-1-1-19-41-0-murio-un-chico-de-21-anos-tras-un-accidente-en-moto" />
+      <meta property="og:url" content="https://www.ellitoral.com.ar/nota/2020-1-1-19-41-0-murio-un-chico-de-21-anos-tras-un-accidente-en-moto"/>
+      <link rel="amphtml" href="https://www.ellitoral.com.ar/nota/2020-1-1-19-41-0-murio-un-chico-de-21-anos-tras-un-accidente-en-moto/amp">
+      <meta property="og:type" content="article" />
+      <meta property="og:description" content="Impactaron dos motocicletas. Los heridos ingresaron al hospital pero quien se llev&amp;oacute; la peor parte falleci&amp;oacute; tras agonizar seis horas."/>
+      <meta name="description" content="Impactaron dos motocicletas. Los heridos ingresaron al hospital pero quien se llev&amp;oacute; la peor parte falleci&amp;oacute; tras agonizar seis horas." />
+      <meta property="description" content="Impactaron dos motocicletas. Los heridos ingresaron al hospital pero quien se llev&amp;oacute; la peor parte falleci&amp;oacute; tras agonizar seis horas."/>
+      <meta name="twitter:description" content="Impactaron dos motocicletas. Los heridos ingresaron al hospital pero quien se llev&amp;oacute; la peor parte falleci&amp;oacute; tras agonizar seis horas." />
+      <meta itemprop="datePublished" content="2020-01-01T22:41:00.000Z">
+      <meta itemprop="dateModified" content="2020-01-01T23:19:43.555Z">
+      <meta property="og:image" content="https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577918773255.jpg?cw=600&ch=365"/>
+      <meta property="twitter:image" content="https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577918773255.jpg?cw=600&ch=365">
+      <meta property="og:image:width" content="600" />
+      <meta property="og:image:height" content="365" />
+      <div style="display: none" itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
+          <img itemprop="url" src="https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577918773255.jpg?cw=600&ch=365"/>
+      </div> 
+    
+    <div style="display: none" itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+        <div itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
+            <meta itemprop="url" content="https://www.ellitoral.com.ar/img/datos_estructurados.png">
+            <meta itemprop="width" content="391">
+            <meta itemprop="height" content="41">
+        </div>
+        <meta itemprop="name" content="ellitoral.com.ar">
+    </div>    <script>
+    	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    
+    	ga('create', 'UA-10420545-5', 'auto');
+    
+    	function defer(method) {
+    	    if (window.jQuery)
+    	        method(window.jQuery);
+    	    else
+    	        setTimeout(function() { defer(method) }, 50);
+    	}
+    
+    	function deferPhotoSwipe(method) {
+    	    if (window.initPhotoSwipeFromDOM)
+    	        method();
+    	    else
+    	        setTimeout(function() { deferPhotoSwipe(method) }, 50);
+    	}
+    
+    	window.$ = function() {
+    		return {
+    			ready: function(method) {
+    			    if (window.jQuery)
+    			        method(window.jQuery);
+    			    else
+    			        setTimeout(function() { defer(method) }, 50);
+    			}
+    		}
+    	}
+    </script>
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link href='https://fonts.googleapis.com/css?family=Lato|Roboto+Slab:400,700|Roboto:300,400,700|Open+Sans' rel='stylesheet' type='text/css'>
+    <script async type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false&key=AIzaSyDKBJ24Cy1R_oNnc8fE9QAMvgqyJYATCnI"></script>
+    
+    <link rel="stylesheet" type="text/css" href="/css/style.min.css?C5">
+    <script async defer type="text/javascript" src="/js/all.min.js?C5"></script>  
+     <link rel="stylesheet" type="text/css" href="/lightGallery/css/lightgallery.min.css">
+        <script type="text/javascript" src="/lightGallery/js/lightgallery-all.min.js"></script>  
+    <script async defer src="//platform.instagram.com/en_US/embeds.js"></script>  </head>
+
+  <body>
+    <div style="display: none" itemscope itemprop="publisher" itemtype="http://schema.org/Organization">
+      <div itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+        <img itemprop="url" alt="El Litoral" src="/img/logo_transp.png" />
+      </div>
+      <span itemprop="name">ellitoral.com.ar</span>
+    </div>
+
+    <div style="display: none" itemscope itemprop="author" itemtype="http://schema.org/Organization">
+      <div itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+        <img itemprop="url" alt="El Litoral" src="/img/logo_transp.png" />
+      </div>
+      <span itemprop="name">ellitoral.com.ar</span>
+    </div>
+
+    
+    <div id="fb-root"></div>
+    <div class="main_container">
+      <header>
+        <div id="header_superior">
+        
+          <div id="header_superior_top">
+
+            <div class="header_centrado">
+
+              <div class="trapezoide_menu">
+                <a class="menu-icon"><span class="nombre">SECCIONES</span> <span class="spritelit menu"></span></a>
+              </div>
+
+              <ul class="listado-secciones">
+                  <a href="/actualidad"><li>Actualidad</li></a>
+                  <a href="/policiales"><li>Policiales</li></a>
+                  <a href="/sociedad"><li>Sociedad</li></a>
+                  <a href="/deportes"><li>Deportes</li></a>
+                  <a href="/ciudad"><li>Ciudad</li></a>
+                  <a href="/nacional"><li>Nacional</li></a>
+                  <a href="/internacional"><li>Mundo</li></a>
+                  <a href="/opinion"><li>Opinión</li></a>
+                  <a href="/interior"><li>Interior</li></a>
+                  <a href="/funebres"><li>Fúnebres</li></a>
+                  <a href="/cultura"><li>Cultura</li></a>
+                  <a href="/sociales"><li>Sociales</li></a>
+                  <a href="/servicios"><li>Servicios</li></a>
+              </ul>
+
+            </div>
+          </div>
+
+          <div class="header_menu_principal">
+            <div class="contenedor">
+              <ul>
+                <a href="/edicion-impresa"><li class="edicionimpresa">EDICIÓN IMPRESA</li></a>
+              </ul>
+              
+              <div class="bloque_lateral">
+                <div class="buscador_header">
+                  <input class="input_buscador" onkeydown="js_press_search(event, 2)">
+                  <span class="spritelit lupa" onclick="js_search($('.input_buscador').val())"></span>
+                </div>
+                <div class="redes_header">
+                  <ul>
+                    <a href="https://twitter.com/DiarioElLitoral" target="_blank"><li><span class="spritelit twitter"></span></li></a>
+                    <a href="https://instagram.com/diarioellitoral" target="_blank"><li><span class="spritelit instagram"></span></li></a>
+                    <a href="https://www.facebook.com/DiarioElLitoral" target="_blank"><li><span class="spritelit facebook"></span></li></a>
+                  </ul>
+                </div>
+                <span class="ingresar" style="border:0px; padding-left:0px; margin-right:-20px;"><!-- <span class="spritelit user"></span>--></span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="header_centrado">
+            <div class="logo">
+              <a href="/"><span class="spritelit logo"></span></a>
+            </div>
+
+            <div class="header_fechaclima">         
+                <span class="fecha"><span class='dia'>Jueves 02</span> de Enero de 2020</span>
+                <span class="temp"><span class="txt">CORRIENTES</span><span class="grados">23°</span><a href="/servicios/clima"><span class="txt link">Pronóstico Extendido</span></a></span>
+                <span class="icono_clima"><img alt="clima_sol_noche" src="/img/css/clima/clima_sol_noche.png"></span>
+            </div>
+            <div class="headerdolar">
+                <p> <b>Dolar Compra:</b> $58,00</p>
+                <p> <b>Dolar Venta:</b> $63,00</p>
+            </div>
+          </div>
+
+        </div>
+  
+        <div class="menu_mouse_leave">          
+          <div class="menu_open menu_close">
+            <div class="menu_container">
+              <div class="menu_logo">
+                <a href="/"><img alt="El Litoral" src="/img/logo.png" alt=""></a>                   
+              </div>
+
+              <ul class="menu_lateral">                
+                <a href="/"><li data-id="hoy">Hoy</li></a>
+                  <a href="/actualidad"><li data-id="actualidad">Actualidad</li></a>
+                  <a href="/policiales"><li data-id="policiales">Policiales</li></a>
+                  <a href="/sociedad"><li data-id="sociedad">Sociedad</li></a>
+                  <a href="/deportes"><li data-id="deportes">Deportes</li></a>
+                  <a href="/ciudad"><li data-id="ciudad">Ciudad</li></a>
+                  <a href="/nacional"><li data-id="nacional">Nacional</li></a>
+                  <a href="/internacional"><li data-id="internacional">Mundo</li></a>
+                  <a href="/opinion"><li data-id="opinion">Opinión</li></a>
+                  <a href="/interior"><li data-id="interior">Interior</li></a>
+                  <a href="/funebres"><li data-id="funebres">Fúnebres</li></a>
+                  <a href="/cultura"><li data-id="cultura">Cultura</li></a>
+                  <a href="/sociales"><li data-id="sociales">Sociales</li></a>
+                  <a href="/servicios"><li data-id="servicios">Servicios</li></a>
+              </ul>
+              
+              <div class="menu_notas">                
+                  <div class="menu policiales">                    
+                        <div class="nota_menu">
+                        	<div class="nota_menu_imagen">
+                        
+                        
+                        		<div class="videoWrapper">
+                        			<a href="/corrientes/2020-1-1-19-48-0-rina-agonizo-dos-dias-y-murio-en-el-hospital">
+                        				<img alt="Riña: agonizó dos días y murió en el hospital " class="panel_imagen lazyload"  data-sizes="auto" data-src="https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577919144250.jpg?&ma=3&cw=350&ch=200" data-srcset="https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577919144250.jpg?&ma=3&cw=124&ch=78 150w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577919144250.jpg?&ma=3&cw=279&ch=176 279w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577919144250.jpg?&ma=3&cw=350&ch=220 350w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577919144250.jpg?&ma=3&cw=620&ch=390 620w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577919144250.jpg?&ma=3&cw=790&ch=494 790w">
+                        			</a>
+                        		</div>
+                        
+                        	</div>
+                        	<div class="nota_menu_cont">
+                        		<a href="/corrientes/2020-1-1-19-48-0-rina-agonizo-dos-dias-y-murio-en-el-hospital"><div class="nota_tag "><label>FIGURA COMO NN</label></div></a>
+                        		<a href="/corrientes/2020-1-1-19-48-0-rina-agonizo-dos-dias-y-murio-en-el-hospital">
+                        			<label class="nota_menu_texto">Riña: agonizó dos días y murió en el hospital </label>
+                        		</a>
+                        	</div>
+                        </div>  
+                        <div class="nota_menu">
+                        	<div class="nota_menu_imagen">
+                        
+                        
+                        		<div class="videoWrapper">
+                        			<a href="/corrientes/2020-1-1-19-41-0-murio-un-chico-de-21-anos-tras-un-accidente-en-moto">
+                        				<img alt="Murió un chico de 21 años tras un accidente en moto" class="panel_imagen lazyload"  data-sizes="auto" data-src="https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577918773255.jpg?&ma=3&cw=350&ch=200" data-srcset="https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577918773255.jpg?&ma=3&cw=124&ch=78 150w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577918773255.jpg?&ma=3&cw=279&ch=176 279w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577918773255.jpg?&ma=3&cw=350&ch=220 350w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577918773255.jpg?&ma=3&cw=620&ch=390 620w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577918773255.jpg?&ma=3&cw=790&ch=494 790w">
+                        			</a>
+                        		</div>
+                        
+                        	</div>
+                        	<div class="nota_menu_cont">
+                        		<a href="/corrientes/2020-1-1-19-41-0-murio-un-chico-de-21-anos-tras-un-accidente-en-moto"><div class="nota_tag "><label>UNA HERIDA GRAVE</label></div></a>
+                        		<a href="/corrientes/2020-1-1-19-41-0-murio-un-chico-de-21-anos-tras-un-accidente-en-moto">
+                        			<label class="nota_menu_texto">Murió un chico de 21 años tras un accidente en moto</label>
+                        		</a>
+                        	</div>
+                        </div>  
+                        <div class="nota_menu">
+                        	<div class="nota_menu_imagen">
+                        
+                        
+                        		<div class="videoWrapper">
+                        			<a href="/corrientes/2020-1-1-19-16-0-un-detenidos-con-75-kilos-de-marihuana-escondidos-en-un-auto">
+                        				<img alt="Un detenido con 75 kilos de marihuana escondidos en un auto" class="panel_imagen lazyload"  data-sizes="auto" data-src="https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577917105669.jpg?&ma=3&cw=350&ch=200" data-srcset="https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577917105669.jpg?&ma=3&cw=124&ch=78 150w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577917105669.jpg?&ma=3&cw=279&ch=176 279w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577917105669.jpg?&ma=3&cw=350&ch=220 350w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577917105669.jpg?&ma=3&cw=620&ch=390 620w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577917105669.jpg?&ma=3&cw=790&ch=494 790w">
+                        			</a>
+                        		</div>
+                        
+                        	</div>
+                        	<div class="nota_menu_cont">
+                        		<a href="/corrientes/2020-1-1-19-16-0-un-detenidos-con-75-kilos-de-marihuana-escondidos-en-un-auto"><div class="nota_tag "><label>PASO FRONTERIZO</label></div></a>
+                        		<a href="/corrientes/2020-1-1-19-16-0-un-detenidos-con-75-kilos-de-marihuana-escondidos-en-un-auto">
+                        			<label class="nota_menu_texto">Un detenido con 75 kilos de marihuana escondidos en un auto</label>
+                        		</a>
+                        	</div>
+                        </div>  
+                  </div>
+                  <div class="menu sociedad">                    
+                        <div class="nota_menu">
+                        	<div class="nota_menu_imagen">
+                        
+                        
+                        		<div class="videoWrapper">
+                        			<a href="/corrientes/2020-1-1-17-42-0-harvey-nuevo-presidente-de-la-asociacion-de-cirugia-de-corrientes">
+                        				<img alt="Harvey, nuevo presidente de la Asociación de Cirugía de Corrientes" class="panel_imagen lazyload"  data-sizes="auto" data-src="https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577911364680.jpg?&ma=3&cw=350&ch=200" data-srcset="https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577911364680.jpg?&ma=3&cw=124&ch=78 150w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577911364680.jpg?&ma=3&cw=279&ch=176 279w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577911364680.jpg?&ma=3&cw=350&ch=220 350w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577911364680.jpg?&ma=3&cw=620&ch=390 620w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577911364680.jpg?&ma=3&cw=790&ch=494 790w">
+                        			</a>
+                        		</div>
+                        
+                        	</div>
+                        	<div class="nota_menu_cont">
+                        		<a href="/corrientes/2020-1-1-17-42-0-harvey-nuevo-presidente-de-la-asociacion-de-cirugia-de-corrientes"><div class="nota_tag "><label>SALUD</label></div></a>
+                        		<a href="/corrientes/2020-1-1-17-42-0-harvey-nuevo-presidente-de-la-asociacion-de-cirugia-de-corrientes">
+                        			<label class="nota_menu_texto">Harvey, nuevo presidente de la Asociación de Cirugía de Corrientes</label>
+                        		</a>
+                        	</div>
+                        </div>  
+                        <div class="nota_menu">
+                        	<div class="nota_menu_imagen">
+                        
+                        
+                        		<div class="videoWrapper">
+                        			<a href="/corrientes/2019-12-31-8-30-0-prohibieron-un-aceite-por-estar-rotulado-como-libre-de-gluten-sin-autorizacion">
+                        				<img alt="Prohibieron un aceite por estar rotulado como libre de gluten sin autorización" class="panel_imagen lazyload"  data-sizes="auto" data-src="https://pxc.cdn.ellitoral.com.ar/litoral/122019/1577791661264.jpg?&ma=3&cw=350&ch=200" data-srcset="https://pxc.cdn.ellitoral.com.ar/litoral/122019/1577791661264.jpg?&ma=3&cw=124&ch=78 150w, https://pxc.cdn.ellitoral.com.ar/litoral/122019/1577791661264.jpg?&ma=3&cw=279&ch=176 279w, https://pxc.cdn.ellitoral.com.ar/litoral/122019/1577791661264.jpg?&ma=3&cw=350&ch=220 350w, https://pxc.cdn.ellitoral.com.ar/litoral/122019/1577791661264.jpg?&ma=3&cw=620&ch=390 620w, https://pxc.cdn.ellitoral.com.ar/litoral/122019/1577791661264.jpg?&ma=3&cw=790&ch=494 790w">
+                        			</a>
+                        		</div>
+                        
+                        	</div>
+                        	<div class="nota_menu_cont">
+                        		<a href="/corrientes/2019-12-31-8-30-0-prohibieron-un-aceite-por-estar-rotulado-como-libre-de-gluten-sin-autorizacion"><div class="nota_tag "><label>MEDIDAS DE ANMAT</label></div></a>
+                        		<a href="/corrientes/2019-12-31-8-30-0-prohibieron-un-aceite-por-estar-rotulado-como-libre-de-gluten-sin-autorizacion">
+                        			<label class="nota_menu_texto">Prohibieron un aceite por estar rotulado como libre de gluten sin autorización</label>
+                        		</a>
+                        	</div>
+                        </div>  
+                        <div class="nota_menu">
+                        	<div class="nota_menu_imagen">
+                        
+                        
+                        		<div class="videoWrapper">
+                        			<a href="/corrientes/2019-12-31-1-0-0-insisten-en-cuidados-a-quienes-viajen-a-zonas-endemicas">
+                        				<img alt="Insisten en cuidados a quienes viajen a zonas endémicas" class="panel_imagen lazyload"  data-sizes="auto" data-src="https://pxc.cdn.ellitoral.com.ar/litoral/122019/1577760552727.jpg?&ma=3&cw=350&ch=200" data-srcset="https://pxc.cdn.ellitoral.com.ar/litoral/122019/1577760552727.jpg?&ma=3&cw=124&ch=78 150w, https://pxc.cdn.ellitoral.com.ar/litoral/122019/1577760552727.jpg?&ma=3&cw=279&ch=176 279w, https://pxc.cdn.ellitoral.com.ar/litoral/122019/1577760552727.jpg?&ma=3&cw=350&ch=220 350w, https://pxc.cdn.ellitoral.com.ar/litoral/122019/1577760552727.jpg?&ma=3&cw=620&ch=390 620w, https://pxc.cdn.ellitoral.com.ar/litoral/122019/1577760552727.jpg?&ma=3&cw=790&ch=494 790w">
+                        			</a>
+                        		</div>
+                        
+                        	</div>
+                        	<div class="nota_menu_cont">
+                        		<a href="/edicion-impresa"><div class="nota_tag "><label>Edición Impresa</label></div></a>
+                        		<a href="/corrientes/2019-12-31-1-0-0-insisten-en-cuidados-a-quienes-viajen-a-zonas-endemicas">
+                        			<label class="nota_menu_texto">Insisten en cuidados a quienes viajen a zonas endémicas</label>
+                        		</a>
+                        	</div>
+                        </div>  
+                  </div>
+                  <div class="menu opinion">                    
+                        <div class="nota_menu">
+                        	<div class="nota_menu_imagen">
+                        
+                        
+                        		<div class="videoWrapper">
+                        			<a href="/corrientes/2019-12-31-1-0-0-festejos-universales">
+                        				<img alt="Festejos universales" class="panel_imagen lazyload"  data-sizes="auto" data-src="https://pxc.cdn.ellitoral.com.ar/litoral/122019/1577763384307.jpg?&ma=3&cw=350&ch=200" data-srcset="https://pxc.cdn.ellitoral.com.ar/litoral/122019/1577763384307.jpg?&ma=3&cw=124&ch=78 150w, https://pxc.cdn.ellitoral.com.ar/litoral/122019/1577763384307.jpg?&ma=3&cw=279&ch=176 279w, https://pxc.cdn.ellitoral.com.ar/litoral/122019/1577763384307.jpg?&ma=3&cw=350&ch=220 350w, https://pxc.cdn.ellitoral.com.ar/litoral/122019/1577763384307.jpg?&ma=3&cw=620&ch=390 620w, https://pxc.cdn.ellitoral.com.ar/litoral/122019/1577763384307.jpg?&ma=3&cw=790&ch=494 790w">
+                        			</a>
+                        		</div>
+                        
+                        	</div>
+                        	<div class="nota_menu_cont">
+                        		<a href="/corrientes/2019-12-31-1-0-0-festejos-universales"><div class="nota_tag "><label>REFLEXION</label></div></a>
+                        		<a href="/corrientes/2019-12-31-1-0-0-festejos-universales">
+                        			<label class="nota_menu_texto">Festejos universales</label>
+                        		</a>
+                        	</div>
+                        </div>  
+                        <div class="nota_menu">
+                        	<div class="nota_menu_imagen">
+                        
+                        
+                        		<div class="videoWrapper">
+                        			<a href="/corrientes/2019-12-31-1-0-0-proyecciones-sobre-la-inflacion-de-enero">
+                        				<div class="panel_imagen imagen_fondo"></div>
+                        			</a>
+                        		</div>
+                        
+                        	</div>
+                        	<div class="nota_menu_cont">
+                        		<a href="/corrientes/2019-12-31-1-0-0-proyecciones-sobre-la-inflacion-de-enero"><div class="nota_tag "><label>EDITORIAL</label></div></a>
+                        		<a href="/corrientes/2019-12-31-1-0-0-proyecciones-sobre-la-inflacion-de-enero">
+                        			<label class="nota_menu_texto">Proyecciones sobre la inflación de enero</label>
+                        		</a>
+                        	</div>
+                        </div>  
+                        <div class="nota_menu">
+                        	<div class="nota_menu_imagen">
+                        
+                        
+                        		<div class="videoWrapper">
+                        			<a href="/corrientes/2019-12-30-1-0-0-ajuste-mas-de-lo-que-se-pedia">
+                        				<div class="panel_imagen imagen_fondo"></div>
+                        			</a>
+                        		</div>
+                        
+                        	</div>
+                        	<div class="nota_menu_cont">
+                        		<a href="/corrientes/2019-12-30-1-0-0-ajuste-mas-de-lo-que-se-pedia"><div class="nota_tag "><label>EDITORIAL</label></div></a>
+                        		<a href="/corrientes/2019-12-30-1-0-0-ajuste-mas-de-lo-que-se-pedia">
+                        			<label class="nota_menu_texto">Ajuste: más de lo  que se pedía</label>
+                        		</a>
+                        	</div>
+                        </div>  
+                  </div>
+                  <div class="menu hoy">                    
+                        <div class="nota_menu">
+                        	<div class="nota_menu_imagen">
+                        
+                        
+                        		<div class="videoWrapper">
+                        			<a href="/corrientes/2020-1-1-16-43-0-alcoholemia-en-corrientes-una-decena-de-casos-positivos-en-ano-nuevo">
+                        				<img alt="Alcoholemia en Corrientes: una decena de casos positivos en año nuevo" class="panel_imagen lazyload"  data-sizes="auto" data-src="https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577910636176.jpg?&ma=3&cw=350&ch=200" data-srcset="https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577910636176.jpg?&ma=3&cw=124&ch=78 150w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577910636176.jpg?&ma=3&cw=279&ch=176 279w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577910636176.jpg?&ma=3&cw=350&ch=220 350w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577910636176.jpg?&ma=3&cw=620&ch=390 620w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577910636176.jpg?&ma=3&cw=790&ch=494 790w">
+                        			</a>
+                        		</div>
+                        
+                        	</div>
+                        	<div class="nota_menu_cont">
+                        		<a href="/corrientes/2020-1-1-16-43-0-alcoholemia-en-corrientes-una-decena-de-casos-positivos-en-ano-nuevo"><div class="nota_tag "><label>SEGURIDAD VIAL</label></div></a>
+                        		<a href="/corrientes/2020-1-1-16-43-0-alcoholemia-en-corrientes-una-decena-de-casos-positivos-en-ano-nuevo">
+                        			<label class="nota_menu_texto">Alcoholemia en Corrientes: una decena de casos positivos en año nuevo</label>
+                        		</a>
+                        	</div>
+                        </div>  
+                        <div class="nota_menu">
+                        	<div class="nota_menu_imagen">
+                        
+                        
+                        		<div class="videoWrapper">
+                        			<a href="/corrientes/2020-1-1-19-41-0-murio-un-chico-de-21-anos-tras-un-accidente-en-moto">
+                        				<img alt="Murió un chico de 21 años tras un accidente en moto" class="panel_imagen lazyload"  data-sizes="auto" data-src="https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577918773255.jpg?&ma=3&cw=350&ch=200" data-srcset="https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577918773255.jpg?&ma=3&cw=124&ch=78 150w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577918773255.jpg?&ma=3&cw=279&ch=176 279w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577918773255.jpg?&ma=3&cw=350&ch=220 350w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577918773255.jpg?&ma=3&cw=620&ch=390 620w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577918773255.jpg?&ma=3&cw=790&ch=494 790w">
+                        			</a>
+                        		</div>
+                        
+                        	</div>
+                        	<div class="nota_menu_cont">
+                        		<a href="/corrientes/2020-1-1-19-41-0-murio-un-chico-de-21-anos-tras-un-accidente-en-moto"><div class="nota_tag "><label>UNA HERIDA GRAVE</label></div></a>
+                        		<a href="/corrientes/2020-1-1-19-41-0-murio-un-chico-de-21-anos-tras-un-accidente-en-moto">
+                        			<label class="nota_menu_texto">Murió un chico de 21 años tras un accidente en moto</label>
+                        		</a>
+                        	</div>
+                        </div>  
+                        <div class="nota_menu">
+                        	<div class="nota_menu_imagen">
+                        
+                        
+                        		<div class="videoWrapper">
+                        			<a href="/corrientes/2020-1-1-19-48-0-rina-agonizo-dos-dias-y-murio-en-el-hospital">
+                        				<img alt="Riña: agonizó dos días y murió en el hospital " class="panel_imagen lazyload"  data-sizes="auto" data-src="https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577919144250.jpg?&ma=3&cw=350&ch=200" data-srcset="https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577919144250.jpg?&ma=3&cw=124&ch=78 150w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577919144250.jpg?&ma=3&cw=279&ch=176 279w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577919144250.jpg?&ma=3&cw=350&ch=220 350w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577919144250.jpg?&ma=3&cw=620&ch=390 620w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577919144250.jpg?&ma=3&cw=790&ch=494 790w">
+                        			</a>
+                        		</div>
+                        
+                        	</div>
+                        	<div class="nota_menu_cont">
+                        		<a href="/corrientes/2020-1-1-19-48-0-rina-agonizo-dos-dias-y-murio-en-el-hospital"><div class="nota_tag "><label>FIGURA COMO NN</label></div></a>
+                        		<a href="/corrientes/2020-1-1-19-48-0-rina-agonizo-dos-dias-y-murio-en-el-hospital">
+                        			<label class="nota_menu_texto">Riña: agonizó dos días y murió en el hospital </label>
+                        		</a>
+                        	</div>
+                        </div>  
+                  </div>
+                  <div class="menu ciudad">                    
+                        <div class="nota_menu">
+                        	<div class="nota_menu_imagen">
+                        
+                        
+                        		<div class="videoWrapper">
+                        			<a href="/corrientes/2020-1-1-18-40-0-pese-a-los-avisos-los-festejos-dejaron-numerosos-minibasurales">
+                        				<img alt="Pese a los avisos, los festejos dejaron numerosos minibasurales" class="panel_imagen lazyload"  data-sizes="auto" data-src="https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577914899164.jpg?&ma=3&cw=350&ch=200" data-srcset="https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577914899164.jpg?&ma=3&cw=124&ch=78 150w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577914899164.jpg?&ma=3&cw=279&ch=176 279w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577914899164.jpg?&ma=3&cw=350&ch=220 350w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577914899164.jpg?&ma=3&cw=620&ch=390 620w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577914899164.jpg?&ma=3&cw=790&ch=494 790w">
+                        			</a>
+                        		</div>
+                        
+                        	</div>
+                        	<div class="nota_menu_cont">
+                        		<a href="/corrientes/2020-1-1-18-40-0-pese-a-los-avisos-los-festejos-dejaron-numerosos-minibasurales"><div class="nota_tag "><label>CORRIENTES</label></div></a>
+                        		<a href="/corrientes/2020-1-1-18-40-0-pese-a-los-avisos-los-festejos-dejaron-numerosos-minibasurales">
+                        			<label class="nota_menu_texto">Pese a los avisos, los festejos dejaron numerosos minibasurales</label>
+                        		</a>
+                        	</div>
+                        </div>  
+                        <div class="nota_menu">
+                        	<div class="nota_menu_imagen">
+                        
+                        
+                        		<div class="videoWrapper">
+                        			<a href="/corrientes/2020-1-1-16-43-0-alcoholemia-en-corrientes-una-decena-de-casos-positivos-en-ano-nuevo">
+                        				<img alt="Alcoholemia en Corrientes: una decena de casos positivos en año nuevo" class="panel_imagen lazyload"  data-sizes="auto" data-src="https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577910636176.jpg?&ma=3&cw=350&ch=200" data-srcset="https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577910636176.jpg?&ma=3&cw=124&ch=78 150w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577910636176.jpg?&ma=3&cw=279&ch=176 279w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577910636176.jpg?&ma=3&cw=350&ch=220 350w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577910636176.jpg?&ma=3&cw=620&ch=390 620w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577910636176.jpg?&ma=3&cw=790&ch=494 790w">
+                        			</a>
+                        		</div>
+                        
+                        	</div>
+                        	<div class="nota_menu_cont">
+                        		<a href="/corrientes/2020-1-1-16-43-0-alcoholemia-en-corrientes-una-decena-de-casos-positivos-en-ano-nuevo"><div class="nota_tag "><label>SEGURIDAD VIAL</label></div></a>
+                        		<a href="/corrientes/2020-1-1-16-43-0-alcoholemia-en-corrientes-una-decena-de-casos-positivos-en-ano-nuevo">
+                        			<label class="nota_menu_texto">Alcoholemia en Corrientes: una decena de casos positivos en año nuevo</label>
+                        		</a>
+                        	</div>
+                        </div>  
+                        <div class="nota_menu">
+                        	<div class="nota_menu_imagen">
+                        
+                        
+                        		<div class="videoWrapper">
+                        			<a href="/corrientes/2020-1-1-10-28-0-tassano-logramos-avances-en-la-promocion-y-el-desarrollo-del-carnaval">
+                        				<img alt="Tassano: "Logramos avances en la promoción y el desarrollo del Carnaval"" class="panel_imagen lazyload"  data-sizes="auto" data-src="https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577885214435.jpg?&ma=3&cw=350&ch=200" data-srcset="https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577885214435.jpg?&ma=3&cw=124&ch=78 150w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577885214435.jpg?&ma=3&cw=279&ch=176 279w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577885214435.jpg?&ma=3&cw=350&ch=220 350w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577885214435.jpg?&ma=3&cw=620&ch=390 620w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577885214435.jpg?&ma=3&cw=790&ch=494 790w">
+                        			</a>
+                        		</div>
+                        
+                        	</div>
+                        	<div class="nota_menu_cont">
+                        		<a href="/corrientes/2020-1-1-10-28-0-tassano-logramos-avances-en-la-promocion-y-el-desarrollo-del-carnaval"><div class="nota_tag "><label>VERANO CON AGENDA CARGADA</label></div></a>
+                        		<a href="/corrientes/2020-1-1-10-28-0-tassano-logramos-avances-en-la-promocion-y-el-desarrollo-del-carnaval">
+                        			<label class="nota_menu_texto">Tassano: &quot;Logramos avances en la promoción y el desarrollo del Carnaval&quot;</label>
+                        		</a>
+                        	</div>
+                        </div>  
+                  </div>
+                  <div class="menu funebres">                    
+                        <div class="nota_menu">
+                        	<div class="nota_menu_imagen">
+                        
+                        
+                        		<div class="videoWrapper">
+                        			<a href="/corrientes/2019-12-31-1-41-0-maria-marta-rinesi">
+                        				<div class="panel_imagen imagen_fondo"></div>
+                        			</a>
+                        		</div>
+                        
+                        	</div>
+                        	<div class="nota_menu_cont">
+                        		<a href="/funebres"><div class="nota_tag "><label>Fúnebres</label></div></a>
+                        		<a href="/corrientes/2019-12-31-1-41-0-maria-marta-rinesi">
+                        			<label class="nota_menu_texto">MARIA MARTA RINESI</label>
+                        		</a>
+                        	</div>
+                        </div>  
+                        <div class="nota_menu">
+                        	<div class="nota_menu_imagen">
+                        
+                        
+                        		<div class="videoWrapper">
+                        			<a href="/corrientes/2019-12-31-1-40-0-maria-cristina-gomez-sierra-de-bonastre">
+                        				<div class="panel_imagen imagen_fondo"></div>
+                        			</a>
+                        		</div>
+                        
+                        	</div>
+                        	<div class="nota_menu_cont">
+                        		<a href="/funebres"><div class="nota_tag "><label>Fúnebres</label></div></a>
+                        		<a href="/corrientes/2019-12-31-1-40-0-maria-cristina-gomez-sierra-de-bonastre">
+                        			<label class="nota_menu_texto">MARIA CRISTINA  GOMEZ SIERRA  DE BONASTRE</label>
+                        		</a>
+                        	</div>
+                        </div>  
+                        <div class="nota_menu">
+                        	<div class="nota_menu_imagen">
+                        
+                        
+                        		<div class="videoWrapper">
+                        			<a href="/corrientes/2019-12-31-1-39-0-jorge-domingo-perna">
+                        				<div class="panel_imagen imagen_fondo"></div>
+                        			</a>
+                        		</div>
+                        
+                        	</div>
+                        	<div class="nota_menu_cont">
+                        		<a href="/funebres"><div class="nota_tag "><label>Fúnebres</label></div></a>
+                        		<a href="/corrientes/2019-12-31-1-39-0-jorge-domingo-perna">
+                        			<label class="nota_menu_texto">JORGE DOMINGO PERNA</label>
+                        		</a>
+                        	</div>
+                        </div>  
+                  </div>
+                  <div class="menu servicios">                    
+                  </div>
+                  <div class="menu actualidad">                    
+                        <div class="nota_menu">
+                        	<div class="nota_menu_imagen">
+                        
+                        
+                        		<div class="videoWrapper">
+                        			<a href="/corrientes/2019-12-31-14-48-0-comienza-el-pago-de-becas-pensiones-y-programas-sociales-de-la-provincia">
+                        				<img alt="Comienza el pago de becas, pensiones y programas sociales de la Provincia" class="panel_imagen lazyload"  data-sizes="auto" data-src="https://pxc.cdn.ellitoral.com.ar/litoral/122019/1577815343387.jpg?&ma=3&cw=350&ch=200" data-srcset="https://pxc.cdn.ellitoral.com.ar/litoral/122019/1577815343387.jpg?&ma=3&cw=124&ch=78 150w, https://pxc.cdn.ellitoral.com.ar/litoral/122019/1577815343387.jpg?&ma=3&cw=279&ch=176 279w, https://pxc.cdn.ellitoral.com.ar/litoral/122019/1577815343387.jpg?&ma=3&cw=350&ch=220 350w, https://pxc.cdn.ellitoral.com.ar/litoral/122019/1577815343387.jpg?&ma=3&cw=620&ch=390 620w, https://pxc.cdn.ellitoral.com.ar/litoral/122019/1577815343387.jpg?&ma=3&cw=790&ch=494 790w">
+                        			</a>
+                        		</div>
+                        
+                        	</div>
+                        	<div class="nota_menu_cont">
+                        		<a href="/corrientes/2019-12-31-14-48-0-comienza-el-pago-de-becas-pensiones-y-programas-sociales-de-la-provincia"><div class="nota_tag "><label>BANCO DE CORRIENTES</label></div></a>
+                        		<a href="/corrientes/2019-12-31-14-48-0-comienza-el-pago-de-becas-pensiones-y-programas-sociales-de-la-provincia">
+                        			<label class="nota_menu_texto">Comienza el pago de becas, pensiones y programas sociales de la Provincia</label>
+                        		</a>
+                        	</div>
+                        </div>  
+                        <div class="nota_menu">
+                        	<div class="nota_menu_imagen">
+                        
+                        
+                        		<div class="videoWrapper">
+                        			<a href="/corrientes/2019-12-31-1-57-0-tassano-volvio-a-respaldar-la-instalacion-del-shopping-y-hablo-de-los-paradores">
+                        				<img alt="Tassano volvió a respaldar la instalación del shopping y habló de los paradores" class="panel_imagen lazyload"  data-sizes="auto" data-src="https://pxc.cdn.ellitoral.com.ar/litoral/122019/1577768370709.jpg?&ma=3&cw=350&ch=200" data-srcset="https://pxc.cdn.ellitoral.com.ar/litoral/122019/1577768370709.jpg?&ma=3&cw=124&ch=78 150w, https://pxc.cdn.ellitoral.com.ar/litoral/122019/1577768370709.jpg?&ma=3&cw=279&ch=176 279w, https://pxc.cdn.ellitoral.com.ar/litoral/122019/1577768370709.jpg?&ma=3&cw=350&ch=220 350w, https://pxc.cdn.ellitoral.com.ar/litoral/122019/1577768370709.jpg?&ma=3&cw=620&ch=390 620w, https://pxc.cdn.ellitoral.com.ar/litoral/122019/1577768370709.jpg?&ma=3&cw=790&ch=494 790w">
+                        			</a>
+                        		</div>
+                        
+                        	</div>
+                        	<div class="nota_menu_cont">
+                        		<a href="/edicion-impresa"><div class="nota_tag "><label>Edición Impresa</label></div></a>
+                        		<a href="/corrientes/2019-12-31-1-57-0-tassano-volvio-a-respaldar-la-instalacion-del-shopping-y-hablo-de-los-paradores">
+                        			<label class="nota_menu_texto">Tassano volvió a respaldar la instalación del shopping y habló de los paradores</label>
+                        		</a>
+                        	</div>
+                        </div>  
+                        <div class="nota_menu">
+                        	<div class="nota_menu_imagen">
+                        
+                        
+                        		<div class="videoWrapper">
+                        			<a href="/corrientes/2019-12-31-1-56-0-concejales-presentaron-93-proyectos-de-ordenanzas-y-1-295-comunicaciones">
+                        				<img alt="Concejales presentaron 93 proyectos de ordenanzas y 1.295 comunicaciones" class="panel_imagen lazyload"  data-sizes="auto" data-src="https://pxc.cdn.ellitoral.com.ar/litoral/122019/1577768246012.jpg?&ma=3&cw=350&ch=200" data-srcset="https://pxc.cdn.ellitoral.com.ar/litoral/122019/1577768246012.jpg?&ma=3&cw=124&ch=78 150w, https://pxc.cdn.ellitoral.com.ar/litoral/122019/1577768246012.jpg?&ma=3&cw=279&ch=176 279w, https://pxc.cdn.ellitoral.com.ar/litoral/122019/1577768246012.jpg?&ma=3&cw=350&ch=220 350w, https://pxc.cdn.ellitoral.com.ar/litoral/122019/1577768246012.jpg?&ma=3&cw=620&ch=390 620w, https://pxc.cdn.ellitoral.com.ar/litoral/122019/1577768246012.jpg?&ma=3&cw=790&ch=494 790w">
+                        			</a>
+                        		</div>
+                        
+                        	</div>
+                        	<div class="nota_menu_cont">
+                        		<a href="/corrientes/2019-12-31-1-56-0-concejales-presentaron-93-proyectos-de-ordenanzas-y-1-295-comunicaciones"><div class="nota_tag "><label>año legislativo en numeros </label></div></a>
+                        		<a href="/corrientes/2019-12-31-1-56-0-concejales-presentaron-93-proyectos-de-ordenanzas-y-1-295-comunicaciones">
+                        			<label class="nota_menu_texto">Concejales presentaron 93 proyectos de ordenanzas y 1.295 comunicaciones</label>
+                        		</a>
+                        	</div>
+                        </div>  
+                  </div>
+                  <div class="menu deportes">                    
+                        <div class="nota_menu">
+                        	<div class="nota_menu_imagen">
+                        
+                        
+                        		<div class="videoWrapper">
+                        			<a href="/corrientes/2020-1-1-18-15-0-el-cordobes-sordi-se-consagro-en-la-pfl-y-se-llevo-un-millon-de-dolares-de-premio">
+                        				<img alt="Un cordobés ganó un millón de dólares en un torneo de artes marciales" class="panel_imagen lazyload"  data-sizes="auto" data-src="https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577913408838.jpg?&ma=3&cw=350&ch=200" data-srcset="https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577913408838.jpg?&ma=3&cw=124&ch=78 150w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577913408838.jpg?&ma=3&cw=279&ch=176 279w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577913408838.jpg?&ma=3&cw=350&ch=220 350w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577913408838.jpg?&ma=3&cw=620&ch=390 620w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577913408838.jpg?&ma=3&cw=790&ch=494 790w">
+                        			</a>
+                        		</div>
+                        
+                        	</div>
+                        	<div class="nota_menu_cont">
+                        		<a href="/corrientes/2020-1-1-18-15-0-el-cordobes-sordi-se-consagro-en-la-pfl-y-se-llevo-un-millon-de-dolares-de-premio"><div class="nota_tag "><label>PFL</label></div></a>
+                        		<a href="/corrientes/2020-1-1-18-15-0-el-cordobes-sordi-se-consagro-en-la-pfl-y-se-llevo-un-millon-de-dolares-de-premio">
+                        			<label class="nota_menu_texto">Un cordobés ganó un millón de dólares en un torneo de artes marciales</label>
+                        		</a>
+                        	</div>
+                        </div>  
+                        <div class="nota_menu">
+                        	<div class="nota_menu_imagen">
+                        
+                        
+                        		<div class="videoWrapper">
+                        			<a href="/corrientes/2020-1-1-16-4-0-independiente-comienza-el-ciclo-pusineri">
+                        				<img alt="Independiente comienza el ciclo Pusineri" class="panel_imagen lazyload"  data-sizes="auto" data-src="https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577905456589.jpg?&ma=3&cw=350&ch=200" data-srcset="https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577905456589.jpg?&ma=3&cw=124&ch=78 150w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577905456589.jpg?&ma=3&cw=279&ch=176 279w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577905456589.jpg?&ma=3&cw=350&ch=220 350w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577905456589.jpg?&ma=3&cw=620&ch=390 620w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577905456589.jpg?&ma=3&cw=790&ch=494 790w">
+                        			</a>
+                        		</div>
+                        
+                        	</div>
+                        	<div class="nota_menu_cont">
+                        		<a href="/corrientes/2020-1-1-16-4-0-independiente-comienza-el-ciclo-pusineri"><div class="nota_tag "><label>ULTIMO CAMPEÓN LOCAL</label></div></a>
+                        		<a href="/corrientes/2020-1-1-16-4-0-independiente-comienza-el-ciclo-pusineri">
+                        			<label class="nota_menu_texto">Independiente comienza el ciclo Pusineri</label>
+                        		</a>
+                        	</div>
+                        </div>  
+                        <div class="nota_menu">
+                        	<div class="nota_menu_imagen">
+                        
+                        
+                        		<div class="videoWrapper">
+                        			<a href="/corrientes/2019-12-31-16-0-0-d-alessandro-renovo-contrato-con-inter-por-una-temporada-mas">
+                        				<img alt="D'Alessandro renovó contrato con Inter por una temporada más" class="panel_imagen lazyload"  data-sizes="auto" data-src="https://pxc.cdn.ellitoral.com.ar/litoral/122019/1577818832767.jpg?&ma=3&cw=350&ch=200" data-srcset="https://pxc.cdn.ellitoral.com.ar/litoral/122019/1577818832767.jpg?&ma=3&cw=124&ch=78 150w, https://pxc.cdn.ellitoral.com.ar/litoral/122019/1577818832767.jpg?&ma=3&cw=279&ch=176 279w, https://pxc.cdn.ellitoral.com.ar/litoral/122019/1577818832767.jpg?&ma=3&cw=350&ch=220 350w, https://pxc.cdn.ellitoral.com.ar/litoral/122019/1577818832767.jpg?&ma=3&cw=620&ch=390 620w, https://pxc.cdn.ellitoral.com.ar/litoral/122019/1577818832767.jpg?&ma=3&cw=790&ch=494 790w">
+                        			</a>
+                        		</div>
+                        
+                        	</div>
+                        	<div class="nota_menu_cont">
+                        		<a href="/corrientes/2019-12-31-16-0-0-d-alessandro-renovo-contrato-con-inter-por-una-temporada-mas"><div class="nota_tag "><label>BRASIL</label></div></a>
+                        		<a href="/corrientes/2019-12-31-16-0-0-d-alessandro-renovo-contrato-con-inter-por-una-temporada-mas">
+                        			<label class="nota_menu_texto">D&#x27;Alessandro renovó contrato con Inter por una temporada más</label>
+                        		</a>
+                        	</div>
+                        </div>  
+                  </div>
+                  <div class="menu nacional">                    
+                        <div class="nota_menu">
+                        	<div class="nota_menu_imagen">
+                        
+                        
+                        		<div class="videoWrapper">
+                        			<a href="/corrientes/2020-1-1-17-32-0-moyano-se-reunio-con-el-ministro-de-trabajo-y-le-pidio-paritarias-libres">
+                        				<img alt="Moyano se reunió con el ministro de Trabajo y le pidió paritarias libres" class="panel_imagen lazyload"  data-sizes="auto" data-src="https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577910769053.jpg?&ma=3&cw=350&ch=200" data-srcset="https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577910769053.jpg?&ma=3&cw=124&ch=78 150w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577910769053.jpg?&ma=3&cw=279&ch=176 279w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577910769053.jpg?&ma=3&cw=350&ch=220 350w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577910769053.jpg?&ma=3&cw=620&ch=390 620w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577910769053.jpg?&ma=3&cw=790&ch=494 790w">
+                        			</a>
+                        		</div>
+                        
+                        	</div>
+                        	<div class="nota_menu_cont">
+                        		<a href="/corrientes/2020-1-1-17-32-0-moyano-se-reunio-con-el-ministro-de-trabajo-y-le-pidio-paritarias-libres"><div class="nota_tag "><label>SINDICALISMO</label></div></a>
+                        		<a href="/corrientes/2020-1-1-17-32-0-moyano-se-reunio-con-el-ministro-de-trabajo-y-le-pidio-paritarias-libres">
+                        			<label class="nota_menu_texto">Moyano se reunió con el ministro de Trabajo y le pidió paritarias libres</label>
+                        		</a>
+                        	</div>
+                        </div>  
+                        <div class="nota_menu">
+                        	<div class="nota_menu_imagen">
+                        
+                        
+                        		<div class="videoWrapper">
+                        			<a href="/corrientes/2020-1-1-16-17-0-voraz-incendio-en-un-frigorifico">
+                        				<img alt="Voraz incendio en un frigorífico" class="panel_imagen lazyload"  data-sizes="auto" data-src="https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577906269409.jpg?&ma=3&cw=350&ch=200" data-srcset="https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577906269409.jpg?&ma=3&cw=124&ch=78 150w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577906269409.jpg?&ma=3&cw=279&ch=176 279w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577906269409.jpg?&ma=3&cw=350&ch=220 350w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577906269409.jpg?&ma=3&cw=620&ch=390 620w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577906269409.jpg?&ma=3&cw=790&ch=494 790w">
+                        			</a>
+                        		</div>
+                        
+                        	</div>
+                        	<div class="nota_menu_cont">
+                        		<a href="/corrientes/2020-1-1-16-17-0-voraz-incendio-en-un-frigorifico"><div class="nota_tag "><label>GENERAL LAS HERAS</label></div></a>
+                        		<a href="/corrientes/2020-1-1-16-17-0-voraz-incendio-en-un-frigorifico">
+                        			<label class="nota_menu_texto">Voraz incendio en un frigorífico</label>
+                        		</a>
+                        	</div>
+                        </div>  
+                        <div class="nota_menu">
+                        	<div class="nota_menu_imagen">
+                        
+                        
+                        		<div class="videoWrapper">
+                        			<a href="/corrientes/2020-1-1-16-0-0-el-senado-abrira-la-discusion-de-jubilaciones-especiales-alquileres-y-gondolas">
+                        				<img alt="El Senado abrirá la discusión de jubilaciones especiales, alquileres y góndolas" class="panel_imagen lazyload"  data-sizes="auto" data-src="https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577905339056.jpg?&ma=3&cw=350&ch=200" data-srcset="https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577905339056.jpg?&ma=3&cw=124&ch=78 150w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577905339056.jpg?&ma=3&cw=279&ch=176 279w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577905339056.jpg?&ma=3&cw=350&ch=220 350w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577905339056.jpg?&ma=3&cw=620&ch=390 620w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577905339056.jpg?&ma=3&cw=790&ch=494 790w">
+                        			</a>
+                        		</div>
+                        
+                        	</div>
+                        	<div class="nota_menu_cont">
+                        		<a href="/corrientes/2020-1-1-16-0-0-el-senado-abrira-la-discusion-de-jubilaciones-especiales-alquileres-y-gondolas"><div class="nota_tag "><label>MEDIADOS DE MES</label></div></a>
+                        		<a href="/corrientes/2020-1-1-16-0-0-el-senado-abrira-la-discusion-de-jubilaciones-especiales-alquileres-y-gondolas">
+                        			<label class="nota_menu_texto">El Senado abrirá la discusión de jubilaciones especiales, alquileres y góndolas</label>
+                        		</a>
+                        	</div>
+                        </div>  
+                  </div>
+                  <div class="menu internacional">                    
+                        <div class="nota_menu">
+                        	<div class="nota_menu_imagen">
+                        
+                        
+                        		<div class="videoWrapper">
+                        			<a href="/corrientes/2020-1-1-18-28-0-un-partido-amistoso-entre-presos-narcos-termino-con-16-muertos-en-una-carcel">
+                        				<img alt="Un partido amistoso entre presos narcos terminó con 16 muertos en una cárcel" class="panel_imagen lazyload"  data-sizes="auto" data-src="https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577914112816.jpg?&ma=3&cw=350&ch=200" data-srcset="https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577914112816.jpg?&ma=3&cw=124&ch=78 150w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577914112816.jpg?&ma=3&cw=279&ch=176 279w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577914112816.jpg?&ma=3&cw=350&ch=220 350w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577914112816.jpg?&ma=3&cw=620&ch=390 620w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577914112816.jpg?&ma=3&cw=790&ch=494 790w">
+                        			</a>
+                        		</div>
+                        
+                        	</div>
+                        	<div class="nota_menu_cont">
+                        		<a href="/corrientes/2020-1-1-18-28-0-un-partido-amistoso-entre-presos-narcos-termino-con-16-muertos-en-una-carcel"><div class="nota_tag "><label>MÉXICO</label></div></a>
+                        		<a href="/corrientes/2020-1-1-18-28-0-un-partido-amistoso-entre-presos-narcos-termino-con-16-muertos-en-una-carcel">
+                        			<label class="nota_menu_texto">Un partido amistoso entre presos narcos terminó con 16 muertos en una cárcel</label>
+                        		</a>
+                        	</div>
+                        </div>  
+                        <div class="nota_menu">
+                        	<div class="nota_menu_imagen">
+                        
+                        
+                        		<div class="videoWrapper">
+                        			<a href="/corrientes/2020-1-1-16-11-0-casi-tres-millones-de-personas-recibieron-el-2020-en-las-playas-de-rio-de-janeiro">
+                        				<img alt="Casi tres millones de personas recibieron el 2020 en las playas de Río de Janeiro" class="panel_imagen lazyload"  data-sizes="auto" data-src="https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577906017120.jpg?&ma=3&cw=350&ch=200" data-srcset="https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577906017120.jpg?&ma=3&cw=124&ch=78 150w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577906017120.jpg?&ma=3&cw=279&ch=176 279w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577906017120.jpg?&ma=3&cw=350&ch=220 350w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577906017120.jpg?&ma=3&cw=620&ch=390 620w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577906017120.jpg?&ma=3&cw=790&ch=494 790w">
+                        			</a>
+                        		</div>
+                        
+                        	</div>
+                        	<div class="nota_menu_cont">
+                        		<a href="/corrientes/2020-1-1-16-11-0-casi-tres-millones-de-personas-recibieron-el-2020-en-las-playas-de-rio-de-janeiro"><div class="nota_tag "><label>BRASIL</label></div></a>
+                        		<a href="/corrientes/2020-1-1-16-11-0-casi-tres-millones-de-personas-recibieron-el-2020-en-las-playas-de-rio-de-janeiro">
+                        			<label class="nota_menu_texto">Casi tres millones de personas recibieron el 2020 en las playas de Río de Janeiro</label>
+                        		</a>
+                        	</div>
+                        </div>  
+                        <div class="nota_menu">
+                        	<div class="nota_menu_imagen">
+                        
+                        
+                        		<div class="videoWrapper">
+                        			<a href="/corrientes/2020-1-1-10-39-0-francisco-pidio-disculpas-por-el-incidente-con-una-fiel">
+                        				<img alt="Francisco pidió "disculpas" por el incidente con una fiel" class="panel_imagen lazyload"  data-sizes="auto" data-src="https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577886002725.jpg?&ma=3&cw=350&ch=200" data-srcset="https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577886002725.jpg?&ma=3&cw=124&ch=78 150w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577886002725.jpg?&ma=3&cw=279&ch=176 279w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577886002725.jpg?&ma=3&cw=350&ch=220 350w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577886002725.jpg?&ma=3&cw=620&ch=390 620w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577886002725.jpg?&ma=3&cw=790&ch=494 790w">
+                        			</a>
+                        		</div>
+                        
+                        	</div>
+                        	<div class="nota_menu_cont">
+                        		<a href="/corrientes/2020-1-1-10-39-0-francisco-pidio-disculpas-por-el-incidente-con-una-fiel"><div class="nota_tag "><label>PLAZA SAN PEDRO</label></div></a>
+                        		<a href="/corrientes/2020-1-1-10-39-0-francisco-pidio-disculpas-por-el-incidente-con-una-fiel">
+                        			<label class="nota_menu_texto">Francisco pidió &quot;disculpas&quot; por el incidente con una fiel</label>
+                        		</a>
+                        	</div>
+                        </div>  
+                  </div>
+                  <div class="menu interior">                    
+                        <div class="nota_menu">
+                        	<div class="nota_menu_imagen">
+                        
+                        
+                        		<div class="videoWrapper">
+                        			<a href="/corrientes/2020-1-1-11-43-0-los-dos-primeros-nacimientos-de-2020-fueron-en-goya-y-saladas">
+                        				<img alt="Los dos primeros nacimientos de 2020 fueron en Goya y Saladas" class="panel_imagen lazyload"  data-sizes="auto" data-src="https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577889796759.jpg?&ma=3&cw=350&ch=200" data-srcset="https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577889796759.jpg?&ma=3&cw=124&ch=78 150w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577889796759.jpg?&ma=3&cw=279&ch=176 279w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577889796759.jpg?&ma=3&cw=350&ch=220 350w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577889796759.jpg?&ma=3&cw=620&ch=390 620w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577889796759.jpg?&ma=3&cw=790&ch=494 790w">
+                        			</a>
+                        		</div>
+                        
+                        	</div>
+                        	<div class="nota_menu_cont">
+                        		<a href="/corrientes/2020-1-1-11-43-0-los-dos-primeros-nacimientos-de-2020-fueron-en-goya-y-saladas"><div class="nota_tag "><label>TEMPRANEROS NIÑOS</label></div></a>
+                        		<a href="/corrientes/2020-1-1-11-43-0-los-dos-primeros-nacimientos-de-2020-fueron-en-goya-y-saladas">
+                        			<label class="nota_menu_texto">Los dos primeros nacimientos de 2020 fueron en Goya y Saladas</label>
+                        		</a>
+                        	</div>
+                        </div>  
+                        <div class="nota_menu">
+                        	<div class="nota_menu_imagen">
+                        
+                        
+                        		<div class="videoWrapper">
+                        			<a href="/corrientes/2019-12-31-16-34-0-riachuelo-pago-anticipado-de-tributos-con-20-de-descuentos">
+                        				<img alt="Riachuelo: pago anticipado de tributos con 20% de descuento" class="panel_imagen lazyload"  data-sizes="auto" data-src="https://pxc.cdn.ellitoral.com.ar/litoral/122019/1577821028352.jpg?&ma=3&cw=350&ch=200" data-srcset="https://pxc.cdn.ellitoral.com.ar/litoral/122019/1577821028352.jpg?&ma=3&cw=124&ch=78 150w, https://pxc.cdn.ellitoral.com.ar/litoral/122019/1577821028352.jpg?&ma=3&cw=279&ch=176 279w, https://pxc.cdn.ellitoral.com.ar/litoral/122019/1577821028352.jpg?&ma=3&cw=350&ch=220 350w, https://pxc.cdn.ellitoral.com.ar/litoral/122019/1577821028352.jpg?&ma=3&cw=620&ch=390 620w, https://pxc.cdn.ellitoral.com.ar/litoral/122019/1577821028352.jpg?&ma=3&cw=790&ch=494 790w">
+                        			</a>
+                        		</div>
+                        
+                        	</div>
+                        	<div class="nota_menu_cont">
+                        		<a href="/corrientes/2019-12-31-16-34-0-riachuelo-pago-anticipado-de-tributos-con-20-de-descuentos"><div class="nota_tag "><label>IMPUESTOS</label></div></a>
+                        		<a href="/corrientes/2019-12-31-16-34-0-riachuelo-pago-anticipado-de-tributos-con-20-de-descuentos">
+                        			<label class="nota_menu_texto">Riachuelo: pago anticipado de tributos con 20% de descuento</label>
+                        		</a>
+                        	</div>
+                        </div>  
+                        <div class="nota_menu">
+                        	<div class="nota_menu_imagen">
+                        
+                        
+                        		<div class="videoWrapper">
+                        			<a href="/corrientes/2019-12-31-2-6-0-municipio-goyano-recibio-a-los-tabacaleros-evaluaron-su-situacion-y-acordaron-gestiones-conjuntas">
+                        				<img alt="Municipio goyano recibió a los tabacaleros" class="panel_imagen lazyload"  data-sizes="auto" data-src="https://pxc.cdn.ellitoral.com.ar/litoral/122019/1577768829059.jpg?&ma=3&cw=350&ch=200" data-srcset="https://pxc.cdn.ellitoral.com.ar/litoral/122019/1577768829059.jpg?&ma=3&cw=124&ch=78 150w, https://pxc.cdn.ellitoral.com.ar/litoral/122019/1577768829059.jpg?&ma=3&cw=279&ch=176 279w, https://pxc.cdn.ellitoral.com.ar/litoral/122019/1577768829059.jpg?&ma=3&cw=350&ch=220 350w, https://pxc.cdn.ellitoral.com.ar/litoral/122019/1577768829059.jpg?&ma=3&cw=620&ch=390 620w, https://pxc.cdn.ellitoral.com.ar/litoral/122019/1577768829059.jpg?&ma=3&cw=790&ch=494 790w">
+                        			</a>
+                        		</div>
+                        
+                        	</div>
+                        	<div class="nota_menu_cont">
+                        		<a href="/edicion-impresa"><div class="nota_tag "><label>Edición Impresa</label></div></a>
+                        		<a href="/corrientes/2019-12-31-2-6-0-municipio-goyano-recibio-a-los-tabacaleros-evaluaron-su-situacion-y-acordaron-gestiones-conjuntas">
+                        			<label class="nota_menu_texto">Municipio goyano recibió a los tabacaleros</label>
+                        		</a>
+                        	</div>
+                        </div>  
+                  </div>
+                  <div class="menu cultura">                    
+                        <div class="nota_menu">
+                        	<div class="nota_menu_imagen">
+                        
+                        
+                        		<div class="videoWrapper">
+                        			<a href="/corrientes/2019-12-30-12-44-0-lourdes-sanchez-y-el-chato-prada-disfrutan-de-la-playa-arazati">
+                        				<img alt="Lourdes Sánchez y el Chato Prada disfrutan de la playa Arazaty" class="panel_imagen lazyload"  data-sizes="auto" data-src="https://pxc.cdn.ellitoral.com.ar/litoral/122019/1577721537054.jpg?&ma=3&x=145&y=48&width=807&height=484&rotate=0&scaleX=1&scaleY=1&ow=1152&oh=532&cw=350&ch=200" data-srcset="https://pxc.cdn.ellitoral.com.ar/litoral/122019/1577721537054.jpg?&ma=3&x=145&y=48&width=807&height=484&rotate=0&scaleX=1&scaleY=1&ow=1152&oh=532&cw=124&ch=78 150w, https://pxc.cdn.ellitoral.com.ar/litoral/122019/1577721537054.jpg?&ma=3&x=145&y=48&width=807&height=484&rotate=0&scaleX=1&scaleY=1&ow=1152&oh=532&cw=279&ch=176 279w, https://pxc.cdn.ellitoral.com.ar/litoral/122019/1577721537054.jpg?&ma=3&x=145&y=48&width=807&height=484&rotate=0&scaleX=1&scaleY=1&ow=1152&oh=532&cw=350&ch=220 350w, https://pxc.cdn.ellitoral.com.ar/litoral/122019/1577721537054.jpg?&ma=3&x=145&y=48&width=807&height=484&rotate=0&scaleX=1&scaleY=1&ow=1152&oh=532&cw=620&ch=390 620w, https://pxc.cdn.ellitoral.com.ar/litoral/122019/1577721537054.jpg?&ma=3&x=145&y=48&width=807&height=484&rotate=0&scaleX=1&scaleY=1&ow=1152&oh=532&cw=790&ch=494 790w">
+                        			</a>
+                        		</div>
+                        
+                        	</div>
+                        	<div class="nota_menu_cont">
+                        		<a href="/corrientes/2019-12-30-12-44-0-lourdes-sanchez-y-el-chato-prada-disfrutan-de-la-playa-arazati"><div class="nota_tag "><label>CORRIENTES</label></div></a>
+                        		<a href="/corrientes/2019-12-30-12-44-0-lourdes-sanchez-y-el-chato-prada-disfrutan-de-la-playa-arazati">
+                        			<label class="nota_menu_texto">Lourdes Sánchez y el Chato Prada disfrutan de la playa Arazaty</label>
+                        		</a>
+                        	</div>
+                        </div>  
+                        <div class="nota_menu">
+                        	<div class="nota_menu_imagen">
+                        
+                        
+                        		<div class="videoWrapper">
+                        			<a href="/corrientes/2019-12-29-10-20-0-los-emojis-elegidos-como-la-palabra-del-ano-2019">
+                        				<img alt="Los ‘emojis’, elegidos como la palabra del año 2019" class="panel_imagen lazyload"  data-sizes="auto" data-src="https://pxc.cdn.ellitoral.com.ar/litoral/122019/1577626036654.jpg?&ma=3&x=44&y=43&width=1051&height=630&rotate=0&scaleX=1&scaleY=1&ow=1200&oh=675&cw=350&ch=200" data-srcset="https://pxc.cdn.ellitoral.com.ar/litoral/122019/1577626036654.jpg?&ma=3&x=44&y=43&width=1051&height=630&rotate=0&scaleX=1&scaleY=1&ow=1200&oh=675&cw=124&ch=78 150w, https://pxc.cdn.ellitoral.com.ar/litoral/122019/1577626036654.jpg?&ma=3&x=44&y=43&width=1051&height=630&rotate=0&scaleX=1&scaleY=1&ow=1200&oh=675&cw=279&ch=176 279w, https://pxc.cdn.ellitoral.com.ar/litoral/122019/1577626036654.jpg?&ma=3&x=44&y=43&width=1051&height=630&rotate=0&scaleX=1&scaleY=1&ow=1200&oh=675&cw=350&ch=220 350w, https://pxc.cdn.ellitoral.com.ar/litoral/122019/1577626036654.jpg?&ma=3&x=44&y=43&width=1051&height=630&rotate=0&scaleX=1&scaleY=1&ow=1200&oh=675&cw=620&ch=390 620w, https://pxc.cdn.ellitoral.com.ar/litoral/122019/1577626036654.jpg?&ma=3&x=44&y=43&width=1051&height=630&rotate=0&scaleX=1&scaleY=1&ow=1200&oh=675&cw=790&ch=494 790w">
+                        			</a>
+                        		</div>
+                        
+                        	</div>
+                        	<div class="nota_menu_cont">
+                        		<a href="/corrientes/2019-12-29-10-20-0-los-emojis-elegidos-como-la-palabra-del-ano-2019"><div class="nota_tag "><label>ELEGIDO POR FUNDÉU BBVA</label></div></a>
+                        		<a href="/corrientes/2019-12-29-10-20-0-los-emojis-elegidos-como-la-palabra-del-ano-2019">
+                        			<label class="nota_menu_texto">Los ‘emojis’, elegidos como la palabra del año 2019</label>
+                        		</a>
+                        	</div>
+                        </div>  
+                        <div class="nota_menu">
+                        	<div class="nota_menu_imagen">
+                        
+                        
+                        		<div class="videoWrapper">
+                        			<a href="/corrientes/2019-12-29-1-0-0-en-la-soledad-del-lamento-el-crespin">
+                        				<img alt="En la soledad del lamento, el crespín" class="panel_imagen lazyload"  data-sizes="auto" data-src="https://pxc.cdn.ellitoral.com.ar/litoral/122019/1577582181203.jpg?&ma=3&cw=350&ch=200" data-srcset="https://pxc.cdn.ellitoral.com.ar/litoral/122019/1577582181203.jpg?&ma=3&cw=124&ch=78 150w, https://pxc.cdn.ellitoral.com.ar/litoral/122019/1577582181203.jpg?&ma=3&cw=279&ch=176 279w, https://pxc.cdn.ellitoral.com.ar/litoral/122019/1577582181203.jpg?&ma=3&cw=350&ch=220 350w, https://pxc.cdn.ellitoral.com.ar/litoral/122019/1577582181203.jpg?&ma=3&cw=620&ch=390 620w, https://pxc.cdn.ellitoral.com.ar/litoral/122019/1577582181203.jpg?&ma=3&cw=790&ch=494 790w">
+                        			</a>
+                        		</div>
+                        
+                        	</div>
+                        	<div class="nota_menu_cont">
+                        		<a href="/corrientes/2019-12-29-1-0-0-en-la-soledad-del-lamento-el-crespin"><div class="nota_tag "><label>AVES y CHAMAME 2 </label></div></a>
+                        		<a href="/corrientes/2019-12-29-1-0-0-en-la-soledad-del-lamento-el-crespin">
+                        			<label class="nota_menu_texto">En la soledad del lamento, el crespín</label>
+                        		</a>
+                        	</div>
+                        </div>  
+                  </div>
+                  <div class="menu sociales">                    
+                        <div class="nota_menu">
+                        	<div class="nota_menu_imagen">
+                        
+                        
+                        		<div class="videoWrapper">
+                        			<a href="/corrientes/2019-10-6-1-8-0-economista-anticipa-un-escenario-2020-con-inestabilidad-y-la-continuidad-del-cepo">
+                        				<img alt="Economista anticipa un escenario 2020 con inestabilidad y la continuidad del cepo" class="panel_imagen lazyload"  data-sizes="auto" data-src="https://pxc.cdn.ellitoral.com.ar/litoral/102019/1570334996623.jpg?&ma=3&cw=350&ch=200" data-srcset="https://pxc.cdn.ellitoral.com.ar/litoral/102019/1570334996623.jpg?&ma=3&cw=124&ch=78 150w, https://pxc.cdn.ellitoral.com.ar/litoral/102019/1570334996623.jpg?&ma=3&cw=279&ch=176 279w, https://pxc.cdn.ellitoral.com.ar/litoral/102019/1570334996623.jpg?&ma=3&cw=350&ch=220 350w, https://pxc.cdn.ellitoral.com.ar/litoral/102019/1570334996623.jpg?&ma=3&cw=620&ch=390 620w, https://pxc.cdn.ellitoral.com.ar/litoral/102019/1570334996623.jpg?&ma=3&cw=790&ch=494 790w">
+                        			</a>
+                        		</div>
+                        
+                        	</div>
+                        	<div class="nota_menu_cont">
+                        		<a href="/corrientes/2019-10-6-1-8-0-economista-anticipa-un-escenario-2020-con-inestabilidad-y-la-continuidad-del-cepo"><div class="nota_tag "><label>PROYECCIONES PARA EL AÑO QUE VIENE</label></div></a>
+                        		<a href="/corrientes/2019-10-6-1-8-0-economista-anticipa-un-escenario-2020-con-inestabilidad-y-la-continuidad-del-cepo">
+                        			<label class="nota_menu_texto">Economista anticipa un escenario 2020 con inestabilidad y la continuidad del cepo</label>
+                        		</a>
+                        	</div>
+                        </div>  
+                        <div class="nota_menu">
+                        	<div class="nota_menu_imagen">
+                        
+                        
+                        		<div class="videoWrapper">
+                        			<a href="/corrientes/2019-9-26-1-0-0-comercios-centricos">
+                        				<img alt="Comercios céntricos" class="panel_imagen lazyload"  data-sizes="auto" data-src="https://pxc.cdn.ellitoral.com.ar/litoral/092019/1569381046068.jpg?&ma=3&cw=350&ch=200" data-srcset="https://pxc.cdn.ellitoral.com.ar/litoral/092019/1569381046068.jpg?&ma=3&cw=124&ch=78 150w, https://pxc.cdn.ellitoral.com.ar/litoral/092019/1569381046068.jpg?&ma=3&cw=279&ch=176 279w, https://pxc.cdn.ellitoral.com.ar/litoral/092019/1569381046068.jpg?&ma=3&cw=350&ch=220 350w, https://pxc.cdn.ellitoral.com.ar/litoral/092019/1569381046068.jpg?&ma=3&cw=620&ch=390 620w, https://pxc.cdn.ellitoral.com.ar/litoral/092019/1569381046068.jpg?&ma=3&cw=790&ch=494 790w">
+                        			</a>
+                        		</div>
+                        
+                        	</div>
+                        	<div class="nota_menu_cont">
+                        		<a href="/corrientes/2019-9-26-1-0-0-comercios-centricos"><div class="nota_tag "><label>LA IMAGEN</label></div></a>
+                        		<a href="/corrientes/2019-9-26-1-0-0-comercios-centricos">
+                        			<label class="nota_menu_texto">Comercios céntricos</label>
+                        		</a>
+                        	</div>
+                        </div>  
+                        <div class="nota_menu">
+                        	<div class="nota_menu_imagen">
+                        
+                        
+                        		<div class="videoWrapper">
+                        			<a href="/corrientes/2019-9-25-1-0-0-actos-en-honor-a-la-virgen-de-la-merced">
+                        				<img alt="Actos en honor a la virgen de La Merced" class="panel_imagen lazyload"  data-sizes="auto" data-src="https://pxc.cdn.ellitoral.com.ar/litoral/092019/1569374391725.jpg?&ma=3&cw=350&ch=200" data-srcset="https://pxc.cdn.ellitoral.com.ar/litoral/092019/1569374391725.jpg?&ma=3&cw=124&ch=78 150w, https://pxc.cdn.ellitoral.com.ar/litoral/092019/1569374391725.jpg?&ma=3&cw=279&ch=176 279w, https://pxc.cdn.ellitoral.com.ar/litoral/092019/1569374391725.jpg?&ma=3&cw=350&ch=220 350w, https://pxc.cdn.ellitoral.com.ar/litoral/092019/1569374391725.jpg?&ma=3&cw=620&ch=390 620w, https://pxc.cdn.ellitoral.com.ar/litoral/092019/1569374391725.jpg?&ma=3&cw=790&ch=494 790w">
+                        			</a>
+                        		</div>
+                        
+                        	</div>
+                        	<div class="nota_menu_cont">
+                        		<a href="/sociales"><div class="nota_tag "><label>Sociales</label></div></a>
+                        		<a href="/corrientes/2019-9-25-1-0-0-actos-en-honor-a-la-virgen-de-la-merced">
+                        			<label class="nota_menu_texto">Actos en honor a la virgen de La Merced</label>
+                        		</a>
+                        	</div>
+                        </div>  
+                  </div>
+                
+                <div class="menu servicios">
+                  
+                  <div class="servicios_div item">
+                    <div class="servicios_container">
+                      
+                      <div class="bloque_uno">
+                        
+                        <a href="/funebres">
+                          <div class="servicio">
+                            <img alt="Fúnebres" src="/img/funebre.png">
+                            <label class="servicio_label">FÚNEBRES</label>  
+                          </div>  
+                        </a>
+
+                        <a href="/servicios/horoscopo">
+                          <div class="servicio">
+                            <img alt="Horóscopo" src="/img/zodiaco.png">
+                            <label class="servicio_label">HORÓSCOPO</label>  
+                          </div>  
+                        </a>
+
+                        <a href="/servicios/loteria">
+                          <div class="servicio">
+                            <img alt="Loteria" src="/img/loteria.png">
+                            <label class="servicio_label">LOTERIA</label>  
+                          </div>  
+                        </a>
+
+                        <a href="/servicios/clima">
+                         <div class="servicio">
+                           <img alt="Clima" src="/img/clima.png" style="height:  90px;">
+                          <label class="servicio_label">CLIMA</label>  
+                        </div>  
+                        <a href="/servicios/cines">
+                         <div class="servicio">
+                           <img alt="Cines" src="/img/cines.png" style="height:  90px;">
+                          <label class="servicio_label">CINES</label>  
+                        </div>  
+                      </a>  
+
+                      </div>                  
+
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="header_mobile">
+
+          <div class="main_buscador" style="height: 0px;">
+              <span class="spritelit lupa" onclick="js_search($('.header_buscador_input ').val())"></span>
+              <input class="header_buscador_input form-control" type="text" placeholder="¿Qué Buscás?">
+          </div>
+
+          <div id="header_superior_top">
+            <div class="header_centrado">
+
+              <div class="trapezoide_menu">
+                <a class="menu-icon"><span class="nombre">SECCIONES</span> <span class="spritelit menu"></span></a>
+              </div>
+
+              <ul class="listado-secciones">
+                <a href="/actualidad"><li>Actualidad</li></a>
+                <a href="/sociedad"><li>Sociedad</li></a>
+                <a href="/ciudad"><li>Ciudad</li></a>
+                <a href="/opinion"><li>Opinión</li></a>
+                <a href="/cultura"><li>Cultura</li></a>
+                <a href="/interior"><li>Interior</li></a>
+                <a href="/deportes"><li>Deportes</li></a>
+                <a href="/policiales"><li>Policiales</li></a>
+                <a href="/funebres"><li>Funebres</li></a>
+                <a href="/servicios"><li>Servicios</li></a>
+              </ul>
+
+              <a href="/"><img alt="El Litoral" src="/img/ElLitoral-Logo-Blanco.png" class="logo_mobile" style="display:none;"></a>
+
+              <div class="bloque_lateral">
+                <!--<span class="ingresar"  onclick="alert('login');"> <span class="spritelit user"></span></span>-->
+                <span class="spritelit lupa"></span>
+              </div>
+
+            </div>
+          </div>
+
+
+          <div class="header_interior_cont header_centrado">
+
+            <div class="logo">
+              <a href="/"><span class="spritelit logo"></span></a>
+            </div>
+            <h2 class="titulo_seccion"></h2>
+
+            <div class="header_fechaclima">         
+                <span class="fecha"><span class='dia'>Jueves 02</span> de Enero de 2020</span>
+                <span class="temp"><span class="txt">CORRIENTES</span><span class="grados">23°</span><a href="/servicios/clima"><span class="txt link">Pronóstico Extendido</span></a></span>
+                <span class="icono_clima"><img alt="clima_sol_noche" src="/img/css/clima/clima_sol_noche.png"></span>
+            </div>
+            <div class="headerdolar">
+                <p> <b>Dolar Compra:</b> $58,00</p>
+                <p> <b>Dolar Venta:</b> $63,00</p>
+            </div>
+
+          </div>
+          
+        </div>
+
+      </header>
+
+      <div class="user_cont_mobile_menu"></div>
+
+      <div id="ppp">
+        <div class="cargando branding_loading cssload-spin-box"></div>
+      </div>
+
+      <div id="sitio" class="sitio">
+
+        <div id="fbgallery" style="display:none"></div>
+<img class="imagen_galeria_mustang" alt="" style="display: none" data-src-galeria="https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577918773255.jpg" data-name="">
+
+<input type="hidden" id="page_sitio" class="datos_ubicacion" data-ubicacion="nota" data-titulo="Murió un chico de 21 años tras un accidente en moto" data-id="5e0d2031ec536600132b86c7" data-ucreador="Juan Manuel Laprovitta" data-fecha_c="2020-01-01 19:41:00">
+
+<input type="hidden" id="title_nota" value="Murió un chico de 21 años tras un accidente en moto">
+
+<div id="main_body" class="central no-item central_interior policiales">
+
+    
+    <script>
+    $(document).ready(function($) {
+      $(".um_titulos_label").fadeIn('400');
+    });
+    </script>
+    <div class="item ppp_Horizontal H9 ppp_desktop"><div data-spot=5d7173a371ffab00132b5894 data-id=5d71761f71ffab00132b59c9 data-pos=P1 data-width='970' data-height='90' data-fixed='undefined' style=' max-width:970px;  max-height:90px; width:100%; undefined' class='ppp ppp_P1 ppp_desktop'><div style='margin: 0; overflow: hidden; height: 0; padding-bottom: 9.28%;'><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- ellitoral mustang fijo 970x90 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:970px;height:90px"
+     data-ad-client="ca-pub-8878915833182686"
+     data-ad-slot="8660044915"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script></div></div></div>
+    <div class="item ppp_Horizontal H9 ppp_mobile"><div data-spot=5d7174ab71ffab00132b5995 data-id=5d7176c971ffab00132b59f1 data-pos=P1_b data-width='468' data-height='90' data-fixed='undefined' style=' max-width:468px;  max-height:90px; width:100%; undefined' class='ppp ppp_P1_b ppp_mobile'><div style='margin: 0; overflow: hidden; height: 0; padding-bottom: 19.23%;'><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- ellitoral mustang fijo 468x60 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:468px;height:60px"
+     data-ad-client="ca-pub-8878915833182686"
+     data-ad-slot="9342571193"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script></div></div></div>
+    <input id="header_tipo" type="hidden" data-clasif="policiales" data-tipo="0" data-id="5e0d2031ec536600132b86c7" class="0">
+
+
+
+    <div class="np_header" style="clear: both">
+      <label class="np_fecha">01/01/2020 - 19:41 / <a href="/"><b>Ellitoral.com.ar</b></a> / Policiales</label>
+    
+      <a href="/corrientes/2020-1-1-19-41-0-murio-un-chico-de-21-anos-tras-un-accidente-en-moto"><div class="nota_tag "><label>UNA HERIDA GRAVE</label></div></a>
+      <h1 id="title">Murió un chico de 21 años tras un accidente en moto</h1>
+      <div class="np_nota_descripcion"><p>Impactaron dos motocicletas. Los heridos ingresaron al hospital pero quien se llev&oacute; la peor parte falleci&oacute; tras agonizar seis horas.</p></div>
+    </div>   
+        
+    
+    
+    
+    
+    <style type="text/css">
+    .bx-wrapper .bx-viewport{
+      height: auto !important;
+    }
+    #notas .bx-viewport{
+      /*max-height: 600px;*/
+    }
+    </style>
+
+
+
+
+    <div class="np_contenido">
+      <div id="notas">
+
+
+        <div class="imgvideo_principal">
+
+
+            <div class="tapa_contenedort_imagen galeria">
+
+
+              <div class="galeria_notapage">
+                    <div>
+                      <img alt="imagen_0" class="panel_imagen item_galerianp"  data-sizes="auto" data-src-galeria="https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577918773255.jpg?&ma=3&cw=920&ch=615" data-src="https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577918773255.jpg?&ma=3&cw=920&ch=615" data-index="0">
+
+                    </div>
+              </div>
+
+
+                <div class="galeria_cont">
+                  <div class="icono_galeria"></div>
+                  <div class="cantidad_fotos"></div>
+                  <div class="fbgaleria_count"></div>
+                </div>
+                <div class="icono_galeria_a"></div>
+                <div class="icono_galeria_s"></div>
+              <a class="boton_galeria">
+              </a>
+
+          </div>
+
+
+
+        </div>
+
+        <div class="notapage_compartir bloque_share_interior">
+            <a target='_blank'
+               onclick="javascript:myPopup('https://www.facebook.com/dialog/feed?app_id=250070788421829&amp;link=https://www.ellitoral.com.ar/corrientes/2020-1-1-19-41-0-murio-un-chico-de-21-anos-tras-un-accidente-en-moto&amp;name=Muri%C3%B3%20un%20chico%20de%2021%20a%C3%B1os%20tras%20un%20accidente%20en%20moto&amp;description=Impactaron%20dos%20motocicletas.%20Los%20heridos%20ingresaron%20al%20hospital%20pero%20quien%20se%20llev%26oacute%3B%20la%20peor%20parte%20falleci%26oacute%3B%20tras%20agonizar%20seis%20horas.&amp;display=popup&amp;picture=https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577918773255.jpg&amp;redirect_uri=https://www.ellitoral.com.ar/corrientes/2020-1-1-19-41-0-murio-un-chico-de-21-anos-tras-un-accidente-en-moto%2F%23close_window')">
+                <div class="spritelit facebook"></div>
+            </a>
+
+            <a target='_blank' onclick="javascript:myPopup('https://twitter.com/intent/tweet?url=https://www.ellitoral.com.ar/corrientes/2020-1-1-19-41-0-murio-un-chico-de-21-anos-tras-un-accidente-en-moto&amp;text=Muri%C3%B3%20un%20chico%20de%2021%20a%C3%B1os%20tras%20un%20accidente%20en%20moto')">
+                <div class="spritelit twitter"></div>
+            </a>
+
+            <a target='_blank' class="nota_redes redes_wsp" href="https://api.whatsapp.com/send?text=Muri%C3%B3%20un%20chico%20de%2021%20a%C3%B1os%20tras%20un%20accidente%20en%20moto - https://www.ellitoral.com.ar/corrientes/2020-1-1-19-41-0-murio-un-chico-de-21-anos-tras-un-accidente-en-moto">
+              <div class="spritelit whatsapp"></div>
+            </a>
+
+            <div class="spritelit imprimir" onclick="window.print()"></div>
+            <!--<div class="spritelit mail enviar compartir_notapage_enviar"></div>-->
+        </div>
+
+
+        <div class="firmante">
+          
+        </div>
+
+        <div id="notapage_texto" class="notapage_cuerpo" itemprop="articleBody">
+          <p>Un joven muri&oacute; este mi&eacute;rcoles tras un choque de motos en la localidad correntina de Mercedes, seg&uacute;n inform&oacute; la polic&iacute;a, que al mismo tiempo, report&oacute; dos heridos de gravedad en el mismo hecho.</p><p>El siniestro vial se produjo&nbsp;alrededor de las 4,30, en inmediaciones de calles Independencia y Juan Ram&oacute;n Vidal de Mercedes, donde por circunstancias que se tratan de establecer, se produjo la colisi&oacute;n entre dos<br />motocicletas.</p><p>El conductor de uno los rodados identificado con el apellido Pera, de 21 a&ntilde;os de edad, result&oacute;&nbsp;con &quot;lesiones grav&iacute;simas que minutos m&aacute;s tarde le produjeron su deceso&quot;, indic&oacute; la fuerza en un comunicado.</p><p>Seg&uacute;n las primeras averiguaciones el siniestro tuvo como protagonistas a una motocicleta marca Corven de 110c.c.,&nbsp;conducida&nbsp;por un hombre de apellido Ver&oacute;n de 43 a&ntilde;os de edad a quien acompa&ntilde;aba una mujer de apellido Vasconcello de 31 a&ntilde;os, y una motocicleta marca Honda Wave de 110c.c.&nbsp;guiada por el chico que result&oacute; con lesiones fatales.</p><p>Las tres personas debieron ser trasladadas&nbsp;al hospital local, donde lamentablemente alrededor de las 10,30 se produjo el deceso de Pera.</p><p>Asimismo, la ciudadana Vasconcello result&oacute; con lesiones de car&aacute;cter graves.</p><p>En el lugar se realizaron las diligencias de rigor correspondientes, mientras que en la Comisar&iacute;a de Distrito Tercera de Mercedes se inici&oacute; de oficio la actuaci&oacute;n sumarial del caso.</p>
+        </div>
+          
+
+
+
+
+        <div class="notapage_tags">
+          <a href="/policiales"><span>Policiales</span></a>
+          
+        </div>
+         
+         
+         
+         <div class="notapage_comentarios">¿Te gustó la nota?</div>
+         <div class="like-dislike">
+            <a class="like" role="button" data-toggle="popover" data-placement="bottom">
+                <div class="half-img"></div>
+                <div class="half-counter">
+                    <span class="reaccionCantidad" style="display: block;">11</span>
+                </div>
+            </a>
+
+            <a class="dislike" role="button" data-toggle="popover" data-placement="bottom">
+                <div class="half-img"></div>
+                <div class="half-counter">
+                    <span class="reaccionCantidad" style="display: block;">0</span>
+                </div>
+            </a>
+        </div>
+
+      
+
+
+
+
+        </div>
+
+      </div>
+      <div class="columna3 np_columna_especial1">
+
+
+
+        
+        
+        
+          <div class="lml_div item_bloque">
+            <div class="header_bloque">
+              Ranking
+            </div>
+          
+            <div class="lml_container_gen contenido_bloque">
+          
+          
+              <div id="lml_leida" class="lml_sel"><label>Leídas</label></div>
+              <div id="lml_comentadas" class="lml_sec"><label>Comentadas</label></div>
+              <div id="lml_ultimas" class="lml_sec"><label>Últimas</label></div>
+          
+              <table class="lml_container" id="lml_leida_table">
+                <tr>
+                  <td class="lml_indice"><a href="/corrientes/2020-1-1-19-48-0-rina-agonizo-dos-dias-y-murio-en-el-hospital">1</a></td>
+                  <td class="lml_label_titulo"><a href="/corrientes/2020-1-1-19-48-0-rina-agonizo-dos-dias-y-murio-en-el-hospital">Riña: agonizó dos días y murió en el hospital </a></td>
+                </tr>
+                <tr>
+                  <td class="lml_indice"><a href="/corrientes/2020-1-1-11-43-0-los-dos-primeros-nacimientos-de-2020-fueron-en-goya-y-saladas">2</a></td>
+                  <td class="lml_label_titulo"><a href="/corrientes/2020-1-1-11-43-0-los-dos-primeros-nacimientos-de-2020-fueron-en-goya-y-saladas">Los dos primeros nacimientos de 2020 fueron en Goya y Saladas</a></td>
+                </tr>
+                <tr>
+                  <td class="lml_indice"><a href="/corrientes/2020-1-1-16-43-0-alcoholemia-en-corrientes-una-decena-de-casos-positivos-en-ano-nuevo">3</a></td>
+                  <td class="lml_label_titulo"><a href="/corrientes/2020-1-1-16-43-0-alcoholemia-en-corrientes-una-decena-de-casos-positivos-en-ano-nuevo">Alcoholemia en Corrientes: una decena de casos positivos en año nuevo</a></td>
+                </tr>
+                <tr>
+                  <td class="lml_indice"><a href="/corrientes/2020-1-1-19-41-0-murio-un-chico-de-21-anos-tras-un-accidente-en-moto">4</a></td>
+                  <td class="lml_label_titulo"><a href="/corrientes/2020-1-1-19-41-0-murio-un-chico-de-21-anos-tras-un-accidente-en-moto">Murió un chico de 21 años tras un accidente en moto</a></td>
+                </tr>
+                <tr>
+                  <td class="lml_indice"><a href="/corrientes/2015-12-31-6-22-0-un-plan-desintoxicante-para-recuperarte">5</a></td>
+                  <td class="lml_label_titulo"><a href="/corrientes/2015-12-31-6-22-0-un-plan-desintoxicante-para-recuperarte">Un plan desintoxicante para recuperarte de las fiestas de Año Nuevo</a></td>
+                </tr>
+              </table>
+          
+              <table style="display: none" class="lml_container" id="lml_comentadas_table">
+                <tr>
+                  <td class="lml_indice"><a href="/corrientes/2019-12-11-11-36-0-greta-thunberg-persona-del-ano-de-la-revista-time">1</a></td>
+                  <td class="lml_label_titulo"><a href="/corrientes/2019-12-11-11-36-0-greta-thunberg-persona-del-ano-de-la-revista-time">Greta Thunberg, &quot;Persona del Año&quot; de la revista Time</a></td>
+                </tr>
+                <tr>
+                  <td class="lml_indice"><a href="/corrientes/2019-12-11-16-0-0-marcelo-gallardo-confirmo-que-sigue-en-river">2</a></td>
+                  <td class="lml_label_titulo"><a href="/corrientes/2019-12-11-16-0-0-marcelo-gallardo-confirmo-que-sigue-en-river">Marcelo Gallardo confirmó que sigue en River</a></td>
+                </tr>
+                <tr>
+                  <td class="lml_indice"><a href="/corrientes/2019-12-8-1-0-0-pedro-pablo-villamayor">3</a></td>
+                  <td class="lml_label_titulo"><a href="/corrientes/2019-12-8-1-0-0-pedro-pablo-villamayor">PEDRO PABLO VILLAMAYOR</a></td>
+                </tr>
+                <tr>
+                  <td class="lml_indice"><a href="/corrientes/2020-1-1-15-40-0-por-primera-vez-desde-1982-el-hospital-de-quemados-no-recibio-heridos-en-ano-nuevo">4</a></td>
+                  <td class="lml_label_titulo"><a href="/corrientes/2020-1-1-15-40-0-por-primera-vez-desde-1982-el-hospital-de-quemados-no-recibio-heridos-en-ano-nuevo">Por primera vez desde 1982, el Hospital de Quemados no recibió heridos en Año Nuevo</a></td>
+                </tr>
+                <tr>
+                  <td class="lml_indice"><a href="/corrientes/2019-7-10-17-17-0-paso-a-paso-como-obtener-la-licencia-nacional-de-conducir-digital">5</a></td>
+                  <td class="lml_label_titulo"><a href="/corrientes/2019-7-10-17-17-0-paso-a-paso-como-obtener-la-licencia-nacional-de-conducir-digital">Paso a paso: cómo obtener la Licencia Nacional de Conducir Digital</a></td>
+                </tr>
+              </table>
+          
+              <table style="display: none" class="lml_container" id="lml_ultimas_table">
+                <tr>
+                  <td class="lml_indice"><a href="/corrientes/2020-1-1-19-48-0-rina-agonizo-dos-dias-y-murio-en-el-hospital">1</a></td>
+                  <td class="lml_label_titulo"><a href="/corrientes/2020-1-1-19-48-0-rina-agonizo-dos-dias-y-murio-en-el-hospital">Riña: agonizó dos días y murió en el hospital </a></td>
+                </tr>
+                <tr>
+                  <td class="lml_indice"><a href="/corrientes/2020-1-1-19-41-0-murio-un-chico-de-21-anos-tras-un-accidente-en-moto">2</a></td>
+                  <td class="lml_label_titulo"><a href="/corrientes/2020-1-1-19-41-0-murio-un-chico-de-21-anos-tras-un-accidente-en-moto">Murió un chico de 21 años tras un accidente en moto</a></td>
+                </tr>
+                <tr>
+                  <td class="lml_indice"><a href="/corrientes/2020-1-1-19-16-0-un-detenidos-con-75-kilos-de-marihuana-escondidos-en-un-auto">3</a></td>
+                  <td class="lml_label_titulo"><a href="/corrientes/2020-1-1-19-16-0-un-detenidos-con-75-kilos-de-marihuana-escondidos-en-un-auto">Un detenido con 75 kilos de marihuana escondidos en un auto</a></td>
+                </tr>
+                <tr>
+                  <td class="lml_indice"><a href="/corrientes/2020-1-1-18-40-0-pese-a-los-avisos-los-festejos-dejaron-numerosos-minibasurales">4</a></td>
+                  <td class="lml_label_titulo"><a href="/corrientes/2020-1-1-18-40-0-pese-a-los-avisos-los-festejos-dejaron-numerosos-minibasurales">Pese a los avisos, los festejos dejaron numerosos minibasurales</a></td>
+                </tr>
+                <tr>
+                  <td class="lml_indice"><a href="/corrientes/2020-1-1-18-28-0-un-partido-amistoso-entre-presos-narcos-termino-con-16-muertos-en-una-carcel">5</a></td>
+                  <td class="lml_label_titulo"><a href="/corrientes/2020-1-1-18-28-0-un-partido-amistoso-entre-presos-narcos-termino-con-16-muertos-en-una-carcel">Un partido amistoso entre presos narcos terminó con 16 muertos en una cárcel</a></td>
+                </tr>
+              </table>
+          
+            </div>
+          </div>
+          
+          
+          <script>
+          
+          function lml_ready() {
+            var cookie = get_cookies();
+            var selected = cookie["lml"];
+            $("#"+selected).click();
+          }
+          
+          $(document).ready(function() {
+            lml_ready();  
+          
+            $("#lml_leida").click(function(event)  {
+              document.cookie = "lml=lml_leida; expires= Mon, 1 Dec 2018 12:00:00 GMT; path=/";
+              $("#lml_comentadas,#lml_ultimas").removeClass("lml_sel").addClass("lml_sec");
+              $(this).addClass("lml_sel").removeClass("lml_sec");
+          
+              $("#lml_comentadas_table,#lml_ultimas_table").hide();
+              $("#lml_leida_table").fadeIn('fast');
+            });
+          
+            $("#lml_comentadas").click(function(event)  {
+              document.cookie = "lml=lml_comentadas; expires= Mon, 1 Dec 2018 12:00:00 GMT; path=/";
+              $("#lml_leida,#lml_ultimas").removeClass("lml_sel").addClass("lml_sec");
+              $(this).addClass("lml_sel").removeClass("lml_sec");
+          
+              $("#lml_leida_table,#lml_ultimas_table").hide();
+              $("#lml_comentadas_table").fadeIn('fast');
+            });
+          
+            $("#lml_ultimas").click(function(event)  {
+              document.cookie = "lml=lml_ultimas; expires= Mon, 1 Dec 2018 12:00:00 GMT; path=/";
+              $("#lml_leida,#lml_comentadas").removeClass("lml_sel").addClass("lml_sec");
+              $(this).addClass("lml_sel").removeClass("lml_sec");
+          
+              $("#lml_leida_table,#lml_comentadas_table").hide();
+              $("#lml_ultimas_table").fadeIn('fast');
+            });
+          
+          });
+          
+          </script>
+
+        
+        
+        
+        
+        <div class="item nota ppp_Cubito H9 ppp_desktop"><div data-spot=5a4e43fad35443001381f47c data-id=5a4e4434d35443001381f482 data-pos=P10 data-width='247' data-height='123' data-fixed='undefined' style=' max-width:247px;  max-height:123px; width:100%; undefined' class='ppp ppp_P10 ppp_desktop'><div style='margin: 0; overflow: hidden; height: 0; padding-bottom: 49.80%;'><a target='_blank' href='http://www.senadoctes.gov.ar/'><a target='_blank' href='http://www.senadoctes.gov.ar/'><img src='https://pxc.cdn.ellitoral.com.ar/litoral/5a4e43fad35443001381f47c/1516201655366.jpg'></a></a></div></div></div>
+        
+        <div class="item nota ppp_Cubito H9 ppp_desktop"><div data-spot=5a4e203acfe22e00139b9aad data-id=5a4e2102cfe22e00139b9ab8 data-pos=P11 data-width='300' data-height='250' data-fixed='undefined' style=' max-width:300px;  max-height:250px; width:100%; undefined' class='ppp ppp_P11 ppp_desktop'><div style='margin: 0; overflow: hidden; height: 0; padding-bottom: 83.33%;'><a target='_blank' href='http://www.hcdcorrientes.gov.ar/'><a target='_blank' href='http://www.hcdcorrientes.gov.ar/'><img src='https://pxc.cdn.ellitoral.com.ar/litoral/5a4e203acfe22e00139b9aad/1524499700929.jpg'></a></a></div></div></div>
+        
+        
+        
+
+      </div>
+
+        <div class="masnoticias_home item masnoticias_home_notapage"  >  
+    <div class="masnoticias_fondo"></div>       
+    <div class="notapage_label">
+      <div class="nota_tag tag_margin"><label>Noticias Recomendadas</label></div>
+    </div>
+    <div class="contenedor_mas">
+      <div class="notapage_panel notapage_notasSeccion nota nota_simple_small">
+      	<div class="panel_contenedor_imagen">
+      		<div class="panel_imagen_control"></div>
+      		<div class="panel_imagen">
+      			<a href="/corrientes/2020-1-1-19-48-0-rina-agonizo-dos-dias-y-murio-en-el-hospital">
+      				<div class="videoWrapper">
+      					<img alt="Riña: agonizó dos días y murió en el hospital " class="panel_imagen lazyload"  data-sizes="auto" data-src="https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577919144250.jpg?&ma=3&cw=350&ch=200" data-srcset="https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577919144250.jpg?&ma=3&cw=124&ch=78 150w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577919144250.jpg?&ma=3&cw=279&ch=176 279w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577919144250.jpg?&ma=3&cw=350&ch=220 350w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577919144250.jpg?&ma=3&cw=620&ch=390 620w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577919144250.jpg?&ma=3&cw=790&ch=494 790w">
+      				</div>
+      			</a>
+      		</div>
+      		<a href="/corrientes/2020-1-1-19-48-0-rina-agonizo-dos-dias-y-murio-en-el-hospital"><div class="nota_tag nota_tag_seccion"><label>FIGURA COMO NN</label></div></a>
+      		<a href="/corrientes/2020-1-1-19-48-0-rina-agonizo-dos-dias-y-murio-en-el-hospital">
+      			<div class="panel_imagen_text"><label>Riña: agonizó dos días y murió en el hospital </label></div>
+      		</a>
+      	</div>
+      </div>  
+      <div class="notapage_panel notapage_notasSeccion nota nota_simple_small">
+      	<div class="panel_contenedor_imagen">
+      		<div class="panel_imagen_control"></div>
+      		<div class="panel_imagen">
+      			<a href="/corrientes/2020-1-1-19-16-0-un-detenidos-con-75-kilos-de-marihuana-escondidos-en-un-auto">
+      				<div class="videoWrapper">
+      					<img alt="Un detenido con 75 kilos de marihuana escondidos en un auto" class="panel_imagen lazyload"  data-sizes="auto" data-src="https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577917105669.jpg?&ma=3&cw=350&ch=200" data-srcset="https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577917105669.jpg?&ma=3&cw=124&ch=78 150w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577917105669.jpg?&ma=3&cw=279&ch=176 279w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577917105669.jpg?&ma=3&cw=350&ch=220 350w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577917105669.jpg?&ma=3&cw=620&ch=390 620w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577917105669.jpg?&ma=3&cw=790&ch=494 790w">
+      				</div>
+      			</a>
+      		</div>
+      		<a href="/corrientes/2020-1-1-19-16-0-un-detenidos-con-75-kilos-de-marihuana-escondidos-en-un-auto"><div class="nota_tag nota_tag_seccion"><label>PASO FRONTERIZO</label></div></a>
+      		<a href="/corrientes/2020-1-1-19-16-0-un-detenidos-con-75-kilos-de-marihuana-escondidos-en-un-auto">
+      			<div class="panel_imagen_text"><label>Un detenido con 75 kilos de marihuana escondidos en un auto</label></div>
+      		</a>
+      	</div>
+      </div>  
+      <div class="notapage_panel notapage_notasSeccion nota nota_simple_small">
+      	<div class="panel_contenedor_imagen">
+      		<div class="panel_imagen_control"></div>
+      		<div class="panel_imagen">
+      			<a href="/corrientes/2020-1-1-17-39-0-asesinaron-de-un-balazo-a-un-jubilado-delante-de-su-esposa-tras-un-asalto-en-su-casa">
+      				<div class="videoWrapper">
+      					<img alt="Asesinaron de un balazo a un jubilado delante de su esposa tras un asalto en su casa" class="panel_imagen lazyload"  data-sizes="auto" data-src="https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577911220342.jpg?&ma=3&cw=350&ch=200" data-srcset="https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577911220342.jpg?&ma=3&cw=124&ch=78 150w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577911220342.jpg?&ma=3&cw=279&ch=176 279w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577911220342.jpg?&ma=3&cw=350&ch=220 350w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577911220342.jpg?&ma=3&cw=620&ch=390 620w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577911220342.jpg?&ma=3&cw=790&ch=494 790w">
+      				</div>
+      			</a>
+      		</div>
+      		<a href="/corrientes/2020-1-1-17-39-0-asesinaron-de-un-balazo-a-un-jubilado-delante-de-su-esposa-tras-un-asalto-en-su-casa"><div class="nota_tag nota_tag_seccion"><label>la plata</label></div></a>
+      		<a href="/corrientes/2020-1-1-17-39-0-asesinaron-de-un-balazo-a-un-jubilado-delante-de-su-esposa-tras-un-asalto-en-su-casa">
+      			<div class="panel_imagen_text"><label>Asesinaron de un balazo a un jubilado delante de su esposa tras un asalto en su casa</label></div>
+      		</a>
+      	</div>
+      </div>  
+      <div class="notapage_panel notapage_notasSeccion nota nota_simple_small">
+      	<div class="panel_contenedor_imagen">
+      		<div class="panel_imagen_control"></div>
+      		<div class="panel_imagen">
+      			<a href="/corrientes/2020-1-1-15-49-0-robaron-un-celular-armados-con-un-cuchillo-pero-los-atraparon">
+      				<div class="videoWrapper">
+      					<img alt="Robaron un celular armados con un cuchillo pero los atraparon" class="panel_imagen lazyload"  data-sizes="auto" data-src="https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577904566056.jpg?&ma=3&cw=350&ch=200" data-srcset="https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577904566056.jpg?&ma=3&cw=124&ch=78 150w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577904566056.jpg?&ma=3&cw=279&ch=176 279w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577904566056.jpg?&ma=3&cw=350&ch=220 350w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577904566056.jpg?&ma=3&cw=620&ch=390 620w, https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577904566056.jpg?&ma=3&cw=790&ch=494 790w">
+      				</div>
+      			</a>
+      		</div>
+      		<a href="/corrientes/2020-1-1-15-49-0-robaron-un-celular-armados-con-un-cuchillo-pero-los-atraparon"><div class="nota_tag nota_tag_seccion"><label>POLICÍA DE CORRIENTES</label></div></a>
+      		<a href="/corrientes/2020-1-1-15-49-0-robaron-un-celular-armados-con-un-cuchillo-pero-los-atraparon">
+      			<div class="panel_imagen_text"><label>Robaron un celular armados con un cuchillo pero los atraparon</label></div>
+      		</a>
+      	</div>
+      </div>  
+    </div>
+  </div>
+
+
+
+
+ <!--spot P6 y P7 dentro de mas noticias-->
+        
+        
+        <div class="notapage_comentarios"><span class="spritelit comentario"></span> Comentarios</div>
+        <div style="margin-bottom:30px;">
+          <div id="fb-comments" class="fb-comments" data-href="https://www.ellitoral.com.ar/corrientes/2020-1-1-19-41-0-murio-un-chico-de-21-anos-tras-un-accidente-en-moto" data-num-posts="100" data-width="100%"></div>
+        </div>
+    </div>
+
+    
+    
+    
+    
+
+
+<div class="mk_cont">
+  
+    
+</div>
+
+<div style="display:none;" class="datos_estructurados" >
+    <div  itemprop="description">Impactaron dos motocicletas. Los heridos ingresaron al hospital pero quien se llevó la peor parte falleció tras agonizar seis horas.</div>
+    <div itemprop="alternativeHeadline"><a href="/corrientes/2020-1-1-19-41-0-murio-un-chico-de-21-anos-tras-un-accidente-en-moto"><div class="nota_tag "><label>UNA HERIDA GRAVE</label></div></a></div>
+    <h4  itemprop="headline">Murió un chico de 21 años tras un accidente en moto</h4>
+</div>
+
+<script>
+  $(document).ready(function() {
+
+    getShares("5e0d2031ec536600132b86c7","https://www.ellitoral.com.ar/corrientes/2020-1-1-19-41-0-murio-un-chico-de-21-anos-tras-un-accidente-en-moto","","","","");
+
+    setTimeout(function() {
+      $(".mk_cont").css('top', $(".np_titulo").height() - 130)
+    }, 1000)
+
+    $("#foto").click(function() {
+      $(".tapa_contenedort_imagen").removeClass('not_visible');
+      $(".tapa_contenedort_video").addClass('not_visible');
+      $('.solapa_selected').removeClass('solapa_selected');
+      $(this).addClass('solapa_selected')
+    })
+
+    $("#video").click(function() {
+      $(".tapa_contenedort_imagen").addClass('not_visible');
+      $(".tapa_contenedort_video").removeClass('not_visible');
+      $('.solapa_selected').removeClass('solapa_selected');
+      $(this).addClass('solapa_selected')
+    })
+
+    $("img[data-src]").each(function() {
+      $(this).attr('src', $(this).attr('data-src'))
+    })
+
+    var cookies = get_cookies();
+    if (cookies && cookies.login_mustang) {
+      $(".columna3").prepend(
+      '<a href="http://manager.ellitoral.com.ar/edit/notas/5e0d2031ec536600132b86c7" target="_blank">' +
+        '<div class="boton_editar">Editar</div>' +
+      "</a>")
+    }
+
+        var slider = $('.galeria_notapage').bxSlider({
+              pager: false,
+              slideMargin:20,
+              adaptiveHeight: true,
+              autoControls: false,
+              oneToOneTouch: false,
+              nextSelector: '.icono_galeria_s',
+              prevSelector: '.icono_galeria_a',
+              nextText: '',
+              prevText: '',
+              infiniteLoop:false
+        });
+
+        $("#foto").click(function() {
+            slider.redrawSlider();
+        })
+  });
+
+  function iniciarGaleria() {
+    if ("")
+       $(".boton_galeria").click();
+  }
+</script>
+
+
+
+<div class="printable">
+  <img class="logo_cloned" alt="Logo" src="/img/logo.png" alt="">
+
+  <div class="np_titulo"><h1 id="title">Murió un chico de 21 años tras un accidente en moto</h1></div>    
+
+  <div class="np_nota_descripcion "><p>Impactaron dos motocicletas. Los heridos ingresaron al hospital pero quien se llev&oacute; la peor parte falleci&oacute; tras agonizar seis horas.</p></div>
+  <img class="panel_imagen" alt="" src="https://pxc.cdn.ellitoral.com.ar/litoral/012020/1577918773255.jpg">
+
+  <div class="notapage_cuerpo_printable"><p>Un joven muri&oacute; este mi&eacute;rcoles tras un choque de motos en la localidad correntina de Mercedes, seg&uacute;n inform&oacute; la polic&iacute;a, que al mismo tiempo, report&oacute; dos heridos de gravedad en el mismo hecho.</p><p>El siniestro vial se produjo&nbsp;alrededor de las 4,30, en inmediaciones de calles Independencia y Juan Ram&oacute;n Vidal de Mercedes, donde por circunstancias que se tratan de establecer, se produjo la colisi&oacute;n entre dos<br />motocicletas.</p><p>El conductor de uno los rodados identificado con el apellido Pera, de 21 a&ntilde;os de edad, result&oacute;&nbsp;con &quot;lesiones grav&iacute;simas que minutos m&aacute;s tarde le produjeron su deceso&quot;, indic&oacute; la fuerza en un comunicado.</p><p>Seg&uacute;n las primeras averiguaciones el siniestro tuvo como protagonistas a una motocicleta marca Corven de 110c.c.,&nbsp;conducida&nbsp;por un hombre de apellido Ver&oacute;n de 43 a&ntilde;os de edad a quien acompa&ntilde;aba una mujer de apellido Vasconcello de 31 a&ntilde;os, y una motocicleta marca Honda Wave de 110c.c.&nbsp;guiada por el chico que result&oacute; con lesiones fatales.</p><p>Las tres personas debieron ser trasladadas&nbsp;al hospital local, donde lamentablemente alrededor de las 10,30 se produjo el deceso de Pera.</p><p>Asimismo, la ciudadana Vasconcello result&oacute; con lesiones de car&aacute;cter graves.</p><p>En el lugar se realizaron las diligencias de rigor correspondientes, mientras que en la Comisar&iacute;a de Distrito Tercera de Mercedes se inici&oacute; de oficio la actuaci&oacute;n sumarial del caso.</p></div>
+
+</div>
+
+        
+      </div>
+
+      <div id="footer_main">
+        <div id="footer_unico">
+          <div class="footer_contenedor">
+      
+            <div class="footer_top">
+              <img alt="El litoral" src="/img/ellitoral.png">
+            </div>
+      
+            <div class="datos_footer">
+              
+              <ul>
+                <li><a href="/institucional">Institucional</a></li> 
+                <li><a href="/contacto">Contacto</a></li>
+                <li><a href="/mediakit">MediaKit</a></li>
+              </ul>
+      
+            </div>
+      
+            
+            <div class="redes_footer">
+              <ul>
+                
+                <a href="https://twitter.com/DiarioElLitoral" target="_blank"><li><span class="spritelit twitter"></span></li></a>
+                <a href="https://instagram.com/diarioellitoral" target="_blank"><li><span class="spritelit instagram"></span></li></a>
+                <a href="https://www.facebook.com/DiarioElLitoral" target="_blank"><li><span class="spritelit facebook"></span></li></a>
+                <a href="https://www.pinterest.com/diarioellitoral" target="_blank"><li><span class="spritelit pinterest"></span></li></a>
+                <a href="https://www.youtube.com/diarioellitoral" target="_blank"><li><span class="spritelit youtube"></span></li></a>
+              </ul>
+            </div>
+      
+          <div class="footer_contenedor footer_copyright">
+            <div class="text-left">&copy; Copyright Diario EL LITORAL - Corrientes - 2003-2018 | Todos los derechos reservados | Editora Juan Romero S.A.</div>
+          </div>
+      
+          </div>
+        </div>
+          
+        <div class="mustang_div">
+            <a target="_blank" href="http://mustang.cloud/">
+              <img style="margin-right: 10px; width: 40px; height: auto;" width="96" height="55" src="/img/css/mustang.png" alt="Mustang">
+              <span>Mustang Cloud - CMS para portales de noticias</span>
+            </a>
+        </div>
+      </div>
+    </div>
+
+    <div id="opacityBody"></div>
+    
+    </div>
+
+    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    
+        <!-- Background of PhotoSwipe. 
+             It's a separate element as animating opacity is faster than rgba(). -->
+        <div class="pswp__bg"></div>
+    
+        <!-- Slides wrapper with overflow:hidden. -->
+        <div class="pswp__scroll-wrap">
+    
+            <!-- Container that holds slides. 
+                PhotoSwipe keeps only 3 of them in the DOM to save memory.
+                Don't modify these 3 pswp__item elements, data is added later on. -->
+            <div class="pswp__container">
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+            </div>
+    
+            <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+            <div class="pswp__ui pswp__ui--hidden">
+    
+                <div class="pswp__top-bar">
+    
+                    <!--  Controls are self-explanatory. Order can be changed. -->
+    
+                    <div class="pswp__counter"></div>
+    
+                    <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+    
+                    <button class="pswp__button pswp__button--share" title="Share"></button>
+    
+                    <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+    
+                    <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+    
+                    <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                    <!-- element will get class pswp__preloader--active when preloader is running -->
+                    <div class="pswp__preloader">
+                        <div class="pswp__preloader__icn">
+                          <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                    <div class="pswp__share-tooltip"></div> 
+                </div>
+    
+                <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+                </button>
+    
+                <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+                </button>
+    
+                <div class="pswp__caption">
+                    <div class="pswp__caption__center"></div>
+                </div>
+    
+            </div>
+    
+        </div>
+    
+    </div>
+    
+    <script>
+    window.initPhotoSwipeFromDOM = function(gallerySelector) {
+        var pswp = null;
+        var parseThumbnailElements = function(el) {
+            var thumbElements = el.childNodes,
+                numNodes = thumbElements.length,
+                items = [],
+                figureEl,
+                linkEl,
+                size,
+                item;
+    
+            var title = el.getAttribute("data-title");
+    
+            for(var i = 0; i < numNodes; i++) {
+    
+                figureEl = thumbElements[i]; // <figure> element
+    
+                // include only element nodes 
+                if(figureEl.nodeType !== 1) {
+                    continue;
+                }
+    
+                item = {
+                    src: figureEl.getAttribute('data-src'),
+                    w: figureEl.getAttribute('data-width'),
+                    h: figureEl.getAttribute('data-height'),
+                    id: figureEl.getAttribute('id'),
+                    title: title
+                };
+    
+                items.push(item);
+            }
+    
+            return items;
+        };
+    
+        // find nearest parent element
+        var closest = function closest(el, fn) {
+            return el && ( fn(el) ? el : closest(el.parentNode, fn) );
+        };
+    
+        // triggers when user clicks on thumbnail
+        var onThumbnailsClick = function(e) {
+            e = e || window.event;
+            e.preventDefault ? e.preventDefault() : e.returnValue = false;
+    
+            var eTarget = e.target || e.srcElement;
+            console.log(eTarget.getAttribute("class"))
+    
+            if(eTarget.getAttribute("class").indexOf('share_nota')!= -1 || eTarget.getAttribute("class").indexOf('spritelit')!= -1){
+                return; 
+            }
+    
+            // find root element of slide
+            var clickedListItem = closest(eTarget, function(el) {
+                return (el.tagName && el.tagName.toUpperCase() === 'DIV'  && el.getAttribute("class") === 'items');
+            });
+    
+            if(!clickedListItem) {
+                return;
+            }
+    
+            // find index of clicked item by looping through all child nodes
+            // alternatively, you may define index via data- attribute
+            var clickedGallery = clickedListItem.parentNode,
+                childNodes = clickedListItem.parentNode.childNodes,
+                numChildNodes = childNodes.length,
+                nodeIndex = 0,
+                index;
+    
+            for (var i = 0; i < numChildNodes; i++) {
+                if(childNodes[i].nodeType !== 1) { 
+                    continue; 
+                }
+    
+                if(childNodes[i] === clickedListItem) {
+                    index = nodeIndex;
+                    break;
+                }
+                nodeIndex++;
+            }
+    
+    
+    
+            if(index >= 0) {
+                // open PhotoSwipe if valid index found
+                openPhotoSwipe( index, clickedGallery );
+            }
+            return false;
+        };
+    
+        // parse picture index and gallery index from URL (#&pid=1&gid=2)
+        var photoswipeParseHash = function() {
+            var hash = window.location.hash.substring(1),
+            params = {};
+    
+            if(hash.length < 5) {
+                return params;
+            }
+    
+            var vars = hash.split('&');
+            for (var i = 0; i < vars.length; i++) {
+                if(!vars[i]) {
+                    continue;
+                }
+                var pair = vars[i].split('=');  
+                if(pair.length < 2) {
+                    continue;
+                }           
+                params[pair[0]] = pair[1];
+            }
+    
+            if(params.gid) {
+                params.gid = parseInt(params.gid, 10);
+            }
+    
+            return params;
+        };
+    
+        var openPhotoSwipe = function(index, galleryElement, disableAnimation, fromURL) {
+            var pswpElement = document.querySelectorAll('.pswp')[0],
+                gallery,
+                options,
+                items;
+    
+            items = parseThumbnailElements(galleryElement);
+    
+            // define options (if needed)
+            options = {
+                // define gallery index (for URL)
+                galleryUID: galleryElement.getAttribute('data-pswp-uid'),
+                showHideOpacity:true, 
+                getThumbBoundsFn: false,
+                history: false,
+                shareButtons: [
+                    {id:'facebook', label:'<span class="spritelit facebook_small"></span> Compartir en Facebook', url:'https://www.facebook.com/dialog/feed?app_id=250070788421829&amp;link={{url}}'},
+                    {id:'twitter', label:'<span class="spritelit twitter_small"></span> Compartir en Twitter', url:'https://twitter.com/intent/tweet?url={{url}}&amp;text={{text}}'},
+                ],
+                getPageURLForShare: function( shareButtonData ) {
+                    return window.location.href + "/" + (pswp.currItem.id || '');
+                },
+            };
+    
+            if (mobilecheck())
+                options.shareButtons.push({
+                    id: 'whatsapp',
+                    label: '<span class="spritelit whatsapp_small"></span> Compartir en Whatsapp',
+                    url: 'https://api.whatsapp.com/send?text={{text}} - {{url}}'
+                })
+    
+            // PhotoSwipe opened from URL
+            if(fromURL) {
+                if(options.galleryPIDs) {
+                    // parse real index when custom PIDs are used 
+                    // http://photoswipe.com/documentation/faq.html#custom-pid-in-url
+                    for(var j = 0; j < items.length; j++) {
+                        if(items[j].pid == index) {
+                            options.index = j;
+                            break;
+                        }
+                    }
+                } else {
+                    // in URL indexes start from 1
+                    options.index = parseInt(index, 10) - 1;
+                }
+            } else {
+                options.index = parseInt(index, 10);
+            }
+    
+            // exit if index not found
+            if( isNaN(options.index) ) {
+                return;
+            }
+    
+            if(disableAnimation) {
+                options.showAnimationDuration = 0;
+            }
+    
+            // Pass data to PhotoSwipe and initialize it
+            pswp = gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, items, options);
+            gallery.init();
+        };
+    
+        // loop through all gallery elements and bind events
+        var galleryElements = document.querySelectorAll( gallerySelector );
+    
+        for(var i = 0, l = galleryElements.length; i < l; i++) {
+            galleryElements[i].setAttribute('data-pswp-uid', i+1);
+            galleryElements[i].onclick = onThumbnailsClick;
+        }
+    
+        // Parse URL and open gallery if it contains #&pid=3&gid=1
+        var hashData = photoswipeParseHash();
+        if(hashData.pid && hashData.gid) {
+            openPhotoSwipe( hashData.pid ,  galleryElements[ hashData.gid - 1 ], true, true );
+        }
+    };
+    
+      
+    </script>  </body>
+</html>

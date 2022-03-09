@@ -1,0 +1,1333 @@
+
+<!doctype html>
+<html class="no-js" lang="en-US" >
+    <head>
+
+        <meta charset="UTF-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"e4824da135",applicationID:"96620565"};window.NREUM||(NREUM={}),__nr_require=function(n,e,t){function r(t){if(!e[t]){var i=e[t]={exports:{}};n[t][0].call(i.exports,function(e){var i=n[t][1][e];return r(i||e)},i,i.exports)}return e[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(n,e,t){function r(){}function i(n,e,t){return function(){return o(n,[u.now()].concat(f(arguments)),e?null:this,t),e?void 0:this}}var o=n("handle"),a=n(4),f=n(5),c=n("ee").get("tracer"),u=n("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(n,e){s[e]=i(d+e,!0,"api")}),s.addPageAction=i(d+"addPageAction",!0),s.setCurrentRouteName=i(d+"routeName",!0),e.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(n,e){var t={},r=this,i="function"==typeof e;return o(l+"tracer",[u.now(),n,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return e.apply(this,arguments)}catch(n){throw c.emit("fn-err",[arguments,this,n],t),n}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(n,e){m[e]=i(l+e)}),newrelic.noticeError=function(n,e){"string"==typeof n&&(n=new Error(n)),o("err",[n,u.now(),!1,e])}},{}],2:[function(n,e,t){function r(n,e){var t=n.getEntries();t.forEach(function(n){"first-paint"===n.name?a("timing",["fp",Math.floor(n.startTime)]):"first-contentful-paint"===n.name&&a("timing",["fcp",Math.floor(n.startTime)])})}function i(n){if(n instanceof c&&!s){var e,t=Math.round(n.timeStamp);e=t>1e12?Date.now()-t:f.now()-t,s=!0,a("timing",["fi",t,{type:n.type,fid:e}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var o,a=n("handle"),f=n("loader"),c=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){o=new PerformanceObserver(r);try{o.observe({entryTypes:["paint"]})}catch(u){}}if("addEventListener"in document){var s=!1,p=["click","keydown","mousedown","pointerdown","touchstart"];p.forEach(function(n){document.addEventListener(n,i,!1)})}}},{}],3:[function(n,e,t){function r(n,e){if(!i)return!1;if(n!==i)return!1;if(!e)return!0;if(!o)return!1;for(var t=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],4:[function(n,e,t){function r(n,e){var t=[],r="",o=0;for(r in n)i.call(n,r)&&(t[o]=e(r,n[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],5:[function(n,e,t){function r(n,e,t){e||(e=0),"undefined"==typeof t&&(t=n?n.length:0);for(var r=-1,i=t-e||0,o=Array(i<0?0:i);++r<i;)o[r]=n[e+r];return o}e.exports=r},{}],6:[function(n,e,t){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(n,e,t){function r(){}function i(n){function e(n){return n&&n instanceof r?n:n?c(n,f,o):o()}function t(t,r,i,o){if(!d.aborted||o){n&&n(t,r,i);for(var a=e(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function l(n,e){h[n]=v(n).concat(e)}function m(n,e){var t=h[n];if(t)for(var r=0;r<t.length;r++)t[r]===e&&t.splice(r,1)}function v(n){return h[n]||[]}function g(n){return p[n]=p[n]||i(t)}function w(n,e){u(n,function(n,t){e=e||"feature",y[t]=e,e in s||(s[e]=[])})}var h={},y={},b={on:l,addEventListener:l,removeEventListener:m,emit:t,get:g,listeners:v,context:e,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var f="nr@context",c=n("gos"),u=n(4),s={},p={},d=e.exports=i();d.backlog=s},{}],gos:[function(n,e,t){function r(n,e,t){if(i.call(n,e))return n[e];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(n,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return n[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(n,e,t){function r(n,e,t,r){i.buffer([n],r),i.emit(n,e,t)}var i=n("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(n,e,t){function r(n){var e=typeof n;return!n||"object"!==e&&"function"!==e?-1:n===window?0:a(n,o,function(){return i++})}var i=1,o="nr@id",a=n("gos");e.exports=r},{}],loader:[function(n,e,t){function r(){if(!x++){var n=E.info=NREUM.info,e=l.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(n&&n.licenseKey&&n.applicationID&&e))return s.abort();u(y,function(e,t){n[e]||(n[e]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=l.createElement("script");t.src="https://"+n.agent,e.parentNode.insertBefore(t,e)}}function i(){"complete"===l.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=n("handle"),u=n(4),s=n("ee"),p=n(3),d=window,l=d.document,m="addEventListener",v="attachEvent",g=d.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:g,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1158.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=e.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};n(1),n(2),l[m]?(l[m]("DOMContentLoaded",o,!1),d[m]("load",r,!1)):(l[v]("onreadystatechange",i),d[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=n(6)},{}],"wrap-function":[function(n,e,t){function r(n){return!(n&&n instanceof Function&&n.apply&&!n[a])}var i=n("ee"),o=n(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;e.exports=function(n,e){function t(n,e,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){d([u,"",[r,a,i],f])}s(e+"start",[r,a,i],f);try{return c=n.apply(a,r)}catch(p){throw s(e+"err",[r,a,p],f),p}finally{s(e+"end",[r,a,c],f)}}return r(n)?n:(e||(e=""),nrWrapper[a]=n,p(n,nrWrapper),nrWrapper)}function u(n,e,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<e.length;c++)f=e[c],a=n[f],r(a)||(n[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||e){var o=c;c=!0;try{n.emit(t,r,i,e)}catch(a){d([a,t,r,i])}c=o}}function p(n,e){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(n);return t.forEach(function(t){Object.defineProperty(e,t,{get:function(){return n[t]},set:function(e){return n[t]=e,e}})}),e}catch(r){d([r])}for(var i in n)f.call(n,i)&&(e[i]=n[i]);return e}function d(e){try{n.emit("internal-error",e)}catch(t){}}return n||(n=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="cache-control" content="no-cache" />
+        <meta name="gpsid" content="19914145" />
+        <link rel="icon" href="https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/assets/images/icons/favicon.ico" type="image/x-icon">
+        <link rel="apple-touch-icon" sizes="144x144" href="https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/assets/images/icons/apple-touch-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/assets/images/icons/apple-touch-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/assets/images/icons/apple-touch-icon-72x72.png">
+        <link rel="apple-touch-icon" href="https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/assets/images/icons/apple-touch-icon.png">
+        <title>LETTERS: Keep second gym, don&#8217;t reassign cardiac program classes &#8211; Peace Arch News</title>
+<!--
+<PageMap>
+	<DataObject type="thumbnail">
+		<Attribute name="src" value="https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19914145_web1_Letters-editor-180116-ACC-M-300x200.jpg"/>
+		<Attribute name="width" value="300"/>
+		<Attribute name="height" value="200"/>
+	</DataObject>
+</PageMap>
+--><link rel="amphtml" href="https://www.peacearchnews.com/opinion/letters-keep-second-gym-dont-reassign-cardiac-program-classes/amp/" /><meta name="generator" content="AMP for WP 0.9.98.2"/><link rel='dns-prefetch' href='//ap.lijit.com' />
+<link rel='dns-prefetch' href='//ajax.googleapis.com' />
+<link rel='dns-prefetch' href='//content.jwplatform.com' />
+<link rel='dns-prefetch' href='//cdnjs.cloudflare.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel='stylesheet' id='wp-block-library-css'  href='https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-includes/css/dist/block-library/style.min.css?ver=5.2.5' type='text/css' media='all' />
+<link rel='stylesheet' id='slick-css'  href='//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css?ver=1.9.0' type='text/css' media='all' />
+<link rel='stylesheet' id='slick-theme-css'  href='//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css?ver=1.9.0' type='text/css' media='all' />
+<link rel='stylesheet' id='main-stylesheet-css'  href='https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/dest/css/foundation.min.css?ver=2.36.14' type='text/css' media='all' />
+<link rel='stylesheet' id='featherlight-css'  href='https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/assets/components/featherlight/featherlight.css?ver=1.6.1' type='text/css' media='all' />
+<script type="application/javascript">var googletag=googletag||{};googletag.cmd=googletag.cmd||[];googletag.cmd.push(function(){googletag.pubads().disableInitialLoad()});</script>
+<script type='text/javascript' src='//ap.lijit.com/www/headerauction/headersuite.min.js?configId=3209'></script>
+<script type='text/javascript' src='//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js?ver=2.1.0'></script>
+<link rel='https://api.w.org/' href='https://www.peacearchnews.com/wp-json/' />
+<link rel="alternate" type="application/json+oembed" href="https://www.peacearchnews.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.peacearchnews.com%2Fopinion%2Fletters-keep-second-gym-dont-reassign-cardiac-program-classes%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://www.peacearchnews.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.peacearchnews.com%2Fopinion%2Fletters-keep-second-gym-dont-reassign-cardiac-program-classes%2F&#038;format=xml" />
+<!-- Start Lotame Tags -->
+<script type='text/javascript' src='//tags.crwdcntrl.net/c/14245/cc.js?ns=_cc14245' id='LOTCC_14245'></script>
+<script type='text/javascript' language='javascript'>
+_cc14245.bcp();</script>
+<script type='text/javascript' src='https://ad.crwdcntrl.net/5/c=14235/pe=y/var=ccauds'></script>
+<!-- End Lotame Tags -->
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-17101303-15"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config','UA-17101303-15',{'dimension1': 'Wire Service','dimension2': 'letters,opinion', 'dimension3': 'untagged', 'dimension4': 'post'});
+  gtag('config','UA-17099191-2',{'dimension1': 'Wire Service','dimension2': 'letters,opinion', 'dimension3': 'untagged', 'dimension4': 'post'});
+  gtag('config','UA-17099191-1',{'dimension1': 'Wire Service','dimension2': 'letters,opinion', 'dimension3': 'untagged', 'dimension4': 'post'});
+  gtag('config','UA-17099191-9',{'dimension1': 'Wire Service','dimension2': 'letters,opinion', 'dimension3': 'untagged', 'dimension4': 'post'});
+</script>
+<!-- End Google Analytics -->
+<!-- Google Analytics Event elements -->
+<script type='text/javascript'>
+  $(document).ready(function(){
+    $("ul.dropdown.menu:first-child > li > a.search").click(function(){
+      gtag('event', 'Click', {'event_category': 'Main Navigation', 'event_label': 'Search Button'});
+    });
+    $("a.pub-logo-large").click(function(){
+      gtag('event', 'Click', {'event_category': 'Main Navigation', 'event_label': 'Header Logo'});
+    });
+    $(".module-adjacent-posts .adjacent-next a").click(function(){
+      gtag('event', 'Click', {'event_category': 'Recirculating Content', 'event_label': 'Next Adjacent Story'});
+    });
+    $(".module-adjacent-posts .adjacent-prev a").click(function(){
+      gtag('event', 'Click', {'event_category': 'Recirculating Content', 'event_label': 'Previous Adjacent Story'});
+    });
+    $("a.social").click(function(){
+      gtag('event', 'Click', {'event_category': 'Recirculating Content', 'event_label': 'Article Social Share'});
+    });
+    $("a.social").click(function(){
+      gtag('event', 'Click', {'event_category': 'Recirculating Content', 'event_label': 'Article Social Share'});
+    });
+  });
+</script>
+<!-- End Event elements -->
+
+<!-- Start Chartbeat -->
+<script type='text/javascript'>
+    (function() {
+        var _sf_async_config = window._sf_async_config = (window._sf_async_config || {});
+        _sf_async_config.uid = 65935
+        _sf_async_config.domain = 'peacearchnews.com'; 
+        _sf_async_config.useCanonical = false;
+        _sf_async_config.useCanonicalDomain = true;
+        _sf_async_config.authors = 'Wire Service'; 
+        _sf_async_config.sections = 'Letters, Opinion'; 
+        function loadChartbeat() {
+            var e = document.createElement('script');
+            var n = document.getElementsByTagName('script')[0];
+            e.type = 'text/javascript';
+            e.async = true;
+            e.src = '//static.chartbeat.com/js/chartbeat.js';
+            n.parentNode.insertBefore(e, n);
+        }
+        loadChartbeat();
+     })();
+</script>
+<!-- End Chartbeat -->
+			<style>
+				ul.dropdown.menu a {
+    				font-size: 0.84rem !important;
+				}
+				@media screen and (max-width: 39.9375em) {
+					ul.dropdown.menu a {
+						font-size: 0.74rem !important;
+					}
+				}
+			</style>
+		<!-- Start echo_header_meta_tags() for SEO -->
+<meta property="og:locale" content="en_US" />
+<meta property="og:site_name" content="Peace Arch News" />
+<meta property="og:url" content="https://www.peacearchnews.com/opinion/letters-keep-second-gym-dont-reassign-cardiac-program-classes/" />
+<meta property="og:title" content="LETTERS: Keep second gym, don&#8217;t reassign cardiac program classes - Peace Arch News" />
+<meta name="description" content="Editor:" />
+<meta property="og:description" content="Editor:" />
+<meta property="og:type" content="article" />
+<meta property="article:section" content="Opinion" />
+<meta property="article:published_time" content="2020-01-01T07:30:00-08:00" />
+<meta property="og:image" content="https://www.peacearchnews.com/wp-content/uploads/2020/01/19914145_web1_Letters-editor-180116-ACC-M-1024x683.jpg" />
+<meta property="og:secure_url" content="https://www.peacearchnews.com/wp-content/uploads/2020/01/19914145_web1_Letters-editor-180116-ACC-M-1024x683.jpg" />
+<meta property="og:image:width" content="1024" />
+<meta property="og:image:height" content="683" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="LETTERS: Keep second gym, don&#8217;t reassign cardiac program classes - Peace Arch News" />
+<meta property="twitter:description" content="Editor:" />
+<meta property="twitter:image" content="https://www.peacearchnews.com/wp-content/uploads/2020/01/19914145_web1_Letters-editor-180116-ACC-M-1024x683.jpg" />
+<meta property="fb:app_id" content="307451845947866" />
+<script type="application/ld+json">{"@context":"https:\/\/schema.org","@type":"NewsArticle","url":"https:\/\/www.peacearchnews.com\/opinion\/letters-keep-second-gym-dont-reassign-cardiac-program-classes\/","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/www.peacearchnews.com\/opinion\/letters-keep-second-gym-dont-reassign-cardiac-program-classes\/"},"headline":"LETTERS: Keep second gym, don&#8217;t reassign cardiac program classes","datePublished":"2020-01-01T07:30:00-08:00","dateModified":"2020-01-01T07:30:00-08:00","thumbnailUrl":"https:\/\/www.peacearchnews.com\/wp-content\/uploads\/2020\/01\/19914145_web1_Letters-editor-180116-ACC-M.jpg","image":{"@type":"ImageObject","url":"https:\/\/www.peacearchnews.com\/wp-content\/uploads\/2020\/01\/19914145_web1_Letters-editor-180116-ACC-M.jpg","width":1200,"height":800},"author":{"@type":"Person","name":"Wire Service"},"publisher":{"@type":"Organization","name":"Peace Arch News","logo":{"@type":"ImageObject","url":"https:\/\/www.peacearchnews.com\/wp-content\/themes\/BlackPress\/assets\/images\/logos\/pan-logo.png","width":411,"height":52}},"contentLocation":{"@type":"Place","name":"Surrey, B.C., Canada"},"dateline":"Surrey, B.C., Canada","description":"\n\t\t\t\t&lt;p&gt;&lt;strong&gt;Editor: &lt;\/strong&gt;&lt;\/p&gt;\n\t\t\t"}</script>
+<!-- End echo_header_meta_tags() for SEO -->
+
+    <!-- BEGIN: Dev Con Script -->
+    <script id='ns_script_dc' data-key='91532438-f31b-4086-8018-7cd68ddba2a3' data-e='5' src='//includemodal.global.ssl.fastly.net/sp.js' type='text/javascript'></script>
+    <!-- END: Dev Con Script -->  
+    
+        <script>window.twttr = (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0],
+            t = window.twttr || {};
+        if (d.getElementById(id)) return t;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "https://platform.twitter.com/widgets.js";
+        fjs.parentNode.insertBefore(js, fjs);
+
+        t._e = [];
+        t.ready = function(f) {
+            t._e.push(f);
+        };
+
+        return t;
+        }(document, "script", "twitter-wjs"));</script>
+        <style type='text/css'>
+.ai-viewport-3                { display: none !important;}
+.ai-viewport-2                { display: none !important;}
+.ai-viewport-1                { display: inherit !important;}
+.ai-viewport-0                { display: none !important;}
+@media (min-width: 768px) and (max-width: 979px) {
+.ai-viewport-1                { display: none !important;}
+.ai-viewport-2                { display: inherit !important;}
+}
+@media (max-width: 767px) {
+.ai-viewport-1                { display: none !important;}
+.ai-viewport-3                { display: inherit !important;}
+}
+</style>
+<!-- DoubleClick for Publishers -->
+<script type='text/javascript'>
+ var googletag = googletag || {};
+ googletag.cmd = googletag.cmd || [];
+ (function() {
+   var gads = document.createElement('script');
+   gads.async = true;
+   gads.type = 'text/javascript';
+   var useSSL = 'https:' == document.location.protocol;
+   gads.src = (useSSL ? 'https:' : 'http:') +
+     '//www.googletagservices.com/tag/js/gpt.js';
+   var node = document.getElementsByTagName('script')[0];
+   node.parentNode.insertBefore(gads, node);
+ })();
+</script>
+
+<script type='text/javascript'>
+ var gptAdSlots = [];
+ var gptRefreshSlots = [];
+ googletag.cmd.push(function() {
+   var mappingHorizontal = googletag.sizeMapping().
+     addSize([1024, 0],[[970, 90],[728, 90]]).
+     addSize([768, 0],[[728, 90], [320, 50]]).
+     addSize([320, 0],[[300, 250]]).
+     addSize([0, 0],[[320, 50], [300, 50], [300, 250]]).
+     build();
+   var mappingVertical = googletag.sizeMapping().
+     addSize([1024, 0],[[300, 600], [300, 250]]).
+     addSize([600, 0],[[300, 600],[300, 250]]).
+     addSize([400, 0],[300, 250]).
+     addSize([0, 0],[[300, 50], [300, 250]]).
+     build(); 
+   var mappingFeatured = googletag.sizeMapping().
+     addSize([1024, 0],[[300, 600]]).
+     addSize([600, 0],[[300, 600]]).
+     addSize([0, 0],[300, 250]).
+     build();   
+   var mappingBillboard = googletag.sizeMapping().
+     addSize([1024, 0],[[970,250]]).
+     addSize([600, 0],[320,50]).
+     addSize([320, 0], [320, 50]).
+     addSize([0, 0],[]).
+     build();   
+   var mappingPromo = googletag.sizeMapping().
+     addSize([1024, 0],[[970,30],[970,90],[728,90]]).
+     addSize([600, 0],[320, 50]).
+     addSize([320, 0], [320, 50]).
+     addSize([0, 0],[]).
+     build();   
+   var mappingMobileOnly = googletag.sizeMapping().
+     addSize([0, 0],[[280, 375],[320, 50],[300, 50],[300, 250],[1, 1]]).
+     addSize([320, 0], [[280, 375],[320, 50],[300, 50],[300, 250],[1, 1]]).
+     addSize([1024, 0],[]).
+     addSize([600, 0],[]).
+     build();   
+   var mappingMobileRectangle = googletag.sizeMapping().
+     addSize([0, 0],[[300, 250]]).
+     addSize([320, 0], [[300, 250]]).
+     addSize([1024, 0],[]).
+     addSize([600, 0],[]).
+     build();   
+  var mappingObitSidebar = googletag.sizeMapping().
+     addSize([1024, 0],[[300, 600]]).
+     addSize([600, 0],[[300, 250]]).
+     addSize([400, 0],[300, 250]).
+     addSize([0, 0],[[300, 250]]).
+     build(); 
+
+   gptAdSlots[0] = googletag.defineSlot('/1036919/adunit0', [[320, 50],[970, 30],[728,90]], 'div-gpt-0').defineSizeMapping(mappingPromo).addService(googletag.pubads());
+   gptAdSlots[1] = googletag.defineSlot('/1036919/adunit1', [[970, 250],[300,250]], 'div-gpt-1').defineSizeMapping(mappingBillboard).addService(googletag.pubads());
+   gptAdSlots[2] = googletag.defineSlot('/1036919/adunit2', [[300, 250]], 'div-gpt-2').addService(googletag.pubads());
+   gptAdSlots[3] = googletag.defineSlot('/1036919/adunit3', [[970, 90],[728, 90],[320, 50]], 'div-gpt-3').defineSizeMapping(mappingHorizontal).addService(googletag.pubads());
+   gptAdSlots[4] = googletag.defineSlot('/1036919/adunit4', [[300, 600],[300, 250]], 'div-gpt-4').defineSizeMapping(mappingVertical).addService(googletag.pubads());
+   gptAdSlots[5] = googletag.defineSlot('/1036919/adunit5', [[970, 90],[728, 90],[320, 50]], 'div-gpt-5').defineSizeMapping(mappingHorizontal).addService(googletag.pubads());
+   gptAdSlots[6] = googletag.defineSlot('/1036919/adunit6', [[300, 600],[300, 250]], 'div-gpt-6').defineSizeMapping(mappingVertical).addService(googletag.pubads());
+   gptAdSlots[7] = googletag.defineSlot('/1036919/adunit7', [[970, 90],[728, 90],[320, 50]], 'div-gpt-7').defineSizeMapping(mappingHorizontal).addService(googletag.pubads());
+   gptAdSlots[8] = googletag.defineSlot('/1036919/adunit8', [[300, 600],[300, 250]], 'div-gpt-8').defineSizeMapping(mappingVertical).addService(googletag.pubads());
+   gptAdSlots[9] = googletag.defineSlot('/1036919/adunit9', [[970, 90],[728, 90],[320, 50]], 'div-gpt-9').defineSizeMapping(mappingHorizontal).addService(googletag.pubads());
+   gptAdSlots[10] = googletag.defineSlot('/1036919/adunit10', [[300, 600],[300,250]], 'div-gpt-10').defineSizeMapping(mappingFeatured).addService(googletag.pubads());
+   gptAdSlots[11] = googletag.defineSlot('/1036919/adunit11', [[970, 90],[728, 90],[320, 50]], 'div-gpt-11').defineSizeMapping(mappingHorizontal).addService(googletag.pubads());
+   gptAdSlots[12] = googletag.defineSlot('/1036919/adunit12', [[300, 600],[300, 250]], 'div-gpt-12').defineSizeMapping(mappingVertical).addService(googletag.pubads());
+   gptAdSlots[13] = googletag.defineSlot('/1036919/adunit13', [[970, 90],[728, 90],[320, 50]], 'div-gpt-13').defineSizeMapping(mappingHorizontal).addService(googletag.pubads());
+   gptAdSlots[14] = googletag.defineSlot('/1036919/adunit14', [300, 250], 'div-gpt-14').addService(googletag.pubads());
+   gptAdSlots[15] = googletag.defineSlot('/1036919/adunit15', [[970, 90],[728, 90],[320, 50]], 'div-gpt-15').defineSizeMapping(mappingHorizontal).addService(googletag.pubads());
+   gptAdSlots[17] = googletag.defineSlot('/1036919/adunit17', [[320, 50]], 'div-gpt-17').defineSizeMapping(mappingMobileOnly).addService(googletag.pubads());
+   gptAdSlots[18] = googletag.defineSlot('/1036919/adunit18', [[280, 375],[300, 250]], 'div-gpt-18').defineSizeMapping(mappingMobileOnly).addService(googletag.pubads());
+   gptAdSlots[19] = googletag.defineSlot('/1036919/adunit19', [300, 250], 'div-gpt-19').addService(googletag.pubads());
+   gptAdSlots[20] = googletag.defineSlot('/1036919/adunit20', [[300, 250]], 'div-gpt-20').addService(googletag.pubads());
+   gptAdSlots[21] = googletag.defineSlot('/1036919/vendor_library_0', [1, 1], 'div-gpt-21').addService(googletag.pubads());
+   gptAdSlots[22] = googletag.defineSlot('/1036919/adunit22', [300, 250], 'div-gpt-22').addService(googletag.pubads());
+   gptAdSlots[23] = googletag.defineSlot('/1036919/adunit23', [[970, 90],[728, 90],[320, 50]], 'div-gpt-23').defineSizeMapping(mappingHorizontal).addService(googletag.pubads());
+   gptAdSlots[24] = googletag.defineSlot('/1036919/adunit24', [[320, 50],[970, 30],[728,90]], 'div-gpt-24').defineSizeMapping(mappingPromo).addService(googletag.pubads());
+   gptAdSlots[30] = googletag.defineSlot('/1036919/obit0', [[970, 30],[970, 90], [728, 90],[320, 50]], 'div-gpt-30').defineSizeMapping(mappingPromo).addService(googletag.pubads());
+   gptAdSlots[32] = googletag.defineSlot('/1036919/obit2', [[300, 600],[300, 250]], 'div-gpt-32').defineSizeMapping(mappingObitSidebar).addService(googletag.pubads());
+   gptAdSlots[33] = googletag.defineSlot('/1036919/obit3', [[300, 600],[300, 250]], 'div-gpt-33').defineSizeMapping(mappingVertical).addService(googletag.pubads());
+   gptAdSlots[34] = googletag.defineSlot('/1036919/obit4', [[300, 600],[300, 250]], 'div-gpt-34').defineSizeMapping(mappingVertical).addService(googletag.pubads());
+   gptAdSlots[40] = googletag.defineSlot('/1036919/impress0', [[970, 30],[970, 90], [728, 90],[320, 50]], 'div-gpt-40').defineSizeMapping(mappingPromo).addService(googletag.pubads());
+   gptAdSlots[41] = googletag.defineSlot('/1036919/impress2', [[300, 600],[300, 250]], 'div-gpt-41').defineSizeMapping(mappingVertical).addService(googletag.pubads());
+   gptAdSlots[42] = googletag.defineSlot('/1036919/impress3', [[300, 600],[300, 250]], 'div-gpt-42').defineSizeMapping(mappingVertical).addService(googletag.pubads());
+   gptAdSlots[43] = googletag.defineSlot('/1036919/impress4', [[300, 600],[300, 250]], 'div-gpt-43').defineSizeMapping(mappingVertical).addService(googletag.pubads());
+   gptAdSlots[45] = googletag.defineSlot('/1036919/weather0', [[970, 30],[970, 90], [728, 90],[320, 50]], 'div-gpt-45').defineSizeMapping(mappingPromo).addService(googletag.pubads());
+   gptAdSlots[46] = googletag.defineSlot('/1036919/weather1', [[300, 600],[300, 250]], 'div-gpt-46').defineSizeMapping(mappingVertical).addService(googletag.pubads());
+   gptAdSlots[47] = googletag.defineSlot('/1036919/weather2', [[300, 600],[300, 250]], 'div-gpt-47').defineSizeMapping(mappingVertical).addService(googletag.pubads());
+   gptAdSlots[48] = googletag.defineSlot('/1036919/weather3', [[970, 30],[970, 90], [728, 90],[320, 50]], 'div-gpt-48').defineSizeMapping(mappingPromo).addService(googletag.pubads());
+   gptAdSlots[49] = googletag.defineSlot('/1036919/contest0', [[970, 30],[970, 90], [728, 90],[320, 50]], 'div-gpt-49').defineSizeMapping(mappingPromo).addService(googletag.pubads());
+   gptAdSlots[55] = googletag.defineSlot('/1036919/mf0', [300,250], 'div-gpt-55').defineSizeMapping(mappingMobileRectangle).addService(googletag.pubads());
+   gptAdSlots[56] = googletag.defineSlot('/1036919/mf1', [[320, 50],[300,250]], 'div-gpt-56').defineSizeMapping(mappingMobileOnly).addService(googletag.pubads());
+   gptAdSlots[57] = googletag.defineSlot('/1036919/mf2', [[320, 50],[300,250]], 'div-gpt-57').defineSizeMapping(mappingMobileOnly).addService(googletag.pubads());
+   
+var ccAudVals = "";
+if (typeof(ccauds) != "undefined")
+{
+  for (var cci = 0; cci < ccauds.Profile.Audiences.Audience.length; cci++)
+  {
+    if(ccauds.Profile.Audiences.Audience[cci].abbr == "all") 
+      continue;
+    
+    ccAudVals += ccauds.Profile.Audiences.Audience[cci].abbr;
+    
+    if(ccAudVals.length != 0) 
+      ccAudVals += ",";
+	}
+}
+   googletag.pubads().setTargeting('ccaud', ccAudVals);
+   googletag.pubads().setTargeting('site', ['peacearchnews.com']).setTargeting('section', ['letters','opinion','ros']);
+   //googletag.pubads().enableSingleRequest();
+   googletag.pubads().disableInitialLoad();
+   googletag.pubads().collapseEmptyDivs();
+   googletag.enableServices();
+ });
+</script>
+<!-- End DoubleClick for Publishers -->
+<!-- 
+    * Script creates the global generalSettings js array. 
+    * Key/Value pair of Black Press general settings section: option name, option value 
+    * NOTE: new options should be added to this array 
+-->
+<script type='text/javascript'>
+        var generalSettings = {"postal_code":"V3Z 0C8","pub_code":"PAN","secondstreet_contest_feed":"http:\/\/peacearchnews.upickem.net\/Engine\/XMLFeed.aspx?AffiliateID=PANS"};
+
+</script>
+<!-- Begin comScore Tag -->
+<script>
+  var _comscore = _comscore || [];
+  _comscore.push({ c1: "2", c2: "6035032" });
+  (function() {
+    var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;
+    s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
+    el.parentNode.insertBefore(s, el);
+  })();
+</script>
+<noscript>
+  <img src="https://sb.scorecardresearch.com/p?c1=2&c2=6035032&cv=2.0&cj=1" />
+</noscript>
+<!-- End comScore Tag -->
+    </head>
+    <body class="post-template-default single single-post postid-156567 single-format-standard offcanvas">
+        <!-- BEGIN: FACE BOOK COMMENTS PLUGIN CODE -->
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+        <!-- END: FACE BOOK COMMENTS PLUGIN CODE -->
+
+    
+    
+    
+    
+    <header id="masthead" class="site-header row collapse" role="banner">
+        <!-- original divs replaced by code after. Note still have 2 divs, 
+             with different settings for mobile and desktop -->
+        <!-- <div  class="small-12 columns" data-sticky-container > -->
+        <!-- <div id="sticky-menu-bar-container" class="top-bar title-bar row collapse" data-sticky data-options="marginTop:0;" style="width:100%"> -->
+        <div  class="small-12 columns" data-sticky-container ><div id="sticky-menu-bar-container" class="top-bar title-bar row collapse" data-sticky data-options="marginTop:0;" style="width:100%">            
+            
+            <article id="text-1" class="menu-button-container small-1 medium-1 columns">
+                    <div id="mobile-menu-button" data-responsive-toggle="site-navigation" data-hide-for="medium">
+                        <button class="fa fa-bars menu" type="button" data-toggle="site-navigation"></button>
+                    </div>
+                    <ul id="menu-mainmenu" class="dropdown menu day-4 show-for-medium" data-dropdown-menu data-options="hoverDelay:150;"><li><a href="#"><i class="fa fa-bars menu"></i></a><ul class="dropdown menu" data-dropdown-menu><li class='nav-search'><a href='/search/'><i class='fa fa-search menu'></i>Search</a></li><li id="menu-item-320" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-320"><a href="https://www.peacearchnews.com/">Home</a></li>
+<li id="menu-item-67577" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-67577"><a href="https://www.peacearchnews.com/submit/">Submit News Tip</a></li>
+<li id="menu-item-169" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-169"><a href="https://www.peacearchnews.com/./news/">News</a>
+<ul class="dropdown menu vertical" data-toggle>
+	<li id="menu-item-170" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-170"><a href="https://www.peacearchnews.com/./local-news/">Local News</a></li>
+	<li id="menu-item-98315" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-98315"><a href="https://www.peacearchnews.com/./municipal-election/">Municipal Election</a></li>
+	<li id="menu-item-171" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-171"><a target="_blank" rel="noopener noreferrer" href="http://bclocalnews.com">BC</a></li>
+	<li id="menu-item-144889" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-144889"><a href="https://www.peacearchnews.com/./federal-election/">Federal Election 2019</a></li>
+	<li id="menu-item-172" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-172"><a href="https://www.peacearchnews.com/./national-news/">Canada &amp; World</a></li>
+	<li id="menu-item-173" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-173"><a href="https://www.peacearchnews.com/e-editions/">eEditions</a></li>
+	<li id="menu-item-176" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-176"><a href="https://www.peacearchnews.com/submit/">Submit news tip or photo</a></li>
+</ul>
+</li>
+<li id="menu-item-177" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-177"><a href="https://www.peacearchnews.com/./sports/">Sports</a>
+<ul class="dropdown menu vertical" data-toggle>
+	<li id="menu-item-178" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-178"><a href="https://www.peacearchnews.com/./local-sports/">Local</a></li>
+	<li id="menu-item-348" class="menu-item menu-item-type-taxonomy menu-item-object-post_tag menu-item-348"><a href="https://www.peacearchnews.com/tag/surrey-eagles/">Surrey Eagles</a></li>
+	<li id="menu-item-347" class="menu-item menu-item-type-taxonomy menu-item-object-post_tag menu-item-347"><a href="https://www.peacearchnews.com/tag/bchl/">BCHL</a></li>
+	<li id="menu-item-349" class="menu-item menu-item-type-taxonomy menu-item-object-post_tag menu-item-349"><a href="https://www.peacearchnews.com/tag/valley-west-hawks/">Valley West Hawks</a></li>
+	<li id="menu-item-345" class="menu-item menu-item-type-taxonomy menu-item-object-post_tag menu-item-345"><a href="https://www.peacearchnews.com/tag/bcmml/">BC Major Midget League</a></li>
+	<li id="menu-item-350" class="menu-item menu-item-type-taxonomy menu-item-object-post_tag menu-item-350"><a href="https://www.peacearchnews.com/tag/white-rock-tritons/">White Rock Tritons</a></li>
+	<li id="menu-item-346" class="menu-item menu-item-type-taxonomy menu-item-object-post_tag menu-item-346"><a href="https://www.peacearchnews.com/tag/bcpbl/">BC Premier Baseball League</a></li>
+	<li id="menu-item-322" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-322"><a target="_blank" rel="noopener noreferrer" href="http://www.bclocalnews.com/sports/">BC</a></li>
+	<li id="menu-item-179" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-179"><a href="https://www.peacearchnews.com/./national-sports/">Canada &amp; World</a></li>
+	<li id="menu-item-180" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-180"><a href="https://www.peacearchnews.com/submit/">Submit sports tip or photo</a></li>
+</ul>
+</li>
+<li id="menu-item-181" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-181"><a href="https://www.peacearchnews.com/./trending-now/">Trending Now</a></li>
+<li id="menu-item-155499" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-155499"><a href="https://www.peacearchnews.com/newsletters/">Newsletters</a></li>
+<li id="menu-item-147416" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-147416"><a href="//autos.peacearchnews.com/">Autos</a></li>
+<li id="menu-item-114110" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-114110"><a target="_blank" rel="noopener noreferrer" href="//www.bcclassifieds.com/?sfid=2165">Classifieds</a></li>
+<li id="menu-item-87551" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-87551"><a target="_blank" rel="noopener noreferrer" href="//www.localwork.ca">Jobs</a></li>
+<li id="menu-item-182" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-182"><a href="https://www.peacearchnews.com/./business/">Business</a>
+<ul class="dropdown menu vertical" data-toggle>
+	<li id="menu-item-183" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-183"><a href="https://www.peacearchnews.com/./local-business/">Local</a></li>
+	<li id="menu-item-184" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-184"><a target="_blank" rel="noopener noreferrer" href="http://bclocalnews.com/business">BC</a></li>
+	<li id="menu-item-185" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-185"><a href="https://www.peacearchnews.com/submit/">Submit business tip or photo</a></li>
+</ul>
+</li>
+<li id="menu-item-186" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-186"><a href="https://www.peacearchnews.com/./entertainment/">Entertainment</a>
+<ul class="dropdown menu vertical" data-toggle>
+	<li id="menu-item-187" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-187"><a href="https://www.peacearchnews.com/./local-entertainment/">Local</a></li>
+	<li id="menu-item-188" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-188"><a target="_blank" rel="noopener noreferrer" href="http://bclocalnews.com/entertainment">BC</a></li>
+	<li id="menu-item-189" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-189"><a href="https://www.peacearchnews.com/submit/">Submit entertainment tip or photo</a></li>
+</ul>
+</li>
+<li id="menu-item-132723" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-132723"><a href="https://www.peacearchnews.com/./photo-galleries/">Photo Galleries</a></li>
+<li id="menu-item-190" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-190"><a href="https://www.peacearchnews.com/./life/">Life</a>
+<ul class="dropdown menu vertical" data-toggle>
+	<li id="menu-item-100513" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-100513"><a href="https://www.peacearchnews.com/./life/">Life</a></li>
+	<li id="menu-item-141954" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-141954"><a href="https://www.peacearchnews.com/./sip-savour/">Sip &amp; Savour</a></li>
+	<li id="menu-item-193" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-193"><a target="_blank" rel="noopener noreferrer" href="http://winetrails.ca">Wine Trails</a></li>
+	<li id="menu-item-194" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-194"><a href="https://www.peacearchnews.com/submit/">Submit life tip or photo</a></li>
+</ul>
+</li>
+<li id="menu-item-195" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-195"><a href="https://www.peacearchnews.com/./community/">Community</a>
+<ul class="dropdown menu vertical" data-toggle>
+	<li id="menu-item-196" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-196"><a href="https://www.peacearchnews.com/./community/">Local</a></li>
+	<li id="menu-item-94154" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-94154"><a href="https://www.peacearchnews.com/./miss-bc/">Miss BC</a></li>
+	<li id="menu-item-134432" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-134432"><a href="https://www.peacearchnews.com/./social-matters/">Social Matters</a></li>
+	<li id="menu-item-351" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-351"><a href="/e-editions/?iid=i20160608161324549&#038;pid=p20120309121148491">Discover the Peninsula</a></li>
+	<li id="menu-item-323" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-323"><a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/iLoveBritishColumbia">I Love British Columbia</a></li>
+	<li id="menu-item-197" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-197"><a href="https://www.peacearchnews.com/calendar/">Calendar</a></li>
+	<li id="menu-item-198" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-198"><a href="https://www.peacearchnews.com/submit/">Submit community tip or photo</a></li>
+</ul>
+</li>
+<li id="menu-item-282" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-has-children menu-item-282"><a href="https://www.peacearchnews.com/./opinion/">Opinion</a>
+<ul class="dropdown menu vertical" data-toggle>
+	<li id="menu-item-204" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-204"><a href="https://www.peacearchnews.com/./opinion/">Local Opinion</a></li>
+	<li id="menu-item-202" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-202"><a href="https://www.peacearchnews.com/./editorials-opinion/">Editorials</a></li>
+	<li id="menu-item-201" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-201"><a href="https://www.peacearchnews.com/./columns/">Columnists</a></li>
+	<li id="menu-item-203" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-203"><a href="https://www.peacearchnews.com/./letters/">Letters</a></li>
+	<li id="menu-item-66233" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-66233"><a href="https://www.peacearchnews.com/./web-poll/">Web poll</a></li>
+	<li id="menu-item-205" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-205"><a target="_blank" rel="noopener noreferrer" href="http://bclocalnews.com/opinion">BC Opinion</a></li>
+	<li id="menu-item-206" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-206"><a href="https://www.peacearchnews.com/submitletters/">Submit letter</a></li>
+	<li id="menu-item-66232" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-66232"><a href="https://www.peacearchnews.com/./web-poll/">Web poll</a></li>
+</ul>
+</li>
+<li id="menu-item-210" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-210"><a href="https://www.peacearchnews.com/videos/">Videos</a>
+<ul class="dropdown menu vertical" data-toggle>
+	<li id="menu-item-211" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-211"><a href="https://www.peacearchnews.com/videos/">Local</a></li>
+	<li id="menu-item-105988" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-105988"><a href="/videos/#real-estate-tv-video-belt">Impress TV</a></li>
+	<li id="menu-item-212" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-212"><a href="https://www.peacearchnews.com/submit/">Submit video</a></li>
+	<li id="menu-item-213" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-213"><a target="_blank" rel="noopener noreferrer" href="http://blackpress.tv">Black Press TV</a></li>
+</ul>
+</li>
+<li id="menu-item-214" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-214"><a href="https://www.peacearchnews.com/weather/">Weather</a></li>
+<li id="menu-item-216" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-216"><a href="https://www.peacearchnews.com/./obituaries/">Obituaries</a></li>
+<li id="menu-item-217" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-217"><a href="https://www.peacearchnews.com/./marketplace/">Marketplace</a>
+<ul class="dropdown menu vertical" data-toggle>
+	<li id="menu-item-275" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-275"><a href="https://www.peacearchnews.com/advertise/">Place an ad</a></li>
+	<li id="menu-item-218" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-218"><a href="https://www.peacearchnews.com/./marketplace/">Impress branded content</a></li>
+	<li id="menu-item-116651" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-116651"><a href="/videos/#real-estate-tv-video-belt">Impress TV</a></li>
+	<li id="menu-item-44609" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44609"><a href="https://www.peacearchnews.com/real-estate/">Real Estate</a></li>
+	<li id="menu-item-92134" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-92134"><a href="/e-editions/?pub_code=pan&#038;&#038;container=p20180606143137832&#038;&#038;date=">today&#8217;s drive</a></li>
+</ul>
+</li>
+<li id="menu-item-321" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-321"><a href="https://www.peacearchnews.com/contests/">Contests</a></li>
+<li id="menu-item-224" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-224"><a href="https://www.peacearchnews.com/contact-us/">Contact Us</a>
+<ul class="dropdown menu vertical" data-toggle>
+	<li id="menu-item-225" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-225"><a href="https://www.peacearchnews.com/contact-us/">Contact Us</a></li>
+	<li id="menu-item-226" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-226"><a href="https://www.peacearchnews.com/our-team/">Our Team</a></li>
+	<li id="menu-item-230" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-230"><a target="_blank" rel="noopener noreferrer" href="http://blackpress.ca">Black Press</a></li>
+	<li id="menu-item-231" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-231"><a href="https://www.peacearchnews.com/submit/">Submit tip or photo</a></li>
+	<li id="menu-item-227" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-227"><a href="https://www.peacearchnews.com/faq/">FAQ</a></li>
+	<li id="menu-item-228" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-228"><a href="https://www.peacearchnews.com/privacy-policy/">Privacy Policy</a></li>
+	<li id="menu-item-229" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-229"><a href="https://www.peacearchnews.com/terms-of-use/">Terms of use</a></li>
+</ul>
+</li>
+<li id="menu-item-151071" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-151071"><a href="https://www.peacearchnews.com/site-map/">Site Map</a></li>
+</ul></li></ul>
+                </article>
+                <article id="text-2" class="small-10 medium-10 columns">
+                    <ul data-test="test" id="menu-secondarymenu" class="dropdown menu" data-dropdown-menu>
+                                    <li id="menu-item-108825" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-108825"><a href="https://www.peacearchnews.com/./local-news/">LOCAL</a></li>
+<li id="menu-item-249" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-249"><a href="https://www.peacearchnews.com/./news/">NEWS</a>
+<ul class="vertical nested menu">
+	<li id="menu-item-250" class="show-for-medium menu-item menu-item-type-taxonomy menu-item-object-category menu-item-250"><a href="https://www.peacearchnews.com/./local-news/">Local News</a></li>
+	<li id="menu-item-98326" class="show-for-medium menu-item menu-item-type-taxonomy menu-item-object-category menu-item-98326"><a>Municipal Election</a></li>
+	<li id="menu-item-256" class="show-for-medium menu-item menu-item-type-custom menu-item-object-custom menu-item-256"><a target="_blank" rel="noopener noreferrer" href="http://bclocalnews.com">BC</a></li>
+	<li id="menu-item-251" class="show-for-medium menu-item menu-item-type-taxonomy menu-item-object-category menu-item-251"><a href="https://www.peacearchnews.com/./national-news/">Canada &amp; World</a></li>
+	<li id="menu-item-252" class="show-for-medium menu-item menu-item-type-post_type menu-item-object-page menu-item-252"><a href="https://www.peacearchnews.com/e-editions/">eEditions</a></li>
+	<li id="menu-item-155498" class="show-for-medium menu-item menu-item-type-post_type menu-item-object-page menu-item-155498"><a href="https://www.peacearchnews.com/newsletters/">Newsletters</a></li>
+</ul>
+</li>
+<li id="menu-item-147414" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-147414"><a href="//autos.peacearchnews.com">AUTOS</a></li>
+<li id="menu-item-260" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-260"><a target="_blank" rel="noopener noreferrer" href="//www.bcclassifieds.com/?sfid=2165">CLASSIFIEDS</a></li>
+<li id="menu-item-258" class="show-for-medium menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-258"><a href="https://www.peacearchnews.com/./obituaries/">OBITUARIES</a>
+<ul class="vertical nested menu">
+	<li id="menu-item-98704" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-98704"><a href="/tag/celebrations-of-life/">Celebrations of Life</a></li>
+	<li id="menu-item-103043" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-103043"><a href="/funeral-care-services/">Funeral Care Services</a></li>
+</ul>
+</li>
+<li id="menu-item-317" class="show-for-medium menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-317"><a href="https://www.peacearchnews.com/./video/">VIDEO</a>
+<ul class="vertical nested menu">
+	<li id="menu-item-105991" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-105991"><a href="https://www.peacearchnews.com/videos/">Local</a></li>
+	<li id="menu-item-105992" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-105992"><a href="/videos/#real-estate-tv-video-belt">Impress TV</a></li>
+	<li id="menu-item-105990" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-105990"><a href="https://www.peacearchnews.com/submit/">Submit video</a></li>
+	<li id="menu-item-105993" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-105993"><a href="//blackpress.tv">Black Press TV</a></li>
+</ul>
+</li>
+<li id="menu-item-280" class="show-for-large e-editions menu-item menu-item-type-post_type menu-item-object-page menu-item-280"><a href="https://www.peacearchnews.com/e-editions/">E-EDITIONS</a></li>
+<li id="menu-item-318" class="show-for-large menu-item menu-item-type-custom menu-item-object-custom menu-item-318"><a target="_blank" rel="noopener noreferrer" href="//www.localwork.ca">JOBS</a></li>
+<li id="menu-item-337" class="show-for-large hide menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-337"><a href="https://www.peacearchnews.com/contact-us/">CONTACT</a>
+<ul class="vertical nested menu">
+	<li id="menu-item-269" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-269"><a href="https://www.peacearchnews.com/contact-us/">Contact Us</a></li>
+	<li id="menu-item-64899" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-64899"><a href="https://www.peacearchnews.com/our-team/">Our Team</a></li>
+	<li id="menu-item-270" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-270"><a href="https://www.peacearchnews.com/submit/">Submit news tip or photo</a></li>
+</ul>
+</li>
+<li id="menu-item-336" class="show-for-large menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-336"><a href="https://www.peacearchnews.com/./marketplace/">MARKETPLACE</a>
+<ul class="vertical nested menu">
+	<li id="menu-item-274" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-274"><a href="https://www.peacearchnews.com/advertise/">Place an ad</a></li>
+	<li id="menu-item-262" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-262"><a href="https://www.peacearchnews.com/./marketplace/">Impress</a></li>
+	<li id="menu-item-116654" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-116654"><a href="/videos/#real-estate-tv-video-belt">Impress TV</a></li>
+	<li id="menu-item-44616" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44616"><a href="https://www.peacearchnews.com/real-estate/">Real Estate</a></li>
+	<li id="menu-item-92133" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-92133"><a href="/e-editions/?pub_code=pan&#038;&#038;container=p20180606143137832&#038;&#038;date=">today&#8217;s drive</a></li>
+</ul>
+</li>
+<li id="menu-item-319" class="show-for-large menu-item menu-item-type-post_type menu-item-object-page menu-item-319"><a href="https://www.peacearchnews.com/contests/">CONTESTS</a></li>
+<li id="nav-submit-button" >
+                                    <span data-tooltip aria-haspopup="true" data-disable-hover="false" tabindex="1" title="Submit News Tips">
+                                    <a href="https://www.peacearchnews.com/submit">
+                                    <img src="https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/assets/images/submit.png" id="header-submit-button">
+                                    </a>
+                                    </span>    
+                                </li><li id="nav-impress-button" >
+                                            <span data-tooltip aria-haspopup="true" data-disable-hover="false" tabindex="2" title="Impress TV">
+                                            <a href="http://impresstv.blackpress.ca/" target="_blank">
+                                            <img src="https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/assets/images/ImpressTV.png" id="header-impresstv-button">
+                                            </a>
+                                            </span>    
+                                        </li></ul>                </article>
+
+                <!-- Search -->
+                <article id="text-5" class="small-1 medium-1 columns">
+                    
+                        <button id="btn_search" type="button" class="float-right fa fa-search menu"></button>
+
+                </article>
+
+                <!-- Search -->
+                <article id="div_search" class="small-12 columns">
+                <!-- **************** -->
+                <!-- Search form container -->
+                    
+                                        <form name="searchForm" action="/search/">
+  
+                        <div class="row collapse">
+                            <div class="small-12 columns">
+
+                                <div class="row collapse">
+                                    <div class="small-2 medium-3 columns">
+                                        &nbsp;
+                                      <input name="cx" value="015619971846971042401:ufh1ywe-cms" type="hidden">
+                                    </div>
+
+                                    <div class="small-1 medium-3 columns">
+                                        &nbsp;
+                                      <input name="ie" value="UTF-8" type="hidden">
+                                    </div>
+
+                                    <div class="small-6 medium-4 columns">
+                                        <input id="google_search_field" class="google-search-field" name="q" value="Story Search" style="" type="text">
+                                      
+                                    </div>
+
+                                    <div class="small-3 medium-2 columns">
+                                      
+                                        <input class="google-search-button" value="Search" type="submit">
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                          
+                    </form>
+                 
+                <!-- **************** -->
+                </article>
+                
+                <article class="small-12 medium-12 columns">
+                    <div class="line"></div>
+                </article>
+            
+            </div>
+
+        </div>
+        
+        <div class ="row" id="header-second-row">
+            <article id="text-12" class="header-widget-left widget_text">			<div class="textwidget"><ul class="social header">
+	<!-- <li><a title="Weather" class="social fa fa-cloud" href="/weather/"></a></li> -->
+	<li><a title="Follow us on Facebook" class="social fa fa-facebook-f" href="https://www.facebook.com/peacearchnews" target="_blank" rel="noopener noreferrer"></a></li>
+	<li><a title="Follow us on Twitter" class="social fa fa-twitter" href="https://twitter.com/PeaceArchNews" target="_blank" rel="noopener noreferrer"></a></li>
+	<li><a title="Follow us on Instagram" class="social fa fa-instagram" href="https://www.instagram.com/PeaceArchNews" target="_blank" rel="noopener noreferrer"></a></li> 
+</ul></div>
+		</article>            <article id="text-11" class="header-widget-center widget_text">			<div class="textwidget"><a class="pub-logo-large day-4" href="https://www.peacearchnews.com/"><svg id="Outline" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 409.98 51.81"><defs><style>.cls-1{fill:#231f20;}</style></defs><title></title><path class="bp-pub-logo" d="M52.16,2h9.1C71.56,2,76.95,6.12,76.95,16.91c0,9-3.5,15-12,15H61.27v20h-9.1Zm9.17,22.61h.77c3.71,0,5.74-1.47,5.74-7.49C67.85,9.9,65,9.69,62,9.69h-.7Z" transform="translate(-52.16 -1.01)"/><path class="bp-pub-logo" d="M80.79,2h20.58v7.7H89.89V22.44h8.47v8.12H89.89V44.14h12v7.7H80.79Z" transform="translate(-52.16 -1.01)"/><path class="bp-pub-logo" d="M111.31,2h13.16l6.16,49.85h-8.75l-1.33-11.06H113.2l-1.26,11.06h-7.63Zm5.81,7.7H117l-2.87,23.8h5.67Z" transform="translate(-52.16 -1.01)"/><path class="bp-pub-logo" d="M150.65,20.06c0-8.26-1.05-11.34-3.29-11.34-1.89,0-3.78,1.26-3.78,18.2,0,16.38,1,18.2,3.78,18.2,3,0,3.71-4.62,3.85-11.83l7.7.35c0,8.68-1.26,19.18-11.9,19.18-9.73,0-13-9.52-13-25.9,0-19,5.74-25.9,13-25.9,10.5,0,11.76,9.66,11.76,18.76Z" transform="translate(-52.16 -1.01)"/><path class="bp-pub-logo" d="M165.28,2h20.58v7.7H174.38V22.44h8.47v8.12h-8.47V44.14h12v7.7H165.28Z" transform="translate(-52.16 -1.01)"/><path class="bp-pub-logo" d="M210.78,2h13.16l6.16,49.85h-8.75L220,40.78h-7.35l-1.26,11.06h-7.63Zm5.81,7.7h-.14l-2.87,23.8h5.67Z" transform="translate(-52.16 -1.01)"/><path class="bp-pub-logo" d="M234.86,2h10.22c8.68,0,14.42,3.64,14.42,14.14,0,4.2-1.26,9.8-5.32,12.18l5.39,23.52H250.4l-4.27-21.42H244V51.84h-9.1ZM244,23.14h1.82c3.36,0,4.62-3.36,4.62-6.93,0-5.39-2-6.93-5-6.93H244Z" transform="translate(-52.16 -1.01)"/><path class="bp-pub-logo" d="M280,20.06c0-8.26-1.05-11.34-3.29-11.34-1.89,0-3.78,1.26-3.78,18.2,0,16.38,1,18.2,3.78,18.2,3,0,3.71-4.62,3.85-11.83l7.7.35c0,8.68-1.26,19.18-11.9,19.18-9.73,0-13-9.52-13-25.9,0-19,5.74-25.9,13-25.9,10.5,0,11.76,9.66,11.76,18.76Z" transform="translate(-52.16 -1.01)"/><path class="bp-pub-logo" d="M294.64,2h9.1V22h5.74V2h9.1V51.84h-9.1V30.7h-5.74V51.84h-9.1Z" transform="translate(-52.16 -1.01)"/><path class="bp-pub-logo" d="M340.49,2h8.89l8.33,26.32h.14V2h7.28V51.84h-7.07l-9.73-30.17h-.14V51.84h-7.7Z" transform="translate(-52.16 -1.01)"/><path class="bp-pub-logo" d="M372.06,2h20.58v7.7H381.16V22.44h8.47v8.12h-8.47V44.14h12v7.7H372.06Z" transform="translate(-52.16 -1.01)"/><path class="bp-pub-logo" d="M396.84,2h8.26l3.22,29.26h.14L412.8,2H421l4,29.26h.14L428.69,2h6.51l-6.51,49.85h-8.26l-4.34-31.57h-.14l-4.48,31.57h-8Z" transform="translate(-52.16 -1.01)"/><path class="bp-pub-logo" d="M446,37.42c0,2.8,0,7.7,3.92,7.7,3,0,4.06-2.8,4.06-4.83,0-8.89-16.52-10.92-16.52-25.69C437.51,7.1,441.57,1,449.27,1c8.19,0,11.34,6.23,11.55,15.19H452.7c0-2.8,0-7.49-3.64-7.49-2.17,0-3.43,1.82-3.43,4.55,0,8.47,16.52,11.34,16.52,25.83,0,7.63-4.34,13.72-12.53,13.72-9.73,0-11.69-8.54-11.69-15.4Z" transform="translate(-52.16 -1.01)"/></svg></a></div>
+		</article>            <article id="text-33" class="header-widget-right show-for-medium"><div id="weatherContainer" class="textwidget float-right" ><a href="https://www.accuweather.com/en/ca/surrey/v3r/weather-forecast/47171" 
+                                        class="aw-widget-legal">
+                                        </a><div id="awcc1517357785678" class="aw-widget-current"  data-locationkey="47171" data-unit="c" data-language="en-us" data-useip="false" data-uid="awcc1517357785678" data-targeturl="/weather/"></div><script type="text/javascript" src="https://oap.accuweather.com/launch.js"></script></div></article>        </div>
+        
+        <!-- Mobile menu -->
+        <nav id="site-navigation" class="main-navigation top-bar" role="navigation">
+            <div class="top-bar-right row">
+                                    
+<nav class="vertical menu" id="mobile-menu" role="navigation">
+    <ul id="menu-mainmenu-1" class="vertical menu accordion menu" data-accordion-menu><li class='nav-search'><a href='/search/'><i class='fa fa-search menu'></i>Search</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-320"><a href="https://www.peacearchnews.com/">Home</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-67577"><a href="https://www.peacearchnews.com/submit/">Submit News Tip</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-169"><a href="https://www.peacearchnews.com/./news/">News</a>
+<ul class="vertical nested menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-170"><a href="https://www.peacearchnews.com/./local-news/">Local News</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-98315"><a href="https://www.peacearchnews.com/./municipal-election/">Municipal Election</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-171"><a target="_blank" rel="noopener noreferrer" href="http://bclocalnews.com">BC</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-144889"><a href="https://www.peacearchnews.com/./federal-election/">Federal Election 2019</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-172"><a href="https://www.peacearchnews.com/./national-news/">Canada &amp; World</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-173"><a href="https://www.peacearchnews.com/e-editions/">eEditions</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-176"><a href="https://www.peacearchnews.com/submit/">Submit news tip or photo</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-177"><a href="https://www.peacearchnews.com/./sports/">Sports</a>
+<ul class="vertical nested menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-178"><a href="https://www.peacearchnews.com/./local-sports/">Local</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-post_tag menu-item-348"><a href="https://www.peacearchnews.com/tag/surrey-eagles/">Surrey Eagles</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-post_tag menu-item-347"><a href="https://www.peacearchnews.com/tag/bchl/">BCHL</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-post_tag menu-item-349"><a href="https://www.peacearchnews.com/tag/valley-west-hawks/">Valley West Hawks</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-post_tag menu-item-345"><a href="https://www.peacearchnews.com/tag/bcmml/">BC Major Midget League</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-post_tag menu-item-350"><a href="https://www.peacearchnews.com/tag/white-rock-tritons/">White Rock Tritons</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-post_tag menu-item-346"><a href="https://www.peacearchnews.com/tag/bcpbl/">BC Premier Baseball League</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-322"><a target="_blank" rel="noopener noreferrer" href="http://www.bclocalnews.com/sports/">BC</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-179"><a href="https://www.peacearchnews.com/./national-sports/">Canada &amp; World</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-180"><a href="https://www.peacearchnews.com/submit/">Submit sports tip or photo</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-181"><a href="https://www.peacearchnews.com/./trending-now/">Trending Now</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-155499"><a href="https://www.peacearchnews.com/newsletters/">Newsletters</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-147416"><a href="//autos.peacearchnews.com/">Autos</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-114110"><a target="_blank" rel="noopener noreferrer" href="//www.bcclassifieds.com/?sfid=2165">Classifieds</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-87551"><a target="_blank" rel="noopener noreferrer" href="//www.localwork.ca">Jobs</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-182"><a href="https://www.peacearchnews.com/./business/">Business</a>
+<ul class="vertical nested menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-183"><a href="https://www.peacearchnews.com/./local-business/">Local</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-184"><a target="_blank" rel="noopener noreferrer" href="http://bclocalnews.com/business">BC</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-185"><a href="https://www.peacearchnews.com/submit/">Submit business tip or photo</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-186"><a href="https://www.peacearchnews.com/./entertainment/">Entertainment</a>
+<ul class="vertical nested menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-187"><a href="https://www.peacearchnews.com/./local-entertainment/">Local</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-188"><a target="_blank" rel="noopener noreferrer" href="http://bclocalnews.com/entertainment">BC</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-189"><a href="https://www.peacearchnews.com/submit/">Submit entertainment tip or photo</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-132723"><a href="https://www.peacearchnews.com/./photo-galleries/">Photo Galleries</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-190"><a href="https://www.peacearchnews.com/./life/">Life</a>
+<ul class="vertical nested menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-100513"><a href="https://www.peacearchnews.com/./life/">Life</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-141954"><a href="https://www.peacearchnews.com/./sip-savour/">Sip &amp; Savour</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-193"><a target="_blank" rel="noopener noreferrer" href="http://winetrails.ca">Wine Trails</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-194"><a href="https://www.peacearchnews.com/submit/">Submit life tip or photo</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-195"><a href="https://www.peacearchnews.com/./community/">Community</a>
+<ul class="vertical nested menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-196"><a href="https://www.peacearchnews.com/./community/">Local</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-94154"><a href="https://www.peacearchnews.com/./miss-bc/">Miss BC</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-134432"><a href="https://www.peacearchnews.com/./social-matters/">Social Matters</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-351"><a href="/e-editions/?iid=i20160608161324549&#038;pid=p20120309121148491">Discover the Peninsula</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-323"><a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/iLoveBritishColumbia">I Love British Columbia</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-197"><a href="https://www.peacearchnews.com/calendar/">Calendar</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-198"><a href="https://www.peacearchnews.com/submit/">Submit community tip or photo</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-has-children menu-item-282"><a href="https://www.peacearchnews.com/./opinion/">Opinion</a>
+<ul class="vertical nested menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-204"><a href="https://www.peacearchnews.com/./opinion/">Local Opinion</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-202"><a href="https://www.peacearchnews.com/./editorials-opinion/">Editorials</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-201"><a href="https://www.peacearchnews.com/./columns/">Columnists</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-203"><a href="https://www.peacearchnews.com/./letters/">Letters</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-66233"><a href="https://www.peacearchnews.com/./web-poll/">Web poll</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-205"><a target="_blank" rel="noopener noreferrer" href="http://bclocalnews.com/opinion">BC Opinion</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-206"><a href="https://www.peacearchnews.com/submitletters/">Submit letter</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-66232"><a href="https://www.peacearchnews.com/./web-poll/">Web poll</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-210"><a href="https://www.peacearchnews.com/videos/">Videos</a>
+<ul class="vertical nested menu">
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-211"><a href="https://www.peacearchnews.com/videos/">Local</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-105988"><a href="/videos/#real-estate-tv-video-belt">Impress TV</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-212"><a href="https://www.peacearchnews.com/submit/">Submit video</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-213"><a target="_blank" rel="noopener noreferrer" href="http://blackpress.tv">Black Press TV</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-214"><a href="https://www.peacearchnews.com/weather/">Weather</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-216"><a href="https://www.peacearchnews.com/./obituaries/">Obituaries</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-217"><a href="https://www.peacearchnews.com/./marketplace/">Marketplace</a>
+<ul class="vertical nested menu">
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-275"><a href="https://www.peacearchnews.com/advertise/">Place an ad</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-218"><a href="https://www.peacearchnews.com/./marketplace/">Impress branded content</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-116651"><a href="/videos/#real-estate-tv-video-belt">Impress TV</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44609"><a href="https://www.peacearchnews.com/real-estate/">Real Estate</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-92134"><a href="/e-editions/?pub_code=pan&#038;&#038;container=p20180606143137832&#038;&#038;date=">today&#8217;s drive</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-321"><a href="https://www.peacearchnews.com/contests/">Contests</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-224"><a href="https://www.peacearchnews.com/contact-us/">Contact Us</a>
+<ul class="vertical nested menu">
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-225"><a href="https://www.peacearchnews.com/contact-us/">Contact Us</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-226"><a href="https://www.peacearchnews.com/our-team/">Our Team</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-230"><a target="_blank" rel="noopener noreferrer" href="http://blackpress.ca">Black Press</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-231"><a href="https://www.peacearchnews.com/submit/">Submit tip or photo</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-227"><a href="https://www.peacearchnews.com/faq/">FAQ</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-228"><a href="https://www.peacearchnews.com/privacy-policy/">Privacy Policy</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-229"><a href="https://www.peacearchnews.com/terms-of-use/">Terms of use</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-151071"><a href="https://www.peacearchnews.com/site-map/">Site Map</a></li>
+</ul></nav>
+                            </div>
+        </nav>
+        
+        
+        <!-- taboola code -->
+            <script type="text/javascript">
+            window._taboola = window._taboola || [];
+            _taboola.push({article:'auto'});
+            !function (e, f, u, i) {
+            if (!document.getElementById(i)){
+                e.async = 1;
+                e.src = u;
+                e.id = i;
+                f.parentNode.insertBefore(e, f);
+            }
+            }(document.createElement('script'),
+            document.getElementsByTagName('script')[0],
+            '//cdn.taboola.com/libtrc/blackpressmedia-network/loader.js',
+            'tb_loader_script');
+            if(window.performance && typeof window.performance.mark == 'function')
+            {window.performance.mark('tbl_ic');}
+        </script>
+        
+
+    </header>
+
+    <section class="container">
+        <!-- Elevator: return to Top -->
+        <a id="return-to-top" href="javascript:" ><i class="fa fa-chevron-up"></i></a>
+        
+        
+
+<div id="single-post" role="main">
+
+    <div class="row module ad">
+        <div class="large-12 columns ad text-center">
+                    <div class='code-block code-block-24' style='margin: 8px 0; clear: both;'>
+<!-- Replace AU0 on article pages -->
+<div id="div-gpt-24" class="gpt-ad horizontal">
+<script type='text/javascript'>
+    googletag.cmd.push(function() { googletag.display('div-gpt-24');gptRefreshSlots.push(24); });
+</script>
+</div></div>
+        </div>
+    </div>
+
+    <!-- Number of attachments: 1 --><!-- Featured Image Layout: medium -->
+
+                <article class="main-content post-156567 post type-post status-publish format-standard has-post-thumbnail hentry category-letters category-opinion" id="post-156567">
+
+        
+        <header>
+            <div class="post-attachment" alt="&lt;1024 - &gt;640"><img width="1200" height="800" src="https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19914145_web1_Letters-editor-180116-ACC-M.jpg" class="attachment-full size-full" alt="" srcset="https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19914145_web1_Letters-editor-180116-ACC-M.jpg 1200w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19914145_web1_Letters-editor-180116-ACC-M-300x200.jpg 300w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19914145_web1_Letters-editor-180116-ACC-M-768x512.jpg 768w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19914145_web1_Letters-editor-180116-ACC-M-1024x683.jpg 1024w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19914145_web1_Letters-editor-180116-ACC-M-640x427.jpg 640w" sizes="(max-width: 1200px) 100vw, 1200px" /><p></p></div>
+                                    <h2 class="entry-title">LETTERS: Keep second gym, don&#8217;t reassign cardiac program classes</h2>
+            
+            <ul class="author-meta"><li>Jan. 1, 2020 7:30 a.m.</li><li><a class="byline" href="https://www.peacearchnews.com/letters/">Letters</a></li><li><a class="byline" href="https://www.peacearchnews.com/opinion/">Opinion</a></li></ul>            <ul class="social story top">
+	<li><span data-tooltip aria-haspopup="true" data-disable-hover="false" tabindex="1" title="Post to Facebook"><a href="//www.facebook.com/sharer.php?u=https%3A%2F%2Fwww.peacearchnews.com%2Fopinion%2Fletters-keep-second-gym-dont-reassign-cardiac-program-classes%2F" class="social fa fa-facebook-f" target="_blank"></a></span></li>
+	<li><span data-tooltip aria-haspopup="true" data-disable-hover="false" tabindex="1" title="Post to Twitter"><a href="//twitter.com/intent/tweet?text=LETTERS%3A+Keep+second+gym%2C+don%E2%80%99t+reassign+cardiac+program+classes&amp;url=https%3A%2F%2Fwww.peacearchnews.com%2Fopinion%2Fletters-keep-second-gym-dont-reassign-cardiac-program-classes%2F" class="social fa fa-twitter" target="_blank"></a></span></li>
+	<li><span data-tooltip aria-haspopup="true" data-disable-hover="false" tabindex="1" title="Post to Reddit"><a href="//reddit.com/submit?url=https%3A%2F%2Fwww.peacearchnews.com%2Fopinion%2Fletters-keep-second-gym-dont-reassign-cardiac-program-classes%2F&title=LETTERS%3A+Keep+second+gym%2C+don%E2%80%99t+reassign+cardiac+program+classes" class="social fa fa-reddit-alien" target="_blank"></a></span></li>
+	<li><span data-tooltip aria-haspopup="true" data-disable-hover="false" tabindex="1" title="Email story"><a href="mailto:?subject=LETTERS%3A%20Keep%20second%20gym%2C%20don%E2%80%99t%20reassign%20cardiac%20program%20classes&amp;body=https%3A%2F%2Fwww.peacearchnews.com%2Fopinion%2Fletters-keep-second-gym-dont-reassign-cardiac-program-classes%2F" class="social fa fa-envelope-o"></a></span></li>
+
+	<li><span data-tooltip aria-haspopup="true" data-disable-hover="false" tabindex="1" title="Print story"><a href="javascript:window.print();" class="social fa fa-print"></a></span></li>
+	<li><span data-tooltip aria-haspopup="true" data-disable-hover="false" tabindex="1" title="Jump to comments"><a href="#facebook-comments" class="social fa fa-comment-o"></a></span></li>
+
+
+
+</ul>
+        </header>
+                <div class="entry-content">
+
+        <p><strong>Editor: </strong></p>
+<p>In response to several letters, Fraser Health has said they are not cancelling the program.</p>
+<p>This is true, they wish to continue with phases 2 and 3 (intake program) of the cardiac rehab program, but discontinue Phase 4.</p>
+<p>Phases 2 and 3 are held in the Vine Street Centre, phase 4 is presently held in two gyms at the Horst and Emily Werner Centre. Phase 4 is supervised by an exercise specialist (kinesiologist), lasts for 90 minutes and is for cardiac rehabilitation for people who have participated in phases 2 and 3.</p>
+<p>Phase 1 is time spent in the hospital for those who have experienced a heart incident (angiogram, bypass, valve replacement, pacemaker, defibrillator).</p>
+<p>At present, Fraser Health has cancelled the second gym in the H-E W Centre and rescheduled the 266 cardiac rehab participants.</p>
+<p>In order to accommodate the loss of the second gym, these participants were arbitrarily rescheduled, some from morning classes to late afternoon or evening. </p>
+<p>This has created considerable angst in all 266 participants.</p>
+<p>As a participant involved in the phase 4 program, I urge FH to keep open the second gym in the H-E W Centre, allowing the 266 participants to continue in their 2019 assigned classes.</p>
+<p><strong><em>Sharon Williams, South Surrey </em></strong></p>
+<div class='row newsletters-row' >
+<div class='columns small-4 medium-3 large-2 newsletters-image-column' >
+                                        <img src='https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/assets/images/newsletters/bp-newsletters-icon.png' >
+                                    </div>
+<div class='columns small-8 medium-9 large-10 newsletters-text-column' >
+                                        Get local stories you won't find anywhere else right to your inbox.<br />
+                                        <a href='/newsletters/'>Sign up here</a>
+                                    </div>
+</p></div>
+                        </div>
+        
+        <!-- Start: Spot.IM setup -->
+                <!-- End: Spot.IM setup -->
+
+        <!-- BEGIN: Comments -->
+                                <div class="fb-comments" id="facebook-comments" data-href="https://www.peacearchnews.com/opinion/letters-keep-second-gym-dont-reassign-cardiac-program-classes/" data-width="100%" data-numposts="10" data-order-by="reverse_time" data-colorscheme="light"></div>
+                <!-- END: Comments -->
+
+        <footer>
+                    </footer>
+                
+        <!-- Comments disabled for now -->
+        <!-- <a class="hollow expanded button comments day-" href="">View Comments <i class="fa fa-comment-o"></i></a> -->
+        
+        
+        <div class="row" style="padding-bottom: 1.5rem;"><div class="columns small-12 medium-12 large-6"><div class='code-block code-block-14' style='margin: 8px auto; text-align: center; display: block; clear: both;'>
+<div id="div-gpt-14" class="gpt-ad">
+<script type='text/javascript'>
+    googletag.cmd.push(function() { googletag.display('div-gpt-14');gptRefreshSlots.push(14); });
+</script>
+</div></div>
+</div><div class="columns small-12 medium-12 large-6"><div class='code-block code-block-19' style='margin: 8px auto; text-align: center; display: block; clear: both;'>
+<div id="div-gpt-19" class="gpt-ad">
+<script type='text/javascript'>
+    googletag.cmd.push(function() { googletag.display('div-gpt-19');gptRefreshSlots.push(19); });
+</script>
+</div></div>
+</div></div>        
+    </article>
+
+
+<aside class="sidebar text-right">
+		<article id="ai_widget-10" class="widget ai_widget"><div class='code-block code-block-10' style='margin: 8px auto; text-align: center; display: block; clear: both;'>
+<div id="div-gpt-10" class="gpt-ad">
+<script type='text/javascript'>
+    googletag.cmd.push(function() { googletag.display('div-gpt-10');gptRefreshSlots.push(10); });
+</script>
+</div></div>
+</article><article id="ai_widget-8" class="widget ai_widget"><div class='code-block code-block-12' style='margin: 8px auto; text-align: center; display: block; clear: both;'>
+<div id="div-gpt-12" class="gpt-ad">
+<script type='text/javascript'>
+    googletag.cmd.push(function() { googletag.display('div-gpt-12');gptRefreshSlots.push(12); });
+</script>
+</div></div>
+</article>	
+        <!-- taboola code -->
+            <div id="taboola-right-rail"></div>
+            <script type="text/javascript">
+            window._taboola = window._taboola || [];
+            _taboola.push({
+                mode: 'thumbnails-c',
+                container: 'taboola-right-rail',
+                placement: 'Right Rail',
+                target_type: 'mix'
+            });
+            </script>
+            
+        
+
+	</aside>
+</div>
+
+<div class="row module-adjacent-posts" data-equalizer data-equalize-on="medium">
+	    <div class="small-6 adjacent-prev columns" data-equalizer-watch>
+                    <a class="button" onClick="__gaTracker('send','event','Recirculating Content','Click','Previous Adjacent Story');" href="https://www.peacearchnews.com/opinion/column-a-year-of-big-changes-in-surrey-and-white-rock/">
+                <h5><i class="fa fa-chevron-left" aria-hidden="true"></i>Previous <span class="show-for-small-only">story </span></h5>
+                <span class="show-for-medium">
+                    <h6>COLUMN: A year of big changes in Surrey and White Rock</h6>
+                </span>
+            </a>
+            </div>
+    <div class="small-6 adjacent-next columns" data-equalizer-watch>
+                    <a class="button" onClick="__gaTracker('send','event','Recirculating Content','Click','Next Adjacent Story');" href="https://www.peacearchnews.com/opinion/letters-pedestrians-need-to-make-an-effort-to-be-seen/">
+                <h5>Next <span class="show-for-small-only">story </span><i class="fa fa-chevron-right" aria-hidden="true"></i></h5>
+                <span class="show-for-medium">
+                    <h6>LETTERS: Pedestrians need to make an effort to be seen</h6>
+                </span>
+            </a>
+            </div>
+</div><div class="row module-recirc">
+	<div class="small-12 columns">
+		<h3 class="text-center"><a onClick="__gaTracker('send','event','Recirculating Content','Click','Opinion Header');" href="https://www.peacearchnews.com/./opinion/">Just Posted</a></h3>
+                <div class="row module-recirc">
+            <div class="small-12 large-8 module-recirc columns">
+                <!-- Transient Content single-f7b93b11a94fc14b3511c1f4ac8584b9 --><!-- story-recirc-block --><div class="small-up-2 medium-up-2 large-up-3"><!-- Start - Single Card --><div class="column"><div class='card '><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.peacearchnews.com/community/white-rock-interfaith-lunch-set-for-jan-4/"><img src="https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19895011_web1_190109-PAN-M-interfaith4.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19895011_web1_190109-PAN-M-interfaith4.jpg 1200w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19895011_web1_190109-PAN-M-interfaith4-300x200.jpg 300w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19895011_web1_190109-PAN-M-interfaith4-768x512.jpg 768w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19895011_web1_190109-PAN-M-interfaith4-1024x683.jpg 1024w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19895011_web1_190109-PAN-M-interfaith4-640x427.jpg 640w" sizes="(max-width: 1200px) 100vw, 1200px" /></a> <div class="card-section"><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.peacearchnews.com/community/white-rock-interfaith-lunch-set-for-jan-4/"><h5 class="active">White Rock interfaith lunch set for Jan. 4</h5></a><p class="lead show-for-medium">All welcome to share a meal
+</p></div></div></div><!-- End - Single Card --><!-- Start - Single Card --><div class="column"><div class='card '><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.peacearchnews.com/news/white-rock-report-confirms-2009-re-naming-of-totem-plaza/"><img src="https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19954060_web1_BernardCharlesPlaza092810-02.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19954060_web1_BernardCharlesPlaza092810-02.jpg 1400w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19954060_web1_BernardCharlesPlaza092810-02-300x199.jpg 300w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19954060_web1_BernardCharlesPlaza092810-02-768x509.jpg 768w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19954060_web1_BernardCharlesPlaza092810-02-1024x678.jpg 1024w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19954060_web1_BernardCharlesPlaza092810-02-640x424.jpg 640w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19954060_web1_BernardCharlesPlaza092810-02-1200x795.jpg 1200w" sizes="(max-width: 1199px) 98vw, 1200px" /></a> <div class="card-section"><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.peacearchnews.com/news/white-rock-report-confirms-2009-re-naming-of-totem-plaza/"><h5 class="active">White Rock report confirms 2009 re-naming of Totem Plaza</h5></a><p class="lead show-for-medium">Council to next discuss overall park name with Semiahmoo First Nation
+</p></div></div></div><!-- End - Single Card --><!-- Start - Single Card --><div class="column"><div class='card '><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.peacearchnews.com/news/surrey-firefighters-trying-to-determine-cause-of-boxing-day-fire-in-bridgeview/"><img src="https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19983841_web1_191231-SNW-M-AutoSalvageFire.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19983841_web1_191231-SNW-M-AutoSalvageFire.jpg 1200w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19983841_web1_191231-SNW-M-AutoSalvageFire-300x200.jpg 300w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19983841_web1_191231-SNW-M-AutoSalvageFire-768x512.jpg 768w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19983841_web1_191231-SNW-M-AutoSalvageFire-1024x683.jpg 1024w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19983841_web1_191231-SNW-M-AutoSalvageFire-640x427.jpg 640w" sizes="(max-width: 1200px) 100vw, 1200px" /></a> <div class="card-section"><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.peacearchnews.com/news/surrey-firefighters-trying-to-determine-cause-of-boxing-day-fire-in-bridgeview/"><h5 class="active">Surrey firefighters trying to determine cause of Boxing Day fire in Bridgeview</h5></a><p class="lead show-for-medium">Assistant fire chief says no reason yet to consider it suspicious
+</p></div></div></div><!-- End - Single Card --><!-- Start - Single Card --><div class="column"><div class='card '><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.peacearchnews.com/news/white-rock-man-sentenced-for-violating-b-c-securities-act/"><img src="https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19980313_web1_190130-ABB-Richard-Gozdek_1.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19980313_web1_190130-ABB-Richard-Gozdek_1.jpg 1200w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19980313_web1_190130-ABB-Richard-Gozdek_1-300x200.jpg 300w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19980313_web1_190130-ABB-Richard-Gozdek_1-768x512.jpg 768w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19980313_web1_190130-ABB-Richard-Gozdek_1-1024x683.jpg 1024w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19980313_web1_190130-ABB-Richard-Gozdek_1-640x427.jpg 640w" sizes="(max-width: 1200px) 100vw, 1200px" /></a> <div class="card-section"><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.peacearchnews.com/news/white-rock-man-sentenced-for-violating-b-c-securities-act/"><h5 class="active">White Rock man sentenced for violating B.C. Securities Act</h5></a><p class="lead show-for-medium">Richard Gozdek charged in 2018 after failing to comply with 2013 order
+</p></div></div></div><!-- End - Single Card --><!-- Start - Single Card --><div class="column"><div class='card '><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.peacearchnews.com/news/elderly-surrey-womans-wheelchair-walker-swiped/"><img src="https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19973021_web1_191230-SNW-M-Su-Zhen-Luo.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19973021_web1_191230-SNW-M-Su-Zhen-Luo.jpg 1200w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19973021_web1_191230-SNW-M-Su-Zhen-Luo-300x200.jpg 300w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19973021_web1_191230-SNW-M-Su-Zhen-Luo-768x512.jpg 768w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19973021_web1_191230-SNW-M-Su-Zhen-Luo-1024x683.jpg 1024w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19973021_web1_191230-SNW-M-Su-Zhen-Luo-640x427.jpg 640w" sizes="(max-width: 1200px) 100vw, 1200px" /></a> <div class="card-section"><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.peacearchnews.com/news/elderly-surrey-womans-wheelchair-walker-swiped/"><h5 class="active">Elderly Surrey woman&#8217;s wheelchair/walker swiped</h5></a><p class="lead show-for-medium">Su Zhen Luo, 85, suffers from a spinal injury from a fall and depended on her $254.99 stroller to get around
+</p></div></div></div><!-- End - Single Card --><!-- Start - Single Card --><div class="column"><div class='card '><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.peacearchnews.com/news/video-cheers-tears-and-prayers-as-world-rings-in-2020/"><img src="https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992288_web1_ISL101-1231_2019_115509.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992288_web1_ISL101-1231_2019_115509.jpg 450w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992288_web1_ISL101-1231_2019_115509-300x200.jpg 300w" sizes="(max-width: 1199px) 98vw, 450px" /></a> <div class="card-section"><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.peacearchnews.com/news/video-cheers-tears-and-prayers-as-world-rings-in-2020/"><h5 class="active">VIDEO: Cheers, tears and prayers as world rings in 2020</h5></a><p class="lead show-for-medium">Top events from the last decade were the rise of social media, the Arab Spring, the #MeToo movement
+</p></div></div></div><!-- End - Single Card --><!-- Start - Single Card --><div class="column"><div class='card '><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.peacearchnews.com/trending-now/b-c-s-first-baby-of-2020-arrives-in-new-westminster/"><img src="https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992018_web1_200101-BPD-M-2020BCBaby.jpeg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992018_web1_200101-BPD-M-2020BCBaby.jpeg 2048w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992018_web1_200101-BPD-M-2020BCBaby-300x200.jpeg 300w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992018_web1_200101-BPD-M-2020BCBaby-768x512.jpeg 768w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992018_web1_200101-BPD-M-2020BCBaby-1024x683.jpeg 1024w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992018_web1_200101-BPD-M-2020BCBaby-640x427.jpeg 640w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992018_web1_200101-BPD-M-2020BCBaby-1200x800.jpeg 1200w" sizes="(max-width: 1199px) 98vw, 1200px" /></a> <div class="card-section"><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.peacearchnews.com/trending-now/b-c-s-first-baby-of-2020-arrives-in-new-westminster/"><h5 class="active">B.C.&#8217;s first baby of 2020 arrives in New Westminster</h5></a><p class="lead show-for-medium">Girl was born at 12:01 a.m. at Royal Columbian Hospital
+</p></div></div></div><!-- End - Single Card --><!-- Start - Single Card --><div class="column"><div class='card '><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.peacearchnews.com/news/order-granted-vs-opponents-of-coastal-gaslink-pipeline-in-northern-b-c/"><img src="https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992494_web1_20393945.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992494_web1_20393945.jpg 2048w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992494_web1_20393945-300x200.jpg 300w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992494_web1_20393945-768x512.jpg 768w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992494_web1_20393945-1024x683.jpg 1024w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992494_web1_20393945-640x427.jpg 640w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992494_web1_20393945-1200x800.jpg 1200w" sizes="(max-width: 1199px) 98vw, 1200px" /></a> <div class="card-section"><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.peacearchnews.com/news/order-granted-vs-opponents-of-coastal-gaslink-pipeline-in-northern-b-c/"><h5 class="active">Order granted vs. opponents of Coastal GasLink pipeline in northern B.C.</h5></a><p class="lead show-for-medium">B.C. Supreme Court grants interlocutory order following protests by Wet’suwet’en First Nation
+</p></div></div></div><!-- End - Single Card --><!-- Start - Single Card --><div class="column"><div class='card '><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.peacearchnews.com/news/record-70-million-lotto-jackpot-up-for-grabs-in-b-c/"><img src="https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992275_web1_180209-IFD-wage.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992275_web1_180209-IFD-wage.jpg 1200w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992275_web1_180209-IFD-wage-300x200.jpg 300w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992275_web1_180209-IFD-wage-768x512.jpg 768w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992275_web1_180209-IFD-wage-1024x683.jpg 1024w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992275_web1_180209-IFD-wage-640x427.jpg 640w" sizes="(max-width: 1200px) 100vw, 1200px" /></a> <div class="card-section"><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.peacearchnews.com/news/record-70-million-lotto-jackpot-up-for-grabs-in-b-c/"><h5 class="active">Record $70-million lotto jackpot up for grabs in B.C.</h5></a><p class="lead show-for-medium">First Lotto Max draw of the year could make someone particularly rich
+</p></div></div></div><!-- End - Single Card --><!-- Start - Single Card --><div class="column"><div class='card '><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.peacearchnews.com/news/lower-taxes-new-rrsp-rules-among-2020-changes-in-canada/"><img src="https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19988937_web1_170310-BPD-M-loonies-money.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19988937_web1_170310-BPD-M-loonies-money.jpg 900w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19988937_web1_170310-BPD-M-loonies-money-300x201.jpg 300w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19988937_web1_170310-BPD-M-loonies-money-768x514.jpg 768w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19988937_web1_170310-BPD-M-loonies-money-640x428.jpg 640w" sizes="(max-width: 1199px) 98vw, 900px" /></a> <div class="card-section"><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.peacearchnews.com/news/lower-taxes-new-rrsp-rules-among-2020-changes-in-canada/"><h5 class="active">Lower taxes, new RRSP rules among 2020 changes in Canada</h5></a><p class="lead show-for-medium">$75 credit for digital news subscriptions and no more federal carbon tax in Alberta, too
+</p></div></div></div><!-- End - Single Card --><!-- Start - Single Card --><div class="column"><div class='card '><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.peacearchnews.com/news/new-year-no-power-thousands-in-b-c-interior-in-the-dark-after-snowstorm/"><img src="https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992090_web1_poweroutage1.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992090_web1_poweroutage1.jpg 1344w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992090_web1_poweroutage1-300x200.jpg 300w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992090_web1_poweroutage1-768x512.jpg 768w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992090_web1_poweroutage1-1024x683.jpg 1024w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992090_web1_poweroutage1-640x427.jpg 640w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992090_web1_poweroutage1-1200x800.jpg 1200w" sizes="(max-width: 1199px) 98vw, 1200px" /></a> <div class="card-section"><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.peacearchnews.com/news/new-year-no-power-thousands-in-b-c-interior-in-the-dark-after-snowstorm/"><h5 class="active">New year, no power: Thousands in B.C. Interior in the dark after snowstorm</h5></a><p class="lead show-for-medium">More snow is expected in the southern and central interiors
+</p></div></div></div><!-- End - Single Card --><!-- Start - Single Card --><div class="column"><div class='card '><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.peacearchnews.com/news/who-was-the-best-prime-minister-of-the-20th-century/"><img src="https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19989494_web1_191231-BPD-M-22406509.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19989494_web1_191231-BPD-M-22406509.jpg 1200w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19989494_web1_191231-BPD-M-22406509-300x200.jpg 300w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19989494_web1_191231-BPD-M-22406509-768x512.jpg 768w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19989494_web1_191231-BPD-M-22406509-1024x683.jpg 1024w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19989494_web1_191231-BPD-M-22406509-640x427.jpg 640w" sizes="(max-width: 1200px) 100vw, 1200px" /></a> <div class="card-section"><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.peacearchnews.com/news/who-was-the-best-prime-minister-of-the-20th-century/"><h5 class="active">Who was the best prime minister of the 20th century?</h5></a><p class="lead show-for-medium">Poll suggests a regional divide in Canada
+</p></div></div></div><!-- End - Single Card --><!-- Start - Single Card --><div class="column"><div class='card '><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.peacearchnews.com/news/abbotsford-man-charged-in-ontario-exploitation-probe-has-record-of-sexual-offences/"><img src="https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19989209_web1_191011-ABB-Danny-Depew_1.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19989209_web1_191011-ABB-Danny-Depew_1.jpg 693w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19989209_web1_191011-ABB-Danny-Depew_1-300x200.jpg 300w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19989209_web1_191011-ABB-Danny-Depew_1-640x427.jpg 640w" sizes="(max-width: 1199px) 98vw, 693px" /></a> <div class="card-section"><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.peacearchnews.com/news/abbotsford-man-charged-in-ontario-exploitation-probe-has-record-of-sexual-offences/"><h5 class="active">Abbotsford man charged in Ontario exploitation probe has record of sexual offences</h5></a><p class="lead show-for-medium">Danny Depew was the subject of two prior public warnings from Calgary police
+</p></div></div></div><!-- End - Single Card --><!-- Start - Single Card --><div class="column"><div class='card '><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.peacearchnews.com/news/infographic-b-c-s-most-crowded-hospitals-are-in-fraser-valley-northern-b-c/"><img src="https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19983828_web1_crowded-hospitals.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19983828_web1_crowded-hospitals.jpg 1200w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19983828_web1_crowded-hospitals-300x200.jpg 300w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19983828_web1_crowded-hospitals-768x512.jpg 768w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19983828_web1_crowded-hospitals-1024x683.jpg 1024w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19983828_web1_crowded-hospitals-640x427.jpg 640w" sizes="(max-width: 1200px) 100vw, 1200px" /></a> <div class="card-section"><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.peacearchnews.com/news/infographic-b-c-s-most-crowded-hospitals-are-in-fraser-valley-northern-b-c/"><h5 class="active">INFOGRAPHIC: B.C.&#8217;s most-crowded hospitals are in Fraser Valley, Northern B.C.</h5></a><p class="lead show-for-medium">See if your local hospital’s in-patient wards operated over capacity in 2018/19
+</p></div></div></div><!-- End - Single Card --></div>            </div>
+
+            <div class="small-12 large-4 module-most-read columns">
+                <div class="row">
+    <div class="small-12 module-trending story columns">
+        <h3 class="text-center">Most Read</h3>
+        <ul class="trending-maxi">
+                            <li>
+                <div id="post-156546" class="row story-list-item collapse">
+	<div class="small-12 medium-8 photo content columns">
+					<h4 class="count"></h4><h5><a onClick="__gaTracker('send','event','Recirculating Content','Click','Opinion Most Read');" href="https://www.peacearchnews.com/news/lower-taxes-new-rrsp-rules-among-2020-changes-in-canada/">Lower taxes, new RRSP rules among 2020 changes in Canada</a></h5>
+				<p class="lead web show-for-medium hide-for-large">$75 credit for digital news subscriptions and no more federal carbon tax in Alberta, too
+</p>	</div>
+			<div class="show-for-medium medium-4 columns">
+							<a onClick="__gaTracker('send','event','Recirculating Content','Click','Opinion Most Read');" href="https://www.peacearchnews.com/news/lower-taxes-new-rrsp-rules-among-2020-changes-in-canada/"><img src="https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19988937_web1_170310-BPD-M-loonies-money.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19988937_web1_170310-BPD-M-loonies-money.jpg 900w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19988937_web1_170310-BPD-M-loonies-money-300x201.jpg 300w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19988937_web1_170310-BPD-M-loonies-money-768x514.jpg 768w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19988937_web1_170310-BPD-M-loonies-money-640x428.jpg 640w" sizes="(max-width: 1199px) 98vw, 900px" /></a>
+					</div>
+	</div>
+            </li>
+                            <li>
+                <div id="post-156526" class="row story-list-item collapse">
+	<div class="small-12 medium-8 photo content columns">
+					<h4 class="count"></h4><h5><a onClick="__gaTracker('send','event','Recirculating Content','Click','Opinion Most Read');" href="https://www.peacearchnews.com/news/surrey-firefighters-trying-to-determine-cause-of-boxing-day-fire-in-bridgeview/">Surrey firefighters trying to determine cause of Boxing Day fire in Bridgeview</a></h5>
+				<p class="lead web show-for-medium hide-for-large">Assistant fire chief says no reason yet to consider it suspicious
+</p>	</div>
+			<div class="show-for-medium medium-4 columns">
+							<a onClick="__gaTracker('send','event','Recirculating Content','Click','Opinion Most Read');" href="https://www.peacearchnews.com/news/surrey-firefighters-trying-to-determine-cause-of-boxing-day-fire-in-bridgeview/"><img src="https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19983841_web1_191231-SNW-M-AutoSalvageFire.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19983841_web1_191231-SNW-M-AutoSalvageFire.jpg 1200w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19983841_web1_191231-SNW-M-AutoSalvageFire-300x200.jpg 300w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19983841_web1_191231-SNW-M-AutoSalvageFire-768x512.jpg 768w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19983841_web1_191231-SNW-M-AutoSalvageFire-1024x683.jpg 1024w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19983841_web1_191231-SNW-M-AutoSalvageFire-640x427.jpg 640w" sizes="(max-width: 1200px) 100vw, 1200px" /></a>
+					</div>
+	</div>
+            </li>
+                            <li>
+                <div id="post-156535" class="row story-list-item collapse">
+	<div class="small-12 medium-8 photo content columns">
+					<h4 class="count"></h4><h5><a onClick="__gaTracker('send','event','Recirculating Content','Click','Opinion Most Read');" href="https://www.peacearchnews.com/news/b-c-zoo-vows-change-after-report-of-animals-suffering-boredom-and-frustration/">B.C. zoo vows change after report of animals suffering &#8216;boredom and frustration&#8217;</a></h5>
+				<p class="lead web show-for-medium hide-for-large">Manager promises upgrades, including a safari park and better accommodation for big cats
+</p>	</div>
+			<div class="show-for-medium medium-4 columns">
+							<a onClick="__gaTracker('send','event','Recirculating Content','Click','Opinion Most Read');" href="https://www.peacearchnews.com/news/b-c-zoo-vows-change-after-report-of-animals-suffering-boredom-and-frustration/"><img src="https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19986974_web1_191231-BPD-M-Bear.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19986974_web1_191231-BPD-M-Bear.jpg 660w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19986974_web1_191231-BPD-M-Bear-300x200.jpg 300w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19986974_web1_191231-BPD-M-Bear-640x427.jpg 640w" sizes="(max-width: 1199px) 98vw, 660px" /></a>
+					</div>
+	</div>
+            </li>
+                            <li>
+                <div id="post-156532" class="row story-list-item collapse">
+	<div class="small-12 medium-8 photo content columns">
+					<h4 class="count"></h4><h5><a onClick="__gaTracker('send','event','Recirculating Content','Click','Opinion Most Read');" href="https://www.peacearchnews.com/news/avalanche-in-northwestern-b-c-kills-two-snowboarders/">Avalanche in northwestern B.C. kills two snowboarders</a></h5>
+				<p class="lead web show-for-medium hide-for-large">Two young men from Alaska were killed in Tatshenshini-Alsek Provincial Park
+</p>	</div>
+			<div class="show-for-medium medium-4 columns">
+							<a onClick="__gaTracker('send','event','Recirculating Content','Click','Opinion Most Read');" href="https://www.peacearchnews.com/news/avalanche-in-northwestern-b-c-kills-two-snowboarders/"><img src="https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19985933_web1_191231-BPD-M-Park.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19985933_web1_191231-BPD-M-Park.jpg 720w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19985933_web1_191231-BPD-M-Park-300x200.jpg 300w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19985933_web1_191231-BPD-M-Park-640x427.jpg 640w" sizes="(max-width: 1199px) 98vw, 720px" /></a>
+					</div>
+	</div>
+            </li>
+                            <li>
+                <div id="post-156528" class="row story-list-item collapse">
+	<div class="small-12 medium-8 photo content columns">
+					<h4 class="count"></h4><h5><a onClick="__gaTracker('send','event','Recirculating Content','Click','Opinion Most Read');" href="https://www.peacearchnews.com/news/ex-kelowna-cop-accused-of-sending-explicit-photos-and-threatening-domestic-violence-victim/">Ex-Kelowna cop accused of sending explicit photos and threatening domestic-violence victim</a></h5>
+				<p class="lead web show-for-medium hide-for-large">A woman claims she had to leave the Kelowna area to avoid further harassment by RCMP members
+</p>	</div>
+			<div class="show-for-medium medium-4 columns">
+							<a onClick="__gaTracker('send','event','Recirculating Content','Click','Opinion Most Read');" href="https://www.peacearchnews.com/news/ex-kelowna-cop-accused-of-sending-explicit-photos-and-threatening-domestic-violence-victim/"><img src="https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19985644_web1_RCMP.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19985644_web1_RCMP.jpg 1200w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19985644_web1_RCMP-300x200.jpg 300w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19985644_web1_RCMP-768x512.jpg 768w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19985644_web1_RCMP-1024x683.jpg 1024w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19985644_web1_RCMP-640x427.jpg 640w" sizes="(max-width: 1200px) 100vw, 1200px" /></a>
+					</div>
+	</div>
+            </li>
+                            <li>
+                <div id="post-156539" class="row story-list-item collapse">
+	<div class="small-12 medium-8 photo content columns">
+					<h4 class="count"></h4><h5><a onClick="__gaTracker('send','event','Recirculating Content','Click','Opinion Most Read');" href="https://www.peacearchnews.com/news/rain-snow-set-b-c-up-for-soggy-slippery-start-to-2020/">Rain, snow set B.C. up for soggy, slippery start to 2020</a></h5>
+				<p class="lead web show-for-medium hide-for-large">Warnings cover much of the province on New Year’s Eve
+</p>	</div>
+			<div class="show-for-medium medium-4 columns">
+							<a onClick="__gaTracker('send','event','Recirculating Content','Click','Opinion Most Read');" href="https://www.peacearchnews.com/news/rain-snow-set-b-c-up-for-soggy-slippery-start-to-2020/"><img src="https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19986059_web1_copy_191227-SAA-Snowfall-warning.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19986059_web1_copy_191227-SAA-Snowfall-warning.jpg 2000w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19986059_web1_copy_191227-SAA-Snowfall-warning-300x200.jpg 300w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19986059_web1_copy_191227-SAA-Snowfall-warning-768x512.jpg 768w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19986059_web1_copy_191227-SAA-Snowfall-warning-1024x682.jpg 1024w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19986059_web1_copy_191227-SAA-Snowfall-warning-640x427.jpg 640w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19986059_web1_copy_191227-SAA-Snowfall-warning-1200x800.jpg 1200w" sizes="(max-width: 1199px) 98vw, 1200px" /></a>
+					</div>
+	</div>
+            </li>
+                            <li>
+                <div id="post-156548" class="row story-list-item collapse">
+	<div class="small-12 medium-8 photo content columns">
+					<h4 class="count"></h4><h5><a onClick="__gaTracker('send','event','Recirculating Content','Click','Opinion Most Read');" href="https://www.peacearchnews.com/news/abbotsford-man-charged-in-ontario-exploitation-probe-has-record-of-sexual-offences/">Abbotsford man charged in Ontario exploitation probe has record of sexual offences</a></h5>
+				<p class="lead web show-for-medium hide-for-large">Danny Depew was the subject of two prior public warnings from Calgary police
+</p>	</div>
+			<div class="show-for-medium medium-4 columns">
+							<a onClick="__gaTracker('send','event','Recirculating Content','Click','Opinion Most Read');" href="https://www.peacearchnews.com/news/abbotsford-man-charged-in-ontario-exploitation-probe-has-record-of-sexual-offences/"><img src="https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19989209_web1_191011-ABB-Danny-Depew_1.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19989209_web1_191011-ABB-Danny-Depew_1.jpg 693w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19989209_web1_191011-ABB-Danny-Depew_1-300x200.jpg 300w, https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19989209_web1_191011-ABB-Danny-Depew_1-640x427.jpg 640w" sizes="(max-width: 1199px) 98vw, 693px" /></a>
+					</div>
+	</div>
+            </li>
+                </ul>
+    </div>
+</div>            </div>
+        </div>
+    </div>
+</div>
+
+<!-- [post-block post_type='post' taxonomy='category' tax_term='home' taxonomy_posts_per_page='5' taxonomy_2='category' tax_2_term='home2' taxonomy_2_posts_per_page='8' tax_operator='AND' post_template='story-recirc' current_story_id='$currentID' reverse_chron='$reverse_chron'] -->
+<!--//*** Taboola article code ***//-->
+<div class="row">
+	<div class="small-12 columns">
+		<div class="row">
+            <div class="small-12 large-8 columns">
+                
+        <!-- taboola code -->
+            <div id="taboola-below-article-thumbnails"></div>
+            <script type="text/javascript">
+            window._taboola = window._taboola || [];
+            _taboola.push({
+                mode: 'thumbnails-a',
+                container: 'taboola-below-article-thumbnails',
+                placement: 'Below Article Thumbnails',
+                target_type: 'mix'
+            });
+            </script>
+        
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+        </section>
+        <div id="footer-container">
+            <footer id="footer">
+                
+                
+<div id="bp-logo" class="row">
+
+    <div class="small-12 columns">
+ 
+    <!-- *** BEGIN LOGO *** -->
+        <div class="textwidget">
+            <a class="pub-logo-small day-4" href="https://www.peacearchnews.com/"><svg id="Outline" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 409.98 51.81"><defs><style>.cls-1{fill:#231f20;}</style></defs><title></title><path class="bp-pub-logo" d="M52.16,2h9.1C71.56,2,76.95,6.12,76.95,16.91c0,9-3.5,15-12,15H61.27v20h-9.1Zm9.17,22.61h.77c3.71,0,5.74-1.47,5.74-7.49C67.85,9.9,65,9.69,62,9.69h-.7Z" transform="translate(-52.16 -1.01)"/><path class="bp-pub-logo" d="M80.79,2h20.58v7.7H89.89V22.44h8.47v8.12H89.89V44.14h12v7.7H80.79Z" transform="translate(-52.16 -1.01)"/><path class="bp-pub-logo" d="M111.31,2h13.16l6.16,49.85h-8.75l-1.33-11.06H113.2l-1.26,11.06h-7.63Zm5.81,7.7H117l-2.87,23.8h5.67Z" transform="translate(-52.16 -1.01)"/><path class="bp-pub-logo" d="M150.65,20.06c0-8.26-1.05-11.34-3.29-11.34-1.89,0-3.78,1.26-3.78,18.2,0,16.38,1,18.2,3.78,18.2,3,0,3.71-4.62,3.85-11.83l7.7.35c0,8.68-1.26,19.18-11.9,19.18-9.73,0-13-9.52-13-25.9,0-19,5.74-25.9,13-25.9,10.5,0,11.76,9.66,11.76,18.76Z" transform="translate(-52.16 -1.01)"/><path class="bp-pub-logo" d="M165.28,2h20.58v7.7H174.38V22.44h8.47v8.12h-8.47V44.14h12v7.7H165.28Z" transform="translate(-52.16 -1.01)"/><path class="bp-pub-logo" d="M210.78,2h13.16l6.16,49.85h-8.75L220,40.78h-7.35l-1.26,11.06h-7.63Zm5.81,7.7h-.14l-2.87,23.8h5.67Z" transform="translate(-52.16 -1.01)"/><path class="bp-pub-logo" d="M234.86,2h10.22c8.68,0,14.42,3.64,14.42,14.14,0,4.2-1.26,9.8-5.32,12.18l5.39,23.52H250.4l-4.27-21.42H244V51.84h-9.1ZM244,23.14h1.82c3.36,0,4.62-3.36,4.62-6.93,0-5.39-2-6.93-5-6.93H244Z" transform="translate(-52.16 -1.01)"/><path class="bp-pub-logo" d="M280,20.06c0-8.26-1.05-11.34-3.29-11.34-1.89,0-3.78,1.26-3.78,18.2,0,16.38,1,18.2,3.78,18.2,3,0,3.71-4.62,3.85-11.83l7.7.35c0,8.68-1.26,19.18-11.9,19.18-9.73,0-13-9.52-13-25.9,0-19,5.74-25.9,13-25.9,10.5,0,11.76,9.66,11.76,18.76Z" transform="translate(-52.16 -1.01)"/><path class="bp-pub-logo" d="M294.64,2h9.1V22h5.74V2h9.1V51.84h-9.1V30.7h-5.74V51.84h-9.1Z" transform="translate(-52.16 -1.01)"/><path class="bp-pub-logo" d="M340.49,2h8.89l8.33,26.32h.14V2h7.28V51.84h-7.07l-9.73-30.17h-.14V51.84h-7.7Z" transform="translate(-52.16 -1.01)"/><path class="bp-pub-logo" d="M372.06,2h20.58v7.7H381.16V22.44h8.47v8.12h-8.47V44.14h12v7.7H372.06Z" transform="translate(-52.16 -1.01)"/><path class="bp-pub-logo" d="M396.84,2h8.26l3.22,29.26h.14L412.8,2H421l4,29.26h.14L428.69,2h6.51l-6.51,49.85h-8.26l-4.34-31.57h-.14l-4.48,31.57h-8Z" transform="translate(-52.16 -1.01)"/><path class="bp-pub-logo" d="M446,37.42c0,2.8,0,7.7,3.92,7.7,3,0,4.06-2.8,4.06-4.83,0-8.89-16.52-10.92-16.52-25.69C437.51,7.1,441.57,1,449.27,1c8.19,0,11.34,6.23,11.55,15.19H452.7c0-2.8,0-7.49-3.64-7.49-2.17,0-3.43,1.82-3.43,4.55,0,8.47,16.52,11.34,16.52,25.83,0,7.63-4.34,13.72-12.53,13.72-9.73,0-11.69-8.54-11.69-15.4Z" transform="translate(-52.16 -1.01)"/></svg></a>        </div>
+
+    <!-- *** END LOGO *** -->
+    </div>            
+        
+</div><!-- row -->
+
+<div id="bp-social-footer" class="row">
+    <div class="small-12 columns">
+                    
+        <div class="textwidget">
+            <ul class="social footer">
+	<li><a title="Follow us on Facebook" class="social fa fa-facebook-f" href="https://www.facebook.com/peacearchnews" target="_blank"></a></li>
+	<li><a title="Follow us on Twitter" class="social fa fa-twitter" href="https://twitter.com/PeaceArchNews" target="_blank"></a></li>
+	<li><a title="Follow us on Instagram" class="social fa fa-instagram" href="https://www.instagram.com/PeaceArchNews"  target="_blank"></a></li>
+	<!-- <li><a title="RSS Feed" class="social fa fa-rss" href="/feed/"></a></li> -->
+<li><a title="Submit a story" href="/submit/">
+            <img style="margin-bottom:0;width: 34px;height: 34px;" 
+            src="https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/assets/images/submit.png"></a>
+            </li>
+<li><a title="Impress TV" href="http://impresstv.blackpress.ca/" target="_blank">
+            <img style="margin-bottom:0;width: 34px;height: 34px;" 
+            src="https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/assets/images/ImpressTV.png"></a>
+            </li></ul>        </div>
+
+    </div>
+</div><!-- row -->
+
+<div id="bp-site-map-title" class="row" >
+    <div class="small-12 columns" >
+                
+        <div class="textwidget" >        
+             <h4 class="text-center">Explore Peace Arch News</h4>
+        </div>
+
+    </div>
+</div><!-- row -->   
+
+<!-- <div id="bp-site-map" class="row" > -->
+<div id="bp-site-map" class="small-12 column row" >
+    <!-- <div class="small-12 columns"> -->
+
+        <ul><li><a href="/news/">NEWS</a></li><li><a href="/sports/">SPORTS</a></li><li><a href="/trending-now/">TRENDING NOW</a></li><li><a href="/business/">BUSINESS</a></li><li><a href="/entertainment/">ENTERTAINMENT</a></li><li><a href="/life/">LIFE</a></li><li><a href="/community/">COMMUNITY</a></li><li><a href="/opinion/">OPINION</a></li><li><a href="/video/">VIDEOS</a></li><li><a href="/weather/">WEATHER</a></li><li><a href="/obituaries/">OBITUARIES</a></li><li><a href="/e-editions/">SPECIAL SECTIONS</a></li><li><a href="/marketplace/">MARKETPLACE</a></li><li><a href="/contests/">CONTESTS</a></li><li><a href="/contact-us/">CONTACT US</a></li></ul>                             
+
+    <!-- </div>  -->                        
+</div><!-- row -->
+
+<div id="bp-media-group" class="row" >
+    
+    <div class="small-12 columns">
+                
+        <div class="textwidget">
+            
+            <a href="//www.blackpress.ca/publications/" target="_blank">BLACK PRESS MEDIA</a>      
+           
+        </div>
+
+    </div>
+    
+    <div class="small-12 columns menu-footer-container">
+        <ul id="menu-footer" class="menu" >
+            
+                     
+                    
+                    <li class="menu-item" >
+                        <a  target="_blank" href="//www.surreynowleader.com">Surrey Now Leader</a>
+                    </li>
+                
+                     
+                    
+                    <li class="menu-item" >
+                        <a  target="_blank" href="//www.langleyadvancetimes.com">Langley Advance Times</a>
+                    </li>
+                
+                     
+                    
+                    <li class="menu-item" >
+                        <a  target="_blank" href="//www.mapleridgenews.com">Maple Ridge-Pitt Meadows News</a>
+                    </li>
+                
+                     
+                    
+                    <li class="menu-item" >
+                        <a  target="_blank" href="//www.cloverdalereporter.com">Cloverdale Reporter</a>
+                    </li>
+                
+                     
+                    
+                    <li class="menu-item" >
+                        <a  target="_blank" href="//www.northdeltareporter.com">North Delta Reporter</a>
+                    </li>
+                
+                    
+        
+        </ul>
+        
+    </div>
+
+    <!-- black press media logo-->
+    <div class="small-12 columns">
+        <div class="textwidget">
+                   
+            <a href="//www.blackpress.ca/publications/">
+                        <img style="max-width: 300px;padding-top: 2rem;" src="https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/assets/images/BlackPressMedia.svg" alt="Black Press Media" ></a>        </div>
+
+    </div>
+
+
+</div><!-- row -->
+
+
+<div id="bp-terms" class="row" >
+    
+    <div class="small-12 columns">
+        
+        <ul id="menu-footer" class="menu">
+            
+            <li class="menu-item"><a target="_blank" href="https://www.peacearchnews.com/contact-us/">Contact Us</a></li><li class="menu-item"><a target="_blank" href="https://www.peacearchnews.com/our-team/">Our Team</a></li><li class="menu-item"><a target="_blank" href="https://www.peacearchnews.com/privacy-policy/">Privacy Policy</a></li><li class="menu-item"><a target="_blank" href="https://www.peacearchnews.com/terms-of-use/">Terms of use</a></li><li class="menu-item"><a target="_blank" href="https://www.peacearchnews.com/site-map/">Site Map</a></li><li class="menu-item"><a target="_blank" href="https://www.peacearchnews.com/weather/">White Rock Weather</a></li><li class="menu-item"><a target="_blank" href="https://www.peacearchnews.com/./local-news/">White Rock News</a></li><li class="menu-item"><a target="_blank" href="//www.bcclassifieds.com/?sfid=2165">White Rock Classifieds</a></li>      
+        </ul>
+
+    </div>
+
+    <div class="small-12 columns">
+                
+        <div class="textwidget">
+            &copy; 2020, <a href="#"></a>Peace Arch News and <a href="http://www.blackpress.ca/">Black Press Group Ltd.</a>
+
+
+        </div>
+
+    </div>
+
+</div><!-- row -->
+
+                            </footer>
+        </div>
+
+        
+
+<!-- Start Catfish ad -->
+<div style="position:fixed;bottom:0px;width:100%;background:white;">
+<div class='code-block code-block-17' style='margin: 8px 0; clear: both;'>
+<!-- Reserved for Catfish ad. See display call in Footer. -->
+<div id="div-gpt-17" class="gpt-ad" style="margin: 0 auto;width:320px;">
+<script type='text/javascript'>
+    googletag.cmd.push(function() {googletag.display('div-gpt-17');gptRefreshSlots.push(17);});
+</script>
+</div></div>
+</div>
+<!-- End Catfish ad -->
+
+
+<!-- Start Interstitial ad -->
+<div id='page-cover' style="z-index:999999; text-align:center;background-color:#FFF; position:fixed; top:0; left:0; width:100%; height:100%;padding-top: 25%;padding-left: 10px;padding-right: 10px;display: none;">
+<div class='code-block code-block-18' style='margin: 8px 0; clear: both;'>
+<!-- Reserved for Interstitial ad. See display call in Footer. -->
+<div id="div-gpt-18" class="gpt-ad">
+<script type='text/javascript'>
+  googletag.cmd.push(function() { googletag.display('div-gpt-18');gptRefreshSlots.push(18);googletag.pubads().addEventListener('slotRenderEnded', function(event) {
+                if (event.slot === gptAdSlots[18]) {
+                    if(event.isEmpty) {
+                        document.getElementById("page-cover").style.display = 'none';
+                    }
+                    else{
+                        console.log("setting timer")
+                    	//delay modal window from opening to allow ad tags to render; the above listener means the tags loaded, not necessarily showing the creative.
+                    	var delayModal = window.setTimeout(
+                    		function(){var timeoutID = window.setTimeout(function(){document.getElementById("page-cover").style.display = 'none';},8000);document.getElementById("page-cover").style.display = 'block';}
+                    	,5000);
+                    }
+                }
+            });
+  });
+  $(document).ready(function() {
+    	$("#close-interstitial").click(function() {
+        	document.getElementById("page-cover").style.display = 'none';
+    	});
+	}); 
+</script>
+</div>
+<div><a id="close-interstitial" href="#">Close ad</a></div></div>
+</div>
+<!-- End Interstitial ad -->
+
+l -->
+<!-- /1036919/vendor_library_0 -->
+<div id='div-gpt-21' style='height:1px; width:1px;'>
+<script>
+googletag.cmd.push(function() { googletag.display('div-gpt-21');gptRefreshSlots.push(21); });
+</script>
+</div>
+<!-- End vendor library call -->
+<!--<script type='text/javascript'>
+    googletag.cmd.push(function() {
+        for (i = 0; i < gptAdSlots.length; i++) { 
+            if(gptRefreshSlots.indexOf(i) == -1){                
+                googletag.destroySlots([gptAdSlots[i]]);
+                console.log('destroyed ' + i);
+            }
+        }
+        googletag.pubads().refresh(gptAdSlots);
+    });
+</script>-->
+                    <style type="text/css">
+                        div.aw-widget-36hour-inner a.aw-arrow {
+                            z-index: 1 !important;
+                        }
+                                                            
+                        div.aw-widget-current [class*="bg-"] {
+                            background: none !important;
+                        }
+
+                        div.aw-current-weather-inner h3 {
+                            display: none;
+                        }
+
+                        div.aw-widget-current-inner div.aw-widget-content {
+                            border: none !important;
+                        }
+
+                        div.aw-widget-current-inner div.aw-widget-content.bg-cl, 
+                        div.aw-widget-current-inner div.aw-widget-content.bg-cl a.aw-current-weather, 
+                        div.aw-widget-current-inner div.aw-widget-content.bg-s, 
+                        div.aw-widget-current-inner div.aw-widget-content.bg-s a.aw-current-weather {
+                                color: #000 !important;
+                        }
+
+                        div.aw-widget-current-inner div.aw-widget-content a.aw-current-weather p span.aw-temperature-today b {
+                            font-weight: 600 !important;
+                            padding-left: 40px !important;
+                            font-size: 1.5rem !important;
+                        }
+
+                        div.aw-widget-current-inner div.aw-widget-content a.aw-current-weather p time {
+                            display: none !important;
+                        }
+
+                        div.aw-widget-current-inner div.aw-widget-content a.aw-current-weather p span.aw-weather-description {
+                            display: none !important;
+                        }
+                        
+                        div.aw-widget-current-inner a.aw-toggle {
+                            display: none !important;
+                        }
+
+                        div#weatherContainer {
+                            padding-top: 10px;
+                        }
+
+                        .lt-106 div.aw-widget-current-inner div.aw-widget-content a.aw-current-weather span.aw-icon {
+                            background-position: 0 0 !important;
+                        }
+
+                        .lt-115 div.aw-widget-current-inner div.aw-widget-content a.aw-current-weather span.aw-icon {
+                            z-index: 1 !important;
+                        }
+
+                        .lt-479 div.aw-widget-current-inner div.aw-widget-content a.aw-current-weather p {
+                            z-index: 1 !important;
+                        }
+
+                        @media screen and (max-width: 39.9375em) {
+                            div.aw-widget-current-inner div.aw-widget-content a.aw-current-weather {
+                                color: #fff !important;
+                            }
+
+                            div#weatherContainer {
+                                padding-top: 10px;
+                            }
+
+                            div.aw-widget-current-inner div.aw-widget-content.bg-cl, 
+                            div.aw-widget-current-inner div.aw-widget-content.bg-cl a.aw-current-weather, 
+                            div.aw-widget-current-inner div.aw-widget-content.bg-s, 
+                            div.aw-widget-current-inner div.aw-widget-content.bg-s a.aw-current-weather {
+                                color: #fff !important;
+                            }
+
+                        }
+                    </style>
+                <script type='text/javascript' src='//content.jwplatform.com/libraries/yrJQMy68.js?ver=1.0.0'></script>
+<script type='text/javascript' src='https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/assets/components/featherlight/featherlight.js?ver=1.6.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var foundation = {"is_front_page":"0"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/dest/javascript/foundation.min.js?ver=2.36.14'></script>
+<script type='text/javascript' src='https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/dest/javascript/what-input/what-input.min.js?ver=4.0.3'></script>
+<script type='text/javascript' src='https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/dest/javascript/frame_resize_2.0.min.js?ver=2.36.14'></script>
+<script type='text/javascript' src='https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-includes/js/comment-reply.min.js?ver=5.2.5'></script>
+<script type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js?ver=1.9.0'></script>
+<script type='text/javascript' src='https://ow0hs2zhmkp2497op3xhvxsa-wpengine.netdna-ssl.com/wp-includes/js/wp-embed.min.js?ver=5.2.5'></script>
+
+
+        <!-- taboola code -->
+            <script type="text/javascript">
+            window._taboola = window._taboola || [];
+            _taboola.push({flush: true});
+        </script>
+        
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"e4824da135","applicationID":"96620565","transactionName":"NFVWZ0YCCERXAkxeXQ0fdVBACglZGRJRWVUPVQ==","queueTime":0,"applicationTime":275,"atts":"GBJVEQ4YG0o=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>

@@ -1,0 +1,1342 @@
+
+<!doctype html>
+<html class="no-js" lang="en-US" >
+    <head>
+
+        <meta charset="UTF-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"e4824da135",applicationID:"96620599"};window.NREUM||(NREUM={}),__nr_require=function(n,e,t){function r(t){if(!e[t]){var i=e[t]={exports:{}};n[t][0].call(i.exports,function(e){var i=n[t][1][e];return r(i||e)},i,i.exports)}return e[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(n,e,t){function r(){}function i(n,e,t){return function(){return o(n,[u.now()].concat(f(arguments)),e?null:this,t),e?void 0:this}}var o=n("handle"),a=n(4),f=n(5),c=n("ee").get("tracer"),u=n("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(n,e){s[e]=i(d+e,!0,"api")}),s.addPageAction=i(d+"addPageAction",!0),s.setCurrentRouteName=i(d+"routeName",!0),e.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(n,e){var t={},r=this,i="function"==typeof e;return o(l+"tracer",[u.now(),n,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return e.apply(this,arguments)}catch(n){throw c.emit("fn-err",[arguments,this,n],t),n}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(n,e){m[e]=i(l+e)}),newrelic.noticeError=function(n,e){"string"==typeof n&&(n=new Error(n)),o("err",[n,u.now(),!1,e])}},{}],2:[function(n,e,t){function r(n,e){var t=n.getEntries();t.forEach(function(n){"first-paint"===n.name?a("timing",["fp",Math.floor(n.startTime)]):"first-contentful-paint"===n.name&&a("timing",["fcp",Math.floor(n.startTime)])})}function i(n){if(n instanceof c&&!s){var e,t=Math.round(n.timeStamp);e=t>1e12?Date.now()-t:f.now()-t,s=!0,a("timing",["fi",t,{type:n.type,fid:e}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var o,a=n("handle"),f=n("loader"),c=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){o=new PerformanceObserver(r);try{o.observe({entryTypes:["paint"]})}catch(u){}}if("addEventListener"in document){var s=!1,p=["click","keydown","mousedown","pointerdown","touchstart"];p.forEach(function(n){document.addEventListener(n,i,!1)})}}},{}],3:[function(n,e,t){function r(n,e){if(!i)return!1;if(n!==i)return!1;if(!e)return!0;if(!o)return!1;for(var t=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],4:[function(n,e,t){function r(n,e){var t=[],r="",o=0;for(r in n)i.call(n,r)&&(t[o]=e(r,n[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],5:[function(n,e,t){function r(n,e,t){e||(e=0),"undefined"==typeof t&&(t=n?n.length:0);for(var r=-1,i=t-e||0,o=Array(i<0?0:i);++r<i;)o[r]=n[e+r];return o}e.exports=r},{}],6:[function(n,e,t){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(n,e,t){function r(){}function i(n){function e(n){return n&&n instanceof r?n:n?c(n,f,o):o()}function t(t,r,i,o){if(!d.aborted||o){n&&n(t,r,i);for(var a=e(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function l(n,e){h[n]=v(n).concat(e)}function m(n,e){var t=h[n];if(t)for(var r=0;r<t.length;r++)t[r]===e&&t.splice(r,1)}function v(n){return h[n]||[]}function g(n){return p[n]=p[n]||i(t)}function w(n,e){u(n,function(n,t){e=e||"feature",y[t]=e,e in s||(s[e]=[])})}var h={},y={},b={on:l,addEventListener:l,removeEventListener:m,emit:t,get:g,listeners:v,context:e,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var f="nr@context",c=n("gos"),u=n(4),s={},p={},d=e.exports=i();d.backlog=s},{}],gos:[function(n,e,t){function r(n,e,t){if(i.call(n,e))return n[e];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(n,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return n[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(n,e,t){function r(n,e,t,r){i.buffer([n],r),i.emit(n,e,t)}var i=n("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(n,e,t){function r(n){var e=typeof n;return!n||"object"!==e&&"function"!==e?-1:n===window?0:a(n,o,function(){return i++})}var i=1,o="nr@id",a=n("gos");e.exports=r},{}],loader:[function(n,e,t){function r(){if(!x++){var n=E.info=NREUM.info,e=l.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(n&&n.licenseKey&&n.applicationID&&e))return s.abort();u(y,function(e,t){n[e]||(n[e]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=l.createElement("script");t.src="https://"+n.agent,e.parentNode.insertBefore(t,e)}}function i(){"complete"===l.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=n("handle"),u=n(4),s=n("ee"),p=n(3),d=window,l=d.document,m="addEventListener",v="attachEvent",g=d.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:g,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1158.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=e.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};n(1),n(2),l[m]?(l[m]("DOMContentLoaded",o,!1),d[m]("load",r,!1)):(l[v]("onreadystatechange",i),d[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=n(6)},{}],"wrap-function":[function(n,e,t){function r(n){return!(n&&n instanceof Function&&n.apply&&!n[a])}var i=n("ee"),o=n(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;e.exports=function(n,e){function t(n,e,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){d([u,"",[r,a,i],f])}s(e+"start",[r,a,i],f);try{return c=n.apply(a,r)}catch(p){throw s(e+"err",[r,a,p],f),p}finally{s(e+"end",[r,a,c],f)}}return r(n)?n:(e||(e=""),nrWrapper[a]=n,p(n,nrWrapper),nrWrapper)}function u(n,e,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<e.length;c++)f=e[c],a=n[f],r(a)||(n[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||e){var o=c;c=!0;try{n.emit(t,r,i,e)}catch(a){d([a,t,r,i])}c=o}}function p(n,e){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(n);return t.forEach(function(t){Object.defineProperty(e,t,{get:function(){return n[t]},set:function(e){return n[t]=e,e}})}),e}catch(r){d([r])}for(var i in n)f.call(n,i)&&(e[i]=n[i]);return e}function d(e){try{n.emit("internal-error",e)}catch(t){}}return n||(n=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="cache-control" content="no-cache" />
+        <meta name="gpsid" content="20225810" />
+        <link rel="icon" href="https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/assets/images/icons/favicon.ico" type="image/x-icon">
+        <link rel="apple-touch-icon" sizes="144x144" href="https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/assets/images/icons/apple-touch-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/assets/images/icons/apple-touch-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/assets/images/icons/apple-touch-icon-72x72.png">
+        <link rel="apple-touch-icon" href="https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/assets/images/icons/apple-touch-icon.png">
+        <title>Kelowna restaurant to hold fundraiser for one-year-old with cancer &#8211; Lake Country Calendar</title>
+<!--
+<PageMap>
+	<DataObject type="thumbnail">
+		<Attribute name="src" value="https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20225810_web1_200110-KCN-M-Screen-Shot-2020-01-10-at-10.45.03-AM-300x200.jpg"/>
+		<Attribute name="width" value="300"/>
+		<Attribute name="height" value="200"/>
+	</DataObject>
+</PageMap>
+--><link rel="amphtml" href="https://www.lakecountrycalendar.com/news/kelowna-restaurant-to-hold-fundraiser-for-one-year-old-with-cancer/amp/" /><meta name="generator" content="AMP for WP 0.9.98.2"/><link rel='dns-prefetch' href='//ap.lijit.com' />
+<link rel='dns-prefetch' href='//ajax.googleapis.com' />
+<link rel='dns-prefetch' href='//content.jwplatform.com' />
+<link rel='dns-prefetch' href='//cdnjs.cloudflare.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel='stylesheet' id='wp-block-library-css'  href='https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-includes/css/dist/block-library/style.min.css?ver=5.2.5' type='text/css' media='all' />
+<link rel='stylesheet' id='slick-css'  href='//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css?ver=1.9.0' type='text/css' media='all' />
+<link rel='stylesheet' id='slick-theme-css'  href='//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css?ver=1.9.0' type='text/css' media='all' />
+<link rel='stylesheet' id='main-stylesheet-css'  href='https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/dest/css/foundation.min.css?ver=2.36.14' type='text/css' media='all' />
+<link rel='stylesheet' id='featherlight-css'  href='https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/assets/components/featherlight/featherlight.css?ver=1.6.1' type='text/css' media='all' />
+<script type="application/javascript">var googletag=googletag||{};googletag.cmd=googletag.cmd||[];googletag.cmd.push(function(){googletag.pubads().disableInitialLoad()});</script>
+<script type='text/javascript' src='//ap.lijit.com/www/headerauction/headersuite.min.js?configId=3164'></script>
+<script type='text/javascript' src='//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js?ver=2.1.0'></script>
+<link rel='https://api.w.org/' href='https://www.lakecountrycalendar.com/wp-json/' />
+<link rel="alternate" type="application/json+oembed" href="https://www.lakecountrycalendar.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.lakecountrycalendar.com%2Fnews%2Fkelowna-restaurant-to-hold-fundraiser-for-one-year-old-with-cancer%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://www.lakecountrycalendar.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.lakecountrycalendar.com%2Fnews%2Fkelowna-restaurant-to-hold-fundraiser-for-one-year-old-with-cancer%2F&#038;format=xml" />
+<!-- Start Lotame Tags -->
+<script type='text/javascript' src='//tags.crwdcntrl.net/c/14238/cc.js?ns=_cc14238' id='LOTCC_14238'></script>
+<script type='text/javascript' language='javascript'>
+_cc14238.add("int", "wp-post-tag : fundraiser")
+_cc14238.add("int", "www.lakecountrycalendar.com : wp-post-tag : fundraiser")
+_cc14238.add("int", "wp-post-tag : kelowna")
+_cc14238.add("int", "www.lakecountrycalendar.com : wp-post-tag : kelowna")
+_cc14238.bcp();</script>
+<script type='text/javascript' src='https://ad.crwdcntrl.net/5/c=14235/pe=y/var=ccauds'></script>
+<!-- End Lotame Tags -->
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-17097096-11"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config','UA-17097096-11',{'dimension1': 'Daniel Taylor','dimension2': 'home,news', 'dimension3': 'fundraiser,kelowna', 'dimension4': 'post'});
+  gtag('config','UA-17099191-6',{'dimension1': 'Daniel Taylor','dimension2': 'home,news', 'dimension3': 'fundraiser,kelowna', 'dimension4': 'post'});
+  gtag('config','UA-17099191-1',{'dimension1': 'Daniel Taylor','dimension2': 'home,news', 'dimension3': 'fundraiser,kelowna', 'dimension4': 'post'});
+  gtag('config','UA-17099191-9',{'dimension1': 'Daniel Taylor','dimension2': 'home,news', 'dimension3': 'fundraiser,kelowna', 'dimension4': 'post'});
+</script>
+<!-- End Google Analytics -->
+<!-- Google Analytics Event elements -->
+<script type='text/javascript'>
+  $(document).ready(function(){
+    $("ul.dropdown.menu:first-child > li > a.search").click(function(){
+      gtag('event', 'Click', {'event_category': 'Main Navigation', 'event_label': 'Search Button'});
+    });
+    $("a.pub-logo-large").click(function(){
+      gtag('event', 'Click', {'event_category': 'Main Navigation', 'event_label': 'Header Logo'});
+    });
+    $(".module-adjacent-posts .adjacent-next a").click(function(){
+      gtag('event', 'Click', {'event_category': 'Recirculating Content', 'event_label': 'Next Adjacent Story'});
+    });
+    $(".module-adjacent-posts .adjacent-prev a").click(function(){
+      gtag('event', 'Click', {'event_category': 'Recirculating Content', 'event_label': 'Previous Adjacent Story'});
+    });
+    $("a.social").click(function(){
+      gtag('event', 'Click', {'event_category': 'Recirculating Content', 'event_label': 'Article Social Share'});
+    });
+    $("a.social").click(function(){
+      gtag('event', 'Click', {'event_category': 'Recirculating Content', 'event_label': 'Article Social Share'});
+    });
+  });
+</script>
+<!-- End Event elements -->
+
+<!-- Start Chartbeat -->
+<script type='text/javascript'>
+    (function() {
+        var _sf_async_config = window._sf_async_config = (window._sf_async_config || {});
+        _sf_async_config.uid = 65935
+        _sf_async_config.domain = 'lakecountrycalendar.com'; 
+        _sf_async_config.useCanonical = false;
+        _sf_async_config.useCanonicalDomain = true;
+        _sf_async_config.authors = 'Daniel Taylor'; 
+        _sf_async_config.sections = 'Home, News'; 
+        function loadChartbeat() {
+            var e = document.createElement('script');
+            var n = document.getElementsByTagName('script')[0];
+            e.type = 'text/javascript';
+            e.async = true;
+            e.src = '//static.chartbeat.com/js/chartbeat.js';
+            n.parentNode.insertBefore(e, n);
+        }
+        loadChartbeat();
+     })();
+</script>
+<!-- End Chartbeat -->
+			<style>
+				ul.dropdown.menu a {
+    				font-size: 0.84rem !important;
+				}
+				@media screen and (max-width: 39.9375em) {
+					ul.dropdown.menu a {
+						font-size: 0.74rem !important;
+					}
+				}
+			</style>
+		<!-- Start echo_header_meta_tags() for SEO -->
+<meta property="og:locale" content="en_US" />
+<meta property="og:site_name" content="Lake Country Calendar" />
+<meta property="og:url" content="https://www.lakecountrycalendar.com/news/kelowna-restaurant-to-hold-fundraiser-for-one-year-old-with-cancer/" />
+<meta property="og:title" content="Kelowna restaurant to hold fundraiser for one-year-old with cancer - Lake Country Calendar" />
+<meta name="description" content="The event is scheduled for Jan. 25 and will feature opportunities for cash donations" />
+<meta property="og:description" content="The event is scheduled for Jan. 25 and will feature opportunities for cash donations" />
+<meta property="og:type" content="article" />
+<meta property="article:section" content="News" />
+<meta property="article:published_time" content="2020-01-21T08:15:00-08:00" />
+<meta property="og:image" content="https://www.lakecountrycalendar.com/wp-content/uploads/2020/01/20225810_web1_200110-KCN-M-Screen-Shot-2020-01-10-at-10.45.03-AM-1024x683.jpg" />
+<meta property="og:secure_url" content="https://www.lakecountrycalendar.com/wp-content/uploads/2020/01/20225810_web1_200110-KCN-M-Screen-Shot-2020-01-10-at-10.45.03-AM-1024x683.jpg" />
+<meta property="og:image:width" content="1024" />
+<meta property="og:image:height" content="683" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Kelowna restaurant to hold fundraiser for one-year-old with cancer - Lake Country Calendar" />
+<meta property="twitter:description" content="The event is scheduled for Jan. 25 and will feature opportunities for cash donations" />
+<meta property="twitter:image" content="https://www.lakecountrycalendar.com/wp-content/uploads/2020/01/20225810_web1_200110-KCN-M-Screen-Shot-2020-01-10-at-10.45.03-AM-1024x683.jpg" />
+<meta property="fb:app_id" content="234578876601966" />
+<script type="application/ld+json">{"@context":"https:\/\/schema.org","@type":"NewsArticle","url":"https:\/\/www.lakecountrycalendar.com\/news\/kelowna-restaurant-to-hold-fundraiser-for-one-year-old-with-cancer\/","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/www.lakecountrycalendar.com\/news\/kelowna-restaurant-to-hold-fundraiser-for-one-year-old-with-cancer\/"},"headline":"Kelowna restaurant to hold fundraiser for one-year-old with cancer","datePublished":"2020-01-21T08:15:00-08:00","dateModified":"2020-01-21T08:26:15-08:00","thumbnailUrl":"https:\/\/www.lakecountrycalendar.com\/wp-content\/uploads\/2020\/01\/20225810_web1_200110-KCN-M-Screen-Shot-2020-01-10-at-10.45.03-AM.jpg","image":{"@type":"ImageObject","url":"https:\/\/www.lakecountrycalendar.com\/wp-content\/uploads\/2020\/01\/20225810_web1_200110-KCN-M-Screen-Shot-2020-01-10-at-10.45.03-AM.jpg","width":1200,"height":800},"author":{"@type":"Person","name":"Daniel Taylor"},"publisher":{"@type":"Organization","name":"Lake Country Calendar","logo":{"@type":"ImageObject","url":"https:\/\/www.lakecountrycalendar.com\/wp-content\/themes\/BlackPress\/assets\/images\/logos\/win-logo.png","width":512,"height":54}},"contentLocation":{"@type":"Place","name":"Lake Country, British Columbia, Canada"},"dateline":"Lake Country, British Columbia, Canada","description":"\n\t\t\t\t&lt;p&gt;The event is scheduled for Jan. 25 and will feature opportunities for cash donations &lt;\/p&gt;\n\t\t\t"}</script>
+<!-- End echo_header_meta_tags() for SEO -->
+
+    <!-- BEGIN: Dev Con Script -->
+    <script id='ns_script_dc' data-key='91532438-f31b-4086-8018-7cd68ddba2a3' data-e='5' src='//includemodal.global.ssl.fastly.net/sp.js' type='text/javascript'></script>
+    <!-- END: Dev Con Script -->  
+    
+        <script>window.twttr = (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0],
+            t = window.twttr || {};
+        if (d.getElementById(id)) return t;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "https://platform.twitter.com/widgets.js";
+        fjs.parentNode.insertBefore(js, fjs);
+
+        t._e = [];
+        t.ready = function(f) {
+            t._e.push(f);
+        };
+
+        return t;
+        }(document, "script", "twitter-wjs"));</script>
+        <style type='text/css'>
+.ai-viewport-3                { display: none !important;}
+.ai-viewport-2                { display: none !important;}
+.ai-viewport-1                { display: inherit !important;}
+.ai-viewport-0                { display: none !important;}
+@media (min-width: 768px) and (max-width: 979px) {
+.ai-viewport-1                { display: none !important;}
+.ai-viewport-2                { display: inherit !important;}
+}
+@media (max-width: 767px) {
+.ai-viewport-1                { display: none !important;}
+.ai-viewport-3                { display: inherit !important;}
+}
+</style>
+<!-- DoubleClick for Publishers -->
+<script type='text/javascript'>
+ var googletag = googletag || {};
+ googletag.cmd = googletag.cmd || [];
+ (function() {
+   var gads = document.createElement('script');
+   gads.async = true;
+   gads.type = 'text/javascript';
+   var useSSL = 'https:' == document.location.protocol;
+   gads.src = (useSSL ? 'https:' : 'http:') +
+     '//www.googletagservices.com/tag/js/gpt.js';
+   var node = document.getElementsByTagName('script')[0];
+   node.parentNode.insertBefore(gads, node);
+ })();
+</script>
+
+<script type='text/javascript'>
+ var gptAdSlots = [];
+ var gptRefreshSlots = [];
+ googletag.cmd.push(function() {
+   var mappingHorizontal = googletag.sizeMapping().
+     addSize([1024, 0],[[970, 90],[728, 90]]).
+     addSize([768, 0],[[728, 90], [320, 50]]).
+     addSize([320, 0],[[300, 250]]).
+     addSize([0, 0],[[320, 50], [300, 50], [300, 250]]).
+     build();
+   var mappingVertical = googletag.sizeMapping().
+     addSize([1024, 0],[[300, 600], [300, 250]]).
+     addSize([600, 0],[[300, 600],[300, 250]]).
+     addSize([400, 0],[300, 250]).
+     addSize([0, 0],[[300, 50], [300, 250]]).
+     build(); 
+   var mappingFeatured = googletag.sizeMapping().
+     addSize([1024, 0],[[300, 600]]).
+     addSize([600, 0],[[300, 600]]).
+     addSize([0, 0],[300, 250]).
+     build();   
+   var mappingBillboard = googletag.sizeMapping().
+     addSize([1024, 0],[[970,250]]).
+     addSize([600, 0],[320,50]).
+     addSize([320, 0], [320, 50]).
+     addSize([0, 0],[]).
+     build();   
+   var mappingPromo = googletag.sizeMapping().
+     addSize([1024, 0],[[970,30],[970,90],[728,90]]).
+     addSize([600, 0],[320, 50]).
+     addSize([320, 0], [320, 50]).
+     addSize([0, 0],[]).
+     build();   
+   var mappingMobileOnly = googletag.sizeMapping().
+     addSize([0, 0],[[280, 375],[320, 50],[300, 50],[300, 250],[1, 1]]).
+     addSize([320, 0], [[280, 375],[320, 50],[300, 50],[300, 250],[1, 1]]).
+     addSize([1024, 0],[]).
+     addSize([600, 0],[]).
+     build();   
+   var mappingMobileRectangle = googletag.sizeMapping().
+     addSize([0, 0],[[300, 250]]).
+     addSize([320, 0], [[300, 250]]).
+     addSize([1024, 0],[]).
+     addSize([600, 0],[]).
+     build();   
+  var mappingObitSidebar = googletag.sizeMapping().
+     addSize([1024, 0],[[300, 600]]).
+     addSize([600, 0],[[300, 250]]).
+     addSize([400, 0],[300, 250]).
+     addSize([0, 0],[[300, 250]]).
+     build(); 
+     
+   gptAdSlots[0] = googletag.defineSlot('/1036919/adunit0', [[320, 50],[970, 30],[728,90]], 'div-gpt-0').defineSizeMapping(mappingPromo).addService(googletag.pubads());
+   gptAdSlots[1] = googletag.defineSlot('/1036919/adunit1', [[970, 250],[300,250]], 'div-gpt-1').defineSizeMapping(mappingBillboard).addService(googletag.pubads());
+   gptAdSlots[2] = googletag.defineSlot('/1036919/adunit2', [[300, 250]], 'div-gpt-2').addService(googletag.pubads());
+   gptAdSlots[3] = googletag.defineSlot('/1036919/adunit3', [[970, 90],[728, 90],[320, 50]], 'div-gpt-3').defineSizeMapping(mappingHorizontal).addService(googletag.pubads());
+   gptAdSlots[4] = googletag.defineSlot('/1036919/adunit4', [[300, 600],[300, 250]], 'div-gpt-4').defineSizeMapping(mappingVertical).addService(googletag.pubads());
+   gptAdSlots[5] = googletag.defineSlot('/1036919/adunit5', [[970, 90],[728, 90],[320, 50]], 'div-gpt-5').defineSizeMapping(mappingHorizontal).addService(googletag.pubads());
+   gptAdSlots[6] = googletag.defineSlot('/1036919/adunit6', [[300, 600],[300, 250]], 'div-gpt-6').defineSizeMapping(mappingVertical).addService(googletag.pubads());
+   gptAdSlots[7] = googletag.defineSlot('/1036919/adunit7', [[970, 90],[728, 90],[320, 50]], 'div-gpt-7').defineSizeMapping(mappingHorizontal).addService(googletag.pubads());
+   gptAdSlots[8] = googletag.defineSlot('/1036919/adunit8', [[300, 600],[300, 250]], 'div-gpt-8').defineSizeMapping(mappingVertical).addService(googletag.pubads());
+   gptAdSlots[9] = googletag.defineSlot('/1036919/adunit9', [[970, 90],[728, 90],[320, 50]], 'div-gpt-9').defineSizeMapping(mappingHorizontal).addService(googletag.pubads());
+   gptAdSlots[10] = googletag.defineSlot('/1036919/adunit10', [[300, 600],[300,250]], 'div-gpt-10').defineSizeMapping(mappingFeatured).addService(googletag.pubads());
+   gptAdSlots[11] = googletag.defineSlot('/1036919/adunit11', [[970, 90],[728, 90],[320, 50]], 'div-gpt-11').defineSizeMapping(mappingHorizontal).addService(googletag.pubads());
+   gptAdSlots[12] = googletag.defineSlot('/1036919/adunit12', [[300, 600],[300, 250]], 'div-gpt-12').defineSizeMapping(mappingVertical).addService(googletag.pubads());
+   gptAdSlots[13] = googletag.defineSlot('/1036919/adunit13', [[970, 90],[728, 90],[320, 50]], 'div-gpt-13').defineSizeMapping(mappingHorizontal).addService(googletag.pubads());
+   gptAdSlots[14] = googletag.defineSlot('/1036919/adunit14', [300, 250], 'div-gpt-14').addService(googletag.pubads());
+   gptAdSlots[15] = googletag.defineSlot('/1036919/adunit15', [[970, 90],[728, 90],[320, 50]], 'div-gpt-15').defineSizeMapping(mappingHorizontal).addService(googletag.pubads());
+   gptAdSlots[17] = googletag.defineSlot('/1036919/adunit17', [[320, 50]], 'div-gpt-17').defineSizeMapping(mappingMobileOnly).addService(googletag.pubads());
+   gptAdSlots[18] = googletag.defineSlot('/1036919/adunit18', [[280, 375],[300, 250]], 'div-gpt-18').defineSizeMapping(mappingMobileOnly).addService(googletag.pubads());
+   gptAdSlots[19] = googletag.defineSlot('/1036919/adunit19', [300, 250], 'div-gpt-19').addService(googletag.pubads());
+   gptAdSlots[20] = googletag.defineSlot('/1036919/adunit20', [[300, 250]], 'div-gpt-20').addService(googletag.pubads());
+   gptAdSlots[21] = googletag.defineSlot('/1036919/vendor_library_0', [1, 1], 'div-gpt-21').addService(googletag.pubads());
+   gptAdSlots[22] = googletag.defineSlot('/1036919/adunit22', [300, 250], 'div-gpt-22').addService(googletag.pubads());
+   gptAdSlots[23] = googletag.defineSlot('/1036919/adunit23', [[970, 90],[728, 90],[320, 50]], 'div-gpt-23').defineSizeMapping(mappingHorizontal).addService(googletag.pubads());
+   gptAdSlots[24] = googletag.defineSlot('/1036919/adunit24', [[320, 50],[970, 30],[728,90]], 'div-gpt-24').defineSizeMapping(mappingPromo).addService(googletag.pubads());
+   gptAdSlots[30] = googletag.defineSlot('/1036919/obit0', [[970, 30],[970, 90], [728, 90],[320, 50]], 'div-gpt-30').defineSizeMapping(mappingPromo).addService(googletag.pubads());
+   gptAdSlots[32] = googletag.defineSlot('/1036919/obit2', [[300, 600],[300, 250]], 'div-gpt-32').defineSizeMapping(mappingObitSidebar).addService(googletag.pubads());
+   gptAdSlots[33] = googletag.defineSlot('/1036919/obit3', [[300, 600],[300, 250]], 'div-gpt-33').defineSizeMapping(mappingVertical).addService(googletag.pubads());
+   gptAdSlots[34] = googletag.defineSlot('/1036919/obit4', [[300, 600],[300, 250]], 'div-gpt-34').defineSizeMapping(mappingVertical).addService(googletag.pubads());
+   gptAdSlots[40] = googletag.defineSlot('/1036919/impress0', [[970, 30],[970, 90], [728, 90],[320, 50]], 'div-gpt-40').defineSizeMapping(mappingPromo).addService(googletag.pubads());
+   gptAdSlots[41] = googletag.defineSlot('/1036919/impress2', [[300, 600],[300, 250]], 'div-gpt-41').defineSizeMapping(mappingVertical).addService(googletag.pubads());
+   gptAdSlots[42] = googletag.defineSlot('/1036919/impress3', [[300, 600],[300, 250]], 'div-gpt-42').defineSizeMapping(mappingVertical).addService(googletag.pubads());
+   gptAdSlots[43] = googletag.defineSlot('/1036919/impress4', [[300, 600],[300, 250]], 'div-gpt-43').defineSizeMapping(mappingVertical).addService(googletag.pubads());
+   gptAdSlots[45] = googletag.defineSlot('/1036919/weather0', [[970, 30],[970, 90], [728, 90],[320, 50]], 'div-gpt-45').defineSizeMapping(mappingPromo).addService(googletag.pubads());
+   gptAdSlots[46] = googletag.defineSlot('/1036919/weather1', [[300, 600],[300, 250]], 'div-gpt-46').defineSizeMapping(mappingVertical).addService(googletag.pubads());
+   gptAdSlots[47] = googletag.defineSlot('/1036919/weather2', [[300, 600],[300, 250]], 'div-gpt-47').defineSizeMapping(mappingVertical).addService(googletag.pubads());
+   gptAdSlots[48] = googletag.defineSlot('/1036919/weather3', [[970, 30],[970, 90], [728, 90],[320, 50]], 'div-gpt-48').defineSizeMapping(mappingPromo).addService(googletag.pubads());
+   gptAdSlots[49] = googletag.defineSlot('/1036919/contest0', [[970, 30],[970, 90], [728, 90],[320, 50]], 'div-gpt-49').defineSizeMapping(mappingPromo).addService(googletag.pubads());
+   gptAdSlots[55] = googletag.defineSlot('/1036919/mf0', [300,250], 'div-gpt-55').defineSizeMapping(mappingMobileRectangle).addService(googletag.pubads());
+   gptAdSlots[56] = googletag.defineSlot('/1036919/mf1', [[320, 50],[300,250]], 'div-gpt-56').defineSizeMapping(mappingMobileOnly).addService(googletag.pubads());
+   gptAdSlots[57] = googletag.defineSlot('/1036919/mf2', [[320, 50],[300,250]], 'div-gpt-57').defineSizeMapping(mappingMobileOnly).addService(googletag.pubads());
+   var ccAudVals = "";
+if (typeof(ccauds) != "undefined")
+{
+  for (var cci = 0; cci < ccauds.Profile.Audiences.Audience.length; cci++)
+  {
+    if(ccauds.Profile.Audiences.Audience[cci].abbr == "all") 
+      continue;
+    
+    ccAudVals += ccauds.Profile.Audiences.Audience[cci].abbr;
+    
+    if(ccAudVals.length != 0) 
+      ccAudVals += ",";
+	}
+}
+console.log("ccAudVals = ", ccAudVals);
+   googletag.pubads().setTargeting('ccaud', ccAudVals);
+   googletag.pubads().setTargeting('site', ['lakecountrycalendar.com']).setTargeting('section', ['news','ros']);
+   //googletag.pubads().enableSingleRequest();
+   googletag.pubads().disableInitialLoad();
+   googletag.pubads().collapseEmptyDivs();
+   googletag.enableServices();
+ });
+</script>
+<!-- End DoubleClick for Publishers -->
+<!-- 
+    * Script creates the global generalSettings js array. 
+    * Key/Value pair of Black Press general settings section: option name, option value 
+    * NOTE: new options should be added to this array 
+-->
+<script type='text/javascript'>
+        var generalSettings = {"postal_code":"V4V 1S7","pub_code":"WIN","secondstreet_contest_feed":"http:\/\/thecalendar.upickem.net\/Engine\/XMLFeed.aspx?AffiliateID=LCCA"};
+
+</script>
+<!-- Begin comScore Tag -->
+<script>
+  var _comscore = _comscore || [];
+  _comscore.push({ c1: "2", c2: "6035032" });
+  (function() {
+    var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;
+    s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
+    el.parentNode.insertBefore(s, el);
+  })();
+</script>
+<noscript>
+  <img src="https://sb.scorecardresearch.com/p?c1=2&c2=6035032&cv=2.0&cj=1" />
+</noscript>
+<!-- End comScore Tag -->
+    </head>
+    <body class="post-template-default single single-post postid-120117 single-format-standard offcanvas">
+        <!-- BEGIN: FACE BOOK COMMENTS PLUGIN CODE -->
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+        <!-- END: FACE BOOK COMMENTS PLUGIN CODE -->
+
+    
+    
+    
+    
+    <header id="masthead" class="site-header row collapse" role="banner">
+        <!-- original divs replaced by code after. Note still have 2 divs, 
+             with different settings for mobile and desktop -->
+        <!-- <div  class="small-12 columns" data-sticky-container > -->
+        <!-- <div id="sticky-menu-bar-container" class="top-bar title-bar row collapse" data-sticky data-options="marginTop:0;" style="width:100%"> -->
+        <div  class="small-12 columns" data-sticky-container ><div id="sticky-menu-bar-container" class="top-bar title-bar row collapse" data-sticky data-options="marginTop:0;" style="width:100%">            
+            
+            <article id="text-1" class="menu-button-container small-1 medium-1 columns">
+                    <div id="mobile-menu-button" data-responsive-toggle="site-navigation" data-hide-for="medium">
+                        <button class="fa fa-bars menu" type="button" data-toggle="site-navigation"></button>
+                    </div>
+                    <ul id="menu-mainmenu" class="dropdown menu day-4 show-for-medium" data-dropdown-menu data-options="hoverDelay:150;"><li><a href="#"><i class="fa fa-bars menu"></i></a><ul class="dropdown menu" data-dropdown-menu><li class='nav-search'><a href='/search/'><i class='fa fa-search menu'></i>Search</a></li><li id="menu-item-320" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-320"><a href="https://www.lakecountrycalendar.com/">Home</a></li>
+<li id="menu-item-28533" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-28533"><a href="https://www.lakecountrycalendar.com/submit/">Submit News Tip</a></li>
+<li id="menu-item-169" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-has-children menu-item-169"><a href="https://www.lakecountrycalendar.com/./news/">News</a>
+<ul class="dropdown menu vertical" data-toggle>
+	<li id="menu-item-170" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-170"><a href="https://www.lakecountrycalendar.com/./local-news/">Local News</a></li>
+	<li id="menu-item-56142" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-56142"><a href="https://www.lakecountrycalendar.com/./municipal-election/">Municipal Election</a></li>
+	<li id="menu-item-171" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-171"><a target="_blank" rel="noopener noreferrer" href="http://bclocalnews.com">BC</a></li>
+	<li id="menu-item-105570" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-105570"><a href="https://www.lakecountrycalendar.com/./federal-election/">Federal Election 2019</a></li>
+	<li id="menu-item-172" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-172"><a href="https://www.lakecountrycalendar.com/./national-news/">Canada &amp; World</a></li>
+	<li id="menu-item-173" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-173"><a href="https://www.lakecountrycalendar.com/e-editions/">eEditions</a></li>
+	<li id="menu-item-176" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-176"><a href="https://www.lakecountrycalendar.com/submit/">Submit news tip or photo</a></li>
+</ul>
+</li>
+<li id="menu-item-177" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-177"><a href="https://www.lakecountrycalendar.com/./sports/">Sports</a>
+<ul class="dropdown menu vertical" data-toggle>
+	<li id="menu-item-178" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-178"><a href="https://www.lakecountrycalendar.com/./local-sports/">Local</a></li>
+	<li id="menu-item-322" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-322"><a target="_blank" rel="noopener noreferrer" href="http://www.bclocalnews.com/sports/">BC</a></li>
+	<li id="menu-item-179" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-179"><a href="https://www.lakecountrycalendar.com/./national-sports/">Canada &amp; World</a></li>
+	<li id="menu-item-180" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-180"><a href="https://www.lakecountrycalendar.com/submit/">Submit sports tip or photo</a></li>
+</ul>
+</li>
+<li id="menu-item-181" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-181"><a href="https://www.lakecountrycalendar.com/./trending-now/">Trending Now</a></li>
+<li id="menu-item-117858" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-117858"><a href="https://www.lakecountrycalendar.com/newsletters/">Newsletters</a></li>
+<li id="menu-item-111885" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-111885"><a href="//autos.lakecountrycalendar.com/">Autos</a></li>
+<li id="menu-item-70928" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-70928"><a href="//classifieds.lakecountrycalendar.com/classifieds/all?q=&#038;r=centralokanagan">Classifieds</a></li>
+<li id="menu-item-45531" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-45531"><a target="_blank" rel="noopener noreferrer" href="//www.localwork.ca">Jobs</a></li>
+<li id="menu-item-182" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-182"><a href="https://www.lakecountrycalendar.com/./business/">Business</a>
+<ul class="dropdown menu vertical" data-toggle>
+	<li id="menu-item-183" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-183"><a href="https://www.lakecountrycalendar.com/./local-business/">Local</a></li>
+	<li id="menu-item-184" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-184"><a target="_blank" rel="noopener noreferrer" href="http://bclocalnews.com/business">BC</a></li>
+	<li id="menu-item-185" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-185"><a href="https://www.lakecountrycalendar.com/submit/">Submit business tip or photo</a></li>
+</ul>
+</li>
+<li id="menu-item-186" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-186"><a href="https://www.lakecountrycalendar.com/./entertainment/">Entertainment</a>
+<ul class="dropdown menu vertical" data-toggle>
+	<li id="menu-item-187" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-187"><a href="https://www.lakecountrycalendar.com/./local-entertainment/">Local</a></li>
+	<li id="menu-item-188" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-188"><a target="_blank" rel="noopener noreferrer" href="http://bclocalnews.com/entertainment">BC</a></li>
+	<li id="menu-item-189" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-189"><a href="https://www.lakecountrycalendar.com/submit/">Submit entertainment tip or photo</a></li>
+</ul>
+</li>
+<li id="menu-item-91339" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-91339"><a href="https://www.lakecountrycalendar.com/./photo-galleries/">Photo Galleries</a></li>
+<li id="menu-item-190" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-190"><a href="https://www.lakecountrycalendar.com/./life/">Life</a>
+<ul class="dropdown menu vertical" data-toggle>
+	<li id="menu-item-58398" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-58398"><a href="https://www.lakecountrycalendar.com/./life/">Life</a></li>
+	<li id="menu-item-102181" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-102181"><a href="https://www.lakecountrycalendar.com/./sip-savour/">Sip &amp; Savour</a></li>
+	<li id="menu-item-193" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-193"><a target="_blank" rel="noopener noreferrer" href="http://winetrails.ca">Wine Trails</a></li>
+	<li id="menu-item-194" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-194"><a href="https://www.lakecountrycalendar.com/submit/">Submit life tip or photo</a></li>
+</ul>
+</li>
+<li id="menu-item-195" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-195"><a href="https://www.lakecountrycalendar.com/./community/">Community</a>
+<ul class="dropdown menu vertical" data-toggle>
+	<li id="menu-item-196" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-196"><a href="https://www.lakecountrycalendar.com/./community/">Local</a></li>
+	<li id="menu-item-51711" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-51711"><a href="https://www.lakecountrycalendar.com/./miss-bc/">Miss BC</a></li>
+	<li id="menu-item-93383" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-93383"><a href="https://www.lakecountrycalendar.com/./social-matters/">Social Matters</a></li>
+	<li id="menu-item-323" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-323"><a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/iLoveBritishColumbia">I Love British Columbia</a></li>
+	<li id="menu-item-197" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-197"><a href="https://www.lakecountrycalendar.com/calendar/">Calendar</a></li>
+	<li id="menu-item-198" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-198"><a href="https://www.lakecountrycalendar.com/submit/">Submit community tip or photo</a></li>
+</ul>
+</li>
+<li id="menu-item-282" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-282"><a href="https://www.lakecountrycalendar.com/./opinion/">Opinion</a>
+<ul class="dropdown menu vertical" data-toggle>
+	<li id="menu-item-204" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-204"><a href="https://www.lakecountrycalendar.com/./opinion/">Local Opinion</a></li>
+	<li id="menu-item-202" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-202"><a href="https://www.lakecountrycalendar.com/./editorials-opinion/">Editorials</a></li>
+	<li id="menu-item-201" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-201"><a href="https://www.lakecountrycalendar.com/./columns/">Columnists</a></li>
+	<li id="menu-item-203" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-203"><a href="https://www.lakecountrycalendar.com/./letters/">Letters</a></li>
+	<li id="menu-item-27491" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-27491"><a href="https://www.lakecountrycalendar.com/./web-poll/">Web poll</a></li>
+	<li id="menu-item-205" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-205"><a target="_blank" rel="noopener noreferrer" href="http://bclocalnews.com/opinion">BC Opinion</a></li>
+	<li id="menu-item-206" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-206"><a href="https://www.lakecountrycalendar.com/submitletters/">Submit letter</a></li>
+</ul>
+</li>
+<li id="menu-item-210" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-210"><a href="https://www.lakecountrycalendar.com/videos/">Videos</a>
+<ul class="dropdown menu vertical" data-toggle>
+	<li id="menu-item-211" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-211"><a href="https://www.lakecountrycalendar.com/videos/">Local</a></li>
+	<li id="menu-item-212" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-212"><a href="https://www.lakecountrycalendar.com/submit/">Submit video</a></li>
+	<li id="menu-item-213" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-213"><a target="_blank" rel="noopener noreferrer" href="http://blackpress.tv">Black Press TV</a></li>
+</ul>
+</li>
+<li id="menu-item-214" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-214"><a href="https://www.lakecountrycalendar.com/weather/">Weather</a></li>
+<li id="menu-item-216" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-216"><a href="https://www.lakecountrycalendar.com/./obituaries/">Obituaries</a></li>
+<li id="menu-item-332" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-332"><a href="http://#">Special Sections</a>
+<ul class="dropdown menu vertical" data-toggle>
+	<li id="menu-item-333" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-333"><a href="/e-editions/?iid=i20160624085406732&#038;&#038;headline=SHVudGluZyBSZWd1bGF0aW9ucyAyMDE2XzIwMTg=&#038;&#038;doc_id=160624155408-f0771efc2c114c7ab300b42ad7b57f52&#038;&#038;pid=p20120309121148491">Hunting and Trapping Regulations 2016-2018</a></li>
+	<li id="menu-item-334" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-334"><a href="/e-editions/?iid=i20161228034852523&#038;&#038;headline=MjAxNi0xMi0yOA==&#038;&#038;doc_id=161228115525-49f78c2cc06940969b093b591a19565c&#038;&#038;pid=p20120309121148491">2017 Calendar</a></li>
+</ul>
+</li>
+<li id="menu-item-217" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-217"><a href="https://www.lakecountrycalendar.com/./marketplace/">Marketplace</a>
+<ul class="dropdown menu vertical" data-toggle>
+	<li id="menu-item-275" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-275"><a href="https://www.lakecountrycalendar.com/advertise/">Place an ad</a></li>
+	<li id="menu-item-218" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-218"><a href="https://www.lakecountrycalendar.com/./marketplace/">Impress branded content</a></li>
+	<li id="menu-item-111286" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-111286"><a href="/videos/#real-estate-tv-video-belt">Impress TV</a></li>
+	<li id="menu-item-15475" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15475"><a href="https://www.lakecountrycalendar.com/real-estate/">Real Estate</a></li>
+</ul>
+</li>
+<li id="menu-item-321" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-321"><a href="https://www.lakecountrycalendar.com/contests/">Contests</a></li>
+<li id="menu-item-224" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-224"><a href="https://www.lakecountrycalendar.com/contact-us/">Contact Us</a>
+<ul class="dropdown menu vertical" data-toggle>
+	<li id="menu-item-225" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-225"><a href="https://www.lakecountrycalendar.com/contact-us/">Contact Us</a></li>
+	<li id="menu-item-226" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-226"><a href="https://www.lakecountrycalendar.com/our-team/">Our Team</a></li>
+	<li id="menu-item-230" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-230"><a target="_blank" rel="noopener noreferrer" href="http://blackpress.ca">Black Press</a></li>
+	<li id="menu-item-231" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-231"><a href="https://www.lakecountrycalendar.com/submit/">Submit tip or photo</a></li>
+	<li id="menu-item-227" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-227"><a href="https://www.lakecountrycalendar.com/faq/">FAQ</a></li>
+	<li id="menu-item-228" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-228"><a href="https://www.lakecountrycalendar.com/privacy-policy/">Privacy Policy</a></li>
+	<li id="menu-item-229" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-229"><a href="https://www.lakecountrycalendar.com/terms-of-use/">Terms of use</a></li>
+</ul>
+</li>
+<li id="menu-item-111982" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-111982"><a href="https://www.lakecountrycalendar.com/site-map/">Site Map</a></li>
+</ul></li></ul>
+                </article>
+                <article id="text-2" class="small-10 medium-10 columns">
+                    <ul data-test="test" id="menu-secondarymenu" class="dropdown menu" data-dropdown-menu>
+                                    <li id="menu-item-65661" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-65661"><a href="https://www.lakecountrycalendar.com/./local-news/">LOCAL</a></li>
+<li id="menu-item-249" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-has-children menu-item-249"><a href="https://www.lakecountrycalendar.com/./news/">NEWS</a>
+<ul class="vertical nested menu">
+	<li id="menu-item-250" class="show-for-medium menu-item menu-item-type-taxonomy menu-item-object-category menu-item-250"><a href="https://www.lakecountrycalendar.com/./local-news/">Local News</a></li>
+	<li id="menu-item-56158" class="show-for-medium menu-item menu-item-type-taxonomy menu-item-object-category menu-item-56158"><a>Municipal Election</a></li>
+	<li id="menu-item-256" class="show-for-medium menu-item menu-item-type-custom menu-item-object-custom menu-item-256"><a target="_blank" rel="noopener noreferrer" href="http://bclocalnews.com">BC</a></li>
+	<li id="menu-item-251" class="show-for-medium menu-item menu-item-type-taxonomy menu-item-object-category menu-item-251"><a href="https://www.lakecountrycalendar.com/./national-news/">Canada &amp; World</a></li>
+	<li id="menu-item-252" class="show-for-medium menu-item menu-item-type-post_type menu-item-object-page menu-item-252"><a href="https://www.lakecountrycalendar.com/e-editions/">eEditions</a></li>
+	<li id="menu-item-117857" class="show-for-medium menu-item menu-item-type-post_type menu-item-object-page menu-item-117857"><a href="https://www.lakecountrycalendar.com/newsletters/">Newsletters</a></li>
+</ul>
+</li>
+<li id="menu-item-111881" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-111881"><a href="//autos.lakecountrycalendar.com/">AUTOS</a></li>
+<li id="menu-item-260" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-260"><a href="//classifieds.lakecountrycalendar.com/classifieds/all?q=&#038;r=centralokanagan">CLASSIFIEDS</a></li>
+<li id="menu-item-258" class="show-for-medium menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-258"><a href="https://www.lakecountrycalendar.com/./obituaries/">OBITUARIES</a>
+<ul class="vertical nested menu">
+	<li id="menu-item-56451" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-56451"><a href="/tag/celebrations-of-life/">Celebrations of Life</a></li>
+	<li id="menu-item-60675" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-60675"><a href="/funeral-care-services/">Funeral Care Services</a></li>
+</ul>
+</li>
+<li id="menu-item-317" class="show-for-medium menu-item menu-item-type-taxonomy menu-item-object-category menu-item-317"><a href="https://www.lakecountrycalendar.com/./video/">VIDEO</a></li>
+<li id="menu-item-280" class="show-for-large e-editions menu-item menu-item-type-post_type menu-item-object-page menu-item-280"><a href="https://www.lakecountrycalendar.com/e-editions/">E-EDITIONS</a></li>
+<li id="menu-item-318" class="show-for-large menu-item menu-item-type-custom menu-item-object-custom menu-item-318"><a target="_blank" rel="noopener noreferrer" href="//www.localwork.ca">JOBS</a></li>
+<li id="menu-item-9697" class="show-for-large hide menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-9697"><a href="https://www.lakecountrycalendar.com/contact-us/">CONTACT</a>
+<ul class="vertical nested menu">
+	<li id="menu-item-269" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-269"><a href="https://www.lakecountrycalendar.com/contact-us/">Contact Us</a></li>
+	<li id="menu-item-26487" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-26487"><a href="https://www.lakecountrycalendar.com/our-team/">Our Team</a></li>
+	<li id="menu-item-270" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-270"><a href="https://www.lakecountrycalendar.com/submit/">Submit news tip or photo</a></li>
+</ul>
+</li>
+<li id="menu-item-9698" class="show-for-large menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-9698"><a href="https://www.lakecountrycalendar.com/./marketplace/">MARKETPLACE</a>
+<ul class="vertical nested menu">
+	<li id="menu-item-274" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-274"><a href="https://www.lakecountrycalendar.com/advertise/">Place an ad</a></li>
+	<li id="menu-item-262" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-262"><a href="https://www.lakecountrycalendar.com/./marketplace/">Impress</a></li>
+	<li id="menu-item-111287" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-111287"><a href="/videos/#real-estate-tv-video-belt">Impress TV</a></li>
+	<li id="menu-item-15473" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15473"><a href="https://www.lakecountrycalendar.com/real-estate/">Real Estate</a></li>
+</ul>
+</li>
+<li id="menu-item-319" class="show-for-large menu-item menu-item-type-post_type menu-item-object-page menu-item-319"><a href="https://www.lakecountrycalendar.com/contests/">CONTESTS</a></li>
+<li id="nav-submit-button" >
+                                    <span data-tooltip aria-haspopup="true" data-disable-hover="false" tabindex="1" title="Submit News Tips">
+                                    <a href="https://www.lakecountrycalendar.com/submit">
+                                    <img src="https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/assets/images/submit.png" id="header-submit-button">
+                                    </a>
+                                    </span>    
+                                </li><li id="nav-impress-button" >
+                                            <span data-tooltip aria-haspopup="true" data-disable-hover="false" tabindex="2" title="Impress TV">
+                                            <a href="http://impresstv.blackpress.ca/" target="_blank">
+                                            <img src="https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/assets/images/ImpressTV.png" id="header-impresstv-button">
+                                            </a>
+                                            </span>    
+                                        </li></ul>                </article>
+
+                <!-- Search -->
+                <article id="text-5" class="small-1 medium-1 columns">
+                    
+                        <button id="btn_search" type="button" class="float-right fa fa-search menu"></button>
+
+                </article>
+
+                <!-- Search -->
+                <article id="div_search" class="small-12 columns">
+                <!-- **************** -->
+                <!-- Search form container -->
+                    
+                                        <form name="searchForm" action="/search/">
+  
+                        <div class="row collapse">
+                            <div class="small-12 columns">
+
+                                <div class="row collapse">
+                                    <div class="small-2 medium-3 columns">
+                                        &nbsp;
+                                      <input name="cx" value="015619971846971042401:ufh1ywe-cms" type="hidden">
+                                    </div>
+
+                                    <div class="small-1 medium-3 columns">
+                                        &nbsp;
+                                      <input name="ie" value="UTF-8" type="hidden">
+                                    </div>
+
+                                    <div class="small-6 medium-4 columns">
+                                        <input id="google_search_field" class="google-search-field" name="q" value="Story Search" style="" type="text">
+                                      
+                                    </div>
+
+                                    <div class="small-3 medium-2 columns">
+                                      
+                                        <input class="google-search-button" value="Search" type="submit">
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                          
+                    </form>
+                 
+                <!-- **************** -->
+                </article>
+                
+                <article class="small-12 medium-12 columns">
+                    <div class="line"></div>
+                </article>
+            
+            </div>
+
+        </div>
+        
+        <div class ="row" id="header-second-row">
+            <article id="text-12" class="header-widget-left widget_text">			<div class="textwidget"><ul class="social header">
+	<!-- <li><a title="Weather" class="social fa fa-cloud" href="/weather/"></a></li> -->
+	<li><a title="Follow us on Facebook" class="social fa fa-facebook-f" href="https://www.facebook.com/Lake-Country-Calendar-301407309875409/" target="_blank" rel="noopener noreferrer"></a></li>
+	<li><a title="Follow us on Twitter" class="social fa fa-twitter" href="https://twitter.com/LC_Calendar" target="_blank" rel="noopener noreferrer"></a></li>
+<!--	<li><a title="Follow us on Instagram" class="social fa fa-instagram" href="#" target="_blank" rel="noopener noreferrer"></a></li>
+-->
+</ul></div>
+		</article>            <article id="text-11" class="header-widget-center widget_text">			<div class="textwidget"><a class="pub-logo-large day-4" href="https://www.lakecountrycalendar.com/"><svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 503.03 48.1"><title></title><path class="bp-pub-logo" d="M3.73,2.67h8.45V41.8H23V49H3.73Z" transform="translate(-3.73 -1.76)"/><path class="bp-pub-logo" d="M30.77,2.67H43L48.71,49H40.58L39.35,38.68H32.52L31.35,49H24.27Zm5.4,7.15H36l-2.67,22.1h5.27Z" transform="translate(-3.73 -1.76)"/><path class="bp-pub-logo" d="M51.83,2.67h8.45V22h.13l7-19.37H75L68.66,18.2,76.27,49H68.14L63.46,28.21h-.13L60.28,35.5V49H51.83Z" transform="translate(-3.73 -1.76)"/><path class="bp-pub-logo" d="M79.52,2.67H98.63V9.82H88V21.65h7.87v7.54H88V41.8H99.08V49H79.52Z" transform="translate(-3.73 -1.76)"/><path class="bp-pub-logo" d="M129.18,19.44c0-7.67-1-10.53-3.05-10.53-1.76,0-3.51,1.17-3.51,16.9,0,15.21.91,16.9,3.51,16.9,2.79,0,3.44-4.29,3.58-11l7.15.33c0,8.06-1.17,17.81-11.05,17.81-9,0-12-8.84-12-24.05,0-17.68,5.33-24.05,12-24.05,9.75,0,10.92,9,10.92,17.42Z" transform="translate(-3.73 -1.76)"/><path class="bp-pub-logo" d="M152.58,1.76c7.48,0,12.35,5.79,12.35,24.05s-4.87,24.05-12.35,24.05-12.35-5.79-12.35-24.05S145.1,1.76,152.58,1.76Zm-3.12,28.93c0,10,1.17,12,3.12,12s3.12-2,3.12-12V20.93c0-10-1.17-12-3.12-12s-3.12,2-3.12,12Z" transform="translate(-3.73 -1.76)"/><path class="bp-pub-logo" d="M168.83,2.67h8.45V38.48c0,2.08.46,4.23,2.92,4.23s3.12-2,3.12-4.23V2.67h7.15V37.38c0,9.1-4,12.48-10.79,12.48-6.5,0-10.86-3.38-10.86-12.48Z" transform="translate(-3.73 -1.76)"/><path class="bp-pub-logo" d="M195.28,2.67h8.25l7.74,24.44h.13V2.67h6.76V49H211.6l-9-28h-.13V49h-7.15Z" transform="translate(-3.73 -1.76)"/><path class="bp-pub-logo" d="M227.2,9.82h-7.28V2.67h23V9.82h-7.28V49H227.2Z" transform="translate(-3.73 -1.76)"/><path class="bp-pub-logo" d="M245,2.67h9.49c8.06,0,13.39,3.38,13.39,13.13,0,3.9-1.17,9.1-4.94,11.31L268,49h-8.52l-4-19.89h-2V49H245Zm8.45,19.63h1.69c3.12,0,4.29-3.12,4.29-6.44,0-5-1.82-6.44-4.68-6.44h-1.3Z" transform="translate(-3.73 -1.76)"/><path class="bp-pub-logo" d="M275.36,31.07,267.63,2.67H276l4,18.14h.13l4.29-18.14h7.08l-7.74,27.63V49h-8.45Z" transform="translate(-3.73 -1.76)"/><path class="bp-pub-logo" d="M319.95,19.44c0-7.67-1-10.53-3.05-10.53-1.75,0-3.51,1.17-3.51,16.9,0,15.21.91,16.9,3.51,16.9,2.79,0,3.45-4.29,3.58-11l7.15.33c0,8.06-1.17,17.81-11.05,17.81-9,0-12-8.84-12-24.05,0-17.68,5.33-24.05,12-24.05,9.75,0,10.92,9,10.92,17.42Z" transform="translate(-3.73 -1.76)"/><path class="bp-pub-logo" d="M336.39,2.67h12.22L354.33,49h-8.12L345,38.68h-6.83L337,49h-7.09Zm5.39,7.15h-.13L339,31.92h5.27Z" transform="translate(-3.73 -1.76)"/><path class="bp-pub-logo" d="M357.45,2.67h8.45V41.8h10.79V49H357.45Z" transform="translate(-3.73 -1.76)"/><path class="bp-pub-logo" d="M380.33,2.67h19.11V9.82H388.78V21.65h7.87v7.54h-7.87V41.8H399.9V49H380.33Z" transform="translate(-3.73 -1.76)"/><path class="bp-pub-logo" d="M402.89,2.67h8.25l7.74,24.44H419V2.67h6.76V49H419.2l-9-28H410V49h-7.15Z" transform="translate(-3.73 -1.76)"/><path class="bp-pub-logo" d="M430.9,2.67h7.34c14.17,0,15.54,9.1,15.54,23.14,0,13.39-1.11,23.14-14.17,23.14H430.9Zm8.45,39.13c5.33-.06,5.59-2,5.59-16.06s-.26-15.86-5.59-15.93Z" transform="translate(-3.73 -1.76)"/><path class="bp-pub-logo" d="M462.75,2.67H475L480.69,49h-8.12l-1.24-10.27h-6.83L463.34,49h-7.09Zm5.39,7.15H468l-2.67,22.1h5.27Z" transform="translate(-3.73 -1.76)"/><path class="bp-pub-logo" d="M483.81,2.67h9.49c8.06,0,13.39,3.38,13.39,13.13,0,3.9-1.17,9.1-4.94,11.31l5,21.84h-8.52l-4-19.89h-2V49h-8.45Zm8.45,19.63H494c3.12,0,4.29-3.12,4.29-6.44,0-5-1.82-6.44-4.68-6.44h-1.3Z" transform="translate(-3.73 -1.76)"/></svg></a></div>
+		</article>            <article id="text-33" class="header-widget-right show-for-medium"><div id="weatherContainer" class="textwidget float-right" ><a ref="https://www.accuweather.com/en/ca/lake-country/v4v/weather-forecast/2288995" 
+                                        class="aw-widget-legal">
+                                        </a><div id="awcc1517356147459" class="aw-widget-current"  data-locationkey="2288995" data-unit="c" data-language="en-us" data-useip="false" data-uid="awcc1517356147459" data-targeturl="/weather/"></div><script type="text/javascript" src="https://oap.accuweather.com/launch.js"></script></div></article>        </div>
+        
+        <!-- Mobile menu -->
+        <nav id="site-navigation" class="main-navigation top-bar" role="navigation">
+            <div class="top-bar-right row">
+                                    
+<nav class="vertical menu" id="mobile-menu" role="navigation">
+    <ul id="menu-mainmenu-1" class="vertical menu accordion menu" data-accordion-menu><li class='nav-search'><a href='/search/'><i class='fa fa-search menu'></i>Search</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-320"><a href="https://www.lakecountrycalendar.com/">Home</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-28533"><a href="https://www.lakecountrycalendar.com/submit/">Submit News Tip</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-has-children menu-item-169"><a href="https://www.lakecountrycalendar.com/./news/">News</a>
+<ul class="vertical nested menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-170"><a href="https://www.lakecountrycalendar.com/./local-news/">Local News</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-56142"><a href="https://www.lakecountrycalendar.com/./municipal-election/">Municipal Election</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-171"><a target="_blank" rel="noopener noreferrer" href="http://bclocalnews.com">BC</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-105570"><a href="https://www.lakecountrycalendar.com/./federal-election/">Federal Election 2019</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-172"><a href="https://www.lakecountrycalendar.com/./national-news/">Canada &amp; World</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-173"><a href="https://www.lakecountrycalendar.com/e-editions/">eEditions</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-176"><a href="https://www.lakecountrycalendar.com/submit/">Submit news tip or photo</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-177"><a href="https://www.lakecountrycalendar.com/./sports/">Sports</a>
+<ul class="vertical nested menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-178"><a href="https://www.lakecountrycalendar.com/./local-sports/">Local</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-322"><a target="_blank" rel="noopener noreferrer" href="http://www.bclocalnews.com/sports/">BC</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-179"><a href="https://www.lakecountrycalendar.com/./national-sports/">Canada &amp; World</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-180"><a href="https://www.lakecountrycalendar.com/submit/">Submit sports tip or photo</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-181"><a href="https://www.lakecountrycalendar.com/./trending-now/">Trending Now</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-117858"><a href="https://www.lakecountrycalendar.com/newsletters/">Newsletters</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-111885"><a href="//autos.lakecountrycalendar.com/">Autos</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-70928"><a href="//classifieds.lakecountrycalendar.com/classifieds/all?q=&#038;r=centralokanagan">Classifieds</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-45531"><a target="_blank" rel="noopener noreferrer" href="//www.localwork.ca">Jobs</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-182"><a href="https://www.lakecountrycalendar.com/./business/">Business</a>
+<ul class="vertical nested menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-183"><a href="https://www.lakecountrycalendar.com/./local-business/">Local</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-184"><a target="_blank" rel="noopener noreferrer" href="http://bclocalnews.com/business">BC</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-185"><a href="https://www.lakecountrycalendar.com/submit/">Submit business tip or photo</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-186"><a href="https://www.lakecountrycalendar.com/./entertainment/">Entertainment</a>
+<ul class="vertical nested menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-187"><a href="https://www.lakecountrycalendar.com/./local-entertainment/">Local</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-188"><a target="_blank" rel="noopener noreferrer" href="http://bclocalnews.com/entertainment">BC</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-189"><a href="https://www.lakecountrycalendar.com/submit/">Submit entertainment tip or photo</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-91339"><a href="https://www.lakecountrycalendar.com/./photo-galleries/">Photo Galleries</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-190"><a href="https://www.lakecountrycalendar.com/./life/">Life</a>
+<ul class="vertical nested menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-58398"><a href="https://www.lakecountrycalendar.com/./life/">Life</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-102181"><a href="https://www.lakecountrycalendar.com/./sip-savour/">Sip &amp; Savour</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-193"><a target="_blank" rel="noopener noreferrer" href="http://winetrails.ca">Wine Trails</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-194"><a href="https://www.lakecountrycalendar.com/submit/">Submit life tip or photo</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-195"><a href="https://www.lakecountrycalendar.com/./community/">Community</a>
+<ul class="vertical nested menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-196"><a href="https://www.lakecountrycalendar.com/./community/">Local</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-51711"><a href="https://www.lakecountrycalendar.com/./miss-bc/">Miss BC</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-93383"><a href="https://www.lakecountrycalendar.com/./social-matters/">Social Matters</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-323"><a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/iLoveBritishColumbia">I Love British Columbia</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-197"><a href="https://www.lakecountrycalendar.com/calendar/">Calendar</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-198"><a href="https://www.lakecountrycalendar.com/submit/">Submit community tip or photo</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-282"><a href="https://www.lakecountrycalendar.com/./opinion/">Opinion</a>
+<ul class="vertical nested menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-204"><a href="https://www.lakecountrycalendar.com/./opinion/">Local Opinion</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-202"><a href="https://www.lakecountrycalendar.com/./editorials-opinion/">Editorials</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-201"><a href="https://www.lakecountrycalendar.com/./columns/">Columnists</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-203"><a href="https://www.lakecountrycalendar.com/./letters/">Letters</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-27491"><a href="https://www.lakecountrycalendar.com/./web-poll/">Web poll</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-205"><a target="_blank" rel="noopener noreferrer" href="http://bclocalnews.com/opinion">BC Opinion</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-206"><a href="https://www.lakecountrycalendar.com/submitletters/">Submit letter</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-210"><a href="https://www.lakecountrycalendar.com/videos/">Videos</a>
+<ul class="vertical nested menu">
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-211"><a href="https://www.lakecountrycalendar.com/videos/">Local</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-212"><a href="https://www.lakecountrycalendar.com/submit/">Submit video</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-213"><a target="_blank" rel="noopener noreferrer" href="http://blackpress.tv">Black Press TV</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-214"><a href="https://www.lakecountrycalendar.com/weather/">Weather</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-216"><a href="https://www.lakecountrycalendar.com/./obituaries/">Obituaries</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-332"><a href="http://#">Special Sections</a>
+<ul class="vertical nested menu">
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-333"><a href="/e-editions/?iid=i20160624085406732&#038;&#038;headline=SHVudGluZyBSZWd1bGF0aW9ucyAyMDE2XzIwMTg=&#038;&#038;doc_id=160624155408-f0771efc2c114c7ab300b42ad7b57f52&#038;&#038;pid=p20120309121148491">Hunting and Trapping Regulations 2016-2018</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-334"><a href="/e-editions/?iid=i20161228034852523&#038;&#038;headline=MjAxNi0xMi0yOA==&#038;&#038;doc_id=161228115525-49f78c2cc06940969b093b591a19565c&#038;&#038;pid=p20120309121148491">2017 Calendar</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-217"><a href="https://www.lakecountrycalendar.com/./marketplace/">Marketplace</a>
+<ul class="vertical nested menu">
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-275"><a href="https://www.lakecountrycalendar.com/advertise/">Place an ad</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-218"><a href="https://www.lakecountrycalendar.com/./marketplace/">Impress branded content</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-111286"><a href="/videos/#real-estate-tv-video-belt">Impress TV</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15475"><a href="https://www.lakecountrycalendar.com/real-estate/">Real Estate</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-321"><a href="https://www.lakecountrycalendar.com/contests/">Contests</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-224"><a href="https://www.lakecountrycalendar.com/contact-us/">Contact Us</a>
+<ul class="vertical nested menu">
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-225"><a href="https://www.lakecountrycalendar.com/contact-us/">Contact Us</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-226"><a href="https://www.lakecountrycalendar.com/our-team/">Our Team</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-230"><a target="_blank" rel="noopener noreferrer" href="http://blackpress.ca">Black Press</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-231"><a href="https://www.lakecountrycalendar.com/submit/">Submit tip or photo</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-227"><a href="https://www.lakecountrycalendar.com/faq/">FAQ</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-228"><a href="https://www.lakecountrycalendar.com/privacy-policy/">Privacy Policy</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-229"><a href="https://www.lakecountrycalendar.com/terms-of-use/">Terms of use</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-111982"><a href="https://www.lakecountrycalendar.com/site-map/">Site Map</a></li>
+</ul></nav>
+                            </div>
+        </nav>
+        
+        
+        <!-- taboola code -->
+            <script type="text/javascript">
+            window._taboola = window._taboola || [];
+            _taboola.push({article:'auto'});
+            !function (e, f, u, i) {
+            if (!document.getElementById(i)){
+                e.async = 1;
+                e.src = u;
+                e.id = i;
+                f.parentNode.insertBefore(e, f);
+            }
+            }(document.createElement('script'),
+            document.getElementsByTagName('script')[0],
+            '//cdn.taboola.com/libtrc/blackpressmedia-network/loader.js',
+            'tb_loader_script');
+            if(window.performance && typeof window.performance.mark == 'function')
+            {window.performance.mark('tbl_ic');}
+        </script>
+        
+
+    </header>
+
+    <section class="container">
+        <!-- Elevator: return to Top -->
+        <a id="return-to-top" href="javascript:" ><i class="fa fa-chevron-up"></i></a>
+        
+        
+
+<div id="single-post" role="main">
+
+    <div class="row module ad">
+        <div class="large-12 columns ad text-center">
+                    <div class='code-block code-block-24' style='margin: 8px 0; clear: both;'>
+<!-- Replace AU0 on article pages -->
+<div id="div-gpt-24" class="gpt-ad horizontal">
+<script type='text/javascript'>
+    googletag.cmd.push(function() { googletag.display('div-gpt-24');gptRefreshSlots.push(24); });
+</script>
+</div></div>
+        </div>
+    </div>
+
+    <!-- Number of attachments: 1 --><!-- Featured Image Layout: medium -->
+
+                <article class="main-content post-120117 post type-post status-publish format-standard has-post-thumbnail hentry category-home category-news tag-fundraiser tag-kelowna" id="post-120117">
+
+        
+        <header>
+            <div class="post-attachment" alt="&lt;1024 - &gt;640"><img width="1200" height="800" src="https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20225810_web1_200110-KCN-M-Screen-Shot-2020-01-10-at-10.45.03-AM.jpg" class="attachment-full size-full" alt="" srcset="https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20225810_web1_200110-KCN-M-Screen-Shot-2020-01-10-at-10.45.03-AM.jpg 1200w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20225810_web1_200110-KCN-M-Screen-Shot-2020-01-10-at-10.45.03-AM-300x200.jpg 300w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20225810_web1_200110-KCN-M-Screen-Shot-2020-01-10-at-10.45.03-AM-768x512.jpg 768w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20225810_web1_200110-KCN-M-Screen-Shot-2020-01-10-at-10.45.03-AM-1024x683.jpg 1024w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20225810_web1_200110-KCN-M-Screen-Shot-2020-01-10-at-10.45.03-AM-640x427.jpg 640w" sizes="(max-width: 1200px) 100vw, 1200px" /><p>One-year-old Elara Isagawa was diagnosed with a tumour last Christmas Eve</p></div>
+                                    <h2 class="entry-title">Kelowna restaurant to hold fundraiser for one-year-old with cancer</h2>
+            <p class="lead">The event is scheduled for Jan. 25 and will feature opportunities for cash donations
+</p>
+            <ul class="author-meta"><li><a class="byline" href="https://www.lakecountrycalendar.com/author/daniel-taylor/" rel="author" class="fn">Daniel Taylor</a></li><li>Jan. 21, 2020 8:15 a.m.</li><li><a class="byline" href="https://www.lakecountrycalendar.com/news/">News</a></li></ul>            <ul class="social story top">
+	<li><span data-tooltip aria-haspopup="true" data-disable-hover="false" tabindex="1" title="Post to Facebook"><a href="//www.facebook.com/sharer.php?u=https%3A%2F%2Fwww.lakecountrycalendar.com%2Fnews%2Fkelowna-restaurant-to-hold-fundraiser-for-one-year-old-with-cancer%2F" class="social fa fa-facebook-f" target="_blank"></a></span></li>
+	<li><span data-tooltip aria-haspopup="true" data-disable-hover="false" tabindex="1" title="Post to Twitter"><a href="//twitter.com/intent/tweet?text=Kelowna+restaurant+to+hold+fundraiser+for+one-year-old+with+cancer&amp;url=https%3A%2F%2Fwww.lakecountrycalendar.com%2Fnews%2Fkelowna-restaurant-to-hold-fundraiser-for-one-year-old-with-cancer%2F" class="social fa fa-twitter" target="_blank"></a></span></li>
+	<li><span data-tooltip aria-haspopup="true" data-disable-hover="false" tabindex="1" title="Post to Reddit"><a href="//reddit.com/submit?url=https%3A%2F%2Fwww.lakecountrycalendar.com%2Fnews%2Fkelowna-restaurant-to-hold-fundraiser-for-one-year-old-with-cancer%2F&title=Kelowna+restaurant+to+hold+fundraiser+for+one-year-old+with+cancer" class="social fa fa-reddit-alien" target="_blank"></a></span></li>
+	<li><span data-tooltip aria-haspopup="true" data-disable-hover="false" tabindex="1" title="Email story"><a href="mailto:?subject=Kelowna%20restaurant%20to%20hold%20fundraiser%20for%20one-year-old%20with%20cancer&amp;body=https%3A%2F%2Fwww.lakecountrycalendar.com%2Fnews%2Fkelowna-restaurant-to-hold-fundraiser-for-one-year-old-with-cancer%2F" class="social fa fa-envelope-o"></a></span></li>
+
+	<li><span data-tooltip aria-haspopup="true" data-disable-hover="false" tabindex="1" title="Print story"><a href="javascript:window.print();" class="social fa fa-print"></a></span></li>
+	<li><span data-tooltip aria-haspopup="true" data-disable-hover="false" tabindex="1" title="Jump to comments"><a href="#facebook-comments" class="social fa fa-comment-o"></a></span></li>
+
+
+
+</ul>
+        </header>
+                <div class="entry-content">
+
+        <p>The Central Kitchen and Bar in Kelowna have grilled up an event, Burgers for Elara, in an effort to raise money for the Isagawa family and their one-year-old daughter Elara, who was diagnosed with a tumour on Christmas Eve.</p>
+<p>On Dec. 31 Elara underwent a 6.5-hour surgery to remove 98 per cent of the tumour between her pelvis and abdomen, however, family member Jessica Isagawa said Elara still has a long road to recovery ahead of her.</p>
+<p>&ldquo;After meeting with Elara&rsquo;s oncology team, it was discovered that Elara&rsquo;s tumour is malignant and needs to be treated with up to four rounds of chemotherapy,&rdquo; said Jessica.</p>
+<p>&ldquo;Each round of chemotherapy will last about a month.&rdquo;</p>
+<p><ins><strong>READ MORE: <a href="https://www.kelownacapnews.com/news/fundraiser-for-six-year-old-kelowna-girl-with-tumour-surpasses-10000-fundraising-goal/" target="_blank" rel="noopener noreferrer">Fundraiser for one-year-old Kelowna girl with tumour </a></strong></ins></p>
+<p>According to a post on Central&rsquo;s Facebook Page, Elara&rsquo;s parents Nico and Jessica Isagwa have a special connection to the Central. Years ago Nico and Jessica had their first date at the establishment, which led to their engagement, followed by engagement photos at Central, which then led to the birth of their daughter Elara.</p>
+<p>&ldquo;Ok Kelowna, it&rsquo;s time to show up and show out for the most precious little girl who is currently in the fight of her young life, &ldquo;read Central&rsquo;s post on Facebook.</p>
+<p>&ldquo;We cannot imagine what this family is going through, but one thing we do know is that we must help in any way we can.&rdquo;</p>
+<p>On Jan. 25, at 5 p.m. Central will be hosting a fundraiser for Elara who is currently battling at B.C. Children&rsquo;s Hospital in Vancouver.</p>
+<p>The event will feature a &ldquo;Sweet and Spicy&rdquo; burger developed by the Isagawas that best represent Elara&rsquo;s personality. 100 per cent of sales from this burger from over the entire weekend will be donated to the family.</p>
+<p>Attendees will also have an opportunity to make cash donations and participate in a silent auction with some prizes donated by local businesses. </p>
+<p>For more information visit <a href="https://www.facebook.com/centralkelowna/?eid=ARBPq9UTjIuOtISGwCoiJSIm4-ls6AQlPEcqKBPGm2H0DrUJXbMPTxJkr8NwQmXbCOmn7oodpcyOgSYn" target="_blank" rel="noopener noreferrer">Central&rsquo;s Facebook page</a> or the <a href="https://www.facebook.com/events/202206397618363/?active_tab=about" target="_blank" rel="noopener noreferrer">Burgers for Elara at Central event </a><a href="https://www.facebook.com/events/202206397618363/?active_tab=about" target="_blank" rel="noopener noreferrer">page</a>.</p>
+<p><ins><strong>READ MORE: <a href="https://www.kelownacapnews.com/news/kelowna-family-almost-reaches-fundraising-goal-for-daughter-diagnosed-with-tumour/" target="_blank" rel="noopener noreferrer">Kelowna family almost reaches fundraising goal for daughter diagnosed with tumour</a></strong> </ins></p>
+<p><p><strong>Like us on <a href="https://www.facebook.com/newskelowna" target="_blank" rel="noopener noreferrer">Facebook</a> and follow us on <a href="https://twitter.com/KelownaCapNews" target="_blank" rel="noopener noreferrer">Twitter</a>. </strong></p>
+</p>
+<div class='row newsletters-row' >
+<div class='columns small-4 medium-3 large-2 newsletters-image-column' >
+                                        <img src='https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/assets/images/newsletters/bp-newsletters-icon.png' >
+                                    </div>
+<div class='columns small-8 medium-9 large-10 newsletters-text-column' >
+                                        Get local stories you won't find anywhere else right to your inbox.<br />
+                                        <a href='/newsletters/'>Sign up here</a>
+                                    </div>
+</p></div>
+                        </div>
+        
+        <!-- Start: Spot.IM setup -->
+                <!-- End: Spot.IM setup -->
+
+        <!-- BEGIN: Comments -->
+                                <div class="fb-comments" id="facebook-comments" data-href="https://www.lakecountrycalendar.com/news/kelowna-restaurant-to-hold-fundraiser-for-one-year-old-with-cancer/" data-width="100%" data-numposts="10" data-order-by="reverse_time" data-colorscheme="light"></div>
+                <!-- END: Comments -->
+
+        <footer>
+                    </footer>
+                
+        <!-- Comments disabled for now -->
+        <!-- <a class="hollow expanded button comments day-" href="">View Comments <i class="fa fa-comment-o"></i></a> -->
+        
+        
+        <div class="row" style="padding-bottom: 1.5rem;"><div class="columns small-12 medium-12 large-6"><div class='code-block code-block-14' style='margin: 8px auto; text-align: center; display: block; clear: both;'>
+<div id="div-gpt-14" class="gpt-ad">
+<script type='text/javascript'>
+    googletag.cmd.push(function() { googletag.display('div-gpt-14');gptRefreshSlots.push(14); });
+</script>
+</div></div>
+</div><div class="columns small-12 medium-12 large-6"><div class='code-block code-block-19' style='margin: 8px auto; text-align: center; display: block; clear: both;'>
+<div id="div-gpt-19" class="gpt-ad">
+<script type='text/javascript'>
+    googletag.cmd.push(function() { googletag.display('div-gpt-19');gptRefreshSlots.push(19); });
+</script>
+</div></div>
+</div></div>        
+    </article>
+
+
+<aside class="sidebar text-right">
+		<article id="ai_widget-10" class="widget ai_widget"><div class='code-block code-block-10' style='margin: 8px auto; text-align: center; display: block; clear: both;'>
+<div id="div-gpt-10" class="gpt-ad">
+<script type='text/javascript'>
+    googletag.cmd.push(function() { googletag.display('div-gpt-10');gptRefreshSlots.push(10); });
+</script>
+</div></div>
+</article><article id="ai_widget-8" class="widget ai_widget"><div class='code-block code-block-12' style='margin: 8px auto; text-align: center; display: block; clear: both;'>
+<div id="div-gpt-12" class="gpt-ad">
+<script type='text/javascript'>
+    googletag.cmd.push(function() { googletag.display('div-gpt-12');gptRefreshSlots.push(12); });
+</script>
+</div></div>
+</article>	
+        <!-- taboola code -->
+            <div id="taboola-right-rail"></div>
+            <script type="text/javascript">
+            window._taboola = window._taboola || [];
+            _taboola.push({
+                mode: 'thumbnails-c',
+                container: 'taboola-right-rail',
+                placement: 'Right Rail',
+                target_type: 'mix'
+            });
+            </script>
+            
+        
+
+	</aside>
+</div>
+
+<div class="row module-adjacent-posts" data-equalizer data-equalize-on="medium">
+	    <div class="small-6 adjacent-prev columns" data-equalizer-watch>
+                    <a class="button" onClick="__gaTracker('send','event','Recirculating Content','Click','Previous Adjacent Story');" href="https://www.lakecountrycalendar.com/news/state-of-emergency-in-st-johns-n-l-reaches-day-5-after-massive-blizzard/">
+                <h5><i class="fa fa-chevron-left" aria-hidden="true"></i>Previous <span class="show-for-small-only">story </span></h5>
+                <span class="show-for-medium">
+                    <h6>State of emergency in St. John&#8217;s, N.L., reaches Day 5 after massive blizzard</h6>
+                </span>
+            </a>
+            </div>
+    <div class="small-6 adjacent-next columns" data-equalizer-watch>
+                    <a class="button" onClick="__gaTracker('send','event','Recirculating Content','Click','Next Adjacent Story');" href="https://www.lakecountrycalendar.com/news/alberta-man-dies-in-vehicle-incident-on-trans-canada-highway/">
+                <h5>Next <span class="show-for-small-only">story </span><i class="fa fa-chevron-right" aria-hidden="true"></i></h5>
+                <span class="show-for-medium">
+                    <h6>Alberta man dies in vehicle incident on Trans Canada Highway</h6>
+                </span>
+            </a>
+            </div>
+</div><div class="row module-recirc">
+	<div class="small-12 columns">
+		<h3 class="text-center"><a onClick="__gaTracker('send','event','Recirculating Content','Click','News Header');" href="https://www.lakecountrycalendar.com/./news/">Just Posted</a></h3>
+                <div class="row module-recirc">
+            <div class="small-12 large-8 module-recirc columns">
+                <!-- story-recirc-block --><div class="small-up-2 medium-up-2 large-up-3"><!-- Start - Single Card --><div class="column"><div class='card '><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.lakecountrycalendar.com/sports/warriors-hot-start-fizzles-in-5-2-loss-to-visiting-vees/"><img src="https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20247172_web1_VeesPeriod1_DSC_9220.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20247172_web1_VeesPeriod1_DSC_9220.jpg 1200w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20247172_web1_VeesPeriod1_DSC_9220-300x200.jpg 300w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20247172_web1_VeesPeriod1_DSC_9220-768x512.jpg 768w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20247172_web1_VeesPeriod1_DSC_9220-1024x683.jpg 1024w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20247172_web1_VeesPeriod1_DSC_9220-640x427.jpg 640w" sizes="(max-width: 1200px) 100vw, 1200px" /></a> <div class="card-section"><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.lakecountrycalendar.com/sports/warriors-hot-start-fizzles-in-5-2-loss-to-visiting-vees/"><h5 class="active">Warriors&#8217; hot start fizzles in 5-2 loss to visiting Vees</h5></a><p class="lead show-for-medium">West Kelowna returns to action Friday when they host the Vernon Vipers
+</p></div></div></div><!-- End - Single Card --><!-- Start - Single Card --><div class="column"><div class='card '><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.lakecountrycalendar.com/news/four-things-not-to-do-if-you-run-into-harry-and-meghan-in-b-c/"><img src="https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20244416_web1_22489609.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20244416_web1_22489609.jpg 1200w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20244416_web1_22489609-300x200.jpg 300w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20244416_web1_22489609-768x512.jpg 768w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20244416_web1_22489609-1024x683.jpg 1024w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20244416_web1_22489609-640x427.jpg 640w" sizes="(max-width: 1200px) 100vw, 1200px" /></a> <div class="card-section"><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.lakecountrycalendar.com/news/four-things-not-to-do-if-you-run-into-harry-and-meghan-in-b-c/"><h5 class="active">Four things &#8216;not&#8217; to do if you run into Harry and Meghan in B.C.</h5></a><p class="lead show-for-medium">Like many in British Columbia, you may be worried about running into&hellip; <a class="inline-read-more" href="https://www.lakecountrycalendar.com/news/four-things-not-to-do-if-you-run-into-harry-and-meghan-in-b-c/">Continue reading</i></a></p></div></div></div><!-- End - Single Card --><!-- Start - Single Card --><div class="column"><div class='card '><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.lakecountrycalendar.com/news/almost-20000-parking-tickets-issued-by-interior-health-at-hospitals-in-2019/"><img src="https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20237486_web1_071218_parking-ticket_032wb.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20237486_web1_071218_parking-ticket_032wb.jpg 1200w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20237486_web1_071218_parking-ticket_032wb-300x200.jpg 300w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20237486_web1_071218_parking-ticket_032wb-768x512.jpg 768w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20237486_web1_071218_parking-ticket_032wb-1024x683.jpg 1024w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20237486_web1_071218_parking-ticket_032wb-640x427.jpg 640w" sizes="(max-width: 1200px) 100vw, 1200px" /></a> <div class="card-section"><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.lakecountrycalendar.com/news/almost-20000-parking-tickets-issued-by-interior-health-at-hospitals-in-2019/"><h5 class="active">Almost 20,000 parking tickets issued by Interior Health at hospitals in 2019</h5></a><p class="lead show-for-medium">In 2018, pay parking in Interior Health hospitals totalled $5.3 million of their $2.2-billion budget
+</p></div></div></div><!-- End - Single Card --><!-- Start - Single Card --><div class="column"><div class='card '><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.lakecountrycalendar.com/entertainment/indie-rockers-colour-tongues-to-kick-off-western-canada-tour-in-kelowna/"><img src="https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20242601_web1_Photo2018-08-17100645PM.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20242601_web1_Photo2018-08-17100645PM.jpg 1500w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20242601_web1_Photo2018-08-17100645PM-300x200.jpg 300w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20242601_web1_Photo2018-08-17100645PM-768x511.jpg 768w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20242601_web1_Photo2018-08-17100645PM-1024x682.jpg 1024w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20242601_web1_Photo2018-08-17100645PM-640x426.jpg 640w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20242601_web1_Photo2018-08-17100645PM-1200x799.jpg 1200w" sizes="(max-width: 1199px) 98vw, 1200px" /></a> <div class="card-section"><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.lakecountrycalendar.com/entertainment/indie-rockers-colour-tongues-to-kick-off-western-canada-tour-in-kelowna/"><h5 class="active">Indie rockers Colour Tongues to kick off Western Canada tour in Kelowna</h5></a><p class="lead show-for-medium">The band is set to take the stage at Fernando’s Pub on Feb. 6
+</p></div></div></div><!-- End - Single Card --><!-- Start - Single Card --><div class="column"><div class='card '><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.lakecountrycalendar.com/news/ylw-hosts-event-to-help-ease-people-with-autism-into-flying/"><img src="https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20241161_web1_YLW-sign-web.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20241161_web1_YLW-sign-web.jpg 700w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20241161_web1_YLW-sign-web-300x200.jpg 300w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20241161_web1_YLW-sign-web-640x427.jpg 640w" sizes="(max-width: 1199px) 98vw, 700px" /></a> <div class="card-section"><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.lakecountrycalendar.com/news/ylw-hosts-event-to-help-ease-people-with-autism-into-flying/"><h5 class="active">YLW to host event to help ease people with autism into flying</h5></a><p class="lead show-for-medium">The tour will take families through the entire pre-flight process
+</p></div></div></div><!-- End - Single Card --><!-- Start - Single Card --><div class="column"><div class='card '><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.lakecountrycalendar.com/news/video-trudeau-insists-iran-respect-families-wishes-when-it-comes-to-burials/"><img src="https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20246717_web1_WPGX10741338.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20246717_web1_WPGX10741338.jpg 450w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20246717_web1_WPGX10741338-300x199.jpg 300w" sizes="(max-width: 1199px) 98vw, 450px" /></a> <div class="card-section"><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.lakecountrycalendar.com/news/video-trudeau-insists-iran-respect-families-wishes-when-it-comes-to-burials/"><h5 class="active">VIDEO: Trudeau insists Iran respect families&#8217; wishes when it comes to burials</h5></a><p class="lead show-for-medium">All 176 people on board the Ukraine International Airlines flight PS752 were killed
+</p></div></div></div><!-- End - Single Card --><!-- Start - Single Card --><div class="column"><div class='card '> <div class="card-section"><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.lakecountrycalendar.com/news/highway-1-closed-near-golden/"><h5 class="active">Highway 1 closed near Golden</h5></a><p class="lead show-for-medium">DriveBC estimates the road to reopen at 1 p.m.
+</p></div></div></div><!-- End - Single Card --><!-- Start - Single Card --><div class="column"><div class='card '><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.lakecountrycalendar.com/news/dog-reunited-with-tofino-owner-months-after-being-taken-from-beach/"><img src="https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20206478_web1_200122-UWN-Tofino-dog-returned2_2.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20206478_web1_200122-UWN-Tofino-dog-returned2_2.jpg 1200w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20206478_web1_200122-UWN-Tofino-dog-returned2_2-300x199.jpg 300w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20206478_web1_200122-UWN-Tofino-dog-returned2_2-768x510.jpg 768w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20206478_web1_200122-UWN-Tofino-dog-returned2_2-1024x680.jpg 1024w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20206478_web1_200122-UWN-Tofino-dog-returned2_2-640x425.jpg 640w" sizes="(max-width: 1200px) 100vw, 1200px" /></a> <div class="card-section"><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.lakecountrycalendar.com/news/dog-reunited-with-tofino-owner-months-after-being-taken-from-beach/"><h5 class="active">Dog reunited with Tofino owner, months after being taken from beach</h5></a><p class="lead show-for-medium">Shannon Boothman ‘ecstatic’ at pet’s return after a tip leads to social media search
+</p></div></div></div><!-- End - Single Card --><!-- Start - Single Card --><div class="column"><div class='card '><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.lakecountrycalendar.com/news/b-c-s-first-ride-hailing-app-to-launch-in-tofino-whistler-in-february/"><img src="https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20247520_web1_200120-UWN-Whistle-KylerVos.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20247520_web1_200120-UWN-Whistle-KylerVos.jpg 1200w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20247520_web1_200120-UWN-Whistle-KylerVos-300x200.jpg 300w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20247520_web1_200120-UWN-Whistle-KylerVos-768x512.jpg 768w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20247520_web1_200120-UWN-Whistle-KylerVos-1024x683.jpg 1024w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20247520_web1_200120-UWN-Whistle-KylerVos-640x427.jpg 640w" sizes="(max-width: 1200px) 100vw, 1200px" /></a> <div class="card-section"><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.lakecountrycalendar.com/news/b-c-s-first-ride-hailing-app-to-launch-in-tofino-whistler-in-february/"><h5 class="active">B.C.&#8217;s first ride-hailing app to launch in Tofino, Whistler in February</h5></a><p class="lead show-for-medium">The Whistle! app will be available in Tofino on Feb.1 and in Whistler Feb. 6.
+</p></div></div></div><!-- End - Single Card --><!-- Start - Single Card --><div class="column"><div class='card '><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.lakecountrycalendar.com/news/councillor-resigns-in-revelstoke-after-colleagues-approved-67-raise/"><img src="https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20247293_web1_181114-RTR-revelstoke-city-council_4.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20247293_web1_181114-RTR-revelstoke-city-council_4.jpg 1200w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20247293_web1_181114-RTR-revelstoke-city-council_4-300x200.jpg 300w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20247293_web1_181114-RTR-revelstoke-city-council_4-768x512.jpg 768w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20247293_web1_181114-RTR-revelstoke-city-council_4-1024x683.jpg 1024w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20247293_web1_181114-RTR-revelstoke-city-council_4-640x427.jpg 640w" sizes="(max-width: 1200px) 100vw, 1200px" /></a> <div class="card-section"><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.lakecountrycalendar.com/news/councillor-resigns-in-revelstoke-after-colleagues-approved-67-raise/"><h5 class="active">Councillor resigns in Revelstoke after colleagues approved 67% raise</h5></a><p class="lead show-for-medium">Council approved a 134 per cent raise for the mayor of Revelstoke
+</p></div></div></div><!-- End - Single Card --><!-- Start - Single Card --><div class="column"><div class='card '><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.lakecountrycalendar.com/news/abbotsfords-rolled-over-dairy-truck-lost-40000-litres-of-milk/"><img src="https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20247452_web1_milk-truck.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20247452_web1_milk-truck.jpg 1200w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20247452_web1_milk-truck-300x200.jpg 300w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20247452_web1_milk-truck-768x512.jpg 768w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20247452_web1_milk-truck-1024x683.jpg 1024w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20247452_web1_milk-truck-640x427.jpg 640w" sizes="(max-width: 1200px) 100vw, 1200px" /></a> <div class="card-section"><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.lakecountrycalendar.com/news/abbotsfords-rolled-over-dairy-truck-lost-40000-litres-of-milk/"><h5 class="active">Rolled-over dairy truck in Abbotsford lost 40,000 litres of milk</h5></a><p class="lead show-for-medium">Truck removed Sunday, Jan. 19, with specialized equipment to upright vehicle
+</p></div></div></div><!-- End - Single Card --><!-- Start - Single Card --><div class="column"><div class='card '><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.lakecountrycalendar.com/news/boy-13-arrested-after-alleged-assault-involving-girl-at-b-c-middle-school/"><img src="https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20235672_web1_citadel-middle-school.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20235672_web1_citadel-middle-school.jpg 1200w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20235672_web1_citadel-middle-school-300x201.jpg 300w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20235672_web1_citadel-middle-school-768x513.jpg 768w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20235672_web1_citadel-middle-school-1024x684.jpg 1024w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20235672_web1_citadel-middle-school-640x428.jpg 640w" sizes="(max-width: 1200px) 100vw, 1200px" /></a> <div class="card-section"><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.lakecountrycalendar.com/news/boy-13-arrested-after-alleged-assault-involving-girl-at-b-c-middle-school/"><h5 class="active">Boy, 13, arrested after alleged assault involving girl at B.C. middle school</h5></a><p class="lead show-for-medium">Boy alleged to have used ‘inappropriate levels of force’ to injure the girl
+</p></div></div></div><!-- End - Single Card --><!-- Start - Single Card --><div class="column"><div class='card '><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.lakecountrycalendar.com/news/b-c-premier-talks-forestry-service-needs-with-handful-of-northern-mayors-in-prince-george/"><img src="https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20247197_web1_0V7A6758.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20247197_web1_0V7A6758.jpg 1200w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20247197_web1_0V7A6758-300x200.jpg 300w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20247197_web1_0V7A6758-768x512.jpg 768w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20247197_web1_0V7A6758-1024x683.jpg 1024w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20247197_web1_0V7A6758-640x427.jpg 640w" sizes="(max-width: 1200px) 100vw, 1200px" /></a> <div class="card-section"><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.lakecountrycalendar.com/news/b-c-premier-talks-forestry-service-needs-with-handful-of-northern-mayors-in-prince-george/"><h5 class="active">B.C. premier talks forestry, service needs with handful of northern mayors in Prince George</h5></a><p class="lead show-for-medium">Prince George meeting completes premier’s tour of Kitimat, Terrace, Fort St. James and Quesnel
+</p></div></div></div><!-- End - Single Card --><!-- Start - Single Card --><div class="column"><div class='card '><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.lakecountrycalendar.com/trending-now/morning-start-did-you-know-the-journey-songs-line-born-and-raised-in-south-detroit-actually-refers-to-canada/"><img src="https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20246706_web1_200122-SAA-Morning-start.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20246706_web1_200122-SAA-Morning-start.jpg 1200w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20246706_web1_200122-SAA-Morning-start-300x200.jpg 300w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20246706_web1_200122-SAA-Morning-start-768x512.jpg 768w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20246706_web1_200122-SAA-Morning-start-1024x683.jpg 1024w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20246706_web1_200122-SAA-Morning-start-640x427.jpg 640w" sizes="(max-width: 1200px) 100vw, 1200px" /></a> <div class="card-section"><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.lakecountrycalendar.com/trending-now/morning-start-did-you-know-the-journey-songs-line-born-and-raised-in-south-detroit-actually-refers-to-canada/"><h5 class="active">Morning start: Did you know the Journey song&#8217;s line &#8220;born and raised in South Detroit&#8221; actually refers to Canada?</h5></a><p class="lead show-for-medium">Your morning start: Fun fact, weather, and video of the day
+</p></div></div></div><!-- End - Single Card --></div>            </div>
+
+            <div class="small-12 large-4 module-most-read columns">
+                <div class="row">
+    <div class="small-12 module-trending story columns">
+        <h3 class="text-center">Most Read</h3>
+        <ul class="trending-maxi">
+                            <li>
+                <div id="post-120150" class="row story-list-item collapse">
+	<div class="small-12 medium-8 photo content columns">
+					<h4 class="count"></h4><h5><a onClick="__gaTracker('send','event','Recirculating Content','Click','News Most Read');" href="https://www.lakecountrycalendar.com/autos/the-corsair-is-a-move-forward-in-styling-content-and-spaciousness/">The Corsair is a move forward in styling, content and spaciousness</a></h5>
+				<p class="lead web show-for-medium hide-for-large">It’s the latest model in the brand’s massive utility-vehicle overhaul
+</p>	</div>
+			<div class="show-for-medium medium-4 columns">
+							<a onClick="__gaTracker('send','event','Recirculating Content','Click','News Most Read');" href="https://www.lakecountrycalendar.com/autos/the-corsair-is-a-move-forward-in-styling-content-and-spaciousness/"><img src="https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20231591_web1_200121-BPD-M-Corsair_1.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20231591_web1_200121-BPD-M-Corsair_1.jpg 1200w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20231591_web1_200121-BPD-M-Corsair_1-300x200.jpg 300w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20231591_web1_200121-BPD-M-Corsair_1-768x512.jpg 768w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20231591_web1_200121-BPD-M-Corsair_1-1024x683.jpg 1024w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20231591_web1_200121-BPD-M-Corsair_1-640x427.jpg 640w" sizes="(max-width: 1200px) 100vw, 1200px" /></a>
+					</div>
+	</div>
+            </li>
+                            <li>
+                <div id="post-120159" class="row story-list-item collapse">
+	<div class="small-12 medium-8 photo content columns">
+					<h4 class="count"></h4><h5><a onClick="__gaTracker('send','event','Recirculating Content','Click','News Most Read');" href="https://www.lakecountrycalendar.com/autos/an-understated-alternative-to-the-golf-gti-hatchback/">An understated alternative to the Golf GTI hatchback</a></h5>
+				<p class="lead web show-for-medium hide-for-large">In terms of sleek style, four-door cars such as the Volkswagen Jetta are tough to beat
+</p>	</div>
+			<div class="show-for-medium medium-4 columns">
+							<a onClick="__gaTracker('send','event','Recirculating Content','Click','News Most Read');" href="https://www.lakecountrycalendar.com/autos/an-understated-alternative-to-the-golf-gti-hatchback/"><img src="https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20232164_web1_200121-BPD-M-2020_Jetta_GLI_1_Credit_Volkswagen.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20232164_web1_200121-BPD-M-2020_Jetta_GLI_1_Credit_Volkswagen.jpg 1200w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20232164_web1_200121-BPD-M-2020_Jetta_GLI_1_Credit_Volkswagen-300x200.jpg 300w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20232164_web1_200121-BPD-M-2020_Jetta_GLI_1_Credit_Volkswagen-768x512.jpg 768w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20232164_web1_200121-BPD-M-2020_Jetta_GLI_1_Credit_Volkswagen-1024x683.jpg 1024w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20232164_web1_200121-BPD-M-2020_Jetta_GLI_1_Credit_Volkswagen-640x427.jpg 640w" sizes="(max-width: 1200px) 100vw, 1200px" /></a>
+					</div>
+	</div>
+            </li>
+                            <li>
+                <div id="post-120304" class="row story-list-item collapse">
+	<div class="small-12 medium-8 photo content columns">
+					<h4 class="count"></h4><h5><a onClick="__gaTracker('send','event','Recirculating Content','Click','News Most Read');" href="https://www.lakecountrycalendar.com/sports/warriors-hot-start-fizzles-in-5-2-loss-to-visiting-vees/">Warriors&#8217; hot start fizzles in 5-2 loss to visiting Vees</a></h5>
+				<p class="lead web show-for-medium hide-for-large">West Kelowna returns to action Friday when they host the Vernon Vipers
+</p>	</div>
+			<div class="show-for-medium medium-4 columns">
+							<a onClick="__gaTracker('send','event','Recirculating Content','Click','News Most Read');" href="https://www.lakecountrycalendar.com/sports/warriors-hot-start-fizzles-in-5-2-loss-to-visiting-vees/"><img src="https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20247172_web1_VeesPeriod1_DSC_9220.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20247172_web1_VeesPeriod1_DSC_9220.jpg 1200w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20247172_web1_VeesPeriod1_DSC_9220-300x200.jpg 300w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20247172_web1_VeesPeriod1_DSC_9220-768x512.jpg 768w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20247172_web1_VeesPeriod1_DSC_9220-1024x683.jpg 1024w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20247172_web1_VeesPeriod1_DSC_9220-640x427.jpg 640w" sizes="(max-width: 1200px) 100vw, 1200px" /></a>
+					</div>
+	</div>
+            </li>
+                            <li>
+                <div id="post-120224" class="row story-list-item collapse">
+	<div class="small-12 medium-8 photo content columns">
+					<h4 class="count"></h4><h5><a onClick="__gaTracker('send','event','Recirculating Content','Click','News Most Read');" href="https://www.lakecountrycalendar.com/life/elevated-style/">Elevated Style</a></h5>
+				<p class="lead web show-for-medium hide-for-large">Colourful ski fashion on the slopes of Big White Resort
+</p>	</div>
+			<div class="show-for-medium medium-4 columns">
+							<a onClick="__gaTracker('send','event','Recirculating Content','Click','News Most Read');" href="https://www.lakecountrycalendar.com/life/elevated-style/"><img src="https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20239093_web1_Fashion-1.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20239093_web1_Fashion-1.jpg 1200w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20239093_web1_Fashion-1-300x200.jpg 300w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20239093_web1_Fashion-1-768x512.jpg 768w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20239093_web1_Fashion-1-1024x683.jpg 1024w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20239093_web1_Fashion-1-640x427.jpg 640w" sizes="(max-width: 1200px) 100vw, 1200px" /></a>
+					</div>
+	</div>
+            </li>
+                            <li>
+                <div id="post-120312" class="row story-list-item collapse">
+	<div class="small-12 columns">
+					<h4 class="count"></h4><h5><a onClick="__gaTracker('send','event','Recirculating Content','Click','News Most Read');" href="https://www.lakecountrycalendar.com/news/highway-1-closed-near-golden/">Highway 1 closed near Golden</a></h5>
+				<p class="lead web show-for-medium hide-for-large">DriveBC estimates the road to reopen at 1 p.m.
+</p>	</div>
+	</div>
+            </li>
+                            <li>
+                <div id="post-120235" class="row story-list-item collapse">
+	<div class="small-12 medium-8 photo content columns">
+					<h4 class="count"></h4><h5><a onClick="__gaTracker('send','event','Recirculating Content','Click','News Most Read');" href="https://www.lakecountrycalendar.com/opinion/dyer-what-should-you-do-with-the-climate-action-plan/">Dyer: What should you do with the climate action plan?</a></h5>
+				<p class="lead web show-for-medium hide-for-large">Kristy Dyer is a new columnist to Black Press Media who writes about the environment
+</p>	</div>
+			<div class="show-for-medium medium-4 columns">
+							<a onClick="__gaTracker('send','event','Recirculating Content','Click','News Most Read');" href="https://www.lakecountrycalendar.com/opinion/dyer-what-should-you-do-with-the-climate-action-plan/"><img src="https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20241445_web1_20200120_080832--1--copy.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20241445_web1_20200120_080832--1--copy.jpg 1200w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20241445_web1_20200120_080832--1--copy-300x200.jpg 300w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20241445_web1_20200120_080832--1--copy-768x512.jpg 768w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20241445_web1_20200120_080832--1--copy-1024x683.jpg 1024w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20241445_web1_20200120_080832--1--copy-640x427.jpg 640w" sizes="(max-width: 1200px) 100vw, 1200px" /></a>
+					</div>
+	</div>
+            </li>
+                            <li>
+                <div id="post-120285" class="row story-list-item collapse">
+	<div class="small-12 medium-8 photo content columns">
+					<h4 class="count"></h4><h5><a onClick="__gaTracker('send','event','Recirculating Content','Click','News Most Read');" href="https://www.lakecountrycalendar.com/business/bank-of-canada-keeps-key-rate-target-on-hold-trims-growth-expectations-for-2020/">Bank of Canada keeps key rate target on hold, trims growth expectations for 2020</a></h5>
+				<p class="lead web show-for-medium hide-for-large">The central bank says in its latest forecast that the Canadian economy will grow by 1.6 per cent this year
+</p>	</div>
+			<div class="show-for-medium medium-4 columns">
+							<a onClick="__gaTracker('send','event','Recirculating Content','Click','News Most Read');" href="https://www.lakecountrycalendar.com/business/bank-of-canada-keeps-key-rate-target-on-hold-trims-growth-expectations-for-2020/"><img src="https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20246658_web1_22544980.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20246658_web1_22544980.jpg 1200w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20246658_web1_22544980-300x200.jpg 300w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20246658_web1_22544980-768x512.jpg 768w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20246658_web1_22544980-1024x683.jpg 1024w, https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/20246658_web1_22544980-640x427.jpg 640w" sizes="(max-width: 1200px) 100vw, 1200px" /></a>
+					</div>
+	</div>
+            </li>
+                </ul>
+    </div>
+</div>            </div>
+        </div>
+    </div>
+</div>
+
+<!-- [post-block post_type='post' taxonomy='category' tax_term='home' taxonomy_posts_per_page='5' taxonomy_2='category' tax_2_term='home2' taxonomy_2_posts_per_page='8' tax_operator='AND' post_template='story-recirc' current_story_id='$currentID' reverse_chron='$reverse_chron'] -->
+<!--//*** Taboola article code ***//-->
+<div class="row">
+	<div class="small-12 columns">
+		<div class="row">
+            <div class="small-12 large-8 columns">
+                
+        <!-- taboola code -->
+            <div id="taboola-below-article-thumbnails"></div>
+            <script type="text/javascript">
+            window._taboola = window._taboola || [];
+            _taboola.push({
+                mode: 'thumbnails-a',
+                container: 'taboola-below-article-thumbnails',
+                placement: 'Below Article Thumbnails',
+                target_type: 'mix'
+            });
+            </script>
+        
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+        </section>
+        <div id="footer-container">
+            <footer id="footer">
+                
+                
+<div id="bp-logo" class="row">
+
+    <div class="small-12 columns">
+ 
+    <!-- *** BEGIN LOGO *** -->
+        <div class="textwidget">
+            <a class="pub-logo-small day-4" href="https://www.lakecountrycalendar.com/"><svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 503.03 48.1"><title></title><path class="bp-pub-logo" d="M3.73,2.67h8.45V41.8H23V49H3.73Z" transform="translate(-3.73 -1.76)"/><path class="bp-pub-logo" d="M30.77,2.67H43L48.71,49H40.58L39.35,38.68H32.52L31.35,49H24.27Zm5.4,7.15H36l-2.67,22.1h5.27Z" transform="translate(-3.73 -1.76)"/><path class="bp-pub-logo" d="M51.83,2.67h8.45V22h.13l7-19.37H75L68.66,18.2,76.27,49H68.14L63.46,28.21h-.13L60.28,35.5V49H51.83Z" transform="translate(-3.73 -1.76)"/><path class="bp-pub-logo" d="M79.52,2.67H98.63V9.82H88V21.65h7.87v7.54H88V41.8H99.08V49H79.52Z" transform="translate(-3.73 -1.76)"/><path class="bp-pub-logo" d="M129.18,19.44c0-7.67-1-10.53-3.05-10.53-1.76,0-3.51,1.17-3.51,16.9,0,15.21.91,16.9,3.51,16.9,2.79,0,3.44-4.29,3.58-11l7.15.33c0,8.06-1.17,17.81-11.05,17.81-9,0-12-8.84-12-24.05,0-17.68,5.33-24.05,12-24.05,9.75,0,10.92,9,10.92,17.42Z" transform="translate(-3.73 -1.76)"/><path class="bp-pub-logo" d="M152.58,1.76c7.48,0,12.35,5.79,12.35,24.05s-4.87,24.05-12.35,24.05-12.35-5.79-12.35-24.05S145.1,1.76,152.58,1.76Zm-3.12,28.93c0,10,1.17,12,3.12,12s3.12-2,3.12-12V20.93c0-10-1.17-12-3.12-12s-3.12,2-3.12,12Z" transform="translate(-3.73 -1.76)"/><path class="bp-pub-logo" d="M168.83,2.67h8.45V38.48c0,2.08.46,4.23,2.92,4.23s3.12-2,3.12-4.23V2.67h7.15V37.38c0,9.1-4,12.48-10.79,12.48-6.5,0-10.86-3.38-10.86-12.48Z" transform="translate(-3.73 -1.76)"/><path class="bp-pub-logo" d="M195.28,2.67h8.25l7.74,24.44h.13V2.67h6.76V49H211.6l-9-28h-.13V49h-7.15Z" transform="translate(-3.73 -1.76)"/><path class="bp-pub-logo" d="M227.2,9.82h-7.28V2.67h23V9.82h-7.28V49H227.2Z" transform="translate(-3.73 -1.76)"/><path class="bp-pub-logo" d="M245,2.67h9.49c8.06,0,13.39,3.38,13.39,13.13,0,3.9-1.17,9.1-4.94,11.31L268,49h-8.52l-4-19.89h-2V49H245Zm8.45,19.63h1.69c3.12,0,4.29-3.12,4.29-6.44,0-5-1.82-6.44-4.68-6.44h-1.3Z" transform="translate(-3.73 -1.76)"/><path class="bp-pub-logo" d="M275.36,31.07,267.63,2.67H276l4,18.14h.13l4.29-18.14h7.08l-7.74,27.63V49h-8.45Z" transform="translate(-3.73 -1.76)"/><path class="bp-pub-logo" d="M319.95,19.44c0-7.67-1-10.53-3.05-10.53-1.75,0-3.51,1.17-3.51,16.9,0,15.21.91,16.9,3.51,16.9,2.79,0,3.45-4.29,3.58-11l7.15.33c0,8.06-1.17,17.81-11.05,17.81-9,0-12-8.84-12-24.05,0-17.68,5.33-24.05,12-24.05,9.75,0,10.92,9,10.92,17.42Z" transform="translate(-3.73 -1.76)"/><path class="bp-pub-logo" d="M336.39,2.67h12.22L354.33,49h-8.12L345,38.68h-6.83L337,49h-7.09Zm5.39,7.15h-.13L339,31.92h5.27Z" transform="translate(-3.73 -1.76)"/><path class="bp-pub-logo" d="M357.45,2.67h8.45V41.8h10.79V49H357.45Z" transform="translate(-3.73 -1.76)"/><path class="bp-pub-logo" d="M380.33,2.67h19.11V9.82H388.78V21.65h7.87v7.54h-7.87V41.8H399.9V49H380.33Z" transform="translate(-3.73 -1.76)"/><path class="bp-pub-logo" d="M402.89,2.67h8.25l7.74,24.44H419V2.67h6.76V49H419.2l-9-28H410V49h-7.15Z" transform="translate(-3.73 -1.76)"/><path class="bp-pub-logo" d="M430.9,2.67h7.34c14.17,0,15.54,9.1,15.54,23.14,0,13.39-1.11,23.14-14.17,23.14H430.9Zm8.45,39.13c5.33-.06,5.59-2,5.59-16.06s-.26-15.86-5.59-15.93Z" transform="translate(-3.73 -1.76)"/><path class="bp-pub-logo" d="M462.75,2.67H475L480.69,49h-8.12l-1.24-10.27h-6.83L463.34,49h-7.09Zm5.39,7.15H468l-2.67,22.1h5.27Z" transform="translate(-3.73 -1.76)"/><path class="bp-pub-logo" d="M483.81,2.67h9.49c8.06,0,13.39,3.38,13.39,13.13,0,3.9-1.17,9.1-4.94,11.31l5,21.84h-8.52l-4-19.89h-2V49h-8.45Zm8.45,19.63H494c3.12,0,4.29-3.12,4.29-6.44,0-5-1.82-6.44-4.68-6.44h-1.3Z" transform="translate(-3.73 -1.76)"/></svg></a>        </div>
+
+    <!-- *** END LOGO *** -->
+    </div>            
+        
+</div><!-- row -->
+
+<div id="bp-social-footer" class="row">
+    <div class="small-12 columns">
+                    
+        <div class="textwidget">
+            <ul class="social footer">
+	<li><a title="Follow us on Facebook" class="social fa fa-facebook-f" href="https://www.facebook.com/Lake-Country-Calendar-301407309875409/" target="_blank"></a></li>
+	<li><a title="Follow us on Twitter" class="social fa fa-twitter" href="https://twitter.com/LC_Calendar" target="_blank"></a></li>
+<!--  <li><a title="Follow us on Instagram" class="social fa fa-instagram" href="#"  target="_blank"></a></li>
+	<li><a title="RSS Feed" class="social fa fa-rss" href="/feed/"></a></li> -->
+<li><a title="Submit a story" href="/submit/">
+            <img style="margin-bottom:0;width: 34px;height: 34px;" 
+            src="https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/assets/images/submit.png"></a>
+            </li><li><a title="Impress TV" href="http://impresstv.blackpress.ca/" target="_blank">
+            <img style="margin-bottom:0;width: 34px;height: 34px;" 
+            src="https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/assets/images/ImpressTV.png"></a>
+            </li></ul>        </div>
+
+    </div>
+</div><!-- row -->
+
+<div id="bp-site-map-title" class="row" >
+    <div class="small-12 columns" >
+                
+        <div class="textwidget" >        
+             <h4 class="text-center">Explore Lake Country Calendar</h4>
+        </div>
+
+    </div>
+</div><!-- row -->   
+
+<!-- <div id="bp-site-map" class="row" > -->
+<div id="bp-site-map" class="small-12 column row" >
+    <!-- <div class="small-12 columns"> -->
+
+        <ul><li><a href="/news/">NEWS</a></li><li><a href="/sports/">SPORTS</a></li><li><a href="/trending-now/">TRENDING NOW</a></li><li><a href="/business/">BUSINESS</a></li><li><a href="/entertainment/">ENTERTAINMENT</a></li><li><a href="/life/">LIFE</a></li><li><a href="/community/">COMMUNITY</a></li><li><a href="/opinion/">OPINION</a></li><li><a href="/video/">VIDEOS</a></li><li><a href="/weather/">WEATHER</a></li><li><a href="/obituaries/">OBITUARIES</a></li><li><a href="/e-editions/">SPECIAL SECTIONS</a></li><li><a href="/marketplace/">MARKETPLACE</a></li><li><a href="/contests/">CONTESTS</a></li><li><a href="/contact-us/">CONTACT US</a></li></ul>                             
+
+    <!-- </div>  -->                        
+</div><!-- row -->
+
+<div id="bp-media-group" class="row" >
+    
+    <div class="small-12 columns">
+                
+        <div class="textwidget">
+            
+            <a href="//www.blackpress.ca/publications/" target="_blank">BLACK PRESS MEDIA</a>      
+           
+        </div>
+
+    </div>
+    
+    <div class="small-12 columns menu-footer-container">
+        <ul id="menu-footer" class="menu" >
+            
+                     
+                    
+                    <li class="menu-item" >
+                        <a  target="_blank" href="//www.kelownacapnews.com/">Kelowna Capital News</a>
+                    </li>
+                
+                     
+                    
+                    <li class="menu-item" >
+                        <a  target="_blank" href="//www.vernonmorningstar.com">Vernon Morning News</a>
+                    </li>
+                
+                     
+                    
+                    <li class="menu-item" >
+                        <a  target="_blank" href="//www.pentictonwesternnews.com/">Penticton Western News</a>
+                    </li>
+                
+                     
+                    
+                    <li class="menu-item" >
+                        <a  target="_blank" href="//www.saobserver.net">Salmon Arm Observer</a>
+                    </li>
+                
+                     
+                    
+                    <li class="menu-item" >
+                        <a  target="_blank" href="//www.eaglevalleynews.com">Eagle Valley News</a>
+                    </li>
+                
+                     
+                    
+                    <li class="menu-item" >
+                        <a  target="_blank" href="//www.summerlandreview.com">Summerland Review</a>
+                    </li>
+                
+                     
+                    
+                    <li class="menu-item" >
+                        <a  target="_blank" href="//www.keremeosreview.com/">Keremeos Review</a>
+                    </li>
+                
+                     
+                    
+                    <li class="menu-item" >
+                        <a  target="_blank" href="//www.similkameenspotlight.com">Similkameen Spotlight</a>
+                    </li>
+                
+                    
+        
+        </ul>
+        
+    </div>
+
+    <!-- black press media logo-->
+    <div class="small-12 columns">
+        <div class="textwidget">
+                   
+            <a href="//www.blackpress.ca/publications/">
+                        <img style="max-width: 300px;padding-top: 2rem;" src="https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/assets/images/BlackPressMedia.svg" alt="Black Press Media" ></a>        </div>
+
+    </div>
+
+
+</div><!-- row -->
+
+
+<div id="bp-terms" class="row" >
+    
+    <div class="small-12 columns">
+        
+        <ul id="menu-footer" class="menu">
+            
+            <li class="menu-item"><a target="_blank" href="https://www.lakecountrycalendar.com/contact-us/">Contact Us</a></li><li class="menu-item"><a target="_blank" href="https://www.lakecountrycalendar.com/our-team/">Our Team</a></li><li class="menu-item"><a target="_blank" href="https://www.lakecountrycalendar.com/privacy-policy/">Privacy Policy</a></li><li class="menu-item"><a target="_blank" href="https://www.lakecountrycalendar.com/terms-of-use/">Terms of use</a></li><li class="menu-item"><a target="_blank" href="https://www.lakecountrycalendar.com/site-map/">Site Map</a></li><li class="menu-item"><a target="_blank" href="https://www.lakecountrycalendar.com/./local-news/">Lake Country News</a></li><li class="menu-item"><a target="_blank" href="https://www.lakecountrycalendar.com/weather/">Lake Country Weather</a></li><li class="menu-item"><a target="_blank" href="//okanaganclassifieds.lakecountrycalendar.com/">Lake Country Classifieds</a></li>      
+        </ul>
+
+    </div>
+
+    <div class="small-12 columns">
+                
+        <div class="textwidget">
+            &copy; 2020, <a href="#"></a>Lake Country Calendar and <a href="http://www.blackpress.ca/">Black Press Group Ltd.</a>
+
+
+        </div>
+
+    </div>
+
+</div><!-- row -->
+
+                            </footer>
+        </div>
+
+        
+
+<!-- Start Catfish ad -->
+<div style="position:fixed;bottom:0px;width:100%;background:white;">
+<div class='code-block code-block-17' style='margin: 8px 0; clear: both;'>
+<!-- Reserved for Catfish ad. See display call in Footer. -->
+<div id="div-gpt-17" class="gpt-ad" style="margin: 0 auto;width:320px;">
+<script type='text/javascript'>
+    googletag.cmd.push(function() {googletag.display('div-gpt-17');gptRefreshSlots.push(17);});
+</script>
+</div></div>
+</div>
+<!-- End Catfish ad -->
+
+
+<!-- Start Interstitial ad -->
+<div id='page-cover' style="z-index:999999; text-align:center;background-color:#FFF; position:fixed; top:0; left:0; width:100%; height:100%;padding-top: 25%;padding-left: 10px;padding-right: 10px;display: none;">
+<div class='code-block code-block-18' style='margin: 8px 0; clear: both;'>
+<!-- Reserved for Interstitial ad. See display call in Footer. -->
+<div id="div-gpt-18" class="gpt-ad">
+<script type='text/javascript'>
+  googletag.cmd.push(function() { googletag.display('div-gpt-18');gptRefreshSlots.push(18);googletag.pubads().addEventListener('slotRenderEnded', function(event) {
+                if (event.slot === gptAdSlots[18]) {
+                    if(event.isEmpty) {
+                        document.getElementById("page-cover").style.display = 'none';
+                    }
+                    else{
+                        console.log("setting timer")
+                    	//delay modal window from opening to allow ad tags to render; the above listener means the tags loaded, not necessarily showing the creative.
+                    	var delayModal = window.setTimeout(
+                    		function(){var timeoutID = window.setTimeout(function(){document.getElementById("page-cover").style.display = 'none';},8000);document.getElementById("page-cover").style.display = 'block';}
+                    	,5000);
+                    }
+                }
+            });
+  });
+  $(document).ready(function() {
+    	$("#close-interstitial").click(function() {
+        	document.getElementById("page-cover").style.display = 'none';
+    	});
+	}); 
+</script>
+</div>
+<div><a id="close-interstitial" href="#">Close ad</a></div></div>
+</div>
+<!-- End Interstitial ad -->
+
+
+<!-- Start vendor library call -->
+<!-- /1036919/vendor_library_0 -->
+<div id='div-gpt-21' style='height:1px; width:1px;'>
+<script>
+googletag.cmd.push(function() { googletag.display('div-gpt-21');gptRefreshSlots.push(21); });
+</script>
+</div>
+<!-- End vendor library call -->
+<!--<script type='text/javascript'>
+    googletag.cmd.push(function() {
+        for (i = 0; i < gptAdSlots.length; i++) { 
+            if(gptRefreshSlots.indexOf(i) == -1){                
+                googletag.destroySlots([gptAdSlots[i]]);
+                console.log('destroyed ' + i);
+            }
+        }
+        googletag.pubads().refresh(gptAdSlots);
+    });
+</script>-->
+                    <style type="text/css">
+                        div.aw-widget-36hour-inner a.aw-arrow {
+                            z-index: 1 !important;
+                        }
+                                                            
+                        div.aw-widget-current [class*="bg-"] {
+                            background: none !important;
+                        }
+
+                        div.aw-current-weather-inner h3 {
+                            display: none;
+                        }
+
+                        div.aw-widget-current-inner div.aw-widget-content {
+                            border: none !important;
+                        }
+
+                        div.aw-widget-current-inner div.aw-widget-content.bg-cl, 
+                        div.aw-widget-current-inner div.aw-widget-content.bg-cl a.aw-current-weather, 
+                        div.aw-widget-current-inner div.aw-widget-content.bg-s, 
+                        div.aw-widget-current-inner div.aw-widget-content.bg-s a.aw-current-weather {
+                                color: #000 !important;
+                        }
+
+                        div.aw-widget-current-inner div.aw-widget-content a.aw-current-weather p span.aw-temperature-today b {
+                            font-weight: 600 !important;
+                            padding-left: 40px !important;
+                            font-size: 1.5rem !important;
+                        }
+
+                        div.aw-widget-current-inner div.aw-widget-content a.aw-current-weather p time {
+                            display: none !important;
+                        }
+
+                        div.aw-widget-current-inner div.aw-widget-content a.aw-current-weather p span.aw-weather-description {
+                            display: none !important;
+                        }
+                        
+                        div.aw-widget-current-inner a.aw-toggle {
+                            display: none !important;
+                        }
+
+                        div#weatherContainer {
+                            padding-top: 10px;
+                        }
+
+                        .lt-106 div.aw-widget-current-inner div.aw-widget-content a.aw-current-weather span.aw-icon {
+                            background-position: 0 0 !important;
+                        }
+
+                        .lt-115 div.aw-widget-current-inner div.aw-widget-content a.aw-current-weather span.aw-icon {
+                            z-index: 1 !important;
+                        }
+
+                        .lt-479 div.aw-widget-current-inner div.aw-widget-content a.aw-current-weather p {
+                            z-index: 1 !important;
+                        }
+
+                        @media screen and (max-width: 39.9375em) {
+                            div.aw-widget-current-inner div.aw-widget-content a.aw-current-weather {
+                                color: #fff !important;
+                            }
+
+                            div#weatherContainer {
+                                padding-top: 10px;
+                            }
+
+                            div.aw-widget-current-inner div.aw-widget-content.bg-cl, 
+                            div.aw-widget-current-inner div.aw-widget-content.bg-cl a.aw-current-weather, 
+                            div.aw-widget-current-inner div.aw-widget-content.bg-s, 
+                            div.aw-widget-current-inner div.aw-widget-content.bg-s a.aw-current-weather {
+                                color: #fff !important;
+                            }
+
+                        }
+                    </style>
+                <script type='text/javascript' src='//content.jwplatform.com/libraries/yrJQMy68.js?ver=1.0.0'></script>
+<script type='text/javascript' src='https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/assets/components/featherlight/featherlight.js?ver=1.6.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var foundation = {"is_front_page":"0"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/dest/javascript/foundation.min.js?ver=2.36.14'></script>
+<script type='text/javascript' src='https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/dest/javascript/what-input/what-input.min.js?ver=4.0.3'></script>
+<script type='text/javascript' src='https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/dest/javascript/frame_resize_2.0.min.js?ver=2.36.14'></script>
+<script type='text/javascript' src='https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-includes/js/comment-reply.min.js?ver=5.2.5'></script>
+<script type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js?ver=1.9.0'></script>
+<script type='text/javascript' src='https://2sxb3ruikat4fdj68130mvc1-wpengine.netdna-ssl.com/wp-includes/js/wp-embed.min.js?ver=5.2.5'></script>
+
+
+        <!-- taboola code -->
+            <script type="text/javascript">
+            window._taboola = window._taboola || [];
+            _taboola.push({flush: true});
+        </script>
+        
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"e4824da135","applicationID":"96620599","transactionName":"NFVWZ0YCCERXAkxeXQ0fdVBACglZGRJRWVUPVQ==","queueTime":0,"applicationTime":169,"atts":"GBJVEQ4YG0o=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>

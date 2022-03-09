@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]--><head>
+<script type='text/javascript'>var _sf_startpt=(new Date()).getTime()</script>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge"><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"12d0b6b339",applicationID:"11950488"};window.NREUM||(NREUM={}),__nr_require=function(e,n,t){function r(t){if(!n[t]){var i=n[t]={exports:{}};e[t][0].call(i.exports,function(n){var i=e[t][1][n];return r(i||n)},i,i.exports)}return n[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(e,n,t){function r(){}function i(e,n,t){return function(){return o(e,[u.now()].concat(f(arguments)),n?null:this,t),n?void 0:this}}var o=e("handle"),a=e(4),f=e(5),c=e("ee").get("tracer"),u=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",d=l+"ixn-";a(p,function(e,n){s[n]=i(l+n,!0,"api")}),s.addPageAction=i(l+"addPageAction",!0),s.setCurrentRouteName=i(l+"routeName",!0),n.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,n){var t={},r=this,i="function"==typeof n;return o(d+"tracer",[u.now(),e,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return n.apply(this,arguments)}catch(e){throw c.emit("fn-err",[arguments,this,e],t),e}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,n){m[n]=i(d+n)}),newrelic.noticeError=function(e,n){"string"==typeof e&&(e=new Error(e)),o("err",[e,u.now(),!1,n])}},{}],2:[function(e,n,t){function r(e,n){var t=e.getEntries();t.forEach(function(e){"first-paint"===e.name?c("timing",["fp",Math.floor(e.startTime)]):"first-contentful-paint"===e.name&&c("timing",["fcp",Math.floor(e.startTime)])})}function i(e,n){var t=e.getEntries();t.length>0&&c("lcp",[t[t.length-1]])}function o(e){if(e instanceof s&&!l){var n,t=Math.round(e.timeStamp);n=t>1e12?Date.now()-t:u.now()-t,l=!0,c("timing",["fi",t,{type:e.type,fid:n}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var a,f,c=e("handle"),u=e("loader"),s=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){a=new PerformanceObserver(r),f=new PerformanceObserver(i);try{a.observe({entryTypes:["paint"]}),f.observe({entryTypes:["largest-contentful-paint"]})}catch(p){}}if("addEventListener"in document){var l=!1,d=["click","keydown","mousedown","pointerdown","touchstart"];d.forEach(function(e){document.addEventListener(e,o,!1)})}}},{}],3:[function(e,n,t){function r(e,n){if(!i)return!1;if(e!==i)return!1;if(!n)return!0;if(!o)return!1;for(var t=o.split("."),r=n.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}n.exports={agent:i,version:o,match:r}},{}],4:[function(e,n,t){function r(e,n){var t=[],r="",o=0;for(r in e)i.call(e,r)&&(t[o]=n(r,e[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;n.exports=r},{}],5:[function(e,n,t){function r(e,n,t){n||(n=0),"undefined"==typeof t&&(t=e?e.length:0);for(var r=-1,i=t-n||0,o=Array(i<0?0:i);++r<i;)o[r]=e[n+r];return o}n.exports=r},{}],6:[function(e,n,t){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,n,t){function r(){}function i(e){function n(e){return e&&e instanceof r?e:e?c(e,f,o):o()}function t(t,r,i,o){if(!l.aborted||o){e&&e(t,r,i);for(var a=n(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function d(e,n){h[e]=v(e).concat(n)}function m(e,n){var t=h[e];if(t)for(var r=0;r<t.length;r++)t[r]===n&&t.splice(r,1)}function v(e){return h[e]||[]}function g(e){return p[e]=p[e]||i(t)}function w(e,n){u(e,function(e,t){n=n||"feature",y[t]=n,n in s||(s[n]=[])})}var h={},y={},b={on:d,addEventListener:d,removeEventListener:m,emit:t,get:g,listeners:v,context:n,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(l.aborted=!0,s=l.backlog={})}var f="nr@context",c=e("gos"),u=e(4),s={},p={},l=n.exports=i();l.backlog=s},{}],gos:[function(e,n,t){function r(e,n,t){if(i.call(e,n))return e[n];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,n,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return e[n]=r,r}var i=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(e,n,t){function r(e,n,t,r){i.buffer([e],r),i.emit(e,n,t)}var i=e("ee").get("handle");n.exports=r,r.ee=i},{}],id:[function(e,n,t){function r(e){var n=typeof e;return!e||"object"!==n&&"function"!==n?-1:e===window?0:a(e,o,function(){return i++})}var i=1,o="nr@id",a=e("gos");n.exports=r},{}],loader:[function(e,n,t){function r(){if(!x++){var e=E.info=NREUM.info,n=d.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&n))return s.abort();u(y,function(n,t){e[n]||(e[n]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=d.createElement("script");t.src="https://"+e.agent,n.parentNode.insertBefore(t,n)}}function i(){"complete"===d.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=e("handle"),u=e(4),s=e("ee"),p=e(3),l=window,d=l.document,m="addEventListener",v="attachEvent",g=l.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:l.setImmediate,CT:clearTimeout,XHR:g,REQ:l.Request,EV:l.Event,PR:l.Promise,MO:l.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1167.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=n.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};e(1),e(2),d[m]?(d[m]("DOMContentLoaded",o,!1),l[m]("load",r,!1)):(d[v]("onreadystatechange",i),l[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=e(6)},{}],"wrap-function":[function(e,n,t){function r(e){return!(e&&e instanceof Function&&e.apply&&!e[a])}var i=e("ee"),o=e(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;n.exports=function(e,n){function t(e,n,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){l([u,"",[r,a,i],f])}s(n+"start",[r,a,i],f);try{return c=e.apply(a,r)}catch(p){throw s(n+"err",[r,a,p],f),p}finally{s(n+"end",[r,a,c],f)}}return r(e)?e:(n||(n=""),nrWrapper[a]=e,p(e,nrWrapper),nrWrapper)}function u(e,n,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<n.length;c++)f=n[c],a=e[f],r(a)||(e[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||n){var o=c;c=!0;try{e.emit(t,r,i,n)}catch(a){l([a,t,r,i])}c=o}}function p(e,n){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(e);return t.forEach(function(t){Object.defineProperty(n,t,{get:function(){return e[t]},set:function(n){return e[t]=n,n}})}),n}catch(r){l([r])}for(var i in e)f.call(e,i)&&(n[i]=e[i]);return n}function l(n){try{e.emit("internal-error",n)}catch(t){}}return e||(e=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="shortcut icon" href="https://www.eldiario24.com/favicon.ico">
+<title>Que dice el pronóstico del tiempo en Tucumán hoy: Domingo 15 de marzo de 2020 | El Diario 24</title>
+<meta name="title" content="Que dice el pronóstico del tiempo en Tucumán hoy: Domingo 15 de marzo de 2020 | El Diario 24" />
+<meta property="og:title" content="Que dice el pronóstico del tiempo en Tucumán hoy: Domingo 15 de marzo de 2020 | El Diario 24" />
+<meta name="twitter:title" content="Que dice el pronóstico del tiempo en Tucumán hoy: Domingo 15 de marzo de 2020 | El Diario 24" />
+<meta itemprop="name" content="Que dice el pronóstico del tiempo en Tucumán hoy: Domingo 15 de marzo de 2020 | El Diario 24" />
+<meta name="description" content="El Servicio Meteorológico Nacional (SMN) anticipa que tenemos un domingo más fresco y que comenzará una semana con temperaturas más agradable que la anterior.">
+<meta name="Description" content="El Servicio Meteorológico Nacional (SMN) anticipa que tenemos un domingo más fresco y que comenzará una semana con temperaturas más agradable que la anterior." />
+<meta name="DC.description" content="El Servicio Meteorológico Nacional (SMN) anticipa que tenemos un domingo más fresco y que comenzará una semana con temperaturas más agradable que la anterior." />
+<meta property="og:description" content="El Servicio Meteorológico Nacional (SMN) anticipa que tenemos un domingo más fresco y que comenzará una semana con temperaturas más agradable que la anterior." />
+<meta itemprop="description" content="El Servicio Meteorológico Nacional (SMN) anticipa que tenemos un domingo más fresco y que comenzará una semana con temperaturas más agradable que la anterior." />
+<meta name="keywords" content="Tucumán,que,dice,pronostico,tiempo,tucuman,hoy,domingo,15,marzo,2020,El Diario 24" />
+<meta name="Keywords" content="Tucumán,que,dice,pronostico,tiempo,tucuman,hoy,domingo,15,marzo,2020,El Diario 24" />
+<meta name="google-site-verification" content="NguxisJd-F4XtMAAxs9PO_UksrBHeHxGI5dnUJ2RgTc" />
+<meta name="theme-color" content="#AD1226" />
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@eldiario24">
+<meta name="twitter:creator" content="@eldiario24">
+<meta name="twitter:title" content="Que dice el pronóstico del tiempo en Tucumán hoy: Domingo 15 de marzo de 2020 | El Diario 24">
+<meta name="twitter:description" content="El Servicio Meteorológico Nacional (SMN) anticipa que tenemos un domingo más fresco y que comenzará una semana con temperaturas más agradable que la anterior.">
+<meta name="twitter:image:src" content="https://www.eldiario24.com/d24ar/fotos/notas/2020/03/15/447037_20200315054615.jpg">
+<link rel="image_src" type="image/jpeg" href="https://www.eldiario24.com/d24ar/fotos/notas/2020/03/15/447037_20200315054615.jpg">
+<meta property="og:image" content="https://www.eldiario24.com/d24ar/fotos/notas/2020/03/15/447037_20200315054615.jpg" />
+<meta itemprop="image" content="https://www.eldiario24.com/d24ar/fotos/notas/2020/03/15/447037_20200315054615.jpg" />
+<link rel="canonical" href="https://www.eldiario24.com/nota/tucuman/447037/que-dice-pronostico-tiempo-tucuman-hoy-domingo-15-marzo-2020.html" />
+<link rel="amphtml" href="https://www.eldiario24.com/nota/amp/tucuman/447037/que-dice-pronostico-tiempo-tucuman-hoy-domingo-15-marzo-2020.html" />
+<meta content='1046575068805312' property='fb:app_id' />
+<link href="https://www.eldiario24.com/common/bootstrap3.1.1/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://www.eldiario24.com/common/font-awesome-4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet' type='text/css'>
+<link href="https://www.eldiario24.com/css/d24ar/style.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="https://www.eldiario24.com/css/common/imagelightbox.css">
+
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://www.eldiario24.com/common/bootstrap3.1.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+<script type="text/javascript" src="https://www.eldiario24.com/js/common/imagelightbox.min.js"></script>
+<script type="text/javascript" src="https://www.eldiario24.com/js/common/jquery.lazyload.min.js"></script>
+<script type="text/javascript">var URL_ACTUAL = "https://www.eldiario24.com/";</script>
+<script src="https://www.eldiario24.com/js/varios.js"></script>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+          (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-8823171581949548",
+            enable_page_level_ads: true
+          });
+        </script>
+<meta http-equiv="refresh" content="600">
+<link rel="manifest" href="/manifest.json">
+<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async='async'></script>
+<script>
+        var OneSignal = window.OneSignal || [];
+        OneSignal.push(["init", {
+          appId: "da0749ea-7cf0-4962-bd1a-fd3079d4d9f4",
+          autoRegister: true, 
+          persistNotification: false,
+          httpPermissionRequest: {
+            enable: true
+          },
+          notifyButton: {
+              enable: false
+          },
+          httpPermissionRequest: {
+                modalTitle: 'Información al instante!',
+                modalMessage: "Te mantendremos informado con noticias de último momento",
+                modalButtonText: 'Cerrar'
+            },
+            welcomeNotification: {
+            "title": "Te mantendremos informado...",
+            "message": "Muchas gracias por suscribirte!",
+            // "url": "" /* Leave commented for the notification to not open a window on Chrome and Firefox (on Safari, it opens to your webpage) */
+            },
+            promptOptions: {
+                /* actionMessage limited to 90 characters */
+                actionMessage: "Nos gustaría mostrarte notificaciones de las últimas noticias y actualizaciones.",
+                /* acceptButtonText limited to 15 characters */
+                acceptButtonText: "Acepto",
+                /* cancelButtonText limited to 15 characters */
+                cancelButtonText: "No me interesa"
+            }
+        }]);
+    </script>
+<script>
+      window.fbAsyncInit = function() {
+
+        var accessToken;
+           var uID;
+
+        FB.init({
+          appId            : '1046575068805312',
+          autoLogAppEvents : true,
+          cookie     : true,
+             xfbml      : true,
+          status           : true,
+          version          : 'v4.0'
+        });
+
+     /*   FB.login(function(response) {
+    if (response.authResponse) {
+     console.log('Welcome!  Fetching your information.... ');
+     FB.api('/me', function(response) {
+       console.log('Good to see you, ' + response.name + '.');
+     });
+    } else {
+     console.log('User cancelled login or did not fully authorize.');
+    }
+});*/
+
+        FB.AppEvents.logPageView();
+
+           FB.getLoginStatus(function(response) { 
+            if(!(response.status === 'connected')){
+                console.log(response);
+                } else {
+                    uID = response.authResponse.userID;
+                    accessToken = response.authResponse.accessToken;
+                     console.log('uid: '+uID);
+                     console.log('accessToken: '+accessToken);
+
+                    FB.api('/me', {fields: 'last_name'}, {  access_token : accessToken } ,function(response) {
+                        console.log(response);
+                    });
+                }
+
+            });
+
+             console.log(FB.getAuthResponse());
+
+        /*FB.api('/me/',{  access_token : 'EAAO32r80ZBMABAME8GwvjTSwOlvhvaQ6aUSY9r3uLReGUIip9cfZBNqAuy1wgxF2VZBZChnMZBYb2gSFEBbZB7oBTsHuMmCaC79I3zWT4Xgn3j8kjjf7p5PaJoWwKZA2gI54uQagmPdRJguK81fPwCPH4xuscdZBk80ZD' },function(response) { 
+            if( response.data ) 
+            { 
+                console.log(response.data);
+                if( !isEmpty(response.data) ) 
+                    console.log('You are a fan!'); 
+                else 
+                    console.log('Not a fan!');
+            } 
+            else 
+            { 
+                console.log('ERROR!'); 
+            } 
+        }); // function to check for an empty object 
+        function isEmpty(obj) { for(var prop in obj) { if(obj.hasOwnProperty(prop)) return false; } return true; }*/
+      };
+    </script>
+<script async defer src="https://connect.facebook.net/en_US/sdk.js"></script>
+</head>
+<body>
+<!--[if lt IE 7]>
+        <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+    <![endif]-->
+<div class="text-center bannertop"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8823171581949548" data-ad-slot="2206700981" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+<div class="container-fluid">
+<header>
+<div class="row grisoscuro linea"></div>
+<div class="row degrade">
+<div class="col-md-12 padding text-center">
+<div class="row">
+<div class="container top">
+<a class="logo" href="https://www.eldiario24.com/">
+<img src="https://www.eldiario24.com/img/c/d24ar.png" class="img-responsive" align="center">
+<p><br />Lunes 16 de Marzo de 2020</p>
+</a>
+<div class="iconfecha">
+<a href="https://www.facebook.com/eldiario24tucuman" target="_blank" class="iconredes icofacebook">
+<span class="fa-stack fa-lg">
+<i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+</span>
+</a>
+<a href="https://twitter.com/eldiario24" target="_blank" class="iconredes icotwitter">
+<span class="fa-stack fa-lg">
+<i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+</span>
+</a>
+<a href="https://www.youtube.com/user/eldiario24detucuman" target="_blank" class="iconredes icoyoutube">
+<span class="fa-stack fa-lg">
+<i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-youtube fa-stack-1x fa-inverse"></i>
+</span>
+</a>
+<a href="https://plus.google.com/+Eldiario24tucuman" target="_blank" class="iconredes icogoogleplus">
+<span class="fa-stack fa-lg">
+<i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-google-plus fa-stack-1x fa-inverse"></i>
+</span>
+</a>
+<a href="https://www.eldiario24.com/rss" target="_blank" class="iconredes icorss">
+<span class="fa-stack fa-lg">
+<i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+</span>
+</a>
+</div>
+<div class="tiempo">
+<div class="weather">
+<img class="weather_img" src="https://www.eldiario24.com/img/clima/yiconos/colorful/png/26.png">
+<div class="w_data">
+<span class="temperatura">20º</span>
+<span class="humedad">
+<span class="h">H</span>
+92 </span>
+</div>
+<div class="w_city">SMTuc</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</header>
+<div class="navbar navbar-default" role="navigation">
+<div class="container bordesombra">
+<div class="navbar-header">
+<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+<span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+</div>
+<div class="navbar-collapse collapse">
+<div class="row">
+<div class="col-md-12">
+<ul class="nav navbar-nav navbar-left">
+<li><a href="https://www.eldiario24.com/"><i class="fa fa-home"></i></a></li>
+<li><a href="https://www.eldiario24.com/tucuman">Tucumán</a></li>
+<li><a href="https://www.eldiario24.com/argentina">Argentina</a></li>
+<li><a href="https://www.eldiario24.com/el-mundo">El Mundo</a></li>
+<li><a href="https://www.eldiario24.com/culturas">Culturas</a></li>
+<li><a href="https://www.eldiario24.com/deportes">Deportes</a></li>
+<li><a href="https://www.eldiario24.com/policiales">Policiales</a></li>
+<li><a href="https://www.eldiario24.com/tv-vivo">Más Deportes</a></li>
+<li><a href="https://www.eldiario24.com/seccion/29/la-timba">La Timba</a></li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+<li style="margin:0px 12px;">
+<input type="text" id="buscarenmenu" placeholder="Buscar..." class="form-control enmenu" />
+</li>
+<li style="margin:3px -12px;"><a href="javascript:void(0);" onclick="if($('#buscarenmenu').val()!=''){ window.location='https://www.eldiario24.com/buscar/'+$('#buscarenmenu').val() }" style="display:inline-block; padding:7px 12px;"><i class="fa fa-search fa-lg"></i></a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="container bordesombra blanco">
+<div class="row">
+<div class="col-md-9 centro pbt15 nota">
+<div class="row">
+<article class="notacompleta">
+<div class="col-md-12 mb15">
+<div class="row text-center">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8823171581949548" data-ad-slot="6261851285" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script> </div>
+</div>
+<div class="col-md-12">
+<div class="fecha"><i class="fa fa-clock-o fa-lg"></i> 15/03/2020</div>
+</div>
+<div class="col-md-12">
+<h3>
+<span>Tucumán</span>
+</h3>
+</div>
+<div class="col-md-12">
+<h4 class="antetitulo">
+</h4>
+</div>
+<div class="col-md-12">
+<h1 class="f30">Que dice el pronóstico del tiempo en Tucumán hoy: Domingo 15 de marzo de 2020</h1>
+</div>
+<div class="col-md-12">
+<div class="bajada">
+El Servicio Meteorológico Nacional (SMN) anticipa que tenemos un domingo más fresco y que comenzará una semana con temperaturas más agradable que la anterior. </div>
+</div>
+<div class="col-md-12">
+<div class="recomendacion clearfix minimizado">
+<a class="iconredesnota" onclick="compartir_nota('http://www.facebook.com/sharer/sharer.php?u=https://www.eldiario24.com/nota/tucuman/447037/que-dice-pronostico-tiempo-tucuman-hoy-domingo-15-marzo-2020.html',447037,32,700,435)" href="javascript:void(0);">
+<span class="fa-stack fa-1x icofacebook">
+<i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+</span>
+</a>
+<a class="iconredesnota" onclick="compartir_nota('http://twitter.com/share?text=Que dice el pronóstico del tiempo en Tucumán hoy: Domingo 15 de marzo de 2020. @eldiario24&amp;url=https://www.eldiario24.com/nota/tucuman/447037/que-dice-pronostico-tiempo-tucuman-hoy-domingo-15-marzo-2020.html',447037,32,700,435);" href="javascript:void(0);">
+<span class="fa-stack fa-1x icotwitter">
+<i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+</span>
+</a>
+<a class="iconredesnota visible-xs" href="whatsapp://send?text=Que dice el pronóstico del tiempo en Tucumán hoy: Domingo 15 de marzo de 2020 https://www.eldiario24.com/nota/tucuman/447037/que-dice-pronostico-tiempo-tucuman-hoy-domingo-15-marzo-2020.html">
+<span class="fa-stack fa-1x icowhatsapp">
+<i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-whatsapp fa-stack-1x fa-inverse"></i>
+</span>
+</a>
+<a class="iconredesnota" onclick="compartir_nota('https://www.linkedin.com/shareArticle?mini=true&amp;url=https://www.eldiario24.com/nota/tucuman/447037/que-dice-pronostico-tiempo-tucuman-hoy-domingo-15-marzo-2020.html&amp;title=Que dice el pronóstico del tiempo en Tucumán hoy: Domingo 15 de marzo de 2020&amp;source=d24ar',447037,32,700,435);" href="javascript:void(0);">
+<span class="fa-stack fa-1x icolinkedin">
+<i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+</span>
+</a>
+<a class="iconredesnota" onclick="compartir_nota('https://plus.google.com/share?hl=en&amp;url=https://www.eldiario24.com/nota/tucuman/447037/que-dice-pronostico-tiempo-tucuman-hoy-domingo-15-marzo-2020.html',447037,32,700,435);" href="javascript:void(0);">
+<span class="fa-stack fa-1x icogoogleplus">
+<i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-google-plus fa-stack-1x fa-inverse"></i>
+</span>
+</a>
+<a class="iconredesnota" onclick="window.print();">
+<span class="fa-stack fa-1x icocomentario">
+<i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-print fa-stack-1x fa-inverse"></i>
+</span>
+</a>
+</div>
+</div>
+<div class="col-md-12">
+<figure>
+<a href="https://www.eldiario24.com/d24ar/fotos/notas/2020/03/15/447037_20200315054615.jpg" class="lb" title="Que dice el pronóstico del tiempo en Tucumán hoy: Domingo 15 de marzo de 2020">
+<img src="https://www.eldiario24.com/d24ar/fotos/cache/notas/2020/03/15/750x380_447037_20200315054615.jpg" alt="Que dice el pronóstico del tiempo en Tucumán hoy: Domingo 15 de marzo de 2020 | El Diario 24" title="Que dice el pronóstico del tiempo en Tucumán hoy: Domingo 15 de marzo de 2020 | El Diario 24" width="750" height="380" /> <span class="introimage"><i class="fa fa-arrows-alt fa-lg"></i> Ampliar (1 fotos)</span>
+</a>
+<p>Que dice el pronóstico del tiempo en Tucumán hoy: Domingo 15 de marzo de 2020</p>
+</figure>
+</div>
+<div class="col-md-12">
+<div class="row">
+<div class="col-md-12 sombra-interior textonota">
+<div class="bloquedespliegue text-center">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8823171581949548" data-ad-slot="9873793237" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script> </div>
+<div>
+<p>El Servicio Meteorológico Nacional (SMN) había anunciado lluvias para este domingo en Tucumán. Y, de hecho al menos por esta vez, el organismo no falló y a la madrugada teníamos lluvia y la sensación de un que comenzaba un día más fresco.<br><br>Tras una semana de calor agobiante, con una sensación térmica cercana a los 40 grados, el pronóstico prevé que "se desarrollen áreas de lluvias y tormentas aisladas sobre la región, pudiendo ser algunas localmente fuertes, estar acompañadas principalmente de abundante caída de agua en cortos períodos, fuerte actividad eléctrica, ráfagas y ocasional cáida de granizo".</p><p>A las 5 de la mañana la temperatura era de 22ºC y se anticipaba que no iba a subir mucho más durante la jornada.</p><p>Comienza una semana que será mucho más llevadera que la anterior.<br></p> </div>
+<div class="col-md-12 extranota grisclaro">
+<h5>
+<span><i class="fa fa-tags"></i> Tags</span>
+</h5>
+<div class="tags" itemprop="keywords">
+<a title="Clima" rel="tag" class="tag" style="text-decoration:none;" href="https://www.eldiario24.com/tags/listado/106/clima">Clima</a>
+<a title="El Tiempo" rel="tag" class="tag" style="text-decoration:none;" href="https://www.eldiario24.com/tags/listado/760/tiempo">El Tiempo</a>
+<a title="Servicio Meteorológico Nacional" rel="tag" class="tag" style="text-decoration:none;" href="https://www.eldiario24.com/tags/listado/1082/servicio-meteorologico-nacional">Servicio Meteorológico Nacional</a>
+<a title="Condiciones climaticas" rel="tag" class="tag" style="text-decoration:none;" href="https://www.eldiario24.com/tags/listado/2705/condiciones-climaticas">Condiciones climaticas</a>
+</div>
+</div>
+<br clear="all" />
+<div class="col-md-12">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8823171581949548" data-ad-slot="8742100073" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script> </div>
+<div class="col-md-12" style="margin-top:20px;">
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+                           var js, fjs = d.getElementsByTagName(s)[0];
+                           if (d.getElementById(id)) return;
+                           js = d.createElement(s); js.id = id;
+                           js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.8&appId=1046575068805312";
+                           fjs.parentNode.insertBefore(js, fjs);
+                         }(document, 'script', 'facebook-jssdk'));</script>
+<div class="fb-comments" data-colorscheme="light" data-href="https://www.eldiario24.com/nota/tucuman/447037/que-dice-pronostico-tiempo-tucuman-hoy-domingo-15-marzo-2020.html" data-width="100%" data-numposts="20"></div>
+</div>
+<div class="col-md-12 recomendacion prebote grisoscuro">
+<h5>
+<span><i class="fa fa-pencil-square-o"></i> Notas Relacionadas:</span>
+</h5>
+<div class="rw">
+<div class="col-md-3 pd5">
+<article role="article" class="rebote">
+<figure>
+<a href="https://www.eldiario24.com/nota/tucuman/447058/san-martin-volvio-perder-sus-perseguidores-se-acercan-tabla.html"><img src="https://www.eldiario24.com/d24ar/fotos/cache/notas/2020/03/15/310x174_447058_20200315171214.jpg" alt="" title="" width="310" height="174" /></a>
+</figure>
+<h2 class="f14">
+<a href="https://www.eldiario24.com/nota/tucuman/447058/san-martin-volvio-perder-sus-perseguidores-se-acercan-tabla.html">San Martín volvió a perder y sus perseguidores se acercan en la tabla</a>
+</h2>
+</article>
+</div>
+<div class="col-md-3 pd5">
+<article role="article" class="rebote">
+<figure>
+<a href="https://www.eldiario24.com/nota/tucuman/447021/postergan-lanzamiento-boleto-universitario-gratuito-tucuman.html"><img src="https://www.eldiario24.com/d24ar/fotos/cache/notas/2020/03/14/310x174_447021_20200314171621.jpg" alt="" title="" width="310" height="174" /></a>
+</figure>
+<h2 class="f14">
+<a href="https://www.eldiario24.com/nota/tucuman/447021/postergan-lanzamiento-boleto-universitario-gratuito-tucuman.html">Postergan el lanzamiento del boleto universitario gratuito en Tucumán</a>
+</h2>
+</article>
+</div>
+<div class="col-md-3 pd5">
+<article role="article" class="rebote">
+<figure>
+<a href="https://www.eldiario24.com/nota/tucuman/447020/atletico-se-presento-monumental-quedo-suspendido-partido.html"><img src="https://www.eldiario24.com/d24ar/fotos/cache/notas/2020/03/14/310x174_447020_20200314170606.jpg" alt="" title="" width="310" height="174" /></a>
+</figure>
+<h2 class="f14">
+<a href="https://www.eldiario24.com/nota/tucuman/447020/atletico-se-presento-monumental-quedo-suspendido-partido.html">Atlético se presentó en el Monumental y quedó suspendido el partido</a>
+</h2>
+</article>
+</div>
+<div class="col-md-3 pd5">
+<article role="article" class="rebote">
+<figure>
+<a href="https://www.eldiario24.com/nota/tucuman/447010/byos-empresa-innovadora-recicla-aceite-comestible-tafi-viejo.html"><img src="https://www.eldiario24.com/d24ar/fotos/cache/notas/2020/03/14/310x174_447010_20200314121147.jpg" alt="" title="" width="310" height="174" /></a>
+</figure>
+<h2 class="f14">
+<a href="https://www.eldiario24.com/nota/tucuman/447010/byos-empresa-innovadora-recicla-aceite-comestible-tafi-viejo.html">BYOS, la empresa innovadora que recicla el aceite comestible en Tafí Viejo</a>
+</h2>
+</article>
+</div>
+</div>
+<br clear="all" />
+<h5>
+<span><i class="fa fa-pencil-square-o"></i> Te Recomendamos:</span>
+</h5>
+<div class="rw">
+<div class="col-md-3 pd5">
+<article role="article" class="rebote">
+<figure>
+<a href="https://www.eldiario24.com/nota/tucuman/445946/1-marzo-comienzan-inscripciones-para-becas-progresar-estos-son-requisitos.html"><img src="https://www.eldiario24.com/d24ar/fotos/cache/notas/2020/02/24/310x174_445946_20200224094904.jpg" alt="" title="" width="310" height="174" /></a>
+</figure>
+<h2 class="f14">
+<a href="https://www.eldiario24.com/nota/tucuman/445946/1-marzo-comienzan-inscripciones-para-becas-progresar-estos-son-requisitos.html">El 1° de marzo comienzan las inscripciones para las Becas Progresar: Estos son los requisitos</a>
+</h2>
+</article>
+</div>
+<div class="col-md-3 pd5">
+<article role="article" class="rebote">
+<figure>
+<a href="https://www.eldiario24.com/nota/tucuman/446639/resultados-telekino-domingo-8-marzo-2020.html"><img src="https://www.eldiario24.com/d24ar/fotos/cache/notas/2020/03/08/310x174_446639_20200308161152.jpg" alt="" title="" width="310" height="174" /></a>
+</figure>
+<h2 class="f14">
+<a href="https://www.eldiario24.com/nota/tucuman/446639/resultados-telekino-domingo-8-marzo-2020.html">Resultados del TeleKino del Domingo 8 de Marzo de 2020</a>
+</h2>
+</article>
+</div>
+<div class="col-md-3 pd5">
+<article role="article" class="rebote">
+<figure>
+<a href="https://www.eldiario24.com/nota/tucuman/445917/resultados-telekino-domingo-23-febrero-2020.html"><img src="https://www.eldiario24.com/d24ar/fotos/cache/notas/2020/02/23/310x174_445917_20200223161713.jpg" alt="" title="" width="310" height="174" /></a>
+</figure>
+<h2 class="f14">
+<a href="https://www.eldiario24.com/nota/tucuman/445917/resultados-telekino-domingo-23-febrero-2020.html">Resultados del TeleKino del Domingo 23 de Febrero de 2020</a>
+</h2>
+</article>
+</div>
+<div class="col-md-3 pd5">
+<article role="article" class="rebote">
+<figure>
+<a href="https://www.eldiario24.com/nota/tucuman/446310/festival-salamanca-se-suma-al-rosario-fracasos-municipalidad-banda.html"><img src="https://www.eldiario24.com/d24ar/fotos/cache/notas/2020/03/02/310x174_446310_20200302125221.jpg" alt="" title="" width="310" height="174" /></a>
+</figure>
+<h2 class="f14">
+<a href="https://www.eldiario24.com/nota/tucuman/446310/festival-salamanca-se-suma-al-rosario-fracasos-municipalidad-banda.html">El Festival de la Salamanca se suma al rosario de fracasos de la Municipalidad de La Banda</a>
+</h2>
+</article>
+</div>
+</div>
+</div> <div class="col-md-12 recomendacion">
+<h5>
+<span><i class="fa fa-share"></i> Recomienda esta nota:</span>
+</h5>
+<a class="iconredesnota" onclick="compartir_nota('http://www.facebook.com/sharer/sharer.php?u=https://www.eldiario24.com/nota/tucuman/447037/que-dice-pronostico-tiempo-tucuman-hoy-domingo-15-marzo-2020.html',447037,32,700,435)" href="javascript:void(0);">
+<span class="fa-stack fa-1x icofacebook">
+<i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+</span>
+</a>
+<a class="iconredesnota" onclick="compartir_nota('http://twitter.com/share?text=Que dice el pronóstico del tiempo en Tucumán hoy: Domingo 15 de marzo de 2020. @eldiario24&amp;url=https://www.eldiario24.com/nota/tucuman/447037/que-dice-pronostico-tiempo-tucuman-hoy-domingo-15-marzo-2020.html',447037,32,700,435);" href="javascript:void(0);">
+<span class="fa-stack fa-1x icotwitter">
+<i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+</span>
+</a>
+<a class="iconredesnota visible-xs" href="whatsapp://send?text=Que dice el pronóstico del tiempo en Tucumán hoy: Domingo 15 de marzo de 2020 https://www.eldiario24.com/nota/tucuman/447037/que-dice-pronostico-tiempo-tucuman-hoy-domingo-15-marzo-2020.html">
+<span class="fa-stack fa-1x icowhatsapp">
+<i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-whatsapp fa-stack-1x fa-inverse"></i>
+ </span>
+</a>
+<a class="iconredesnota" onclick="compartir_nota('https://www.linkedin.com/shareArticle?mini=true&amp;url=https://www.eldiario24.com/nota/tucuman/447037/que-dice-pronostico-tiempo-tucuman-hoy-domingo-15-marzo-2020.html&amp;title=Que dice el pronóstico del tiempo en Tucumán hoy: Domingo 15 de marzo de 2020&amp;source=d24ar',447037,32,700,435);" href="javascript:void(0);">
+<span class="fa-stack fa-1x icolinkedin">
+<i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+</span>
+</a>
+<a class="iconredesnota" onclick="compartir_nota('https://plus.google.com/share?hl=en&amp;url=https://www.eldiario24.com/nota/tucuman/447037/que-dice-pronostico-tiempo-tucuman-hoy-domingo-15-marzo-2020.html',447037,32,700,435);" href="javascript:void(0);">
+<span class="fa-stack fa-1x icogoogleplus">
+<i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-google-plus fa-stack-1x fa-inverse"></i>
+</span>
+</a>
+<a class="iconredesnota" onclick="window.print();">
+<span class="fa-stack fa-1x icocomentario">
+<i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-print fa-stack-1x fa-inverse"></i>
+</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</article>
+<script type="text/javascript">
+     $.post("https://www.eldiario24.com/visitas/audita",{nota_id: 447037, key: '7d131d84614462be828f95350b8154ee'},function(data){});     
+</script> </div>
+</div>
+<div class="col-md-3 derecho mt15 "><aside class="publi mb15"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8823171581949548" data-ad-slot="1217967300" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script></aside><div class="col-md-12 publi mb15">
+<div class="automatico ranking-derecho">
+<h3><span>Ranking</span></h3>
+<ul class="nav nav-tabs nav-justified">
+<li class="active"><a data-toggle="tab" href="#ultimas">Ultimas</a></li>
+<li><a data-toggle="tab" href="#leidas">Más Leídas</a></li>
+</ul>
+<div class="tab-content">
+<div id="ultimas" class="tab-pane fade in active">
+<ul class="list-group">
+<a href="https://www.eldiario24.com/nota/culturas/447062/muere-conocido-locutor-sergio-velazco-ferrero.html" class="list-group-item">Muere el conocido locutor Sergio Velazco Ferrero</a><a href="https://www.eldiario24.com/nota/argentina/447061/santiago-otorga-licencia-empleados-publicos-casos-sospechosos-coronavirus.html" class="list-group-item">Santiago otorga licencia a los empleados públicos con "casos sospechosos" de coronavirus</a><a href="https://www.eldiario24.com/nota/argentina/447060/coronavirus-guia-para-todos-argentinos-estan-exterior-sus-familiares.html" class="list-group-item">Coronavirus: Guía para todos los argentinos que están en el exterior y sus familiares</a><a href="https://www.eldiario24.com/nota/deportes/447059/brasil-suspende-futbol-para-ayudar-frenar-coronavirus.html" class="list-group-item">Brasil suspende el fútbol para ayudar a frenar el coronavirus</a><a href="https://www.eldiario24.com/nota/tucuman/447058/san-martin-volvio-perder-sus-perseguidores-se-acercan-tabla.html" class="list-group-item">San Martín volvió a perder y sus perseguidores se acercan en la tabla</a>
+</ul>
+</div>
+<div id="leidas" class="tab-pane fade">
+<ul class="list-group">
+<a href="https://www.eldiario24.com/nota/timba/446639/resultados-telekino-domingo-8-marzo-2020.html" class="list-group-item">Resultados del TeleKino del Domingo 8 de Marzo de 2020</a><a href="https://www.eldiario24.com/nota/argentina/446760/hacen-este-pais-cueva-fachos-opresores-dolores-fonzi-cargo-contra-lanata.html" class="list-group-item">"Hacen de este país una cueva de fachos opresores": Dolores Fonzi cargó contra Lanata</a><a href="https://www.eldiario24.com/nota/argentina/446891/crimen-baez-sosa-burlando-advertencia-genera-bronca-polemica.html" class="list-group-item">Crimen de Báez Sosa: Burlando y una advertencia que genera bronca y polémica</a><a href="https://www.eldiario24.com/nota/timba/447055/resultados-telekino-domingo-15-marzo-2020.html" class="list-group-item">Resultados del TeleKino del Domingo 15 de Marzo de 2020</a><a href="https://www.eldiario24.com/nota/argentina/446872/diego-brancatelli-hablo-coronavirus-critico-macri-desato-polemica-redes.html" class="list-group-item">Diego Brancatelli habló del coronavirus, criticó a Macri y desató la polémica en las redes</a>
+</ul>
+</div>
+</div>
+</div>
+</div><aside class="publi mb15"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8823171581949548" data-ad-slot="1217967300" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script></aside><aside class="publi mb15"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8823171581949548" data-ad-slot="1217967300" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script></aside><aside class="publi mb15"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8823171581949548" data-ad-slot="1217967300" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script></aside></div> </div>
+</div>
+<div class="container bordesombra grisoscuro">
+<footer class=" container">
+<div class="row padding">
+<div class="col-md-12 text-center">
+<img src="https://www.eldiario24.com/img/c/d24ar-byn.png" class="img-responsive">
+<a href="https://www.eldiario24.com/rss" target="_blank" class="iconredes icorss">
+<span class="fa-stack fa-lg">
+<i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+</span>
+</a>
+<a href="https://plus.google.com/+Eldiario24tucuman" target="_blank" class="iconredes icogoogleplus">
+<span class="fa-stack fa-lg">
+<i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-google-plus fa-stack-1x fa-inverse"></i>
+</span>
+</a>
+<a href="https://www.youtube.com/user/eldiario24detucuman" target="_blank" class="iconredes icoyoutube">
+<span class="fa-stack fa-lg">
+<i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-youtube fa-stack-1x fa-inverse"></i>
+</span>
+</a>
+<a href="https://twitter.com/eldiario24" target="_blank" class="iconredes icotwitter">
+<span class="fa-stack fa-lg">
+<i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+</span>
+</a>
+<a href="https://www.facebook.com/eldiario24tucuman" target="_blank" class="iconredes icofacebook">
+<span class="fa-stack fa-lg">
+<i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+</span>
+</a>
+</div>
+<div class="col-md-1 text-center" style="margin-top:12px;">
+</div>
+<div class="col-md-3">
+<nav>
+<ul class="fa-ul">
+<li><b>STAFF</b></li>
+<li><i class="fa-li fa fa-angle-right"></i> <b>Copyright 2010 Eldiario24.com</b><br />Todos los derechos reservados</li>
+<li><i class="fa-li fa fa-angle-right"></i> <b>Fundado en 2010 por</b><br />Daniel J. Flores</li>
+</ul>
+</nav>
+</div>
+<div class="col-md-4">
+<nav>
+<ul class="fa-ul">
+<li><b>STAFF</b></li>
+<li><i class="fa-li fa fa-angle-right"></i> <b>Daniel J. Flores (Director)</b><br />djflores54<i class="fa fa-at"></i>gmail.com</li>
+<li><i class="fa-li fa fa-angle-right"></i> <b>Juan Pablo Flores (Apoderado)</b><br />juanpabloflores18<i class="fa fa-at"></i>hotmail.com</li>
+</ul>
+</nav>
+</div>
+<div class="col-md-2">
+<nav>
+<ul class="fa-ul">
+<li><b>SECCIONES</b></li>
+<li><a href="https://www.eldiario24.com/tucuman"><i class="fa-li fa fa-angle-right"></i>Tucumán</a></li>
+<li><a href="https://www.eldiario24.com/argentina"><i class="fa-li fa fa-angle-right"></i>Argentina</a></li>
+<li><a href="https://www.eldiario24.com/el-mundo"><i class="fa-li fa fa-angle-right"></i>El Mundo</a></li>
+<li><a href="https://www.eldiario24.com/culturas"><i class="fa-li fa fa-angle-right"></i>Culturas</a></li>
+</ul>
+</nav>
+</div>
+<div class="col-md-2">
+<nav>
+<ul class="fa-ul">
+<li><b>SECCIONES</b></li>
+<li><a href="https://www.eldiario24.com/deportes"><i class="fa-li fa fa-angle-right"></i>Deportes</a></li>
+<li><a href="https://www.eldiario24.com/policiales"><i class="fa-li fa fa-angle-right"></i>Policiales</a></li>
+<li><a href="https://www.eldiario24.com/tv-vivo"><i class="fa-li fa fa-angle-right"></i>TV en Vivo</a></li>
+</ul>
+</nav>
+</div>
+</div>
+</footer>
+</div> 
+<div class="container">
+<div class="row">
+<div class="col-md-12 text-right">
+<a href="http://www.trendtech.com.ar" target="_blank">Powered by <img src="https://www.eldiario24.com/img/trendnews.png" /></a>
+</div>
+</div>
+<script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-65285071-3', 'auto');
+              ga('create', 'UA-12163986-1', 'auto', 'client');
+            ga('create', 'UA-1108485-9', 'auto', 'clienttest');
+      ga('send', 'pageview');
+              ga('client.send', 'pageview');
+            ga('clienttest.send', 'pageview');
+    </script>
+<script type="text/javascript">
+      var _sf_async_config = { uid: 61134, domain: 'd24ar.com', useCanonical: true };
+      (function() {
+        function loadChartbeat() {
+          window._sf_endpt = (new Date()).getTime();
+          var e = document.createElement('script');
+          e.setAttribute('language', 'javascript');
+          e.setAttribute('type', 'text/javascript');
+          e.setAttribute('src','//static.chartbeat.com/js/chartbeat.js');
+          document.body.appendChild(e);
+        };
+        var oldonload = window.onload;
+        window.onload = (typeof window.onload != 'function') ?
+          loadChartbeat : function() { oldonload(); loadChartbeat(); };
+      })();
+    </script>
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"12d0b6b339","applicationID":"11950488","transactionName":"YVZVNkBQWBdSVk0PWlgcdgFGWFkKHHtWElQZRVIQbV9ZEFI=","queueTime":0,"applicationTime":4,"atts":"TRFWQAhKSxk=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>

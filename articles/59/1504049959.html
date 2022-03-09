@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+  <head>
+    <meta charset="utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"VQYCVlVaDhAIVllWAwYO",licenseKey:"0d3c09e20d",applicationID:"8284479"};window.NREUM||(NREUM={}),__nr_require=function(t,n,e){function r(e){if(!n[e]){var o=n[e]={exports:{}};t[e][0].call(o.exports,function(n){var o=t[e][1][n];return r(o||n)},o,o.exports)}return n[e].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<e.length;o++)r(e[o]);return r}({1:[function(t,n,e){function r(t){try{s.console&&console.log(t)}catch(n){}}var o,i=t("ee"),a=t(20),s={};try{o=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(s.console=!0,o.indexOf("dev")!==-1&&(s.dev=!0),o.indexOf("nr_dev")!==-1&&(s.nrDev=!0))}catch(c){}s.nrDev&&i.on("internal-error",function(t){r(t.stack)}),s.dev&&i.on("fn-err",function(t,n,e){r(e.stack)}),s.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(s,function(t,n){return t}).join(", ")))},{}],2:[function(t,n,e){function r(t,n,e,r,s){try{p?p-=1:o(s||new UncaughtException(t,n,e),!0)}catch(f){try{i("ierr",[f,c.now(),!0])}catch(d){}}return"function"==typeof u&&u.apply(this,a(arguments))}function UncaughtException(t,n,e){this.message=t||"Uncaught error with no additional information",this.sourceURL=n,this.line=e}function o(t,n){var e=n?null:c.now();i("err",[t,e])}var i=t("handle"),a=t(21),s=t("ee"),c=t("loader"),f=t("gos"),u=window.onerror,d=!1,l="nr@seenError",p=0;c.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(h){"stack"in h&&(t(9),t(8),"addEventListener"in window&&t(5),c.xhrWrappable&&t(10),d=!0)}s.on("fn-start",function(t,n,e){d&&(p+=1)}),s.on("fn-err",function(t,n,e){d&&!e[l]&&(f(e,l,function(){return!0}),this.thrown=!0,o(e))}),s.on("fn-end",function(){d&&!this.thrown&&p>0&&(p-=1)}),s.on("internal-error",function(t){i("ierr",[t,c.now(),!0])})},{}],3:[function(t,n,e){t("loader").features.ins=!0},{}],4:[function(t,n,e){function r(t){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var o=t("ee"),i=t("handle"),a=t(9),s=t(8),c="learResourceTimings",f="addEventListener",u="resourcetimingbufferfull",d="bstResource",l="resource",p="-start",h="-end",m="fn"+p,w="fn"+h,v="bstTimer",g="pushState",y=t("loader");y.features.stn=!0,t(7),"addEventListener"in window&&t(5);var x=NREUM.o.EV;o.on(m,function(t,n){var e=t[0];e instanceof x&&(this.bstStart=y.now())}),o.on(w,function(t,n){var e=t[0];e instanceof x&&i("bst",[e,n,this.bstStart,y.now()])}),a.on(m,function(t,n,e){this.bstStart=y.now(),this.bstType=e}),a.on(w,function(t,n){i(v,[n,this.bstStart,y.now(),this.bstType])}),s.on(m,function(){this.bstStart=y.now()}),s.on(w,function(t,n){i(v,[n,this.bstStart,y.now(),"requestAnimationFrame"])}),o.on(g+p,function(t){this.time=y.now(),this.startPath=location.pathname+location.hash}),o.on(g+h,function(t){i("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),f in window.performance&&(window.performance["c"+c]?window.performance[f](u,function(t){i(d,[window.performance.getEntriesByType(l)]),window.performance["c"+c]()},!1):window.performance[f]("webkit"+u,function(t){i(d,[window.performance.getEntriesByType(l)]),window.performance["webkitC"+c]()},!1)),document[f]("scroll",r,{passive:!0}),document[f]("keypress",r,!1),document[f]("click",r,!1)}},{}],5:[function(t,n,e){function r(t){for(var n=t;n&&!n.hasOwnProperty(u);)n=Object.getPrototypeOf(n);n&&o(n)}function o(t){s.inPlace(t,[u,d],"-",i)}function i(t,n){return t[1]}var a=t("ee").get("events"),s=t("wrap-function")(a,!0),c=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";n.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(o(window),o(f.prototype)),a.on(u+"-start",function(t,n){var e=t[1],r=c(e,"nr@wrapped",function(){function t(){if("function"==typeof e.handleEvent)return e.handleEvent.apply(e,arguments)}var n={object:t,"function":e}[typeof e];return n?s(n,"fn-",null,n.name||"anonymous"):e});this.wrapped=t[1]=r}),a.on(d+"-start",function(t){t[1]=this.wrapped||t[1]})},{}],6:[function(t,n,e){function r(t,n,e){var r=t[n];"function"==typeof r&&(t[n]=function(){var t=i(arguments),n={};o.emit(e+"before-start",[t],n);var a;n[m]&&n[m].dt&&(a=n[m].dt);var s=r.apply(this,t);return o.emit(e+"start",[t,a],s),s.then(function(t){return o.emit(e+"end",[null,t],s),t},function(t){throw o.emit(e+"end",[t],s),t})})}var o=t("ee").get("fetch"),i=t(21),a=t(20);n.exports=o;var s=window,c="fetch-",f=c+"body-",u=["arrayBuffer","blob","json","text","formData"],d=s.Request,l=s.Response,p=s.fetch,h="prototype",m="nr@context";d&&l&&p&&(a(u,function(t,n){r(d[h],n,f),r(l[h],n,f)}),r(s,"fetch",c),o.on(c+"end",function(t,n){var e=this;if(n){var r=n.headers.get("content-length");null!==r&&(e.rxSize=r),o.emit(c+"done",[null,n],e)}else o.emit(c+"done",[t],e)}))},{}],7:[function(t,n,e){var r=t("ee").get("history"),o=t("wrap-function")(r);n.exports=r;var i=window.history&&window.history.constructor&&window.history.constructor.prototype,a=window.history;i&&i.pushState&&i.replaceState&&(a=i),o.inPlace(a,["pushState","replaceState"],"-")},{}],8:[function(t,n,e){var r=t("ee").get("raf"),o=t("wrap-function")(r),i="equestAnimationFrame";n.exports=r,o.inPlace(window,["r"+i,"mozR"+i,"webkitR"+i,"msR"+i],"raf-"),r.on("raf-start",function(t){t[0]=o(t[0],"fn-")})},{}],9:[function(t,n,e){function r(t,n,e){t[0]=a(t[0],"fn-",null,e)}function o(t,n,e){this.method=e,this.timerDuration=isNaN(t[1])?0:+t[1],t[0]=a(t[0],"fn-",this,e)}var i=t("ee").get("timer"),a=t("wrap-function")(i),s="setTimeout",c="setInterval",f="clearTimeout",u="-start",d="-";n.exports=i,a.inPlace(window,[s,"setImmediate"],s+d),a.inPlace(window,[c],c+d),a.inPlace(window,[f,"clearImmediate"],f+d),i.on(c+u,r),i.on(s+u,o)},{}],10:[function(t,n,e){function r(t,n){d.inPlace(n,["onreadystatechange"],"fn-",s)}function o(){var t=this,n=u.context(t);t.readyState>3&&!n.resolved&&(n.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,g,"fn-",s)}function i(t){y.push(t),h&&(b?b.then(a):w?w(a):(E=-E,O.data=E))}function a(){for(var t=0;t<y.length;t++)r([],y[t]);y.length&&(y=[])}function s(t,n){return n}function c(t,n){for(var e in t)n[e]=t[e];return n}t(5);var f=t("ee"),u=f.get("xhr"),d=t("wrap-function")(u),l=NREUM.o,p=l.XHR,h=l.MO,m=l.PR,w=l.SI,v="readystatechange",g=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],y=[];n.exports=u;var x=window.XMLHttpRequest=function(t){var n=new p(t);try{u.emit("new-xhr",[n],n),n.addEventListener(v,o,!1)}catch(e){try{u.emit("internal-error",[e])}catch(r){}}return n};if(c(p,x),x.prototype=p.prototype,d.inPlace(x.prototype,["open","send"],"-xhr-",s),u.on("send-xhr-start",function(t,n){r(t,n),i(n)}),u.on("open-xhr-start",r),h){var b=m&&m.resolve();if(!w&&!m){var E=1,O=document.createTextNode(E);new h(a).observe(O,{characterData:!0})}}else f.on("fn-end",function(t){t[0]&&t[0].type===v||a()})},{}],11:[function(t,n,e){function r(t){if(!i(t))return null;var n=window.NREUM;if(!n.loader_config)return null;var e=(n.loader_config.accountID||"").toString()||null,r=(n.loader_config.agentID||"").toString()||null,s=(n.loader_config.trustKey||"").toString()||null;if(!e||!r)return null;var c=a.generateCatId(),f=a.generateCatId(),u=Date.now(),d=o(c,f,u,e,r,s);return{header:d,guid:c,traceId:f,timestamp:u}}function o(t,n,e,r,o,i){var a="btoa"in window&&"function"==typeof window.btoa;if(!a)return null;var s={v:[0,1],d:{ty:"Browser",ac:r,ap:o,id:t,tr:n,ti:e}};return i&&r!==i&&(s.d.tk=i),btoa(JSON.stringify(s))}function i(t){var n=!1,e=!1,r={};if("init"in NREUM&&"distributed_tracing"in NREUM.init&&(r=NREUM.init.distributed_tracing,e=!!r.enabled),e)if(t.sameOrigin)n=!0;else if(r.allowed_origins instanceof Array)for(var o=0;o<r.allowed_origins.length;o++){var i=s(r.allowed_origins[o]);if(t.hostname===i.hostname&&t.protocol===i.protocol&&t.port===i.port){n=!0;break}}return e&&n}var a=t(18),s=t(13);n.exports={generateTracePayload:r,shouldGenerateTrace:i}},{}],12:[function(t,n,e){function r(t){var n=this.params,e=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;r<p;r++)t.removeEventListener(l[r],this.listener,!1);n.aborted||(e.duration=s.now()-this.startTime,this.loadCaptureCalled||4!==t.readyState?null==n.status&&(n.status=0):a(this,t),e.cbTime=this.cbTime,d.emit("xhr-done",[t],t),c("xhr",[n,e,this.startTime]))}}function o(t,n){var e=t.responseType;if("json"===e&&null!==n)return n;var r="arraybuffer"===e||"blob"===e||"json"===e?t.response:t.responseText;return w(r)}function i(t,n){var e=f(n),r=t.params;r.host=e.hostname+":"+e.port,r.pathname=e.pathname,t.parsedOrigin=f(n),t.sameOrigin=t.parsedOrigin.sameOrigin}function a(t,n){t.params.status=n.status;var e=o(n,t.lastSize);if(e&&(t.metrics.rxSize=e),t.sameOrigin){var r=n.getResponseHeader("X-NewRelic-App-Data");r&&(t.params.cat=r.split(", ").pop())}t.loadCaptureCalled=!0}var s=t("loader");if(s.xhrWrappable){var c=t("handle"),f=t(13),u=t(11).generateTracePayload,d=t("ee"),l=["load","error","abort","timeout"],p=l.length,h=t("id"),m=t(16),w=t(15),v=window.XMLHttpRequest;s.features.xhr=!0,t(10),t(6),d.on("new-xhr",function(t){var n=this;n.totalCbs=0,n.called=0,n.cbTime=0,n.end=r,n.ended=!1,n.xhrGuids={},n.lastSize=null,n.loadCaptureCalled=!1,t.addEventListener("load",function(e){a(n,t)},!1),m&&(m>34||m<10)||window.opera||t.addEventListener("progress",function(t){n.lastSize=t.loaded},!1)}),d.on("open-xhr-start",function(t){this.params={method:t[0]},i(this,t[1]),this.metrics={}}),d.on("open-xhr-end",function(t,n){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&n.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid);var e=u(this.parsedOrigin);e&&e.header&&(n.setRequestHeader("newrelic",e.header),this.dt=e)}),d.on("send-xhr-start",function(t,n){var e=this.metrics,r=t[0],o=this;if(e&&r){var i=w(r);i&&(e.txSize=i)}this.startTime=s.now(),this.listener=function(t){try{"abort"!==t.type||o.loadCaptureCalled||(o.params.aborted=!0),("load"!==t.type||o.called===o.totalCbs&&(o.onloadCalled||"function"!=typeof n.onload))&&o.end(n)}catch(e){try{d.emit("internal-error",[e])}catch(r){}}};for(var a=0;a<p;a++)n.addEventListener(l[a],this.listener,!1)}),d.on("xhr-cb-time",function(t,n,e){this.cbTime+=t,n?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof e.onload||this.end(e)}),d.on("xhr-load-added",function(t,n){var e=""+h(t)+!!n;this.xhrGuids&&!this.xhrGuids[e]&&(this.xhrGuids[e]=!0,this.totalCbs+=1)}),d.on("xhr-load-removed",function(t,n){var e=""+h(t)+!!n;this.xhrGuids&&this.xhrGuids[e]&&(delete this.xhrGuids[e],this.totalCbs-=1)}),d.on("addEventListener-end",function(t,n){n instanceof v&&"load"===t[0]&&d.emit("xhr-load-added",[t[1],t[2]],n)}),d.on("removeEventListener-end",function(t,n){n instanceof v&&"load"===t[0]&&d.emit("xhr-load-removed",[t[1],t[2]],n)}),d.on("fn-start",function(t,n,e){n instanceof v&&("onload"===e&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=s.now()))}),d.on("fn-end",function(t,n){this.xhrCbStart&&d.emit("xhr-cb-time",[s.now()-this.xhrCbStart,this.onload,n],n)}),d.on("fetch-before-start",function(t){var n,e=t[1]||{};"string"==typeof t[0]?n=t[0]:t[0]&&t[0].url&&(n=t[0].url),n&&(this.parsedOrigin=f(n),this.sameOrigin=this.parsedOrigin.sameOrigin);var r=u(this.parsedOrigin);if(r&&r.header){var o=r.header;if("string"==typeof t[0]){var i={};for(var a in e)i[a]=e[a];i.headers=new Headers(e.headers||{}),i.headers.set("newrelic",o),this.dt=r,t.length>1?t[1]=i:t.push(i)}else t[0]&&t[0].headers&&(t[0].headers.append("newrelic",o),this.dt=r)}})}},{}],13:[function(t,n,e){var r={};n.exports=function(t){if(t in r)return r[t];var n=document.createElement("a"),e=window.location,o={};n.href=t,o.port=n.port;var i=n.href.split("://");!o.port&&i[1]&&(o.port=i[1].split("/")[0].split("@").pop().split(":")[1]),o.port&&"0"!==o.port||(o.port="https"===i[0]?"443":"80"),o.hostname=n.hostname||e.hostname,o.pathname=n.pathname,o.protocol=i[0],"/"!==o.pathname.charAt(0)&&(o.pathname="/"+o.pathname);var a=!n.protocol||":"===n.protocol||n.protocol===e.protocol,s=n.hostname===document.domain&&n.port===e.port;return o.sameOrigin=a&&(!n.hostname||s),"/"===o.pathname&&(r[t]=o),o}},{}],14:[function(t,n,e){function r(){}function o(t,n,e){return function(){return i(t,[f.now()].concat(s(arguments)),n?null:this,e),n?void 0:this}}var i=t("handle"),a=t(20),s=t(21),c=t("ee").get("tracer"),f=t("loader"),u=NREUM;"undefined"==typeof window.newrelic&&(newrelic=u);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",p=l+"ixn-";a(d,function(t,n){u[n]=o(l+n,!0,"api")}),u.addPageAction=o(l+"addPageAction",!0),u.setCurrentRouteName=o(l+"routeName",!0),n.exports=newrelic,u.interaction=function(){return(new r).get()};var h=r.prototype={createTracer:function(t,n){var e={},r=this,o="function"==typeof n;return i(p+"tracer",[f.now(),t,e],r),function(){if(c.emit((o?"":"no-")+"fn-start",[f.now(),r,o],e),o)try{return n.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],e),t}finally{c.emit("fn-end",[f.now()],e)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,n){h[n]=o(p+n)}),newrelic.noticeError=function(t,n){"string"==typeof t&&(t=new Error(t)),i("err",[t,f.now(),!1,n])}},{}],15:[function(t,n,e){n.exports=function(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(n){return}}}},{}],16:[function(t,n,e){var r=0,o=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);o&&(r=+o[1]),n.exports=r},{}],17:[function(t,n,e){function r(t,n){var e=t.getEntries();e.forEach(function(t){"first-paint"===t.name?a("timing",["fp",Math.floor(t.startTime)]):"first-contentful-paint"===t.name&&a("timing",["fcp",Math.floor(t.startTime)])})}function o(t){if(t instanceof c&&!u){var n,e=Math.round(t.timeStamp);n=e>1e12?Date.now()-e:s.now()-e,u=!0,a("timing",["fi",e,{type:t.type,fid:n}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var i,a=t("handle"),s=t("loader"),c=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){i=new PerformanceObserver(r);try{i.observe({entryTypes:["paint"]})}catch(f){}}if("addEventListener"in document){var u=!1,d=["click","keydown","mousedown","pointerdown","touchstart"];d.forEach(function(t){document.addEventListener(t,o,!1)})}}},{}],18:[function(t,n,e){function r(){function t(){return n?15&n[e++]:16*Math.random()|0}var n=null,e=0,r=window.crypto||window.msCrypto;r&&r.getRandomValues&&(n=r.getRandomValues(new Uint8Array(31)));for(var o,i="xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx",a="",s=0;s<i.length;s++)o=i[s],"x"===o?a+=t().toString(16):"y"===o?(o=3&t()|8,a+=o.toString(16)):a+=o;return a}function o(){function t(){return n?15&n[e++]:16*Math.random()|0}var n=null,e=0,r=window.crypto||window.msCrypto;r&&r.getRandomValues&&Uint8Array&&(n=r.getRandomValues(new Uint8Array(31)));for(var o=[],i=0;i<16;i++)o.push(t().toString(16));return o.join("")}n.exports={generateUuid:r,generateCatId:o}},{}],19:[function(t,n,e){function r(t,n){if(!o)return!1;if(t!==o)return!1;if(!n)return!0;if(!i)return!1;for(var e=i.split("."),r=n.split("."),a=0;a<r.length;a++)if(r[a]!==e[a])return!1;return!0}var o=null,i=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var s=navigator.userAgent,c=s.match(a);c&&s.indexOf("Chrome")===-1&&s.indexOf("Chromium")===-1&&(o="Safari",i=c[1])}n.exports={agent:o,version:i,match:r}},{}],20:[function(t,n,e){function r(t,n){var e=[],r="",i=0;for(r in t)o.call(t,r)&&(e[i]=n(r,t[r]),i+=1);return e}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],21:[function(t,n,e){function r(t,n,e){n||(n=0),"undefined"==typeof e&&(e=t?t.length:0);for(var r=-1,o=e-n||0,i=Array(o<0?0:o);++r<o;)i[r]=t[n+r];return i}n.exports=r},{}],22:[function(t,n,e){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(t,n,e){function r(){}function o(t){function n(t){return t&&t instanceof r?t:t?c(t,s,i):i()}function e(e,r,o,i){if(!l.aborted||i){t&&t(e,r,o);for(var a=n(o),s=m(e),c=s.length,f=0;f<c;f++)s[f].apply(a,r);var d=u[y[e]];return d&&d.push([x,e,r,a]),a}}function p(t,n){g[t]=m(t).concat(n)}function h(t,n){var e=g[t];if(e)for(var r=0;r<e.length;r++)e[r]===n&&e.splice(r,1)}function m(t){return g[t]||[]}function w(t){return d[t]=d[t]||o(e)}function v(t,n){f(t,function(t,e){n=n||"feature",y[e]=n,n in u||(u[n]=[])})}var g={},y={},x={on:p,addEventListener:p,removeEventListener:h,emit:e,get:w,listeners:m,context:n,buffer:v,abort:a,aborted:!1};return x}function i(){return new r}function a(){(u.api||u.feature)&&(l.aborted=!0,u=l.backlog={})}var s="nr@context",c=t("gos"),f=t(20),u={},d={},l=n.exports=o();l.backlog=u},{}],gos:[function(t,n,e){function r(t,n,e){if(o.call(t,n))return t[n];var r=e();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,n,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return t[n]=r,r}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(t,n,e){function r(t,n,e,r){o.buffer([t],r),o.emit(t,n,e)}var o=t("ee").get("handle");n.exports=r,r.ee=o},{}],id:[function(t,n,e){function r(t){var n=typeof t;return!t||"object"!==n&&"function"!==n?-1:t===window?0:a(t,i,function(){return o++})}var o=1,i="nr@id",a=t("gos");n.exports=r},{}],loader:[function(t,n,e){function r(){if(!E++){var t=b.info=NREUM.info,n=p.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&n))return u.abort();f(y,function(n,e){t[n]||(t[n]=e)}),c("mark",["onload",a()+b.offset],null,"api");var e=p.createElement("script");e.src="https://"+t.agent,n.parentNode.insertBefore(e,n)}}function o(){"complete"===p.readyState&&i()}function i(){c("mark",["domContent",a()+b.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(s=Math.max((new Date).getTime(),s))-b.offset}var s=(new Date).getTime(),c=t("handle"),f=t(20),u=t("ee"),d=t(19),l=window,p=l.document,h="addEventListener",m="attachEvent",w=l.XMLHttpRequest,v=w&&w.prototype;NREUM.o={ST:setTimeout,SI:l.setImmediate,CT:clearTimeout,XHR:w,REQ:l.Request,EV:l.Event,PR:l.Promise,MO:l.MutationObserver};var g=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1158.min.js"},x=w&&v&&v[h]&&!/CriOS/.test(navigator.userAgent),b=n.exports={offset:s,now:a,origin:g,features:{},xhrWrappable:x,userAgent:d};t(14),t(17),p[h]?(p[h]("DOMContentLoaded",i,!1),l[h]("load",r,!1)):(p[m]("onreadystatechange",o),l[m]("onload",r)),c("mark",["firstbyte",s],null,"api");var E=0,O=t(22)},{}],"wrap-function":[function(t,n,e){function r(t){return!(t&&t instanceof Function&&t.apply&&!t[a])}var o=t("ee"),i=t(21),a="nr@original",s=Object.prototype.hasOwnProperty,c=!1;n.exports=function(t,n){function e(t,n,e,o){function nrWrapper(){var r,a,s,c;try{a=this,r=i(arguments),s="function"==typeof e?e(r,a):e||{}}catch(f){l([f,"",[r,a,o],s])}u(n+"start",[r,a,o],s);try{return c=t.apply(a,r)}catch(d){throw u(n+"err",[r,a,d],s),d}finally{u(n+"end",[r,a,c],s)}}return r(t)?t:(n||(n=""),nrWrapper[a]=t,d(t,nrWrapper),nrWrapper)}function f(t,n,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<n.length;c++)s=n[c],a=t[s],r(a)||(t[s]=e(a,f?s+o:o,i,s))}function u(e,r,o){if(!c||n){var i=c;c=!0;try{t.emit(e,r,o,n)}catch(a){l([a,e,r,o])}c=i}}function d(t,n){if(Object.defineProperty&&Object.keys)try{var e=Object.keys(t);return e.forEach(function(e){Object.defineProperty(n,e,{get:function(){return t[e]},set:function(n){return t[e]=n,n}})}),n}catch(r){l([r])}for(var o in t)s.call(t,o)&&(n[o]=t[o]);return n}function l(n){try{t.emit("internal-error",n)}catch(e){}}return t||(t=o),e.inPlace=f,e.flag=a,e}},{}]},{},["loader",2,12,4,3]);</script>
+<script>document.cookie = "__adblocker=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
+    var setNptTechAdblockerCookie = function(adblocker) {
+        var d = new Date();
+        d.setTime(d.getTime() + 60 * 5 * 1000);
+        document.cookie = "__adblocker=" + (adblocker ? "true" : "false") + "; expires=" + d.toUTCString() + "; path=/";
+    };
+    var script = document.createElement("script");
+    script.setAttribute("async", true);
+    script.setAttribute("src", "//www.npttech.com/advertising.js");
+    script.setAttribute("onerror", "setNptTechAdblockerCookie(true);");
+    document.getElementsByTagName("head")[0].appendChild(script);</script>
+<script>tp = window.tp || [];
+tp.push(["setCustomVariable", "userState", "anonymous"]);
+tp.push(["setContentCreated", "2020-01-24T20:11:49+0000"]);
+tp.push(["setTags", ["france"]]);</script>
+<meta property="og:site_name" content="Le Temps" />
+<meta name="Generator" content="Drupal 8 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="twitter:image" content="https://assets.letemps.ch/sites/default/files/styles/share/public/media/2020/01/24/file78zopr6qlbd1d1skxjcm.jpg.jpeg?itok=OPr6Th3V" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@letemps" />
+<meta name="twitter:title" content="Macron dénonce ses accusateurs" />
+<meta name="twitter:description" content="Le président français s’est dit inquiet, à son retour d’Israël, de la prolifération des «discours coupables» qui attisent les colères en France" />
+<script>dataLayer = [{"subscription":"anonymous","articleID":"1193020","articleType":"np8_news","primaryCategory":"Monde","tags":"france","length":"501-1500","year":"2020","article_publication_date":"2020-01-24T20:11:49","premium_content":0}];</script>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TQ2B8Q');</script>
+<meta name="google-site-verification" content="z0tBKnrS4WrJ-Qq_7-W8j40X5-3Lnvlb7lf1a8FnfTE" />
+<meta name="apple-itunes-app" content="app-id=455659364" />
+<meta name="p:domain_verify" content="d0baf6f701271f1d36972e356dcfb112" />
+<meta property="fb:pages" content="319393291423771" />
+<meta property="fb:app_id" content="100160886777903" />
+<meta name="theme-color" content="#930025" />
+<meta name="robots" content="noarchive" />
+<meta name="article:published_time" content="2020-01-24T20:11:49" />
+<meta name="article:modified_time" content="2020-01-24T20:12:08" />
+<meta name="article:section" content="Monde" />
+<meta name="article:tag" content="France" />
+<script type="application/ld+json">{"@context":"http:\/\/schema.org","@type":"NewsArticle","mainEntityOfPage":"https:\/\/www.letemps.ch\/node\/1193020","publisher":{"@type":"Organization","name":"Le Temps","logo":{"@type":"ImageObject","url":"https:\/\/assets.letemps.ch\/themes\/custom\/letemps\/logo-amp.png","width":324,"height":60}},"url":"https:\/\/www.letemps.ch\/node\/1193020","articleSection":"Monde","keywords":["France"],"headline":"Macron d\u00e9nonce ses accusateurs","dateCreated":"2020-01-24T18:52:00+01:00","datePublished":"2020-01-24T20:11:49+00:00","dateModified":"2020-01-24T20:11:49+00:00","description":"Le pr\u00e9sident fran\u00e7ais s\u2019est dit inquiet, \u00e0 son retour d\u2019Isra\u00ebl, de la prolif\u00e9ration des \u00abdiscours coupables\u00bb qui attisent les col\u00e8res en France","author":{"@type":"Person","name":"Richard Werly"},"image":{"@type":"ImageObject","url":"https:\/\/assets.letemps.ch\/sites\/default\/files\/styles\/share\/public\/media\/2020\/01\/24\/file78zopr6qlbd1d1skxjcm.jpg.jpeg?itok=OPr6Th3V","height":433,"width":1200}}</script>
+<meta name="description" content="Le président français s’est dit inquiet, à son retour d’Israël, de la prolifération des «discours coupables» qui at" />
+<script id="recommendation-article-template" type="x-tmpl-mustache">    {{#recommendations}}
+  <div class="col-xs-12 col-sm-6 recommendation" id="recommendation-{{ id }}">
+	  	<h4 class="article-headliner">
+	  	  <span class="article-categories"><span class="label">{{ kicker }}</span>
+
+	  	  </span>
+
+	  	  <a href="{{ link }}" class="link link-shade">{{ title }}</a>
+	  	  <small>
+	  	  <a class="link link-muted square-char" href="{{ link }}">{{ datePublication }}</a>
+        </small>
+        <span class="label label-premium paywall-{{paywallStatus}}">Abonné</span>
+	  	</h4>
+
+	</div>
+{{/recommendations}}</script>
+<meta property="og:title" content="Macron dénonce ses accusateurs" />
+<meta property="og:image" content="https://assets.letemps.ch/sites/default/files/styles/share/public/media/2020/01/24/file78zopr6qlbd1d1skxjcm.jpg.jpeg?itok=OPr6Th3V" />
+<meta property="og:url" content="https://www.letemps.ch/monde/macron-denonce-accusateurs" />
+<meta property="og:description" content="Le président français s’est dit inquiet, à son retour d’Israël, de la prolifération des «discours coupables» qui attisent les colères en France" />
+<meta property="og:type" content="article" />
+<link rel="shortcut icon" href="https://assets.letemps.ch/sites/default/files/favicon_0.ico" type="image/vnd.microsoft.icon" />
+<link rel="image_src" href="https://assets.letemps.ch/sites/default/files/styles/share/public/media/2020/01/24/file78zopr6qlbd1d1skxjcm.jpg.jpeg?itok=OPr6Th3V" />
+<link rel="search" href="https://assets.letemps.ch/modules/custom/lt_custom/assets/opensearchdescription.xml" type="application/opensearchdescription+xml" title="LeTemps.ch" />
+<link rel="canonical" href="https://www.letemps.ch/monde/macron-denonce-accusateurs" />
+<link rel="shortlink" href="https://www.letemps.ch/node/1193020" />
+<link rel="revision" href="https://www.letemps.ch/monde/macron-denonce-accusateurs" />
+
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="//assets.letemps.ch/themes/custom/letemps/favicons/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="//assets.letemps.ch/themes/custom/letemps/favicons/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="//assets.letemps.ch/themes/custom/letemps/favicons/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="//assets.letemps.ch/themes/custom/letemps/favicons/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="//assets.letemps.ch/themes/custom/letemps/favicons/apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="//assets.letemps.ch/themes/custom/letemps/favicons/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="//assets.letemps.ch/themes/custom/letemps/favicons/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="//assets.letemps.ch/themes/custom/letemps/favicons/apple-touch-icon-152x152.png" />
+    <link rel="icon" type="image/png" href="//assets.letemps.ch/themes/custom/letemps/favicons/favicon-196x196.png" sizes="196x196" />
+    <link rel="icon" type="image/png" href="//assets.letemps.ch/themes/custom/letemps/favicons/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="//assets.letemps.ch/themes/custom/letemps/favicons/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="//assets.letemps.ch/themes/custom/letemps/favicons/favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="//assets.letemps.ch/themes/custom/letemps/favicons/favicon-128.png" sizes="128x128" />
+    <meta name="application-name" content="Le Temps"/>
+    <meta name="msapplication-TileColor" content="#930025" />
+    <meta name="msapplication-TileImage" content="//assets.letemps.ch/themes/custom/letemps/favicons/mstile-144x144.png" />
+    <meta name="msapplication-square70x70logo" content="//assets.letemps.ch/themes/custom/letemps/favicons/mstile-70x70.png" />
+    <meta name="msapplication-square150x150logo" content="//assets.letemps.ch/themes/custom/letemps/favicons/mstile-150x150.png" />
+    <meta name="msapplication-wide310x150logo" content="//assets.letemps.ch/themes/custom/letemps/favicons/mstile-310x150.png" />
+    <meta name="msapplication-square310x310logo" content="//assets.letemps.ch/themes/custom/letemps/favicons/mstile-310x310.png" />
+    <title>Macron dénonce ses accusateurs - Le Temps</title>
+    <link rel="stylesheet" media="all" href="https://assets.letemps.ch/sites/default/files/css/css_By0VIEk14RwPeui5SZlZwJPgYr_P7Hbo-1Zz998ZaOY.css" />
+<link rel="stylesheet" media="all" href="https://assets.letemps.ch/sites/default/files/css/css_a2-8BKCjTF-ckgVEMUobVNeLzCAv2eaI0VVsgVz7S7c.css" />
+<link rel="stylesheet" media="print" href="https://assets.letemps.ch/sites/default/files/css/css_dt6w_Ggj_9GVRZhvn-lwWHZDBTmQbBlJrwCW3Nc2PsY.css" />
+<link rel="stylesheet" media="all" href="https://assets.letemps.ch/sites/default/files/css/css_f1X7QjWhydpi6GzLYIBZz_j6O_0NZZhM_7yFhBkpSes.css" />
+
+    
+<!--[if lte IE 8]>
+<script src="https://assets.letemps.ch/sites/default/files/js/js_VtafjXmRvoUgAzqzYTA3Wrjkx9wcWhjP0G4ZnnqRamA.js"></script>
+<![endif]-->
+
+  </head>
+  <body>
+    <a href="#main-content" class="visually-hidden focusable">Aller au contenu principal</a>
+    <script>
+        (function(src) {
+            var a = document.createElement("script");
+            a.type = "text/javascript";
+            a.async = true;
+            a.src = src;
+            var b = document.getElementsByTagName("script")[0];
+            b.parentNode.insertBefore(a, b)
+        })("//experience.tinypass.com/xbuilder/experience/load?aid=w4zNYLIkAY");
+    </script><noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-TQ2B8Q&nojs=true" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><script>utag_data = {"customer_type":"anonymous","page_type":"np8_news","article_id":"1193020","article_name":"Macron d\u00e9nonce ses accusateurs","article_publish_date":"2020-01-24T20:11:49","page_section":"Monde","article_author":"Richard Werly"};</script><script type="text/javascript">
+           var wemf_url = (('https:' == document.location.protocol) ? 'https://temp-ssl.wemfbox.ch/cgi-bin/ivw/CP/' : 'http://letemps.wemfbox.ch/cgi-bin/ivw/CP/' );
+            var wemf_path = "service";
+        // Minified version of isMobile https://github.com/kaimallea/isMobile.
+        !function(a){var b=/iPhone/i,c=/iPod/i,d=/iPad/i,e=/(?=.*\bAndroid\b)(?=.*\bMobile\b)/i,f=/Android/i,g=/IEMobile/i,h=/(?=.*\bWindows\b)(?=.*\bARM\b)/i,i=/BlackBerry/i,j=/BB10/i,k=/Opera Mini/i,l=/(?=.*\bFirefox\b)(?=.*\bMobile\b)/i,m=new RegExp("(?:Nexus 7|BNTV250|Kindle Fire|Silk|GT-P1000)","i"),n=function(a,b){return a.test(b)},o=function(a){var o=a||navigator.userAgent;return this.apple={phone:n(b,o),ipod:n(c,o),tablet:n(d,o),device:n(b,o)||n(c,o)||n(d,o)},this.android={phone:n(e,o),tablet:!n(e,o)&&n(f,o),device:n(e,o)||n(f,o)},this.windows={phone:n(g,o),tablet:n(h,o),device:n(g,o)||n(h,o)},this.other={blackberry:n(i,o),blackberry10:n(j,o),opera:n(k,o),firefox:n(l,o),device:n(i,o)||n(j,o)||n(k,o)||n(l,o)},this.seven_inch=n(m,o),this.any=this.apple.device||this.android.device||this.windows.device||this.other.device||this.seven_inch,this.phone=this.apple.phone||this.android.phone||this.windows.phone,this.tablet=this.apple.tablet||this.android.tablet||this.windows.tablet,"undefined"==typeof window?this:void 0},p=function(){var a=new o;return a.Class=o,a};"undefined"!=typeof module&&module.exports&&"undefined"==typeof window?module.exports=o:"undefined"!=typeof module&&module.exports&&"undefined"!=typeof window?module.exports=p():"function"==typeof define&&define.amd?define("isMobile",[],a.isMobile=p()):a.isMobile=p()}(this);
+        if (isMobile.phone) {
+          wemf_path = "mobilesite/" + wemf_path;
+        }
+        var NETMX = wemf_url + wemf_path;
+        document.write("<img class=\"wemf\" src=\""+NETMX+"?r="+escape(document.referrer)+"&d="+(Math.random()*100000)+"&x="+screen.width+"x"+screen.height+"\" width=\"1\" height=\"1\" alt=\"\" />");</script><noscript><img src="https://temp-ssl.wemfbox.ch/cgi-bin/ivw/CP/service" width="1" height="1" alt="" /></noscript><script type="text/javascript">
+        (function(a,b,c,d){
+        a='//tags.tiqcdn.com/utag/axelspringer/rasch-romandie-letemps/prod/utag.js';
+        b=document;c='script';d=b.createElement(c);d.src=a;d.type='text/java'+c;d.async=true;
+        a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a);
+        })();
+    </script>
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    <!-- SZMFRABO VERSION="1.1" -->
+<script>
+var szmvars="letemps//CP//";
+if (isMobile.phone) {
+  var szmopt={mobile:true};
+}
+</script>
+<script src="https://temp-ssl.wemfbox.ch/2004/01/survey.js"></script>
+<!-- /SZMFRABO -->
+
+<header class="header" id="top">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-offset-1 col-lg-10">
+          <div>
+    <div id="block-ltburgermenu" class="visible-xs block block-lt-custom">
+  
+    
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-navbar-collapse" aria-expanded="false"><span class="close-menu">Fermer</span><span class="open-menu">Menu</span> <span class="icon-bars"><span class="icon-bar top-bar"></span><span class="icon-bar middle-bar"></span><span class="icon-bar bottom-bar"></span></span></button>
+  </div>
+<div id="block-letemps-branding" class="block block-system">
+  
+    
+        <div class="header-logo text-center">
+      <a class="logo hidden-xs hidden-sm" href="/" rel="home" title="Le Temps"><img class="img-responsive" src="https://assets.letemps.ch/themes/custom/letemps/logo.svg" alt="Le Temps" /></a>
+      <a class="logo-t" href="/" rel="home" title="Le Temps"><img class="img-responsive" src="https://assets.letemps.ch/themes/custom/letemps/assets/svg/logo-t.svg" alt="Le Temps" /></a>
+
+      <a class="logo-mobile visible-xs-block visible-sm-block" href="/" rel="home" title="Le Temps"><img class="img-responsive" src="https://assets.letemps.ch/themes/custom/letemps/assets/svg/logo.svg" alt="Le Temps" /></a>
+      
+    </div>
+  </div>
+<nav role="navigation" aria-labelledby="block-useraccountmenu-menu" id="block-useraccountmenu" class="visible-xs">
+            
+  <h2 class="visually-hidden" id="block-useraccountmenu-menu">&lt;none&gt;</h2>
+  
+
+        
+              <ul class="menu nav">
+                          <li class="dropdown">
+                      <a href="#t" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="navbar-item"><i class="fa fa-user" aria-hidden="true"></i></span></a>
+                          <ul class="dropdown-menu">
+                          <li>
+                                    <a href="/user/login" class="">Se connecter</a>
+                              </li>
+          </ul>
+  
+                  </li>
+          </ul>
+  
+
+
+  </nav>
+<div class="header-top">
+  
+  
+        
+        <ul class="list-inline">
+              <li class="menu-link-login hidden-xs">
+                                <a href="/user/login?destination=/monde/macron-denonce-accusateurs"  class="menu-link-login hidden-xs">Se connecter</a>
+                </li>
+              <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="navbar-item">Services</span> <i class="ltpsicon ltpsicon-chevron-down"></i></a>
+                  <ul class="dropdown-menu">
+              <li>
+                                <a href="/pdf" >ePaper/PDF</a>
+                </li>
+              <li>
+                                <a href="/newsletters" >Newsletters</a>
+                </li>
+              <li>
+                                <a href="http://www.letemps.ch/evenements" >Événements</a>
+                </li>
+              <li>
+                                <a href="/privileges" >Privilèges abonnés</a>
+                </li>
+              <li>
+                                <a href="/annonces" >Annonces</a>
+                </li>
+              <li>
+                                <a href="/annonces" >Avis de décès</a>
+                </li>
+              <li>
+                                <a href="http://www.letempsarchives.ch/" >Archives</a>
+                </li>
+              <li>
+                                <a href="http://www.letemps.ch/faq" >FAQ</a>
+                </li>
+              <li>
+                                <a href="/contact" >Contact</a>
+                </li>
+      </ul>
+  
+                </li>
+              <li>
+                                <a href="/subscribe"  class="label label label-premium premium-track-click-header">S&#039;abonner</a>
+                </li>
+      </ul>
+  
+
+
+  </div>
+<div class="clearfix"></div>
+
+  </div>
+
+      </div>
+    </div>
+  </div>
+    <div class="container">
+    <div class="navbar-container">
+  <nav class="navbar navbar-default" id="main-navbar">
+    <div class="navbar-sticky">
+      <div class="">
+        <div class="row">
+          <div class="col-lg-offset-1 col-lg-10">
+            <div class="navbar-header visible-xs">
+              <ul class="list-inline">
+                <li class="visible-affix">
+                  <a href="/" class="logo-mobile">
+                    <img width="85" height="12" src="https://assets.letemps.ch/themes/custom/letemps/assets/svg/logo.svg" alt="Le Temps - Site média Suisse" class="img-responsive" />
+                  </a>
+                  <a href="/" class="logo-t">
+                    <img src="https://assets.letemps.ch/themes/custom/letemps/assets/svg/logo-t.svg" alt="Le Temps - Site média Suisse" class="img-responsive logo-t--mobile"/>
+                  </a>
+                </li>
+                <li class="hidden-affix"><a href="/en-continu" style="text-transform:lowercase">24 jan. 2020</a></li>
+                <li>
+                  <!-- <ul class="list-inline">
+                    <li><a href="/">Login</a></li>
+                    <li><a href="/">Services</a></li>
+                  </ul> -->
+                </li>
+              </ul>
+            </div>
+
+            <div class="collapse navbar-collapse" id="main-navbar-collapse">
+              <div class="nav-container">
+                <div class="js-priority-wrapper-letemps nav-inner">
+                                                        
+              <ul class="menu nav navbar-nav visible-links">
+                          <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="navbar-item">Rubriques</span> <i class="ltpsicon ltpsicon-chevron-down"></i></a>
+                          <ul class="dropdown-menu">
+                          <li>
+                                    <a href="/monde" class="">Monde</a>
+                              </li>
+                      <li>
+                                    <a href="/suisse" class="">Suisse</a>
+                              </li>
+                      <li>
+                                    <a href="/economie" class="">Économie</a>
+                              </li>
+                      <li>
+                                    <a href="/opinions" class="">Opinions</a>
+                              </li>
+                      <li>
+                                    <a href="/culture" class="">Culture</a>
+                              </li>
+                      <li>
+                                    <a href="/sciences" class="">Sciences</a>
+                              </li>
+                      <li>
+                                    <a href="/sport" class="">Sport</a>
+                              </li>
+                      <li>
+                                    <a href="/societe" class="">Société</a>
+                              </li>
+                      <li>
+                                    <a href="/lifestyle" class="">Lifestyle</a>
+                              </li>
+                      <li>
+                                    <a href="/hyperlien" class="">Hyperlien</a>
+                              </li>
+          </ul>
+  
+                  </li>
+                      <li>
+                                    <a href="/en-continu" class=""><span class="navbar-item">En continu</span></a>
+                              </li>
+                      <li>
+                                    <a href="/blogs" class=""><span class="navbar-item">Blogs</span></a>
+                              </li>
+                      <li>
+                                    <a href="/images/video" class=""><span class="navbar-item">Vidéos</span></a>
+                              </li>
+                      <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="navbar-item">Multimédia</span> <i class="ltpsicon ltpsicon-chevron-down"></i></a>
+                          <ul class="dropdown-menu">
+                          <li>
+                                    <a href="/podcast" class="">Podcasts</a>
+                              </li>
+                      <li>
+                                    <a href="/images/photographies" class="">Photographies</a>
+                              </li>
+                      <li>
+                                    <a href="/images/dossier" class="">Dossiers</a>
+                              </li>
+                      <li>
+                                    <a href="/images/interactif" class="">Interactif</a>
+                              </li>
+                      <li>
+                                    <a href="/images/chappatte" class="">Chappatte</a>
+                              </li>
+          </ul>
+  
+                  </li>
+                      <li>
+                                    <a href="/t" class="tmagazine-menu-item"><span class="navbar-item">T Magazine</span></a>
+                              </li>
+          </ul>
+  
+
+
+                                    <ul class="nav navbar-nav navbar-priority">
+                    <li class="dropdown">
+                      <a href="#" class="more hidden dropdown-toggle text-uppercase" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Plus <i class="ltpsicon ltpsicon-chevron-down"></i></a>
+                      <ul class="hidden-links dropdown-menu"></ul>
+                    </li>
+                  </ul>
+                </div>
+                <ul class="nav navbar-nav navbar-search navbar-right">
+                  <li>
+                    <a href="/search"><span class="search-label">RECHERCHER </span><span class="fa fa-search sr-hidden"></span></a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</div>
+<div class="np8-search-block navbar-search collapse" data-drupal-selector="np8-search-block" id="block-letemps-searchform">
+  
+    
+      <form action="/search" method="GET" id="np8-search-block" accept-charset="UTF-8">
+  <div class="form-group js-form-item form-item js-form-type-textfield form-item-keywords js-form-item-keywords form-no-label">
+      <label for="edit-keywords" class="visually-hidden js-form-required form-required">Mots-clés</label>
+        <input title="Enter your search keywords." data-drupal-selector="edit-keywords" type="text" id="edit-keywords" name="keywords" value="" size="15" maxlength="128" placeholder="Mots-clés" class="form-text required form-control" required="required" aria-required="true" />
+
+        </div>
+<div data-drupal-selector="edit-actions" class="form-actions js-form-wrapper form-wrapper" id="edit-actions"><input data-drupal-selector="edit-submit" type="submit" id="edit-submit" name="search" value="Rechercher" class="button js-form-submit form-submit btn-primary btn" />
+</div>
+
+</form>
+
+  </div>
+
+  </div>
+
+    <div class="region region-top-right">
+    <div id="block-admeirablock" class="block block-lt-admeira">
+  
+    
+      <div class="ad-container admeira admeira__hpa-1-sba">
+  <div class="ad">
+    <small>Publicité</small>
+    <div id="admeira-5e2b688a3f26a"></div>
+  </div>
+</div>
+
+  </div>
+
+  </div>
+
+    <div>
+    <div id="block-letemps-breadcrumbs" class="region-breadcrumb block block-system">
+  
+    
+      <div class="container">
+  <div class="row">
+    <div class="col-lg-offset-1 col-lg-10">
+      <nav role="navigation" aria-labelledby="system-breadcrumb">
+        <span class="visually-hidden">Fil d'Ariane</span>
+        <ol class="breadcrumb">
+        <li class="visible-xs-inline"><a href="https://www.letemps.ch/"><i class="small ltpsicon ltpsicon-home"></i></a></li>
+                  <li class="hidden-xs" >
+                          <a href="/">Accueil</a>
+                      </li>
+                  <li >
+                          <a href="/monde">Monde</a>
+                      </li>
+                  <li  class="active">
+                          Macron dénonce ses accusateurs
+                      </li>
+                </ol>
+      </nav>
+    </div>
+  </div>
+</div>
+
+  </div>
+<div id="block-admeirablock-2" class="block block-lt-admeira">
+  
+    
+      <div class="ad-container admeira admeira__wb-1">
+  <div class="ad">
+    <small>Publicité</small>
+    <div id="admeira-5e2b679d0b046"></div>
+  </div>
+</div>
+
+  </div>
+
+  </div>
+
+</header>
+
+
+<main>
+  <a id="main-content" tabindex="-1"></a>
+  
+  
+  
+    <div>
+    <div data-drupal-messages-fallback class="hidden"></div>
+<div id="block-letemps-content" class="block block-system">
+  
+    
+      
+
+<article class="content-full-article">
+    
+    <figure class="picture picture-cover ad-skyscraper-pusher">
+            <picture>
+                <!--[if IE 9]><video style="display: none;"><![endif]-->
+              <source srcset="https://assets.letemps.ch/sites/default/files/styles/np8_full/public/media/2020/01/24/file78zopr6qlbd1d1skxjcm.jpg?itok=nCecHhbH 1x" media="all and (min-width: 992px)" type="image/jpeg"/>
+              <source srcset="https://assets.letemps.ch/sites/default/files/styles/767x422/public/media/2020/01/24/file78zopr6qlbd1d1skxjcm.jpg?itok=tgTrGwYK 1x" media="(min-width: 0px)" type="image/jpeg"/>
+            <!--[if IE 9]></video><![endif]-->
+              <img class="picture" src="https://assets.letemps.ch/sites/default/files/styles/lt_article_full/public/media/2020/01/24/file78zopr6qlbd1d1skxjcm.jpg?itok=bOZ4lmtj" alt="" />
+
+  </picture>
+
+
+  <button type="button" class="picture-caption-icon" title="Plus d'information sur l'image">
+    <i class="fa fa-info"></i><span class="sr-only">Plus d'information sur l'image</span>
+  </button>
+  <figcaption>Fidèle à cette tactique qui lui vaut, à chaque fois, de raviver les braises de la colère, Emmanuel Macron a dénoncé devant les journalistes, les «discours politiques extraordinairement coupables» de certains de ses opposants. 
+          <br><span class="picture-copyright">© Abir Sultant/Pool Photo via AP Photo via Keystone </span>
+      </figcaption>
+
+    </figure>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3 col-md-2">
+                <section class="article-info hidden-xs text-sans-serif">
+                    
+<p class="reading-time">
+    <i class="ltpsicon ltpsicon-watch"></i><span>2 minutes</span>
+    de lecture
+</p>
+
+<p class="tags">
+                        <a href="/theme/france"><i class="fa fa-tag"></i>
+                <b>France</b></a>
+            </p>
+
+<p>
+                <span>
+        <a rel="author" href="/auteur/140" class="article-author"><span>Richard Werly</span></a><br>
+        </span>
+        
+            Publié vendredi 24 janvier 2020 à 21:11,
+        modifié vendredi 24 janvier 2020 à 21:12.
+    
+    </p>
+                </section>
+            </div>
+            <div class="col-sm-9 col-md-6">
+                <div class="article-content article-content-inset gallery main-content" data-pswp-uid="1">
+                                        <h2 class="label label-primary" style="margin:0">Déclarations</h2>
+                                        <h1><span>Macron dénonce ses accusateurs</span>
+</h1>                                         <p class="lead">
+                                            Le président français s’est dit inquiet, à son retour d’Israël, de la prolifération des «discours coupables» qui attisent les colères en France
+                    </p>
+                    
+                    <section class="article-info visible-xs-block text-sans-serif">
+                        
+<p class="reading-time">
+    <i class="ltpsicon ltpsicon-watch"></i><span>2 minutes</span>
+    de lecture
+</p>
+
+<p class="tags">
+                        <a href="/theme/france"><i class="fa fa-tag"></i>
+                <b>France</b></a>
+            </p>
+
+<p>
+                <span>
+        <a rel="author" href="/auteur/140" class="article-author"><span>Richard Werly</span></a><br>
+        </span>
+        
+            Publié vendredi 24 janvier 2020 à 21:11,
+        modifié vendredi 24 janvier 2020 à 21:12.
+    
+    </p>
+                    </section>
+
+                    <div class="article_body">
+                        <div>
+                                <div class="share">
+    <p class="text-uppercase">Partage</p>
+    <ul class="list-unstyled">
+        <li class="fb">
+            <a href="https://www.facebook.com/sharer.php?u=https://www.letemps.ch/monde/macron-denonce-accusateurs%3Futm_source%3Dfacebook%26utm_medium%3Dshare%26utm_campaign%3Darticle&display=popup&ref=plugin&src=share_button"
+               class="share-facebook" rel="nofollow noopener" target="_blank">
+               <!-- <span class="sr-only">Partager sur Facebook</span> --><span><i class="fa fa-facebook"></i><span> Partager</span></span>
+            </a>
+        </li>
+        <li class="tw">
+            <a href="https://twitter.com/intent/tweet?text=Macron%20d%C3%A9nonce%20ses%20accusateurs%0D%0Ahttps://www.letemps.ch/monde/macron-denonce-accusateurs%3Futm_source%3Dtwitter%26utm_medium%3Dshare%26utm_campaign%3Darticle%20par%20%40LTWerly" class="share-twitter" rel="nofollow noopener" target="_blank">
+                <!-- <span class="sr-only">Partager sur Twitter</span> <--><span><i class="fa fa-twitter"></i><span> Tweeter</span></span>
+            </a>
+        </li>
+        <li class="li">
+            <a href="https://www.linkedin.com/shareArticle?url=https://www.letemps.ch/monde/macron-denonce-accusateurs%3Futm_source%3Dlinkedin%26utm_medium%3Dshare%26utm_campaign%3Darticle&mini=true&title=Macron%20d%C3%A9nonce%20ses%20accusateurs&summary=Le%20pr%C3%A9sident%20fran%C3%A7ais%20s%E2%80%99est%20dit%20inquiet%2C%20%C3%A0%20son%20retour%20d%E2%80%99Isra%C3%ABl%2C%20de%20la%20prolif%C3%A9ration%20des%20%C2%ABdiscours%20coupables%C2%BB%20qui%20attisent%20les%20col%C3%A8res%20en%20France&source=Le%20Temps" class="share-linkedin" rel="nofollow noopener" target="_blank">
+               <!--  <span class="sr-only">Partager sur Linkedin</span> <--><span><i class="fa fa-linkedin"></i><span> Partager</span></span>
+            </a>
+        </li>
+        <li class="wa visible-xs-inline">
+            <a href="whatsapp://send?text=Macron%20d%C3%A9nonce%20ses%20accusateurs%20https%3A%2F%2Fwww.letemps.ch%2Fmonde%2Fmacron-denonce-accusateurs%3Futm_source%3Dwhatsapp%26utm_medium%3Dshare%26utm_campaign%3Darticle" class="share-whatsapp" rel="noopener nofollow" target="_blank"><span><i class="fa fa-whatsapp"></i></span>
+            </a>
+        </li>
+        <li class="email">
+            <a class="share-email" href="mailto:?subject=LeTemps.ch : Macron%20d%C3%A9nonce%20ses%20accusateurs&body=Macron%20d%C3%A9nonce%20ses%20accusateurs%0D%0A%0D%0ALe%20pr%C3%A9sident%20fran%C3%A7ais%20s%E2%80%99est%20dit%20inquiet%2C%20%C3%A0%20son%20retour%20d%E2%80%99Isra%C3%ABl%2C%20de%20la%20prolif%C3%A9ration%20des%20%C2%ABdiscours%20coupables%C2%BB%20qui%20attisent%20les%20col%C3%A8res%20en%20France%0D%0A%0D%0Ahttps://www.letemps.ch/monde/macron-denonce-accusateurs%3Futm_source%3Dmail%26utm_medium%3Dshare%26utm_campaign%3Darticle"><span><i class="fa fa-envelope"></i></span></a>
+        </li>
+        <li class="bookmark bookmark-action-add" data-article-id="1193020">
+            <a href="javascript:void(0);" data-container="body" data-placement="top" data-toggle="popover" data-content="Cette fonctionnalité nécessite un compte utilisateur.<br><a href='/piano/register?minimal=1&amp;destination=/monde/macron-denonce-accusateurs' class='btn btn-primary btn-small'>S'inscrire</a><a href='/user/login?destination=/monde/macron-denonce-accusateurs' class='btn btn-primary btn-small btn-neg'>Se connecter</a>" data-html="true">
+                <span>
+                    <img src="https://assets.letemps.ch/themes/custom/letemps/assets/img/icon-bookmark-add-red.svg" alt="" class="bookmark-add">
+                    <img src="https://assets.letemps.ch/themes/custom/letemps/assets/img/icon-bookmark-bookmarked-red.svg" alt="" class="bookmark-bookmarked">
+                </span>
+            </a>
+        </li>
+    </ul>
+</div>
+                        </div>
+                        
+                        
+                                                <div class="nl-subscription-container nl-subscription-inarticle"></div>
+                        
+                        <div class="body_content">
+                        
+            <div><p>Il a de nouveau riposté. Fidèle à cette tactique qui lui vaut, à chaque fois, de raviver les braises de la colère, Emmanuel Macron a dénoncé devant les journalistes, jeudi, à son retour d’Israël, les «discours politiques extraordinairement coupables» de certains de ses opposants. Une charge dirigée largement contre la gauche radicale de Jean-Luc Mélenchon. «Aujourd’hui s’est installée dans notre société, et de manière séditieuse, l’idée que nous ne serions plus dans une démocratie, qu’une forme de dictature se serait installée», a-t-il lâché. Le leader de La France insoumise a aussitôt dénoncé cette nouvelle attaque.</p><p><strong>Lire aussi notre ancien éditorial (19.01.20): </strong><a href="/opinions/macron-icebergs-francais">Macron et les icebergs français</a></p><p>Plus controversée encore, en cette période de convulsions sociales, les mots du chef de l’Etat sur ceux qui dénoncent sa façon de gouverner: «Mais allez en dictature! Une dictature, c’est un régime où une personne ou un clan décident des lois. Une dictature, c’est un régime où on ne change pas les dirigeants, jamais. Si la France, c’est cela, essayez la dictature et vous verrez! La dictature, elle justifie la haine. La dictature, elle justifie la violence pour en sortir. Mais il y a en démocratie un principe fondamental: le respect de l’autre, l’interdiction de la violence, la haine à combattre.» Difficile de croire, après cette salve, que les invectives politiques vont retomber.</p></div>
+      
+                        </div>
+
+
+                        
+                        
+                                                    <div class="related-news" id="recommendations-sherlock">
+                              <div class="spacer spacer-xs"></div>
+                              <h2>Recommandés pour vous</h2>
+                              <div class="article-cards article-media">
+                                                                        <div id="recommendations-sherlock-list" class="recommended-container in-article row">
+  Chargement...</div>
+
+                                                                </div>
+                            </div>
+                            <div class="related-news" id="recommendations-letemps">
+                              <div class="spacer spacer-xs"></div>
+                              <h2>Continuez votre lecture</h2>
+                              <div class="article-cards article-media">
+                                                                  <div class="col-xs-12 col-sm-6 recommendation"><h4 class="article-headliner">
+    <span class="article-categories">
+      <span class="label label-primary">
+            Épidémie 
+      </span>    </span>
+    <a href="/monde/coronavirus-deux-premiers-cas-europe" class="link link-shade"><span>Coronavirus: deux premiers cas en Europe </span>
+</a>
+        <small>
+      <a class="link link-muted square-char" href="/monde/coronavirus-deux-premiers-cas-europe">
+                  <time datetime="2020-01-24T20:03:35Z">24 janvier 2020</time>
+
+              </a>
+          </small>
+
+</h4>
+</div>
+                                                                  <div class="col-xs-12 col-sm-6 recommendation"><h4 class="article-headliner">
+    <span class="article-categories">
+      <span class="label label-primary">
+            France
+      </span>    </span>
+    <a href="/monde/mourad-fares-marchand-dillusions-djihad" class="link link-shade"><span>Mourad Farès, marchand d&#039;illusions du djihad</span>
+</a>
+        <span class="label label-premium label-premium-sm hidden-lg hidden-md hidden-sm">Abonné</span>
+        <small>
+      <a class="link link-muted square-char" href="/monde/mourad-fares-marchand-dillusions-djihad">
+                  <time datetime="2020-01-24T19:55:05Z">24 janvier 2020</time>
+
+              </a>
+            <span class="label label-premium label-premium-sm">Abonné</span>
+          </small>
+
+</h4>
+</div>
+                                                                  <div class="col-xs-12 col-sm-6 recommendation"><h4 class="article-headliner">
+    <span class="article-categories">
+      <span class="label label-primary">
+            France 
+      </span>    </span>
+    <a href="/monde/segolene-royal-demise-fonctions-dambassadrice-poles" class="link link-shade"><span>Ségolène Royal démise de ses fonctions d&#039;ambassadrice des pôles</span>
+</a>
+        <small>
+      <a class="link link-muted square-char" href="/monde/segolene-royal-demise-fonctions-dambassadrice-poles">
+                  <time datetime="2020-01-24T14:15:00Z">24 janvier 2020</time>
+
+              </a>
+          </small>
+
+</h4>
+</div>
+                                                                  <div class="col-xs-12 col-sm-6 recommendation"><h4 class="article-headliner">
+    <span class="article-categories">
+      <span class="label label-primary">
+            Le temps d&#039;un café 
+      </span>    </span>
+    <a href="/culture/regis-jauffret-jai-appris-jaimais-pere" class="link link-shade"><span>Régis Jauffret: «J’ai appris que j’aimais mon père»</span>
+</a>
+        <span class="label label-premium label-premium-sm hidden-lg hidden-md hidden-sm">Abonné</span>
+        <small>
+      <a class="link link-muted square-char" href="/culture/regis-jauffret-jai-appris-jaimais-pere">
+                  <time datetime="2020-01-24T20:39:00Z">24 janvier 2020</time>
+
+              </a>
+            <span class="label label-premium label-premium-sm">Abonné</span>
+          </small>
+
+</h4>
+</div>
+                                                                  <div class="col-xs-12 col-sm-6 recommendation"><h4 class="article-headliner">
+    <span class="article-categories">
+      <span class="label label-primary">
+            france
+      </span>    </span>
+    <a href="/monde/retraites-cobayes-france-future" class="link link-shade"><span>Les retraités, «cobayes» de la France future</span>
+</a>
+        <small>
+      <a class="link link-muted square-char" href="/monde/retraites-cobayes-france-future">
+                  <time datetime="2020-01-23T19:48:58Z">23 janvier 2020</time>
+
+              </a>
+          </small>
+
+</h4>
+</div>
+                                                                  <div class="col-xs-12 col-sm-6 recommendation"><h4 class="article-headliner">
+    <span class="article-categories">
+      <span class="label label-primary">
+            Futur antérieur
+      </span>    </span>
+    <a href="/culture/pronom-neutre-sortir-ornieres-langue" class="link link-shade"><span>Le pronom neutre, pour sortir des ornières de la langue</span>
+</a>
+        <span class="label label-premium label-premium-sm hidden-lg hidden-md hidden-sm">Abonné</span>
+        <small>
+      <a class="link link-muted square-char" href="/culture/pronom-neutre-sortir-ornieres-langue">
+                  <time datetime="2020-01-24T19:20:55Z">24 janvier 2020</time>
+
+              </a>
+            <span class="label label-premium label-premium-sm">Abonné</span>
+          </small>
+
+</h4>
+</div>
+                                                              </div>
+                            </div>
+                        
+
+                            <div class="share">
+    <p class="text-uppercase">Partage</p>
+    <ul class="list-unstyled">
+        <li class="fb">
+            <a href="https://www.facebook.com/sharer.php?u=https://www.letemps.ch/monde/macron-denonce-accusateurs%3Futm_source%3Dfacebook%26utm_medium%3Dshare%26utm_campaign%3Darticle&display=popup&ref=plugin&src=share_button"
+               class="share-facebook" rel="nofollow noopener" target="_blank">
+               <!-- <span class="sr-only">Partager sur Facebook</span> --><span><i class="fa fa-facebook"></i><span> Partager</span></span>
+            </a>
+        </li>
+        <li class="tw">
+            <a href="https://twitter.com/intent/tweet?text=Macron%20d%C3%A9nonce%20ses%20accusateurs%0D%0Ahttps://www.letemps.ch/monde/macron-denonce-accusateurs%3Futm_source%3Dtwitter%26utm_medium%3Dshare%26utm_campaign%3Darticle%20par%20%40LTWerly" class="share-twitter" rel="nofollow noopener" target="_blank">
+                <!-- <span class="sr-only">Partager sur Twitter</span> <--><span><i class="fa fa-twitter"></i><span> Tweeter</span></span>
+            </a>
+        </li>
+        <li class="li">
+            <a href="https://www.linkedin.com/shareArticle?url=https://www.letemps.ch/monde/macron-denonce-accusateurs%3Futm_source%3Dlinkedin%26utm_medium%3Dshare%26utm_campaign%3Darticle&mini=true&title=Macron%20d%C3%A9nonce%20ses%20accusateurs&summary=Le%20pr%C3%A9sident%20fran%C3%A7ais%20s%E2%80%99est%20dit%20inquiet%2C%20%C3%A0%20son%20retour%20d%E2%80%99Isra%C3%ABl%2C%20de%20la%20prolif%C3%A9ration%20des%20%C2%ABdiscours%20coupables%C2%BB%20qui%20attisent%20les%20col%C3%A8res%20en%20France&source=Le%20Temps" class="share-linkedin" rel="nofollow noopener" target="_blank">
+               <!--  <span class="sr-only">Partager sur Linkedin</span> <--><span><i class="fa fa-linkedin"></i><span> Partager</span></span>
+            </a>
+        </li>
+        <li class="wa visible-xs-inline">
+            <a href="whatsapp://send?text=Macron%20d%C3%A9nonce%20ses%20accusateurs%20https%3A%2F%2Fwww.letemps.ch%2Fmonde%2Fmacron-denonce-accusateurs%3Futm_source%3Dwhatsapp%26utm_medium%3Dshare%26utm_campaign%3Darticle" class="share-whatsapp" rel="noopener nofollow" target="_blank"><span><i class="fa fa-whatsapp"></i></span>
+            </a>
+        </li>
+        <li class="email">
+            <a class="share-email" href="mailto:?subject=LeTemps.ch : Macron%20d%C3%A9nonce%20ses%20accusateurs&body=Macron%20d%C3%A9nonce%20ses%20accusateurs%0D%0A%0D%0ALe%20pr%C3%A9sident%20fran%C3%A7ais%20s%E2%80%99est%20dit%20inquiet%2C%20%C3%A0%20son%20retour%20d%E2%80%99Isra%C3%ABl%2C%20de%20la%20prolif%C3%A9ration%20des%20%C2%ABdiscours%20coupables%C2%BB%20qui%20attisent%20les%20col%C3%A8res%20en%20France%0D%0A%0D%0Ahttps://www.letemps.ch/monde/macron-denonce-accusateurs%3Futm_source%3Dmail%26utm_medium%3Dshare%26utm_campaign%3Darticle"><span><i class="fa fa-envelope"></i></span></a>
+        </li>
+        <li class="bookmark bookmark-action-add" data-article-id="1193020">
+            <a href="javascript:void(0);" data-container="body" data-placement="top" data-toggle="popover" data-content="Cette fonctionnalité nécessite un compte utilisateur.<br><a href='/piano/register?minimal=1&amp;destination=/monde/macron-denonce-accusateurs' class='btn btn-primary btn-small'>S'inscrire</a><a href='/user/login?destination=/monde/macron-denonce-accusateurs' class='btn btn-primary btn-small btn-neg'>Se connecter</a>" data-html="true">
+                <span>
+                    <img src="https://assets.letemps.ch/themes/custom/letemps/assets/img/icon-bookmark-add-red.svg" alt="" class="bookmark-add">
+                    <img src="https://assets.letemps.ch/themes/custom/letemps/assets/img/icon-bookmark-bookmarked-red.svg" alt="" class="bookmark-bookmarked">
+                </span>
+            </a>
+        </li>
+    </ul>
+</div>
+                        <div class="spacer spacer-md"></div>
+                    </div>
+
+                    <div class="text-centered">
+                        <div class="ad-container admeira admeira__mb-1">
+  <div class="ad">
+    <small>Publicité</small>
+    <div id="admeira-5e2b679cf037e"></div>
+  </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-xs-12 text-right">
+                <div class="spacer spacer-md"></div>
+                <div class="text-right content-full-halfpage">
+                  <div class="ad-container admeira admeira__mr-1-hpa">
+  <div class="ad">
+    <small>Publicité</small>
+    <div id="admeira-5e2b679cf0378"></div>
+  </div>
+</div>
+
+
+                  <div class="text-right"></div>
+                                  </div>
+
+            </div>
+        </div>
+    </div>
+</article>
+
+
+<div class="lazy-load-related" data-section-id="46">
+  <div class="loader">
+   <div class="circle1"></div>
+   <div class="circle2"></div>
+   <div class="circle3"></div>
+  </div>
+</div>
+
+<div id="gallery" class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="pswp__bg"></div>
+    <div class="pswp__scroll-wrap">
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="pswp__loading-indicator"><div class="pswp__loading-indicator__line"></div></div> -->
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip">
+                    <!-- <a href="#" class="pswp__share--facebook"></a>
+                    <a href="#" class="pswp__share--twitter"></a>
+                    <a href="#" class="pswp__share--pinterest"></a>
+                    <a href="#" download class="pswp__share--download"></a> -->
+                </div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="share-by-mail-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Partager un article</h4>
+            </div>
+            <div class="modal-body">
+                
+            </div>
+            <!--div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Send message</button>
+            </div-->
+        </div>
+    </div>
+</div>
+  </div>
+<div id="block-admeirablock-3" class="block block-lt-admeira">
+  
+    
+      
+  </div>
+
+  </div>
+
+</main>
+    <div>
+    <div id="block-letemps-socialmedialinks" class="block block-block-content">
+  
+    
+      
+            <div><div class="bg-gray-lighter">
+<div class="container">
+<div class="row text-center">
+<div class="col-md-10 col-md-offset-1">
+<div class="spacer spacer-sm"> </div>
+
+<h4 class="section-title text-center">Suivez toute l'actualité du Temps sur les réseaux sociaux</h4>
+
+<ul class="list-inline social-networks"><li><a class="facebook" href="https://www.facebook.com/letemps.ch" target="_blank" rel="noopener">Facebook</a></li>
+	<li><a class="twitter" href="https://twitter.com/letemps" target="_blank" rel="noopener">Twitter</a></li>
+	<li><a class="instagram" href="https://www.instagram.com/letemps.ch/" target="_blank" rel="noopener">Instagram</a></li>
+	<li><a class="linkedin" href="https://www.linkedin.com/company/le-temps/" target="_blank" rel="noopener">LinkedIn</a></li>
+	<li><a class="youtube" href="https://www.youtube.com/letemps" target="_blank" rel="noopener">YouTube</a></li>
+</ul><div class="spacer spacer-sm"> </div>
+</div>
+</div>
+</div>
+<!-- /container --></div>
+</div>
+      
+  </div>
+
+  </div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-5 col-md-4 col-md-offset-1">
+  <div class="media">
+    <div class="media-left">
+      <i class="media-object ltpsicon ltpsicon-newspaper"></i>
+    </div>
+    <div class="media-body">
+      <a href="/newsletters" style="text-decoration:none">
+        <h4 class="media-heading h5">Vos newsletters</h4>
+        <p>Inscrivez-vous et recevez les newsletters de votre choix. <b>Voir la liste</b>.</p>
+      </a>
+    </div>
+
+  </div>
+</div>
+<div class="col-sm-7 col-md-6">
+  <div class="spacer spacer-xxs"></div>
+  <div class="nl-subscription-container-footer"></div>
+  <div class="spacer spacer-xxs"></div>
+</div>
+    </div>
+  </div>
+      <div class="footer-bottom">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-10 col-lg-offset-1 footer-credits">
+            <a href="https://www.letemps.ch/">
+            <img class="logo" src="https://assets.letemps.ch/themes/custom/letemps/assets/svg/logo-negative.svg" alt="" />
+            <img class="logo-t" src="https://assets.letemps.ch/themes/custom/letemps/assets/svg/logo-t-negative.svg" alt="" />
+            </a>
+              
+        <ul class="list-inline">
+              <li class="hidden-xs">
+                                <a href="/a-propos"  class="hidden-xs">À propos</a>
+                </li>
+              <li>
+                                <a href="https://www.letemps.ch/abos" >Abonnements</a>
+                </li>
+              <li>
+                                <a href="http://www.admeira.ch/fr/brands/digital/letemps-ch" >Publicité</a>
+                </li>
+              <li>
+                                <a href="/abonnes/services" >Services</a>
+                </li>
+              <li>
+                                <a href="/contact/annuaire" >Impressum</a>
+                </li>
+              <li>
+                                <a href="/protection-donnees" >Protection des données</a>
+                </li>
+      </ul>
+  
+
+
+
+            <a class="btn btn-default btn-top pull-right" href="#top"><i class="fa fa-chevron-up"></i></a>
+          </div>
+        </div>
+
+        <div class="row text-center">&nbsp;</div>
+
+        <div class="spacer spacer-sm"></div>
+
+      </div>
+    </div>
+  </footer>
+
+  </div>
+
+    
+    <div class="popup popup-medium hidden" id="popup-warning-support">
+      <span class="popup-title"></span>
+      <p class="popup-text text-serif"></p>
+      <div class="popup-footer">
+        <a class="btn btn-primary" href="#"></a>
+        <img src="https://assets.letemps.ch/themes/custom/letemps/logo-black.svg" alt="" class="popup-logo">
+      </div>
+    </div>
+    <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/1193020","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"fr"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"ajaxPageState":{"libraries":"core\/html5shiv,core\/picturefill,factory_mailchimp\/newsletter,factory_piano\/factory_piano,letemps\/article,letemps\/pymjs,letemps\/video,lt_admeira\/lt_admeira,lt_bookmark\/bookmark,lt_custom\/recommendations,lt_custom\/related_news,lt_custom\/video,np8_embed\/np8_embed,np8_user\/login-destination,statistics\/drupal.statistics,system\/base","theme":"letemps","theme_token":null},"ajaxTrustedUrl":{"\/search":true},"lt_bookmark":{"userToken":null,"firebaseConfig":{"apiKey":"AIzaSyBb50w4-mHGaC7qFOKj4075266yBHnJDfg","authDomain":"le-temps-app.firebaseapp.com","projectId":"le-temps-app"},"bookmark_environment":"users_production"},"np8_embed":{"twitter":{"dialog_add":"Embed Twitter","dialog_edit":"Edit Embedded Twitter"},"facebook":{"app_id":2147483647,"langcode":"de_DE","dialog_add":"Embed Facebook","dialog_edit":"Edit Embedded Facebook","loading":"Loading Facebook Post..."}},"lt_custom":{"recommendations":"https:\/\/europe-west1-app-body-parser.cloudfunctions.net\/getRecommendations"},"lt_admeira":{"publisher_id":"letemps.ch","language":"fr","version":"1.5.7","channel":"Monde","targeting":{"url1":"monde","url2":"macron-denonce-accusateurs","title":"macron-denonce-ses-accusateurs","pagetype":"detail","articleid":"1193020","articlepremium":"","sponsor":"false","dossier":"france","ressort":"monde","usersi":0},"ads":{"ad-iav-1":{"slotCode":"IAV_1","mobileSlotCode":"IAV_1","isVideo":false},"admeira-5e2b679cf0378":{"slotCode":"MR_1-HPA","mobileSlotCode":"MPA_2-MHPA","isVideo":false},"admeira-5e2b679cf037e":{"slotCode":"MB_1","mobileSlotCode":"MPA_3","isVideo":false},"admeira-5e2b679d0b046":{"slotCode":"WB_1","mobileSlotCode":"MMR_1","isVideo":false},"admeira-5e2b688a3f26a":{"slotCode":"HPA_1-SBA","mobileSlotCode":"","isVideo":false}}},"statistics":{"data":{"nid":"1193020"},"url":"\/core\/modules\/statistics\/statistics.php"},"blazy":{"loadInvisible":true,"offset":100,"saveViewportOffsetDelay":50,"validateDelay":25},"user":{"uid":0,"permissionsHash":"6227f82449c0c038de12bbabf0e7d86f626235b4dc28cfd5b45b7bd71193553a"}}</script>
+<script src="https://assets.letemps.ch/sites/default/files/js/js_bFcMc7nUR82tVszbJNgGsYFDhhtO3v-2y-W-B0I8PN8.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.2.3/firebase-app.js" defer></script>
+<script src="https://www.gstatic.com/firebasejs/6.2.3/firebase-auth.js" defer></script>
+<script src="https://www.gstatic.com/firebasejs/6.2.3/firebase-firestore.js" defer></script>
+<script src="https://assets.letemps.ch/modules/custom/lt_bookmark/js/bookmark.js?v=1.1" defer></script>
+<script src="https://assets.letemps.ch/sites/default/files/js/js_fjiI-C4GaVdYrEpAkbdMGoDS7uHb7YTxzTAiot8Z5BU.js"></script>
+<script src="https://players.brightcove.net/5104226614001/BJqobDOb6_default/index.min.js"></script>
+<script src="https://www.youtube.com/iframe_api"></script>
+<script src="https://assets.letemps.ch/sites/default/files/js/js_xzR4W4FrOQ20KU7rPnNF69qjufakA25k0Ld0_C8mV9Q.js"></script>
+
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"0d3c09e20d","applicationID":"8284479","transactionName":"ZlZTY0pZCxBVBRJQC18cZEVRFwwNUAMeFxRZQw==","queueTime":0,"applicationTime":6,"atts":"ShFQFQJDGB4=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>

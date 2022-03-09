@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"VgYHV1dVGwIBVFlVBQU=",licenseKey:"15ba4da3e8",applicationID:"1108724"};window.NREUM||(NREUM={}),__nr_require=function(t,n,e){function r(e){if(!n[e]){var o=n[e]={exports:{}};t[e][0].call(o.exports,function(n){var o=t[e][1][n];return r(o||n)},o,o.exports)}return n[e].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<e.length;o++)r(e[o]);return r}({1:[function(t,n,e){function r(t){try{s.console&&console.log(t)}catch(n){}}var o,i=t("ee"),a=t(20),s={};try{o=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(s.console=!0,o.indexOf("dev")!==-1&&(s.dev=!0),o.indexOf("nr_dev")!==-1&&(s.nrDev=!0))}catch(c){}s.nrDev&&i.on("internal-error",function(t){r(t.stack)}),s.dev&&i.on("fn-err",function(t,n,e){r(e.stack)}),s.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(s,function(t,n){return t}).join(", ")))},{}],2:[function(t,n,e){function r(t,n,e,r,s){try{p?p-=1:o(s||new UncaughtException(t,n,e),!0)}catch(f){try{i("ierr",[f,c.now(),!0])}catch(d){}}return"function"==typeof u&&u.apply(this,a(arguments))}function UncaughtException(t,n,e){this.message=t||"Uncaught error with no additional information",this.sourceURL=n,this.line=e}function o(t,n){var e=n?null:c.now();i("err",[t,e])}var i=t("handle"),a=t(21),s=t("ee"),c=t("loader"),f=t("gos"),u=window.onerror,d=!1,l="nr@seenError",p=0;c.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(h){"stack"in h&&(t(9),t(8),"addEventListener"in window&&t(5),c.xhrWrappable&&t(10),d=!0)}s.on("fn-start",function(t,n,e){d&&(p+=1)}),s.on("fn-err",function(t,n,e){d&&!e[l]&&(f(e,l,function(){return!0}),this.thrown=!0,o(e))}),s.on("fn-end",function(){d&&!this.thrown&&p>0&&(p-=1)}),s.on("internal-error",function(t){i("ierr",[t,c.now(),!0])})},{}],3:[function(t,n,e){t("loader").features.ins=!0},{}],4:[function(t,n,e){function r(t){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var o=t("ee"),i=t("handle"),a=t(9),s=t(8),c="learResourceTimings",f="addEventListener",u="resourcetimingbufferfull",d="bstResource",l="resource",p="-start",h="-end",m="fn"+p,w="fn"+h,v="bstTimer",g="pushState",y=t("loader");y.features.stn=!0,t(7),"addEventListener"in window&&t(5);var x=NREUM.o.EV;o.on(m,function(t,n){var e=t[0];e instanceof x&&(this.bstStart=y.now())}),o.on(w,function(t,n){var e=t[0];e instanceof x&&i("bst",[e,n,this.bstStart,y.now()])}),a.on(m,function(t,n,e){this.bstStart=y.now(),this.bstType=e}),a.on(w,function(t,n){i(v,[n,this.bstStart,y.now(),this.bstType])}),s.on(m,function(){this.bstStart=y.now()}),s.on(w,function(t,n){i(v,[n,this.bstStart,y.now(),"requestAnimationFrame"])}),o.on(g+p,function(t){this.time=y.now(),this.startPath=location.pathname+location.hash}),o.on(g+h,function(t){i("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),f in window.performance&&(window.performance["c"+c]?window.performance[f](u,function(t){i(d,[window.performance.getEntriesByType(l)]),window.performance["c"+c]()},!1):window.performance[f]("webkit"+u,function(t){i(d,[window.performance.getEntriesByType(l)]),window.performance["webkitC"+c]()},!1)),document[f]("scroll",r,{passive:!0}),document[f]("keypress",r,!1),document[f]("click",r,!1)}},{}],5:[function(t,n,e){function r(t){for(var n=t;n&&!n.hasOwnProperty(u);)n=Object.getPrototypeOf(n);n&&o(n)}function o(t){s.inPlace(t,[u,d],"-",i)}function i(t,n){return t[1]}var a=t("ee").get("events"),s=t("wrap-function")(a,!0),c=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";n.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(o(window),o(f.prototype)),a.on(u+"-start",function(t,n){var e=t[1],r=c(e,"nr@wrapped",function(){function t(){if("function"==typeof e.handleEvent)return e.handleEvent.apply(e,arguments)}var n={object:t,"function":e}[typeof e];return n?s(n,"fn-",null,n.name||"anonymous"):e});this.wrapped=t[1]=r}),a.on(d+"-start",function(t){t[1]=this.wrapped||t[1]})},{}],6:[function(t,n,e){function r(t,n,e){var r=t[n];"function"==typeof r&&(t[n]=function(){var t=i(arguments),n={};o.emit(e+"before-start",[t],n);var a;n[m]&&n[m].dt&&(a=n[m].dt);var s=r.apply(this,t);return o.emit(e+"start",[t,a],s),s.then(function(t){return o.emit(e+"end",[null,t],s),t},function(t){throw o.emit(e+"end",[t],s),t})})}var o=t("ee").get("fetch"),i=t(21),a=t(20);n.exports=o;var s=window,c="fetch-",f=c+"body-",u=["arrayBuffer","blob","json","text","formData"],d=s.Request,l=s.Response,p=s.fetch,h="prototype",m="nr@context";d&&l&&p&&(a(u,function(t,n){r(d[h],n,f),r(l[h],n,f)}),r(s,"fetch",c),o.on(c+"end",function(t,n){var e=this;if(n){var r=n.headers.get("content-length");null!==r&&(e.rxSize=r),o.emit(c+"done",[null,n],e)}else o.emit(c+"done",[t],e)}))},{}],7:[function(t,n,e){var r=t("ee").get("history"),o=t("wrap-function")(r);n.exports=r;var i=window.history&&window.history.constructor&&window.history.constructor.prototype,a=window.history;i&&i.pushState&&i.replaceState&&(a=i),o.inPlace(a,["pushState","replaceState"],"-")},{}],8:[function(t,n,e){var r=t("ee").get("raf"),o=t("wrap-function")(r),i="equestAnimationFrame";n.exports=r,o.inPlace(window,["r"+i,"mozR"+i,"webkitR"+i,"msR"+i],"raf-"),r.on("raf-start",function(t){t[0]=o(t[0],"fn-")})},{}],9:[function(t,n,e){function r(t,n,e){t[0]=a(t[0],"fn-",null,e)}function o(t,n,e){this.method=e,this.timerDuration=isNaN(t[1])?0:+t[1],t[0]=a(t[0],"fn-",this,e)}var i=t("ee").get("timer"),a=t("wrap-function")(i),s="setTimeout",c="setInterval",f="clearTimeout",u="-start",d="-";n.exports=i,a.inPlace(window,[s,"setImmediate"],s+d),a.inPlace(window,[c],c+d),a.inPlace(window,[f,"clearImmediate"],f+d),i.on(c+u,r),i.on(s+u,o)},{}],10:[function(t,n,e){function r(t,n){d.inPlace(n,["onreadystatechange"],"fn-",s)}function o(){var t=this,n=u.context(t);t.readyState>3&&!n.resolved&&(n.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,g,"fn-",s)}function i(t){y.push(t),h&&(b?b.then(a):w?w(a):(E=-E,O.data=E))}function a(){for(var t=0;t<y.length;t++)r([],y[t]);y.length&&(y=[])}function s(t,n){return n}function c(t,n){for(var e in t)n[e]=t[e];return n}t(5);var f=t("ee"),u=f.get("xhr"),d=t("wrap-function")(u),l=NREUM.o,p=l.XHR,h=l.MO,m=l.PR,w=l.SI,v="readystatechange",g=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],y=[];n.exports=u;var x=window.XMLHttpRequest=function(t){var n=new p(t);try{u.emit("new-xhr",[n],n),n.addEventListener(v,o,!1)}catch(e){try{u.emit("internal-error",[e])}catch(r){}}return n};if(c(p,x),x.prototype=p.prototype,d.inPlace(x.prototype,["open","send"],"-xhr-",s),u.on("send-xhr-start",function(t,n){r(t,n),i(n)}),u.on("open-xhr-start",r),h){var b=m&&m.resolve();if(!w&&!m){var E=1,O=document.createTextNode(E);new h(a).observe(O,{characterData:!0})}}else f.on("fn-end",function(t){t[0]&&t[0].type===v||a()})},{}],11:[function(t,n,e){function r(t){if(!i(t))return null;var n=window.NREUM;if(!n.loader_config)return null;var e=(n.loader_config.accountID||"").toString()||null,r=(n.loader_config.agentID||"").toString()||null,s=(n.loader_config.trustKey||"").toString()||null;if(!e||!r)return null;var c=a.generateCatId(),f=a.generateCatId(),u=Date.now(),d=o(c,f,u,e,r,s);return{header:d,guid:c,traceId:f,timestamp:u}}function o(t,n,e,r,o,i){var a="btoa"in window&&"function"==typeof window.btoa;if(!a)return null;var s={v:[0,1],d:{ty:"Browser",ac:r,ap:o,id:t,tr:n,ti:e}};return i&&r!==i&&(s.d.tk=i),btoa(JSON.stringify(s))}function i(t){var n=!1,e=!1,r={};if("init"in NREUM&&"distributed_tracing"in NREUM.init&&(r=NREUM.init.distributed_tracing,e=!!r.enabled),e)if(t.sameOrigin)n=!0;else if(r.allowed_origins instanceof Array)for(var o=0;o<r.allowed_origins.length;o++){var i=s(r.allowed_origins[o]);if(t.hostname===i.hostname&&t.protocol===i.protocol&&t.port===i.port){n=!0;break}}return e&&n}var a=t(18),s=t(13);n.exports={generateTracePayload:r,shouldGenerateTrace:i}},{}],12:[function(t,n,e){function r(t){var n=this.params,e=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;r<p;r++)t.removeEventListener(l[r],this.listener,!1);n.aborted||(e.duration=s.now()-this.startTime,this.loadCaptureCalled||4!==t.readyState?null==n.status&&(n.status=0):a(this,t),e.cbTime=this.cbTime,d.emit("xhr-done",[t],t),c("xhr",[n,e,this.startTime]))}}function o(t,n){var e=t.responseType;if("json"===e&&null!==n)return n;var r="arraybuffer"===e||"blob"===e||"json"===e?t.response:t.responseText;return w(r)}function i(t,n){var e=f(n),r=t.params;r.host=e.hostname+":"+e.port,r.pathname=e.pathname,t.parsedOrigin=f(n),t.sameOrigin=t.parsedOrigin.sameOrigin}function a(t,n){t.params.status=n.status;var e=o(n,t.lastSize);if(e&&(t.metrics.rxSize=e),t.sameOrigin){var r=n.getResponseHeader("X-NewRelic-App-Data");r&&(t.params.cat=r.split(", ").pop())}t.loadCaptureCalled=!0}var s=t("loader");if(s.xhrWrappable){var c=t("handle"),f=t(13),u=t(11).generateTracePayload,d=t("ee"),l=["load","error","abort","timeout"],p=l.length,h=t("id"),m=t(16),w=t(15),v=window.XMLHttpRequest;s.features.xhr=!0,t(10),t(6),d.on("new-xhr",function(t){var n=this;n.totalCbs=0,n.called=0,n.cbTime=0,n.end=r,n.ended=!1,n.xhrGuids={},n.lastSize=null,n.loadCaptureCalled=!1,t.addEventListener("load",function(e){a(n,t)},!1),m&&(m>34||m<10)||window.opera||t.addEventListener("progress",function(t){n.lastSize=t.loaded},!1)}),d.on("open-xhr-start",function(t){this.params={method:t[0]},i(this,t[1]),this.metrics={}}),d.on("open-xhr-end",function(t,n){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&n.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid);var e=u(this.parsedOrigin);e&&e.header&&(n.setRequestHeader("newrelic",e.header),this.dt=e)}),d.on("send-xhr-start",function(t,n){var e=this.metrics,r=t[0],o=this;if(e&&r){var i=w(r);i&&(e.txSize=i)}this.startTime=s.now(),this.listener=function(t){try{"abort"!==t.type||o.loadCaptureCalled||(o.params.aborted=!0),("load"!==t.type||o.called===o.totalCbs&&(o.onloadCalled||"function"!=typeof n.onload))&&o.end(n)}catch(e){try{d.emit("internal-error",[e])}catch(r){}}};for(var a=0;a<p;a++)n.addEventListener(l[a],this.listener,!1)}),d.on("xhr-cb-time",function(t,n,e){this.cbTime+=t,n?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof e.onload||this.end(e)}),d.on("xhr-load-added",function(t,n){var e=""+h(t)+!!n;this.xhrGuids&&!this.xhrGuids[e]&&(this.xhrGuids[e]=!0,this.totalCbs+=1)}),d.on("xhr-load-removed",function(t,n){var e=""+h(t)+!!n;this.xhrGuids&&this.xhrGuids[e]&&(delete this.xhrGuids[e],this.totalCbs-=1)}),d.on("addEventListener-end",function(t,n){n instanceof v&&"load"===t[0]&&d.emit("xhr-load-added",[t[1],t[2]],n)}),d.on("removeEventListener-end",function(t,n){n instanceof v&&"load"===t[0]&&d.emit("xhr-load-removed",[t[1],t[2]],n)}),d.on("fn-start",function(t,n,e){n instanceof v&&("onload"===e&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=s.now()))}),d.on("fn-end",function(t,n){this.xhrCbStart&&d.emit("xhr-cb-time",[s.now()-this.xhrCbStart,this.onload,n],n)}),d.on("fetch-before-start",function(t){var n,e=t[1]||{};"string"==typeof t[0]?n=t[0]:t[0]&&t[0].url&&(n=t[0].url),n&&(this.parsedOrigin=f(n),this.sameOrigin=this.parsedOrigin.sameOrigin);var r=u(this.parsedOrigin);if(r&&r.header){var o=r.header;if("string"==typeof t[0]){var i={};for(var a in e)i[a]=e[a];i.headers=new Headers(e.headers||{}),i.headers.set("newrelic",o),this.dt=r,t.length>1?t[1]=i:t.push(i)}else t[0]&&t[0].headers&&(t[0].headers.append("newrelic",o),this.dt=r)}})}},{}],13:[function(t,n,e){var r={};n.exports=function(t){if(t in r)return r[t];var n=document.createElement("a"),e=window.location,o={};n.href=t,o.port=n.port;var i=n.href.split("://");!o.port&&i[1]&&(o.port=i[1].split("/")[0].split("@").pop().split(":")[1]),o.port&&"0"!==o.port||(o.port="https"===i[0]?"443":"80"),o.hostname=n.hostname||e.hostname,o.pathname=n.pathname,o.protocol=i[0],"/"!==o.pathname.charAt(0)&&(o.pathname="/"+o.pathname);var a=!n.protocol||":"===n.protocol||n.protocol===e.protocol,s=n.hostname===document.domain&&n.port===e.port;return o.sameOrigin=a&&(!n.hostname||s),"/"===o.pathname&&(r[t]=o),o}},{}],14:[function(t,n,e){function r(){}function o(t,n,e){return function(){return i(t,[f.now()].concat(s(arguments)),n?null:this,e),n?void 0:this}}var i=t("handle"),a=t(20),s=t(21),c=t("ee").get("tracer"),f=t("loader"),u=NREUM;"undefined"==typeof window.newrelic&&(newrelic=u);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",p=l+"ixn-";a(d,function(t,n){u[n]=o(l+n,!0,"api")}),u.addPageAction=o(l+"addPageAction",!0),u.setCurrentRouteName=o(l+"routeName",!0),n.exports=newrelic,u.interaction=function(){return(new r).get()};var h=r.prototype={createTracer:function(t,n){var e={},r=this,o="function"==typeof n;return i(p+"tracer",[f.now(),t,e],r),function(){if(c.emit((o?"":"no-")+"fn-start",[f.now(),r,o],e),o)try{return n.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],e),t}finally{c.emit("fn-end",[f.now()],e)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,n){h[n]=o(p+n)}),newrelic.noticeError=function(t,n){"string"==typeof t&&(t=new Error(t)),i("err",[t,f.now(),!1,n])}},{}],15:[function(t,n,e){n.exports=function(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(n){return}}}},{}],16:[function(t,n,e){var r=0,o=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);o&&(r=+o[1]),n.exports=r},{}],17:[function(t,n,e){function r(t,n){var e=t.getEntries();e.forEach(function(t){"first-paint"===t.name?a("timing",["fp",Math.floor(t.startTime)]):"first-contentful-paint"===t.name&&a("timing",["fcp",Math.floor(t.startTime)])})}function o(t){if(t instanceof c&&!u){var n,e=Math.round(t.timeStamp);n=e>1e12?Date.now()-e:s.now()-e,u=!0,a("timing",["fi",e,{type:t.type,fid:n}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var i,a=t("handle"),s=t("loader"),c=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){i=new PerformanceObserver(r);try{i.observe({entryTypes:["paint"]})}catch(f){}}if("addEventListener"in document){var u=!1,d=["click","keydown","mousedown","pointerdown","touchstart"];d.forEach(function(t){document.addEventListener(t,o,!1)})}}},{}],18:[function(t,n,e){function r(){function t(){return n?15&n[e++]:16*Math.random()|0}var n=null,e=0,r=window.crypto||window.msCrypto;r&&r.getRandomValues&&(n=r.getRandomValues(new Uint8Array(31)));for(var o,i="xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx",a="",s=0;s<i.length;s++)o=i[s],"x"===o?a+=t().toString(16):"y"===o?(o=3&t()|8,a+=o.toString(16)):a+=o;return a}function o(){function t(){return n?15&n[e++]:16*Math.random()|0}var n=null,e=0,r=window.crypto||window.msCrypto;r&&r.getRandomValues&&Uint8Array&&(n=r.getRandomValues(new Uint8Array(31)));for(var o=[],i=0;i<16;i++)o.push(t().toString(16));return o.join("")}n.exports={generateUuid:r,generateCatId:o}},{}],19:[function(t,n,e){function r(t,n){if(!o)return!1;if(t!==o)return!1;if(!n)return!0;if(!i)return!1;for(var e=i.split("."),r=n.split("."),a=0;a<r.length;a++)if(r[a]!==e[a])return!1;return!0}var o=null,i=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var s=navigator.userAgent,c=s.match(a);c&&s.indexOf("Chrome")===-1&&s.indexOf("Chromium")===-1&&(o="Safari",i=c[1])}n.exports={agent:o,version:i,match:r}},{}],20:[function(t,n,e){function r(t,n){var e=[],r="",i=0;for(r in t)o.call(t,r)&&(e[i]=n(r,t[r]),i+=1);return e}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],21:[function(t,n,e){function r(t,n,e){n||(n=0),"undefined"==typeof e&&(e=t?t.length:0);for(var r=-1,o=e-n||0,i=Array(o<0?0:o);++r<o;)i[r]=t[n+r];return i}n.exports=r},{}],22:[function(t,n,e){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(t,n,e){function r(){}function o(t){function n(t){return t&&t instanceof r?t:t?c(t,s,i):i()}function e(e,r,o,i){if(!l.aborted||i){t&&t(e,r,o);for(var a=n(o),s=m(e),c=s.length,f=0;f<c;f++)s[f].apply(a,r);var d=u[y[e]];return d&&d.push([x,e,r,a]),a}}function p(t,n){g[t]=m(t).concat(n)}function h(t,n){var e=g[t];if(e)for(var r=0;r<e.length;r++)e[r]===n&&e.splice(r,1)}function m(t){return g[t]||[]}function w(t){return d[t]=d[t]||o(e)}function v(t,n){f(t,function(t,e){n=n||"feature",y[e]=n,n in u||(u[n]=[])})}var g={},y={},x={on:p,addEventListener:p,removeEventListener:h,emit:e,get:w,listeners:m,context:n,buffer:v,abort:a,aborted:!1};return x}function i(){return new r}function a(){(u.api||u.feature)&&(l.aborted=!0,u=l.backlog={})}var s="nr@context",c=t("gos"),f=t(20),u={},d={},l=n.exports=o();l.backlog=u},{}],gos:[function(t,n,e){function r(t,n,e){if(o.call(t,n))return t[n];var r=e();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,n,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return t[n]=r,r}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(t,n,e){function r(t,n,e,r){o.buffer([t],r),o.emit(t,n,e)}var o=t("ee").get("handle");n.exports=r,r.ee=o},{}],id:[function(t,n,e){function r(t){var n=typeof t;return!t||"object"!==n&&"function"!==n?-1:t===window?0:a(t,i,function(){return o++})}var o=1,i="nr@id",a=t("gos");n.exports=r},{}],loader:[function(t,n,e){function r(){if(!E++){var t=b.info=NREUM.info,n=p.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&n))return u.abort();f(y,function(n,e){t[n]||(t[n]=e)}),c("mark",["onload",a()+b.offset],null,"api");var e=p.createElement("script");e.src="https://"+t.agent,n.parentNode.insertBefore(e,n)}}function o(){"complete"===p.readyState&&i()}function i(){c("mark",["domContent",a()+b.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(s=Math.max((new Date).getTime(),s))-b.offset}var s=(new Date).getTime(),c=t("handle"),f=t(20),u=t("ee"),d=t(19),l=window,p=l.document,h="addEventListener",m="attachEvent",w=l.XMLHttpRequest,v=w&&w.prototype;NREUM.o={ST:setTimeout,SI:l.setImmediate,CT:clearTimeout,XHR:w,REQ:l.Request,EV:l.Event,PR:l.Promise,MO:l.MutationObserver};var g=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1158.min.js"},x=w&&v&&v[h]&&!/CriOS/.test(navigator.userAgent),b=n.exports={offset:s,now:a,origin:g,features:{},xhrWrappable:x,userAgent:d};t(14),t(17),p[h]?(p[h]("DOMContentLoaded",i,!1),l[h]("load",r,!1)):(p[m]("onreadystatechange",o),l[m]("onload",r)),c("mark",["firstbyte",s],null,"api");var E=0,O=t(22)},{}],"wrap-function":[function(t,n,e){function r(t){return!(t&&t instanceof Function&&t.apply&&!t[a])}var o=t("ee"),i=t(21),a="nr@original",s=Object.prototype.hasOwnProperty,c=!1;n.exports=function(t,n){function e(t,n,e,o){function nrWrapper(){var r,a,s,c;try{a=this,r=i(arguments),s="function"==typeof e?e(r,a):e||{}}catch(f){l([f,"",[r,a,o],s])}u(n+"start",[r,a,o],s);try{return c=t.apply(a,r)}catch(d){throw u(n+"err",[r,a,d],s),d}finally{u(n+"end",[r,a,c],s)}}return r(t)?t:(n||(n=""),nrWrapper[a]=t,d(t,nrWrapper),nrWrapper)}function f(t,n,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<n.length;c++)s=n[c],a=t[s],r(a)||(t[s]=e(a,f?s+o:o,i,s))}function u(e,r,o){if(!c||n){var i=c;c=!0;try{t.emit(e,r,o,n)}catch(a){l([a,e,r,o])}c=i}}function d(t,n){if(Object.defineProperty&&Object.keys)try{var e=Object.keys(t);return e.forEach(function(e){Object.defineProperty(n,e,{get:function(){return t[e]},set:function(n){return t[e]=n,n}})}),n}catch(r){l([r])}for(var o in t)s.call(t,o)&&(n[o]=t[o]);return n}function l(n){try{t.emit("internal-error",n)}catch(e){}}return t||(t=o),e.inPlace=f,e.flag=a,e}},{}]},{},["loader",2,12,4,3]);</script>
+<meta property="og:description" content="Three years ago, a small film crew drove into the Austrian Alps in search of a remote valley. It would serve as one of the settings for Terrence Malick&amp;" />
+<meta property="og:image" content="https://mediad.publicbroadcasting.net/p/shared/npr/styles/medium/nprshared/201912/790912717.jpg" />
+<meta property="og:url" content="https://www.redriverradio.org/post/austrias-alps-hidden-life-world-war-ii-resistance" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="In Austria&#039;s Alps, &#039;A Hidden Life&#039; Of World War II Resistance" />
+<meta property="og:image:height" content="2698" />
+<meta property="og:image:width" content="4796" />
+<meta content="In Austria&amp;#039;s Alps, &amp;#039;A Hidden Life&amp;#039; Of World War II Resistance" about="/post/austrias-alps-hidden-life-world-war-ii-resistance" property="dc:title" />
+<link rel="shortcut icon" href="//www.redriverradio.org/sites/rrr/files/201508/RRRNewlogoico_0.ico" type="image/vnd.microsoft.icon" />
+<meta property="twitter:creator" content="@rrrpublicradio" />
+<meta property="twitter:site" content="@rrrpublicradio" />
+<meta property="twitter:card" content="summary" />
+<link href="https://mediad.publicbroadcasting.net/p/shared/npr/201912/790912717.jpg" rel="image_src" />
+<meta name="datePublished" content="2019-12-23" />
+<meta name="has_audio" content="1" />
+<meta name="programs" content="All Things Considered, Weekend All Things Considered" />
+<link rel="shortlink" href="/node/136410" />
+<link rel="canonical" href="/post/austrias-alps-hidden-life-world-war-ii-resistance" />
+<meta name="Generator" content="Drupal 7 (http://drupal.org)" />
+<meta name="category" content="none" />
+<meta name="nid" content="136410" />
+<meta name="wordCount" content="1715" />
+<meta name="story_id" content="790906638" />
+<meta name="keywords" content="" />
+<meta name="org_id" content="1" />
+<meta name="author" content="Bilal Qureshi" />
+<meta name="description" content="Three years ago, a small film crew drove into the Austrian Alps in search of a remote valley. It would serve as one of the settings for Terrence Malick&amp;" />
+    <title>In Austria&#039;s Alps, &#039;A Hidden Life&#039; Of World War II Resistance | Red River Radio</title>
+    <link type="text/css" rel="stylesheet" href="https://www.redriverradio.org/sites/redriverradio.org/files/css/css_rjIyrRfDBvOF_3JiRrl7QDp03VelCpfatfnbH6TqeB0.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://www.redriverradio.org/sites/redriverradio.org/files/css/css_ZFlaYqkiQzTmlBPX4mQeT33IFQX3nR-zpGlyqFhtTNM.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://www.redriverradio.org/sites/redriverradio.org/files/css/css_PV0HBDBtTWS7oiEnFpozcEeThn_X5umpjVSdbNSQIRI.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://www.redriverradio.org/sites/redriverradio.org/files/css/css_fS2nxB467zSfd9oVpcMDMZ0AizKiFkiuNQ8urIGXU8k.css" media="all" />
+<style type="text/css" media="all">
+<!--/*--><![CDATA[/*><!--*/
+.header-region-outer{background-color:#FFFFFF;}@media screen and (min-width:1024px){.header-region-outer{background-image:url(//www.redriverradio.org/sites/rrr/files/201812/background2_fid.jpg);background-position:center bottom;background-size:auto;background-repeat:no-repeat;}}.branding .tagline{color:#000;}.branding .listen-live-toggle > a,.branding .header-utility > a,.branding .header-utility > a.trigger-nav{color:#FFF;}@media screen and (min-width:641px){.branding .trigger-nav{background:#0A0909;}}@media screen and (max-width:640px){.branding .header-utility > a.trigger-nav,.active-menu .branding .header-utility > a.trigger-nav{color:#777777;}}#listen-live .listen-live-toggle{background-color:#929290;}#listen-live .listen-live-btn{background-color:transparent;color:#FFF;}@media screen and (min-width:640px){#listen-live .listen-live-btn{background-color:#929290;}}.branding .give{background:#CE4731;}
+
+/*]]>*/-->
+</style>
+<link type="text/css" rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,700,700italic,900,italic,regular&amp;subset=latin" media="all" />
+<link type="text/css" rel="stylesheet" href="https://www.redriverradio.org/sites/redriverradio.org/files/css/css_zndqvtWq5LYY1stiAFMQITKhCPFSm2oW3wK0MD-raGc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://www.redriverradio.org/sites/redriverradio.org/files/css/css_KHbyuO5WXNdpTVB7G46pLrD2jT3B3NREIPVI6ZS-dBs.css" media="all" />
+    <script type="text/javascript" src="//www.redriverradio.org/sites/rrr/files/js/js_xSpMA4ArVcBKOZ43sPqNRk0gxQZdDVifw27pIUCzWU0.js"></script>
+<script type="text/javascript" src="//www.redriverradio.org/sites/rrr/files/js/js_P9u0bgloveAIlc2kutVCUB_xMaRV3YHWhSVHD3IN5tM.js"></script>
+<script type="text/javascript" src="//www.redriverradio.org/sites/rrr/files/js/js_f_6-OzlFXjayKlsU5sJKLwjz7LFQvdIZDm-Mt6jKwyM.js"></script>
+<script type="text/javascript" src="//www.redriverradio.org/sites/rrr/files/js/js__4npt0PuTlrK-GkTl821OR8Eb7aiGB9GvsSeu1tr7U4.js"></script>
+<script type="text/javascript" src="//www.googletagservices.com/tag/js/gpt.js"></script>
+<script type="text/javascript" src="//www.redriverradio.org/sites/rrr/files/js/js_6oC4w3Iu731i40L9-N0yYjaQWeRAw-bD7kDfJN_Ck4M.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+(function() {var ga = document.createElement("script");ga.type = "text/javascript";ga.async = true;ga.src="//stream.publicbroadcasting.net/analytics/aal2.js";var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(ga, s);})();
+//--><!]]>
+</script>
+<script type="text/javascript" src="//www.redriverradio.org/sites/rrr/files/js/js_J4mhtldZ7_S7gVLJZX7b6-BHGpS6sT7WV_NjnBA4Ps0.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":{"theme":"responso","theme_token":"btnjhXgqv83PzsIh1TYQZM8WRJMI4NVszllJyUYLHlg","js":{"http:\/\/widgets.listenlive.co\/1.0\/tdwidgets.min.js":1,"0":1,"sites\/all\/modules\/contrib\/jquery_update\/replace\/jquery\/1.8\/jquery.min.js":1,"misc\/jquery.once.js":1,"misc\/drupal.js":1,"sites\/all\/libraries\/magnific-popup\/jquery.magnific-popup.min.js":1,"sites\/all\/modules\/custom\/responsive_utilities\/js\/vendor\/foundation\/foundation.js":1,"sites\/all\/modules\/custom\/responsive_utilities\/js\/vendor\/foundation\/foundation.topbar.js":1,"sites\/all\/modules\/contrib\/google_cse\/google_cse.js":1,"sites\/all\/modules\/custom\/pi_media_types\/pi_audio\/js\/pi-audio.js":1,"sites\/all\/modules\/custom\/pi_hull\/js\/pi-hull.js":1,"sites\/all\/modules\/custom\/pi_hull\/js\/jquery.innerfade.js":1,"sites\/all\/modules\/custom\/pi_hull\/jplayer\/js\/jquery.jplayer.min.js":1,"sites\/all\/modules\/custom\/pi_hull\/jplayer\/js\/main.js":1,"\/\/www.googletagservices.com\/tag\/js\/gpt.js":1,"sites\/all\/modules\/custom\/responsive_ads\/js\/main.js":1,"sites\/all\/modules\/custom\/pi_hull\/pi_outrigger\/js\/shared-cache-roundtrip.js":1,"sites\/all\/modules\/custom\/triton_player\/js\/td-player\/td-player.js":1,"sites\/all\/modules\/custom\/triton_player\/js\/td-player\/composer2.js":1,"sites\/all\/modules\/custom\/pi_ajax_links_api\/nprogress\/nprogress.js":1,"sites\/all\/modules\/custom\/pi_ajax_links_api\/pi_ajax_links_api.js":1,"sites\/all\/modules\/custom\/npr_entities\/npr_fields\/npr_image_gallery\/js\/npr-image-gallery.js":1,"sites\/all\/modules\/custom\/npr_river\/assets\/npr-river.js":1,"sites\/all\/modules\/custom\/pi_assets\/plugins\/images\/js\/popup.js":1,"sites\/all\/modules\/custom\/pi_guide\/js\/pi_guide_schedule_selector.js":1,"sites\/all\/modules\/custom\/pi_content_types\/pi_live_event\/js\/iframe.js":1,"sites\/all\/modules\/custom\/responsive_utilities\/js\/vendor\/modernizr.js":1,"sites\/all\/modules\/custom\/responsive_utilities\/js\/vendor\/media.match.min.js":1,"sites\/all\/modules\/custom\/responsive_utilities\/js\/vendor\/matchMedia.addListener.js":1,"sites\/all\/modules\/custom\/responsive_utilities\/js\/vendor\/enquire.min.js":1,"sites\/all\/modules\/custom\/responsive_utilities\/js\/vendor\/fastclick.js":1,"1":1,"sites\/all\/modules\/custom\/pi_content_types\/pi_program\/treatments\/program-promo\/program-promo.js":1,"sites\/all\/modules\/custom\/responsive_utilities\/js\/responsive-utilities.mediaqueries.js":1,"sites\/all\/modules\/custom\/responsive_utilities\/js\/responsive-utilities.scripts.js":1,"sites\/all\/modules\/custom\/responsive_utilities\/js\/responsive-utilities.responsiveimages.js":1,"sites\/all\/modules\/custom\/community_calendar\/lib\/datetimepicker\/jquery.timepicker.min.js":1,"sites\/all\/modules\/custom\/community_calendar\/lib\/datetimepicker\/bootstrap-datepicker.min.js":1,"sites\/all\/modules\/custom\/community_calendar\/lib\/datetimepicker\/jquery.datepair.min.js":1,"sites\/all\/modules\/custom\/community_calendar\/lib\/validation\/jquery.mask.min.js":1,"sites\/all\/modules\/custom\/community_calendar\/lib\/validation\/jquery.validate.min.js":1,"sites\/all\/modules\/custom\/community_calendar\/lib\/typeahead\/typeahead.js":1,"sites\/all\/modules\/custom\/community_calendar\/assets\/community-calendar.helpers.js":1,"sites\/all\/modules\/custom\/community_calendar\/assets\/community-calendar.js":1,"sites\/all\/modules\/custom\/community_calendar\/assets\/community-calendar.filters.js":1,"sites\/all\/modules\/custom\/community_calendar\/assets\/community-calendar.event.js":1,"sites\/all\/modules\/custom\/responsive_utilities\/js\/responsive-utilities.js":1,"sites\/all\/modules\/custom\/responsive_utilities\/js\/responsive-utilities.tag.js":1,"sites\/all\/modules\/custom\/community_calendar\/assets\/community-calendar.location.js":1,"sites\/all\/modules\/custom\/community_calendar\/assets\/community-calendar.organization.js":1,"sites\/all\/modules\/custom\/community_calendar\/assets\/community-calendar.recurrence.js":1,"sites\/all\/modules\/custom\/community_calendar\/assets\/community-calendar.category.js":1,"sites\/all\/modules\/custom\/community_calendar\/assets\/community-calendar.image.js":1,"sites\/all\/modules\/custom\/community_calendar\/assets\/community-calendar.sponsor.js":1,"sites\/all\/modules\/custom\/community_calendar\/assets\/community-calendar.validation.js":1,"sites\/all\/modules\/custom\/responsive_utilities\/js\/responsive-utilities.overrides.js":1,"sites\/all\/modules\/contrib\/disqus\/disqus.js":1},"css":{"modules\/system\/system.base.css":1,"modules\/system\/system.menus.css":1,"modules\/system\/system.messages.css":1,"sites\/all\/libraries\/magnific-popup\/magnific-popup.css":1,"sites\/all\/modules\/contrib\/date\/date_api\/date.css":1,"sites\/all\/modules\/contrib\/date\/date_popup\/themes\/datepicker.1.7.css":1,"modules\/field\/theme\/field.css":1,"sites\/all\/modules\/contrib\/google_cse\/google_cse.css":1,"modules\/node\/node.css":1,"sites\/all\/modules\/custom\/pi_hull\/pi_outrigger\/css\/pi_outrigger.css":1,"modules\/search\/search.css":1,"modules\/user\/user.css":1,"sites\/all\/modules\/contrib\/views\/css\/views.css":1,"sites\/all\/modules\/contrib\/ctools\/css\/ctools.css":1,"sites\/all\/modules\/custom\/pi_guide\/css\/pi_guide.css":1,"sites\/all\/modules\/custom\/pi_hull\/jplayer\/css\/jplayer.npr.css":1,"sites\/all\/modules\/custom\/pi_npr_story\/css\/pi_npr_story.css":1,"sites\/all\/modules\/custom\/pi_views\/pi_reports_views\/css\/pi_reports.css":1,"sites\/all\/modules\/custom\/pi_menus\/css\/flexiMenu.css":1,"sites\/all\/modules\/custom\/responsive_footer\/responsive-footer.admin.css":1,"0":1,"\/\/fonts.googleapis.com\/css?family=Lato:300,700,700italic,900,italic,regular\u0026subset=latin":1,"sites\/all\/modules\/custom\/triton_player\/css\/td-player.css":1,"sites\/all\/modules\/custom\/pi_ajax_links_api\/pi_ajax_links_api.css":1,"sites\/all\/modules\/custom\/pi_ajax_links_api\/nprogress\/nprogress.css":1,"sites\/all\/modules\/custom\/pi_content_types\/pi_program\/treatments\/program-promo\/program-promo.css":1,"sites\/all\/modules\/custom\/community_calendar\/lib\/typeahead\/typeahead.css":1,"sites\/all\/modules\/custom\/community_calendar\/lib\/datetimepicker\/jquery.timepicker.css":1,"sites\/all\/modules\/custom\/community_calendar\/lib\/datetimepicker\/bootstrap-datepicker3.standalone.min.css":1,"sites\/all\/modules\/custom\/community_calendar\/assets\/community-calendar.css":1,"sites\/all\/modules\/custom\/npr_entities\/npr_fields\/npr_image_gallery\/css\/npr-image-gallery.css":1,"sites\/all\/themes\/responso\/css\/icon-fonts.css":1,"sites\/all\/themes\/responso\/css\/screen.css":1}},"googleCSE":{"cx":"010251366440257945544:bhxogvtq4wk","language":"","resultsWidth":600,"domain":"www.google.com","showWaterMark":true},"responsive_ads":{"networkCode":"21832215649","prefix":"RRR","adUnitTypes":{"leaderboard":{"note":"Only shows above 1024; shows 970x90 or 728x90.","sizes":[{"viewportSize":[0,0],"slotSize":[]},{"viewportSize":[1024,200],"slotSize":[[970,90],[970,50],[728,90]]}]},"medium":{"note":"Won't be served on screens smaller than 640x480.","sizes":[{"viewportSize":[0,0],"slotSize":[]},{"viewportSize":[640,200],"slotSize":[300,250]}]},"tablet":{"note":"Won't be served on screens smaller than 640x480 or larger than 1024x768","sizes":[{"viewportSize":[0,0],"slotSize":[]},{"viewportSize":[640,200],"slotSize":[728,90]},{"viewportSize":[1024,200],"slotSize":[]}]},"mobile":{"note":"Won't be served on screens larger than 640x480.","sizes":[{"viewportSize":[0,0],"slotSize":[320,50]},{"viewportSize":[640,200],"slotSize":[]}]}},"adUnits":[{"name":"leaderboard_1","type":"leaderboard","width":728,"height":90},{"name":"player_display","type":"leaderboard","width":728,"height":90},{"name":"medium_1","type":"medium","width":300,"height":250},{"name":"medium_2","type":"medium","width":300,"height":250},{"name":"medium_3","type":"medium","width":300,"height":250},{"name":"tablet_1","type":"tablet","width":728,"height":90},{"name":"mobile_1","type":"mobile","width":320,"height":50}],"placements":{"leaderboard_1":"main#content","medium_1":".node .post-body .field-name-body","medium_2":".node .post-body p:nth-of-type(3)","medium_3":".node .post-body p:nth-of-type(3)","tablet_1":"main#content","mobile_1":"#block-pi-responsive-ads-mobile-1 .content"},"persistentPlacements":[],"targeting":{"id":"136410","type":"post","tags":[],"category":"","programs":["All Things Considered","Weekend All Things Considered"]}},"tms_meta":{"has_audio":"1","programs":"All Things Considered, Weekend All Things Considered","category":"none","nid":136410,"author":"Bilal Qureshi","org_id":"1","keywords":"","wordCount":1715,"story_id":"790906638","datePublished":"2019-12-23"},"disqus":{"domain":"npr-kdaq","url":"https:\/\/www.redriverradio.org\/post\/austrias-alps-hidden-life-world-war-ii-resistance","title":"In Austria\u0026#039;s Alps, \u0026#039;A Hidden Life\u0026#039; Of World War II Resistance","identifier":"node\/136410"},"responsive_utilities":{"body_classes":"html not-front not-logged-in no-sidebars page-node page-node- page-node-136410 node-type-post fixed-header","custom_vars":{"nid":{"name":"nid","slot":8,"scope_id":3},"pop":{"name":"pop","slot":9,"scope_id":3},"author":{"name":"author","slot":11,"scope_id":3},"keywords":{"name":"tags","slot":12,"scope_id":3},"org_id":{"name":"org_id","slot":13,"scope_id":3},"brand":{"name":"CP_Station","slot":14,"scope_id":2},"has_audio":{"name":"Has_Inline_Audio","slot":15,"scope_id":3},"programs":{"name":"Program","slot":16,"scope_id":3},"category":{"name":"Category","slot":10,"scope_id":3},"datePublished":{"name":"PublishedDate","slot":17,"scope_id":3},"wordCount":{"name":"WordCount","slot":18,"scope_id":3},"story_id":{"name":"API_Story_Id","slot":19,"scope_id":3},"pmp_guid":{"name":"pmp_guid","slot":20,"scope_id":3}},"pagetype_vars":[{"page_type":"Content\/About","regex_pattern":"\/about(-us)?\/?$","pattern_name":"Core Publisher About Page"},{"page_type":"Events","regex_pattern":"\/events(\/|$)","pattern_name":"Core Publisher Events Page"},{"page_type":"People","regex_pattern":"\/people(\/|$)","pattern_name":"Core Publisher People Page"},{"page_type":"Playlist","regex_pattern":"\/search_playlists\/?$","pattern_name":"Core Publisher Playlist Page"},{"page_type":"Program","regex_pattern":"\/programs(\/|$)","pattern_name":"Core Publisher Program Page"},{"page_type":"Schedule","regex_pattern":"\/schedule(\/|$)","pattern_name":"Core Publisher Schedule Page"},{"page_type":"Search","regex_pattern":"\/search\/google\/?","pattern_name":"Core Publisher Search GSA Page"},{"page_type":"Story","regex_pattern":"\/post\/|\/webclip\/","pattern_name":"Core Publisher Story Page"},{"page_type":"Streaming","regex_pattern":"\/listen(-live)?\/?(#|$)","pattern_name":"Core Publisher Listen Live Page"}],"media_queries":{"mobile":"all and (max-width: 40em)","tablet":"screen and (min-width: 40.063em) and (max-width: 64em)","desktop":"screen and (min-width: 64.063em)"}},"pi_ajax_links_api":{"selector":"#page-document","trigger":"a.ajax-link,#page-wrapper a,a.logo,a.mobile-teaser-link,.dropdown a","negative_triggers":".dropdown .back a,.mobile .not-click \u003e a,#toolbar a,a.lightbox,.jp-interface a,.header .not-click \u003e a,.page-admin a,.page-block-factory a,a.give,.social-share a,#change-station,#rss-tablequeue a,a[href^=\"mailto:\"],.popup,a[href^=\"#\"],a:not([href]),ul.tabs\u003eli\u003ea,ul.contextual-links a,#table-queue-fleximenu a[target=\"_blank\"],.delete-button,a[href*='files'],a[href^='http:']","scripts_included":0,"html5":1,"vpager":1}});
+//--><!]]>
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-9007362012733451",
+    enable_page_level_ads: true
+  });
+</script>
+    <meta name="viewport" content="width=device-width">
+  </head>
+
+  <body class="html not-front not-logged-in page-node page-node- page-node-136410 node-type-post fixed-header" >
+    <header role="banner" class="header">
+  <div class="skiptocontent"><a href="#main-content">skip to main content</a></div>
+    <div class="region region-header">
+    <div id="block-baby-bear-baby-bear-header" class="block block-baby-bear">
+
+    
+  <div class="content">
+    
+<div class="header-region-outer">
+  <section class="header-region-inner row">
+    <div class="branding large-12 columns">
+      <div class="brand-inner-wrapper">
+        <a href="/" rel="home" class="logo" title="Red River Radio Home"><img typeof="foaf:Image" src="//www.redriverradio.org/sites/rrr/files/201508/logo_fid.png" alt="Red River Radio logo" title="Red River Radio Home" /></a>         <div class="tagline">
+          <strong)Red River Radio: Voice of the Community<Strong>        </div>
+      </div>
+      <div class="header-utility">
+        <a class="trigger-nav" href="#">
+          <span class="icon-list"></span>
+          <span class="menu-text">Site Menu</span>
+        </a>
+        <a class="give" href="https://donate.nprstations.org/rrr/" >
+  Donate</a>
+      </div>
+    </div>
+  </section>
+</div>
+  </div>
+</div>
+  </div>
+</header>
+    <div class="nav-wrapper mobile">
+      <nav>
+        <div class="top-bar contain-to-grid" data-topbar>
+          <ul class="title-area">
+            <li class="toggle-topbar menu-icon">
+              <a href="#">Menu</a>
+            </li>
+          </ul>
+          <section class="top-bar-section">
+            <div class="table-queue" id="table-queue-fleximenu">
+  <ul  class="menu dropdown">
+<li>
+<a href="/">Home</a>
+</li>
+<li class="dd has-dropdown not-click">
+<a href="/schedule">Schedule</a>
+<ul  class="dropdown">
+<li class="left">
+<a href="/schedule/week/week%2523stream%23stream/1">Main Channel</a>
+</li>
+<li class="left">
+<a href="/schedule/rrr2">HD2  Stream</a>
+</li>
+<li class="left">
+<a href="/schedule/rrr3">HD3  Stream</a>
+</li>
+<li class="left">
+<a href="/our-day-sponsors">Day Sponsors</a>
+</li>
+</ul>
+</li>
+<li class="dd has-dropdown not-click">
+<a href="/programs">Programs</a>
+<ul  class="dropdown">
+<li class="left">
+<a href="http://www.redriverradio.org/connect-our-streams-anywhere?_ga=2.219364059.319756600.1539368156-827374639.1539368156">Connect To All Our Streams Here</a>
+</li>
+<li class="left">
+<a href="/programs">List of all Programs</a>
+</li>
+<li class="left">
+<a href="/programs/american-opera-series-2016">American Opera Series</a>
+</li>
+<li class="left">
+<a href="/programs/american-routes">American Routes</a>
+</li>
+<li class="left">
+<a href="/programs/archie-mcdonald-speaker-series">Archie McDonald Speaker Series</a>
+</li>
+<li class="left">
+<a href="/programs/better-picture">Better Picture</a>
+</li>
+<li class="left">
+<a href="/programs/black-history-month-specials-2017">Black History 2017</a>
+</li>
+<li class="left">
+<a href="/programs/bird-calls">Bird Calls</a>
+</li>
+<li class="left">
+<a href="/programs/blue-shadows-nothin-blues">Blue Shadows</a>
+</li>
+<li class="left">
+<a href="/people/gary-borders">Borderline with Gary Borders</a>
+</li>
+<li class="left">
+<a href="/programs/caravan-0">Caravan</a>
+</li>
+<li class="left">
+<a href="/programs/carnegie-hall-live">Carnegie Hall Live</a>
+</li>
+<li class="left">
+<a href="/programs/cleveland-orchestra">Cleveland Orchestra</a>
+</li>
+<li class="left">
+<a href="/programs/community-voices">Community Voices</a>
+</li>
+<li class="left">
+<a href="/programs/special-programs-upcoming-community-and-cultural-programs">Cultural, Community, Information</a>
+</li>
+<li class="left">
+<a href="/programs/evening-jazz">Evening Jazz</a>
+</li>
+<li class="left">
+<a href="/programs/grand-teton-music-festival">Grand Teton Music Festival</a>
+</li>
+<li class="left">
+<a href="/programs/health-matters">Health Matters</a>
+</li>
+<li class="left">
+<a href="/people/gary-joiner-phd">History Matters with Dr. Gary Joiner</a>
+</li>
+<li class="left">
+<a href="/programs/holiday-specials-red-river-radio-2015">Holiday Specials</a>
+</li>
+<li class="left">
+<a href="/programs/local-news-red-river-radio">Local News Casts</a>
+</li>
+<li class="left">
+<a href="/programs/louisiana-eats">Louisiana Eats</a>
+</li>
+<li class="left">
+<a href="/programs/metropolitan-opera">Metropolitan Opera</a>
+</li>
+<li class="left">
+<a href="/programs/mountain-stage-npr">Mountain Stage</a>
+</li>
+<li class="left">
+<a href="/term/red-river-radio-spotlight">Red River Radio Spotlight</a>
+</li>
+<li class="left">
+<a href="/beethoven-classical-music-network-hd-2-stream%23stream/1">HD 2 Classical Steam</a>
+</li>
+<li class="left">
+<a href="/term/red-river-radio-spotlight">Red River Radio Spotlights</a>
+</li>
+<li class="left">
+<a href="/programs/regional-symphony-broadcasts-0">Regional Symphony</a>
+</li>
+<li class="left">
+<a href="/programs/rhythm-gumbo">Rhythm Gumbo with John Ellis</a>
+</li>
+<li class="left">
+<a href="/programs/san-francisco-symphony">San Francisco Symphony</a>
+</li>
+<li class="left">
+<a href="/programs/santa-fe-chamber-music-series">Santa Fe Chamber Music Series</a>
+</li>
+<li class="left">
+<a href="/programs/says-you">Says You!</a>
+</li>
+<li class="left">
+<a href="/programs/shadow-files">Shadow Files</a>
+</li>
+<li class="left">
+<a href="/programs/shreveport-house-concerts">Shreveport House Concerts</a>
+</li>
+<li class="left">
+<a href="/programs/support-red-river-radio">Support Red River Radio</a>
+</li>
+<li class="left">
+<a href="/programs/better-picture">The Better Picture</a>
+</li>
+<li class="left">
+<a href="/programs/shadow-files">The Shadow Files with Dr. Cheryl White</a>
+</li>
+<li class="left">
+<a href="/live-event/tiny-desk-concerts">Tiny Desk Concerts</a>
+</li>
+<li class="left">
+<a href="/programs/treasures-noel">Treasures Of The Noel</a>
+</li>
+<li class="left">
+<a href="/programs/whats-bugging-you">What&#039;s Bugging You</a>
+</li>
+<li class="left">
+<a href="/programs/young-artists-competition">Young Artists Competition</a>
+</li>
+<li class="left">
+<a href="/programs/american-graduate-youth-jeopardy-dropout-crisis">Youth in Jeopardy </a>
+</li>
+</ul>
+</li>
+<li class="dd has-dropdown not-click">
+<a href="/news">News</a>
+<ul  class="dropdown">
+<li class="left">
+<a href="/people/chuck-smith">Red River Radio News</a>
+</li>
+<li class="left">
+<a href="/term/commentary-0">Commentary</a>
+</li>
+<li class="left">
+<a href="/programs/community-voices">Community Voices</a>
+</li>
+<li class="left">
+<a href="/news">All News</a>
+</li>
+<li class="left">
+<a href="/programs/npr-news-specials">NPR News Specials</a>
+</li>
+</ul>
+</li>
+<li class="dd has-dropdown not-click">
+<a href="/staff-contacts">About Us</a>
+<ul  class="dropdown">
+<li class="left">
+<a href="/staff-contacts">Contact Us</a>
+</li>
+<li class="left">
+<a href="/Social%20Media">Social Media</a>
+</li>
+<li class="left">
+<a href="/people/capacity/staff">Staff</a>
+</li>
+<li class="left">
+<a href="/people/capacity/hosts">Hosts</a>
+</li>
+<li class="left">
+<a href="/payment-and-donation-policies">Payment/Donation Policy</a>
+</li>
+<li class="left">
+<a href="/community-advisory-board">Community Advisory Board</a>
+</li>
+<li class="left">
+<a href="/audited-financial-reports">Audited Financial Reports &amp; EEO Statement</a>
+</li>
+<li class="left">
+<a href="/red-river-radio-public-file">Red River Radio Public File</a>
+</li>
+<li class="left">
+<a href="/cpb-community-service-report">CPB Community Service Report</a>
+</li>
+<li class="left">
+<a href="/employment-internship-and-volunteer-opportunities%23stream/2">Employment, Internship and Volunteer Opportunities</a>
+</li>
+<li class="left">
+<a href="/cpb-transparency-information">CPB Transparency Details</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/underwriting-red-river-radio">Underwriting</a>
+</li>
+<li>
+<a href="/community-calendar">Events Calendar</a>
+</li>
+<li>
+<a href="/search">Search</a>
+</li>
+<li>
+<a href="/connect-our-streams-anywhere">Stream Links</a>
+</li>
+</ul>
+</div>
+          </section>
+        </div>
+      </nav>
+    </div>
+      <div class="region region-persistent">
+    <div id="block-triton-player-triton-player" class="block block-triton-player">
+
+    
+  <div class="content">
+    <div id="triton-player" class="triton-wrapper">
+  <div class="triton-player-container">
+    <div class="triton-left">
+      <td-player
+  id="td-player"
+  type="bar"
+  autostart="false"
+  station="KDAQFM"
+  renderingmode="Html5,Flash"
+  geotargeting="false"
+  primarycolor="#bbccdd"
+  secondarycolor="#4a565f"
+  highlightcolor="#5599bb"
+  leaderboard="companionLeaderBoard"
+  onappready="appReady"
+  onstreamstart="onStreamStart"
+  onstreamstopped="onStreamStopped">
+</td-player>
+<div class="stream-program-container">
+  <div class="stream-program-box">
+    <div class="stream-program-header">Red River Radio KDAQ</div>
+    <div class="stream-program-name"></div>
+    <div class="stream-program-nextinfo"></div>
+  </div>
+</div>
+    </div>
+    <div class="triton-more-toggle">
+      <div class="triton-player-btn" role="button" aria-label="Expand/Collapse">
+        <svg xmlns="//www.w3.org/2000/svg" id="btn-open" class="toggle-arrow open" width="20px" height="11.7px" viewBox="0 0 20 11.7" preserveAspectRatio="xMinYMin">
+          <path fill="#7F95A4" d="M19.5,3.4c-0.7,0.7-8.1,7.8-8.1,7.8c-0.4,0.4-0.9,0.6-1.4,0.6c-0.5,0-1-0.2-1.4-0.6c0,0-7.4-7-8.1-7.8
+    c-0.7-0.7-0.8-2,0-2.8c0.8-0.8,1.8-0.8,2.7,0L10,7.1l6.7-6.5c0.9-0.8,2-0.8,2.7,0C20.2,1.4,20.2,2.7,19.5,3.4z"></path>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div class="stream-selector-container">
+    <div class="row collapse">
+      <div class="stream-song-container">
+        <div class="stream-song-box">
+          <div class="stream-song-artwork"></div>
+          <div class="stream-song-trackname"></div>
+          <div class="stream-song-artist"></div>
+          <div class="stream-song-collection"></div>
+        </div>
+      </div>
+      <div class="stream-selector-links small-12 column">
+        <ul class="stream-list">
+                      <li>
+  <a href="" class="triton-stream-selector-link"
+     data-stream-name="Red River Radio KDAQ"
+     data-stream-key="KDAQFM"
+     data-stream-ucs="5187c825e1c86bcc976c2210">
+    <div class="stream-indicator">
+      <div class="triton-stream-inactive" title="not-playing"></div>
+      <div class="triton-stream-active" title="playing">
+        <span class="stream-activebar"></span>
+        <span class="stream-activebar"></span>
+        <span class="stream-activebar"></span>
+      </div>
+    </div>
+    <div class="stream-selector-stream-summary">
+      <div class="stream-selector-stream-name">
+        Red River Radio KDAQ      </div>
+      <div class="stream-selector-program-name"></div>
+    </div>
+  </a>
+</li>
+                      <li>
+  <a href="" class="triton-stream-selector-link"
+     data-stream-name="Red River Radio HD2"
+     data-stream-key="KDAQHD2"
+     data-stream-ucs="55a521f312da68ff25010779">
+    <div class="stream-indicator">
+      <div class="triton-stream-inactive" title="not-playing"></div>
+      <div class="triton-stream-active" title="playing">
+        <span class="stream-activebar"></span>
+        <span class="stream-activebar"></span>
+        <span class="stream-activebar"></span>
+      </div>
+    </div>
+    <div class="stream-selector-stream-summary">
+      <div class="stream-selector-stream-name">
+        Red River Radio HD2      </div>
+      <div class="stream-selector-program-name"></div>
+    </div>
+  </a>
+</li>
+                      <li>
+  <a href="" class="triton-stream-selector-link"
+     data-stream-name="Red River Radio HD3"
+     data-stream-key="KDAQHD3"
+     data-stream-ucs="5187c8d1e1c81af7d3b787b0">
+    <div class="stream-indicator">
+      <div class="triton-stream-inactive" title="not-playing"></div>
+      <div class="triton-stream-active" title="playing">
+        <span class="stream-activebar"></span>
+        <span class="stream-activebar"></span>
+        <span class="stream-activebar"></span>
+      </div>
+    </div>
+    <div class="stream-selector-stream-summary">
+      <div class="stream-selector-stream-name">
+        Red River Radio HD3      </div>
+      <div class="stream-selector-program-name"></div>
+    </div>
+  </a>
+</li>
+                  </ul>
+      </div>
+    </div>
+    <div class="companion-leaderboard-container">
+  <div class="row">
+    <div class="small-12 column">
+              <div id="companionLeaderBoard" class="companionLeaderBoard"></div>
+          </div>
+  </div>
+</div>  </div>
+</div>
+  </div>
+</div>
+  </div>
+    <div id="page-wrapper">
+            <div id="page-document" role="document" class="page">
+  <div class="nav-wrapper">
+    <nav>
+      <div class="top-bar contain-to-grid" data-topbar>
+        <ul class="title-area">
+          <li class="toggle-topbar menu-icon">
+            <a href="#">Menu</a>
+          </li>
+        </ul>
+        <section class="top-bar-section">
+          <div class="table-queue" id="table-queue-fleximenu">
+  <ul  class="menu dropdown">
+<li>
+<a href="/">Home</a>
+</li>
+<li class="dd has-dropdown not-click">
+<a href="/schedule">Schedule</a>
+<ul  class="dropdown">
+<li class="left">
+<a href="/schedule/week/week%2523stream%23stream/1">Main Channel</a>
+</li>
+<li class="left">
+<a href="/schedule/rrr2">HD2  Stream</a>
+</li>
+<li class="left">
+<a href="/schedule/rrr3">HD3  Stream</a>
+</li>
+<li class="left">
+<a href="/our-day-sponsors">Day Sponsors</a>
+</li>
+</ul>
+</li>
+<li class="dd has-dropdown not-click">
+<a href="/programs">Programs</a>
+<ul  class="dropdown">
+<li class="left">
+<a href="http://www.redriverradio.org/connect-our-streams-anywhere?_ga=2.219364059.319756600.1539368156-827374639.1539368156">Connect To All Our Streams Here</a>
+</li>
+<li class="left">
+<a href="/programs">List of all Programs</a>
+</li>
+<li class="left">
+<a href="/programs/american-opera-series-2016">American Opera Series</a>
+</li>
+<li class="left">
+<a href="/programs/american-routes">American Routes</a>
+</li>
+<li class="left">
+<a href="/programs/archie-mcdonald-speaker-series">Archie McDonald Speaker Series</a>
+</li>
+<li class="left">
+<a href="/programs/better-picture">Better Picture</a>
+</li>
+<li class="left">
+<a href="/programs/black-history-month-specials-2017">Black History 2017</a>
+</li>
+<li class="left">
+<a href="/programs/bird-calls">Bird Calls</a>
+</li>
+<li class="left">
+<a href="/programs/blue-shadows-nothin-blues">Blue Shadows</a>
+</li>
+<li class="left">
+<a href="/people/gary-borders">Borderline with Gary Borders</a>
+</li>
+<li class="left">
+<a href="/programs/caravan-0">Caravan</a>
+</li>
+<li class="left">
+<a href="/programs/carnegie-hall-live">Carnegie Hall Live</a>
+</li>
+<li class="left">
+<a href="/programs/cleveland-orchestra">Cleveland Orchestra</a>
+</li>
+<li class="left">
+<a href="/programs/community-voices">Community Voices</a>
+</li>
+<li class="left">
+<a href="/programs/special-programs-upcoming-community-and-cultural-programs">Cultural, Community, Information</a>
+</li>
+<li class="left">
+<a href="/programs/evening-jazz">Evening Jazz</a>
+</li>
+<li class="left">
+<a href="/programs/grand-teton-music-festival">Grand Teton Music Festival</a>
+</li>
+<li class="left">
+<a href="/programs/health-matters">Health Matters</a>
+</li>
+<li class="left">
+<a href="/people/gary-joiner-phd">History Matters with Dr. Gary Joiner</a>
+</li>
+<li class="left">
+<a href="/programs/holiday-specials-red-river-radio-2015">Holiday Specials</a>
+</li>
+<li class="left">
+<a href="/programs/local-news-red-river-radio">Local News Casts</a>
+</li>
+<li class="left">
+<a href="/programs/louisiana-eats">Louisiana Eats</a>
+</li>
+<li class="left">
+<a href="/programs/metropolitan-opera">Metropolitan Opera</a>
+</li>
+<li class="left">
+<a href="/programs/mountain-stage-npr">Mountain Stage</a>
+</li>
+<li class="left">
+<a href="/term/red-river-radio-spotlight">Red River Radio Spotlight</a>
+</li>
+<li class="left">
+<a href="/beethoven-classical-music-network-hd-2-stream%23stream/1">HD 2 Classical Steam</a>
+</li>
+<li class="left">
+<a href="/term/red-river-radio-spotlight">Red River Radio Spotlights</a>
+</li>
+<li class="left">
+<a href="/programs/regional-symphony-broadcasts-0">Regional Symphony</a>
+</li>
+<li class="left">
+<a href="/programs/rhythm-gumbo">Rhythm Gumbo with John Ellis</a>
+</li>
+<li class="left">
+<a href="/programs/san-francisco-symphony">San Francisco Symphony</a>
+</li>
+<li class="left">
+<a href="/programs/santa-fe-chamber-music-series">Santa Fe Chamber Music Series</a>
+</li>
+<li class="left">
+<a href="/programs/says-you">Says You!</a>
+</li>
+<li class="left">
+<a href="/programs/shadow-files">Shadow Files</a>
+</li>
+<li class="left">
+<a href="/programs/shreveport-house-concerts">Shreveport House Concerts</a>
+</li>
+<li class="left">
+<a href="/programs/support-red-river-radio">Support Red River Radio</a>
+</li>
+<li class="left">
+<a href="/programs/better-picture">The Better Picture</a>
+</li>
+<li class="left">
+<a href="/programs/shadow-files">The Shadow Files with Dr. Cheryl White</a>
+</li>
+<li class="left">
+<a href="/live-event/tiny-desk-concerts">Tiny Desk Concerts</a>
+</li>
+<li class="left">
+<a href="/programs/treasures-noel">Treasures Of The Noel</a>
+</li>
+<li class="left">
+<a href="/programs/whats-bugging-you">What&#039;s Bugging You</a>
+</li>
+<li class="left">
+<a href="/programs/young-artists-competition">Young Artists Competition</a>
+</li>
+<li class="left">
+<a href="/programs/american-graduate-youth-jeopardy-dropout-crisis">Youth in Jeopardy </a>
+</li>
+</ul>
+</li>
+<li class="dd has-dropdown not-click">
+<a href="/news">News</a>
+<ul  class="dropdown">
+<li class="left">
+<a href="/people/chuck-smith">Red River Radio News</a>
+</li>
+<li class="left">
+<a href="/term/commentary-0">Commentary</a>
+</li>
+<li class="left">
+<a href="/programs/community-voices">Community Voices</a>
+</li>
+<li class="left">
+<a href="/news">All News</a>
+</li>
+<li class="left">
+<a href="/programs/npr-news-specials">NPR News Specials</a>
+</li>
+</ul>
+</li>
+<li class="dd has-dropdown not-click">
+<a href="/staff-contacts">About Us</a>
+<ul  class="dropdown">
+<li class="left">
+<a href="/staff-contacts">Contact Us</a>
+</li>
+<li class="left">
+<a href="/Social%20Media">Social Media</a>
+</li>
+<li class="left">
+<a href="/people/capacity/staff">Staff</a>
+</li>
+<li class="left">
+<a href="/people/capacity/hosts">Hosts</a>
+</li>
+<li class="left">
+<a href="/payment-and-donation-policies">Payment/Donation Policy</a>
+</li>
+<li class="left">
+<a href="/community-advisory-board">Community Advisory Board</a>
+</li>
+<li class="left">
+<a href="/audited-financial-reports">Audited Financial Reports &amp; EEO Statement</a>
+</li>
+<li class="left">
+<a href="/red-river-radio-public-file">Red River Radio Public File</a>
+</li>
+<li class="left">
+<a href="/cpb-community-service-report">CPB Community Service Report</a>
+</li>
+<li class="left">
+<a href="/employment-internship-and-volunteer-opportunities%23stream/2">Employment, Internship and Volunteer Opportunities</a>
+</li>
+<li class="left">
+<a href="/cpb-transparency-information">CPB Transparency Details</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/underwriting-red-river-radio">Underwriting</a>
+</li>
+<li>
+<a href="/community-calendar">Events Calendar</a>
+</li>
+<li>
+<a href="/search">Search</a>
+</li>
+<li>
+<a href="/connect-our-streams-anywhere">Stream Links</a>
+</li>
+</ul>
+</div>
+        </section>
+      </div>
+    </nav>
+  </div>
+
+  <div id="player" class="player">
+      </div>
+
+  
+      <section class="pre-content">
+      <div>
+          <div class="region region-pre-content">
+    <div id="block-pi-responsive-ads-mobile-1" class="block block-pi-responsive-ads">
+
+    
+  <div class="content">
+      </div>
+</div>
+  </div>
+      </div>
+    </section>
+  
+  
+  
+  <div class="row">
+    <main id="content" role="main" class="main-content small-12 columns">
+      <article class="story">
+        <a id="main-content"></a>
+        
+                                    
+        
+        
+        
+        
+        
+        
+                    <div class="region region-content">
+    <div id="block-system-main" class="block block-system">
+
+    
+  <div class="content">
+    <div id="node-136410" class="node node-post node-promoted full row" about="/post/austrias-alps-hidden-life-world-war-ii-resistance" typeof="sioc:Item foaf:Document">
+  <div class="small-12 columns">
+        
+          <div class='post-program post-program-top'>
+        <div class="field field-name-field-related-program field-type-node-reference field-label-inline clearfix"><div class="field-label">Related Programs:&nbsp;</div><div class="field-items"><div class="field-item even"><a href="/programs/all-things-considered">All Things Considered</a></div><div class="field-item odd"><a href="/programs/weekend-all-things-considered">Weekend All Things Considered</a></div></div></div>      </div>
+    
+    <h1 itemprop="name" class="post-title">
+      In Austria&#039;s Alps, &#039;A Hidden Life&#039; Of World War II Resistance    </h1>
+
+  	
+    
+          <div class="by-date">
+        <span class="submitted"><span class="submitted-label">By</span> <span class="name"><a href="/people/bilal-qureshi" rel="author">Bilal Qureshi</a></span></span>
+        <i class="bullet">&#8226;</i>
+        <span class="pub-date">15 hours ago</span>
+      </div>
+    
+    <div class="row">
+      <div class="large-2 columns sharing-and-programs">
+                  <div class='post-program post-program-side'>
+            <div class="field field-name-field-related-program field-type-node-reference field-label-inline clearfix"><div class="field-label">Related Programs:&nbsp;</div><div class="field-items"><div class="field-item even"><a href="/programs/all-things-considered">All Things Considered</a></div><div class="field-item odd"><a href="/programs/weekend-all-things-considered">Weekend All Things Considered</a></div></div></div>          </div>
+        
+        <div class="social-share clearfix"><a href="http://facebook.com/sharer.php?u=http%3A%2F%2Fwww.tinyurl.com%2Fvvu5zbo&amp;t=In%20Austria%27s%20Alps%2C%20%27A%20Hidden%20Life%27%20Of%20World%20War%20II%20Resistance" class="social-share-item facebook" title="Share" target="_blank">Share</a><a href="http://twitter.com/intent/tweet?url=http%3A%2F%2Fwww.tinyurl.com%2Fvvu5zbo&amp;text=In%20Austria%27s%20Alps%2C%20%27A%20Hidden%20Life%27%20Of%20World%20War%20II%20Resistance" class="social-share-item twitter" title="Tweet" target="_blank">Tweet</a><a href="mailto:?subject=In%20Austria%27s%20Alps%2C%20%27A%20Hidden%20Life%27%20Of%20World%20War%20II%20Resistance&amp;body=http%3A%2F%2Fwww.tinyurl.com%2Fvvu5zbo" class="social-share-item email" title="Email" target="_blank">Email</a></div>      </div>
+
+      <div class="medium-10 medium-pull-1 large-8 large-pull-2 columns post-body-container" >
+        <div class="post-body">
+          <div class="field field-name-field-image-gallery field-type-image field-label-hidden"><div class="field-items"><div class="field-item even"><ul class="gallery no-bullet"><li>
+  <figure>
+    <a title="Valerie Pachner and August Diehl star as Fani and Franz Jagerstatter in the film &lt;em&gt;A Hidden Life&lt;/em&gt;." href="https://mediad.publicbroadcasting.net/p/shared/npr/styles/x_large/nprshared/201912/790912717.jpg" class="noexit lightbox">
+      <img src="https://mediad.publicbroadcasting.net/p/shared/npr/styles/placed_wide/nprshared/201912/790912717.jpg"   alt="Valerie Pachner and August Diehl star as Fani and Franz Jagerstatter in the film &lt;em&gt;A Hidden Life&lt;/em&gt;.">
+          </a>
+    <div class="image-meta">
+  <figcaption>
+    <div class="caption">Valerie Pachner and August Diehl star as Fani and Franz Jagerstatter in the film <em>A Hidden Life</em>.</div>
+    <div class="attribution">
+  <span class="credit"></span>
+    <span class="agency">Fox Searchlight Pictures</span>
+</div>
+  </figcaption>
+</div>
+  </figure>
+</li>
+</ul></div></div></div>
+
+<div class="audio-container">
+  <div id="jp-interface--5e020a33c653d" class="jp-interface">
+    <div id="post-audio--5e020a33c653d" class="jp-player" jp-instance="-5e020a33c653d"></div>
+
+    <div class="playpause">
+      <a href="https://ondemand.npr.org/npr-mp4/npr/atc/2019/12/20191223_atc_in_austrias_alps_a_hidden_life_of_world_war_ii_resistance.mp4?orgId=1&amp;topicId=1045&amp;d=340&amp;p=2&amp;story=790906638&amp;ft=nprml&amp;f=2" title="" class="jp-play"></a>      <a class="jp-pause"></a>
+    </div>
+
+    <div class="audio-meta">
+      <div class="listen-text-box">
+        <div class="listen-text">Listen </div>
+        <div class="listening-text">Listening...</div>
+      </div>
+
+      <div class="jp-controls">
+        <div class="jp-progress">
+          <div id="seekbar" class="jp-seek-bar">
+            <div id="playbar" class="jp-play-bar">
+              <div class="scrubber">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="duration-wrapper">
+        <div class="jp-custom-current-time"></div>
+        <span class="divider">&#47;</span>
+        <div class="jp-custom-duration"></div>
+      </div>
+
+    </div>
+      </div>
+</div>
+<div class='api-pub-date'>Originally published on December 23, 2019 5:54 pm </div><div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even" property="content:encoded"><p>Three years ago, a small film crew drove into the Austrian Alps in search of a remote valley. It would serve as one of the settings for Terrence Malick's vision of paradise. </p> <p>"We'd taken a big, big risk when we decided to go," says the film's producer Grant Hill. "We had next to no funds. [We] felt, for some reason, we'd work that out as we went along — which, I wouldn't advise doing it again that way, but it worked. And this combination of the mountain background, the faces on the people, the weather really did — I mean, it was otherworldly."</p> <p>The film came to be called <em>A Hidden Life. </em>It's based on the letters of an Austrian farmer who refused to fight for the Nazis — and was executed for his resistance.</p> <p>It's the latest film from acclaimed director Terrence Malick. He's known for epic movies like <em>The Thin Red Line</em> and <em>The Tree of Life</em>. Like those films, Malick's latest is about grand themes like love, faith and war.</p> <p><em>A Hidden Life</em> opens in the dark with nature sounds. The screen then comes to life: mountain valleys, waterfalls, rivers flowing, clouds rolling.</p> <p>Actor Valerie Pachner is from Austria. She's one of the stars of the film.</p> <p>"There is this incredibly beautiful landscape," Pachner says. "But on the other hand there's also a certain darkness to it. And I always feel like — you know, there is these beautiful mountains, but then you have those very dark forests. And then when you think about the second World War, I feel like there's always sort of both, in nature. And that's what I feel Terry [Malick] really captured so well."</p> <p>Terence Malick made the film with cinematographer Joerg Widmer.</p> <div class="wysiwyg-asset-image-wrapper wide"> <div class="wysiwyg-asset-image">             <a href="http://media.npr.org/assets/img/2019/12/23/a-hidden-life-106_r_02402_rgb_custom-52ab9d833a82012b03fac2f79db41125a01e7e7f.jpg"><img width="100%" class="pi_assets-image" src="http://media.npr.org/assets/img/2019/12/23/a-hidden-life-106_r_02402_rgb_custom-52ab9d833a82012b03fac2f79db41125a01e7e7f.jpg" /></a> <div class="image-meta"> <div class="caption">August Diehl, Valerie Pachner and Director of Photography Joerg Widmer on the set of <em>A</em><em> Hidden Life</em>.</div> <div class="credit">Reiner Bajo / Twentieth Century Fox</div> </div> </div> </div> <p>"Nature, you have to capture when it happens," Widmer says. "So you can't design it. It's just: When it's dusk, you have to be there and capture the dusk. If you have heavy weather coming up, then you should be at the right place just to capture the wind, just capture the beauty of the clouds."</p> <p>But the year is 1939, and that natural beauty is interrupted with the arrival of war planes. The German actor August Diehl plays the farmer who became a conscientious objector — his name was Franz Jägerstätter.</p> <p>"He decided not to fight, and not to swear an oath to Hitler, and to not be part of the whole machinery of war," Diehl says. "What is a feeling at the first place becomes more and more a real decision, and he sticks to this and sacrifices his whole family for this until the very end."</p> <p>Franz Jagerstatter expressed his doubts in letters to his wife. His resistance became a crisis of his Catholic faith, and his village turned against him and his family.</p> <p>The writer Eric Benson <a href="https://www.texasmonthly.com/the-culture/the-not-so-secret-life-of-terrence-malick/">wrote an article about Terrence Malick</a> for <em>Texas Monthly</em> magazine two years ago. He says <em>A Hidden Life</em> is filled with the spiritual questions that have defined the elusive filmmaker's work.</p> <p>"I think it's concerned with these really basic philosophical questions of: What should a good man do in the face of evil?" Benson says. "How do you navigate your loyalties to country and to God and to your own morality?"</p> <p>Terence Malick is now 76 and lives in Austin, Texas. He hasn't given any interviews in decades.</p> <p>"Probably if he were to show up and talk about all this, we wouldn't have, probably ... this kind of nice movies from him," says Diehl, the actor. "That's linked to each other. The silence in the public is saving energy for a language — which really matters."</p> <p>That film language includes voiceovers, swirling images and widescreen landscapes. It's not for everyone.</p> <p>"A Terrence Malick movie is almost like: If you were to shoot a normal movie, and then you were to take that footage and almost make an artistic collage out of it, kill the dialogue and have the images — instead of being tied together by a pretty conventional story — be tied together by sort of mood and ideas and images," Benson says. "So it's almost like watching a movie and having a dream about that movie. The Malick movie is that dream you have that night."</p> <p>Despite its signature dream-like style, many critics have called <em>A Hidden Life</em> Terrence Malick's most direct film. Diehl says it offers an antidote to our current political culture.</p> <p>"I have the feeling that we live in a world which is getting louder and louder," Diehl says. "And so it is very, very hard to find a silent place in ourselves where we can still see which is right and which is wrong. Therefore our movie is so relevant right now — it's not only politics; it's in a very simple way, a silent resistance of somebody who is hidden. Like, we all are actually hidden lives. Everybody lives a hidden life."</p> <p>Pachner, who plays Fani Jägerstätter (Franz's wife), says that if the film insists on a political position, it is a message of kindness — and turning the other cheek.</p> <p>"It always sounds cheesy when I say it, but I just feel it's true," Pachner says. "This tendency of hatred and being against each other: The only thing that can oppose that is love, in any sense. You know, not only in the romantic way, but also in the sense of being kind to your neighbors even though they are yelling at you; being kind to nature; being kind to whatever you are confronted with ... because this is what makes us human beings."</p> <p>Franz Jägerstätter was executed at age 36 on Aug. 9, 1943. His letters are now on screen in Terrence Malick's memorial to what was once "a hidden life."<br /></p><div class="fullattribution">Copyright 2019 NPR. To see more, visit https://www.npr.org.<img src="https://www.google-analytics.com/__utm.gif?utmac=UA-5828686-4&amp;utmdt=In+Austria%27s+Alps%2C+%27A+Hidden+Life%27+Of+World+War+II+Resistance&amp;utme=8(APIKey)9(MDA3NzMxMTkxMDEzMDkyOTU3ODRmYjc2Mg001)" /></div>  <p>ARI SHAPIRO, HOST: </p> <p>After weeks of unrest, the streets of Haiti are back to their usual busy, traffic-clogged state just in time for Christmas. Anti-government protesters who had put up barricades and burned tires are taking a holiday break. It's allowed businesses to reopen and local artists to spread the Haitian Christmas spirit. NPR's Carrie Kahn reports from Port-au-Prince.</p> <p>CARRIE KAHN, BYLINE: Francisco Silva (ph) shakes a can of bright red spray paint before he adds the final touches to the large red face that is the centerpiece of his latest mural. It's covering the wall in front of the National Bureau of Ethnology that showcases Haiti's Vodou culture.</p> <p>FRANCISCO SILVA: (Speaking Creole).</p> <p>KAHN: This is Makaya, a Vodou spirit which we celebrate the same time of year as Christmas, he says. Makaya embodies the winter season.</p> <p>SILVA: (Speaking Creole).</p> <p>KAHN: "And the colors are the same as Christmas, red and green," says Silva. Green is for the Earth and red is for life. Artist Gary Francois (ph) is adding dozens of green leaves to the mural all around Makaya's red face. The eyes remain white, he says, to emphasize the spirit inside. Francois is studying at the ethnology school. It's located just across the street from the site of the former National Palace, which still hasn't been rebuilt since Haiti's devastating earthquake nearly 10 years ago.</p> <p>GARY FRANCOIS: (Speaking Creole).</p> <p>KAHN: He says most of his work reflects the political crisis engulfing Haiti right now. Until just a few weeks ago, he and his partner Silva couldn't have been out here so close to the scene of many street battles between police and demonstrators. Opponents of current President Jovenel Moise want him to resign. They accuse the president of massive corruption and theft - a claim Moise denies. Artist Gary Francois shows me a picture of a political mural just blocks from here, one he and Silva painted at the height of the opposition marches and riots this fall.</p> <p>FRANCOIS: (Speaking Creole).</p> <p>KAHN: In it, he depicts lawmakers as pigs, the president as a cat, the prime minister as a goat and the Haitian elites as sharks.</p> <p>So it seems like there's a zoo in charge.</p> <p>UNIDENTIFIED INTERPRETER: (Speaking Creole).</p> <p>FRANCOIS: (Speaking Creole).</p> <p>UNIDENTIFIED INTERPRETER: So, yes, many animals manage the country.</p> <p>(SOUNDBITE OF MUSIC)</p> <p>KAHN: On the other side of the mural, the national Vodou dance company called 21 Nations is practicing for an upcoming New Year's Day performance. Erol Josue, director of the company and the National Bureau of Ethnology, says, sadly, this Christmas in Haiti is not joyous for many. The months of relentless protests, which claimed more than 40 lives, have taken a toll on everyone.</p> <p>EROL JOSUE: It's hard. It's hard. But we working on it. We have hope.</p> <p>KAHN: New Year's Day is also Haitian Independence Day, a sense of pride, he says, for everyone. It's also the day the opposition has called for protesters to return to the streets. Carrie Kahn, NPR News, Port-au-Prince.</p> <p>(SOUNDBITE OF TRACEY CHATTAWAY'S "STARLIGHTS") Transcript provided by NPR, Copyright NPR.</p> </div></div></div><div class="social-share bottom"><a href="http://facebook.com/sharer.php?u=http%3A%2F%2Fwww.tinyurl.com%2Fvvu5zbo&amp;t=In%20Austria%27s%20Alps%2C%20%27A%20Hidden%20Life%27%20Of%20World%20War%20II%20Resistance" class="social-share-item facebook" title="Share" target="_blank">Share</a><a href="http://twitter.com/intent/tweet?url=http%3A%2F%2Fwww.tinyurl.com%2Fvvu5zbo&amp;text=In%20Austria%27s%20Alps%2C%20%27A%20Hidden%20Life%27%20Of%20World%20War%20II%20Resistance" class="social-share-item twitter" title="Tweet" target="_blank">Tweet</a><a href="mailto:?subject=In%20Austria%27s%20Alps%2C%20%27A%20Hidden%20Life%27%20Of%20World%20War%20II%20Resistance&amp;body=http%3A%2F%2Fwww.tinyurl.com%2Fvvu5zbo" class="social-share-item email" title="Email" target="_blank">Email</a></div><div id="disqus_thread"><noscript><p><a href="http://npr-kdaq.disqus.com/?url=https%3A%2F%2Fwww.redriverradio.org%2Fpost%2Faustrias-alps-hidden-life-world-war-ii-resistance">View the discussion thread.</a></p></noscript></div>        </div>
+
+        <div class="related">
+                  </div>
+      </div>
+    </div>
+      </div>
+</div>
+  </div>
+</div>
+  </div>
+              </article>
+    </main>
+  </div>
+
+  
+  <div class="bottom-ads">
+    <div class="bottom-ads-inner"></div>
+  </div>
+</div>
+
+<footer class="footer" role="contentinfo">
+  <div class="row">
+    <div class="footer-affiliate-container small-centered columns">
+                  <div class="region region-footer">
+    <div id="block-pi-table-queue-partnerfooter" class="block block-pi-table-queue">
+
+    
+  <div class="content">
+    <div class="table-queue" id="table-queue-partnerfooter">
+  <p class="partnerslabel">
+  Our Partners</p>
+<div class="item-list"><ul class="partner-logos"><li class="first"><a href="http://www.lsus.edu/" target="_blank"><img typeof="foaf:Image" src="//www.redriverradio.org/sites/rrr/files/styles/partner_footer_logo/public/201508/logo_0.png" alt="LSU Shreveport" title="LSU Shreveport" /></a></li>
+<li><a href="http://www.cfnla.org/" target="_blank"><img typeof="foaf:Image" src="//www.redriverradio.org/sites/rrr/files/styles/partner_footer_logo/public/201911/logo-horizontal-v2-1024x284.png" alt="The Community Foundation" title="The Community Foundation" /></a></li>
+<li><a href="http://www.cartalkvdp.com/" target="_blank"><img typeof="foaf:Image" src="//www.redriverradio.org/sites/rrr/files/styles/partner_footer_logo/public/201905/cars_logo.jpg" alt="Car Talk Vehicle Donation Program" title="Car Talk Vehicle Donation Program" /></a></li>
+<li><a href="http://www.npr.org/" target="_blank"><img typeof="foaf:Image" src="//www.redriverradio.org/sites/rrr/files/styles/partner_footer_logo/public/201508/npr-home_2.png" alt="National Public Radio" title="National Public Radio" /></a></li>
+<li><a href="http://www.bbc.com/news" target="_blank"><img typeof="foaf:Image" src="//www.redriverradio.org/sites/rrr/files/styles/partner_footer_logo/public/201508/bbc-blocks-light_0.png" alt="The BBC News" title="The BBC News" /></a></li>
+<li><a href="http://www.americanpublicmedia.org/" target="_blank"><img typeof="foaf:Image" src="//www.redriverradio.org/sites/rrr/files/styles/partner_footer_logo/public/201508/Untitled_0.jpg" alt="American Public Media" title="American Public Media" /></a></li>
+<li><a href="http://www.wfmt.com/main.taf?p=12,11,4" target="_self"><img typeof="foaf:Image" src="//www.redriverradio.org/sites/rrr/files/styles/partner_footer_logo/public/201508/the_beethoven_network_0.png" alt="The Beethoven Network" title="The Beethoven Network" /></a></li>
+<li><a href="https://www.facebook.com/pages/Red-River-Radio/110583654120" target="_blank"><img typeof="foaf:Image" src="//www.redriverradio.org/sites/rrr/files/styles/partner_footer_logo/public/201508/find-us-on-facebook-logossmall_0.jpg" alt="Follow Us On Facebook" title="Follow Us On Facebook" /></a></li>
+<li><a href="https://twitter.com/rrrpublicradio" target="_blank"><img typeof="foaf:Image" src="//www.redriverradio.org/sites/rrr/files/styles/partner_footer_logo/public/201508/Twitter_Logo_Hd_Png_06small.jpg" alt="Follow Us On Twitter" title="Follow Us On Twitter" /></a></li>
+<li class="last"><a href="https://www.youtube.com/channel/UCxpBlBTsL-Ff9FvPf7AJypg" target="_blank"><img typeof="foaf:Image" src="//www.redriverradio.org/sites/rrr/files/styles/partner_footer_logo/public/201903/youtube-logo__1__0.png" alt="YouTube" title="YouTube" /></a></li>
+</ul></div></div>
+  </div>
+</div>
+<div id="block-pi-table-queue-auxiliarylinksfooter" class="block block-pi-table-queue">
+
+    
+  <div class="content">
+    <div class="table-queue" id="table-queue-auxiliarylinksfooter">
+  <div class="item-list"><ul class="auxiliary-links"><li class="first"><span>&copy; 2019 Red River Radio</span></li>
+<li><a href="https://donate.nprstations.org/rrr/?__utma=146488247.790776224.1432226745.1440615217.1440619228.184&amp;__utmb=146488247.16.8.144061" target="_self">Donate</a></li>
+<li><a href="http://redriverradio.org/people/kate-archer-kent" target="_self">Local News</a></li>
+<li><a href="http://redriverradio.org/term/commentary-0" target="_self">Commentary</a></li>
+<li><a href="http://redriverradio.org/community-calendar" target="_self">Area Events Calendar </a></li>
+<li><a href="http://redriverradio.org/contact-us" target="_self">Contact Us</a></li>
+<li><a href="http://redriverradio.org/underwriting-red-river-radio#stream/1" target="_self">Underwrite Red River Radio</a></li>
+<li><a href="http://redriverradio.org/people/capacity/staff" target="_self">Staff</a></li>
+<li><a href="http://redriverradio.org/people/capacity/hosts" target="_self">Hosts</a></li>
+<li><a href="http://redriverradio.org/community-advisory-board" target="_self">Community Advisory Board</a></li>
+<li><a href="http://mediad.publicbroadcasting.net/p/rrr/files/EEO_statement_2015.pdf?__utma=146488247.790776224.1432226745.1440615217.1440619" target="_self">EEO Statement</a></li>
+<li><a href="http://mediad.publicbroadcasting.net/p/rrr/files/RRR_2014_Final_Audit_Report.pdf.pdf?__utma=146488247.790776224.1432226745.14406" target="_self">Audited Financial Reports</a></li>
+<li><a href="http://mediad.publicbroadcasting.net/p/rrr/files/CPB_Public_Radio_story_2013-14.pdf?__utma=146488247.790776224.1432226745.144061" target="_self">CPB Community Service Report</a></li>
+<li><a href="http://redriverradio.org/red-river-radio-public-file" target="_self">Red River Radio Public File</a></li>
+<li class="last"><a href="http://redriverradio.org/employment-internship-and-volunteer-opportunities#stream/2" target="_self">Employment, Internship and Volunteer Opportunities</a></li>
+</ul></div></div>
+  </div>
+</div>
+  </div>
+          </div>
+  </div>
+</footer>
+      <script type="text/javascript" src="//widgets.listenlive.co/1.0/tdwidgets.min.js?q1k3xg"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+ (function ($) { $(document).foundation({ topbar: { custom_back_text: true, back_text: 'back', mobile_show_parent_link: true } }); }(jQuery));
+//--><!]]>
+</script>
+    </div>
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"15ba4da3e8","applicationID":"1108724","transactionName":"NlMBMhAECEZRAU1eDg8ZIgUWDAlbHwxWUwQ+RgIBBzoQXFUV","queueTime":0,"applicationTime":1078,"atts":"GhQCRFgeG0g=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>

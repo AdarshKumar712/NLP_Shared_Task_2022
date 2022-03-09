@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="profile" href="http://gmpg.org/xfn/11">
+
+<title>Our Top Ten Posts of 2019, #ICYMI &#8211; FIT IS A FEMINIST ISSUE</title>
+<script type="text/javascript">
+  WebFontConfig = {"google":{"families":["Montserrat:r:latin,latin-ext"]}};
+  (function() {
+    var wf = document.createElement('script');
+    wf.src = 'https://s0.wp.com/wp-content/plugins/custom-fonts/js/webfont.js';
+    wf.type = 'text/javascript';
+    wf.async = 'true';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(wf, s);
+	})();
+</script><style id="jetpack-custom-fonts-css">.wf-active h1, .wf-active h2, .wf-active h3, .wf-active h4, .wf-active h5, .wf-active h6{font-family:"Montserrat",sans-serif;font-style:normal;font-weight:400}.wf-active .widget-title{font-style:normal;font-weight:400}.wf-active .rating-msg{font-style:normal;font-weight:400}.wf-active .site-title{font-style:normal;font-weight:400;font-family:"Montserrat",sans-serif}@media only screen and (min-width: 40.063em){.wf-active .site-title{font-style:normal;font-weight:400}}.wf-active h1{font-style:normal;font-weight:400}.wf-active h2, .wf-active .site-title{font-style:normal;font-weight:400}@media only screen and (min-width: 40.063em){.wf-active .entry-title{font-style:normal;font-weight:400}}.wf-active h3{font-style:normal;font-weight:400}.wf-active .entry-title, .wf-active h4{font-style:normal;font-weight:400}.wf-active h5{font-style:normal;font-weight:400}.wf-active h6{font-style:normal;font-weight:400}.wf-active .page-title{font-style:normal;font-weight:400}</style>
+
+<!-- Async WordPress.com Remote Login -->
+<script id="wpcom_remote_login_js">
+var wpcom_remote_login_extra_auth = '';
+function wpcom_remote_login_remove_dom_node_id( element_id ) {
+	var dom_node = document.getElementById( element_id );
+	if ( dom_node ) { dom_node.remove(); }
+}
+function wpcom_remote_login_remove_dom_node_classes( class_name ) {
+	var dom_nodes = document.querySelectorAll( '.' + class_name );
+	for ( var i = 0; i < dom_nodes.length; i++ ) {
+		dom_nodes[i].remove();
+	}
+}
+function wpcom_remote_login_final_cleanup() {
+	wpcom_remote_login_remove_dom_node_classes( "wpcom_remote_login_msg" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_remote_login_key" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_remote_login_validate" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_remote_login_js" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_request_access_iframe" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_request_access_styles" );
+}
+
+// Watch for messages back from the remote login
+window.addEventListener( "message", function( e ) {
+	if ( e.origin === "https://r-login.wordpress.com" ) {
+		var data = {};
+		try {
+			data = JSON.parse( e.data );
+		} catch( e ) {
+			wpcom_remote_login_final_cleanup();
+			return;
+		}
+
+		if ( data.msg === 'LOGIN' ) {
+			// Clean up the login check iframe
+			wpcom_remote_login_remove_dom_node_id( "wpcom_remote_login_key" );
+
+			var id_regex = new RegExp( /^[0-9]+$/ );
+			var token_regex = new RegExp( /^.*|.*|.*$/ );
+			if (
+				token_regex.test( data.token )
+				&& id_regex.test( data.wpcomid )
+			) {
+				// We have everything we need to ask for a login
+				var script = document.createElement( "script" );
+				script.setAttribute( "id", "wpcom_remote_login_validate" );
+				script.src = '/remote-login.php?wpcom_remote_login=validate'
+					+ '&wpcomid=' + data.wpcomid
+					+ '&token=' + encodeURIComponent( data.token )
+					+ '&host=' + window.location.protocol
+						+ '//' + window.location.hostname;
+				document.body.appendChild( script );
+			}
+
+			return;
+		}
+
+		// Safari ITP, not logged in, so redirect
+		if ( data.msg === 'LOGIN-REDIRECT' ) {
+			window.location = 'https://wordpress.com/log-in?redirect_to=' + window.location.href;
+			return;
+		}
+
+		// Safari ITP, storage access failed, remove the request
+		if ( data.msg === 'LOGIN-REMOVE' ) {
+			var css_zap = 'html { -webkit-transition: margin-top 1s; transition: margin-top 1s; } /* 9001 */ html { margin-top: 0 !important; } * html body { margin-top: 0 !important; } @media screen and ( max-width: 782px ) { html { margin-top: 0 !important; } * html body { margin-top: 0 !important; } }';
+			var style_zap = document.createElement( 'style' );
+			style_zap.type = 'text/css';
+			style_zap.appendChild( document.createTextNode( css_zap ) );
+			document.body.appendChild( style_zap );
+
+			var e = document.getElementById( 'wpcom_request_access_iframe' );
+			e.parentNode.removeChild( e );
+
+			document.cookie = 'wordpress_com_login_access=denied; path=/; max-age=31536000';
+
+			return;
+		}
+
+		// Safari ITP
+		if ( data.msg === 'REQUEST_ACCESS' ) {
+			console.log( 'request access: safari' );
+
+			// Check ITP iframe enable/disable knob
+			if ( wpcom_remote_login_extra_auth !== 'safari_itp_iframe' ) {
+				return;
+			}
+
+			// If we are in a "private window" there is no ITP.
+			var private_window = false;
+			try {
+				var opendb = window.openDatabase( null, null, null, null );
+			} catch( e ) {
+				private_window = true;
+			}
+
+			if ( private_window ) {
+				console.log( 'private window' );
+				return;
+			}
+
+			var iframe = document.createElement( 'iframe' );
+			iframe.id = 'wpcom_request_access_iframe';
+			iframe.setAttribute( 'scrolling', 'no' );
+			iframe.setAttribute( 'sandbox', 'allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-top-navigation-by-user-activation' );
+			iframe.src = 'https://r-login.wordpress.com/remote-login.php?wpcom_remote_login=request_access&origin=' + encodeURIComponent( data.origin ) + '&wpcomid=' + encodeURIComponent( data.wpcomid );
+
+			var css = 'html { -webkit-transition: margin-top 1s; transition: margin-top 1s; } /* 9001 */ html { margin-top: 46px !important; } * html body { margin-top: 46px !important; } @media screen and ( max-width: 660px ) { html { margin-top: 71px !important; } * html body { margin-top: 71px !important; } #wpcom_request_access_iframe { display: block; height: 71px !important; } } #wpcom_request_access_iframe { border: 0px; height: 46px; position: fixed; top: 0; left: 0; width: 100%; min-width: 100%; z-index: 99999; background: #23282d; } ';
+
+			var style = document.createElement( 'style' );
+			style.type = 'text/css';
+			style.id = 'wpcom_request_access_styles';
+			style.appendChild( document.createTextNode( css ) );
+			document.body.appendChild( style );
+
+			document.body.appendChild( iframe );
+		}
+
+		if ( data.msg === 'DONE' ) {
+			wpcom_remote_login_final_cleanup();
+		}
+	}
+}, false );
+
+// Inject the remote login iframe after the page has had a chance to load
+// more critical resources
+window.addEventListener( "DOMContentLoaded", function( e ) {
+	var iframe = document.createElement( "iframe" );
+	iframe.style.display = "none";
+	iframe.setAttribute( "scrolling", "no" );
+	iframe.setAttribute( "id", "wpcom_remote_login_key" );
+	iframe.src = "https://r-login.wordpress.com/remote-login.php"
+		+ "?wpcom_remote_login=key"
+		+ "&origin=aHR0cHM6Ly9maXRpc2FmZW1pbmlzdGlzc3VlLmNvbQ%3D%3D"
+		+ "&wpcomid=39833017"
+		+ "&time=1577893781";
+	document.body.appendChild( iframe );
+}, false );
+</script>
+<link rel='dns-prefetch' href='//s2.wp.com' />
+<link rel='dns-prefetch' href='//s1.wp.com' />
+<link rel='dns-prefetch' href='//s0.wp.com' />
+<link rel='dns-prefetch' href='//fitisafeministissue.wordpress.com' />
+<link rel='dns-prefetch' href='//wordpress.com' />
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel="alternate" type="application/rss+xml" title="FIT IS A FEMINIST ISSUE &raquo; Feed" href="https://fitisafeministissue.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="FIT IS A FEMINIST ISSUE &raquo; Comments Feed" href="https://fitisafeministissue.com/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="FIT IS A FEMINIST ISSUE &raquo; Our Top Ten Posts of 2019,&nbsp;#ICYMI Comments Feed" href="https://fitisafeministissue.com/2020/01/01/our-top-ten-posts-of-2019-icymi/feed/" />
+	<script type="text/javascript">
+		/* <![CDATA[ */
+		function addLoadEvent(func) {
+			var oldonload = window.onload;
+			if (typeof window.onload != 'function') {
+				window.onload = func;
+			} else {
+				window.onload = function () {
+					oldonload();
+					func();
+				}
+			}
+		}
+		/* ]]> */
+	</script>
+			<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s0.wp.com\/wp-content\/mu-plugins\/wpcom-smileys\/twemoji\/2\/72x72\/","ext":".png","svgUrl":"https:\/\/s0.wp.com\/wp-content\/mu-plugins\/wpcom-smileys\/twemoji\/2\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/s0.wp.com\/wp-includes\/js\/wp-emoji-release.min.js?m=1573557586h&ver=5.3.2"}};
+			!function(e,a,t){var r,n,o,i,p=a.createElement("canvas"),s=p.getContext&&p.getContext("2d");function c(e,t){var a=String.fromCharCode;s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,e),0,0);var r=p.toDataURL();return s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,t),0,0),r===p.toDataURL()}function l(e){if(!s||!s.fillText)return!1;switch(s.textBaseline="top",s.font="600 32px Arial",e){case"flag":return!c([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])&&(!c([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!c([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]));case"emoji":return!c([55357,56424,55356,57342,8205,55358,56605,8205,55357,56424,55356,57340],[55357,56424,55356,57342,8203,55358,56605,8203,55357,56424,55356,57340])}return!1}function d(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(i=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},o=0;o<i.length;o++)t.supports[i[o]]=l(i[o]),t.supports.everything=t.supports.everything&&t.supports[i[o]],"flag"!==i[o]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[i[o]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(r=t.source||{}).concatemoji?d(r.concatemoji):r.wpemoji&&r.twemoji&&(d(r.twemoji),d(r.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='all-css-0-1' href='https://s0.wp.com/_static/??-eJydU9tOwzAM/SHSrEi78ID4lqQ1xSM3Jc5K/x43GQw2KKgvVe2em2pbjkF03hE4kjaLYPKALskxdN6KZNHAdFU1XUp38mdaBKMIehF8oqtqiWbwFZI8AgXVvYpS3cA/sEPmUkMc+EsEuW/aZiN1RtNLbXyh66jiJBNNBv4hU1gXdzgxjOHZUe9Ht1bGqMlnEkPEfq1EVIRuSGvphBYMOviD/5yNEQkJBPQ4G56nIjdNe5h/6VDnV+Vlj4nkCWH8VbDz5yAtC/BsCqO2mhqlTGtloJrFsObXQNfdpWWb14b7NiiaEZZdFBiwDFuijdgPwEvNkPO7IHhbppSz0TpESEnw02K2gl7Ya/EcmDWnqYdQDL91KhWl84TMTp8vN5rVSoas+UKIvBP3l214so/tdr87bDftw+74Dlvig/U=?cssminify=yes' type='text/css' media='all' />
+<style id='wp-block-library-inline-css'>
+.has-text-align-justify {
+	text-align:justify;
+}
+</style>
+<link rel='stylesheet' id='button-2-fonts-css'  href='https://fonts.googleapis.com/css?family=Lato%3A400%2C300%2C300italic%2C400italic%2C700%2C700italic%7CLora%3A400italic%2C700italic&#038;subset=latin%2Clatin-ext' media='all' />
+<link rel='stylesheet' id='all-css-2-1' href='https://s0.wp.com/_static/??-eJyNkUFuAjEMRS9U17QFpFlUPUsSPCFMEkexw5TbE5AQVJUGdu9L/0W2g3MBx1kpK+qeEgmWZtE2Vc7wiTaym+Tdibzhk2rIDkVPkWAujtM/JzUosfmQBeew86SCygUKS6eruKRIs+JqKBq4p5Fj5Hmpv+cjVbDN2kgvPH+baDSOLPMEMUwdfl83O6vx1aQ7LWmeGPptzWWfPwHGaEJdUiv1X/EdPfbWQ7xIP+n7Y7Me1sP2azUczibbtFc=?cssminify=yes' type='text/css' media='all' />
+<link rel='stylesheet' id='print-css-3-1' href='https://s2.wp.com/wp-content/mu-plugins/global-print/global-print.css?m=1465851035h&cssminify=yes' type='text/css' media='print' />
+<link rel='stylesheet' id='all-css-4-1' href='https://s1.wp.com/_static/??-eJyNjtsOgkAMRH/IWkm8Phi/ZVmWpVq2hJYQ/941wXghIT61TWfODI4deEkWkmE7QMdDpKTovJGk0vXvbe1VV/ghf2nrgRmULECoyCjFiYKbdXHEyFK6/Lc7B0U1Z+SxZJduM+BHfidqULOjHrVxfYa+5pJLxVPOYonyfcxM1oQ212m2U78l6khVDKaYJdMOsacKXKqASe0fb5lrKBDUwizjz/kEXNpzsTvsj7tNcdpfH0kClsE=?cssminify=yes' type='text/css' media='all' />
+<style id='jetpack-global-styles-frontend-style-inline-css'>
+:root { --font-headings: unset; --font-base: unset; --font-headings-default: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif; --font-base-default: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;}
+</style>
+<script>
+var related_posts_js_options = {"post_heading":"h4"};
+</script>
+<script type='text/javascript' src='https://s2.wp.com/_static/??-eJyFkN0OgjAMhV/IObkQ9ML4LDDK0rk/102iT+9QTBCIJk3apl9OT8t7z9AKnVogrnJcE4T7mLaKNvwXwAzKUEfYGrQfWDgbwcaB9Y6iAaJawsrUuAY1sEQQMmBjXtO5OWcS8zpJtMQD6LyqZYPqrFtR/z4E7Q2h/4spiL4WFxaA8LHwPPFCqSER0Ed0ueuc1m6hPsF7bCXE1//eJWuS8Wz0dDanYl8Vx11Vlgf1BAnZlx4='></script>
+<link rel='stylesheet' id='all-css-0-2' href='https://s0.wp.com/wp-content/mu-plugins/highlander-comments/style.css?m=1530132353h&cssminify=yes' type='text/css' media='all' />
+<!--[if lt IE 8]>
+<link rel='stylesheet' id='highlander-comments-ie7-css'  href='https://s2.wp.com/wp-content/mu-plugins/highlander-comments/style-ie7.css?m=1351637563h&#038;ver=20110606' media='all' />
+<![endif]-->
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://fitisafeministissue.wordpress.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://s1.wp.com/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='20-20 Vision in 2020 (Guest&nbsp;Post)' href='https://fitisafeministissue.com/2019/12/31/20-20-vision-in-2020-guest-post/' />
+<link rel='next' title='What&#039;s one fitness experience that stands out for you, good or bad, from&nbsp;2019?' href='https://fitisafeministissue.com/2020/01/01/whats-one-fitness-experience-that-stands-out-for-you-good-or-bad-from-2019/' />
+<meta name="generator" content="WordPress.com" />
+<link rel="canonical" href="https://fitisafeministissue.com/2020/01/01/our-top-ten-posts-of-2019-icymi/" />
+<link rel='shortlink' href='https://wp.me/p2H8o1-O6L' />
+<link rel="alternate" type="application/json+oembed" href="https://public-api.wordpress.com/oembed/?format=json&amp;url=https%3A%2F%2Ffitisafeministissue.com%2F2020%2F01%2F01%2Four-top-ten-posts-of-2019-icymi%2F&amp;for=wpcom-auto-discovery" /><link rel="alternate" type="application/xml+oembed" href="https://public-api.wordpress.com/oembed/?format=xml&amp;url=https%3A%2F%2Ffitisafeministissue.com%2F2020%2F01%2F01%2Four-top-ten-posts-of-2019-icymi%2F&amp;for=wpcom-auto-discovery" />
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Our Top Ten Posts of 2019, #ICYMI" />
+<meta property="og:url" content="https://fitisafeministissue.com/2020/01/01/our-top-ten-posts-of-2019-icymi/" />
+<meta property="og:description" content="Our most read post of 2019, #1, was Cate&#8217;s 2018 post on being 53 1/2 and still menstruating. That post, on what may seem like an oddball topic for a fitness blog, hit a nerve. From the many c…" />
+<meta property="article:published_time" content="2020-01-01T11:00:00+00:00" />
+<meta property="article:modified_time" content="2020-01-01T15:09:24+00:00" />
+<meta property="og:site_name" content="FIT IS A FEMINIST ISSUE" />
+<meta property="og:image" content="https://fitisafeministissue.files.wordpress.com/2019/12/chinh-le-duc-s9xd0iz6iza-unsplash.jpg" />
+<meta property="og:image:width" content="6000" />
+<meta property="og:image:height" content="4000" />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:creator" content="@SamJaneB" />
+<meta name="twitter:site" content="@SamJaneB" />
+<meta name="twitter:text:title" content="Our Top Ten Posts of 2019,&nbsp;#ICYMI" />
+<meta name="twitter:card" content="summary" />
+<meta property="article:publisher" content="https://www.facebook.com/WordPresscom" />
+
+<!-- End Jetpack Open Graph Tags -->
+<link rel="shortcut icon" type="image/x-icon" href="https://s1.wp.com/i/favicon.ico" sizes="16x16 24x24 32x32 48x48" />
+<link rel="icon" type="image/x-icon" href="https://s1.wp.com/i/favicon.ico" sizes="16x16 24x24 32x32 48x48" />
+<link rel="apple-touch-icon-precomposed" href="https://s2.wp.com/i/webclip.png" />
+<link rel='openid.server' href='https://fitisafeministissue.com/?openidserver=1' />
+<link rel='openid.delegate' href='https://fitisafeministissue.com/' />
+<link rel="search" type="application/opensearchdescription+xml" href="https://fitisafeministissue.com/osd.xml" title="FIT IS A FEMINIST ISSUE" />
+<link rel="search" type="application/opensearchdescription+xml" href="https://s1.wp.com/opensearch.xml" title="WordPress.com" />
+<meta name="theme-color" content="#f8f8f8" />
+<link rel="pingback" href="https://fitisafeministissue.com/xmlrpc.php">		<style type="text/css">
+			.recentcomments a {
+				display: inline !important;
+				padding: 0 !important;
+				margin: 0 !important;
+			}
+
+			table.recentcommentsavatartop img.avatar, table.recentcommentsavatarend img.avatar {
+				border: 0px;
+				margin: 0;
+			}
+
+			table.recentcommentsavatartop a, table.recentcommentsavatarend a {
+				border: 0px !important;
+				background-color: transparent !important;
+			}
+
+			td.recentcommentsavatarend, td.recentcommentsavatartop {
+				padding: 0px 0px 1px 0px;
+				margin: 0px;
+			}
+
+			td.recentcommentstextend {
+				border: none !important;
+				padding: 0px 0px 2px 10px;
+			}
+
+			.rtl td.recentcommentstextend {
+				padding: 0px 10px 2px 0px;
+			}
+
+			td.recentcommentstexttop {
+				border: none;
+				padding: 0px 0px 0px 10px;
+			}
+
+			.rtl td.recentcommentstexttop {
+				padding: 0px 10px 0px 0px;
+			}
+		</style>
+		<style type="text/css">
+.widget_twitter li {
+	word-wrap: break-word;
+}
+</style>
+<meta name="application-name" content="FIT IS A FEMINIST ISSUE" /><meta name="msapplication-window" content="width=device-width;height=device-height" /><meta name="msapplication-tooltip" content="Feminist reflections on fitness, sport, and health" /><meta name="msapplication-task" content="name=Subscribe;action-uri=https://fitisafeministissue.com/feed/;icon-uri=https://s1.wp.com/i/favicon.ico" /><meta name="msapplication-task" content="name=Sign up for a free blog;action-uri=http://wordpress.com/signup/;icon-uri=https://s1.wp.com/i/favicon.ico" /><meta name="msapplication-task" content="name=WordPress.com Support;action-uri=http://support.wordpress.com/;icon-uri=https://s1.wp.com/i/favicon.ico" /><meta name="msapplication-task" content="name=WordPress.com Forums;action-uri=http://forums.wordpress.com/;icon-uri=https://s1.wp.com/i/favicon.ico" /><meta name="description" content="Our most read post of 2019, #1, was Cate&#039;s 2018 post on being 53 1/2 and still menstruating. That post, on what may seem like an oddball topic for a fitness blog, hit a nerve. From the many comments and reposts we learned that Cate is certainly not alone. It&#039;s on our top ten list&hellip;" />
+<link rel="amphtml" href="https://fitisafeministissue.com/2020/01/01/our-top-ten-posts-of-2019-icymi/amp/"><style type="text/css" id="custom-colors-css">#infinite-handle span button:active,#infinite-handle span button:focus,#infinite-handle span button:hover,#infinite-handle span:hover button,.flex-control-paging li a.flex-active,.flex-control-paging li a:hover,.jetpack-social-navigation ul a:hover,.tags-links a:hover,.widget_tag_cloud a:hover,.button:active,.button:focus,button:active,button:focus,button:hover,input[type=button]:active,input[type=button]:focus,input[type=button]:hover,input[type=reset]:active,input[type=reset]:focus,input[type=reset]:hover,input[type=submit]:active,input[type=submit]:focus,input[type=submit]:hover,.page-links span.active-link,.page-links a:hover span.active-link{color:#191919}body{background-color:#f8f8f8}#infinite-handle span button:active,#infinite-handle span button:focus,#infinite-handle span button:hover,#infinite-handle span:hover button,.flex-control-paging li a.flex-active,.flex-control-paging li a:hover,.jetpack-social-navigation ul a:hover,.tags-links a:hover,.widget_tag_cloud a:hover,.button:active,.button:focus,.button:hover,button:active,button:focus,button:hover,input[type=button]:active,input[type=button]:focus,input[type=button]:hover,input[type=reset]:active,input[type=reset]:focus,input[type=reset]:hover,input[type=submit]:active,input[type=submit]:focus,input[type=submit]:hover,.page-links span.active-link,.page-links a:hover span.active-link{background-color:#5192a8}.bypostauthor>.comment-body:first-of-type .comment-author .avatar,input[type=email]:focus,input[type=password]:focus,input[type=search]:focus,input[type=text]:focus,input[type=url]:focus,textarea:focus{border-color:#5192a8}.tags-links a:hover:after,.widget_tag_cloud a:hover:after{border-left-color:#5192a8}.tags-links a:hover:before,.widget_tag_cloud a:hover:before{border-top-color:#5192a8}.tags-links a:hover:before,.widget_tag_cloud a:hover:before,abbr,acronym{border-bottom-color:#5192a8}#infinite-handle span button:active,#infinite-handle span button:focus,#infinite-handle span button:hover,#infinite-handle span:hover button,button:active,button:focus,button:hover,input[type=button]:active,input[type=button]:focus,input[type=button]:hover,input[type=reset]:active,input[type=reset]:focus,input[type=reset]:hover,input[type=submit]:active,input[type=submit]:focus,input[type=submit]:hover{outline-color:#5192a8}#infinite-footer .container a:hover,.comment-meta .comment-metadata a:hover,.entry-footer a:hover,.entry-meta a:hover,.required,.site-footer a:hover,.site-title a,.site-title a:visited,a,a.more-link,a.more-link:hover,a:visited{color:#5192a8}.main-navigation .current-menu-item>a,.main-navigation .current_page_ancestor>a,.main-navigation .current_page_item>a,.main-navigation a:hover,.main-navigation a:visited:hover{color:#5192a8}</style>
+</head>
+
+<body class="post-template-default single single-post postid-192619 single-format-standard wp-embed-responsive customizer-styles-applied group-blog user-background highlander-enabled highlander-light custom-colors">
+<div id="page" class="hfeed site">
+	<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+
+	<header id="masthead" class="site-header" role="banner">
+		<div class="site-branding">
+										<p class="site-title"><a href="https://fitisafeministissue.com/" rel="home">FIT IS A FEMINIST ISSUE</a></p>
+							<p class="site-description">Feminist reflections on fitness, sport, and health</p>
+					</div><!-- .site-branding -->
+	</header><!-- #masthead -->
+
+	<nav id="site-navigation" class="main-navigation" role="navigation">
+		<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><rect x="0" fill="none" width="16" height="16"/><g><path id="menu-icon" d="M0 14h16v-2H0v2zM0 2v2h16V2H0zm0 7h16V7H0v2z"/></g></svg>
+			Menu		</button>
+		<div id="primary-menu" class="menu"><ul>
+<li class="page_item page-item-2"><a href="https://fitisafeministissue.com/about/">About Fit is a Feminist&nbsp;Issue</a></li>
+<li class="page_item page-item-177582"><a href="https://fitisafeministissue.com/pre-order-the-book/">How to order Sam and Tracy&#8217;s&nbsp;book</a></li>
+<li class="page_item page-item-181567"><a href="https://fitisafeministissue.com/other-books-we-love/">Other books we&nbsp;love!</a></li>
+</ul></div>
+			</nav><!-- #site-navigation -->
+
+	
+	<div id="content" class="site-content">
+
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main" role="main">
+
+		
+			
+<article id="post-192619" class="post-192619 post type-post status-publish format-standard hentry category-blog category-blogging category-fitness tag-icymi">
+	<header class="entry-header">
+
+		
+		<span class="cat-links"><a href="https://fitisafeministissue.com/category/blog/" rel="category tag">blog</a> &middot; <a href="https://fitisafeministissue.com/category/blogging/" rel="category tag">blogging</a> &middot; <a href="https://fitisafeministissue.com/category/fitness/" rel="category tag">fitness</a></span>
+		<h1 class="entry-title">Our Top Ten Posts of 2019,&nbsp;#ICYMI</h1>
+		<div class="entry-meta">
+			<span class="posted-on"><a href="https://fitisafeministissue.com/2020/01/01/our-top-ten-posts-of-2019-icymi/" rel="bookmark"><time class="entry-date published" datetime="2020-01-01T06:00:00-05:00">January 1, 2020</time><time class="updated" datetime="2020-01-01T10:09:24-05:00">January 1, 2020</time></a></span><span class="byline"> <span class="author vcard"><a class="url fn n" href="https://fitisafeministissue.com/author/samanthabrennan/">Sam B</a></span></span>		</div>
+	</header><!-- .entry-header -->
+
+	<div class="entry-content">
+		
+<p>Our most read post of 2019, #1, was Cate&#8217;s 2018 <a href="https://fitisafeministissue.com/2018/08/18/im-53-and-a-half-and-im-still-menstruating-is-this-a-good-thing/">post on being 53 1/2 and still menstruating</a>. That post, on what may seem like an oddball topic for a fitness blog, hit a nerve. From the many comments and reposts we learned that Cate is certainly not alone. It&#8217;s on our top ten list pretty much every month. (5415)</p>
+
+
+
+<p>Our second most read post is a much older one. It&#8217;s from 2013 when I blogged about <a href="https://fitisafeministissue.com/2013/03/25/crotch-shots-upskirts-sports-reporting-and-the-objectification-of-female-athletes-bodies/">sports reporting, upskirts, and the objectification of women athletes</a>.  That post also has enduring popularity thanks, in part, to search engines and the existence of &#8220;upskirts&#8221; and &#8220;crotch shots&#8221; in the title.  (4593)</p>
+
+
+
+<p>One of our newest bloggers wrote the third most read post of the year. Marjorie wrote <a href="https://fitisafeministissue.com/2019/03/04/doin-my-part-to-keep-the-gym-a-safe-space-for-men-guest-post/">Doin’ My Part to Keep the Gym a Safe Space for Men&nbsp;</a> back in March 2019 before she&#8217;d even joined the regular team of bloggers here at Fit is a Feminist Issue. (3277)</p>
+
+
+
+<p>In May, in light of the ongoing Caster Semenya controversy, Martha <a href="https://fitisafeministissue.com/2019/05/03/women-sport-and-sex-tests-why-caster-semenya-matters-a-great-deal/">blogged about sex tests</a>. That was our fourth most read post of the year. (2382)</p>
+
+
+
+<p>In 2014 I blogged about <a href="https://fitisafeministissue.com/2014/06/06/crossfit-and-womens-bodies-its-complicated/">CrossFit and women&#8217;s bodies</a>. People read that post a lot, and to be honest, I suppose it&#8217;s got some appeal because of the images.  It&#8217;s often on our top ten list and this year it&#8217;s number five. (2169)</p>
+
+
+
+<p>Who would think vibrators would make for good prizes in women&#8217;s sports? Someone did and Catherine <a href="https://fitisafeministissue.com/2019/05/23/on-vibrators-as-athletic-trophies-or-when-a-prize-is-not-a-prize/">blogged about it  </a>in May of 2019. That post was our sixth most read post of 2019. (1831)</p>
+
+
+
+<p><a href="https://fitisafeministissue.com/2017/02/02/eyelash-extensions-made-me-feel-ridiculous-more-reflections-on-objectification-and-the-feminine-beauty-ideal/">Eyelash extensions made Tracy feel ridiculous</a> when she tried them and blogged about it 2017.  That post was our seventh most read post. Considering eyelash extensions? Go read her post first. (1737)</p>
+
+
+
+<p>In 2013 I was feeling exercised about <a href="https://fitisafeministissue.com/2013/02/26/finding-clothes-to-fit-athletic-womens-bodies/">finding clothes to fit athletic women&#8217;s bodies</a>. That post was our eighth most popular post. The issue still bugs me. I&#8217;m still struggling to find clothes. I might blog about it again.  (1565)</p>
+
+
+
+<p>Also, in 2013 Tracy wrote that <a href="https://fitisafeministissue.com/2013/04/11/youve-lost-weight-you-look-great-isnt-a-compliment/">&#8220;you&#8217;ve lost weight, you look great&#8221; isn&#8217;t a compliment</a>. That post was our ninth most read post of 2019. (1534)</p>
+
+
+
+<p>Another 2013 post was our tenth most read post of the year. That&#8217;s <a href="https://fitisafeministissue.com/2013/01/31/she-may-look-healthy-but-why-fitness-models-arent-models-of-health/">Tracy&#8217;s blog post on why fitness models aren&#8217;t necessarily models of health</a>.  These old posts are definite blog classics. (1403)</p>
+
+
+
+<figure class="wp-block-image size-large"><img data-attachment-id="192867" data-permalink="https://fitisafeministissue.com/chinh-le-duc-s9xd0iz6iza-unsplash/" data-orig-file="https://fitisafeministissue.files.wordpress.com/2019/12/chinh-le-duc-s9xd0iz6iza-unsplash.jpg" data-orig-size="6000,4000" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="chinh-le-duc-s9xd0iz6iza-unsplash" data-image-description="" data-medium-file="https://fitisafeministissue.files.wordpress.com/2019/12/chinh-le-duc-s9xd0iz6iza-unsplash.jpg?w=300" data-large-file="https://fitisafeministissue.files.wordpress.com/2019/12/chinh-le-duc-s9xd0iz6iza-unsplash.jpg?w=663" src="https://fitisafeministissue.files.wordpress.com/2019/12/chinh-le-duc-s9xd0iz6iza-unsplash.jpg?w=1024" alt="" class="wp-image-192867" srcset="https://fitisafeministissue.files.wordpress.com/2019/12/chinh-le-duc-s9xd0iz6iza-unsplash.jpg?w=1024 1024w, https://fitisafeministissue.files.wordpress.com/2019/12/chinh-le-duc-s9xd0iz6iza-unsplash.jpg?w=2048 2048w, https://fitisafeministissue.files.wordpress.com/2019/12/chinh-le-duc-s9xd0iz6iza-unsplash.jpg?w=150 150w, https://fitisafeministissue.files.wordpress.com/2019/12/chinh-le-duc-s9xd0iz6iza-unsplash.jpg?w=300 300w, https://fitisafeministissue.files.wordpress.com/2019/12/chinh-le-duc-s9xd0iz6iza-unsplash.jpg?w=768 768w" sizes="(max-width: 1024px) 100vw, 1024px" /><figcaption>Sparklers!  Photo by&nbsp;<a href="https://unsplash.com/@mero_dnt?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Chinh Le Duc</a>&nbsp;on&nbsp;<a href="https://unsplash.com/s/photos/2019?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a> </figcaption></figure>
+
+
+
+<p></p>
+
+
+
+<p></p>
+<div id="jp-post-flair" class="sharedaddy sd-like-enabled sd-sharing-enabled"><div class="sharedaddy sd-sharing-enabled"><div class="robots-nocontent sd-block sd-social sd-social-icon sd-sharing"><h3 class="sd-title">Share this:</h3><div class="sd-content"><ul><li class="share-twitter"><a rel="nofollow noopener noreferrer" data-shared="sharing-twitter-192619" class="share-twitter sd-button share-icon no-text" href="https://fitisafeministissue.com/2020/01/01/our-top-ten-posts-of-2019-icymi/?share=twitter" target="_blank" title="Click to share on Twitter"><span></span><span class="sharing-screen-reader-text">Click to share on Twitter (Opens in new window)</span></a></li><li class="share-facebook"><a rel="nofollow noopener noreferrer" data-shared="sharing-facebook-192619" class="share-facebook sd-button share-icon no-text" href="https://fitisafeministissue.com/2020/01/01/our-top-ten-posts-of-2019-icymi/?share=facebook" target="_blank" title="Click to share on Facebook"><span></span><span class="sharing-screen-reader-text">Click to share on Facebook (Opens in new window)</span></a></li><li class="share-pinterest"><a rel="nofollow noopener noreferrer" data-shared="sharing-pinterest-192619" class="share-pinterest sd-button share-icon no-text" href="https://fitisafeministissue.com/2020/01/01/our-top-ten-posts-of-2019-icymi/?share=pinterest" target="_blank" title="Click to share on Pinterest"><span></span><span class="sharing-screen-reader-text">Click to share on Pinterest (Opens in new window)</span></a></li><li class="share-reddit"><a rel="nofollow noopener noreferrer" data-shared="" class="share-reddit sd-button share-icon no-text" href="https://fitisafeministissue.com/2020/01/01/our-top-ten-posts-of-2019-icymi/?share=reddit" target="_blank" title="Click to share on Reddit"><span></span><span class="sharing-screen-reader-text">Click to share on Reddit (Opens in new window)</span></a></li><li class="share-tumblr"><a rel="nofollow noopener noreferrer" data-shared="" class="share-tumblr sd-button share-icon no-text" href="https://fitisafeministissue.com/2020/01/01/our-top-ten-posts-of-2019-icymi/?share=tumblr" target="_blank" title="Click to share on Tumblr"><span></span><span class="sharing-screen-reader-text">Click to share on Tumblr (Opens in new window)</span></a></li><li class="share-end"></li></ul></div></div></div><div class='sharedaddy sd-block sd-like jetpack-likes-widget-wrapper jetpack-likes-widget-unloaded' id='like-post-wrapper-39833017-192619-5e0cbf9556590' data-src='//widgets.wp.com/likes/index.html?ver=20190321#blog_id=39833017&amp;post_id=192619&amp;origin=fitisafeministissue.wordpress.com&amp;obj_id=39833017-192619-5e0cbf9556590&amp;domain=fitisafeministissue.com' data-name='like-post-frame-39833017-192619-5e0cbf9556590'><h3 class='sd-title'>Like this:</h3><div class='likes-widget-placeholder post-likes-widget-placeholder' style='height: 55px;'><span class='button'><span>Like</span></span> <span class="loading">Loading...</span></div><span class='sd-text-color'></span><a class='sd-link-color'></a></div>
+<div id='jp-relatedposts' class='jp-relatedposts' >
+	<h3 class="jp-relatedposts-headline"><em>Related</em></h3>
+</div></div>			</div><!-- .entry-content -->
+
+		<div class="entry-author author-avatar-show">
+				<div class="author-avatar">
+			<img alt='' src='https://0.gravatar.com/avatar/6c997943b663760dda0eb88a7b7a1056?s=80&#038;d=retro&#038;r=PG' class='avatar avatar-80' height='80' width='80' />		</div><!-- .author-avatar -->
+		
+		<div class="author-heading">
+			<h2 class="author-title">Published by <span class="author-name">Sam B</span></h2>
+		</div><!-- .author-heading -->
+
+		<p class="author-bio">
+			Philosopher, feminist, parent, and cyclist! Co-founder of Fit Is a Feminist Issue, co-author of Fit at Mid-Life: A Feminist Fitness Journey, published by Greystone Books.			<a class="author-link" href="https://fitisafeministissue.com/author/samanthabrennan/" rel="author">
+				View all posts by Sam B			</a>
+		</p><!-- .author-bio -->
+	</div><!-- .entry-auhtor -->
+
+			<div class="entry-flair">
+			<div class="sharedaddy sd-sharing-enabled"><div class="robots-nocontent sd-block sd-social sd-social-icon sd-sharing"><h3 class="sd-title">Share this:</h3><div class="sd-content"><ul><li class="share-twitter"><a rel="nofollow noopener noreferrer" data-shared="sharing-twitter-192619" class="share-twitter sd-button share-icon no-text" href="https://fitisafeministissue.com/2020/01/01/our-top-ten-posts-of-2019-icymi/?share=twitter" target="_blank" title="Click to share on Twitter"><span></span><span class="sharing-screen-reader-text">Click to share on Twitter (Opens in new window)</span></a></li><li class="share-facebook"><a rel="nofollow noopener noreferrer" data-shared="sharing-facebook-192619" class="share-facebook sd-button share-icon no-text" href="https://fitisafeministissue.com/2020/01/01/our-top-ten-posts-of-2019-icymi/?share=facebook" target="_blank" title="Click to share on Facebook"><span></span><span class="sharing-screen-reader-text">Click to share on Facebook (Opens in new window)</span></a></li><li class="share-pinterest"><a rel="nofollow noopener noreferrer" data-shared="sharing-pinterest-192619" class="share-pinterest sd-button share-icon no-text" href="https://fitisafeministissue.com/2020/01/01/our-top-ten-posts-of-2019-icymi/?share=pinterest" target="_blank" title="Click to share on Pinterest"><span></span><span class="sharing-screen-reader-text">Click to share on Pinterest (Opens in new window)</span></a></li><li class="share-reddit"><a rel="nofollow noopener noreferrer" data-shared="" class="share-reddit sd-button share-icon no-text" href="https://fitisafeministissue.com/2020/01/01/our-top-ten-posts-of-2019-icymi/?share=reddit" target="_blank" title="Click to share on Reddit"><span></span><span class="sharing-screen-reader-text">Click to share on Reddit (Opens in new window)</span></a></li><li class="share-tumblr"><a rel="nofollow noopener noreferrer" data-shared="" class="share-tumblr sd-button share-icon no-text" href="https://fitisafeministissue.com/2020/01/01/our-top-ten-posts-of-2019-icymi/?share=tumblr" target="_blank" title="Click to share on Tumblr"><span></span><span class="sharing-screen-reader-text">Click to share on Tumblr (Opens in new window)</span></a></li><li class="share-end"></li></ul></div></div></div><div class='sharedaddy sd-block sd-like jetpack-likes-widget-wrapper jetpack-likes-widget-unloaded' id='like-post-wrapper-39833017-192619-5e0cbf9556c98' data-src='//widgets.wp.com/likes/index.html?ver=20190321#blog_id=39833017&amp;post_id=192619&amp;origin=fitisafeministissue.wordpress.com&amp;obj_id=39833017-192619-5e0cbf9556c98&amp;domain=fitisafeministissue.com' data-name='like-post-frame-39833017-192619-5e0cbf9556c98'><h3 class='sd-title'>Like this:</h3><div class='likes-widget-placeholder post-likes-widget-placeholder' style='height: 55px;'><span class='button'><span>Like</span></span> <span class="loading">Loading...</span></div><span class='sd-text-color'></span><a class='sd-link-color'></a></div>		</div><!-- .entry-flair -->
+	
+	<footer class="entry-footer">
+		<div class="tags-links"><a href="https://fitisafeministissue.com/tag/icymi/" rel="tag">ICYMI</a></div>	</footer><!-- .entry-footer -->
+</article><!-- #post-## -->
+
+			
+	<nav class="navigation post-navigation" role="navigation" aria-label="Posts">
+		<h2 class="screen-reader-text">Post navigation</h2>
+		<div class="nav-links"><div class="nav-previous"><a href="https://fitisafeministissue.com/2019/12/31/20-20-vision-in-2020-guest-post/" rel="prev"><span class="meta-nav">Previous Post</span> 20-20 Vision in 2020 (Guest&nbsp;Post)</a></div><div class="nav-next"><a href="https://fitisafeministissue.com/2020/01/01/whats-one-fitness-experience-that-stands-out-for-you-good-or-bad-from-2019/" rel="next"><span class="meta-nav">Next Post</span> What&#039;s one fitness experience that stands out for you, good or bad, from&nbsp;2019?</a></div></div>
+	</nav>
+			
+<div id="comments" class="comments-area">
+
+	
+	
+	
+		<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">What do you think? <small><a rel="nofollow" id="cancel-comment-reply-link" href="/2020/01/01/our-top-ten-posts-of-2019-icymi/#respond" style="display:none;">Cancel reply</a></small></h3><form action="https://fitisafeministissue.com/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate><input type="hidden" id="highlander_comment_nonce" name="highlander_comment_nonce" value="9d7db07a12" /><input type="hidden" name="_wp_http_referer" value="/2020/01/01/our-top-ten-posts-of-2019-icymi/" />
+<input type="hidden" name="hc_post_as" id="hc_post_as" value="guest" />
+
+<div class="comment-form-field comment-textarea">
+	<label for="comment">Enter your comment here...</label>
+	<div id="comment-form-comment"><textarea id="comment" name="comment" title="Enter your comment here..."></textarea></div>
+</div>
+
+<div id="comment-form-identity">
+	<div id="comment-form-nascar">
+		<p>Fill in your details below or click an icon to log in:</p>
+		<ul>
+			<li class="selected" style="display:none;">
+				<a href="#comment-form-guest" id="postas-guest" class="nascar-signin-link"
+                   title="Login via Guest">
+									</a>
+			</li>
+			<li>
+				<a href="#comment-form-load-service:WordPress.com" id="postas-wordpress" class="nascar-signin-link"
+                   title="Login via WordPress.com">
+					<svg xmlns="http://www.w3.org/2000/svg" role="presentation" viewBox="0 0 24 24" ><rect x="0" fill="none" width="24" height="24"/><g><path fill="#0087be" d="M12.158 12.786l-2.698 7.84c.806.236 1.657.365 2.54.365 1.047 0 2.05-.18 2.986-.51-.024-.037-.046-.078-.065-.123l-2.762-7.57zM3.008 12c0 3.56 2.07 6.634 5.068 8.092L3.788 8.342c-.5 1.117-.78 2.354-.78 3.658zm15.06-.454c0-1.112-.398-1.88-.74-2.48-.456-.74-.883-1.368-.883-2.11 0-.825.627-1.595 1.51-1.595.04 0 .078.006.116.008-1.598-1.464-3.73-2.36-6.07-2.36-3.14 0-5.904 1.613-7.512 4.053.21.008.41.012.58.012.94 0 2.395-.114 2.395-.114.484-.028.54.684.057.74 0 0-.487.058-1.03.086l3.275 9.74 1.968-5.902-1.4-3.838c-.485-.028-.944-.085-.944-.085-.486-.03-.43-.77.056-.742 0 0 1.484.114 2.368.114.94 0 2.397-.114 2.397-.114.486-.028.543.684.058.74 0 0-.488.058-1.03.086l3.25 9.665.897-2.997c.456-1.17.684-2.137.684-2.907zm1.82-3.86c.04.286.06.593.06.924 0 .912-.17 1.938-.683 3.22l-2.746 7.94c2.672-1.558 4.47-4.454 4.47-7.77 0-1.564-.4-3.033-1.1-4.314zM12 22C6.486 22 2 17.514 2 12S6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></g></svg>				</a>
+			</li>
+			<li>
+			<li>
+				<a href="#comment-form-load-service:Twitter" id="postas-twitter" class="nascar-signin-link"
+                   title="Login via Twitter">
+					<svg xmlns="http://www.w3.org/2000/svg" role="presentation" viewBox="0 0 24 24" ><rect x="0" fill="none" width="24" height="24"/><g><path fill="#1DA1F2" d="M22.23 5.924c-.736.326-1.527.547-2.357.646.847-.508 1.498-1.312 1.804-2.27-.793.47-1.67.812-2.606.996C18.325 4.498 17.258 4 16.078 4c-2.266 0-4.103 1.837-4.103 4.103 0 .322.036.635.106.935-3.41-.17-6.433-1.804-8.457-4.287-.353.607-.556 1.312-.556 2.064 0 1.424.724 2.68 1.825 3.415-.673-.022-1.305-.207-1.86-.514v.052c0 1.988 1.415 3.647 3.293 4.023-.344.095-.707.145-1.08.145-.265 0-.522-.026-.773-.074.522 1.63 2.038 2.817 3.833 2.85-1.404 1.1-3.174 1.757-5.096 1.757-.332 0-.66-.02-.98-.057 1.816 1.164 3.973 1.843 6.29 1.843 7.547 0 11.675-6.252 11.675-11.675 0-.178-.004-.355-.012-.53.802-.578 1.497-1.3 2.047-2.124z"/></g></svg>				</a>
+			</li>
+			<li>
+				<a href="#comment-form-load-service:Facebook" id="postas-facebook" class="nascar-signin-link"
+                   title="Login via Facebook">
+					<svg xmlns="http://www.w3.org/2000/svg" role="presentation" viewBox="0 0 24 24" ><rect x="0" fill="none" width="24" height="24"/><g><path fill="#3B5998" d="M20.007 3H3.993C3.445 3 3 3.445 3 3.993v16.013c0 .55.445.994.993.994h8.62v-6.97H10.27V11.31h2.346V9.31c0-2.325 1.42-3.59 3.494-3.59.993 0 1.847.073 2.096.106v2.43h-1.438c-1.128 0-1.346.537-1.346 1.324v1.734h2.69l-.35 2.717h-2.34V21h4.587c.548 0 .993-.445.993-.993V3.993c0-.548-.445-.993-.993-.993z"/></g></svg>				</a>
+			</li>
+		</ul>
+	</div>
+
+	<div id="comment-form-guest" class="comment-form-service selected">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+<a href="https://gravatar.com/site/signup/" target="_blank">				<img src="https://1.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=25&amp;d=retro&amp;forcedefault=y&amp;r=PG" alt="Gravatar" width="25" class="no-grav" />
+</a>			</div>
+
+				<div class="comment-form-fields">
+				<div class="comment-form-field comment-form-email">
+					<label for="email">Email <span class="required">(required)</span> <span class="nopublish">(Address never made public)</span></label>
+					<div class="comment-form-input"><input id="email" name="email" type="email" value="" /></div>
+				</div>
+				<div class="comment-form-field comment-form-author">
+					<label for="author">Name <span class="required">(required)</span></label>
+					<div class="comment-form-input"><input id="author" name="author" type="text" value="" /></div>
+				</div>
+				<div class="comment-form-field comment-form-url">
+					<label for="url">Website</label>
+					<div class="comment-form-input"><input id="url" name="url" type="url" value="" /></div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+
+	<div id="comment-form-wordpress" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="https://1.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=25&amp;d=retro&amp;forcedefault=y&amp;r=PG" alt="WordPress.com Logo" width="25" class="no-grav" />
+			</div>
+
+				<div class="comment-form-fields">
+				<input type="hidden" name="wp_avatar" id="wordpress-avatar" class="comment-meta-wordpress" value="" />
+				<input type="hidden" name="wp_user_id" id="wordpress-user_id" class="comment-meta-wordpress" value="" />
+				<input type="hidden" name="wp_access_token" id="wordpress-access_token" class="comment-meta-wordpress" value="" />
+						<p class="comment-form-posting-as pa-wordpress">
+			<strong></strong>
+			You are commenting using your WordPress.com account.			<span class="comment-form-log-out">
+				(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout( 'wordpress' );">Log&nbsp;Out</a>&nbsp;/&nbsp;
+				<a href="#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)
+			</span>
+			<span class="pa-icon"><svg xmlns="http://www.w3.org/2000/svg" role="presentation" viewBox="0 0 24 24" ><rect x="0" fill="none" width="24" height="24"/><g><path fill="#0087be" d="M12.158 12.786l-2.698 7.84c.806.236 1.657.365 2.54.365 1.047 0 2.05-.18 2.986-.51-.024-.037-.046-.078-.065-.123l-2.762-7.57zM3.008 12c0 3.56 2.07 6.634 5.068 8.092L3.788 8.342c-.5 1.117-.78 2.354-.78 3.658zm15.06-.454c0-1.112-.398-1.88-.74-2.48-.456-.74-.883-1.368-.883-2.11 0-.825.627-1.595 1.51-1.595.04 0 .078.006.116.008-1.598-1.464-3.73-2.36-6.07-2.36-3.14 0-5.904 1.613-7.512 4.053.21.008.41.012.58.012.94 0 2.395-.114 2.395-.114.484-.028.54.684.057.74 0 0-.487.058-1.03.086l3.275 9.74 1.968-5.902-1.4-3.838c-.485-.028-.944-.085-.944-.085-.486-.03-.43-.77.056-.742 0 0 1.484.114 2.368.114.94 0 2.397-.114 2.397-.114.486-.028.543.684.058.74 0 0-.488.058-1.03.086l3.25 9.665.897-2.997c.456-1.17.684-2.137.684-2.907zm1.82-3.86c.04.286.06.593.06.924 0 .912-.17 1.938-.683 3.22l-2.746 7.94c2.672-1.558 4.47-4.454 4.47-7.77 0-1.564-.4-3.033-1.1-4.314zM12 22C6.486 22 2 17.514 2 12S6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></g></svg></span>
+		</p>
+					</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-googleplus" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="https://1.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=25&amp;d=retro&amp;forcedefault=y&amp;r=PG" alt="Google photo" width="25" class="no-grav" />
+			</div>
+
+				<div class="comment-form-fields">
+				<input type="hidden" name="googleplus_avatar" id="googleplus-avatar" class="comment-meta-googleplus" value="" />
+				<input type="hidden" name="googleplus_user_id" id="googleplus-user_id" class="comment-meta-googleplus" value="" />
+				<input type="hidden" name="googleplus_access_token" id="googleplus-access_token" class="comment-meta-googleplus" value="" />
+						<p class="comment-form-posting-as pa-googleplus">
+			<strong></strong>
+			You are commenting using your Google account.			<span class="comment-form-log-out">
+				(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout( 'googleplus' );">Log&nbsp;Out</a>&nbsp;/&nbsp;
+				<a href="#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)
+			</span>
+			<span class="pa-icon"><svg xmlns="http://www.w3.org/2000/svg" role="presentation" x="0px" y="0px" viewBox="0 0 60 60" ><path fill="#519bf7" d="M56.3,30c0,-1.6 -0.2,-3.4 -0.6,-5h-3.1H42.2H30v10.6h14.8C44,39.3 42,42 39.1,43.9l8.8,6.8C53,46 56.3,39 56.3,30z" /><path fill="#3db366" d="M30,57.5c6.7,0 13.1,-2.4 17.9,-6.8l-8.8,-6.8c-2.5,1.6 -5.6,2.4 -9.1,2.4c-7.2,0 -13.3,-4.7 -15.4,-11.2l-9.3,7.1C9.8,51.3 19.1,57.5 30,57.5z" /><path fill="#fdc600" d="M5.3,42.2l9.3,-7.1c-0.5,-1.6 -0.8,-3.3 -0.8,-5.1s0.3,-3.5 0.8,-5.1l-9.3,-7.1C3.5,21.5 2.5,25.6 2.5,30S3.5,38.5 5.3,42.2z" /><path fill="#f15b44" d="M40.1,17.4l8,-8C43.3,5.1 37,2.5 30,2.5C19.1,2.5 9.8,8.7 5.3,17.8l9.3,7.1c2.1,-6.5 8.2,-11.1 15.4,-11.1C33.9,13.7 37.4,15.1 40.1,17.4z" /></svg></span>
+		</p>
+					</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-twitter" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="https://1.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=25&amp;d=retro&amp;forcedefault=y&amp;r=PG" alt="Twitter picture" width="25" class="no-grav" />
+			</div>
+
+				<div class="comment-form-fields">
+				<input type="hidden" name="twitter_avatar" id="twitter-avatar" class="comment-meta-twitter" value="" />
+				<input type="hidden" name="twitter_user_id" id="twitter-user_id" class="comment-meta-twitter" value="" />
+				<input type="hidden" name="twitter_access_token" id="twitter-access_token" class="comment-meta-twitter" value="" />
+						<p class="comment-form-posting-as pa-twitter">
+			<strong></strong>
+			You are commenting using your Twitter account.			<span class="comment-form-log-out">
+				(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout( 'twitter' );">Log&nbsp;Out</a>&nbsp;/&nbsp;
+				<a href="#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)
+			</span>
+			<span class="pa-icon"><svg xmlns="http://www.w3.org/2000/svg" role="presentation" viewBox="0 0 24 24" ><rect x="0" fill="none" width="24" height="24"/><g><path fill="#1DA1F2" d="M22.23 5.924c-.736.326-1.527.547-2.357.646.847-.508 1.498-1.312 1.804-2.27-.793.47-1.67.812-2.606.996C18.325 4.498 17.258 4 16.078 4c-2.266 0-4.103 1.837-4.103 4.103 0 .322.036.635.106.935-3.41-.17-6.433-1.804-8.457-4.287-.353.607-.556 1.312-.556 2.064 0 1.424.724 2.68 1.825 3.415-.673-.022-1.305-.207-1.86-.514v.052c0 1.988 1.415 3.647 3.293 4.023-.344.095-.707.145-1.08.145-.265 0-.522-.026-.773-.074.522 1.63 2.038 2.817 3.833 2.85-1.404 1.1-3.174 1.757-5.096 1.757-.332 0-.66-.02-.98-.057 1.816 1.164 3.973 1.843 6.29 1.843 7.547 0 11.675-6.252 11.675-11.675 0-.178-.004-.355-.012-.53.802-.578 1.497-1.3 2.047-2.124z"/></g></svg></span>
+		</p>
+					</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-facebook" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="https://1.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=25&amp;d=retro&amp;forcedefault=y&amp;r=PG" alt="Facebook photo" width="25" class="no-grav" />
+			</div>
+
+				<div class="comment-form-fields">
+				<input type="hidden" name="fb_avatar" id="facebook-avatar" class="comment-meta-facebook" value="" />
+				<input type="hidden" name="fb_user_id" id="facebook-user_id" class="comment-meta-facebook" value="" />
+				<input type="hidden" name="fb_access_token" id="facebook-access_token" class="comment-meta-facebook" value="" />
+						<p class="comment-form-posting-as pa-facebook">
+			<strong></strong>
+			You are commenting using your Facebook account.			<span class="comment-form-log-out">
+				(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout( 'facebook' );">Log&nbsp;Out</a>&nbsp;/&nbsp;
+				<a href="#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)
+			</span>
+			<span class="pa-icon"><svg xmlns="http://www.w3.org/2000/svg" role="presentation" viewBox="0 0 24 24" ><rect x="0" fill="none" width="24" height="24"/><g><path fill="#3B5998" d="M20.007 3H3.993C3.445 3 3 3.445 3 3.993v16.013c0 .55.445.994.993.994h8.62v-6.97H10.27V11.31h2.346V9.31c0-2.325 1.42-3.59 3.494-3.59.993 0 1.847.073 2.096.106v2.43h-1.438c-1.128 0-1.346.537-1.346 1.324v1.734h2.69l-.35 2.717h-2.34V21h4.587c.548 0 .993-.445.993-.993V3.993c0-.548-.445-.993-.993-.993z"/></g></svg></span>
+		</p>
+					</div>
+	
+		</div>
+	</div>
+
+
+	<div id="comment-form-load-service" class="comment-form-service">
+		<div class="comment-form-posting-as-cancel"><a href="javascript:HighlanderComments.cancelExternalWindow();">Cancel</a></div>
+		<p>Connecting to %s</p>
+	</div>
+
+</div>
+
+<script type="text/javascript">
+var highlander_expando_javascript = function(){
+	var input = document.createElement( 'input' ),
+	    comment = jQuery( '#comment' );
+
+	if ( 'placeholder' in input ) {
+		comment.attr( 'placeholder', jQuery( '.comment-textarea label' ).remove().text() );
+	}
+
+	// Expando Mode: start small, then auto-resize on first click + text length
+	jQuery( '#comment-form-identity' ).hide();
+	jQuery( '#comment-form-subscribe' ).hide();
+	jQuery( '#commentform .form-submit' ).hide();
+
+	comment.css( { 'height':'10px' } ).one( 'focus', function() {
+		var timer = setInterval( HighlanderComments.resizeCallback, 10 )
+		jQuery( this ).animate( { 'height': HighlanderComments.initialHeight } ).delay( 100 ).queue( function(n) { clearInterval( timer ); HighlanderComments.resizeCallback(); n(); } );
+		jQuery( '#comment-form-identity' ).slideDown();
+		jQuery( '#comment-form-subscribe' ).slideDown();
+		jQuery( '#commentform .form-submit' ).slideDown();
+	});
+}
+jQuery(document).ready( highlander_expando_javascript );
+</script>
+
+<div id="comment-form-subscribe">
+	<p class="comment-subscription-form"><input type="checkbox" name="subscribe" id="subscribe" value="subscribe" style="width: auto;"/> <label class="subscribe-label" id="subscribe-label" for="subscribe" style="display: inline;">Notify me of new comments via email.</label></p><p class="post-subscription-form"><input type="checkbox" name="subscribe_blog" id="subscribe_blog" value="subscribe" style="width: auto;"/> <label class="subscribe-label" id="subscribe-blog-label" for="subscribe_blog"  style="display: inline;">Notify me of new posts via email.</label></p></div>
+
+
+
+
+<p class="form-submit"><input name="submit" type="submit" id="comment-submit" class="submit" value="Post Comment" /> <input type='hidden' name='comment_post_ID' value='192619' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="2bc4b70dd1" /></p>
+<input type="hidden" name="genseq" value="1577893781" />
+<p style="display: none;"><input type="hidden" id="ak_js" name="ak_js" value="112"/></p></form>	</div><!-- #respond -->
+	<div style="clear: both"></div><p class="akismet_comment_form_privacy_notice">This site uses Akismet to reduce spam. <a href="https://akismet.com/privacy/" target="_blank" rel="nofollow noopener">Learn how your comment data is processed</a>.</p>
+</div><!-- #comments -->
+
+		
+		</main><!-- #main -->
+	</div><!-- #primary -->
+
+
+
+<div id="secondary" class="widget-area" role="complementary">
+		<aside id="text-3" class="widget widget_text"><h1 class="widget-title">Buy the book</h1>			<div class="textwidget"><p><a href="https://www.amazon.com/gp/product/1771641673/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=1771641673&amp;linkCode=as2&amp;tag=fitfeminists-20&amp;linkId=072691ef76b3aba1383bfdaca70b2176" target="_blank" rel="noopener noreferrer"><img src="//ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&amp;MarketPlace=US&amp;ASIN=1771641673&amp;ServiceVersion=20070822&amp;ID=AsinImage&amp;WS=1&amp;Format=_SL250_&amp;tag=fitfeminists-20" border="0" /></a><img style="border:none !important;margin:0!important;" src="//ir-na.amazon-adsystem.com/e/ir?t=fitfeminists-20&amp;l=am2&amp;o=1&amp;a=1771641673" alt="" width="1" height="1" border="0" /></p>
+<p>Please buy the book from our <a href="https://www.amazon.com/Fit-Mid-Life-Feminist-Fitness-Journey/dp/1771641673/ref=as_sl_pc_qf_sp_asin_til?tag=fitfeminists-20&amp;linkCode=w00&amp;linkId=f5f9aac0bcd92c1af9c72a8633dfcbd7&amp;creativeASIN=1771641673">affiliate store at Amazon</a>.</p>
+</div>
+		</aside><aside id="freshly_pressed-2" class="widget widget_freshly_pressed"><a href="http://discover.wordpress.com/" title="Featured on Freshly Pressed"><img src="https://s0.wp.com/i/badges/freshly-pressed-rectangle.png" width="200px" height="62px" /></a>
+</aside><aside id="media_gallery-3" class="widget widget_media_gallery"><div data-carousel-extra='{"blog_id":39833017,"permalink":"https:\/\/fitisafeministissue.com\/2020\/01\/01\/our-top-ten-posts-of-2019-icymi\/"}' id='gallery-192619-1' class='gallery galleryid-192619 gallery-columns-1 gallery-size-medium'><figure class='gallery-item'>
+			<div class='gallery-icon landscape'>
+				<a href='https://fitisafeministissue.com/feminist_1000px/'><img width="300" height="300" src="https://fitisafeministissue.files.wordpress.com/2018/03/feminist_1000px.png?w=300" class="attachment-medium size-medium" alt="" srcset="https://fitisafeministissue.files.wordpress.com/2018/03/feminist_1000px.png?w=300 300w, https://fitisafeministissue.files.wordpress.com/2018/03/feminist_1000px.png?w=150 150w, https://fitisafeministissue.files.wordpress.com/2018/03/feminist_1000px.png 320w" sizes="(max-width: 300px) 100vw, 300px" data-attachment-id="181577" data-permalink="https://fitisafeministissue.com/feminist_1000px/" data-orig-file="https://fitisafeministissue.files.wordpress.com/2018/03/feminist_1000px.png" data-orig-size="320,320" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="feminist_1000px" data-image-description="" data-medium-file="https://fitisafeministissue.files.wordpress.com/2018/03/feminist_1000px.png?w=300" data-large-file="https://fitisafeministissue.files.wordpress.com/2018/03/feminist_1000px.png?w=320" /></a>
+			</div></figure>
+		</div>
+</aside><aside id="search-2" class="widget widget_search"><form role="search" method="get" class="search-form" action="https://fitisafeministissue.com/">
+				<label>
+					<span class="screen-reader-text">Search for:</span>
+					<input type="search" class="search-field" placeholder="Search &hellip;" value="" name="s" />
+				</label>
+				<input type="submit" class="search-submit" value="Search" />
+			</form></aside><aside id="text-2" class="widget widget_text"><h1 class="widget-title">About Our Blog</h1>			<div class="textwidget"><p>Fit Is a Feminist Issue picks up on a conversation we (blog co-founders Sam and Tracy) have been having for over two decades about feminism and fitness. In the fall of 2012, two years before our 50th birthdays we set ourselves a goal: to be the fittest we’ve ever been in our lives by the time we hit 50 (on August 31 (Sam) and September 24 (Tracy) in 2014). As professional philosophers, it&#8217;s second nature for us to ask questions: what does it mean to be fit? What are appropriate measures for the goal? And, from a feminist perspective, in what way(s) does women’s quest for fitness and health contribute to empowerment and/or oppression? You’ll find posts about our personal approaches to fitness/health, and posts that are more reflective, critical and meant to challenge common assumptions. As the Fit Is a Feminist Issue community has grown, we&#8217;ve brought some amazing guest bloggers and regular contributors on board. Their welcome posts add to the diversity of voices about feminist approaches to fitness. We like to have fun with the whole thing and hope you do, too.</p>
+<p>Our book, <em>Fit at Mid-Life: A Feminist Fitness Journey,</em> is published by Greystone Books. It&#8217;s official release is April 14 (Canada) and 17 (US). You can <a href="https://www.amazon.com/Fit-Mid-Life-Feminist-Fitness-Journey/dp/1771641673/ref=sr_1_1?ie=UTF8&amp;qid=1519697074&amp;sr=8-1&amp;keywords=fit+at+mid-life">order it now on Amazon.</a></p>
+</div>
+		</aside><aside id="widget_contact_info-2" class="widget widget_contact_info"><h1 class="widget-title">Contact us</h1><div itemscope itemtype="http://schema.org/LocalBusiness"><div class="confit-address" itemscope itemtype="http://schema.org/PostalAddress" itemprop="address"><a href="http://maps.google.com/maps?z=16&#038;q=fitfeminist50%40gmail.com" target="_blank">fitfeminist50@gmail.com</a></div></div></aside><aside id="facebook-likebox-2" class="widget widget_facebook_likebox"><h1 class="widget-title"><a href="https://www.facebook.com/feministfitness">Like us on Facebook</a></h1>		<div id="fb-root"></div>
+		<div class="fb-page" data-href="https://www.facebook.com/feministfitness" data-width="200"  data-height="432" data-hide-cover="false" data-show-facepile="true" data-tabs="false">
+		<div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/feministfitness"><a href="https://www.facebook.com/feministfitness">Like us on Facebook</a></blockquote></div>
+		</div>
+		</aside><aside id="wpcom_instagram_widget-2" class="widget widget_wpcom_instagram_widget"><h1 class="widget-title">Visit us on Instagram</h1><div class="wpcom-instagram-images wpcom-instagram-columns-2">
+<a href="https://www.instagram.com/p/B6LPLkoHMuS/" target="_self"><div class="sq-bg-image" style="background-image: url(https://scontent.cdninstagram.com/v/t51.2885-15/sh0.08/e35/p640x640/74900091_755885651586720_8945586294197332521_n.jpg?_nc_ht=scontent.cdninstagram.com&#038;_nc_ohc=xWPvaq9KTGUAX-ukTxP&#038;oh=dc7781d62537b19091384a1f1ba3d471&#038;oe=5EAA9A69)"><span class="screen-reader-text">Good morning @uog_arts!</span></div></a>
+<a href="https://www.instagram.com/p/B6F9QgonG9U/" target="_self"><div class="sq-bg-image" style="background-image: url(https://scontent.cdninstagram.com/v/t51.2885-15/sh0.08/e35/s640x640/75580650_852881651795765_1036463497661917664_n.jpg?_nc_ht=scontent.cdninstagram.com&#038;_nc_ohc=rY2_iccoDuoAX_AZCaS&#038;oh=78993685f0089825485555bcf3792354&#038;oe=5E9C7920)"><span class="screen-reader-text">Sam&#039;s dog Cheddar is looking festive
+#dogsofinstagram</span></div></a>
+<a href="https://www.instagram.com/p/B56imNEnH8P/" target="_self"><div class="sq-bg-image" style="background-image: url(https://scontent.cdninstagram.com/v/t51.2885-15/sh0.08/e35/p640x640/75288856_2321609871277028_3614102441608502963_n.jpg?_nc_ht=scontent.cdninstagram.com&#038;_nc_ohc=cNQRKmfqoNAAX-dliDm&#038;oh=aa0c0a4b0b31b5b1b180f3a4b4402c48&#038;oe=5EA10CF1)"><span class="screen-reader-text"></span></div></a>
+<a href="https://www.instagram.com/p/B48G6TTHUMc/" target="_self"><div class="sq-bg-image" style="background-image: url(https://scontent.cdninstagram.com/v/t51.2885-15/sh0.08/e35/p640x640/74339582_227888814862653_5114496729477884236_n.jpg?_nc_ht=scontent.cdninstagram.com&#038;_nc_ohc=KJGfCPB6e50AX8TWcEv&#038;oh=14b6cad7119b4b107b9c94b99e13573b&#038;oe=5E9E326F)"><span class="screen-reader-text">Walking to work!</span></div></a>
+<a href="https://www.instagram.com/p/B4XviypH_Jy/" target="_self"><div class="sq-bg-image" style="background-image: url(https://scontent.cdninstagram.com/v/t51.2885-15/sh0.08/e35/s640x640/75243097_2148032978824007_6250800407851622492_n.jpg?_nc_ht=scontent.cdninstagram.com&#038;_nc_ohc=ccGNXgFTmP8AX9wWLGs&#038;oh=190d6d660cb20e30f6d0a7416a3801bd&#038;oe=5EB1F90B)"><span class="screen-reader-text">Such a good thing when you try a new yoga studio and it’s everything you ever wanted</span></div></a>
+<a href="https://www.instagram.com/p/B4QohKGnwVV/" target="_self"><div class="sq-bg-image" style="background-image: url(https://scontent.cdninstagram.com/v/t51.2885-15/e35/74458483_117374899430115_8170186304117983086_n.jpg?_nc_ht=scontent.cdninstagram.com&#038;_nc_ohc=IMeYvaUqiTIAX8r3ILp&#038;oh=54f2c0ff6afa47517f4dc98f83a394ed&#038;oe=5E9532AF)"><span class="screen-reader-text">I&#039;m a giant fan!
+
+Thks Michel!
+
+#fitisafeministissue</span></div></a>
+</div>
+</aside><aside id="twitter-2" class="widget widget_twitter"><h1 class="widget-title"><a href='http://twitter.com/FitFeminists'>Follow us on Twitter</a></h1><ul class='tweets'>
+			<li>
+				Things to quit in 2020 				<a href="http://twitter.com/FitFeminists/statuses/1212389253835116546" class="timesince">44&nbsp;minutes&nbsp;ago</a>
+			</li>
+
+			
+			<li>
+				How walking is good for you
+
+<a href="https://www.theguardian.com/lifeandstyle/2019/jul/28/its-a-superpower-how-walking-makes-us-healthier-happier-and-brainier?CMP=fb_gu&#038;utm_medium=Social&#038;utm_source=Facebook#Echobox=1577864997"> theguardian.com/lifeandstyle/2…</a> <a href="https://www.theguardian.com/lifeandstyle/2019/jul/28/its-a-superpower-how-walking-makes-us-healthier-happier-and-brainier?CMP=fb_gu&#038;utm_medium=Social&#038;utm_source=Facebook#Echobox=1577864997"> theguardian.com/lifeandstyle/2…</a> 				<a href="http://twitter.com/FitFeminists/statuses/1212351678575468545" class="timesince">3&nbsp;hours&nbsp;ago</a>
+			</li>
+
+			
+			<li>
+				It&#039;s the new year and we&#039;re doing some reflecting here at Fit is a Feminist Issue. I asked the team to share one fi… <a href="https://twitter.com/i/web/status/1212351410794377216"> twitter.com/i/web/status/1…</a> 				<a href="http://twitter.com/FitFeminists/statuses/1212351410794377216" class="timesince">3&nbsp;hours&nbsp;ago</a>
+			</li>
+
+			
+			<li>
+				Our most read post of 2019, #1, was Cate&#039;s 2018 post on being 53 1/2 and still menstruating. That post, on what may… <a href="https://twitter.com/i/web/status/1212327813287677954"> twitter.com/i/web/status/1…</a> 				<a href="http://twitter.com/FitFeminists/statuses/1212327813287677954" class="timesince">4&nbsp;hours&nbsp;ago</a>
+			</li>
+
+			
+			<li>
+				<a href="https://www.facebook.com/576242059112232/posts/2527688707300881/"> facebook.com/57624205911223…</a> 				<a href="http://twitter.com/FitFeminists/statuses/1212252925449457665" class="timesince">9&nbsp;hours&nbsp;ago</a>
+			</li>
+
+			</ul><a href="http://twitter.com/FitFeminists"  class='twitter-follow-button' data-show-count='false' data-link-color='#f78769' data-text-color='#888888'>Follow @FitFeminists</a></aside><aside id="blog_subscription-2" class="widget widget_blog_subscription jetpack_subscription_widget"><h1 class="widget-title"><label for="subscribe-field">Follow Blog via Email</label></h1>
+            <form action="https://subscribe.wordpress.com" method="post" accept-charset="utf-8"
+                  id="subscribe-blog">
+									<p>Enter your email address to follow this blog and receive notifications of new posts by email.</p>
+<p>Join 40,489 other followers</p>
+                    <p><input type="text" name="email" style="width: 95%; padding: 1px 2px"
+                              placeholder="Enter your email address" value=""
+                              id="subscribe-field"/></p>
+				
+                <p>
+                    <input type="hidden" name="action" value="subscribe"/>
+                    <input type="hidden" name="blog_id" value="39833017"/>
+                    <input type="hidden" name="source" value="https://fitisafeministissue.com/2020/01/01/our-top-ten-posts-of-2019-icymi/"/>
+                    <input type="hidden" name="sub-type" value="widget"/>
+                    <input type="hidden" name="redirect_fragment" value="blog_subscription-2"/>
+					<input type="hidden" id="_wpnonce" name="_wpnonce" value="9a00479f5b" />                    <button type="submit"
+	                    		                	                >
+	                    Follow                    </button>
+                </p>
+            </form>
+			
+</aside><aside id="top-posts-2" class="widget widget_top-posts"><ul>				<li>
+					<a href="https://fitisafeministissue.com/2015/05/21/doctorates-down-dogs-and-the-challenge-of-self-talk-guest-post/" class="bump-view" data-bump-view="tp">Doctorates, Down-Dogs and the Challenge of Self Talk (Guest Post)</a>					</li>
+								<li>
+					<a href="https://fitisafeministissue.com/2016/08/07/beyond-good-and-evil-food/" class="bump-view" data-bump-view="tp">Beyond Good and Evil (Food)</a>					</li>
+								<li>
+					<a href="https://fitisafeministissue.com/2013/03/26/why-food-is-beyond-good-and-evil/" class="bump-view" data-bump-view="tp">Why Food Is Beyond &quot;Good&quot; and &quot;Evil&quot;</a>					</li>
+								<li>
+					<a href="https://fitisafeministissue.com/2015/08/15/belly-patrolling/" class="bump-view" data-bump-view="tp">Belly Patrolling</a>					</li>
+								<li>
+					<a href="https://fitisafeministissue.com/2015/07/12/repeat-after-me-athleticism-is-beauty-athleticism-is-beauty-athleticism-is-beauty-athleticism-is-beauty/" class="bump-view" data-bump-view="tp">Repeat after me: Athleticism is beauty.  Athleticism is beauty.  Athleticism is beauty.  Athleticism is beauty...</a>					</li>
+								<li>
+					<a href="https://fitisafeministissue.com/2015/10/28/loving-my-post-mastectomy-body-guest-post/" class="bump-view" data-bump-view="tp">Loving my post-mastectomy body (Guest Post)</a>					</li>
+								<li>
+					<a href="https://fitisafeministissue.com/2015/10/21/stretch-marks-scars-and-tattoos/" class="bump-view" data-bump-view="tp">The stories our skin tells: Stretch marks, scars, and tattoos</a>					</li>
+								<li>
+					<a href="https://fitisafeministissue.com/2017/06/20/whoever-said-eating-fried-potatoes-is-linked-to-higher-risk-of-death-can-fk-right-off/" class="bump-view" data-bump-view="tp">Whoever said &quot;eating fried potatoes is linked to higher risk of death&quot; can f**k right off</a>					</li>
+								<li>
+					<a href="https://fitisafeministissue.com/2015/03/24/living-clean-without-eating-clean/" class="bump-view" data-bump-view="tp">Living Clean without Eating Clean</a>					</li>
+								<li>
+					<a href="https://fitisafeministissue.com/2015/08/12/i-tried-the-lululemon-beer-so-you-dont-have-to-guest-post/" class="bump-view" data-bump-view="tp">I Tried the Lululemon Beer So You Don&#039;t Have To (Guest Post)</a>					</li>
+				</ul></aside>		<aside id="recent-posts-2" class="widget widget_recent_entries">		<h1 class="widget-title">Recent Posts</h1>		<ul>
+											<li>
+					<a href="https://fitisafeministissue.com/2020/01/01/whats-one-fitness-experience-that-stands-out-for-you-good-or-bad-from-2019/">What&#039;s one fitness experience that stands out for you, good or bad, from&nbsp;2019?</a>
+									</li>
+											<li>
+					<a href="https://fitisafeministissue.com/2020/01/01/our-top-ten-posts-of-2019-icymi/" aria-current="page">Our Top Ten Posts of 2019,&nbsp;#ICYMI</a>
+									</li>
+											<li>
+					<a href="https://fitisafeministissue.com/2019/12/31/20-20-vision-in-2020-guest-post/">20-20 Vision in 2020 (Guest&nbsp;Post)</a>
+									</li>
+											<li>
+					<a href="https://fitisafeministissue.com/2019/12/31/the-100-day-reclaim-day-31-40-three-fit-feminist-bloggers-weigh-in/">The 100 Day Reclaim: Day 31-40, Three Fit Feminist Bloggers Weigh&nbsp;In</a>
+									</li>
+											<li>
+					<a href="https://fitisafeministissue.com/2019/12/31/top-ten-of-december/">Top ten posts in December,&nbsp;#icymi</a>
+									</li>
+					</ul>
+		</aside><aside id="categories-2" class="widget widget_categories"><h1 class="widget-title">Find posts by category</h1><form action="https://fitisafeministissue.com" method="get"><label class="screen-reader-text" for="cat">Find posts by category</label><select  name='cat' id='cat' class='postform' >
+	<option value='-1'>Select Category</option>
+	<option class="level-0" value="666726738">#deanslife&nbsp;&nbsp;(6)</option>
+	<option class="level-0" value="601432219">218 in 2018&nbsp;&nbsp;(4)</option>
+	<option class="level-0" value="679801999">219 in 2019&nbsp;&nbsp;(10)</option>
+	<option class="level-0" value="3471">accessibility&nbsp;&nbsp;(77)</option>
+	<option class="level-0" value="12523">addiction&nbsp;&nbsp;(11)</option>
+	<option class="level-0" value="521">advertising&nbsp;&nbsp;(28)</option>
+	<option class="level-0" value="157">advice&nbsp;&nbsp;(5)</option>
+	<option class="level-0" value="17218">aging&nbsp;&nbsp;(138)</option>
+	<option class="level-0" value="2199">Aikido&nbsp;&nbsp;(65)</option>
+	<option class="level-0" value="16332">alcohol&nbsp;&nbsp;(6)</option>
+	<option class="level-0" value="137361">athletes&nbsp;&nbsp;(145)</option>
+	<option class="level-0" value="1624573">beach body&nbsp;&nbsp;(2)</option>
+	<option class="level-0" value="1885">beauty&nbsp;&nbsp;(4)</option>
+	<option class="level-0" value="273">blog&nbsp;&nbsp;(7)</option>
+	<option class="level-0" value="91">blogging&nbsp;&nbsp;(25)</option>
+	<option class="level-0" value="57927">boats&nbsp;&nbsp;(10)</option>
+	<option class="level-0" value="52040">body image&nbsp;&nbsp;(368)</option>
+	<option class="level-0" value="3883647">Book Reviews&nbsp;&nbsp;(20)</option>
+	<option class="level-0" value="7716">boxing&nbsp;&nbsp;(3)</option>
+	<option class="level-0" value="191176">bras&nbsp;&nbsp;(11)</option>
+	<option class="level-0" value="96874">burlesque&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="44185">Call for Papers&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="13403">camping&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="19453">cane&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="295931">canoe&nbsp;&nbsp;(11)</option>
+	<option class="level-0" value="9954">charity&nbsp;&nbsp;(28)</option>
+	<option class="level-0" value="1236270">chi running&nbsp;&nbsp;(4)</option>
+	<option class="level-0" value="16897">climate change&nbsp;&nbsp;(2)</option>
+	<option class="level-0" value="5034">climbing&nbsp;&nbsp;(11)</option>
+	<option class="level-0" value="22794">clothing&nbsp;&nbsp;(49)</option>
+	<option class="level-0" value="2644">commute&nbsp;&nbsp;(6)</option>
+	<option class="level-0" value="472">competition&nbsp;&nbsp;(105)</option>
+	<option class="level-0" value="104722">Crossfit&nbsp;&nbsp;(54)</option>
+	<option class="level-0" value="1676">cycling&nbsp;&nbsp;(501)</option>
+	<option class="level-0" value="3522">Dancing&nbsp;&nbsp;(13)</option>
+	<option class="level-0" value="8437">death&nbsp;&nbsp;(2)</option>
+	<option class="level-0" value="49708">diets&nbsp;&nbsp;(134)</option>
+	<option class="level-0" value="40576">disability&nbsp;&nbsp;(35)</option>
+	<option class="level-0" value="305">dogs&nbsp;&nbsp;(16)</option>
+	<option class="level-0" value="4001">eating&nbsp;&nbsp;(131)</option>
+	<option class="level-0" value="48469">eating disorders&nbsp;&nbsp;(17)</option>
+	<option class="level-0" value="47506">equality&nbsp;&nbsp;(25)</option>
+	<option class="level-0" value="277879">ergonomics&nbsp;&nbsp;(7)</option>
+	<option class="level-0" value="46710">fall&nbsp;&nbsp;(5)</option>
+	<option class="level-0" value="406">family&nbsp;&nbsp;(73)</option>
+	<option class="level-0" value="3737">fashion&nbsp;&nbsp;(62)</option>
+	<option class="level-0" value="5159">fat&nbsp;&nbsp;(59)</option>
+	<option class="level-0" value="32976">Fear&nbsp;&nbsp;(14)</option>
+	<option class="level-0" value="269713923">femalestrength&nbsp;&nbsp;(18)</option>
+	<option class="level-0" value="553">feminism&nbsp;&nbsp;(49)</option>
+	<option class="level-0" value="607760720">fit at mid-life&nbsp;&nbsp;(22)</option>
+	<option class="level-0" value="579699531">Fit Feminists Answer&nbsp;&nbsp;(5)</option>
+	<option class="level-0" value="5189">fitness&nbsp;&nbsp;(2,122)</option>
+	<option class="level-0" value="1029224">fitness classes&nbsp;&nbsp;(28)</option>
+	<option class="level-0" value="234785">flexibility&nbsp;&nbsp;(3)</option>
+	<option class="level-0" value="586">food&nbsp;&nbsp;(53)</option>
+	<option class="level-0" value="1134">football&nbsp;&nbsp;(3)</option>
+	<option class="level-0" value="347">gear&nbsp;&nbsp;(12)</option>
+	<option class="level-0" value="20875114">gender policing&nbsp;&nbsp;(38)</option>
+	<option class="level-0" value="2853">giveaway&nbsp;&nbsp;(3)</option>
+	<option class="level-0" value="415">Guest Post&nbsp;&nbsp;(416)</option>
+	<option class="level-0" value="74941">habits&nbsp;&nbsp;(16)</option>
+	<option class="level-0" value="32458">Happy New Year!&nbsp;&nbsp;(3)</option>
+	<option class="level-0" value="337">health&nbsp;&nbsp;(143)</option>
+	<option class="level-0" value="7815">hiking&nbsp;&nbsp;(20)</option>
+	<option class="level-0" value="2900479">holiday fitness&nbsp;&nbsp;(16)</option>
+	<option class="level-0" value="4325">holidays&nbsp;&nbsp;(31)</option>
+	<option class="level-0" value="82438">illness&nbsp;&nbsp;(7)</option>
+	<option class="level-0" value="214391">inclusiveness&nbsp;&nbsp;(40)</option>
+	<option class="level-0" value="26313">injury&nbsp;&nbsp;(78)</option>
+	<option class="level-0" value="11788">interview&nbsp;&nbsp;(5)</option>
+	<option class="level-0" value="1904971">kids and exercise&nbsp;&nbsp;(3)</option>
+	<option class="level-0" value="2192406">link round up&nbsp;&nbsp;(81)</option>
+	<option class="level-0" value="7020037">look at you&nbsp;&nbsp;(5)</option>
+	<option class="level-0" value="24316307">Martha&#8217;s Musings&nbsp;&nbsp;(26)</option>
+	<option class="level-0" value="15031">martial arts&nbsp;&nbsp;(57)</option>
+	<option class="level-0" value="292">media&nbsp;&nbsp;(17)</option>
+	<option class="level-0" value="6197">meditation&nbsp;&nbsp;(29)</option>
+	<option class="level-0" value="4092">men&nbsp;&nbsp;(27)</option>
+	<option class="level-0" value="69749">menopause&nbsp;&nbsp;(10)</option>
+	<option class="level-0" value="133775">menstruation&nbsp;&nbsp;(11)</option>
+	<option class="level-0" value="7092">Metrics&nbsp;&nbsp;(3)</option>
+	<option class="level-0" value="116588">mindfulness&nbsp;&nbsp;(3)</option>
+	<option class="level-0" value="16336336">monthly check in&nbsp;&nbsp;(20)</option>
+	<option class="level-0" value="2885">motivation&nbsp;&nbsp;(126)</option>
+	<option class="level-0" value="190">movies&nbsp;&nbsp;(5)</option>
+	<option class="level-0" value="1099">nature&nbsp;&nbsp;(16)</option>
+	<option class="level-0" value="34327">new year&#8217;s resolutions&nbsp;&nbsp;(2)</option>
+	<option class="level-0" value="318833484">normative bodies&nbsp;&nbsp;(2)</option>
+	<option class="level-0" value="1677">nutrition&nbsp;&nbsp;(28)</option>
+	<option class="level-0" value="305811">objectification&nbsp;&nbsp;(8)</option>
+	<option class="level-0" value="11490">Olympics&nbsp;&nbsp;(9)</option>
+	<option class="level-0" value="211794">overeating&nbsp;&nbsp;(17)</option>
+	<option class="level-0" value="26878">paddling&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="1868">philosophy&nbsp;&nbsp;(2)</option>
+	<option class="level-0" value="314062">planner&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="4599">planning&nbsp;&nbsp;(5)</option>
+	<option class="level-0" value="114008">race report&nbsp;&nbsp;(37)</option>
+	<option class="level-0" value="583">racing&nbsp;&nbsp;(107)</option>
+	<option class="level-0" value="13443">racism&nbsp;&nbsp;(2)</option>
+	<option class="level-0" value="27790515">reader profiles&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="668">research&nbsp;&nbsp;(9)</option>
+	<option class="level-0" value="15314">rest&nbsp;&nbsp;(10)</option>
+	<option class="level-0" value="34992266">Rowing&nbsp;&nbsp;(30)</option>
+	<option class="level-0" value="6100">rugby&nbsp;&nbsp;(5)</option>
+	<option class="level-0" value="1675">running&nbsp;&nbsp;(235)</option>
+	<option class="level-0" value="11828">sailing&nbsp;&nbsp;(7)</option>
+	<option class="level-0" value="676349413">SamanthaWalsh&nbsp;&nbsp;(8)</option>
+	<option class="level-0" value="336572009">Sat with Nat&nbsp;&nbsp;(118)</option>
+	<option class="level-0" value="20019">schedule&nbsp;&nbsp;(2)</option>
+	<option class="level-0" value="13303586">season transitions&nbsp;&nbsp;(9)</option>
+	<option class="level-0" value="46686337">Seasonal sadness&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="140680">self care&nbsp;&nbsp;(11)</option>
+	<option class="level-0" value="520">sex&nbsp;&nbsp;(16)</option>
+	<option class="level-0" value="11866">sexism&nbsp;&nbsp;(3)</option>
+	<option class="level-0" value="17245">shoes&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="23966">skiing&nbsp;&nbsp;(8)</option>
+	<option class="level-0" value="2224">sleep&nbsp;&nbsp;(32)</option>
+	<option class="level-0" value="20341">snow&nbsp;&nbsp;(5)</option>
+	<option class="level-0" value="1693">soccer&nbsp;&nbsp;(19)</option>
+	<option class="level-0" value="141035">soy&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="269409">sports nutrition&nbsp;&nbsp;(53)</option>
+	<option class="level-0" value="349237">standing&nbsp;&nbsp;(2)</option>
+	<option class="level-0" value="19989">stereotypes&nbsp;&nbsp;(35)</option>
+	<option class="level-0" value="226709">strength training&nbsp;&nbsp;(7)</option>
+	<option class="level-0" value="306444">stretching&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="14120">swimming&nbsp;&nbsp;(55)</option>
+	<option class="level-0" value="1515155">tbt&nbsp;&nbsp;(24)</option>
+	<option class="level-0" value="782081">team sports&nbsp;&nbsp;(22)</option>
+	<option class="level-0" value="683237150">temperature and exercise&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="1090471">Throwback Thursday&nbsp;&nbsp;(11)</option>
+	<option class="level-0" value="5087">time&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="1981">Tools&nbsp;&nbsp;(2)</option>
+	<option class="level-0" value="9026">top ten&nbsp;&nbsp;(3)</option>
+	<option class="level-0" value="121950">trackers&nbsp;&nbsp;(9)</option>
+	<option class="level-0" value="943">training&nbsp;&nbsp;(173)</option>
+	<option class="level-0" value="4164">traveling&nbsp;&nbsp;(53)</option>
+	<option class="level-0" value="363053">triathalon&nbsp;&nbsp;(47)</option>
+	<option class="level-0" value="1">Uncategorized&nbsp;&nbsp;(304)</option>
+	<option class="level-0" value="84540">vaccines&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="30309">walking&nbsp;&nbsp;(25)</option>
+	<option class="level-0" value="339117160">Weekends with Womack&nbsp;&nbsp;(35)</option>
+	<option class="level-0" value="83554">weight lifting&nbsp;&nbsp;(76)</option>
+	<option class="level-0" value="2303">weight loss&nbsp;&nbsp;(132)</option>
+	<option class="level-0" value="6652788">weight stigma&nbsp;&nbsp;(10)</option>
+	<option class="level-0" value="353091">wheelchairs&nbsp;&nbsp;(1)</option>
+	<option class="level-0" value="9484">winter&nbsp;&nbsp;(33)</option>
+	<option class="level-0" value="651988">Wordless&nbsp;&nbsp;(6)</option>
+	<option class="level-0" value="7371">yoga&nbsp;&nbsp;(92)</option>
+	<option class="level-0" value="1519274">You Ask&nbsp;&nbsp;(5)</option>
+</select>
+</form>
+<script type="text/javascript">
+/* <![CDATA[ */
+(function() {
+	var dropdown = document.getElementById( "cat" );
+	function onCatChange() {
+		if ( dropdown.options[ dropdown.selectedIndex ].value > 0 ) {
+			dropdown.parentNode.submit();
+		}
+	}
+	dropdown.onchange = onCatChange;
+})();
+/* ]]> */
+</script>
+
+			</aside><aside id="authors-2" class="widget widget_authors"><h1 class="widget-title">The Bloggers of Fit is a Feminist Issue</h1><ul><li><a href="https://fitisafeministissue.com/author/ageinappropriateliving/"> <img alt='' src='https://1.gravatar.com/avatar/a814ad1928e96e4ddf3e1f747e4a2a5c?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>ageinappropriateliving</strong></a><ul><li><a href="https://fitisafeministissue.com/2014/08/02/virtual-fitness-science-fiction-and-fat-lit/">Virtual Fitness, Science Fiction, and &#8220;Fat Lit&#8221;</a></li><li><a href="https://fitisafeministissue.com/2014/04/19/pink-weights/">Pink Weights? (Guest Post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/ajfifth/"> <img alt='' src='https://0.gravatar.com/avatar/688a47a6907cea34bbe91562002a2baf?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>ajfifth</strong></a><ul><li><a href="https://fitisafeministissue.com/2015/06/25/what-feminist-self-defense-courses-can-do-guest-post/">What (Feminist) Self-Defense Courses Can Do (Guest Post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/alisonreiheld/"> <img alt='' src='https://0.gravatar.com/avatar/6b6e9738594a173014e16c7f3a95ee5e?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>alisonreiheld</strong></a><ul><li><a href="https://fitisafeministissue.com/2019/10/10/of-period-puns-and-bicycling-groups-guest-post/">Of Period Puns and Bicycling Groups (Guest Post)</a></li><li><a href="https://fitisafeministissue.com/2019/08/23/there-and-back-again-part-3-the-bit-where-we-are-back-again-ish/">There and Back Again Part 3: the bit where we are back again&#8230; ish</a></li><li><a href="https://fitisafeministissue.com/2019/08/21/there-and-back-again-part-2/">There and Back Again: Part 2</a></li><li><a href="https://fitisafeministissue.com/2019/08/19/there-and-back-again-part-1/">There and Back Again: Part 1</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/amreid/"> <img alt='' src='https://2.gravatar.com/avatar/233a2bfef56e8e487003e8602217298e?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>Alison Reid</strong></a><ul><li><a href="https://fitisafeministissue.com/2018/01/15/famous-blue-gymsuit-guest-post/">Famous Blue Gymsuit (Guest Post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/amysunshine15/"> <img alt='' src='https://0.gravatar.com/avatar/359bb24e4bc059a9bf5e4febfbbc7f51?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>amysunshine15</strong></a><ul><li><a href="https://fitisafeministissue.com/2019/03/25/the-meditation-of-weightlifting-guest-post/">The Meditation of Weightlifting (Guest Post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/annemfsimpson/"> <img alt='' src='https://2.gravatar.com/avatar/e9db5557684859b1fa599a11cd00fb0b?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>annemfsimpson</strong></a><ul><li><a href="https://fitisafeministissue.com/2019/12/30/word-of-the-year-guest-post/">Word of the Year (Guest Post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/apetropanagos/"> <img alt='' src='https://2.gravatar.com/avatar/8358b03e3a4c0f52a2df2359f206ff8b?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>apetropanagos</strong></a><ul><li><a href="https://fitisafeministissue.com/2015/02/14/do-these-pants-make-my-butt-look-big-hockey-equipment-and-body-image-2/">Do These Pants Make My Butt Look Big? Hockey Equipment and Body Image (Guest Post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/atrott01/"> <img alt='' src='https://2.gravatar.com/avatar/2f5184b16fa09f2dc0a709114d6e8fce?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>Adriel M Trott</strong></a><ul><li><a href="https://fitisafeministissue.com/2017/12/21/exercising-under-neoliberalism/">Exercising Under Neoliberalism (Guest Post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/audreysh/"> <img alt='' src='https://1.gravatar.com/avatar/765633ae0d9394ecdf92df55d443e40c?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>Audrey</strong></a><ul><li><a href="https://fitisafeministissue.com/2019/02/09/the-importance-of-trying-and-failing-guest-post/">The Importance of Trying and Failing (Guest Post)</a></li><li><a href="https://fitisafeministissue.com/2018/06/03/grooming-coaching-and-toxic-relationships-some-guest-conversations/">Grooming, Coaching, and Toxic Relationships: Some (Guest) Conversations</a></li><li><a href="https://fitisafeministissue.com/2018/05/15/pennington-vs-nunes-vs-protecting-athletes-guest-post/">Pennington vs Nunes vs Protecting Athletes (Guest Post)</a></li><li><a href="https://fitisafeministissue.com/2018/04/30/competing-with-kids-guest-post/">Competing with Kids (Guest Post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/avivacshiller/"> <img alt='' src='https://0.gravatar.com/avatar/9d2af99e0d5bc26a936431fe42bc4f8f?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>avivashiller</strong></a><ul><li><a href="https://fitisafeministissue.com/2013/08/05/work-family-balance-and-participation-in-sports/">Work-Family Balance and Participation in Sports</a></li><li><a href="https://fitisafeministissue.com/2013/06/28/role-models-guest-post/">Role Models (Guest post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/azarvigeh/"> <img alt='' src='https://2.gravatar.com/avatar/e275fa9a2bbf0d078d734d0a227943a8?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>Azar Varahra</strong></a><ul><li><a href="https://fitisafeministissue.com/2015/07/03/osteoporosis-is-a-feminist-issue/">Osteoporosis is a Feminist Issue! (Guest Post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/benjiphoenix/"> <img alt='' src='https://1.gravatar.com/avatar/19c06ef5281ad05ad58592bbeec49f67?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>Joy Cameron</strong></a><ul><li><a href="https://fitisafeministissue.com/2018/01/01/2017-experiments-with-bikes/">2017 Experiments with Bikes (Guest Post)</a></li><li><a href="https://fitisafeministissue.com/2017/11/12/first-snowy-ride-guest-post/">First Snowy Ride (Guest Post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/cabergirl/"> <img alt='' src='https://0.gravatar.com/avatar/09695b4008074145117caf5e4e8e5bc5?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>Sandi C.</strong></a><ul><li><a href="https://fitisafeministissue.com/2017/06/07/bull-riding-adventures-guest-post/">Bull riding adventures (Guest post)</a></li><li><a href="https://fitisafeministissue.com/2017/06/03/anxiety-in-competition-guest-post/">Anxiety in competition (Guest post)</a></li><li><a href="https://fitisafeministissue.com/2017/05/31/goat-obsessions-yoga-guest-post/">Goat Obsessions &amp; Yoga (Guest Post)</a></li><li><a href="https://fitisafeministissue.com/2017/04/22/fit-and-far-from-home-guest-post/">Fit and Far From Home&#8230; (Guest Post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/cathywilliams6/"> <img alt='' src='https://2.gravatar.com/avatar/bce9105e3877fdc8359cfc17c62f1e15?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>CathyW</strong></a><ul><li><a href="https://fitisafeministissue.com/2018/02/08/choosing-a-bike-saddle-by-your-number-guest-post/">Choosing a bike saddle by your number (Guest post)</a></li><li><a href="https://fitisafeministissue.com/2018/01/22/my-handstandchallenge2018-guest-post/">My #HandstandChallenge2018 (Guest Post)</a></li><li><a href="https://fitisafeministissue.com/2017/11/18/avert-your-eyes-guest-post/">Avert your eyes! (Guest post)</a></li><li><a href="https://fitisafeministissue.com/2017/09/08/race-report-for-itu-age-group-worlds-standard-distance-duathlon-guest-post/">Race Report for ITU Age Group Worlds Standard Distance Duathlon (Guest Post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/cautiouslygregarious/"> <img alt='' src='https://0.gravatar.com/avatar/c9abafe471de5e58a7e078b5b2c0517d?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>Ange B</strong></a><ul><li><a href="https://fitisafeministissue.com/2017/02/08/a-letter-to-my-bike-guest-post/">A letter to my bike (Guest post)</a></li><li><a href="https://fitisafeministissue.com/2016/01/06/swimming-to-beat-the-heat-guest-post/">Swimming to beat the heat (Guest post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/cawmit/"> <img alt='' src='https://2.gravatar.com/avatar/53a931e71b6df7b2eef68b5f2ace33e0?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>catherine w</strong></a><ul><li><a href="https://fitisafeministissue.com/2019/12/29/more-impossible-yoga-poses-by-gracie-and-bethie-and-bad-yogi/">More impossible yoga poses, by Gracie and Bethie (and bad Yogi)</a></li><li><a href="https://fitisafeministissue.com/2019/12/26/best-self-gifts-this-year-and-wish-list-for-2020/">Best self-gifts this year, and wish list for 2020</a></li><li><a href="https://fitisafeministissue.com/2019/12/22/best-of-the-worst-fitness-gifts-for-the-holidays-beyond-the-peloton/">Best of the worst fitness gifts for the holidays: beyond the Peloton</a></li><li><a href="https://fitisafeministissue.com/2019/12/19/219-in-2019-10-to-go-for-a-just-in-time-finish/">219 in 2019: 10 to go for a just-in-time finish</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/ccrotea2/"> <img alt='' src='https://2.gravatar.com/avatar/ed307c41a792079e3c1bc2e7b2642235?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>cami c</strong></a><ul><li><a href="https://fitisafeministissue.com/2019/09/07/im-swimming-get-out-of-my-way-guest-post/">I’m swimming, get out of my way! (Guest post)</a></li><li><a href="https://fitisafeministissue.com/2019/02/13/falling-aint-that-bad-guest-post/">Falling ain&#8217;t that bad (Guest post)</a></li><li><a href="https://fitisafeministissue.com/2018/09/24/playing-games-is-more-fun-than-structured-exercise/">Playing games is more fun than structured exercise (Guest post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/cdaigle/"> <img alt='' src='https://0.gravatar.com/avatar/cf540e725048b5f1f67f69843c62c8be?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>cdaigle</strong></a><ul><li><a href="https://fitisafeministissue.com/2018/06/05/grapes-of-wrath-what-did-i-do/">Grapes of Wrath &#8211; What did I do?!? (Guest Post)</a></li><li><a href="https://fitisafeministissue.com/2018/04/22/christines-10-km-trail-race/">Christine&#8217;s 10 km trail race (Guest post)</a></li><li><a href="https://fitisafeministissue.com/2018/04/10/on-group-running/">On group running (Guest post)</a></li><li><a href="https://fitisafeministissue.com/2017/08/19/falling-apart/">Falling apart&#8230; (Guest post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/ceag1/"> <img alt='' src='https://0.gravatar.com/avatar/0c2e63af18d517ce4caa016af217c091?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>ceag1</strong></a><ul><li><a href="https://fitisafeministissue.com/2013/07/10/rowing-widows/">Rowing Widows (Guest Post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/ceebeepress/"> <img alt='' src='https://0.gravatar.com/avatar/64c594930bbb41ebf6a29922270bf1ce?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>ceebeepress</strong></a><ul><li><a href="https://fitisafeministissue.com/2015/04/03/when-you-and-your-doctor-dont-agree-on-what-healthy-means/">When you and your doctor don’t agree on what “healthy” means (Guest post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/cejdubz/"> <img alt='' src='https://0.gravatar.com/avatar/f5f8d34421fccb36a7066e6559c68e7e?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>Chloe W</strong></a><ul><li><a href="https://fitisafeministissue.com/2018/07/25/race-report-cyclocross-guest-post/">Race Report: Cyclocross (Guest Post)</a></li><li><a href="https://fitisafeministissue.com/2017/08/07/n1-a-love-story-guest-post/">N+1: A Love Story (Guest Post)</a></li><li><a href="https://fitisafeministissue.com/2017/06/09/how-the-amazons-got-me-to-go-to-the-gym-guest-post/">How the Amazons got me to go to the gym (Guest Post)</a></li><li><a href="https://fitisafeministissue.com/2017/02/10/appearance-vs-reality-guest-post/">Appearance vs. Reality (Guest Post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/cheryldobinson/"> <img alt='' src='https://2.gravatar.com/avatar/2b1113259d5209bf0883db176f28e10a?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>Cheryl D</strong></a><ul><li><a href="https://fitisafeministissue.com/2019/03/20/cheryl-joins-the-circus/">Cheryl Joins the Circus</a></li><li><a href="https://fitisafeministissue.com/2018/10/19/my-first-5k/">Cheryl&#8217;s First 5K (Guest Post)</a></li><li><a href="https://fitisafeministissue.com/2018/09/10/couch-to-5k-an-update-guest-post/">Couch to 5K – an update (Guest Post)</a></li><li><a href="https://fitisafeministissue.com/2018/08/17/starting-my-feminist-fitness-journey-early-days-of-couch-to-5k-guest-post/">Starting my feminist fitness journey: Early days of couch to 5K (Guest post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/cherylmadliger/"> <img alt='' src='https://0.gravatar.com/avatar/f47a4d9f9b9226d23a352c1b3c21072e?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>Cheryl Madliger</strong></a><ul><li><a href="https://fitisafeministissue.com/2015/03/27/no-excuses-no-more-fitness-instructing-from-a-place-of-body-positivity/">“No excuses” no more: Fitness instructing from a place of body positivity (Guest post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/christinafriendjohnston/"> <img alt='' src='https://2.gravatar.com/avatar/5ec7b87273710e24c0fafb3ff0980e64?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>Krysse</strong></a><ul><li><a href="https://fitisafeministissue.com/2016/11/16/the-pain-of-losing-can-fuel-a-more-satisfying-win-guest-post/">The pain of losing can fuel a more satisfying win (Guest post)</a></li><li><a href="https://fitisafeministissue.com/2016/10/19/what-not-to-say-when-you-encounter-a-womans-bodybuilding-page/">What not to say when you encounter a woman’s bodybuilding page (Guest post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/chthonicboom/"> <img alt='' src='https://2.gravatar.com/avatar/e2d483a31e5df497c4190980cbd3b651?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>Diana S-V</strong></a><ul><li><a href="https://fitisafeministissue.com/2015/01/23/guest-post-an-app-solutely-adorable-fitness-tracker/">Guest Post: An App-solutely Adorable Fitness Tracker</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/cravethecookbook/"> <img alt='' src='https://0.gravatar.com/avatar/0eb1e87ef5e084fbd5f8e033c57011ca?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>cravethecookbook</strong></a><ul><li><a href="https://fitisafeministissue.com/2015/10/23/what-has-happened-to-my-yoga-class/">What has happened to my Yoga class? (Guest post)</a></li><li><a href="https://fitisafeministissue.com/2015/10/06/into-the-trails-for-the-run-for-the-toad-guest-post/">Into the Trails for the Run for the Toad (Guest Post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/drcateh/"> <img alt='' src='https://2.gravatar.com/avatar/beede64a0c83ca69e4ff15f6f184d383?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>Cate Hundleby</strong></a><ul><li><a href="https://fitisafeministissue.com/2018/05/22/psyched-out-spirituality-the-yoga-space-and-laughter-guest-post/">Psyched out: Spirituality, the yoga space, and laughter (Guest post)</a></li><li><a href="https://fitisafeministissue.com/2016/09/08/liberation-two-nipples-at-a-time-guest-post/">Liberation, two nipples at a time (Guest post)</a></li><li><a href="https://fitisafeministissue.com/2016/03/05/letter-to-the-new-yoga-studio-guest-post/">Letter to the New Yoga Studio (Guest Post)</a></li><li><a href="https://fitisafeministissue.com/2015/09/03/old-school-guest-post/">Old School (Guest Post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/drjchiz/"> <img alt='' src='https://2.gravatar.com/avatar/ee2aa320732aaf2decfd7e1666fc0ab4?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>drjchiz</strong></a><ul><li><a href="https://fitisafeministissue.com/2015/05/21/doctorates-down-dogs-and-the-challenge-of-self-talk-guest-post/">Doctorates, Down-Dogs and the Challenge of Self Talk (Guest Post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/ebjourno/"> <img alt='' src='https://2.gravatar.com/avatar/519ad76dcbd23eb3f5910274bad3715a?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>ebjourno</strong></a><ul><li><a href="https://fitisafeministissue.com/2014/05/02/a-pair-of-shoes-just-for-walking-who-knew-guest-post/">A pair of shoes just for walking? Who knew? (Guest post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/ebrister/"> <img alt='' src='https://1.gravatar.com/avatar/790f1665fe9a966306010d47ad9c60f4?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>ebrister</strong></a><ul><li><a href="https://fitisafeministissue.com/2015/09/09/the-most-cerebral-sport-ive-ever-tried-guest-post/">The most cerebral sport I&#8217;ve ever tried (Guest post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/elanpaulson/"> <img alt='' src='https://2.gravatar.com/avatar/52ab652c8190983e06a70cc313765d9a?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>elanpaulson</strong></a><ul><li><a href="https://fitisafeministissue.com/2019/04/02/a-waybetter-way-to-exercise/">A WayBetter way to exercise? (Guest post)</a></li><li><a href="https://fitisafeministissue.com/2018/06/25/step-counters-and-the-guilt-triangle-food-friends-and-fitness/">Step Counters and the Guilt Triangle: Food, Friends, and Fitness (Guest Post)</a></li><li><a href="https://fitisafeministissue.com/2018/04/02/ebikes-moderate-exercise-for-the-un-stationary-guest-post/">eBikes: Moderate Exercise for the Un-Stationary (Guest Post)</a></li><li><a href="https://fitisafeministissue.com/2018/03/02/we-do-us-fun-run-in-the-snow-guest-post/">We Do Us: A Fun Run in the Snow (Guest Post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/elizabethjbarnes/"> <img alt='' src='https://1.gravatar.com/avatar/1897da9be395b97dccaa9402585f24cc?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>elizabethjbarnes</strong></a><ul><li><a href="https://fitisafeministissue.com/2014/11/16/getting-fit-for-a-mobility-aid-guest-post/">Getting fit for a mobility aid (Guest post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/emelgy/"> <img alt='' src='https://0.gravatar.com/avatar/c5eea18012eae629dd5eaeeb57c72dfa?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>Michelle Lynne Goodfellow</strong></a><ul><li><a href="https://fitisafeministissue.com/2017/09/09/i-walk-20k-steps-a-day-and-im-getting-rid-of-my-fitbit-guest-post/">I walk 20K steps a day&#8230;  and I&#8217;m getting rid of my Fitbit (Guest Post)</a></li><li><a href="https://fitisafeministissue.com/2016/12/22/how-martial-arts-have-changed-me-results-may-vary-guest-post/">How martial arts have changed me. (Results may vary.) (Guest post)</a></li><li><a href="https://fitisafeministissue.com/2016/11/05/thriving-after-double-mastectomy-for-breast-cancer-without-breast-reconstruction-guest-post/">Thriving after double mastectomy for breast cancer without breast reconstruction (Guest post)</a></li><li><a href="https://fitisafeministissue.com/2016/10/17/being-okay-with-what-is-guest-post/">Being okay with what is (Guest post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/emmaryman/"> <img alt='' src='https://0.gravatar.com/avatar/647f2c946f0ddf58dfc21a99264c86b7?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>emmaryman</strong></a><ul><li><a href="https://fitisafeministissue.com/2016/04/21/a-non-athletic-persons-guide-to-running-5k-guest-post/">A Non-Athletic Person&#8217;s Guide to Running 5k (Guest Post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/erineayala/"> <img alt='' src='https://0.gravatar.com/avatar/cef20a2027960654bf2f07aa34cfc7e0?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>erineayala</strong></a><ul><li><a href="https://fitisafeministissue.com/2018/03/30/gender-diversity-in-cycling-small-victories-guest-post/">Gender Diversity in Cycling: Small Victories (Guest Post)</a></li><li><a href="https://fitisafeministissue.com/2018/03/23/gender-diversity-in-cycling-microaggressions-and-continued-work/">Gender Diversity in Cycling: Microaggressions and Continued Work</a></li><li><a href="https://fitisafeministissue.com/2018/03/16/gender-diversity-in-cycling-time-for-a-shift-guest-post/">Gender Diversity in Cycling: Time For A Shift? (Guest Post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/fatandfitinthesix/"> <img alt='' src='https://1.gravatar.com/avatar/164a80a044bceb4ea2ee7044ed2390b1?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>fatandfitinthesix</strong></a><ul><li><a href="https://fitisafeministissue.com/2017/11/04/big-fat-myths-or-why-so-many-of-us-avoid-the-gym-guest-post/">Big Fat Myths, Or, Why So Many of Us Avoid the Gym (Guest Post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/fieldpoppy/"> <img alt='' src='https://2.gravatar.com/avatar/85286b87539c90807649f59f23a20180?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>fieldpoppy</strong></a><ul><li><a href="https://fitisafeministissue.com/2019/12/20/192478/">Walking in Hong Kong</a></li><li><a href="https://fitisafeministissue.com/2019/11/23/n15-microholiday-with-folding-bike/">N+1=5; microholiday with folding bike</a></li><li><a href="https://fitisafeministissue.com/2019/11/15/catching-lotuses-with-my-vagina/">Catching lotuses with my vagina</a></li><li><a href="https://fitisafeministissue.com/2019/11/07/workout-300-and-301-through-305-5/">Workout #300 (and 301 through 305.5)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/friedlaender/"> <img alt='' src='https://2.gravatar.com/avatar/8bcc5f35178f366887ac2a3eb9557c07?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>friedlaender</strong></a><ul><li><a href="https://fitisafeministissue.com/2018/03/13/femmes-food-and-europes-deep-freeze-or-on-my-love-for-walking/">Femmes, Food, and Europe&#8217;s Deep Freeze; or, On My Love for Walking</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/hawthornechow/"> <img alt='' src='https://1.gravatar.com/avatar/147b81239669e8e0cb993898292dc532?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>Marjorie Rose</strong></a><ul><li><a href="https://fitisafeministissue.com/2019/12/31/breakfast-meal-prep-oatmeal/">Make-Ahead Breakfast Meal Prep&#8211;Oatmeal!</a></li><li><a href="https://fitisafeministissue.com/2019/12/02/trigger-warning-pseudoscience/">Trigger Warning: Pseudoscience</a></li><li><a href="https://fitisafeministissue.com/2019/11/04/breasts-and-the-myth-of-perfect-form/">Breasts and the Myth of Perfect Form</a></li><li><a href="https://fitisafeministissue.com/2019/10/28/this-is-my-why/">This is My &#8220;Why&#8221;</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/heatherclitheroe/"> <img alt='' src='https://1.gravatar.com/avatar/d1643bc14ff879055dba672f54626263?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>Heather Clitheroe</strong></a><ul><li><a href="https://fitisafeministissue.com/2017/10/05/race-report-38th-melissas-road-race-in-banff-guest-post/">Race report: 38th Melissa&#8217;s Road Race in Banff (Guest Post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/hickson1/"> <img alt='' src='https://2.gravatar.com/avatar/8c99e04abf7298169b5e1360182ed985?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>hickson1</strong></a><ul><li><a href="https://fitisafeministissue.com/2018/03/10/learning-to-swim-and-loving-my-body-in-the-process-guest-post/">Learning to Swim and Loving My Body in the Process (Guest Post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/homefromscratch2/"> <img alt='' src='https://1.gravatar.com/avatar/ad3b362b97ba728067479a45d0552490?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>Andra Corinne</strong></a><ul><li><a href="https://fitisafeministissue.com/2014/04/18/running-can-only-take-me-so-far-guest-post/">Running Can Only Take Me So Far (Guest Post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/isekhmet/"> <img alt='' src='https://2.gravatar.com/avatar/8bb34e8533bf7905bc48100f326265a3?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>Christine Hennebury</strong></a><ul><li><a href="https://fitisafeministissue.com/2019/12/28/the-days-ahead-christine-h-and-short-term-planning/">The Days Ahead: Christine H and short-term planning</a></li><li><a href="https://fitisafeministissue.com/2019/11/30/anchoring-myself-for-december/">Anchoring myself for December</a></li><li><a href="https://fitisafeministissue.com/2019/10/30/exercise-procrastination-does-it-happen-to-you-too/">Exercise Procrastination: Does it happen to you, too?</a></li><li><a href="https://fitisafeministissue.com/2019/09/28/almost-over-but-not-quite/">Almost Over (But Not Quite)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/jaclynlanthier/"> <img alt='' src='https://1.gravatar.com/avatar/4647b6a4c1ce212beaca399efff52054?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>jaclynlanthier</strong></a><ul><li><a href="https://fitisafeministissue.com/2017/06/27/have-i-just-replaced-one-addiction-with-another-guest-post/">Have I Just Replaced One Addiction With Another? (Guest Post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/jaiagreen/"> <img alt='' src='https://1.gravatar.com/avatar/446a06b2be377ced13bbc59abc70ae95?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>Jane S.</strong></a><ul><li><a href="https://fitisafeministissue.com/2016/09/24/the-art-of-small-steps-guest-post/">The Art of Small Steps (Guest Post)</a></li><li><a href="https://fitisafeministissue.com/2016/09/17/climbing-things-choking-people-and-disability-inclusion-guest-post/">Climbing Things, Choking People, and Disability Inclusion (Guest Post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/jandawson/"> <img alt='' src='https://0.gravatar.com/avatar/37c502ff89624a1b2c49198e96e0a3b4?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>jandawson</strong></a><ul><li><a href="https://fitisafeministissue.com/2013/11/16/roller-derby-reaching-new-heights-guest-post/">Roller Derby Reaching New Heights (Guest Post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/jaquaid/"> <img alt='' src='https://2.gravatar.com/avatar/5952abcdf6f08aee8e87ddcf4feb3666?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>jaquaid</strong></a><ul><li><a href="https://fitisafeministissue.com/2018/06/23/thanks-coach-thoughts-on-drills-good-form-and-the-importance-of-mixing-it-up/">Thanks, Coach! Thoughts on Drills, Good Form and the Importance of Mixing it Up (Guest Post)</a></li><li><a href="https://fitisafeministissue.com/2018/06/02/so-howd-it-go-putting-a-race-into-perspective/">So how’d it go? Putting a race into perspective (Guest post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/jenhock13/"> <img alt='' src='https://1.gravatar.com/avatar/a440ee7deac6933bc85330152e05e5c3?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>jenhock13</strong></a><ul><li><a href="https://fitisafeministissue.com/2016/06/28/futsal-for-life-for-everyone-guest-post/">Futsal for life. For everyone. (Guest Post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/jennyellison157/"> <img alt='' src='https://2.gravatar.com/avatar/ed120238617e723e01e7a7d37b81b5f5?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>jennyellison157</strong></a><ul><li><a href="https://fitisafeministissue.com/2014/06/13/fitness-fashion-and-feminism-guest-post/">Fitness Fashion and Feminism (Guest Post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/jessicaireland7/"> <img alt='' src='https://0.gravatar.com/avatar/9eeaecef5ba25b51887bf583fc548ab9?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>jessicaireland7</strong></a><ul><li><a href="https://fitisafeministissue.com/2017/02/07/i-dont-have-any-fitness-goals-for-2017/">I don&#8217;t have any fitness goals for 2017 (Guest post)</a></li><li><a href="https://fitisafeministissue.com/2016/04/21/i-like-to-kick-stretch-and-kick-and-im-30/">I like to kick, stretch, and kick and I&#8217;m 30</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/jessicaschagerl/"> <img alt='' src='https://0.gravatar.com/avatar/07b2993cdcba6eab9b7147dc596e8add?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>jessicas</strong></a><ul><li><a href="https://fitisafeministissue.com/2015/02/01/elusive-badass-cred/">Guest Post: Elusive &#8220;Badass Cred&#8221;</a></li><li><a href="https://fitisafeministissue.com/2015/01/31/sweaty-hair-solutions/">Sweaty hair solutions (Guest post)</a></li><li><a href="https://fitisafeministissue.com/2015/01/02/fun-fun-fun-guest-post/">Fun, fun, fun (Guest post)</a></li><li><a href="https://fitisafeministissue.com/2014/12/28/its-not-enough-for-me-guest-post/">It&#8217;s not enough for me (Guest post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/jlafford/"> <img alt='' src='https://2.gravatar.com/avatar/e0bec70aa2065494a8c84f8562a000a5?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>Jewel of Toronto</strong></a><ul><li><a href="https://fitisafeministissue.com/2019/09/09/on-age-appropriate-activities/">On Age Appropriate Activities (Guest Post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/jlseeley/"> <img alt='' src='https://2.gravatar.com/avatar/b5f9219622bb1518a139074291368655?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>Jenn Seeley</strong></a><ul><li><a href="https://fitisafeministissue.com/2015/12/31/new-year-same-you-guest-post/">New Year Same You (Guest Post)</a></li><li><a href="https://fitisafeministissue.com/2015/10/30/freedom-to-define-fitness-ill-do-it-my-way-guest-post/">Freedom To Define Fitness: I&#8217;ll Do It My Way (Guest Post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/jmusca/"> <img alt='' src='https://0.gravatar.com/avatar/0a71ae563aad96bfb49ddd400db82110?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>Jeanne-Marie</strong></a><ul><li><a href="https://fitisafeministissue.com/2014/05/24/my-love-hate-relationship-with-co-ed-team-sports-guest-post/">My Love-Hate Relationship with Co-ed Team Sports (Guest post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/joangforry/"> <img alt='' src='https://2.gravatar.com/avatar/5c324489e81ee124b53b2e4120f42203?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>joangforry</strong></a><ul><li><a href="https://fitisafeministissue.com/2014/10/10/part-two-running-with-dogs-and-succeeding-guest-post/">Part Two: Running With Dogs and Succeeding (Guest Post)</a></li><li><a href="https://fitisafeministissue.com/2014/10/03/part-one-running-with-dogs-and-failing-guest-post/">Part One: Running with Dogs and Failing (Guest Post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/juliarandall27/"> <img alt='' src='https://0.gravatar.com/avatar/fb771b15b69b18e81fc01987e8e180d1?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>juliarandall27</strong></a><ul><li><a href="https://fitisafeministissue.com/2014/09/05/guest-post-my-top-tips-for-staying-respectably-fit-while-you-travel/">Guest Post: My Top Tips for Staying Fit While You Travel</a></li><li><a href="https://fitisafeministissue.com/2014/08/19/ronda-rousey-cant-be-all-there-is-for-women-in-the-ufc-guest-post/">Ronda Rousey can&#8217;t be all there is for women in the UFC (Guest post)</a></li><li><a href="https://fitisafeministissue.com/2013/12/24/nobody-else-in-the-world-can-be-you-guest-post/">Nobody Else in the World Can Be You (Guest Post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/kaimorg/"> <img alt='' src='https://2.gravatar.com/avatar/bd1d42ab46cdfd632cea067e75e09037?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>kai_morgan</strong></a><ul><li><a href="https://fitisafeministissue.com/2016/06/04/do-some-women-learn-martial-arts-differently-to-some-men-guest-post/">Do some women learn martial arts differently to some men? (Guest post)</a></li><li><a href="https://fitisafeministissue.com/2016/05/28/why-im-not-inspired-by-female-warriors-despite-loving-martial-arts-guest-post/">Why I’m not inspired by female warriors &#8211; despite loving martial arts (Guest Post)</a></li><li><a href="https://fitisafeministissue.com/2016/05/15/a-morning-with-mara-yamauchi-part-two-ways-to-engage-more-women-in-sport-guest-post/">A morning with Mara Yamauchi – Part Two – Ways to engage more women in sport (Guest post)</a></li><li><a href="https://fitisafeministissue.com/2016/05/08/a-morning-with-mara-yamauchi-part-one-guest-post/">A morning with Mara Yamauchi – Part One (Guest post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/katebrowneblogs/"> <img alt='' src='https://2.gravatar.com/avatar/bdd14afa4467c9a1483745de7626106d?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>KateB</strong></a><ul><li><a href="https://fitisafeministissue.com/2016/09/24/mommy-me-childcare-as-an-access-issue-guest-post/">Mommy and Me: Childcare as an Access Issue (Guest Post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/kfranc02/"> <img alt='' src='https://0.gravatar.com/avatar/30d3229d43c72c5711eba7571acadb4b?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>kfranc02</strong></a><ul><li><a href="https://fitisafeministissue.com/2018/09/20/mudmoiselle-2018-guest-post/">Mudmoiselle 2018 (Guest Post)</a></li><li><a href="https://fitisafeministissue.com/2018/09/03/give-me-strength-guest-post/">Give Me Strength (Guest Post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/laurarainbowdragon/"> <img alt='' src='https://1.gravatar.com/avatar/7a78cafda66694ae1bb2f8ad885cf9ff?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>Laura Rainbow Dragon</strong></a><ul><li><a href="https://fitisafeministissue.com/2017/08/01/30-x-30-a-challenge-of-a-different-nature/">30 x 30: A Challenge of a Different Nature (Guest Post)</a></li><li><a href="https://fitisafeministissue.com/2016/08/18/366-days-of-yoga-guest-post/">366 Days of Yoga (Guest Post)</a></li><li><a href="https://fitisafeministissue.com/2014/07/23/last-flight-of-the-murder-a-roller-derby-love-story-guest-post/">Last Flight of the Murder &#8211; a Roller Derby Love Story (Guest Post)</a></li><li><a href="https://fitisafeministissue.com/2013/07/12/full-contact-over-forty-guest-post/">Full Contact Over Forty (Guest post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/laurenefreeman/"> <img alt='' src='https://2.gravatar.com/avatar/8d1626ff65ab5921d43856d9e8c975e0?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>Lauren Freeman</strong></a><ul><li><a href="https://fitisafeministissue.com/2018/06/04/feminist-biking-in-italy-or-feminism-101-in-lecce/">Guest Post: Feminist Biking in Italy (or, Feminism 101 in Lecce)</a></li><li><a href="https://fitisafeministissue.com/2018/05/25/runner-biking-in-italy/">Runner Biking in Italy (Guest Post)</a></li><li><a href="https://fitisafeministissue.com/2015/06/12/why-athletic-challenges-are-not-like-childbirth-guest-post/">Why Athletic Challenges are Not Like Childbirth (Guest Post)</a></li><li><a href="https://fitisafeministissue.com/2014/08/28/running-from-mosquitoes-guest-post/">Running From Mosquitoes (Guest Post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/legslegum/"> <img alt='' src='https://0.gravatar.com/avatar/0b181022b8f6b27a5c103ef273cc026f?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>legslegum</strong></a><ul><li><a href="https://fitisafeministissue.com/2017/06/09/taking-the-lane-gender-and-cycling-in-toronto-a-panel-discussion/">Taking the Lane: Gender and Cycling in Toronto (A Panel Discussion)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/lereid/"> <img alt='' src='https://2.gravatar.com/avatar/83c1d16b1ed4fdc3e1ca5c89a13a8478?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>Lynette</strong></a><ul><li><a href="https://fitisafeministissue.com/2018/05/30/survey-on-sexual-harassment-in-climbing/">Survey on sexual harassment in climbing (Guest post)</a></li><li><a href="https://fitisafeministissue.com/2018/04/16/urban-crags-guest-post/">Urban crags (Guest post)</a></li><li><a href="https://fitisafeministissue.com/2018/04/09/climbing-above-geneva-guest-post/">Climbing above Geneva (Guest Post)</a></li><li><a href="https://fitisafeministissue.com/2018/01/12/more-on-the-sort-of-person-who-guest-post/">More on &#8220;the sort of person who&#8230;&#8221; (Guest post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/lyndsv09/"> <img alt='' src='https://0.gravatar.com/avatar/6cef2d0813ca0690d87ef1fdbc3f9d2f?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>Lynds</strong></a><ul><li><a href="https://fitisafeministissue.com/2017/05/17/lyndsey-feels-excitement-pride-and-just-a-bit-wistful-about-womens-aussie-rules-football-guest-post/">Lyndsey feels excitement, pride and just a bit wistful about Women&#8217;s Aussie Rules Football (Guest post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/marenbehrensen/"> <img alt='' src='https://0.gravatar.com/avatar/9407e90212e4886d0887c841f589f8fa?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>marenbehrensen</strong></a><ul><li><a href="https://fitisafeministissue.com/2018/05/04/the-latest-nonsense-from-the-gender-police-guest-post/">The Latest Nonsense from the Gender Police (Guest Post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/marthafitat55/"> <img alt='' src='https://0.gravatar.com/avatar/990d555017b5ee354a79bf710e6ce371?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>marthafitat55</strong></a><ul><li><a href="https://fitisafeministissue.com/2019/12/21/making-room-for-big-rocks/">Making room for big rocks</a></li><li><a href="https://fitisafeministissue.com/2019/12/13/fitness-challenges-gaming-or-failing/">Fitness challenges: gaming or failing?</a></li><li><a href="https://fitisafeministissue.com/2019/12/06/kids-and-fitness-trackers-the-holiday-edition-not/">Kids and fitness trackers: the holiday edition (not)</a></li><li><a href="https://fitisafeministissue.com/2019/11/20/appreciating-adaptability/">Appreciating adaptability</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/marycycle/"> <img alt='' src='https://2.gravatar.com/avatar/b74853afcad99bf5ce457595ad5b31d6?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>marycycle</strong></a><ul><li><a href="https://fitisafeministissue.com/2019/06/13/law-breaking-commuter-guest-post/">Law-breaking commuter (Guest post)</a></li><li><a href="https://fitisafeministissue.com/2019/04/11/hammer-down-in-flanders-guest-post/">Hammer Down in Flanders (Guest Post)</a></li><li><a href="https://fitisafeministissue.com/2018/03/03/vintage-works-for-winter/">Vintage Works for Winter (Guest Post)</a></li><li><a href="https://fitisafeministissue.com/2016/05/20/fit-and-feminist-genetics-guest-post/">Fit and Feminist Genetics (Guest Post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/materiaephemera/"> <img alt='' src='https://1.gravatar.com/avatar/dc99e5daa4ebff67a7bbcfd20b11548b?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>Virginia</strong></a><ul><li><a href="https://fitisafeministissue.com/2019/04/01/a-deadlift-of-the-will-guest-post/">A Deadlift of the Will (Guest Post)</a></li><li><a href="https://fitisafeministissue.com/2019/03/26/how-i-learned-to-stop-worrying-and-love-the-barbell-guest-post/">How I Learned to Stop Worrying and Love the Barbell (Guest Post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/mbrenn7/"> <img alt='' src='https://2.gravatar.com/avatar/b36636e02662aaba14a7198109aa1d4a?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>Mallory</strong></a><ul><li><a href="https://fitisafeministissue.com/2018/10/22/thanksgiving-canoeing/">Mallory Goes Thanksgiving Canoeing (Guest Post)</a></li><li><a href="https://fitisafeministissue.com/2017/04/15/using-carrot-to-earn-fitness-rewards-guest-post/">Using &#8220;Carrot&#8221; to Earn Fitness Rewards (Guest Post)</a></li><li><a href="https://fitisafeministissue.com/2014/07/14/six-things-i-learned-on-my-six-week-bike-tour-guest-post/">Six Things I Learned on my Six-Week Bike Tour (Guest Post)</a></li><li><a href="https://fitisafeministissue.com/2013/10/23/our-algonquin-canoe-trip/">Our Algonquin Canoe Trip</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/meenakrishnamurthy2013/"> <img alt='' src='https://1.gravatar.com/avatar/d29add92da46dd95d99cb0a921a8e895?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>Meena Krishnamurthy</strong></a><ul><li><a href="https://fitisafeministissue.com/2017/08/02/trying-failing-and-succeeding-at-running-after-a-brain-injury/">Trying, failing, and succeeding at running after a brain injury</a></li><li><a href="https://fitisafeministissue.com/2017/02/20/recovered-guest-post/">Recovered? (Guest Post)</a></li><li><a href="https://fitisafeministissue.com/2015/04/18/strong-is-the-new-pretty-guest-post/">Strong is the New Pretty (Guest Post)</a></li><li><a href="https://fitisafeministissue.com/2014/09/26/the-long-slow-walk-a-k-a-my-recovery-from-a-concussion-guest-post/">The Long Slow Walk (a.k.a. My Recovery from a Concussion) – Guest Post</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/meganeeze/"> <img alt='' src='https://1.gravatar.com/avatar/49cca72235286fbfc73a0685f0c242a4?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>meganeeze</strong></a><ul><li><a href="https://fitisafeministissue.com/2015/11/06/can-we-train-the-shame-away-guest-post/">Can we train the shame away? (Guest Post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/melindamunro/"> <img alt='' src='https://2.gravatar.com/avatar/ed52f5e18de42d66f55cb5b41f25ae93?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>melindamunro</strong></a><ul><li><a href="https://fitisafeministissue.com/2019/01/24/no-way-guest-post/">No Way! (Guest Post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/minasamuelsyahooca/"> <img alt='' src='https://2.gravatar.com/avatar/8dc6f8399a1c3b970222ed168de00e4b?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>Mina</strong></a><ul><li><a href="https://fitisafeministissue.com/2019/12/04/how-to-make-running-in-paris-fun-and-challenging/">How To Make Running in Paris Fun and Challenging</a></li><li><a href="https://fitisafeministissue.com/2019/11/06/mina-runs-the-paris-20k/">Mina Runs the Paris 20k</a></li><li><a href="https://fitisafeministissue.com/2019/10/02/minas-still-streaking-300-days-of-meditation-and-counting/">Mina’s Still Streaking—300 Days of Meditation and Counting …</a></li><li><a href="https://fitisafeministissue.com/2019/09/04/mina-wants-to-be-noticed/">Mina Wants to Be Noticed</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/moirahowes/"> <img alt='' src='https://2.gravatar.com/avatar/ed628ad508d7defddcb845a78366f205?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>Moira</strong></a><ul><li><a href="https://fitisafeministissue.com/2019/08/05/ms-marmot-says-guest-post/">Ms. Marmot says&#8230; (Guest post)</a></li><li><a href="https://fitisafeministissue.com/2017/01/02/surprised-by-glide/">Surprised by Glide</a></li><li><a href="https://fitisafeministissue.com/2016/08/12/where-the-wild-girls-are-canoeing-in-killarney-guest-post/">Where the Wild Girls Are (Canoeing in Killarney!)&#8211;Guest Post</a></li><li><a href="https://fitisafeministissue.com/2015/03/08/my-trip-to-gender-equality-in-sports-coverage/">My trip to gender equality in sports coverage</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/mosssm/"> <img alt='' src='https://1.gravatar.com/avatar/1de7caafe27c1160b6206cc12326f36a?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>Sharon</strong></a><ul><li><a href="https://fitisafeministissue.com/2014/11/29/fat-strong-and-confident-guest-post/">Fat, Strong, and Confident (Guest Post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/n000o/"> <img alt='' src='https://2.gravatar.com/avatar/5f47aade5ed4f11012eb8a0c0d1d668a?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>n000o</strong></a><ul><li><a href="https://fitisafeministissue.com/2014/12/19/i-punch-like-a-woman-guest-post/">I punch like a woman! (Guest post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/nancywalton2/"> <img alt='' src='https://0.gravatar.com/avatar/6f276dca9ef0bb51bdaf88fc300ff869?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>Nancy Walton</strong></a><ul><li><a href="https://fitisafeministissue.com/2016/10/24/undeniable-undeniable-guest-post/">Undeniable? Undeniable. (Guest Post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/nanetteryan/"> <img alt='' src='https://2.gravatar.com/avatar/ecfebefcc76bc6c1deb4f44dddb6ad9f?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>nanetteryan</strong></a><ul><li><a href="https://fitisafeministissue.com/2016/03/15/strength-training-and-the-feminine-ideal-guest-post/">Strength Training and the Feminine Ideal (Guest Post)</a></li><li><a href="https://fitisafeministissue.com/2015/11/18/dont-worry-theyre-man-nipples/">Freeing the Nipple One T-Shirt at a Time (or Hairy Man Nipples For Equality)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/natadicorsa/"> <img alt='' src='https://0.gravatar.com/avatar/c414cea992d9ccff2ed5c9edcecff240?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>natadicorsa</strong></a><ul><li><a href="https://fitisafeministissue.com/2017/03/25/the-perfect-bikini-body-can-we-all-really-have-it-guest-post/">The Perfect Bikini Body: Can We All Really Have It? (Guest Post)</a></li><li><a href="https://fitisafeministissue.com/2014/08/12/inner-conflicts-in-the-life-of-a-feminist-dancing-mother-guest-post/">Inner conflicts in the life of a feminist dancing mother (Guest post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/natalielouisehebert/"> <img alt='' src='https://0.gravatar.com/avatar/647fb10d75f0b6bbeae1d03378ea4801?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>natalieh</strong></a><ul><li><a href="https://fitisafeministissue.com/2019/12/07/nat-calls-for-high-performance-formal-wear/">Nat calls for high performance formal wear</a></li><li><a href="https://fitisafeministissue.com/2019/11/09/nats-still-waiting-to-fall-in-love-with-her-cpap/">Nat’s still waiting to fall in love with her CPAP</a></li><li><a href="https://fitisafeministissue.com/2019/11/02/nat-is-definitely-experiencing-peri-menopause/">Nat is definitely experiencing peri menopause</a></li><li><a href="https://fitisafeministissue.com/2019/10/05/nat-goes-back-to-her-exercise-basics/">Nat goes back to her exercise basics</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/nomadbettina/"> <img alt='' src='https://0.gravatar.com/avatar/f09eb4a81ac5b23493a7567f431a2242?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>bettinathenomad</strong></a><ul><li><a href="https://fitisafeministissue.com/2019/12/18/rip-apple-watch/">RIP, Apple Watch?</a></li><li><a href="https://fitisafeministissue.com/2019/12/14/starting-to-stop-exercising-people-seem-to-do-it-at-41-but-why/">Starting to stop exercising &#8211; people seem to do it at 41, but why?</a></li><li><a href="https://fitisafeministissue.com/2019/11/22/bettina-tries-orienteering-an-exercise-in-priorities/">Bettina tries orienteering: an exercise in priorities</a></li><li><a href="https://fitisafeministissue.com/2019/11/16/on-balance-finding-time-for-new-things/">On balance: finding time for new things</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/oftenacademic/"> <img alt='' src='https://2.gravatar.com/avatar/5dcb066438a62d463d7e9d9ffa168ab7?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>Often Academic</strong></a><ul><li><a href="https://fitisafeministissue.com/2016/09/08/riding-hadrians-wall/">Riding Hadrian&#8217;s Wall (Guest Post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/onabar/"> <img alt='' src='https://2.gravatar.com/avatar/547493068e53ad99a317feb6cdccaf2a?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>onabar</strong></a><ul><li><a href="https://fitisafeministissue.com/2014/07/06/learning-to-flyagain-guest-post/">Learning to Fly…Again (Guest Post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/permacultureforthepeople/"> <img alt='' src='https://2.gravatar.com/avatar/21567fe70630d234d526f1f6108b9fe5?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>RE</strong></a><ul><li><a href="https://fitisafeministissue.com/2018/01/05/a-return-to-fitness-in-2018-guest-post/">A return to fitness in 2018 (Guest post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/phyllis43/"> <img alt='' src='https://0.gravatar.com/avatar/0c61cacb2bbe71b31190a3c105c3cabc?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>phyllis43</strong></a><ul><li><a href="https://fitisafeministissue.com/2015/01/03/rediscovering-my-inner-runner-guest-post/">Rediscovering my Inner Runner (Guest Post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/profbigk/"> <img alt='' src='https://1.gravatar.com/avatar/1a02e5578d841a559dc051ffc803e5ba?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>KateNorlock</strong></a><ul><li><a href="https://fitisafeministissue.com/2015/03/10/doctors-orders-menopause-and-fitness/">Doctor&#8217;s orders: Menopause and fitness</a></li><li><a href="https://fitisafeministissue.com/2014/04/25/this-time-i-mean-it-new-years-resolutions-self-forgiveness-and-fitness-guest-post/">This Time I Mean It: New Year’s Resolutions, Self-Forgiveness, and Fitness (Guest Post)</a></li><li><a href="https://fitisafeministissue.com/2013/08/17/beginners-love-guest-post/">Beginner&#8217;s Love (Guest Post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/rachelbrown007/"> <img alt='' src='https://1.gravatar.com/avatar/1c6d5fb56812fe98de606e7cb22a115e?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>rachelbrown007</strong></a><ul><li><a href="https://fitisafeministissue.com/2016/02/19/amazing-is-my-new-realistic/">Amazing is the New Realistic (guest post)</a></li><li><a href="https://fitisafeministissue.com/2014/06/27/manning-up-to-stage-race-guest-post/">Manning Up to Stage Race (Guest Post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/rachelvmck/"> <img alt='' src='https://2.gravatar.com/avatar/eb42bc2d7fda9b7ee41029ac2bfd9485?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>rachelvmck</strong></a><ul><li><a href="https://fitisafeministissue.com/2016/04/16/bicycle-racing-is-expensive-guest-post/">Bicycle Racing is Expensive! (Guest Post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/rasledge/"> <img alt='' src='https://2.gravatar.com/avatar/538b60c1f29514cb8e2a0584f5c432d5?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>Rachel S</strong></a><ul><li><a href="https://fitisafeministissue.com/2016/10/29/unpacking-the-acsms-body-composition-table/">Unpacking the ACSM&#8217;s Body Composition Table (Guest Post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/rayners123/"> <img alt='' src='https://1.gravatar.com/avatar/13a00eaac1ea3a4d5e314a3991f76d64?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>rayners123</strong></a><ul><li><a href="https://fitisafeministissue.com/2015/05/22/nyc-5-boroughs-bike-tour-guest-post/">NYC 5 Boroughs Bike Tour (Guest Post)</a></li><li><a href="https://fitisafeministissue.com/2015/01/28/soccer-with-a-twist/">Soccer with A Twist (Guest Post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/rebeccakukla/"> <img alt='' src='https://0.gravatar.com/avatar/3984a193912d3e8c3999a78aaf9ca20f?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>rebeccakukla</strong></a><ul><li><a href="https://fitisafeministissue.com/2014/01/13/i-was-wrong-guest-post/">I was wrong (Guest post)</a></li><li><a href="https://fitisafeministissue.com/2013/11/18/guest-post-cfp-regulating-bodies-in-the-obesity-era/">Guest Post &#8211; CFP: Regulating Bodies in the &#8216;Obesity Era&#8217;</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/sabafatima145929181/"> <img alt='' src='https://1.gravatar.com/avatar/733cd659ff99a920f4edae0905e31dba?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>Saba Fatima</strong></a><ul><li><a href="https://fitisafeministissue.com/2018/05/30/exercising-during-ramadhan/">Exercising During Ramadhan (Guest Post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/samanthabrennan/"> <img alt='' src='https://0.gravatar.com/avatar/6c997943b663760dda0eb88a7b7a1056?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>Sam B</strong></a><ul><li><a href="https://fitisafeministissue.com/2020/01/01/whats-one-fitness-experience-that-stands-out-for-you-good-or-bad-from-2019/">What&#039;s one fitness experience that stands out for you, good or bad, from 2019?</a></li><li><a href="https://fitisafeministissue.com/2020/01/01/our-top-ten-posts-of-2019-icymi/">Our Top Ten Posts of 2019, #ICYMI</a></li><li><a href="https://fitisafeministissue.com/2019/12/31/20-20-vision-in-2020-guest-post/">20-20 Vision in 2020 (Guest Post)</a></li><li><a href="https://fitisafeministissue.com/2019/12/31/the-100-day-reclaim-day-31-40-three-fit-feminist-bloggers-weigh-in/">The 100 Day Reclaim: Day 31-40, Three Fit Feminist Bloggers Weigh In</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/sarahhentges/"> <img alt='' src='https://1.gravatar.com/avatar/ac636302d49b4a96224638f47e7e86fe?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>sarahhentges</strong></a><ul><li><a href="https://fitisafeministissue.com/2014/01/24/reflections-on-fitness-families-and-unexpected-gifts-guest-post/">Reflections on Fitness Families and Unexpected Gifts (Guest Post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/sarahmillinmakeitwork/"> <img alt='' src='https://0.gravatar.com/avatar/f67a2b762b63af87c0b860418970e8d5?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>Sarah Millin</strong></a><ul><li><a href="https://fitisafeministissue.com/2016/05/25/footwear-follies/">Footwear Follies (Guest Post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/savageheidi/"> <img alt='' src='https://2.gravatar.com/avatar/8f541b95d76dafe47a6b00c31507c181?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>savage af</strong></a><ul><li><a href="https://fitisafeministissue.com/2014/03/19/from-biker-grrl-to-bo-bo-guest-post/">From Biker Grrl to Bo-Bo? (Guest Post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/savita1/"> <img alt='' src='https://0.gravatar.com/avatar/f50d573506c7bc7336655ffc1e54bd22?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>savita1</strong></a><ul><li><a href="https://fitisafeministissue.com/2016/05/10/extreme-dieting-and-metabolic-adaptation-the-biggest-loser-dataset-guest-post/">Extreme Dieting and Metabolic Adaptation: The “Biggest Loser” Dataset (Guest Post)</a></li><li><a href="https://fitisafeministissue.com/2014/04/04/ten-canadian-woman-health-and-sports-pioneers-you-should-know-guest-post/">Ten Canadian Woman Health and Sports Pioneers You Should Know (Guest Post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/serenejk/"> <img alt='' src='https://2.gravatar.com/avatar/2786a8f7bca31a2c5219c1172eacda62?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>Serene</strong></a><ul><li><a href="https://fitisafeministissue.com/2016/02/25/help-serene-raise-money-for-real-life-strong-women-guest-post/">Help Serene Raise Money for Real-Life Strong Women (Guest Post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/shamwowladybug/"> <img alt='' src='https://1.gravatar.com/avatar/134b65901365d9c811da05bf6e6230eb?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>shamwowladybug</strong></a><ul><li><a href="https://fitisafeministissue.com/2014/01/25/asthma-you-can-run-you-can-hide-but-you-cant-escape-its-grip-guest-post/">Asthma: You Can Run, You Can Hide, but You Can’t Escape Its Grip (Guest Post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/sharoncrasnow/"> <img alt='' src='https://0.gravatar.com/avatar/36b2a43d57d1b71376cf4973ae5a3555?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>sharon crasnow</strong></a><ul><li><a href="https://fitisafeministissue.com/2017/08/19/family-yoga-guest-post/">Family Yoga (Guest Post)</a></li><li><a href="https://fitisafeministissue.com/2017/07/13/__trashed-6/">Today I Ran (Guest Post)</a></li><li><a href="https://fitisafeministissue.com/2015/04/17/maybe-i-like-crossfit-guest-post/">Maybe I Like CrossFit (Guest Post)</a></li><li><a href="https://fitisafeministissue.com/2013/11/24/guest-post-cycling-after-60/">Guest Post-Cycling after 60</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/shaslang/"> <img alt='' src='https://0.gravatar.com/avatar/360b4e79897a593b039a32eace1d79db?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>shaslang</strong></a><ul><li><a href="https://fitisafeministissue.com/2018/06/13/society-empowerment-through-sport-guest-post/">Society Empowerment through Sport (Guest Post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/shivangibansal/"> <img alt='' src='https://1.gravatar.com/avatar/d14f6e69fba49ceb3426f217d2c8f071?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>shivangibansal</strong></a><ul><li><a href="https://fitisafeministissue.com/2015/04/24/fighting-violence-against-women-in-india-with-self-defence/">Fighting Violence Against Women in India With Self-Defence (Guest Post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/sjdea/"> <img alt='' src='https://0.gravatar.com/avatar/c0d7e6e2d9fb5620aab2d3ec87437646?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>Lady Day</strong></a><ul><li><a href="https://fitisafeministissue.com/2018/03/14/reflections-on-the-exercise-pill-by-a-reluctant-desk-potato/">Reflections on the exercise pill by a reluctant desk potato (Guest post)</a></li><li><a href="https://fitisafeministissue.com/2014/03/21/lessons-from-spinoza-guest-post/">Lessons From Spinoza (Guest Post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/snadzmatazz/"> <img alt='' src='https://2.gravatar.com/avatar/e6ae5a066276a97179ae1159fb2207bf?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>SnaddyP</strong></a><ul><li><a href="https://fitisafeministissue.com/2017/08/09/what-i-learned-about-myself-doing-office-yoga/">What I Learned About Myself Doing Office Yoga (Guest Post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/solgakim/"> <img alt='' src='https://1.gravatar.com/avatar/465600c2ab60aaf170fbfcda54e87d9b?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>Kim Solga</strong></a><ul><li><a href="https://fitisafeministissue.com/2019/11/11/dare-not-to-compare/">Dare *Not* To Compare</a></li><li><a href="https://fitisafeministissue.com/2019/10/07/adventures-on-a-folding-bike/">Adventures on a folding bike!</a></li><li><a href="https://fitisafeministissue.com/2019/09/09/why-kim-rides-pt-2-thinking-about-cycling-and-social-justice/">Why Kim Rides, pt 2: thinking about cycling and social justice</a></li><li><a href="https://fitisafeministissue.com/2019/07/30/kim-asks-herself-why-do-i-ride/">Kim asks herself: why do I ride?</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/springel/"> <img alt='' src='https://0.gravatar.com/avatar/6b81bc877a4de4266d5a1a3ec69c9427?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>springel</strong></a><ul><li><a href="https://fitisafeministissue.com/2017/06/19/a-compatible-movement-practice-part-2-of-3/">Guest Post: A Compatible Movement Practice (part 2 of 3)</a></li><li><a href="https://fitisafeministissue.com/2017/06/19/a-compatible-movement-practice-part-1-of-3/">Guest Post: A Compatible Movement Practice (part 1 of 3)</a></li><li><a href="https://fitisafeministissue.com/2017/06/19/a-compatible-movement-practice-part-3-of-3/">Guest Post: A Compatible Movement Practice (part 3 of 3)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/stephcoen/"> <img alt='' src='https://0.gravatar.com/avatar/c7635f1a861b2fb5b30250023cb33f53?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>Steph Secret Illness</strong></a><ul><li><a href="https://fitisafeministissue.com/2018/01/09/failure-in-lifting-and-life-guest-post/">“Failure” in lifting, and life (Guest post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/stephkkeating/"> <img alt='' src='https://2.gravatar.com/avatar/bdfd88635f70bc3e0864b9a6ab01dcde?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>stephkkeating</strong></a><ul><li><a href="https://fitisafeministissue.com/2017/05/20/seaton-soaker-50k/">Seaton Soaker 50k (Guest post)</a></li><li><a href="https://fitisafeministissue.com/2016/05/22/how-i-accidentally-ran-my-happiest-race-guest-post/">How I Accidentally Ran My Happiest Race (Guest Post)</a></li><li><a href="https://fitisafeministissue.com/2014/10/25/first-marathon-scotiabank-toronto-waterfront-marathon-race-recap/">First Marathon: Scotiabank Toronto Waterfront Marathon Race Recap</a></li><li><a href="https://fitisafeministissue.com/2014/10/16/training-for-my-first-marathon-guest-post/">Training for my first marathon (Guest post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/susantarshis/"> <img alt='' src='https://0.gravatar.com/avatar/f66121ac46541e8e6108e091fb2a7491?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>Susan Tarshis</strong></a><ul><li><a href="https://fitisafeministissue.com/2019/12/27/if-you-cant-go-big-go-small/">If You Cannot Go Big, Go Small</a></li><li><a href="https://fitisafeministissue.com/2019/11/29/contemplating-brene-browns-contribution-to-the-war-against-patriarchy/">Contemplating Brené Brown&#039;s Contribution to the War Against Patriarchy</a></li><li><a href="https://fitisafeministissue.com/2019/10/25/trying-to-find-pleasure-in-running/">Trying to Find Pleasure in Running</a></li><li><a href="https://fitisafeministissue.com/2019/09/27/my-feet-on-the-ground/">My Feet On the Ground</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/tammylynnrrt/"> <img alt='' src='https://2.gravatar.com/avatar/ea8300ac5751e442833d44592e9457f5?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>tammylynnrrt</strong></a><ul><li><a href="https://fitisafeministissue.com/2013/10/30/being-a-habitat-for-humanity-team-leader/">Being a Habitat for Humanity Team Leader (Guest Post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/teresablankmeyerburke/"> <img alt='' src='https://0.gravatar.com/avatar/fc8a7fca555d0ffed80974cdf73d5317?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>Teresa Blankmeyer Burke</strong></a><ul><li><a href="https://fitisafeministissue.com/2014/03/09/eat-better-move-more-sleep-well-guest-post/">Eat Better, Move More, Sleep Well (Guest Post)</a></li><li><a href="https://fitisafeministissue.com/2013/07/26/deaf-woman-alone-on-the-trail-guest-post/">(Deaf) Woman Alone on the Trail (Guest post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/thracianmaid/"> <img alt='' src='https://1.gravatar.com/avatar/7580dd5aebf1a62ef7313cefd75134e2?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>thracianmaid</strong></a><ul><li><a href="https://fitisafeministissue.com/2013/08/02/pregnancy-postpartum-and-the-somewhat-fit-feminist-guest-post/">Pregnancy, Postpartum and the (Somewhat) Fit Feminist (Guest Post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/tinylanterntarot/"> <img alt='' src='https://0.gravatar.com/avatar/9d4a49bdde82bb0b5ec13eeb1fa16755?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>tinylanterntarot</strong></a><ul><li><a href="https://fitisafeministissue.com/2016/11/30/all-bodies-are-good-bodies-my-body-is-a-good-body-affirmation-as-a-path-to-better-health-guest-post/">all bodies are good bodies, my body is a good body: affirmation as a path to better health. (guest post)</a></li><li><a href="https://fitisafeministissue.com/2016/08/20/fuck-fat-loss-but-like-actually/">Fuck Fat Loss, but like, actually (Guest post)</a></li><li><a href="https://fitisafeministissue.com/2016/01/22/not-my-resolution-thoughts-on-january-weight-loss-from-a-cheerful-chubster-guest-post/">not my resolution; thoughts on January weight loss from a cheerful chubster (guest post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/tracyisaacs/"> <img alt='' src='https://1.gravatar.com/avatar/1a0fefa7684a6a097e71c9bd3ebc6a72?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>Tracy I</strong></a><ul><li><a href="https://fitisafeministissue.com/2019/12/23/tracy-objects-to-yoga-for-holiday-baking/">Tracy objects to “yoga for holiday baking”</a></li><li><a href="https://fitisafeministissue.com/2019/11/21/gamechangers-promotes-plant-based-sports-nutrition-but-doesnt-change-the-gender-game-guest-post/">Gamechangers promotes plant-based sports nutrition but doesn&#8217;t change the gender game (Guest post)</a></li><li><a href="https://fitisafeministissue.com/2019/11/01/float-therapy-supposedly-good-for-your-well-being-guest-post/">Float Therapy: supposedly good for your well-being (Guest post)</a></li><li><a href="https://fitisafeministissue.com/2019/08/29/tracys-good-bye-for-now-series-part-4-this-time-she-really-means-it/">Tracy&#8217;s good-bye for now series, part 4: This time she really means it</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/tracyrwdeboer/"> <img alt='' src='https://1.gravatar.com/avatar/a93a6d2bff08c206d0cf13536decfeb2?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>tracyrwdeboer</strong></a><ul><li><a href="https://fitisafeministissue.com/2018/02/10/adventures-in-knee-rehab-and-farewell/">Adventures in Knee Rehab and Farewell</a></li><li><a href="https://fitisafeministissue.com/2018/01/13/getting-naked-with-torontos-now-magazine/">Getting Naked with Toronto&#8217;s NOW Magazine</a></li><li><a href="https://fitisafeministissue.com/2017/12/09/why-im-trying-to-break-free-of-the-uniformity-of-activewear/">Why I&#8217;m Trying to Break Free of the Uniformity of Activewear</a></li><li><a href="https://fitisafeministissue.com/2017/11/28/fit-is-a-feminist-issue-has-a-brand-new-look/">Fit is a Feminist Issue has a brand new look!</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/vanessapinto1/"> <img alt='' src='https://0.gravatar.com/avatar/3ddab54394f4090e7cc15743c0bdc516?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>Vanessa</strong></a><ul><li><a href="https://fitisafeministissue.com/2017/05/27/one-in-twenty-thousand-race-report-of-the-sporting-life-10k-guest-post/">One in Twenty Thousand: Race Report of the Sporting Life 10K (Guest Post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/varveart/"> <img alt='' src='https://0.gravatar.com/avatar/95d373bd9edcb9e0feb58dd18b99dda8?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>varveart</strong></a><ul><li><a href="https://fitisafeministissue.com/2019/12/18/get-a-grip-guest-post/">Get a grip (guest post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/vickyth/"> <img alt='' src='https://0.gravatar.com/avatar/f211c2987f66811027cafc4e386005c9?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>VickyTH</strong></a><ul><li><a href="https://fitisafeministissue.com/2019/02/18/watch-your-step-guest-post/">Watch your step (Guest post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/wandererssong/"> <img alt='' src='https://2.gravatar.com/avatar/834ae0f866de9008d4a996de683e7380?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>wandererssong</strong></a><ul><li><a href="https://fitisafeministissue.com/2017/06/16/katherines-wibbly-wobbly-walk-guest-post/">Katherine&#8217;s Wibbly Wobbly Walk (Guest Post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/westcoastjes/"> <img alt='' src='https://1.gravatar.com/avatar/1df11832740c0b223de92f8d7c40ba01?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>Jes</strong></a><ul><li><a href="https://fitisafeministissue.com/2016/09/30/regaining-confidence-after-an-injury-one-climbers-story-guest-post/">Regaining confidence after an injury: one climber’s story (Guest post)</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/zaftigrunner/"> <img alt='' src='https://1.gravatar.com/avatar/499a804ab852a1d26f38b9952c1006ca?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>Nicole P,</strong></a><ul><li><a href="https://fitisafeministissue.com/2019/12/30/an-ode-to-the-morning-workout/">An Ode to the Morning Workout</a></li><li><a href="https://fitisafeministissue.com/2019/12/25/2020-wishes-and-2019-gratitude/">2020 Wishes and 2019 Gratitude</a></li><li><a href="https://fitisafeministissue.com/2019/12/14/super-fit-does-not-equal-healthy/">&quot;Super Fit&quot; does not Equal Healthy</a></li><li><a href="https://fitisafeministissue.com/2019/12/11/shades-in-between/">Shades in Between</a></li></ul></li><li><a href="https://fitisafeministissue.com/author/zoubetty/"> <img alt='' src='https://1.gravatar.com/avatar/daee629a95708dde6bbdeadfe1c0d7dc?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /> <strong>Betty</strong></a><ul><li><a href="https://fitisafeministissue.com/2015/10/20/race-report-boston-half-marathon-guest-post/">Race Report: Boston Half Marathon (Guest post)</a></li><li><a href="https://fitisafeministissue.com/2015/06/19/race-report-nike-womens-15k-toronto-guest-post/">Race Report: Nike Women&#8217;s 15K Toronto (Guest Post)</a></li><li><a href="https://fitisafeministissue.com/2015/04/10/run-like-a-girl-my-journey-to-the-nike-womens-toronto-15k-race-guest-post/">Run like a girl: My journey to the Nike Women&#8217;s Toronto 15K race (Guest post)</a></li></ul></li></ul></aside><aside id="jetpack_my_community-2" class="widget widget_jetpack_my_community"><div class='widgets-multi-column-grid'><ul><li><a href="http://runningfaster.co.uk"><img alt='' src='http://0.gravatar.com/avatar/0e8b023370c41c4d5feb45749986b5af?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /></a></li><li><a href=''><img alt='' src='http://1.gravatar.com/avatar/12d7de5334c29807b65d1fab8eaa66c0?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /></a></li><li><a href=""><img alt='' src='http://2.gravatar.com/avatar/2426dd5be5a0cd24dfa5820cf7e828a2?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /></a></li><li><a href=''><img alt='' src='http://0.gravatar.com/avatar/f67d0f8d4dc901e8076d268b959fa14a?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /></a></li><li><a href="http://thoughtsofsheryl.blog"><img alt='' src='http://1.gravatar.com/avatar/4913c551fca64bafc3b959b15963afbc?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /></a></li><li><a href=""><img alt='' src='http://2.gravatar.com/avatar/e98b0170384194db720fb0d43c187c5f?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /></a></li><li><a href=''><img alt='' src='http://0.gravatar.com/avatar/c7725a4e97e8093ecb19cd795a32f1f6?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /></a></li><li><a href=""><img alt='' src='http://0.gravatar.com/avatar/c7a8a4b3a2e2d216a7387b862787169c?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /></a></li><li><a href=""><img alt='' src='http://0.gravatar.com/avatar/32ba944bdabb9551f5a39595c29823ed?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /></a></li><li><a href="http://ishpaathome.wordpress.com"><img alt='' src='http://2.gravatar.com/avatar/8f5915ccb00caca21e79fd9908bd70be?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /></a></li><li><a href=""><img alt='' src='http://1.gravatar.com/avatar/4a1e7b5b4cd9732e759b89b5d4806199?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /></a></li><li><a href="https://roadtoahealthierlife.com"><img alt='' src='http://2.gravatar.com/avatar/86799715bcc84379584b8c678a80f84f?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /></a></li><li><a href="http://healthhappinesshealingnet.wordpress.com"><img alt='' src='http://1.gravatar.com/avatar/4410b7bd765b4bb55e30ca85d02f68d0?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /></a></li><li><a href=""><img alt='' src='http://1.gravatar.com/avatar/72721b191dbee69757f9163f546eff1a?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /></a></li><li><a href=''><img alt='' src='http://0.gravatar.com/avatar/f09eb4a81ac5b23493a7567f431a2242?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /></a></li><li><a href="http://rnrreads.wordpress.com"><img alt='' src='http://0.gravatar.com/avatar/f233a69dec03f4f7e264b1326e3a7683?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /></a></li><li><a href='http://elainefenner.wordpress.com'><img alt='' src='http://1.gravatar.com/avatar/1f28eba0e4df8b1ad5196146a5ee7d2e?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /></a></li><li><a href="http://rachelmankowitz.wordpress.com"><img alt='' src='http://1.gravatar.com/avatar/7a70a0bdce30815b4f5e375c5ca24b3e?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /></a></li><li><a href='http://www.youarenotdone.com'><img alt='' src='http://1.gravatar.com/avatar/a2da3c65b9b3f86d960e8fa01eb84c51?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /></a></li><li><a href='http://siglindesarts.wordpress.com'><img alt='' src='http://0.gravatar.com/avatar/983c3ee366400d665444ec94e7eaace9?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /></a></li><li><a href="https://www.FITin56.com"><img alt='' src='http://0.gravatar.com/avatar/fc09967f4ba853ab63b08e296117a126?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /></a></li><li><a href="http://5thlens.fitness"><img alt='' src='http://1.gravatar.com/avatar/afd9bddf2f4940c6a21bd6a8941b7824?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /></a></li><li><a href="http://da05home.wordpress.com"><img alt='' src='http://0.gravatar.com/avatar/04acb07a8f7befb8847cfe9bf4447be3?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /></a></li><li><a href=''><img alt='' src='http://1.gravatar.com/avatar/465600c2ab60aaf170fbfcda54e87d9b?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /></a></li><li><a href=""><img alt='' src='http://2.gravatar.com/avatar/5dd36754646eb7121d3d56176bd1cde1?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /></a></li><li><a href=''><img alt='' src='http://2.gravatar.com/avatar/53a931e71b6df7b2eef68b5f2ace33e0?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /></a></li><li><a href=''><img alt='' src='http://0.gravatar.com/avatar/0381304fa378ef27ee15ca19568358e1?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /></a></li><li><a href="https://inspiredliving.blog"><img alt='' src='http://2.gravatar.com/avatar/e683aa5b133879eb037e8b70b130afa8?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /></a></li><li><a href='http://stitchgnomercy.wordpress.com'><img alt='' src='http://1.gravatar.com/avatar/124ded89c18c3ae0a870f7d711eb763a?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /></a></li><li><a href='http://cyclewriteblog.wordpress.com'><img alt='' src='http://1.gravatar.com/avatar/a818cc978dfd8a18b27251719ec742ec?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /></a></li><li><a href="http://epicallyunreal.home.blog"><img alt='' src='http://0.gravatar.com/avatar/3f0b40b6f65b8939de7897b582b72354?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /></a></li><li><a href="http://natalielouisehebert.wordpress.com"><img alt='' src='http://0.gravatar.com/avatar/647fb10d75f0b6bbeae1d03378ea4801?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /></a></li><li><a href="http://theglance.home.blog"><img alt='' src='http://2.gravatar.com/avatar/b7222259d16137e1d2670e9334687b4a?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /></a></li><li><a href="http://circumspectacles.wordpress.com"><img alt='' src='http://0.gravatar.com/avatar/03ba3e51c71bb1ab9fe824a849752845?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /></a></li><li><a href='http://tempocyclist.com'><img alt='' src='http://2.gravatar.com/avatar/b08d0975320b84eb36c3d2788035e831?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /></a></li><li><a href="http://ceco.wordpress.com"><img alt='' src='http://2.gravatar.com/avatar/87d3af7d1008dc1737dec0a47f8b7fec?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /></a></li><li><a href=""><img alt='' src='http://1.gravatar.com/avatar/4c9ec2b317598638616d78aca4b105e4?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /></a></li><li><a href='http://opressiononline.wordpress.com'><img alt='' src='http://0.gravatar.com/avatar/36279ce0676cc406de5042d6416f959f?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /></a></li><li><a href=""><img alt='' src='http://0.gravatar.com/avatar/fcdcdd9eebdf22cae87e45d51dae1f62?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /></a></li><li><a href='http://humanperformancepsychology.wordpress.com'><img alt='' src='http://0.gravatar.com/avatar/0f238bb07e1154f088bba92bb4a583c3?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /></a></li><li><a href=''><img alt='' src='http://2.gravatar.com/avatar/e0bec70aa2065494a8c84f8562a000a5?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /></a></li><li><a href=""><img alt='' src='http://1.gravatar.com/avatar/7183e5819fddc7ce040608712ddb494a?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /></a></li><li><a href=""><img alt='' src='http://0.gravatar.com/avatar/0754174347d7f586af2af9881ab3ad62?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /></a></li><li><a href='http://runawaywidow.wordpress.com'><img alt='' src='http://0.gravatar.com/avatar/f10bbdb56d5686183ec5901d803e328c?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /></a></li><li><a href=''><img alt='' src='http://0.gravatar.com/avatar/612ad4a9fe14713bc2566f6c72151ef9?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /></a></li><li><a href='http://midsummer365project.wordpress.com/'><img alt='' src='http://1.gravatar.com/avatar/74a2a80596dc51ed1d1dafcf61a08bb8?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /></a></li><li><a href="http://suzanlaura.wordpress.com"><img alt='' src='http://0.gravatar.com/avatar/03dae78d2bc34a2faeba199889f8b576?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /></a></li><li><a href="http://piinkdiiva.wordpress.com"><img alt='' src='http://2.gravatar.com/avatar/5dc485d063d386173f8307d66a777cfe?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /></a></li><li><a href=""><img alt='' src='http://2.gravatar.com/avatar/5d7dcbb0d09f6f8086b4e3be4a9b6c6f?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /></a></li><li><a href="http://fitambitiousblonde.wordpress.com"><img alt='' src='http://0.gravatar.com/avatar/c7bff8eb9a46889c037577c6254fdb6c?s=48&#038;d=retro&#038;r=PG' class='avatar avatar-48' height='48' width='48' /></a></li></ul></div></aside><aside id="jp_blogs_i_follow-2" class="widget widget_jp_blogs_i_follow"><h1 class="widget-title">Wordpress blogs we like</h1><ul><li><a href="http://www.masterthemoments.ca/" class="bump-view" data-bump-view="bif">Master The Moments</a></li><li><a href="http://boatingadventuresblog.wordpress.com" class="bump-view" data-bump-view="bif">Boating Adventures</a></li><li><a href="http://feministphilosophers.wordpress.com" class="bump-view" data-bump-view="bif">Feminist Philosophers</a></li><li><a href="http://ainsobriety.wordpress.com" class="bump-view" data-bump-view="bif">ainsobriety</a></li><li><a href="http://natalielouisehebert.wordpress.com" class="bump-view" data-bump-view="bif">On the way to nicer</a></li><li><a href="http://theactivistclassroom.wordpress.com" class="bump-view" data-bump-view="bif">The Activist Classroom</a></li><li><a href="http://fitisafeministissue.com" class="bump-view" data-bump-view="bif">FIT IS A FEMINIST ISSUE</a></li><li><a href="http://chundleby.com" class="bump-view" data-bump-view="bif">chundleby.wordpress.com/</a></li></ul></aside><aside id="archives-2" class="widget widget_archive"><h1 class="widget-title">Archives</h1>		<ul>
+				<li><a href='https://fitisafeministissue.com/2020/01/'>January 2020</a></li>
+	<li><a href='https://fitisafeministissue.com/2019/12/'>December 2019</a></li>
+	<li><a href='https://fitisafeministissue.com/2019/11/'>November 2019</a></li>
+	<li><a href='https://fitisafeministissue.com/2019/10/'>October 2019</a></li>
+	<li><a href='https://fitisafeministissue.com/2019/09/'>September 2019</a></li>
+	<li><a href='https://fitisafeministissue.com/2019/08/'>August 2019</a></li>
+	<li><a href='https://fitisafeministissue.com/2019/07/'>July 2019</a></li>
+	<li><a href='https://fitisafeministissue.com/2019/06/'>June 2019</a></li>
+	<li><a href='https://fitisafeministissue.com/2019/05/'>May 2019</a></li>
+	<li><a href='https://fitisafeministissue.com/2019/04/'>April 2019</a></li>
+	<li><a href='https://fitisafeministissue.com/2019/03/'>March 2019</a></li>
+	<li><a href='https://fitisafeministissue.com/2019/02/'>February 2019</a></li>
+	<li><a href='https://fitisafeministissue.com/2019/01/'>January 2019</a></li>
+	<li><a href='https://fitisafeministissue.com/2018/12/'>December 2018</a></li>
+	<li><a href='https://fitisafeministissue.com/2018/11/'>November 2018</a></li>
+	<li><a href='https://fitisafeministissue.com/2018/10/'>October 2018</a></li>
+	<li><a href='https://fitisafeministissue.com/2018/09/'>September 2018</a></li>
+	<li><a href='https://fitisafeministissue.com/2018/08/'>August 2018</a></li>
+	<li><a href='https://fitisafeministissue.com/2018/07/'>July 2018</a></li>
+	<li><a href='https://fitisafeministissue.com/2018/06/'>June 2018</a></li>
+	<li><a href='https://fitisafeministissue.com/2018/05/'>May 2018</a></li>
+	<li><a href='https://fitisafeministissue.com/2018/04/'>April 2018</a></li>
+	<li><a href='https://fitisafeministissue.com/2018/03/'>March 2018</a></li>
+	<li><a href='https://fitisafeministissue.com/2018/02/'>February 2018</a></li>
+	<li><a href='https://fitisafeministissue.com/2018/01/'>January 2018</a></li>
+	<li><a href='https://fitisafeministissue.com/2017/12/'>December 2017</a></li>
+	<li><a href='https://fitisafeministissue.com/2017/11/'>November 2017</a></li>
+	<li><a href='https://fitisafeministissue.com/2017/10/'>October 2017</a></li>
+	<li><a href='https://fitisafeministissue.com/2017/09/'>September 2017</a></li>
+	<li><a href='https://fitisafeministissue.com/2017/08/'>August 2017</a></li>
+	<li><a href='https://fitisafeministissue.com/2017/07/'>July 2017</a></li>
+	<li><a href='https://fitisafeministissue.com/2017/06/'>June 2017</a></li>
+	<li><a href='https://fitisafeministissue.com/2017/05/'>May 2017</a></li>
+	<li><a href='https://fitisafeministissue.com/2017/04/'>April 2017</a></li>
+	<li><a href='https://fitisafeministissue.com/2017/03/'>March 2017</a></li>
+	<li><a href='https://fitisafeministissue.com/2017/02/'>February 2017</a></li>
+	<li><a href='https://fitisafeministissue.com/2017/01/'>January 2017</a></li>
+	<li><a href='https://fitisafeministissue.com/2016/12/'>December 2016</a></li>
+	<li><a href='https://fitisafeministissue.com/2016/11/'>November 2016</a></li>
+	<li><a href='https://fitisafeministissue.com/2016/10/'>October 2016</a></li>
+	<li><a href='https://fitisafeministissue.com/2016/09/'>September 2016</a></li>
+	<li><a href='https://fitisafeministissue.com/2016/08/'>August 2016</a></li>
+	<li><a href='https://fitisafeministissue.com/2016/07/'>July 2016</a></li>
+	<li><a href='https://fitisafeministissue.com/2016/06/'>June 2016</a></li>
+	<li><a href='https://fitisafeministissue.com/2016/05/'>May 2016</a></li>
+	<li><a href='https://fitisafeministissue.com/2016/04/'>April 2016</a></li>
+	<li><a href='https://fitisafeministissue.com/2016/03/'>March 2016</a></li>
+	<li><a href='https://fitisafeministissue.com/2016/02/'>February 2016</a></li>
+	<li><a href='https://fitisafeministissue.com/2016/01/'>January 2016</a></li>
+	<li><a href='https://fitisafeministissue.com/2015/12/'>December 2015</a></li>
+	<li><a href='https://fitisafeministissue.com/2015/11/'>November 2015</a></li>
+	<li><a href='https://fitisafeministissue.com/2015/10/'>October 2015</a></li>
+	<li><a href='https://fitisafeministissue.com/2015/09/'>September 2015</a></li>
+	<li><a href='https://fitisafeministissue.com/2015/08/'>August 2015</a></li>
+	<li><a href='https://fitisafeministissue.com/2015/07/'>July 2015</a></li>
+	<li><a href='https://fitisafeministissue.com/2015/06/'>June 2015</a></li>
+	<li><a href='https://fitisafeministissue.com/2015/05/'>May 2015</a></li>
+	<li><a href='https://fitisafeministissue.com/2015/04/'>April 2015</a></li>
+	<li><a href='https://fitisafeministissue.com/2015/03/'>March 2015</a></li>
+	<li><a href='https://fitisafeministissue.com/2015/02/'>February 2015</a></li>
+	<li><a href='https://fitisafeministissue.com/2015/01/'>January 2015</a></li>
+	<li><a href='https://fitisafeministissue.com/2014/12/'>December 2014</a></li>
+	<li><a href='https://fitisafeministissue.com/2014/11/'>November 2014</a></li>
+	<li><a href='https://fitisafeministissue.com/2014/10/'>October 2014</a></li>
+	<li><a href='https://fitisafeministissue.com/2014/09/'>September 2014</a></li>
+	<li><a href='https://fitisafeministissue.com/2014/08/'>August 2014</a></li>
+	<li><a href='https://fitisafeministissue.com/2014/07/'>July 2014</a></li>
+	<li><a href='https://fitisafeministissue.com/2014/06/'>June 2014</a></li>
+	<li><a href='https://fitisafeministissue.com/2014/05/'>May 2014</a></li>
+	<li><a href='https://fitisafeministissue.com/2014/04/'>April 2014</a></li>
+	<li><a href='https://fitisafeministissue.com/2014/03/'>March 2014</a></li>
+	<li><a href='https://fitisafeministissue.com/2014/02/'>February 2014</a></li>
+	<li><a href='https://fitisafeministissue.com/2014/01/'>January 2014</a></li>
+	<li><a href='https://fitisafeministissue.com/2013/12/'>December 2013</a></li>
+	<li><a href='https://fitisafeministissue.com/2013/11/'>November 2013</a></li>
+	<li><a href='https://fitisafeministissue.com/2013/10/'>October 2013</a></li>
+	<li><a href='https://fitisafeministissue.com/2013/09/'>September 2013</a></li>
+	<li><a href='https://fitisafeministissue.com/2013/08/'>August 2013</a></li>
+	<li><a href='https://fitisafeministissue.com/2013/07/'>July 2013</a></li>
+	<li><a href='https://fitisafeministissue.com/2013/06/'>June 2013</a></li>
+	<li><a href='https://fitisafeministissue.com/2013/05/'>May 2013</a></li>
+	<li><a href='https://fitisafeministissue.com/2013/04/'>April 2013</a></li>
+	<li><a href='https://fitisafeministissue.com/2013/03/'>March 2013</a></li>
+	<li><a href='https://fitisafeministissue.com/2013/02/'>February 2013</a></li>
+	<li><a href='https://fitisafeministissue.com/2013/01/'>January 2013</a></li>
+	<li><a href='https://fitisafeministissue.com/2012/12/'>December 2012</a></li>
+	<li><a href='https://fitisafeministissue.com/2012/11/'>November 2012</a></li>
+	<li><a href='https://fitisafeministissue.com/2012/10/'>October 2012</a></li>
+	<li><a href='https://fitisafeministissue.com/2012/09/'>September 2012</a></li>
+	<li><a href='https://fitisafeministissue.com/2012/08/'>August 2012</a></li>
+		</ul>
+			</aside><aside id="meta-2" class="widget widget_meta"><h1 class="widget-title">Meta</h1>			<ul>
+			<li><a href="https://wordpress.com/start?ref=wplogin">Register</a></li>			<li><a href="https://fitisafeministissue.wordpress.com/wp-login.php">Log in</a></li>
+			<li><a href="https://fitisafeministissue.com/feed/">Entries feed</a></li>
+			<li><a href="https://fitisafeministissue.com/comments/feed/">Comments feed</a></li>
+			<li><a href="https://wordpress.com/" title="Powered by WordPress, state-of-the-art semantic personal publishing platform.">WordPress.com</a></li>			</ul>
+			</aside><aside id="linkcat-1356" class="widget widget_links"><h1 class="widget-title">Blogroll</h1>
+	<ul class='xoxo blogroll'>
+<li><a href="http://breakingmuscle.com/">Breaking Muscle</a></li>
+<li><a href="http://www.cultureandmovement.com" title="&#8220;This site offers a variety of information and resources related to culture and movement, literal and figurative, real and imagined. Culture moves us and we can use culture to move ourselves, our communities, and our world(s).  Culture &amp; Movement buil">Culture &amp; Movement</a></li>
+<li><a href="http://gokaleo.com/">Go Kaleo Eat real food. Move around a lot. Lift heavy things. And skip the kool-aid.</a></li>
+<li><a href="http://www.stumptuous.com/">Stumptuous: Women&#039;s weightlifting resources and some amazing rants</a></li>
+<li><a href="http://cszto.blogspot.ca/">The Rabbit Hole A socio-cultural commentary on anything related to sport, physical activity and health.</a></li>
+
+	</ul>
+</aside>
+</div><!-- #secondary -->
+
+	</div><!-- #content -->
+
+	<footer id="colophon" class="site-footer" role="contentinfo">
+				<div class="site-info">
+	<a href="https://wordpress.com/?ref=footer_blog" rel="nofollow">Blog at WordPress.com.</a>
+	
+	</div><!-- .site-info -->
+
+	</footer><!-- #colophon -->
+</div><!-- #page -->
+
+<!--  -->
+<div id="wpcom-follow-bubbles-jp_blogs_i_follow-2" class="wpcom-follow-bubbles"><div id="wpcom-bubble-jp_blogs_i_follow-2-1" class="wpcom-bubble wpcom-follow-bubble"><div class="bubble-txt"><a href="http://www.masterthemoments.ca/" class="bump-view" data-bump-view="bif">Master The Moments</a><p></p></div></div><div id="wpcom-bubble-jp_blogs_i_follow-2-2" class="wpcom-bubble wpcom-follow-bubble"><div class="bubble-txt"><a href="http://boatingadventuresblog.wordpress.com" class="bump-view" data-bump-view="bif">Boating Adventures</a><p></p></div></div><div id="wpcom-bubble-jp_blogs_i_follow-2-3" class="wpcom-bubble wpcom-follow-bubble"><div class="bubble-txt"><a href="http://feministphilosophers.wordpress.com" class="bump-view" data-bump-view="bif">Feminist Philosophers</a><p><small>News feminist philosophers can use</small></p></div></div><div id="wpcom-bubble-jp_blogs_i_follow-2-4" class="wpcom-bubble wpcom-follow-bubble"><div class="bubble-txt"><a href="http://ainsobriety.wordpress.com" class="bump-view" data-bump-view="bif">ainsobriety</a><p><small>Trying to ace sober living</small></p></div></div><div id="wpcom-bubble-jp_blogs_i_follow-2-5" class="wpcom-bubble wpcom-follow-bubble"><div class="bubble-txt"><a href="http://natalielouisehebert.wordpress.com" class="bump-view" data-bump-view="bif">On the way to nicer</a><p><small>(aka learning how not to be an asshole)</small></p></div></div><div id="wpcom-bubble-jp_blogs_i_follow-2-6" class="wpcom-bubble wpcom-follow-bubble"><div class="bubble-txt"><a href="http://theactivistclassroom.wordpress.com" class="bump-view" data-bump-view="bif">The Activist Classroom</a><p><small>Because pedagogy is a public practice.</small></p></div></div><div id="wpcom-bubble-jp_blogs_i_follow-2-7" class="wpcom-bubble wpcom-follow-bubble"><div class="bubble-txt"><a href="http://fitisafeministissue.com" class="bump-view" data-bump-view="bif">FIT IS A FEMINIST ISSUE</a><p><small>Feminist reflections on fitness, sport, and health</small></p></div></div><div id="wpcom-bubble-jp_blogs_i_follow-2-8" class="wpcom-bubble wpcom-follow-bubble"><div class="bubble-txt"><a href="http://chundleby.com" class="bump-view" data-bump-view="bif">chundleby.wordpress.com/</a><p></p></div></div></div><script src='//0.gravatar.com/js/gprofiles.js?ver=202001y'></script>
+<script>
+var WPGroHo = {"my_hash":""};
+</script>
+<script type='text/javascript' src='https://s1.wp.com/wp-content/mu-plugins/gravatar-hovercards/wpgroho.js?m=1380573781h'></script>
+
+	<script>
+		//initialize and attach hovercards to all gravatars
+		jQuery( document ).ready( function( $ ) {
+
+			if (typeof Gravatar === "undefined"){
+				return;
+			}
+
+			if ( typeof Gravatar.init !== "function" ) {
+				return;
+			}			
+
+			Gravatar.profile_cb = function( hash, id ) {
+				WPGroHo.syncProfileData( hash, id );
+			};
+			Gravatar.my_hash = WPGroHo.my_hash;
+			Gravatar.init( 'body', '#wp-admin-bar-my-account' );
+		});
+	</script>
+
+		<div style="display:none">
+	<div class="grofile-hash-map-6c997943b663760dda0eb88a7b7a1056">
+	</div>
+	</div>
+<script>
+var HighlanderComments = {"loggingInText":"Logging In\u2026","submittingText":"Posting Comment\u2026","postCommentText":"Post Comment","connectingToText":"Connecting to %s","commentingAsText":"%1$s: You are commenting using your %2$s account.","logoutText":"Log Out","loginText":"Log In","connectURL":"https:\/\/fitisafeministissue.wordpress.com\/public.api\/connect\/?action=request&domain=fitisafeministissue.com","logoutURL":"https:\/\/fitisafeministissue.wordpress.com\/wp-login.php?action=logout&_wpnonce=77140f984c","homeURL":"https:\/\/fitisafeministissue.com\/","postID":"192619","gravDefault":"retro","enterACommentError":"Please enter a comment","enterEmailError":"Please enter your email address here","invalidEmailError":"Invalid email address","enterAuthorError":"Please enter your name here","gravatarFromEmail":"This picture will show whenever you leave a comment. Click to customize it.","logInToExternalAccount":"Log in to use details from one of these accounts.","change":"Change","changeAccount":"Change Account","comment_registration":"","userIsLoggedIn":"","isJetpack":"","text_direction":"ltr"};
+</script>
+<script type='text/javascript' src='https://s0.wp.com/_static/??/wp-content/js/jquery/jquery.autoresize.js,/wp-content/mu-plugins/highlander-comments/script.js?m=1573483029j'></script>
+
+	<div id="carousel-reblog-box">
+		<form action="#" name="carousel-reblog">
+			<textarea id="carousel-reblog-content" name="carousel-reblog-content" placeholder="Add your thoughts here... (optional)"></textarea>
+			<label for="carousel-reblog-to-blog-id" id="carousel-reblog-lblogid">Post to</label>
+			<select name="carousel-reblog-to-blog-id" id="carousel-reblog-to-blog-id">
+						</select>
+
+			<div class="submit">
+				<span class="canceltext"><a href="#" class="cancel">Cancel</a></span>
+				<input type="submit" name="carousel-reblog-submit" class="button" id="carousel-reblog-submit" value="Reblog Post" />
+				<input type="hidden" id="carousel-reblog-blog-id" value="39833017" />
+				<input type="hidden" id="carousel-reblog-blog-url" value="https://fitisafeministissue.com" />
+				<input type="hidden" id="carousel-reblog-blog-title" value="FIT IS A FEMINIST ISSUE" />
+				<input type="hidden" id="carousel-reblog-post-url" value="" />
+				<input type="hidden" id="carousel-reblog-post-title" value="" />
+			</div>
+
+			<input type="hidden" id="_wpnonce" name="_wpnonce" value="39375174b0" /><input type="hidden" name="_wp_http_referer" value="/2020/01/01/our-top-ten-posts-of-2019-icymi/" />		</form>
+
+		<div class="arrow"></div>
+	</div>
+
+	<script type="text/javascript">
+		window.WPCOM_sharing_counts = {"https:\/\/fitisafeministissue.com\/2020\/01\/01\/our-top-ten-posts-of-2019-icymi\/":192619};
+	</script>
+						<script src='https://platform.twitter.com/widgets.js?ver=20111117'></script>
+<link rel='stylesheet' id='all-css-0-3' href='https://s2.wp.com/_static/??/wp-content/plugins/gutenberg-blocks/jetpack-layout-grid/blocks/front.css,/wp-content/mu-plugins/carousel/jetpack-carousel.css?m=1576278967j&cssminify=yes' type='text/css' media='all' />
+<script>
+var comment_like_text = {"loading":"Loading..."};
+</script>
+<script>
+var jpfbembed = {"appid":"249643311490","locale":"en_US"};
+</script>
+<script>
+var actionbardata = {"siteID":"39833017","siteName":"FIT IS A FEMINIST ISSUE","siteURL":"https:\/\/fitisafeministissue.com","icon":"<img alt='' src='https:\/\/s2.wp.com\/i\/logo\/wpcom-gray-white.png' class='avatar avatar-50' height='50' width='50' \/>","canManageOptions":"","canCustomizeSite":"","isFollowing":"","themeSlug":"pub\/button-2","signupURL":"https:\/\/wordpress.com\/start\/","loginURL":"https:\/\/wordpress.com\/log-in?redirect_to=https%3A%2F%2Ffitisafeministissue.com%2F2020%2F01%2F01%2Four-top-ten-posts-of-2019-icymi%2F&signup_flow=account&domain=fitisafeministissue.com","themeURL":"https:\/\/wordpress.com\/theme\/button-2\/","xhrURL":"https:\/\/fitisafeministissue.com\/wp-admin\/admin-ajax.php","nonce":"e500d2c8f9","isSingular":"1","isFolded":"","isLoggedIn":"","isMobile":"","subscribeNonce":"<input type=\"hidden\" id=\"_wpnonce\" name=\"_wpnonce\" value=\"9a00479f5b\" \/>","referer":"https:\/\/fitisafeministissue.com\/2020\/01\/01\/our-top-ten-posts-of-2019-icymi\/","canFollow":"1","feedID":"14147416","statusMessage":"","customizeLink":"https:\/\/fitisafeministissue.wordpress.com\/wp-admin\/customize.php?url=https%3A%2F%2Ffitisafeministissue.wordpress.com%2F2020%2F01%2F01%2Four-top-ten-posts-of-2019-icymi%2F","postID":"192619","shortlink":"https:\/\/wp.me\/p2H8o1-O6L","canEditPost":"","editLink":"https:\/\/wordpress.com\/post\/fitisafeministissue.com\/192619","statsLink":"https:\/\/wordpress.com\/stats\/post\/192619\/fitisafeministissue.com","i18n":{"view":"View site","follow":"Follow","following":"Following","edit":"Edit","login":"Log in","signup":"Sign up","customize":"Customize","report":"Report this content","themeInfo":"Get theme: Button 2","shortlink":"Copy shortlink","copied":"Copied","followedText":"New posts from this site will now appear in your <a href=\"https:\/\/wordpress.com\/read\">Reader<\/a>","foldBar":"Collapse this bar","unfoldBar":"Expand this bar","editSubs":"Manage subscriptions","viewReader":"View site in Reader","viewReadPost":"View post in Reader","subscribe":"Sign me up","enterEmail":"Enter your email address","followers":"Join 40,489 other followers","alreadyUser":"Already have a WordPress.com account? <a href=\"https:\/\/wordpress.com\/log-in?redirect_to=https%3A%2F%2Ffitisafeministissue.com%2F2020%2F01%2F01%2Four-top-ten-posts-of-2019-icymi%2F&signup_flow=account&domain=fitisafeministissue.com\">Log in now.<\/a>","stats":"Stats"}};
+</script>
+<script>
+var jetpackCarouselStrings = {"widths":[370,700,1000,1200,1400,2000],"is_logged_in":"","lang":"en","ajaxurl":"https:\/\/fitisafeministissue.com\/wp-admin\/admin-ajax.php","nonce":"aa6cc8a873","display_exif":"1","display_geo":"1","single_image_gallery":"1","single_image_gallery_media_file":"","background_color":"black","comment":"Comment","post_comment":"Post Comment","write_comment":"Write a Comment...","loading_comments":"Loading Comments...","download_original":"View full size <span class=\"photo-size\">{0}<span class=\"photo-size-times\">\u00d7<\/span>{1}<\/span>","no_comment_text":"Please be sure to submit some text with your comment.","no_comment_email":"Please provide an email address to comment.","no_comment_author":"Please provide your name to comment.","comment_post_error":"Sorry, but there was an error posting your comment. Please try again later.","comment_approved":"Your comment was approved.","comment_unapproved":"Your comment is in moderation.","camera":"Camera","aperture":"Aperture","shutter_speed":"Shutter Speed","focal_length":"Focal Length","copyright":"Copyright","comment_registration":"0","require_name_email":"1","login_url":"https:\/\/fitisafeministissue.wordpress.com\/wp-login.php?redirect_to=https%3A%2F%2Ffitisafeministissue.com%2F2020%2F01%2F01%2Four-top-ten-posts-of-2019-icymi%2F","blog_id":"39833017","meta_data":["camera","aperture","shutter_speed","focal_length","copyright"],"local_comments_commenting_as":"<fieldset><label for=\"email\">Email (Required)<\/label> <input type=\"text\" name=\"email\" class=\"jp-carousel-comment-form-field jp-carousel-comment-form-text-field\" id=\"jp-carousel-comment-form-email-field\" \/><\/fieldset><fieldset><label for=\"author\">Name (Required)<\/label> <input type=\"text\" name=\"author\" class=\"jp-carousel-comment-form-field jp-carousel-comment-form-text-field\" id=\"jp-carousel-comment-form-author-field\" \/><\/fieldset><fieldset><label for=\"url\">Website<\/label> <input type=\"text\" name=\"url\" class=\"jp-carousel-comment-form-field jp-carousel-comment-form-text-field\" id=\"jp-carousel-comment-form-url-field\" \/><\/fieldset>","reblog":"Reblog","reblogged":"Reblogged","reblog_add_thoughts":"Add your thoughts here... (optional)","reblogging":"Reblogging...","post_reblog":"Post Reblog","stats_query_args":"blog=39833017&v=wpcom&tz=-5&user_id=0&subd=fitisafeministissue","is_public":"1","reblog_enabled":""};
+</script>
+<script>
+var sharing_js_options = {"lang":"en","counts":"1","is_stats_active":"1"};
+</script>
+<script type='text/javascript' src='https://s2.wp.com/_static/??-eJyVU+1y2yAQfKEi7Hby9SOTR+kgOMkn8VUOpPjteySSqzqOZvwL2GP3lgXkHIUOPoPPciBpYEIN8b0Z6IfclFwR0ZYePUmLI5D8U6DASXljIa2b0WtbDBerEFKWE3gTUi3FYM8dWts49Nfaq3BXrBWEGQQYzOj7paU8NMdn2drAQKBMgqd6XDogzDtedXCOIfHpeajmW0kzRriH9B/wnfu+8LKF1H/aYyLkqPQoYKpcHYrPJsxeLuUr+Fo2n8Bx91ha2Zacgxc/pSKC/OHIqa8x7jO8mrBXGcOdPBox8sH9KLqgC4kO329d9xpRgmjPty55k++Mpq/q9UZJIAtbG+ar5Q5/CVb+ZgOyUxraEDhm14LZYSnDrkSrEodHGRLPRJggJaxHuGB3KuTETr68iS1J18wr6TK7lR/Ff5Ft8YH/WTovQ7PddevhqhQKgb08vRXY8zciOcjiV3NYAg3J7eyvP1B0VmGSdFKJf+k6MunNvR4fnh6fHw7Hl8fhL2ohoSo='></script>
+<script type='text/javascript'>
+( 'fetch' in window ) || document.write( '<script src="https://s0.wp.com/wp-includes/js/dist/vendor/wp-polyfill-fetch.min.js?m=1573572739h&#038;ver=3.0.0"></scr' + 'ipt>' );( document.contains ) || document.write( '<script src="https://s1.wp.com/wp-includes/js/dist/vendor/wp-polyfill-node-contains.min.js?m=1540208548h&#038;ver=3.26.0-0"></scr' + 'ipt>' );( window.FormData && window.FormData.prototype.keys ) || document.write( '<script src="https://s1.wp.com/wp-includes/js/dist/vendor/wp-polyfill-formdata.min.js?m=1550600082h&#038;ver=3.0.12"></scr' + 'ipt>' );( Element.prototype.matches && Element.prototype.closest ) || document.write( '<script src="https://s2.wp.com/wp-includes/js/dist/vendor/wp-polyfill-element-closest.min.js?m=1540208548h&#038;ver=2.0.2"></scr' + 'ipt>' );
+</script>
+<script type='text/javascript'>
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-twitter', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomtwitter', 'menubar=1,resizable=1,width=600,height=350' );
+				return false;
+			});
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-facebook', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomfacebook', 'menubar=1,resizable=1,width=600,height=400' );
+				return false;
+			});
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-tumblr', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomtumblr', 'menubar=1,resizable=1,width=450,height=450' );
+				return false;
+			});
+</script>
+<script type="text/javascript">
+// <![CDATA[
+(function() {
+try{
+  if ( window.external &&'msIsSiteMode' in window.external) {
+    if (window.external.msIsSiteMode()) {
+      var jl = document.createElement('script');
+      jl.type='text/javascript';
+      jl.async=true;
+      jl.src='/wp-content/plugins/ie-sitemode/custom-jumplist.php';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(jl, s);
+    }
+  }
+}catch(e){}
+})();
+// ]]>
+</script>		<iframe src='https://widgets.wp.com/likes/master.html?ver=20190321#ver=20190321' scrolling='no' id='likes-master' name='likes-master' style='display:none;'></iframe>
+		<div id='likes-other-gravatars'><div class="likes-text"><span>%d</span> bloggers like this:</div><ul class="wpl-avatars sd-like-gravatars"></ul></div>
+		<iframe src='https://widgets.wp.com/likes/master.html?ver=20190321#ver=20190321' scrolling='no' id='likes-master' name='likes-master' style='display:none;'></iframe>
+		<div id='likes-other-gravatars'><div class="likes-text"><span>%d</span> bloggers like this:</div><ul class="wpl-avatars sd-like-gravatars"></ul></div>
+<script src="//stats.wp.com/w.js?60" type="text/javascript" async defer></script>
+<script type="text/javascript">
+_tkq = window._tkq || [];
+_stq = window._stq || [];
+_tkq.push(['storeContext', {'blog_id':'39833017','blog_tz':'-5','user_lang':'en','blog_lang':'en','user_id':'0'}]);
+_stq.push(['view', {'blog':'39833017','v':'wpcom','tz':'-5','user_id':'0','post':'192619','subd':'fitisafeministissue'}]);
+_stq.push(['extra', {'crypt':'UE5tW3cvZGRQdy02b3QmaFtqUDRmREhGYy55aEViS2lqNm9odS9MMmwrP3ZlUkE5cmk9TGNrK1I1UDFqdDM/fG9GZldjUXIxaj9JZVpXPTJUZXphP2ZndVFWclBaQi5MS2ZEPXBpUm4vYWRzczEyel0/THMvJmJiR3dpSGl5WzNNUDdwanZXUVtkajYuREU0UX5neWMzOGZHdVpFeiZbaEFad1k9L3dIW0dFLS5RLXpQUkMxJURtakQlfG42V0pvN3R8ST9yLVZkazhsWVJPZmVVamZdd1N+NixmZmYxcE1uZCZbaTQvLDkxZ1NfZHVJX0RyaVFRVUEwK1ZWRUphcXA9U1BWQ3d6UDF+bH5RVEsuUTlFRStFSWNSSz1fLzYyYyUyZjVOfnNLTlRDWW9iVjVWY1d0SltiW2pdR3RCXXl0'}]);
+_stq.push([ 'clickTrackerInit', '39833017', '192619' ]);
+	</script>
+<noscript><img src="https://pixel.wp.com/b.gif?v=noscript" style="height:0px;width:0px;overflow:hidden" alt="" /></noscript>
+<script>
+if ( 'object' === typeof wpcom_mobile_user_agent_info ) {
+
+	wpcom_mobile_user_agent_info.init();
+	var mobileStatsQueryString = "";
+	
+	if( false !== wpcom_mobile_user_agent_info.matchedPlatformName )
+		mobileStatsQueryString += "&x_" + 'mobile_platforms' + '=' + wpcom_mobile_user_agent_info.matchedPlatformName;
+	
+	if( false !== wpcom_mobile_user_agent_info.matchedUserAgentName )
+		mobileStatsQueryString += "&x_" + 'mobile_devices' + '=' + wpcom_mobile_user_agent_info.matchedUserAgentName;
+	
+	if( wpcom_mobile_user_agent_info.isIPad() )
+		mobileStatsQueryString += "&x_" + 'ipad_views' + '=' + 'views';
+
+	if( "" != mobileStatsQueryString ) {
+		new Image().src = document.location.protocol + '//pixel.wp.com/g.gif?v=wpcom-no-pv' + mobileStatsQueryString + '&baba=' + Math.random();
+	}
+	
+}
+</script>
+</body>
+</html>

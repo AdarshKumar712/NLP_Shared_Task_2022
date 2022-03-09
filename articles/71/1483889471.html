@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"f970b08a5a",applicationID:"8903983"};window.NREUM||(NREUM={}),__nr_require=function(n,e,t){function r(t){if(!e[t]){var i=e[t]={exports:{}};n[t][0].call(i.exports,function(e){var i=n[t][1][e];return r(i||e)},i,i.exports)}return e[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(n,e,t){function r(){}function i(n,e,t){return function(){return o(n,[u.now()].concat(f(arguments)),e?null:this,t),e?void 0:this}}var o=n("handle"),a=n(4),f=n(5),c=n("ee").get("tracer"),u=n("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(n,e){s[e]=i(d+e,!0,"api")}),s.addPageAction=i(d+"addPageAction",!0),s.setCurrentRouteName=i(d+"routeName",!0),e.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(n,e){var t={},r=this,i="function"==typeof e;return o(l+"tracer",[u.now(),n,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return e.apply(this,arguments)}catch(n){throw c.emit("fn-err",[arguments,this,n],t),n}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(n,e){m[e]=i(l+e)}),newrelic.noticeError=function(n,e){"string"==typeof n&&(n=new Error(n)),o("err",[n,u.now(),!1,e])}},{}],2:[function(n,e,t){function r(n,e){var t=n.getEntries();t.forEach(function(n){"first-paint"===n.name?a("timing",["fp",Math.floor(n.startTime)]):"first-contentful-paint"===n.name&&a("timing",["fcp",Math.floor(n.startTime)])})}function i(n){if(n instanceof c&&!s){var e,t=Math.round(n.timeStamp);e=t>1e12?Date.now()-t:f.now()-t,s=!0,a("timing",["fi",t,{type:n.type,fid:e}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var o,a=n("handle"),f=n("loader"),c=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){o=new PerformanceObserver(r);try{o.observe({entryTypes:["paint"]})}catch(u){}}if("addEventListener"in document){var s=!1,p=["click","keydown","mousedown","pointerdown","touchstart"];p.forEach(function(n){document.addEventListener(n,i,!1)})}}},{}],3:[function(n,e,t){function r(n,e){if(!i)return!1;if(n!==i)return!1;if(!e)return!0;if(!o)return!1;for(var t=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],4:[function(n,e,t){function r(n,e){var t=[],r="",o=0;for(r in n)i.call(n,r)&&(t[o]=e(r,n[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],5:[function(n,e,t){function r(n,e,t){e||(e=0),"undefined"==typeof t&&(t=n?n.length:0);for(var r=-1,i=t-e||0,o=Array(i<0?0:i);++r<i;)o[r]=n[e+r];return o}e.exports=r},{}],6:[function(n,e,t){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(n,e,t){function r(){}function i(n){function e(n){return n&&n instanceof r?n:n?c(n,f,o):o()}function t(t,r,i,o){if(!d.aborted||o){n&&n(t,r,i);for(var a=e(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function l(n,e){h[n]=v(n).concat(e)}function m(n,e){var t=h[n];if(t)for(var r=0;r<t.length;r++)t[r]===e&&t.splice(r,1)}function v(n){return h[n]||[]}function g(n){return p[n]=p[n]||i(t)}function w(n,e){u(n,function(n,t){e=e||"feature",y[t]=e,e in s||(s[e]=[])})}var h={},y={},b={on:l,addEventListener:l,removeEventListener:m,emit:t,get:g,listeners:v,context:e,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var f="nr@context",c=n("gos"),u=n(4),s={},p={},d=e.exports=i();d.backlog=s},{}],gos:[function(n,e,t){function r(n,e,t){if(i.call(n,e))return n[e];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(n,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return n[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(n,e,t){function r(n,e,t,r){i.buffer([n],r),i.emit(n,e,t)}var i=n("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(n,e,t){function r(n){var e=typeof n;return!n||"object"!==e&&"function"!==e?-1:n===window?0:a(n,o,function(){return i++})}var i=1,o="nr@id",a=n("gos");e.exports=r},{}],loader:[function(n,e,t){function r(){if(!x++){var n=E.info=NREUM.info,e=l.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(n&&n.licenseKey&&n.applicationID&&e))return s.abort();u(y,function(e,t){n[e]||(n[e]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=l.createElement("script");t.src="https://"+n.agent,e.parentNode.insertBefore(t,e)}}function i(){"complete"===l.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=n("handle"),u=n(4),s=n("ee"),p=n(3),d=window,l=d.document,m="addEventListener",v="attachEvent",g=d.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:g,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1158.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=e.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};n(1),n(2),l[m]?(l[m]("DOMContentLoaded",o,!1),d[m]("load",r,!1)):(l[v]("onreadystatechange",i),d[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=n(6)},{}],"wrap-function":[function(n,e,t){function r(n){return!(n&&n instanceof Function&&n.apply&&!n[a])}var i=n("ee"),o=n(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;e.exports=function(n,e){function t(n,e,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){d([u,"",[r,a,i],f])}s(e+"start",[r,a,i],f);try{return c=n.apply(a,r)}catch(p){throw s(e+"err",[r,a,p],f),p}finally{s(e+"end",[r,a,c],f)}}return r(n)?n:(e||(e=""),nrWrapper[a]=n,p(n,nrWrapper),nrWrapper)}function u(n,e,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<e.length;c++)f=e[c],a=n[f],r(a)||(n[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||e){var o=c;c=!0;try{n.emit(t,r,i,e)}catch(a){d([a,t,r,i])}c=o}}function p(n,e){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(n);return t.forEach(function(t){Object.defineProperty(e,t,{get:function(){return n[t]},set:function(e){return n[t]=e,e}})}),e}catch(r){d([r])}for(var i in n)f.call(n,i)&&(e[i]=n[i]);return e}function d(e){try{n.emit("internal-error",e)}catch(t){}}return n||(n=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","queueTime":0,"licenseKey":"f970b08a5a","agent":"","transactionName":"ZlEEYhFRCBFUW0QNWV8bIEMNUxILWlYfB1tCGhBfBkcVWFRKRA1VXVE=","applicationID":"8903983","errorBeacon":"bam.nr-data.net","applicationTime":227}</script>
+    <!-- webmaster verification -->
+    <meta name="google-site-verification" content="JZ40ixIsC0nzktcyy8PSfX75HZzS4J7aNccyLFvOmMg" />
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <title>Is the next gen Xbox GPU more powerful than the RX 5700 XT? - Hardware - News - HEXUS.net</title>
+    <link rel="icon" href="https://hexus.net/media/img/favicon.gif?161010020811" type="image/gif" />
+    <script type="text/javascript" src="https://hexus.net/media/js/jquery-1.8.3.min.js?262509071013"></script>
+    <script type="text/javascript" src="https://hexus.net/media/js/jquery.colorbox-min.js?161010020811"></script>
+    <script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js" type="text/javascript" charset="utf-8"></script>
+    <script>MEDIA_URL = 'https://hexus.net/media/';COMPO_ID = '9999991'; IS_MOBILE_SITE=false;</script>
+    <script type="text/javascript" src="https://hexus.net/media/js/global.js?431117151013"></script>
+    
+    
+    <link rel="stylesheet" type="text/css" href="https://hexus.net/media/css/global.css?171511100516" />
+    <link rel="stylesheet" type="text/css" href="https://hexus.net/media/css/colorbox.css?161010020811" />
+    <!--[if lte IE 6]>
+    <link rel="stylesheet" type="text/css" href="https://hexus.net/media/css/ie6.css?183912030112" />
+    <![endif]-->
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    
+    <link href="http://hexus.net/rss/gaming/" rel="alternate" type="application/rss+xml" title="HEXUS.net RSS feed" />
+    <script type='text/javascript'>
+    var OA_zones = {
+    'zone-masthead' : 41,
+    'leaderboard' : 42,
+    'rect' : 43,
+    'box' : 44,
+    //'skyscraper' : 45,
+    'home_second_rect': 129
+    }
+    </script>
+    
+    
+
+
+<meta name="description" content="Data leaked onto GitHub indicates the next Xbox may come packing a custom 56CU Navi GPU." />
+<link rel="stylesheet" type="text/css" href="https://hexus.net/media/css/article.css?201314020913" />
+<script type="text/javascript" src="https://hexus.net/media/js/jquery.form.js?435215061011"></script>
+
+<script type="text/javascript">
+$(function() {
+        $('#quick_comment_form').live('submit', function() {
+        $(this).ajaxSubmit({
+            iframe: true,
+            beforeSubmit: function()  { 
+                $('#qr_submit').attr("disabled", "disabled"); 
+                var t=setTimeout("$('#article_comments').load('/article_comments_ajax_full/138245/?posted=1');", 3000);
+            }
+        }); 
+        return false; 
+    });
+    $('#see_newer').click(function() {
+        $('#article_comments').load('/article_comments_ajax_full/138245/');
+        return false; 
+    });
+    $('a.quote_button').live('click', function() {
+        var postid = $(this).attr('tabindex');
+        $(window).scrollTop($('textarea#message').offset().top);
+        $('textarea#message').val("Loading quote");
+        $.get('/article_comments_quote/411839/' + postid + '/', function(data) {
+            $('textarea#message').val(data);
+        });
+        return false;
+    });
+
+    
+    // forcing width for firefox tables
+    $('article#articlecontent > table').each(function(index) {
+        if(parseInt($(this).css('width')) > 769) {
+            $(this).css('width', '769px');
+            $(this).css('table-layout', 'fixed');
+        }
+    });
+});
+</script>
+<style>
+td {
+    word-wrap:break-word;
+}
+</style>
+
+
+<meta property="og:url" content="https://hexus.net/gaming/news/hardware/138245-is-next-gen-xbox-gpu-powerful-rx-5700-xt/">
+<meta property="og:title" content="Is the next gen Xbox GPU more powerful than the RX 5700 XT?">
+<meta property="og:description" content="Data leaked onto GitHub indicates the next Xbox may come packing a custom 56CU Navi GPU.">
+<meta property="og:image" content="https://hexus.net/media/uploaded/2019/12/fef3b6cd-5faa-48f8-af47-00363de00e7e.jpg"/>
+<meta property="fb:app_id" content="1750486618313951"/>
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_GB">
+<meta property="og:site_name" content="HEXUS">
+<meta property="article:author" content="https://www.facebook.com/HEXUSnet">
+<meta property="og:article:author" content="Mark Tyson">
+<meta property="og:article:published_time " content="31 December 2019, 10:30">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@HEXUSNET">
+<meta name="twitter:title" content="Is the next gen Xbox GPU more powerful than the RX 5700 XT?">
+<meta name="twitter:description" content="Data leaked onto GitHub indicates the next Xbox may come packing a custom 56CU Navi GPU.">
+<meta name="twitter:creator" content="@HEXUSNET">
+<meta name="twitter:image:src" content="https://hexus.net/media/uploaded/2019/12/fef3b6cd-5faa-48f8-af47-00363de00e7e.jpg">
+<meta name="twitter:image:alt" content="HEXUS.net">
+<meta name="twitter:domain" content="hexus.net">
+
+<link rel="canonical" href="https://hexus.net/gaming/news/hardware/138245-is-next-gen-xbox-gpu-powerful-rx-5700-xt/" />
+
+
+    <!-- JSON-LD markup -->
+    <script type="application/ld+json">
+        {
+            "@context" : "http://schema.org",
+            "@type" : "Article",
+            "name" : "Is the next gen Xbox GPU more powerful than the RX 5700 XT?",
+            "headline" : "Is the next gen Xbox GPU more powerful than the RX 5700 XT?",
+            "inLanguage":"en",
+            "url" : "https://hexus.net/gaming/news/hardware/138245-is-next-gen-xbox-gpu-powerful-rx-5700-xt/",
+            "image": "https://hexus.net/media/uploaded/2019/12/fef3b6cd-5faa-48f8-af47-00363de00e7e.jpg",
+            "datePublished" : "31 December 2019, 10:30",
+            "dateModified" : "31 December 2019, 10:30",
+            "commentCount" : 1,
+            "discussionUrl" : "https://forums.hexus.net/showthread.php?t=411839",
+            "description" : "Data leaked onto GitHub indicates the next Xbox may come packing a custom 56CU Navi GPU.",
+            "author" : {
+                "@type" : "Person",
+                "name" : "Mark Tyson"
+            },
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://hexus.net/gaming/news/hardware/138245-is-next-gen-xbox-gpu-powerful-rx-5700-xt/"
+            },
+            "publisher": {
+                "@type": "Organization",
+                "name": "HEXUS",
+                "url" : "https://hexus.net",
+                "sameAs": [
+                    "https://www.facebook.com/HEXUSnet",
+                    "https://twitter.com/HEXUSNET"
+                ],
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://www.themediateam.net/static/img/resources/hexus/HEXUS.jpg"
+                }
+            }
+        }
+    </script>
+
+
+
+    
+    
+        <!-- script type='text/javascript' src='http://uk.ads.hexus.net/ox/www/delivery/spcjs.php?id=7'></script -->
+        <script type='text/javascript' src='https://serve.themediateam.net/ox/www/delivery/spcjs.php?id=7'></script>
+        <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-26275264-1'],
+            ['_trackPageview'],
+            ['_trackPageLoadTime'],
+            ['b._setAccount', 'UA-27212239-1'],
+            ['b._trackPageview'],
+            ['b._trackPageLoadTime']);
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+        </script>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133454118-5"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-133454118-5');
+        </script>
+
+    
+</head>
+<body style="background-color: #00000;">
+
+    
+    <div id="left_tabs">
+        <a href="/static/vacancies/"><img src="https://hexus.net/media/img/tabs_vacancies.png?053609080213" alt="vacancies" /></a>
+        <a href="/advertise/"><img src="https://hexus.net/media/img/tabs_advertise.png?525417061211" alt="advertise" /></a>
+        <a href="/contact/"><img src="https://hexus.net/media/img/tabs_contact_us.png?525417061211" alt="contact" /></a>
+        <a href="/news_tip/"><img src="https://hexus.net/media/img/tabs_news_tip.png?525417061211" alt="news tip" /></a>
+        <a href="/vault/"><img src="https://hexus.net/media/img/tabs_vault.png?525417061211" alt="The Vault" /></a>
+    </div>
+    <div id="middle">
+    
+        
+            <div id="cookie_bar">                
+                <a href="/static/cookies/">By reading this site you agree to our cookie policy. Click to find out more. </a><a href="#" id="close_cookie_bar">[x]</a>
+            </div>
+        
+        
+                     
+            <a id="compo_bar" href="https://hexus.net/epicgiveaway/">It's EPIC GIVEAWAY TIME! NEW PRIZE EVERYDAY!</a>
+            <a href="#" id="close_compo_bar">[x]</a>
+            
+        
+        
+        <!-- div id="logo_container"><a href="/" id="logo"><img src="https://hexus.net/media/img/Hexus_Logo_trans_xmasv7.png?084217261112" alt="HEXUS logo" /></a></div -->
+        <div id="logo_container"><a href="/" id="logo"><img src="https://hexus.net/media/img/hexus_web_shadow_trans.png?402516240412" alt="HEXUS logo" /></a></div>
+
+        <script type='text/javascript'>
+        OA_show('zone-masthead');
+        </script>
+
+        <div id="topicons">
+            <a href="http://www.facebook.com/HEXUSnet">
+                <img src="https://hexus.net/media/img/fb.png?373013090911" alt="facebook" />
+            </a>
+            <a href="/rss/gaming">
+                <img src="https://hexus.net/media/img/rss.png?373013090911" alt="rss" />
+            </a>
+            <a href="http://twitter.com/#!/HEXUSNET">
+                <img src="https://hexus.net/media/img/twit.png?373013090911" alt="twitter" />
+            </a>
+        </div>
+        
+        <div id="topad">
+            <script type='text/javascript'>
+            OA_show('leaderboard');
+            </script>
+        </div>
+        
+
+        
+        <nav id="nav">
+            <a href="/" >HOME</a>
+        
+            <div class="separator"></div>
+            <a  href="/tech/">TECH</a>
+            <div class="separator"></div>
+            <a class='current' href="/gaming/">GAMING</a>
+            <div class="separator"></div>
+            <a  href="/business/">BUSINESS</a>
+            <div class="separator"></div>
+            <a  href="/ce/">CONSUMER</a>
+            <div class="separator"></div>
+            <a  href="/mobile/">MOBILE</a>
+            <div class="separator"></div>
+            <a  href="/tv/">HEXUS.TV</a>
+            <div class="separator"></div>
+            <a  href="/trust/">TRUST</a>
+            <div class="separator"></div>
+            <a href="/competitions/">COMPETITIONS</a>
+            <div class="separator"></div>
+            <a href="//forums.hexus.net/">FORUMS</a>
+            <div class="separator"></div>
+            
+            <div id="searchform">
+                <form action="/search/" method="get"  name="hxsSearchForm">
+                    <input type="hidden" name="title_only" value="1">
+                    <button type="submit" value="" class="hexus_button ">SEARCH <img src="https://hexus.net/media/img/magnify.png?373013090911" alt="search" /></button>
+                    <input type="text" id="search" value=" Search HEXUS" onfocus="if (this.value == ' Search HEXUS') this.value = '';" name="q">
+                </form>
+            </div>
+        </nav>
+        
+        <div class="clear"></div>
+
+        <div id="left">
+            <div class="clear"></div>
+            
+    <div id="article">
+        <div id="header_bar" class="subnav">
+            <div id="header_bar_left" class="breadnav">
+            
+                <div id="you_are_here">
+                You are here:
+                </div>
+                <div class="separator"></div>
+                <a href="/gaming/cat/hardware/">Hardware</a> <div class="separator"></div>
+                
+                    <a href="/tech/cat/graphics/">Graphics</a> <div class="separator"></div>
+                
+                <a href="/gaming/cat/hardware/type/news/">News</a> <div class="separator"></div>
+            
+            </div>
+            
+            <div id="socialstuff">
+                <div class="icon xlist">
+                    <img src="https://hexus.net/media/img/x_off.png?373013090911" class="x" tabindex="138245" alt="x" />
+                </div>
+                <div class="separator separator3"></div>
+                <div class="icon gplus">
+                    <g:plusone size="medium" count="false" href="https://HEXUS.net/gaming/news/hardware/138245-is-next-gen-xbox-gpu-powerful-rx-5700-xt/"></g:plusone>
+                    <script type="text/javascript">
+                      (function() {
+                        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+                        po.src = 'https://apis.google.com/js/plusone.js';
+                        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+                      })();
+                    </script>
+                </div>
+                
+                <div class="separator separator3"></div>
+                <div class="icon">
+                    <iframe src="https://www.facebook.com/plugins/like.php?href=https%3A//HEXUS.net/gaming/news/hardware/138245-is-next-gen-xbox-gpu-powerful-rx-5700-xt/&amp;send=false&amp;layout=button_count&amp;width=47&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21" style="border:none; overflow:hidden; width:47px; height:21px;margin-top:1px"></iframe>
+                </div>
+                
+                
+                <div class="separator separator3"></div>
+                <div class="icon">
+                    <a href="http://twitter.com/share">
+                        <img src="https://hexus.net/media/img/twitter_icon.png?373013090911" alt="twitter" />
+                    </a>
+                </div>
+                
+                <div class="separator separator3"></div>
+                <div class="icon comments">
+                    <a href="https://forums.hexus.net/showthread.php?t=411839" class="comments" title="Discuss in the HEXUS Forums">
+                        1
+                    </a>
+                </div>
+                <div class="separator separator3"></div>
+                <div class="icon printer">
+                    <a href="?print=1" title="Printer Friendly Layout" rel="nofollow">
+                        <img src="https://hexus.net/media/img/print.png?373013090911" alt="Printer Friendly Layout" />
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+        <div id="sweclockers">
+<script type='text/javascript'><!--//<![CDATA[
+   document.MAX_ct0 = unescape('INSERT_ENCODED_CLICKURL_HERE');
+ 
+   //var m3_u = (location.protocol=='https:'?'https://uk.ads.hexus.net/ox/www/delivery/ajs.php':'http://uk.ads.hexus.net/ox/www/delivery/ajs.php');
+   var m3_u = (location.protocol=='https:'?'https://serve.themediateam.net/ox/www/delivery/ajs.php':'http://serve.themediateam.net/ox/www/delivery/ajs.php');
+   var m3_r = Math.floor(Math.random()*99999999999);
+   if (!document.MAX_used) document.MAX_used = ',';
+   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
+   document.write ("?zoneid=221&amp;source=_blank&amp;target=_blank");
+   document.write ('&amp;cb=' + m3_r);
+   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
+   document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
+   document.write ("&amp;loc=" + escape(window.location));
+   if (document.referrer) document.write ("&amp;referer=" + escape(document.referrer));
+   if (document.context) document.write ("&context=" + escape(document.context));
+   if ((typeof(document.MAX_ct0) != 'undefined') && (document.MAX_ct0.substring(0,4) == 'http')) {
+       document.write ("&amp;ct0=" + escape(document.MAX_ct0));
+   }
+   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
+   document.write ("'><\/scr"+"ipt>");
+//]]>--></script><noscript><a href='https://serve.themediateam.net/ox/www/delivery/ck.php?n=ac650fdb&amp;cb=INSERT_RANDOM_NUMBER_HERE' target='_blank'><img src='https://serve.themediateam.net/ox/www/delivery/avw.php?zoneid=221&amp;source=_blank&amp;cb=INSERT_RANDOM_NUMBER_HERE&amp;n=ac650fdb&amp;ct0=INSERT_ENCODED_CLICKURL_HERE' border='0' alt='' /></a></noscript>
+        </div>
+        <div class="clear"></div>
+        <header id="articleheader">
+            <div id="adbreak" style="width:769px;"></div>
+            <div class="clear"></div>
+            <h1 class="title item"><span class="fn">Is the next gen Xbox GPU more powerful than the RX 5700 XT?</span></h1>
+            <table>
+                <tr>
+                    <td class="headerleft">
+                        
+                            <div class="by">
+                                by <a class="reviewer" href="/contact_author/138245/">Mark Tyson</a>
+                                <span class="date dtreviewed">
+                                    on 31 December 2019, 10:30 
+                                    <span class="value-title" title="2019-12-31"></span>
+                                </span>
+                                
+                                
+                            </div>
+                        
+                        <p class="relations">
+                            
+                                <strong>Tags: </strong>
+                                
+                                    <a href="/tag/3329-microsoft/">Microsoft</a> (<a href="http://www.google.com/finance?q=NASDAQ:MSFT">NASDAQ:MSFT</a>), 
+                                
+                                    <a href="/tag/3338-sony/">Sony</a> (<a href="http://www.google.com/finance?q=NYSE:SNE">NYSE:SNE</a>), 
+                                
+                                    <a href="/tag/3300-amd/">AMD</a> (<a href="http://www.google.com/finance?q=NYSE:AMD">NYSE:AMD</a>)
+                                
+                                <br />
+                            
+                        </p>
+                        <p>
+                            <strong>Quick Link: </strong> <a rel="nofollow" href="https://HEXUS.net/qaehaf">HEXUS.net/qaehaf</a>
+                        </p>                       
+                        <p> 
+                            Add to <a href="/vault/">My Vault</a>: 
+                            <img style="vertical-align: -3px;" src="https://hexus.net/media/img/x_off.png?373013090911" class="x" tabindex="138245" alt="x" />
+                        </p>
+                        
+                    </td>
+                    
+                    
+                    <td class="headerright">
+                        <table style="height: 100%">
+                            <tr>
+                                <td style="padding: 0; vertical-align:bottom">
+                                    
+
+                                    
+
+                                    
+                                    
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+            
+            
+            <div id="headerbottomspace"></div>
+
+        </header>
+        
+        <article id="articlecontent">
+            <h2 class="title"></h2>
+            <p>The technical arm of Eurogamer, known as <a href="https://www.eurogamer.net/articles/digitalfoundry-2019-playstation-5-xbox-series-x-spec-leak-analysed">Digital Foundry</a>, says it has <em>"independently verified the source"</em> of some detailed next gen console AMD processor information uncovered earlier this year. It reckons that an operative working at AMD's ASIC validation department <em>"used GitHub to store fragments of internal testing data from a range of work-in-progress Team Red projects". </em>The data stored includes tests of next-gen desktop and mobile Ryzen APUs as well as some deep-dive testing of the PS5 chip, codenamed 'Oberon'. The <a href="https://hexus.net/gaming/news/xbox/137846-microsoft-reveals-xbox-series-x-the-game-awards/">Xbox Series X</a> processor is less thoroughly leaked but Digital Foundry believes it has the key specs of the 'Arden' chip likely to be used in Microsoft's next console.</p>
+<p><img style="border: medium none ;" src="https://hexus.net/media/uploaded/2019/12/83750ad0-ecf5-4740-99b1-23002b668f8a.jpg" alt="" /></p>
+<p>Below you can find summary tables and comparisons of the upcoming PS5 and Xbox Series X destined AMD SoCs. I think it is especially useful to remember the specs of the R<a href="https://hexus.net/tech/reviews/graphics/134177-sapphire-radeon-rx-5700-xt-nitro/">adeon RX 5700 XT GPU</a> as you pick through the tables. AMD's current top discrete Navi GPU boasts the following key specs: 40CUs, 2,560SPs, base/boost of 1,605/1,905MHz, 9.75TFLOPs compute, and 8GB of GDDR6 providing 448GBps bandwidth.</p>
+<p><img style="border: medium none ;" src="https://hexus.net/media/uploaded/2019/12/eadaf5e8-5261-4116-a942-63cfba72f3d5.png" alt="" /></p>
+<p>Both the systems use a processor based upon an octa-core Zen2 based architecture with SMT but you can see they diverge quite sharply in the GPU department. The Microsoft console has about a third more CUs than the Sony machine if these leaks prove to be correct. If this is the case Microsoft's strategists must have gone all-out for premium performance with the costs that involves. Perhaps it is gambling that gamers will gravitate to the more expensive platform and won't be too price sensitive. One must also remember that there are indications that Microsoft is producing a series of next gen Xbox consoles, at least two we think, the <a href="https://hexus.net/gaming/news/xbox/137588-microsoft-project-scarlett-top-end-anaconda-cheaper-lockhart/">top-end Anaconda, and cheaper Lockhart</a>.</p>
+<p><img style="border: medium none ;" src="https://hexus.net/media/uploaded/2019/12/506ca6bc-06f4-495b-92c7-7c683a3d9abc.jpg" alt="" /></p>
+<p>The significantly more powerful AMD SoCs glimpsed in these leaks are expected to have even more attractions up their sleeves. There are multiple indications that they will also include support for raytracing acceleration in hardware. Other goodies within these custom gaming SoCs could be waiting to be uncovered too. Lastly, consoles also have an advantage over PCs in squeezing more performance out of what they have under the bonnet. It is going to be interesting to see what Microsoft, Sony and their developers can pull out of their hats to proclaim 'behold next gen gaming' in 2020.</p>
+            
+        </article>
+        <div id="articlefooter">
+            <br />
+            <table style="width: 100%;">
+                <div class="prevnext">
+                    <tr>
+                        <td style="text-align: left;">
+                            <div class="prevnext"></div>
+                            
+                        </td>
+                        <td style="text-align: center;">
+                            
+                        </td>
+                        <td style="text-align: right;">
+                            <div class="prevnext"></div>
+                            
+                        </td>
+                    </tr>
+                </div>
+            </table>
+            <div class="clear"></div>
+            
+                <div id="related_reading">
+                    <br />
+                    <a href="https://www.facebook.com/sharer.php?u=http%3A%2F%2Fhexus.net/gaming/news/hardware/138245-is-next-gen-xbox-gpu-powerful-rx-5700-xt/&amp;t=Is%20the%20next%20gen%20Xbox%20GPU%20more%20powerful%20than%20the%20RX%205700%20XT%3F"><img src="https://hexus.net/media/img/share_on_facebook.gif?033210020512" alt="Share on Facebook"></a>
+                    <br />
+                    
+                        <h2 class="title">Related Reading</h2>
+<div id="related_reading">
+    <div id="related_reading_left">
+    
+        
+            <div class="article">
+                <a class="articleicon" href="/gaming/news/hardware/138026-puma-launches-first-active-gaming-footwear-esports-shoes/">
+                    <img src="https://hexus.net/media/uploaded/2019/12/aa3eabc9-1782-4a08-9d82-f57c53e80a82_resized_100x65.jpg" alt="Puma launches its first Active Gaming Footwear eSports shoes" />
+                </a>
+                
+                <a href="https://forums.hexus.net/showthread.php?t=411449" class="comments">21</a>
+                
+                <a href="/gaming/news/hardware/138026-puma-launches-first-active-gaming-footwear-esports-shoes/" class="title">Puma launches its first Active Gaming Footwear eSports shoes</a>
+
+                <p class="snippet">
+                    Designed for indoor and arena use to deliver the "comfort, support and grip," you need. 
+                </p>
+                
+            </div>
+        
+        
+    
+        
+            <div class="article">
+                <a class="articleicon" href="/tech/news/monitors/137972-asus-starts-selling-280hz-tuf-gaming-vg279qm-monitor/">
+                    <img src="https://hexus.net/media/uploaded/2019/12/a9bdd0fb-6cfb-46a4-bd6c-64a91c392a2b_resized_100x65.jpg" alt="Asus starts selling the 280Hz TUF Gaming VG279QM monitor" />
+                </a>
+                
+                <a href="https://forums.hexus.net/showthread.php?t=411401" class="comments">8</a>
+                
+                <a href="/tech/news/monitors/137972-asus-starts-selling-280hz-tuf-gaming-vg279qm-monitor/" class="title">Asus starts selling the 280Hz TUF Gaming VG279QM monitor</a>
+
+                <p class="snippet">
+                    27-inch 1080p IPS monitor, AKA 'The Flash', is only available in China at the time of writing. 
+                </p>
+                
+            </div>
+        
+        
+    
+        
+            <div class="article">
+                <a class="articleicon" href="/tech/features/peripherals/137474-day-8-win-white-gaming-bundle-corsair/">
+                    <img src="https://hexus.net/media/uploaded/2019/12/6f965e3d-d1ef-4832-a830-390faec3e811_resized_100x65.jpg" alt="Day 8: Win a white gaming bundle from Corsair" />
+                </a>
+                
+                <a href="https://forums.hexus.net/showthread.php?t=411359" class="comments">11</a>
+                
+                <a href="/tech/features/peripherals/137474-day-8-win-white-gaming-bundle-corsair/" class="title">Day 8: Win a white gaming bundle from Corsair</a>
+
+                <p class="snippet">
+                    K70 RGB MK.2 SE keyboard, Virtuoso RGB headset, and M65 RGB Elite mouse! 
+                </p>
+                
+            </div>
+        
+        
+    
+        
+        
+    
+        
+        
+    
+        
+        
+    
+        
+        
+    
+        
+        
+    
+    </div>
+    <div id="related_reading_right">
+    
+        
+    
+        
+    
+        
+    
+        
+            <a href="/gaming/news/hardware/137909-corsair-acquires-games-controller-pioneer-scuf-gaming/" class="title">Corsair acquires games controller pioneer SCUF Gaming</a>
+        
+    
+        
+            <a href="/gaming/news/xbox/137846-microsoft-reveals-xbox-series-x-the-game-awards/" class="title">Microsoft reveals the Xbox Series X at The Game Awards</a>
+        
+    
+        
+            <a href="/tech/news/graphics/138212-amd-partner-spills-full-radeon-rx-5600-xt-specs/" class="title">AMD partner spills full Radeon RX 5600 XT specs</a>
+        
+    
+        
+            <a href="/tech/news/cpu/138122-early-listings-reveal-first-8c16t-amd-ryzen-4000-mobile-apus/" class="title">Early listings reveal first 8C/16T AMD Ryzen 4000 mobile APUs</a>
+        
+    
+        
+            <a href="/tech/news/graphics/138113-purported-amd-rx-5600-xt-3dmark-test-results-surface/" class="title">Purported AMD RX 5600 XT 3DMark test results surface</a>
+        
+    
+    </div>
+</div>
+
+<div class="clear"></div>
+
+                    
+                </div>
+                <div id="article_comments">
+                
+    <br />
+    <h2 class="title">
+        <a href="https://forums.hexus.net/showthread.php?t=411839">HEXUS Forums :: 1 Comment</a>
+    </h2>
+    
+    
+        <div id="article_comments_login_form">
+            <div id="article_comments_login_form_left">
+                <h2 class="title" style="font-size:16px;font-weight:bold;margin-bottom:5px;">Login with Forum Account</h2>
+                <form action="https://forums.hexus.net/login.php?do=login" method="post">
+                    <table>
+                        <tr>
+                            <td class="smallfont"><label for="navbar_username">User Name</label></td>
+                            <td><input type="text" class="bginput" style="font-size: 11px" name="vb_login_username" id="navbar_username" size="10" accesskey="u" tabindex="101" value="User Name" onfocus="if (this.value == 'User Name') this.value = '';" /></td>
+                            <td class="smallfont"><input type="hidden" name="cookieuser" value="1" tabindex="103" id="cb_cookieuser_navbar" /></td>
+                        </tr>
+                        <tr>
+                            <td class="smallfont"><label for="navbar_password">Password</label></td>
+                            <td><input type="password" class="bginput" style="font-size: 11px" name="vb_login_password" id="navbar_password" size="10" tabindex="102" /></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                    <input type="submit" class="hexus_button" value="Log in" tabindex="104" title="Enter your username and password in the boxes provided to login, or click the 'register' button to create a profile for yourself." accesskey="s" />
+                    <input type="hidden" name="s" value="" />
+                    <input type="hidden" name="do" value="login" />
+                </form>
+                
+            </div>
+            <div id="article_comments_login_form_right">
+                Don't have an account? <a href="/register/">Register</a> today!<br />
+            </div>
+            <div style="clear:both"></div>
+        </div>
+    
+    <div style="clear:both"></div>
+    
+        <div class="commentheader">
+            <strong>
+                <a href="https://forums.hexus.net/showthread.php?t=411839#post4163045">
+                    Posted by Tabbykatze - Tue 31 Dec 2019 12:07
+                </a>
+            </strong>
+        </div>
+        <div class="commentbody">
+            <div class="commentbodyinner">
+            If it is I might be sorely interested in getting one&#8230;
+            
+            
+            </div>
+        </div>
+    
+    
+    
+    
+    
+
+
+                </div>
+            
+        </div>
+    </div>
+
+        </div>
+        
+            <div id="right">
+            
+                <div id="myhexus">
+                    <div class="subnav">
+                        <h4 class="subnav">MY HEXUS</h4>
+                    </div>
+                    <div class="myhexus">
+                    
+                        <p>Sign in for the best HEXUS experience</p>
+                        <a class="hexus_button login_button" href="/login/">LOG IN</a> 
+                        <a class="hexus_button register_button" href="/register/">REGISTER</a>
+                    
+                    </div>
+                </div>
+                <div id="rightad1">
+                    <script type='text/javascript'>
+                    OA_show('box');
+                    </script>
+                </div>
+                
+                 <div class="clear"></div>
+                
+                
+                    <div class="clear"></div>
+                    <div class="subnav newslettersubnav">
+                        <h4 id="nointelliTXT" class="subnav">HEXUS NEWSLETTER</h4>
+                    </div>
+                    
+                    <iframe src="/subscribe_iframe/" height="60" width="336">
+                    </iframe>
+                    
+                    <!-- <div class="clear"></div> -->
+                
+
+                <br><a href="https://hexus.net/static/amd"><img src="https://hexus.net/media/uploaded/2019/7/df47d517-e065-465e-8afe-22d91c670859.jpg"></a><br><br><br>
+
+                <style>
+                    #rightad2 {
+                        height:auto;
+                        margin-top: -10px
+                    }
+                </style>
+                <div id="rightad2">
+                    <script type='text/javascript'>
+                    OA_show('rect');
+                    </script>
+                </div>
+                
+                <div class="clear"></div>
+
+                
+                
+
+                
+                
+                    
+                        <div class="todays">
+    <div class="todaysheader">
+        <div id="mostviewed" class="todaysactive"><h4>MOST VIEWED</h4></div>
+        <div class="separator"></div>
+        <div id="mostcommented"><h4>MOST COMMENTED</h4></div>
+    </div>
+    <div id="mostviewedcontent" class="mostviewedcontent">
+        <ul>
+            
+                <li>
+                    <a href="/gaming/news/industry/138119-red-dead-redemption-2-pc-sales-lacklustre-epic-games/" class="most_rank">1</a>
+                    <a href="/gaming/news/industry/138119-red-dead-redemption-2-pc-sales-lacklustre-epic-games/" class="article_link">Red Dead Redemption 2 PC sales were lacklustre for Epic Games</a>
+                    
+                        <a href="https://forums.hexus.net/showthread.php?t=411572" class="comments">25</a>
+                    
+                    <div class="clear"></div>
+                </li>
+            
+                <li>
+                    <a href="/gaming/news/industry/138230-steam-reveals-best-selling-games-2019/" class="most_rank">2</a>
+                    <a href="/gaming/news/industry/138230-steam-reveals-best-selling-games-2019/" class="article_link">Steam reveals its best selling games of 2019</a>
+                    
+                        <a href="https://forums.hexus.net/showthread.php?t=411815" class="comments">1</a>
+                    
+                    <div class="clear"></div>
+                </li>
+            
+                <li>
+                    <a href="/gaming/news/hardware/138245-is-next-gen-xbox-gpu-powerful-rx-5700-xt/" class="most_rank">3</a>
+                    <a href="/gaming/news/hardware/138245-is-next-gen-xbox-gpu-powerful-rx-5700-xt/" class="article_link">Is the next gen Xbox GPU more powerful than the RX 5700 XT?</a>
+                    
+                        <a href="https://forums.hexus.net/showthread.php?t=411839" class="comments">1</a>
+                    
+                    <div class="clear"></div>
+                </li>
+            
+        </ul>
+    </div>
+    <div id="mostcommentedcontent" class="mostviewedcontent">
+        <ul>
+            
+                <li>
+                    <a href="/gaming/news/industry/138119-red-dead-redemption-2-pc-sales-lacklustre-epic-games/" class="most_rank">1</a>
+                    <a href="/gaming/news/industry/138119-red-dead-redemption-2-pc-sales-lacklustre-epic-games/" class="article_link">Red Dead Redemption 2 PC sales were lacklustre for Epic Games</a>
+                    
+                        <a href="https://forums.hexus.net/showthread.php?t=411572" class="comments">25</a>
+                    
+                    <div class="clear"></div>
+                </li>
+            
+                <li>
+                    <a href="/gaming/news/industry/138230-steam-reveals-best-selling-games-2019/" class="most_rank">2</a>
+                    <a href="/gaming/news/industry/138230-steam-reveals-best-selling-games-2019/" class="article_link">Steam reveals its best selling games of 2019</a>
+                    
+                        <a href="https://forums.hexus.net/showthread.php?t=411815" class="comments">1</a>
+                    
+                    <div class="clear"></div>
+                </li>
+            
+                <li>
+                    <a href="/gaming/news/hardware/138245-is-next-gen-xbox-gpu-powerful-rx-5700-xt/" class="most_rank">3</a>
+                    <a href="/gaming/news/hardware/138245-is-next-gen-xbox-gpu-powerful-rx-5700-xt/" class="article_link">Is the next gen Xbox GPU more powerful than the RX 5700 XT?</a>
+                    
+                        <a href="https://forums.hexus.net/showthread.php?t=411839" class="comments">1</a>
+                    
+                    <div class="clear"></div>
+                </li>
+            
+        </ul>
+    </div>
+</div>
+                    
+                
+
+                <!-- old asus ad, removed on 2014-08-07 -->
+                <!--a href="http://HEXUS.net/glc/BGR/">
+                <img src="http://hexus.net/media/uploaded/2014/3/14609151-64c6-40c0-88bc-ea0d21d6eb48.jpg">
+                </a-->
+                
+                
+
+                <div id="pollandevents">
+                    <div id="events">
+                        
+                            <div class="subnav">
+    <h4 class="subnav">EVENTS</h4>
+</div>
+
+<div id="events_back">
+    <ul>
+        
+        
+            <li class="first">
+                <a href="/event/263-computex-2019-taipei-taiwan/">
+                    <img src="https://hexus.net/media/uploaded/2019/5/bb1ded2b-a762-42c9-a3ad-9af1c449eb41.jpg" alt="Computex 2019, Taipei, Taiwan" />
+                </a>
+            </li>
+        
+        
+        
+            <li>
+                <a href="/event/257-mwc-2019-barcelona/">
+                    <img src="https://hexus.net/media/uploaded/2019/2/9ddce4f7-f816-42a4-9ceb-e88e497898e6.jpg" alt="MWC 2019, Barcelona" />
+                </a>
+            </li>
+        
+        
+        
+            <li>
+                <a href="/event/251-ces-2019-las-vegas-usa/">
+                    <img src="https://hexus.net/media/uploaded/2019/1/5cf1ae6e-e1c2-4845-92fc-33e2ea5ddce1.jpg" alt="CES 2019, Las Vegas, USA" />
+                </a>
+            </li>
+        
+        
+        
+            <li>
+                <a href="/event/245-ifa-2018-berlin-germany/">
+                    <img src="https://hexus.net/media/uploaded/2018/8/8b9c93d6-d5bc-4854-a800-bdd9a9e5e33e.jpg" alt="IFA 2018, Berlin, Germany" />
+                </a>
+            </li>
+        
+        
+    </ul>
+
+    <form method="get" action="/events/">
+        <button class="hexus_button events_button">ALL EVENTS</button>
+    </form>
+    <div class="clear"></div>
+</div>
+
+                        
+                    </div>
+                    <div class="clear"></div>
+                    <br />
+                    
+                    <div id="poll">
+                        <div class="subnav">
+                            <h4 class="subnav">POLL</h4>
+                        </div>
+                        <div style="margin: 5px 0px 0px 0px;">
+                            <iframe style="border: 0pt none;" src="https://app.themediateam.net/poll/selected/" width="162px" height="261px" scrolling="no"></iframe>
+                        </div>
+                    </div>
+
+                </div>
+                
+                <div id="rightad3">
+                
+
+<!--/*
+  *
+  * HEXUS Ads Javascript Tag
+  * - Generated with Revive Adserver v4.0.1
+  *
+  */-->
+ 
+<script type='text/javascript'><!--//<![CDATA[
+   document.MAX_ct0 = unescape('INSERT_ENCODED_CLICKURL_HERE');
+ 
+   var m3_u = (location.protocol=='https:'?'https://serve.themediateam.net/ox/www/delivery/ajs.php':'http://serve.themediateam.net/ox/www/delivery/ajs.php');
+   var m3_r = Math.floor(Math.random()*99999999999);
+   if (!document.MAX_used) document.MAX_used = ',';
+   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
+   document.write ("?zoneid=45&amp;source=_blank&amp;target=_blank");
+   document.write ('&amp;cb=' + m3_r);
+   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
+   document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
+   document.write ("&amp;loc=" + escape(window.location));
+   if (document.referrer) document.write ("&amp;referer=" + escape(document.referrer));
+   if (document.context) document.write ("&context=" + escape(document.context));
+   if ((typeof(document.MAX_ct0) != 'undefined') && (document.MAX_ct0.substring(0,4) == 'http')) {
+       document.write ("&amp;ct0=" + escape(document.MAX_ct0));
+   }
+   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
+   document.write ("'><\/scr"+"ipt>");
+//]]>--></script><noscript><a href='http://serve.themediateam.net/ox/www/delivery/ck.php?n=a1fa34af&amp;cb=INSERT_RANDOM_NUMBER_HERE' target='_blank'><img src='http://serve.themediateam.net/ox/www/delivery/avw.php?zoneid=45&amp;source=_blank&amp;cb=INSERT_RANDOM_NUMBER_HERE&amp;n=a1fa34af&amp;ct0=INSERT_ENCODED_CLICKURL_HERE' border='0' alt='' /></a></noscript>
+                </div>
+                
+                <div class="clear"></div>
+                
+                <br />
+                
+                <div style="display: block; height: 250px; width: 300px; margin-left: auto; margin-right: auto;">
+                    <script type='text/javascript'><!--//<![CDATA[
+                        document.MAX_ct0 = unescape('INSERT_ENCODED_CLICKURL_HERE');
+                     
+                        var m3_u = (location.protocol=='https:'?'https://serve.themediateam.net/ox/www/delivery/ajs.php':'http://serve.themediateam.net/ox/www/delivery/ajs.php');
+                        var m3_r = Math.floor(Math.random()*99999999999);
+                        if (!document.MAX_used) document.MAX_used = ',';
+                        document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
+                        document.write ("?zoneid=323&amp;source=_blank&amp;target=_blank");
+                        document.write ('&amp;cb=' + m3_r);
+                        if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
+                        document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
+                        document.write ("&amp;loc=" + escape(window.location));
+                        if (document.referrer) document.write ("&amp;referer=" + escape(document.referrer));
+                        if (document.context) document.write ("&context=" + escape(document.context));
+                        if ((typeof(document.MAX_ct0) != 'undefined') && (document.MAX_ct0.substring(0,4) == 'http')) {
+                            document.write ("&amp;ct0=" + escape(document.MAX_ct0));
+                        }
+                        if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
+                        document.write ("'><\/scr"+"ipt>");
+                     //]]>--></script><noscript><a href='http://serve.themediateam.net/ox/www/delivery/ck.php?n=a6f569bb&amp;cb=INSERT_RANDOM_NUMBER_HERE' target='_blank'><img src='http://serve.themediateam.net/ox/www/delivery/avw.php?zoneid=323&amp;source=_blank&amp;cb=INSERT_RANDOM_NUMBER_HERE&amp;n=a6f569bb&amp;ct0=INSERT_ENCODED_CLICKURL_HERE' border='0' alt='' /></a></noscript>
+                </div>
+                <br />
+
+
+                
+                <!--[if !IE]> -->
+                    <!--
+                    <div class="subnav">
+                        <h4 class="subnav">FACEBOOK</h4>
+                    </div>
+                        
+                    <iframe src="//www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2FHEXUSnet&amp;width=340&amp;height=250&amp;colorscheme=light&amp;show_faces=true&amp;border_color&amp;stream=true&amp;header=false&amp;appId=116572225090919" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:340px; height:250px;margin-top:5px;margin-bottom:5px;"></iframe>
+                    -->
+                <!-- <![endif]-->
+                
+
+                
+                <div style="display: block; height: 250px; width: 300px; margin-left: auto; margin-right: auto;">
+                    <script type='text/javascript'>
+                        <!--//<![CDATA[
+                        document.MAX_ct0 = unescape('INSERT_ENCODED_CLICKURL_HERE');
+    
+                        var m3_u = (location.protocol == 'https:' ?
+                            'https://serve.themediateam.net/ox/www/delivery/ajs.php' :
+                            'http://serve.themediateam.net/ox/www/delivery/ajs.php');
+                        var m3_r = Math.floor(Math.random() * 99999999999);
+                        if (!document.MAX_used) document.MAX_used = ',';
+                        document.write("<scr" + "ipt type='text/javascript' src='" + m3_u);
+                        document.write("?zoneid=368&amp;source=_blank&amp;target=_blank");
+                        document.write('&amp;cb=' + m3_r);
+                        if (document.MAX_used != ',') document.write("&amp;exclude=" + document.MAX_used);
+                        document.write(document.charset ? '&amp;charset=' + document.charset : (document.characterSet ?
+                            '&amp;charset=' + document.characterSet : ''));
+                        document.write("&amp;loc=" + escape(window.location));
+                        if (document.referrer) document.write("&amp;referer=" + escape(document.referrer));
+                        if (document.context) document.write("&context=" + escape(document.context));
+                        if ((typeof (document.MAX_ct0) != 'undefined') && (document.MAX_ct0.substring(0, 4) == 'http')) {
+                            document.write("&amp;ct0=" + escape(document.MAX_ct0));
+                        }
+                        if (document.mmm_fo) document.write("&amp;mmm_fo=1");
+                        document.write("'><\/scr" + "ipt>");
+                        //]]>-->
+                    </script>
+                    <noscript>
+                        <a
+                            href='http://serve.themediateam.net/ox/www/delivery/ck.php?n=aaf5aaf3&amp;cb=INSERT_RANDOM_NUMBER_HERE'
+                            target='_blank'
+                        >
+                            <img
+                                src='http://serve.themediateam.net/ox/www/delivery/avw.php?zoneid=368&amp;source=_blank&amp;cb=INSERT_RANDOM_NUMBER_HERE&amp;n=aaf5aaf3&amp;ct0=INSERT_ENCODED_CLICKURL_HERE'
+                                border='0'
+                                alt='' 
+                            />
+                        </a>
+                    </noscript>
+                </div>
+                <br />
+                 
+                
+                    <div class="subnav">
+    <h4 class="subnav">INDUSTRY PRESS RELEASES</h4>
+</div>
+
+<ul id="press_releases">
+
+    <li>
+        <a class="most_rank" href="/tech/items/storage/138239-transcend-releases-jetflash-910-usb-flash-drive/" style="color: rgb(0, 0, 0);">1</a>
+        <a class="article_link" href="/tech/items/storage/138239-transcend-releases-jetflash-910-usb-flash-drive/">Transcend Releases JetFlash 910 USB Flash Drive</a>
+        <div class="clear"></div>
+    </li>
+
+    <li>
+        <a class="most_rank" href="/tech/items/storage/138236-sk-hynix-introduce-consumer-pcie-nvme-ssds/" style="color: rgb(0, 0, 0);">2</a>
+        <a class="article_link" href="/tech/items/storage/138236-sk-hynix-introduce-consumer-pcie-nvme-ssds/">SK hynix to Introduce Consumer PCIe NVMe SSDs</a>
+        <div class="clear"></div>
+    </li>
+
+    <li>
+        <a class="most_rank" href="/tech/items/mainboard/138206-introducing-evga-sr-3-dark-motherboard/" style="color: rgb(0, 0, 0);">3</a>
+        <a class="article_link" href="/tech/items/mainboard/138206-introducing-evga-sr-3-dark-motherboard/">Introducing the EVGA SR-3 DARK Motherboard</a>
+        <div class="clear"></div>
+    </li>
+
+    <li>
+        <a class="most_rank" href="/tech/items/chassis/138203-montech-releases-new-fighter-400-fighter-600/" style="color: rgb(0, 0, 0);">4</a>
+        <a class="article_link" href="/tech/items/chassis/138203-montech-releases-new-fighter-400-fighter-600/">MONTECH Releases New Fighter 400 and Fighter 600</a>
+        <div class="clear"></div>
+    </li>
+
+    <li>
+        <a class="most_rank" href="/tech/items/industry/138173-thermaltake-2019-casemod-invitational-season-2-final/" style="color: rgb(0, 0, 0);">5</a>
+        <a class="article_link" href="/tech/items/industry/138173-thermaltake-2019-casemod-invitational-season-2-final/">Thermaltake 2019 CaseMOD Invitational Season 2 Final</a>
+        <div class="clear"></div>
+    </li>
+
+    <li>
+        <a class="most_rank" href="/tech/items/storage/138170-greenliant-sata-25-enduroslctm-ssds-achieve-30-dwpd-5-years/" style="color: rgb(0, 0, 0);">6</a>
+        <a class="article_link" href="/tech/items/storage/138170-greenliant-sata-25-enduroslctm-ssds-achieve-30-dwpd-5-years/">Greenliant SATA 2.5” EnduroSLC™ SSDs Achieve 30 DWPD for 5 Years</a>
+        <div class="clear"></div>
+    </li>
+
+</ul>
+                
+
+            </div>
+        
+        <div class="clear"></div>
+        <footer> 
+            <table style="width: 1110px;margin:10px 20px 20px 20px;">
+                <tr>
+                    <td>
+                        <h4 style="font-size:18px;">INFORMATION</h4>
+                        <p style="margin-top:12px;">
+                            
+                            <a href="/static/about/">About us</a> <br />
+                            <a href="/advertise/">Advertise</a> <br />
+                            <a href="/contact/">Contact us</a> <br />
+                            <a href="/static/competitions/">How Competitions work</a> <br />
+                            <a href="/static/how_we_test/">How we test</a> <br />
+                            <a href="/static/cookies/">About Cookies</a> <br />
+                            <a href="/static/awards/">What our awards mean</a> <br />
+                            <a href="/static/terms/">Terms of use</a><br />
+                            <a href="https://www.themediateam.net/privacy/">Privacy</a><br />
+                        </p>
+                        
+                    </td>
+                    <td>
+                        <h4 style="font-size:18px;">SUBSCRIPTIONS</h4>
+                        <p style="margin-top:12px;">
+                            <a href="/rss/">RSS</a> / <a href="/myhexus/alerts/">Alerts</a> / <a href="http://twitter.com/#!/HEXUSNET">Twitter</a> <br />
+                            <a href="http://www.facebook.com/HEXUSnet">Facebook</a> / <a href="/myhexus/alerts/">Newsletter</a> <br />
+                            <a href="/myhexus/email_unsubscribe/"><i>Unsubscribe</i></a> <br />
+                        </p>
+                    </td>
+                    <td>
+                        <h4 style="margin-bottom:12px;font-size:18px;"><a href="https://forums.HEXUS.net/">HEXUS Community</a></h4>
+                        
+                            <p>
+
+Members: 441,508<br />
+Forum posts: 2,667,141<br />
+Forum threads: 255,563<br />
+Currently active users: 329<br />
+</p>
+
+                        
+                    </td>
+                    <td style="text-align:right;vertical-align:bottom;width:40%;">
+                        <!-- a href="http://m.HEXUS.net/"><img src="https://hexus.net/media/img/hexus_mobile_banner.png?381217051011" alt="HEXUS Mobile Site" /></a -->
+                        <a href="https://www.themediateam.net/"><img src="https://www.themediateam.net/static/img/part_of_the_media_team.png" /></a>
+                    </td>
+                </tr>
+            </table>
+        
+            <div id="footer_bottom">
+                <p id="footer_left">
+                Copyright &copy; 1998 - 2019, HEXUS.net. All rights reserved.
+                </p>
+                <p id="footer_right">
+                HEXUS&reg; is a registered trademark.<br />
+                </p>
+                <div class="clear"></div>
+            </div>
+        </footer>
+        
+    </div>
+
+
+
+    
+        
+
+        
+            <!-- start Vibrant Media IntelliTXT script section -->
+            <script type="text/javascript" src="http://hexus.uk.intellitxt.com/intellitxt/front.asp?ipid=3374"></script>
+            <!-- end Vibrant Media IntelliTXT script section -->
+        
+
+        
+
+
+        
+        
+        
+    
+    
+    </body>
+
+</html>

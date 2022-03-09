@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie7" lang="pl"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7" lang="pl"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8" lang="pl"> <![endif]-->
+<!--[if IE 9]>    <html class="no-js ie9" lang="pl"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js" lang="pl"> <!--<![endif]-->
+  <head>
+     <script type="text/javascript">
+  var __cmp = __cmp || function(methodName, params, callback) {
+    __cmp.queue = __cmp.queue || [];
+    __cmp.queue.push(function() {
+        __cmp(methodName, params, callback)
+      }
+    );
+  };
+</script>
+
+<script src="https://s-pt.ppstatic.pl/lib/bdaosn/v1.0.0/js/ads/gemius/g.ad.adserver.adsrv/reklama.js" type="text/javascript"></script>
+<script src="https://s-pt.ppstatic.pl/lib/detectors/v1.2.1/js/eyeo.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+  window.PPAdsConfig = window.PPAdsConfig || {};
+  window.PPAdsConfig.loadAdsSetup = true;
+
+  (function() {
+    var ad_standard = 'better_ads';
+    var ad_recover = 'none';
+    var is_antiadblock_enabled = (function () {
+      var cookies = document.cookie;
+      return cookies.replace(/ /g,'').indexOf("adb=1") !== -1
+    })();
+
+    if (typeof window.pp_adblock_is_off === 'undefined') {
+      ad_standard = 'blocked';
+      if (typeof window.acceptable_ads_disallowed === 'undefined') {
+        ad_standard = 'acceptable_ads';
+        ad_recover = 'eyeo';
+      }
+    }
+
+    if (is_antiadblock_enabled) {
+      ad_standard = 'better_ads';
+      ad_recover = 'antiadblock';
+    }
+
+    window.PPAdsConfig.adStandard = ad_standard;
+    window.PPAdsConfig.adRecover = ad_recover;
+  })();
+</script>
+
+  <script type="text/javascript">
+if (window.PPAdsConfig.adStandard === 'better_ads') {
+  (function () {
+    var mainScript = document.createElement('script');
+    mainScript.src = '//jscdn.yieldbird.com/srv/8ca16ab5-ee56-46b2-821f-1a25d55d4cbb/yb.js';
+
+    
+          var firstScriptOnSite = document.getElementsByTagName('script')[0];
+      (firstScriptOnSite.parentNode || document.head).insertBefore(mainScript, firstScriptOnSite);
+      })();
+}
+
+var runYB = function () {
+    PPAds.queue.push(function() {
+    if (window.Yieldbird && window.PPAdsConfig.adStandard === 'better_ads') {
+      window.Yieldbird.run({
+        'domain': 'nowiny24.pl'
+      });
+    } else {
+      PPAds.queue.push(function() {
+        var refreshAddedSlot = function () {
+          Object.keys(PPAds.getFinalSlots()).forEach((slotName) => {
+            PPAds.refreshSlot(slotName);
+          });
+          document.removeEventListener('PPAds:Slots:Defined', refreshAddedSlot);
+        };
+        document.addEventListener('PPAds:Slots:Defined', refreshAddedSlot);
+      });
+    }
+  });
+  };
+
+</script>
+
+<script type="text/javascript">
+  var PPAds = PPAds || {};
+  PPAds.queue = PPAds.queue || [];
+
+  var PPEvents = PPEvents || {};
+  PPEvents.queue = PPEvents.queue || [];
+
+  PPAds.queue.push(function () {
+          PPAds.setClientId('134579212');
+            PPAds.app.getSlotTemplate()
+        .setServiceName('nowiny24')
+        .setSectionName('pozostale')
+        .setDefaultTargeting('typstr', 'pozostale');
+
+    if (typeof pp_adblock_is_off === 'undefined' &&
+      typeof acceptable_ads_disallowed === 'undefined') {
+            var acceptableAds = 'acceptable_ads';
+      PPAds.setAllowedGroups([acceptableAds]);
+    }
+
+        if (PPAds.adsDefender !== undefined) {
+      PPAds.adsDefender.tryDefend();
+    }
+
+          PPAds.app.getSlotTemplate().appendTargeting('c_theme', 'potoo');
+              PPAds.app.getSlotTemplate().appendTargeting('c_device', 'desktop');
+    
+    PPAds.app.getSlotTemplate().appendTargeting('ads.standard', window.PPAdsConfig.adStandard);
+    PPAds.app.getSlotTemplate().appendTargeting('ads.recover', window.PPAdsConfig.adRecover);
+
+    var analyticsQueue = window.analyticsQueue || [];
+    analyticsQueue.push(
+      function () {
+          PPEvents.queue.push(function () {
+              var event = PPEvents.getEvent('ads');
+              event.setAction(PPEvents.actionType.VIEW);
+              event.appendParam('standard', window.PPAdsConfig.adStandard);
+              event.appendParam('recover', window.PPAdsConfig.adRecover);
+              PPEvents.listen('ads');
+          });
+      }
+    );
+    window.analyticsQueue = analyticsQueue;
+  });
+
+      PPAds.queue.push(function () {
+      var _YB = _YB || {
+        bm: function () {
+          return (Math.random() >= 0.1 ? '1' : '0');
+        }
+      };
+      PPAds.app.getSlotTemplate().setDefaultTargeting('yb_bm', _YB.bm());
+    });
+  
+  var czyPoprawnyYieldbird = function () {
+    return Object.keys(window.Yieldbird).length > 1;
+  };
+
+  var wymusRefresh = function () {
+    if (!czyPoprawnyYieldbird()) {
+      window.googletag.cmd.push(function() {
+        window.googletag.pubads().refresh();
+      });
+    }
+  }
+
+  var finishAds = function () {
+          PPAds.queue.push(function () {
+        PPAds.app.finish();
+      });
+
+            };
+
+  var runYB = runYB || function() {};
+  var finishAndYbInQueue = false;
+  var finishAndRunYB = function () {
+    if (!finishAndYbInQueue) {
+      finishAndYbInQueue = true;
+      runYB();
+      finishAds();
+    }
+  };
+
+  window.addEventListener('DOMContentLoaded', function () {
+    finishAndRunYB();
+  });
+
+      window.addEventListener('DOMContentLoaded', function () {
+      setTimeout(function() {
+        finishAndRunYB();
+      }, 4000);
+    });
+  </script><meta charset="utf-8">
+<title>Sylwester 2019 / 2020. Tłumy na rzeszowskim Rynku przywitały Nowy Rok - nowiny24.pl</title>
+<meta name="description" content="Tłum bawił się na płycie rzeszowskiego Rynku podczas imprezy sylwestrowej. Gwiazdami wieczoru byli: Mesajah, Adamo Rudnik i Lady Pank. Impreza zakończyła się sp">
+<meta name="robots" content="index, follow">
+<meta name="google-site-verification" content="AB42bKBVxX3f8kZLQbEsspCiZghe84M6IzkM1Fag-T8">
+<link rel="canonical" href="https://nowiny24.pl/sylwester-2019-2020-tlumy-na-rzeszowskim-rynku-przywitaly-nowy-rok/ga/c1-14688663/zd/40994881">
+<meta name="rating" content="general">
+<meta name="revisit-after" content="1 day">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.7 user-scalable=yes">
+<meta name="thumbnail" content="https://d-pt.ppstatic.pl/k/r/1/b0/47/5e0bf4cf526e2_p.jpg?1577948233">
+<meta name="twitter:image" content="https://d-pt.ppstatic.pl/kadry/k/r/1/b0/47/5e0bf4cf526e2_o.jpg?1577948233">
+<meta name="twitter:title" content="Sylwester 2019 / 2020. Tłumy na rzeszowskim Rynku przywitały Nowy Rok - nowiny24.pl">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@nowiny24">
+<meta name="twitter:description" content="Tłum bawił się na płycie rzeszowskiego Rynku podczas imprezy sylwestrowej. Gwiazdami wieczoru byli: Mesajah, Adamo Rudnik i Lady Pank. Impreza zakończyła się spektakularnym pokazem laserów.">
+
+
+
+<meta property="article:publisher" content="https://www.facebook.com/nowiny24">
+<meta property="article:author" content="https://www.facebook.com/nowiny24">
+<meta property="og:image" content="https://d-pt.ppstatic.pl/kadry/k/r/1/b0/47/5e0bf4cf526e2_o.jpg?1577948233">
+<meta property="og:url" content="https://nowiny24.pl/sylwester-2019-2020-tlumy-na-rzeszowskim-rynku-przywitaly-nowy-rok/ga/c1-14688663/zd/40994881">
+<meta property="og:title" content="Sylwester 2019 / 2020. Tłumy na rzeszowskim Rynku przywitały Nowy Rok - nowiny24.pl">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content=" - nowiny24.pl">
+<meta property="og:description" content="&amp;nbsp;">
+
+
+<link href="https://s-pt.ppstatic.pl/p/css/rwd/foundation.css?e68df91422959" type="text/css" rel="stylesheet">
+<link href="https://s-pt.ppstatic.pl/o/reklamy/ppa_slot.css?8bc90d1422959" type="text/css" rel="stylesheet">
+<link href="https://s-pt.ppstatic.pl/p/css/rwd/galeria.css?b636441422959" type="text/css" rel="stylesheet">
+<link href="https://s-pt.ppstatic.pl/p/css/rwd/pt.css?7d148b1422959" type="text/css" rel="stylesheet">
+<link href="https://s-pt.ppstatic.pl/p/css/rwd/small.css?f001301422959" type="text/css" rel="stylesheet" media="only screen and (max-width: 479px)">
+<link href="https://s-pt.ppstatic.pl/p/css/rwd/medium.css?757f451422959" type="text/css" rel="stylesheet" media="only screen and (max-width: 800px) and (min-width: 480px)">
+
+<link rel="apple-touch-icon" href="https://s-pt.ppstatic.pl/g/favicon/mobilne/nowiny.png?1422959">
+
+
+
+<script>
+function GR() { return; };
+var oG_OSA = {'serwis':'polskatimes','projekt':'projekt_polskatimes','sUrl':'https://s-pt.ppstatic.pl', 'iframeReklama':'https://www.gratka.pl/reklama/', 'vat':{"stawka":0.23,"procent":23,"brutto":1.23} ,  wersja_serwisu: '1422959', tracking: []};
+</script>
+
+<script src="/_sess/script.js"></script>
+<script src="https://s-pt.ppstatic.pl/o/js/jquery/1.8.3/jquery.min.js?20150630?e128811422959"></script>
+
+<script>if(GR&&!GR.DOM){jQuery=jQuery.noConflict(true);}</script>
+
+<script src="https://s-pt.ppstatic.pl/o/js/osnowa.js?97513e1422959"></script>
+<script src="https://s-pt.ppstatic.pl/o/js/cgr/track.js?b57ede1422959"></script>
+<script src="https://s-pt.ppstatic.pl/o/js/urlmaildetect.js?2ce65e1422959"></script>
+<script src="https://s-pt.ppstatic.pl/lib/ppa/v2.35.6/js/main.js?202001" async></script>
+<script src="https://s-pt.ppstatic.pl/p/js/rwd/material_spolecznosci.js?6e57081422959"></script>
+<script src="https://s-pt.ppstatic.pl/o/jquerytools/jquery.cookie.js?89ebf41422959"></script>
+<script src="https://s-pt.ppstatic.pl/lib/events/v0.11.0/js/main.js"></script>
+<script src="https://s-pt.ppstatic.pl/o/jquerytools/jquery.lazyload-1.9.3.js?4b6e9d1422959"></script>
+<script src="https://s-pt.ppstatic.pl/o/jquerytools/jquery.appear-1.1.1.min.js?72e1d91422959"></script>
+<script src="https://s-pt.ppstatic.pl/p/js/cgr/polskatimes.js?0a66401422959"></script>
+<script src="https://s-pt.ppstatic.pl/p/js/anty_ramka.js?91fa4b1422959"></script>
+<script src="https://s-pt.ppstatic.pl/p/js/rwd/modernizr.foundation.js?9177d51422959"></script>
+<script src="https://s-pt.ppstatic.pl/p/js/rwd/foundation.min.js?fc40831422959"></script>
+<script src="https://s-pt.ppstatic.pl/o/js/pp-ads/ads.js?1b93c01422959"></script>
+<script>var czyMobilne = !1, czyTablet = !1;</script>
+
+
+
+<link href="https://s-pt.ppstatic.pl/g/favicon/nowiny.ico?1422959" rel="shortcut icon">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source Sans Pro: 700&subset=latin,latin-ext" crossorigin>
+
+
+
+    <link rel="preload" href="https://s-nsk.ppstatic.pl/assets/nsk/v1.54.4/css/_colors/blue.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://s-nsk.ppstatic.pl/assets/nsk/v1.54.4/css/_colors/blue.css"></noscript>
+  
+<script>
+  if (!(window.Promise && window.fetch && window.Symbol)) {
+    var scriptTag = document.createElement('script');
+    scriptTag.src="https://s-nsk.ppstatic.pl/assets/nsk/v1.54.4/js/compiled/polyfill.js";
+    document.head.appendChild(scriptTag);
+  }
+</script>
+
+<script src="https://s-nsk.ppstatic.pl/assets/nsk/v1.54.4/js/libs/require.js"></script>
+<script src="https://s-nsk.ppstatic.pl/assets/nsk/v1.54.4/js/libs/containerqueries.js"></script>
+<script src="https://s-nsk.ppstatic.pl/assets/nsk/v1.54.4/js/compiled/PPG_lazyload.min.js" data-images-sizes="{&quot;articles&quot;:{&quot;160&quot;:&quot;xsmall&quot;,&quot;320&quot;:&quot;small&quot;,&quot;480&quot;:&quot;mini&quot;,&quot;640&quot;:&quot;medium&quot;,&quot;960&quot;:&quot;large&quot;,&quot;1280&quot;:&quot;xlarge&quot;},&quot;custom&quot;:{&quot;100&quot;:&quot;xsmall&quot;,&quot;500&quot;:&quot;small&quot;}}"></script>
+
+<script>
+  /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+  !function(a){"use strict";var b=function(b,c,d){function j(a){if(e.body)return a();setTimeout(function(){j(a)})}function l(){f.addEventListener&&f.removeEventListener("load",l),f.media=d||"all"}var g,e=a.document,f=e.createElement("link");if(c)g=c;else{var h=(e.body||e.getElementsByTagName("head")[0]).childNodes;g=h[h.length-1]}var i=e.styleSheets;f.rel="stylesheet",f.href=b,f.media="only x",j(function(){g.parentNode.insertBefore(f,c?g:g.nextSibling)});var k=function(a){for(var b=f.href,c=i.length;c--;)if(i[c].href===b)return a();setTimeout(function(){k(a)})};return f.addEventListener&&f.addEventListener("load",l),f.onloadcssdefined=k,k(l),f};"undefined"!=typeof exports?exports.loadCSS=b:a.loadCSS=b}("undefined"!=typeof global?global:this);
+  /*! loadCSS rel=preload polyfill. [c]2017 Filament Group, Inc. MIT License */
+  !function(a){if(a.loadCSS){var b=loadCSS.relpreload={};if(b.support=function(){try{return a.document.createElement("link").relList.supports("preload")}catch(a){return!1}},b.poly=function(){for(var b=a.document.getElementsByTagName("link"),c=0;c<b.length;c++){var d=b[c];"preload"===d.rel&&"style"===d.getAttribute("as")&&(a.loadCSS(d.href,d,d.getAttribute("media")),d.rel=null)}},!b.support()){b.poly();var c=a.setInterval(b.poly,300);a.addEventListener&&a.addEventListener("load",function(){b.poly(),a.clearInterval(c)}),a.attachEvent&&a.attachEvent("onload",function(){a.clearInterval(c)})}}}(this);
+</script>
+
+  <script>
+ var PPAds = PPAds || {};
+ PPAds.queue = PPAds.queue || [];
+ PPAds.queue.push(function () {
+                PPAds.app.getSlotTemplate().appendTargeting('c_assets', "v1.54.4");
+         });
+</script>     <!-- IE Fix for HTML5 Tags -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+     <script src="https://s-pt.ppstatic.pl/lib/bdaosn/v1.0.0/js/ads/gemius/g.ad.adserver.adsrv/reklama.js" type="text/javascript"></script>
+<script>
+  var adblockstatus = typeof pp_adblock_is_off !== 'undefined' && pp_adblock_is_off ? 'adblock-off' : 'adblock-on';
+</script>
+  <script type="text/javascript">
+  <!--//--><![CDATA[//><!--
+  var PPEvents = PPEvents || {};
+  PPEvents.queue = PPEvents.queue || [];
+
+  PPEvents.queue.push(function () {
+    PPEvents.setProvider(PPEvents.providerType.GP);
+  });
+
+  var gemius_identifier = 'nGiVT4AZZcnbGPvJYF5jlcPbTH4W42vPRskmfI0X9I3.t7';
+  var gemius_extraparameters = ["autor=6990757","data_publikacji=2020-01-01-08-35-00","tytul=Sylwester 2019 \/ 2020. T\u0142umy na rzeszowskim Rynku przywita\u0142y Nowy Rok","site.type=Galeria","category.main=Imprezy","category.path=Imprezy - fotogalerie","user=x","userstatus=x","photo_number=1","photo_count=65","article.id=14688663","article.title=Sylwester 2019 \/ 2020. T\u0142umy na rzeszowskim Rynku przywita\u0142y Nowy Rok","article.author_name=krzysztof.kapica","category.subject=wiadomo\u015bci","category.special="];
+  gemius_extraparameters.push('adblock=' + adblockstatus);
+  gemius_extraparameters.push('hitflag=1');
+
+  function gemius_pending(i) { window[i] = window[i] || function() {var x = window[i+'_pdata'] = window[i+'_pdata'] || []; x[x.length]=arguments;};};
+  gemius_pending('gemius_hit'); gemius_pending('gemius_event'); gemius_pending('pp_gemius_hit'); gemius_pending('pp_gemius_event');
+  (function(d,t) {try{ var s=d.getElementsByTagName(t)[0],l='http'+((location.protocol=='https:')?'s':'');
+    var add=function(ohost, clb){ var gt=d.createElement(t),h=(ohost?"daib.pl/sweqevub.js":"mreg.hit.gemius.pl/xgemius.js");
+      gt.setAttribute('async','async'); gt.setAttribute('defer','defer'); gt.src=l+'://'+h; s.parentNode.insertBefore(gt,s);
+      if (clb && gt.addEventListener) gt.addEventListener('error', clb, false); else if (clb && gt.attachEvent) gt.attachEvent('onerror', clb); };
+    add(0, function(){gemius_extraparameters.forEach(function(param,i){if(param.indexOf('hitflag=')==0){
+      gemius_extraparameters[i]='hitflag=2'}});add(1);});} catch (e) {}})(document,'script');
+  //--><!]]>
+  function gemiusPushAction(params, merge_params, gemius_id) {
+    merge_params = typeof merge_params !== 'undefined' ? merge_params : true;
+    gemius_id = typeof gemius_id !== 'undefined' ? gemius_id : '';
+    params = merge_params ? gemius_extraparameters.concat(params) : params;
+    gemius_event.apply(this, ['_action_', gemius_id].concat(params));
+  }
+  function gemiusPushView(params, merge_params, gemius_id) {
+    merge_params = typeof merge_params !== 'undefined' ? merge_params : true;
+    gemius_id = typeof gemius_id !== 'undefined' ? gemius_id : '';
+    params = merge_params ? gemius_extraparameters.concat(params) : params;
+    gemius_event.apply(this, ['_view_', gemius_id].concat(params));
+  }
+
+  
+  var analyticsQueue = window.analyticsQueue || {push: function(f){f();}};
+  var queueLength = analyticsQueue.length || 0;
+  if (queueLength > 0) {
+    analyticsQueue.map((f) => f());
+  }
+  
+</script>
+
+
+
+  <script>
+  /* Deep Media Analytics (c) v3.0.6 */
+  
+  "use strict";!function(){let t,e;for(;!(t=window.document.getElementsByTagName("head")[0]);)window.document.getElementsByTagName("html")[0].appendChild(window.document.createElement("head"));"function"!=typeof window.document.querySelectorAll&&((e=window.document.createElement("script")).type="text/javascript",e.charset="utf-8",e.setAttribute("crossorigin","anonymous"),e.async=!0,e.src="https://s-pt.ppstatic.pl/lib/events/v0.11.0/deep/v3/sizzle.js",t.appendChild(e)),(e=window.document.createElement("script")).type="text/javascript",e.charset="utf-8",e.setAttribute("crossorigin","anonymous"),e.async=!0,e.src="https://s-pt.ppstatic.pl/lib/events/v0.11.0/deep/v3/init.js",t.appendChild(e)}();
+  
+  deep_r(function() {
+    var deep = window.deepTracker.track('nWtM4NQ4cgHZ', 'o8qhHcJaM2plYsOVTEQsWuqL');
+    var params = {"article.id":"14688663","article.title":"Sylwester 2019 \/ 2020. T\u0142umy na rzeszowskim Rynku przywita\u0142y Nowy Rok","article.author_name":"krzysztof.kapica","gallery.photo_number":1,"gallery.photo_count":65,"category.subject":"wiadomo\u015bci","site.type":"Galeria","category.special":""};
+    deep.options.trackconsent = true;
+    deep.options.dntignore = true;
+    deep(params);
+  });
+
+  function deep_r(f) {
+    if (!window.deepTracker || !window.deepTracker.isInitialized()) {
+      setTimeout('deep_r(' + f + ')', 9);
+    } else {
+      f();
+    }
+  }
+</script>
+
+
+  <script>
+  var PPEvents = PPEvents || {};
+  PPEvents.queue = PPEvents.queue || [];
+
+  PPEvents.queue.push(function () {
+    PPEvents.setProvider(PPEvents.providerType.UA);
+  });
+
+  var dataLayer = dataLayer || [];
+  dataLayer.push({"zgody_uzytkownika":{"google_analytics":true,"yield_bird":true,"dfp":true,"ads_profiling":true,"adocean":true,"content_stream":true,"deep_bi":true,"exponea":true,"pixel_fb":true,"traqli":true,"twitter_widget":true,"okazjon":true,"youtube":true,"vimeo":true,"xlink":true,"tvp_player":true,"gemius":true,"hotjar":true,"plista":true,"pixel_dfp":true,"google_optimize":true,"google_adwords":true,"synerise":true,"rtb_house":true}});
+</script>
+
+        <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){ w[l]=w[l]||[];w[l].push({ 'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NP2BMFJ');</script>
+  <!-- End Google Tag Manager -->
+
+        <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){ w[l]=w[l]||[];w[l].push({ 'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-TVPW5W');</script>
+  <!-- End Google Tag Manager -->
+
+  <!--[if IE]>
+    <meta http-equiv="imagetoolbar" content="no">
+<![endif]-->
+
+<script type="text/javascript">
+  jQuery(function() {
+    jQuery("img.lazy").appear(function() { }); // hac
+    jQuery("img.lazy").removeClass('lazy').lazyload({
+      effect:"fadeIn",
+      threshold : 10,
+      failure_limit : 100
+    });
+    // inicjalizacja obsługi boksów asynchronicznych
+    GR('o_async_inicjalizuj_pt', '/artykul/zdjecia/', 'sylwester-2019-2020-tlumy-na-rzeszowskim-rynku-przywitaly-nowy-rok,14688663,40994881,t,id,zid', 'html', '//nowiny24.pl/ajax/laduj_asynchronicznie/', '', 0);
+  });
+</script>
+  <script>
+  var PPAds = PPAds || {};
+  PPAds.queue = PPAds.queue || [];
+  PPAds.queue.push(function() {
+                            PPAds.app.getSlotTemplate().appendTargeting("serwis", "nowiny24");
+                                          PPAds.app.getSlotTemplate().appendTargeting("region", "podkarpackie");
+                    });
+</script>
+
+
+  <script>
+    var dataLayer = dataLayer || [];
+    dataLayer.push({
+                        'article.subscription': 'Nie',                                });
+  </script>
+
+       
+
+    <script>
+     if(typeof(history) !== "undefined") {
+        history.replaceState(history.state, "", (""+window.location).replace(/[\?\&]sso_token=.*/, ""));
+     }
+    </script>
+
+
+
+
+  </head>
+  <body id="boks-galeria" class="nowyLayout fotostory">
+  <script type="text/javascript">
+  if ((Math.random() <= 0.05)) {
+    window.jsperformance = {
+      app: "projekt_polskatimes",
+    }
+
+    var script = window.document.createElement('script');
+    script.src = "https://s-nsk.ppstatic.pl/assets/commons/v1.1.0/js/compiled/performance.new.min.js";
+    script.defer = true;
+
+    var firstScript = window.document.getElementsByTagName('script')[0];
+    firstScript.parentNode.insertBefore(script, firstScript);
+  }
+</script>
+            <!-- Google Tag Manager (noscript) -->
+  <noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NP2BMFJ" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+  </noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+        <!-- Google Tag Manager (noscript) -->
+  <noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TVPW5W" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+  </noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+      <script>
+  (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) { return; }
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/pl_PL/sdk.js";
+      fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
+      
+    <script>
+        (function() {
+            var czyZainicjalizowany =  oG_OSA['facebookZainicjalizowany'] || false;
+            if(!czyZainicjalizowany) {
+                window.fbAsyncInit = function() {
+                    FB.init({
+                        appId: 661330183921816,
+                        xfbml: true,
+                        cookie: true,
+                        oauth: true,
+                        version: 'v2.2'
+                    });
+                    oG_OSA['facebookZainicjalizowany'] = true;
+                }
+            }
+        })();
+    </script>
+    
+
+
+    
+    <div class="row kontener">
+           <header>
+  <p class="three columns mobile-four info">
+        <a class="zamknij" href="https://nowiny24.pl/sylwester-2019-2020-tlumy-na-rzeszowskim-rynku-przywitaly-nowy-rok/ar/c1-14688663" title="Zamknij galerię"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAATCAYAAACQjC21AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBXaW5kb3dzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjlFNUEyQTZCNjAxMDExRTQ5NzBDQTAwQTRCNURFNEFFIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjlFNUEyQTZDNjAxMDExRTQ5NzBDQTAwQTRCNURFNEFFIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6OUU1QTJBNjk2MDEwMTFFNDk3MENBMDBBNEI1REU0QUUiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6OUU1QTJBNkE2MDEwMTFFNDk3MENBMDBBNEI1REU0QUUiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7lmRs4AAABPklEQVR42mL8//8/AxBYMkDAcQbSgSIQawPxViD+zwA00ASIHwDxHSDWAVlAAuYF4k1A/BuIY4GYAySYCMR//kPAFSDWJNIwASDe+B8BpgCxMEwyDYh/QSVuEuFSQajLYGAqELODgw9JEcjQv1AFt/AYyo9mGMhlrDB5dMUgQ39CFV7HYigvmjdBLmNGVoPNBRlIhiKHKXqYTQNiNnT9uMIIOUxBLnUC4rVoLmPFphdfwCN7/x2UBqWGybgMI2QgCBf/RwWrCSUnJjw5QACILdDElIBYA2++ITKdgdjfiEmnxKSzSUDMA8TJxKRTBhLTGaF0yoAvb2JNZ3jSKYqB2PImK4EkhTXvgwgxIN6MK28SMBQ5TI2AmAkkUYgvbxJhKMz7K4BYHCTICcQzoZiNxAIWhHOBeBcQK4D4AAEGADmmZknNrP8QAAAAAElFTkSuQmCC"/></a>
+  </p>
+  <div class="nine columns mobile-four naglowek">
+    <a href="https://nowiny24.pl/" title="Nowiny" class="logotyp">
+      <img src="https://s-pt.ppstatic.pl/g/logo_naglowek/nowiny.svg?1422959" alt="Nowiny">
+    </a>
+    <h1 class="linkArtykul">
+              <p>Sylwester 2019 / 2020. Tłumy na rzeszowskim Rynku przywitały Nowy Rok</p>
+          </h1>
+      </div>
+</header>
+
+<script>
+  </script>
+
+  <script>
+  var PPAds = PPAds || {};
+  PPAds.queue = PPAds.queue || [];
+  PPAds.queue.push(function() {
+                            PPAds.app.getSlotTemplate().appendTargeting("typstr", "galeria");
+                                          PPAds.app.getSlotTemplate().appendTargeting("article.title", "Sylwester 2019 \/ 2020. T\u0142umy na rzeszowskim Rynku przywita\u0142y Nowy Rok");
+                                          PPAds.app.getSlotTemplate().appendTargeting("article.author_name", "krzysztof.kapica");
+                                          PPAds.app.getSlotTemplate().appendTargeting("article.id", "14688663");
+                                          PPAds.app.getSlotTemplate().appendTargeting("idzas", "14688663");
+                                          PPAds.app.getSlotTemplate().appendTargeting("kat", ["imprezy","fotogalerie"]);
+                                          PPAds.app.getSlotTemplate().appendTargeting("category.subject", "wiadomo\u015bci");
+                                                    PPAds.app.getSlotTemplate().appendTargeting("photonumber", "1");
+                    });
+</script>
+
+  <div id='dfp-gora1' class="ppa-slot">
+    <script type="text/javascript">
+      PPAds.queue.push(function () {
+        var slot = PPAds.app.getSlot('gora1');
+        
+                  slot.appendResolution(750, 200);
+                  slot.appendResolution(728, 90);
+                  slot.appendResolution(750, 100);
+                  slot.appendResolution(750, 300);
+                  slot.appendResolution(980, 200);
+                  slot.appendResolution(980, 300);
+                  slot.appendResolution(1, 1);
+        
+                
+        if (typeof pp_adblock_is_off === 'undefined' &&
+typeof acceptable_ads_disallowed  === 'undefined') {
+    var acceptableAds = 'acceptable_ads';
+  slot.assignToGroup(acceptableAds);
+    slot.setSuffix('abp');
+}
+
+
+        
+        if (typeof window.PPAdsConfig !== 'undefined' && window.PPAdsConfig.fastDefineSlots) {
+          var globalTargeting = PPAds.getGlobalTargetings();
+          PPAds.defineToClient(slot, globalTargeting);
+        }
+      });
+    </script>
+  </div>
+       <div id="kontent-glowny">
+                  <div id="glowna-kolumna" class="eight mobile-four columns">
+             
+<section>
+  <div class="galeria row">
+      
+        <div class="fotoContentStream zaslepka">
+      <div class="galeriaZdjec">
+                        <figure class="kontenerZdjec">
+                                <div class="podglad nastepne" style="background-image: url(https://d-pt.ppstatic.pl/k/r/1/b0/47/5e0bf4cf526e2_p.jpg?1577948233)"></div>
+                      <img src="https://d-pt.ppstatic.pl/k/r/1/b0/47/5e0bf4cf526e2_p.jpg?1577948233" alt="Tłum bawił się na płycie rzeszowskiego Rynku podczas imprezy sylwestrowej. Gwiazdami wieczoru byli: Mesajah, Adamo Rudnik i Lady Pank. Impreza zakończyła">
+          </figure>
+                      <p class="autor">Krzysztof Kapica</p>
+                                            <a class="nastepne desktop" href="https://nowiny24.pl/sylwester-2019-2020-tlumy-na-rzeszowskim-rynku-przywitaly-nowy-rok/ga/c1-14688663/zd/40994883" title="Następne zdjęcie">Następne</a>
+              </div>
+    </div>
+    <span class="uwaga">
+      Przeglądaj również za pomocą
+      strzałek <b></b> <b></b> na klawiaturze
+          </span>
+    <span class="numeracja">[<b>1</b>/65]</span>              <a class="nastepne mobile" href="https://nowiny24.pl/sylwester-2019-2020-tlumy-na-rzeszowskim-rynku-przywitaly-nowy-rok/ga/c1-14688663/zd/40994883" title="Następne zdjęcie">Następne</a>
+              <div class="warstwaTekstowa">
+                <p>
+          Tłum bawił się na płycie rzeszowskiego Rynku podczas imprezy sylwestrowej. Gwiazdami wieczoru byli: Mesajah, Adamo Rudnik i Lady Pank. Impreza zakończyła się spektakularnym pokazem laserów.
+                  </p>
+        
+                      </div>
+      </div>
+      <ul id="narzedzia" data-url="https%3A%2F%2Fnowiny24.pl%2Fsylwester-2019-2020-tlumy-na-rzeszowskim-rynku-przywitaly-nowy-rok%2Fga%2Fc1-14688663%2Fzd%2F40994881">
+      <li class="facebook wyzsze opis popup">
+        <a data-url="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fnowiny24.pl%2Fsylwester-2019-2020-tlumy-na-rzeszowskim-rynku-przywitaly-nowy-rok%2Fga%2Fc1-14688663%2Fzd%2F40994881%3Futm_source%3Dsocial-media-facebook%26utm_medium%3Dprzycisk-gora&amp;title=Sylwester+2019+%2F+2020.+T%C5%82umy+na+rzeszowskim+Rynku+przywita%C5%82y+Nowy+Rok" rel="nofollow">
+          <div class="wartosc">0</div>
+                      <span class="icon icon-facebook"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M14.844 12h-2.227v6h-2.57v-6H8.81v-1.96h1.237V8.766c0-1.734.748-2.766 2.784-2.766h2.344v2.125H13.26c-.568 0-.636.3-.636.855l-.007 1.06h2.573L14.844 12z"/></svg></span>
+                    <span class="ukryty">
+            <iframe src="https://www.facebook.com/plugins/like.php?locale=pl_PL&amp;href=https%3A%2F%2Fnowiny24.pl%2Fsylwester-2019-2020-tlumy-na-rzeszowskim-rynku-przywitaly-nowy-rok%2Fga%2Fc1-14688663%2Fzd%2F40994881%3Futm_source%3Dsocial-media-facebook%26utm_medium%3Dprzycisk-gora&amp;layout=button_count&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;share=true&amp;width=200&amp;height=20" scrolling="no" width="200" height="20"></iframe>
+          </span>
+        </a>
+      </li>
+          </ul>
+  </section>
+
+  <div class="medium-narrow large-wide">
+      <link rel="stylesheet" href="https://s-nsk.ppstatic.pl/assets/nsk/v1.54.4/css/potoo/components/recommendations/simple/listing.css">
+<noscript><link rel="stylesheet" href="https://s-nsk.ppstatic.pl/assets/nsk/v1.54.4/css/potoo/components/recommendations/simple/listing.css"></noscript>
+<section><link rel="preload" href="https://s-nsk.ppstatic.pl/assets/nsk/v1.54.4/css/potoo/atoms/header.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://s-nsk.ppstatic.pl/assets/nsk/v1.54.4/css/potoo/atoms/header.css"></noscript><h2 class="atomsHeader component" data-event-position="atomsHeader">Najnowsze wiadomości</h2><div class="componentsRecommendationsSimpleListing component" data-event-position="componentsRecommendationsSimpleListing" id="componentsRecommendationsSimpleListing453199999"><div class="componentsRecommendationsSimpleListing__content"><div class="componentsRecommendationsSimpleListing__element"
+        data-event-position="1"
+              ><link rel="preload" href="https://s-nsk.ppstatic.pl/assets/nsk/v1.54.4/css/potoo/atoms/article/tile.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://s-nsk.ppstatic.pl/assets/nsk/v1.54.4/css/potoo/atoms/article/tile.css"></noscript><div class="atomsArticleTile component" data-event-position="atomsArticleTile" data-event-name="atomsArticleTile" data-event-type="click" data-event-params="url=%2Fkierunki-studiow-na-uczelni-ojca-rydzyka-dziedzictwo-mysli-jana-pawla-ii-na-studiach-podyplomowych-w-toruniu-co-to-za-studia%2Far%2Fc1-14538027"><a class="atomsArticleTile__img" data-event-position="atomsArticleTile__img" href="/kierunki-studiow-na-uczelni-ojca-rydzyka-dziedzictwo-mysli-jana-pawla-ii-na-studiach-podyplomowych-w-toruniu-co-to-za-studia/ar/c1-14538027" title="Nowy kierunek studiów na uczelni ojca Rydzyka" rel="noopener"><div class="atomsArticleTile__imageWrapper"><img
+          class="atomsArticleTile__tileImg lazyload"
+          data-src="https://d-art.ppstatic.pl/kadry/k/r/1/32/a0/5db6d84d79263_o_medium.jpg"
+          alt="Nowy kierunek studiów na uczelni ojca Rydzyka"
+          data-image-type="articles"
+        /></div></a><a class="atomsArticleTile__info" data-event-position="atomsArticleTile__info" href="/kierunki-studiow-na-uczelni-ojca-rydzyka-dziedzictwo-mysli-jana-pawla-ii-na-studiach-podyplomowych-w-toruniu-co-to-za-studia/ar/c1-14538027" title="Nowy kierunek studiów na uczelni ojca Rydzyka" rel="noopener"><h3 class="atomsArticleTile__title" data-event-position="atomsArticleTile__title">Nowy kierunek studiów na uczelni ojca Rydzyka</h3></a></div></div><div class="componentsRecommendationsSimpleListing__element"
+        data-event-position="2"
+              ><link rel="preload" href="https://s-nsk.ppstatic.pl/assets/nsk/v1.54.4/css/potoo/atoms/article/tile.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://s-nsk.ppstatic.pl/assets/nsk/v1.54.4/css/potoo/atoms/article/tile.css"></noscript><div class="atomsArticleTile component" data-event-position="atomsArticleTile" data-event-name="atomsArticleTile" data-event-type="click" data-event-params="url=%2Fpolicja-w-przemyslu-w-sylwestra-i-nowy-rok-bylo-bezpiecznie%2Far%2Fc1-14693387"><a class="atomsArticleTile__img" data-event-position="atomsArticleTile__img" href="/policja-w-przemyslu-w-sylwestra-i-nowy-rok-bylo-bezpiecznie/ar/c1-14693387" title="Policja w Przemyślu: W Sylwestra i Nowy Rok było bezpiecznie" rel="noopener"><div class="atomsArticleTile__imageWrapper"><img
+          class="atomsArticleTile__tileImg lazyload"
+          data-src="https://d-art.ppstatic.pl/kadry/k/r/1/f7/cb/5e0f10accf111_o_medium.jpg"
+          alt="Policja w Przemyślu: W Sylwestra i Nowy Rok było bezpiecznie"
+          data-image-type="articles"
+        /></div></a><a class="atomsArticleTile__info" data-event-position="atomsArticleTile__info" href="/policja-w-przemyslu-w-sylwestra-i-nowy-rok-bylo-bezpiecznie/ar/c1-14693387" title="Policja w Przemyślu: W Sylwestra i Nowy Rok było bezpiecznie" rel="noopener"><h3 class="atomsArticleTile__title" data-event-position="atomsArticleTile__title">Policja w Przemyślu: W Sylwestra i Nowy Rok było bezpiecznie</h3></a></div></div><div class="componentsRecommendationsSimpleListing__element"
+        data-event-position="3"
+              ><link rel="preload" href="https://s-nsk.ppstatic.pl/assets/nsk/v1.54.4/css/potoo/atoms/article/tile.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://s-nsk.ppstatic.pl/assets/nsk/v1.54.4/css/potoo/atoms/article/tile.css"></noscript><div class="atomsArticleTile component" data-event-position="atomsArticleTile" data-event-name="atomsArticleTile" data-event-type="click" data-event-params="url=%2Fjas-pierwszym-tarnobrzezaninem-w-2020-roku-szczesliwa-rodzine-odwiedzil-prezydent-tarnobrzega%2Far%2Fc1-14693309"><a class="atomsArticleTile__img atomsArticleTile__img--withGallery" data-event-position="atomsArticleTile__img" href="/jas-pierwszym-tarnobrzezaninem-w-2020-roku-szczesliwa-rodzine-odwiedzil-prezydent-tarnobrzega/ar/c1-14693309" title="Jaś pierwszym tarnobrzeżaninem w 2020 roku" rel="noopener"><div class="atomsArticleTile__imageWrapper"><img
+          class="atomsArticleTile__tileImg lazyload"
+          data-src="https://d-art.ppstatic.pl/kadry/k/r/1/63/fd/5e0f0bec77f7d_o_medium.jpg"
+          alt="Jaś pierwszym tarnobrzeżaninem w 2020 roku"
+          data-image-type="articles"
+        /></div></a><a class="atomsArticleTile__info" data-event-position="atomsArticleTile__info" href="/jas-pierwszym-tarnobrzezaninem-w-2020-roku-szczesliwa-rodzine-odwiedzil-prezydent-tarnobrzega/ar/c1-14693309" title="Jaś pierwszym tarnobrzeżaninem w 2020 roku" rel="noopener"><h3 class="atomsArticleTile__title" data-event-position="atomsArticleTile__title">Jaś pierwszym tarnobrzeżaninem w 2020 roku</h3></a></div></div><div class="componentsRecommendationsSimpleListing__element"
+        data-event-position="4"
+                  data-slot-remove="true"
+              ><link rel="preload" href="https://s-nsk.ppstatic.pl/assets/nsk/v1.54.4/css/potoo/atoms/article/tile.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://s-nsk.ppstatic.pl/assets/nsk/v1.54.4/css/potoo/atoms/article/tile.css"></noscript><div class="atomsArticleTile component" data-event-position="atomsArticleTile" data-event-name="atomsArticleTile" data-event-type="click" data-event-params="url=%2Fslub-koscielny-2020-duze-zmiany-ksiadz-wypyta-o-impotencje-i-zmiane-plci-moze-nawet-zablokowac-zawarcie-malzenstwa%2Far%2Fc1-14630875"><a class="atomsArticleTile__img" data-event-position="atomsArticleTile__img" href="/slub-koscielny-2020-duze-zmiany-ksiadz-wypyta-o-impotencje-i-zmiane-plci-moze-nawet-zablokowac-zawarcie-malzenstwa/ar/c1-14630875" title="Zmiany w ślubach kościelnych. Ksiądz może zablokować ślub" rel="noopener"><div class="atomsArticleTile__imageWrapper"><img
+          class="atomsArticleTile__tileImg lazyload"
+          data-src="https://d-art.ppstatic.pl/kadry/k/r/1/8f/44/5de7df2cd251d_o_medium.jpg"
+          alt="Zmiany w ślubach kościelnych. Ksiądz może zablokować ślub"
+          data-image-type="articles"
+        /></div></a><a class="atomsArticleTile__info" data-event-position="atomsArticleTile__info" href="/slub-koscielny-2020-duze-zmiany-ksiadz-wypyta-o-impotencje-i-zmiane-plci-moze-nawet-zablokowac-zawarcie-malzenstwa/ar/c1-14630875" title="Zmiany w ślubach kościelnych. Ksiądz może zablokować ślub" rel="noopener"><h3 class="atomsArticleTile__title" data-event-position="atomsArticleTile__title">Zmiany w ślubach kościelnych. Ksiądz może zablokować ślub</h3></a></div></div><div class="componentsRecommendationsSimpleListing__element"
+          data-slot-show="true"
+        ><div id="dfp-nativesrodek1" class="componentsRecommendationsSimpleAdsNativeElement" ></div><script>
+  var PPAds = PPAds || {};
+  PPAds.queue = PPAds.queue || [];
+  PPAds.queue.push(function () {
+    var slot = PPAds.app.getSlot('nativesrodek', '1');
+
+    
+    var resolutions = [["fluid","auto"]];
+    if (typeof window.PPAdsConfig !== 'undefined' && PPAdsConfig.adStandard === 'acceptable_ads') {
+      var resolutions = [["fluid","auto"]];
+    }
+    for (var i = 0; i < resolutions.length; i++) {
+      slot.appendResolution(resolutions[i][0].toString(), resolutions[i][1].toString());
+    }
+
+    slot.setLoadType('lazy', 0.5);
+
+        slot.setCollapseType(PPAds.collapseTypes.AFTER);
+    
+    
+        slot.assignToGroup('standard');
+    
+          if (typeof pp_adblock_is_off === 'undefined' &&
+        typeof acceptable_ads_disallowed  === 'undefined') {
+        slot.assignToGroup('acceptable_ads');
+        slot.setSuffix('');
+      }
+    
+    
+    if (typeof window.PPAdsConfig !== 'undefined' && window.PPAdsConfig.fastDefineSlots) {
+      var globalTargeting = PPAds.getGlobalTargetings();
+      PPAds.defineToClient(slot, globalTargeting);
+    }
+  });</script></div><div class="componentsRecommendationsSimpleListing__element"
+        data-event-position="5"
+              ><link rel="preload" href="https://s-nsk.ppstatic.pl/assets/nsk/v1.54.4/css/potoo/atoms/article/tile.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://s-nsk.ppstatic.pl/assets/nsk/v1.54.4/css/potoo/atoms/article/tile.css"></noscript><div class="atomsArticleTile component" data-event-position="atomsArticleTile" data-event-name="atomsArticleTile" data-event-type="click" data-event-params="url=%2Fpapiez-uderzyl-w-reke-kobiete-ktora-nie-chciala-go-puscic-nagranie-obieglo-internet-wideo-franciszek-przeprasza-za-swoje%2Far%2Fc1-14691441"><a class="atomsArticleTile__img atomsArticleTile__img--withVideo" data-event-position="atomsArticleTile__img" href="/papiez-uderzyl-w-reke-kobiete-ktora-nie-chciala-go-puscic-nagranie-obieglo-internet-wideo-franciszek-przeprasza-za-swoje/ar/c1-14691441" title="Papież przeprosił za swoje zachowanie. Uderzył wierną w rękę" rel="noopener"><div class="atomsArticleTile__imageWrapper"><img
+          class="atomsArticleTile__tileImg lazyload"
+          data-src="https://d-art.ppstatic.pl/kadry/k/r/1/2d/d5/5e0dec03e4f1b_o_medium.jpg"
+          alt="Papież przeprosił za swoje zachowanie. Uderzył wierną w rękę"
+          data-image-type="articles"
+        /></div></a><a class="atomsArticleTile__info" data-event-position="atomsArticleTile__info" href="/papiez-uderzyl-w-reke-kobiete-ktora-nie-chciala-go-puscic-nagranie-obieglo-internet-wideo-franciszek-przeprasza-za-swoje/ar/c1-14691441" title="Papież przeprosił za swoje zachowanie. Uderzył wierną w rękę" rel="noopener"><h3 class="atomsArticleTile__title" data-event-position="atomsArticleTile__title">Papież przeprosił za swoje zachowanie. Uderzył wierną w rękę</h3></a></div></div><div class="componentsRecommendationsSimpleListing__element"
+        data-event-position="6"
+                  data-slot-remove="true"
+              ><link rel="preload" href="https://s-nsk.ppstatic.pl/assets/nsk/v1.54.4/css/potoo/atoms/article/tile.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://s-nsk.ppstatic.pl/assets/nsk/v1.54.4/css/potoo/atoms/article/tile.css"></noscript><div class="atomsArticleTile component" data-event-position="atomsArticleTile" data-event-name="atomsArticleTile" data-event-type="click" data-event-params="url=%2Fproblem-mieszkancow-ul-koscielnej-w-rzeszowie-przyjezdzaja-do-kosciola-i-zastawiaja-im-wyjazd%2Far%2Fc1-14691987"><a class="atomsArticleTile__img" data-event-position="atomsArticleTile__img" href="/problem-mieszkancow-ul-koscielnej-w-rzeszowie-przyjezdzaja-do-kosciola-i-zastawiaja-im-wyjazd/ar/c1-14691987" title="Przyjeżdżają do kościoła i zastawiają im wyjazd" rel="noopener"><div class="atomsArticleTile__imageWrapper"><img
+          class="atomsArticleTile__tileImg lazyload"
+          data-src="https://d-art.ppstatic.pl/kadry/k/r/1/42/e6/5e0e164f2ee78_o_medium.jpg"
+          alt="Przyjeżdżają do kościoła i zastawiają im wyjazd"
+          data-image-type="articles"
+        /></div></a><a class="atomsArticleTile__info" data-event-position="atomsArticleTile__info" href="/problem-mieszkancow-ul-koscielnej-w-rzeszowie-przyjezdzaja-do-kosciola-i-zastawiaja-im-wyjazd/ar/c1-14691987" title="Przyjeżdżają do kościoła i zastawiają im wyjazd" rel="noopener"><h3 class="atomsArticleTile__title" data-event-position="atomsArticleTile__title">Przyjeżdżają do kościoła i zastawiają im wyjazd</h3></a></div></div><div class="componentsRecommendationsSimpleListing__element"
+          data-slot-show="true"
+        ><div id="dfp-nativesrodek2" class="componentsRecommendationsSimpleAdsNativeElement" ></div><script>
+  var PPAds = PPAds || {};
+  PPAds.queue = PPAds.queue || [];
+  PPAds.queue.push(function () {
+    var slot = PPAds.app.getSlot('nativesrodek', '2');
+
+    
+    var resolutions = [["fluid","auto"]];
+    if (typeof window.PPAdsConfig !== 'undefined' && PPAdsConfig.adStandard === 'acceptable_ads') {
+      var resolutions = [["fluid","auto"]];
+    }
+    for (var i = 0; i < resolutions.length; i++) {
+      slot.appendResolution(resolutions[i][0].toString(), resolutions[i][1].toString());
+    }
+
+    slot.setLoadType('lazy', 0.5);
+
+        slot.setCollapseType(PPAds.collapseTypes.AFTER);
+    
+    
+        slot.assignToGroup('standard');
+    
+          if (typeof pp_adblock_is_off === 'undefined' &&
+        typeof acceptable_ads_disallowed  === 'undefined') {
+        slot.assignToGroup('acceptable_ads');
+        slot.setSuffix('');
+      }
+    
+    
+    if (typeof window.PPAdsConfig !== 'undefined' && window.PPAdsConfig.fastDefineSlots) {
+      var globalTargeting = PPAds.getGlobalTargetings();
+      PPAds.defineToClient(slot, globalTargeting);
+    }
+  });</script></div><div class="componentsRecommendationsSimpleListing__element"
+        data-event-position="7"
+              ><link rel="preload" href="https://s-nsk.ppstatic.pl/assets/nsk/v1.54.4/css/potoo/atoms/article/tile.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://s-nsk.ppstatic.pl/assets/nsk/v1.54.4/css/potoo/atoms/article/tile.css"></noscript><div class="atomsArticleTile component" data-event-position="atomsArticleTile" data-event-name="atomsArticleTile" data-event-type="click" data-event-params="url=%2Firanski-general-kassem-soleimani-zabity-przez-wojska-usa-na-rozkaz-prezydenta-donalda-trumpa-nalezal-do-iranskiej-elity%2Far%2Fc1-14693097"><a class="atomsArticleTile__img" data-event-position="atomsArticleTile__img" href="/iranski-general-kassem-soleimani-zabity-przez-wojska-usa-na-rozkaz-prezydenta-donalda-trumpa-nalezal-do-iranskiej-elity/ar/c1-14693097" title="Irański generał Soleimani zabity na rozkaz Donalda Trumpa" rel="noopener"><div class="atomsArticleTile__imageWrapper"><img
+          class="atomsArticleTile__tileImg lazyload"
+          data-src="https://d-art.ppstatic.pl/kadry/k/r/1/a9/86/5e0ef4a1888cb_o_medium.jpg"
+          alt="Irański generał Soleimani zabity na rozkaz Donalda Trumpa"
+          data-image-type="articles"
+        /></div></a><a class="atomsArticleTile__info" data-event-position="atomsArticleTile__info" href="/iranski-general-kassem-soleimani-zabity-przez-wojska-usa-na-rozkaz-prezydenta-donalda-trumpa-nalezal-do-iranskiej-elity/ar/c1-14693097" title="Irański generał Soleimani zabity na rozkaz Donalda Trumpa" rel="noopener"><h3 class="atomsArticleTile__title" data-event-position="atomsArticleTile__title">Irański generał Soleimani zabity na rozkaz Donalda Trumpa</h3></a></div></div><div class="componentsRecommendationsSimpleListing__element"
+        data-event-position="8"
+              ><link rel="preload" href="https://s-nsk.ppstatic.pl/assets/nsk/v1.54.4/css/potoo/atoms/article/tile.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://s-nsk.ppstatic.pl/assets/nsk/v1.54.4/css/potoo/atoms/article/tile.css"></noscript><div class="atomsArticleTile component" data-event-position="atomsArticleTile" data-event-name="atomsArticleTile" data-event-type="click" data-event-params="url=%2Fceny-gazu-2020-nowe-taryfy-ure-dla-pgnig-obrot-detaliczny-od-1-stycznia-za-gaz-zaplacimy-mniej-o-ile-kilka-zlotych-oszczednosci%2Far%2Fc1-14664517"><a class="atomsArticleTile__img atomsArticleTile__img--withVideo" data-event-position="atomsArticleTile__img" href="/ceny-gazu-2020-nowe-taryfy-ure-dla-pgnig-obrot-detaliczny-od-1-stycznia-za-gaz-zaplacimy-mniej-o-ile-kilka-zlotych-oszczednosci/ar/c1-14664517" title="Tańszy gaz od 1 stycznia 2020 r. URE zatwierdził nowe taryfy" rel="noopener"><div class="atomsArticleTile__imageWrapper"><img
+          class="atomsArticleTile__tileImg lazyload"
+          data-src="https://d-art.ppstatic.pl/kadry/k/r/1/28/53/5df9f884afd20_o_medium.jpg"
+          alt="Tańszy gaz od 1 stycznia 2020 r. URE zatwierdził nowe taryfy"
+          data-image-type="articles"
+        /></div></a><a class="atomsArticleTile__info" data-event-position="atomsArticleTile__info" href="/ceny-gazu-2020-nowe-taryfy-ure-dla-pgnig-obrot-detaliczny-od-1-stycznia-za-gaz-zaplacimy-mniej-o-ile-kilka-zlotych-oszczednosci/ar/c1-14664517" title="Tańszy gaz od 1 stycznia 2020 r. URE zatwierdził nowe taryfy" rel="noopener"><h3 class="atomsArticleTile__title" data-event-position="atomsArticleTile__title">Tańszy gaz od 1 stycznia 2020 r. URE zatwierdził nowe taryfy</h3></a></div></div><div class="componentsRecommendationsSimpleListing__element"
+        data-event-position="9"
+              ><link rel="preload" href="https://s-nsk.ppstatic.pl/assets/nsk/v1.54.4/css/potoo/atoms/article/tile.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://s-nsk.ppstatic.pl/assets/nsk/v1.54.4/css/potoo/atoms/article/tile.css"></noscript><div class="atomsArticleTile component" data-event-position="atomsArticleTile" data-event-name="atomsArticleTile" data-event-type="click" data-event-params="url=%2Fceny-pradu-2020-nowe-taryfy-ure-dla-enea-i-energa-obrot-podwyzki-u-kolejnych-sprzedawcow-energii-elektrycznej-o-ile-zdrozeje%2Far%2Fc1-14687353"><a class="atomsArticleTile__img" data-event-position="atomsArticleTile__img" href="/ceny-pradu-2020-nowe-taryfy-ure-dla-enea-i-energa-obrot-podwyzki-u-kolejnych-sprzedawcow-energii-elektrycznej-o-ile-zdrozeje/ar/c1-14687353" title="Ceny prądu w górę. Podwyżki u kolejnych sprzedawców" rel="noopener"><div class="atomsArticleTile__imageWrapper"><img
+          class="atomsArticleTile__tileImg lazyload"
+          data-src="https://d-art.ppstatic.pl/kadry/k/r/1/b2/03/5e0af5c1d1aef_o_medium.jpg"
+          alt="Ceny prądu w górę. Podwyżki u kolejnych sprzedawców"
+          data-image-type="articles"
+        /></div></a><a class="atomsArticleTile__info" data-event-position="atomsArticleTile__info" href="/ceny-pradu-2020-nowe-taryfy-ure-dla-enea-i-energa-obrot-podwyzki-u-kolejnych-sprzedawcow-energii-elektrycznej-o-ile-zdrozeje/ar/c1-14687353" title="Ceny prądu w górę. Podwyżki u kolejnych sprzedawców" rel="noopener"><h3 class="atomsArticleTile__title" data-event-position="atomsArticleTile__title">Ceny prądu w górę. Podwyżki u kolejnych sprzedawców</h3></a></div></div></div></div></section>
+<script>
+  require.config({
+    context: 'components/recommendations/simple/listing',
+    baseUrl: "https://s-nsk.ppstatic.pl/assets/nsk/v1.54.4/js/compiled/",
+    waitSeconds: 60
+  })(['components/recommendations/simple/listing'], function(Component) {
+    if (Component || Component.default) {
+      (new Component.default('componentsRecommendationsSimpleListing453199999', 'componentsRecommendationsSimpleListing'))
+        .init({"type_slot":"nativesrodek"});
+    }
+  });
+</script>
+
+  <script>
+ var PPAds = PPAds || {};
+ PPAds.queue = PPAds.queue || [];
+ PPAds.queue.push(function () {
+                PPAds.app.getSlotTemplate().appendTargeting('c_assets', "v1.54.4");
+         });
+</script>
+  </div>
+
+<script>
+    (function ($) {
+        $('body').keydown(function (e) {
+                                        if (39 == e.keyCode) {
+                    window.location.href = 'https://nowiny24.pl/sylwester-2019-2020-tlumy-na-rzeszowskim-rynku-przywitaly-nowy-rok/ga/c1-14688663/zd/40994883';
+                }
+                    });
+
+                    liczbySpolecznosciRegionalne();
+        
+        $("#narzedzia .facebook").hover(function() {
+            $(this).toggleClass("hover");
+        });
+
+        function Pozycjonuj() {
+            var poz = $(".galeria").offset(),
+                scrollTop = $(window).scrollTop(),
+                doWysokosci = $(".galeria .warstwaTekstowa").offset(),
+                narzedzia;
+
+            if (typeof doWysokosci == "undefined") {
+                return;
+            } else {
+                doWysokosci = doWysokosci.top - 15
+            }
+
+                            narzedzia = $('#narzedzia');
+            
+            if(poz.top <= scrollTop) {
+                if(scrollTop + narzedzia.outerHeight(true) < doWysokosci) {
+                    narzedzia.css({
+                        "top": 20,
+                        "position": "fixed",
+                        "left": poz.left - narzedzia.outerWidth(true)-20,
+                    });
+                } else {
+                    narzedzia.css({
+                        "top": $('div.warstwaTekstowa').offset().top + $('div.warstwaTekstowa').outerHeight(true) - poz.top - narzedzia.outerHeight(true) + 20,
+                        "position": "absolute",
+                        "left": -narzedzia.outerWidth(true),
+                    });
+                }
+            } else {
+                narzedzia.css({
+                    "top": poz.top,
+                    "position": "absolute",
+                    "left": -narzedzia.outerWidth(true),
+                });
+            }
+        }
+        
+        $(window).on("scroll resize", function(){
+            Pozycjonuj();
+        });
+        $(window).on("load", function(){
+            setTimeout(function(){
+                Pozycjonuj();
+            }, 300);
+        });
+    })(jQuery);
+</script>
+
+  <script>
+    var dataLayer = dataLayer || [];
+    dataLayer.push({
+                        'article.author_name': 'krzysztof.kapica',                                'article.edited_at': '2020-01-02 07:57',                                'article.created_at': '2020-01-01 08:35',                                'article.video_count': 'Nie',                                'article.id': '14688663',                                'category.path': '/imprezy/fotogalerie/',                                'article.prefered_journals': 'nowiny24.pl'                  });
+  </script>
+
+  <script>
+  var PPAds = PPAds || {};
+  PPAds.queue = PPAds.queue || [];
+  PPAds.queue.push(function() {
+                            PPAds.app.getSlotTemplate().appendTargeting("typstr", "galeria");
+                                          PPAds.app.getSlotTemplate().appendTargeting("article.title", "Sylwester 2019 \/ 2020. T\u0142umy na rzeszowskim Rynku przywita\u0142y Nowy Rok");
+                                          PPAds.app.getSlotTemplate().appendTargeting("article.author_name", "krzysztof.kapica");
+                                          PPAds.app.getSlotTemplate().appendTargeting("article.id", "14688663");
+                                          PPAds.app.getSlotTemplate().appendTargeting("idzas", "14688663");
+                                          PPAds.app.getSlotTemplate().appendTargeting("kat", ["imprezy","fotogalerie"]);
+                                          PPAds.app.getSlotTemplate().appendTargeting("category.subject", "wiadomo\u015bci");
+                                                    PPAds.app.getSlotTemplate().appendTargeting("photonumber", "1");
+                    });
+</script>
+
+<link rel="stylesheet" href="https://s-nsk.ppstatic.pl/assets/nsk/v1.54.4/css/owl/components/slots/welcome-screen.css">
+<noscript><link rel="stylesheet" href="https://s-nsk.ppstatic.pl/assets/nsk/v1.54.4/css/owl/components/slots/welcome-screen.css"></noscript>
+<div class="componentsSlotsWelcomeScreen component" data-event-position="componentsSlotsWelcomeScreen" id="componentsSlotsWelcomeScreen2071535958">
+  <div class="componentsSlotsWelcomeScreen__nav" id='js-nav'>
+          <a class="componentsSlotsWelcomeScreen__href" href="https://nowiny24.pl" rel="noopener">
+        <svg xmlns="http://www.w3.org/2000/svg" width="237" height="51" viewBox="0 0 237 51">
+  <path fill="#e20613" d="M232.2 28.8V26h-2.5c-1.2 0-2.2-1-2.2-2.2V5.4h-5.2l-14.8 18.3v5.2H221c1.2 0 2.2 1 2.2 2.2V37h4.4v-5.7-.2c0-1.2 1-2.2 2.2-2.2h2.4zm4.4-5V31c0 1.2-1 2.2-2.2 2.2h-2.5v5.9c0 1.2-1 2.2-2.2 2.2h-8.8c-1.2 0-2.2-1-2.2-2.2v-5.9h-13.5c-1.2 0-2.2-1-2.2-2.2v-8.2c0-.5.2-1 .5-1.4l16-19.7c.4-.5 1.1-.8 1.7-.8h8.5c1.2 0 2.2 1 2.2 2.2v18.5h2.5c1.2 0 2.2 1 2.2 2.2z"/>
+  <path fill="#fff" d="M234.4 23.8V31h-4.7v8.1h-8.8V31h-15.7v-8.1l16-19.7h8.5v20.6z"/>
+  <path fill="#e20613" d="M171.6 9.8H164L158.3 26l-5.6-16.2h-11.2l9.7 26.4c.6 1.7.9 3 .9 4 0 2.5-1.4 3.5-4.8 3.5H144V51h4.5c5.8 0 8.5-1.6 10.5-7l12.6-34.2zM28 40.6v-21c0-6.8-2-10.2-7.6-10.2-3.4 0-6.4 1.6-10.2 4.8V9.8H0v30.7h10.3V23.1c.1-3.2 1.3-5 3.8-5 2.4-.1 3.8 1.5 3.8 5.3v17.1H28zM60.1 25c0-9.5-6.4-16.4-15.5-16.4S29 15.5 29.1 25c0 9.5 6.5 16.5 15.6 16.5s15.4-7 15.4-16.5m-10.6-.1c0 6.1-1.5 9.3-4.9 9.4-3.3 0-4.9-3.2-4.9-9.3 0-6.1 1.5-9.3 4.9-9.3 3.4-.1 4.9 3 4.9 9.2zM97.6 9.8h-4.2l-4.5 16-4.8-16h-6.6l-5 16-4.2-16H57.5l9.4 30.7h7.8L79.2 26l4.5 14.5h7.9l8.4-26.4c-1.2-1.2-2-2.7-2.4-4.3M111.8 40.5V15.8c-1.4.8-3.1 1.3-4.9 1.3-2.1 0-4-.7-5.6-1.8v25.1h10.5z"/>
+  <path fill="#e20613" d="M142.7 40.5V19.6c0-6.8-2.1-10.2-7.6-10.2-3.4 0-6.4 1.7-10.2 4.8V9.8h-8.6c-.3 1.3-.9 2.5-1.7 3.5v27.2h10.3V23.1c.1-3.2 1.2-5 3.8-5 2.4-.1 3.8 1.5 3.8 5.3v17.1h10.2zM107 0c4.1 0 7.5 3.4 7.5 7.5S111.1 15 107 15s-7.5-3.4-7.5-7.5S102.8 0 107 0M221.2 23.8v-9.2-2.9c-1.6 2.3-2.7 3.8-3.2 4.6l-2.6 3.3c-1.5 1.8-2.7 3.2-3.5 4.3h9.3zM204.1 31.8v7.3c0 1.2-1 2.2-2.2 2.2H173c-1.2 0-2.2-1-2.2-2.2V39v-.9c0-.3 0-.6.1-1 .2-1.6.5-3.2 1.2-4.9 0-.1 0-.1.1-.2.1-.3.3-.7.5-1.1.2-.4.4-.8.7-1.2 1.2-1.9 3.1-3.8 5.5-5.6.2-.2.4-.3.6-.4h.1l.7-.5c1.4-1 3.6-2.4 6.4-4.2 0 0 .1 0 .1-.1.9-.6 1.6-1.1 2.2-1.6.5-.4.8-.7 1-1l.1-.1.3-.6c.1-.3.1-.6.1-.9 0-.4-.1-.7-.2-.9-.1-.2-.3-.5-.5-.7l-.1-.1c-.1 0-.1-.1-.2-.1-.4-.2-.9-.3-1.6-.3-.8 0-1.4.1-1.8.4-.4.2-.7.6-1 1.2v.1c0 .1-.1.2-.1.3-.1.2-.1.3-.1.4-.2.7-.3 1.7-.3 2.8 0 1.2-1 2.1-2.2 2.1H174c-1.2 0-2.2-1-2.2-2.2v-.6-1-.9c.1-1.5.3-2.9.6-4 .1-.5.3-.9.5-1.5.2-.5.4-1 .6-1.4 1.2-2.3 3-4.2 5.4-5.6 1.3-.8 2.8-1.3 4.4-1.7 1.5-.4 3.2-.6 4.9-.6 2.2 0 4.2.3 6 .8 1.9.6 3.5 1.4 4.9 2.6l.1.1c.4.3.8.7 1.1 1 .4.4.7.8 1 1.2l.1.1c1.6 2.2 2.4 4.7 2.4 7.6 0 2.1-.4 4-1.2 5.8-.8 1.8-2 3.3-3.6 4.7l-.1.1c-.5.4-1.3 1-2.3 1.7-1.1.8-2.4 1.6-4 2.6l-.9.6H202c1.2 0 2.2 1 2.2 2.2-.1.1-.1.2-.1.3"/>
+  <path fill="#fff" d="M201.9 31.6v7.5H173c-.1-2 .3-4 1.1-6.2.9-2.3 2.9-4.6 6-7.1 1.2-.9 3.7-2.6 7.7-5.1 2-1.3 3.4-2.4 3.9-3.2.6-.8.8-1.8.8-2.9 0-1.3-.5-2.4-1.4-3.2-.8-.8-2-1.2-3.5-1.2-2.4 0-4 1-4.8 2.9-.4 1-.7 2.5-.8 4.3h-8.4c0-2.4.2-4.3.6-5.8.8-3.1 2.7-5.5 5.5-7.1 2.3-1.3 5-2 8.2-2 3.9 0 7.1 1 9.5 2.9 2.6 2.1 3.9 4.9 3.9 8.4s-1.3 6.4-4 8.8c-.9.8-2.9 2.2-6.2 4.2-1.5 1-2.9 1.9-4.3 2.9-.9.7-1.7 1.4-2.4 2.1 2.3-.2 4.4-.4 6.3-.4h11.2z"/>
+</svg>
+
+      </a>
+        <div class="componentsSlotsWelcomeScreen__actions">
+      <span class="componentsSlotsWelcomeScreen__counter">reklama</span>
+      <button class="componentsSlotsWelcomeScreen__closeBtn" id="componentsSlotsWelcomeScreen2071535958CloseBtn">Przejdź do strony <svg version="1.1" width='12' height='12' viewBox="0 0 10 11" xmlns="http://www.w3.org/2000/svg">
+<g fill="none" fill-rule="evenodd">
+<g transform="translate(-1581 -34)" fill="#070707" fill-rule="nonzero">
+<polygon points="1584.9 43.239 1586 44.293 1591 39.293 1586 34.293 1584.9 35.347 1588.1 38.548 1581 38.548 1581 40.038 1588.1 40.038"/>
+</g>
+</g>
+</svg>
+</button>
+    </div>
+  </div>
+  <div class="componentsSlotsWelcomeScreen__adContainer" id="componentsSlotsWelcomeScreen2071535958AdContainer">
+    <div id="dfp-layer"  >
+</div>
+
+    <script>
+      var currentDate = new Date();
+    currentDate.setTime(currentDate.getTime() + (24 * 3600 * 1000));
+    document.cookie = 'ppa_preload_layer=1; expires=' + currentDate.toUTCString() + '; path=/; domain=.' + window.location.host;
+  
+  var PPAds = window.PPAds || {};
+  PPAds.queue = PPAds.queue || [];
+
+  PPAds.queue.push(function () {
+    var slot = PPAds.app.getSlot('layer');
+          slot.appendResolution('1600', '800');
+          slot.appendResolution('1', '1');
+        slot.setAdUnitParts({"siteName":"nowiny24","categoryName":"pozostale","pageType":null});
+    slot.setTargetings(PPAds.app.getGlobalTargetings());
+    PPAds.preloadSlot(slot);
+  });
+</script>
+
+  </div>
+</div>
+<script>
+  window.PPAds.queue.push(function () {
+    window.PPAds.listenToForSlotName(window.PPAds.event.AD_RENDER_ENDED, 'layer', function (param) {
+      var node = document.getElementById('componentsSlotsWelcomeScreen2071535958');
+      node.style.setProperty('display', 'block', 'important');
+    });
+  });
+</script>
+<script>
+  require.config({
+    context: 'components/slots/welcome-screen',
+    baseUrl: "https://s-nsk.ppstatic.pl/assets/nsk/v1.54.4/js/compiled/",
+    waitSeconds: 60
+  })(['components/slots/welcome-screen'], function(Component) {
+    if (Component || Component.default) {
+      (new Component.default('componentsSlotsWelcomeScreen2071535958', 'componentsSlotsWelcomeScreen'))
+        .init();
+    }
+  });
+</script>           </div>
+          <div id="prawa-kolumna" class="four mobile-four columns">
+             <div id='dfp-prawa1' class="ppa-slot">
+    <script type="text/javascript">
+      PPAds.queue.push(function () {
+        var slot = PPAds.app.getSlot('prawa1');
+        
+                  slot.appendResolution(300, 600);
+                  slot.appendResolution(300, 250);
+                  slot.appendResolution(1, 1);
+        
+                
+        
+
+        
+        if (typeof window.PPAdsConfig !== 'undefined' && window.PPAdsConfig.fastDefineSlots) {
+          var globalTargeting = PPAds.getGlobalTargetings();
+          PPAds.defineToClient(slot, globalTargeting);
+        }
+      });
+    </script>
+  </div>
+<link rel="stylesheet" href="https://s-nsk.ppstatic.pl/assets/nsk/v1.54.4/css/potoo/components/recommendations/mixed/listing.css">
+<noscript><link rel="stylesheet" href="https://s-nsk.ppstatic.pl/assets/nsk/v1.54.4/css/potoo/components/recommendations/mixed/listing.css"></noscript>
+<section><link rel="preload" href="https://s-nsk.ppstatic.pl/assets/nsk/v1.54.4/css/potoo/atoms/header.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://s-nsk.ppstatic.pl/assets/nsk/v1.54.4/css/potoo/atoms/header.css"></noscript><h2 class="atomsHeader component" data-event-position="atomsHeader">Polecamy</h2><div class="componentsRecommendationsMixedListing component" data-event-position="componentsRecommendationsMixedListing"><div class="componentsRecommendationsMixedListing__content"><div class="componentsRecommendationsMixedListing__elementWithTile" data-event-position="1"><link rel="preload" href="https://s-nsk.ppstatic.pl/assets/nsk/v1.54.4/css/potoo/atoms/article/tile.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://s-nsk.ppstatic.pl/assets/nsk/v1.54.4/css/potoo/atoms/article/tile.css"></noscript><div class="atomsArticleTile component" data-event-position="atomsArticleTile" data-event-name="atomsArticleTile" data-event-type="click" data-event-params="url=%2Fnie-zyje-marlena-makielhedrzak-profesor-uniwersytetu-rzeszowskiego%2Far%2Fc1-14691143"><a class="atomsArticleTile__img" data-event-position="atomsArticleTile__img" href="/nie-zyje-marlena-makielhedrzak-profesor-uniwersytetu-rzeszowskiego/ar/c1-14691143" title="Nie żyje Marlena Makiel-Hędrzak, profesor UR" rel="noopener"><div class="atomsArticleTile__imageWrapper"><img
+          class="atomsArticleTile__tileImg lazyload"
+          data-src="https://d-art.ppstatic.pl/kadry/k/r/1/c7/af/5e0de570bc613_o_medium.jpg"
+          alt="Nie żyje Marlena Makiel-Hędrzak, profesor UR"
+          data-image-type="articles"
+        /></div></a><a class="atomsArticleTile__info" data-event-position="atomsArticleTile__info" href="/nie-zyje-marlena-makielhedrzak-profesor-uniwersytetu-rzeszowskiego/ar/c1-14691143" title="Nie żyje Marlena Makiel-Hędrzak, profesor UR" rel="noopener"><h3 class="atomsArticleTile__title" data-event-position="atomsArticleTile__title">Nie żyje Marlena Makiel-Hędrzak, profesor UR</h3></a></div></div><div class="componentsRecommendationsMixedListing__elementWithTile" data-event-position="2"><link rel="preload" href="https://s-nsk.ppstatic.pl/assets/nsk/v1.54.4/css/potoo/atoms/article/tile.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://s-nsk.ppstatic.pl/assets/nsk/v1.54.4/css/potoo/atoms/article/tile.css"></noscript><div class="atomsArticleTile atomsArticleTile--inRowNarrow atomsArticleTile--inRow component" data-event-position="atomsArticleTile" data-event-name="atomsArticleTile" data-event-type="click" data-event-params="url=%2Fproblem-mieszkancow-ul-koscielnej-w-rzeszowie-przyjezdzaja-do-kosciola-i-zastawiaja-im-wyjazd%2Far%2Fc1-14691987"><a class="atomsArticleTile__img" data-event-position="atomsArticleTile__img" href="/problem-mieszkancow-ul-koscielnej-w-rzeszowie-przyjezdzaja-do-kosciola-i-zastawiaja-im-wyjazd/ar/c1-14691987" title="Przyjeżdżają do kościoła i zastawiają im wyjazd" rel="noopener"><div class="atomsArticleTile__imageWrapper"><img
+          class="atomsArticleTile__tileImg lazyload"
+          data-src="https://d-art.ppstatic.pl/kadry/k/r/1/42/e6/5e0e164f2ee78_o_medium.jpg"
+          alt="Przyjeżdżają do kościoła i zastawiają im wyjazd"
+          data-image-type="articles"
+        /></div></a><a class="atomsArticleTile__info" data-event-position="atomsArticleTile__info" href="/problem-mieszkancow-ul-koscielnej-w-rzeszowie-przyjezdzaja-do-kosciola-i-zastawiaja-im-wyjazd/ar/c1-14691987" title="Przyjeżdżają do kościoła i zastawiają im wyjazd" rel="noopener"><h3 class="atomsArticleTile__title" data-event-position="atomsArticleTile__title">Przyjeżdżają do kościoła i zastawiają im wyjazd</h3></a></div></div><div class="componentsRecommendationsMixedListing__element" data-event-position="2"><div id="dfp-nativeprawa1" class="componentsRecommendationsMixedAdsNativeElement" ></div><script>
+  var PPAds = PPAds || {};
+  PPAds.queue = PPAds.queue || [];
+  PPAds.queue.push(function () {
+    var slot = PPAds.app.getSlot('nativeprawa', '1');
+
+    
+    var resolutions = [["fluid","auto"]];
+    if (typeof window.PPAdsConfig !== 'undefined' && PPAdsConfig.adStandard === 'acceptable_ads') {
+      var resolutions = [["fluid","auto"]];
+    }
+    for (var i = 0; i < resolutions.length; i++) {
+      slot.appendResolution(resolutions[i][0].toString(), resolutions[i][1].toString());
+    }
+
+    slot.setLoadType('lazy', 0.5);
+
+        slot.setCollapseType(PPAds.collapseTypes.AFTER);
+    
+    
+        slot.assignToGroup('standard');
+    
+          if (typeof pp_adblock_is_off === 'undefined' &&
+        typeof acceptable_ads_disallowed  === 'undefined') {
+        slot.assignToGroup('acceptable_ads');
+        slot.setSuffix('');
+      }
+    
+    
+    if (typeof window.PPAdsConfig !== 'undefined' && window.PPAdsConfig.fastDefineSlots) {
+      var globalTargeting = PPAds.getGlobalTargetings();
+      PPAds.defineToClient(slot, globalTargeting);
+    }
+  });</script></div><div class="componentsRecommendationsMixedListing__elementWithTile" data-event-position="3"><link rel="preload" href="https://s-nsk.ppstatic.pl/assets/nsk/v1.54.4/css/potoo/atoms/article/tile.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://s-nsk.ppstatic.pl/assets/nsk/v1.54.4/css/potoo/atoms/article/tile.css"></noscript><div class="atomsArticleTile atomsArticleTile--inRowNarrow atomsArticleTile--inRow component" data-event-position="atomsArticleTile" data-event-name="atomsArticleTile" data-event-type="click" data-event-params="url=%2Fprokuratura-wyjasnia-sprawe-smierci-39letniej-kobiety-z-jaroslawia-to-nie-bylo-zabojstwo%2Far%2Fc1-14691423"><a class="atomsArticleTile__img" data-event-position="atomsArticleTile__img" href="/prokuratura-wyjasnia-sprawe-smierci-39letniej-kobiety-z-jaroslawia-to-nie-bylo-zabojstwo/ar/c1-14691423" title="Śmierć 39-latki z Jarosławia. To nie było zabójstwo" rel="noopener"><div class="atomsArticleTile__imageWrapper"><img
+          class="atomsArticleTile__tileImg lazyload"
+          data-src="https://d-art.ppstatic.pl/kadry/k/r/1/fb/0c/5e0deacf29b1b_o_medium.jpg"
+          alt="Śmierć 39-latki z Jarosławia. To nie było zabójstwo"
+          data-image-type="articles"
+        /></div></a><a class="atomsArticleTile__info" data-event-position="atomsArticleTile__info" href="/prokuratura-wyjasnia-sprawe-smierci-39letniej-kobiety-z-jaroslawia-to-nie-bylo-zabojstwo/ar/c1-14691423" title="Śmierć 39-latki z Jarosławia. To nie było zabójstwo" rel="noopener"><h3 class="atomsArticleTile__title" data-event-position="atomsArticleTile__title">Śmierć 39-latki z Jarosławia. To nie było zabójstwo</h3></a></div></div><div class="componentsRecommendationsMixedListing__elementWithTile" data-event-position="4"><link rel="preload" href="https://s-nsk.ppstatic.pl/assets/nsk/v1.54.4/css/potoo/atoms/article/tile.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://s-nsk.ppstatic.pl/assets/nsk/v1.54.4/css/potoo/atoms/article/tile.css"></noscript><div class="atomsArticleTile atomsArticleTile--inRowNarrow atomsArticleTile--inRow component" data-event-position="atomsArticleTile" data-event-name="atomsArticleTile" data-event-type="click" data-event-params="url=%2Fzmiany-na-parkingu-przy-wzs-w-rzeszowie-wywolaly-chaos-kierowcy-stoja-w-korkach-do-wyjazdu-foto%2Far%2Fc1-14686137"><a class="atomsArticleTile__img atomsArticleTile__img--withGallery" data-event-position="atomsArticleTile__img" href="/zmiany-na-parkingu-przy-wzs-w-rzeszowie-wywolaly-chaos-kierowcy-stoja-w-korkach-do-wyjazdu-foto/ar/c1-14686137" title="Zmiany na parkingu przy przychodni wywołały chaos" rel="noopener"><div class="atomsArticleTile__imageWrapper"><img
+          class="atomsArticleTile__tileImg lazyload"
+          data-src="https://d-art.ppstatic.pl/kadry/k/r/1/d6/e0/5e0a0cfe33309_o_medium.jpg"
+          alt="Zmiany na parkingu przy przychodni wywołały chaos"
+          data-image-type="articles"
+        /></div></a><a class="atomsArticleTile__info" data-event-position="atomsArticleTile__info" href="/zmiany-na-parkingu-przy-wzs-w-rzeszowie-wywolaly-chaos-kierowcy-stoja-w-korkach-do-wyjazdu-foto/ar/c1-14686137" title="Zmiany na parkingu przy przychodni wywołały chaos" rel="noopener"><h3 class="atomsArticleTile__title" data-event-position="atomsArticleTile__title">Zmiany na parkingu przy przychodni wywołały chaos</h3></a></div></div><div class="componentsRecommendationsMixedListing__element" data-event-position="4"><div id="dfp-nativeprawa2" class="componentsRecommendationsMixedAdsNativeElement" ></div><script>
+  var PPAds = PPAds || {};
+  PPAds.queue = PPAds.queue || [];
+  PPAds.queue.push(function () {
+    var slot = PPAds.app.getSlot('nativeprawa', '2');
+
+    
+    var resolutions = [["fluid","auto"]];
+    if (typeof window.PPAdsConfig !== 'undefined' && PPAdsConfig.adStandard === 'acceptable_ads') {
+      var resolutions = [["fluid","auto"]];
+    }
+    for (var i = 0; i < resolutions.length; i++) {
+      slot.appendResolution(resolutions[i][0].toString(), resolutions[i][1].toString());
+    }
+
+    slot.setLoadType('lazy', 0.5);
+
+        slot.setCollapseType(PPAds.collapseTypes.AFTER);
+    
+    
+        slot.assignToGroup('standard');
+    
+          if (typeof pp_adblock_is_off === 'undefined' &&
+        typeof acceptable_ads_disallowed  === 'undefined') {
+        slot.assignToGroup('acceptable_ads');
+        slot.setSuffix('');
+      }
+    
+    
+    if (typeof window.PPAdsConfig !== 'undefined' && window.PPAdsConfig.fastDefineSlots) {
+      var globalTargeting = PPAds.getGlobalTargetings();
+      PPAds.defineToClient(slot, globalTargeting);
+    }
+  });</script></div><div class="componentsRecommendationsMixedListing__elementWithTile" data-event-position="5"><link rel="preload" href="https://s-nsk.ppstatic.pl/assets/nsk/v1.54.4/css/potoo/atoms/article/tile.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://s-nsk.ppstatic.pl/assets/nsk/v1.54.4/css/potoo/atoms/article/tile.css"></noscript><div class="atomsArticleTile atomsArticleTile--inRowNarrow atomsArticleTile--inRow component" data-event-position="atomsArticleTile" data-event-name="atomsArticleTile" data-event-type="click" data-event-params="url=%2Fprezenty-dla-pierwszej-w-tym-roku-rzeszowianki-dziewczynka-przyszla-na-swiat-w-nowy-rok-pietnascie-minut-po-polnocy%2Far%2Fc1-14691583"><a class="atomsArticleTile__img" data-event-position="atomsArticleTile__img" href="/prezenty-dla-pierwszej-w-tym-roku-rzeszowianki-dziewczynka-przyszla-na-swiat-w-nowy-rok-pietnascie-minut-po-polnocy/ar/c1-14691583" title="Prezenty dla pierwszej w tym roku rzeszowianki" rel="noopener"><div class="atomsArticleTile__imageWrapper"><img
+          class="atomsArticleTile__tileImg lazyload"
+          data-src="https://d-art.ppstatic.pl/kadry/k/r/1/37/94/5e0df1633b707_o_medium.jpg"
+          alt="Prezenty dla pierwszej w tym roku rzeszowianki"
+          data-image-type="articles"
+        /></div></a><a class="atomsArticleTile__info" data-event-position="atomsArticleTile__info" href="/prezenty-dla-pierwszej-w-tym-roku-rzeszowianki-dziewczynka-przyszla-na-swiat-w-nowy-rok-pietnascie-minut-po-polnocy/ar/c1-14691583" title="Prezenty dla pierwszej w tym roku rzeszowianki" rel="noopener"><h3 class="atomsArticleTile__title" data-event-position="atomsArticleTile__title">Prezenty dla pierwszej w tym roku rzeszowianki</h3></a></div></div><div class="componentsRecommendationsMixedListing__elementWithTile" data-event-position="6"><link rel="preload" href="https://s-nsk.ppstatic.pl/assets/nsk/v1.54.4/css/potoo/atoms/article/tile.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://s-nsk.ppstatic.pl/assets/nsk/v1.54.4/css/potoo/atoms/article/tile.css"></noscript><div class="atomsArticleTile atomsArticleTile--inRowNarrow atomsArticleTile--inRow component" data-event-position="atomsArticleTile" data-event-name="atomsArticleTile" data-event-type="click" data-event-params="url=%2Fmieszkanka-lutczy-stanela-oko-w-oko-z-wilkiem-lezal-na-sianie-w-stodole%2Far%2Fc1-14690361"><a class="atomsArticleTile__img" data-event-position="atomsArticleTile__img" href="/mieszkanka-lutczy-stanela-oko-w-oko-z-wilkiem-lezal-na-sianie-w-stodole/ar/c1-14690361" title="Mieszkanka Lutczy stanęła oko w oko z wilkiem" rel="noopener"><div class="atomsArticleTile__imageWrapper"><img
+          class="atomsArticleTile__tileImg lazyload"
+          data-src="https://d-art.ppstatic.pl/kadry/k/r/1/54/81/5e0da8c591e87_o_medium.jpg"
+          alt="Mieszkanka Lutczy stanęła oko w oko z wilkiem"
+          data-image-type="articles"
+        /></div></a><a class="atomsArticleTile__info" data-event-position="atomsArticleTile__info" href="/mieszkanka-lutczy-stanela-oko-w-oko-z-wilkiem-lezal-na-sianie-w-stodole/ar/c1-14690361" title="Mieszkanka Lutczy stanęła oko w oko z wilkiem" rel="noopener"><h3 class="atomsArticleTile__title" data-event-position="atomsArticleTile__title">Mieszkanka Lutczy stanęła oko w oko z wilkiem</h3></a></div></div><div class="componentsRecommendationsMixedListing__element" data-event-position="6"><div id="dfp-nativeprawa3" class="componentsRecommendationsMixedAdsNativeElement" ></div><script>
+  var PPAds = PPAds || {};
+  PPAds.queue = PPAds.queue || [];
+  PPAds.queue.push(function () {
+    var slot = PPAds.app.getSlot('nativeprawa', '3');
+
+    
+    var resolutions = [["fluid","auto"]];
+    if (typeof window.PPAdsConfig !== 'undefined' && PPAdsConfig.adStandard === 'acceptable_ads') {
+      var resolutions = [["fluid","auto"]];
+    }
+    for (var i = 0; i < resolutions.length; i++) {
+      slot.appendResolution(resolutions[i][0].toString(), resolutions[i][1].toString());
+    }
+
+    slot.setLoadType('lazy', 0.5);
+
+        slot.setCollapseType(PPAds.collapseTypes.AFTER);
+    
+    
+        slot.assignToGroup('standard');
+    
+          if (typeof pp_adblock_is_off === 'undefined' &&
+        typeof acceptable_ads_disallowed  === 'undefined') {
+        slot.assignToGroup('acceptable_ads');
+        slot.setSuffix('');
+      }
+    
+    
+    if (typeof window.PPAdsConfig !== 'undefined' && window.PPAdsConfig.fastDefineSlots) {
+      var globalTargeting = PPAds.getGlobalTargetings();
+      PPAds.defineToClient(slot, globalTargeting);
+    }
+  });</script></div><div class="componentsRecommendationsMixedListing__elementWithTile" data-event-position="7"><link rel="preload" href="https://s-nsk.ppstatic.pl/assets/nsk/v1.54.4/css/potoo/atoms/article/tile.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://s-nsk.ppstatic.pl/assets/nsk/v1.54.4/css/potoo/atoms/article/tile.css"></noscript><div class="atomsArticleTile atomsArticleTile--inRowNarrow atomsArticleTile--inRow component" data-event-position="atomsArticleTile" data-event-name="atomsArticleTile" data-event-type="click" data-event-params="url=%2Fdwie-byle-celniczki-i-przedsiebiorca-zatrzymani-przez-cba-z-rzeszowa-chodzi-o-wyludzanie-podatku-vat%2Far%2Fc1-14690651"><a class="atomsArticleTile__img" data-event-position="atomsArticleTile__img" href="/dwie-byle-celniczki-i-przedsiebiorca-zatrzymani-przez-cba-z-rzeszowa-chodzi-o-wyludzanie-podatku-vat/ar/c1-14690651" title="Dwie byłe celniczki i przedsiębiorca zatrzymani przez CBA" rel="noopener"><div class="atomsArticleTile__imageWrapper"><img
+          class="atomsArticleTile__tileImg lazyload"
+          data-src="https://d-art.ppstatic.pl/kadry/k/r/1/85/e2/5e0dc22c31b95_o_medium.jpg"
+          alt="Dwie byłe celniczki i przedsiębiorca zatrzymani przez CBA"
+          data-image-type="articles"
+        /></div></a><a class="atomsArticleTile__info" data-event-position="atomsArticleTile__info" href="/dwie-byle-celniczki-i-przedsiebiorca-zatrzymani-przez-cba-z-rzeszowa-chodzi-o-wyludzanie-podatku-vat/ar/c1-14690651" title="Dwie byłe celniczki i przedsiębiorca zatrzymani przez CBA" rel="noopener"><h3 class="atomsArticleTile__title" data-event-position="atomsArticleTile__title">Dwie byłe celniczki i przedsiębiorca zatrzymani przez CBA</h3></a></div></div></div></div></section>
+  <script>
+ var PPAds = PPAds || {};
+ PPAds.queue = PPAds.queue || [];
+ PPAds.queue.push(function () {
+                PPAds.app.getSlotTemplate().appendTargeting('c_assets', "v1.54.4");
+         });
+</script>           </div>
+              </div>
+    </div>
+          <div id="poza-szkieletem"><script type="text/javascript">
+      GR('oTrackEvents', oG_OSA.tracking);
+</script>
+<script type="text/javascript">GR('oAnonimid');</script>
+</div>
+        <style>.l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff{color:hsl(0,0%,0%);background-color:hsla(0,0%,100%, .75);display:none;position:fixed;z-index:2147483645;top:0;right:0;bottom:0;left:0;flex-direction:column;align-items:center;justify-content:center;margin:0;text-align:center}.l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff .l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__content{background-color:hsl(0,0%,100%);max-width:750px;box-shadow:0 2px 45px 0 rgba(0,0,0,0.2)}.l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff .l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__wrapper{padding:3.5rem 3.5rem 1rem;border-bottom:1px solid #e0e0e0}.l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff .l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__wrapper .l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__header{margin:0;padding-bottom:1.5rem;font-size:1.75rem;font-weight:700}.l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff .l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__wrapper .l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__text{font-size:1.125rem;line-height:1.44}.l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff .l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__wrapper .l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__instruction{display:block;margin-top:1rem;font-size:1rem}.l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff .l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__enter{transition-property:color;transition-duration:.2s;transition-timing-function:ease-in-out;color:hsl(0,0%,49%);text-decoration:none;border-radius:2px;position:relative;display:block;margin:1rem auto;border:0;font-size:0.8rem;cursor:pointer}.l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff .l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__enter:hover{color:hsl(208,100%,69%);background-color:rgba(0,0,0,0);border-color:rgba(0,0,0,0)}.l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff .l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__enter::after{transition-property:background-color;transition-duration:.2s;transition-timing-function:ease-in-out;background-color:hsla(0,0%,49%, .15);content:'';position:absolute;z-index:-1;right:0;bottom:0;left:0;height:2px}.l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff .l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__enter:hover::after{background-color:hsl(209,44%,22%)}.l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff .l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__enter:focus{outline:none}.l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff .l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__showHelp{transition-property:color;transition-duration:.2s;transition-timing-function:ease-in-out;color:hsl(0,0%,49%);text-decoration:none;border-radius:2px;position:relative;background-color:rgba(0,0,0,0);display:inline-block;border-width:0;font-size:0.875rem;cursor:pointer}.l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff .l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__showHelp:hover{color:hsl(208,100%,69%);background-color:rgba(0,0,0,0);border-color:rgba(0,0,0,0)}.l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff .l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__showHelp::after{transition-property:background-color;transition-duration:.2s;transition-timing-function:ease-in-out;background-color:hsla(0,0%,49%, .15);content:'';position:absolute;z-index:-1;right:0;bottom:0;left:0;height:2px}.l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff .l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__showHelp:hover::after{background-color:hsl(209,44%,22%)}.l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff .l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__showHelp:focus{outline:none}.l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff .l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__help--show{transition-property:all;transition-duration:2s;transition-timing-function:ease-in-out;height:auto;padding:40px;opacity:100}.l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff .l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__help--hide{transition-property:all;transition-duration:100ms;transition-timing-function:ease-in-out;height:0;padding:0;opacity:0}.l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff .l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__help{background-color:hsl(0,0%,93.3%);display:flex;position:relative;flex-wrap:wrap}.l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff .l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__help .l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__closeHelp{transition-property:all;transition-duration:.2s;transition-timing-function:ease-in-out;background-color:hsl(0,0%,100%);position:absolute;top:-17px;right:10px;width:31px;height:31px;padding:5px 9px 9px 6px;border:0;border-radius:100%;box-shadow:0 0 10px #757575}.l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff .l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__help .l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__closeHelp:hover{box-shadow:0 0 50px #000}.l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff .l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__help .l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__closeHelp:active{box-shadow:inset 0 0 10px #000,0 0 10px #000}.l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff .l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__help .l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__closeHelp:focus{outline:none}.l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff .l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__help .l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__helpCol{flex:50%;padding:5px 10px}.l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff .l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__help .l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__helpCol .l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__helpNumber{transition-property:color;transition-duration:.2s;transition-timing-function:ease-in-out;color:hsl(0,0%,49%);text-decoration:none;border-radius:2px;position:relative;width:10%;float:left}.l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff .l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__help .l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__helpCol .l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__helpNumber:hover{color:hsl(208,100%,69%);background-color:rgba(0,0,0,0);border-color:rgba(0,0,0,0)}.l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff .l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__help .l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__helpCol .l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__helpNumber::after{transition-property:background-color;transition-duration:.2s;transition-timing-function:ease-in-out;background-color:hsla(0,0%,49%, .15);content:'';position:absolute;z-index:-1;right:0;bottom:0;left:0;height:2px}.l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff .l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__help .l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__helpCol .l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__helpNumber:hover::after{background-color:hsl(209,44%,22%)}.l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff .l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__help .l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__helpCol .l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__helpText{width:90%;float:left;font-size:0.85rem;text-align:left}.l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff .l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__help .l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__helpCol .l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__helpImageOne,.l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff .l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__help .l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__helpCol .l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__helpImageTwo,.l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff .l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__help .l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__helpCol .l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__helpImageThree{width:100%;height:auto}.l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff .l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__addToWhiteList{display:inline-block;font-size:.875rem;text-decoration:none;line-height:1.2;border-width:3px;border-style:solid;padding:1rem 2rem;font-weight:700;font-family:"Source Sans Pro",sans-serif;background-color:hsl(0,0%,49%);color:hsl(0,0%,100%);border-color:hsl(0,0%,49%);transition-property:border-color,color,background-color;transition-duration:.2s;transition-timing-function:ease-in-out;cursor:pointer}.l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff .l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__addToWhiteList:hover{color:hsl(0,0%,49%);background-color:hsl(0,0%,100%);border-color:hsl(208,100%,69%);cursor:pointer}.l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff .l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__signature{margin:0;padding-bottom:2rem;font-size:1.125rem}.l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff .l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__enter{transition-property:color;transition-duration:.2s;transition-timing-function:ease-in-out;color:hsl(0,0%,49%);text-decoration:none;border-radius:2px;position:relative;background-color:rgba(0,0,0,0)}.l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff .l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__enter:hover{color:hsl(208,100%,69%);background-color:rgba(0,0,0,0);border-color:rgba(0,0,0,0)}.l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff .l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__enter::after{transition-property:background-color;transition-duration:.2s;transition-timing-function:ease-in-out;background-color:hsla(0,0%,49%, .15);content:'';position:absolute;z-index:-1;right:0;bottom:0;left:0;height:2px}.l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff .l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__enter:hover::after{background-color:hsl(209,44%,22%)}.l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff .l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__addToWhiteList{background-color:hsl(0,0%,0%);border-color:hsl(0,0%,0%)}.l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff .l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__addToWhiteList:hover{border-color:hsl(0,0%,0%);color:hsl(0,0%,0%)}.l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff .l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__showHelp:hover{color:hsl(0,0%,0%)}.l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff .l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__enter:hover{color:hsl(0,0%,0%)}</style>
+
+<div class="l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff" id="l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff648867719"><div class="l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__content"><div class="l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__wrapper"><p class="l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__header">
+        Wykryliśmy, że nadal blokujesz reklamy...
+      </p><p class="l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__text">
+        To dzięki reklamom możemy dostarczyć dla Ciebie wartościowe informacje.
+        Jeśli cenisz naszą pracę, prosimy, odblokuj reklamy na naszej stronie.
+      </p><p class="l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__signature">
+        Dziękujemy za Twoje wsparcie!
+      </p><a class="l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__addToWhiteList" href="abp:subscribe?location=https%3A%2F%2Fs-nsk.ppstatic.pl%2Flib%2Fadbnsk%2Fv1.3.1%2Fdictionary%2Fwhitelist%2Fadblock%2Fready%2Flist.txt&amp;amp;title=naszemiasto.pl">
+        Jasne, chcę odblokować
+      </a><div class="l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__instruction">
+        Przycisk nie działa ?
+        <button id="l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff648867719ShowHelp" class="l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__showHelp">
+          Skorzystaj z instrukcji.
+        </button></div></div><button id="l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff648867719Enter" class="l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__enter">
+      Odblokuję następnym razem
+    </button><div class="l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__help l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__help--hide"><button  class="l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__closeHelp"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" height="20"><path d="M320 274.752l-226.272-226.272-45.248 45.248 226.272 226.272-226.272 226.272 45.248 45.248 226.272-226.272 226.272 226.272 45.248-45.248-226.272-226.272 226.272-226.272-45.248-45.248-226.272 226.272z"></path></svg></button><div class="l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__helpCol"><span class="l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__helpNumber">1.</span><div class="l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__helpText">
+          W prawym górnym rogu przegladarki znajdź i kliknij ikonkę AdBlock. Z otwartego menu wybierz opcję "Wstrzymaj blokowanie na stronach w tej domenie".
+        </div></div><div class="l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__helpCol"><img class="l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__helpImageOne" src="https://s-nsk.ppstatic.pl/assets/nsk/v1.54.4/images/_defaults/tutorials/plachta/loading.svg" alt="krok 1" /></div><div class="l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__helpCol"><span class="l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__helpNumber">2.</span><div class="l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__helpText">
+          Pojawi się okienko AdBlock. Przesuń suwak maksymalnie w prawą stronę, a nastepnie kliknij "Wyklucz".
+        </div></div><div class="l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__helpCol"><img class="l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__helpImageTwo" src="https://s-nsk.ppstatic.pl/assets/nsk/v1.54.4/images/_defaults/tutorials/plachta/loading.svg" alt="krok 2" /></div><div class="l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__helpCol"><span class="l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__helpNumber">3.</span><div class="l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__helpText">
+          Gotowe! Zielona ikonka informuje, że reklamy na stronie zostały odblokowane.
+        </div></div><div class="l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__helpCol"><img class="l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__helpImageThree" src="https://s-nsk.ppstatic.pl/assets/nsk/v1.54.4/images/_defaults/tutorials/plachta/loading.svg" alt="krok 3" /></div></div></div></div><script type="text/javascript" defer>
+  !function(e){var t={};function n(o){if(t[o])return t[o].exports;var s=t[o]={i:o,l:!1,exports:{}};return e[o].call(s.exports,s,s.exports,n),s.l=!0,s.exports}n.m=e,n.c=t,n.d=function(e,t,o){n.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:o})},n.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},n.t=function(e,t){if(1&t&&(e=n(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var o=Object.create(null);if(n.r(o),Object.defineProperty(o,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var s in e)n.d(o,s,function(t){return e[t]}.bind(null,s));return o},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,"a",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p="",n(n.s=0)}([function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.Cover=void 0;var o,s=n(1),a=(o=s)&&o.__esModule?o:{default:o};(t.Cover={init:function(){window.PPAdblock=this},setParams:function(e){this.params=e},show:function(){var e=this,t=this.params,n=new a.default;if(window.pp_adblock_is_off||!window.acceptable_ads_disallowed||n.get("adblockCookie"))this.showCoverEvent("off");else{this.showCoverEvent("on"),n.set("adblockCookie","set",0,2),this.cover=document.querySelector("."+t.class_name_hashed),this.content=document.querySelector("."+t.class_name_hashed+"__content"),this.cols=document.getElementsByClassName(t.class_name_hashed+"__helpCol");var o=document.querySelector("."+t.class_name_hashed+"__addToWhiteList");this.leaveButton=this.cover.querySelector("."+t.class_name_hashed+"__enter");var s=this.cover.querySelector("."+t.class_name_hashed+"__showHelp"),r=this.cover.querySelector("."+t.class_name_hashed+"__closeHelp"),i=this.cover.querySelector("."+t.class_name_hashed+"__help");this.helpImageOne=this.cover.querySelector("."+t.class_name_hashed+"__helpImageOne"),this.helpImageTwo=this.cover.querySelector("."+t.class_name_hashed+"__helpImageTwo"),this.helpImageThree=this.cover.querySelector("."+t.class_name_hashed+"__helpImageThree"),document.body.classList.add("adBlockCover"),this.cover.style.display="flex",o.addEventListener("mouseup",function(t){return e.reloadSite(t)}),this.leaveButton.addEventListener("click",function(){return e.hideCover()}),s.addEventListener("click",function(){return e.showInstruction(i)}),r.addEventListener("click",function(){return e.hideInstruction(i)})}},showCoverEvent:function(e){window.PPEvents.queue.push(function(){var t=window.PPEvents.getEvent("adblock");t.setAction(window.PPEvents.actionType.VIEW),t.appendParam("cover",e),window.PPEvents.listen("adblock")})},showInstruction:function(e){var t="undefined"!=typeof InstallTrigger,n=!!document.documentMode,o=!n&&!!window.StyleMedia;!!window.chrome&&window.chrome.webstore;t?(this.changeImageSrc(this.helpImageOne,"firefox-1.png"),this.changeImageSrc(this.helpImageTwo,"firefox-2.png"),this.changeImageSrc(this.helpImageThree,"firefox-3.png")):o?(this.changeImageSrc(this.helpImageOne,"edge-1.png"),this.changeImageSrc(this.helpImageTwo,"edge-2.png"),this.changeImageSrc(this.helpImageThree,"edge-3.png")):n?(this.changeImageSrc(this.helpImageOne,"ie-1.png"),this.changeImageSrc(this.helpImageTwo,"ie-2.png"),this.cols[4].style.display="none",this.cols[5].style.display="none"):(this.changeImageSrc(this.helpImageOne,"chrome-1.png"),this.changeImageSrc(this.helpImageTwo,"chrome-2.png"),this.changeImageSrc(this.helpImageThree,"chrome-3.png")),this.content.style.overflowY="scroll",e.classList.remove(this.params.class_name_hashed+"__help--hide"),e.classList.add(this.params.class_name_hashed+"__help--show"),this.leaveButton.style.display="none"},changeImageSrc:function(e,t){var n=e.src;n=n.replace("loading.svg",t),e.src=n},hideInstruction:function(e){this.content.scrollTop=0,this.content.style.overflowY="hidden",e.classList.remove(this.params.class_name_hashed+"__help--show"),e.classList.add(this.params.class_name_hashed+"__help--hide"),this.leaveButton.removeAttribute("style")},hideCover:function(){this.cover.style.display="",document.body.classList.remove("adBlockCover")},reloadSite:function(e){window.setTimeout(function(){document.addEventListener("visibilitychange",function(){return location.reload()},100)})}}).init()},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var o=function(){function e(e,t){for(var n=0;n<t.length;n++){var o=t[n];o.enumerable=o.enumerable||!1,o.configurable=!0,"value"in o&&(o.writable=!0),Object.defineProperty(e,o.key,o)}}return function(t,n,o){return n&&e(t.prototype,n),o&&e(t,o),t}}();var s=function(){function e(){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,e)}return o(e,[{key:"set",value:function(e,t,n){var o=arguments.length>3&&void 0!==arguments[3]?arguments[3]:0,s=new Date,a=864e5*parseInt(n)+6e4*parseInt(o);s.setTime(s.getTime()+a),document.cookie=e+"="+t+";expires="+s.toUTCString()+";path=/"}},{key:"get",value:function(e){var t=new RegExp(e+"=[^;]+"),n=document.cookie.match(t);return n&&n.length?n[0].split("=")[1]:""}}]),e}();t.default=s}]);
+  document.addEventListener('DOMContentLoaded', function() {
+      PPAdblock.setParams({
+          class_name_hashed: 'l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff'
+      });
+
+      });
+</script><script>
+  var PPEvents = PPEvents || {};
+  PPEvents.queue = PPEvents.queue || [];
+
+  PPEvents.queue.push(function () {
+    var event = PPEvents.getEvent('componentsNoticeAdblock:enter');
+    event.setAction(PPEvents.actionType.CLICK);
+
+          var rootElement = document.querySelector('#l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff648867719 .l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__enter');
+    event.bindRoot(rootElement);
+    
+    
+    PPEvents.listen('componentsNoticeAdblock:enter');
+  });
+</script><script>
+  var PPEvents = PPEvents || {};
+  PPEvents.queue = PPEvents.queue || [];
+
+  PPEvents.queue.push(function () {
+    var event = PPEvents.getEvent('componentsNoticeAdblock:showHelp');
+    event.setAction(PPEvents.actionType.CLICK);
+
+          var rootElement = document.querySelector('#l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff648867719 .l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__showHelp');
+    event.bindRoot(rootElement);
+    
+    
+    PPEvents.listen('componentsNoticeAdblock:showHelp');
+  });
+</script><script>
+  var PPEvents = PPEvents || {};
+  PPEvents.queue = PPEvents.queue || [];
+
+  PPEvents.queue.push(function () {
+    var event = PPEvents.getEvent('componentsNoticeAdblock:addToWhiteList');
+    event.setAction(PPEvents.actionType.MOUSEUP);
+
+          var rootElement = document.querySelector('#l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff648867719 .l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__addToWhiteList');
+    event.bindRoot(rootElement);
+    
+    
+    PPEvents.listen('componentsNoticeAdblock:addToWhiteList');
+  });
+</script><script>
+  var PPEvents = PPEvents || {};
+  PPEvents.queue = PPEvents.queue || [];
+
+  PPEvents.queue.push(function () {
+    var event = PPEvents.getEvent('componentsNoticeAdblock:closeHelp');
+    event.setAction(PPEvents.actionType.CLICK);
+
+          var rootElement = document.querySelector('#l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff648867719 .l561af7b6aa1cd85f7cf9e2253338232e1c66e6ff__closeHelp');
+    event.bindRoot(rootElement);
+    
+    
+    PPEvents.listen('componentsNoticeAdblock:closeHelp');
+  });
+</script>  </body>
+</html>

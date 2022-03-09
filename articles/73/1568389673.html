@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head><meta charset="UTF-8"><script>if(navigator.userAgent.match(/MSIE|Internet Explorer/i)||navigator.userAgent.match(/Trident\/7\..*?rv:11/i)){var href=document.location.href;if(!href.match(/[?&]nowprocket/)){if(href.indexOf("?")==-1){if(href.indexOf("#")==-1){document.location.href=href+"?nowprocket=1"}else{document.location.href=href.replace("#","?nowprocket=1#")}}else{if(href.indexOf("#")==-1){document.location.href=href+"&nowprocket=1"}else{document.location.href=href.replace("#","&nowprocket=1#")}}}}</script><script>class RocketLazyLoadScripts{constructor(e){this.triggerEvents=e,this.eventOptions={passive:!0},this.userEventListener=this.triggerListener.bind(this),this.delayedScripts={normal:[],async:[],defer:[]},this.allJQueries=[]}_addUserInteractionListener(e){this.triggerEvents.forEach((t=>window.addEventListener(t,e.userEventListener,e.eventOptions)))}_removeUserInteractionListener(e){this.triggerEvents.forEach((t=>window.removeEventListener(t,e.userEventListener,e.eventOptions)))}triggerListener(){this._removeUserInteractionListener(this),"loading"===document.readyState?document.addEventListener("DOMContentLoaded",this._loadEverythingNow.bind(this)):this._loadEverythingNow()}async _loadEverythingNow(){this._delayEventListeners(),this._delayJQueryReady(this),this._handleDocumentWrite(),this._registerAllDelayedScripts(),this._preloadAllScripts(),await this._loadScriptsFromList(this.delayedScripts.normal),await this._loadScriptsFromList(this.delayedScripts.defer),await this._loadScriptsFromList(this.delayedScripts.async),await this._triggerDOMContentLoaded(),await this._triggerWindowLoad(),window.dispatchEvent(new Event("rocket-allScriptsLoaded"))}_registerAllDelayedScripts(){document.querySelectorAll("script[type=rocketlazyloadscript]").forEach((e=>{e.hasAttribute("src")?e.hasAttribute("async")&&!1!==e.async?this.delayedScripts.async.push(e):e.hasAttribute("defer")&&!1!==e.defer||"module"===e.getAttribute("data-rocket-type")?this.delayedScripts.defer.push(e):this.delayedScripts.normal.push(e):this.delayedScripts.normal.push(e)}))}async _transformScript(e){return await this._requestAnimFrame(),new Promise((t=>{const n=document.createElement("script");let r;[...e.attributes].forEach((e=>{let t=e.nodeName;"type"!==t&&("data-rocket-type"===t&&(t="type",r=e.nodeValue),n.setAttribute(t,e.nodeValue))})),e.hasAttribute("src")?(n.addEventListener("load",t),n.addEventListener("error",t)):(n.text=e.text,t()),e.parentNode.replaceChild(n,e)}))}async _loadScriptsFromList(e){const t=e.shift();return t?(await this._transformScript(t),this._loadScriptsFromList(e)):Promise.resolve()}_preloadAllScripts(){var e=document.createDocumentFragment();[...this.delayedScripts.normal,...this.delayedScripts.defer,...this.delayedScripts.async].forEach((t=>{const n=t.getAttribute("src");if(n){const t=document.createElement("link");t.href=n,t.rel="preload",t.as="script",e.appendChild(t)}})),document.head.appendChild(e)}_delayEventListeners(){let e={};function t(t,n){!function(t){function n(n){return e[t].eventsToRewrite.indexOf(n)>=0?"rocket-"+n:n}e[t]||(e[t]={originalFunctions:{add:t.addEventListener,remove:t.removeEventListener},eventsToRewrite:[]},t.addEventListener=function(){arguments[0]=n(arguments[0]),e[t].originalFunctions.add.apply(t,arguments)},t.removeEventListener=function(){arguments[0]=n(arguments[0]),e[t].originalFunctions.remove.apply(t,arguments)})}(t),e[t].eventsToRewrite.push(n)}function n(e,t){let n=e[t];Object.defineProperty(e,t,{get:()=>n||function(){},set(r){e["rocket"+t]=n=r}})}t(document,"DOMContentLoaded"),t(window,"DOMContentLoaded"),t(window,"load"),t(window,"pageshow"),t(document,"readystatechange"),n(document,"onreadystatechange"),n(window,"onload"),n(window,"onpageshow")}_delayJQueryReady(e){let t=window.jQuery;Object.defineProperty(window,"jQuery",{get:()=>t,set(n){if(n&&n.fn&&!e.allJQueries.includes(n)){n.fn.ready=n.fn.init.prototype.ready=function(t){e.domReadyFired?t.bind(document)(n):document.addEventListener("rocket-DOMContentLoaded",(()=>t.bind(document)(n)))};const t=n.fn.on;n.fn.on=n.fn.init.prototype.on=function(){if(this[0]===window){function e(e){return e.split(" ").map((e=>"load"===e||0===e.indexOf("load.")?"rocket-jquery-load":e)).join(" ")}"string"==typeof arguments[0]||arguments[0]instanceof String?arguments[0]=e(arguments[0]):"object"==typeof arguments[0]&&Object.keys(arguments[0]).forEach((t=>{delete Object.assign(arguments[0],{[e(t)]:arguments[0][t]})[t]}))}return t.apply(this,arguments),this},e.allJQueries.push(n)}t=n}})}async _triggerDOMContentLoaded(){this.domReadyFired=!0,await this._requestAnimFrame(),document.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._requestAnimFrame(),window.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._requestAnimFrame(),document.dispatchEvent(new Event("rocket-readystatechange")),await this._requestAnimFrame(),document.rocketonreadystatechange&&document.rocketonreadystatechange()}async _triggerWindowLoad(){await this._requestAnimFrame(),window.dispatchEvent(new Event("rocket-load")),await this._requestAnimFrame(),window.rocketonload&&window.rocketonload(),await this._requestAnimFrame(),this.allJQueries.forEach((e=>e(window).trigger("rocket-jquery-load"))),window.dispatchEvent(new Event("rocket-pageshow")),await this._requestAnimFrame(),window.rocketonpageshow&&window.rocketonpageshow()}_handleDocumentWrite(){const e=new Map;document.write=document.writeln=function(t){const n=document.currentScript,r=document.createRange(),i=n.parentElement;let o=e.get(n);void 0===o&&(o=n.nextSibling,e.set(n,o));const a=document.createDocumentFragment();r.setStart(a,0),a.appendChild(r.createContextualFragment(t)),i.insertBefore(a,o)}}async _requestAnimFrame(){return new Promise((e=>requestAnimationFrame(e)))}static run(){const e=new RocketLazyLoadScripts(["keydown","mousemove","touchmove","touchstart","touchend","wheel"]);e._addUserInteractionListener(e)}}RocketLazyLoadScripts.run();</script>
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	<link rel="pingback" href="https://gellerreport.com/xmlrpc.php">
+	<script>var et_site_url='https://gellerreport.com';var et_post_id='161425';function et_core_page_resource_fallback(a,b){"undefined"===typeof b&&(b=a.sheet.cssRules&&0===a.sheet.cssRules.length);b&&(a.onerror=null,a.onload=null,a.href?a.href=et_site_url+"/?et_core_page_resource="+a.id+et_post_id:a.src&&(a.src=et_site_url+"/?et_core_page_resource="+a.id+et_post_id))}
+</script><title>TOP 10: President Trump’s biggest accomplishments of 2019! &#8211; Geller Report</title><link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Open%20Sans%3A400%2C700%7COpen%20Sans%20Condensed%3A700%7CRaleway%3A800&#038;display=swap" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open%20Sans%3A400%2C700%7COpen%20Sans%20Condensed%3A700%7CRaleway%3A800&#038;display=swap" media="print" onload="this.media='all'" /><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open%20Sans%3A400%2C700%7COpen%20Sans%20Condensed%3A700%7CRaleway%3A800&#038;display=swap" /></noscript>
+<meta name='robots' content='max-image-preview:large' />
+<link rel='dns-prefetch' href='//a.omappapi.com' />
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//eadn-wc02-4988931.nxedge.io' />
+<link href='https://fonts.gstatic.com' crossorigin rel='preconnect' />
+<link href='https://eadn-wc02-4988931.nxedge.io' rel='preconnect' />
+<link rel="alternate" type="application/rss+xml" title="Geller Report &raquo; Feed" href="https://gellerreport.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Geller Report &raquo; Comments Feed" href="https://gellerreport.com/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Geller Report &raquo; TOP 10: President Trump’s biggest accomplishments of 2019! Comments Feed" href="https://gellerreport.com/2020/01/trump-accomplishments-2019.html/feed/" />
+<!-- gellerreport.com is managing ads with Advanced Ads --><!--noptimize--><script id="pamel-ready">
+			window.advanced_ads_ready=function(e,a){a=a||"complete";var d=function(e){return"interactive"===a?"loading"!==e:"complete"===e};d(document.readyState)?e():document.addEventListener("readystatechange",(function(a){d(a.target.readyState)&&e()}),{once:"interactive"===a})},window.advanced_ads_ready_queue=window.advanced_ads_ready_queue||[];		</script>
+		<!--/noptimize--><style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 0.07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='wp-block-library-css'  href='https://eadn-wc02-4988931.nxedge.io/cdn/wp-includes/css/dist/block-library/style.min.css?ver=5.9.1' type='text/css' media='all' />
+<style id='global-styles-inline-css' type='text/css'>
+body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--duotone--dark-grayscale: url('#wp-duotone-dark-grayscale');--wp--preset--duotone--grayscale: url('#wp-duotone-grayscale');--wp--preset--duotone--purple-yellow: url('#wp-duotone-purple-yellow');--wp--preset--duotone--blue-red: url('#wp-duotone-blue-red');--wp--preset--duotone--midnight: url('#wp-duotone-midnight');--wp--preset--duotone--magenta-yellow: url('#wp-duotone-magenta-yellow');--wp--preset--duotone--purple-green: url('#wp-duotone-purple-green');--wp--preset--duotone--blue-orange: url('#wp-duotone-blue-orange');--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+</style>
+<link rel='stylesheet' id='et_monarch-css-css'  href='https://eadn-wc02-4988931.nxedge.io/cdn/wp-content/plugins/monarch/css/style.css?ver=1.4.14' type='text/css' media='all' />
+
+<link rel='stylesheet' id='slick_css-css'  href='https://eadn-wc02-4988931.nxedge.io/cdn/wp-content/themes/pamela-geller/assets/dist/css/slick.css?ver=2.0.28' type='text/css' media='' />
+<link rel='stylesheet' id='pamelageller_styles-css'  href='https://eadn-wc02-4988931.nxedge.io/cdn/wp-content/themes/pamela-geller/assets/dist/css/app.css?ver=2.0.28' type='text/css' media='' />
+<link rel='stylesheet' id='pamelageller_print_styles-css'  href='https://eadn-wc02-4988931.nxedge.io/cdn/wp-content/themes/pamela-geller/assets/dist/css/print.css?ver=2.0.28' type='text/css' media='print' />
+
+<script type="rocketlazyloadscript" data-rocket-type='text/javascript' src='https://eadn-wc02-4988931.nxedge.io/cdn/wp-includes/js/jquery/jquery.min.js?ver=3.6.0' id='jquery-core-js' defer></script>
+<script type="rocketlazyloadscript" data-rocket-type='text/javascript' src='https://eadn-wc02-4988931.nxedge.io/cdn/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.3.2' id='jquery-migrate-js' defer></script>
+<script type='text/javascript' id='advanced-ads-advanced-js-js-extra'>
+/* <![CDATA[ */
+var advads_options = {"blog_id":"1","privacy":{"enabled":false,"state":"not_needed"}};
+/* ]]> */
+</script>
+<script type="rocketlazyloadscript" data-rocket-type='text/javascript' src='https://eadn-wc02-4988931.nxedge.io/cdn/wp-content/uploads/533/171/public/assets/js/871.js?ver=1.29.0' id='advanced-ads-advanced-js-js' defer></script>
+<link rel="https://api.w.org/" href="https://gellerreport.com/wp-json/" /><link rel="alternate" type="application/json" href="https://gellerreport.com/wp-json/wp/v2/posts/161425" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://gellerreport.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://eadn-wc02-4988931.nxedge.io/cdn/wp-includes/wlwmanifest.xml" /> 
+<link rel="canonical" href="https://gellerreport.com/2020/01/trump-accomplishments-2019.html/" />
+<link rel='shortlink' href='https://gellerreport.com/?p=161425' />
+<link rel="alternate" type="application/json+oembed" href="https://gellerreport.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fgellerreport.com%2F2020%2F01%2Ftrump-accomplishments-2019.html%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://gellerreport.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fgellerreport.com%2F2020%2F01%2Ftrump-accomplishments-2019.html%2F&#038;format=xml" />
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script type="rocketlazyloadscript" async src="https://www.googletagmanager.com/gtag/js?id=UA-113281944-1"></script>
+	<script type="rocketlazyloadscript">
+		window.dataLayer = window.dataLayer || [];
+
+		function gtag() {
+			dataLayer.push( arguments );
+		}
+
+		gtag( 'js', new Date() );
+
+		gtag( 'config', 'UA-113281944-1' );
+	</script>
+
+		<script type="rocketlazyloadscript">
+		function parlerSHARE() {
+			window.open("https://parler.com/new-post?message=TOP 10: President Trump’s biggest accomplishments of 2019! https://gellerreport.com/2020/01/trump-accomplishments-2019.html/");
+		}
+	</script>
+	<script type="rocketlazyloadscript">advads_items = { conditions: {}, display_callbacks: {}, display_effect_callbacks: {}, hide_callbacks: {}, backgrounds: {}, effect_durations: {}, close_functions: {}, showed: [] };</script><style type="text/css" id="advads-layer-custom-css"></style><style type="text/css" id="et-social-custom-css">
+				 
+			</style><link rel="preload" href="https://eadn-wc02-4988931.nxedge.io/cdn/wp-content/plugins/monarch/core/admin/fonts/modules.ttf" as="font" crossorigin="anonymous"><!-- Default Statcounter code for Geller Report http://b1ff5939f6.nxcli.net/ -->
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript">
+var sc_project=12365610; 
+var sc_invisible=1; 
+var sc_security="9d63e1d3"; 
+var sc_https=1; 
+</script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript"
+src="https://www.statcounter.com/counter/counter.js" async></script>
+<noscript><div class="statcounter"><a title="Web Analytics"
+href="https://statcounter.com/" target="_blank"><img class="statcounter"
+src="https://c.statcounter.com/12365610/0/9d63e1d3/1/" alt="Web
+Analytics"></a></div></noscript>
+<!-- End of Statcounter Code --><noscript><style id="rocket-lazyload-nojs-css">.rll-youtube-player, [data-lazy-src]{display:none !important;}</style></noscript>	<!-- Begin PowerAds tag -->
+		<script type="rocketlazyloadscript" async src="https://powerad.ai/script.js"></script>
+	<!-- End PowerAds tag -->
+
+	<!-- Video Ads tag -->
+	<script type="rocketlazyloadscript" src="https://adncdnend.azureedge.net/adn-video/Gellerreport_Outstream.js" defer></script>
+	<!-- end video Ads tag -->
+</head>
+
+<body class="post-template-default single single-post postid-161425 single-format-standard et_monarch group-blog aa-prefix-pamel-">
+<!-- Video Ads tag -->
+<div id="vid"></div>
+<!-- end video Ads tag -->
+<svg width="0" height="0" style="position: absolute;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><symbol viewBox="0 0 16 16" id="icon-facebook" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3H12V0H9.5C7.57 0 6 1.57 6 3.5V5H4v3h2v8h3V8h2.5l.5-3H9V3.5c0-.271.229-.5.5-.5z"/></symbol><symbol viewBox="0 0 32 32" id="icon-feed" xmlns="http://www.w3.org/2000/svg"><path d="M4.259 23.467A4.265 4.265 0 0 0 0 27.719a4.25 4.25 0 0 0 4.259 4.244 4.25 4.25 0 0 0 4.265-4.244 4.265 4.265 0 0 0-4.265-4.252zM.005 10.873v6.133c3.993 0 7.749 1.562 10.577 4.391A14.897 14.897 0 0 1 14.966 32h6.16c0-11.651-9.478-21.127-21.121-21.127zM.012 0v6.136C14.255 6.136 25.848 17.74 25.848 32H32C32 14.36 17.648 0 .012 0z"/></symbol><symbol viewBox="0 0 16 16" id="icon-instagram" xmlns="http://www.w3.org/2000/svg"><path d="M14.5 0h-13C.675 0 0 .675 0 1.5v13c0 .825.675 1.5 1.5 1.5h13c.825 0 1.5-.675 1.5-1.5v-13c0-.825-.675-1.5-1.5-1.5zM11 2.5c0-.275.225-.5.5-.5h2c.275 0 .5.225.5.5v2c0 .275-.225.5-.5.5h-2a.501.501 0 0 1-.5-.5v-2zM8 5a3.001 3.001 0 0 1 0 6 3.001 3.001 0 0 1 0-6zm6 8.5c0 .275-.225.5-.5.5h-11a.501.501 0 0 1-.5-.5V7h1.1A4.999 4.999 0 0 0 8 13a4.999 4.999 0 0 0 4.9-6H14v6.5z"/></symbol><symbol viewBox="0 0 24 24" id="icon-left-arrow" xmlns="http://www.w3.org/2000/svg"><path d="M15.422 16.078l-1.406 1.406-6-6 6-6 1.406 1.406-4.594 4.594z"/></symbol><symbol viewBox="0 0 32 32" id="icon-search" xmlns="http://www.w3.org/2000/svg"><path d="M31.008 27.231l-7.58-6.447c-.784-.705-1.622-1.029-2.299-.998a11.954 11.954 0 0 0 2.87-7.787c0-6.627-5.373-12-12-12s-12 5.373-12 12 5.373 12 12 12c2.972 0 5.691-1.081 7.787-2.87-.031.677.293 1.515.998 2.299l6.447 7.58c1.104 1.226 2.907 1.33 4.007.23s.997-2.903-.23-4.007zM12 20a8 8 0 1 1 0-16 8 8 0 0 1 0 16z"/></symbol><symbol viewBox="0 0 26 26" id="icon-search-close" xmlns="http://www.w3.org/2000/svg"><path d="M26 2.3L23.7 0 13 10.7 2.3 0 0 2.3 10.7 13 0 23.7 2.3 26 13 15.3 23.7 26l2.3-2.3L15.3 13z"/></symbol><symbol viewBox="0 0 16 16" id="icon-twitter" xmlns="http://www.w3.org/2000/svg"><path d="M16 3.538a6.461 6.461 0 0 1-1.884.516 3.301 3.301 0 0 0 1.444-1.816 6.607 6.607 0 0 1-2.084.797 3.28 3.28 0 0 0-2.397-1.034 3.28 3.28 0 0 0-3.197 4.028 9.321 9.321 0 0 1-6.766-3.431 3.284 3.284 0 0 0 1.015 4.381A3.301 3.301 0 0 1 .643 6.57v.041A3.283 3.283 0 0 0 3.277 9.83a3.291 3.291 0 0 1-1.485.057 3.293 3.293 0 0 0 3.066 2.281 6.586 6.586 0 0 1-4.862 1.359 9.286 9.286 0 0 0 5.034 1.475c6.037 0 9.341-5.003 9.341-9.341 0-.144-.003-.284-.009-.425a6.59 6.59 0 0 0 1.637-1.697z"/></symbol><symbol viewBox="0 0 24 28" id="icon-youtube" xmlns="http://www.w3.org/2000/svg"><path d="M15.172 19.437v3.297q0 1.047-.609 1.047-.359 0-.703-.344v-4.703q.344-.344.703-.344.609 0 .609 1.047zm5.281.016v.719h-1.406v-.719q0-1.062.703-1.062t.703 1.062zM5.359 16.047h1.672v-1.469H2.156v1.469h1.641v8.891H5.36v-8.891zm4.5 8.891h1.391v-7.719H9.859v5.906q-.469.656-.891.656-.281 0-.328-.328-.016-.047-.016-.547v-5.688H7.233v6.109q0 .766.125 1.141.187.578.906.578.75 0 1.594-.953v.844zm6.703-2.313v-3.078q0-1.141-.141-1.547-.266-.875-1.109-.875-.781 0-1.453.844v-3.391h-1.391v10.359h1.391v-.75q.703.859 1.453.859.844 0 1.109-.859.141-.422.141-1.563zm5.282-.156v-.203h-1.422q0 .797-.031.953-.109.562-.625.562-.719 0-.719-1.078v-1.359h2.797v-1.609q0-1.234-.422-1.813-.609-.797-1.656-.797-1.062 0-1.672.797-.438.578-.438 1.813v2.703q0 1.234.453 1.813.609.797 1.687.797 1.125 0 1.687-.828.281-.422.328-.844.031-.141.031-.906zm-9.5-14.266V4.922q0-1.078-.672-1.078T11 4.922v3.281q0 1.094.672 1.094t.672-1.094zm11.234 11.735q0 3.656-.406 5.469-.219.922-.906 1.547t-1.594.719q-2.875.328-8.672.328t-8.672-.328q-.906-.094-1.602-.719t-.898-1.547q-.406-1.75-.406-5.469 0-3.656.406-5.469.219-.922.906-1.547t1.609-.734q2.859-.313 8.656-.313t8.672.313q.906.109 1.602.734t.898 1.547q.406 1.75.406 5.469zM7.984 0h1.594L7.687 6.234v4.234H6.124V6.234q-.219-1.156-.953-3.313-.578-1.609-1.016-2.922h1.656L6.92 4.108zm5.782 5.203v2.734q0 1.266-.438 1.844-.578.797-1.656.797-1.047 0-1.641-.797-.438-.594-.438-1.844V5.203q0-1.25.438-1.828.594-.797 1.641-.797 1.078 0 1.656.797.438.578.438 1.828zM19 2.672v7.797h-1.422V9.61q-.828.969-1.609.969-.719 0-.922-.578-.125-.375-.125-1.172V2.673h1.422v5.734q0 .516.016.547.047.344.328.344.422 0 .891-.672V2.673h1.422z"/></symbol></svg>
+<header class="masthead" role="banner">
+
+	<div class="enhancedtextwidget-117 header-ad"><div class="textwidget widget-text"></div></div><div class="header-border"></div>
+	<div class="header-top row column">
+		<div class="header-time">
+			Tuesday, March 01, 2022		</div>
+		<a href="https://gellerreport.com/" rel="home" class="logo-wrapper">
+			<img width="810" height="176" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20810%20176'%3E%3C/svg%3E" alt="Geller Report" class="logo" data-lazy-src="https://eadn-wc02-4988931.nxedge.io/cdn/wp-content/themes/pamela-geller/assets/img/logo.png"><noscript><img width="810" height="176" src="https://eadn-wc02-4988931.nxedge.io/cdn/wp-content/themes/pamela-geller/assets/img/logo.png" alt="Geller Report" class="logo"></noscript>
+		</a>
+		<ul class="header-cta">
+			<li><a href="http://www.feedblitz.com/f/f.fbz?Sub=26412" title="Subscribe to our newsletter">Subscribe</a></li>
+			<li class="header-cta-pipe">|</li>
+			<li><a href="/news-tip" title="Submit a news tip">News Tips</a></li>
+		</ul>
+		<div class="header-top-search">
+			<form role="search" method="get" class="search-form" action="https://gellerreport.com/">
+				<label>
+					<span class="screen-reader-text">Search for:</span>
+					<input type="search" class="search-field" placeholder="Search &hellip;" value="" name="s" />
+				</label>
+				<input type="submit" class="search-submit" value="Search" />
+			</form>		</div>
+	</div>
+
+	<div class="header-border"></div>
+
+	<div class="header-bottom row column">
+		
+		<ul class="social-component">
+							<li class="social-wrapper icon-facebook">
+					<a href="https://www.facebook.com/pamelageller" target="_blank" rel="nofollow">
+						<svg class="icon icon-social">
+							<use xlink:href="#icon-facebook"></use>
+						</svg>
+					</a>
+				</li>
+							<li class="social-wrapper icon-twitter">
+					<a href="https://twitter.com/pamelageller" target="_blank" rel="nofollow">
+						<svg class="icon icon-social">
+							<use xlink:href="#icon-twitter"></use>
+						</svg>
+					</a>
+				</li>
+							<li class="social-wrapper icon-youtube">
+					<a href="https://www.youtube.com/user/atlasshrugs2000" target="_blank" rel="nofollow">
+						<svg class="icon icon-social">
+							<use xlink:href="#icon-youtube"></use>
+						</svg>
+					</a>
+				</li>
+							<li class="social-wrapper icon-instagram">
+					<a href="https://www.instagram.com/pamelageller/" target="_blank" rel="nofollow">
+						<svg class="icon icon-social">
+							<use xlink:href="#icon-instagram"></use>
+						</svg>
+					</a>
+				</li>
+							<li class="social-wrapper icon-feed">
+					<a href="https://gellerreport.com/feed/" target="_blank" rel="nofollow">
+						<svg class="icon icon-social">
+							<use xlink:href="#icon-feed"></use>
+						</svg>
+					</a>
+				</li>
+					</ul>
+
+	
+		<nav class="site-navigation" role="navigation">
+			<ul id="menu-main-menu" class="site-menu js-site-menu"><li id="menu-item-18" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-18"><a href="https://gellerreport.com/about/">About</a></li>
+<li id="menu-item-32" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-32"><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&#038;hosted_button_id=TV7ES3BWSZTLL">Donate</a></li>
+<li id="menu-item-33212" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-33212"><a href="http://b1ff5939f6.nxcli.net/category/atlas-articles/">Articles</a></li>
+<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a href="https://gellerreport.com/categories/">Categories</a></li>
+<li id="menu-item-29" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-29"><a href="https://gellerreport.com/quotables-from-notables/">Quotables</a></li>
+<li id="menu-item-30691" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-30691"><a href="http://b1ff5939f6.nxcli.net/category/atlas-tv/">Press</a></li>
+<li id="menu-item-28330" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-28330"><a href="http://www.amazon.com/Pamela-Geller/e/B003815P0S/ref=sr_tc_2_0?qid=1387911392&#038;sr=1-2-ent">Books</a></li>
+<li id="menu-item-79406" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-79406"><a href="https://gellerreport.com/rebuttals-to-false-charges/">Rebuttals</a></li>
+<li id="menu-item-85314" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-85314"><a href="https://www.youtube.com/user/atlasshrugs2000/videos">Video</a></li>
+</ul>		</nav>
+
+		
+	<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=TV7ES3BWSZTLL" target="_blank" class="donate-today">
+		Donate Today
+	</a>
+
+	
+		<a href="#" data-search-role="trigger" class="search-trigger">
+			<svg class="icon icon-search">
+				<use xlink:href="#icon-search"></use>
+			</svg>
+		</a>
+		<a class="js-mobile-nav-trigger mobile-nav-trigger">
+			<div class="hamburger-wrapper">
+				<div class="hamburger"></div>
+			</div>
+		</a>
+
+
+	</div>
+
+	<div class="search-wrapper" data-search-role="target">
+		<form role="search" method="get" class="search-form" action="https://gellerreport.com/">
+				<label>
+					<span class="screen-reader-text">Search for:</span>
+					<input type="search" class="search-field" placeholder="Search &hellip;" value="" name="s" />
+				</label>
+				<input type="submit" class="search-submit" value="Search" />
+			</form>		<div class="search-icons">
+			<a href="#" data-search-role="submit">
+				<svg class="icon icon-search">
+					<use xlink:href="#icon-search"></use>
+				</svg>
+			</a>
+			<a href="#" class="close-search" data-search-role="close">
+				<svg class="icon icon-search-close">
+					<use xlink:href="#icon-search-close"></use>
+				</svg>
+			</a>
+		</div>
+	</div>
+
+</header>
+
+    <div class="news-ticker">
+        <div class="row">
+			<div class="columns">
+				<div class="news-ticker__label">News Ticker:</div>
+				<div class="news-ticker__posts" data-carousel-name="newsTicker">
+											<div class="post">
+							<a href="https://gellerreport.com/2022/03/democrat-who-took-donations-from-putin-pipeline-lobbyist-alleges-gop-rooting-for-russia.html/" class="news-ticker__post-container">
+								<div class="date">[ March 1, 2022 ]</div>
+								<h2 class="title">Democrat Who Took Donations From ‘Putin Pipeline’ Lobbyist Alleges GOP &#8220;Rooting for Russia&#8221;</h2>
+							</a>
+						</div>
+											<div class="post">
+							<a href="https://gellerreport.com/2022/03/special-counsel-finds-mark-zuckerbergs-election-money-violated-wisconsin-bribery-laws.html/" class="news-ticker__post-container">
+								<div class="date">[ March 1, 2022 ]</div>
+								<h2 class="title">Special Counsel Finds Mark Zuckerberg’s Election Money Violated Wisconsin Bribery Laws</h2>
+							</a>
+						</div>
+											<div class="post">
+							<a href="https://gellerreport.com/2022/03/biden-to-divert-agents-from-u-s-southern-border-send-them-to-assist-with-russia-ukraine-conflict.html/" class="news-ticker__post-container">
+								<div class="date">[ March 1, 2022 ]</div>
+								<h2 class="title">Biden to Divert Agents from U.S. Southern Border, Send Them to ‘Assist’ with Russia-Ukraine Conflict</h2>
+							</a>
+						</div>
+											<div class="post">
+							<a href="https://gellerreport.com/2022/03/desantis-rejects-biden-admin-request-for-national-guard-at-state-of-the-union.html/" class="news-ticker__post-container">
+								<div class="date">[ March 1, 2022 ]</div>
+								<h2 class="title">DeSantis Rejects Biden Admin Request for National Guard at State of the Union</h2>
+							</a>
+						</div>
+											<div class="post">
+							<a href="https://gellerreport.com/2022/03/trump-peace-egypts-el-sisi-has-taken-a-strategic-decision-to-deepen-ties-with-israel.html/" class="news-ticker__post-container">
+								<div class="date">[ March 1, 2022 ]</div>
+								<h2 class="title">Trump Peace: Egypt’s El-Sisi has taken a ‘strategic decision to deepen ties with Israel’</h2>
+							</a>
+						</div>
+											<div class="post">
+							<a href="https://gellerreport.com/2022/03/gop-rep-gallagher-bidens-relying-on-russia-with-iran-deal-will-be-justified-by-claiming-need-for-iranian-oil.html/" class="news-ticker__post-container">
+								<div class="date">[ March 1, 2022 ]</div>
+								<h2 class="title">GOP Rep. Gallagher: Biden’s Relying on Russia with Iran, Deal Will Be Justified by Claiming...</h2>
+							</a>
+						</div>
+											<div class="post">
+							<a href="https://gellerreport.com/2022/02/iran-back-houthis-seize-another-us-embassy-staffer-in-yemen-source-says.html/" class="news-ticker__post-container">
+								<div class="date">[ February 28, 2022 ]</div>
+								<h2 class="title">Iran-Back Houthis Seize Another US Embassy Staffer in Yemen, Source Says</h2>
+							</a>
+						</div>
+											<div class="post">
+							<a href="https://gellerreport.com/2022/02/us-to-continue-to-engage-with-russia-over-iran-despite-ukraine-invasion.html/" class="news-ticker__post-container">
+								<div class="date">[ February 28, 2022 ]</div>
+								<h2 class="title">US to continue to engage with Russia over Iran despite Ukraine invasion</h2>
+							</a>
+						</div>
+											<div class="post">
+							<a href="https://gellerreport.com/2022/02/trump-won-arizona-senate-study-finds-200k-ballots-counted-in-2020-with-mismatched-signatures.html/" class="news-ticker__post-container">
+								<div class="date">[ February 28, 2022 ]</div>
+								<h2 class="title">Trump Won: Arizona Senate study finds 200k ballots counted in 2020 with mismatched signatures</h2>
+							</a>
+						</div>
+											<div class="post">
+							<a href="https://gellerreport.com/2022/02/post-abc-poll-biden-hits-record-low-approval-rating.html/" class="news-ticker__post-container">
+								<div class="date">[ February 28, 2022 ]</div>
+								<h2 class="title">Post-ABC Poll: Biden Hits Record-Low Approval Rating</h2>
+							</a>
+						</div>
+									</div>
+			</div>
+		</div>
+    </div>
+
+
+	
+<div class="site-content">
+
+<div class="row">
+	<div class="medium-12 columns">
+		<header class="entry-header">
+			<h1 class="entry-title">TOP 10: President Trump’s biggest accomplishments of 2019!</h1><div class="single-entry-meta"><div class="byline">By <a href="https://gellerreport.com/author/admin/" class="post-author-link" title="View Articles Written By Pamela Geller">Pamela Geller</a> - <span>on <time class="post-entry-time" datetime="2020-01-01T12:01:01-05:00">January 1, 2020</time></span></div></div>
+	<div class="post-card post-161425 post type-post status-publish format-standard has-post-thumbnail hentry category-president-donald-trump">
+
+		<div class="post-card-wrap">
+			<div class="primary-category"><a href="https://gellerreport.com/category/president-donald-trump/" title="View more articles in this category">President Donald Trump</a></div><a href="https://gellerreport.com/2020/01/trump-accomplishments-2019.html/"><img width="910" height="615" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20910%20615'%3E%3C/svg%3E" class="post-card-img wp-post-image" alt="" loading="lazy" data-lazy-srcset="https://eadn-wc02-4988931.nxedge.io/cdn/wp-content/uploads/2019/05/Donald_Trump_thumbs_up.jpg 2219w, https://eadn-wc02-4988931.nxedge.io/cdn/wp-content/uploads/2019/05/Donald_Trump_thumbs_up-300x203.jpg 300w, https://eadn-wc02-4988931.nxedge.io/cdn/wp-content/uploads/2019/05/Donald_Trump_thumbs_up-768x519.jpg 768w, https://eadn-wc02-4988931.nxedge.io/cdn/wp-content/uploads/2019/05/Donald_Trump_thumbs_up-800x541.jpg 800w" data-lazy-sizes="(max-width: 910px) 100vw, 910px" data-lazy-src="https://eadn-wc02-4988931.nxedge.io/cdn/wp-content/uploads/2019/05/Donald_Trump_thumbs_up.jpg" /><noscript><img width="910" height="615" src="https://eadn-wc02-4988931.nxedge.io/cdn/wp-content/uploads/2019/05/Donald_Trump_thumbs_up.jpg" class="post-card-img wp-post-image" alt="" loading="lazy" srcset="https://eadn-wc02-4988931.nxedge.io/cdn/wp-content/uploads/2019/05/Donald_Trump_thumbs_up.jpg 2219w, https://eadn-wc02-4988931.nxedge.io/cdn/wp-content/uploads/2019/05/Donald_Trump_thumbs_up-300x203.jpg 300w, https://eadn-wc02-4988931.nxedge.io/cdn/wp-content/uploads/2019/05/Donald_Trump_thumbs_up-768x519.jpg 768w, https://eadn-wc02-4988931.nxedge.io/cdn/wp-content/uploads/2019/05/Donald_Trump_thumbs_up-800x541.jpg 800w" sizes="(max-width: 910px) 100vw, 910px" /></noscript></a>
+	<div class="comment-bubble-wrap">
+		<div class="comment-bubble">5</div>	</div>
+			</div>
+		
+	</div>
+
+	
+		</header>
+	</div>
+	<div class="medium-8 columns entry-container">
+
+		
+<article id="post-161425" class="single-entry post-161425 post type-post status-publish format-standard has-post-thumbnail hentry category-president-donald-trump">
+
+
+	<div class="entry-content">
+		<div class="pamel-before-content" style="float: left; " id="pamel-179527826"><div id="srp110"> </div>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" src="https://srp.one/api/s/110" defer></script></div><div class="et_social_inline et_social_mobile_on et_social_inline_top">
+				<div class="et_social_networks et_social_autowidth et_social_slide et_social_rounded et_social_left et_social_no_animation et_social_withnetworknames et_social_outer_dark">
+					
+					<ul class="et_social_icons_container"><li class="et_social_facebook">
+									<a href="http://www.facebook.com/sharer.php?u=https%3A%2F%2Fgellerreport.com%2F2020%2F01%2Ftrump-accomplishments-2019.html%2F&#038;t=TOP%2010%3A%20President%20Trump%E2%80%99s%20biggest%20accomplishments%20of%202019%21" class="et_social_share" rel="nofollow" data-social_name="facebook" data-post_id="161425" data-social_type="share" data-location="inline">
+										<i class="et_social_icon et_social_icon_facebook"></i><div class="et_social_network_label"><div class="et_social_networkname">Facebook</div></div><span class="et_social_overlay"></span>
+									</a>
+								</li><li class="et_social_twitter">
+									<a href="http://twitter.com/share?text=TOP%2010%3A%20President%20Trump%E2%80%99s%20biggest%20accomplishments%20of%202019%21&#038;url=https%3A%2F%2Fgellerreport.com%2F2020%2F01%2Ftrump-accomplishments-2019.html%2F&#038;via=pamelageller" class="et_social_share" rel="nofollow" data-social_name="twitter" data-post_id="161425" data-social_type="share" data-location="inline">
+										<i class="et_social_icon et_social_icon_twitter"></i><div class="et_social_network_label"><div class="et_social_networkname">Twitter</div></div><span class="et_social_overlay"></span>
+									</a>
+								</li><li class="et_social_googleplus">
+									<a href="https://plus.google.com/share?url=https%3A%2F%2Fgellerreport.com%2F2020%2F01%2Ftrump-accomplishments-2019.html%2F&#038;t=TOP%2010%3A%20President%20Trump%E2%80%99s%20biggest%20accomplishments%20of%202019%21" class="et_social_share" rel="nofollow" data-social_name="googleplus" data-post_id="161425" data-social_type="share" data-location="inline">
+										<i class="et_social_icon et_social_icon_googleplus"></i><div class="et_social_network_label"><div class="et_social_networkname">Google+</div></div><span class="et_social_overlay"></span>
+									</a>
+								</li><li class="et_social_all_button">
+								<a href="#" rel="nofollow" data-location="inline" data-page_id="161425" data-permalink="https://gellerreport.com/2020/01/trump-accomplishments-2019.html/" data-title="TOP 10: President Trump’s biggest accomplishments of 2019!" class="et_social_open_all">
+									<i class="et_social_icon et_social_icon_all_button"></i>
+									<span class="et_social_overlay"></span>
+								</a>
+							</li></ul>
+				</div>
+			</div><div class="parler-share top"><button type="button" style="background-color: rgba(255, 0, 0, 0);border: none; cursor: pointer; display: inline; outline: none" onclick="parlerSHARE()"><img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20250%200'%3E%3C/svg%3E" alt="Share on Parler" width="250" data-lazy-src="https://eadn-wc02-4988931.nxedge.io/cdn/wp-content/uploads/2020/12/share-to-parler.png"><noscript><img src="https://eadn-wc02-4988931.nxedge.io/cdn/wp-content/uploads/2020/12/share-to-parler.png" alt="Share on Parler" width="250"></noscript></button></div>
+<p>While the Democrats plotted to overthrow the President&#8230;.</p><div class="pamel-inside-content" style="float: left; " id="pamel-1621740081"><div id="srp110"> </div>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" src="https://srp.one/api/s/110" defer></script></div>
+<div class="pamel-content-2" id="pamel-1711912993"><blockquote style="border: 2px solid #666; padding: 10px; background-color: #ccc;"> 
+	<div>
+	<em><strong>Quick note:</strong> Tech giants are shutting us down. You know this. Twitter, LinkedIn, Google Adsense, Pinterest permanently banned us. Facebook, Google search et al have shadow-banned, suspended and deleted us from your news feeds. They are disappearing us. But we are here. We will not waver. We will not tire. We will not falter, and we will not fail. Freedom will prevail.  </em>
+</div><P><P>
+
+	<strong><em><a href="http://www.feedblitz.com/f/f.fbz?Sub=26412">Subscribe to Geller Report newsletter here </a>— it’s free and it’s critical NOW when informed decision making and opinion is essential to America's survival. </em> </strong>Share our posts on your social channels and with your email contacts. Fight the great fight. </p></em></P>
+	
+
+
+	<p>Follow me on<a href="https://gettr.com/user/pamelageller"> Gettr. I am there, <a href="https://gettr.com/user/pamelageller">click here.</a> It's open and free. 
+		
+	</p>
+<P>Remember, YOU make the work possible. If you can, please <strong><a href="https://www.paypal.com
+/donate?hosted_button_id=DWYHKNK3MB6WQ">contribute</a></strong> to Geller Report.  </a></em></strong>
+	
+</div></blockquote></div><div class="pamel-rev-content-inside-article-2" style="margin-left: auto; margin-right: auto; text-align: center; " id="pamel-1478282811"><a href="https://gettr.com/user/pamelageller"><img class="aligncenter size-full wp-image-205669" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20582%20106'%3E%3C/svg%3E" alt="" width="582" height="106" data-lazy-src="http://b1ff5939f6.nxcli.net/wp-content/uploads/2021/07/Screen-Shot-2021-07-12-at-9.47.08-AM.png" /><noscript><img class="aligncenter size-full wp-image-205669" src="http://b1ff5939f6.nxcli.net/wp-content/uploads/2021/07/Screen-Shot-2021-07-12-at-9.47.08-AM.png" alt="" width="582" height="106" /></noscript></a>
+</div><blockquote>
+<h1>TOP 10: President Trump’s biggest accomplishments of 2019!</h1>
+<p><strong>Americans saw plenty</strong> of Washington at its worst this year, with one party in Congress obsessed with a partisan impeachment stunt and obstructing progress at every turn. But despite getting no help from the far left, America today is soaring to new heights.</p>
+<p><strong>It’s tough to pick</strong> only 10 accomplishments from such an extraordinary year, but here are just a few of the biggest things President Donald J. Trump has gotten done for the American people in 2019:</p>
+<ol>
+<li value="1"><strong>The Trump Boom </strong>is going strong. The unemployment rate recently hit its lowest mark in <em>50 years</em>. All told, since President Trump’s election, our economy has added more than 7 million jobs—over half a million in manufacturing alone.</li>
+<li value="2"><strong>The stock market</strong> keeps breaking records: The Dow Jones and S&amp;P 500 hit record closes again on Friday.</li>
+<li value="3"><strong>The working class</strong> is thriving, as are previously forgotten communities. Wages are <a href="https://whitehouse.us19.list-manage.com/track/click?u=4da4828d48b4efa4fc1138955&amp;id=a699d74843&amp;e=4082322a67" target="_blank" rel="noopener" data-saferedirecturl="https://www.google.com/url?q=https://whitehouse.us19.list-manage.com/track/click?u%3D4da4828d48b4efa4fc1138955%26id%3Da699d74843%26e%3D4082322a67&amp;source=gmail&amp;ust=1577971787212000&amp;usg=AFQjCNFo-PMYgzOSo3i39-kjmqV9eTgbmw">now rising the fastest</a> for low-income workers, and poverty rates for African Americans and Hispanic Americans have reached all-time lows.</li>
+<li value="4"><strong>Accountable government </strong>is back. Since taking office, President Trump has rolled back nearly 8 regulations for every new one, saving American taxpayers more than $50 billion in the process—with bigger savings still to come.</li>
+<li value="5"><strong>Better trade deals </strong>are putting America back in the driver’s seat. Congress approved President Trump’s <a href="https://whitehouse.us19.list-manage.com/track/click?u=4da4828d48b4efa4fc1138955&amp;id=2a8711667b&amp;e=4082322a67" target="_blank" rel="noopener" data-saferedirecturl="https://www.google.com/url?q=https://whitehouse.us19.list-manage.com/track/click?u%3D4da4828d48b4efa4fc1138955%26id%3D2a8711667b%26e%3D4082322a67&amp;source=gmail&amp;ust=1577971787212000&amp;usg=AFQjCNGPD4Jn1-RZla2dnK4Dp5OFtU_CKg">USMCA</a> this month—a huge win for U.S. workers, farmers, and manufacturers that will create 176,000 new jobs.</li>
+<li value="6"><strong>Trade with China </strong>in particular is about to get a whole lot fairer. As part of a historic “phase 1” deal, Beijing has agreed to structural reforms in its trade practices and to make substantial purchases of American agricultural products.</li>
+<li value="7"><strong><a href="https://whitehouse.us19.list-manage.com/track/click?u=4da4828d48b4efa4fc1138955&amp;id=af6b45079e&amp;e=4082322a67" target="_blank" rel="noopener" data-saferedirecturl="https://www.google.com/url?q=https://whitehouse.us19.list-manage.com/track/click?u%3D4da4828d48b4efa4fc1138955%26id%3Daf6b45079e%26e%3D4082322a67&amp;source=gmail&amp;ust=1577971787212000&amp;usg=AFQjCNGrLqCAtDbU0-xoC-W3P7-GCyYscw">Securing the border</a> </strong>is paying off and making our country safer. President Trump struck new agreements with Mexico and Central American countries this year to help stop the flood of illegal immigration. Thanks to this swift action, border apprehensions fell by more than 70 percent from May to November.</li>
+<li value="8"><strong>On health care</strong>, President Trump is fighting to give our patients the best system on Earth. While Democrats try to take away choice, the President’s focus on affordability led to the largest year-over-year drop in drug prices <em>ever</em> recorded.</li>
+<li value="9"><strong>American interests </strong>are <a href="https://whitehouse.us19.list-manage.com/track/click?u=4da4828d48b4efa4fc1138955&amp;id=c94950c93d&amp;e=4082322a67" target="_blank" rel="noopener" data-saferedirecturl="https://www.google.com/url?q=https://whitehouse.us19.list-manage.com/track/click?u%3D4da4828d48b4efa4fc1138955%26id%3Dc94950c93d%26e%3D4082322a67&amp;source=gmail&amp;ust=1577971787212000&amp;usg=AFQjCNHpcI3FRwTuXokG8Y1MeaA_5PyEXA">taking center stage abroad</a>. In just one example: After years of not paying their fair share, NATO Allies will have increased defense spending by <em>$130 billion</em> by the end of next year.</li>
+<li value="10"><strong>Our great military </strong>took out the world&#8217;s top terrorist in October. (<a href="https://whitehouse.us19.list-manage.com/track/click?u=4da4828d48b4efa4fc1138955&amp;id=631c1f4830&amp;e=4082322a67" target="_blank" rel="noopener" data-saferedirecturl="https://www.google.com/url?q=https://whitehouse.us19.list-manage.com/track/click?u%3D4da4828d48b4efa4fc1138955%26id%3D631c1f4830%26e%3D4082322a67&amp;source=gmail&amp;ust=1577971787212000&amp;usg=AFQjCNFHt3b5Tyn6O0VR5DRtitPATfBdsQ">Meet Conan,</a> the hero dog who helped them do it!) Our troops are now getting the support they deserve. President Trump recently signed the National Defense Authorization Act for the 2020 fiscal year, which includes the biggest pay raise for our military in a decade.</li>
+</ol>
+<p><a href="https://whitehouse.us19.list-manage.com/track/click?u=4da4828d48b4efa4fc1138955&amp;id=a7e8b3f3d6&amp;e=4082322a67" target="_blank" rel="noopener" data-saferedirecturl="https://www.google.com/url?q=https://whitehouse.us19.list-manage.com/track/click?u%3D4da4828d48b4efa4fc1138955%26id%3Da7e8b3f3d6%26e%3D4082322a67&amp;source=gmail&amp;ust=1577971787212000&amp;usg=AFQjCNFhu0BRByTMjNnSybIbg4MaVlHOqg">WATCH: “Our best days are yet to come!”</a></p></blockquote>
+<div class="parler-share bottom"><button type="button" style="background-color: rgba(255, 0, 0, 0);border: none; cursor: pointer; display: inline; outline: none" onclick="parlerSHARE()"><img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20250%200'%3E%3C/svg%3E" alt="Share on Parler" width="250" data-lazy-src="https://eadn-wc02-4988931.nxedge.io/cdn/wp-content/uploads/2020/12/share-to-parler.png"><noscript><img src="https://eadn-wc02-4988931.nxedge.io/cdn/wp-content/uploads/2020/12/share-to-parler.png" alt="Share on Parler" width="250"></noscript></button></div>
+<div class="et_social_inline et_social_mobile_on et_social_inline_bottom">
+				<div class="et_social_networks et_social_autowidth et_social_slide et_social_rounded et_social_left et_social_no_animation et_social_withnetworknames et_social_outer_dark">
+					
+					<ul class="et_social_icons_container"><li class="et_social_facebook">
+									<a href="http://www.facebook.com/sharer.php?u=https%3A%2F%2Fgellerreport.com%2F2020%2F01%2Ftrump-accomplishments-2019.html%2F&#038;t=TOP%2010%3A%20President%20Trump%E2%80%99s%20biggest%20accomplishments%20of%202019%21" class="et_social_share" rel="nofollow" data-social_name="facebook" data-post_id="161425" data-social_type="share" data-location="inline">
+										<i class="et_social_icon et_social_icon_facebook"></i><div class="et_social_network_label"><div class="et_social_networkname">Facebook</div></div><span class="et_social_overlay"></span>
+									</a>
+								</li><li class="et_social_twitter">
+									<a href="http://twitter.com/share?text=TOP%2010%3A%20President%20Trump%E2%80%99s%20biggest%20accomplishments%20of%202019%21&#038;url=https%3A%2F%2Fgellerreport.com%2F2020%2F01%2Ftrump-accomplishments-2019.html%2F&#038;via=pamelageller" class="et_social_share" rel="nofollow" data-social_name="twitter" data-post_id="161425" data-social_type="share" data-location="inline">
+										<i class="et_social_icon et_social_icon_twitter"></i><div class="et_social_network_label"><div class="et_social_networkname">Twitter</div></div><span class="et_social_overlay"></span>
+									</a>
+								</li><li class="et_social_googleplus">
+									<a href="https://plus.google.com/share?url=https%3A%2F%2Fgellerreport.com%2F2020%2F01%2Ftrump-accomplishments-2019.html%2F&#038;t=TOP%2010%3A%20President%20Trump%E2%80%99s%20biggest%20accomplishments%20of%202019%21" class="et_social_share" rel="nofollow" data-social_name="googleplus" data-post_id="161425" data-social_type="share" data-location="inline">
+										<i class="et_social_icon et_social_icon_googleplus"></i><div class="et_social_network_label"><div class="et_social_networkname">Google+</div></div><span class="et_social_overlay"></span>
+									</a>
+								</li><li class="et_social_all_button">
+								<a href="#" rel="nofollow" data-location="inline" data-page_id="161425" data-permalink="https://gellerreport.com/2020/01/trump-accomplishments-2019.html/" data-title="TOP 10: President Trump’s biggest accomplishments of 2019!" class="et_social_open_all">
+									<i class="et_social_icon et_social_icon_all_button"></i>
+									<span class="et_social_overlay"></span>
+								</a>
+							</li></ul>
+				</div>
+			</div>	<div class="grey-box">
+        <h5 style="font-family: Georgia, serif; color:#ed5f39">The Truth Must be Told</h5>
+        <p>Your contribution supports independent journalism</p>
+
+		<p>Please take a moment to consider this. Now, more than ever, people are reading Geller Report for news they won't get anywhere else. But advertising revenues have all but disappeared. Google Adsense is the online advertising monopoly and they have banned us. Social media giants like Facebook and Twitter have blocked and shadow-banned our accounts. But we won't put up a paywall. Because never has the free world needed independent journalism more.</p>
+		<p>Everyone who reads our reporting knows the Geller Report covers the news the media won't. We cannot do our ground-breaking report without your support. We must continue to report on the global jihad and the left's war on freedom. Our readers’ contributions make that possible.</p>
+		<p>Geller Report's independent, investigative journalism takes a lot of time, money and hard work to produce. But we do it because we believe our work is critical in the fight for freedom and because it is your fight, too.</p>
+		<div class="row">
+			<div class="medium-3 columns">
+				<p>Please contribute <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=TV7ES3BWSZTLL" target="_blank">here</a>.</p>
+
+				<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+					<input type="hidden" name="cmd" value="_s-xclick">
+					<input type="hidden" name="hosted_button_id" value="TV7ES3BWSZTLL">
+					<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+					<img alt="" border="0" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201%201'%3E%3C/svg%3E" width="1" height="1" data-lazy-src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif"><noscript><img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1"></noscript>
+				</form>
+			</div>
+			<div class="medium-2 columns">
+				<p style="text-align:center;font-size:2em">or</p>
+			</div>
+			<div class="medium-7 columns">
+				<p>
+					Make a monthly commitment to support <span>The Geller Report</span> – choose the option that suits you best.
+				</p>
+
+				<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+					<input type="hidden" name="cmd" value="_s-xclick">
+					<input type="hidden" name="hosted_button_id" value="KTE7SK975VSPN">
+						<div class="paypal-select-box">
+							<input type="hidden" name="on0" value="Contribute Monthly - Choose One">
+							<select class="paypal-subscribe" name="os0">
+								<option value="Subscriber">Subscriber : $18.00 USD - monthly</option>
+								<option value="Contributor">Contributor : $36.00 USD - monthly</option>
+								<option value="Patron">Patron : $50.00 USD - monthly</option>
+								<option value="Silver member">Silver member : $100.00 USD - monthly</option>
+								<option value="Gold member">Gold member : $250.00 USD - monthly</option>
+								<option value="Platinum member">Platinum member : $500.00 USD - monthly</option>
+							</select>
+						</div>
+
+					<input type="hidden" name="currency_code" value="USD">
+					<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+					<img alt="" border="0" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201%201'%3E%3C/svg%3E" width="1" height="1" data-lazy-src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif"><noscript><img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1"></noscript>
+				</form>
+			</div>
+		</div>
+
+
+
+	</div>
+	
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript">
+	var HYVOR_TALK_WEBSITE = 3737;
+
+					var HYVOR_TALK_CONFIG = {
+			url: "https://gellerreport.com/2020/01/trump-accomplishments-2019.html/",
+			id: "161425:http://b1ff5939f6.nxcli.net/?p=161425",
+			title: "TOP 10: President Trump’s biggest accomplishments of 2019!",
+			loadMode: "default",
+			clickId: "hyvor-talk-load-button"
+		};
+	
+	
+</script><div class="comments-area">
+
+	
+	<div id="hyvor-talk-view"></div>
+</div>
+<script type="rocketlazyloadscript" async data-rocket-type="text/javascript" src="//talk.hyvor.com/web-api/embed.js"></script>	</div>
+
+	
+</article>
+
+	<nav class="navigation post-navigation" aria-label="Posts">
+		<h2 class="screen-reader-text">Post navigation</h2>
+		<div class="nav-links"><div class="nav-previous"><a href="https://gellerreport.com/2020/01/imam-pensacola-attack-jihad-4-allah.html/" rel="prev">Previous</a></div><div class="nav-next"><a href="https://gellerreport.com/2020/01/de-blasio-giving-freed-nyc-inmates-metrocards-gift-cards-t-mobile-flip-phones.html/" rel="next">Next</a></div></div>
+	</nav>
+	</div>
+
+	<div id="sidebar" class="medium-4 columns">
+
+		
+<div class="widget-area" role="complementary">
+	<section id="pamelageller_keeptruth-2" class="widget pamelageller_keepTruth">
+	<div class="inside">
+		<h2 class="donate-title">Keep Truth Alive</h2>
+		<p class="text-center">Your Donations <br />make the <br /> work possible.</p>
+		<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&#038;hosted_button_id=YUV8T94GKVWNN" class="button" target="_blank">Donate Today</a>
+	</div>
+
+		</section><section id="enhancedtextwidget-137" class="widget widget_text enhanced-text-widget"><h2 class="widget-title"><a href='http://www.feedblitz.com/f/f.fbz?Sub=26412' >Get the news the media censors</a></h2><div class="textwidget widget-text"><a href="http://www.feedblitz.com/f/f.fbz?Sub=26412"><img class="alignnone size-large wp-image-195755" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20640%20217'%3E%3C/svg%3E" alt="" width="640" height="217" data-lazy-src="http://b1ff5939f6.nxcli.net/wp-content/uploads/2021/03/Screen-Shot-2021-03-09-at-4.58.46-PM-800x271.png" /><noscript><img class="alignnone size-large wp-image-195755" src="http://b1ff5939f6.nxcli.net/wp-content/uploads/2021/03/Screen-Shot-2021-03-09-at-4.58.46-PM-800x271.png" alt="" width="640" height="217" /></noscript></a>
+
+<a href="https://gettr.com/user/pamelageller"><img class="aligncenter size-full wp-image-205669" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20582%20106'%3E%3C/svg%3E" alt="" width="582" height="106" data-lazy-src="http://b1ff5939f6.nxcli.net/wp-content/uploads/2021/07/Screen-Shot-2021-07-12-at-9.47.08-AM.png" /><noscript><img class="aligncenter size-full wp-image-205669" src="http://b1ff5939f6.nxcli.net/wp-content/uploads/2021/07/Screen-Shot-2021-07-12-at-9.47.08-AM.png" alt="" width="582" height="106" /></noscript></a>
+</div></section><section id="search-2" class="widget widget_search"><form role="search" method="get" class="search-form" action="https://gellerreport.com/">
+				<label>
+					<span class="screen-reader-text">Search for:</span>
+					<input type="search" class="search-field" placeholder="Search &hellip;" value="" name="s" />
+				</label>
+				<input type="submit" class="search-submit" value="Search" />
+			</form></section><section id="geller_recent_comments-3" class="widget geller_recent_comments">
+		<h2 class="widget-title">recent <span>Comments</span></h2>
+
+		<ul id="recentcomments">
+			<li class="recentcomments"><span class="comment-author-link">NY Climate Commies Protest Gov. Hochul: Ban Gas, Make NY Electric! &#8211; True News Hub</span> on <a href="https://gellerreport.com/2022/02/ny-climate-commies-protest-gov-hochul-ban-gas-make-ny-electric.html/">NY Climate Commies Protest Gov. Hochul: Ban</a></li>		</ul>
+
+		</section><section id="adwidget_imagewidget-60" class="widget AdWidget_ImageWidget"><a target="_blank" href='http://www.whatfinger.com' alt='Ad'><img style='width: 100%;' src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E" alt='Ad' data-lazy-src="http://b1ff5939f6.nxcli.net/wp-content/uploads/2019/05/Whatfinger250x2505.jpg" /><noscript><img style='width: 100%;' src='http://b1ff5939f6.nxcli.net/wp-content/uploads/2019/05/Whatfinger250x2505.jpg' alt='Ad' /></noscript></a></section><section id="adwidget_imagewidget-61" class="widget AdWidget_ImageWidget"><a target="_blank" href='https://www.amazon.com/Cant-We-Talk-About-This/dp/B078YD5KNS' alt='Ad'><img style='width: 100%;' src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E" alt='Ad' data-lazy-src="http://b1ff5939f6.nxcli.net/wp-content/uploads/2020/09/cwtat-1-225x300.jpg" /><noscript><img style='width: 100%;' src='http://b1ff5939f6.nxcli.net/wp-content/uploads/2020/09/cwtat-1-225x300.jpg' alt='Ad' /></noscript></a></section><section id="pamelageller_donate-2" class="widget pamelageller_donate">
+		<div class="inside">
+			<h2 class="donate-title"><span>Fund</span> The Fight</h2>
+			<p class="text-center">We all need heroes. <br /> Donate Monthly</p>
+			<p class="text-center"><small>Choose your subscription level</small></p>
+
+
+
+			<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+				<input type="hidden" name="on0" value="Contribute Monthly - Choose One">
+				<input type="hidden" name="cmd" value="_s-xclick">
+				<input type="hidden" name="hosted_button_id" value="KTE7SK975VSPN">
+				<div class="paypal-select-box">
+					<select class="paypal-subscribe" name="os0">
+						<option value="Subscriber">Subscriber : $18.00 USD - monthly</option>
+						<option value="Contributor">Contributor : $36.00 USD - monthly</option>
+						<option value="Patron">Patron : $50.00 USD - monthly</option>
+						<option value="Silver member">Silver member : $100.00 USD - monthly</option>
+						<option value="Gold member">Gold member : $250.00 USD - monthly</option>
+						<option value="Platinum member">Platinum member : $500.00 USD - monthly</option>
+					</select>
+				</div>
+				<input type="hidden" name="currency_code" value="USD">
+				<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+				<img alt="" border="0" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201%201'%3E%3C/svg%3E" width="1" height="1" data-lazy-src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif"><noscript><img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1"></noscript>
+			</form>
+		</div>
+
+
+
+
+
+		</section><!-- Sidebar 1x3 -->
+
+<div id="rc-widget-bab1c5" data-rc-widget data-widget-host="habitat" data-endpoint="//trends.revcontent.com" data-widget-id="142334"></div>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" src="https://assets.revcontent.com/master/delivery.js" defer="defer"></script><section id="adwidget_imagewidget-56" class="widget AdWidget_ImageWidget"><a  href='https://www.commentarymagazine.com/politics-ideas/pamela-geller-threat-free-speech/' alt='Ad'><img  src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E" alt='Ad' data-lazy-src="http://b1ff5939f6.nxcli.net/wp-content/uploads/2020/09/commentary-1-216x300.jpg" /><noscript><img  src='http://b1ff5939f6.nxcli.net/wp-content/uploads/2020/09/commentary-1-216x300.jpg' alt='Ad' /></noscript></a></section><section id="enhancedtextwidget-11" class="widget widget_text enhanced-text-widget"><h2 class="widget-title"><a href='AFDI.us' target='_blank'>AMERICAN FREEDOM DEFENSE INITIATIVE</a></h2><div class="textwidget widget-text"><a href="http://afdi.us"><img class="aligncenter size-full wp-image-144177" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20227%20222'%3E%3C/svg%3E" alt="" width="227" height="222" data-lazy-src="http://b1ff5939f6.nxcli.net/wp-content/uploads/2019/05/afdi-logo.jpg" /><noscript><img class="aligncenter size-full wp-image-144177" src="http://b1ff5939f6.nxcli.net/wp-content/uploads/2019/05/afdi-logo.jpg" alt="" width="227" height="222" /></noscript></a></div></section><section id="pamelageller_books-2" class="widget pamelageller_books">
+		<h2>books <span>&amp; Movies</span></h2>
+		<p class="subtitle">By Pamela Geller</p>
+
+		<ul class="book-list">
+
+			<li class="book">
+				<a href="https://www.amazon.com/dp/B078YD5KNS/ref=sr_1_1_dvt_1_wnzw_btn?s=instant-video&ie=UTF8&qid=1515711481&sr=1-1&keywords=can%27t+we+talk&autoplay=1">
+					<img width="150" height="200" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20150%20200'%3E%3C/svg%3E" alt="" class="book-img" data-lazy-src="https://eadn-wc02-4988931.nxedge.io/cdn/wp-content/themes/pamela-geller/assets/img/samples/cantwetalkabouthis.jpg"><noscript><img width="150" height="200" src="https://eadn-wc02-4988931.nxedge.io/cdn/wp-content/themes/pamela-geller/assets/img/samples/cantwetalkabouthis.jpg" alt="" class="book-img"></noscript>
+				</a>
+				<p class="book-excerpt">It is the conflict of our age, yet no one dares talk about it. The true story of the Islamic Supremacist war on free speech as told by those on the front lines fighting for our First Amendment rights,
+					.
+				</p>
+				<a href="https://www.amazon.com/dp/B078YD5KNS/ref=sr_1_1_dvt_1_wnzw_btn?s=instant-video&ie=UTF8&qid=1515711481&sr=1-1&keywords=can%27t+we+talk&autoplay=1" class="book-cta">Buy Now</a>
+			</li>
+
+			<li class="book">
+				<a href="https://www.amazon.com/dp/1947979000/ref=sr_1_fkmr0_1?ie=UTF8&qid=1506028280&sr=8-1-fkmr0&keywords=fatwa+haunted+in+america">
+					<img width="345" height="499" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20345%20499'%3E%3C/svg%3E" alt="" class="book-img" data-lazy-src="https://eadn-wc02-4988931.nxedge.io/cdn/wp-content/themes/pamela-geller/assets/img/samples/fatwa-hunted-in-america.jpg"><noscript><img width="345" height="499" src="https://eadn-wc02-4988931.nxedge.io/cdn/wp-content/themes/pamela-geller/assets/img/samples/fatwa-hunted-in-america.jpg" alt="" class="book-img"></noscript>
+				</a>
+				<p class="book-excerpt">Pamela Geller tells her own story of how she became one of the world's foremost activists for the freedom of speech,
+					individual rights, and equality of rights for all. "It's my story, it's what happens when someone fights for freedom in America today,"
+					Geller explained.
+				</p>
+				<a href="https://www.amazon.com/dp/1947979000/ref=sr_1_fkmr0_1?ie=UTF8&qid=1506028280&sr=8-1-fkmr0&keywords=fatwa+haunted+in+america" class="book-cta">Buy Now</a>
+			</li>
+
+			<li class="book">
+				<a href="http://superstore.wnd.com/books/Stop-the-Islamization-of-America-A-Practical-Guide-To-The-Resistance-Autographed-Hardcover">
+					<img width="190" height="284" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20190%20284'%3E%3C/svg%3E" alt="" class="book-img" data-lazy-src="https://eadn-wc02-4988931.nxedge.io/cdn/wp-content/themes/pamela-geller/assets/img/samples/stoptheislamizationofamerica.jpg"><noscript><img width="190" height="284" src="https://eadn-wc02-4988931.nxedge.io/cdn/wp-content/themes/pamela-geller/assets/img/samples/stoptheislamizationofamerica.jpg" alt="" class="book-img"></noscript>
+				</a>
+				<p class="book-excerpt">Today Islamic supremacists are demanding more accommodation of Islamic principles
+					and practices than ever, and daily growing more aggressive in eroding our freedoms – with politically
+					correct public officials only too happy..
+				</p>
+				<a href="http://superstore.wnd.com/books/Stop-the-Islamization-of-America-A-Practical-Guide-To-The-Resistance-Autographed-Hardcover" class="book-cta">Buy Now</a>
+			</li>
+
+			<li class="book">
+				<a href="http://www.amazon.com/Post-American-Presidency-Obama-Administrations-America-ebook/dp/B003LL2YOU/ref=tmm_kin_swatch_0?_encoding=UTF8&sr=&qid=">
+					<img width="260" height="343" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20260%20343'%3E%3C/svg%3E" alt="" class="book-img" data-lazy-src="https://eadn-wc02-4988931.nxedge.io/cdn/wp-content/themes/pamela-geller/assets/img/samples/pap-book.jpeg"><noscript><img width="260" height="343" src="https://eadn-wc02-4988931.nxedge.io/cdn/wp-content/themes/pamela-geller/assets/img/samples/pap-book.jpeg" alt="" class="book-img"></noscript>
+				</a>
+				<p class="book-excerpt">Popular conservative blogger Pamela Geller and New York Times bestselling author
+					Robert Spencer sound a wake-up call for Americans to stop the Obama administration from limiting our
+					hard-won...
+				</p>
+				<a href="http://www.amazon.com/Post-American-Presidency-Obama-Administrations-America-ebook/dp/B003LL2YOU/ref=tmm_kin_swatch_0?_encoding=UTF8&sr=&qid=" class="book-cta">Buy Now</a>
+			</li>
+
+            <li class="book">
+                <a href="https://www.amazon.com/Ground-Zero-Mosque-Second-Attacks/dp/B00563TR82/ref=sr_1_1?keywords=ground+zero+mosque&qid=1557940890&s=instant-video&sr=1-1-catcorr">
+                    <img width="362" height="500" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20362%20500'%3E%3C/svg%3E" alt="" class="book-img" data-lazy-src="https://eadn-wc02-4988931.nxedge.io/cdn/wp-content/themes/pamela-geller/assets/img/samples/ground-zero-mosque.jpg"><noscript><img width="362" height="500" src="https://eadn-wc02-4988931.nxedge.io/cdn/wp-content/themes/pamela-geller/assets/img/samples/ground-zero-mosque.jpg" alt="" class="book-img"></noscript>
+                </a>
+                <p class="book-excerpt">The Ground Zero Mosque: The Second Wave of the 9/11 Attacks is a groundbreaking documentary on the controversy
+                    over the planned Islamic supremacist mega-mosque at Ground Zero.
+                </p>
+                <a href="https://www.amazon.com/Ground-Zero-Mosque-Second-Attacks/dp/B00563TR82/ref=sr_1_1?keywords=ground+zero+mosque&qid=1557940890&s=instant-video&sr=1-1-catcorr" class="book-cta">Buy Now</a>
+            </li>
+
+		</ul>
+
+		</section><section id="youtube-2" class="widget widget_youtube">
+		<h2 class="widget-title">must See <span>Video</span></h2>
+
+		
+			<div class="video-post">
+				<a href="https://gellerreport.com/2021/02/kuwaiti-singer-converts-to-judaism-generating-another-upset-in-the-gulf-area.html/">
+					<figure class="youtube-img">
+											</figure>
+					<h2 class="youtube-title"><a href="https://gellerreport.com/2021/02/kuwaiti-singer-converts-to-judaism-generating-another-upset-in-the-gulf-area.html/">Kuwaiti singer converts to Judaism, generating another upset in the Gulf area</a>				</a>
+			</div>
+		</section><section id="enhancedtextwidget-115" class="widget widget_text enhanced-text-widget"><div class="textwidget widget-text">Pamela Geller <pamelageller@gmail.com>
+	
+May 10, 2020, 8:40 PM (12 hours ago)
+	
+to me
+<script type="rocketlazyloadscript" src="https://s.newsmaxfeednetwork.com/static/js/connectV5.js" defer></script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript">
+    NM.init({
+        widgetId: "sblA3v9zt7uNojV_XNyNiO2VDLG3X9AvIb-CTB5N",
+        template: "NM10",
+        articleSelector: ".post_excerpt"
+    });
+
+</script>
+
+<div id="DXbVu_FUwEwwBJrHYodCbvVcExqtDAY7NT8i0jL8"></div>
+
+<script type="rocketlazyloadscript" src="https://s.newsmaxfeednetwork.com/static/js/connectV5.js" defer></script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript">
+    NM.init({
+        widgetId: "DXbVu_FUwEwwBJrHYodCbvVcExqtDAY7NT8i0jL8",
+         template: "NM05"
+    });</script>
+ 
+
+
+
+
+
+<div id="DXbVu_FUwEwwBJrHYodCbvVcExqtDAY7NT8i0jL8"></div></div></section><section id="enhancedtextwidget-124" class="widget widget_text enhanced-text-widget"><div class="textwidget widget-text"><form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="KTE7SK975VSPN">
+<table>
+<tr><td><input type="hidden" name="on0" value="Contribute Monthly - Choose One">Contribute Monthly - Choose One</td></tr><tr><td><select name="os0">
+	<option value="Subscriber">Subscriber : $18.00 USD - monthly</option>
+	<option value="Contributor">Contributor : $36.00 USD - monthly</option>
+	<option value="Patron">Patron : $50.00 USD - monthly</option>
+	<option value="Silver member">Silver member : $100.00 USD - monthly</option>
+	<option value="Gold member">Gold member : $250.00 USD - monthly</option>
+	<option value="Platinum member">Platinum member : $500.00 USD - monthly</option>
+	<option value="Diamond">Diamond : $1,000.00 USD - monthly</option>
+</select> </td></tr>
+</table>
+<input type="hidden" name="currency_code" value="USD">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201%201'%3E%3C/svg%3E" width="1" height="1" data-lazy-src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif"><noscript><img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1"></noscript>
+</form>
+</div></section><section id="pamelageller_newsmax-2" class="widget pamelageller_newsmax">
+	<div id="DXbVu_FUwEwwBJrHYodCbvVcExqtDAY7NT8i0jL8"></div>
+	<script type="rocketlazyloadscript" src="https://s.newsmaxfeednetwork.com/static/js/connectV5.js" defer></script>
+	<script type="rocketlazyloadscript" data-rocket-type="text/javascript">
+		NM.init({
+			widgetId: "DXbVu_FUwEwwBJrHYodCbvVcExqtDAY7NT8i0jL8",
+			template: "NM05"
+		});
+	</script>
+
+	</section></div>
+
+	</div>
+
+</div>
+
+
+</div><!-- #content -->
+
+<footer class="site-footer" role="contentinfo">
+
+	<div class="row">
+		<div class="medium-4 columns footer-section">
+			<h2 class="footer-header explore-header">Explore</h2>
+			<nav class="footer-navigation" role="navigation">
+				<ul id="menu-footer-links" class="footer-menu"><li id="menu-item-97" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-97"><a href="http://www.storenvy.com/stores/121860-atlas-stuff">Store</a></li>
+<li id="menu-item-32626" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-32626"><a href="https://gellerreport.com/about/">About</a></li>
+<li id="menu-item-32625" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-32625"><a href="https://gellerreport.com/articles/">Articles</a></li>
+<li id="menu-item-50117" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-50117"><a href="http://www.amazon.com/Pamela-Geller/e/B003815P0S/ref=sr_tc_2_0?qid=1387911392&#038;sr=1-2-ent">Books</a></li>
+<li id="menu-item-32624" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-32624"><a href="https://gellerreport.com/quotables-from-notables/">Notable Quotables</a></li>
+<li id="menu-item-32621" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-32621"><a href="https://gellerreport.com/archive/">Archive</a></li>
+<li id="menu-item-50118" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-50118"><a href="https://gellerreport.com/category/atlas-tv/">Press</a></li>
+<li id="menu-item-96" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-96"><a href="https://gellerreport.com/contact/">Contact</a></li>
+<li id="menu-item-85025" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-85025"><a href="https://gellerreport.com/disclaimer/">Disclaimer</a></li>
+</ul>			</nav>
+		</div>
+		<div class="large-4 columns footer-section">
+		</div>
+		<div class="large-4 columns footer-section">
+			<h2 class="footer-header">Connect</h2>
+			
+		<ul class="social-component">
+							<li class="social-wrapper icon-facebook">
+					<a href="https://www.facebook.com/pamelageller" target="_blank" rel="nofollow">
+						<svg class="icon icon-social">
+							<use xlink:href="#icon-facebook"></use>
+						</svg>
+					</a>
+				</li>
+							<li class="social-wrapper icon-twitter">
+					<a href="https://twitter.com/pamelageller" target="_blank" rel="nofollow">
+						<svg class="icon icon-social">
+							<use xlink:href="#icon-twitter"></use>
+						</svg>
+					</a>
+				</li>
+							<li class="social-wrapper icon-youtube">
+					<a href="https://www.youtube.com/user/atlasshrugs2000" target="_blank" rel="nofollow">
+						<svg class="icon icon-social">
+							<use xlink:href="#icon-youtube"></use>
+						</svg>
+					</a>
+				</li>
+							<li class="social-wrapper icon-instagram">
+					<a href="https://www.instagram.com/pamelageller/" target="_blank" rel="nofollow">
+						<svg class="icon icon-social">
+							<use xlink:href="#icon-instagram"></use>
+						</svg>
+					</a>
+				</li>
+							<li class="social-wrapper icon-feed">
+					<a href="https://gellerreport.com/feed/" target="_blank" rel="nofollow">
+						<svg class="icon icon-social">
+							<use xlink:href="#icon-feed"></use>
+						</svg>
+					</a>
+				</li>
+					</ul>
+
+	                        
+		<a href="http://www.feedblitz.com/f/f.fbz?Sub=26412" class="button subscribe">Subscribe To Our Newsletter</a>
+
+			</div>
+	</div>
+	<div class="row column">
+		<p class="footer-copyright">Copyright &copy; 2022 Geller Report</p>	</div>
+</footer>
+
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript">
+	var HYVOR_TALK_WEBSITE = 3737;
+
+					var HYVOR_TALK_CONFIG = {
+			url: "https://gellerreport.com/2020/01/trump-accomplishments-2019.html/",
+			id: "161425:http://b1ff5939f6.nxcli.net/?p=161425",
+			title: "TOP 10: President Trump’s biggest accomplishments of 2019!",
+			loadMode: "default",
+			clickId: "hyvor-talk-load-button"
+		};
+	
+	
+</script><script type="rocketlazyloadscript" async data-rocket-type="text/javascript" src="//talk.hyvor.com/web-api/count/"></script><div class="et_social_pin_images_outer">
+					<div class="et_social_pinterest_window">
+						<div class="et_social_modal_header"><h3>Pin It on Pinterest</h3><span class="et_social_close"></span></div>
+						<div class="et_social_pin_images" data-permalink="https://gellerreport.com/2020/01/trump-accomplishments-2019.html/" data-title="TOP 10: President Trump’s biggest accomplishments of 2019!" data-post_id="161425"></div>
+					</div>
+				</div><!-- This site is converting visitors into subscribers and customers with OptinMonster - https://optinmonster.com :: Campaign Title: Feedblitz --><div id="om-bf1hrwtnimln2vh1-holder"></div><script type="rocketlazyloadscript">var bf1hrwtnimln2vh1,bf1hrwtnimln2vh1_poll=function(){var r=0;return function(n,l){clearInterval(r),r=setInterval(n,l)}}();!function(e,t,n){if(e.getElementById(n)){bf1hrwtnimln2vh1_poll(function(){if(window['om_loaded']){if(!bf1hrwtnimln2vh1){bf1hrwtnimln2vh1=new OptinMonsterApp();return bf1hrwtnimln2vh1.init({"u":"25090.449367","staging":0,"dev":0,"beta":0});}}},25);return;}var d=false,o=e.createElement(t);o.id=n,o.src="https://a.omappapi.com/app/js/api.min.js",o.async=true,o.onload=o.onreadystatechange=function(){if(!d){if(!this.readyState||this.readyState==="loaded"||this.readyState==="complete"){try{d=om_loaded=true;bf1hrwtnimln2vh1=new OptinMonsterApp();bf1hrwtnimln2vh1.init({"u":"25090.449367","staging":0,"dev":0,"beta":0});o.onload=o.onreadystatechange=null;}catch(t){}}}};(document.getElementsByTagName("head")[0]||document.documentElement).appendChild(o)}(document,"script","omapi-script");</script><!-- / OptinMonster -->		<script type="rocketlazyloadscript" data-rocket-type="text/javascript">
+		var bf1hrwtnimln2vh1_shortcode = true;		</script>
+		<script type="rocketlazyloadscript" data-rocket-type='text/javascript' src='https://eadn-wc02-4988931.nxedge.io/cdn/wp-content/uploads/533/102/public/assets/js/868.js?ver=1.5.4' id='advanced-ads-layer-footer-js-js' defer></script>
+<script type="rocketlazyloadscript" data-rocket-type='text/javascript' src='https://eadn-wc02-4988931.nxedge.io/cdn/wp-content/plugins/monarch/js/idle-timer.min.js?ver=1.4.14' id='et_monarch-idle-js' defer></script>
+<script type='text/javascript' id='et_monarch-custom-js-js-extra'>
+/* <![CDATA[ */
+var monarchSettings = {"ajaxurl":"https:\/\/gellerreport.com\/wp-admin\/admin-ajax.php","pageurl":"https:\/\/gellerreport.com\/2020\/01\/trump-accomplishments-2019.html\/","stats_nonce":"bbf5b27e49","share_counts":"4a92364dda","follow_counts":"187b2f9c03","total_counts":"634cf10df9","media_single":"b2740375d0","media_total":"cdc7412f01","generate_all_window_nonce":"fe464652a3","no_img_message":"No images available for sharing on this page"};
+/* ]]> */
+</script>
+<script type="rocketlazyloadscript" data-rocket-type='text/javascript' src='https://eadn-wc02-4988931.nxedge.io/cdn/wp-content/plugins/monarch/js/custom.js?ver=1.4.14' id='et_monarch-custom-js-js' defer></script>
+<script type="rocketlazyloadscript" data-rocket-type='text/javascript' id='rocket-browser-checker-js-after'>
+"use strict";var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||!1,descriptor.configurable=!0,"value"in descriptor&&(descriptor.writable=!0),Object.defineProperty(target,descriptor.key,descriptor)}}return function(Constructor,protoProps,staticProps){return protoProps&&defineProperties(Constructor.prototype,protoProps),staticProps&&defineProperties(Constructor,staticProps),Constructor}}();function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor))throw new TypeError("Cannot call a class as a function")}var RocketBrowserCompatibilityChecker=function(){function RocketBrowserCompatibilityChecker(options){_classCallCheck(this,RocketBrowserCompatibilityChecker),this.passiveSupported=!1,this._checkPassiveOption(this),this.options=!!this.passiveSupported&&options}return _createClass(RocketBrowserCompatibilityChecker,[{key:"_checkPassiveOption",value:function(self){try{var options={get passive(){return!(self.passiveSupported=!0)}};window.addEventListener("test",null,options),window.removeEventListener("test",null,options)}catch(err){self.passiveSupported=!1}}},{key:"initRequestIdleCallback",value:function(){!1 in window&&(window.requestIdleCallback=function(cb){var start=Date.now();return setTimeout(function(){cb({didTimeout:!1,timeRemaining:function(){return Math.max(0,50-(Date.now()-start))}})},1)}),!1 in window&&(window.cancelIdleCallback=function(id){return clearTimeout(id)})}},{key:"isDataSaverModeOn",value:function(){return"connection"in navigator&&!0===navigator.connection.saveData}},{key:"supportsLinkPrefetch",value:function(){var elem=document.createElement("link");return elem.relList&&elem.relList.supports&&elem.relList.supports("prefetch")&&window.IntersectionObserver&&"isIntersecting"in IntersectionObserverEntry.prototype}},{key:"isSlowConnection",value:function(){return"connection"in navigator&&"effectiveType"in navigator.connection&&("2g"===navigator.connection.effectiveType||"slow-2g"===navigator.connection.effectiveType)}}]),RocketBrowserCompatibilityChecker}();
+</script>
+<script type='text/javascript' id='rocket-preload-links-js-extra'>
+/* <![CDATA[ */
+var RocketPreloadLinksConfig = {"excludeUris":"\/(.+\/)?feed\/?.+\/?|\/(?:.+\/)?embed\/|\/(index\\.php\/)?wp\\-json(\/.*|$)|\/wp-admin\/|\/logout\/|\/wp-login.php","usesTrailingSlash":"1","imageExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif","fileExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif|php|pdf|html|htm","siteUrl":"https:\/\/gellerreport.com","onHoverDelay":"100","rateThrottle":"3"};
+/* ]]> */
+</script>
+<script type="rocketlazyloadscript" data-rocket-type='text/javascript' id='rocket-preload-links-js-after'>
+(function() {
+"use strict";var r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},e=function(){function i(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}return function(e,t,n){return t&&i(e.prototype,t),n&&i(e,n),e}}();function i(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}var t=function(){function n(e,t){i(this,n),this.browser=e,this.config=t,this.options=this.browser.options,this.prefetched=new Set,this.eventTime=null,this.threshold=1111,this.numOnHover=0}return e(n,[{key:"init",value:function(){!this.browser.supportsLinkPrefetch()||this.browser.isDataSaverModeOn()||this.browser.isSlowConnection()||(this.regex={excludeUris:RegExp(this.config.excludeUris,"i"),images:RegExp(".("+this.config.imageExt+")$","i"),fileExt:RegExp(".("+this.config.fileExt+")$","i")},this._initListeners(this))}},{key:"_initListeners",value:function(e){-1<this.config.onHoverDelay&&document.addEventListener("mouseover",e.listener.bind(e),e.listenerOptions),document.addEventListener("mousedown",e.listener.bind(e),e.listenerOptions),document.addEventListener("touchstart",e.listener.bind(e),e.listenerOptions)}},{key:"listener",value:function(e){var t=e.target.closest("a"),n=this._prepareUrl(t);if(null!==n)switch(e.type){case"mousedown":case"touchstart":this._addPrefetchLink(n);break;case"mouseover":this._earlyPrefetch(t,n,"mouseout")}}},{key:"_earlyPrefetch",value:function(t,e,n){var i=this,r=setTimeout(function(){if(r=null,0===i.numOnHover)setTimeout(function(){return i.numOnHover=0},1e3);else if(i.numOnHover>i.config.rateThrottle)return;i.numOnHover++,i._addPrefetchLink(e)},this.config.onHoverDelay);t.addEventListener(n,function e(){t.removeEventListener(n,e,{passive:!0}),null!==r&&(clearTimeout(r),r=null)},{passive:!0})}},{key:"_addPrefetchLink",value:function(i){return this.prefetched.add(i.href),new Promise(function(e,t){var n=document.createElement("link");n.rel="prefetch",n.href=i.href,n.onload=e,n.onerror=t,document.head.appendChild(n)}).catch(function(){})}},{key:"_prepareUrl",value:function(e){if(null===e||"object"!==(void 0===e?"undefined":r(e))||!1 in e||-1===["http:","https:"].indexOf(e.protocol))return null;var t=e.href.substring(0,this.config.siteUrl.length),n=this._getPathname(e.href,t),i={original:e.href,protocol:e.protocol,origin:t,pathname:n,href:t+n};return this._isLinkOk(i)?i:null}},{key:"_getPathname",value:function(e,t){var n=t?e.substring(this.config.siteUrl.length):e;return n.startsWith("/")||(n="/"+n),this._shouldAddTrailingSlash(n)?n+"/":n}},{key:"_shouldAddTrailingSlash",value:function(e){return this.config.usesTrailingSlash&&!e.endsWith("/")&&!this.regex.fileExt.test(e)}},{key:"_isLinkOk",value:function(e){return null!==e&&"object"===(void 0===e?"undefined":r(e))&&(!this.prefetched.has(e.href)&&e.origin===this.config.siteUrl&&-1===e.href.indexOf("?")&&-1===e.href.indexOf("#")&&!this.regex.excludeUris.test(e.href)&&!this.regex.images.test(e.href))}}],[{key:"run",value:function(){"undefined"!=typeof RocketPreloadLinksConfig&&new n(new RocketBrowserCompatibilityChecker({capture:!0,passive:!0}),RocketPreloadLinksConfig).init()}}]),n}();t.run();
+}());
+</script>
+<script type="rocketlazyloadscript" data-rocket-type='text/javascript' src='https://eadn-wc02-4988931.nxedge.io/cdn/wp-content/themes/pamela-geller/assets/dist/js/slick.js?ver=2.0.28' id='slick-js-js' defer></script>
+<script type="rocketlazyloadscript" data-rocket-type='text/javascript' src='https://eadn-wc02-4988931.nxedge.io/cdn/wp-content/themes/pamela-geller/assets/dist/js/app.js?ver=2.0.28' id='pamelageller_js-js' defer></script>
+<script type="rocketlazyloadscript">(function(d){var s=d.createElement("script");s.type="text/javascript";s.src="https://a.omappapi.com/app/js/api.min.js";s.async=true;s.id="omapi-script";d.getElementsByTagName("head")[0].appendChild(s);})(document);</script><script type="rocketlazyloadscript" data-rocket-type='text/javascript' src='https://eadn-wc02-4988931.nxedge.io/cdn/wp-content/plugins/monarch/core/admin/js/common.js?ver=4.9.3' id='et-core-common-js' defer></script>
+<script type="rocketlazyloadscript" data-rocket-type='text/javascript' src='https://eadn-wc02-4988931.nxedge.io/cdn/wp-content/plugins/optinmonster/assets/js/helper.js?ver=2.6.5' id='optinmonster-wp-helper-js' defer></script>
+<div class="pamel-body-code" id="pamel-1637611722"><script type="rocketlazyloadscript" async data-cfasync="false" src="https://cdn1.lockerdomecdn.com/embeds/pamelageller_pamelageller_sticky.js"></script></div><!--noptimize--><script type="rocketlazyloadscript">!function(){window.advanced_ads_ready_queue=window.advanced_ads_ready_queue||[],advanced_ads_ready_queue.push=window.advanced_ads_ready;for(var d=0,a=advanced_ads_ready_queue.length;d<a;d++)advanced_ads_ready(advanced_ads_ready_queue[d])}();</script><!--/noptimize-->		<script type="rocketlazyloadscript" data-rocket-type="text/javascript">var omapi_localized = { ajax: 'https://gellerreport.com/wp-admin/admin-ajax.php?optin-monster-ajax-route=1', nonce: '6147666fd0', slugs: {"bf1hrwtnimln2vh1":{"slug":"bf1hrwtnimln2vh1","mailpoet":false}} };</script>
+				<script type="rocketlazyloadscript" data-rocket-type="text/javascript">var omapi_data = {"wc_cart":[],"object_id":161425,"object_key":"post","object_type":"post","term_ids":[11595]};</script>
+		<script>window.lazyLoadOptions={elements_selector:"img[data-lazy-src],.rocket-lazyload",data_src:"lazy-src",data_srcset:"lazy-srcset",data_sizes:"lazy-sizes",class_loading:"lazyloading",class_loaded:"lazyloaded",threshold:300,callback_loaded:function(element){if(element.tagName==="IFRAME"&&element.dataset.rocketLazyload=="fitvidscompatible"){if(element.classList.contains("lazyloaded")){if(typeof window.jQuery!="undefined"){if(jQuery.fn.fitVids){jQuery(element).parent().fitVids()}}}}}};window.addEventListener('LazyLoad::Initialized',function(e){var lazyLoadInstance=e.detail.instance;if(window.MutationObserver){var observer=new MutationObserver(function(mutations){var image_count=0;var iframe_count=0;var rocketlazy_count=0;mutations.forEach(function(mutation){for(i=0;i<mutation.addedNodes.length;i++){if(typeof mutation.addedNodes[i].getElementsByTagName!=='function'){continue}
+if(typeof mutation.addedNodes[i].getElementsByClassName!=='function'){continue}
+images=mutation.addedNodes[i].getElementsByTagName('img');is_image=mutation.addedNodes[i].tagName=="IMG";iframes=mutation.addedNodes[i].getElementsByTagName('iframe');is_iframe=mutation.addedNodes[i].tagName=="IFRAME";rocket_lazy=mutation.addedNodes[i].getElementsByClassName('rocket-lazyload');image_count+=images.length;iframe_count+=iframes.length;rocketlazy_count+=rocket_lazy.length;if(is_image){image_count+=1}
+if(is_iframe){iframe_count+=1}}});if(image_count>0||iframe_count>0||rocketlazy_count>0){lazyLoadInstance.update()}});var b=document.getElementsByTagName("body")[0];var config={childList:!0,subtree:!0};observer.observe(b,config)}},!1)</script><script data-no-minify="1" async src="https://eadn-wc02-4988931.nxedge.io/cdn/wp-content/plugins/wp-rocket/assets/js/lazyload/16.1/lazyload.min.js"></script><!--  RevExit -->
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" id="rev2exit" src="//labs-cdn.revcontent.com/build/revexit.min.js?w=168703&p=22182&k=eecd0619abbaaaf48fe5071f6ef9dc1e3422b339&d=wnpinsider.com&t=false&i=none&x=both&z=10" defer></script>
+</body>
+</html>
+
+<!-- This website is like a Rocket, isn't it? Performance optimized by WP Rocket. Learn more: https://wp-rocket.me - Debug: cached@1646173059 -->

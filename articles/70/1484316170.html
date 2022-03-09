@@ -1,0 +1,1408 @@
+
+<!doctype html>
+<html class="no-js" lang="en-US" >
+    <head>
+
+        <meta charset="UTF-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"e4824da135",applicationID:"96617038"};window.NREUM||(NREUM={}),__nr_require=function(e,t,n){function r(n){if(!t[n]){var i=t[n]={exports:{}};e[n][0].call(i.exports,function(t){var i=e[n][1][t];return r(i||t)},i,i.exports)}return t[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(e,t,n){function r(){}function i(e,t,n){return function(){return o(e,[u.now()].concat(c(arguments)),t?null:this,n),t?void 0:this}}var o=e("handle"),a=e(6),c=e(7),f=e("ee").get("tracer"),u=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(e,t){s[t]=i(p+t,!0,"api")}),s.addPageAction=i(p+"addPageAction",!0),s.setCurrentRouteName=i(p+"routeName",!0),t.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,t){var n={},r=this,i="function"==typeof t;return o(l+"tracer",[u.now(),e,n],r),function(){if(f.emit((i?"":"no-")+"fn-start",[u.now(),r,i],n),i)try{return t.apply(this,arguments)}catch(e){throw f.emit("fn-err",[arguments,this,e],n),e}finally{f.emit("fn-end",[u.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,t){m[t]=i(l+t)}),newrelic.noticeError=function(e,t){"string"==typeof e&&(e=new Error(e)),o("err",[e,u.now(),!1,t])}},{}],2:[function(e,t,n){function r(){return c.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,c=e(8);t.exports=r,t.exports.offset=a,t.exports.getLastTimestamp=i},{}],3:[function(e,t,n){function r(e,t){var n=e.getEntries();n.forEach(function(e){"first-paint"===e.name?d("timing",["fp",Math.floor(e.startTime)]):"first-contentful-paint"===e.name&&d("timing",["fcp",Math.floor(e.startTime)])})}function i(e,t){var n=e.getEntries();n.length>0&&d("lcp",[n[n.length-1]])}function o(e){e.getEntries().forEach(function(e){e.hadRecentInput||d("cls",[e])})}function a(e){if(e instanceof m&&!g){var t=Math.round(e.timeStamp),n={type:e.type};t<=p.now()?n.fid=p.now()-t:t>p.offset&&t<=Date.now()?(t-=p.offset,n.fid=p.now()-t):t=p.now(),g=!0,d("timing",["fi",t,n])}}function c(e){d("pageHide",[p.now(),e])}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var f,u,s,d=e("handle"),p=e("loader"),l=e(5),m=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){f=new PerformanceObserver(r);try{f.observe({entryTypes:["paint"]})}catch(v){}u=new PerformanceObserver(i);try{u.observe({entryTypes:["largest-contentful-paint"]})}catch(v){}s=new PerformanceObserver(o);try{s.observe({type:"layout-shift",buffered:!0})}catch(v){}}if("addEventListener"in document){var g=!1,w=["click","keydown","mousedown","pointerdown","touchstart"];w.forEach(function(e){document.addEventListener(e,a,!1)})}l(c)}},{}],4:[function(e,t,n){function r(e,t){if(!i)return!1;if(e!==i)return!1;if(!t)return!0;if(!o)return!1;for(var n=o.split("."),r=t.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var c=navigator.userAgent,f=c.match(a);f&&c.indexOf("Chrome")===-1&&c.indexOf("Chromium")===-1&&(i="Safari",o=f[1])}t.exports={agent:i,version:o,match:r}},{}],5:[function(e,t,n){function r(e){function t(){e(a&&document[a]?document[a]:document[i]?"hidden":"visible")}"addEventListener"in document&&o&&document.addEventListener(o,t,!1)}t.exports=r;var i,o,a;"undefined"!=typeof document.hidden?(i="hidden",o="visibilitychange",a="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",o="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",o="webkitvisibilitychange",a="webkitVisibilityState")},{}],6:[function(e,t,n){function r(e,t){var n=[],r="",o=0;for(r in e)i.call(e,r)&&(n[o]=t(r,e[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;t.exports=r},{}],7:[function(e,t,n){function r(e,t,n){t||(t=0),"undefined"==typeof n&&(n=e?e.length:0);for(var r=-1,i=n-t||0,o=Array(i<0?0:i);++r<i;)o[r]=e[t+r];return o}t.exports=r},{}],8:[function(e,t,n){t.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,t,n){function r(){}function i(e){function t(e){return e&&e instanceof r?e:e?u(e,f,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!l.aborted||o){e&&a&&e(n,r,i);for(var c=t(i),f=v(n),u=f.length,s=0;s<u;s++)f[s].apply(c,r);var p=d[h[n]];return p&&p.push([b,n,r,c]),c}}function o(e,t){y[e]=v(e).concat(t)}function m(e,t){var n=y[e];if(n)for(var r=0;r<n.length;r++)n[r]===t&&n.splice(r,1)}function v(e){return y[e]||[]}function g(e){return p[e]=p[e]||i(n)}function w(e,t){s(e,function(e,n){t=t||"feature",h[n]=t,t in d||(d[t]=[])})}var y={},h={},b={on:o,addEventListener:o,removeEventListener:m,emit:n,get:g,listeners:v,context:t,buffer:w,abort:c,aborted:!1};return b}function o(e){return u(e,f,a)}function a(){return new r}function c(){(d.api||d.feature)&&(l.aborted=!0,d=l.backlog={})}var f="nr@context",u=e("gos"),s=e(6),d={},p={},l=t.exports=i();t.exports.getOrSetContext=o,l.backlog=d},{}],gos:[function(e,t,n){function r(e,t,n){if(i.call(e,t))return e[t];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,t,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return e[t]=r,r}var i=Object.prototype.hasOwnProperty;t.exports=r},{}],handle:[function(e,t,n){function r(e,t,n,r){i.buffer([e],r),i.emit(e,t,n)}var i=e("ee").get("handle");t.exports=r,r.ee=i},{}],id:[function(e,t,n){function r(e){var t=typeof e;return!e||"object"!==t&&"function"!==t?-1:e===window?0:a(e,o,function(){return i++})}var i=1,o="nr@id",a=e("gos");t.exports=r},{}],loader:[function(e,t,n){function r(){if(!x++){var e=b.info=NREUM.info,t=p.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&t))return u.abort();f(y,function(t,n){e[t]||(e[t]=n)});var n=a();c("mark",["onload",n+b.offset],null,"api"),c("timing",["load",n]);var r=p.createElement("script");r.src="https://"+e.agent,t.parentNode.insertBefore(r,t)}}function i(){"complete"===p.readyState&&o()}function o(){c("mark",["domContent",a()+b.offset],null,"api")}var a=e(2),c=e("handle"),f=e(6),u=e("ee"),s=e(4),d=window,p=d.document,l="addEventListener",m="attachEvent",v=d.XMLHttpRequest,g=v&&v.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:v,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var w=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1194.min.js"},h=v&&g&&g[l]&&!/CriOS/.test(navigator.userAgent),b=t.exports={offset:a.getLastTimestamp(),now:a,origin:w,features:{},xhrWrappable:h,userAgent:s};e(1),e(3),p[l]?(p[l]("DOMContentLoaded",o,!1),d[l]("load",r,!1)):(p[m]("onreadystatechange",i),d[m]("onload",r)),c("mark",["firstbyte",a.getLastTimestamp()],null,"api");var x=0},{}],"wrap-function":[function(e,t,n){function r(e,t){function n(t,n,r,f,u){function nrWrapper(){var o,a,s,p;try{a=this,o=d(arguments),s="function"==typeof r?r(o,a):r||{}}catch(l){i([l,"",[o,a,f],s],e)}c(n+"start",[o,a,f],s,u);try{return p=t.apply(a,o)}catch(m){throw c(n+"err",[o,a,m],s,u),m}finally{c(n+"end",[o,a,p],s,u)}}return a(t)?t:(n||(n=""),nrWrapper[p]=t,o(t,nrWrapper,e),nrWrapper)}function r(e,t,r,i,o){r||(r="");var c,f,u,s="-"===r.charAt(0);for(u=0;u<t.length;u++)f=t[u],c=e[f],a(c)||(e[f]=n(c,s?f+r:r,i,f,o))}function c(n,r,o,a){if(!m||t){var c=m;m=!0;try{e.emit(n,r,o,t,a)}catch(f){i([f,n,r,o],e)}m=c}}return e||(e=s),n.inPlace=r,n.flag=p,n}function i(e,t){t||(t=s);try{t.emit("internal-error",e)}catch(n){}}function o(e,t,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(e);return r.forEach(function(n){Object.defineProperty(t,n,{get:function(){return e[n]},set:function(t){return e[n]=t,t}})}),t}catch(o){i([o],n)}for(var a in e)l.call(e,a)&&(t[a]=e[a]);return t}function a(e){return!(e&&e instanceof Function&&e.apply&&!e[p])}function c(e,t){var n=t(e);return n[p]=e,o(e,n,s),n}function f(e,t,n){var r=e[t];e[t]=c(r,n)}function u(){for(var e=arguments.length,t=new Array(e),n=0;n<e;++n)t[n]=arguments[n];return t}var s=e("ee"),d=e(7),p="nr@original",l=Object.prototype.hasOwnProperty,m=!1;t.exports=r,t.exports.wrapFunction=c,t.exports.wrapInPlace=f,t.exports.argsToArray=u},{}]},{},["loader"]);</script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="cache-control" content="no-cache" />
+        <meta name="gpsid" content="19988786" />
+        <link rel="icon" href="https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/assets/images/icons/favicon.ico" type="image/x-icon">
+        <link rel="apple-touch-icon" sizes="144x144" href="https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/assets/images/icons/apple-touch-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/assets/images/icons/apple-touch-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/assets/images/icons/apple-touch-icon-72x72.png">
+        <link rel="apple-touch-icon" href="https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/assets/images/icons/apple-touch-icon.png">
+        <title>Tank of liquefied fish retrieved after falling into ocean off Vancouver Island &#8211; Aldergrove Star</title>
+<!--
+<PageMap>
+	<DataObject type="thumbnail">
+		<Attribute name="src" value="https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19988786_web1_191231-BPD-M-Fish-trailer-300x200.jpg"/>
+		<Attribute name="width" value="300"/>
+		<Attribute name="height" value="200"/>
+	</DataObject>
+</PageMap>
+--><link rel="amphtml" href="https://www.aldergrovestar.com/news/tank-of-liquefied-fish-retrieved-after-falling-into-ocean-off-vancouver-island/amp/" /><meta name="generator" content="AMP for WP 1.0.52"/><link rel='dns-prefetch' href='//ap.lijit.com' />
+<link rel='dns-prefetch' href='//ajax.googleapis.com' />
+<link rel='dns-prefetch' href='//content.jwplatform.com' />
+<link rel='dns-prefetch' href='//cdnjs.cloudflare.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel='stylesheet' id='wp-block-library-css'  href='https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-includes/css/dist/block-library/style.min.css?ver=5.2.9' type='text/css' media='all' />
+<link rel='stylesheet' id='slick-css'  href='//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css?ver=1.9.0' type='text/css' media='all' />
+<link rel='stylesheet' id='slick-theme-css'  href='//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css?ver=1.9.0' type='text/css' media='all' />
+<link rel='stylesheet' id='main-stylesheet-css'  href='https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/dest/css/foundation.min.css?ver=2.36.59' type='text/css' media='all' />
+<link rel='stylesheet' id='featherlight-css'  href='https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/assets/components/featherlight/featherlight.css?ver=1.6.1' type='text/css' media='all' />
+<!-- Blackpress RON --><script src="https://hb.districtm.io/prod/102652/ron.blackpress.js"></script><!-- end of tag -->
+<script type="application/javascript">var googletag=googletag||{};googletag.cmd=googletag.cmd||[];googletag.cmd.push(function(){googletag.pubads().disableInitialLoad()});</script>
+<script type='text/javascript' src='//ap.lijit.com/www/headerauction/headersuite.min.js?configId=3052'></script>
+<script type='text/javascript' src='//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js?ver=2.1.0'></script>
+<link rel='https://api.w.org/' href='https://www.aldergrovestar.com/wp-json/' />
+<link rel="alternate" type="application/json+oembed" href="https://www.aldergrovestar.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.aldergrovestar.com%2Fnews%2Ftank-of-liquefied-fish-retrieved-after-falling-into-ocean-off-vancouver-island%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://www.aldergrovestar.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.aldergrovestar.com%2Fnews%2Ftank-of-liquefied-fish-retrieved-after-falling-into-ocean-off-vancouver-island%2F&#038;format=xml" />
+<!-- Start Lotame Tags -->
+<script type='text/javascript' src='//tags.crwdcntrl.net/c/14245/cc.js?ns=_cc14245' id='LOTCC_14245'></script>
+<script type='text/javascript' language='javascript'>
+_cc14245.bcp();</script>
+<script type='text/javascript' src='https://ad.crwdcntrl.net/5/c=14235/pe=y/var=ccauds'></script>
+<!-- End Lotame Tags -->
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-17101303-3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config','UA-17101303-3',{'dimension1': 'The Canadian Press','dimension2': 'news', 'dimension3': 'untagged', 'dimension4': 'post'});
+  gtag('config','UA-17099191-2',{'dimension1': 'The Canadian Press','dimension2': 'news', 'dimension3': 'untagged', 'dimension4': 'post'});
+  gtag('config','UA-17099191-1',{'dimension1': 'The Canadian Press','dimension2': 'news', 'dimension3': 'untagged', 'dimension4': 'post'});
+  gtag('config','UA-17099191-9',{'dimension1': 'The Canadian Press','dimension2': 'news', 'dimension3': 'untagged', 'dimension4': 'post'});
+</script>
+<!-- End Google Analytics -->
+<!-- Google Analytics Event elements -->
+<script type='text/javascript'>
+  $(document).ready(function(){
+    $("ul.dropdown.menu:first-child > li > a.search").click(function(){
+      gtag('event', 'Click', {'event_category': 'Main Navigation', 'event_label': 'Search Button'});
+    });
+    $("a.pub-logo-large").click(function(){
+      gtag('event', 'Click', {'event_category': 'Main Navigation', 'event_label': 'Header Logo'});
+    });
+    $(".module-adjacent-posts .adjacent-next a").click(function(){
+      gtag('event', 'Click', {'event_category': 'Recirculating Content', 'event_label': 'Next Adjacent Story'});
+    });
+    $(".module-adjacent-posts .adjacent-prev a").click(function(){
+      gtag('event', 'Click', {'event_category': 'Recirculating Content', 'event_label': 'Previous Adjacent Story'});
+    });
+    $("a.social").click(function(){
+      gtag('event', 'Click', {'event_category': 'Recirculating Content', 'event_label': 'Article Social Share'});
+    });
+    $("a.social").click(function(){
+      gtag('event', 'Click', {'event_category': 'Recirculating Content', 'event_label': 'Article Social Share'});
+    });
+  });
+</script>
+<!-- End Event elements -->
+
+<!-- Start Chartbeat -->
+<script type='text/javascript'>
+    (function() {
+        var _sf_async_config = window._sf_async_config = (window._sf_async_config || {});
+        _sf_async_config.uid = 65935
+        _sf_async_config.domain = 'aldergrovestar.com'; 
+        _sf_async_config.useCanonical = false;
+        _sf_async_config.useCanonicalDomain = true;
+        _sf_async_config.authors = 'The Canadian Press'; 
+        _sf_async_config.sections = 'News'; 
+        function loadChartbeat() {
+            var e = document.createElement('script');
+            var n = document.getElementsByTagName('script')[0];
+            e.type = 'text/javascript';
+            e.async = true;
+            e.src = '//static.chartbeat.com/js/chartbeat.js';
+            n.parentNode.insertBefore(e, n);
+        }
+        loadChartbeat();
+     })();
+</script>
+<!-- End Chartbeat -->
+<!-- Start echo_header_meta_tags() for SEO -->
+<meta property="og:locale" content="en_US" />
+<meta property="og:site_name" content="Aldergrove Star" />
+<meta property="og:url" content="https://www.aldergrovestar.com/news/tank-of-liquefied-fish-retrieved-after-falling-into-ocean-off-vancouver-island/" />
+<meta property="og:title" content="Tank of liquefied fish retrieved after falling into ocean off Vancouver Island - Aldergrove Star" />
+<meta name="description" content="DFO says heavy waves caused the trailer to roll off the deck near Campbell River" />
+<meta property="og:description" content="DFO says heavy waves caused the trailer to roll off the deck near Campbell River" />
+<meta property="og:type" content="article" />
+<meta property="article:section" content="News" />
+<meta property="article:published_time" content="2019-12-31T14:05:00-08:00" />
+<meta property="og:image" content="https://www.aldergrovestar.com/wp-content/uploads/2019/12/19988786_web1_191231-BPD-M-Fish-trailer-1024x683.jpg" />
+<meta property="og:secure_url" content="https://www.aldergrovestar.com/wp-content/uploads/2019/12/19988786_web1_191231-BPD-M-Fish-trailer-1024x683.jpg" />
+<meta property="og:image:width" content="1024" />
+<meta property="og:image:height" content="683" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Tank of liquefied fish retrieved after falling into ocean off Vancouver Island - Aldergrove Star" />
+<meta property="twitter:description" content="DFO says heavy waves caused the trailer to roll off the deck near Campbell River" />
+<meta property="twitter:image" content="https://www.aldergrovestar.com/wp-content/uploads/2019/12/19988786_web1_191231-BPD-M-Fish-trailer-1024x683.jpg" />
+<meta property="fb:app_id" content="235064316555081" />
+<script type="application/ld+json">{"@context":"https:\/\/schema.org","@type":"NewsArticle","url":"https:\/\/www.aldergrovestar.com\/news\/tank-of-liquefied-fish-retrieved-after-falling-into-ocean-off-vancouver-island\/","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/www.aldergrovestar.com\/news\/tank-of-liquefied-fish-retrieved-after-falling-into-ocean-off-vancouver-island\/"},"headline":"Tank of liquefied fish retrieved after falling into ocean off Vancouver Island","datePublished":"2019-12-31T14:05:00-08:00","dateModified":"2019-12-31T14:36:01-08:00","thumbnailUrl":"https:\/\/www.aldergrovestar.com\/wp-content\/uploads\/2019\/12\/19988786_web1_191231-BPD-M-Fish-trailer.jpg","image":{"@type":"ImageObject","url":"https:\/\/www.aldergrovestar.com\/wp-content\/uploads\/2019\/12\/19988786_web1_191231-BPD-M-Fish-trailer.jpg","width":1200,"height":800},"author":{"@type":"Person","name":"The Canadian Press"},"publisher":{"@type":"Organization","name":"Aldergrove Star","logo":{"@type":"ImageObject","url":"https:\/\/www.aldergrovestar.com\/wp-content\/themes\/BlackPress\/assets\/images\/logos\/alt-logo.png","width":410,"height":52}},"contentLocation":{"@type":"Place","name":"Aldergrove, B.C., Canada"},"dateline":"Aldergrove, B.C., Canada","description":"\n\t\t\t\t&lt;p&gt;DFO says heavy waves caused the trailer to roll off the deck near Campbell River &lt;\/p&gt;\n\t\t\t"}</script>
+<!-- End echo_header_meta_tags() for SEO -->
+
+    <!-- BEGIN: Dev Con Script -->
+    <script id='ns_script_dc' data-key='91532438-f31b-4086-8018-7cd68ddba2a3' data-e='5' src='//includemodal.global.ssl.fastly.net/sp.js' type='text/javascript'></script>
+    <!-- END: Dev Con Script -->  
+    
+        <script>window.twttr = (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0],
+            t = window.twttr || {};
+        if (d.getElementById(id)) return t;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "https://platform.twitter.com/widgets.js";
+        fjs.parentNode.insertBefore(js, fjs);
+
+        t._e = [];
+        t.ready = function(f) {
+            t._e.push(f);
+        };
+
+        return t;
+        }(document, "script", "twitter-wjs"));</script>
+        <style>
+.ai-viewports                 {--ai: 1;}
+.ai-viewport-3                { display: none !important;}
+.ai-viewport-2                { display: none !important;}
+.ai-viewport-1                { display: inherit !important;}
+.ai-viewport-0                { display: none !important;}
+@media (min-width: 768px) and (max-width: 979px) {
+.ai-viewport-1                { display: none !important;}
+.ai-viewport-2                { display: inherit !important;}
+}
+@media (max-width: 767px) {
+.ai-viewport-1                { display: none !important;}
+.ai-viewport-3                { display: inherit !important;}
+}
+</style>
+<!-- DoubleClick for Publishers -->
+<script type='text/javascript'>
+ var googletag = googletag || {};
+ googletag.cmd = googletag.cmd || [];
+ (function() {
+   var gads = document.createElement('script');
+   gads.async = true;
+   gads.type = 'text/javascript';
+   var useSSL = 'https:' == document.location.protocol;
+   gads.src = (useSSL ? 'https:' : 'http:') +
+     '//www.googletagservices.com/tag/js/gpt.js';
+   var node = document.getElementsByTagName('script')[0];
+   node.parentNode.insertBefore(gads, node);
+ })();
+</script>
+
+<script type='text/javascript'>
+console.log("ccauds = ", ccauds);
+ var gptAdSlots = [];
+ var gptRefreshSlots = [];
+ googletag.cmd.push(function() {
+   var mappingHorizontal = googletag.sizeMapping().
+     addSize([1024, 0],[[970, 90],[728, 90]]).
+     addSize([768, 0],[[728, 90], [320, 50]]).
+     addSize([320, 0],[[300, 250]]).
+     addSize([0, 0],[[320, 50], [300, 50], [300, 250]]).
+     build();
+   var mappingVertical = googletag.sizeMapping().
+     addSize([1024, 0],[[300, 600], [300, 250]]).
+     addSize([600, 0],[[300, 600],[300, 250]]).
+     addSize([400, 0],[300, 250]).
+     addSize([0, 0],[[300, 50], [300, 250]]).
+     build(); 
+   var mappingFeatured = googletag.sizeMapping().
+     addSize([1024, 0],[[300, 600]]).
+     addSize([600, 0],[[300, 600]]).
+     addSize([0, 0],[300, 250]).
+     build();   
+   var mappingBillboard = googletag.sizeMapping().
+     addSize([1024, 0],[[970,250]]).
+     addSize([600, 0],[320,50]).
+     addSize([320, 0], [320, 50]).
+     addSize([0, 0],[]).
+     build();   
+   var mappingPromo = googletag.sizeMapping().
+     addSize([1024, 0],[[970,30],[970,90],[728,90]]).
+     addSize([600, 0],[320, 50]).
+     addSize([320, 0], [320, 50]).
+     addSize([0, 0],[]).
+     build();   
+   var mappingMobileOnly = googletag.sizeMapping().
+     addSize([0, 0],[[280, 375],[320, 50],[300, 50],[300, 250],[1, 1]]).
+     addSize([320, 0], [[280, 375],[320, 50],[300, 50],[300, 250],[1, 1]]).
+     addSize([1024, 0],[]).
+     addSize([600, 0],[]).
+     build();   
+   var mappingMobileRectangle = googletag.sizeMapping().
+     addSize([0, 0],[[300, 250]]).
+     addSize([320, 0], [[300, 250]]).
+     addSize([1024, 0],[]).
+     addSize([600, 0],[]).
+     build();   
+  var mappingObitSidebar = googletag.sizeMapping().
+     addSize([1024, 0],[[300, 600]]).
+     addSize([600, 0],[[300, 250]]).
+     addSize([400, 0],[300, 250]).
+     addSize([0, 0],[[300, 250]]).
+     build(); 
+
+   gptAdSlots[0] = googletag.defineSlot('/1036919/adunit0', [[320, 50],[970, 30],[728,90]], 'div-gpt-0').defineSizeMapping(mappingPromo).addService(googletag.pubads());
+   gptAdSlots[1] = googletag.defineSlot('/1036919/adunit1', [[970, 250],[300,250]], 'div-gpt-1').defineSizeMapping(mappingBillboard).addService(googletag.pubads());
+   gptAdSlots[2] = googletag.defineSlot('/1036919/adunit2', [[300, 250]], 'div-gpt-2').addService(googletag.pubads());
+   gptAdSlots[3] = googletag.defineSlot('/1036919/adunit3', [[970, 90],[728, 90],[320, 50]], 'div-gpt-3').defineSizeMapping(mappingHorizontal).addService(googletag.pubads());
+   gptAdSlots[4] = googletag.defineSlot('/1036919/adunit4', [[300, 600],[300, 250]], 'div-gpt-4').defineSizeMapping(mappingVertical).addService(googletag.pubads());
+   gptAdSlots[5] = googletag.defineSlot('/1036919/adunit5', [[970, 90],[728, 90],[320, 50]], 'div-gpt-5').defineSizeMapping(mappingHorizontal).addService(googletag.pubads());
+   gptAdSlots[6] = googletag.defineSlot('/1036919/adunit6', [[300, 600],[300, 250]], 'div-gpt-6').defineSizeMapping(mappingVertical).addService(googletag.pubads());
+   gptAdSlots[7] = googletag.defineSlot('/1036919/adunit7', [[970, 90],[728, 90],[320, 50]], 'div-gpt-7').defineSizeMapping(mappingHorizontal).addService(googletag.pubads());
+   gptAdSlots[8] = googletag.defineSlot('/1036919/adunit8', [[300, 600],[300, 250]], 'div-gpt-8').defineSizeMapping(mappingVertical).addService(googletag.pubads());
+   gptAdSlots[9] = googletag.defineSlot('/1036919/adunit9', [[970, 90],[728, 90],[320, 50]], 'div-gpt-9').defineSizeMapping(mappingHorizontal).addService(googletag.pubads());
+   gptAdSlots[10] = googletag.defineSlot('/1036919/adunit10', [[300, 600],[300,250]], 'div-gpt-10').defineSizeMapping(mappingFeatured).addService(googletag.pubads());
+   gptAdSlots[11] = googletag.defineSlot('/1036919/adunit11', [[970, 90],[728, 90],[320, 50]], 'div-gpt-11').defineSizeMapping(mappingHorizontal).addService(googletag.pubads());
+   gptAdSlots[12] = googletag.defineSlot('/1036919/adunit12', [[300, 600],[300, 250]], 'div-gpt-12').defineSizeMapping(mappingVertical).addService(googletag.pubads());
+   gptAdSlots[13] = googletag.defineSlot('/1036919/adunit13', [[970, 90],[728, 90],[320, 50]], 'div-gpt-13').defineSizeMapping(mappingHorizontal).addService(googletag.pubads());
+   gptAdSlots[14] = googletag.defineSlot('/1036919/adunit14', [300, 250], 'div-gpt-14').addService(googletag.pubads());
+   gptAdSlots[15] = googletag.defineSlot('/1036919/adunit15', [[970, 90],[728, 90],[320, 50]], 'div-gpt-15').defineSizeMapping(mappingHorizontal).addService(googletag.pubads());
+   gptAdSlots[17] = googletag.defineSlot('/1036919/adunit17', [[320, 50]], 'div-gpt-17').defineSizeMapping(mappingMobileOnly).addService(googletag.pubads());
+   gptAdSlots[18] = googletag.defineSlot('/1036919/adunit18', [[280, 375],[300, 250]], 'div-gpt-18').defineSizeMapping(mappingMobileOnly).addService(googletag.pubads());
+   gptAdSlots[19] = googletag.defineSlot('/1036919/adunit19', [300, 250], 'div-gpt-19').addService(googletag.pubads());
+   gptAdSlots[20] = googletag.defineSlot('/1036919/adunit20', [[300, 250]], 'div-gpt-20').addService(googletag.pubads());
+   gptAdSlots[21] = googletag.defineSlot('/1036919/vendor_library_0', [1, 1], 'div-gpt-21').addService(googletag.pubads());
+   gptAdSlots[22] = googletag.defineSlot('/1036919/adunit22', [300, 250], 'div-gpt-22').addService(googletag.pubads());
+   gptAdSlots[23] = googletag.defineSlot('/1036919/adunit23', [[970, 90],[728, 90],[320, 50]], 'div-gpt-23').defineSizeMapping(mappingHorizontal).addService(googletag.pubads());
+   gptAdSlots[24] = googletag.defineSlot('/1036919/adunit24', [[320, 50],[970, 30],[728,90]], 'div-gpt-24').defineSizeMapping(mappingPromo).addService(googletag.pubads());
+   gptAdSlots[30] = googletag.defineSlot('/1036919/obit0', [[970, 30],[970, 90], [728, 90],[320, 50]], 'div-gpt-30').defineSizeMapping(mappingPromo).addService(googletag.pubads());
+   gptAdSlots[32] = googletag.defineSlot('/1036919/obit2', [[300, 600],[300, 250]], 'div-gpt-32').defineSizeMapping(mappingObitSidebar).addService(googletag.pubads());
+   gptAdSlots[33] = googletag.defineSlot('/1036919/obit3', [[300, 600],[300, 250]], 'div-gpt-33').defineSizeMapping(mappingVertical).addService(googletag.pubads());
+   gptAdSlots[34] = googletag.defineSlot('/1036919/obit4', [[300, 600],[300, 250]], 'div-gpt-34').defineSizeMapping(mappingVertical).addService(googletag.pubads());
+   gptAdSlots[40] = googletag.defineSlot('/1036919/impress0', [[970, 30],[970, 90], [728, 90],[320, 50]], 'div-gpt-40').defineSizeMapping(mappingPromo).addService(googletag.pubads());
+   gptAdSlots[41] = googletag.defineSlot('/1036919/impress2', [[300, 600],[300, 250]], 'div-gpt-41').defineSizeMapping(mappingVertical).addService(googletag.pubads());
+   gptAdSlots[42] = googletag.defineSlot('/1036919/impress3', [[300, 600],[300, 250]], 'div-gpt-42').defineSizeMapping(mappingVertical).addService(googletag.pubads());
+   gptAdSlots[43] = googletag.defineSlot('/1036919/impress4', [[300, 600],[300, 250]], 'div-gpt-43').defineSizeMapping(mappingVertical).addService(googletag.pubads());
+   gptAdSlots[45] = googletag.defineSlot('/1036919/weather0', [[970, 30],[970, 90], [728, 90],[320, 50]], 'div-gpt-45').defineSizeMapping(mappingPromo).addService(googletag.pubads());
+   gptAdSlots[46] = googletag.defineSlot('/1036919/weather1', [[300, 600],[300, 250]], 'div-gpt-46').defineSizeMapping(mappingVertical).addService(googletag.pubads());
+   gptAdSlots[47] = googletag.defineSlot('/1036919/weather2', [[300, 600],[300, 250]], 'div-gpt-47').defineSizeMapping(mappingVertical).addService(googletag.pubads());
+   gptAdSlots[48] = googletag.defineSlot('/1036919/weather3', [[970, 30],[970, 90], [728, 90],[320, 50]], 'div-gpt-48').defineSizeMapping(mappingPromo).addService(googletag.pubads());
+   gptAdSlots[49] = googletag.defineSlot('/1036919/contest0', [[970, 30],[970, 90], [728, 90],[320, 50]], 'div-gpt-49').defineSizeMapping(mappingPromo).addService(googletag.pubads());
+   gptAdSlots[55] = googletag.defineSlot('/1036919/mf0', [300,250], 'div-gpt-55').defineSizeMapping(mappingMobileRectangle).addService(googletag.pubads());
+   gptAdSlots[56] = googletag.defineSlot('/1036919/mf1', [[320, 50],[300,250]], 'div-gpt-56').defineSizeMapping(mappingMobileOnly).addService(googletag.pubads());
+   gptAdSlots[57] = googletag.defineSlot('/1036919/mf2', [[320, 50],[300,250]], 'div-gpt-57').defineSizeMapping(mappingMobileOnly).addService(googletag.pubads());
+   
+var ccAudVals = "";
+if (typeof(ccauds) != "undefined")
+{
+  for (var cci = 0; cci < ccauds.Profile.Audiences.Audience.length; cci++)
+  {
+    if(ccauds.Profile.Audiences.Audience[cci].abbr == "all") 
+      continue;
+      
+    //ccAudVals += ccauds.Profile.Audiences.Audience[cci].abbr;
+    ccAudVals += ccauds.Profile.Audiences.Audience[cci].id;
+    
+    //if(ccAudVals.length != 0) 
+    if((ccauds.Profile.Audiences.Audience.length - cci) > 1) 
+      ccAudVals += ",";
+	}
+}
+console.log("ccAudVals = ", ccAudVals);
+   googletag.pubads().setTargeting('ccaud', ccAudVals); 
+   googletag.pubads().setTargeting('site', ['aldergrovestar.com']).setTargeting('section', ['news','ros']);
+   //googletag.pubads().enableSingleRequest();
+   googletag.pubads().disableInitialLoad();
+   googletag.pubads().collapseEmptyDivs();
+   googletag.enableServices();
+ });
+</script>
+<!-- End DoubleClick for Publishers -->
+<!-- 
+    * Script creates the global generalSettings js array. 
+    * Key/Value pair of Black Press general settings section: option name, option value 
+    * NOTE: new options should be added to this array 
+-->
+<script type='text/javascript'>
+        var generalSettings = {"postal_code":"V4W 3P6","pub_code":"ALT","secondstreet_contest_feed":"http:\/\/aldergrovestar.upickem.net\/Engine\/XMLFeed.aspx?AffiliateID=ALDS"};
+
+</script>
+
+
+</head>
+    <body class="post-template-default single single-post postid-117409 single-format-standard offcanvas">
+            <!-- BEGIN: FACE BOOK COMMENTS PLUGIN CODE -->
+        <div id="fb-root"></div>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v8.0&appId=235064316555081&autoLogAppEvents=1" nonce="IC2twOwL"></script>
+        <!-- END: FACE BOOK COMMENTS PLUGIN CODE -->
+        
+    
+    
+    
+    <header id="masthead" class="site-header row collapse" role="banner">
+        <!-- original divs replaced by code after. Note still have 2 divs, 
+             with different settings for mobile and desktop -->
+        <!-- <div  class="small-12 columns" data-sticky-container > -->
+        <!-- <div id="sticky-menu-bar-container" class="top-bar title-bar row collapse" data-sticky data-options="marginTop:0;" style="width:100%"> -->
+        <div  class="small-12 columns" data-sticky-container ><div id="sticky-menu-bar-container" class="top-bar title-bar row collapse" data-sticky data-options="marginTop:0;" style="width:100%">            
+            
+                <article id="text-1" class="menu-button-container small-2 medium-1 columns">
+                                        <div id="mobile-menu-button" data-responsive-toggle="site-navigation" data-hide-for="medium" class="hide-for-medium">
+                        <button class="fa fa-bars menu" type="button" data-toggle="site-navigation"></button>
+                    </div>
+                    <ul id="menu-mainmenu" class="dropdown menu day-1 show-for-medium" data-dropdown-menu data-options="hoverDelay:150;"><li><a href="#"><i class="fa fa-bars menu"></i></a><ul class="dropdown menu" data-dropdown-menu><li class='nav-search'><a href='/search/'><i class='fa fa-search menu'></i>Search</a></li><li id="menu-item-320" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-320"><a href="https://www.aldergrovestar.com/">Home</a></li>
+<li id="menu-item-144607" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-144607"><a href="/#good-news">Good News</a></li>
+<li id="menu-item-139414" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-139414"><a target="_blank" rel="noopener noreferrer" href="//www.canadianevergreen.com">Cannabis 19+</a></li>
+<li id="menu-item-33581" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-33581"><a href="https://www.aldergrovestar.com/submit/">Submit News Tip</a></li>
+<li id="menu-item-169" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-has-children menu-item-169"><a href="https://www.aldergrovestar.com/./news/">News</a>
+<ul class="dropdown menu vertical" data-toggle>
+	<li id="menu-item-170" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-170"><a href="https://www.aldergrovestar.com/./local-news/">Local News</a></li>
+	<li id="menu-item-61810" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-61810"><a href="https://www.aldergrovestar.com/./municipal-election/">Municipal Election</a></li>
+	<li id="menu-item-171" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-171"><a target="_blank" rel="noopener noreferrer" href="http://bclocalnews.com">BC</a></li>
+	<li id="menu-item-105545" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-105545"><a href="https://www.aldergrovestar.com/./federal-election/">Federal Election 2019</a></li>
+	<li id="menu-item-172" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-172"><a href="https://www.aldergrovestar.com/./national-news/">Canada &amp; World</a></li>
+	<li id="menu-item-173" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-173"><a href="https://www.aldergrovestar.com/e-editions/">eEditions</a></li>
+	<li id="menu-item-176" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-176"><a href="https://www.aldergrovestar.com/submit/">Submit news tip or photo</a></li>
+</ul>
+</li>
+<li id="menu-item-124401" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-124401"><a href="/tag/coronavirus/">Coronavirus News</a></li>
+<li id="menu-item-177" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-177"><a href="https://www.aldergrovestar.com/./sports/">Sports</a>
+<ul class="dropdown menu vertical" data-toggle>
+	<li id="menu-item-178" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-178"><a href="https://www.aldergrovestar.com/./local-sports/">Local</a></li>
+	<li id="menu-item-23164" class="menu-item menu-item-type-taxonomy menu-item-object-post_tag menu-item-23164"><a href="https://www.aldergrovestar.com/tag/aldergrove-kodiaks/">Aldergrove Kodiaks</a></li>
+	<li id="menu-item-322" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-322"><a target="_blank" rel="noopener noreferrer" href="http://www.bclocalnews.com/sports/">BC</a></li>
+	<li id="menu-item-179" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-179"><a href="https://www.aldergrovestar.com/./national-sports/">Canada &amp; World</a></li>
+	<li id="menu-item-180" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-180"><a href="https://www.aldergrovestar.com/submit/">Submit sports tip or photo</a></li>
+</ul>
+</li>
+<li id="menu-item-128557" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-128557"><a target="_blank" rel="noopener noreferrer" href="//www.westcoasttraveller.com/">Travel</a>
+<ul class="dropdown menu vertical" data-toggle>
+	<li id="menu-item-128876" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-128876"><a href="https://www.aldergrovestar.com/./travel/">Local Travel</a></li>
+	<li id="menu-item-128877" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-128877"><a target="_blank" rel="noopener noreferrer" href="//www.westcoasttraveller.com/">West Coast Traveller</a></li>
+</ul>
+</li>
+<li id="menu-item-181" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-181"><a href="https://www.aldergrovestar.com/./trending-now/">Trending Now</a></li>
+<li id="menu-item-117308" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-117308"><a href="https://www.aldergrovestar.com/newsletters/">Newsletters</a></li>
+<li id="menu-item-108026" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-108026"><a href="//autos.aldergrovestar.com/">Autos</a></li>
+<li id="menu-item-76128" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-76128"><a target="_blank" rel="noopener noreferrer" href="//www.bcclassifieds.com/?sfid=1">Classifieds</a></li>
+<li id="menu-item-52106" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-52106"><a target="_blank" rel="noopener noreferrer" href="//www.localwork.ca">Jobs</a></li>
+<li id="menu-item-182" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-182"><a href="https://www.aldergrovestar.com/./business/">Business</a>
+<ul class="dropdown menu vertical" data-toggle>
+	<li id="menu-item-183" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-183"><a href="https://www.aldergrovestar.com/./local-business/">Local</a></li>
+	<li id="menu-item-184" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-184"><a target="_blank" rel="noopener noreferrer" href="http://bclocalnews.com/business">BC</a></li>
+	<li id="menu-item-185" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-185"><a href="https://www.aldergrovestar.com/submit/">Submit business tip or photo</a></li>
+</ul>
+</li>
+<li id="menu-item-186" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-186"><a href="https://www.aldergrovestar.com/./entertainment/">Entertainment</a>
+<ul class="dropdown menu vertical" data-toggle>
+	<li id="menu-item-187" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-187"><a href="https://www.aldergrovestar.com/./local-entertainment/">Local</a></li>
+	<li id="menu-item-188" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-188"><a target="_blank" rel="noopener noreferrer" href="http://bclocalnews.com/entertainment">BC</a></li>
+	<li id="menu-item-189" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-189"><a href="https://www.aldergrovestar.com/submit/">Submit entertainment tip or photo</a></li>
+</ul>
+</li>
+<li id="menu-item-93193" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-93193"><a href="https://www.aldergrovestar.com/./photo-galleries/">Photo Galleries</a></li>
+<li id="menu-item-190" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-190"><a href="https://www.aldergrovestar.com/./life/">Life</a>
+<ul class="dropdown menu vertical" data-toggle>
+	<li id="menu-item-63791" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-63791"><a href="https://www.aldergrovestar.com/./life/">Life</a></li>
+	<li id="menu-item-102598" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-102598"><a href="https://www.aldergrovestar.com/./sip-savour/">Sip &amp; Savour</a></li>
+	<li id="menu-item-193" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-193"><a target="_blank" rel="noopener noreferrer" href="http://winetrails.ca">Wine Trails</a></li>
+	<li id="menu-item-194" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-194"><a href="https://www.aldergrovestar.com/submit/">Submit life tip or photo</a></li>
+</ul>
+</li>
+<li id="menu-item-195" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-195"><a href="https://www.aldergrovestar.com/./community/">Community</a>
+<ul class="dropdown menu vertical" data-toggle>
+	<li id="menu-item-196" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-196"><a href="https://www.aldergrovestar.com/./community/">Local</a></li>
+	<li id="menu-item-58003" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-58003"><a href="https://www.aldergrovestar.com/./miss-bc/">Miss BC</a></li>
+	<li id="menu-item-94933" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-94933"><a href="https://www.aldergrovestar.com/./social-matters/">Social Matters</a></li>
+	<li id="menu-item-323" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-323"><a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/iLoveBritishColumbia">I Love British Columbia</a></li>
+	<li id="menu-item-197" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-197"><a href="https://www.aldergrovestar.com/calendar/">Calendar</a></li>
+	<li id="menu-item-198" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-198"><a href="https://www.aldergrovestar.com/submit/">Submit community tip or photo</a></li>
+</ul>
+</li>
+<li id="menu-item-282" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-282"><a href="https://www.aldergrovestar.com/./opinion/">Opinion</a>
+<ul class="dropdown menu vertical" data-toggle>
+	<li id="menu-item-204" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-204"><a href="https://www.aldergrovestar.com/./opinion/">Local Opinion</a></li>
+	<li id="menu-item-202" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-202"><a href="https://www.aldergrovestar.com/./editorials-opinion/">Editorials</a></li>
+	<li id="menu-item-201" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-201"><a href="https://www.aldergrovestar.com/./columns/">Columnists</a></li>
+	<li id="menu-item-203" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-203"><a href="https://www.aldergrovestar.com/./letters/">Letters</a></li>
+	<li id="menu-item-32420" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-32420"><a href="https://www.aldergrovestar.com/./web-poll/">Web poll</a></li>
+	<li id="menu-item-205" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-205"><a target="_blank" rel="noopener noreferrer" href="http://bclocalnews.com/opinion">BC Opinion</a></li>
+	<li id="menu-item-206" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-206"><a href="https://www.aldergrovestar.com/submitletters/">Submit letter</a></li>
+</ul>
+</li>
+<li id="menu-item-210" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-210"><a href="https://www.aldergrovestar.com/videos/">Videos</a>
+<ul class="dropdown menu vertical" data-toggle>
+	<li id="menu-item-211" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-211"><a href="https://www.aldergrovestar.com/videos/">Local</a></li>
+	<li id="menu-item-68618" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-68618"><a href="/videos/#real-estate-tv-video-belt">Impress TV</a></li>
+	<li id="menu-item-212" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-212"><a href="https://www.aldergrovestar.com/submit/">Submit video</a></li>
+	<li id="menu-item-213" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-213"><a target="_blank" rel="noopener noreferrer" href="http://blackpress.tv">Black Press TV</a></li>
+</ul>
+</li>
+<li id="menu-item-214" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-214"><a href="https://www.aldergrovestar.com/weather/">Weather</a></li>
+<li id="menu-item-216" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-216"><a href="https://www.aldergrovestar.com/./obituaries/">Obituaries</a></li>
+<li id="menu-item-217" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-217"><a href="https://www.aldergrovestar.com/./marketplace/">Marketplace</a>
+<ul class="dropdown menu vertical" data-toggle>
+	<li id="menu-item-275" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-275"><a href="https://www.aldergrovestar.com/advertise/">Place an ad</a></li>
+	<li id="menu-item-218" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-218"><a href="https://www.aldergrovestar.com/./marketplace/">Impress branded content</a></li>
+	<li id="menu-item-78419" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-78419"><a href="/videos/#real-estate-tv-video-belt">Impress TV</a></li>
+	<li id="menu-item-354" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-354"><a href="https://www.aldergrovestar.com/real-estate/">Real Estate</a></li>
+</ul>
+</li>
+<li id="menu-item-321" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-321"><a href="https://www.aldergrovestar.com/contests/">Contests</a></li>
+<li id="menu-item-224" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-224"><a href="https://www.aldergrovestar.com/contact-us/">Contact Us</a>
+<ul class="dropdown menu vertical" data-toggle>
+	<li id="menu-item-225" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-225"><a href="https://www.aldergrovestar.com/contact-us/">Contact Us</a></li>
+	<li id="menu-item-226" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-226"><a href="https://www.aldergrovestar.com/our-team/">Our Team</a></li>
+	<li id="menu-item-230" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-230"><a target="_blank" rel="noopener noreferrer" href="http://blackpress.ca">Black Press</a></li>
+	<li id="menu-item-231" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-231"><a href="https://www.aldergrovestar.com/submit/">Submit tip or photo</a></li>
+	<li id="menu-item-227" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-227"><a href="https://www.aldergrovestar.com/faq/">FAQ</a></li>
+	<li id="menu-item-228" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-228"><a href="https://www.aldergrovestar.com/privacy-policy/">Privacy Policy</a></li>
+	<li id="menu-item-229" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-229"><a href="https://www.aldergrovestar.com/terms-of-use/">Terms of use</a></li>
+</ul>
+</li>
+<li id="menu-item-111625" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-111625"><a href="https://www.aldergrovestar.com/site-map/">Site Map</a></li>
+</ul></li></ul>
+                </article>
+                <article id="text-2" class="small-8 medium-10 columns">
+                                        <article id="text-12" class="header-widget-left widget_text">			<div class="textwidget"><ul class="social header">
+	<!-- <li><a title="Weather" class="social fa fa-cloud" href="/weather/"></a></li> -->
+	<li><a title="Follow us on Facebook" class="social fa fa-facebook-f" href="https://www.facebook.com/Aldergrove-Star-186177368124190/" target="_blank" rel="noopener noreferrer"></a></li>
+	<li><a title="Follow us on Twitter" class="social fa fa-twitter" href="https://twitter.com/AldergroveStar" target="_blank" rel="noopener noreferrer"></a></li>
+	<!--<li><a title="Follow us on Instagram" class="social fa fa-instagram" href="#" target="_blank" rel="noopener noreferrer"></a></li>-->
+</ul></div>
+		</article>                    <article id="text-11" class="header-widget-center widget_text">			<div class="textwidget"><a class="pub-logo-large day-1" href="https://www.aldergrovestar.com/"><svg id="Outline" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 408.94 51.81"><defs><style></style></defs><title></title><path class="bp-pub-logo" d="M58.32,2H71.49l6.16,49.85H68.9L67.57,40.78H60.21L59,51.84H51.32Zm5.81,7.7H64L61.13,33.5H66.8Z" transform="translate(-51.32 -1.01)"/><path class="bp-pub-logo" d="M82.4,2h9.1V44.14h11.62v7.7H82.4Z" transform="translate(-51.32 -1.01)"/><path class="bp-pub-logo" d="M108.44,2h7.91c15.26,0,16.73,9.8,16.73,24.92,0,14.42-1.19,24.92-15.26,24.92h-9.38Zm9.1,42.14c5.74-.07,6-2.17,6-17.29s-.28-17.08-6-17.15Z" transform="translate(-51.32 -1.01)"/><path class="bp-pub-logo" d="M139.66,2h20.58v7.7H148.76V22.44h8.47v8.12h-8.47V44.14h12v7.7H139.66Z" transform="translate(-51.32 -1.01)"/><path class="bp-pub-logo" d="M165.7,2h10.22c8.68,0,14.42,3.64,14.42,14.14,0,4.2-1.26,9.8-5.32,12.18l5.39,23.52h-9.17L177,30.42H174.8V51.84h-9.1Zm9.1,21.14h1.82c3.36,0,4.62-3.36,4.62-6.93,0-5.39-2-6.93-5-6.93h-1.4Z" transform="translate(-51.32 -1.01)"/><path class="bp-pub-logo" d="M211.06,19.78c0-2.31.56-11.06-3.36-11.06-2.24,0-3.92,2.1-3.92,18.13,0,16.38,1.54,18.27,4.34,18.27,3.43,0,3.71-6.86,3.71-9.24h-3.36V28.6h11.06V51.84h-3.85l-1.26-3.29c-1.4,2.1-4.06,4.27-7.21,4.27-9.73,0-13-9.52-13-25.9,0-19,5.74-25.9,13-25.9,5.88,0,12,2.8,12,15.54v3.22Z" transform="translate(-51.32 -1.01)"/><path class="bp-pub-logo" d="M225.48,2H235.7c8.68,0,14.42,3.64,14.42,14.14,0,4.2-1.26,9.8-5.32,12.18l5.39,23.52H241l-4.27-21.42h-2.17V51.84h-9.1Zm9.1,21.14h1.82c3.36,0,4.62-3.36,4.62-6.93,0-5.39-2-6.93-5-6.93h-1.4Z" transform="translate(-51.32 -1.01)"/><path class="bp-pub-logo" d="M267.34,1c8.05,0,13.3,6.23,13.3,25.9s-5.25,25.9-13.3,25.9S254,46.59,254,26.92,259.29,1,267.34,1ZM264,32.17c0,10.78,1.26,13,3.36,13s3.36-2.17,3.36-13V21.67c0-10.78-1.26-13-3.36-13s-3.36,2.17-3.36,13Z" transform="translate(-51.32 -1.01)"/><path class="bp-pub-logo" d="M283.93,2h8.89l4.27,35h.14l4.69-35h7.35l-7.49,49.85H291.35Z" transform="translate(-51.32 -1.01)"/><path class="bp-pub-logo" d="M313.89,2h20.58v7.7H323V22.44h8.47v8.12H323V44.14h12v7.7H313.89Z" transform="translate(-51.32 -1.01)"/><path class="bp-pub-logo" d="M361.14,37.42c0,2.8,0,7.7,3.92,7.7,3,0,4.06-2.8,4.06-4.83,0-8.89-16.52-10.92-16.52-25.69C352.6,7.1,356.66,1,364.36,1c8.19,0,11.34,6.23,11.55,15.19h-8.12c0-2.8,0-7.49-3.64-7.49-2.17,0-3.43,1.82-3.43,4.55,0,8.47,16.52,11.34,16.52,25.83,0,7.63-4.34,13.72-12.53,13.72C355,52.82,353,44.28,353,37.42Z" transform="translate(-51.32 -1.01)"/><path class="bp-pub-logo" d="M386.41,9.69h-7.84V2h24.78v7.7h-7.84V51.84h-9.1Z" transform="translate(-51.32 -1.01)"/><path class="bp-pub-logo" d="M411.47,2h13.16l6.16,49.85H422l-1.33-11.06h-7.35L412.1,51.84h-7.63Zm5.81,7.7h-.14l-2.87,23.8h5.67Z" transform="translate(-51.32 -1.01)"/><path class="bp-pub-logo" d="M435.55,2h10.22c8.68,0,14.42,3.64,14.42,14.14,0,4.2-1.26,9.8-5.32,12.18l5.39,23.52h-9.17l-4.27-21.42h-2.17V51.84h-9.1Zm9.1,21.14h1.82c3.36,0,4.62-3.36,4.62-6.93,0-5.39-2-6.93-5-6.93h-1.4Z" transform="translate(-51.32 -1.01)"/></svg></a></div>
+		</article>                    <article id="text-33" class="header-widget-right show-for-medium"><div id="weatherContainer" class="textwidget float-right" ><a href="https://www.accuweather.com/en/ca/aldergrove/v4w/weather-forecast/53199" 
+                                        class="aw-widget-legal">
+                                        </a><div id="awcc1517345235985" class="aw-widget-current"  data-locationkey="53199" data-unit="c" data-language="en-us" data-useip="false" data-uid="awcc1517345235985" data-targeturl="/weather/"></div><script type="text/javascript" src="https://oap.accuweather.com/launch.js"></script></div></article>                </article>
+
+                <!-- Search -->
+                <article id="text-5" class="small-2 medium-1 columns">
+                    
+                        <button id="btn_search" type="button" class="float-right fa fa-search menu"></button>
+
+                </article>
+
+                <!-- Search -->
+                <article id="div_search" class="small-12 columns">
+                <!-- **************** -->
+                <!-- Search form container -->
+                    
+                                        <form name="searchForm" action="/search/">
+  
+                        <div class="row collapse">
+                            <div class="small-12 columns">
+
+                                <div class="row collapse"> 
+                                    <div class="small-2 columns">
+                                        &nbsp;
+                                      <input name="cx" value="015619971846971042401:ufh1ywe-cms" type="hidden">
+                                    </div>
+
+                                    <div class="small-1 columns">
+                                        &nbsp;
+                                      <input name="ie" value="UTF-8" type="hidden">
+                                    </div>
+
+                                    <div class="small-6 columns">
+                                        <input id="google_search_field" class="google-search-field" name="q" value="Story Search" style="" type="text">
+                                      
+                                    </div>
+
+                                    <div class="small-3 columns">
+                                      
+                                        <input class="google-search-button" value="Search" type="submit">
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                          
+                    </form>
+                 
+                <!-- **************** -->
+                </article>
+                
+                <article class="small-12 medium-12 columns">
+                    <div class="line"></div>
+                </article>
+            
+            </div>
+
+        </div>
+
+        <div class ="column row" id="header-second-row" >
+            
+            <ul data-test="test" id="menu-secondarymenu" class="dropdown menu" data-dropdown-menu>
+                                    <li id="menu-item-139465" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-has-children menu-item-139465"><a href="https://www.aldergrovestar.com/./news/">News</a>
+<ul class="vertical nested menu">
+	<li id="menu-item-139466" class="show-for-medium menu-item menu-item-type-taxonomy menu-item-object-category menu-item-139466"><a href="https://www.aldergrovestar.com/./local-news/">Local News</a></li>
+	<li id="menu-item-139472" class="show-for-medium menu-item menu-item-type-custom menu-item-object-custom menu-item-139472"><a href="/tag/coronavirus/">COVID-19</a></li>
+	<li id="menu-item-139467" class="show-for-medium menu-item menu-item-type-taxonomy menu-item-object-category menu-item-139467"><a href="https://www.aldergrovestar.com/./municipal-election/">Municipal Election</a></li>
+	<li id="menu-item-139471" class="show-for-medium menu-item menu-item-type-custom menu-item-object-custom menu-item-139471"><a target="_blank" rel="noopener noreferrer" href="//bclocalnews.com">BC</a></li>
+	<li id="menu-item-139468" class="show-for-medium menu-item menu-item-type-taxonomy menu-item-object-category menu-item-139468"><a href="https://www.aldergrovestar.com/./national-news/">National</a></li>
+	<li id="menu-item-139469" class="show-for-medium menu-item menu-item-type-post_type menu-item-object-page menu-item-139469"><a href="https://www.aldergrovestar.com/e-editions/">eEditions</a></li>
+	<li id="menu-item-139470" class="show-for-medium menu-item menu-item-type-post_type menu-item-object-page menu-item-139470"><a href="https://www.aldergrovestar.com/newsletters/">Newsletters</a></li>
+</ul>
+</li>
+<li id="menu-item-137161" class="menu-item menu-item-type-taxonomy menu-item-object-post_tag menu-item-has-children menu-item-137161"><a href="https://www.aldergrovestar.com/tag/bc-politics/">BC Politics</a>
+<ul class="vertical nested menu">
+	<li id="menu-item-137164" class="show-for-medium menu-item menu-item-type-taxonomy menu-item-object-post_tag menu-item-137164"><a href="https://www.aldergrovestar.com/tag/bc-legislature/">BC Legislature</a></li>
+	<li id="menu-item-137162" class="show-for-medium menu-item menu-item-type-taxonomy menu-item-object-post_tag menu-item-137162"><a href="https://www.aldergrovestar.com/tag/bc-politics/">BC Politics</a></li>
+	<li id="menu-item-137163" class="show-for-medium menu-item menu-item-type-taxonomy menu-item-object-post_tag menu-item-137163"><a href="https://www.aldergrovestar.com/tag/bc-liberals/">BC Liberals</a></li>
+	<li id="menu-item-137165" class="show-for-medium menu-item menu-item-type-taxonomy menu-item-object-post_tag menu-item-137165"><a href="https://www.aldergrovestar.com/tag/bc-ndp/">BC NDP</a></li>
+	<li id="menu-item-141386" class="show-for-medium menu-item menu-item-type-custom menu-item-object-custom menu-item-141386"><a href="/tag/bc-green/">BC Green</a></li>
+</ul>
+</li>
+<li id="menu-item-124400" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-124400"><a href="/tag/coronavirus/">COVID-19</a></li>
+<li id="menu-item-149835" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-149835"><a target="_blank" rel="noopener noreferrer" href="//www.westcoasttraveller.com/">Travel</a>
+<ul class="vertical nested menu">
+	<li id="menu-item-149836" class="show-for-medium menu-item menu-item-type-taxonomy menu-item-object-category menu-item-149836"><a target="_blank" rel="noopener noreferrer" href="https://www.aldergrovestar.com/./travel/">Local Travel</a></li>
+	<li id="menu-item-149837" class="show-for-medium menu-item menu-item-type-custom menu-item-object-custom menu-item-149837"><a target="_blank" rel="noopener noreferrer" href="//www.westcoasttraveller.com/">West Coast Traveller</a></li>
+</ul>
+</li>
+<li id="menu-item-251" class="show-for-medium menu-item menu-item-type-taxonomy menu-item-object-category menu-item-251"><a href="https://www.aldergrovestar.com/./national-news/">National</a></li>
+<li id="menu-item-258" class="show-for-medium menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-258"><a href="https://www.aldergrovestar.com/./obituaries/">Obituaries</a>
+<ul class="vertical nested menu">
+	<li id="menu-item-62162" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-62162"><a href="/tag/celebrations-of-life/">Celebrations of Life</a></li>
+	<li id="menu-item-66179" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-66179"><a href="/funeral-care-services/">Funeral Care Services</a></li>
+</ul>
+</li>
+<li id="menu-item-252" class="show-for-large menu-item menu-item-type-post_type menu-item-object-page menu-item-252"><a href="https://www.aldergrovestar.com/e-editions/">eEditions</a></li>
+<li id="menu-item-260" class="show-for-large menu-item menu-item-type-custom menu-item-object-custom menu-item-260"><a target="_blank" rel="noopener noreferrer" href="//www.bcclassifieds.com/?sfid=1">Classifieds</a></li>
+<li id="menu-item-139432" class="show-for-large menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-139432"><a href="/videos/">Video</a>
+<ul class="vertical nested menu">
+	<li id="menu-item-139433" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-139433"><a href="https://www.aldergrovestar.com/videos/">Local</a></li>
+	<li id="menu-item-139434" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-139434"><a href="/videos/#real-estate-tv-video-belt">Impress TV</a></li>
+	<li id="menu-item-139435" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-139435"><a href="https://www.aldergrovestar.com/submit/">Submit video</a></li>
+	<li id="menu-item-139436" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-139436"><a target="_blank" rel="noopener noreferrer" href="//blackpress.tv">Black Press TV</a></li>
+</ul>
+</li>
+<li id="menu-item-139427" class="show-for-large menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-139427"><a href="https://www.aldergrovestar.com/./marketplace/">Marketplace</a>
+<ul class="vertical nested menu">
+	<li id="menu-item-139428" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-139428"><a href="https://www.aldergrovestar.com/advertise/">Place an ad</a></li>
+	<li id="menu-item-139429" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-139429"><a href="https://www.aldergrovestar.com/./marketplace/">Impress</a></li>
+	<li id="menu-item-139430" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-139430"><a href="/videos/#real-estate-tv-video-belt">Impress TV</a></li>
+	<li id="menu-item-139431" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-139431"><a href="https://www.aldergrovestar.com/real-estate/">Real Estate</a></li>
+</ul>
+</li>
+<li id="nav-impress-button" >
+                                            <span data-tooltip aria-haspopup="true" data-disable-hover="false" tabindex="2" title="Impress TV">
+                                            <a href="http://impresstv.blackpress.ca/" target="_blank">
+                                            <img src="https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/assets/images/ImpressTV.png" id="header-impresstv-button">
+                                            </a>
+                                            </span>    
+                                        </li></ul>        </div>
+
+        <!-- ******* BEGIN: trending bar **************** -->
+        
+                <!-- ******* BEGIN: trending bar **************** -->
+                    <div class ="row" id="header-trending-row">
+                <div class="small-12 columns">
+                    <ul data-test="test" id="menu-trending" class="trending menu" role="menubar">
+                                                    <li id="menu-item-1110151" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1110151" role="menuitem">
+                                <a href="/newsletters/">Newsletter</a> 
+                            </li>
+                        
+                                                    <li id="menu-item-1110155" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1110155" role="menuitem">
+                                <a target="_blank" href="//homes.aldergrovestar.com/">Today's Home</a>
+                            </li>
+                        
+                                                    <li id="menu-item-1110154" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1110154" role="menuitem">
+                                <a target="_blank" href="//autos.aldergrovestar.com/">Autos</a>
+                            </li>
+                        
+                        
+                        <!--
+                        <li id="menu-item-1110152" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1110152" role="menuitem">
+                            <a target="_blank" href="//www.westcoasttraveller.com/">Travel</a>
+                        </li> -->
+
+                        <li id="menu-item-1110152" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1110152" role="menuitem">
+                            <a target="_blank" href="/contests/">Contests</a>
+                        </li>
+
+                        <li id="menu-item-1110153" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1110153" role="menuitem">
+                            <a target="_blank" href="//www.canadianevergreen.com/">Cannabis 19+</a>
+                        </li>
+                        
+                        <li id="menu-item-1110156" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1110156 show-for-medium" role="menuitem">
+                            <a target="_blank" href="//www.localwork.ca/">Jobs</a>
+                        </li>
+                        
+                        <li id="menu-item-1110160" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1110160 show-for-medium" role="menuitem">
+                            <a href="/trending-now/">Trending Now</a>
+                        </li>
+
+                        <li id="menu-item-1110162" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1110162 show-for-large" role="menuitem">
+                            <a href="/business/">Business</a>
+                        </li>
+
+                                                
+                            <li id="menu-item-1110157" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1110157 show-for-large" role="menuitem">
+                                <a href="/#good-news">Good News</a>
+                            </li>
+                  
+                        
+                        <li id="menu-item-1110163" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1110163 show-for-large" role="menuitem">
+                            <a href="/contact-us/">Contact Us</a>
+                        </li>
+
+                        
+                        <!--    
+                        <li id="menu-item-1110161" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1110161 show-for-large float-right" role="menuitem">
+                            <a style="color: #4a6054;background-color: #ffffff;margin-top:-1.85rem" href="/roots-blues-festival/">ROOTSandBLUES Festival</a>
+                        </li>
+                        -->
+                        
+
+                        
+                                                
+                    </ul>
+
+                </div>
+
+            </div> 
+            
+                
+        <!-- ******* END: trending bar **************** -->
+        <!-- ******* END: trending bar **************** -->
+        
+        
+        
+        <!-- Mobile menu -->
+        <nav id="site-navigation" class="main-navigation top-bar" role="navigation">
+            <div class="top-bar-right row">
+                                    
+<nav class="vertical menu" id="mobile-menu" role="navigation">
+    <ul id="menu-mainmenu-1" class="vertical menu accordion menu" data-accordion-menu><li class='nav-search'><a href='/search/'><i class='fa fa-search menu'></i>Search</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-320"><a href="https://www.aldergrovestar.com/">Home</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-144607"><a href="/#good-news">Good News</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-139414"><a target="_blank" rel="noopener noreferrer" href="//www.canadianevergreen.com">Cannabis 19+</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-33581"><a href="https://www.aldergrovestar.com/submit/">Submit News Tip</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-has-children menu-item-169"><a href="https://www.aldergrovestar.com/./news/">News</a>
+<ul class="vertical nested menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-170"><a href="https://www.aldergrovestar.com/./local-news/">Local News</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-61810"><a href="https://www.aldergrovestar.com/./municipal-election/">Municipal Election</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-171"><a target="_blank" rel="noopener noreferrer" href="http://bclocalnews.com">BC</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-105545"><a href="https://www.aldergrovestar.com/./federal-election/">Federal Election 2019</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-172"><a href="https://www.aldergrovestar.com/./national-news/">Canada &amp; World</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-173"><a href="https://www.aldergrovestar.com/e-editions/">eEditions</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-176"><a href="https://www.aldergrovestar.com/submit/">Submit news tip or photo</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-124401"><a href="/tag/coronavirus/">Coronavirus News</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-177"><a href="https://www.aldergrovestar.com/./sports/">Sports</a>
+<ul class="vertical nested menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-178"><a href="https://www.aldergrovestar.com/./local-sports/">Local</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-post_tag menu-item-23164"><a href="https://www.aldergrovestar.com/tag/aldergrove-kodiaks/">Aldergrove Kodiaks</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-322"><a target="_blank" rel="noopener noreferrer" href="http://www.bclocalnews.com/sports/">BC</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-179"><a href="https://www.aldergrovestar.com/./national-sports/">Canada &amp; World</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-180"><a href="https://www.aldergrovestar.com/submit/">Submit sports tip or photo</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-128557"><a target="_blank" rel="noopener noreferrer" href="//www.westcoasttraveller.com/">Travel</a>
+<ul class="vertical nested menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-128876"><a href="https://www.aldergrovestar.com/./travel/">Local Travel</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-128877"><a target="_blank" rel="noopener noreferrer" href="//www.westcoasttraveller.com/">West Coast Traveller</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-181"><a href="https://www.aldergrovestar.com/./trending-now/">Trending Now</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-117308"><a href="https://www.aldergrovestar.com/newsletters/">Newsletters</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-108026"><a href="//autos.aldergrovestar.com/">Autos</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-76128"><a target="_blank" rel="noopener noreferrer" href="//www.bcclassifieds.com/?sfid=1">Classifieds</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-52106"><a target="_blank" rel="noopener noreferrer" href="//www.localwork.ca">Jobs</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-182"><a href="https://www.aldergrovestar.com/./business/">Business</a>
+<ul class="vertical nested menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-183"><a href="https://www.aldergrovestar.com/./local-business/">Local</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-184"><a target="_blank" rel="noopener noreferrer" href="http://bclocalnews.com/business">BC</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-185"><a href="https://www.aldergrovestar.com/submit/">Submit business tip or photo</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-186"><a href="https://www.aldergrovestar.com/./entertainment/">Entertainment</a>
+<ul class="vertical nested menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-187"><a href="https://www.aldergrovestar.com/./local-entertainment/">Local</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-188"><a target="_blank" rel="noopener noreferrer" href="http://bclocalnews.com/entertainment">BC</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-189"><a href="https://www.aldergrovestar.com/submit/">Submit entertainment tip or photo</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-93193"><a href="https://www.aldergrovestar.com/./photo-galleries/">Photo Galleries</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-190"><a href="https://www.aldergrovestar.com/./life/">Life</a>
+<ul class="vertical nested menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-63791"><a href="https://www.aldergrovestar.com/./life/">Life</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-102598"><a href="https://www.aldergrovestar.com/./sip-savour/">Sip &amp; Savour</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-193"><a target="_blank" rel="noopener noreferrer" href="http://winetrails.ca">Wine Trails</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-194"><a href="https://www.aldergrovestar.com/submit/">Submit life tip or photo</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-195"><a href="https://www.aldergrovestar.com/./community/">Community</a>
+<ul class="vertical nested menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-196"><a href="https://www.aldergrovestar.com/./community/">Local</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-58003"><a href="https://www.aldergrovestar.com/./miss-bc/">Miss BC</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-94933"><a href="https://www.aldergrovestar.com/./social-matters/">Social Matters</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-323"><a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/iLoveBritishColumbia">I Love British Columbia</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-197"><a href="https://www.aldergrovestar.com/calendar/">Calendar</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-198"><a href="https://www.aldergrovestar.com/submit/">Submit community tip or photo</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-282"><a href="https://www.aldergrovestar.com/./opinion/">Opinion</a>
+<ul class="vertical nested menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-204"><a href="https://www.aldergrovestar.com/./opinion/">Local Opinion</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-202"><a href="https://www.aldergrovestar.com/./editorials-opinion/">Editorials</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-201"><a href="https://www.aldergrovestar.com/./columns/">Columnists</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-203"><a href="https://www.aldergrovestar.com/./letters/">Letters</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-32420"><a href="https://www.aldergrovestar.com/./web-poll/">Web poll</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-205"><a target="_blank" rel="noopener noreferrer" href="http://bclocalnews.com/opinion">BC Opinion</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-206"><a href="https://www.aldergrovestar.com/submitletters/">Submit letter</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-210"><a href="https://www.aldergrovestar.com/videos/">Videos</a>
+<ul class="vertical nested menu">
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-211"><a href="https://www.aldergrovestar.com/videos/">Local</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-68618"><a href="/videos/#real-estate-tv-video-belt">Impress TV</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-212"><a href="https://www.aldergrovestar.com/submit/">Submit video</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-213"><a target="_blank" rel="noopener noreferrer" href="http://blackpress.tv">Black Press TV</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-214"><a href="https://www.aldergrovestar.com/weather/">Weather</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-216"><a href="https://www.aldergrovestar.com/./obituaries/">Obituaries</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-217"><a href="https://www.aldergrovestar.com/./marketplace/">Marketplace</a>
+<ul class="vertical nested menu">
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-275"><a href="https://www.aldergrovestar.com/advertise/">Place an ad</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-218"><a href="https://www.aldergrovestar.com/./marketplace/">Impress branded content</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-78419"><a href="/videos/#real-estate-tv-video-belt">Impress TV</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-354"><a href="https://www.aldergrovestar.com/real-estate/">Real Estate</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-321"><a href="https://www.aldergrovestar.com/contests/">Contests</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-224"><a href="https://www.aldergrovestar.com/contact-us/">Contact Us</a>
+<ul class="vertical nested menu">
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-225"><a href="https://www.aldergrovestar.com/contact-us/">Contact Us</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-226"><a href="https://www.aldergrovestar.com/our-team/">Our Team</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-230"><a target="_blank" rel="noopener noreferrer" href="http://blackpress.ca">Black Press</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-231"><a href="https://www.aldergrovestar.com/submit/">Submit tip or photo</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-227"><a href="https://www.aldergrovestar.com/faq/">FAQ</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-228"><a href="https://www.aldergrovestar.com/privacy-policy/">Privacy Policy</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-229"><a href="https://www.aldergrovestar.com/terms-of-use/">Terms of use</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-111625"><a href="https://www.aldergrovestar.com/site-map/">Site Map</a></li>
+</ul></nav>
+                            </div>
+        </nav>
+        
+        
+            <!-- taboola code -->
+                <script type="text/javascript">
+                window._taboola = window._taboola || [];
+                _taboola.push({article:'auto'});
+                !function (e, f, u, i) {
+                if (!document.getElementById(i)){
+                    e.async = 1;
+                    e.src = u;
+                    e.id = i;
+                    f.parentNode.insertBefore(e, f);
+                }
+                }(document.createElement('script'),
+                document.getElementsByTagName('script')[0],
+                '//cdn.taboola.com/libtrc/blackpressmedia-network/loader.js',
+                'tb_loader_script');
+                if(window.performance && typeof window.performance.mark == 'function')
+                {window.performance.mark('tbl_ic');}
+            </script>
+            
+
+    </header>
+
+    <section class="container">
+        <!-- Elevator: return to Top -->
+        <a id="return-to-top" href="javascript:" ><i class="fa fa-chevron-up"></i></a>
+        
+        
+
+<div id="single-post" role="main">
+
+    <div class="row module ad">
+        <div class="large-12 columns ad text-center">
+                    <div class='code-block code-block-24' style='margin: 8px 0; clear: both;'>
+<!-- Replace AU0 on article pages -->
+<div id="div-gpt-24" class="gpt-ad horizontal">
+<script type='text/javascript'>
+    googletag.cmd.push(function() { googletag.display('div-gpt-24');gptRefreshSlots.push(24); });
+</script>
+</div></div>
+        </div>
+    </div>
+
+    <!-- Number of attachments: 1 --><!-- Featured Image Layout: medium -->
+
+                <article class="main-content post-117409 post type-post status-publish format-standard has-post-thumbnail hentry category-news" id="post-117409">
+
+        
+        <header>
+            <div class="post-attachment" alt="&lt;1024 - &gt;640"><img width="1200" height="800" src="https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19988786_web1_191231-BPD-M-Fish-trailer.jpg" class="attachment-full size-full" alt="A tank trailer filled with liquefied dead fish was knocked into the water off Vancouver Island on Dec. 30, 2019. (Tavish Campbell)" srcset="https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19988786_web1_191231-BPD-M-Fish-trailer.jpg 1200w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19988786_web1_191231-BPD-M-Fish-trailer-300x200.jpg 300w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19988786_web1_191231-BPD-M-Fish-trailer-768x512.jpg 768w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19988786_web1_191231-BPD-M-Fish-trailer-1024x683.jpg 1024w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19988786_web1_191231-BPD-M-Fish-trailer-640x427.jpg 640w" sizes="(max-width: 1200px) 100vw, 1200px" /><p>A tank trailer filled with liquefied dead fish was knocked into the water off Vancouver Island on Dec. 30, 2019. (Tavish Campbell)</p></div>
+                                    <h2 class="entry-title">Tank of liquefied fish retrieved after falling into ocean off Vancouver Island</h2>
+            <p class="lead">DFO says heavy waves caused the trailer to roll off the deck near Campbell River
+</p>            <ul class="author-meta"><li><a class="byline" href="https://www.aldergrovestar.com/author/canadian-press-2/" rel="author" class="fn">The Canadian Press</a></li><li>Dec. 31, 2019 2:05 p.m.</li><li><a class="byline" href="https://www.aldergrovestar.com/news/">News</a></li></ul>            <ul class="social story top">
+	<li><span data-tooltip aria-haspopup="true" data-disable-hover="false" tabindex="1" title="Post to Facebook"><a href="//www.facebook.com/sharer.php?u=https%3A%2F%2Fwww.aldergrovestar.com%2Fnews%2Ftank-of-liquefied-fish-retrieved-after-falling-into-ocean-off-vancouver-island%2F" class="social fa fa-facebook-f" target="_blank"></a></span></li>
+	<li><span data-tooltip aria-haspopup="true" data-disable-hover="false" tabindex="1" title="Post to Twitter"><a href="//twitter.com/intent/tweet?text=Tank+of+liquefied+fish+retrieved+after+falling+into+ocean+off+Vancouver+Island&amp;url=https%3A%2F%2Fwww.aldergrovestar.com%2Fnews%2Ftank-of-liquefied-fish-retrieved-after-falling-into-ocean-off-vancouver-island%2F" class="social fa fa-twitter" target="_blank"></a></span></li>
+	<li><span data-tooltip aria-haspopup="true" data-disable-hover="false" tabindex="1" title="Post to Reddit"><a href="//reddit.com/submit?url=https%3A%2F%2Fwww.aldergrovestar.com%2Fnews%2Ftank-of-liquefied-fish-retrieved-after-falling-into-ocean-off-vancouver-island%2F&title=Tank+of+liquefied+fish+retrieved+after+falling+into+ocean+off+Vancouver+Island" class="social fa fa-reddit-alien" target="_blank"></a></span></li>
+	
+	
+	<li><span data-tooltip aria-haspopup="true" data-disable-hover="false" tabindex="1" title="Email story"><a href="mailto:?subject=Tank%20of%20liquefied%20fish%20retrieved%20after%20falling%20into%20ocean%20off%20Vancouver%20Island&amp;body=https%3A%2F%2Fwww.aldergrovestar.com%2Fnews%2Ftank-of-liquefied-fish-retrieved-after-falling-into-ocean-off-vancouver-island%2F" class="social fa fa-envelope-o"></a></span></li>
+
+	<li><span data-tooltip aria-haspopup="true" data-disable-hover="false" tabindex="1" title="Print story"><a href="javascript:window.print();" class="social fa fa-print"></a></span></li>
+	
+
+
+
+</ul>
+        </header>
+                <div class="entry-content">
+
+        <p>An ocean transportation company says it has retrieved a tank trailer filled with liquefied fish after it was knocked into the water off Vancouver Island.</p>
+<p>Billy Vaughn of Coastal Seatrucking says the silage was pumped into another tanker on Tuesday and the trailer was removed from the ocean near Campbell River.</p>
+<p>Silage is a product made with dead fish that is commonly used in animal feed.</p>
+<p>The Department of Fisheries and Oceans says heavy wave action caused the trailer to shift and roll off the deck of the landing craft, which is similar to a barge, on Monday.</p>
+<p>It says the Canadian Coast Guard attended the scene and no one was injured or required rescue.</p>
+<p>The department says the tank trailer remained afloat and was towed into Duncan Bay.</p>
+<p><ins><strong>READ MORE: <a href="https://www.campbellrivermirror.com/news/b-c-fish-farm-operator-says-most-of-escaped-salmon-likely-eaten/" target="_blank" rel="noopener noreferrer">B.C. fish farm operator says most of escaped salmon likely eaten</a></strong></ins></p>
+<p>Photographer Tavish Campbell says he was out boating in the area when he came across the scene Monday.</p>
+<p>&ldquo;It&rsquo;s a huge tanker trailer and it was half submerged with the oil boom around it,&rdquo; he said.</p>
+<p>The Canadian Press</p>
+<p><strong>Like us on <a href="http://www.facebook.com/BCNews" target="_blank" rel="noopener noreferrer">Facebook</a> and follow us on <a href="http://www.twitter.com/BlackPressMedia" target="_blank" rel="noopener noreferrer">Twitter</a> </strong></p>
+</p>
+<div class='row newsletters-row' >
+<div class='columns small-4 medium-3 large-2 newsletters-image-column' >
+                                        <img src='https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/assets/images/newsletters/bp-newsletters-icon.png' >
+                                    </div>
+<div class='columns small-8 medium-9 large-10 newsletters-text-column' >
+                                        Get local stories you won't find anywhere else right to your inbox.<br />
+                                        <a href='/newsletters/'>Sign up here</a>
+                                    </div>
+</p></div>
+<!-- AI CONTENT END 1 -->
+                        </div>
+        
+        <!-- BEGIN: Comments  -->
+                <!-- END: Comments -->
+
+        <footer>
+                    </footer>
+                
+        <!-- Comments disabled for now -->
+        <!-- <a class="hollow expanded button comments day-" href="">View Comments <i class="fa fa-comment-o"></i></a> -->
+        
+        
+        <div class="row" style="padding-bottom: 1.5rem;"><div class="columns small-12 medium-12 large-6"><div class='code-block code-block-14' style='margin: 8px auto; text-align: center; display: block; clear: both;'>
+<div id="div-gpt-14" class="gpt-ad">
+<script type='text/javascript'>
+    googletag.cmd.push(function() { googletag.display('div-gpt-14');gptRefreshSlots.push(14); });
+</script>
+</div></div>
+</div><div class="columns small-12 medium-12 large-6"><div class='code-block code-block-19' style='margin: 8px auto; text-align: center; display: block; clear: both;'>
+<div id="div-gpt-19" class="gpt-ad">
+<script type='text/javascript'>
+    googletag.cmd.push(function() { googletag.display('div-gpt-19');gptRefreshSlots.push(19); });
+</script>
+</div></div>
+</div></div>        
+    </article>
+
+
+<aside class="sidebar text-right">
+		<article id="ai_widget-15" class="widget ai_widget"><div class='code-block code-block-10' style='margin: 8px auto; text-align: center; display: block; clear: both;'>
+<div id="div-gpt-10" class="gpt-ad">
+<script type='text/javascript'>
+    googletag.cmd.push(function() { googletag.display('div-gpt-10');gptRefreshSlots.push(10); });
+</script>
+</div></div>
+</article><article id="ai_widget-14" class="widget ai_widget"><div class='code-block code-block-12' style='margin: 8px auto; text-align: center; display: block; clear: both;'>
+<div id="div-gpt-12" class="gpt-ad">
+<script type='text/javascript'>
+    googletag.cmd.push(function() { googletag.display('div-gpt-12');gptRefreshSlots.push(12); });
+</script>
+</div></div>
+</article>	
+            <!-- taboola code -->
+                <div id="taboola-right-rail"></div>
+                <script type="text/javascript">
+                window._taboola = window._taboola || [];
+                _taboola.push({
+                    mode: 'thumbnails-c',
+                    container: 'taboola-right-rail',
+                    placement: 'Right Rail',
+                    target_type: 'mix'
+                });
+                </script>
+                
+            
+
+	</aside>
+</div>
+
+<div class="row module-adjacent-posts" data-equalizer data-equalize-on="medium">
+	    <div class="small-6 adjacent-prev columns" data-equalizer-watch>
+                    <a class="button" onClick="__gaTracker('send','event','Recirculating Content','Click','Previous Adjacent Story');" href="https://www.aldergrovestar.com/news/abbotsford-man-charged-in-ontario-exploitation-probe-has-record-of-sexual-offences/">
+                <h5><i class="fa fa-chevron-left" aria-hidden="true"></i>Previous <span class="show-for-small-only">story </span></h5>
+                <span class="show-for-medium">
+                    <h6>Abbotsford man charged in Ontario exploitation probe has record of sexual offences</h6>
+                </span>
+            </a>
+            </div>
+    <div class="small-6 adjacent-next columns" data-equalizer-watch>
+                    <a class="button" onClick="__gaTracker('send','event','Recirculating Content','Click','Next Adjacent Story');" href="https://www.aldergrovestar.com/news/designated-drivers-who-charge-for-rides-in-b-c-may-be-breaking-the-law/">
+                <h5>Next <span class="show-for-small-only">story </span><i class="fa fa-chevron-right" aria-hidden="true"></i></h5>
+                <span class="show-for-medium">
+                    <h6>Designated drivers who charge for rides in B.C. may be breaking the law</h6>
+                </span>
+            </a>
+            </div>
+</div><div class="row module-recirc">
+	<div class="small-12 columns">
+		<h3 class="text-center"><a onClick="__gaTracker('send','event','Recirculating Content','Click','News Header');" href="https://www.aldergrovestar.com/./news/">Just Posted</a></h3>
+                <div class="row module-recirc">
+            <div class="small-12 large-8 module-recirc columns">
+                <!-- story-recirc-block --><div class="small-up-2 medium-up-2 large-up-3"><!-- Start - Single Card --><div class="column"><div class='card '><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.aldergrovestar.com/sports/ostapchuk-makes-nhl-list/"><img src="https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24011177_web1_210124-LAT-Ostapchuk-makes-list-file_1.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="Vancouver Giants forward Zack Ostapchuk has cracked the latest NHL Central Scouting &#145;Players to Watch&#146; list (Chris Relke/Vancouver Giants)" srcset="https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24011177_web1_210124-LAT-Ostapchuk-makes-list-file_1.jpg 1200w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24011177_web1_210124-LAT-Ostapchuk-makes-list-file_1-300x202.jpg 300w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24011177_web1_210124-LAT-Ostapchuk-makes-list-file_1-768x516.jpg 768w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24011177_web1_210124-LAT-Ostapchuk-makes-list-file_1-1024x689.jpg 1024w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24011177_web1_210124-LAT-Ostapchuk-makes-list-file_1-640x430.jpg 640w" sizes="(max-width: 1200px) 100vw, 1200px" /></a> <div class="card-section"><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.aldergrovestar.com/sports/ostapchuk-makes-nhl-list/"><h5 class="active">Ostapchuk makes NHL list</h5></a><p class="lead show-for-medium">Player with Langley-based Vancouver cracks latest NHL Central Scouting ‘Players to Watch’ list
+</p></div></div></div><!-- End - Single Card --><!-- Start - Single Card --><div class="column"><div class='card '><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.aldergrovestar.com/opinion/letter-township-church-tax-move-feels-punitive-langley-man-argues/"><img src="https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24004233_web1_prayer.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="A Fort Langley letter writer lays out why he disagrees with the Township&#146;s suggestion to withhold permissive tax exemptions for churches that defy Provincial Health Orders (file photo)" srcset="https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24004233_web1_prayer.jpg 2048w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24004233_web1_prayer-300x200.jpg 300w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24004233_web1_prayer-768x512.jpg 768w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24004233_web1_prayer-1024x683.jpg 1024w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24004233_web1_prayer-640x427.jpg 640w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24004233_web1_prayer-1200x800.jpg 1200w" sizes="(max-width: 1199px) 98vw, 1200px" /></a> <div class="card-section"><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.aldergrovestar.com/opinion/letter-township-church-tax-move-feels-punitive-langley-man-argues/"><h5 class="active">LETTER: Township church tax move feels punitive, Langley man argues</h5></a><p class="lead show-for-medium">Township looking at whether to give permissive tax exemption to churches holding in-person services.
+</p></div></div></div><!-- End - Single Card --><!-- Start - Single Card --><div class="column"><div class='card '><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.aldergrovestar.com/sports/langleys-chase-claypool-signs-with-nikes-jordan-brand/"><img src="https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24010515_web1_210121-ABB-claypool-1_1.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="Abbotsford football star Chase Claypool has signed an endorsement deal with Nike&#146;s Jordan brand. (Air Jordan website)" srcset="https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24010515_web1_210121-ABB-claypool-1_1.jpg 1200w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24010515_web1_210121-ABB-claypool-1_1-300x200.jpg 300w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24010515_web1_210121-ABB-claypool-1_1-768x512.jpg 768w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24010515_web1_210121-ABB-claypool-1_1-1024x683.jpg 1024w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24010515_web1_210121-ABB-claypool-1_1-640x427.jpg 640w" sizes="(max-width: 1200px) 100vw, 1200px" /></a> <div class="card-section"><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.aldergrovestar.com/sports/langleys-chase-claypool-signs-with-nikes-jordan-brand/"><h5 class="active">Langley&#8217;s Chase Claypool signs with Nike&#8217;s Jordan brand</h5></a><p class="lead show-for-medium">Abbotsford Senior Secondary School grad had to settle for knock-off shoes when he was a student
+</p></div></div></div><!-- End - Single Card --><!-- Start - Single Card --><div class="column"><div class='card '><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.aldergrovestar.com/news/lottery-ticket-worth-4-2-million-purchased-in-aldergrove/"><img src="https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24010696_web1_210124-LAT-Aldergrove-Lotto-winner-file_1.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="Someone bought a lottery ticket worth $4.2 million in Aldergrove (file)" srcset="https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24010696_web1_210124-LAT-Aldergrove-Lotto-winner-file_1.jpg 1200w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24010696_web1_210124-LAT-Aldergrove-Lotto-winner-file_1-300x200.jpg 300w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24010696_web1_210124-LAT-Aldergrove-Lotto-winner-file_1-768x512.jpg 768w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24010696_web1_210124-LAT-Aldergrove-Lotto-winner-file_1-1024x683.jpg 1024w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24010696_web1_210124-LAT-Aldergrove-Lotto-winner-file_1-640x427.jpg 640w" sizes="(max-width: 1200px) 100vw, 1200px" /></a> <div class="card-section"><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.aldergrovestar.com/news/lottery-ticket-worth-4-2-million-purchased-in-aldergrove/"><h5 class="active">Lottery ticket worth $4.2 million purchased in Aldergrove</h5></a><p class="lead show-for-medium">Lotto 6/49 numbers were drawn Saturday
+</p></div></div></div><!-- End - Single Card --><!-- Start - Single Card --><div class="column"><div class='card '><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.aldergrovestar.com/sports/tsumura-basketball-invitational-aims-to-resume-in-december-2021/"><img src="https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24008448_web1_210123-LAT-Tsumura-a-go-2019_1.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="A Fleetwood Park Dragons player goes for a shot during the opening game of the Tsumura Basketball Invitational (TBI) at the Langley Events Centre in 2019. Founder Howard Tsumura is hoping to hold a 2021 version of the tournament (Langley Advance Times file)" srcset="https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24008448_web1_210123-LAT-Tsumura-a-go-2019_1.jpg 1200w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24008448_web1_210123-LAT-Tsumura-a-go-2019_1-300x200.jpg 300w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24008448_web1_210123-LAT-Tsumura-a-go-2019_1-768x512.jpg 768w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24008448_web1_210123-LAT-Tsumura-a-go-2019_1-1024x683.jpg 1024w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24008448_web1_210123-LAT-Tsumura-a-go-2019_1-640x427.jpg 640w" sizes="(max-width: 1200px) 100vw, 1200px" /></a> <div class="card-section"><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.aldergrovestar.com/sports/tsumura-basketball-invitational-aims-to-resume-in-december-2021/"><h5 class="active">Tsumura Basketball Invitational aims to resume in December 2021</h5></a><p class="lead show-for-medium">Founder chooses to be optimistic
+</p></div></div></div><!-- End - Single Card --><!-- Start - Single Card --><div class="column"><div class='card '><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.aldergrovestar.com/trending-now/quiz-how-much-do-you-know-about-hockey-2/"><img src="https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24009379_web1_200130-SUM-Hockey-summary_2.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="Terrance Josephson of the Princeton Posse, at left, and Tyson Conroy of the Summerland Steam clash during a Junior B hockey game at the Summerland Arena in the early spring of 2020. (John Arendt - Summerland Review)" srcset="https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24009379_web1_200130-SUM-Hockey-summary_2.jpg 2048w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24009379_web1_200130-SUM-Hockey-summary_2-300x203.jpg 300w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24009379_web1_200130-SUM-Hockey-summary_2-768x520.jpg 768w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24009379_web1_200130-SUM-Hockey-summary_2-1024x693.jpg 1024w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24009379_web1_200130-SUM-Hockey-summary_2-640x433.jpg 640w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24009379_web1_200130-SUM-Hockey-summary_2-1200x812.jpg 1200w" sizes="(max-width: 1199px) 98vw, 1200px" /></a> <div class="card-section"><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.aldergrovestar.com/trending-now/quiz-how-much-do-you-know-about-hockey-2/"><h5 class="active">QUIZ: How much do you know about hockey?</h5></a><p class="lead show-for-medium">Test your knowledge of Canada’s national winter sport
+</p></div></div></div><!-- End - Single Card --><!-- Start - Single Card --><div class="column"><div class='card '><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.aldergrovestar.com/news/drug-users-at-greater-risk-of-dying-as-services-scale-back-in-second-wave-of-covid-19/"><img src="https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24012086_web1_20210122140148-1ee4352857ded5bd42e17105d20fb861a0a5fe7b7d123eb88651b1da50034bcb.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="A woman injects herself with crack cocaine at a supervised consumption site Friday, Jan. 22, 2021 in Ottawa. THE CANADIAN PRESS/Adrian Wyld" srcset="https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24012086_web1_20210122140148-1ee4352857ded5bd42e17105d20fb861a0a5fe7b7d123eb88651b1da50034bcb.jpg 1280w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24012086_web1_20210122140148-1ee4352857ded5bd42e17105d20fb861a0a5fe7b7d123eb88651b1da50034bcb-300x200.jpg 300w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24012086_web1_20210122140148-1ee4352857ded5bd42e17105d20fb861a0a5fe7b7d123eb88651b1da50034bcb-768x512.jpg 768w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24012086_web1_20210122140148-1ee4352857ded5bd42e17105d20fb861a0a5fe7b7d123eb88651b1da50034bcb-1024x682.jpg 1024w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24012086_web1_20210122140148-1ee4352857ded5bd42e17105d20fb861a0a5fe7b7d123eb88651b1da50034bcb-640x427.jpg 640w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24012086_web1_20210122140148-1ee4352857ded5bd42e17105d20fb861a0a5fe7b7d123eb88651b1da50034bcb-1200x800.jpg 1200w" sizes="(max-width: 1199px) 98vw, 1200px" /></a> <div class="card-section"><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.aldergrovestar.com/news/drug-users-at-greater-risk-of-dying-as-services-scale-back-in-second-wave-of-covid-19/"><h5 class="active">Drug users at greater risk of dying as services scale back in second wave of COVID-19</h5></a><p class="lead show-for-medium">It pins the blame largely on a lack of supports, a corrupted drug supply
+</p></div></div></div><!-- End - Single Card --><!-- Start - Single Card --><div class="column"><div class='card '><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.aldergrovestar.com/news/were-still-in-it-wetsuweten-push-forward-on-rights-recognition/"><img src="https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24011335_web1_20210122180112-769958ba41f60df89b75275bb030a1ccfc1928d6943153f598accd42dc68c403.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="Wet&#146;suwet&#146;en supporters and Coastal GasLink opponents continue to protest outside the B.C. Legislature in Victoria, B.C., on Thursday, February 27, 2020. THE CANADIAN PRESS/Chad Hipolito" srcset="https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24011335_web1_20210122180112-769958ba41f60df89b75275bb030a1ccfc1928d6943153f598accd42dc68c403.jpg 1280w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24011335_web1_20210122180112-769958ba41f60df89b75275bb030a1ccfc1928d6943153f598accd42dc68c403-300x206.jpg 300w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24011335_web1_20210122180112-769958ba41f60df89b75275bb030a1ccfc1928d6943153f598accd42dc68c403-768x528.jpg 768w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24011335_web1_20210122180112-769958ba41f60df89b75275bb030a1ccfc1928d6943153f598accd42dc68c403-1024x704.jpg 1024w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24011335_web1_20210122180112-769958ba41f60df89b75275bb030a1ccfc1928d6943153f598accd42dc68c403-640x440.jpg 640w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24011335_web1_20210122180112-769958ba41f60df89b75275bb030a1ccfc1928d6943153f598accd42dc68c403-1200x825.jpg 1200w" sizes="(max-width: 1199px) 98vw, 1200px" /></a> <div class="card-section"><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.aldergrovestar.com/news/were-still-in-it-wetsuweten-push-forward-on-rights-recognition/"><h5 class="active">&#8216;We&#8217;re still in it&#8217;: Wet&#8217;suwet&#8217;en push forward on rights recognition</h5></a><p class="lead show-for-medium">The 670-km Coastal GasLink pipeline was approved by B.C. and 20 elected First Nations councils on its path
+</p></div></div></div><!-- End - Single Card --><!-- Start - Single Card --><div class="column"><div class='card '><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.aldergrovestar.com/news/top-doctor-urges-canadians-to-keep-up-with-covid-measures-even-as-vaccines-roll-out/"><img src="https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24010347_web1_CP115489144.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="Jennifer Cochrane, a Public Health Nurse with Prairie Mountain Health in Virden, administers the COVID-19 vaccine to Robert Farquhar with Westman Regional Laboratory, during the first day of immunizations at the Brandon COVID-19 vaccination supersite in Brandon, Man., on Monday, January 18, 2021. THE CANADIAN PRESS/Tim Smith - POOL" srcset="https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24010347_web1_CP115489144.jpg 1200w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24010347_web1_CP115489144-300x200.jpg 300w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24010347_web1_CP115489144-768x512.jpg 768w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24010347_web1_CP115489144-1024x683.jpg 1024w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24010347_web1_CP115489144-640x427.jpg 640w" sizes="(max-width: 1200px) 100vw, 1200px" /></a> <div class="card-section"><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.aldergrovestar.com/news/top-doctor-urges-canadians-to-keep-up-with-covid-measures-even-as-vaccines-roll-out/"><h5 class="active">Top doctor urges Canadians to keep up with COVID measures, even as vaccines roll out</h5></a><p class="lead show-for-medium">More than 776,606 vaccines have been administered so far
+</p></div></div></div><!-- End - Single Card --><!-- Start - Single Card --><div class="column"><div class='card '><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.aldergrovestar.com/news/is-it-time-to-start-thinking-about-greener-ways-to-package-cannabis/"><img src="https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2020/09/22733673_web1_cannabis_Wadhwani_packaging.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="Cannabis bought in British Columbia (Ashley Wadhwani/Black Press Media)" srcset="https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2020/09/22733673_web1_cannabis_Wadhwani_packaging.jpg 1200w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2020/09/22733673_web1_cannabis_Wadhwani_packaging-300x204.jpg 300w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2020/09/22733673_web1_cannabis_Wadhwani_packaging-768x522.jpg 768w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2020/09/22733673_web1_cannabis_Wadhwani_packaging-1024x696.jpg 1024w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2020/09/22733673_web1_cannabis_Wadhwani_packaging-640x435.jpg 640w" sizes="(max-width: 1200px) 100vw, 1200px" /></a> <div class="card-section"><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.aldergrovestar.com/news/is-it-time-to-start-thinking-about-greener-ways-to-package-cannabis/"><h5 class="active">Is it time to start thinking about greener ways to package cannabis?</h5></a><p class="lead show-for-medium">Packaging suppliers are still figuring eco-friendly and affordable packaging options that fit the mandates of Cannabis Regulations
+</p></div></div></div><!-- End - Single Card --><!-- Start - Single Card --><div class="column"><div class='card '><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.aldergrovestar.com/news/b-c-mounties-commended-for-bringing-firewood-to-elderly-woman/"><img src="https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24010275_web1_210128-GBC-MIDWAY_WOOD--RCMP_1.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="From the left: Midway RCMP Csts. Jonathan Stermscheg and Chris Hansen, Public Servant Leanne Mclaren and Cpl. Phil Peters. Pictured in the front are Mclaren&#146;s dog, Lincoln and Peters&#146; dog, Angel. Photo courtesy of BC RCMP" srcset="https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24010275_web1_210128-GBC-MIDWAY_WOOD--RCMP_1.jpg 1200w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24010275_web1_210128-GBC-MIDWAY_WOOD--RCMP_1-300x200.jpg 300w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24010275_web1_210128-GBC-MIDWAY_WOOD--RCMP_1-768x512.jpg 768w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24010275_web1_210128-GBC-MIDWAY_WOOD--RCMP_1-1024x683.jpg 1024w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24010275_web1_210128-GBC-MIDWAY_WOOD--RCMP_1-640x427.jpg 640w" sizes="(max-width: 1200px) 100vw, 1200px" /></a> <div class="card-section"><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.aldergrovestar.com/news/b-c-mounties-commended-for-bringing-firewood-to-elderly-woman/"><h5 class="active">B.C. Mounties commended for bringing firewood to elderly woman</h5></a><p class="lead show-for-medium">Cpl. Phil Peters said he and detachment members acted after the woman’s husband went to hospital
+</p></div></div></div><!-- End - Single Card --><!-- Start - Single Card --><div class="column"><div class='card '><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.aldergrovestar.com/news/it-wasnt-called-covid-at-the-time-one-year-since-canadas-first-covid-19-case/"><img src="https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24010172_web1_20210122110132-45f2f544b8485fa7b5e404ea315be5ff4f0e048f516eb66eeccfd6e401d5ed0e.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="Dr. Jerome Leis and Dr. Lynfa Stroud are pictured at Sunnybrook Hospital in Toronto on Thursday, January 21, 2021.THE CANADIAN PRESS/Frank Gunn" srcset="https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24010172_web1_20210122110132-45f2f544b8485fa7b5e404ea315be5ff4f0e048f516eb66eeccfd6e401d5ed0e.jpg 1280w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24010172_web1_20210122110132-45f2f544b8485fa7b5e404ea315be5ff4f0e048f516eb66eeccfd6e401d5ed0e-300x195.jpg 300w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24010172_web1_20210122110132-45f2f544b8485fa7b5e404ea315be5ff4f0e048f516eb66eeccfd6e401d5ed0e-768x500.jpg 768w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24010172_web1_20210122110132-45f2f544b8485fa7b5e404ea315be5ff4f0e048f516eb66eeccfd6e401d5ed0e-1024x667.jpg 1024w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24010172_web1_20210122110132-45f2f544b8485fa7b5e404ea315be5ff4f0e048f516eb66eeccfd6e401d5ed0e-640x417.jpg 640w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24010172_web1_20210122110132-45f2f544b8485fa7b5e404ea315be5ff4f0e048f516eb66eeccfd6e401d5ed0e-1200x782.jpg 1200w" sizes="(max-width: 1199px) 98vw, 1200px" /></a> <div class="card-section"><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.aldergrovestar.com/news/it-wasnt-called-covid-at-the-time-one-year-since-canadas-first-covid-19-case/"><h5 class="active">&#8216;It wasn&#8217;t called COVID at the time:&#8217; One year since Canada&#8217;s first COVID-19 case</h5></a><p class="lead show-for-medium">The 56-year-old man was admitted to Toronto’s Sunnybrook Health Sciences Centre
+</p></div></div></div><!-- End - Single Card --><!-- Start - Single Card --><div class="column"><div class='card '><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.aldergrovestar.com/news/taxi-companies-lose-court-bid-to-quash-uber-lyft-approvals-in-british-columbia/"><img src="https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24010094_web1_20210123180148-600cb5c630e8ef758dead0f1jpeg.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="An Uber driver&#146;s vehicle is seen after the company launched service, in Vancouver, Friday, Jan. 24, 2020. Several taxi companies have lost a court bid to run Uber and Lyft off the road in British Columbia. THE CANADIAN PRESS/Darryl Dyck" srcset="https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24010094_web1_20210123180148-600cb5c630e8ef758dead0f1jpeg.jpg 1280w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24010094_web1_20210123180148-600cb5c630e8ef758dead0f1jpeg-300x200.jpg 300w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24010094_web1_20210123180148-600cb5c630e8ef758dead0f1jpeg-768x512.jpg 768w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24010094_web1_20210123180148-600cb5c630e8ef758dead0f1jpeg-1024x682.jpg 1024w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24010094_web1_20210123180148-600cb5c630e8ef758dead0f1jpeg-640x427.jpg 640w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24010094_web1_20210123180148-600cb5c630e8ef758dead0f1jpeg-1200x800.jpg 1200w" sizes="(max-width: 1199px) 98vw, 1200px" /></a> <div class="card-section"><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.aldergrovestar.com/news/taxi-companies-lose-court-bid-to-quash-uber-lyft-approvals-in-british-columbia/"><h5 class="active">Taxi companies lose court bid to quash Uber, Lyft approvals in British Columbia</h5></a><p class="lead show-for-medium">Uber said in a statement that the ruling of the justice is clear and speaks for itself
+</p></div></div></div><!-- End - Single Card --><!-- Start - Single Card --><div class="column"><div class='card '><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.aldergrovestar.com/news/video-mission-drag-racer-scores-1st-career-win-sets-world-record-makes-history-in-2020/"><img src="https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24008404_web1_210122-MCR-Racecar-driver-sets-record-Justin-Bond_1.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="sd" srcset="https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24008404_web1_210122-MCR-Racecar-driver-sets-record-Justin-Bond_1.jpg 960w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24008404_web1_210122-MCR-Racecar-driver-sets-record-Justin-Bond_1-300x200.jpg 300w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24008404_web1_210122-MCR-Racecar-driver-sets-record-Justin-Bond_1-768x512.jpg 768w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24008404_web1_210122-MCR-Racecar-driver-sets-record-Justin-Bond_1-640x427.jpg 640w" sizes="(max-width: 1199px) 98vw, 960px" /></a> <div class="card-section"><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.aldergrovestar.com/news/video-mission-drag-racer-scores-1st-career-win-sets-world-record-makes-history-in-2020/"><h5 class="active">VIDEO: Mission drag racer scores 1st career win, sets world record, makes history in 2020</h5></a><p class="lead show-for-medium">Justin Bond, founder and owner of JBS Equipment Mission, has break-out year
+</p></div></div></div><!-- End - Single Card --></div>            </div>
+
+            <div class="small-12 large-4 module-most-read columns">
+                <div class="row">
+    <div class="small-12 module-trending story columns">
+        <h3 class="text-center">Most Read</h3>
+        <ul class="trending-maxi">
+                            <li>
+                <div id="post-150295" class="row story-list-item collapse">
+	<div class="small-12 medium-8 photo content columns">
+					<h4 class="count"></h4><h5><a onClick="__gaTracker('send','event','Recirculating Content','Click','News Most Read');" href="https://www.aldergrovestar.com/news/lottery-ticket-worth-4-2-million-purchased-in-aldergrove/">Lottery ticket worth $4.2 million purchased in Aldergrove</a></h5>
+				<p class="lead web show-for-medium hide-for-large">Lotto 6/49 numbers were drawn Saturday
+</p>	</div>
+			<div class="show-for-medium medium-4 columns">
+							<a onClick="__gaTracker('send','event','Recirculating Content','Click','News Most Read');" href="https://www.aldergrovestar.com/news/lottery-ticket-worth-4-2-million-purchased-in-aldergrove/"><img src="https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24010696_web1_210124-LAT-Aldergrove-Lotto-winner-file_1.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="Someone bought a lottery ticket worth $4.2 million in Aldergrove (file)" srcset="https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24010696_web1_210124-LAT-Aldergrove-Lotto-winner-file_1.jpg 1200w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24010696_web1_210124-LAT-Aldergrove-Lotto-winner-file_1-300x200.jpg 300w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24010696_web1_210124-LAT-Aldergrove-Lotto-winner-file_1-768x512.jpg 768w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24010696_web1_210124-LAT-Aldergrove-Lotto-winner-file_1-1024x683.jpg 1024w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24010696_web1_210124-LAT-Aldergrove-Lotto-winner-file_1-640x427.jpg 640w" sizes="(max-width: 1200px) 100vw, 1200px" /></a>
+					</div>
+	</div>
+            </li>
+                            <li>
+                <div id="post-150267" class="row story-list-item collapse">
+	<div class="small-12 medium-8 photo content columns">
+					<h4 class="count"></h4><h5><a onClick="__gaTracker('send','event','Recirculating Content','Click','News Most Read');" href="https://www.aldergrovestar.com/community/share-frosty-vista-of-mount-baker-by-langley-city-man/">SHARE: Frosty vista of Mount Baker by Langley City man</a></h5>
+				<p class="lead web show-for-medium hide-for-large">Send us your photo showing how you view Langley, and it could be featured in a future edition
+</p>	</div>
+			<div class="show-for-medium medium-4 columns">
+							<a onClick="__gaTracker('send','event','Recirculating Content','Click','News Most Read');" href="https://www.aldergrovestar.com/community/share-frosty-vista-of-mount-baker-by-langley-city-man/"><img src="https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24001275_web1_210122-LAT-ThroughYourLensNordal-._1.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="Dale Nordal photographed a frosty scene in late 2020. (Special to the Langley Advance Times)" srcset="https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24001275_web1_210122-LAT-ThroughYourLensNordal-._1.jpg 1200w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24001275_web1_210122-LAT-ThroughYourLensNordal-._1-300x200.jpg 300w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24001275_web1_210122-LAT-ThroughYourLensNordal-._1-768x512.jpg 768w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24001275_web1_210122-LAT-ThroughYourLensNordal-._1-1024x683.jpg 1024w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24001275_web1_210122-LAT-ThroughYourLensNordal-._1-640x427.jpg 640w" sizes="(max-width: 1200px) 100vw, 1200px" /></a>
+					</div>
+	</div>
+            </li>
+                            <li>
+                <div id="post-150269" class="row story-list-item collapse">
+	<div class="small-12 medium-8 photo content columns">
+					<h4 class="count"></h4><h5><a onClick="__gaTracker('send','event','Recirculating Content','Click','News Most Read');" href="https://www.aldergrovestar.com/news/crime-stoppers-most-wanted-for-the-week-of-jan-24/">CRIME STOPPERS: &#8216;Most wanted&#8217; for the week of Jan. 24</a></h5>
+				<p class="lead web show-for-medium hide-for-large">Crime Stoppers’ weekly list based on information provided by police investigators
+</p>	</div>
+			<div class="show-for-medium medium-4 columns">
+							<a onClick="__gaTracker('send','event','Recirculating Content','Click','News Most Read');" href="https://www.aldergrovestar.com/news/crime-stoppers-most-wanted-for-the-week-of-jan-24/"><img src="https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/23987819_web1_CRIMESTOPPERS.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="Police tape is shown in Toronto Tuesday, May 2, 2017. (Graeme Roy/The Canadian Press)" srcset="https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/23987819_web1_CRIMESTOPPERS.jpg 2048w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/23987819_web1_CRIMESTOPPERS-300x200.jpg 300w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/23987819_web1_CRIMESTOPPERS-768x512.jpg 768w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/23987819_web1_CRIMESTOPPERS-1024x683.jpg 1024w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/23987819_web1_CRIMESTOPPERS-640x427.jpg 640w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/23987819_web1_CRIMESTOPPERS-1200x800.jpg 1200w" sizes="(max-width: 1199px) 98vw, 1200px" /></a>
+					</div>
+	</div>
+            </li>
+                            <li>
+                <div id="post-150277" class="row story-list-item collapse">
+	<div class="small-12 medium-8 photo content columns">
+					<h4 class="count"></h4><h5><a onClick="__gaTracker('send','event','Recirculating Content','Click','News Most Read');" href="https://www.aldergrovestar.com/news/taxi-companies-lose-court-bid-to-quash-uber-lyft-approvals-in-british-columbia/">Taxi companies lose court bid to quash Uber, Lyft approvals in British Columbia</a></h5>
+				<p class="lead web show-for-medium hide-for-large">Uber said in a statement that the ruling of the justice is clear and speaks for itself
+</p>	</div>
+			<div class="show-for-medium medium-4 columns">
+							<a onClick="__gaTracker('send','event','Recirculating Content','Click','News Most Read');" href="https://www.aldergrovestar.com/news/taxi-companies-lose-court-bid-to-quash-uber-lyft-approvals-in-british-columbia/"><img src="https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24010094_web1_20210123180148-600cb5c630e8ef758dead0f1jpeg.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="An Uber driver&#146;s vehicle is seen after the company launched service, in Vancouver, Friday, Jan. 24, 2020. Several taxi companies have lost a court bid to run Uber and Lyft off the road in British Columbia. THE CANADIAN PRESS/Darryl Dyck" srcset="https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24010094_web1_20210123180148-600cb5c630e8ef758dead0f1jpeg.jpg 1280w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24010094_web1_20210123180148-600cb5c630e8ef758dead0f1jpeg-300x200.jpg 300w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24010094_web1_20210123180148-600cb5c630e8ef758dead0f1jpeg-768x512.jpg 768w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24010094_web1_20210123180148-600cb5c630e8ef758dead0f1jpeg-1024x682.jpg 1024w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24010094_web1_20210123180148-600cb5c630e8ef758dead0f1jpeg-640x427.jpg 640w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24010094_web1_20210123180148-600cb5c630e8ef758dead0f1jpeg-1200x800.jpg 1200w" sizes="(max-width: 1199px) 98vw, 1200px" /></a>
+					</div>
+	</div>
+            </li>
+                            <li>
+                <div id="post-150282" class="row story-list-item collapse">
+	<div class="small-12 medium-8 photo content columns">
+					<h4 class="count"></h4><h5><a onClick="__gaTracker('send','event','Recirculating Content','Click','News Most Read');" href="https://www.aldergrovestar.com/news/it-wasnt-called-covid-at-the-time-one-year-since-canadas-first-covid-19-case/">&#8216;It wasn&#8217;t called COVID at the time:&#8217; One year since Canada&#8217;s first COVID-19 case</a></h5>
+				<p class="lead web show-for-medium hide-for-large">The 56-year-old man was admitted to Toronto’s Sunnybrook Health Sciences Centre
+</p>	</div>
+			<div class="show-for-medium medium-4 columns">
+							<a onClick="__gaTracker('send','event','Recirculating Content','Click','News Most Read');" href="https://www.aldergrovestar.com/news/it-wasnt-called-covid-at-the-time-one-year-since-canadas-first-covid-19-case/"><img src="https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24010172_web1_20210122110132-45f2f544b8485fa7b5e404ea315be5ff4f0e048f516eb66eeccfd6e401d5ed0e.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="Dr. Jerome Leis and Dr. Lynfa Stroud are pictured at Sunnybrook Hospital in Toronto on Thursday, January 21, 2021.THE CANADIAN PRESS/Frank Gunn" srcset="https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24010172_web1_20210122110132-45f2f544b8485fa7b5e404ea315be5ff4f0e048f516eb66eeccfd6e401d5ed0e.jpg 1280w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24010172_web1_20210122110132-45f2f544b8485fa7b5e404ea315be5ff4f0e048f516eb66eeccfd6e401d5ed0e-300x195.jpg 300w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24010172_web1_20210122110132-45f2f544b8485fa7b5e404ea315be5ff4f0e048f516eb66eeccfd6e401d5ed0e-768x500.jpg 768w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24010172_web1_20210122110132-45f2f544b8485fa7b5e404ea315be5ff4f0e048f516eb66eeccfd6e401d5ed0e-1024x667.jpg 1024w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24010172_web1_20210122110132-45f2f544b8485fa7b5e404ea315be5ff4f0e048f516eb66eeccfd6e401d5ed0e-640x417.jpg 640w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24010172_web1_20210122110132-45f2f544b8485fa7b5e404ea315be5ff4f0e048f516eb66eeccfd6e401d5ed0e-1200x782.jpg 1200w" sizes="(max-width: 1199px) 98vw, 1200px" /></a>
+					</div>
+	</div>
+            </li>
+                            <li>
+                <div id="post-150262" class="row story-list-item collapse">
+	<div class="small-12 medium-8 photo content columns">
+					<h4 class="count"></h4><h5><a onClick="__gaTracker('send','event','Recirculating Content','Click','News Most Read');" href="https://www.aldergrovestar.com/trending-now/quiz-how-much-do-you-know-about-hockey-2/">QUIZ: How much do you know about hockey?</a></h5>
+				<p class="lead web show-for-medium hide-for-large">Test your knowledge of Canada’s national winter sport
+</p>	</div>
+			<div class="show-for-medium medium-4 columns">
+							<a onClick="__gaTracker('send','event','Recirculating Content','Click','News Most Read');" href="https://www.aldergrovestar.com/trending-now/quiz-how-much-do-you-know-about-hockey-2/"><img src="https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24009379_web1_200130-SUM-Hockey-summary_2.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="Terrance Josephson of the Princeton Posse, at left, and Tyson Conroy of the Summerland Steam clash during a Junior B hockey game at the Summerland Arena in the early spring of 2020. (John Arendt - Summerland Review)" srcset="https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24009379_web1_200130-SUM-Hockey-summary_2.jpg 2048w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24009379_web1_200130-SUM-Hockey-summary_2-300x203.jpg 300w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24009379_web1_200130-SUM-Hockey-summary_2-768x520.jpg 768w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24009379_web1_200130-SUM-Hockey-summary_2-1024x693.jpg 1024w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24009379_web1_200130-SUM-Hockey-summary_2-640x433.jpg 640w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24009379_web1_200130-SUM-Hockey-summary_2-1200x812.jpg 1200w" sizes="(max-width: 1199px) 98vw, 1200px" /></a>
+					</div>
+	</div>
+            </li>
+                            <li>
+                <div id="post-150292" class="row story-list-item collapse">
+	<div class="small-12 medium-8 photo content columns">
+					<h4 class="count"></h4><h5><a onClick="__gaTracker('send','event','Recirculating Content','Click','News Most Read');" href="https://www.aldergrovestar.com/news/top-doctor-urges-canadians-to-keep-up-with-covid-measures-even-as-vaccines-roll-out/">Top doctor urges Canadians to keep up with COVID measures, even as vaccines roll out</a></h5>
+				<p class="lead web show-for-medium hide-for-large">More than 776,606 vaccines have been administered so far
+</p>	</div>
+			<div class="show-for-medium medium-4 columns">
+							<a onClick="__gaTracker('send','event','Recirculating Content','Click','News Most Read');" href="https://www.aldergrovestar.com/news/top-doctor-urges-canadians-to-keep-up-with-covid-measures-even-as-vaccines-roll-out/"><img src="https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24010347_web1_CP115489144.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="Jennifer Cochrane, a Public Health Nurse with Prairie Mountain Health in Virden, administers the COVID-19 vaccine to Robert Farquhar with Westman Regional Laboratory, during the first day of immunizations at the Brandon COVID-19 vaccination supersite in Brandon, Man., on Monday, January 18, 2021. THE CANADIAN PRESS/Tim Smith - POOL" srcset="https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24010347_web1_CP115489144.jpg 1200w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24010347_web1_CP115489144-300x200.jpg 300w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24010347_web1_CP115489144-768x512.jpg 768w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24010347_web1_CP115489144-1024x683.jpg 1024w, https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/uploads/2021/01/24010347_web1_CP115489144-640x427.jpg 640w" sizes="(max-width: 1200px) 100vw, 1200px" /></a>
+					</div>
+	</div>
+            </li>
+                </ul>
+    </div>
+</div>            </div>
+        </div>
+    </div>
+</div>
+
+<!-- [post-block post_type='post' taxonomy='category' tax_term='home' taxonomy_posts_per_page='5' taxonomy_2='category' tax_2_term='home2' taxonomy_2_posts_per_page='8' tax_operator='AND' post_template='story-recirc' current_story_id='$currentID' reverse_chron='$reverse_chron'] -->
+<!--//*** Taboola article code ***//-->
+<div class="row">
+	<div class="small-12 columns">
+		<div class="row">
+            <div class="small-12 large-8 columns">
+                
+            <!-- taboola code -->
+                <div id="taboola-below-article-thumbnails"></div>
+                <script type="text/javascript">
+                window._taboola = window._taboola || [];
+                _taboola.push({
+                    mode: 'thumbnails-a',
+                    container: 'taboola-below-article-thumbnails',
+                    placement: 'Below Article Thumbnails',
+                    target_type: 'mix'
+                });
+                </script>
+            
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        </section>
+        <div id="footer-container">
+            <footer id="footer">
+                
+                
+<div id="bp-logo" class="row">
+
+    <div class="small-12 columns">
+ 
+    <!-- *** BEGIN LOGO *** -->
+        <div class="textwidget">
+            <a class="pub-logo-small day-1" href="https://www.aldergrovestar.com/"><svg id="Outline" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 408.94 51.81"><defs><style></style></defs><title></title><path class="bp-pub-logo" d="M58.32,2H71.49l6.16,49.85H68.9L67.57,40.78H60.21L59,51.84H51.32Zm5.81,7.7H64L61.13,33.5H66.8Z" transform="translate(-51.32 -1.01)"/><path class="bp-pub-logo" d="M82.4,2h9.1V44.14h11.62v7.7H82.4Z" transform="translate(-51.32 -1.01)"/><path class="bp-pub-logo" d="M108.44,2h7.91c15.26,0,16.73,9.8,16.73,24.92,0,14.42-1.19,24.92-15.26,24.92h-9.38Zm9.1,42.14c5.74-.07,6-2.17,6-17.29s-.28-17.08-6-17.15Z" transform="translate(-51.32 -1.01)"/><path class="bp-pub-logo" d="M139.66,2h20.58v7.7H148.76V22.44h8.47v8.12h-8.47V44.14h12v7.7H139.66Z" transform="translate(-51.32 -1.01)"/><path class="bp-pub-logo" d="M165.7,2h10.22c8.68,0,14.42,3.64,14.42,14.14,0,4.2-1.26,9.8-5.32,12.18l5.39,23.52h-9.17L177,30.42H174.8V51.84h-9.1Zm9.1,21.14h1.82c3.36,0,4.62-3.36,4.62-6.93,0-5.39-2-6.93-5-6.93h-1.4Z" transform="translate(-51.32 -1.01)"/><path class="bp-pub-logo" d="M211.06,19.78c0-2.31.56-11.06-3.36-11.06-2.24,0-3.92,2.1-3.92,18.13,0,16.38,1.54,18.27,4.34,18.27,3.43,0,3.71-6.86,3.71-9.24h-3.36V28.6h11.06V51.84h-3.85l-1.26-3.29c-1.4,2.1-4.06,4.27-7.21,4.27-9.73,0-13-9.52-13-25.9,0-19,5.74-25.9,13-25.9,5.88,0,12,2.8,12,15.54v3.22Z" transform="translate(-51.32 -1.01)"/><path class="bp-pub-logo" d="M225.48,2H235.7c8.68,0,14.42,3.64,14.42,14.14,0,4.2-1.26,9.8-5.32,12.18l5.39,23.52H241l-4.27-21.42h-2.17V51.84h-9.1Zm9.1,21.14h1.82c3.36,0,4.62-3.36,4.62-6.93,0-5.39-2-6.93-5-6.93h-1.4Z" transform="translate(-51.32 -1.01)"/><path class="bp-pub-logo" d="M267.34,1c8.05,0,13.3,6.23,13.3,25.9s-5.25,25.9-13.3,25.9S254,46.59,254,26.92,259.29,1,267.34,1ZM264,32.17c0,10.78,1.26,13,3.36,13s3.36-2.17,3.36-13V21.67c0-10.78-1.26-13-3.36-13s-3.36,2.17-3.36,13Z" transform="translate(-51.32 -1.01)"/><path class="bp-pub-logo" d="M283.93,2h8.89l4.27,35h.14l4.69-35h7.35l-7.49,49.85H291.35Z" transform="translate(-51.32 -1.01)"/><path class="bp-pub-logo" d="M313.89,2h20.58v7.7H323V22.44h8.47v8.12H323V44.14h12v7.7H313.89Z" transform="translate(-51.32 -1.01)"/><path class="bp-pub-logo" d="M361.14,37.42c0,2.8,0,7.7,3.92,7.7,3,0,4.06-2.8,4.06-4.83,0-8.89-16.52-10.92-16.52-25.69C352.6,7.1,356.66,1,364.36,1c8.19,0,11.34,6.23,11.55,15.19h-8.12c0-2.8,0-7.49-3.64-7.49-2.17,0-3.43,1.82-3.43,4.55,0,8.47,16.52,11.34,16.52,25.83,0,7.63-4.34,13.72-12.53,13.72C355,52.82,353,44.28,353,37.42Z" transform="translate(-51.32 -1.01)"/><path class="bp-pub-logo" d="M386.41,9.69h-7.84V2h24.78v7.7h-7.84V51.84h-9.1Z" transform="translate(-51.32 -1.01)"/><path class="bp-pub-logo" d="M411.47,2h13.16l6.16,49.85H422l-1.33-11.06h-7.35L412.1,51.84h-7.63Zm5.81,7.7h-.14l-2.87,23.8h5.67Z" transform="translate(-51.32 -1.01)"/><path class="bp-pub-logo" d="M435.55,2h10.22c8.68,0,14.42,3.64,14.42,14.14,0,4.2-1.26,9.8-5.32,12.18l5.39,23.52h-9.17l-4.27-21.42h-2.17V51.84h-9.1Zm9.1,21.14h1.82c3.36,0,4.62-3.36,4.62-6.93,0-5.39-2-6.93-5-6.93h-1.4Z" transform="translate(-51.32 -1.01)"/></svg></a>        </div>
+
+    <!-- *** END LOGO *** -->
+    </div>            
+        
+</div><!-- row -->
+
+<div id="bp-social-footer" class="row">
+    <div class="small-12 columns">
+                    
+        <div class="textwidget">
+            <ul class="social footer">
+	<li><a title="Follow us on Facebook" class="social fa fa-facebook-f" href="https://www.facebook.com/Aldergrove-Star-186177368124190/" target="_blank"></a></li>
+	<li><a title="Follow us on Twitter" class="social fa fa-twitter" href="https://twitter.com/AldergroveStar" target="_blank"></a></li>
+	<!--<li><a title="Follow us on Instagram" class="social fa fa-instagram" href="#"  target="_blank"></a></li>
+	 <li><a title="RSS Feed" class="social fa fa-rss" href="/feed/"></a></li> -->
+<li><a title="Submit a story" href="/submit/">
+            <img style="margin-bottom:0;width: 34px;height: 34px;" 
+            src="https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/assets/images/submit.png"></a>
+            </li>
+<li><a title="Impress TV" href="http://impresstv.blackpress.ca/" target="_blank">
+            <img style="margin-bottom:0;width: 34px;height: 34px;" 
+            src="https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/assets/images/ImpressTV.png"></a>
+            </li>
+</ul>        </div>
+
+    </div>
+</div><!-- row -->
+
+<div id="bp-site-map-title" class="row" >
+    <div class="small-12 columns" >
+                
+        <div class="textwidget" >        
+             <h4 class="text-center">Explore Aldergrove Star</h4>
+        </div>
+
+    </div>
+</div><!-- row -->   
+
+<!-- <div id="bp-site-map" class="row" > -->
+<div id="bp-site-map" class="small-12 column row" >
+    <!-- <div class="small-12 columns"> -->
+
+        <ul><li><a href="/news/">NEWS</a></li><li><a href="/sports/">SPORTS</a></li><li><a href="/trending-now/">TRENDING NOW</a></li><li><a href="/business/">BUSINESS</a></li><li><a href="/entertainment/">ENTERTAINMENT</a></li><li><a href="/life/">LIFE</a></li><li><a href="/community/">COMMUNITY</a></li><li><a href="/opinion/">OPINION</a></li><li><a href="/video/">VIDEOS</a></li><li><a href="/weather/">WEATHER</a></li><li><a href="/obituaries/">OBITUARIES</a></li><li><a href="//www.westcoasttraveller.com/" target="_blank">TRAVEL</a></li><li><a href="/marketplace/">MARKETPLACE</a></li><li><a href="/contests/">CONTESTS</a></li><li><a href="/contact-us/">CONTACT US</a></li></ul>                             
+
+    <!-- </div>  -->                        
+</div><!-- row -->
+
+<div id="bp-media-group" class="row" >
+    
+    <div class="small-12 columns">
+                
+        <div class="textwidget">
+            
+            <a href="//www.blackpress.ca/publications/" target="_blank">BLACK PRESS MEDIA</a>      
+           
+        </div>
+
+    </div>
+    
+    <div class="small-12 columns menu-footer-container">
+        <ul id="menu-footer" class="menu" >
+            
+                     
+                    
+                    <li class="menu-item" >
+                        <a  target="_blank" href="//www.abbynews.com/">Abbotsford News</a>
+                    </li>
+                
+                     
+                    
+                    <li class="menu-item" >
+                        <a  target="_blank" href="//www.theprogress.com/">Chilliwack Progress</a>
+                    </li>
+                
+                     
+                    
+                    <li class="menu-item" >
+                        <a  target="_blank" href="//www.missioncityrecord.com/">Mission City Record</a>
+                    </li>
+                
+                     
+                    
+                    <li class="menu-item" >
+                        <a  target="_blank" href="//www.hopestandard.com/">Hope Standard</a>
+                    </li>
+                
+                     
+                    
+                    <li class="menu-item" >
+                        <a  target="_blank" href="//www.agassizharrisonobserver.com/">Agassiz Harrison Observer</a>
+                    </li>
+                
+                    
+        
+        </ul>
+        
+    </div>
+
+    <!-- black press media logo-->
+    <div class="small-12 columns">
+        <div class="textwidget">
+                   
+            <a href="//www.blackpress.ca/publications/">
+                        <img style="max-width: 300px;padding-top: 2rem;" src="https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/assets/images/BlackPressMedia.svg" alt="Black Press Media" ></a>        </div>
+
+    </div>
+
+
+</div><!-- row -->
+
+
+<div id="bp-terms" class="row" >
+    
+    <div class="small-12 columns">
+        
+        <ul id="menu-footer" class="menu">
+            
+            <li class="menu-item"><a target="_blank" href="https://www.aldergrovestar.com/contact-us/">Contact Us</a></li><li class="menu-item"><a target="_blank" href="https://www.aldergrovestar.com/our-team/">Our Team</a></li><li class="menu-item"><a target="_blank" href="https://www.aldergrovestar.com/privacy-policy/">Privacy Policy</a></li><li class="menu-item"><a target="_blank" href="https://www.aldergrovestar.com/terms-of-use/">Terms of use</a></li><li class="menu-item"><a target="_blank" href="https://www.aldergrovestar.com/site-map/">Site Map</a></li><li class="menu-item"><a target="_blank" href="https://www.aldergrovestar.com/./local-news/">Aldergrove News</a></li><li class="menu-item"><a target="_blank" href="https://www.aldergrovestar.com/weather/">Aldergrove Weather</a></li><li class="menu-item"><a target="_blank" href="//www.bcclassifieds.com/?sfid=1">Aldergrove Classifieds</a></li>      
+        </ul>
+
+    </div>
+
+    <div class="small-12 columns">
+                
+        <div class="textwidget">
+            &copy; 2021, <a href="#"></a>Aldergrove Star and <a href="http://www.blackpress.ca/">Black Press Group Ltd.</a>
+
+
+        </div>
+
+    </div>
+
+</div><!-- row -->
+
+                            </footer>
+        </div>
+
+        
+
+
+                    <style type="text/css">
+                        div.aw-widget-36hour-inner a.aw-arrow {
+                            z-index: 1 !important;
+                        }
+                                                            
+                        div.aw-widget-current [class*="bg-"] {
+                            background: none !important;
+                        }
+
+                        div.aw-current-weather-inner h3 {
+                            display: none;
+                        }
+
+                        div.aw-widget-current-inner div.aw-widget-content {
+                            border: none !important;
+                        }
+
+                        div.aw-widget-current-inner div.aw-widget-content.bg-cl, 
+                        div.aw-widget-current-inner div.aw-widget-content.bg-cl a.aw-current-weather, 
+                        div.aw-widget-current-inner div.aw-widget-content.bg-s, 
+                        div.aw-widget-current-inner div.aw-widget-content.bg-s a.aw-current-weather {
+                                color: #000 !important;
+                        }
+
+                        div.aw-widget-current-inner div.aw-widget-content a.aw-current-weather p span.aw-temperature-today b {
+                            font-weight: 600 !important;
+                            padding-left: 40px !important;
+                            font-size: 1.5rem !important;
+                        }
+
+                        div.aw-widget-current-inner div.aw-widget-content a.aw-current-weather p span.aw-temperature-today b:hover{
+                            color: #940c19;
+                        
+                        }
+
+                        div.aw-widget-current-inner div.aw-widget-content a.aw-current-weather p time {
+                            display: none !important;
+                        }
+
+                        div.aw-widget-current-inner div.aw-widget-content a.aw-current-weather p span.aw-weather-description {
+                            display: none !important;
+                        }
+                        
+                        div.aw-widget-current-inner a.aw-toggle {
+                            display: none !important;
+                        }
+
+                        div#weatherContainer {
+                            padding-top: 10px;
+                            padding-right: 10px;
+                        }
+
+                        .lt-106 div.aw-widget-current-inner div.aw-widget-content a.aw-current-weather span.aw-icon {
+                            background-position: 0 0 !important;
+                        }
+
+                        .lt-115 div.aw-widget-current-inner div.aw-widget-content a.aw-current-weather span.aw-icon {
+                            z-index: 1 !important;
+                        }
+
+                        .lt-479 div.aw-widget-current-inner div.aw-widget-content a.aw-current-weather p {
+                            z-index: 1 !important;
+                        }
+
+                        @media screen and (max-width: 39.9375em) {
+                            div.aw-widget-current-inner div.aw-widget-content a.aw-current-weather {
+                                color: #fff !important;
+                            }
+
+                            div#weatherContainer {
+                                padding-top: 10px;
+                            }
+
+                            div.aw-widget-current-inner div.aw-widget-content.bg-cl, 
+                            div.aw-widget-current-inner div.aw-widget-content.bg-cl a.aw-current-weather, 
+                            div.aw-widget-current-inner div.aw-widget-content.bg-s, 
+                            div.aw-widget-current-inner div.aw-widget-content.bg-s a.aw-current-weather {
+                                color: #fff !important;
+                            }
+
+                        }
+
+
+                        .lt-780 div.aw-widget-36hour-inner div.aw-more-block.aw-more-block-first {
+                            display: none;
+                        }
+                        
+                        .lt-780 div.aw-widget-36hour-inner div.aw-more-sep-3 {
+                            display: none;
+                        }
+                        
+                    </style>
+                <script type='text/javascript' src='//content.jwplatform.com/libraries/yrJQMy68.js?ver=1.0.0'></script>
+<script type='text/javascript' src='https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/assets/components/featherlight/featherlight.js?ver=1.6.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var foundation = {"is_front_page":"0"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/dest/javascript/foundation.min.js?ver=2.36.59'></script>
+<script type='text/javascript' src='https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/dest/javascript/what-input/what-input.min.js?ver=4.0.3'></script>
+<script type='text/javascript' src='https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/dest/javascript/frame_resize_2.0.min.js?ver=2.36.59'></script>
+<script type='text/javascript' src='https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-includes/js/comment-reply.min.js?ver=5.2.9'></script>
+<script type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js?ver=1.9.0'></script>
+<script type='text/javascript' src='https://g13722vz9nn3md7iuswqypkh-wpengine.netdna-ssl.com/wp-includes/js/wp-embed.min.js?ver=5.2.9'></script>
+<!-- Start Catfish ad -->
+<div style="position:fixed;bottom:0px;width:100%;background:white;">
+<div class='code-block code-block-17' style='margin: 8px 0; clear: both;'>
+<!-- Reserved for Catfish ad. See display call in Footer. -->
+<div id="div-gpt-17" class="gpt-ad" style="margin: 0 auto;width:320px;">
+<script type='text/javascript'>
+    googletag.cmd.push(function() {googletag.display('div-gpt-17');gptRefreshSlots.push(17);});
+</script>
+</div></div>
+</div>
+<!-- End Catfish ad -->
+
+
+<!-- Start Interstitial ad -->
+<div id='page-cover' style="z-index:999999; text-align:center;background-color:#FFF; position:fixed; top:0; left:0; width:100%; height:100%;padding-top: 25%;padding-left: 10px;padding-right: 10px;display: none;">
+<div class='code-block code-block-18' style='margin: 8px 0; clear: both;'>
+<!-- Reserved for Interstitial ad. See display call in Footer. -->
+<div id="div-gpt-18" class="gpt-ad">
+<script type='text/javascript'>
+  googletag.cmd.push(function() { googletag.display('div-gpt-18');gptRefreshSlots.push(18);googletag.pubads().addEventListener('slotRenderEnded', function(event) {
+                if (event.slot === gptAdSlots[18]) {
+                    if(event.isEmpty) {
+                        document.getElementById("page-cover").style.display = 'none';
+                    }
+                    else{
+                        console.log("setting timer")
+                    	//delay modal window from opening to allow ad tags to render; the above listener means the tags loaded, not necessarily showing the creative.
+                    	var delayModal = window.setTimeout(
+                    		function(){var timeoutID = window.setTimeout(function(){document.getElementById("page-cover").style.display = 'none';},8000);document.getElementById("page-cover").style.display = 'block';}
+                    	,5000);
+                    }
+                }
+            });
+  });
+  $(document).ready(function() {
+    	$("#close-interstitial").click(function() {
+        	document.getElementById("page-cover").style.display = 'none';
+    	});
+	}); 
+</script>
+</div>
+<div><a id="close-interstitial" href="#">Close ad</a></div></div>
+</div>
+<!-- End Interstitial ad -->
+
+
+<!-- Start vendor library call -->
+<!-- /1036919/vendor_library_0 -->
+<div id='div-gpt-21' style='height:1px; width:1px;'>
+<script>
+googletag.cmd.push(function() { googletag.display('div-gpt-21');gptRefreshSlots.push(21); });
+</script>
+</div>
+<!-- End vendor library call -->
+<script type='text/javascript'>
+function refreshGPTAdSlots() {
+    googletag.cmd.push(function() {
+        for (i = 0; i < gptAdSlots.length; i++) { 
+            if(gptRefreshSlots.indexOf(i) == -1){                
+                googletag.destroySlots([gptAdSlots[i]]);
+                console.log('destroyed ' + i);
+            }
+        }
+        googletag.pubads().refresh(gptAdSlots);
+    });
+  }
+</script>
+
+            <!-- taboola code -->
+                <script type="text/javascript">
+                window._taboola = window._taboola || [];
+                _taboola.push({flush: true});
+            </script>
+            
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam-cell.nr-data.net","licenseKey":"e4824da135","applicationID":"96617038","transactionName":"NFVWZ0YCCERXAkxeXQ0fdVBACglZGRJRWVUPVQ==","queueTime":0,"applicationTime":396,"atts":"GBJVEQ4YG0o=","errorBeacon":"bam-cell.nr-data.net","agent":""}</script></body>
+</html>

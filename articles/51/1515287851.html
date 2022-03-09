@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge"><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"UgIOVVBWGwAGVlRXBwA=",licenseKey:"130b0776b5",applicationID:"3625501"};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o||e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({1:[function(t,e,n){function r(t){try{s.console&&console.log(t)}catch(e){}}var o,i=t("ee"),a=t(18),s={};try{o=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(s.console=!0,o.indexOf("dev")!==-1&&(s.dev=!0),o.indexOf("nr_dev")!==-1&&(s.nrDev=!0))}catch(c){}s.nrDev&&i.on("internal-error",function(t){r(t.stack)}),s.dev&&i.on("fn-err",function(t,e,n){r(n.stack)}),s.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(s,function(t,e){return t}).join(", ")))},{}],2:[function(t,e,n){function r(t,e,n,r,s){try{p?p-=1:o(s||new UncaughtException(t,e,n),!0)}catch(f){try{i("ierr",[f,c.now(),!0])}catch(d){}}return"function"==typeof u&&u.apply(this,a(arguments))}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function o(t,e){var n=e?null:c.now();i("err",[t,n])}var i=t("handle"),a=t(19),s=t("ee"),c=t("loader"),f=t("gos"),u=window.onerror,d=!1,l="nr@seenError",p=0;c.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(h){"stack"in h&&(t(6),t(5),"addEventListener"in window&&t(3),c.xhrWrappable&&t(7),d=!0)}s.on("fn-start",function(t,e,n){d&&(p+=1)}),s.on("fn-err",function(t,e,n){d&&!n[l]&&(f(n,l,function(){return!0}),this.thrown=!0,o(n))}),s.on("fn-end",function(){d&&!this.thrown&&p>0&&(p-=1)}),s.on("internal-error",function(t){i("ierr",[t,c.now(),!0])})},{}],3:[function(t,e,n){function r(t){for(var e=t;e&&!e.hasOwnProperty(u);)e=Object.getPrototypeOf(e);e&&o(e)}function o(t){s.inPlace(t,[u,d],"-",i)}function i(t,e){return t[1]}var a=t("ee").get("events"),s=t("wrap-function")(a,!0),c=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";e.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(o(window),o(f.prototype)),a.on(u+"-start",function(t,e){var n=t[1],r=c(n,"nr@wrapped",function(){function t(){if("function"==typeof n.handleEvent)return n.handleEvent.apply(n,arguments)}var e={object:t,"function":n}[typeof n];return e?s(e,"fn-",null,e.name||"anonymous"):n});this.wrapped=t[1]=r}),a.on(d+"-start",function(t){t[1]=this.wrapped||t[1]})},{}],4:[function(t,e,n){function r(t,e,n){var r=t[e];"function"==typeof r&&(t[e]=function(){var t=i(arguments),e={};o.emit(n+"before-start",[t],e);var a;e[m]&&e[m].dt&&(a=e[m].dt);var s=r.apply(this,t);return o.emit(n+"start",[t,a],s),s.then(function(t){return o.emit(n+"end",[null,t],s),t},function(t){throw o.emit(n+"end",[t],s),t})})}var o=t("ee").get("fetch"),i=t(19),a=t(18);e.exports=o;var s=window,c="fetch-",f=c+"body-",u=["arrayBuffer","blob","json","text","formData"],d=s.Request,l=s.Response,p=s.fetch,h="prototype",m="nr@context";d&&l&&p&&(a(u,function(t,e){r(d[h],e,f),r(l[h],e,f)}),r(s,"fetch",c),o.on(c+"end",function(t,e){var n=this;if(e){var r=e.headers.get("content-length");null!==r&&(n.rxSize=r),o.emit(c+"done",[null,e],n)}else o.emit(c+"done",[t],n)}))},{}],5:[function(t,e,n){var r=t("ee").get("raf"),o=t("wrap-function")(r),i="equestAnimationFrame";e.exports=r,o.inPlace(window,["r"+i,"mozR"+i,"webkitR"+i,"msR"+i],"raf-"),r.on("raf-start",function(t){t[0]=o(t[0],"fn-")})},{}],6:[function(t,e,n){function r(t,e,n){t[0]=a(t[0],"fn-",null,n)}function o(t,e,n){this.method=n,this.timerDuration=isNaN(t[1])?0:+t[1],t[0]=a(t[0],"fn-",this,n)}var i=t("ee").get("timer"),a=t("wrap-function")(i),s="setTimeout",c="setInterval",f="clearTimeout",u="-start",d="-";e.exports=i,a.inPlace(window,[s,"setImmediate"],s+d),a.inPlace(window,[c],c+d),a.inPlace(window,[f,"clearImmediate"],f+d),i.on(c+u,r),i.on(s+u,o)},{}],7:[function(t,e,n){function r(t,e){d.inPlace(e,["onreadystatechange"],"fn-",s)}function o(){var t=this,e=u.context(t);t.readyState>3&&!e.resolved&&(e.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,w,"fn-",s)}function i(t){y.push(t),h&&(b?b.then(a):v?v(a):(E=-E,O.data=E))}function a(){for(var t=0;t<y.length;t++)r([],y[t]);y.length&&(y=[])}function s(t,e){return e}function c(t,e){for(var n in t)e[n]=t[n];return e}t(3);var f=t("ee"),u=f.get("xhr"),d=t("wrap-function")(u),l=NREUM.o,p=l.XHR,h=l.MO,m=l.PR,v=l.SI,g="readystatechange",w=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],y=[];e.exports=u;var x=window.XMLHttpRequest=function(t){var e=new p(t);try{u.emit("new-xhr",[e],e),e.addEventListener(g,o,!1)}catch(n){try{u.emit("internal-error",[n])}catch(r){}}return e};if(c(p,x),x.prototype=p.prototype,d.inPlace(x.prototype,["open","send"],"-xhr-",s),u.on("send-xhr-start",function(t,e){r(t,e),i(e)}),u.on("open-xhr-start",r),h){var b=m&&m.resolve();if(!v&&!m){var E=1,O=document.createTextNode(E);new h(a).observe(O,{characterData:!0})}}else f.on("fn-end",function(t){t[0]&&t[0].type===g||a()})},{}],8:[function(t,e,n){function r(t){if(!i(t))return null;var e=window.NREUM;if(!e.loader_config)return null;var n=(e.loader_config.accountID||"").toString()||null,r=(e.loader_config.agentID||"").toString()||null,s=(e.loader_config.trustKey||"").toString()||null;if(!n||!r)return null;var c=a.generateCatId(),f=a.generateCatId(),u=Date.now(),d=o(c,f,u,n,r,s);return{header:d,guid:c,traceId:f,timestamp:u}}function o(t,e,n,r,o,i){var a="btoa"in window&&"function"==typeof window.btoa;if(!a)return null;var s={v:[0,1],d:{ty:"Browser",ac:r,ap:o,id:t,tr:e,ti:n}};return i&&r!==i&&(s.d.tk=i),btoa(JSON.stringify(s))}function i(t){var e=!1,n=!1,r={};if("init"in NREUM&&"distributed_tracing"in NREUM.init&&(r=NREUM.init.distributed_tracing,n=!!r.enabled),n)if(t.sameOrigin)e=!0;else if(r.allowed_origins instanceof Array)for(var o=0;o<r.allowed_origins.length;o++){var i=s(r.allowed_origins[o]);if(t.hostname===i.hostname&&t.protocol===i.protocol&&t.port===i.port){e=!0;break}}return n&&e}var a=t(16),s=t(10);e.exports={generateTracePayload:r,shouldGenerateTrace:i}},{}],9:[function(t,e,n){function r(t){var e=this.params,n=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;r<l;r++)t.removeEventListener(d[r],this.listener,!1);e.aborted||(n.duration=a.now()-this.startTime,this.loadCaptureCalled||4!==t.readyState?null==e.status&&(e.status=0):i(this,t),n.cbTime=this.cbTime,u.emit("xhr-done",[t],t),s("xhr",[e,n,this.startTime]))}}function o(t,e){var n=c(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.parsedOrigin=c(e),t.sameOrigin=t.parsedOrigin.sameOrigin}function i(t,e){t.params.status=e.status;var n=v(e,t.lastSize);if(n&&(t.metrics.rxSize=n),t.sameOrigin){var r=e.getResponseHeader("X-NewRelic-App-Data");r&&(t.params.cat=r.split(", ").pop())}t.loadCaptureCalled=!0}var a=t("loader");if(a.xhrWrappable){var s=t("handle"),c=t(10),f=t(8).generateTracePayload,u=t("ee"),d=["load","error","abort","timeout"],l=d.length,p=t("id"),h=t(14),m=t(13),v=t(11),g=window.XMLHttpRequest;a.features.xhr=!0,t(7),t(4),u.on("new-xhr",function(t){var e=this;e.totalCbs=0,e.called=0,e.cbTime=0,e.end=r,e.ended=!1,e.xhrGuids={},e.lastSize=null,e.loadCaptureCalled=!1,t.addEventListener("load",function(n){i(e,t)},!1),h&&(h>34||h<10)||window.opera||t.addEventListener("progress",function(t){e.lastSize=t.loaded},!1)}),u.on("open-xhr-start",function(t){this.params={method:t[0]},o(this,t[1]),this.metrics={}}),u.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid);var n=f(this.parsedOrigin);n&&n.header&&(e.setRequestHeader("newrelic",n.header),this.dt=n)}),u.on("send-xhr-start",function(t,e){var n=this.metrics,r=t[0],o=this;if(n&&r){var i=m(r);i&&(n.txSize=i)}this.startTime=a.now(),this.listener=function(t){try{"abort"!==t.type||o.loadCaptureCalled||(o.params.aborted=!0),("load"!==t.type||o.called===o.totalCbs&&(o.onloadCalled||"function"!=typeof e.onload))&&o.end(e)}catch(n){try{u.emit("internal-error",[n])}catch(r){}}};for(var s=0;s<l;s++)e.addEventListener(d[s],this.listener,!1)}),u.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),u.on("xhr-load-added",function(t,e){var n=""+p(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),u.on("xhr-load-removed",function(t,e){var n=""+p(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),u.on("addEventListener-end",function(t,e){e instanceof g&&"load"===t[0]&&u.emit("xhr-load-added",[t[1],t[2]],e)}),u.on("removeEventListener-end",function(t,e){e instanceof g&&"load"===t[0]&&u.emit("xhr-load-removed",[t[1],t[2]],e)}),u.on("fn-start",function(t,e,n){e instanceof g&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=a.now()))}),u.on("fn-end",function(t,e){this.xhrCbStart&&u.emit("xhr-cb-time",[a.now()-this.xhrCbStart,this.onload,e],e)}),u.on("fetch-before-start",function(t){var e,n=t[1]||{};"string"==typeof t[0]?e=t[0]:t[0]&&t[0].url&&(e=t[0].url),e&&(this.parsedOrigin=c(e),this.sameOrigin=this.parsedOrigin.sameOrigin);var r=f(this.parsedOrigin);if(r&&r.header){var o=r.header;if("string"==typeof t[0]){var i={};for(var a in n)i[a]=n[a];i.headers=new Headers(n.headers||{}),i.headers.set("newrelic",o),this.dt=r,t.length>1?t[1]=i:t.push(i)}else t[0]&&t[0].headers&&(t[0].headers.append("newrelic",o),this.dt=r)}})}},{}],10:[function(t,e,n){var r={};e.exports=function(t){if(t in r)return r[t];var e=document.createElement("a"),n=window.location,o={};e.href=t,o.port=e.port;var i=e.href.split("://");!o.port&&i[1]&&(o.port=i[1].split("/")[0].split("@").pop().split(":")[1]),o.port&&"0"!==o.port||(o.port="https"===i[0]?"443":"80"),o.hostname=e.hostname||n.hostname,o.pathname=e.pathname,o.protocol=i[0],"/"!==o.pathname.charAt(0)&&(o.pathname="/"+o.pathname);var a=!e.protocol||":"===e.protocol||e.protocol===n.protocol,s=e.hostname===document.domain&&e.port===n.port;return o.sameOrigin=a&&(!e.hostname||s),"/"===o.pathname&&(r[t]=o),o}},{}],11:[function(t,e,n){function r(t,e){var n=t.responseType;return"json"===n&&null!==e?e:"arraybuffer"===n||"blob"===n||"json"===n?o(t.response):"text"===n||"document"===n||""===n||void 0===n?o(t.responseText):void 0}var o=t(13);e.exports=r},{}],12:[function(t,e,n){function r(){}function o(t,e,n){return function(){return i(t,[f.now()].concat(s(arguments)),e?null:this,n),e?void 0:this}}var i=t("handle"),a=t(18),s=t(19),c=t("ee").get("tracer"),f=t("loader"),u=NREUM;"undefined"==typeof window.newrelic&&(newrelic=u);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",p=l+"ixn-";a(d,function(t,e){u[e]=o(l+e,!0,"api")}),u.addPageAction=o(l+"addPageAction",!0),u.setCurrentRouteName=o(l+"routeName",!0),e.exports=newrelic,u.interaction=function(){return(new r).get()};var h=r.prototype={createTracer:function(t,e){var n={},r=this,o="function"==typeof e;return i(p+"tracer",[f.now(),t,n],r),function(){if(c.emit((o?"":"no-")+"fn-start",[f.now(),r,o],n),o)try{return e.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],n),t}finally{c.emit("fn-end",[f.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){h[e]=o(p+e)}),newrelic.noticeError=function(t,e){"string"==typeof t&&(t=new Error(t)),i("err",[t,f.now(),!1,e])}},{}],13:[function(t,e,n){e.exports=function(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(e){return}}}},{}],14:[function(t,e,n){var r=0,o=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);o&&(r=+o[1]),e.exports=r},{}],15:[function(t,e,n){function r(t,e){var n=t.getEntries();n.forEach(function(t){"first-paint"===t.name?c("timing",["fp",Math.floor(t.startTime)]):"first-contentful-paint"===t.name&&c("timing",["fcp",Math.floor(t.startTime)])})}function o(t,e){var n=t.getEntries();n.length>0&&c("lcp",[n[n.length-1]])}function i(t){if(t instanceof u&&!l){var e,n=Math.round(t.timeStamp);e=n>1e12?Date.now()-n:f.now()-n,l=!0,c("timing",["fi",n,{type:t.type,fid:e}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var a,s,c=t("handle"),f=t("loader"),u=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){a=new PerformanceObserver(r),s=new PerformanceObserver(o);try{a.observe({entryTypes:["paint"]}),s.observe({entryTypes:["largest-contentful-paint"]})}catch(d){}}if("addEventListener"in document){var l=!1,p=["click","keydown","mousedown","pointerdown","touchstart"];p.forEach(function(t){document.addEventListener(t,i,!1)})}}},{}],16:[function(t,e,n){function r(){function t(){return e?15&e[n++]:16*Math.random()|0}var e=null,n=0,r=window.crypto||window.msCrypto;r&&r.getRandomValues&&(e=r.getRandomValues(new Uint8Array(31)));for(var o,i="xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx",a="",s=0;s<i.length;s++)o=i[s],"x"===o?a+=t().toString(16):"y"===o?(o=3&t()|8,a+=o.toString(16)):a+=o;return a}function o(){function t(){return e?15&e[n++]:16*Math.random()|0}var e=null,n=0,r=window.crypto||window.msCrypto;r&&r.getRandomValues&&Uint8Array&&(e=r.getRandomValues(new Uint8Array(31)));for(var o=[],i=0;i<16;i++)o.push(t().toString(16));return o.join("")}e.exports={generateUuid:r,generateCatId:o}},{}],17:[function(t,e,n){function r(t,e){if(!o)return!1;if(t!==o)return!1;if(!e)return!0;if(!i)return!1;for(var n=i.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var o=null,i=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var s=navigator.userAgent,c=s.match(a);c&&s.indexOf("Chrome")===-1&&s.indexOf("Chromium")===-1&&(o="Safari",i=c[1])}e.exports={agent:o,version:i,match:r}},{}],18:[function(t,e,n){function r(t,e){var n=[],r="",i=0;for(r in t)o.call(t,r)&&(n[i]=e(r,t[r]),i+=1);return n}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],19:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(o<0?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=r},{}],20:[function(t,e,n){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(t,e,n){function r(){}function o(t){function e(t){return t&&t instanceof r?t:t?c(t,s,i):i()}function n(n,r,o,i){if(!l.aborted||i){t&&t(n,r,o);for(var a=e(o),s=m(n),c=s.length,f=0;f<c;f++)s[f].apply(a,r);var d=u[y[n]];return d&&d.push([x,n,r,a]),a}}function p(t,e){w[t]=m(t).concat(e)}function h(t,e){var n=w[t];if(n)for(var r=0;r<n.length;r++)n[r]===e&&n.splice(r,1)}function m(t){return w[t]||[]}function v(t){return d[t]=d[t]||o(n)}function g(t,e){f(t,function(t,n){e=e||"feature",y[n]=e,e in u||(u[e]=[])})}var w={},y={},x={on:p,addEventListener:p,removeEventListener:h,emit:n,get:v,listeners:m,context:e,buffer:g,abort:a,aborted:!1};return x}function i(){return new r}function a(){(u.api||u.feature)&&(l.aborted=!0,u=l.backlog={})}var s="nr@context",c=t("gos"),f=t(18),u={},d={},l=e.exports=o();l.backlog=u},{}],gos:[function(t,e,n){function r(t,e,n){if(o.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return t[e]=r,r}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){o.buffer([t],r),o.emit(t,e,n)}var o=t("ee").get("handle");e.exports=r,r.ee=o},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,i,function(){return o++})}var o=1,i="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!E++){var t=b.info=NREUM.info,e=p.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&e))return u.abort();f(y,function(e,n){t[e]||(t[e]=n)}),c("mark",["onload",a()+b.offset],null,"api");var n=p.createElement("script");n.src="https://"+t.agent,e.parentNode.insertBefore(n,e)}}function o(){"complete"===p.readyState&&i()}function i(){c("mark",["domContent",a()+b.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(s=Math.max((new Date).getTime(),s))-b.offset}var s=(new Date).getTime(),c=t("handle"),f=t(18),u=t("ee"),d=t(17),l=window,p=l.document,h="addEventListener",m="attachEvent",v=l.XMLHttpRequest,g=v&&v.prototype;NREUM.o={ST:setTimeout,SI:l.setImmediate,CT:clearTimeout,XHR:v,REQ:l.Request,EV:l.Event,PR:l.Promise,MO:l.MutationObserver};var w=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1163.min.js"},x=v&&g&&g[h]&&!/CriOS/.test(navigator.userAgent),b=e.exports={offset:s,now:a,origin:w,features:{},xhrWrappable:x,userAgent:d};t(12),t(15),p[h]?(p[h]("DOMContentLoaded",i,!1),l[h]("load",r,!1)):(p[m]("onreadystatechange",o),l[m]("onload",r)),c("mark",["firstbyte",s],null,"api");var E=0,O=t(20)},{}],"wrap-function":[function(t,e,n){function r(t){return!(t&&t instanceof Function&&t.apply&&!t[a])}var o=t("ee"),i=t(19),a="nr@original",s=Object.prototype.hasOwnProperty,c=!1;e.exports=function(t,e){function n(t,e,n,o){function nrWrapper(){var r,a,s,c;try{a=this,r=i(arguments),s="function"==typeof n?n(r,a):n||{}}catch(f){l([f,"",[r,a,o],s])}u(e+"start",[r,a,o],s);try{return c=t.apply(a,r)}catch(d){throw u(e+"err",[r,a,d],s),d}finally{u(e+"end",[r,a,c],s)}}return r(t)?t:(e||(e=""),nrWrapper[a]=t,d(t,nrWrapper),nrWrapper)}function f(t,e,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<e.length;c++)s=e[c],a=t[s],r(a)||(t[s]=n(a,f?s+o:o,i,s))}function u(n,r,o){if(!c||e){var i=c;c=!0;try{t.emit(n,r,o,e)}catch(a){l([a,n,r,o])}c=i}}function d(t,e){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(t);return n.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(r){l([r])}for(var o in t)s.call(t,o)&&(e[o]=t[o]);return e}function l(e){try{t.emit("internal-error",e)}catch(n){}}return t||(t=o),n.inPlace=f,n.flag=a,n}},{}]},{},["loader",2,9]);</script><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","queueTime":0,"licenseKey":"130b0776b5","agent":"","transactionName":"MQEDYUNZWUUDUBAMDQhLJ0BfW0NfDV1LBBIWShJAU1lHRhEdFxEQEwcVQENdGUALVhMWTAAWDltFXVlSWGMRBw4PBwBBWFdZYAtWE0sFAxA=","applicationID":"3625501","errorBeacon":"bam.nr-data.net","applicationTime":21}</script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>
+	Katastrofa samolotu w Stambule – Boeing 737 po wylądowaniu wypadł z pasa i rozpadł się na części. Trzy ofiary śmiertelne
+</title>
+	<meta name="description" content="
+	
+		Turecka prasa podała, że wśród pasażerów było 12 dzieci.
+	
+">
+	<link rel="canonical" href="https://wpolityce.pl/swiat/485818-katastrofa-samolotu-w-stambule-trzy-ofiary-smiertelne">
+	<link rel="shortcut icon" href="//static.wpolityce.pl/img/favicon.ico" type="image/x-icon">
+	<meta class="breakpoints">
+
+	<!--[if lt IE 10]>
+		<style>
+			.adunit-holder:before, .fcb:before, .box-col-3.fog-bottom:after, .box-col-5.fog-bottom:after, .area-col-3.fog-bottom:after {
+				background: url(//static.wpolityce.pl/img/gradient.png) repeat-x 0 0;
+				display: block;
+			}
+
+			.box-col-3.holder-col-3.fog-bottom:after, .box-col-5.fog-bottom:after {
+				bottom: -42px;
+			}
+
+			.box-col-3-light.fog-bottom:after {
+				background: none;
+			}
+		</style>
+	<![endif]-->
+
+	<script type="application/ld+json">
+		{
+			"@context" : "http://schema.org",
+			"@type" : "WebSite",
+			"name" : "wPolityce.pl",
+			"url" : "https://wpolityce.pl/swiat/485818-katastrofa-samolotu-w-stambule-trzy-ofiary-smiertelne"
+		}
+	</script>
+
+	<script type="text/javascript">(function(){function t(t,e,n,i,s,c,p,o,r){this.name=e,this.src=n,this.type_=i,this.isAsync=s,this.isInline=c,this.require=p,this.consistsOf=o,this.extra=r,this.snippy=t,this.state="pending",this.preload()}function e(){this.snippets={},this.executed={},this.protocol=document.location.protocol,this.documentHead=document.getElementsByTagName("head")[0],this.isExecutingAsyncSnippets=!1,this.asyncSnippetsExecutionQueue=[],this.executionFunctions={"text/javascript":n,"text/css":i}}function n(t,e){script=document.createElement("script"),e.isInline?(noRun=document.getElementById("snippy-"+e.name),script.innerHTML=noRun.innerHTML,script.type=e.type_,e.markExecuted(),e.snippy.documentHead.appendChild(script)):e.isAsync?(script.onload=function(t){return function(){e.markExecuted(),t.snippy.queueAsyncSnippetExecution()}}(e),script.onerror=function(t){return function(n,i,s,c,p){return msg="Fial to load snippet "+e.name+":\t",console.error(msg+n+"\nMoving on"),e.markExecuted(),t.snippy.queueAsyncSnippetExecution(),!0}}(e),e.state="loading",script.src=e.src,script.async=!1,e.snippy.documentHead.appendChild(script)):(document.write("<script src='"+e.src+"'><\/script>"),e.markExecuted())}function i(t,e){e.isInline?(noRun=document.getElementById("snippy-"+e.name),tag=document.createElement("style"),tag.innerHTML=noRun.innerHTML):(tag=document.createElement("link"),tag.rel="stylesheet",tag.href=e.src),tag.type=e.type_,tag.charset="utf-8",tag.media=e.extra.media||"screen",e.snippy.documentHead.appendChild(tag),e.markExecuted()}function s(){window.snippy.queueAsyncSnippetExecution(),document.write=function(t){msg="document.write was called after document loaded:\n",console.warn(msg+t)}}t.prototype.preload=function(){if(this.src&&!this.isInline){var t=document.createElement("object");t.data=this.getUrl(),this.snippy.documentHead.appendChild(t)}},t.prototype.getUrl=function(){return this.src},t.prototype.executeSync=function(){for(idx=0;idx<this.require.lenght;idx++)req=this.snippy.snippets[this.require[idx]],req.isAsync=!1,"executed"!=req.state&&req.executeSync();this.triggerExecution()},t.prototype.executeAsync=function(){for(var t=0;t<this.require.length;t++)if(!this.snippy.executed[this.require[t]])return null;this.triggerExecution()},t.prototype.triggerExecution=function(){f=this.snippy.executionFunctions[this.type_],f(this.snippy,this)},t.prototype.markExecuted=function(){this.state="executed";for(var t=0;t<this.consistsOf.length;t++)this.snippy.executed[this.consistsOf[t]]=!0},e.prototype.register=function(e,n,i,s,c,p,o,r){0===o.length&&(o=[e]),this.snippets[e]=new t(this,e,n,i,s,c,p,o,r)},e.prototype.executeSyncScripts=function(){for(name in this.snippets){var t=this.snippets[name];t.isAsync||"pending"!==t.state||t.executeSync()}},e.prototype.queueAsyncSnippetExecution=function(){this.asyncSnippetsExecutionQueue.push(!0),this.executeAsyncScripts()},e.prototype.executeAsyncScripts=function(){this.isExecutingAsyncSnippets||this.asyncSnippetsExecutionQueue.splice(0,1)[0]&&(this.isExecutingAsyncSnippets=!0,this._executeAsyncScripts(),this.isExecutingAsyncSnippets=!1,this.executeAsyncScripts())},e.prototype._executeAsyncScripts=function(){for(name in this.snippets)"pending"===this.snippets[name].state&&this.snippets[name].executeAsync()},window.snippy=new e,document.addEventListener?document.addEventListener("DOMContentLoaded",s):document.attachEvent("onreadystatechange",function(){"interactive"===document.readyState&&s()})}).call(this);</script>
+
+	<script type="snippy/no-run" id="snippy-consent-for-ads">
+		window.tosInfoExceptions = ["/m/ustawienia-prywatnosci"]
+
+		var w2g = w2g || {};
+		w2g.cmd = w2g.cmd || [];
+		if (false){
+			w2g.cmd.push(function(){w2g.run(true);});
+		} else {
+			w2g.cmd.push(function(){w2g.run(false);})
+			document.TOSAcceptedCallbacks = document.TOSAcceptedCallbacks || [];
+			document.TOSAcceptedCallbacks.push(function(){
+				w2g.cmd.push(function(){w2g.run(true);})
+			})
+		}
+	</script>
+
+	<script type="snippy/no-run" id="snippy-report-to-ga">
+		reportToGA(false, 'Anonimowy');
+	</script>
+
+	
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:site" content="@wPolityce_pl">
+	<meta property="fb:app_id" content="286165648231957">
+	<meta property="og:title" content="Katastrofa samolotu w Stambule. Trzy ofiary śmiertelne">
+	<meta property="og:url" content="https://wpolityce.pl/swiat/485818-katastrofa-samolotu-w-stambule-trzy-ofiary-smiertelne">
+	<meta property="og:description" content="Turecka prasa podała, że wśród pasażerów było 12 dzieci.">
+	<meta property="og:image" content="https://media.wplm.pl/pictures/2020/02/06/825/499/af380647e0d345629b330aed72119b9e.jpeg">
+	<meta property="og:type" content="article">
+
+	
+	<script type="application/ld+json">
+		{
+			"@context": "http://schema.org",
+			"@type": "BreadcrumbList",
+			"itemListElement": [{
+				"@type": "ListItem",
+				"position": 1,
+				"item": {
+					"@id": "http://wpolityce.pl/Świat",
+					"name": "Świat"
+				}
+			}]
+		}
+	</script>
+
+	<script type="snippy/no-run" id="snippy-show-delayed-ads">
+		var showDelayedAdsInPosts = function(){
+			
+			if (true) {
+				var adContainer = document.createElement('div');
+				adContainer.classList.add('adunit', 'billboard', 'fit-in-comments', 'adunit-desktop-publication-comments-form');
+				var tag = document.createElement('div');
+				tag.id = 'wPolityce_desktop_artykul_rec_komentarze';
+				adContainer.appendChild(tag);
+				var textarea = document.querySelector('.js-post-form textarea');
+				if (textarea) {
+					textarea.parentNode.insertBefore(adContainer, textarea);
+				}
+			}
+
+			
+			if (true) {
+				var adContainer = document.createElement('div');
+				adContainer.classList.add('adunit', 'adunit-desktop-publication-comments-between-posts');
+				var tag = document.createElement('div');
+				tag.id = 'wPolityce_desktop_artykul_bill_komentarze';
+				adContainer.appendChild(tag);
+				var postsContainer = document.querySelector('.js-load-posts');
+				// if posts are blocked for this publication, post container is null
+				if (postsContainer) {
+					var children = postsContainer.children;
+					if (children.length < 5 ){
+						postsContainer.insertBefore(adContainer, children[children.length - 1]);
+					} else {
+						postsContainer.insertBefore(adContainer, children[3]);
+					}
+				}
+			}
+		}
+	</script>
+
+	<script type="snippy/no-run" id="snippy-sorry-markiewicz">
+		
+	</script>
+
+	<script type="snippy/no-run" id="snippy-plista-widget">
+		 // not just a switch - think before you touch
+			(function(c){var g,s='script',w=window,n=c.name||'PLISTA';if(!w[n]){w[n]=c;g=w.document.getElementsByTagName(s)[0];s=w.document.createElement(s);s.async=true;s.type='text/javascript';s.src=(w.location.protocol==='https:'?'https:':'http:')+'//static'+(c.origin?'-'+c.origin:'')+'.plista.com/async'+(c.name?'/'+c.name:'')+'.js';g.parentNode.insertBefore(s,g);}
+			}({
+				"publickey": "2d089184ba4f4eb4da71ff48",
+				"item": {
+				   "objectid": "485818",
+					"title": "Katastrofa samolotu w Stambule. Trzy ofiary śmiertelne",
+					"text": "Turecka prasa podała, że wśród pasażerów było 12 dzieci..",
+					"url": "http://wpolityce.pl/swiat/485818-katastrofa-samolotu-w-stambule-trzy-ofiary-smiertelne",
+					"img": "https://media.wplm.pl/pictures/2020/02/06/825/499/af380647e0d345629b330aed72119b9e.jpeg",
+					"category": "Świat",
+					"published_at": 1580991376,
+					"updated_at": 1580991376
+				},
+				"origin": "pl"
+			}));
+		
+    </script>
+
+	
+	<script type="snippy/no-run" id="snippy-show-posts">
+		
+
+			var loginWithPopupActive = true;
+			var userId = null;
+			var isAuthenticated = false;
+			if (loginWithPopupActive) {
+				window.loginConfig.userId = userId;
+				window.loginConfig.isAuthenticated = isAuthenticated;
+				window.loginConfig.refreshedContentType = 'elmContent';
+			}
+
+			$('.js-forum-container').waypoint({
+				handler: function() {
+					this.destroy();
+
+					$('.js-loader-info').text('Trwa ładowanie komentarzy...');
+					// get forum related stuff
+					var config = {
+						'forumDomain': 'https://gwarka.pl/',
+						'postsCountUnderThread': 20,
+						'postsCountUnderPublication': 12,
+						'identifier': 'wpolityce:zbiornik.Publication:485818',
+						'showMaxVotedPosts': true,
+						'hotTopicsEnabled': true,
+						'showVoteForButtons': true,
+						'showModerationButtons': true,
+						'loadPostsAgain': true,
+						'switchWesprzyjArticleImg': true,
+						'staticUrl': '//static.wpolityce.pl/',
+						// login settings
+						'loginUrl': "/czytelnicy/logowanie?login_with_popup=1",
+						'checkAuthenticationUrl': "/czytelnicy/api/check-authentication",
+						// RODO
+						'tosAccepted': false,
+						// others
+						'selfPromotion': {
+							'url': '//media.wplm.pl/pictures/2020/01/07/640/279/00de14d4a29b4049a58869a8adbebbf1.jpeg',
+							'alt': 'Porozmawiaj z dziennikarzem w telewizji wPolsce.pl',
+							'link': 'https://wpolsce.pl/studio-polakow?utm_source=wpolityce&amp;utm_campaign=studiopolakow&amp;utm_medium=640x279px'
+						}
+					};
+					if (loginWithPopupActive) {
+						config['userId'] = window.loginConfig.userId;
+						config['isAuthenticated'] = window.loginConfig.isAuthenticated;
+					} else {
+						config['userId'] = userId;
+						config['isAuthenticated'] = isAuthenticated;
+					}
+					var elmPage = new PostsUnderPublicationPage(config);
+					if (elmPage.tosAccepted && typeof showDelayedAdsInPosts !== 'undefined') {
+						elmPage.addCallback('renderComplete', showDelayedAdsInPosts);
+					}
+					document.TOSAcceptedCallbacks = document.TOSAcceptedCallbacks || [];
+					document.TOSAcceptedCallbacks.push(function() {
+						if (typeof showDelayedAdsInPosts !== 'undefined') {
+							elmPage.addCallback('renderComplete', showDelayedAdsInPosts);
+						}
+						elmPage.tosAccepted = true;
+						elmPage.reload();
+					});
+					if (loginWithPopupActive) {
+						window.loginConfig.elmPage = elmPage;
+						window.loginConfig.elmPage.addCallback('bindLogin', window.loginConfig.bindLogin);
+					}
+				},
+				offset: 'bottom-in-view'
+			});
+		
+	</script>
+
+	<script type="snippy/no-run" id="snippy-run-tvp-player">
+		
+	</script>
+
+	
+		
+			
+		
+		
+			
+		
+	
+	<!-- (c) 2008 Gemius SA / gemiusHeatMap(GHM+XY) / http://www.wpolityce.pl -->
+	<script type="snippy/no-run" id="snippy-set-gemius-heatmaps-parameters">
+		var ghmxy_parameters = [
+			"type=story",
+			"id=485818",
+			"title=Katastrofa samolotu w Stambule – Boeing 737 po wylądowaniu wypadł z pasa i rozpadł się na części. Trzy ofiary śmiertelne",
+			"author=Zespół wPolityce.pl"
+		];
+		if (0 > 0) {
+			ghmxy_parameters.push("page=0");
+		}
+		var ghmxy_align = 'center';
+		var ghmxy_type = 'absolute';
+		var ghmxy_identifier = 'nGrgi0iZG0HIk6S00.0B2IYhT.PdGoSnnKMgRNQmZFj.S7';
+		var ghmxy_hitcollector = 'ghmpl.hit.gemius.pl';
+	</script>
+
+	<script type="text/javascript">
+			snippy.register("1c3408a75d0f88fa857d43ec84eb5553", "//static.wpolityce.pl/snippy/1c3408a75d0f88fa857d43ec84eb5553.css", "text/css", true, false, [], ["rhododendron-popup.css"], {})
+			snippy.register("83ae3d2891e5d685e58ed1835ec9c8da", "//static.wpolityce.pl/snippy/83ae3d2891e5d685e58ed1835ec9c8da.js", "text/javascript", true, false, [], ["send_pageview_to_ga"], {})
+				snippy.register("lib.wtg-ads", "https://lib.wtg-ads.com/lib.min.js", "text/javascript", true, false, [], [], {})
+				snippy.register("jquery", "//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js", "text/javascript", true, false, [], [], {})
+				snippy.register("show_ads", "//static.wpolityce.pl/structure/js/ads.js", "text/javascript", true, false, ["send_pageview_to_ga"], [], {})
+				snippy.register("consent-for-ads", "", "text/javascript", true, true, [], [], {})
+				snippy.register("set-gemius-heatmaps-parameters", "", "text/javascript", true, true, [], [], {})
+				snippy.register("plista-widget", "", "text/javascript", true, true, [], [], {})
+				snippy.register("show-delayed-ads", "", "text/javascript", true, true, [], [], {})
+				snippy.register("sorry-markiewicz", "", "text/javascript", true, true, ["jquery"], [], {})
+				snippy.register("report-to-ga", "", "text/javascript", true, true, ["show_ads", "send_pageview_to_ga"], [], {})
+			snippy.register("1cc20406e7cda26b6801893740336872", "//static.wpolityce.pl/snippy/1cc20406e7cda26b6801893740336872.js", "text/javascript", true, false, ["jquery", "report-to-ga", "send_pageview_to_ga"], ["rhododendron_terms_of_service", "moment-pl.js", "social_media_buttons", "ga_events_tracking", "header", "set-jquery-our-own", "tvp_player_templates", "set-moment-locale.js", "posts_templates", "ads", "print_publication", "time_manipulation", "moment.js", "related_publications", "set_widget_playlist_src", "lazy_markdown21s_images", "csrf.js", "waypoints.js", "cookie.js", "load_widget_playlist_publication_page", "cas_helpers", "doT.js_wrapper", "polls", "tvp_player", "lightbox.js", "facebook-init.js", "doT.js"], {})
+				snippy.register("send_data_through_client", "https://static.gwarka.pl//js/forum/send_data_through_client.js?d=2019-10-07T22%3A56%3A14.829082%2B00%3A00", "text/javascript", true, false, ["jquery"], [], {})
+				snippy.register("gemius-heatmaps", "//ghmpl.hit.gemius.pl/hmapxy.js", "text/javascript", true, false, ["set-gemius-heatmaps-parameters"], [], {})
+				snippy.register("login.js", "https://static.konto.wpolityce.pl/scripts/accounts/login.js?d=2019-10-07T22%3A56%3A14.829082%2B00%3A00", "text/javascript", true, false, ["jquery", "cas_helpers"], [], {})
+				snippy.register("posts", "https://static.gwarka.pl//js/forum/posts.js?d=2019-10-07T22%3A56%3A14.829082%2B00%3A00", "text/javascript", true, false, ["jquery", "time_manipulation", "posts_templates", "cookie.js", "send_data_through_client"], [], {})
+				snippy.register("run-tvp-player", "", "text/javascript", true, true, ["tvp_player"], [], {})
+				snippy.register("show-posts", "", "text/javascript", true, true, ["jquery", "show-delayed-ads", "cas_helpers", "rhododendron_terms_of_service", "posts", "waypoints.js"], [], {})
+</script><link href="//static.wpolityce.pl/snippy/0639c0e0e15921c5fc6a4221934db039.css" rel="stylesheet" type="text/css" charset="utf-8" media="screen"><link href="//static.wpolityce.pl/snippy/b4286c377814e5f9aed298b0d6ad5e88.css" rel="stylesheet" type="text/css" charset="utf-8" media="print">
+
+
+	
+		
+	<!-- (C)2000-2013 Gemius SA - gemiusAudience / pp.wpolityce.pl / podstrony -->
+	<script type="text/javascript">
+	<!--//--><![CDATA[//><!--
+	var pp_gemius_identifier = 'bQBLosrFvMm8SBOWpPGb_ZQ5DtXG05tyHfzrz8gzki..g7';
+	// lines below shouldn't be edited
+	function gemius_pending(i) { window[i] = window[i] || function() {var x = window[i+'_pdata'] = window[i+'_pdata'] || []; x[x.length]=arguments;};};
+	gemius_pending('gemius_hit'); gemius_pending('gemius_event'); gemius_pending('pp_gemius_hit'); gemius_pending('pp_gemius_event');
+	(function(d,t) {try {var gt=d.createElement(t),s=d.getElementsByTagName(t)[0],l='http'+((location.protocol=='https:')?'s':''); gt.setAttribute('async','async');
+	gt.setAttribute('defer','defer'); gt.src=l+'://gapl.hit.gemius.pl/xgemius.js'; s.parentNode.insertBefore(gt,s);} catch (e) {}})(document,'script');
+	//--><!]]>
+	</script>
+
+	
+
+</head>
+
+<body class=" js-url-scroller" data-static-url="//static.wpolityce.pl/">
+
+	<div id="fb-root"></div>
+
+	<div>
+		<div>
+
+			
+			
+				<div class="nu-header-with-boost js-header-boost">
+	<section class="nu-header-boost">
+		<a href="https://wpolsce.pl/studio-polakow?utm_source=wpolityce&utm_campaign=studiopolakow&utm_medium=header" class="nu-row nu-header-boost__mobile" target="_blank">
+			<div class="nu-header-boost__images">
+				<img src="//static.wpolityce.pl/img/logo-sp-color.png?d=2019-05-12" class="nu-header-boost__logo" alt="Studio Polaków">
+			</div>
+			<div class="nu-header-boost__text">Porozmawiaj w telewizji <span>z dziennikarzem</span> <img src="//static.wpolityce.pl/img/icon-phone.svg?d=2019-05-12" class="nu-header-boost__icon"></div>
+			<p class="nu-header-boost__button-imitation">Zgłoś się</p>
+		</a>
+		<a href="https://wpolsce.pl/studio-polakow?utm_source=wpolityce&utm_campaign=studiopolakow&utm_medium=header" class="nu-row nu-header-boost__desktop" target="_blank">
+			<div class="nu-header-boost__images nu-header-boost__images--logo">
+				<img src="//static.wpolityce.pl/img/logo-sp-color.png?d=2019-05-12" class="nu-header-boost__logo" alt="Studio Polaków">
+			</div>
+			<p class="nu-header-boost__text">Porozmawiaj na żywo w telewizji wPolsce.pl <span>z dziennikarzem</span></p>
+			<div class="nu-header-boost__images">
+				<img src="//static.wpolityce.pl/img/icon-phone.svg?d=2019-05-12" class="nu-header-boost__icon">
+			</div>
+			<p class="nu-header-boost__button-imitation">Zgłoś się</p>
+		</a>
+	</section>
+	<header class="nu-page-header js-page-header">
+		<div class="nu-row">
+			<h1 class="nu-logo" id="LinkArea:navLogo">
+				<a href="/" class="nu-logo__link">
+					<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+	 x="0px" y="0px" width="200px" height="43px" viewBox="0 0 70 15" enable-background="new 0 0 70 15" preserveAspectRatio="none" xml:space="preserve">
+<defs>
+</defs>
+<path d="M0,5.142h2.511v0.242C2.28,5.4,2.129,5.442,2.057,5.508C1.985,5.573,1.949,5.667,1.949,5.789
+	c0,0.136,0.037,0.299,0.111,0.49l1.282,3.446L4.63,6.921L4.29,6.038C4.185,5.775,4.048,5.595,3.878,5.495
+	C3.782,5.434,3.603,5.396,3.342,5.384V5.142h2.851v0.242c-0.314,0.013-0.536,0.07-0.667,0.17c-0.087,0.07-0.131,0.181-0.131,0.334
+	c0,0.087,0.017,0.176,0.052,0.268l1.361,3.439L8.07,6.279c0.087-0.235,0.131-0.423,0.131-0.562c0-0.083-0.043-0.157-0.128-0.223
+	s-0.252-0.103-0.5-0.111V5.142h1.89v0.242C9.083,5.44,8.804,5.697,8.626,6.155l-2.001,5.159H6.356L4.859,7.489l-1.746,3.825H2.871
+	L0.948,6.279C0.822,5.962,0.697,5.747,0.575,5.636S0.262,5.44,0,5.384V5.142z"/>
+<path d="M12.54,5.715c0.277,0.052,0.522,0.091,0.736,0.117c0.214,0.025,0.396,0.039,0.548,0.039
+	c0.543,0,1.011-0.21,1.405-0.631c0.394-0.42,0.591-0.964,0.591-1.632c0-0.459-0.094-0.886-0.282-1.279
+	C15.35,1.935,15.084,1.64,14.74,1.443c-0.345-0.194-0.736-0.293-1.174-0.293c-0.267,0-0.609,0.05-1.026,0.148V5.715z M12.54,6.161
+	v3.092c0,0.668,0.073,1.083,0.219,1.245c0.198,0.229,0.499,0.344,0.9,0.344h0.408v0.29H9.518v-0.29h0.399
+	c0.449,0,0.77-0.146,0.963-0.438c0.105-0.161,0.157-0.545,0.157-1.15V2.395c0-0.668-0.071-1.082-0.211-1.244
+	c-0.204-0.229-0.507-0.345-0.909-0.345H9.518V0.517h3.891c0.95,0,1.699,0.097,2.247,0.293c0.548,0.196,1.01,0.526,1.385,0.99
+	c0.376,0.465,0.564,1.016,0.564,1.652c0,0.866-0.286,1.57-0.857,2.113c-0.572,0.543-1.379,0.814-2.423,0.814
+	c-0.256,0-0.532-0.019-0.83-0.055C13.198,6.289,12.879,6.233,12.54,6.161"/>
+<path d="M21.613,4.259c-0.276,0-0.554,0.082-0.833,0.246C20.5,4.67,20.275,4.957,20.102,5.37
+	c-0.172,0.412-0.258,0.942-0.258,1.59c0,1.044,0.207,1.943,0.622,2.7s0.962,1.136,1.641,1.136c0.506,0,0.923-0.209,1.252-0.627
+	c0.329-0.417,0.493-1.136,0.493-2.152c0-1.274-0.274-2.276-0.822-3.007C22.66,4.509,22.188,4.259,21.613,4.259 M21.856,3.75
+	c1.085,0,1.957,0.411,2.615,1.236c0.558,0.705,0.837,1.515,0.837,2.427c0,0.643-0.154,1.292-0.461,1.949
+	c-0.308,0.658-0.732,1.154-1.273,1.488c-0.54,0.333-1.141,0.501-1.804,0.501c-1.08,0-1.939-0.431-2.576-1.292
+	c-0.537-0.726-0.806-1.54-0.806-2.443c0-0.656,0.163-1.311,0.489-1.961c0.326-0.649,0.756-1.13,1.288-1.439
+	C20.697,3.904,21.261,3.75,21.856,3.75"/>
+<path d="M28.511,0v9.512c0,0.449,0.033,0.746,0.098,0.892c0.065,0.146,0.165,0.257,0.301,0.333
+	c0.136,0.076,0.389,0.113,0.76,0.113v0.282h-3.515V10.85c0.328,0,0.553-0.033,0.673-0.101c0.12-0.068,0.214-0.181,0.282-0.338
+	c0.067-0.156,0.101-0.456,0.101-0.899V2.998c0-0.81-0.018-1.307-0.054-1.491c-0.037-0.186-0.096-0.313-0.177-0.38
+	c-0.08-0.067-0.183-0.102-0.309-0.102c-0.136,0-0.308,0.041-0.516,0.125l-0.134-0.273L28.159,0H28.511z"/>
+<path d="M31.906,0c0.219,0,0.406,0.076,0.56,0.23c0.154,0.154,0.231,0.341,0.231,0.56
+	c0,0.22-0.077,0.407-0.231,0.563c-0.154,0.157-0.341,0.235-0.56,0.235c-0.219,0-0.407-0.078-0.563-0.235
+	c-0.157-0.156-0.235-0.344-0.235-0.563c0-0.219,0.077-0.405,0.231-0.56S31.683,0,31.906,0 M32.556,3.75v5.762
+	c0,0.449,0.033,0.748,0.098,0.896c0.065,0.149,0.162,0.261,0.289,0.333c0.128,0.073,0.362,0.11,0.701,0.11v0.281H30.16v-0.281
+	c0.35,0,0.585-0.034,0.705-0.103c0.12-0.067,0.215-0.18,0.286-0.337c0.07-0.155,0.105-0.457,0.105-0.899V6.747
+	c0-0.776-0.023-1.28-0.07-1.511c-0.037-0.167-0.094-0.283-0.172-0.348c-0.079-0.065-0.186-0.099-0.321-0.099
+	c-0.146,0-0.324,0.039-0.533,0.118l-0.109-0.281l2.161-0.877H32.556z"/>
+<path d="M36.267,1.604v2.356h1.675v0.548h-1.675v4.65c0,0.464,0.066,0.777,0.2,0.939
+	c0.133,0.162,0.304,0.243,0.512,0.243c0.173,0,0.34-0.055,0.501-0.161c0.162-0.107,0.287-0.266,0.376-0.474h0.306
+	c-0.183,0.512-0.442,0.896-0.776,1.154c-0.334,0.259-0.678,0.389-1.033,0.389c-0.24,0-0.475-0.067-0.704-0.2
+	c-0.23-0.133-0.4-0.323-0.509-0.571c-0.11-0.248-0.165-0.63-0.165-1.147V4.509H33.84V4.251c0.287-0.115,0.581-0.31,0.881-0.583
+	c0.3-0.274,0.567-0.6,0.802-0.976c0.12-0.198,0.287-0.561,0.501-1.088H36.267z"/>
+<path d="M37.847,3.961h3.343v0.29h-0.165c-0.234,0-0.411,0.051-0.528,0.152c-0.117,0.102-0.176,0.229-0.176,0.38
+	c0,0.204,0.086,0.484,0.258,0.846l1.746,3.616l1.605-3.961c0.088-0.214,0.133-0.425,0.133-0.634c0-0.095-0.019-0.164-0.055-0.212
+	c-0.042-0.058-0.107-0.103-0.196-0.137c-0.088-0.034-0.245-0.051-0.469-0.051v-0.29h2.333v0.29
+	c-0.194,0.021-0.342,0.062-0.447,0.125c-0.104,0.063-0.219,0.18-0.344,0.352c-0.047,0.073-0.136,0.274-0.266,0.604l-2.92,7.155
+	c-0.282,0.693-0.652,1.219-1.108,1.573c-0.457,0.355-0.897,0.532-1.319,0.532c-0.308,0-0.561-0.089-0.76-0.266
+	c-0.198-0.178-0.297-0.381-0.297-0.611c0-0.219,0.072-0.395,0.215-0.528c0.144-0.133,0.341-0.199,0.591-0.199
+	c0.172,0,0.407,0.058,0.705,0.173c0.208,0.078,0.339,0.117,0.391,0.117c0.157,0,0.328-0.081,0.513-0.243
+	c0.185-0.161,0.372-0.476,0.56-0.939l0.509-1.245L39.123,5.44c-0.078-0.161-0.203-0.362-0.376-0.603
+	c-0.13-0.183-0.237-0.305-0.321-0.368c-0.12-0.084-0.313-0.157-0.579-0.219V3.961z"/>
+<path d="M51.976,8.407c-0.193,0.945-0.571,1.671-1.135,2.181c-0.564,0.509-1.187,0.764-1.871,0.764
+	c-0.814,0-1.524-0.342-2.129-1.026c-0.606-0.684-0.909-1.606-0.909-2.771c0-1.128,0.336-2.044,1.006-2.748
+	c0.671-0.705,1.476-1.057,2.415-1.057c0.705,0,1.284,0.187,1.738,0.56s0.682,0.76,0.682,1.162c0,0.199-0.064,0.358-0.192,0.481
+	c-0.128,0.122-0.307,0.185-0.537,0.185c-0.308,0-0.54-0.1-0.696-0.298C50.259,5.73,50.2,5.521,50.172,5.214
+	c-0.029-0.309-0.135-0.543-0.318-0.705c-0.182-0.156-0.435-0.234-0.759-0.234c-0.522,0-0.942,0.193-1.26,0.579
+	c-0.423,0.511-0.634,1.187-0.634,2.027c0,0.855,0.21,1.611,0.63,2.267c0.42,0.655,0.987,0.982,1.703,0.982
+	c0.511,0,0.97-0.176,1.377-0.524c0.287-0.24,0.567-0.676,0.838-1.308L51.976,8.407z"/>
+<path d="M53.791,6.208h3.319c-0.026-0.459-0.081-0.783-0.164-0.972c-0.131-0.292-0.325-0.521-0.583-0.688
+	c-0.259-0.167-0.529-0.25-0.811-0.25c-0.433,0-0.82,0.168-1.162,0.505C54.048,5.139,53.848,5.607,53.791,6.208 M53.791,6.662
+	c-0.005,1.064,0.253,1.899,0.775,2.505c0.522,0.605,1.135,0.908,1.84,0.908c0.469,0,0.878-0.129,1.225-0.388
+	c0.347-0.259,0.638-0.701,0.873-1.327l0.242,0.156c-0.109,0.715-0.428,1.366-0.955,1.954c-0.527,0.587-1.187,0.88-1.98,0.88
+	c-0.861,0-1.599-0.335-2.212-1.006c-0.613-0.67-0.92-1.572-0.92-2.704c0-1.227,0.315-2.183,0.944-2.87
+	c0.629-0.686,1.418-1.028,2.368-1.028c0.803,0,1.464,0.265,1.98,0.795c0.517,0.528,0.775,1.237,0.775,2.125H53.791z"/>
+<path d="M60.904,9.561c0.254,0,0.467,0.089,0.64,0.264c0.172,0.176,0.259,0.388,0.259,0.636s-0.088,0.46-0.263,0.635
+	c-0.176,0.177-0.388,0.265-0.636,0.265s-0.46-0.088-0.636-0.265c-0.175-0.175-0.263-0.387-0.263-0.635
+	c0-0.254,0.088-0.467,0.263-0.64C60.444,9.647,60.656,9.561,60.904,9.561"/>
+<path d="M64.182,7.671v1.777c0,0.385,0.016,0.638,0.047,0.759c0.048,0.2,0.167,0.378,0.356,0.529
+	c0.189,0.153,0.427,0.229,0.714,0.229c0.347,0,0.627-0.135,0.842-0.405c0.281-0.354,0.421-0.851,0.421-1.492
+	c0-0.727-0.159-1.287-0.478-1.678c-0.222-0.271-0.485-0.406-0.79-0.406c-0.166,0-0.331,0.042-0.494,0.125
+	C64.676,7.172,64.469,7.358,64.182,7.671 M62.519,6.845l1.465-0.592h0.198v1.111c0.246-0.42,0.493-0.713,0.74-0.881
+	c0.248-0.168,0.509-0.252,0.783-0.252c0.478,0,0.876,0.188,1.195,0.562c0.391,0.457,0.587,1.053,0.587,1.788
+	c0,0.82-0.236,1.5-0.707,2.036c-0.388,0.44-0.876,0.66-1.465,0.66c-0.257,0-0.478-0.037-0.665-0.108
+	c-0.139-0.053-0.295-0.156-0.468-0.313v1.45c0,0.325,0.02,0.532,0.06,0.621c0.039,0.088,0.109,0.158,0.208,0.21
+	c0.098,0.052,0.278,0.078,0.537,0.078v0.191h-2.494v-0.191h0.13c0.19,0.004,0.353-0.033,0.488-0.109
+	c0.066-0.038,0.117-0.1,0.154-0.184c0.036-0.085,0.054-0.301,0.054-0.647V7.774c0-0.308-0.014-0.504-0.041-0.587
+	c-0.028-0.083-0.072-0.146-0.133-0.187c-0.06-0.042-0.143-0.063-0.247-0.063c-0.083,0-0.188,0.024-0.317,0.072L62.519,6.845z"/>
+<path d="M69.629,3.742v6.313c0,0.299,0.022,0.495,0.065,0.593c0.043,0.097,0.11,0.171,0.2,0.221
+	c0.09,0.051,0.258,0.076,0.504,0.076v0.187h-2.333v-0.187c0.218,0,0.367-0.023,0.447-0.068c0.079-0.045,0.142-0.119,0.187-0.223
+	c0.045-0.104,0.067-0.303,0.067-0.599V5.732c0-0.537-0.012-0.867-0.036-0.99c-0.024-0.123-0.063-0.207-0.117-0.252
+	s-0.122-0.067-0.205-0.067c-0.09,0-0.205,0.028-0.343,0.083l-0.089-0.182l1.419-0.582H69.629z"/>
+</svg>
+					
+				</a>
+			</h1>
+			
+			
+	<nav class="nu-main-nav nu-main-nav--header js-nu-main-nav">
+		<div class="nu-main-nav__list-container" id="LinkArea:navLinks">
+			<ul class="nu-main-nav__list">
+				
+					<li class="nu-main-nav__item nu-main-nav__item--eng">
+						<a href="/facts-from-poland" class="nu-main-nav__link">
+							
+								<span class="icon">
+									<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="none" width="36" height="36" viewBox="0 0 640 640"><defs><path d="M567.3 332.6c24.6-30.9 37-64.6 37-101.1 0-36.4-12.3-70.1-37-101-24.6-30.9-58.2-55.4-100.8-73.3-42.6-17.9-88.9-26.9-139-26.9-50.1 0-96.4 9-139 26.9-42.6 18-76.2 42.4-100.8 73.3-24.7 30.9-36.9 64.6-36.9 101 0 31.2 9.3 60.6 27.9 88.1 18.6 27.5 44.2 50.7 76.7 69.6l-8.1 17.3-9.8 15.1-8.8 11.4c-2.1 2.8-5.5 6.6-10.2 11.6l-9 9.9c0-.3-.5.3-1.6 1.8-1.1 1.5-1.7 2.1-1.8 2-.1-.1-.6.5-1.6 1.9l-2.4 4.1c-.4.8-.6 1.6-.8 2.4-.1.8-.2 1.7-.2 2.5 0 .9.1 1.8.4 2.6.5 3.4 2 6.2 4.5 8.3 2.5 2.1 5.2 3.2 8.1 3.2h1.2c13.1-1.8 24.4-3.9 33.8-6.3 40.4-10.5 76.8-27.3 109.3-50.3 23.6 4.2 46.7 6.3 69.2 6.3 50.1 0 96.4-9 139-26.9 42.6-17.9 76.2-42.4 100.8-73.3z" id="a19YWIYksM"/><clipPath id="clipf3stHwnY25"><use xlink:href="#a19YWIYksM"/></clipPath><path d="M145.1 305.3l97.9-.2v-26.2h-63.6v-34l53.6-.3v-25h-53.6v-30h63.9v-26.4h-98.1v142.1z" id="a1D1FrzMyu"/><path d="M267.6 305.3h34.2v-88.4l50.3 88.4h34.1V163.1h-34.1v88.6l-50.3-88.6h-34.2v142.2z" id="d1XOeDXtAh"/><path d="M469.2 280.8c-23.2-.4-26.5-27.9-26.5-51.3 0-23.4 9.4-41.8 26.5-41.9.8 0-17.7-.5 2.3.1 13.4.4 20.9 7.7 22.7 22h32.9c-3.7-32.3-23-48.6-58-48.7-52.4-.2-60.9 47.9-60.9 68.6 0 20.6 2.3 77.2 60.9 77.9a87 87 0 0 0 56.4-17.2l1.7-2.2v-58.4l-58.1-.1v23.6H493V275c-.3 1.3-.6 6.2-23.8 5.8z" id="ao85eyjQd"/></defs><g><g><g><g clip-path="url(#clipf3stHwnY25)"><use xlink:href="#a19YWIYksM" fill-opacity="0" stroke="#000" stroke-width="60" stroke-opacity="1"/></g></g><g><use xlink:href="#a1D1FrzMyu"/><g><use xlink:href="#a1D1FrzMyu" fill-opacity="0" stroke="#000" stroke-opacity="0"/></g></g><g><use xlink:href="#d1XOeDXtAh"/><g><use xlink:href="#d1XOeDXtAh" fill-opacity="0" stroke="#000" stroke-opacity="0"/></g></g><g><use xlink:href="#ao85eyjQd"/><g><use xlink:href="#ao85eyjQd" fill-opacity="0" stroke="#000" stroke-opacity="0"/></g></g></g></g></svg>
+								</span>
+							
+							<span class="text">English version</span>
+						</a>
+					</li>
+				
+				<li class="nu-main-nav__item nu-main-nav__item--forum">
+					<a href="/forum?utm_source=header&utm_campaign=icon&utm_medium=forum" class="nu-main-nav__link">
+						
+							<span class="icon">
+								<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+	 x="0px" y="0px" width="29.7px" height="24px" viewBox="0 0 26 21" preserveAspectRatio="none" enable-background="new 0 0 26 21"
+	 xml:space="preserve">
+<defs>
+</defs>
+<g id="ICON_x5F_FORUM_2_">
+	<g>
+		<path fill-rule="evenodd" clip-rule="evenodd" d="M14.805,13.377c1.517-0.639,2.714-1.509,3.591-2.61
+			s1.316-2.301,1.316-3.599c0-1.297-0.439-2.497-1.316-3.598c-0.877-1.102-2.074-1.972-3.591-2.611C13.289,0.32,11.639,0,9.856,0
+			S6.424,0.32,4.907,0.959C3.39,1.599,2.193,2.469,1.316,3.57C0.438,4.671,0,5.871,0,7.168c0,1.111,0.332,2.157,0.994,3.138
+			c0.663,0.979,1.573,1.806,2.73,2.477c-0.093,0.225-0.189,0.429-0.287,0.616c-0.098,0.187-0.215,0.367-0.35,0.539
+			c-0.135,0.173-0.24,0.309-0.315,0.406c-0.075,0.099-0.196,0.235-0.364,0.412c-0.168,0.178-0.275,0.295-0.322,0.351
+			c0-0.01-0.019,0.012-0.056,0.063c-0.038,0.052-0.059,0.075-0.063,0.07c-0.005-0.005-0.023,0.019-0.056,0.069
+			c-0.033,0.052-0.049,0.077-0.049,0.077l-0.035,0.07c-0.014,0.027-0.023,0.057-0.028,0.084c-0.005,0.028-0.007,0.059-0.007,0.091
+			c0,0.033,0.005,0.063,0.014,0.091c0.019,0.122,0.072,0.219,0.161,0.294c0.088,0.074,0.184,0.112,0.287,0.112h0.042
+			c0.467-0.065,0.868-0.14,1.204-0.225c1.438-0.373,2.735-0.971,3.892-1.791c0.84,0.148,1.662,0.224,2.464,0.224
+			C11.639,14.336,13.289,14.017,14.805,13.377z M24.094,13.896c0.663-0.976,0.994-2.022,0.994-3.143c0-1.148-0.351-2.222-1.05-3.222
+			c-0.701-0.997-1.652-1.829-2.856-2.492c0.214,0.7,0.321,1.41,0.321,2.129c0,1.25-0.313,2.436-0.938,3.556
+			c-0.625,1.119-1.521,2.109-2.688,2.968c-1.084,0.784-2.315,1.387-3.697,1.807c-1.38,0.42-2.823,0.63-4.326,0.63
+			c-0.28,0-0.69-0.019-1.231-0.056c1.876,1.231,4.079,1.847,6.608,1.847c0.803,0,1.624-0.074,2.464-0.223
+			c1.157,0.821,2.454,1.419,3.892,1.792c0.336,0.084,0.738,0.158,1.205,0.224c0.111,0.01,0.215-0.023,0.308-0.098
+			c0.093-0.075,0.153-0.178,0.183-0.309c-0.006-0.056,0-0.086,0.014-0.091c0.014-0.004,0.012-0.035-0.008-0.091
+			c-0.018-0.056-0.027-0.084-0.027-0.084l-0.035-0.069c-0.01-0.019-0.025-0.045-0.049-0.077s-0.042-0.056-0.057-0.07
+			c-0.014-0.014-0.034-0.037-0.063-0.069c-0.027-0.032-0.047-0.055-0.056-0.063c-0.047-0.056-0.153-0.172-0.321-0.35
+			c-0.169-0.177-0.29-0.314-0.365-0.412c-0.074-0.099-0.18-0.234-0.314-0.407c-0.135-0.172-0.252-0.352-0.35-0.538
+			s-0.193-0.393-0.287-0.616C22.522,15.694,23.431,14.871,24.094,13.896z"/>
+	</g>
+</g>
+</svg>
+							</span>
+						
+						<span class="text">Forum</span>
+					</a>
+				</li>
+				<li class="nu-main-nav__item nu-main-nav__item--wsklepiku">
+					<a href="http://wsklepiku.pl" class="nu-main-nav__link" target="_blank">
+						
+							<span class="icon">
+								<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+	 x="0px" y="0px" width="25px" height="24px" viewBox="0 0 23 22" preserveAspectRatio="none" enable-background="new 0 0 23 22"
+	 xml:space="preserve">
+<defs>
+</defs>
+<g id="ICON_x5F_SHOP_2_">
+	<g>
+		<path fill-rule="evenodd" clip-rule="evenodd" d="M6.482,17.286c-1.188,0-2.161,0.974-2.161,2.162
+			c0,1.188,0.973,2.16,2.161,2.16s2.161-0.973,2.161-2.16C8.643,18.26,7.671,17.286,6.482,17.286z M7.671,11.885h7.995
+			c0.865,0,1.514-0.433,1.838-1.081l3.889-7.022c0.217-0.216,0.217-0.324,0.217-0.54c0-0.648-0.433-1.081-1.081-1.081H4.538L3.565,0
+			H0v2.16h2.161l3.89,8.212l-1.513,2.593c-0.108,0.324-0.216,0.757-0.216,1.08c0,1.189,0.973,2.161,2.161,2.161h12.965v-2.161H6.915
+			c-0.108,0-0.216-0.107-0.216-0.216v-0.107L7.671,11.885z M17.287,17.286c-1.188,0-2.16,0.974-2.16,2.162
+			c0,1.188,0.972,2.16,2.16,2.16s2.161-0.973,2.161-2.16C19.448,18.26,18.475,17.286,17.287,17.286z"/>
+	</g>
+</g>
+</svg>
+							</span>
+						
+						<span class="text">wSklepiku</span>
+					</a>
+				</li>
+				<li class="nu-main-nav__item nu-main-nav__item--wpolsce">
+					<a href="http://wpolsce.pl?utm_source=wpolityce&utm_campaign=icon&utm_medium=wpolsce" class="nu-main-nav__link" target="_blank">
+						
+							<span class="icon">
+								<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+	 x="0px" y="0px" width="23px" height="24px" viewBox="0 0 20 21" preserveAspectRatio="none" enable-background="new 0 0 20 21"
+	 xml:space="preserve">
+<defs>
+</defs>
+<g id="ICON_x5F_PLAY_2_">
+	<g>
+		<path fill-rule="evenodd" clip-rule="evenodd" d="M18.494,9.96L0.748,0.099C0.543-0.018,0.367-0.031,0.22,0.058
+			C0.073,0.147,0,0.308,0,0.54v19.669c0,0.231,0.073,0.393,0.22,0.481s0.323,0.075,0.528-0.04l17.746-9.861
+			c0.204-0.116,0.308-0.255,0.308-0.415S18.698,10.076,18.494,9.96z"/>
+	</g>
+</g>
+</svg>
+							</span>
+						
+						<span class="text">wPolsce</span>
+					</a>
+				</li>
+				<li class="nu-main-nav__item nu-main-nav__item--premium">
+					<a href="https://siec.wpolityce.pl/oferta?utm_source=wpolityce&utm_campaign=siecprzyjaciol&utm_medium=icon" class="nu-main-nav__link" target="_blank">
+						
+							<span class="icon">
+								<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+	 x="0px" y="0px" width="24px" height="24px" viewBox="0 0 23 23" preserveAspectRatio="none" enable-background="new 0 0 23 23"
+	 xml:space="preserve">
+<defs>
+</defs>
+<g id="ICON_x5F_READ_2_">
+	<g>
+		<path fill-rule="evenodd" clip-rule="evenodd" d="M16.823,5.396C16.823,2.417,14.231,0,11.041,0
+			C7.85,0,5.259,2.417,5.259,5.396v0.212l5.782,1.262l5.782-1.262V5.396z M21.015,10.604c-0.59,0-1.068,1.013-1.068,2.263
+			s0.479,2.264,1.068,2.264s1.068-1.014,1.068-2.264S21.604,10.604,21.015,10.604z M2.136,12.866c0-1.25-0.478-2.263-1.068-2.263
+			S0,11.616,0,12.866s0.478,2.264,1.068,2.264S2.136,14.116,2.136,12.866z M1.068,9.711c1.14,0,1.965,1.335,1.965,3.155
+			c0,1.821-0.825,3.156-1.965,3.156v3.891L10.586,22V7.696L1.068,5.608V9.711z M19.05,12.866c0-1.82,0.824-3.155,1.965-3.155V5.608
+			l-9.519,2.088v14.291l9.519-2.088v-3.896C19.874,16.004,19.05,14.692,19.05,12.866z"/>
+	</g>
+</g>
+</svg>
+							</span>
+						
+						<span class="text">Sieć Przyjaciół</span>
+					</a>
+				</li>
+				<li class="nu-main-nav__item nu-main-nav__item--sp">
+					<a href="https://wpolsce.pl/studio-polakow?utm_source=wpolityce&utm_campaign=studiopolakow&utm_medium=icon" class="nu-main-nav__link" target="_blank">
+						
+							<span class="icon">
+								<?xml version="1.0" encoding="UTF-8"?>
+<svg width="31px" height="36px" viewBox="0 0 31 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ikona-sp-2-copy" class="sp-icon-svg" fill="#F6EC13" fill-rule="nonzero">
+            <path d="M16.3645455,0 L14.3945455,2.6595 L15.3181818,4.8861 C15.3181818,6.8022 11.5072727,7.4367 10.5263636,5.6007 L10.5263636,4.3407 L6.76272727,2.4129 L9.33181818,8.1729 C10.0790909,7.9029 10.81,7.4331 11.6809091,6.948 C11.6809091,6.948 11.9818182,7.2927 11.9081818,8.0334 C11.9081818,8.0334 14.0672727,7.4637 19.8472727,8.154 C21.0315334,8.28174901 22.2253629,8.29802187 23.4127273,8.2026 L25.9663636,2.4174 L22.1618182,4.3452 L22.1618182,5.6052 C21.1809091,7.4412 17.4109091,6.8067 17.4109091,4.8906 L18.32,2.664 L16.3645455,0 Z" id="Path"></path>
+            <path d="M2.89,14.4135 C3.37818182,13.1337 5.54545455,11.8116 6.91,11.4948 C8.56454545,11.1114 9.56181818,10.4589 9.56181818,10.4589 C9.42250591,11.0430377 9.1733143,11.5959748 8.82727273,12.0888 C11.4681818,10.3887 15.1909091,11.0502 18.6272727,11.7126 C20.8672727,12.1437 22.9909091,12.5748 24.6090909,12.3525 C29.1545455,11.7297 29.6,8.4105 29.6,8.4105 C28.5881818,9.5067 23.8281818,10.2402 18.92,9.7299 C17.5672727,9.5112 16.2145455,9.351 14.9118182,9.3384 C11.8572727,9.2556 10.7236364,9.9207 10.7236364,9.9207 C11.2145455,9.2556 11.1372727,8.1288 11.1372727,8.1288 C9.17727273,10.1295 2.89,8.6895 2.89,14.4135" id="Path"></path>
+            <path d="M9.79090909,14.382 C10.0637636,14.731346 10.3631154,15.0595966 10.6863636,15.3639 C11.3618182,15.9939 12.3590909,16.7139 13.4745455,16.8039 C15.51,16.9668 16.3836364,15.597 16.3836364,15.597 C15.5561989,16.051587 14.6013781,16.2260406 13.6645455,16.0938 C12.1090909,15.8679 11.8281818,14.7204 11.8463636,14.5494 L12.4163636,14.301 C12.6377894,14.502349 12.8793366,14.6808686 13.1372727,14.8338 C13.6536364,15.1245 14.1754545,14.8032 14.1681818,14.4261 C14.1563879,14.1448707 14.0355974,13.8789527 13.8309091,13.6836 L14.4309091,13.4217 C14.9481818,13.5765 15.1781818,14.4117 14.8854545,14.8671 C14.4818182,15.4971 13.7490909,15.7671 13.7490909,15.7671 C15.1454545,15.813 15.3172727,15.2433 16.1872727,14.8203 C17.1872727,14.3343 18.4272727,14.5935 18.4272727,14.5935 C17.8045455,13.9293 16.7581818,13.7835 16.7581818,13.7835 C17.5672727,13.4289 19.8090909,13.6305 19.8090909,13.6305 C18.0990909,12.8916 16.5609091,12.6252 15.2336364,12.6252 C11.8163636,12.6252 9.78909091,14.3856 9.78909091,14.3856" id="Path"></path>
+            <path d="M2.66090909,19.8441 C2.66090909,19.8441 4.20636364,18.8361 6.52727273,18.972 C8.84818182,19.1079 9.55363636,19.962 9.55363636,19.962 C9.55363636,19.962 9.69090909,19.1295 8.88090909,18.522 C8.60818182,18.3159 7.96363636,18.1935 7.18181818,18.1935 C5.66545455,18.1935 3.61818182,18.6507 2.66090909,19.8378" id="Path"></path>
+            <path d="M0.0918181818,19.0827 C0.0336363636,21.1527 1.93181818,21.7827 1.93181818,21.7827 C0.880909091,18.5715 6.29545455,15.7041 13.1890909,19.1853 C13.1890909,19.1853 12.0463636,17.7759 10.3081818,16.8849 C9.52545455,16.4736 7.75363636,14.6043 7.75363636,14.6043 C7.25454545,14.3721 6.54,14.2362 5.74727273,14.2362 C3.33636364,14.2362 0.192727273,15.4881 0.0918181818,19.0809" id="Path"></path>
+            <path d="M20.0309091,22.1823 C11.6809091,22.2723 10.2827273,23.1966 10.2827273,23.1966 C10.2827273,23.1966 10.3090909,20.5776 7.49909091,19.7847 C4.44272727,18.9234 2.38090909,20.7909 2.38090909,20.7909 C4.89181818,19.9656 9.07818182,20.0943 5.96454545,26.6112 C3.02363636,32.7672 7.51,35.9208 11.0027273,35.9208 C14.6663636,35.9208 18.9018182,33.9147 18.9018182,33.9147 C18.9018182,33.9147 12.2,35.0514 9.82454545,34.0434 C7.44909091,33.0354 6.27454545,30.6234 8.06818182,27.5157 C10.2654545,23.7141 22.3409091,24.4323 28.4436364,22.9932 C34.5972727,21.5424 27.84,16.7688 24.4009091,16.7688 C29.0209091,18.6291 29.7272727,22.0788 20.0309091,22.1823" id="Path"></path>
+        </g>
+    </g>
+</svg>
+							</span>
+						
+						<span class="text">Studio Polaków</span>
+					</a>
+				</li>
+			</ul>
+			
+				<div class="nu-main-nav__item nu-main-nav__item--search js-nu-search">
+					<a href="/szukaj" class="nu-main-nav__link nu-search-button js-nu-search-button">
+						<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+	 x="0px" y="0px" width="24px" height="24px" viewBox="0 0 25 25" preserveAspectRatio="none" enable-background="new 0 0 25 25"
+	 xml:space="preserve">
+<defs>
+</defs>
+<g id="ICON_x5F_SEARCH_2_">
+	<g>
+		<path fill-rule="evenodd" clip-rule="evenodd" d="M23.618,20.757l-5.26-5.259c-0.027-0.028-0.061-0.049-0.09-0.075
+			c1.035-1.569,1.639-3.448,1.639-5.47C19.907,4.456,15.451,0,9.954,0C4.457,0,0,4.456,0,9.953c0,5.498,4.456,9.954,9.954,9.954
+			c2.021,0,3.901-0.604,5.47-1.639c0.026,0.029,0.046,0.062,0.073,0.089l5.26,5.261c0.791,0.789,2.071,0.789,2.861,0
+			C24.409,22.827,24.409,21.547,23.618,20.757z M9.954,16.457c-3.592,0-6.503-2.913-6.503-6.504c0-3.592,2.912-6.503,6.503-6.503
+			c3.592,0,6.503,2.912,6.503,6.503S13.546,16.457,9.954,16.457z"/>
+	</g>
+</g>
+</svg>
+						<span class="text">Szukaj</span>
+					</a>
+
+					<form method="get" action="/szukaj" class="nu-search">
+						<input type="search" placeholder="Szukaj" class="nu-search__input js-nu-search-input" name="q">
+						<label class="nu-search__label">
+							<input type="submit" class="nu-search__button nu-search-button js-nu-search-submit" title="Wyszukaj">
+							<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+	 x="0px" y="0px" width="24px" height="24px" viewBox="0 0 25 25" preserveAspectRatio="none" enable-background="new 0 0 25 25"
+	 xml:space="preserve">
+<defs>
+</defs>
+<g id="ICON_x5F_SEARCH_2_">
+	<g>
+		<path fill-rule="evenodd" clip-rule="evenodd" d="M23.618,20.757l-5.26-5.259c-0.027-0.028-0.061-0.049-0.09-0.075
+			c1.035-1.569,1.639-3.448,1.639-5.47C19.907,4.456,15.451,0,9.954,0C4.457,0,0,4.456,0,9.953c0,5.498,4.456,9.954,9.954,9.954
+			c2.021,0,3.901-0.604,5.47-1.639c0.026,0.029,0.046,0.062,0.073,0.089l5.26,5.261c0.791,0.789,2.071,0.789,2.861,0
+			C24.409,22.827,24.409,21.547,23.618,20.757z M9.954,16.457c-3.592,0-6.503-2.913-6.503-6.504c0-3.592,2.912-6.503,6.503-6.503
+			c3.592,0,6.503,2.912,6.503,6.503S13.546,16.457,9.954,16.457z"/>
+	</g>
+</g>
+</svg>
+						</label>
+					</form>
+				</div>
+
+				
+				
+				
+				
+				
+
+				
+				<div class="nu-main-nav__item nu-main-nav__item--user js-user-widget"
+					
+					data-user-account-url="/czytelnicy"
+					
+					data-login-url="/czytelnicy/logowanie?login_with_popup=1" data-check-authentication-url="/czytelnicy/api/check-authentication"
+					
+					data-logout-url="/czytelnicy/wyloguj?login_with_popup=1"
+					
+					data-login-with-popup="true"
+				>
+					<ul class="is-not-logged-in">
+						
+							<li class="log-in">
+								<a href="/czytelnicy/logowanie?next=/swiat/485818-katastrofa-samolotu-w-stambule-trzy-ofiary-smiertelne" title="Zaloguj się" rel="nofollow" class="js-cas-login" data-login-url="/czytelnicy/logowanie?login_with_popup=1" data-check-authentication-url="/czytelnicy/api/check-authentication">
+									<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+	 x="0px" y="0px" width="24px" height="24px" viewBox="0 0 30 30" preserveAspectRatio="none" enable-background="new 0 0 30 30"
+	 xml:space="preserve">
+<defs>
+</defs>
+<g id="ICON_x5F_LOGIN_2_">
+	<g>
+		<path fill-rule="evenodd" clip-rule="evenodd" d="M14.499,15.191C18.09,15.191,21,11.79,21,7.596
+			C21,1.778,18.09,0,14.499,0S7.998,1.778,7.998,7.596C7.998,11.79,10.908,15.191,14.499,15.191z M28.855,26.37l-3.279-7.375
+			c-0.15-0.337-0.414-0.617-0.742-0.788l-5.09-2.645c-0.113-0.059-0.249-0.047-0.35,0.029c-1.439,1.087-3.133,1.661-4.896,1.661
+			c-1.763,0-3.456-0.574-4.896-1.661c-0.102-0.076-0.237-0.088-0.35-0.029l-5.09,2.645c-0.328,0.171-0.591,0.451-0.742,0.788
+			l-3.28,7.375c-0.227,0.509-0.18,1.091,0.124,1.557c0.304,0.467,0.817,0.745,1.375,0.745h25.717c0.557,0,1.07-0.279,1.375-0.745
+			C29.035,27.461,29.082,26.879,28.855,26.37z"/>
+	</g>
+</g>
+</svg>
+									<span class="text">Zaloguj się</span>
+								</a>
+							</li>
+						
+					</ul>
+				</div>
+				<div class="nu-main-nav__item nu-main-nav__item--submenu nu-submenu-container">
+					<ul class="nu-submenu" id="LinkArea:navDivs">
+	<li class="nu-submenu__item"><a href="/polityka" class="nu-submenu__link">Polityka</a></li>
+	<li class="nu-submenu__item"><a href="/swiat" class="nu-submenu__link">Świat</a></li>
+	<li class="nu-submenu__item"><a href="/smolensk" class="nu-submenu__link">Smoleńsk</a></li>
+	<li class="nu-submenu__item"><a href="/media" class="nu-submenu__link">Media</a></li>
+	<li class="nu-submenu__item"><a href="/spoleczenstwo" class="nu-submenu__link">Społeczeństwo</a></li>
+	<li class="nu-submenu__item"><a href="/gospodarka" class="nu-submenu__link">Gospodarka</a></li>
+	<li class="nu-submenu__item"><a href="/sport" class="nu-submenu__link">Sport</a></li>
+	<li class="nu-submenu__item"><a href="/historia" class="nu-submenu__link">Historia</a></li>
+	<li class="nu-submenu__item"><a href="/kultura" class="nu-submenu__link">Kultura</a></li>
+	<li class="nu-submenu__item"><a href="/kosciol" class="nu-submenu__link">Kościół</a></li>
+	<li class="nu-submenu__item"><a href="/kryminal" class="nu-submenu__link">Kryminał</a></li>
+</ul>
+				</div>
+			
+		</div>
+		
+			<div class="nu-main-nav__item nu-main-nav__item--menu-button">
+				<a href="#menu" class="nu-main-nav__link js-nu-menu-button">
+					<span class="text">Menu</span>
+				</a>
+			</div>
+		
+	</nav>
+
+		</div>
+	</header>
+</div>
+			
+
+			
+
+			<div class="part">
+				<div class="wrap">
+					
+	<div class="adunit adunit-desktop-publication-under-header">
+		
+			<div id="wPolityce_desktop_artykul_bill_gora"></div>
+		
+	</div>
+
+				</div>
+			</div>
+
+			
+				<div class="content clearfix">
+					
+
+<div class="part">
+
+	<div class="wrap">
+
+		<div class="section">
+
+			<header class="section-header red">
+				<section class="section-title">
+					<a href="/swiat" id="LinkArea:ppDivLink" title="Zobacz najnowsze artykuły z działu Świat">Świat</a>
+				</section>
+			</header>
+
+			<div class="area-clear fog-bottom-wide">
+
+				
+				<div class="area-col-8 uncut first js-truncate-related-to-my-size">
+
+					<article class="full-article js-publication-container" data-publication-id="485818">
+						<div class="print-header print-hidden">
+							<p>
+								Wydrukowano:
+								<strong><time class="js-print-date">2020-02-06 20:28:15.192327+01:00</time></strong>
+							</p>
+							<div class="logo-container">
+								<strong>wPolityce<small>.pl</small></strong>
+								<p>wiadomości z Polski i ze świata</p>
+							</div>
+						</div>
+
+						<header>
+							<h1>Katastrofa samolotu w Stambule – Boeing 737 po wylądowaniu wypadł z pasa i rozpadł się na części. Trzy ofiary śmiertelne</h1>
+							
+							<p class="print-article-meta print-hidden">
+								opublikowano: <strong><time class="js-publication-date" title="2020-02-06 13:16:16.772928+01:00">2020-02-06 13:16:16.772928+01:00</time></strong>
+
+								
+							</p>
+
+							<p class="article-meta">
+								opublikowano: <strong><time class="js-relative-date" title="2020-02-06 13:16:16.772928+01:00">2020-02-06 13:16:16.772928+01:00</time></strong>
+
+								
+							</p>
+						</header>
+
+						<figure class="primary-picture">
+							
+							
+								<img src="//media.wplm.pl/thumbs/ODI1L3VfMS9jY180ZmY3My9wLzIwMjAvMDIvMDYvODI1LzQ5OS9hZjM4MDY0N2UwZDM0NTYyOWIzMzBhZWQ3MjExOWI5ZS5qcGVn.jpeg" alt="autor: PAP/EPA" width="825" height="499">
+								<p class="watermark-wpolityce">wPolityce.<span>pl</span></p>
+								<div class="primary-picture__meta">
+									<div class="extra-marking">
+	<span class="extra-marking__text">ZDJĘCIA</span>
+</div>
+									
+										<figcaption>autor: PAP/EPA</figcaption>
+									
+								</div>
+							
+							
+						</figure>
+
+						<div class="article-social top" id="LinkArea:ppSMTop">
+							<div class="facebook facebook-like js-facebook-like">
+								<div class="fb-like" data-href="//wpolityce.pl/swiat/485818-katastrofa-samolotu-w-stambule-trzy-ofiary-smiertelne" data-width="120" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+							</div>
+
+							<div class="facebook facebook-share js-facebook-share" data-link="https://wpolityce.pl/swiat/485818-katastrofa-samolotu-w-stambule-trzy-ofiary-smiertelne" data-app-id="286165648231957">
+								<button type="button"><span class="text">Podziel się</span></button>
+							</div>
+
+							<div class="twitter js-twitter" data-site="@wPolityce_pl" data-text="Katastrofa samolotu w Stambule. Trzy ofiary śmiertelne" data-card="summary" data-link="https://wpolityce.pl/swiat/485818-katastrofa-samolotu-w-stambule-trzy-ofiary-smiertelne">
+								<button type="button"><span class="text">Poleć</span></button>
+							</div>
+
+							<div class="wykop">
+								<a href="http://www.wykop.pl/dodaj/link/?url=https://wpolityce.pl/swiat/485818-katastrofa-samolotu-w-stambule-trzy-ofiary-smiertelne&amp;title=Katastrofa samolotu w Stambule. Trzy ofiary śmiertelne&amp;desc=Turecka prasa podała, że wśród pasażerów było 12 dzieci." target="_blank">
+									<span class="text">Wykop</span>
+								</a>
+							</div>
+
+							<div class="comments">
+								<a href="#komentarze" class="js-comments">
+									<span>2</span>
+								</a>
+							</div>
+
+							<button class="print-publication-button js-print-publication-button" title="Wydrukuj: 'Katastrofa samolotu w Stambule. Trzy ofiary śmiertelne'">
+								<span class="icon fa fa-print"></span> <span class="text">Drukuj</span>
+							</button>
+						</div>
+						
+
+						
+							<div class="article-body article-body-print js-article-body-print" data-multi-page="false" id="LinkArea:ppContent">
+								<div class="intext-links"><p><strong>Na&nbsp;lotnisku im. Sabihy Gokcen w&nbsp;Stambule samolot pasażerski podczas lądowania rozbił się tuż obok pasa startowego. Początkowo nie było ofiar śmiertelnych, z&nbsp;biegiem czasu jednak trzech rannych zmarło. Liczba rannych wzrosła&nbsp;do&nbsp;179.</strong></p> <p>Na&nbsp;pokładzie maszyny było w&nbsp;sumie 183 pasażerów i&nbsp;członków&nbsp;załogi.</p> <blockquote> <p>Do&nbsp;trzech wzrosła liczba ofiar śmiertelnych wypadku samolotu pasażerskiego na&nbsp;lotnisku&nbsp;w&nbsp;Stambule</p> </blockquote> <p>&#8212; poinformował w&nbsp;nocy ze&nbsp;środy na&nbsp;czwartek turecki minister zdrowia Fahrettin Koca. Boeing 737 po&nbsp;wylądowaniu wypadł z&nbsp;pasa i&nbsp;rozpadł się na&nbsp;trzy&nbsp;części.</p> <p><div class="js-gallery-container gallery-container"> <a href=/p/649359 title data-lightbox=gallery_1> <img src=/p/649359/min alt> </a> <a href=/p/649360 title data-lightbox=gallery_1> <img src=/p/649360/min alt> </a> <a href=/p/649361 title data-lightbox=gallery_1> <img src=/p/649361/min alt> </a> <a href=/p/649362 title data-lightbox=gallery_1> <img src=/p/649362/min alt> </a> <a href=/p/649364 title data-lightbox=gallery_1> <img src=/p/649364/min alt> </a> <a href=/p/649363 title data-lightbox=gallery_1> <img src=/p/649363/min alt> </a> <a href=/p/649367 title data-lightbox=gallery_1> <img src=/p/649367/min alt> </a> <a href=/p/649368 title data-lightbox=gallery_1> <img src=/p/649368/min alt> </a> </div></p> <p>Samolot linii Pegasus Airlines leciał z&nbsp;Izmiru. Po&nbsp;wylądowaniu na&nbsp;lotnisku w&nbsp;Stambule, gdzie padał ulewny deszcz, maszyna nie utrzymała kursu i&nbsp;wpadła w&nbsp;poślizg, po&nbsp;czym wypadła z&nbsp;pasa&nbsp;startowego.</p> <p>Gubernator Stambułu Ali Yerlikaya poinformował wcześniej, że&nbsp;hospitalizacji wymagało 120 osób, ale niemal wszyscy ranni są&nbsp;w&nbsp;stanie dobrym &bdquo;z&nbsp;wyjątkiem jednego lub dwóch przypadków. Wyjaśnił, że&nbsp;do&nbsp;wypadku doszło około godz. 18.30, a&nbsp;samolot nie utrzymał się na&nbsp;pasie startowym z&nbsp;powodu złych warunków pogodowych i&nbsp;po&nbsp;opuszczeniu pasa przemieszczał się jeszcze ok. 50-60&nbsp;metrów, po&nbsp;czym stoczył się 30-40&nbsp;metrów po&nbsp;zboczu wzgórza, na&nbsp;którym usytuowane jest&nbsp;lotnisko.</p> <p>Turecka prasa podała, że&nbsp;wśród pasażerów było&nbsp;12&nbsp;dzieci.</p> <p>Samolot po&nbsp;wypadnięciu z&nbsp;pasa startowego rozpadł się na&nbsp;trzy części, przy czym część przednia oderwała się całkowicie od&nbsp;kadłuba. W&nbsp;akcji ratunkowej brało udział ponad 100 oddziałów, w&nbsp;tym ekipy rządowej agencji ds. katastrof, straż pożarna, karetki pogotowia&nbsp;i&nbsp;policja. </p> <p>aw/PAP</p></div>
+							</div>
+						
+
+						<p class="print-page-link print-hidden">
+							Publikacja dostępna na stronie: <a href="https://wpolityce.pl/swiat/485818-katastrofa-samolotu-w-stambule-trzy-ofiary-smiertelne">https://wpolityce.pl/swiat/485818-katastrofa-samolotu-w-stambule-trzy-ofiary-smiertelne</a>
+						</p>
+
+						<div class="article-author clearfix" id="LinkArea:ppAuthor">
+							
+
+								
+									
+									<img src="//media.wplm.pl/thumbs/MTIweDEyMC9jX2MvdV8xL2NjX2FhMGE5L3AvMjAxNy8wMi8wNS80MDAvNDAwLzgzY2M0MTU5NmYxODRlYTg5MTViM2Q4OGU0MWUzODVmLmpwZWc=.jpeg" alt="Zdjęcie Zespół wPolityce.pl" height="120" width="120">
+								
+
+								<h3>
+									autor:
+									
+										<a href="/autorzy/100-zespol-wpolitycepl">Zespół wPolityce.pl</a>
+									
+								</h3>
+								<p>Czekamy na Wasze maile z uwagami i komentarzami: redakcja@wpolityce.pl. Dołącz do naszej społeczności – Sieci Przyjaciół wPolityce.pl i tygodnika „Sieci” na SiecPrzyjaciol.pl</p>
+
+							
+
+						</div>
+
+						<div class="article-social bottom" id="LinkArea:ppSMBott">
+							<div class="facebook facebook-like js-facebook-like">
+								<div class="fb-like" data-href="//wpolityce.pl/swiat/485818-katastrofa-samolotu-w-stambule-trzy-ofiary-smiertelne" data-width="120" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+							</div>
+
+							<div class="facebook facebook-share js-facebook-share" data-link="https://wpolityce.pl/swiat/485818-katastrofa-samolotu-w-stambule-trzy-ofiary-smiertelne" data-app-id="286165648231957">
+								<button type="button"><span class="text">Podziel się</span></button>
+							</div>
+
+							<div class="twitter js-twitter" data-site="@wPolityce_pl" data-text="Katastrofa samolotu w Stambule. Trzy ofiary śmiertelne" data-card="summary" data-link="https://wpolityce.pl/swiat/485818-katastrofa-samolotu-w-stambule-trzy-ofiary-smiertelne">
+								<button type="button"><span class="text">Poleć</span></button>
+							</div>
+
+							<div class="wykop">
+								<a href="http://www.wykop.pl/dodaj/link/?url=https://wpolityce.pl/swiat/485818-katastrofa-samolotu-w-stambule-trzy-ofiary-smiertelne&amp;title=Katastrofa samolotu w Stambule. Trzy ofiary śmiertelne&amp;desc=Turecka prasa podała, że wśród pasażerów było 12 dzieci." target="_blank">
+									<span class="text">Wykop</span>
+								</a>
+							</div>
+
+							<div class="comments">
+								<a href="#komentarze" class="js-comments">
+									<span>2</span>
+								</a>
+							</div>
+
+							<button class="print-publication-button js-print-publication-button" title="Wydrukuj: 'Katastrofa samolotu w Stambule. Trzy ofiary śmiertelne'">
+								<span class="icon fa fa-print"></span> <span class="text">Drukuj</span>
+							</button>
+						</div>
+
+						
+						
+							<div class="buttons-container">
+								
+									<a href="https://wpolsce.pl/studio-polakow?utm_source=wpolityce&amp;utm_campaign=studiopolakow&amp;utm_medium=160x42px" target="_blank" class="premium-button">
+										<img src="//media.wplm.pl/pictures/2019/05/12/160/42/b73d309af0c349bf8a719a94f8ad511f.jpeg" alt="Porozmawiaj z dziennikarzem w telewizji wPolsce.pl">
+									</a>
+								
+							</div>
+						
+
+					</article>
+
+					
+						
+						
+					
+
+					<div id="article-related-from-division">
+						  
+							<div class="adunit adunit-desktop-publication-under-article-1st-plista">
+								<div data-widget="plista_widget_belowArticle" class="placement-publication-recommendations"></div>
+							</div>
+						
+
+						
+							<div class="adunit adunit-desktop-publication-under-article-2nd-bill">
+								<div id="wPolityce_desktop_artykul_bill_dol"></div>
+							</div>
+						
+					</div>
+
+					
+						<div class="adunit adunit-desktop-publication-under-article-3rd-contentstream">
+							<header class="area-header"><h2>Czytaj także</h2></header>
+							<div data-ns-type="simplePlacementCustom" data-ns-hash="d1aedb2f053d0c9ce24a180543eb2e70" class="kd_ns_placement">
+								<script src="//emisja.contentstream.pl/aldente/kd_process_function.js?TYPE=simplePlacementCustom" async="async" ></script>
+							</div>
+						</div>
+					
+				</div>
+
+				
+					<div class="adunit adunit-desktop-publication-intext js-wPolityce_desktop_artykul_bill_intekst">
+						<div id="wPolityce_desktop_artykul_bill_intekst">
+							<script>  
+								(function() {
+									var tag = document.querySelector('.js-wPolityce_desktop_artykul_bill_intekst');
+									var parentNode = document.querySelector(".intext-links") || document.querySelector('.article-body');
+									parentNode.insertBefore(tag, parentNode.children[0].nextSibling);
+								})();
+							</script>
+						</div>
+					</div>
+				
+
+				
+				<div class="box-col-3 holder-col-3 area-col-3 last js-related-publications-container" id="LinkArea:ppSeeMore">
+					
+						<header class="area-header"><h2>Zobacz również</h2></header>
+						<div class="related-publications">
+							
+								<div class="adunit adunit-desktop-publication-part-Zobacz-rowniez-1st">
+									<div id="wPolityce_desktop_artykul_rec_szpalta"></div>
+								</div>
+							
+
+							<div id="related-publications" data-publication-id="485818">
+								<div class="loading">
+									<img src="//static.wpolityce.pl/img/loading.svg">
+								</div>
+							</div>
+						</div>
+					
+				</div>
+
+			</div>
+
+		</div>
+
+		
+			
+				<div class="adunit adunit-desktop-publication-under-article-Studio-tv js-widget-playlist">
+					<header class="area-header"><h2>Studio TV</h2></header>
+					<div id="pl1" class="player-tv-container"></div>
+					<iframe class="tv-thumbnails wide" src="//mr1a.exs.pl/showplaylistfratria.php?mid=MCwxNng5LDAsMCwzOTAsNjY1LDEsMCwxLDAsMCwwLDAsMCwwLDAsMCwwLDA=&cId=pl1&cnt=5&dir=vertical&showmain=1"></iframe>
+				</div>
+			
+		
+	</div>
+</div>
+
+
+	<div id="komentarze" class="loading-posts forum-container js-forum-container js-post-form-visitable" data-csrf="SA8IhqcR7AP6vcnXtgkePW5hTWR86uiA7HvJLuzwSWY6CSkRaKxt6jVjRc1dAUjr">
+		<img src="//static.wpolityce.pl/img/loading.svg" class="img-loader">
+		<span class="loading-posts-msg-text js-loader-info">W tym miejscu za chwilę pojawią się komentarze...</span>
+	</div>
+
+
+
+				</div>
+			
+
+			
+	<div class="area-clear">
+	<div class="wrap nav-holder footer-banner-container">
+		
+		
+			
+				<a class="footer-banner" href="https://wpolsce.pl/studio-polakow?utm_source=wpolityce&amp;utm_campaign=studiopolakow&amp;utm_medium=750x200px" target="_blank">
+					<img src="//media.wplm.pl/pictures/2020/01/07/750/200/1e1078e78f254f838fe39106b3662ae1.jpeg" alt="Porozmawiaj z dziennikarzem w telewizji wPolsce.pl">
+				</a>
+			
+		
+		
+			<section class="section-mobile js-section-mobile">
+				<a id="go-to-mobile-version" href="?wersja=mobilna" rel="nofollow">Wersja mobilna</a>
+			</section>
+		
+	</div>
+</div>
+
+
+			
+			
+				
+				<footer class="nu-page-footer" id="LinkArea:footer">
+					<div class="nu-row">
+						<footer class="page-footer-col">
+    <p><a href="/facts-from-poland"><strong>English version</strong></a></p>
+    <p><a href="/forum"><strong>Forum dyskusyjne</strong></a></p>
+    <p><a href="http://wsklepiku.pl"><strong>wSklepiku</strong></a></p>
+    <p><a href="https://wpolsce.pl"><strong>wPolsce.pl</strong></a></p>
+    <p><a href="https://siec.wpolityce.pl"><strong>Sieć Przyjaciół</strong></a></p>
+    <p><a href="https://wpolsce.pl/studio-polakow"><strong>Twoje Finanse</strong></a></p>
+    <div style="margin-bottom: 8px;">
+        <a href="https://www.facebook.com/wPolityce/" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="margin-bottom: -7px;"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-3 7h-1.924c-.615 0-1.076.252-1.076.889v1.111h3l-.238 3h-2.762v8h-3v-8h-2v-3h2v-1.923c0-2.022 1.064-3.077 3.461-3.077h2.539v3z" fill="#3b5998"/></svg> Facebook</a>
+    </div>
+    <div style="margin-bottom: 8px;">
+        <a href="https://twitter.com/wpolityce_pl" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="margin-bottom: -7px;"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-.139 9.237c.209 4.617-3.234 9.765-9.33 9.765-1.854 0-3.579-.543-5.032-1.475 1.742.205 3.48-.278 4.86-1.359-1.437-.027-2.649-.976-3.066-2.28.515.098 1.021.069 1.482-.056-1.579-.317-2.668-1.739-2.633-3.26.442.246.949.394 1.486.411-1.461-.977-1.875-2.907-1.016-4.383 1.619 1.986 4.038 3.293 6.766 3.43-.479-2.053 1.08-4.03 3.199-4.03.943 0 1.797.398 2.395 1.037.748-.147 1.451-.42 2.086-.796-.246.767-.766 1.41-1.443 1.816.664-.08 1.297-.256 1.885-.517-.439.656-.996 1.234-1.639 1.697z" fill="#1da1f2"/></svg> Twitter</a>
+    </div>
+</footer>
+
+<footer class="page-footer-col">
+    <p>Redaktor Naczelna: <strong>Marzena Nykiel</strong></p>
+    <p>Zespół: <strong>Krzysztof Bałękowski, Wojciech Biedroń, Adam Kacprzak, Jacek Karnowski, Michał Karnowski, Tomasz Karpowicz, Kamil Kwiatek,  Aleksander Majewski, Tomasz Plaskota, Adam Stankiewicz, Weronika Tomaszewska, Anna Wiejak.</strong></p>
+    <p>Autorzy: <strong>Łukasz Adamski, Piotr Cywiński, Krzysztof Feusette, Marcin Fijołek, Grzegorz Górny, Edyta Hołdyńska, Jerzy Jachowicz, Aleksandra Jakubowska, Stanisław Janecki, Dorota Łosiewicz, Maja Narbutt, Maciej Pawlicki, Andrzej Potocki, Marek Pyza, Aleksandra Rybińska, Marcin Wikło.</strong></p>
+</footer>
+
+<footer class="page-footer-col">
+    <p>Kontakt: <strong>redakcja@wpolityce.pl</strong></p>
+    <p>Wydawca: <strong>Fratria Sp. z o.o.</strong></p>
+    <p>Adres do korespondencji: <strong>ul. Finlandzka 10, 03-903 Warszawa</strong></p>
+    <p>Kontakt do biura reklamy: <strong>reklama@fratria.pl</strong></p>
+    <p>
+<a href="/kontakt">Kontakt</a>
+<a href="http://feeds.feedburner.com/wPolitycepl" target="_blank">RSS</a>
+<a href="/regulamin">Regulaminy</a>
+<a href="/polityka-prywatnosci">Polityka prywatności</a>
+<a href="/ustawienia-prywatnosci">Ustawienia prywatności</a>
+</p>
+</footer>
+					</div>
+				</footer>
+			
+
+			
+	<!-- Facebook Conversion Code for Piksel główny - serwisy -->
+	<script type="text/javascript">
+		(function() {
+			var _fbq = window._fbq || (window._fbq = []);
+			if (!_fbq.loaded) {
+				var fbds = document.createElement('script');
+				fbds.async = true;
+				fbds.src = '//connect.facebook.net/en_US/fbds.js';
+				var s = document.getElementsByTagName('script')[0];
+				s.parentNode.insertBefore(fbds, s);
+				_fbq.loaded = true;
+			}
+		})();
+		window._fbq = window._fbq || [];
+		window._fbq.push(['track', '6020249374411', {'value':'0.00','currency':'PLN'}]);
+	</script>
+	<noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?ev=6020249374411&amp;cd[value]=0.00&amp;cd[currency]=PLN&amp;noscript=1" /></noscript>
+
+
+			<div id="old-ie-info" class="js-old-ie-info box-information">
+				<div class="inner-box-info">
+					<span class="close"><i class="fa fa-close"></i></span>
+					<p><strong>Używasz przestarzałej wersji przeglądarki</strong> Internet Explorer posiadającej ograniczoną funkcjonalność i luki bezpieczeństwa. Tracisz możliwość skorzystania z pełnych możliwości serwisu.</p>
+					<p>Zaktualizuj przeglądarkę lub skorzystaj z alternatywnej.</p>
+				</div>
+			</div>
+
+			
+				
+			
+		</div>
+	</div>
+</body>
+<script type="text/javascript">snippy.executeSyncScripts()</script>
+</html>

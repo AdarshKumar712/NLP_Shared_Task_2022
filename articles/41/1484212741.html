@@ -1,0 +1,964 @@
+<!doctype html>
+<html lang="es" class="">
+<head>
+	<meta charset="UTF-8"><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"53cef82690",applicationID:"189190456"};window.NREUM||(NREUM={}),__nr_require=function(n,e,t){function r(t){if(!e[t]){var i=e[t]={exports:{}};n[t][0].call(i.exports,function(e){var i=n[t][1][e];return r(i||e)},i,i.exports)}return e[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(n,e,t){function r(){}function i(n,e,t){return function(){return o(n,[u.now()].concat(f(arguments)),e?null:this,t),e?void 0:this}}var o=n("handle"),a=n(4),f=n(5),c=n("ee").get("tracer"),u=n("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(n,e){s[e]=i(d+e,!0,"api")}),s.addPageAction=i(d+"addPageAction",!0),s.setCurrentRouteName=i(d+"routeName",!0),e.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(n,e){var t={},r=this,i="function"==typeof e;return o(l+"tracer",[u.now(),n,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return e.apply(this,arguments)}catch(n){throw c.emit("fn-err",[arguments,this,n],t),n}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(n,e){m[e]=i(l+e)}),newrelic.noticeError=function(n,e){"string"==typeof n&&(n=new Error(n)),o("err",[n,u.now(),!1,e])}},{}],2:[function(n,e,t){function r(n,e){var t=n.getEntries();t.forEach(function(n){"first-paint"===n.name?a("timing",["fp",Math.floor(n.startTime)]):"first-contentful-paint"===n.name&&a("timing",["fcp",Math.floor(n.startTime)])})}function i(n){if(n instanceof c&&!s){var e,t=Math.round(n.timeStamp);e=t>1e12?Date.now()-t:f.now()-t,s=!0,a("timing",["fi",t,{type:n.type,fid:e}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var o,a=n("handle"),f=n("loader"),c=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){o=new PerformanceObserver(r);try{o.observe({entryTypes:["paint"]})}catch(u){}}if("addEventListener"in document){var s=!1,p=["click","keydown","mousedown","pointerdown","touchstart"];p.forEach(function(n){document.addEventListener(n,i,!1)})}}},{}],3:[function(n,e,t){function r(n,e){if(!i)return!1;if(n!==i)return!1;if(!e)return!0;if(!o)return!1;for(var t=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],4:[function(n,e,t){function r(n,e){var t=[],r="",o=0;for(r in n)i.call(n,r)&&(t[o]=e(r,n[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],5:[function(n,e,t){function r(n,e,t){e||(e=0),"undefined"==typeof t&&(t=n?n.length:0);for(var r=-1,i=t-e||0,o=Array(i<0?0:i);++r<i;)o[r]=n[e+r];return o}e.exports=r},{}],6:[function(n,e,t){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(n,e,t){function r(){}function i(n){function e(n){return n&&n instanceof r?n:n?c(n,f,o):o()}function t(t,r,i,o){if(!d.aborted||o){n&&n(t,r,i);for(var a=e(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function l(n,e){h[n]=v(n).concat(e)}function m(n,e){var t=h[n];if(t)for(var r=0;r<t.length;r++)t[r]===e&&t.splice(r,1)}function v(n){return h[n]||[]}function g(n){return p[n]=p[n]||i(t)}function w(n,e){u(n,function(n,t){e=e||"feature",y[t]=e,e in s||(s[e]=[])})}var h={},y={},b={on:l,addEventListener:l,removeEventListener:m,emit:t,get:g,listeners:v,context:e,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var f="nr@context",c=n("gos"),u=n(4),s={},p={},d=e.exports=i();d.backlog=s},{}],gos:[function(n,e,t){function r(n,e,t){if(i.call(n,e))return n[e];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(n,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return n[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(n,e,t){function r(n,e,t,r){i.buffer([n],r),i.emit(n,e,t)}var i=n("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(n,e,t){function r(n){var e=typeof n;return!n||"object"!==e&&"function"!==e?-1:n===window?0:a(n,o,function(){return i++})}var i=1,o="nr@id",a=n("gos");e.exports=r},{}],loader:[function(n,e,t){function r(){if(!x++){var n=E.info=NREUM.info,e=l.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(n&&n.licenseKey&&n.applicationID&&e))return s.abort();u(y,function(e,t){n[e]||(n[e]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=l.createElement("script");t.src="https://"+n.agent,e.parentNode.insertBefore(t,e)}}function i(){"complete"===l.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=n("handle"),u=n(4),s=n("ee"),p=n(3),d=window,l=d.document,m="addEventListener",v="attachEvent",g=d.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:g,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1158.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=e.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};n(1),n(2),l[m]?(l[m]("DOMContentLoaded",o,!1),d[m]("load",r,!1)):(l[v]("onreadystatechange",i),d[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=n(6)},{}],"wrap-function":[function(n,e,t){function r(n){return!(n&&n instanceof Function&&n.apply&&!n[a])}var i=n("ee"),o=n(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;e.exports=function(n,e){function t(n,e,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){d([u,"",[r,a,i],f])}s(e+"start",[r,a,i],f);try{return c=n.apply(a,r)}catch(p){throw s(e+"err",[r,a,p],f),p}finally{s(e+"end",[r,a,c],f)}}return r(n)?n:(e||(e=""),nrWrapper[a]=n,p(n,nrWrapper),nrWrapper)}function u(n,e,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<e.length;c++)f=e[c],a=n[f],r(a)||(n[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||e){var o=c;c=!0;try{n.emit(t,r,i,e)}catch(a){d([a,t,r,i])}c=o}}function p(n,e){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(n);return t.forEach(function(t){Object.defineProperty(e,t,{get:function(){return n[t]},set:function(e){return n[t]=e,e}})}),e}catch(r){d([r])}for(var i in n)f.call(n,i)&&(e[i]=n[i]);return e}function d(e){try{n.emit("internal-error",e)}catch(t){}}return n||(n=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="profile" href="https://gmpg.org/xfn/11">
+
+	<title>Salario mínimo sube en más de 40 estados y ciudades de EEUU &#8211; Telemundo Miami (51)</title>
+<link rel='dns-prefetch' href='//s0.wp.com' />
+<link rel='dns-prefetch' href='//ak.sail-horizon.com' />
+<link rel='dns-prefetch' href='//native.sharethrough.com' />
+<link rel='dns-prefetch' href='//js-sec.indexww.com' />
+<link rel='dns-prefetch' href='//use.fontawesome.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="Telemundo Miami (51) &raquo; Feed" href="https://www.telemundo51.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Telemundo Miami (51) &raquo; RSS de los comentarios" href="https://www.telemundo51.com/comments/feed/" />
+<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='all-css-0' href='https://www.telemundo51.com/_static/??-eJyVjMEOAiEMRH9Ittmoqx6M31IoIrHbJRSy4e8lJhoPevA4M+8NrMm4RYqXAolriKKAZBibz2rEOnD62dA1Db3ZwH/eTyfUHq3PAWyNTGB5cXfD0WbMDbQ09m83iuNKXp/XhHqL/U2HOcp3BKlPxmJ+IZf5PO4P03g6bnfTA8WgW6E=' type='text/css' media='all' />
+<style id='admin-bar-inline-css' type='text/css'>
+#wp-admin-bar-my-sites-search.hide-if-no-js {
+	display: none;
+}
+#wp-admin-bar-my-sites-search label[for="my-sites-search-text"] {
+	clip: rect(1px, 1px, 1px, 1px);
+	position: absolute !important;
+	height: 1px;
+	width: 1px;
+	overflow: hidden;
+}
+#wp-admin-bar-my-sites-search {
+	height: 38px;
+}
+#wp-admin-bar-my-sites-search .ab-item {
+	height: 34px;
+}
+#wp-admin-bar-my-sites-search input {
+	padding: 0 2px;
+	width: 95%;
+	width: calc( 100% - 4px );
+}
+	
+</style>
+<link crossorigin="anonymous" rel='stylesheet' id='font-awesome-css'  href='https://use.fontawesome.com/releases/v5.9.0/css/all.css' type='text/css' media='all' />
+<link rel='stylesheet' id='all-css-2' href='https://www.telemundo51.com/_static/??-eJydzE0OwiAQQOELWWCmpZSF8SzDAJbIj7E0Xt+68AB2/V4++X4O3GoPtcu+hhI2WR0PW6eeWpWc07e4PWUveTtiq1SeAiIGcpZReefYegQ9ipKqOJ6L/NPkVkqrQgdABuuJrAEeUU9Agte9Pk7L99wcZYHLzMY6jHZRMBIZmvC0Sa+eOAeBelZTNCoqCzAjOtb+h97KFbQxCxhQ+AF7dXo+' type='text/css' media='all' />
+<script type='text/javascript' src='https://www.telemundo51.com/wp-includes/js/jquery/jquery.js?ver=1.12.4-wp'></script>
+<script type='text/javascript'>
+jQuery(document).ready( function($) {
+	$('#wp-admin-bar-my-sites-search.hide-if-no-js').show();
+	$('#wp-admin-bar-my-sites-search input').keyup( function( ) {
+
+		var searchValRegex = new RegExp( $(this).val(), 'i');
+
+		$('#wp-admin-bar-my-sites-list > li.menupop').hide().filter(function() {
+
+			return searchValRegex.test( $(this).find('> a').text() );
+
+		}).show();
+
+	});
+});
+	
+</script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var adLayersDFP = {"layerDebugLabel":"Current ad layer","consoleDebugLabel":"Switch to Google console","adUnitPrefix":"div-gpt-ad-"};
+/* ]]> */
+</script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var adLayersAdServer = {"jsAPIClass":"AdLayersDFPAPI"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://www.telemundo51.com/_static/??-eJyVjNsKgCAQRH8oW6L7Q/QtplsoupkXor/PIOg5GBgYzhk4HVMkTJIYQOccCf31FrNq8zxiaRWVOhSQYbFTRIrgTNoUBeCSGX6hD4wW8Tx8g1zdfysbs52qtu+qcaibTt9C6DqM'></script>
+<script type='text/javascript' src='https://www.telemundo51.com/wp-includes/js/dist/vendor/wp-polyfill.min.js?ver=7.0.0'></script>
+<script type='text/javascript'>
+( 'fetch' in window ) || document.write( '<script src="https://www.telemundo51.com/wp-includes/js/dist/vendor/wp-polyfill-fetch.min.js?ver=3.0.0"></scr' + 'ipt>' );( document.contains ) || document.write( '<script src="https://www.telemundo51.com/wp-includes/js/dist/vendor/wp-polyfill-node-contains.min.js?ver=3.26.0-0"></scr' + 'ipt>' );( window.FormData && window.FormData.prototype.keys ) || document.write( '<script src="https://www.telemundo51.com/wp-includes/js/dist/vendor/wp-polyfill-formdata.min.js?ver=3.0.12"></scr' + 'ipt>' );( Element.prototype.matches && Element.prototype.closest ) || document.write( '<script src="https://www.telemundo51.com/wp-includes/js/dist/vendor/wp-polyfill-element-closest.min.js?ver=2.0.2"></scr' + 'ipt>' );
+</script>
+<script type='text/javascript' src='https://www.telemundo51.com/wp-content/plugins/gutenberg/build/i18n/index.js?m=1575971772g'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var nbc = {"brand":"telemundo","callLetters":"WSCV","env":"production","fullDomain":"telemundo51.com","globalSiteKey":"tlmd-mia","comscore_c4":"TELEMUNDO 51","on_air_name":"Telemundo 51","host":"telemundo51.com","market":"telemundo51","pdkAcct":"TQboeC","sensitive":"","siteKey":"tlmd-mia","themeUrl":"https:\/\/www.telemundo51.com\/wp-content\/themes\/nbc-station","twitterVia":"telemundo51","zipCode":"33142","dataLayer":{"adobe":{"prop1":"noticias","eVar1":"noticias","prop2":"article - general","prop3":"eeuu","eVar3":"eeuu","prop4":"","eVar4":"","eVar8":"telemundo","prop8":"telemundo","prop9":"D=v9","eVar9":"TLMD-MIA","prop10":"D=v10","eVar10":"WSCV","prop19":"true","prop20":"nbcuotstelemundodivision","prop21":"10031854502","eVar21":"10031854502","prop22":"Salario m\u00ednimo sube en m\u00e1s de 40 estados y ciudades de EEUU","eVar22":"Salario m\u00ednimo sube en m\u00e1s de 40 estados y ciudades de EEUU","prop25":"EFE","eVar25":"EFE","prop28":"","eVar28":"","prop29":"noticias, eeuu, eeuu, sube-salario-minimo","prop32":"no keyword","prop57":"","eVar57":"","eVar68":"","eVar70":"Jan 01, 2020","prop74":"D=v74","eVar74":"page not sponsored","eVar76":"page not sponsored","eVar80":"article - general","eVar81":"10242032903","eVar90":"Sube salario m\u00ednimo","list2":"noticias, eeuu, eeuu, sube-salario-minimo","attrs":[],"contextData":{"pagename":"","events":"","rsid":"nbcuotstelemundodivision","callsign":"WSCV","businessunit":"telemundo51","division":"telemundo","sitekey":"tlmd-mia","section":"noticias","subsection":"eeuu","subsubsection":"","exitlink":"","url":"https:\/\/www.telemundo51.com\/noticias\/eeuu\/salario-minimo-sube-en-mas-de-40-estados-y-ciudades-de-eeuu\/2032903\/","contentid":2032903,"localid":"1:24:2032903","contenttitle":"Salario m\u00ednimo sube en m\u00e1s de 40 estados y ciudades de EEUU","contenttype":"article","nationalized":true,"byline_authors":"EFE","date":"","sourceid":"","source":"","pageName":"eeuu:detail content page","collections":""},"prop30":"NATIONALTLMD","prop18":"ligiarobles","pageName":"eeuu:detail content page","pageType":"","prop23":"article ","eVar23":"article "},"page_name":["eeuu:detail","content","page"],"site_events":{},"division":"telemundo","market":"WSCV","sitekey":"tlmd-mia","type":"post","network_id":"1:24:2032903","id":2032903,"source":"","title":"Salario m\u00ednimo sube en m\u00e1s de 40 estados y ciudades de EEUU","summary":"<p>Los primeros empleados en beneficiarse de este aumento fueron los que trabajan en la ciudad de Nueva York.<\/p>\n","link":"https:\/\/www.telemundo51.com\/noticias\/eeuu\/salario-minimo-sube-en-mas-de-40-estados-y-ciudades-de-eeuu\/2032903\/","date":"","subtitle":"Los primeros empleados en beneficiarse de este aumento fueron los que trabajan en la ciudad de Nueva York.","sponsor":"","sst_source_id":"","linkout":"","linkout_url":"","syndicated":true,"nationalized":true,"originating_market":"NATIONALTLMD","content_tag":"eeuu|sube-salario-minimo","section":"noticias","subsection":"eeuu","subsubsection":"","all_sections":"noticias|eeuu","primary_tag":"Sube salario m\u00ednimo","sponsored":false,"contentid":"10031854502","localid":"1:24:2032903","localid_combined":"10242032903","contenttitle":"Salario m\u00ednimo sube en m\u00e1s de 40 estados y ciudades de EEUU","contenttype":"article ","syndicatedid":"1:3:1854502","byline_authors":"EFE","sourceid":"","pageName":"eeuu:detail content page","collections":"","uri":"\/noticias\/eeuu\/salario-minimo-sube-en-mas-de-40-estados-y-ciudades-de-eeuu\/2032903\/","uri_length":6,"section_name":"noticias","detail_section_name":"eeuu","detail_subsection_name":"","this_contenttype":"article ","template":"article - general"},"browserTitle":"%s - Telemundo Miami (51)","pageType":"article","video":{"playerType":"articleplayer","fwSSID":"tlmd_wscv_noticias_eeuu","fwSSID_liveNoPre":"tlmd_live_nopreroll","fwNetworkID":"382114","fwManager":{"network":"_live","siteKey":"_telemundo"},"config":{"volume":100,"htmlPreRoll":true,"htmlOmniture":false,"tremorFlashKey":"52289094b872c","tremorFlashSyndKey":"5239b2feaee2e","tremorHTMLKey":"5239c44e7e9e1","tremorHTMLSyndKey":"5239c4849009"},"htmlOmniture":false,"pdkPath":"\/assets\/pdk587","plugins":["akamaiHD","FreeWheel","comscore","captions","capcon","liveCaptions","streamsense","chartbeat"]},"adobe":{"rsid":"nbcuotstelemundodivision","link_internal_filters":"javascript:,telemundo51.com,media.telemundo51.com,events.telemundo51.com,tsn.telemundo51.com,autos.telemundo51.com"},"weather":{"weather_url":"https:\/\/www.telemundo51.com\/el-tiempo\/","alerts_url":"https:\/\/www.telemundo51.com\/el-tiempo\/alertas-del-tiempo\/","closings_url":"https:\/\/www.telemundo51.com\/el-tiempo\/cierre-de-escuelas\/"},"sharethrough_codes":["nP3EagztciAhUuFBbE24BQsi"]};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://www.telemundo51.com/wp-content/themes/nbc-station/client/build/js/analytics.3746cdab20ef9cbba198.bundle.min.js?ver=1.0.2'></script>
+<script type='text/javascript'>
+( function( domain, translations ) {
+	var localeData = translations.locale_data[ domain ] || translations.locale_data.messages;
+	localeData[""].domain = domain;
+	wp.i18n.setLocaleData( localeData, domain );
+} )( 'nbc', {"domain":"messages","locale_data":{"messages":{"":{"domain":"messages","plural_forms":"nplurals=2; plural=(n != 1);","lang":"es_US"},"New Comment":["Nuevo comentario"],"Submit Comment":["Enviar comentario"],"Type provider name to search":["Escribe el nombre del proveedor para buscar"],"For your local NBC live stream, select your TV provider and sign in.":["Para tu transmisión en vivo de Telemundo, selecciona tu proveedor de televisión por cable e inicia sesión."],"Don't see your provider? Search below":["¿No ves a tu proveedor? Busca a continuación"],"Need help signing in?":["¿Necesitas ayuda para iniciar sesión?"],"See our FAQ":["Consulta nuestras preguntas frecuentes"],"For technical issues email:":["Para problemas técnicos escribe al correo electrónico:"],"Sign Out":["Cerrar sesión"],"TV Schedule":["Programación de TV"],"NEED HELP?":["¿NECESITAS AYUDA?"],"Live Stream":["En Vivo"],"Live stream video support":["Soporte de transmisión de vídeo en directo"],"Email":["Correo electrónico"],"FAQ":["Preguntas más frecuentes"],"Live TV":["TV en vivo"],"#":["#"],"NOW":["Ahora"],"Jan":["Enero"],"Feb":["Febrero"],"Mar":["Marzo"],"Apr":["Abril"],"May":["Mayo"],"Jun":["Junio"],"Jul":["Julio"],"Aug":["Agosto"],"Sep":["Septiembre"],"Oct":["Octubre"],"Nov":["Noviembre"],"Dec":["Diciembre"],"Visit Site":["Visita el sitio"],"Horoscopo":["Horóscopo"],"Sponsored":["Auspiciado"],"Enter your email":["Ingresa tu correo electrónico"],"Sign up":["Regístrate"],"Privacy Policy":["Política de privacidad"],"More Newsletters":["Más boletines"],"Sign up successful!":["¡Registro completado con éxito!"],"Male":["Masculino"],"Female":["Femenino"],"Cannot be blank":["No puede estar en blanco"],"Sign in / Sign up":["Iniciar sesión / Registrarse"],"ex: mailAddress@client.com":["por ejemplo: mailAddress@client.com"],"Sign up / Sign in":["Regístrate / Inicia sesión"],"First name":["Nombre."],"Last name":["Apellido."],"Zip code":["Código postal."],"Finish sign up":["Terminar el registro"],"Choose the newsletters you'd like to receive.":["Elija los boletines que le gustaría recibir."],"Log out":["Cerrar sesión"],"Close success message":["Mensaje de cierre exitoso"],"Submitting...":["Enviando "],"Save Changes":["Guardar Cambios"],"Sign in to view":["Inicia sesión para ver"],"Full Schedule":["Horario completo"],"ex: mailAdress@client.com":["por ejemplo: mailAdress@client.com"],"Phone number":["Número de teléfono"],"+1 (555)-555-5555)":["+1 (555)-555-5555)"],"Choose files to upload":["Elige los archivos que deseas cargar"],"No file chosen":["No se ha elegido ningún archivo"],"Submit":["Enviar"],"On a desktop computer? Hold “Ctrl\" on PC or “command\" on Mac to select multiple files. Up to 5 files will be accepted. Zip and all common image, video, and document formats are accepted. Any documents or images submitted could be used for broadcast or digital use.":["¿En un ordenador de sobremesa? Mantenga presionada la tecla \"Ctrl\" en el PC o \"comando\" en Mac para seleccionar varios archivos. Se aceptarán hasta 5 archivos. Zip y se aceptan todos los formatos comunes de imagen, vídeo y documentos. Cualquier documento o imagen presentada podría utilizarse para difusión o uso digital."],"Required Fields":["Campos requeridos"],"Subject":["Asunto"],"Use a short descriptive subject":["Utilice un breve tema descriptivo"],"Describe your tip in detail":["Describa su información en detalle"],"Please type in complete sentences":["Por favor escriba oraciones completas"],"Tags":["Etiquetas"],"comma separated - ex: hurricane, weather":["Separado por comas - por ejemplo: huracán, tiempo"],"Your Name":["Tu nombre"],"First & last name":["Nombre y apellido"],"I agree to the ":["Estoy de acuerdo con "],"terms of service":["Condiciones de servicio de configuración"]," and ":["Y"],"privacy policy":["Política de privacidad"],"Submit Your Media":["Envía tus fotos o videos"],"Thanks for submitting your media.":["Gracias por enviar tu material"],"Choose a file to upload":["Elige un archivo para cargar"],"Title":["Título"],"Use a short descriptive title":["Utilice un breve título descriptivo"],"Description":["Descripción"],"Please type in a description":["Por favor, escriba una descripción"],"Select a Category":["Seleccionar categoría"],"Videos":["Videos"],"More Videos":["Más videos"],"More":["Más Videos"],"More %s Videos":["Más videos de %s"],"Search Videos:":["Buscar vídeos"],"Search Videos":["Buscar vídeos"],"Search":["Buscar "],"Show More":["Mostrar más"],"Search Results":["Resultado de la Busqueda"],"No Results":["Sin resultados"],"Latest":["Todos los videos"],"Local":["Local"],"Up Next":["Siguiente"],"News":["Noticias"],"Now Playing":["Reproduciendo ahora"],"Expand Map":["Expandir mapa"],"Collapse Map":["Contraer mapa"],"Weather Alerts":["Alertas del Tiempo "],"School Closings":["Cierres de escuelas"],"View All":["Ver todo"],"Wind":["Viento"],"Click to search by city or zip...":["Haga clic para buscar por ciudad o zip..."],"Feels like":["Sensación térmica"],"Humidity":["Humedad"],"Precip":["Precip"],"Temperature":["Temperatura"],"Precipitation":["Precipitación"],"Tonight":["Esta noche"],"Tomorrow":["Mañana"],"Suggested Regions":["Regiones sugeridas"],"Search city, zip…":["Buscar ciudad, zip..."],"Close search":["Búsqueda cercana"],"High Temperature":["Alta temperatura"],"Low Temperature":["Baja temperatura"],"Chance of precipitation":["Probabilidad de precipitación"],"10 Day Forecast":["Pronóstico de 10 días"],"Type of Complaint":["Tipo de queja"],"Provide a detailed description of your problem":["Proporcione una descripción detallada de su problema"],"Postal Code (only the first 5 digits)":["Código postal (Solo los primeros 5 dígitos)"],"Provide Documentation":["Proporcione la documentación"]}}} );
+</script>
+<link rel='https://api.w.org/' href='https://www.telemundo51.com/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.telemundo51.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://www.telemundo51.com/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 5.2.5" />
+<link rel="canonical" href="https://www.telemundosanantonio.com/telemundo/noticias/eeuu/salario-minimo-sube-en-mas-de-40-estados-y-ciudades-de-eeuu/1854502/" />
+<link rel='shortlink' href='https://www.telemundo51.com/?p=2032903' />
+<link rel="alternate" type="application/json+oembed" href="https://www.telemundo51.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.telemundo51.com%2Fnoticias%2Feeuu%2Fsalario-minimo-sube-en-mas-de-40-estados-y-ciudades-de-eeuu%2F2032903%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://www.telemundo51.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.telemundo51.com%2Fnoticias%2Feeuu%2Fsalario-minimo-sube-en-mas-de-40-estados-y-ciudades-de-eeuu%2F2032903%2F&#038;format=xml" />
+		<style>
+		.getty.aligncenter {
+			text-align: center;
+		}
+		.getty.alignleft {
+			float: none;
+			margin-right: 0;
+		}
+		.getty.alignleft > div {
+			float: left;
+			margin-right: 5px;
+		}
+		.getty.alignright {
+			float: none;
+			margin-left: 0;
+		}
+		.getty.alignright > div {
+			float: right;
+			margin-left: 5px;
+		}
+		</style>
+		<style type='text/css'>img#wpstats{display:none}</style><style type="text/css">
+	@media (max-width: 375px) {
+		.hero-background:empty { background-image: url('https://media.telemundo51.com/2019/09/US-Flags1.jpg?resize=1440%2C415'); }
+	}
+	@media (min-width: 376px) and (max-width: 768px) {
+		.hero-background:empty { background-image: url('https://media.telemundo51.com/2019/09/US-Flags1.jpg?resize=1440%2C415'); }
+	}
+	@media (min-width: 769px) {
+		.hero-background:empty { background-image: url('https://media.telemundo51.com/2019/09/US-Flags1.jpg?resize=1440%2C415'); }
+	}
+</style>
+	<!-- Begin comScore Tag -->
+	<script>
+	var _comscore = _comscore || [];
+	_comscore.push({ c1: "2", c2: "6035083" });
+	(function() {
+		var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;
+		s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
+		el.parentNode.insertBefore(s, el);
+	})();
+	</script>
+	<noscript>
+	<img src="https://sb.scorecardresearch.com/p?c1=2&c2=6035083&cv=2.0&cj=1" />
+	</noscript>
+	<!-- End comScore Tag -->
+		<script type="text/javascript">
+			window._taboola = window._taboola || [];
+					_taboola.push({'article':'2032903', tracking:'_osource=taboola-recirc'});
+					!function (e, f, u) {
+				e.async = 1;
+				e.src = u;
+				f.parentNode.insertBefore(e, f);
+			}(document.createElement('script'),
+			document.getElementsByTagName('script')[0],
+			'//cdn.taboola.com/libtrc/nbcots-network/loader.js');
+	</script><script>
+		window._newsroom = window._newsroom || [];
+				!function (e, f, u) {
+			e.async = 1;
+			e.src = u;
+			f.parentNode.insertBefore(e, f);
+		}(document.createElement('script'),
+		document.getElementsByTagName('script')[0], '//c2.taboola.com/nr/nbcots-wscv/newsroom.js');
+	</script>
+	<meta property="og:site_name" content="Telemundo Miami (51)" /><meta name="google-site-verification" content="tlCMixtf0I9btWi4wGdVbBUKHe61YgvXQ7B_5xrQOgg" /><meta property="fb:app_id" content="372974859537507" /><meta name="twitter:site" content="@telemundo51" /><meta property="og:type" content="article" /><meta property="article:opinion" content="false" /><meta property="article:content_tier" content="free" /><meta name="twitter:creator" content="@telemundo51" /><meta name="article:publisher" content="https://www.facebook.com/Telemundo51" /><meta name="description" content="Los primeros empleados en beneficiarse de este aumento fueron los que trabajan en la ciudad de Nueva York." /><meta property="og:description" content="Los primeros empleados en beneficiarse de este aumento fueron los que trabajan en la ciudad de Nueva York." /><meta name="twitter:description" content="Los primeros empleados en beneficiarse de este aumento fueron los que trabajan en la ciudad de Nueva York." /><meta property="og:title" content="Salario mínimo sube en más de 40 estados y ciudades de EEUU" /><meta name="twitter:title" content="Salario mínimo sube en más de 40 estados y ciudades de EEUU" /><meta property="og:url" content="https://www.telemundo51.com/noticias/eeuu/salario-minimo-sube-en-mas-de-40-estados-y-ciudades-de-eeuu/2032903/" /><meta name="twitter:url" content="https://www.telemundo51.com/noticias/eeuu/salario-minimo-sube-en-mas-de-40-estados-y-ciudades-de-eeuu/2032903/" /><meta name="keywords" content="estados, ciudades, Estados Unidos, ciudad, Illinois, Minneapolis, Nueva York, Saint Paul, Florida, Colorado, California, escritorio, Washington, Nueva Jersey, National Employment Law Project, NELP, Cámara de Representantes del proyecto &#8220;Raise the Wage Act&amp;, organizaciones, NELP, NELP, Senado, Instituto de Política Económica, Casa Blanca, aumento, aumento, incremento, alza, elecciones, aumento, aprobación, salario, condados, cifras, pago, estado, MIAMI &amp;#8211, una, resto, jurisdicciones, salarios, cifra, veces, cifra, cifra, largo, arranque, total, proyecto, vez, cambio, intentos, resultado, palabras, esfuerzos, aviso, caso, medida, parte, protecciones, forma, esperanza, quincena, EEUU, Sube salario mínimo" /><meta name="sailthru.title" content="Salario mínimo sube en más de 40 estados y ciudades de EEUU" /><meta name="sailthru.description" content="Los primeros empleados en beneficiarse de este aumento fueron los que trabajan en la ciudad de Nueva York." /><meta name="sailthru.tags" content="estados, ciudades, Estados Unidos, ciudad, Illinois, Minneapolis, Nueva York, Saint Paul, Florida, Colorado, California, escritorio, Washington, Nueva Jersey, National Employment Law Project, NELP, Cámara de Representantes del proyecto &#8220;Raise the Wage Act&amp;, organizaciones, NELP, NELP, Senado, Instituto de Política Económica, Casa Blanca, aumento, aumento, incremento, alza, elecciones, aumento, aprobación, salario, condados, cifras, pago, estado, MIAMI &amp;#8211, una, resto, jurisdicciones, salarios, cifra, veces, cifra, cifra, largo, arranque, total, proyecto, vez, cambio, intentos, resultado, palabras, esfuerzos, aviso, caso, medida, parte, protecciones, forma, esperanza, quincena, EEUU, Sube salario mínimo" /><meta name="sailthru.tags" content="estados, ciudades, Estados Unidos, ciudad, Illinois, Minneapolis, Nueva York, Saint Paul, Florida, Colorado, California, escritorio, Washington, Nueva Jersey, National Employment Law Project, NELP, Cámara de Representantes del proyecto &#8220;Raise the Wage Act&amp;, organizaciones, NELP, NELP, Senado, Instituto de Política Económica, Casa Blanca, aumento, aumento, incremento, alza, elecciones, aumento, aprobación, salario, condados, cifras, pago, estado, MIAMI &amp;#8211, una, resto, jurisdicciones, salarios, cifra, veces, cifra, cifra, largo, arranque, total, proyecto, vez, cambio, intentos, resultado, palabras, esfuerzos, aviso, caso, medida, parte, protecciones, forma, esperanza, quincena, EEUU, Sube salario mínimo" /><meta name="sailthru.type" content="article" /><meta name="sailthru.date" content="2020-01-01T16:05:50+00:00" /><meta name="twitter:image" content="https://media.telemundo51.com/2019/09/tlmd-salario-minimo-EEUU-EFE.jpg?resize=850%2C478" /><meta property="og:image" content="https://media.telemundo51.com/2019/09/tlmd-salario-minimo-EEUU-EFE.jpg?resize=850%2C478" /><script type="application/ld+json">{"@context":"http:\/\/schema.org","@type":"NewsArticle","mainEntityOfPage":"https:\/\/www.telemundo51.com\/noticias\/eeuu\/salario-minimo-sube-en-mas-de-40-estados-y-ciudades-de-eeuu\/2032903\/","headline":"Salario m\u00ednimo sube en m\u00e1s de 40 estados y ciudades de EEUU","datePublished":"2020-01-01T16:05:50","dateModified":"2020-01-01T16:10:30","description":"Los primeros empleados en beneficiarse de este aumento fueron los que trabajan en la ciudad de Nueva York.","speakable":{"@type":"SpeakableSpecification","cssSelector":[".article-headline",".article-subtitle"]},"keywords":"estados, ciudades, Estados Unidos, ciudad, Illinois, Minneapolis, Nueva York, Saint Paul, Florida, Colorado, California, escritorio, Washington, Nueva Jersey, National Employment Law Project, NELP, C\u00e1mara de Representantes del proyecto &#8220;Raise the Wage Act&, organizaciones, NELP, NELP, Senado, Instituto de Pol\u00edtica Econ\u00f3mica, Casa Blanca, aumento, aumento, incremento, alza, elecciones, aumento, aprobaci\u00f3n, salario, condados, cifras, pago, estado, MIAMI &#8211, una, resto, jurisdicciones, salarios, cifra, veces, cifra, cifra, largo, arranque, total, proyecto, vez, cambio, intentos, resultado, palabras, esfuerzos, aviso, caso, medida, parte, protecciones, forma, esperanza, quincena, EEUU, Sube salario m\u00ednimo","publisher":{"@type":"Organization","name":"Telemundo 51","logo":{"@type":"ImageObject","height":60,"url":"https:\/\/media.telemundo51.com\/wp-content\/uploads\/2019\/09\/light_amp_wscv.png","width":160}},"image":{"@type":"ImageObject","height":478,"url":"https:\/\/media.telemundo51.com\/2019\/09\/tlmd-salario-minimo-EEUU-EFE.jpg?resize=850%2C478","width":850},"author":{"@type":"Person","name":"EFE"}}</script>							<script type='text/javascript'>
+				var dfpAdUnits = {};
+				var googletag = googletag || {};
+				googletag.cmd = googletag.cmd || [];
+				(function() {
+				var gads = document.createElement('script');
+				gads.async = true;
+				gads.type = 'text/javascript';
+				var useSSL = 'https:' == document.location.protocol;
+				gads.src = (useSSL ? 'https:' : 'http:') +
+				'//www.googletagservices.com/tag/js/gpt.js';
+				var node = document.getElementsByTagName('script')[0];
+				node.parentNode.insertBefore(gads, node);
+				})();
+				</script>
+												<script type="text/javascript">
+			var dfpBuiltMappings = {}, dfpAdUnits = {};
+
+			if (768 <= window.innerWidth) {									googletag.cmd.push(function() {
+					dfpBuiltMappings["bottombox"] = googletag.sizeMapping().addSize([768,1],[[300,250]]).build();
+dfpBuiltMappings["topbox"] = googletag.sizeMapping().addSize([768,1],[[300,250],[300,600]]).build();
+dfpBuiltMappings["topbanner"] = googletag.sizeMapping().addSize([768,1],[[970,90],[970,66],[970,250],[728,90]]).build();
+dfpBuiltMappings["logo"] = googletag.sizeMapping().addSize([768,1],[[88,31],[120,60]]).build();
+dfpBuiltMappings["interstitial"] = googletag.sizeMapping().addSize([768,1],[[1,1]]).build();
+					});
+					var dfpAdDetails = {"topbox":{"path":"\/2620\/otstm_web\/wscv\/noticias\/eeuu","sizes":[[300,250],[300,600]],"targeting":[]},"bottombox":{"path":"\/2620\/otstm_web\/wscv\/noticias\/eeuu","sizes":[[300,250]],"targeting":[]},"logo":{"path":"\/2620\/otstm_web\/wscv\/noticias\/eeuu","sizes":[[88,31],[120,60]],"targeting":[]},"topbanner":{"path":"\/2620\/otstm_web\/wscv\/noticias\/eeuu","sizes":[[970,90],[970,66],[970,250],[728,90]],"targeting":[]},"interstitial":{"path":"\/2620\/otstm_web\/wscv\/noticias\/eeuu","sizes":[[1,1]],"targeting":[]}};
+					var dfpSizeMapping = {"bottombox":[[[768,1],[[300,250]]]],"topbox":[[[768,1],[[300,250],[300,600]]]],"topbanner":[[[768,1],[[970,90],[970,66],[970,250],[728,90]]]],"logo":[[[768,1],[[88,31],[120,60]]]],"interstitial":[[[768,1],[[1,1]]]]};
+
+					 } else { 									googletag.cmd.push(function() {
+					dfpBuiltMappings["mobiletopbanner"] = googletag.sizeMapping().addSize([1,1],[[320,50]]).build();
+dfpBuiltMappings["mobilemultibox"] = googletag.sizeMapping().addSize([1,1],[[300,250],[300,100],[320,50]]).build();
+dfpBuiltMappings["mobilebackstage"] = googletag.sizeMapping().addSize([1,1],[[1,1]]).build();
+					});
+					var dfpAdDetails = {"mobiletopbanner":{"path":"\/2620\/otstm_mobile\/wscv_mobileweb\/noticias\/eeuu","sizes":[[320,50]],"targeting":[]},"mobilemultibox":{"path":"\/2620\/otstm_mobile\/wscv_mobileweb\/noticias\/eeuu","sizes":[[300,250],[300,100],[320,50]],"targeting":[]},"mobilebackstage":{"path":"\/2620\/otstm_mobile\/wscv_mobileweb\/noticias\/eeuu","sizes":[[1,1]],"targeting":[]}};
+					var dfpSizeMapping = {"mobiletopbanner":[[[1,1],[[320,50]]]],"mobilemultibox":[[[1,1],[[300,250],[300,100],[320,50]]]],"mobilebackstage":[[[1,1],[[1,1]]]]};
+
+													}					googletag.cmd.push(function() {
+					googletag.pubads().enableAsyncRendering();
+googletag.pubads().collapseEmptyDivs();
+					googletag.pubads().addEventListener('slotRenderEnded', function(event) {
+						if (false === event.isEmpty) {
+							var slotElementId = event.slot.getSlotElementId();
+							if (0 <= slotElementId.indexOf('topbanner')) {
+								document.body.classList.add("topbanner");
+							}
+						}
+					});
+						googletag.pubads().setTargeting("zipcode", localStorage.getItem("zipCode") || nbc.zipCode );
+
+	var isMobile = window.matchMedia('screen and (max-width: 767px)').matches;
+	googletag.pubads().setTargeting("gpt1", isMobile ? "ots_mobile" : "ots_web");
+	googletag.pubads().setTargeting("platform", isMobile ? "mobile" : "desktop");
+			googletag.pubads().setTargeting("source", "www.telemundo51.com");
+				googletag.pubads().setTargeting("pageid", "10242032903");
+				googletag.pubads().setTargeting("pageid2", "10031854502");
+				googletag.pubads().setTargeting("sect", "noticias");
+				googletag.pubads().setTargeting("sub", "eeuu");
+				googletag.pubads().setTargeting("call", "WSCV");
+				googletag.pubads().setTargeting("region", "miami");
+				googletag.pubads().setTargeting("stationtype", "telemundo");
+				googletag.pubads().setTargeting("tags", "noticias,eeuu,eeuu,sube-salario-minimo");
+				googletag.pubads().setTargeting("gpt2", "WSCV");
+				googletag.pubads().setTargeting("station", "ots");
+				googletag.pubads().setTargeting("sponsor", "");
+				googletag.pubads().setTargeting("excl_cat", "noticias,eeuu");
+		
+					if ( typeof AdLayersAPI === 'undefined' || ! AdLayersAPI.isDebug() ) {
+						googletag.enableServices();
+					}
+				});
+								var dfpAdLayer = {"post_id":1907064,"title":"Article Ad Layer"};
+
+			</script>
+			<link rel="amphtml" href="https://www.telemundo51.com/noticias/eeuu/salario-minimo-sube-en-mas-de-40-estados-y-ciudades-de-eeuu/2032903/?amp"><link rel="icon" href="https://media.telemundo51.com/2019/09/favicon-tlmd-mia.png?fit=32%2C32" sizes="32x32" />
+<link rel="icon" href="https://media.telemundo51.com/2019/09/favicon-tlmd-mia.png?fit=32%2C32" sizes="192x192" />
+<link rel="apple-touch-icon-precomposed" href="https://media.telemundo51.com/2019/09/favicon-tlmd-mia.png?fit=32%2C32" />
+<meta name="msapplication-TileImage" content="https://media.telemundo51.com/2019/09/favicon-tlmd-mia.png?fit=32%2C32" />
+</head>
+
+<body class="post-template-default single single-post postid-2032903 single-format-standard station-telemundo has-featured-image">
+	<div id="fb-root"></div>
+		<script
+			async
+			defer
+			crossorigin="anonymous"
+			src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.3&appId=372974859537507&autoLogAppEvents=1"></script>
+	<div class="leaderboard_ad">
+	<div id="div-gpt-ad-topbanner_" class=" gpt-topbanner" data-beforetext="" data-fallbacktext=""></div><script style="text/javascript">
+				if (typeof adInstance === 'undefined') {
+					adInstance = new AdLayersAPI();
+				}
+				adInstance.lazyLoadAd({ slotName: 'topbanner_', format: 'topbanner', targeting: {"slot":"topbanner","pos":"topbanner"} });
+			</script><div id="div-gpt-ad-mobiletopbanner_" class=" gpt-mobiletopbanner" data-beforetext="" data-fallbacktext=""></div><script style="text/javascript">
+				if (typeof adInstance === 'undefined') {
+					adInstance = new AdLayersAPI();
+				}
+				adInstance.lazyLoadAd({ slotName: 'mobiletopbanner_', format: 'mobiletopbanner', targeting: {"slot":"mobiletopbanner","pos":"mobiletopbanner"} });
+			</script></div>
+<div id="page" class="site" data-component="wrapper">
+	
+<a class="skip-link screen-reader-text" href="#content">Saltar al contenido</a>
+<header id="masthead" class="site-header" role="banner" data-component="siteHeader">
+		<div class="site-header__primary">
+		<div class="site-header__wrap">
+							<div class="site-header__logo">
+					<a href="https://www.telemundo51.com/">
+						<img
+							src="https://media.telemundo51.com/2019/09/TLMD_51_On-_Dark-@3x-1.png?fit=183%2C120"
+							alt="Telemundo Miami (51)"
+						/>
+					</a>
+				</div>
+						<div class="site-header__nav-search">
+				<div class="site-header__nav-main">
+					<button class="site-header__nav-main-toggle">
+						<span class="site-header__nav-main-toggle-text">Navegación principal</span>
+					</button>
+				</div>
+				<div class="site-header__search" data-component="headerSearch">
+					<button class="site-header__search-toggle">
+						<span class="site-header__search-toggle-text">Buscar</span>
+					</button>
+					<div class="site-header__search-form">
+						
+<form class="search-form" role="search" method="get" action="https://www.telemundo51.com/" >
+	<label>
+		<span class="screen-reader-text">Búsqueda por:</span>
+		<input type="search" value="" name="s" placeholder="Buscar" />
+	</label>
+	<input type="submit" class="search-submit" value="Buscar" />
+</form>
+					</div>
+				</div>
+			</div>
+			<div class="site-header__animated-section">
+				<nav class="site-header__nav-sections">
+					<div class="menu-top-navigation-container"><nav id="primary-menu" class="menu"><a class=" menu-item menu-item-type-taxonomy menu-item-object-category" href="/noticias/local/">Local</a></li>
+<a class=" menu-item menu-item-type-custom menu-item-object-custom" href="https://www.telemundo51.com/el-tiempo/">El tiempo</a></li>
+<a class=" menu-item menu-item-type-taxonomy menu-item-object-category" href="/responde/">Responde</a></li>
+<a class=" menu-item menu-item-type-custom menu-item-object-custom" href="/videos">Videos</a></li>
+<a class=" menu-item menu-item-type-taxonomy menu-item-object-category" href="/entretenimiento/">Entretenimiento</a></li>
+<a class=" menu-item menu-item-type-taxonomy menu-item-object-category" href="/deportes/">Deportes</a></li>
+</nav></div>				</nav>
+				<div class="site-header__weather-tv">
+					<div
+						class="site-header__local-weather"
+						data-react-component="NBCWeather"
+						data-view="conditions"
+					>
+					</div>
+										<a class="site-header__live-tv" href="https://www.telemundo51.com/en-vivo">En Vivo</a>
+									</div>
+				<button class="site-header__mobile-share-toggle">
+					<span class="text-share">Comparte</span>
+					<span class="text-close">Cerrar</span>
+				</button>
+			</div>
+		</div> <!-- site-header__wrap -->
+	</div> <!-- site-header__primary -->
+	<div class="site-header__secondary">
+		<div class="site-header__wrap">
+							<div class="site-header__trending">
+					<span class="site-header__trending-label">Tendencias</span>
+											<nav class="site-header__trending-nav">
+												<a href="https://www.telemundo51.com/tag/ano-nuevo/" class="site-header__trending-nav-item">Año Nuevo</a>
+					<a href="https://www.telemundo51.com/tag/hollywood/" class="site-header__trending-nav-item">Hollywood</a>
+					<a href="https://www.telemundo51.com/tag/leyes-de-transito/" class="site-header__trending-nav-item">Leyes de tránsito</a>
+					<a href="https://www.telemundo51.com/tag/decision-2020/" class="site-header__trending-nav-item">Decisión 2020</a>
+		
+							</nav>
+										<div class="site-header__trending-toggle">
+						<button class="trending-toggle"><span class="screen-reader-text">Ampliar</span></button>
+					</div>
+				</div>
+
+				
+<div class="site-header__alerts">
+	<div
+		class="site-header__weather "
+		data-react-component="NBCWeather"
+		data-view="alerts"
+		data-alert-singular="Alerta meteorológica"
+		data-alert-plural="Alertas de El Tiempo"
+		data-zip-code="33142">
+	</div>
+	</div> <!-- site-header__wrap -->
+					</div> <!-- site-header__secondary -->
+	</div>
+	</header>
+	<div id="content" class="site-content " data-component="formsContainer">
+		<div id="primary" class="content-area">
+			<main id="main" class="site-main">
+				<article id="post-2032903" data-component="article">
+
+	<div id="template-hero" class="template-hero " data-component="templateHero">
+			<div class="hero-background"></div>
+	
+	
+	
+				<div class="section-content--full hero-wrap">
+		<div class="section-content--primary">
+			<div class="article-header--wrap ">
+										<a class="article-eyebrow" href="https://www.telemundo51.com/tag/sube-salario-minimo/">Sube salario mínimo</a>							<h1 class="article-headline">
+		Salario mínimo sube en más de 40 estados y ciudades de EEUU	</h1>
+			<h2 class="article-subtitle">
+			Los primeros empleados en beneficiarse de este aumento fueron los que trabajan en la ciudad de Nueva York.		</h2>
+				
+<div class="article-meta" data-component="articleMeta">
+	<h4 class="article-byline">
+					Por <a href="https://www.telemundo51.com?s=Autor%3A%20%22EFE%22">EFE</a>							<span class="meta-dot">&bull;</span>
+					
+							<span class="time-wrap">
+				<time class="entry-date published" datetime="2020-01-01T21:05:50-05:00">Hace 5 horas </time>					<span class="meta-dot">&bull;</span>
+				<time class="entry-date updated" datetime="2020-01-01T21:09:51-05:00">Actualizado hace 5 horas</time>			</span>
+			</h4>
+	<div
+	class="share-buttons"
+	data-component="sharingBar"
+>
+			<a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.telemundo51.com%2Fnoticias%2Feeuu%2Fsalario-minimo-sube-en-mas-de-40-estados-y-ciudades-de-eeuu%2F2032903%2F&#038;Salario%20m%C3%ADnimo%20sube%20en%20m%C3%A1s%20de%2040%20estados%20y%20ciudades%20de%20EEUU?_osource=db_npd_tlmd_wscv_fb_shr" data-service="facebook">
+			<i class="fab fa-facebook-f"></i>
+		</a>
+	
+			<a href="https://twitter.com/intent/tweet?text=Salario%20m%C3%ADnimo%20sube%20en%20m%C3%A1s%20de%2040%20estados%20y%20ciudades%20de%20EEUU&#038;url=https%3A%2F%2Fwww.telemundo51.com%2Fnoticias%2Feeuu%2Fsalario-minimo-sube-en-mas-de-40-estados-y-ciudades-de-eeuu%2F2032903%2F?_osource=db_npd_tlmd_wscv_twt_shr" data-service="twitter">
+			<i class="fab fa-twitter"></i>
+		</a>
+	
+			<a href="mailto:?body=Salario%20m%C3%ADnimo%20sube%20en%20m%C3%A1s%20de%2040%20estados%20y%20ciudades%20de%20EEUU%0D%0A%0D%0Ahttps%3A%2F%2Fwww.telemundo51.com%2Fnoticias%2Feeuu%2Fsalario-minimo-sube-en-mas-de-40-estados-y-ciudades-de-eeuu%2F2032903%2F?_osource=db_npd_tlmd_wscv_eml_shr" data-service="email">
+			<i class="fas fa-envelope"></i>
+		</a>
+	
+	</div>
+</div>
+	</div>
+		</div>
+	</div>
+		
+	
+	
+	
+	
+	
+	
+	</div>
+	
+	<div class="section-content--full below-hero">
+				<div class="section-content--primary">
+			<div class="article-content--wrap">
+
+				<figure class="article-featured-media">
+	<img
+		src="https://media.telemundo51.com/2019/09/tlmd-salario-minimo-EEUU-EFE.jpg?resize=850%2C478"
+		alt=""
+	/>
+			<figcaption>
+							<cite>EFE/Barbara Walton/Archivo</cite>
+			
+												<div
+						class="caption"
+						data-react-component="NBCTruncate"
+						data-maxlines="2"
+						data-maxlinesmobile="4"
+						data-readmore="Leer más"
+						data-text="El aumento del salario mínimo beneficiará a cerca de 6,8 millones de empleados, según cifras del Instituto de Política Económica."
+						data-ellipsis="false">
+					</div>
+									</figcaption>
+	</figure>
+
+				<div class="article-content rich-text">
+					
+<p> MIAMI - El salario mínimo subió entre el martes y el primer día del año en 21 estados y 26 ciudades y condados de Estados Unidos, según cifras recopiladas por el National Employment Law Project (NELP).</p>
+
+<p>Los primeros empleados en beneficiarse de este aumento fueron los que trabajan en la ciudad de Nueva York, que desde este martes deben recibir un pago de al menos 15 dólares por hora, mientras que en el resto del estado es de 11,80 por hora.</p>
+
+<p>Nueva York es una de las 17 jurisdicciones en las que subió el salario mínimo hasta llegar o superar los 15 dólares por hora que sindicatos y organizaciones como NELP han pedido desde hace años.</p>
+<div class="recirc-module">
+	<h3 class="recirc__heading">EEUU</h3>
+	<p class="recirc__subheading"></p>
+					<div class="recirc__post">
+			<div class="post__wrap">
+				<div class="post__image-wrapper">
+											<a href="https://www.telemundo51.com/noticias/eeuu/encuentran-serpiente-en-horno-carolina-del-norte/2032925/">
+							<img class="post__image" src="https://media.telemundo51.com/2019/09/tlmd-encuentran-serpiente-horno-carolina-del-norte-2.jpg?resize=850%2C478" alt="" />
+						</a>
+
+													<span class="format-icon format-icon--video"></span>
+						
+															</div>
+
+				<div class="post__text">
+					<div class="post__meta">
+													<a class="post__tag" href="https://www.telemundo51.com/tag/hallan-serpiente-cuando-horneaban-pizza/">Hallan serpiente cuando horneaban pizza</a>
+																			<span class="post__date post__date--has-category">
+								Hace 4 horas 							</span>
+											</div>
+
+											<h3 class="post__title">
+							<a class="post__title--link" href="https://www.telemundo51.com/noticias/eeuu/encuentran-serpiente-en-horno-carolina-del-norte/2032925/">
+								<span data-ellipsis="true" data-text="Espeluznante: familia encuentra serpiente en horno mientras preparaba una pizza" data-react-component="NBCTruncate" data-maxlines="2" data-maxlinesmobile="2" data-readmore="">
+									Espeluznante: familia encuentra serpiente en horno mientras preparaba una pizza								</span>
+							</a>
+						</h3>
+									</div>
+			</div>
+		</div>
+					<div class="recirc__post">
+			<div class="post__wrap">
+				<div class="post__image-wrapper">
+											<a href="https://www.telemundo51.com/historias-destacadas/tiroteo-en-un-bar-deja-siete-heridos/2032880/">
+							<img class="post__image" src="https://media.telemundo51.com/2019/09/muerto-denver-1-1.jpg?resize=850%2C478" alt="" />
+						</a>
+
+						
+															</div>
+
+				<div class="post__text">
+					<div class="post__meta">
+													<a class="post__tag" href="https://www.telemundo51.com/tag/policiales/">policiales</a>
+																			<span class="post__date post__date--has-category">
+								Hace 7 horas 							</span>
+											</div>
+
+											<h3 class="post__title">
+							<a class="post__title--link" href="https://www.telemundo51.com/historias-destacadas/tiroteo-en-un-bar-deja-siete-heridos/2032880/">
+								<span data-ellipsis="true" data-text="Tiroteo en un bar deja siete heridos" data-react-component="NBCTruncate" data-maxlines="2" data-maxlinesmobile="2" data-readmore="">
+									Tiroteo en un bar deja siete heridos								</span>
+							</a>
+						</h3>
+									</div>
+			</div>
+		</div>
+	</div>
+
+<p>Pero el aumento no se limita a este arranque del año, pues a lo largo de 2020 otros 4 estados y 23 ciudades y condados llegarán a la ansiada cifra de 15 dólares la hora.</p>
+
+<p>En total, 24 estados y 48 ciudades y condados aumentarán sus salarios mínimos en algún momento en 2020.</p>
+
+<p>En Illinois y Saint Paul, en el estado de Minneapolis, aumentarán el salario mínimo dos veces este año, el 1 de enero y en julio, destacó el NELP.</p>
+
+<p>Además de Illinois, entre los estados que cuentan ya con nuevo salario mínimo están Arizona, California, Colorado, Florida, Nueva Jersey y Washington.</p>
+
+<p>El aumento del salario mínimo beneficiará a cerca de 6,8 millones de empleados, según cifras del Instituto de Política Económica.</p>
+
+<p>Los que no verán cambio alguno en su pago son los empleados bajo el salario mínimo federal, que se mantiene en 7,25 dólares por hora desde que subió a esa cifra por última vez hace ya más de una década.</p>
+
+<p>El 24 de julio de 2009, el salario mínimo federal de EEUU tuvo su última alza y pese a los varios intentos por aumentar esta cifra, los trabajadores tendrán que esperar hasta ver el resultado de las elecciones de noviembre próximo para intentar lograr un incremento.</p>
+
+<p>Uno de esos esfuerzos fue la aprobación en 2019 por parte de la Cámara de Representantes del proyecto "Raise the Wage Act", que hubiera permitido que el actual salario mínimo federal subiese a 15 dólares la hora de forma escalonada, además de otras protecciones.</p>
+
+<p>Pero la esperanza de los trabajadores de una quincena de estados que actualmente viven con el salario mínimo federal se desvaneció con las palabras del líder del Senado, el republicano Mitch McConnell, al decir que la Cámara alta no iba a votar el proyecto.</p>
+
+<p>A ello se sumó el aviso de la Casa Blanca de que vetaría la medida en caso de llegar a su escritorio.
+
+</p>
+				</div>
+					
+	<div class="article-footer">
+		<div class="article-tags">
+	<h4 class="article-tags__heading">Este artículo etiquetado en:</h4>
+	<a class="article-tags__tag" href="https://www.telemundo51.com/tag/sube-salario-minimo/">Sube salario mínimo</a><a class="article-tags__tag" href="https://www.telemundo51.com/tag/eeuu/">EEUU</a></div>
+		<div
+	class="share-buttons"
+	data-component="sharingBar"
+>
+			<a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.telemundo51.com%2Fnoticias%2Feeuu%2Fsalario-minimo-sube-en-mas-de-40-estados-y-ciudades-de-eeuu%2F2032903%2F&#038;Salario%20m%C3%ADnimo%20sube%20en%20m%C3%A1s%20de%2040%20estados%20y%20ciudades%20de%20EEUU?_osource=db_npd_tlmd_wscv_fb_shr" data-service="facebook">
+			<i class="fab fa-facebook-f"></i>
+		</a>
+	
+			<a href="https://twitter.com/intent/tweet?text=Salario%20m%C3%ADnimo%20sube%20en%20m%C3%A1s%20de%2040%20estados%20y%20ciudades%20de%20EEUU&#038;url=https%3A%2F%2Fwww.telemundo51.com%2Fnoticias%2Feeuu%2Fsalario-minimo-sube-en-mas-de-40-estados-y-ciudades-de-eeuu%2F2032903%2F?_osource=db_npd_tlmd_wscv_twt_shr" data-service="twitter">
+			<i class="fab fa-twitter"></i>
+		</a>
+	
+			<a href="mailto:?body=Salario%20m%C3%ADnimo%20sube%20en%20m%C3%A1s%20de%2040%20estados%20y%20ciudades%20de%20EEUU%0D%0A%0D%0Ahttps%3A%2F%2Fwww.telemundo51.com%2Fnoticias%2Feeuu%2Fsalario-minimo-sube-en-mas-de-40-estados-y-ciudades-de-eeuu%2F2032903%2F?_osource=db_npd_tlmd_wscv_eml_shr" data-service="email">
+			<i class="fas fa-envelope"></i>
+		</a>
+	
+			<a href="#" data-service="comments">
+			<i class="fas fa-comment-alt"></i>
+
+			<div class="share-buttons__comment-count">
+				<div class="fb-comments-count" data-href="https://www.telemundo51.com/noticias/eeuu/salario-minimo-sube-en-mas-de-40-estados-y-ciudades-de-eeuu/2032903/">0</div>
+			</div>
+		</a>
+	</div>
+	</div>
+				<div id="div-gpt-ad-mobilemultibox_belowarticle" class="widget_ad_layers_ad_widget gpt-mobilemultibox" data-beforetext="" data-fallbacktext=""></div><script style="text/javascript">
+				if (typeof adInstance === 'undefined') {
+					adInstance = new AdLayersAPI();
+				}
+				adInstance.lazyLoadAd({ slotName: 'mobilemultibox_belowarticle', format: 'mobilemultibox', targeting: {"slot":"mobilemultibox","pos":"mobilemultibox"} });
+			</script>	<div id="taboola-below-article-thumbnails"></div>
+
+	<script type="text/javascript">
+		/** scroll cookie for scroll.com **/
+		if (document.cookie.indexOf("scroll0=") < 0) {
+			window._taboola = window._taboola || [];
+			_taboola.push({
+				mode: 'thumbnails-e',
+				container: 'taboola-below-article-thumbnails',
+				placement: 'Below Article Thumbnails',
+				target_type: 'text'
+			});
+		};
+	</script>
+	<div id="taboola-below-article-text-links"></div>
+		<script type="text/javascript">
+		/** scroll cookie for scroll.com **/
+			if (document.cookie.indexOf("scroll0=") < 0) {
+				window._taboola = window._taboola || [];
+				_taboola.push({
+					mode: 'hybrid-text-links-b',
+					container: 'taboola-below-article-text-links',
+					placement: 'Below Article Text Links',
+					target_type: 'text'
+				});
+			};
+		</script>
+				</div>
+		</div>
+		<div class="section-content--secondary">
+			<aside class="sidebar article-sidebar">
+						<section id="ad_layers_ad_widget-2" class="widget widget_ad_layers_ad_widget"><div id="div-gpt-ad-topbox_954" class=" gpt-topbox" data-beforetext="" data-fallbacktext=""></div><script style="text/javascript">
+				if (typeof adInstance === 'undefined') {
+					adInstance = new AdLayersAPI();
+				}
+				adInstance.lazyLoadAd({ slotName: 'topbox_954', format: 'topbox', targeting: {"slot":"topbox","pos":"topbox"} });
+			</script></section><section id="nbc_most_popular-2" class="widget widget_nbc_most_popular"><div class="nbc-most-popular" data-react-component="MostPopular" data-title="Lo más popular" data-include-sponsored="true" data-beforetext="Patrocinado por"></div></section><section id="nbc_weather_widget-3" class="widget widget_nbc_weather_widget">		<div class="nbc-weather-widget">
+			<div class="nbc_owned_television_stations_weather_iframe">
+	<h2>Pronóstico de El Tiempo</h2><div class="widget_location">Miami, FL</div>
+	<a class="weather-module__conditions" href="https://www.telemundo51.com/el-tiempo/">
+		<div data-react-component="IframeConditions" data-location="33142"></div>
+	</a>
+		<div class="widget_sponsor">
+		<div id="div-gpt-ad-logo_weather_747" class="sponsored-ad-unit gpt-logo" data-beforetext="Patrocinado por" data-fallbacktext=""></div><script style="text/javascript">
+				if (typeof adInstance === 'undefined') {
+					adInstance = new AdLayersAPI();
+				}
+				adInstance.lazyLoadAd({ slotName: 'logo_weather_747', format: 'logo', targeting: {"module":"weather","slot":"logo","pos":"logo"} });
+			</script>	</div>
+</div>
+		</div>
+		</section><section id="ad_layers_ad_widget-11" class="widget widget_ad_layers_ad_widget"><div id="div-gpt-ad-mobilemultibox_408" class=" gpt-mobilemultibox" data-beforetext="" data-fallbacktext=""></div><script style="text/javascript">
+				if (typeof adInstance === 'undefined') {
+					adInstance = new AdLayersAPI();
+				}
+				adInstance.lazyLoadAd({ slotName: 'mobilemultibox_408', format: 'mobilemultibox', targeting: {"slot":"mobilemultibox","pos":"mobilemultibox"} });
+			</script></section><section id="nbc_civic_science-2" class="widget widget_nbc_civic_science"><div id="civsci-1504934967" class="module-civicScience"></div></section><section id="ad_layers_ad_widget-7" class="widget widget_ad_layers_ad_widget"><div id="div-gpt-ad-bottombox_452" class=" gpt-bottombox" data-beforetext="" data-fallbacktext=""></div><script style="text/javascript">
+				if (typeof adInstance === 'undefined') {
+					adInstance = new AdLayersAPI();
+				}
+				adInstance.lazyLoadAd({ slotName: 'bottombox_452', format: 'bottombox', targeting: {"slot":"bottombox","pos":"bottombox"} });
+			</script></section><section id="ad_layers_ad_widget-18" class="widget widget_ad_layers_ad_widget"><div id="div-gpt-ad-interstitial_653" class=" gpt-interstitial" data-beforetext="" data-fallbacktext=""></div><script style="text/javascript">
+				if (typeof adInstance === 'undefined') {
+					adInstance = new AdLayersAPI();
+				}
+				adInstance.lazyLoadAd({ slotName: 'interstitial_653', format: 'interstitial', targeting: {"slot":"interstitial","pos":"interstitial"} });
+			</script></section><section id="ad_layers_ad_widget-19" class="widget widget_ad_layers_ad_widget"><div id="div-gpt-ad-mobilebackstage_480" class=" gpt-mobilebackstage" data-beforetext="" data-fallbacktext=""></div><script style="text/javascript">
+				if (typeof adInstance === 'undefined') {
+					adInstance = new AdLayersAPI();
+				}
+				adInstance.lazyLoadAd({ slotName: 'mobilebackstage_480', format: 'mobilebackstage', targeting: {"slot":"mobilebackstage","pos":"mobilebackstage"} });
+			</script></section>			</aside>
+		</div>
+	</div>
+</article>
+
+			</main>
+		</div>
+
+							
+	</div><!-- #content -->
+	
+<footer role="contentinfo" class="site-footer">
+	<div class="site-footer__wrapper">
+		<div class="site-footer__identity">
+							<a href="https://www.telemundo51.com/" class="site-footer__logo">
+					<img
+						src="https://media.telemundo51.com/2019/09/TLMD_51_On_Dark@3x.png?fit=183%2C120"
+						alt="Telemundo Miami (51)"
+					/>
+				</a>
+			
+			<ul class="site-footer__social-list">
+				
+									<li class="site-footer__social-list-item facebook">
+						<a href="https://www.facebook.com/Telemundo51" target="_blank">
+							<span class="screen-reader-text">Facebook</span>
+							<i class="fab fa-facebook-f"></i>
+						</a>
+					</li>
+				
+									<li class="site-footer__social-list-item twitter">
+						<a href="https://twitter.com/telemundo51" target="_blank">
+							<span class="screen-reader-text">Twitter</span>
+							<i class="fab fa-twitter"></i>
+						</a>
+					</li>
+				
+									<li class="site-footer__social-list-item instagram">
+						<a href="https://instagram.com/Telemundo51" target="_blank">
+							<span class="screen-reader-text">Instagram</span>
+							<i class="fab fa-instagram"></i>
+						</a>
+					</li>
+							</ul>
+		</div>
+
+		<ul id="menu-main-footer" class="footer-menu site-footer__menu-primary"><li id="menu-item-1842173" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1842173"><a href="/noticias/local/">Noticias Locales</a></li>
+<li id="menu-item-1842172" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-1842172"><a href="/noticias/eeuu/">Estados Unidos</a></li>
+<li id="menu-item-1955025" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1955025"><a href="/noticias/cuba/">Cuba</a></li>
+<li id="menu-item-1955027" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1955027"><a href="/noticias/venezuela/">Venezuela</a></li>
+<li id="menu-item-1955026" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1955026"><a href="/noticias/puerto-rico/">Puerto Rico</a></li>
+<li id="menu-item-1842171" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1842171"><a href="/noticias/mexico/">México</a></li>
+<li id="menu-item-2027197" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2027197"><a href="/noticias/inmigracion/">Inmigración</a></li>
+<li id="menu-item-2027196" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2027196"><a href="/entretenimiento/">Entretenimiento</a></li>
+<li id="menu-item-2027198" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2027198"><a href="/entretenimiento/acceso-total/">Acceso Total</a></li>
+<li id="menu-item-1955028" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1955028"><a href="/noticias/salud/">Salud</a></li>
+<li id="menu-item-2027199" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2027199"><a href="/noticias/mundo/">Mundo</a></li>
+</ul><ul id="menu-secondary-footer-menu" class="footer-menu-secondary site-footer__menu-secondary"><li id="menu-item-1842193" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1842193"><a href="https://publicfiles.fcc.gov/tv-profile/wscv">WSCV Public Inspection File</a></li>
+<li id="menu-item-2030024" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2030024"><a href="https://www.telemundo51.com/especiales/accesibilidad-wscv/2030020/">Accesibilidad WSCV</a></li>
+<li id="menu-item-1842213" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1842213"><a href="https://www.nbcuniversal.com/privacy-policies/privacy-latinamerica?brandA=Owned_Stations&#038;intake=Telemundo_51">Política de privacidad &#8211; Nuevo</a></li>
+<li id="menu-item-2020592" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2020592"><a href="https://www.nbcuniversal.com/privacy/notrtoo-spanish?brandA=Owned_Stations&#038;intake=Telemundo_51">No venda mi información personal</a></li>
+<li id="menu-item-1842202" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1842202"><a href="https://www.telemundo51.com/wscv-informacion-de-empleos/">Empleos WSCV</a></li>
+<li id="menu-item-1842212" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1842212"><a href="https://www.telemundo51.com/terminos-de-servicio/">Términos de Servicio</a></li>
+<li id="menu-item-1842203" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1842203"><a href="https://publicfiles.fcc.gov/api/service/tv/application/1741076.html">Reporte 397 del FCC</a></li>
+<li id="menu-item-1842204" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1842204"><a href="https://info.evidon.com/pub_info/209?v=1&#038;nt=0&#038;nw=false">AdChoices</a></li>
+<li id="menu-item-1965260" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1965260"><a href="mailto:WSCVViewerMail.Advertising@nbcuni.com?subject=Advertise%20with%20Us%20HP">Publicidad con nosotros</a></li>
+<li id="menu-item-1842208" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1842208"><a href="https://www.telemundo51.com/envia-tus-comentarios/">Envía tus comentarios</a></li>
+</ul>
+				<div class="site-footer__corporate">
+			
+			<span class="site-footer__corporate-copyright">
+				Copyright © 2020 NBC Universal Inc. Derechos Reservados.			</span>
+		</div>
+	</div><!-- wrapper -->
+</footer><!-- #colophon -->
+</div><!-- #page -->
+
+	<script type='text/javascript'>
+	(function() {
+		function CreateEvent(type, data) {
+			var event;
+
+			if ('undefined' === typeof data) {
+				data = {};
+			}
+
+			try {
+				event = new CustomEvent(type, { detail: data });
+			} catch (err) {
+				event = document.createEvent('CustomEvent');
+				event.initCustomEvent(type, true, true, data);
+			}
+
+			return event;
+		}
+
+		var pdk6Url = "https://www.telemundo51.com/wp-content/themes/nbc-station/static/video/pdk6/player.6.1.3.js";		var pdkScript = pdk6Url;
+
+		if ('undefined' !== typeof window['win7ie']) {
+			pdkScript = window['win7ie'] ?
+			"https://www.telemundo51.com/wp-content/themes/nbc-station/static/video/pdk5/tpPdk.js"			: pdk6Url;
+		}
+
+		if (pdkScript) {
+			var s = document.createElement('script');
+			s.type = 'text/javascript';
+			s.src = pdkScript;
+			s.onload = function() {
+				window.dispatchEvent(
+					CreateEvent('nbc:pdkLoaded')
+				);
+			};
+			document.body.appendChild(s);
+		}
+	})();
+	</script>
+	<link rel="stylesheet" href="https://www.telemundo51.com/wp-content/themes/nbc-station/static/video/pdk6/player_smooth.css?v=102319" type="text/css" />	<script type="text/javascript">
+	(function() {
+				var _sf_async_config      = {"domain":"telemundo51.com","uid":61937,"path":"www.telemundo51.com"};
+		_sf_async_config.sections = "eeuu";
+		_sf_async_config.authors  = "EFE";
+		_sf_async_config.title    = "Salario m\u00ednimo sube en m\u00e1s de 40 estados y ciudades de EEUU";
+
+		function loadChartbeat() {
+			var e = document.createElement('script');
+			var n = document.getElementsByTagName('script')[0];
+			e.type = 'text/javascript';
+			e.async = true;
+			e.src = '//static.chartbeat.com/js/chartbeat.js';
+			n.parentNode.insertBefore(e, n);
+		}
+		loadChartbeat();
+	})();
+	</script>
+			<div class="facebook-comments">
+			<button class="facebook-comments__close"><i class="fas fa-chevron-left"></i> Volver al artículo</button>
+			<div class="fb-comments" data-href="https://www.telemundo51.com/noticias/eeuu/salario-minimo-sube-en-mas-de-40-estados-y-ciudades-de-eeuu/2032903/" data-width="100%"></div>
+		</div>
+		<div class="flyout-nav" data-component="flyoutNav">
+	<button class="flyout-nav__close"><i class="fas fa-times"></i> <span class="screen-reader-text">Cerrar menú</span></button>
+	<div class="flyout-nav__logo">
+		<a href="https://www.telemundo51.com/">
+					<img
+						src="https://media.telemundo51.com/2019/09/TLMD_51_On_Dark@3x.png?fit=183%2C120"
+						alt="Telemundo Miami (51)"
+					/>
+		</a>
+	</div>
+	<div class="flyout-nav__search">
+<form class="search-form" role="search" method="get" action="https://www.telemundo51.com/" >
+	<label>
+		<span class="screen-reader-text">Búsqueda por:</span>
+		<input type="search" value="" name="s" placeholder="Buscar" />
+	</label>
+	<input type="submit" class="search-submit" value="Buscar" />
+</form>
+</div>
+	<div class="flyout-nav__menu">
+		<div class="flyout-nav__menu--upper">
+							<a class="flyout-nav__menu-item parent-item" href="/noticias/local/">
+					Noticiero Telemundo 51				</a>
+							<a class="flyout-nav__menu-item parent-item" href="/noticias/">
+					Más Noticias				</a>
+							<a class="flyout-nav__menu-item child-item" href="/noticias/cuba/">
+					Cuba				</a>
+							<a class="flyout-nav__menu-item child-item" href="/noticias/venezuela/">
+					Venezuela				</a>
+							<a class="flyout-nav__menu-item child-item" href="/noticias/eeuu/">
+					Estados Unidos				</a>
+							<a class="flyout-nav__menu-item child-item" href="/noticias/mundo/">
+					Mundo				</a>
+							<a class="flyout-nav__menu-item child-item" href="/noticias/salud/">
+					Salud				</a>
+							<a class="flyout-nav__menu-item child-item" href="/noticias/inmigracion/">
+					Inmigración				</a>
+							<a class="flyout-nav__menu-item child-item" href="/noticias/reportajes-especiales/">
+					Reportajes Especiales				</a>
+							<a class="flyout-nav__menu-item parent-item" href="https://www.telemundo51.com/el-tiempo/">
+					El tiempo				</a>
+							<a class="flyout-nav__menu-item parent-item" href="/noticias/decision-2020/">
+					Decisión 2020				</a>
+							<a class="flyout-nav__menu-item child-item" href="/noticias/nuestra-politica/">
+					Política Local				</a>
+							<a class="flyout-nav__menu-item child-item" href="/noticias/decision/">
+					Política nacional				</a>
+							<a class="flyout-nav__menu-item parent-item" href="/entretenimiento/">
+					Entretenimiento				</a>
+							<a class="flyout-nav__menu-item child-item" href="/entretenimiento/acceso-total/">
+					Acceso Total				</a>
+							<a class="flyout-nav__menu-item parent-item" href="/deportes/">
+					Deportes				</a>
+							<a class="flyout-nav__menu-item parent-item" href="/responde/">
+					Responde				</a>
+							<a class="flyout-nav__menu-item parent-item" href="/comunidad/">
+					Comunidad				</a>
+							<a class="flyout-nav__menu-item parent-item" href="/promociones">
+					Promociones				</a>
+							<a class="flyout-nav__menu-item parent-item" href="/trafico">
+					Tráfico				</a>
+					</div>
+		<div class="flyout-nav__menu--lower">
+							<a class="flyout-nav__menu-item child-item" href="https://publicfiles.fcc.gov/tv-profile/wscv">
+					WSCV Public Inspection File				</a>
+							<a class="flyout-nav__menu-item child-item" href="https://www.telemundo51.com/especiales/accesibilidad-wscv/2030020/">
+					Accesibilidad WSCV				</a>
+							<a class="flyout-nav__menu-item child-item" href="https://www.nbcuniversal.com/privacy-policies/privacy-latinamerica?brandA=Owned_Stations&#038;intake=Telemundo_51">
+					Política de privacidad - Nuevo				</a>
+							<a class="flyout-nav__menu-item child-item" href="https://www.nbcuniversal.com/privacy/notrtoo-spanish?brandA=Owned_Stations&#038;intake=Telemundo_51">
+					No venda mi información personal				</a>
+							<a class="flyout-nav__menu-item child-item" href="https://www.telemundo51.com/wscv-informacion-de-empleos/">
+					Empleos WSCV				</a>
+							<a class="flyout-nav__menu-item child-item" href="https://www.telemundo51.com/terminos-de-servicio/">
+					Términos de Servicio				</a>
+							<a class="flyout-nav__menu-item child-item" href="https://publicfiles.fcc.gov/api/service/tv/application/1741076.html">
+					Reporte 397 del FCC				</a>
+							<a class="flyout-nav__menu-item child-item" href="https://info.evidon.com/pub_info/209?v=1&#038;nt=0&#038;nw=false">
+					AdChoices				</a>
+							<a class="flyout-nav__menu-item child-item" href="mailto:WSCVViewerMail.Advertising@nbcuni.com?subject=Advertise%20with%20Us%20HP">
+					Publicidad con nosotros				</a>
+							<a class="flyout-nav__menu-item child-item" href="https://www.telemundo51.com/envia-tus-comentarios/">
+					Envía tus comentarios				</a>
+					</div>
+	</div>
+	<div class="flyout-nav__social">
+		<h4 class="flyout-nav__social-heading">Síguenos</h4>
+		<ul class="flyout-nav__social-list">
+			
+							<li class="site-footer__social-list-item facebook">
+					<a href="https://www.facebook.com/Telemundo51" target="_blank">
+						<span class="screen-reader-text">Facebook</span>
+						<i class="fab fa-facebook-f"></i>
+					</a>
+				</li>
+			
+							<li class="site-footer__social-list-item twitter">
+					<a href="https://twitter.com/telemundo51" target="_blank">
+						<span class="screen-reader-text">Twitter</span>
+						<i class="fab fa-twitter"></i>
+					</a>
+				</li>
+			
+							<li class="site-footer__social-list-item instagram">
+					<a href="https://instagram.com/Telemundo51" target="_blank">
+						<span class="screen-reader-text">Instagram</span>
+						<i class="fab fa-instagram"></i>
+					</a>
+				</li>
+					</ul>
+	</div>
+</div>
+<a class="flyout-contact-button"
+			href="/conectate"
+	>
+	Contáctanos</a>
+<script type='text/javascript' src='https://www.telemundo51.com/wp-content/client-mu-plugins/jetpack/_inc/build/photon/photon.min.js?m=1575971772g'></script>
+<script type='text/javascript' src='https://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=202001'></script>
+<script type='text/javascript'>
+( function( domain, translations ) {
+	var localeData = translations.locale_data[ domain ] || translations.locale_data.messages;
+	localeData[""].domain = domain;
+	wp.i18n.setLocaleData( localeData, domain );
+} )( "default", { "locale_data": { "messages": { "": {} } } } );
+</script>
+<script type='text/javascript' src='https://www.telemundo51.com/wp-content/plugins/gutenberg/build/url/index.js?ver=b0e45918823321e3aefb9a58a039baa8'></script>
+<script type='text/javascript'>
+( function( domain, translations ) {
+	var localeData = translations.locale_data[ domain ] || translations.locale_data.messages;
+	localeData[""].domain = domain;
+	wp.i18n.setLocaleData( localeData, domain );
+} )( "default", { "locale_data": { "messages": { "": {} } } } );
+</script>
+<script type='text/javascript' src='https://www.telemundo51.com/wp-content/plugins/gutenberg/build/hooks/index.js?ver=82bbdadd836ff5df9da42fa076feb0a6'></script>
+<script type='text/javascript'>
+( function( domain, translations ) {
+	var localeData = translations.locale_data[ domain ] || translations.locale_data.messages;
+	localeData[""].domain = domain;
+	wp.i18n.setLocaleData( localeData, domain );
+} )( "default", { "locale_data": { "messages": { "": {} } } } );
+</script>
+<script type='text/javascript' src='https://www.telemundo51.com/wp-content/plugins/gutenberg/build/api-fetch/index.js?ver=8275800a2afeb0bca99657932db08d5e'></script>
+<script type='text/javascript'>
+( function() {
+	var nonceMiddleware = wp.apiFetch.createNonceMiddleware( "2a28c3d85f" );
+	wp.apiFetch.use( nonceMiddleware );
+	wp.hooks.addAction(
+		"heartbeat.tick",
+		"core/api-fetch/create-nonce-middleware",
+		function( response ) {
+			if ( response[ "rest_nonce" ] ) {
+				nonceMiddleware.nonce = response[ "rest_nonce" ];
+			}
+		}
+	);
+} )();
+wp.apiFetch.use( wp.apiFetch.createRootURLMiddleware( "https://www.telemundo51.com/wp-json/" ) );
+wp.apiFetch.nonceMiddleware = wp.apiFetch.createNonceMiddleware( "2a28c3d85f" );wp.apiFetch.use( wp.apiFetch.nonceMiddleware );wp.apiFetch.nonceEndpoint = "https://www.telemundo51.com/wp-admin/admin-ajax.php?action=gutenberg_rest_nonce";
+wp.apiFetch.use( wp.apiFetch.createPreloadingMiddleware( {"\/nbc\/v1\/weather-alerts":{"body":[],"headers":[]},"\/nbc\/v1\/top-stories?include_sponsored=1&section=noticias":{"body":[{"title":"Revelan de qu\u00e9 muri\u00f3 actor Cameron Boyce","link":"https:\/\/www.telemundo51.com\/videos\/trending-t51-8-julio_tlmd-miami\/128130\/","eyebrow":"","eyebrow_link":"","thumbnail_url":"https:\/\/media.telemundo51.com\/2019\/09\/cameron-boyce-instagram.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Video: Juan Gabriel regresa con autoentrevista","link":"https:\/\/www.telemundo51.com\/local\/juan-gabriel-anuncia-regreso-con-autoentrevista-video\/1973979\/","eyebrow":"","eyebrow_link":"","thumbnail_url":"https:\/\/media.telemundo51.com\/2019\/09\/tlmd_juanga.png?resize=100%2C56","type":"article","presented_by":""},{"title":"Video: Alejandro Fern\u00e1ndez sufre accidente","link":"https:\/\/www.telemundo51.com\/noticias\/noticias-destacados\/alejandro-fernandez-sufre-accidente-video\/2004083\/","eyebrow":"","eyebrow_link":"","thumbnail_url":"https:\/\/media.telemundo51.com\/2019\/09\/tlmd_alejandro_fernandez_accidente.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Video: Ricky Martin revela que padece un mal","link":"https:\/\/www.telemundo51.com\/local\/ricky-martin-confiesa-una-afeccion-video-2\/2008616\/","eyebrow":"","eyebrow_link":"","thumbnail_url":"https:\/\/media.telemundo51.com\/2019\/09\/WMAQ_Blago_s_Legal_Team_Pulls_Out_of_011609_21_mezzn_448x336.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Video: As\u00ed fue el retorno de Juan Gabriel","link":"https:\/\/www.telemundo51.com\/noticias\/noticias-destacados\/asi-fue-el-retorno-de-juan-gabriel-cantante-concierto-jockey-lima-peru-salud-video\/1972987\/","eyebrow":"","eyebrow_link":"","thumbnail_url":"https:\/\/media.telemundo51.com\/2019\/09\/tlmd_juan_gabriel1.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"\u00bfQu\u00e9 viene ahora para Pablo Lyle luego de negarle argumento de defensa propia?","link":"https:\/\/www.telemundo51.com\/videos\/videos-noticias\/qu_-viene-ahora-para-pablo-lyle_-tras-negada-defensa-propia_tlmd-miami\/112878\/","eyebrow":"","eyebrow_link":"","thumbnail_url":"https:\/\/media.telemundo51.com\/2019\/09\/LYLE-CORTE-CARA-1.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Entra en vigor ley que proh\u00edbe textear y manejar","link":"https:\/\/www.telemundo51.com\/videos\/videos-noticias\/entra-en-vigor-ley-que-prohibe-textear-y-manejar\/2032858\/","eyebrow":"Leyes de tr\u00e1nsito","eyebrow_link":"https:\/\/www.telemundo51.com\/tag\/leyes-de-transito\/","thumbnail_url":"https:\/\/media.telemundo51.com\/2019\/09\/Entra_en_vigor_ley_que_prohibe_textear_y_manejar.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Precios especiales en entradas a Disney solo para residentes de Florida","link":"https:\/\/www.telemundo51.com\/videos\/videos-noticias\/precios-especiales-en-entradas-a-disney-solo-para-residentes-de-florida\/2032865\/","eyebrow":"Parques","eyebrow_link":"https:\/\/www.telemundo51.com\/tag\/parques\/","thumbnail_url":"https:\/\/media.telemundo51.com\/2019\/09\/Precios_especiales_en_entradas_a_Disney_solo_para_residentes.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Despliegue policial en Miami Beach tras presunto robo a mano armada","link":"https:\/\/www.telemundo51.com\/videos\/videos-noticias\/despliegue-policial-en-miami-beach-tras-robo-a-mano-armada\/2032855\/","eyebrow":"miami beach","eyebrow_link":"https:\/\/www.telemundo51.com\/tag\/miami-beach\/","thumbnail_url":"https:\/\/media.telemundo51.com\/2019\/09\/Despliegue_policial_en_Miami_Beach_tras_robo_a_mano_armada.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Contin\u00faan trabajos para recuperar yate de Marc Anthony","link":"https:\/\/www.telemundo51.com\/videos\/videos-noticias\/continuan-trabajos-para-recuperar-yate-de-marc-anthony\/2032058\/","eyebrow":"Sucesos","eyebrow_link":"https:\/\/www.telemundo51.com\/tag\/sucesos\/","thumbnail_url":"https:\/\/media.telemundo51.com\/2019\/09\/Continuan_trabajos_para_recuperar_yate_de_Marc_Anthony.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Video: Fallece el cantante Diomedes D\u00edaz","link":"https:\/\/www.telemundo51.com\/noticias\/noticias-destacados\/fallece-el-cantante-diomedes-diaz-video-2\/2005495\/","eyebrow":"","eyebrow_link":"","thumbnail_url":"https:\/\/media.telemundo51.com\/2019\/09\/tlmd_diomedes_diaz_ok.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Tr\u00e1gico incendio estremece a la Peque\u00f1a Habana","link":"https:\/\/www.telemundo51.com\/videos\/videos-noticias\/tragico-incendio-estremece-a-la-pequena-habana\/2032770\/","eyebrow":"","eyebrow_link":"","thumbnail_url":"https:\/\/media.telemundo51.com\/2019\/09\/Tragico_incendio_estremece_a_la_Pequena_Habana.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Derumbe en La Habana deja a familias sin techo","link":"https:\/\/www.telemundo51.com\/videos\/videos-noticias\/derumbe-en-la-habana-deja-a-familias-sin-techo\/2032538\/","eyebrow":"Cuba","eyebrow_link":"https:\/\/www.telemundo51.com\/tag\/cuba\/","thumbnail_url":"https:\/\/media.telemundo51.com\/2019\/09\/Derumbe_en_La_Habana_deja_a_familias_sin_techo.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Hombre tiene mano parcialmente desprendida tras explosi\u00f3n de fuego artificial","link":"https:\/\/www.telemundo51.com\/noticias\/eeuu\/hombre-tiene-mano-parcialmente-desprendida-tras-explosion-de-fuego-artificial\/2032859\/","eyebrow":"Condado Volusia","eyebrow_link":"https:\/\/www.telemundo51.com\/tag\/condado-volusia\/","thumbnail_url":"https:\/\/media.telemundo51.com\/2019\/09\/TLMD-Fireworks.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Reportan robo a mano armada en Miami Beach","link":"https:\/\/www.telemundo51.com\/noticias\/local\/reportan-robo-a-mano-armada-en-miami-beach\/2032842\/","eyebrow":"robo","eyebrow_link":"https:\/\/www.telemundo51.com\/tag\/robo\/","thumbnail_url":"https:\/\/media.telemundo51.com\/2019\/09\/010120-miami-beach-search-for-suspect.png?resize=100%2C56","type":"article","presented_by":""},{"title":"Pablo Lyle reaparece con nueva imagen y rompe el silencio","link":"https:\/\/www.telemundo51.com\/videos\/videos-noticias\/pablo-lyle-reaparece-con-nueva-imagen-y-rompe-el-silencio_tlmd-miami\/78440\/","eyebrow":"","eyebrow_link":"","thumbnail_url":"https:\/\/media.telemundo51.com\/2019\/09\/Pablo_Lyle_reaparece_con_nueva_imagen_y_rompe_el_silencio.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"El Papa Francisco pide perd\u00f3n por golpear la mano de una mujer","link":"https:\/\/www.telemundo51.com\/historias-destacadas\/el-papa-francisco-pide-perdon-por-cachetear-la-mano-de-una-mujer\/2032822\/","eyebrow":"Religi\u00f3n","eyebrow_link":"https:\/\/www.telemundo51.com\/tag\/religion\/","thumbnail_url":"https:\/\/media.telemundo51.com\/2019\/09\/papa-mano-creyente.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Video: Becky G, la \u201cbeb\u00e9\u201d rapera","link":"https:\/\/www.telemundo51.com\/noticias\/noticias-destacados\/becky-g-la-bebe-rapera-video-2\/2003488\/","eyebrow":"","eyebrow_link":"","thumbnail_url":"https:\/\/media.telemundo51.com\/2019\/09\/tlmd_1_becky_g_rapera.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Controversia por cancelaci\u00f3n de presentaci\u00f3n de Gente de Zona en Miami","link":"https:\/\/www.telemundo51.com\/videos\/videos-noticias\/controversia-por-cancelacion-de-presentacion-de-gente-de-zona-en-miami\/2031852\/","eyebrow":"MIAMI","eyebrow_link":"https:\/\/www.telemundo51.com\/tag\/miami\/","thumbnail_url":"https:\/\/media.telemundo51.com\/2019\/09\/Controversia_por_cancelacion_de_presentacion_de_Gente_de_Zona_en_Miami.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Epstein viaj\u00f3 a Cuba invitado por Fidel Castro","link":"https:\/\/www.telemundo51.com\/videos\/epstein-viaj_-a-cuba-invitado-por-fidel-castro_tlmd-miami\/113507\/","eyebrow":"","eyebrow_link":"","thumbnail_url":"https:\/\/media.telemundo51.com\/2019\/09\/Epstein_viajo_a_Cuba_invitado_por_Fidel_castro-1.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Miami celebra la llegada del 2020 por todo lo alto","link":"https:\/\/www.telemundo51.com\/noticias\/local\/miami-prepara-celebracion-para-recibir-el-2020\/2032596\/","eyebrow":"A\u00f1o nuevo","eyebrow_link":"https:\/\/www.telemundo51.com\/tag\/ano-nuevo\/","thumbnail_url":"https:\/\/media.telemundo51.com\/2019\/09\/Miami_celebra_al_2020_por_todo_lo_alto.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Presentan cargos contra acusado de robar remolque con juguetes de una iglesia","link":"https:\/\/www.telemundo51.com\/noticias\/local\/presentan-cargos-contra-acusado-de-robar-remolque-con-juguetes-de-una-iglesia\/2032739\/","eyebrow":"miami-dade","eyebrow_link":"https:\/\/www.telemundo51.com\/tag\/miami-dade\/","thumbnail_url":"https:\/\/media.telemundo51.com\/2019\/09\/Arrestan_a_hombre_acusado_de_robar_remolque_con_juguetes.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Milicianos dejan la Embajada de EEUU en Bagdad","link":"https:\/\/www.telemundo51.com\/videos\/videos-noticias\/milicianos-dejan-la-embajada-de-eeuu-en-bagdad\/2032892\/","eyebrow":"Terrorismo","eyebrow_link":"https:\/\/www.telemundo51.com\/tag\/terrorismo\/","thumbnail_url":"https:\/\/media.telemundo51.com\/2019\/09\/milicianos-dejan-embajada.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Muertes por grandes accidentes a\u00e9reos baj\u00f3 a la mitad en 2019","link":"https:\/\/www.telemundo51.com\/noticias\/mundo\/muertes-por-grandes-accidentes-aereos-bajo-a-la-mitad-en-2019\/2032906\/","eyebrow":"Muertes por accidentes a\u00e9reos","eyebrow_link":"https:\/\/www.telemundo51.com\/tag\/muertes-por-accidentes-aereos\/","thumbnail_url":"https:\/\/media.telemundo51.com\/2019\/09\/shutterstock-accidente-aereo-cifras.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Comienzan a aplicarse multas por \u201ctextear\u201d mientras maneja","link":"https:\/\/www.telemundo51.com\/historias-destacadas\/comienzan-a-aplicarse-multas-por-textear-mientras-maneja\/2032801\/","eyebrow":"Leyes de tr\u00e1nsito","eyebrow_link":"https:\/\/www.telemundo51.com\/tag\/leyes-de-transito\/","thumbnail_url":"https:\/\/media.telemundo51.com\/2019\/09\/textear-al-manejar.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Video: Prince Royce, mudo ante esta pregunta","link":"https:\/\/www.telemundo51.com\/noticias\/noticias-destacados\/frederick-martinez-el-pacha-entrevista-a-prince-royce-so-su-nuevo-tema-soy-el-mismo-video\/2002851\/","eyebrow":"","eyebrow_link":"","thumbnail_url":"https:\/\/media.telemundo51.com\/2019\/09\/jersey-13.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Lo que Fidel Castro le pidi\u00f3 a Celia Cruz para regresar a Cuba","link":"https:\/\/www.telemundo51.com\/videos\/lo-que-fidel-castro-le-pidio-a-celia-cruz_tlmd-miami\/1968524\/","eyebrow":"","eyebrow_link":"","thumbnail_url":"https:\/\/media.telemundo51.com\/2019\/09\/Lo_que_Fidel_Castro_le_pidio_a_Celia_Cruz.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Accidente m\u00faltiple en la I-75","link":"https:\/\/www.telemundo51.com\/videos\/videos-noticias\/accidente-multiple-en-la-i-75\/2032857\/","eyebrow":"hialeah","eyebrow_link":"https:\/\/www.telemundo51.com\/tag\/hialeah\/","thumbnail_url":"https:\/\/media.telemundo51.com\/2019\/09\/Accidente_multiple_en_la_I_75.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Miami celebra el 2020 por todo lo alto","link":"https:\/\/www.telemundo51.com\/videos\/videos-noticias\/miami-celebra-al-2020-por-todo-lo-alto\/2032779\/","eyebrow":"2020","eyebrow_link":"https:\/\/www.telemundo51.com\/tag\/2020\/","thumbnail_url":"https:\/\/media.telemundo51.com\/2019\/09\/Miami_celebra_al_2020_por_todo_lo_alto.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Ni\u00f1os que consumen leche entera ser\u00edan menos propensos a peligrosa condici\u00f3n","link":"https:\/\/www.telemundo51.com\/noticias\/salud\/cientificos-ninos-que-consumen-leche-entera-serian-menos-propensos-a-esta-condicion\/2032585\/","eyebrow":"Ni\u00f1os que consumen leche","eyebrow_link":"https:\/\/www.telemundo51.com\/tag\/ninos-que-consumen-leche\/","thumbnail_url":"https:\/\/media.telemundo51.com\/2019\/09\/shutterstock-leche-entera-vaca.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Las monedas de 25 centavos que pueden valer una fortuna","link":"https:\/\/www.telemundo51.com\/noticias\/noticias-destacados\/sus-monedas-olvidades-pueden-valer-una-fortuna\/1935630\/","eyebrow":"","eyebrow_link":"","thumbnail_url":"https:\/\/media.telemundo51.com\/2019\/09\/TanveerFAYYAZ.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Muere ni\u00f1o dominicano al imitar video de Bad Bunny","link":"https:\/\/www.telemundo51.com\/videos\/trendingt51-6-mayo_tlmd-miami\/147140\/","eyebrow":"","eyebrow_link":"","thumbnail_url":"https:\/\/media.telemundo51.com\/2019\/09\/nino-dominicano-video-bad-bunny.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Futbolista Alex Morgan reacciona tras ser expulsada de Disney","link":"https:\/\/www.telemundo51.com\/noticias\/local\/futbolista-alex-morgan-reacciona-tras-ser-expulsada-de-disney-world-en-orlando\/27742\/","eyebrow":"","eyebrow_link":"","thumbnail_url":"https:\/\/media.telemundo51.com\/2019\/09\/alx-morgan-disney-orlando.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Extraditan a antiguo due\u00f1o de Supermercados Presidente","link":"https:\/\/www.telemundo51.com\/noticias\/local\/extraditan-a-antiguo-dueno-de-supermercados-presidente-manuel-marin\/62522\/","eyebrow":"MIAMI","eyebrow_link":"https:\/\/www.telemundo51.com\/tag\/miami\/","thumbnail_url":"https:\/\/media.telemundo51.com\/2019\/09\/ex-dueno-supermercados-presidente.JPG?resize=100%2C56","type":"article","presented_by":""},{"title":"Andr\u00e9s Cepeda estrena video con Jesse y Joy","link":"https:\/\/www.telemundo51.com\/noticias\/noticias-destacados\/andres-cepeda-estrena-video-con-jesse-y-joy-infinito\/1975740\/","eyebrow":"","eyebrow_link":"","thumbnail_url":"https:\/\/media.telemundo51.com\/2019\/09\/jesse-joy-andres-cepeda-video.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Espeluznante: familia encuentra serpiente en horno mientras preparaba una pizza","link":"https:\/\/www.telemundo51.com\/noticias\/eeuu\/encuentran-serpiente-en-horno-carolina-del-norte\/2032925\/","eyebrow":"Hallan serpiente cuando horneaban pizza","eyebrow_link":"https:\/\/www.telemundo51.com\/tag\/hallan-serpiente-cuando-horneaban-pizza\/","thumbnail_url":"https:\/\/media.telemundo51.com\/2019\/09\/tlmd-encuentran-serpiente-horno-carolina-del-norte-2.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Natalia Jim\u00e9nez presenta nuevo video musical","link":"https:\/\/www.telemundo51.com\/entretenimiento\/natalia-jimenez-presena-nuevo-video_tlmd-miami\/81820\/","eyebrow":"","eyebrow_link":"","thumbnail_url":"https:\/\/media.telemundo51.com\/2019\/09\/Natalia_Jimenez_presena_nuevo_video-1.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Sorprenden a mesera con propina de $2,020","link":"https:\/\/www.telemundo51.com\/noticias\/eeuu\/sorprenden-a-mesera-con-propina-de-2020\/2032722\/","eyebrow":"Mesera recibe propina","eyebrow_link":"https:\/\/www.telemundo51.com\/tag\/mesera-recibe-propina\/","thumbnail_url":"https:\/\/media.telemundo51.com\/2019\/09\/Dec-25-19-Generic-money.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Investigan causas del incendio en Yate de Marc Anthony","link":"https:\/\/www.telemundo51.com\/videos\/videos-noticias\/investigan-causas-del-incendio-en-yate-de-marc-anthony\/2030050\/","eyebrow":"MIAMI","eyebrow_link":"https:\/\/www.telemundo51.com\/tag\/miami\/","thumbnail_url":"https:\/\/media.telemundo51.com\/2019\/09\/Investigan_incendio_que_origino_el_incendio_en_Yate_de_Marc_Anthony.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Pol\u00e9micas declaraciones de Pablo Milan\u00e9s","link":"https:\/\/www.telemundo51.com\/entretenimiento\/polemicas-declaraciones-de-pablo-milanes-4257891609001-video\/73978\/","eyebrow":"","eyebrow_link":"","thumbnail_url":"https:\/\/media.telemundo51.com\/2019\/09\/tlmd_brightcove_2067658930001_4257948707001_4257891609001_vs.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Pron\u00f3stico del tiempo para el fin de semana","link":"https:\/\/www.telemundo51.com\/el-tiempo\/el-tiempo-videos\/pron_stico-del-tiempo-para-el-fin-de-semana_tlmd-miami\/118719\/","eyebrow":"","eyebrow_link":"","thumbnail_url":"https:\/\/media.telemundo51.com\/2019\/09\/PRON-A.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Las 5 del 51 \u2013 Las principales noticias de hoy","link":"https:\/\/www.telemundo51.com\/noticias\/local\/las-5-del-51-las-principales-noticias-de-hoy-117\/2032634\/","eyebrow":"MIAMI","eyebrow_link":"https:\/\/www.telemundo51.com\/tag\/miami\/","thumbnail_url":"https:\/\/media.telemundo51.com\/2019\/09\/concierto.png?resize=100%2C56","type":"article","presented_by":""}],"headers":[]}} ) );
+</script>
+<script type='text/javascript' src='https://www.telemundo51.com/wp-content/themes/nbc-station/client/build/js/common.dffc3afbe35f219ac460.chunk.min.js?m=1577817102g'></script>
+<script type='text/javascript'>
+nbc.preloadedResources = nbc.preloadedResources || {}; nbc.preloadedResources = Object.assign({}, nbc.preloadedResources, {"https:\/\/wsidata.weather.com\/200904-01\/369362872\/Weather\/Report\/33142?filter=1,4,9&locale = es":"<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<Cities>\r\n  <City Id=\"USFL0316\" Name=\"Miami\" StateAbbr=\"FL\" StateName=\"Florida\" CountyFips=\"12086\" CountyName=\"Miami-Dade\" CountryName=\"United States\" CountryFips=\"US\" StnIcao=\"KMIA\" ClimateStn=\"085663\" Latitude=\"25.77\" Longitude=\"-80.19\" TimeZone=\"-5\" IsDaylightSavings=\"False\" ObservesDaylightSavings=\"True\" PreferredZipCode=\"33126\" PreferredAirport=\"MIA \" PreferredTide=\"2658\" PreferredBuoy=\"fwyf1\" PreferredSkiResort=\"\" Dma=\"528\">\r\n    <CurrentObservation StnIcao=\"KMIA\" ReportTime=\"1\/2\/2020 12:53:00 AM\" TempF=\"70\" TempC=\"21\" DewPtF=\"57\" DewPtC=\"14\" RelHumidity=\"63\" WndSpdMph=\"0\" WndDirDegr=\"\" WndDirCardinal=\"\" WndGustMph=\"\" Pressure=\"30.05\" Weather=\"\" Sky=\"Clear\" IconCode=\"97\" Ceiling=\"Unl\" Visibility=\"10\" HeatIdxF=\"70\" HeatIdxC=\"21\" WndChillF=\"70\" WndChillC=\"21\" FeelsLikeF=\"70\" FeelsLikeC=\"21\" SnowDepth=\"\" SixHrMax=\"82\" TwentyFourHrMax=\"81\" SixHrMin=\"72\" TwentyFourHrMin=\"64\" ThreeHrPrecip=\"0\" SixHrPrecip=\"0\" TwentyFourHrPrecip=\"\" CodedWeather=\"NSW\" EnhancedWeather=\"\" ReportText=\"KMIA 020053Z 00000KT 10SM CLR 21\/14 A3005 RMK AO2 SLP177     T02110139 \" DayNight=\"N\" TempTrend=\"LOWER\" \/>\r\n    <WeatherStations>\r\n      <Station Icao=\"KMIA\" DistanceMiles=\"6.64\" Name=\"MIAMI\" CountryAbbr=\"US\" StateAbbr=\"FL\" Latitude=\"25.795\" Longitude=\"-80.29\" ElevationFeet=\"3\">\r\n        <Conditions StnIcao=\"KMIA\" ReportTime=\"1\/2\/2020 12:53:00 AM\" TempF=\"70\" TempC=\"21\" DewPtF=\"57\" DewPtC=\"14\" RelHumidity=\"63\" WndSpdMph=\"0\" WndDirDegr=\"\" WndDirCardinal=\"\" WndGustMph=\"\" Pressure=\"30.05\" Weather=\"\" Sky=\"Clear\" IconCode=\"97\" Ceiling=\"Unl\" Visibility=\"10\" HeatIdxF=\"70\" HeatIdxC=\"21\" WndChillF=\"70\" WndChillC=\"21\" FeelsLikeF=\"70\" FeelsLikeC=\"21\" SnowDepth=\"\" SixHrMax=\"82\" TwentyFourHrMax=\"81\" SixHrMin=\"72\" TwentyFourHrMin=\"64\" ThreeHrPrecip=\"0\" SixHrPrecip=\"0\" TwentyFourHrPrecip=\"\" CodedWeather=\"NSW\" EnhancedWeather=\"\" ReportText=\"KMIA 020053Z 00000KT 10SM CLR 21\/14 A3005 RMK AO2 SLP177     T02110139 \" DayNight=\"N\" TempTrend=\"LOWER\" \/>\r\n      <\/Station>\r\n      <Station Icao=\"KOPF\" DistanceMiles=\"11.69\" Name=\"MIAMI\/OPA LOCKA\" CountryAbbr=\"US\" StateAbbr=\"FL\" Latitude=\"25.917\" Longitude=\"-80.283\" ElevationFeet=\"3\">\r\n        <Conditions StnIcao=\"KOPF\" ReportTime=\"1\/2\/2020 12:53:00 AM\" TempF=\"69\" TempC=\"21\" DewPtF=\"57\" DewPtC=\"14\" RelHumidity=\"65\" WndSpdMph=\"3\" WndDirDegr=\"10\" WndDirCardinal=\"N\" WndGustMph=\"\" Pressure=\"30.06\" Weather=\"\" Sky=\"Clear\" IconCode=\"97\" Ceiling=\"Unl\" Visibility=\"10\" HeatIdxF=\"69\" HeatIdxC=\"21\" WndChillF=\"69\" WndChillC=\"21\" FeelsLikeF=\"69\" FeelsLikeC=\"21\" SnowDepth=\"\" SixHrMax=\"81\" TwentyFourHrMax=\"81\" SixHrMin=\"69\" TwentyFourHrMin=\"62\" ThreeHrPrecip=\"0\" SixHrPrecip=\"0\" TwentyFourHrPrecip=\"\" CodedWeather=\"NSW\" EnhancedWeather=\"\" ReportText=\"KOPF 020053Z 01003KT 10SM CLR 21\/14 A3006 RMK AO2 SLP180     T02060139 \" DayNight=\"N\" TempTrend=\"STEADY\" \/>\r\n      <\/Station>\r\n      <Station Icao=\"KHWO\" DistanceMiles=\"16.11\" Name=\"PEMBROKE PINES\" CountryAbbr=\"US\" StateAbbr=\"FL\" Latitude=\"26\" Longitude=\"-80.233\" ElevationFeet=\"2\">\r\n        <Conditions StnIcao=\"KHWO\" ReportTime=\"1\/2\/2020 12:53:00 AM\" TempF=\"68\" TempC=\"20\" DewPtF=\"53\" DewPtC=\"12\" RelHumidity=\"59\" WndSpdMph=\"3\" WndDirDegr=\"350\" WndDirCardinal=\"N\" WndGustMph=\"\" Pressure=\"30.07\" Weather=\"\" Sky=\"\" IconCode=\"86\" Ceiling=\"\" Visibility=\"10\" HeatIdxF=\"68\" HeatIdxC=\"20\" WndChillF=\"68\" WndChillC=\"20\" FeelsLikeF=\"68\" FeelsLikeC=\"20\" SnowDepth=\"\" SixHrMax=\"82\" TwentyFourHrMax=\"83\" SixHrMin=\"71\" TwentyFourHrMin=\"64\" ThreeHrPrecip=\"0\" SixHrPrecip=\"0\" TwentyFourHrPrecip=\"\" CodedWeather=\"\" EnhancedWeather=\"\" ReportText=\"KHWO 020053Z 35003KT 10SM 20\/12 A3007 RMK AO2 SLP182 T02000117     $ \" DayNight=\"N\" TempTrend=\"LOWER\" \/>\r\n      <\/Station>\r\n    <\/WeatherStations>\r\n    <DailyForecast>\r\n      <Day DayNum=\"1\" DayOfWk=\"Wednesday\" ValidDateUtc=\"1\/1\/2020 12:00:00 AM\" ValidDateLocal=\"1\/1\/2020 7:00:00 AM\" HiTempF=\"77\" LoTempF=\"67\" HiTempC=\"25\" LoTempC=\"19\" ShortPhrase=\"Partly cloudy\" PhraseDay=\"Plentiful sunshine. High 77F. Winds NNE at 5 to 10 mph.\" PhraseNight=\"Some clouds. Low 67F. Winds light and variable.\" IconCode=\"85\" SkyCode=\"32\" SkyText=\"Sunny\" PrecipChance=\"0\" SnowChance=\"0\" RelHumidity=\"59\" WndSpdMph=\"6\" WndSpdKm=\"9\" WndSpdKn=\"4\" WndDirDegr=\"23\" WndDirCardinal=\"NNE\" CloudCoverage=\"24\" UvIdx=\"0\" UvDescr=\"Low\" UvWarn=\"0\" Sunrise=\"07:07:19 am\" Sunset=\"05:41:02 pm\" Moonrise=\"11:38:57 am\" Moonset=\"11:35:03 pm\" MoonPhase=\"1\" MoonPhaseText=\"Waxing Crescent\" SkyCodeDay=\"32\" SkyCodeNight=\"29\" PrecipChanceDay=\"0\" PrecipChanceNight=\"0\" IconCodeDay=\"85\" IconCodeNight=\"98\" SkyTextDay=\"Sunny\" SkyTextNight=\"Partly Cloudy\" RelHumidityNight=\"75\" WndSpdMphNight=\"5\" WndSpdKmNight=\"8\" WndSpdKnNight=\"4\" WndDirDegrNight=\"68\" WndDirCardinalNight=\"ENE\" PhraseDayC=\"Sunny. High 26C. Winds light and variable.\" PhraseNightC=\"Some clouds. Low 19C. Winds ENE at 10 to 15 km\/h.\" SnowAmtIn=\"0.00\" SnowAmtCm=\"0.00\" \/>\r\n      <Day DayNum=\"2\" DayOfWk=\"Thursday\" ValidDateUtc=\"1\/2\/2020 12:00:00 AM\" ValidDateLocal=\"1\/2\/2020 7:00:00 AM\" HiTempF=\"81\" LoTempF=\"74\" HiTempC=\"27\" LoTempC=\"23\" ShortPhrase=\"Partly cloudy\" PhraseDay=\"Partly cloudy. High 81F. Winds SE at 10 to 15 mph.\" PhraseNight=\"Partly cloudy. Low 74F. Winds SE at 10 to 15 mph.\" IconCode=\"66\" SkyCode=\"30\" SkyText=\"Partly Cloudy\" PrecipChance=\"10\" SnowChance=\"0\" RelHumidity=\"73\" WndSpdMph=\"11\" WndSpdKm=\"17\" WndSpdKn=\"9\" WndDirDegr=\"135\" WndDirCardinal=\"SE\" CloudCoverage=\"45\" UvIdx=\"5\" UvDescr=\"Moderate\" UvWarn=\"0\" Sunrise=\"07:07:35 am\" Sunset=\"05:41:43 pm\" Moonrise=\"12:10:54 pm\" Moonset=\"12:01:00 am\" MoonPhase=\"1\" MoonPhaseText=\"Waxing Crescent\" SkyCodeDay=\"30\" SkyCodeNight=\"29\" PrecipChanceDay=\"10\" PrecipChanceNight=\"10\" IconCodeDay=\"66\" IconCodeNight=\"98\" SkyTextDay=\"Partly Cloudy\" SkyTextNight=\"Partly Cloudy\" RelHumidityNight=\"84\" WndSpdMphNight=\"11\" WndSpdKmNight=\"17\" WndSpdKnNight=\"9\" WndDirDegrNight=\"135\" WndDirCardinalNight=\"SE\" PhraseDayC=\"Partly cloudy. High 26C. Winds SE at 15 to 25 km\/h.\" PhraseNightC=\"Partly cloudy skies. Low 23C. Winds SE at 15 to 25 km\/h.\" SnowAmtIn=\"0.00\" SnowAmtCm=\"0.00\" \/>\r\n      <Day DayNum=\"3\" DayOfWk=\"Friday\" ValidDateUtc=\"1\/3\/2020 12:00:00 AM\" ValidDateLocal=\"1\/3\/2020 7:00:00 AM\" HiTempF=\"83\" LoTempF=\"74\" HiTempC=\"28\" LoTempC=\"23\" ShortPhrase=\"Times of sun and clouds\" PhraseDay=\"Sunshine and clouds mixed. High 83F. Winds SSE at 10 to 20 mph.\" PhraseNight=\"Mostly clear skies. Low near 74F. Winds S at 10 to 15 mph.\" IconCode=\"66\" SkyCode=\"30\" SkyText=\"Partly Cloudy\" PrecipChance=\"10\" SnowChance=\"0\" RelHumidity=\"76\" WndSpdMph=\"15\" WndSpdKm=\"24\" WndSpdKn=\"12\" WndDirDegr=\"158\" WndDirCardinal=\"SSE\" CloudCoverage=\"38\" UvIdx=\"5\" UvDescr=\"Moderate\" UvWarn=\"0\" Sunrise=\"07:07:50 am\" Sunset=\"05:42:24 pm\" Moonrise=\"12:42:23 pm\" Moonset=\"12:25:54 am\" MoonPhase=\"2\" MoonPhaseText=\"First Quarter\" SkyCodeDay=\"30\" SkyCodeNight=\"33\" PrecipChanceDay=\"10\" PrecipChanceNight=\"20\" IconCodeDay=\"66\" IconCodeNight=\"102\" SkyTextDay=\"Partly Cloudy\" SkyTextNight=\"Mostly Clear\" RelHumidityNight=\"85\" WndSpdMphNight=\"12\" WndSpdKmNight=\"19\" WndSpdKnNight=\"10\" WndDirDegrNight=\"180\" WndDirCardinalNight=\"S\" PhraseDayC=\"Partly cloudy. High 27C. Winds SSE at 15 to 30 km\/h.\" PhraseNightC=\"\" SnowAmtIn=\"0.00\" SnowAmtCm=\"0.00\" \/>\r\n      <Day DayNum=\"4\" DayOfWk=\"Saturday\" ValidDateUtc=\"1\/4\/2020 12:00:00 AM\" ValidDateLocal=\"1\/4\/2020 7:00:00 AM\" HiTempF=\"81\" LoTempF=\"55\" HiTempC=\"27\" LoTempC=\"12\" ShortPhrase=\"Chance of showers\" PhraseDay=\"Variable clouds with showers and scattered thunderstorms. Storms more numerous in the morning. High 81F. Winds SW at 15 to 25 mph. Chance of rain 40%.\" PhraseNight=\"Some clouds early will give way to generally clear conditions overnight. Low 55F. Winds NW at 10 to 20 mph.\" IconCode=\"96\" SkyCode=\"38\" SkyText=\"Scattered Thunderstorms\" PrecipChance=\"40\" SnowChance=\"0\" RelHumidity=\"76\" WndSpdMph=\"18\" WndSpdKm=\"28\" WndSpdKn=\"15\" WndDirDegr=\"225\" WndDirCardinal=\"SW\" CloudCoverage=\"47\" UvIdx=\"5\" UvDescr=\"Moderate\" UvWarn=\"0\" Sunrise=\"07:08:04 am\" Sunset=\"05:43:06 pm\" Moonrise=\"01:14:11 pm\" Moonset=\"01:16:16 am\" MoonPhase=\"3\" MoonPhaseText=\"Waxing Gibbous\" SkyCodeDay=\"38\" SkyCodeNight=\"29\" PrecipChanceDay=\"40\" PrecipChanceNight=\"0\" IconCodeDay=\"96\" IconCodeNight=\"98\" SkyTextDay=\"Scattered Thunderstorms\" SkyTextNight=\"Partly Cloudy\" RelHumidityNight=\"69\" WndSpdMphNight=\"15\" WndSpdKmNight=\"24\" WndSpdKnNight=\"12\" WndDirDegrNight=\"315\" WndDirCardinalNight=\"NW\" PhraseDayC=\"Considerable cloudiness with occasional rain showers. High 27C. Winds SW at 25 to 40 km\/h. Chance of rain 60%.\" PhraseNightC=\"\" SnowAmtIn=\"0.00\" SnowAmtCm=\"0.00\" \/>\r\n      <Day DayNum=\"5\" DayOfWk=\"Sunday\" ValidDateUtc=\"1\/5\/2020 12:00:00 AM\" ValidDateLocal=\"1\/5\/2020 7:00:00 AM\" HiTempF=\"68\" LoTempF=\"56\" HiTempC=\"20\" LoTempC=\"13\" ShortPhrase=\"Abundant sunshine\" PhraseDay=\"Sunny skies. High 68F. Winds NNW at 10 to 20 mph.\" PhraseNight=\"Clear. Low 56F. Winds NNW at 10 to 15 mph.\" IconCode=\"85\" SkyCode=\"32\" SkyText=\"Sunny\" PrecipChance=\"0\" SnowChance=\"0\" RelHumidity=\"52\" WndSpdMph=\"15\" WndSpdKm=\"24\" WndSpdKn=\"12\" WndDirDegr=\"338\" WndDirCardinal=\"NNW\" CloudCoverage=\"5\" UvIdx=\"5\" UvDescr=\"Moderate\" UvWarn=\"0\" Sunrise=\"07:08:16 am\" Sunset=\"05:43:48 pm\" Moonrise=\"01:48:33 pm\" Moonset=\"02:08:41 am\" MoonPhase=\"3\" MoonPhaseText=\"Waxing Gibbous\" SkyCodeDay=\"32\" SkyCodeNight=\"31\" PrecipChanceDay=\"0\" PrecipChanceNight=\"10\" IconCodeDay=\"85\" IconCodeNight=\"97\" SkyTextDay=\"Sunny\" SkyTextNight=\"Clear\" RelHumidityNight=\"67\" WndSpdMphNight=\"10\" WndSpdKmNight=\"16\" WndSpdKnNight=\"8\" WndDirDegrNight=\"338\" WndDirCardinalNight=\"NNW\" PhraseDayC=\"A mainly sunny sky. High 19C. Winds N at 15 to 30 km\/h.\" PhraseNightC=\"\" SnowAmtIn=\"0.00\" SnowAmtCm=\"0.00\" \/>\r\n      <Day DayNum=\"6\" DayOfWk=\"Monday\" ValidDateUtc=\"1\/6\/2020 12:00:00 AM\" ValidDateLocal=\"1\/6\/2020 7:00:00 AM\" HiTempF=\"73\" LoTempF=\"60\" HiTempC=\"22\" LoTempC=\"15\" ShortPhrase=\"Mostly sunny\" PhraseDay=\"Generally sunny despite a few afternoon clouds. High 72F. Winds N at 10 to 15 mph.\" PhraseNight=\"Partly cloudy skies. Low around 60F. Winds ENE at 5 to 10 mph.\" IconCode=\"65\" SkyCode=\"34\" SkyText=\"Mostly Sunny\" PrecipChance=\"10\" SnowChance=\"0\" RelHumidity=\"65\" WndSpdMph=\"10\" WndSpdKm=\"16\" WndSpdKn=\"8\" WndDirDegr=\"0\" WndDirCardinal=\"N\" CloudCoverage=\"24\" UvIdx=\"5\" UvDescr=\"Moderate\" UvWarn=\"0\" Sunrise=\"07:08:27 am\" Sunset=\"05:44:31 pm\" Moonrise=\"02:26:28 pm\" Moonset=\"03:02:39 am\" MoonPhase=\"3\" MoonPhaseText=\"Waxing Gibbous\" SkyCodeDay=\"34\" SkyCodeNight=\"29\" PrecipChanceDay=\"10\" PrecipChanceNight=\"0\" IconCodeDay=\"65\" IconCodeNight=\"98\" SkyTextDay=\"Mostly Sunny\" SkyTextNight=\"Partly Cloudy\" RelHumidityNight=\"66\" WndSpdMphNight=\"8\" WndSpdKmNight=\"12\" WndSpdKnNight=\"6\" WndDirDegrNight=\"68\" WndDirCardinalNight=\"ENE\" PhraseDayC=\"Sunshine and some clouds. High 22C. Winds NNE at 15 to 25 km\/h.\" PhraseNightC=\"\" SnowAmtIn=\"0.00\" SnowAmtCm=\"0.00\" \/>\r\n      <Day DayNum=\"7\" DayOfWk=\"Tuesday\" ValidDateUtc=\"1\/7\/2020 12:00:00 AM\" ValidDateLocal=\"1\/7\/2020 7:00:00 AM\" HiTempF=\"75\" LoTempF=\"65\" HiTempC=\"23\" LoTempC=\"18\" ShortPhrase=\"Mix of sun and clouds\" PhraseDay=\"Partly to mostly cloudy. High around 75F. Winds ENE at 10 to 15 mph.\" PhraseNight=\"A few clouds from time to time. Low near 65F. Winds ENE at 5 to 10 mph.\" IconCode=\"66\" SkyCode=\"30\" SkyText=\"Partly Cloudy\" PrecipChance=\"10\" SnowChance=\"0\" RelHumidity=\"65\" WndSpdMph=\"11\" WndSpdKm=\"17\" WndSpdKn=\"9\" WndDirDegr=\"68\" WndDirCardinal=\"ENE\" CloudCoverage=\"56\" UvIdx=\"5\" UvDescr=\"Moderate\" UvWarn=\"0\" Sunrise=\"07:08:37 am\" Sunset=\"05:45:15 pm\" Moonrise=\"03:08:19 pm\" Moonset=\"03:59:19 am\" MoonPhase=\"3\" MoonPhaseText=\"Waxing Gibbous\" SkyCodeDay=\"30\" SkyCodeNight=\"29\" PrecipChanceDay=\"10\" PrecipChanceNight=\"20\" IconCodeDay=\"66\" IconCodeNight=\"98\" SkyTextDay=\"Partly Cloudy\" SkyTextNight=\"Partly Cloudy\" RelHumidityNight=\"77\" WndSpdMphNight=\"8\" WndSpdKmNight=\"12\" WndSpdKnNight=\"6\" WndDirDegrNight=\"68\" WndDirCardinalNight=\"ENE\" PhraseDayC=\"Sunshine and clouds mixed. High 24C. Winds ENE at 10 to 15 km\/h.\" PhraseNightC=\"\" SnowAmtIn=\"0.00\" SnowAmtCm=\"0.00\" \/>\r\n      <Day DayNum=\"8\" DayOfWk=\"Wednesday\" ValidDateUtc=\"1\/8\/2020 12:00:00 AM\" ValidDateLocal=\"1\/8\/2020 7:00:00 AM\" HiTempF=\"77\" LoTempF=\"69\" HiTempC=\"25\" LoTempC=\"20\" ShortPhrase=\"Partly cloudy\" PhraseDay=\"Intervals of clouds and sunshine. High 77F. Winds NE at 10 to 20 mph.\" PhraseNight=\"Partly cloudy skies early followed by increasing clouds with showers developing later at night. Low 69F. Winds ENE at 10 to 20 mph. Chance of rain 40%.\" IconCode=\"66\" SkyCode=\"30\" SkyText=\"Partly Cloudy\" PrecipChance=\"20\" SnowChance=\"0\" RelHumidity=\"69\" WndSpdMph=\"13\" WndSpdKm=\"20\" WndSpdKn=\"10\" WndDirDegr=\"45\" WndDirCardinal=\"NE\" CloudCoverage=\"36\" UvIdx=\"5\" UvDescr=\"Moderate\" UvWarn=\"0\" Sunrise=\"07:08:45 am\" Sunset=\"05:45:59 pm\" Moonrise=\"03:56:24 pm\" Moonset=\"04:58:18 am\" MoonPhase=\"3\" MoonPhaseText=\"Waxing Gibbous\" SkyCodeDay=\"30\" SkyCodeNight=\"45\" PrecipChanceDay=\"20\" PrecipChanceNight=\"40\" IconCodeDay=\"66\" IconCodeNight=\"106\" SkyTextDay=\"Partly Cloudy\" SkyTextNight=\"Showers Late\" RelHumidityNight=\"77\" WndSpdMphNight=\"13\" WndSpdKmNight=\"20\" WndSpdKnNight=\"10\" WndDirDegrNight=\"68\" WndDirCardinalNight=\"ENE\" PhraseDayC=\"Partly cloudy. High 24C. Winds NE at 15 to 30 km\/h.\" PhraseNightC=\"\" SnowAmtIn=\"0.00\" SnowAmtCm=\"0.00\" \/>\r\n      <Day DayNum=\"9\" DayOfWk=\"Thursday\" ValidDateUtc=\"1\/9\/2020 12:00:00 AM\" ValidDateLocal=\"1\/9\/2020 7:00:00 AM\" HiTempF=\"76\" LoTempF=\"72\" HiTempC=\"24\" LoTempC=\"22\" ShortPhrase=\"Mostly cloudy\" PhraseDay=\"Rain showers early with some sunshine later in the day. High 76F. Winds E at 15 to 25 mph. Chance of rain 40%.\" PhraseNight=\"Showers in the evening with isolated thunderstorms overnight. Low 72F. Winds E at 10 to 20 mph. Chance of rain 30%.\" IconCode=\"87\" SkyCode=\"39\" SkyText=\"AM Showers\" PrecipChance=\"40\" SnowChance=\"0\" RelHumidity=\"74\" WndSpdMph=\"18\" WndSpdKm=\"28\" WndSpdKn=\"15\" WndDirDegr=\"90\" WndDirCardinal=\"E\" CloudCoverage=\"64\" UvIdx=\"4\" UvDescr=\"Moderate\" UvWarn=\"0\" Sunrise=\"07:08:51 am\" Sunset=\"05:46:43 pm\" Moonrise=\"04:50:54 pm\" Moonset=\"05:58:32 am\" MoonPhase=\"3\" MoonPhaseText=\"Waxing Gibbous\" SkyCodeDay=\"39\" SkyCodeNight=\"47\" PrecipChanceDay=\"40\" PrecipChanceNight=\"30\" IconCodeDay=\"87\" IconCodeNight=\"101\" SkyTextDay=\"AM Showers\" SkyTextNight=\"Isolated Thunderstorms\" RelHumidityNight=\"82\" WndSpdMphNight=\"15\" WndSpdKmNight=\"24\" WndSpdKnNight=\"12\" WndDirDegrNight=\"90\" WndDirCardinalNight=\"E\" PhraseDayC=\"Mostly cloudy. High around 25C. Winds E at 25 to 40 km\/h.\" PhraseNightC=\"\" SnowAmtIn=\"0.00\" SnowAmtCm=\"0.00\" \/>\r\n      <Day DayNum=\"10\" DayOfWk=\"Friday\" ValidDateUtc=\"1\/10\/2020 12:00:00 AM\" ValidDateLocal=\"1\/10\/2020 7:00:00 AM\" HiTempF=\"80\" LoTempF=\"73\" HiTempC=\"26\" LoTempC=\"22\" ShortPhrase=\"Considerable cloudiness\" PhraseDay=\"Partly to mostly cloudy skies with scattered thunderstorms in the morning. High near 80F. Winds ESE at 15 to 25 mph. Chance of rain 40%.\" PhraseNight=\"Scattered thunderstorms. Low 73F. Winds ESE at 10 to 20 mph. Chance of rain 40%.\" IconCode=\"96\" SkyCode=\"38\" SkyText=\"AM Thunderstorms\" PrecipChance=\"40\" SnowChance=\"0\" RelHumidity=\"78\" WndSpdMph=\"17\" WndSpdKm=\"27\" WndSpdKn=\"14\" WndDirDegr=\"113\" WndDirCardinal=\"ESE\" CloudCoverage=\"67\" UvIdx=\"4\" UvDescr=\"Moderate\" UvWarn=\"0\" Sunrise=\"07:08:56 am\" Sunset=\"05:47:28 pm\" Moonrise=\"05:50:49 pm\" Moonset=\"06:58:19 am\" MoonPhase=\"4\" MoonPhaseText=\"Full\" SkyCodeDay=\"38\" SkyCodeNight=\"47\" PrecipChanceDay=\"40\" PrecipChanceNight=\"40\" IconCodeDay=\"96\" IconCodeNight=\"101\" SkyTextDay=\"AM Thunderstorms\" SkyTextNight=\"Scattered Thunderstorms\" RelHumidityNight=\"85\" WndSpdMphNight=\"13\" WndSpdKmNight=\"20\" WndSpdKnNight=\"10\" WndDirDegrNight=\"113\" WndDirCardinalNight=\"ESE\" PhraseDayC=\"Mostly cloudy. High 26C. Winds ESE at 25 to 40 km\/h.\" PhraseNightC=\"\" SnowAmtIn=\"0.00\" SnowAmtCm=\"0.00\" \/>\r\n    <\/DailyForecast>\r\n    <WeatherAlerts \/>\r\n  <\/City>\r\n<\/Cities>"});
+</script>
+<script type='text/javascript' src='https://www.telemundo51.com/wp-content/themes/nbc-station/client/build/js/nonamp.1900929c2220d5ae3d52.bundle.min.js?ver=1.0.2'></script>
+<script type='text/javascript' async src='https://www.telemundo51.com/wp-content/themes/nbc-station/client/build/js/weatherConditions.09fb53be557a8a0e277f.bundle.min.js?ver=1.0.2'></script>
+<script type='text/javascript' async src='https://www.telemundo51.com/wp-content/themes/nbc-station/client/build/js/global.ce205c5938211212c209.bundle.min.js?ver=1.0.2'></script>
+<script type='text/javascript' async src='https://www.telemundo51.com/wp-content/themes/nbc-station/client/build/js/article.b95210a2714dd76746bb.bundle.min.js?ver=1.0.2'></script>
+<script type='text/javascript' async src='https://www.telemundo51.com/wp-content/themes/nbc-station/client/build/js/fonts.89f4991699740af2b8b6.bundle.min.js?ver=1.0.2'></script>
+<script type='text/javascript' src='https://ak.sail-horizon.com/spm/spm.v1.min.js?ver=1.0.0'></script>
+<script type='text/javascript'>
+if ("undefined" !== typeof Sailthru) { Sailthru.init({"customerId":"578ec885bae0cc2cb367533f487ce02d"}); }
+</script>
+<script type='text/javascript' async src='https://www.telemundo51.com/wp-content/themes/nbc-station/client/build/js/videoPlayer.d3ef627da1a1d71db84d.bundle.min.js?ver=1.0.2'></script>
+<script type='text/javascript' src='https://native.sharethrough.com/assets/sfp.js?ver=5.2.5'></script>
+<script type='text/javascript' defer src='https://js-sec.indexww.com/ht/p/186439-10309705427711.js?ver=1.0.2'></script>
+<script type='text/javascript' src='https://www.telemundo51.com/wp-includes/js/wp-embed.min.js?m=1576198346g'></script>
+<script type='text/javascript' src='https://www.civicscience.com/widget/jspoll/?elt=civsci-1504934967&#038;tgtid=5fcba75c-6492-3ff4-2915-7488e03f9bcc&#038;ver=1.0.0'></script>
+<script type='text/javascript' src='https://stats.wp.com/e-202001.js' async='async' defer='defer'></script>
+<script type='text/javascript'>
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:7.9.1',blog:'165596327',post:'2032903',tz:'-5',srv:'www.telemundo51.com'} ]);
+	_stq.push([ 'clickTrackerInit', '165596327', '2032903' ]);
+</script>
+
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"53cef82690","applicationID":"189190456","transactionName":"YVBXYBEFVkZSU00NVlgadFcXDVdbHEdLBUlGUEc=","queueTime":0,"applicationTime":831,"atts":"TRdAFlkfRRkRURteQktI","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>

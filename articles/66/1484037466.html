@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8"><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"5376e19385",applicationID:"444718948"};window.NREUM||(NREUM={}),__nr_require=function(n,e,t){function r(t){if(!e[t]){var i=e[t]={exports:{}};n[t][0].call(i.exports,function(e){var i=n[t][1][e];return r(i||e)},i,i.exports)}return e[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(n,e,t){function r(){}function i(n,e,t){return function(){return o(n,[u.now()].concat(f(arguments)),e?null:this,t),e?void 0:this}}var o=n("handle"),a=n(4),f=n(5),c=n("ee").get("tracer"),u=n("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(n,e){s[e]=i(d+e,!0,"api")}),s.addPageAction=i(d+"addPageAction",!0),s.setCurrentRouteName=i(d+"routeName",!0),e.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(n,e){var t={},r=this,i="function"==typeof e;return o(l+"tracer",[u.now(),n,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return e.apply(this,arguments)}catch(n){throw c.emit("fn-err",[arguments,this,n],t),n}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(n,e){m[e]=i(l+e)}),newrelic.noticeError=function(n,e){"string"==typeof n&&(n=new Error(n)),o("err",[n,u.now(),!1,e])}},{}],2:[function(n,e,t){function r(n,e){var t=n.getEntries();t.forEach(function(n){"first-paint"===n.name?a("timing",["fp",Math.floor(n.startTime)]):"first-contentful-paint"===n.name&&a("timing",["fcp",Math.floor(n.startTime)])})}function i(n){if(n instanceof c&&!s){var e,t=Math.round(n.timeStamp);e=t>1e12?Date.now()-t:f.now()-t,s=!0,a("timing",["fi",t,{type:n.type,fid:e}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var o,a=n("handle"),f=n("loader"),c=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){o=new PerformanceObserver(r);try{o.observe({entryTypes:["paint"]})}catch(u){}}if("addEventListener"in document){var s=!1,p=["click","keydown","mousedown","pointerdown","touchstart"];p.forEach(function(n){document.addEventListener(n,i,!1)})}}},{}],3:[function(n,e,t){function r(n,e){if(!i)return!1;if(n!==i)return!1;if(!e)return!0;if(!o)return!1;for(var t=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],4:[function(n,e,t){function r(n,e){var t=[],r="",o=0;for(r in n)i.call(n,r)&&(t[o]=e(r,n[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],5:[function(n,e,t){function r(n,e,t){e||(e=0),"undefined"==typeof t&&(t=n?n.length:0);for(var r=-1,i=t-e||0,o=Array(i<0?0:i);++r<i;)o[r]=n[e+r];return o}e.exports=r},{}],6:[function(n,e,t){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(n,e,t){function r(){}function i(n){function e(n){return n&&n instanceof r?n:n?c(n,f,o):o()}function t(t,r,i,o){if(!d.aborted||o){n&&n(t,r,i);for(var a=e(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function l(n,e){h[n]=v(n).concat(e)}function m(n,e){var t=h[n];if(t)for(var r=0;r<t.length;r++)t[r]===e&&t.splice(r,1)}function v(n){return h[n]||[]}function g(n){return p[n]=p[n]||i(t)}function w(n,e){u(n,function(n,t){e=e||"feature",y[t]=e,e in s||(s[e]=[])})}var h={},y={},b={on:l,addEventListener:l,removeEventListener:m,emit:t,get:g,listeners:v,context:e,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var f="nr@context",c=n("gos"),u=n(4),s={},p={},d=e.exports=i();d.backlog=s},{}],gos:[function(n,e,t){function r(n,e,t){if(i.call(n,e))return n[e];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(n,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return n[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(n,e,t){function r(n,e,t,r){i.buffer([n],r),i.emit(n,e,t)}var i=n("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(n,e,t){function r(n){var e=typeof n;return!n||"object"!==e&&"function"!==e?-1:n===window?0:a(n,o,function(){return i++})}var i=1,o="nr@id",a=n("gos");e.exports=r},{}],loader:[function(n,e,t){function r(){if(!x++){var n=E.info=NREUM.info,e=l.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(n&&n.licenseKey&&n.applicationID&&e))return s.abort();u(y,function(e,t){n[e]||(n[e]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=l.createElement("script");t.src="https://"+n.agent,e.parentNode.insertBefore(t,e)}}function i(){"complete"===l.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=n("handle"),u=n(4),s=n("ee"),p=n(3),d=window,l=d.document,m="addEventListener",v="attachEvent",g=d.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:g,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1158.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=e.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};n(1),n(2),l[m]?(l[m]("DOMContentLoaded",o,!1),d[m]("load",r,!1)):(l[v]("onreadystatechange",i),d[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=n(6)},{}],"wrap-function":[function(n,e,t){function r(n){return!(n&&n instanceof Function&&n.apply&&!n[a])}var i=n("ee"),o=n(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;e.exports=function(n,e){function t(n,e,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){d([u,"",[r,a,i],f])}s(e+"start",[r,a,i],f);try{return c=n.apply(a,r)}catch(p){throw s(e+"err",[r,a,p],f),p}finally{s(e+"end",[r,a,c],f)}}return r(n)?n:(e||(e=""),nrWrapper[a]=n,p(n,nrWrapper),nrWrapper)}function u(n,e,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<e.length;c++)f=e[c],a=n[f],r(a)||(n[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||e){var o=c;c=!0;try{n.emit(t,r,i,e)}catch(a){d([a,t,r,i])}c=o}}function p(n,e){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(n);return t.forEach(function(t){Object.defineProperty(e,t,{get:function(){return n[t]},set:function(e){return n[t]=e,e}})}),e}catch(r){d([r])}for(var i in n)f.call(n,i)&&(e[i]=n[i]);return e}function d(e){try{n.emit("internal-error",e)}catch(t){}}return n||(n=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<meta name="description" content="Ken Holland has found himself in a tricky situation halfway through his first season at the helm of the Edmonton Oilers. "><meta name="keywords" content="Edmonton Oilers, Ken Holland, Trade, Draft Picks">
+<title>Friedman: The Oilers are wary of trading draft picks</title>
+<link rel='dns-prefetch' href='//s0.wp.com' />
+<link rel='dns-prefetch' href='//static.thenationnetwork.com' />
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="OILERSNATION &raquo; Feed" href="https://oilersnation.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="OILERSNATION &raquo; Comments Feed" href="https://oilersnation.com/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="OILERSNATION &raquo; Friedman: The Oilers are wary of trading draft picks Comments Feed" href="https://oilersnation.com/2020/01/01/friedman-the-oilers-are-wary-of-trading-draft-picks/feed/" />
+<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/svg\/","svgExt":".svg","source":{"wpemoji":"https:\/\/oilersnation.com\/wp-includes\/js\/wp-emoji.js?ver=5.3.2","twemoji":"https:\/\/oilersnation.com\/wp-includes\/js\/twemoji.js?ver=5.3.2"}};
+			/**
+ * @output wp-includes/js/wp-emoji-loader.js
+ */
+
+( function( window, document, settings ) {
+	var src, ready, ii, tests;
+
+	// Create a canvas element for testing native browser support of emoji.
+	var canvas = document.createElement( 'canvas' );
+	var context = canvas.getContext && canvas.getContext( '2d' );
+
+	/**
+	 * Checks if two sets of Emoji characters render the same visually.
+	 *
+	 * @since 4.9.0
+	 *
+	 * @private
+	 *
+	 * @param {number[]} set1 Set of Emoji character codes.
+	 * @param {number[]} set2 Set of Emoji character codes.
+	 *
+	 * @return {boolean} True if the two sets render the same.
+	 */
+	function emojiSetsRenderIdentically( set1, set2 ) {
+		var stringFromCharCode = String.fromCharCode;
+
+		// Cleanup from previous test.
+		context.clearRect( 0, 0, canvas.width, canvas.height );
+		context.fillText( stringFromCharCode.apply( this, set1 ), 0, 0 );
+		var rendered1 = canvas.toDataURL();
+
+		// Cleanup from previous test.
+		context.clearRect( 0, 0, canvas.width, canvas.height );
+		context.fillText( stringFromCharCode.apply( this, set2 ), 0, 0 );
+		var rendered2 = canvas.toDataURL();
+
+		return rendered1 === rendered2;
+	}
+
+	/**
+	 * Detects if the browser supports rendering emoji or flag emoji.
+	 *
+	 * Flag emoji are a single glyph made of two characters, so some browsers
+	 * (notably, Firefox OS X) don't support them.
+	 *
+	 * @since 4.2.0
+	 *
+	 * @private
+	 *
+	 * @param {string} type Whether to test for support of "flag" or "emoji".
+	 *
+	 * @return {boolean} True if the browser can render emoji, false if it cannot.
+	 */
+	function browserSupportsEmoji( type ) {
+		var isIdentical;
+
+		if ( ! context || ! context.fillText ) {
+			return false;
+		}
+
+		/*
+		 * Chrome on OS X added native emoji rendering in M41. Unfortunately,
+		 * it doesn't work when the font is bolder than 500 weight. So, we
+		 * check for bold rendering support to avoid invisible emoji in Chrome.
+		 */
+		context.textBaseline = 'top';
+		context.font = '600 32px Arial';
+
+		switch ( type ) {
+			case 'flag':
+				/*
+				 * Test for Transgender flag compatibility. This flag is shortlisted for the Emoji 13 spec,
+				 * but has landed in Twemoji early, so we can add support for it, too.
+				 *
+				 * To test for support, we try to render it, and compare the rendering to how it would look if
+				 * the browser doesn't render it correctly (white flag emoji + transgender symbol).
+				 */
+				isIdentical = emojiSetsRenderIdentically(
+					[ 0x1F3F3, 0xFE0F, 0x200D, 0x26A7, 0xFE0F ],
+					[ 0x1F3F3, 0xFE0F, 0x200B, 0x26A7, 0xFE0F ]
+				);
+
+				if ( isIdentical ) {
+					return false;
+				}
+
+				/*
+				 * Test for UN flag compatibility. This is the least supported of the letter locale flags,
+				 * so gives us an easy test for full support.
+				 *
+				 * To test for support, we try to render it, and compare the rendering to how it would look if
+				 * the browser doesn't render it correctly ([U] + [N]).
+				 */
+				isIdentical = emojiSetsRenderIdentically(
+					[ 0xD83C, 0xDDFA, 0xD83C, 0xDDF3 ],
+					[ 0xD83C, 0xDDFA, 0x200B, 0xD83C, 0xDDF3 ]
+				);
+
+				if ( isIdentical ) {
+					return false;
+				}
+
+				/*
+				 * Test for English flag compatibility. England is a country in the United Kingdom, it
+				 * does not have a two letter locale code but rather an five letter sub-division code.
+				 *
+				 * To test for support, we try to render it, and compare the rendering to how it would look if
+				 * the browser doesn't render it correctly (black flag emoji + [G] + [B] + [E] + [N] + [G]).
+				 */
+				isIdentical = emojiSetsRenderIdentically(
+					[ 0xD83C, 0xDFF4, 0xDB40, 0xDC67, 0xDB40, 0xDC62, 0xDB40, 0xDC65, 0xDB40, 0xDC6E, 0xDB40, 0xDC67, 0xDB40, 0xDC7F ],
+					[ 0xD83C, 0xDFF4, 0x200B, 0xDB40, 0xDC67, 0x200B, 0xDB40, 0xDC62, 0x200B, 0xDB40, 0xDC65, 0x200B, 0xDB40, 0xDC6E, 0x200B, 0xDB40, 0xDC67, 0x200B, 0xDB40, 0xDC7F ]
+				);
+
+				return ! isIdentical;
+			case 'emoji':
+				/*
+				 * Love is love.
+				 *
+				 * To test for Emoji 12 support, try to render a new emoji: men holding hands, with different skin
+				 * tone modifiers.
+				 *
+				 * When updating this test for future Emoji releases, ensure that individual emoji that make up the
+				 * sequence come from older emoji standards.
+				 */
+				isIdentical = emojiSetsRenderIdentically(
+					[0xD83D, 0xDC68, 0xD83C, 0xDFFE, 0x200D, 0xD83E, 0xDD1D, 0x200D, 0xD83D, 0xDC68, 0xD83C, 0xDFFC],
+					[0xD83D, 0xDC68, 0xD83C, 0xDFFE, 0x200B, 0xD83E, 0xDD1D, 0x200B, 0xD83D, 0xDC68, 0xD83C, 0xDFFC]
+				);
+
+				return ! isIdentical;
+		}
+
+		return false;
+	}
+
+	/**
+	 * Adds a script to the head of the document.
+	 *
+	 * @ignore
+	 *
+	 * @since 4.2.0
+	 *
+	 * @param {Object} src The url where the script is located.
+	 * @return {void}
+	 */
+	function addScript( src ) {
+		var script = document.createElement( 'script' );
+
+		script.src = src;
+		script.defer = script.type = 'text/javascript';
+		document.getElementsByTagName( 'head' )[0].appendChild( script );
+	}
+
+	tests = Array( 'flag', 'emoji' );
+
+	settings.supports = {
+		everything: true,
+		everythingExceptFlag: true
+	};
+
+	/*
+	 * Tests the browser support for flag emojis and other emojis, and adjusts the
+	 * support settings accordingly.
+	 */
+	for( ii = 0; ii < tests.length; ii++ ) {
+		settings.supports[ tests[ ii ] ] = browserSupportsEmoji( tests[ ii ] );
+
+		settings.supports.everything = settings.supports.everything && settings.supports[ tests[ ii ] ];
+
+		if ( 'flag' !== tests[ ii ] ) {
+			settings.supports.everythingExceptFlag = settings.supports.everythingExceptFlag && settings.supports[ tests[ ii ] ];
+		}
+	}
+
+	settings.supports.everythingExceptFlag = settings.supports.everythingExceptFlag && ! settings.supports.flag;
+
+	// Sets DOMReady to false and assigns a ready function to settings.
+	settings.DOMReady = false;
+	settings.readyCallback = function() {
+		settings.DOMReady = true;
+	};
+
+	// When the browser can not render everything we need to load a polyfill.
+	if ( ! settings.supports.everything ) {
+		ready = function() {
+			settings.readyCallback();
+		};
+
+		/*
+		 * Cross-browser version of adding a dom ready event.
+		 */
+		if ( document.addEventListener ) {
+			document.addEventListener( 'DOMContentLoaded', ready, false );
+			window.addEventListener( 'load', ready, false );
+		} else {
+			window.attachEvent( 'onload', ready );
+			document.attachEvent( 'onreadystatechange', function() {
+				if ( 'complete' === document.readyState ) {
+					settings.readyCallback();
+				}
+			} );
+		}
+
+		src = settings.source || {};
+
+		if ( src.concatemoji ) {
+			addScript( src.concatemoji );
+		} else if ( src.wpemoji && src.twemoji ) {
+			addScript( src.twemoji );
+			addScript( src.wpemoji );
+		}
+	}
+
+} )( window, document, window._wpemojiSettings );
+		</script>
+<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='jetpack_related-posts-css' href='https://c0.wp.com/p/jetpack/7.8.1/modules/related-posts/related-posts.css' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-block-library-css' href='https://c0.wp.com/c/5.3.2/wp-includes/css/dist/block-library/style.css' type='text/css' media='all' />
+<link rel='stylesheet' id='tooltipster-css' href='https://oilersnation.com/wp-content/plugins/nation-infobox/css/tooltipster.bundle.css?ver=5.3.2' type='text/css' media='all' />
+<link rel='stylesheet' id='tooltipster-theme-css' href='https://oilersnation.com/wp-content/plugins/nation-infobox/css/tooltipster-sideTip-borderless.min.css?ver=5.3.2' type='text/css' media='all' />
+<link rel='stylesheet' id='tooltipster-overrides-css' href='https://oilersnation.com/wp-content/plugins/nation-infobox/css/tooltipster-overrides.css?ver=1.0.4' type='text/css' media='all' />
+<link rel='stylesheet' id='nn-style-css' href='https://oilersnation.com/wp-content/themes/nationnetwork/style.css?ver=5.3.2' type='text/css' media='all' />
+<link rel='stylesheet' id='nn-googlefonts-css' href='https://fonts.googleapis.com/css?family=Cairo%3A300%2C400%2C600%2C700%7CRoboto%3A300%2C400%2C700&#038;ver=5.3.2' type='text/css' media='all' />
+<link rel='stylesheet' id='nn-app-css' href='https://oilersnation.com/wp-content/themes/nationnetwork/assets/css/app.css?ver=1.0.5' type='text/css' media='all' />
+<script type='text/javascript' data-cfasync="false" src='https://c0.wp.com/c/5.3.2/wp-includes/js/jquery/jquery.js'></script>
+<script type='text/javascript' data-cfasync="false" src='https://c0.wp.com/c/5.3.2/wp-includes/js/jquery/jquery-migrate.js'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var related_posts_js_options = {"post_heading":"h4"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://c0.wp.com/p/jetpack/7.8.1/modules/related-posts/related-posts.js'></script>
+<script type='text/javascript' src='https://oilersnation.com/wp-content/plugins/nation-infobox/js/squirrelly.min.js?ver=5.3.2'></script>
+<script type='text/javascript' src='https://oilersnation.com/wp-content/plugins/nation-infobox/js/tooltipster.bundle.js?ver=5.3.2'></script>
+<script type='text/javascript' data-cfasync="false" src='https://oilersnation.com/ad_config.js?ver=5.3.2'></script>
+<script type='text/javascript' data-cfasync="false" src='https://static.thenationnetwork.com/js/ads/sites/shared_rtk_beta.js?ver=5.3.2'></script>
+<link rel='shortlink' href='https://wp.me/p8tFW3-lRH' />
+<link rel="alternate" type="application/json+oembed" href="https://oilersnation.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Foilersnation.com%2F2020%2F01%2F01%2Ffriedman-the-oilers-are-wary-of-trading-draft-picks%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://oilersnation.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Foilersnation.com%2F2020%2F01%2F01%2Ffriedman-the-oilers-are-wary-of-trading-draft-picks%2F&#038;format=xml" />
+<style>
+		.getty.aligncenter {
+			text-align: center;
+		}
+		.getty.alignleft {
+			float: none;
+			margin-right: 0;
+		}
+		.getty.alignleft > div {
+			float: left;
+			margin-right: 5px;
+		}
+		.getty.alignright {
+			float: none;
+			margin-left: 0;
+		}
+		.getty.alignright > div {
+			float: right;
+			margin-left: 5px;
+		}
+		</style>
+<meta property="fb:pages" content="431189716935410" />
+<meta property="ia:markup_url" content="https://oilersnation.com/2020/01/01/friedman-the-oilers-are-wary-of-trading-draft-picks/?ia_markup=1" />
+<link rel='dns-prefetch' href='//v0.wordpress.com' />
+<link rel='dns-prefetch' href='//i0.wp.com' />
+<link rel='dns-prefetch' href='//i1.wp.com' />
+<link rel='dns-prefetch' href='//i2.wp.com' />
+<link rel='dns-prefetch' href='//c0.wp.com' />
+<style type='text/css'>img#wpstats{display:none}</style><link rel="pingback" href="https://oilersnation.com/xmlrpc.php"> <style type="text/css">
+		.bg-color-primary,
+		#primary-menu li .sub-menu,
+		#primary-menu li.menu-item-has-children:hover,
+		.dropdown-menu .sub-menu,
+		.dropdown-menu .dropdown-menu_has_children:hover,
+		.button,
+		.submit,
+		.posts_navigation ul li .page-numbers {
+			background-color: #1d437b;
+		}
+
+		.bg-color-secondary,
+		.button:hover,
+		.submit:hover,
+		.posts_navigation ul li .page-numbers:hover,
+		.posts_navigation ul li .page-numbers.current
+		{
+			background-color: #e86e30;
+		}
+
+		.color-primary,
+		.single .site-main_primary .entry-content a:hover,
+		.single.blog-3 .site-main_primary .entry-content a, /* CancuckArmy: use primary color for anchor */
+		.mobile-nav-wrap .menu li a,
+		.comment-button a:hover,
+		#footer-menu-container a,
+		.comments-login a,
+		.social_nav ul li a
+		{
+			color: #1d437b;
+		}
+
+		.color-secondary,
+		a:hover,
+		.single .site-main_primary .entry-content a,
+		.widget .entry-content a:hover,
+		.comment-button a,
+		#primary-menu li.menu-item-has-children:hover > a,
+		#primary-menu li .sub-menu li a:hover,
+		#primary-menu li a:hover,
+		.mobile-nav-wrap .menu li a:hover,
+		.mobile-nav-wrap .menu li.menu-item-has-children > a:after,
+		.mobile-nav-wrap .menu li .sub-menu li a:hover,
+		.dropdown-menu .dropdown-menu_has_children:hover > a,
+		.dropdown-menu .sub-menu li a:hover,
+		#footer-menu-container a:hover,
+		table th.sorting:after,
+		table th.sorting_desc:after,
+		table th.sorting_asc:after,
+		.comments-login a:hover,
+		.social_nav ul li a:hover,
+		.post .attachment-post-thumbnail-wrap .comment-count:hover
+		{
+			color: #e86e30;
+		}
+
+		.page-title,
+		.widget,
+		.widget_nn_schedule .schedule,
+		.tabs .tabs-title.is-active,
+		table
+		{
+			border-top: 2px solid #e86e30;
+		}
+
+		.comments-header
+		{
+			border-bottom: 2px solid #e86e30;
+		}
+
+		.search-form input[type="search"] {
+			background-color: ;
+		}
+
+		.mobile-nav-wrap .menu li .sub-menu li a {
+			color: ;
+		}
+
+		.stats {
+			border-top: 2px solid #1d437b;
+			border-bottom: 2px solid #1d437b;
+		}
+
+		.authors_nav ul li a:hover {
+		    border: 2px solid #e86e30;
+		    color: #1d437b;
+		}
+
+
+		.mobile-menu-toggle span {
+			border: 2px solid #1d437b;
+		}
+
+		input:focus,
+		textarea:focus
+		{
+			border: 2px solid #e86e30;
+		}
+
+		.quickhits .box-wrap {
+			border: 2px solid #e86e30;
+		}
+
+		.quickhits .heading {
+			background-color: #e86e30;
+		}
+
+    .quickhits a:hover {
+			color: #e86e30;
+		}
+
+	</style>
+<link rel='canonical' href='https://oilersnation.com/2020/01/01/friedman-the-oilers-are-wary-of-trading-draft-picks/' />
+<style type="text/css">
+				/* If html does not have either class, do not show lazy loaded images. */
+				html:not( .jetpack-lazy-images-js-enabled ):not( .js ) .jetpack-lazy-image {
+					display: none;
+				}
+			</style>
+<script>
+				document.documentElement.classList.add(
+					'jetpack-lazy-images-js-enabled'
+				);
+			</script>
+
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Friedman: The Oilers are wary of trading draft picks" />
+<meta property="og:url" content="https://oilersnation.com/2020/01/01/friedman-the-oilers-are-wary-of-trading-draft-picks/" />
+<meta property="og:description" content="Ken Holland has found himself in a tricky situation halfway through his first season at the helm of the Edmonton Oilers." />
+<meta property="article:published_time" content="2020-01-01T15:26:57+00:00" />
+<meta property="article:modified_time" content="2020-01-01T15:45:15+00:00" />
+<meta property="og:site_name" content="OILERSNATION" />
+<meta property="og:image" content="https://i0.wp.com/oilersnation.com/wp-content/uploads/2019/06/Edmonton-Oilers-General-Manager-Ken-Holland-e1560535001846.png?fit=1000%2C563&amp;ssl=1" />
+<meta property="og:image:width" content="1000" />
+<meta property="og:image:height" content="563" />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:site" content="@oilersnation" />
+<meta name="twitter:text:title" content="Friedman: The Oilers are wary of trading draft picks" />
+<meta name="twitter:image" content="https://i0.wp.com/oilersnation.com/wp-content/uploads/2019/06/Edmonton-Oilers-General-Manager-Ken-Holland-e1560535001846.png?fit=1000%2C563&#038;ssl=1&#038;w=640" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<link rel="icon" href="https://i2.wp.com/oilersnation.com/wp-content/uploads/2017/02/cropped-oilersnation_site_icon1.png?fit=32%2C32&#038;ssl=1" sizes="32x32" />
+<link rel="icon" href="https://i2.wp.com/oilersnation.com/wp-content/uploads/2017/02/cropped-oilersnation_site_icon1.png?fit=192%2C192&#038;ssl=1" sizes="192x192" />
+<link rel="apple-touch-icon-precomposed" href="https://i2.wp.com/oilersnation.com/wp-content/uploads/2017/02/cropped-oilersnation_site_icon1.png?fit=180%2C180&#038;ssl=1" />
+<meta name="msapplication-TileImage" content="https://i2.wp.com/oilersnation.com/wp-content/uploads/2017/02/cropped-oilersnation_site_icon1.png?fit=270%2C270&#038;ssl=1" />
+<style type="text/css" id="wp-custom-css">
+				/*
+You can add your own CSS here.
+
+Click the help icon above to learn more.
+*/			</style>
+<style>
+.ai-viewport-3                { display: none !important;}
+.ai-viewport-2                { display: none !important;}
+.ai-viewport-1                { display: inherit !important;}
+.ai-viewport-0                { display: none !important;}
+@media (min-width: 768px) and (max-width: 979px) {
+.ai-viewport-1                { display: none !important;}
+.ai-viewport-2                { display: inherit !important;}
+}
+@media (max-width: 767px) {
+.ai-viewport-1                { display: none !important;}
+.ai-viewport-3                { display: inherit !important;}
+}
+</style>
+<script type="text/javascript">
+		      window._taboola = window._taboola || [];
+		      _taboola.push({article:'auto'});
+		      !function (e, f, u, i) {
+			if (!document.getElementById(i)){
+			  e.async = 1;
+			  e.src = u;
+			  e.id = i;
+			  f.parentNode.insertBefore(e, f);
+			}
+		      }(document.createElement('script'),
+		      document.getElementsByTagName('script')[0],
+		      '//cdn.taboola.com/libtrc/thenationnetwork-network/loader.js',
+		      'tb_loader_script');
+		      if(window.performance && typeof window.performance.mark == 'function')
+			{window.performance.mark('tbl_ic');}
+		    </script>
+</head>
+<body class="post-template-default single single-post postid-84053 single-format-standard group-blog blog-1">
+<header id="masthead" class="site-header" role="banner">
+<div class="row">
+<div class="small-12 columns">
+<div class="site-header-wrap">
+<div class="site-branding">
+<a href="https://oilersnation.com"><img src="https://oilersnation.com/wp-content/themes/nationnetwork/assets/img/logos/site-logos/oilersnation.png" /></a> </div>
+<nav class="menu-primary-navigation-container"><ul id="primary-menu" class="menu"><li id="menu-item-45405" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-45405"><a href="https://oilersnation.com/oilers-talk/">Oilers Talk</a>
+<ul class="sub-menu">
+<li id="menu-item-45406" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-45406"><a href="https://oilersnation.com/oilers-talk/nation-takes/">Nation Takes</a></li>
+<li id="menu-item-45416" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-45416"><a href="https://oilersnation.com/oilers-talk/interviews-pressers/">Interviews/Pressers</a></li>
+<li id="menu-item-45410" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-45410"><a href="https://oilersnation.com/oilers-talk/social-corner/">Social Corner</a></li>
+<li id="menu-item-45408" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-45408"><a href="https://oilersnation.com/oilers-talk/monday-mailbag/">Monday Mailbag</a></li>
+<li id="menu-item-45407" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-45407"><a href="https://oilersnation.com/oilers-talk/wwydw/">WWYDW</a></li>
+<li id="menu-item-56947" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-56947"><a href="https://oilersnation.com/oilers-talk/nation-video/">Videos</a></li>
+</ul>
+</li>
+<li id="menu-item-45411" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-has-children menu-item-45411"><a href="https://oilersnation.com/news/">News</a>
+<ul class="sub-menu">
+<li id="menu-item-54234" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-54234"><a href="https://oilersnation.com/news/quick-hits/">Quick Hits</a></li>
+<li id="menu-item-45412" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-45412"><a href="https://oilersnation.com/news/team-news/">Team News</a></li>
+<li id="menu-item-45418" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-45418"><a href="https://oilersnation.com/news/matchups/">Matchups</a></li>
+<li id="menu-item-45413" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-45413"><a href="https://oilersnation.com/news/gameday-previews/">Gameday Previews</a></li>
+<li id="menu-item-45419" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-45419"><a href="https://oilersnation.com/news/post-game/">Post Game</a></li>
+<li id="menu-item-45417" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-45417"><a href="https://oilersnation.com/news/injury-report/">Injury Report</a></li>
+</ul>
+</li>
+<li id="menu-item-48043" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-48043"><a href="https://oilersnation.com/edmonton-oilers-line-combinations/">Line Combinations</a>
+<ul class="sub-menu">
+<li id="menu-item-48044" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-48044"><a href="https://oilersnation.com/edmonton-oilers-starting-goalies/">Starting Goalies</a></li>
+</ul>
+</li>
+<li id="menu-item-45526" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-45526"><a href="https://oilersnation.com/team/">Team</a>
+<ul class="sub-menu">
+<li id="menu-item-32871" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-32871"><a href="https://oilersnation.com/schedule/">Schedule</a></li>
+<li id="menu-item-47556" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-47556"><a href="https://oilersnation.com/edmonton-oilers-stats/">Stats</a></li>
+<li id="menu-item-74121" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-74121"><a target="_blank" rel="noopener noreferrer" href="https://puckpedia.com/players?q=UVAT3N#&#038;sort%5Btable0%5D=21-1&#038;c=%5B3,4,5,6,7,8,9,10,11,12,13,15,16,17,18,19,20,21,24,25,26,27,28,29,30%5D">PuckPedia Stats</a></li>
+<li id="menu-item-74119" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-74119"><a target="_blank" rel="noopener noreferrer" href="https://puckpedia.com/team/edmonton-oilers#breakdown">PuckPedia Cap Hits</a></li>
+<li id="menu-item-74120" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-74120"><a target="_blank" rel="noopener noreferrer" href="https://puckpedia.com/team/edmonton-oilers/draftpicks">PuckPedia Draft Picks</a></li>
+</ul>
+</li>
+<li id="menu-item-45486" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-45486"><a href="https://oilersnation.com/about/">About</a>
+<ul class="sub-menu">
+<li id="menu-item-32870" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-32870"><a href="https://oilersnation.com/authors/">Authors</a></li>
+<li id="menu-item-33051" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-33051"><a href="https://oilersnation.com/contact/">Contact Us</a></li>
+<li id="menu-item-32946" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-32946"><a href="https://oilersnation.com/advertise/">Advertise</a></li>
+<li id="menu-item-32945" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-32945"><a href="https://oilersnation.com/outreach/">Community Outreach</a></li>
+</ul>
+</li>
+<li id="menu-item-33003" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-33003"><a href="http://nationgear.ca/collections/all-oilersnation">Nation Gear</a></li>
+<li id="menu-item-45409" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-45409"><a href="https://oilersnation.com/oilers-talk/podcasts/">Podcasts</a></li>
+<li id="menu-item-70791" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-70791"><a href="https://oilersnation.com/odds/">Odds</a>
+<ul class="sub-menu">
+<li id="menu-item-74736" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74736"><a href="https://oilersnation.com/odds/pga/">PGA Odds</a></li>
+<li id="menu-item-74737" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74737"><a href="https://oilersnation.com/odds/mls/">MLS Odds</a></li>
+<li id="menu-item-74738" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74738"><a href="https://oilersnation.com/odds/boxing/">Boxing Odds</a></li>
+<li id="menu-item-74739" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74739"><a href="https://oilersnation.com/odds/ufc/">UFC Odds</a></li>
+<li id="menu-item-74740" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74740"><a href="https://oilersnation.com/odds/cfl/">CFL Odds</a></li>
+<li id="menu-item-74741" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74741"><a href="https://oilersnation.com/odds/ncaab/">NCAAB Odds</a></li>
+<li id="menu-item-74742" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74742"><a href="https://oilersnation.com/odds/ncaaf/">NCAAF Odds</a></li>
+<li id="menu-item-74743" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74743"><a href="https://oilersnation.com/odds/mlb/">MLB Odds</a></li>
+<li id="menu-item-74744" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74744"><a href="https://oilersnation.com/odds/nba/">NBA Odds</a></li>
+<li id="menu-item-74745" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74745"><a href="https://oilersnation.com/odds/nfl/">NFL Odds</a></li>
+<li id="menu-item-74746" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74746"><a href="https://oilersnation.com/odds/nhl/">NHL Odds</a></li>
+</ul>
+</li>
+</ul></nav> <div class="site-header_searchform">
+<form role="search" method="get" class="search-form" action="https://oilersnation.com/">
+<label>
+<input type="search" class="search-field" placeholder="Search..." value="" name="s" />
+</label>
+</form>
+</div>
+<nav class="menu-user-menu-container">
+<ul class="menu-user-menu">
+<li class="menu-user-menu_search">
+<a class="color-primary" href="#">
+<i class="fa fa-search" aria-hidden="true"></i>
+</a>
+</li>
+<li class="menu-user-menu_user">
+<a data-open="login-modal" href="#">
+<span class="fa-stack">
+<i class="fa fa-circle fa-stack-2x color-secondary"></i>
+<i class="fa fa-user fa-stack-1x fa-inverse"></i>
+</span>
+</a>
+</li>
+<li><a class="mobile-menu-toggle color-primary" href="#"></a></li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="stripes">
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+</div>
+</header>
+<div class="legal-disclaimer">
+Oilersnation is a fan site with no direct affiliation to the Edmonton Oilers, Oilers Entertainment Group, NHL, or NHLPA	</div>
+<div class="mobile-nav-wrap">
+<a class="mobile-menu-toggle color-primary" href="#"><i class="fa fa-times" aria-hidden="true"></i></a>
+<div class="mobile-nav_top">
+<nav class="social_nav"><ul><li><a href="https://www.facebook.com/OilersNation/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li><li><a href="https://twitter.com/oilersnationhq" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li><li><a href="https://www.instagram.com/officialoilersnation/" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a></li></ul></nav> <div class="mobile-nav_searchform">
+<form role="search" method="get" class="search-form" action="https://oilersnation.com/">
+<label>
+<input type="search" class="search-field" placeholder="Search..." value="" name="s" />
+</label>
+</form>
+</div>
+<div class="mobile-nav_search">
+<a class="mobile-nav_search__toggle color-primary" href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
+</div>
+</div>
+<nav class="menu-primary-navigation-container"><ul id="mobile-menu" class="menu"><li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-45405"><a href="https://oilersnation.com/oilers-talk/">Oilers Talk</a>
+<ul class="sub-menu">
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-45406"><a href="https://oilersnation.com/oilers-talk/nation-takes/">Nation Takes</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-45416"><a href="https://oilersnation.com/oilers-talk/interviews-pressers/">Interviews/Pressers</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-45410"><a href="https://oilersnation.com/oilers-talk/social-corner/">Social Corner</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-45408"><a href="https://oilersnation.com/oilers-talk/monday-mailbag/">Monday Mailbag</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-45407"><a href="https://oilersnation.com/oilers-talk/wwydw/">WWYDW</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-56947"><a href="https://oilersnation.com/oilers-talk/nation-video/">Videos</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-has-children menu-item-45411"><a href="https://oilersnation.com/news/">News</a>
+<ul class="sub-menu">
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-54234"><a href="https://oilersnation.com/news/quick-hits/">Quick Hits</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-45412"><a href="https://oilersnation.com/news/team-news/">Team News</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-45418"><a href="https://oilersnation.com/news/matchups/">Matchups</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-45413"><a href="https://oilersnation.com/news/gameday-previews/">Gameday Previews</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-45419"><a href="https://oilersnation.com/news/post-game/">Post Game</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-45417"><a href="https://oilersnation.com/news/injury-report/">Injury Report</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-48043"><a href="https://oilersnation.com/edmonton-oilers-line-combinations/">Line Combinations</a>
+<ul class="sub-menu">
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-48044"><a href="https://oilersnation.com/edmonton-oilers-starting-goalies/">Starting Goalies</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-45526"><a href="https://oilersnation.com/team/">Team</a>
+<ul class="sub-menu">
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-32871"><a href="https://oilersnation.com/schedule/">Schedule</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-47556"><a href="https://oilersnation.com/edmonton-oilers-stats/">Stats</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-74121"><a target="_blank" rel="noopener noreferrer" href="https://puckpedia.com/players?q=UVAT3N#&#038;sort%5Btable0%5D=21-1&#038;c=%5B3,4,5,6,7,8,9,10,11,12,13,15,16,17,18,19,20,21,24,25,26,27,28,29,30%5D">PuckPedia Stats</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-74119"><a target="_blank" rel="noopener noreferrer" href="https://puckpedia.com/team/edmonton-oilers#breakdown">PuckPedia Cap Hits</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-74120"><a target="_blank" rel="noopener noreferrer" href="https://puckpedia.com/team/edmonton-oilers/draftpicks">PuckPedia Draft Picks</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-45486"><a href="https://oilersnation.com/about/">About</a>
+<ul class="sub-menu">
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-32870"><a href="https://oilersnation.com/authors/">Authors</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-33051"><a href="https://oilersnation.com/contact/">Contact Us</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-32946"><a href="https://oilersnation.com/advertise/">Advertise</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-32945"><a href="https://oilersnation.com/outreach/">Community Outreach</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-33003"><a href="http://nationgear.ca/collections/all-oilersnation">Nation Gear</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-45409"><a href="https://oilersnation.com/oilers-talk/podcasts/">Podcasts</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-70791"><a href="https://oilersnation.com/odds/">Odds</a>
+<ul class="sub-menu">
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74736"><a href="https://oilersnation.com/odds/pga/">PGA Odds</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74737"><a href="https://oilersnation.com/odds/mls/">MLS Odds</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74738"><a href="https://oilersnation.com/odds/boxing/">Boxing Odds</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74739"><a href="https://oilersnation.com/odds/ufc/">UFC Odds</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74740"><a href="https://oilersnation.com/odds/cfl/">CFL Odds</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74741"><a href="https://oilersnation.com/odds/ncaab/">NCAAB Odds</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74742"><a href="https://oilersnation.com/odds/ncaaf/">NCAAF Odds</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74743"><a href="https://oilersnation.com/odds/mlb/">MLB Odds</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74744"><a href="https://oilersnation.com/odds/nba/">NBA Odds</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74745"><a href="https://oilersnation.com/odds/nfl/">NFL Odds</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74746"><a href="https://oilersnation.com/odds/nhl/">NHL Odds</a></li>
+</ul>
+</li>
+</ul></nav> <h4 class="mobile-nav-title">CONTACT US</h4>
+<nav class="menu-contact-us-container"><ul id="menu-contact-us" class="menu"><li id="menu-item-32950" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-32950"><a href="https://oilersnation.com/contact/">Contact Us</a></li>
+<li id="menu-item-32949" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-32949"><a href="https://oilersnation.com/advertise/">Advertise With Us</a></li>
+<li id="menu-item-32948" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-32948"><a href="https://oilersnation.com/outreach/">Community Outreach</a></li>
+</ul></nav> <h4 class="mobile-nav-title">NATION NETWORK</h4>
+<nav class="menu-footer-navigation-container"><ul id="footer-menu" class="menu"><li id="menu-item-32874" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-32874"><a href="http://bluejaysnation.com/">BLUEJAYSNATION</a></li>
+<li id="menu-item-32875" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-32875"><a href="http://wingsnation.com/">WINGSNATION</a></li>
+<li id="menu-item-32876" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-32876"><a href="http://canucksarmy.com/">CANUCKSARMY</a></li>
+<li id="menu-item-32877" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-32877"><a href="http://oilersnation.com/">OILERSNATION</a></li>
+<li id="menu-item-32878" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-32878"><a href="http://flamesnation.ca/">FLAMESNATION</a></li>
+<li id="menu-item-32879" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-32879"><a href="http://jetsnation.ca/">JETSNATION</a></li>
+<li id="menu-item-32880" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-32880"><a href="http://mapleleafsnation.com/">THELEAFSNATION</a></li>
+<li id="menu-item-32881" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-32881"><a href="https://puckpedia.com">PUCKPEDIA</a></li>
+<li id="menu-item-32882" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-32882"><a href="http://www.dailyfaceoff.com/">DAILYFACEOFF</a></li>
+<li id="menu-item-32883" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-32883"><a href="http://www.hockeyfights.com/">HOCKEYFIGHTS</a></li>
+</ul></nav> </div>
+<div id="content" class="site-content">
+<div id="primary" class="content-area">
+<main id="main" class="site-main" role="main">
+<div class="row">
+<div class="breadcrumbs"><span prefix="v: http://rdf.data-vocabulary.org/#"><span typeof="v:Breadcrumb"><a property="v:title" rel="v:url" href="https://oilersnation.com">Home</a> &gt;</span> <a href="https://oilersnation.com/news/">News</a> &gt; <span typeof="v:Breadcrumb"><a property="v:title" rel="v:url" href="https://oilersnation.com/2020/">2020</a> &gt;</span> <span typeof="v:Breadcrumb"><a property="v:title" rel="v:url" href="https://oilersnation.com/2020/01/01/">01/01</a> &gt;</span> <span typeof="v:Breadcrumb" class="current currentLevel"><a property="v:title" rel="v:url" href="https://oilersnation.com/2020/01/01/friedman-the-oilers-are-wary-of-trading-draft-picks/">Friedman: The Oilers are wary of trading draft picks</a></span></span></div>
+<div class="site-main_primary columns">
+<article id="post-84053" class="post-84053 post type-post status-publish format-standard has-post-thumbnail hentry category-news category-team-news tag-draft-picks tag-edmonton-oilers tag-ken-holland tag-trade">
+<header class="entry-header">
+<div class="attachment-post-thumbnail-wrap"><a class="comment-count fa-stack fa-2x" href="https://oilersnation.com/2020/01/01/friedman-the-oilers-are-wary-of-trading-draft-picks/#respond"><i class="fa fa-comment fa-stack-1x"></i><strong class="comment-count-text fa-stack-1x fa-stack-text fa-inverse">95</strong></a><img width="1000" height="563" src="https://oilersnation.com/wp-content/uploads/2019/06/Edmonton-Oilers-General-Manager-Ken-Holland-e1560535001846.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image jetpack-lazy-image" alt="" data-lazy-src="https://oilersnation.com/wp-content/uploads/2019/06/Edmonton-Oilers-General-Manager-Ken-Holland-e1560535001846.png?is-pending-load=1" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" /></div><span class="photo-credit">Photo Credit: Jason Franson/Canadian Press</span> <div class="share-bar"></div> <h1 class="entry-title">Friedman: The Oilers are wary of trading draft picks</h1> <div class="entry-meta">
+<span class="posted-on"><time class="entry-date published updated" datetime="2020-01-01T08:26:57-07:00">January 1, 2020, 8:26 AM</time></span> | <span class="byline"><span class="author vcard"><a class="url fn n" href="https://oilersnation.com/author/camlewis/">Cam Lewis</a></span></span> </div><div class='code-block code-block-11' style='margin: 8px auto; text-align: center; display: block; clear: both;'>
+<div id="RTK_coY1"></div></div>
+
+</header>
+<div class="entry-content">
+<div class='code-block code-block-8' style='margin: 8px auto; text-align: center; display: block; clear: both;'>
+<div id="RTK_untl"></div></div>
+<p>Ken Holland has found himself in a tricky situation halfway through his first season at the helm of the Edmonton Oilers.</p>
+<p><span id="more-84053"></span></p>
+<p>His big-picture plan is to retool the organization, through the draft. There&#8217;s a core here of Connor McDavid, Leon Draisaitl, Oscar Klefbom, and others along with a nice prospect pool in the minors. But there&#8217;s still a ways to go, and the most prudent way to add talent is through drafting and developing.</p>
+<p>But there&#8217;s also a team and a fanbase desperate for playoff hockey. There&#8217;s a building that isn&#8217;t being sold out on a nightly basis because fans aren&#8217;t interested in paying top dollar to see a team that isn&#8217;t winning. There are also two superstars in McDavid and Draisaitl doing everything they can to drag this team to the playoffs.</p><div class='code-block code-block-9 ai-viewport-3' style='margin: 8px auto; text-align: center; display: block; clear: both;'>
+
+<style>
+  .in-article-ad-container:after{
+	  content: "";
+    display: flex;
+    border-bottom: .0625rem solid #999;
+    margin: .8125rem .938rem 0;
+	  }
+  .before-ad-text{
+    font-family: Barlow Semi Condensed,Helvetica,Arial,sans-serif;
+    font-size: 11px;
+    line-height: 1.2;
+    text-transform: uppercase;
+    color: #383838;
+    letter-spacing: .008em;
+	  display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    margin: 0 0 .625rem;
+	  }
+  .before-ad-text:after {
+    background-color: #999;
+    content: "";
+    flex-grow: 1;
+    height: 1px;
+    position: relative;
+    top: 5px;
+	 }
+  .before-ad-text:before {
+	  background-color: #999;
+    content: "";
+    flex-grow: 1;
+    height: 1px;
+    position: relative;
+    top: 5px;
+	}
+</style>
+<div class="in-article-ad-container">
+<div class="before-ad-text">Advertisement - Continue Reading Below</div>
+<div id="RTK_ikvq"></div>
+</div></div>
+<p>The Oilers are on the bubble. Their hot start has come to an end and a cold stretch in December has the team right on the cusp of the playoffs. It&#8217;s pretty much a coin flip at this point. That, of course, is if Holland doesn&#8217;t do anything before the deadline. If he makes a big addition or two, the likelihood of the team making the playoffs obviously becomes a lot higher.</p>
+<p>So, what do you do now? Do you stick with the original plan and think about the big picture? Or do you lean into what&#8217;s right in front of you and try to make the playoffs?</p>
+<p><a href="https://www.sportsnet.ca/hockey/nhl/31-thoughts-nhl-trade-market-beginning-take-shape/">According to Elliotte Friedman, Holland is wary of trading draft picks away to improve the roster right now&#8230; </a></p>
+<blockquote><p>The Oilers are wary of trading picks. There’s no guarantee all work out, but, the more lottery tickets you have, the better. They didn’t have a second- or third-rounder in 2015; their 2016 first-rounder is estranged from the organization; didn’t have a second-rounder in 2017; nothing in round three-to-five in 2018; and six picks last year. That’s one of the reasons they passed on Taylor Hall — not wanting to give up two more high selections.</p></blockquote>
+<p>Friedman went on to make another Oilers-related point, this time in regards to McDavid and Draisaitl&#8217;s frustration&#8230;</p><div class='code-block code-block-6 ai-viewport-3' style='margin: 8px auto; text-align: center; display: block; clear: both;'>
+
+<style>
+  .in-article-ad-container:after{
+	  content: "";
+    display: flex;
+    border-bottom: .0625rem solid #999;
+    margin: .8125rem .938rem 0;
+	  }
+  .before-ad-text{
+    font-family: Barlow Semi Condensed,Helvetica,Arial,sans-serif;
+    font-size: 11px;
+    line-height: 1.2;
+    text-transform: uppercase;
+    color: #383838;
+    letter-spacing: .008em;
+	  display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    margin: 0 0 .625rem;
+	  }
+  .before-ad-text:after {
+    background-color: #999;
+    content: "";
+    flex-grow: 1;
+    height: 1px;
+    position: relative;
+    top: 5px;
+	 }
+  .before-ad-text:before {
+	  background-color: #999;
+    content: "";
+    flex-grow: 1;
+    height: 1px;
+    position: relative;
+    top: 5px;
+	}
+</style>
+<div class="in-article-ad-container">
+<div class="before-ad-text">Advertisement - Continue Reading Below</div>
+<div id="RTK_kBj0"></div>
+</div></div>
+<blockquote><p>You can see the frustration on Leon Draisaitl and Connor McDavid as the rest of the Pacific catches the Oilers. St. Louis players in particular noticed in-game how upset Draisaitl was by missed chances in a 2-1 loss to the Blues on Dec. 17. They thought it really affected him.</p></blockquote>
+<p>So there are a couple of things going on here.</p>
+<p>First, we have Friedman suggesting that Holland is skeptical of giving up draft picks, which isn&#8217;t all that surprising, given the fact we know his priority here is building the Oilers up for long-term success. When Peter Chiarelli came in, he was trigger happy, dealing away everything in his sight in order to fill what he viewed as primary needs for the organization. That won&#8217;t happen with Holland.</p>
+<p>Second, we have the classic McDavid and Draisaitl are frustrated analysis. I mean, there&#8217;s no doubt that they are. They&#8217;re first and second in the league in points and they&#8217;re dragging the team on their backs to the best of their ability and they might not have anything to show for it at the end of the year. No, this isn&#8217;t <em>McDavid and Draisaitl want out of Edmonton </em>but there is merit to them being frustrated with potentially missing the playoffs for the third year in a row.</p><div class='code-block code-block-19 ai-viewport-2 ai-viewport-3' style='margin: 8px auto; text-align: center; display: block; clear: both;'>
+<div style="width: 90%; margin: auto;">
+<div class='s2nPlayer-Otarfx34' data-type='full'></div><script type='text/javascript' src='//embed.sendtonews.com/player2/embedcode.php?fk=Otarfx34&cid=8795' data-type='s2nScript'></script>
+</div></div>
+<p>That&#8217;s what makes this situation so challenging. Holland&#8217;s plan of worrying about the future is the right one for the Oilers.<a href="https://oilersnation.com/2019/02/10/edmonton-oilers-need-to-be-patient-yet-again/"> I wrote last February that, as awful as it sounds, the best course of action is for the Oilers to be patient in order to be successful.</a></p>
+<blockquote><p>If the next general manager comes in and tries to remedy the Oilers with a quick fix, things will only get worse. Buyouts will worsen the cap situation long-term. Trading prospects and draft picks for short-term solutions will continue to hemorrhage the organization of depth. Being active in free agency will sink the Oilers deeper into cap hell.</p>
+<p>The only solution is patience. It’ll take time, but they have to get it right this time.</p></blockquote>
+<p>That hasn&#8217;t changed. After 2020-21, the Oilers have a much neater salary cap situation that&#8217;ll afford them flexibility in free agency. They&#8217;ll also likely have a handful of internally-developed, young talent establishing itself on the roster. If they&#8217;re patient, they can continue to stock the farm this year and continue working towards a very deep farm system, something we haven&#8217;t seen since, well, I don&#8217;t even know.</p>
+<p>But is being patient that easy? Can you tell McDavid and Draisaitl to be patient? Can you ask them to drag this roster all season to a position in which they&#8217;re in playoff contention at the trade deadline and then stand pat, hoping they can do a few more months of heavy lifting? That&#8217;s a big ask.</p><div class='code-block code-block-5 ai-viewport-3' style='margin: 8px auto; text-align: center; display: block; clear: both;'>
+
+<style>
+  .in-article-ad-container:after{
+	  content: "";
+    display: flex;
+    border-bottom: .0625rem solid #999;
+    margin: .8125rem .938rem 0;
+	  }
+  .before-ad-text{
+    font-family: Barlow Semi Condensed,Helvetica,Arial,sans-serif;
+    font-size: 11px;
+    line-height: 1.2;
+    text-transform: uppercase;
+    color: #383838;
+    letter-spacing: .008em;
+	  display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    margin: 0 0 .625rem;
+	  }
+  .before-ad-text:after {
+    background-color: #999;
+    content: "";
+    flex-grow: 1;
+    height: 1px;
+    position: relative;
+    top: 5px;
+	 }
+  .before-ad-text:before {
+	  background-color: #999;
+    content: "";
+    flex-grow: 1;
+    height: 1px;
+    position: relative;
+    top: 5px;
+	}
+</style>
+<div class="in-article-ad-container">
+<div class="before-ad-text">Advertisement - Continue Reading Below</div>
+<div id="RTK_kiEH"></div>
+</div></div>
+<p>I can understand why Holland doesn&#8217;t want to deal draft picks away at this stage, but hopefully, he can find some kind of middle-ground, because standing pat and giving McDavid and Draisaitl nothing to work with down the stretch isn&#8217;t ideal.</p>
+<div class='code-block code-block-16' style='margin: 8px auto; text-align: center; display: block; clear: both;'>
+<div id="RTK_bsDM"></div></div>
+<div class='code-block code-block-21' style='margin: 8px auto; text-align: center; display: block; clear: both;'>
+<br><div id='vuukle-emote'></div></div>
+</div>
+<footer class="entry-footer">
+<div class="share-bar"></div> </footer>
+</article>
+<div id="vuukle-comments"></div>
+<div id="taboola-container">
+<div id="taboola-below-article-thumbnails"></div>
+<script type="text/javascript">
+		      window._taboola = window._taboola || [];
+		      _taboola.push({
+			mode: 'thumbnails-z',
+			container: 'taboola-below-article-thumbnails',
+			placement: 'Below Article Thumbnails',
+			target_type: 'mix'
+		      });
+		    </script>
+</div>
+</div>
+<div class="site-main_secondary columns">
+<aside id="secondary" class="widget-area" role="complementary">
+<section id="nn_author-2" class="widget widget_nn_author"> <div class="author_byline">
+<a class="avatar_link" href="https://oilersnation.com/author/camlewis/"><img alt src="https://secure.gravatar.com/avatar/81281fbb32a5d59ff021c88538283692?s=90&#038;d=mm&#038;r=g" class="avatar avatar-90 photo jetpack-lazy-image" height="90" width="90" data-lazy-srcset="https://secure.gravatar.com/avatar/81281fbb32a5d59ff021c88538283692?s=180&#038;d=mm&#038;r=g 2x" data-lazy-src="https://secure.gravatar.com/avatar/81281fbb32a5d59ff021c88538283692?s=90&amp;is-pending-load=1#038;d=mm&#038;r=g" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><noscript><img alt='' src='https://secure.gravatar.com/avatar/81281fbb32a5d59ff021c88538283692?s=90&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/81281fbb32a5d59ff021c88538283692?s=180&#038;d=mm&#038;r=g 2x' class='avatar avatar-90 photo' height='90' width='90' /></noscript></a>
+<div class="author_info">
+<p>By <strong>Cam Lewis</strong></p><a href="http://www.twitter.com/Cooom" target="_blank"><i class="fa fa-twitter color-secondary" aria-hidden="true"></i> @Cooom</a><a href="https://oilersnation.com/author/camlewis/"><i class="fa fa-align-left color-secondary" aria-hidden="true"></i> More Articles</a> </div>
+</div>
+</section><section id="custom_html-20" class="widget_text widget widget_custom_html"><div class="textwidget custom-html-widget"><div style="text-align: center; padding-top: 20px;"><a href="https://www.aircominstrumentation.com/"><img alt="aircom logo" src="https://i0.wp.com/oilersnation.com/wp-content/uploads/2019/10/Aircom-Instrumentation_blkgray-min.jpg?w=1424&#038;ssl=1" data-recalc-dims="1" data-lazy-src="https://i0.wp.com/oilersnation.com/wp-content/uploads/2019/10/Aircom-Instrumentation_blkgray-min.jpg?w=1424&amp;is-pending-load=1#038;ssl=1" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class=" jetpack-lazy-image"><noscript><img alt="aircom logo" src="https://i0.wp.com/oilersnation.com/wp-content/uploads/2019/10/Aircom-Instrumentation_blkgray-min.jpg?w=1424&#038;ssl=1" data-recalc-dims="1"></noscript></a></div></div></section><section id="nn_schedule-4" class="widget widget_nn_schedule"> <div class="schedule">
+<div class="schedule_inner">
+<span class="schedule_time">Last: Tue, Dec 31 2019</span>
+<div class="schedule_content">
+<div class="schedule_team">
+<span class="team_logo">
+<img src="https://oilersnation.com/wp-content/themes/nationnetwork/assets/img/logos/nhl/EDM.png" alt="EDM" />
+</span>
+<span class="team_name">
+EDM </span>
+</div>
+<div class="box_score">
+<p><strong>Final <br /> 7 - 5 </strong></p> </div>
+<div class="schedule_team">
+<span class="team_logo">
+<img src="https://oilersnation.com/wp-content/themes/nationnetwork/assets/img/logos/nhl/NYR.png" alt="NYR" />
+</span>
+<span class="team_name">
+NYR </span>
+</div>
+</div>
+</div>
+</div>
+<div class="clearfix"></div>
+<div class="schedule">
+<div class="schedule_inner">
+<span class="schedule_time">Next: Thu, Jan 2 at 5:00 pm MST</span> <div class="schedule_content">
+<div class="schedule_team">
+<span class="team_logo">
+<img src="https://oilersnation.com/wp-content/themes/nationnetwork/assets/img/logos/nhl/BUF.png" alt="BUF" />
+</span>
+<span class="team_name">
+BUF </span>
+</div>
+<div class="box_score">
+<p><strong>VS</strong></p>
+</div>
+<div class="schedule_team">
+<span class="team_logo">
+<img src="https://oilersnation.com/wp-content/themes/nationnetwork/assets/img/logos/nhl/EDM.png" alt="EDM" />
+</span>
+<span class="team_name">
+EDM </span>
+</div>
+</div>
+</div>
+</div>
+<div class="clearfix"></div>
+</section><section id="custom_html-16" class="widget_text widget widget_custom_html"><div class="textwidget custom-html-widget"><a href="https://www.oddsshark.com/?utm_source=NationNetwork&utm_medium=Referral&utm_campaign=Banner" target="_blank" rel="noopener noreferrer"><div style="text-align: center; padding-top: 20px;"><img alt="OddSharkBigBox" src="https://i2.wp.com/oilersnation.com/wp-content/uploads/2019/10/OddShark_350x200_NHL.jpg?w=1424&#038;ssl=1" data-recalc-dims="1" data-lazy-src="https://i2.wp.com/oilersnation.com/wp-content/uploads/2019/10/OddShark_350x200_NHL.jpg?w=1424&amp;is-pending-load=1#038;ssl=1" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class=" jetpack-lazy-image"><noscript><img alt="OddSharkBigBox" src="https://i2.wp.com/oilersnation.com/wp-content/uploads/2019/10/OddShark_350x200_NHL.jpg?w=1424&#038;ssl=1" data-recalc-dims="1"></noscript></div></a></div></section><section id="custom_html-7" class="widget_text widget widget_custom_html"><div class="textwidget custom-html-widget">
+<br>
+<div style="text-align: center; padding-top: 20px;"><div id="RTK_Ey4Y"></div></div></div></section><section id="nn_social-3" class="widget widget_nn_social"><nav class="social_nav"><ul><li><a href="https://www.facebook.com/OilersNation/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li><li><a href="https://twitter.com/oilersnationhq" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li><li><a href="https://www.instagram.com/officialoilersnation/" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a></li></ul></nav></section><section id="custom_html-11" class="widget_text widget widget_custom_html"><div class="textwidget custom-html-widget">
+<br>
+<div style="text-align: center; padding-top: 20px;"><div id="RTK_wT0b"></div></div></div></section><section id="custom_html-5" class="widget_text widget widget_custom_html"><div class="textwidget custom-html-widget"><a href="https://puckpedia.com" target="_blank" rel="noopener noreferrer">
+<img src="https://i1.wp.com/oilersnation.com/wp-content/uploads/2019/06/PP-Horiz-300w.png?resize=300%2C94&#038;ssl=1" data-recalc-dims="1" data-lazy-src="https://i1.wp.com/oilersnation.com/wp-content/uploads/2019/06/PP-Horiz-300w.png?resize=300%2C94&amp;is-pending-load=1#038;ssl=1" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class=" jetpack-lazy-image"><noscript><img src="https://i1.wp.com/oilersnation.com/wp-content/uploads/2019/06/PP-Horiz-300w.png?resize=300%2C94&#038;ssl=1" data-recalc-dims="1"></noscript>
+</a>
+<br>
+<a href="https://puckpedia.com/team/edmonton-oilers#breakdown" target="_blank" rel="noopener noreferrer">Oilers Cap Breakdown</a><br>
+<a href="https://puckpedia.com/players?q=UVAT3N#&sort%5Btable0%5D=21-1&c=%5B3,4,5,6,7,8,9,10,11,12,13,15,16,17,18,19,20,21,24,25,26,27,28,29,30%5D" target="_blank" rel="noopener noreferrer">Oilers Stats</a><br>
+<a href="https://puckpedia.com/team/edmonton-oilers/draftpicks" target="_blank" rel="noopener noreferrer">Oilers Draft Picks</a></div></section><section id="custom_html-12" class="widget_text widget widget_custom_html"><div class="textwidget custom-html-widget">
+<br>
+<div style="text-align: center; padding-top: 20px;"><div id="RTK_YJ87"></div></div></div></section><section id="nn_poll-4" class="widget widget_nn_poll"><p class="widget-title">Poll</p> <div class="ad-wrap ad-wrap_polls">
+<div id="ad-poll">
+<script type="text/javascript">
+					googletag.cmd.push(function() { googletag.display('ad-poll'); });
+				</script>
+</div>
+</div>
+<strong>How many games will the Oilers win in December? They play 14 times.</strong><div class="poll_wrap"> <form id="poll_form" class="form" action="https://oilersnation.com/polls/how-many-games-will-the-oilers-win-in-december-they-play-14-times/" method="POST">
+<label><input type="radio" id="0" name="poll_answer" value="0" />9+</label><label><input type="radio" id="1" name="poll_answer" value="1" />7-8</label><label><input type="radio" id="2" name="poll_answer" value="2" />4-6</label><label><input type="radio" id="3" name="poll_answer" value="3" />Less than 4</label> <input class="button" type="submit" value="Vote" />
+<input id="poll_id" type="hidden" value="82644" />
+<input type="hidden" id="nn_poll_nonce" name="nn_poll_nonce" value="6a3b6e0915" /><input type="hidden" name="_wp_http_referer" value="/2020/01/01/friedman-the-oilers-are-wary-of-trading-draft-picks/" /> </form>
+<div class="poll-results">
+9+ <br /><span class="poll-result">18%, 346 votes</span> <div class="progress-bar-container">
+<div class="progress-bar bg-color-secondary" style="width:18%;"></div>
+</div>
+7-8 <br /><span class="poll-result">38%, 733 votes</span> <div class="progress-bar-container">
+<div class="progress-bar bg-color-secondary" style="width:38%;"></div>
+</div>
+4-6 <br /><span class="poll-result">26%, 497 votes</span> <div class="progress-bar-container">
+<div class="progress-bar bg-color-secondary" style="width:26%;"></div>
+</div>
+Less than 4 <br /><span class="poll-result">17%, 331 votes</span> <div class="progress-bar-container">
+<div class="progress-bar bg-color-secondary" style="width:17%;"></div>
+</div>
+<span>Total Votes: 1907</span>
+<a class="button" href="https://oilersnation.com/polls/how-many-games-will-the-oilers-win-in-december-they-play-14-times/">View Comments</a>
+</div>
+</div></section><section id="nn_flags-3" class="widget widget_nn_flags"> <p class="widget-title">The Nation Network</p>
+<div class="row">
+<ul>
+<li><a href="https://canucksarmy.com/" target="_blank" title="Canucks Army"><img src="https://oilersnation.com/wp-content/themes/nationnetwork/assets/img/logos/nn-mini/canuksarmy.png?v=2" alt="Canucks Army" /></a></li>
+<li><a href="https://flamesnation.ca/" target="_blank" title="Flames Nation"><img src="https://oilersnation.com/wp-content/themes/nationnetwork/assets/img/logos/nn-mini/flamesnation.png?v=2" alt="Flames Nation" /></a></li>
+<li><a href="https://oilersnation.com/" target="_blank" title="Oilers Nation"><img src="https://oilersnation.com/wp-content/themes/nationnetwork/assets/img/logos/nn-mini/oilersnation.png?v=2" alt="Oilers Nation" /></a></li>
+<li><a href="https://jetsnation.ca/" target="_blank" title="Jets Nation"><img src="https://oilersnation.com/wp-content/themes/nationnetwork/assets/img/logos/nn-mini/jetsnation.png?v=2" alt="Jets Nation" /></a></li>
+<li><a href="https://bluejaysnation.com/" target="_blank" title="Bluejays Nation"><img src="https://oilersnation.com/wp-content/themes/nationnetwork/assets/img/logos/nn-mini/bluejaysnation.png?v=2" alt="Bluejays Nation" /></a></li>
+<li><a href="https://wingsnation.com/" target="_blank" title="Wings Nation"><img src="https://oilersnation.com/wp-content/themes/nationnetwork/assets/img/logos/nn-mini/wingsnation.png?v=2" alt="Wings Nation" /></a></li>
+<li><a href="https://theleafsnation.com/" target="_blank" title="TheLeafs Nation"><img src="https://oilersnation.com/wp-content/themes/nationnetwork/assets/img/logos/nn-mini/leafsnation.png?v=2" alt="TheLeafs Nation" /></a></li>
+<li><a href="https://www.hockeyfights.com/" target="_blank" title="Hockey Fights"><img src="https://oilersnation.com/wp-content/themes/nationnetwork/assets/img/logos/nn-mini/hockeyfights.png?v=2" alt="Hockey Fights" /></a></li>
+<li><a href="https://www.dailyfaceoff.com/" target="_blank" title="Daily Faceoff"><img src="https://oilersnation.com/wp-content/themes/nationnetwork/assets/img/logos/nn-mini/dailyfaceoff.png?v=2" alt="Daily Faceoff" /></a></li>
+<li><a href="https://puckpedia.com/" target="_blank" title="Puckpedia"><img src="https://oilersnation.com/wp-content/themes/nationnetwork/assets/img/logos/nn-mini/puckpedia.png" alt="Puckpedia" /></a></li>
+<li><a href="https://allwrestling.com/" target="_blank" title="AllWrestling"><img src="https://oilersnation.com/wp-content/themes/nationnetwork/assets/img/logos/nn-mini/allwrestling.png" alt="AllWrestling" /></a></li>
+</ul>
+</div>
+</section><section id="custom_html-14" class="widget_text widget widget_custom_html"><div class="textwidget custom-html-widget">
+<br>
+<div style="text-align: center; padding-top: 20px;"><div id="RTK_UqV8"></div></div></div></section> </aside>
+</div>
+</div>
+</main>
+</div>
+</div>
+<footer id="site-footer" role="contentinfo">
+<div class="row">
+<div class="small-12 columns">
+<div id="footer-menu-container">
+<h4 class="color-primary">The<span class="color-secondary">Nation</span>Network:</h4>
+<nav class="menu-footer-navigation-container"><ul id="footer-menu" class="menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-32874"><a href="http://bluejaysnation.com/">BLUEJAYSNATION</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-32875"><a href="http://wingsnation.com/">WINGSNATION</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-32876"><a href="http://canucksarmy.com/">CANUCKSARMY</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-32877"><a href="http://oilersnation.com/">OILERSNATION</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-32878"><a href="http://flamesnation.ca/">FLAMESNATION</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-32879"><a href="http://jetsnation.ca/">JETSNATION</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-32880"><a href="http://mapleleafsnation.com/">THELEAFSNATION</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-32881"><a href="https://puckpedia.com">PUCKPEDIA</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-32882"><a href="http://www.dailyfaceoff.com/">DAILYFACEOFF</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-32883"><a href="http://www.hockeyfights.com/">HOCKEYFIGHTS</a></li>
+</ul></nav> </div>
+<div class="site-info">
+<p class="copyright">Copyright © 2020 The Nation Network Inc.</p>
+<nav class="menu-subfooter-menu-container"><ul id="subfooter-menu" class="menu"><li id="menu-item-59163" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-59163"><a rel="nofollow" href="https://oilersnation.com/privacy-policy/">Privacy Policy</a></li>
+<li id="menu-item-69046" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-69046"><a rel="nofollow" href="https://oilersnation.com/terms-of-service/">Terms of Service</a></li>
+</ul></nav> <div class="clear"></div>
+<a href="https://www.canada.ca/" target="_blank">
+<img class="sponsor-logo" src="https://oilersnation.com/wp-content/uploads/2017/03/canada-wordmark1.png" />
+</a>
+</div>
+</div>
+</div>
+</footer>
+<div class="modal-overlay">
+<div id="login-modal" class="modal">
+<div class='code-block code-block-25 ai-viewport-1' style='margin: 8px auto; text-align: center; display: block; clear: both;'>
+
+<style>
+  .in-article-ad-container:after{
+	  content: "";
+    display: flex;
+    border-bottom: .0625rem solid #999;
+    margin: .8125rem .938rem 0;
+	  }
+  .before-ad-text{
+    font-family: Barlow Semi Condensed,Helvetica,Arial,sans-serif;
+    font-size: 11px;
+    line-height: 1.2;
+    text-transform: uppercase;
+    color: #383838;
+    letter-spacing: .008em;
+	  display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    margin: 0 0 .625rem;
+	  }
+  .before-ad-text:after {
+    background-color: #999;
+    content: "";
+    flex-grow: 1;
+    height: 1px;
+    position: relative;
+    top: 5px;
+	 }
+  .before-ad-text:before {
+	  background-color: #999;
+    content: "";
+    flex-grow: 1;
+    height: 1px;
+    position: relative;
+    top: 5px;
+	}
+</style>
+<div class="in-article-ad-container">
+<div class="before-ad-text">Advertisement - Continue Reading Below</div>
+<div id="RTK_kllr"></div>
+</div></div>
+<h1 class="modal_title text-center">SIGN IN</h1>
+<p class="modal_description text-center">Not a member? <a href="https://oilersnation.com/register/">Join the Nation</a></p>
+<form id="login_form" class="form row" action="login" method="post">
+<div class="small-12 columns">
+<div class="callout"></div>
+</div>
+<div class="small-12 columns">
+<input placeholder="Email" name="user_login" id="user_login" class="required" type="text" />
+</div>
+<div class="small-12 columns">
+<input placeholder="Password" name="user_pass" id="user_pass" class="required" type="password" />
+</div>
+<div class="small-12 columns">
+<input id="login_submit" class="button centered" type="submit" value="Login" />
+<input type="hidden" id="nn_login_nonce" name="nn_login_nonce" value="70c94dc08f" /><input type="hidden" name="_wp_http_referer" value="/2020/01/01/friedman-the-oilers-are-wary-of-trading-draft-picks/" /> </div>
+<a class="forgot" data-open="forgot-password-modal" href="#">Forgot Password?</a>
+</form>
+<a class="modal-close" data-close="login-modal" href="#">
+<span class="fa-stack">
+<i class="fa fa-circle fa-stack-2x color-secondary"></i>
+<i class="fa fa-times fa-stack-1x fa-inverse"></i>
+</span>
+</a>
+</div>
+<div id="forgot-password-modal" class="modal">
+<div class='code-block code-block-20 ai-viewport-1' style='margin: 8px auto; text-align: center; display: block; clear: both;'>
+<div style="width: 80%; margin: auto;">
+<div class='s2nPlayer-Otarfx34' data-type='full'></div><script type='text/javascript' src='//embed.sendtonews.com/player2/embedcode.php?fk=Otarfx34&cid=8795' data-type='s2nScript'></script>
+</div></div>
+<h1 class="modal_title text-center">Forgot Password?</h1>
+<p class="modal_description text-center">Please enter your email address to reset your password.</p>
+<form class="form row" method="post" action="https://oilersnation.com/wp-login.php?action=lostpassword">
+<div class="small-12 columns">
+<input placeholder="Username or Email" type="text" name="user_login" value="" id="user_login" />
+</div>
+<div class="small-12 columns">
+<input type="submit" name="user-submit" class="button centered" value="Reset my password" />
+<input type="hidden" name="redirect_to" value="https://oilersnation.com/reset-password/?checkemail=confirm" />
+</div>
+</form>
+<a class="modal-close" data-close="forgot-password-modal" href="#">
+<span class="fa-stack">
+<i class="fa fa-circle fa-stack-2x color-secondary"></i>
+<i class="fa fa-times fa-stack-1x fa-inverse"></i>
+</span>
+</a>
+</div>
+</div>
+<div class='code-block code-block-22 ai-viewport-1 ai-center-v' style='position: fixed; z-index: 9995; top: 30%; transform: translate(0, -50%); right: 0px; padding-right: 65px;'>
+<div class="vuukle-powerbar-vertical"></div></div>
+<script type="text/javascript">
+				var infoboxPlayerTooltipTemplate = '<div class="info-card"> <div class="info-card-top"> <div class="blog-logo">{{if(options.data.blogUrl)}}<a href="{{data.blogUrl}}" target="_blank"><img src="{{data.blogLogo}}" /></a>{{/if}}</div> <div class="dailyfaceoff-logo">{{if(options.data.dailyfaceoffUrl)}}<a href="{{data.dailyfaceoffUrl}}" target="_blank"><img src="{{data.dailyfaceoffLogo}}" /></a>{{/if}}</div> <div class="hockeyfights-logo">{{if(options.data.hockeyfightsUrl)}}<a href="{{data.hockeyfightsUrl}}" target="_blank"><img src="{{data.hockeyfightsLogo}}" /></a>{{/if}}</div> <div class="puckpedia-logo">{{if(options.data.puckpediaUrl)}}<a href="{{data.puckpediaUrl}}" target="_blank"><img src="{{data.puckpediaLogo}}" /></a>{{/if}}</div> </div> <div class="info-card-middle"> {{if(options.data.faceUrl)}}<img src="{{data.faceUrl}}" class="info-card-face" />{{/if}} <div class="info-card-segment-1"> <div> {{data.name}} </div> {{if(options.data.playerRating)}}<div> <span>Rating: {{data.playerRating}}</span> {{if(options.data.playerPositionRank)}} <span class="info-card-badge" style="background-color: {{data.playerPositionRankColor}};">#{{data.playerPositionRank}}&nbsp;{{data.position}}</span> {{/if}} </div>{{/if}} {{if(options.data.teamName)}}<div> <span>{{data.teamName}}</span> </div>{{/if}} </div> <div class="info-card-segment-2"> {{if(options.data.capHit)}}<div class="info-card-single"> {{if(options.data.puckpediaUrl)}} <a href="{{data.puckpediaUrl}}"><span>Cap Hit:</span> <span>${{data.capHit}}</span></a> {{#else}} <span>Cap Hit:</span> <span>${{data.capHit}}</span> {{/if}} {{if(options.data.draftYear)}}<br> <span>Drafted:</span> <span>{{data.draftYear}}</span> {{/if}} </div>{{/if}} {{if(options.data.gamesPlayed)}}<div class="info-card-grid"> <div class="info-card-grid-row"> <div class="info-card-grid-item"> <span>GP:</span> <span>{{data.gamesPlayed}}</span> </div> <div class="info-card-grid-item"> {{if(options.data.position === "G")}} <span>SO:</span> <span>{{data.goalieShutouts}}</span> {{#else}} <span>Goals:</span> <span>{{data.goals}}</span> {{/if}} </div> </div> <div class="info-card-grid-row"> {{if(options.data.position === "G")}} <div class="info-card-grid-item"> <span>SV%:</span> <span>{{data.goalieSavePercentage}}</span> </div> <div class="info-card-grid-item"> <span>GAA:</span> <span>{{data.goalieGoalsAgainstAvg}}</span> </div> {{#else}} <div class="info-card-grid-item"> <span>Assists:</span> <span>{{data.assists}}</span> </div> <div class="info-card-grid-item"> <span>Points:</span> <span>{{data.points}}</span> </div> {{/if}} </div> </div>{{/if}} </div> </div> <div class="info-card-bottom"> </div> </div>';
+				var infoboxTeamTooltipTemplate = '<div class="info-card"> <div class="info-card-top"> <div class="blog-logo">{{if(options.data.blogUrl)}}<a href="{{data.blogUrl}}" target="_blank"><img src="{{data.blogLogo}}" /></a>{{/if}}</div> <div class="dailyfaceoff-logo">{{if(options.data.dailyfaceoffUrl)}}<a href="{{data.dailyfaceoffUrl}}" target="_blank"><img src="{{data.dailyfaceoffLogo}}" /></a>{{/if}}</div> <div class="hockeyfights-logo">{{if(options.data.hockeyfightsUrl)}}<a href="{{data.hockeyfightsUrl}}" target="_blank"><img src="{{data.hockeyfightsLogo}}" /></a>{{/if}}</div> <div class="puckpedia-logo">{{if(options.data.puckpediaUrl)}}<a href="{{data.puckpediaUrl}}" target="_blank"><img src="{{data.puckpediaLogo}}" /></a>{{/if}}</div> </div> <div class="info-card-middle"> {{if(options.data.logoSvg)}}<img src="{{data.logoSvg}}" class="info-card-logo" />{{/if}} <div class="info-card-segment-1"> <div> {{data.name}} </div> {{if(options.data.gamesPlayed)}}<div class="info-card-grid info-card-no-collapse"> <div class="info-card-grid-row"> <div class="info-card-grid-item"> <span>GP:</span> <span>{{data.gamesPlayed}}</span> </div> <div class="info-card-grid-item"> <span>Wins:</span> <span>{{data.wins}}</span> </div> </div> <div class="info-card-grid-row"> <div class="info-card-grid-item"> <span>Losses:</span> <span>{{data.losses}}</span> </div> <div class="info-card-grid-item"> <span>OTL:</span> <span>{{data.overtimeLosses}}</span> </div> </div> </div>{{/if}} </div> <div class="info-card-segment-2"> {{if(options.data.capHit)}}<div class="info-card-single"> {{if(options.data.puckpediaUrl)}} <a href="{{data.puckpediaUrl}}"><span>Cap Hit:</span> <span>${{data.capHit}}</span></a> {{#else}} <span>Cap Hit:</span> <span>${{data.capHit}}</span> {{/if}} </div>{{/if}} </div> </div> <div class="info-card-bottom"> </div> </div>';
+			</script>
+<script type='text/javascript' src='https://c0.wp.com/c/5.3.2/wp-includes/js/dist/vendor/wp-polyfill.js'></script>
+<script type='text/javascript'>
+( 'fetch' in window ) || document.write( '<script src="https://oilersnation.com/wp-includes/js/dist/vendor/wp-polyfill-fetch.js?ver=3.0.0"></scr' + 'ipt>' );( document.contains ) || document.write( '<script src="https://oilersnation.com/wp-includes/js/dist/vendor/wp-polyfill-node-contains.js?ver=3.26.0-0"></scr' + 'ipt>' );( window.FormData && window.FormData.prototype.keys ) || document.write( '<script src="https://oilersnation.com/wp-includes/js/dist/vendor/wp-polyfill-formdata.js?ver=3.0.12"></scr' + 'ipt>' );( Element.prototype.matches && Element.prototype.closest ) || document.write( '<script src="https://oilersnation.com/wp-includes/js/dist/vendor/wp-polyfill-element-closest.js?ver=2.0.2"></scr' + 'ipt>' );
+</script>
+<script type='text/javascript' src='https://c0.wp.com/c/5.3.2/wp-includes/js/dist/dom-ready.js'></script>
+<script type='text/javascript' src='https://c0.wp.com/p/jetpack/7.8.1/modules/photon/photon.js'></script>
+<script type='text/javascript' src='https://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=202001'></script>
+<script type='text/javascript' src='https://oilersnation.com/wp-content/themes/nationnetwork/assets/js/jquery.waypoints.min.js?ver=5.3.2'></script>
+<script type='text/javascript' src='https://oilersnation.com/wp-content/themes/nationnetwork/assets/js/vendor.min.js?ver=5.3.2'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var nn_ajax = {"ajaxurl":"https:\/\/oilersnation.com\/wp-admin\/admin-ajax.php","loggedin":"","userID":"","postID":"84053","postCommentNonce":"c6410d5c34","redirecturl":"https:\/\/oilersnation.com\/2020\/01\/01\/friedman-the-oilers-are-wary-of-trading-draft-picks\/","register_redirecturl":"https:\/\/oilersnation.com\/account\/"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://oilersnation.com/wp-content/themes/nationnetwork/assets/js/app.min.js?ver=5.3.2'></script>
+<script type='text/javascript' src='https://oilersnation.com/wp-content/themes/nationnetwork/js/navigation.js?ver=20151215'></script>
+<script type='text/javascript' src='https://oilersnation.com/wp-content/themes/nationnetwork/js/skip-link-focus-fix.js?ver=20151215'></script>
+<script type='text/javascript' src='https://c0.wp.com/c/5.3.2/wp-includes/js/comment-reply.js'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var q2w3_sidebar_options = [{"sidebar":"sidebar-blog-single","margin_top":10,"margin_bottom":0,"stop_id":"","screen_max_width":0,"screen_max_height":0,"width_inherit":false,"refresh_interval":1500,"window_load_hook":false,"disable_mo_api":false,"widgets":["custom_html-14"]}];
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://oilersnation.com/wp-content/plugins/q2w3-fixed-widget/js/q2w3-fixed-widget.min.js?ver=5.1.9'></script>
+<script type='text/javascript' src='https://c0.wp.com/p/jetpack/7.8.1/modules/lazy-images/js/lazy-images.js'></script>
+<script type='text/javascript' src='https://c0.wp.com/c/5.3.2/wp-includes/js/wp-embed.js'></script>
+<script type='text/javascript' src='https://oilersnation.com/wp-content/plugins/nation-infobox/js/nation-infobox.js?ver=1.0.9'></script>
+<script type='text/javascript' src='https://stats.wp.com/e-202001.js' async='async' defer='defer'></script>
+<script type='text/javascript'>
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:7.8.1',blog:'125283403',post:'84053',tz:'-7',srv:'oilersnation.com'} ]);
+	_stq.push([ 'clickTrackerInit', '125283403', '84053' ]);
+</script>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+				new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+				j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+				'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+				})(window,document,'script','dataLayer', "GTM-WQQ5NT6");</script>
+
+<noscript>
+					<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WQQ5NT6" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+				</noscript>
+
+<script>
+	      var VUUKLE_CONFIG = {
+		apiKey: 'b1aaa3ee-e3e9-444c-b043-ad06699c7e2a',
+		articleId: 'nn-1-84053',
+		comments: {
+		    enabled: true,
+		    auth: {
+			facebook: false,
+			google: false,
+			twitter: false,
+			disqus: false,
+			password: false,
+			vuukle: false,
+			sso: {
+			    onClick: function() { jQuery('[data-open="login-modal"]').click(); }
+			}
+		    }
+		}
+              };
+	      (function() {
+		var d = document,
+		  s = d.createElement('script');
+                  s.async = true;
+        s.onload = function() { if (window.vuukleLogin) { vuukleLogin(); } };
+		  s.src = 'https://cdn.vuukle.com/platform.js';
+		(d.head || d.body).appendChild(s);
+	      })();
+	    </script>
+<script type="text/javascript">
+				window._taboola = window._taboola || [];
+				_taboola.push({flush: true});
+			</script>
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"5376e19385","applicationID":"444718948","transactionName":"YwMEbBZQX0RVWxUKW1pJJ1sQWF5ZG0sIDVNYAw==","queueTime":0,"applicationTime":498,"atts":"T0QHGl5KTEo=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>

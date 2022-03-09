@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<!--[if IE 7]>
+<html class="ie ie7" lang="en-US">
+<![endif]-->
+<!--[if IE 8]>
+<html class="ie ie8" lang="en-US">
+<![endif]-->
+<!--[if !(IE 7) | !(IE 8)  ]><!-->
+<html lang="en-US">
+<!--<![endif]-->
+<head>
+	<meta charset="UTF-8"><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"VwIOWV9WGwAIXVRaAgQ=",licenseKey:"fc77f51dbd",applicationID:"3895855"};window.NREUM||(NREUM={}),__nr_require=function(t,n,e){function r(e){if(!n[e]){var o=n[e]={exports:{}};t[e][0].call(o.exports,function(n){var o=t[e][1][n];return r(o||n)},o,o.exports)}return n[e].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<e.length;o++)r(e[o]);return r}({1:[function(t,n,e){function r(t){try{s.console&&console.log(t)}catch(n){}}var o,i=t("ee"),a=t(17),s={};try{o=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(s.console=!0,o.indexOf("dev")!==-1&&(s.dev=!0),o.indexOf("nr_dev")!==-1&&(s.nrDev=!0))}catch(c){}s.nrDev&&i.on("internal-error",function(t){r(t.stack)}),s.dev&&i.on("fn-err",function(t,n,e){r(e.stack)}),s.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(s,function(t,n){return t}).join(", ")))},{}],2:[function(t,n,e){function r(t,n,e,r,s){try{p?p-=1:o(s||new UncaughtException(t,n,e),!0)}catch(f){try{i("ierr",[f,c.now(),!0])}catch(d){}}return"function"==typeof u&&u.apply(this,a(arguments))}function UncaughtException(t,n,e){this.message=t||"Uncaught error with no additional information",this.sourceURL=n,this.line=e}function o(t,n){var e=n?null:c.now();i("err",[t,e])}var i=t("handle"),a=t(18),s=t("ee"),c=t("loader"),f=t("gos"),u=window.onerror,d=!1,l="nr@seenError",p=0;c.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(h){"stack"in h&&(t(6),t(5),"addEventListener"in window&&t(3),c.xhrWrappable&&t(7),d=!0)}s.on("fn-start",function(t,n,e){d&&(p+=1)}),s.on("fn-err",function(t,n,e){d&&!e[l]&&(f(e,l,function(){return!0}),this.thrown=!0,o(e))}),s.on("fn-end",function(){d&&!this.thrown&&p>0&&(p-=1)}),s.on("internal-error",function(t){i("ierr",[t,c.now(),!0])})},{}],3:[function(t,n,e){function r(t){for(var n=t;n&&!n.hasOwnProperty(u);)n=Object.getPrototypeOf(n);n&&o(n)}function o(t){s.inPlace(t,[u,d],"-",i)}function i(t,n){return t[1]}var a=t("ee").get("events"),s=t("wrap-function")(a,!0),c=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";n.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(o(window),o(f.prototype)),a.on(u+"-start",function(t,n){var e=t[1],r=c(e,"nr@wrapped",function(){function t(){if("function"==typeof e.handleEvent)return e.handleEvent.apply(e,arguments)}var n={object:t,"function":e}[typeof e];return n?s(n,"fn-",null,n.name||"anonymous"):e});this.wrapped=t[1]=r}),a.on(d+"-start",function(t){t[1]=this.wrapped||t[1]})},{}],4:[function(t,n,e){function r(t,n,e){var r=t[n];"function"==typeof r&&(t[n]=function(){var t=i(arguments),n={};o.emit(e+"before-start",[t],n);var a;n[m]&&n[m].dt&&(a=n[m].dt);var s=r.apply(this,t);return o.emit(e+"start",[t,a],s),s.then(function(t){return o.emit(e+"end",[null,t],s),t},function(t){throw o.emit(e+"end",[t],s),t})})}var o=t("ee").get("fetch"),i=t(18),a=t(17);n.exports=o;var s=window,c="fetch-",f=c+"body-",u=["arrayBuffer","blob","json","text","formData"],d=s.Request,l=s.Response,p=s.fetch,h="prototype",m="nr@context";d&&l&&p&&(a(u,function(t,n){r(d[h],n,f),r(l[h],n,f)}),r(s,"fetch",c),o.on(c+"end",function(t,n){var e=this;if(n){var r=n.headers.get("content-length");null!==r&&(e.rxSize=r),o.emit(c+"done",[null,n],e)}else o.emit(c+"done",[t],e)}))},{}],5:[function(t,n,e){var r=t("ee").get("raf"),o=t("wrap-function")(r),i="equestAnimationFrame";n.exports=r,o.inPlace(window,["r"+i,"mozR"+i,"webkitR"+i,"msR"+i],"raf-"),r.on("raf-start",function(t){t[0]=o(t[0],"fn-")})},{}],6:[function(t,n,e){function r(t,n,e){t[0]=a(t[0],"fn-",null,e)}function o(t,n,e){this.method=e,this.timerDuration=isNaN(t[1])?0:+t[1],t[0]=a(t[0],"fn-",this,e)}var i=t("ee").get("timer"),a=t("wrap-function")(i),s="setTimeout",c="setInterval",f="clearTimeout",u="-start",d="-";n.exports=i,a.inPlace(window,[s,"setImmediate"],s+d),a.inPlace(window,[c],c+d),a.inPlace(window,[f,"clearImmediate"],f+d),i.on(c+u,r),i.on(s+u,o)},{}],7:[function(t,n,e){function r(t,n){d.inPlace(n,["onreadystatechange"],"fn-",s)}function o(){var t=this,n=u.context(t);t.readyState>3&&!n.resolved&&(n.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,w,"fn-",s)}function i(t){y.push(t),h&&(b?b.then(a):v?v(a):(E=-E,O.data=E))}function a(){for(var t=0;t<y.length;t++)r([],y[t]);y.length&&(y=[])}function s(t,n){return n}function c(t,n){for(var e in t)n[e]=t[e];return n}t(3);var f=t("ee"),u=f.get("xhr"),d=t("wrap-function")(u),l=NREUM.o,p=l.XHR,h=l.MO,m=l.PR,v=l.SI,g="readystatechange",w=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],y=[];n.exports=u;var x=window.XMLHttpRequest=function(t){var n=new p(t);try{u.emit("new-xhr",[n],n),n.addEventListener(g,o,!1)}catch(e){try{u.emit("internal-error",[e])}catch(r){}}return n};if(c(p,x),x.prototype=p.prototype,d.inPlace(x.prototype,["open","send"],"-xhr-",s),u.on("send-xhr-start",function(t,n){r(t,n),i(n)}),u.on("open-xhr-start",r),h){var b=m&&m.resolve();if(!v&&!m){var E=1,O=document.createTextNode(E);new h(a).observe(O,{characterData:!0})}}else f.on("fn-end",function(t){t[0]&&t[0].type===g||a()})},{}],8:[function(t,n,e){function r(t){if(!i(t))return null;var n=window.NREUM;if(!n.loader_config)return null;var e=(n.loader_config.accountID||"").toString()||null,r=(n.loader_config.agentID||"").toString()||null,s=(n.loader_config.trustKey||"").toString()||null;if(!e||!r)return null;var c=a.generateCatId(),f=a.generateCatId(),u=Date.now(),d=o(c,f,u,e,r,s);return{header:d,guid:c,traceId:f,timestamp:u}}function o(t,n,e,r,o,i){var a="btoa"in window&&"function"==typeof window.btoa;if(!a)return null;var s={v:[0,1],d:{ty:"Browser",ac:r,ap:o,id:t,tr:n,ti:e}};return i&&r!==i&&(s.d.tk=i),btoa(JSON.stringify(s))}function i(t){var n=!1,e=!1,r={};if("init"in NREUM&&"distributed_tracing"in NREUM.init&&(r=NREUM.init.distributed_tracing,e=!!r.enabled),e)if(t.sameOrigin)n=!0;else if(r.allowed_origins instanceof Array)for(var o=0;o<r.allowed_origins.length;o++){var i=s(r.allowed_origins[o]);if(t.hostname===i.hostname&&t.protocol===i.protocol&&t.port===i.port){n=!0;break}}return e&&n}var a=t(15),s=t(10);n.exports={generateTracePayload:r,shouldGenerateTrace:i}},{}],9:[function(t,n,e){function r(t){var n=this.params,e=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;r<p;r++)t.removeEventListener(l[r],this.listener,!1);n.aborted||(e.duration=s.now()-this.startTime,this.loadCaptureCalled||4!==t.readyState?null==n.status&&(n.status=0):a(this,t),e.cbTime=this.cbTime,d.emit("xhr-done",[t],t),c("xhr",[n,e,this.startTime]))}}function o(t,n){var e=t.responseType;if("json"===e&&null!==n)return n;var r="arraybuffer"===e||"blob"===e||"json"===e?t.response:t.responseText;return v(r)}function i(t,n){var e=f(n),r=t.params;r.host=e.hostname+":"+e.port,r.pathname=e.pathname,t.parsedOrigin=f(n),t.sameOrigin=t.parsedOrigin.sameOrigin}function a(t,n){t.params.status=n.status;var e=o(n,t.lastSize);if(e&&(t.metrics.rxSize=e),t.sameOrigin){var r=n.getResponseHeader("X-NewRelic-App-Data");r&&(t.params.cat=r.split(", ").pop())}t.loadCaptureCalled=!0}var s=t("loader");if(s.xhrWrappable){var c=t("handle"),f=t(10),u=t(8).generateTracePayload,d=t("ee"),l=["load","error","abort","timeout"],p=l.length,h=t("id"),m=t(13),v=t(12),g=window.XMLHttpRequest;s.features.xhr=!0,t(7),t(4),d.on("new-xhr",function(t){var n=this;n.totalCbs=0,n.called=0,n.cbTime=0,n.end=r,n.ended=!1,n.xhrGuids={},n.lastSize=null,n.loadCaptureCalled=!1,t.addEventListener("load",function(e){a(n,t)},!1),m&&(m>34||m<10)||window.opera||t.addEventListener("progress",function(t){n.lastSize=t.loaded},!1)}),d.on("open-xhr-start",function(t){this.params={method:t[0]},i(this,t[1]),this.metrics={}}),d.on("open-xhr-end",function(t,n){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&n.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid);var e=u(this.parsedOrigin);e&&e.header&&(n.setRequestHeader("newrelic",e.header),this.dt=e)}),d.on("send-xhr-start",function(t,n){var e=this.metrics,r=t[0],o=this;if(e&&r){var i=v(r);i&&(e.txSize=i)}this.startTime=s.now(),this.listener=function(t){try{"abort"!==t.type||o.loadCaptureCalled||(o.params.aborted=!0),("load"!==t.type||o.called===o.totalCbs&&(o.onloadCalled||"function"!=typeof n.onload))&&o.end(n)}catch(e){try{d.emit("internal-error",[e])}catch(r){}}};for(var a=0;a<p;a++)n.addEventListener(l[a],this.listener,!1)}),d.on("xhr-cb-time",function(t,n,e){this.cbTime+=t,n?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof e.onload||this.end(e)}),d.on("xhr-load-added",function(t,n){var e=""+h(t)+!!n;this.xhrGuids&&!this.xhrGuids[e]&&(this.xhrGuids[e]=!0,this.totalCbs+=1)}),d.on("xhr-load-removed",function(t,n){var e=""+h(t)+!!n;this.xhrGuids&&this.xhrGuids[e]&&(delete this.xhrGuids[e],this.totalCbs-=1)}),d.on("addEventListener-end",function(t,n){n instanceof g&&"load"===t[0]&&d.emit("xhr-load-added",[t[1],t[2]],n)}),d.on("removeEventListener-end",function(t,n){n instanceof g&&"load"===t[0]&&d.emit("xhr-load-removed",[t[1],t[2]],n)}),d.on("fn-start",function(t,n,e){n instanceof g&&("onload"===e&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=s.now()))}),d.on("fn-end",function(t,n){this.xhrCbStart&&d.emit("xhr-cb-time",[s.now()-this.xhrCbStart,this.onload,n],n)}),d.on("fetch-before-start",function(t){var n,e=t[1]||{};"string"==typeof t[0]?n=t[0]:t[0]&&t[0].url&&(n=t[0].url),n&&(this.parsedOrigin=f(n),this.sameOrigin=this.parsedOrigin.sameOrigin);var r=u(this.parsedOrigin);if(r&&r.header){var o=r.header;if("string"==typeof t[0]){var i={};for(var a in e)i[a]=e[a];i.headers=new Headers(e.headers||{}),i.headers.set("newrelic",o),this.dt=r,t.length>1?t[1]=i:t.push(i)}else t[0]&&t[0].headers&&(t[0].headers.append("newrelic",o),this.dt=r)}})}},{}],10:[function(t,n,e){var r={};n.exports=function(t){if(t in r)return r[t];var n=document.createElement("a"),e=window.location,o={};n.href=t,o.port=n.port;var i=n.href.split("://");!o.port&&i[1]&&(o.port=i[1].split("/")[0].split("@").pop().split(":")[1]),o.port&&"0"!==o.port||(o.port="https"===i[0]?"443":"80"),o.hostname=n.hostname||e.hostname,o.pathname=n.pathname,o.protocol=i[0],"/"!==o.pathname.charAt(0)&&(o.pathname="/"+o.pathname);var a=!n.protocol||":"===n.protocol||n.protocol===e.protocol,s=n.hostname===document.domain&&n.port===e.port;return o.sameOrigin=a&&(!n.hostname||s),"/"===o.pathname&&(r[t]=o),o}},{}],11:[function(t,n,e){function r(){}function o(t,n,e){return function(){return i(t,[f.now()].concat(s(arguments)),n?null:this,e),n?void 0:this}}var i=t("handle"),a=t(17),s=t(18),c=t("ee").get("tracer"),f=t("loader"),u=NREUM;"undefined"==typeof window.newrelic&&(newrelic=u);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",p=l+"ixn-";a(d,function(t,n){u[n]=o(l+n,!0,"api")}),u.addPageAction=o(l+"addPageAction",!0),u.setCurrentRouteName=o(l+"routeName",!0),n.exports=newrelic,u.interaction=function(){return(new r).get()};var h=r.prototype={createTracer:function(t,n){var e={},r=this,o="function"==typeof n;return i(p+"tracer",[f.now(),t,e],r),function(){if(c.emit((o?"":"no-")+"fn-start",[f.now(),r,o],e),o)try{return n.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],e),t}finally{c.emit("fn-end",[f.now()],e)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,n){h[n]=o(p+n)}),newrelic.noticeError=function(t,n){"string"==typeof t&&(t=new Error(t)),i("err",[t,f.now(),!1,n])}},{}],12:[function(t,n,e){n.exports=function(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(n){return}}}},{}],13:[function(t,n,e){var r=0,o=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);o&&(r=+o[1]),n.exports=r},{}],14:[function(t,n,e){function r(t,n){var e=t.getEntries();e.forEach(function(t){"first-paint"===t.name?a("timing",["fp",Math.floor(t.startTime)]):"first-contentful-paint"===t.name&&a("timing",["fcp",Math.floor(t.startTime)])})}function o(t){if(t instanceof c&&!u){var n,e=Math.round(t.timeStamp);n=e>1e12?Date.now()-e:s.now()-e,u=!0,a("timing",["fi",e,{type:t.type,fid:n}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var i,a=t("handle"),s=t("loader"),c=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){i=new PerformanceObserver(r);try{i.observe({entryTypes:["paint"]})}catch(f){}}if("addEventListener"in document){var u=!1,d=["click","keydown","mousedown","pointerdown","touchstart"];d.forEach(function(t){document.addEventListener(t,o,!1)})}}},{}],15:[function(t,n,e){function r(){function t(){return n?15&n[e++]:16*Math.random()|0}var n=null,e=0,r=window.crypto||window.msCrypto;r&&r.getRandomValues&&(n=r.getRandomValues(new Uint8Array(31)));for(var o,i="xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx",a="",s=0;s<i.length;s++)o=i[s],"x"===o?a+=t().toString(16):"y"===o?(o=3&t()|8,a+=o.toString(16)):a+=o;return a}function o(){function t(){return n?15&n[e++]:16*Math.random()|0}var n=null,e=0,r=window.crypto||window.msCrypto;r&&r.getRandomValues&&Uint8Array&&(n=r.getRandomValues(new Uint8Array(31)));for(var o=[],i=0;i<16;i++)o.push(t().toString(16));return o.join("")}n.exports={generateUuid:r,generateCatId:o}},{}],16:[function(t,n,e){function r(t,n){if(!o)return!1;if(t!==o)return!1;if(!n)return!0;if(!i)return!1;for(var e=i.split("."),r=n.split("."),a=0;a<r.length;a++)if(r[a]!==e[a])return!1;return!0}var o=null,i=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var s=navigator.userAgent,c=s.match(a);c&&s.indexOf("Chrome")===-1&&s.indexOf("Chromium")===-1&&(o="Safari",i=c[1])}n.exports={agent:o,version:i,match:r}},{}],17:[function(t,n,e){function r(t,n){var e=[],r="",i=0;for(r in t)o.call(t,r)&&(e[i]=n(r,t[r]),i+=1);return e}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],18:[function(t,n,e){function r(t,n,e){n||(n=0),"undefined"==typeof e&&(e=t?t.length:0);for(var r=-1,o=e-n||0,i=Array(o<0?0:o);++r<o;)i[r]=t[n+r];return i}n.exports=r},{}],19:[function(t,n,e){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(t,n,e){function r(){}function o(t){function n(t){return t&&t instanceof r?t:t?c(t,s,i):i()}function e(e,r,o,i){if(!l.aborted||i){t&&t(e,r,o);for(var a=n(o),s=m(e),c=s.length,f=0;f<c;f++)s[f].apply(a,r);var d=u[y[e]];return d&&d.push([x,e,r,a]),a}}function p(t,n){w[t]=m(t).concat(n)}function h(t,n){var e=w[t];if(e)for(var r=0;r<e.length;r++)e[r]===n&&e.splice(r,1)}function m(t){return w[t]||[]}function v(t){return d[t]=d[t]||o(e)}function g(t,n){f(t,function(t,e){n=n||"feature",y[e]=n,n in u||(u[n]=[])})}var w={},y={},x={on:p,addEventListener:p,removeEventListener:h,emit:e,get:v,listeners:m,context:n,buffer:g,abort:a,aborted:!1};return x}function i(){return new r}function a(){(u.api||u.feature)&&(l.aborted=!0,u=l.backlog={})}var s="nr@context",c=t("gos"),f=t(17),u={},d={},l=n.exports=o();l.backlog=u},{}],gos:[function(t,n,e){function r(t,n,e){if(o.call(t,n))return t[n];var r=e();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,n,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return t[n]=r,r}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(t,n,e){function r(t,n,e,r){o.buffer([t],r),o.emit(t,n,e)}var o=t("ee").get("handle");n.exports=r,r.ee=o},{}],id:[function(t,n,e){function r(t){var n=typeof t;return!t||"object"!==n&&"function"!==n?-1:t===window?0:a(t,i,function(){return o++})}var o=1,i="nr@id",a=t("gos");n.exports=r},{}],loader:[function(t,n,e){function r(){if(!E++){var t=b.info=NREUM.info,n=p.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&n))return u.abort();f(y,function(n,e){t[n]||(t[n]=e)}),c("mark",["onload",a()+b.offset],null,"api");var e=p.createElement("script");e.src="https://"+t.agent,n.parentNode.insertBefore(e,n)}}function o(){"complete"===p.readyState&&i()}function i(){c("mark",["domContent",a()+b.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(s=Math.max((new Date).getTime(),s))-b.offset}var s=(new Date).getTime(),c=t("handle"),f=t(17),u=t("ee"),d=t(16),l=window,p=l.document,h="addEventListener",m="attachEvent",v=l.XMLHttpRequest,g=v&&v.prototype;NREUM.o={ST:setTimeout,SI:l.setImmediate,CT:clearTimeout,XHR:v,REQ:l.Request,EV:l.Event,PR:l.Promise,MO:l.MutationObserver};var w=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1158.min.js"},x=v&&g&&g[h]&&!/CriOS/.test(navigator.userAgent),b=n.exports={offset:s,now:a,origin:w,features:{},xhrWrappable:x,userAgent:d};t(11),t(14),p[h]?(p[h]("DOMContentLoaded",i,!1),l[h]("load",r,!1)):(p[m]("onreadystatechange",o),l[m]("onload",r)),c("mark",["firstbyte",s],null,"api");var E=0,O=t(19)},{}],"wrap-function":[function(t,n,e){function r(t){return!(t&&t instanceof Function&&t.apply&&!t[a])}var o=t("ee"),i=t(18),a="nr@original",s=Object.prototype.hasOwnProperty,c=!1;n.exports=function(t,n){function e(t,n,e,o){function nrWrapper(){var r,a,s,c;try{a=this,r=i(arguments),s="function"==typeof e?e(r,a):e||{}}catch(f){l([f,"",[r,a,o],s])}u(n+"start",[r,a,o],s);try{return c=t.apply(a,r)}catch(d){throw u(n+"err",[r,a,d],s),d}finally{u(n+"end",[r,a,c],s)}}return r(t)?t:(n||(n=""),nrWrapper[a]=t,d(t,nrWrapper),nrWrapper)}function f(t,n,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<n.length;c++)s=n[c],a=t[s],r(a)||(t[s]=e(a,f?s+o:o,i,s))}function u(e,r,o){if(!c||n){var i=c;c=!0;try{t.emit(e,r,o,n)}catch(a){l([a,e,r,o])}c=i}}function d(t,n){if(Object.defineProperty&&Object.keys)try{var e=Object.keys(t);return e.forEach(function(e){Object.defineProperty(n,e,{get:function(){return t[e]},set:function(n){return t[e]=n,n}})}),n}catch(r){l([r])}for(var o in t)s.call(t,o)&&(n[o]=t[o]);return n}function l(n){try{t.emit("internal-error",n)}catch(e){}}return t||(t=o),e.inPlace=f,e.flag=a,e}},{}]},{},["loader",2,9]);</script>
+	<title>Dominican Students in China Advised to Stay Put | Dominica Vibes News</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="description" content="Dominica news source of local and caribbean news" />
+	<meta name="keywords" content="dominica news, press releases, sports, politics, lifestyle, education">
+	<meta name="google-site-verification" content="PmdZKBKOVSFI3IbjVpViKpGkHdLZqjClDBX7REPleoA" />
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	<link rel="pingback" href="https://www.dominicavibes.dm/xmlrpc.php">
+	<!--[if lt IE 9]>
+		<script src="https://www.dominicavibes.dm/wp-content/themes/vibesnews/js/html5.js"></script>
+	<![endif]-->
+	<link rel='dns-prefetch' href='//www.dominicavibes.dm' />
+<link rel='dns-prefetch' href='//ajax.googleapis.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="Dominica Vibes News &raquo; Dominican Students in China Advised to Stay Put Comments Feed" href="https://www.dominicavibes.dm/lifestyle-262190/feed/" />
+<!-- This site is powered by Shareaholic - https://shareaholic.com -->
+<script type='text/javascript' data-cfasync='false'>
+  //<![CDATA[
+    (function() {
+      var shr = document.createElement('script');
+      shr.setAttribute('data-cfasync', 'false');
+      shr.src = '//dsms0mj1bbhn4.cloudfront.net/assets/pub/shareaholic.js';
+      shr.type = 'text/javascript'; shr.async = 'true';
+      shr.onload = shr.onreadystatechange = function() {
+        var rs = this.readyState;
+        if (rs && rs != 'complete' && rs != 'loaded') return;
+        var site_id = '39da65a5aa9ede0342f88fa230de4ea0';
+        var page_config = {"apps":{"share_buttons":{"get_share_counts":  function(url, services, cb) {
+    Shareaholic.Utils.ajax({
+      cache: true,
+      cache_ttl: '1 minute',
+      url: 'https://www.dominicavibes.dm/wp-admin/admin-ajax.php',
+      data: { action: 'shareaholic_share_counts_api', url: url, services: services },
+      success: function(res) {
+        if(res && res.data) {
+          cb(res.data, true);
+        }
+      }
+    })
+  }}}};
+        try { Shareaholic.init(site_id, page_config); } catch (e) {}
+      };
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(shr, s);
+    })();
+  //]]>
+</script>
+
+<!-- Shareaholic Content Tags -->
+<meta name='shareaholic:site_name' content='Dominica Vibes News' />
+<meta name='shareaholic:language' content='en-US' />
+<meta name='shareaholic:url' content='https://www.dominicavibes.dm/lifestyle-262190/' />
+<meta name='shareaholic:keywords' content='international, lifestyle, local, news' />
+<meta name='shareaholic:article_published_time' content='2020-01-30T11:33:06+00:00' />
+<meta name='shareaholic:article_modified_time' content='2020-01-31T11:23:59+00:00' />
+<meta name='shareaholic:shareable_page' content='true' />
+<meta name='shareaholic:article_author_name' content='Jarna Ducreay' />
+<meta name='shareaholic:site_id' content='39da65a5aa9ede0342f88fa230de4ea0' />
+<meta name='shareaholic:wp_version' content='7.6.0.4' />
+<meta name='shareaholic:image' content='https://www.dominicavibes.dm/wp-content/uploads/2020/01/Corona-virus-china-face-mask.jpg' />
+<!-- Shareaholic Content Tags End -->
+
+<!-- Shareaholic Open Graph Tags -->
+<meta property='og:image' content='https://www.dominicavibes.dm/wp-content/uploads/2020/01/Corona-virus-china-face-mask.jpg' />
+<!-- Shareaholic Open Graph Tags End -->
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/www.dominicavibes.dm\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.9.13"}};
+			!function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55358,56760,9792,65039],[55358,56760,8203,9792,65039]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='posts-style-css'  href='https://www.dominicavibes.dm/wp-content/themes/vibesnews/inc/post-handler/posts.css?ver=v1' type='text/css' media='all' />
+<link rel='stylesheet' id='nextgen_gallery_related_images-css'  href='https://www.dominicavibes.dm/wp-content/plugins/nextgen-gallery/products/photocrati_nextgen/modules/nextgen_gallery_display/static/nextgen_gallery_related_images.css?ver=4.9.13' type='text/css' media='all' />
+<link rel='stylesheet' id='contact-form-7-css'  href='https://www.dominicavibes.dm/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=4.3' type='text/css' media='all' />
+<link rel='stylesheet' id='gallery_style-css'  href='https://www.dominicavibes.dm/wp-content/plugins/image-gallery-reloaded/themes/classic/galleria.theme.css?ver=4.9.13' type='text/css' media='all' />
+<link rel='stylesheet' id='jquery-ui-style-css'  href='https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/ui-darkness/jquery-ui.css?ver=4.9.13' type='text/css' media='all' />
+<link rel='stylesheet' id='pure-style-css'  href='https://www.dominicavibes.dm/wp-content/themes/vibesnews/css/pure-min.css?ver=0.4.2' type='text/css' media='all' />
+<link rel='stylesheet' id='theme-menu-css'  href='https://www.dominicavibes.dm/wp-content/themes/vibesnews/css/menu.css?ver=1.2' type='text/css' media='all' />
+<link rel='stylesheet' id='sitetheme-style-css'  href='https://www.dominicavibes.dm/wp-content/themes/vibesnews/style.css?ver=1.4' type='text/css' media='all' />
+<!--[if lt IE 9]>
+<link rel='stylesheet' id='sitetheme-ie-css'  href='https://www.dominicavibes.dm/wp-content/themes/vibesnews/css/ie.css?ver=2014-02-20' type='text/css' media='all' />
+<![endif]-->
+<link rel='stylesheet' id='fancybox-style-css'  href='https://www.dominicavibes.dm/wp-content/themes/vibesnews/js/fancybox/jquery.fancybox.css?ver=2014-02-20' type='text/css' media='all' />
+<link rel='stylesheet' id='newsticker-style-css'  href='https://www.dominicavibes.dm/wp-content/themes/vibesnews/js/jquery-newsticker/li-scroller.css?ver=4.9.13' type='text/css' media='all' />
+<script type='text/javascript' src='https://www.dominicavibes.dm/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+<script type='text/javascript' src='https://www.dominicavibes.dm/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var photocrati_ajax = {"url":"https:\/\/www.dominicavibes.dm\/photocrati_ajax","wp_home_url":"https:\/\/www.dominicavibes.dm","wp_site_url":"https:\/\/www.dominicavibes.dm","wp_root_url":"https:\/\/www.dominicavibes.dm","wp_plugins_url":"https:\/\/www.dominicavibes.dm\/wp-content\/plugins","wp_content_url":"https:\/\/www.dominicavibes.dm\/wp-content","wp_includes_url":"https:\/\/www.dominicavibes.dm\/wp-includes\/"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://www.dominicavibes.dm/wp-content/plugins/nextgen-gallery/products/photocrati_nextgen/modules/ajax/static/ajax.js?ver=4.9.13'></script>
+<script type='text/javascript' src='https://www.dominicavibes.dm/wp-content/plugins/nextgen-gallery/products/photocrati_nextgen/modules/ajax/static/persist.js?ver=4.9.13'></script>
+<script type='text/javascript' src='https://www.dominicavibes.dm/wp-content/plugins/nextgen-gallery/products/photocrati_nextgen/modules/ajax/static/store.js?ver=4.9.13'></script>
+<script type='text/javascript' src='https://www.dominicavibes.dm/wp-content/plugins/nextgen-gallery/products/photocrati_nextgen/modules/ajax/static/ngg_store.js?ver=4.9.13'></script>
+<script type='text/javascript' src='https://www.dominicavibes.dm/wp-content/plugins/adrotate/library/jquery.adrotate.dyngroup.js?ver=0.5.3'></script>
+<script type='text/javascript' src='https://www.dominicavibes.dm/wp-content/plugins/adrotate/library/jquery.adrotate.clicktracker.js?ver=0.6'></script>
+<script type='text/javascript' src='https://www.dominicavibes.dm/wp-content/plugins/adrotate/library/jquery.adrotate.responsive.js?ver=0.4'></script>
+<script type='text/javascript' src='https://www.dominicavibes.dm/wp-content/plugins/image-gallery-reloaded/galleria-1.2.8.min.js?ver=4.9.13'></script>
+<script type='text/javascript' src='https://www.dominicavibes.dm/wp-content/plugins/nextgen-gallery/products/photocrati_nextgen/modules/lightbox/static/lightbox_context.js?ver=4.9.13'></script>
+<link rel='https://api.w.org/' href='https://www.dominicavibes.dm/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.dominicavibes.dm/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://www.dominicavibes.dm/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 4.9.13" />
+<link rel="canonical" href="https://www.dominicavibes.dm/lifestyle-262190/" />
+<link rel='shortlink' href='https://www.dominicavibes.dm/?p=262190' />
+<link rel="alternate" type="application/json+oembed" href="https://www.dominicavibes.dm/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.dominicavibes.dm%2Flifestyle-262190%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://www.dominicavibes.dm/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.dominicavibes.dm%2Flifestyle-262190%2F&#038;format=xml" />
+
+<!-- This site is using AdRotate v3.10.12 to display their advertisements - https://www.adrotateplugin.com/ -->
+<!-- AdRotate CSS -->
+<style type="text/css" media="screen">
+	.g { margin:0px; padding:0px; overflow:hidden; line-height:1; zoom:1; }
+	.g-col { position:relative; float:left; }
+	.g-col:first-child { margin-left: 0; }
+	.g-col:last-child { margin-right: 0; }
+	.g-1 { margin:0px; min-width:0px; max-width:300px; min-height:0px; max-height:250px; }
+	.g-2 { margin:0px; min-width:0px; max-width:300px; min-height:0px; max-height:300px; }
+	.g-3 { margin:0px; min-width:0px; max-width:300px; min-height:0px; max-height:500px; }
+	.g-4 { margin:0px; min-width:0px; max-width:700px; min-height:0px; max-height:100px; }
+	.g-5 { margin:0px; min-width:0px; max-width:700px; min-height:0px; max-height:100px; }
+	.g-6 { margin:0px; min-width:0px; max-width:700px; min-height:0px; max-height:100px; }
+	.g-7 { margin:1px; min-width:1px; max-width:700px; min-height:1px; max-height:100px; }
+	.g-8 { margin:0px; min-width:0px; max-width:300px; min-height:0px; max-height:500px; }
+	.g-9 { margin:1px; }
+	.g-10 { margin:0px; min-width:0px; max-width:600px; min-height:0px; max-height:260px; }
+	.g-11 { margin:1px; min-width:1px; max-width:300px; min-height:1px; max-height:500px; }
+	.g-12 { margin:0px; min-width:0px; max-width:300px; min-height:0px; max-height:250px; }
+	.g-13 { margin:0px; min-width:0px; max-width:600px; min-height:0px; max-height:100px; }
+	.g-15 { margin:0px; min-width:0px; max-width:600px; min-height:0px; max-height:200px; }
+	.g-17 { margin:0px; min-width:0px; max-width:300px; min-height:0px; max-height:500px; }
+	.g-18 { margin:0px; min-width:0px; max-width:300px; min-height:0px; max-height:500px; }
+	.g-19 { margin:0px; min-width:0px; max-width:600px; min-height:0px; max-height:200px; }
+	.g-23 { margin:1px; min-width:1px; max-width:300px; min-height:1px; max-height:500px; }
+	.g-24 { margin:0px; min-width:0px; max-width:300px; min-height:0px; max-height:250px; }
+	.g-25 { margin:0px; min-width:0px; max-width:700px; min-height:0px; max-height:100px; }
+	@media only screen and (max-width: 480px) {
+		.g-col, .g-dyn, .g-single { width:100%; margin-left:0; margin-right:0; }
+	}
+.widget_adrotate_widgets { overflow:hidden; padding:0; }
+</style>
+<!-- /AdRotate CSS -->
+
+<!-- <meta name="NextGEN" version="2.0.66.33" /> -->
+<link id='MediaRSS' rel='alternate' type='application/rss+xml' title='NextGEN Gallery RSS Feed' href='https://www.dominicavibes.dm/wp-content/plugins/nextgen-gallery/products/photocrati_nextgen/modules/ngglegacy/xml/media-rss.php' />
+<!-- AdRotate JS -->
+<script type="text/javascript">
+var tracker_url = 'https://www.dominicavibes.dm/wp-content/plugins/adrotate/library/clicktracker.php';
+jQuery(document).ready(function(){
+if(jQuery.fn.gslider) {
+	jQuery('.g-1').gslider({ groupid: 1, speed: 6000 });
+	jQuery('.g-2').gslider({ groupid: 2, speed: 9000 });
+	jQuery('.g-3').gslider({ groupid: 3, speed: 8000 });
+	jQuery('.g-4').gslider({ groupid: 4, speed: 6000 });
+	jQuery('.g-5').gslider({ groupid: 5, speed: 6000 });
+	jQuery('.g-6').gslider({ groupid: 6, speed: 6000 });
+	jQuery('.g-7').gslider({ groupid: 7, speed: 6000 });
+	jQuery('.g-8').gslider({ groupid: 8, speed: 5000 });
+	jQuery('.g-10').gslider({ groupid: 10, speed: 10000 });
+	jQuery('.g-11').gslider({ groupid: 11, speed: 7000 });
+	jQuery('.g-12').gslider({ groupid: 12, speed: 10000 });
+	jQuery('.g-13').gslider({ groupid: 13, speed: 15000 });
+	jQuery('.g-15').gslider({ groupid: 15, speed: 6000 });
+	jQuery('.g-17').gslider({ groupid: 17, speed: 25000 });
+	jQuery('.g-18').gslider({ groupid: 18, speed: 6000 });
+	jQuery('.g-19').gslider({ groupid: 19, speed: 6000 });
+	jQuery('.g-23').gslider({ groupid: 23, speed: 6000 });
+	jQuery('.g-24').gslider({ groupid: 24, speed: 9000 });
+	jQuery('.g-25').gslider({ groupid: 25, speed: 5000 });
+}
+});
+</script>
+<!-- /AdRotate JS -->
+
+</head>
+<body class="post-template-default single single-post postid-262190 single-format-standard lifestyle-262190-section" id="_page">
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-42705850-6', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+<div class="pure-g-r page-wrap">
+	<header class="pure-u-1 global-header">
+		<div class="crown">
+			<div class="content-wrap pure-u-23-24">
+				<p id="global_date">Jan 31, 2020</p>
+			</div>
+		</div>
+		<div class="header-main">
+			<div class="content-wrap pure-u-23-24">
+				<div class="banner-ad header-ad">
+					<!-- Either there are no banners, they are disabled or none qualified for this location! -->				</div>
+				<a href="https://www.dominicavibes.dm"><img id="vibeslogo" src="https://www.dominicavibes.dm/wp-content/themes/vibesnews/images/vibes_logo.png" alt="dominica vibes logo" /></a>
+			</div>
+
+			<div class="content-wrap pure-u-23-24">
+				<div class="post-scroller pure-u-1">
+					<span>The Latest Vibes</span>
+					<ul class="newsticker" id="news_scroller"><li class="post-item">
+	     						<div class="post-item-meta">
+	     							<h3 class="post-item-title"><a href="https://www.dominicavibes.dm/news-262236/">The Hunt for the Diablotin Bird</a></h3>
+	     						</div>
+	     					</li><li class="post-item">
+	     						<div class="post-item-meta">
+	     							<h3 class="post-item-title"><a href="https://www.dominicavibes.dm/education-262218/">Strong Minds, Strong Bodies for Newtown, Soufriere, Kalinago Territory</a></h3>
+	     						</div>
+	     					</li><li class="post-item">
+	     						<div class="post-item-meta">
+	     							<h3 class="post-item-title"><a href="https://www.dominicavibes.dm/lifestyle-262242/">Dom Cancer Society: Women Do  Not Have to Die from Cervical Cancer</a></h3>
+	     						</div>
+	     					</li><li class="post-item">
+	     						<div class="post-item-meta">
+	     							<h3 class="post-item-title"><a href="https://www.dominicavibes.dm/news-262244/">Dominica “Making Progress” on International Airport</a></h3>
+	     						</div>
+	     					</li><li class="post-item">
+	     						<div class="post-item-meta">
+	     							<h3 class="post-item-title"><a href="https://www.dominicavibes.dm/lifestyle-262215/">Coronavirus FactBox: What You Should Know</a></h3>
+	     						</div>
+	     					</li><li class="post-item">
+	     						<div class="post-item-meta">
+	     							<h3 class="post-item-title"><a href="https://www.dominicavibes.dm/lifestyle-262198/">Travel Restrictions Placed on Dominica/China Travel</a></h3>
+	     						</div>
+	     					</li><li class="post-item">
+	     						<div class="post-item-meta">
+	     							<h3 class="post-item-title"><a href="https://www.dominicavibes.dm/education-262202/">Dominica State College Contributing to Making Dominica World&#8217;s First Climate Resilient Country</a></h3>
+	     						</div>
+	     					</li><li class="post-item">
+	     						<div class="post-item-meta">
+	     							<h3 class="post-item-title"><a href="https://www.dominicavibes.dm/lifestyle-262190/">Dominican Students in China Advised to Stay Put</a></h3>
+	     						</div>
+	     					</li><li class="post-item">
+	     						<div class="post-item-meta">
+	     							<h3 class="post-item-title"><a href="https://www.dominicavibes.dm/lifestyle-262183/">“We Have Things Under Control” -Min of Health on Coronavirus</a></h3>
+	     						</div>
+	     					</li><li class="post-item">
+	     						<div class="post-item-meta">
+	     							<h3 class="post-item-title"><a href="https://www.dominicavibes.dm/entertainment-262181/">Ole Mas Festival is on This Weekend</a></h3>
+	     						</div>
+	     					</li></ul>				</div>
+			</div>
+			
+		</div>
+
+		<nav class="global-nav">
+			<div class="content-wrap pure-u-11-12">
+			<ul class="h-nav pure-u-1">
+			
+			<li id="home_link"><a href="https://www.dominicavibes.dm">Home</a></li>
+			<li id="news_link" class="drop"><a href="">News</a>
+				<div class="dropdown">
+					
+					<a href="https://www.dominicavibes.dm/category/news/local/">
+					 <h2>Local</h2>
+					
+					</a>
+				
+					<a href="https://www.dominicavibes.dm/category/news/regional/">
+					 <h2>Regional</h2>
+					</a>
+
+					<a href="https://www.dominicavibes.dm/category/international/">
+					 <h2>International</h2>
+					</a>
+
+					<a href="https://www.dominicavibes.dm/category/news/sports/">
+					 <h2>Sports</h2>
+					</a>
+
+					<a href="https://www.dominicavibes.dm/category/politics/">
+					 <h2>Politics</h2>
+					</a>
+
+					<a href="https://www.dominicavibes.dm/category/business/">
+					 <h2>Business</h2>
+					</a>
+
+					<a href="https://www.dominicavibes.dm/election-central/">
+					 <h2>Election Central (2014)</h2>
+					</a>
+
+				</div>
+			</li>
+
+			<li class="drop" id="careers_link"><a href="">Lifestyle</a>
+				<div class="dropdown">
+					
+					<a href="https://www.dominicavibes.dm/category/lifestyle/health/">
+					 <h2>Health & Beauty</h2>
+					
+					</a>
+				
+					<a href="https://www.dominicavibes.dm/category/lifestyle/relationships/">
+					 <h2>Relationship</h2>
+					 
+					</a>
+
+					<a href="https://www.dominicavibes.dm/category/entertainment/">
+					 <h2>Entertainment</h2>
+					 
+					</a>
+
+					<a href="https://www.dominicavibes.dm/category/lifestyle/travel/">
+					 <h2>Travel</h2>
+				
+					</a>
+
+					<a href="">
+					 <h2>Food and Dining</h2>
+					 
+					</a>
+
+					<a href="https://www.dominicavibes.dm/category/lifestyle/faith/">
+					 <h2>Faith</h2>
+					 
+					</a>
+
+					<a href="https://www.dominicavibes.dm/category/lifestyle/money/">
+					 <h2>Money</h2>
+					 
+					</a>
+
+				</div>
+			</li>
+
+			<li class="drop" id="about_link"><a href="">Real Estate</a>
+				
+				<div class="dropdown">
+
+					<a href="">
+					 <h2>Plot Subdivisions</h2>
+					 
+					</a>
+					
+					<a href="https://www.dominicavibes.dm/category/real-estates/rent/">
+					 <h2>Property for Rent</h2>
+					 
+					</a>
+				
+					<a href="https://www.dominicavibes.dm/category/real-estates/sale/">
+					 <h2>Property for Sale</h2>
+					 
+					</a>
+
+				</div>
+
+			</li>
+			
+			<li class="drop" id="media_link"><a href="">Entertainment</a>
+				<div class="dropdown">
+					
+					<a href="http://vibesradio.dm" target="_blank">
+					 <h2>Vibes Radio</h2>
+				
+					</a>
+				
+					<a href="https://www.dominicavibes.dm/lifestyle-262190/">
+					 <h2>Vibes TV</h2>
+					
+					</a>
+
+					<a href="https://www.dominicavibes.dm/lifestyle-262190/">
+					 <h2>Photo Gallery</h2>
+					
+					</a>
+
+				</div>
+			</li>
+
+			<li class="drop" id="media_link"><a href="">Columns</a>
+				<div class="dropdown">
+
+					<a href="https://www.dominicavibes.dm/category/columns/built-environment/">
+					 <h2>The Built Environment</h2>
+					</a>
+
+					<a href="https://www.dominicavibes.dm/category/physiotherapy-in-action/">
+					 <h2>Physiotherapy in Action</h2>
+					</a>
+
+					<a href="https://www.dominicavibes.dm/category/columns/your-environment-your-responsibility/">
+					 <h2>Your Environment, Your Responsibility</h2>
+					</a>
+
+				</div>
+			</li>
+			
+			<li class="drop" id="media_link"><a href="">Online Directory</a>
+				<div class="dropdown">
+
+					<a href="https://www.dominicavibes.dm/online-directory/doctors/">
+						 <h2>Doctors</h2>
+						
+						</a>
+
+						<a href="https://www.dominicavibes.dm/online-directory/lawyers/">
+						 <h2>Lawyers</h2>
+						
+						</a>
+
+						<a href="https://www.dominicavibes.dm/online-directory/marketing/">
+						 <h2>Marketing</h2>
+						
+						</a>
+
+						<a href="https://www.dominicavibes.dm/online-directory/insurances/">
+						 <h2>Insurances</h2>
+						
+						</a>
+						<a href="https://www.dominicavibes.dm/online-directory/stores/">
+						 <h2>Stores</h2>
+						
+						</a>
+
+						<a href="https://www.dominicavibes.dm/online-directory/accomodations/">
+						 <h2>Accomodation</h2>
+						
+						</a>
+
+						<a href="https://www.dominicavibes.dm/online-directory/car-rentals/">
+						 <h2>Car Rentals</h2>
+						
+						</a>
+
+						<a href="https://www.dominicavibes.dm/online-directory/travel-agencies/">
+						 <h2>Travel Agencies</h2>
+						
+						</a>
+
+						<a href="https://www.dominicavibes.dm/lifestyle-262190/">
+						 <h2>More &raquo;</h2>
+						
+						</a>
+				</div>
+			</li>
+
+			<li id="contact_link"><a href="https://www.dominicavibes.dm/contact-us/">Contact</a></li>
+			
+		</ul>
+		
+		</div>
+		</nav>
+	</header><div class="page-body-wrap content-wrap pure-u-23-24">
+	
+	<div class="pure-u-7-12 page-primary-content article-details">
+
+		<div class="post-content">
+											<header data-post="262190">
+					<span class="post-item-date"><a href="https://www.dominicavibes.dm/category/international/" class="post-item-category">International</a><a href="https://www.dominicavibes.dm/category/lifestyle/" class="post-item-category">Lifestyle</a><a href="https://www.dominicavibes.dm/category/news/local/" class="post-item-category">Local</a><a href="https://www.dominicavibes.dm/category/news/" class="post-item-category">News</a></span>
+					<h1>Dominican Students in China Advised to Stay Put</h1>
+					<span class="post-item-author">by: </span> - <span class="post-item-date">January 30, 2020</span>
+					<div class="views-comments">
+						<span><img src="https://www.dominicavibes.dm/wp-content/themes/vibesnews/images/views.png" />49 Views</span>  &nbsp;
+						<span><img src="https://www.dominicavibes.dm/wp-content/themes/vibesnews/images/comments.png" />no discussions</span>
+					</div>
+				</header>
+				<div class='shareaholic-canvas' data-app-id='19800' data-app='share_buttons' data-title='Dominican Students in China Advised to Stay Put' data-link='https://www.dominicavibes.dm/lifestyle-262190/' data-summary=''></div><a href="https://www.dominicavibes.dm/wp-content/uploads/2020/01/mcintyre.jpg"><img class="aligncenter wp-image-262178 size-full" src="https://www.dominicavibes.dm/wp-content/uploads/2020/01/mcintyre.jpg" alt="" width="300" height="375" srcset="https://www.dominicavibes.dm/wp-content/uploads/2020/01/mcintyre.jpg 300w, https://www.dominicavibes.dm/wp-content/uploads/2020/01/mcintyre-240x300.jpg 240w" sizes="(max-width: 300px) 100vw, 300px" /></a>
+<p>The Ministry of Health is assuring the nation that Dominican students in China are safe and have been advised to remain there for their continued safety.</p>
+<p>This decision, according t0 Honorable Minister for Health and Wellness, Dr. Irving McIntyre appears to be the &#8220;safest&#8221; to prevent the potential spread of the coronavirus.</p>
+<div data-canvas-width="239.35500160000007">Coronaviruses are a group of viruses that cause diseases in mammals and birds. In humans, the viruses cause respiratory infections which are typically mild including the common cold but rarer forms like SARS and MERS can be lethal.</div>
+<p>He told the press on Wednesday that students are cooperative and in good spirits.</p>
+<p>“Since the outbreak everyone has been advised to wear face masks and as a result there has been a shortage. All nationals are safe and because there is 14-day incubation period…it is not advisable for anyone to leave Wuhan at the moment,” he reported.</p>
+<p>The ministry says emergency funds were sent to students to purchase water and supplies.</p>
+<p>Eighty-four Dominicans are pursuing studies in China, 15 of which are based in Wuhan- the epicenter of the outbreak.</p>
+<p>While there has not yet been any case of the virus among Dominican students, there is also a 14-day incubation period.</p>
+<p>The Minister assures that there is daily communication between students and the Ministry of Education.</p>
+<p>Dr McIntyre gave reasons for advising the students to stay in China.</p>
+<p>“There must be a receiving country- the USA, France, Germany, London Holland- to put these students through quarantine, second, a special charter with the nationals departing China under international travel guidelines for prevention and control, and thirdly, assuming there are nationals who may test positive, that receiving country must have the infrastructure to deal with the cure or treatment of the virus.”</p>
+<p>He also added, “This can be a very costly exercise.”</p>
+<p>Dr McIntyre continues to assure however that &#8220;All nationals are safe&#8221; and that the Dominican students are &#8220;in good spirits, and fully understand the risk of leaving. The have been very vigilant. There is no need to panic.&#8221;</p>
+<p>The ministries of health, education and tourism were a part of Wednesday’s event.</p>
+<p>He says the Government of the People&#8217;s Republic of China has given every assurance that &#8220;this pandemic will be brought under control in a few weeks.&#8221;</p>
+<p>The Ministry of Heath is currently discussing the possibility of sending additional masks, especially for Dominican students in Wuhan as face masks must be changed frequently after use.</p>
+<!-- Either there are no banners, they are disabled or none qualified for this location! -->					</div>
+		<br/>
+		<!-- Either there are no banners, they are disabled or none qualified for this location! -->
+
+		<div class="comments-area">
+			
+<div id="comments" class="comments-area">
+
+
+	
+
+	
+	
+
+	<div class="comment-frm">
+			<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="/lifestyle-262190/#respond" style="display:none;">Cancel reply</a></small></h3>			<form action="https://www.dominicavibes.dm/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate>
+				<p class="comment-notes"><span id="email-notes">Your email address will not be published.</span> Required fields are marked <span class="required">*</span></p><p class="comment-form-comment"><label for="comment">Comment</label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea></p><p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" required='required' /></p>
+<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="email" value="" size="30" maxlength="100" aria-describedby="email-notes" required='required' /></p>
+<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="url" value="" size="30" maxlength="200" /></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment" /> <input type='hidden' name='comment_post_ID' value='262190' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="dab6e2df3e" /></p><p style="width: auto;"><label><input type="checkbox" name="s2_comment_request" value="1" /> Check here to Subscribe to notifications for new posts</label></p><p style="display: none;"><input type="hidden" id="ak_js" name="ak_js" value="196"/></p>			</form>
+			</div><!-- #respond -->
+		</div>
+
+</div><!-- #comments -->
+ 
+		</div>
+	
+	</div>
+	<div id="sidebar" class="pure-u-2-5">
+
+		  <div class="sidebar-primary pure-u-5-8">
+
+				<form class="" role="search" method="get" id="searchform" action="https://www.dominicavibes.dm/">
+	 <fieldset>
+        <input id="s" name="s" type="text" placeholder="search keyword(s)">
+        <button class="pure-button button-error">Search</button>
+     </fieldset>
+
+	<div class="social-icons">
+     <a href="https://www.facebook.com/dominicavibes" target="_blank"><img src="https://www.dominicavibes.dm/wp-content/themes/vibesnews/images/facebook-icon.png"></a>
+     <a href="https://twitter.com/dominicavibes" target="_blank"><img src="https://www.dominicavibes.dm/wp-content/themes/vibesnews/images/twitter-icon.png"></a>
+	</div>
+</form>  
+			
+				<div class="ad-block">
+					<p>Advertisment</p>
+					<!-- Either there are no banners, they are disabled or none qualified for this location! -->				</div>
+
+				<div class="sidebar-spacer"></div>
+
+				<div class="ad-block">
+					<p>Advertisment</p>
+					<!-- Either there are no banners, they are disabled or none qualified for this location! -->				</div>
+
+				<div class="tab-panel">
+					<ul class="tab-control">
+						<li><a href="" rel="latest_news" class="active-tab">Latest</a></li>
+						<li><a href="" rel="popular_news">Popular</a></li>
+						<li><a href="" rel="discussed_news">Most Discussed</a></li>
+					</ul>
+					<div class="tabs-content" id="latest_news">
+						<ul class="recent-posts post-text-list"><li><a href="https://www.dominicavibes.dm/business-262249/" title="Look Antogua Rejects US $40m Deal with China" >Antogua Rejects US $40m Deal with China</a> 
+				<p>January 31, 2020</p>
+			</li> <li><a href="https://www.dominicavibes.dm/news-262236/" title="Look The Hunt for the Diablotin Bird" >The Hunt for the Diablotin Bird</a> 
+				<p>January 31, 2020</p>
+			</li> <li><a href="https://www.dominicavibes.dm/news-262246/" title="Look Britain Quits EU, Steps Into Transition Twilight Zone" >Britain Quits EU, Steps Into Transition Twilight Zone</a> 
+				<p>January 31, 2020</p>
+			</li> <li><a href="https://www.dominicavibes.dm/business-262196/" title="Look Montserrat Tourism Arrivals Exceed 20,000 for the First Time Since Volcano Eruption" >Montserrat Tourism Arrivals Exceed 20,000 for the First Time Since Volcano Eruption</a> 
+				<p>January 31, 2020</p>
+			</li> <li><a href="https://www.dominicavibes.dm/education-262218/" title="Look Strong Minds, Strong Bodies for Newtown, Soufriere, Kalinago Territory" >Strong Minds, Strong Bodies for Newtown, Soufriere, Kalinago Territory</a> 
+				<p>January 31, 2020</p>
+			</li> <li><a href="https://www.dominicavibes.dm/lifestyle-262242/" title="Look Dom Cancer Society: Women Do  Not Have to Die from Cervical Cancer" >Dom Cancer Society: Women Do  Not Have to Die from Cervical Cancer</a> 
+				<p>January 31, 2020</p>
+			</li> </ul>					</div>
+					<div class="tabs-content" id="popular_news">
+						<ul class="recent-posts post-text-list"><li><a href="https://www.dominicavibes.dm/news-190063/" title="Look Dominican fatally shot in Antigua" >Dominican fatally shot in Antigua</a> 
+				<p>January 3, 2016 | <img src="https://www.dominicavibes.dm/wp-content/themes/vibesnews/images/views.png" alt=""/> 24759</p>
+			</li> <li><a href="https://www.dominicavibes.dm/news-198415/" title="Look Man detained in connection with Silver Lake homicide" >Man detained in connection with Silver Lake homicide</a> 
+				<p>April 14, 2016 | <img src="https://www.dominicavibes.dm/wp-content/themes/vibesnews/images/views.png" alt=""/> 15614</p>
+			</li> <li><a href="https://www.dominicavibes.dm/news-190091/" title="Look Gholda James threatened with legal action" >Gholda James threatened with legal action</a> 
+				<p>January 4, 2016 | <img src="https://www.dominicavibes.dm/wp-content/themes/vibesnews/images/views.png" alt=""/> 13846</p>
+			</li> <li><a href="https://www.dominicavibes.dm/education-187125/" title="Look Dominican student dies in US" >Dominican student dies in US</a> 
+				<p>November 27, 2015 | <img src="https://www.dominicavibes.dm/wp-content/themes/vibesnews/images/views.png" alt=""/> 13813</p>
+			</li> <li><a href="https://www.dominicavibes.dm/international/print-254896/" title="Look 90 Arrested – Guyana Companies Linked to US$60 Billion Cocaine Empire" >90 Arrested – Guyana Companies Linked to US$60 Billion Cocaine Empire</a> 
+				<p>December 16, 2018 | <img src="https://www.dominicavibes.dm/wp-content/themes/vibesnews/images/views.png" alt=""/> 13294</p>
+			</li> <li><a href="https://www.dominicavibes.dm/news-103548/" title="Look Dominican female arrested in London" >Dominican female arrested in London</a> 
+				<p>July 5, 2013 | <img src="https://www.dominicavibes.dm/wp-content/themes/vibesnews/images/views.png" alt=""/> 13167</p>
+			</li> </ul>					</div>
+					<div class="tabs-content" id="discussed_news">
+						<ul class="recent-posts post-text-list"><li><a href="https://www.dominicavibes.dm/news-101419/" title="Look UPDATE: Trafalgar resident charged with theft" >UPDATE: Trafalgar resident charged with theft</a> 
+				<p>June 11, 2013 | 94 comments</p>
+			</li> <li><a href="https://www.dominicavibes.dm/news-164121/" title="Look UPDATE: Roseau woman granted $5000 bail" >UPDATE: Roseau woman granted $5000 bail</a> 
+				<p>March 19, 2015 | 80 comments</p>
+			</li> <li><a href="https://www.dominicavibes.dm/news-103548/" title="Look Dominican female arrested in London" >Dominican female arrested in London</a> 
+				<p>July 5, 2013 | 78 comments</p>
+			</li> <li><a href="https://www.dominicavibes.dm/news-59293/" title="Look Police officer may face lawsuit for assault" >Police officer may face lawsuit for assault</a> 
+				<p>May 29, 2012 | 69 comments</p>
+			</li> <li><a href="https://www.dominicavibes.dm/news-190063/" title="Look Dominican fatally shot in Antigua" >Dominican fatally shot in Antigua</a> 
+				<p>January 3, 2016 | 66 comments</p>
+			</li> <li><a href="https://www.dominicavibes.dm/news-110105/" title="Look PM Skerrit chides Opposition senator [audio included]" >PM Skerrit chides Opposition senator [audio included]</a> 
+				<p>October 1, 2013 | 56 comments</p>
+			</li> </ul>					</div>
+				</div>
+
+				<div class="sidebar-spacer"></div>
+
+				<div class="ad-block">
+				<p>Advertisment</p>
+				<!-- Either there are no banners, they are disabled or none qualified for this location! -->				</div>
+
+				<div class="sidebar-spacer"></div>
+
+				<div style="background:#fff;"><iframe src="//www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fdominicavibes&amp;width=300&amp;height=258&amp;colorscheme=light&amp;show_faces=true&amp;header=false&amp;stream=false&amp;show_border=true&amp;" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:300px; height:258px;" allowTransparency="true"></iframe></div>
+			  
+			  	<div class="sidebar-spacer"></div>
+
+				<div class="ad-block">
+				<p>Advertisment</p>
+				<!-- Either there are no banners, they are disabled or none qualified for this location! -->				</div>
+		  
+		  		<div class="sidebar-spacer"></div>
+				
+		  </div>
+
+		  <div class="sidebar-secondary pure-u-7-24">
+			<h4>Notices</h4>
+			<ul class="grid-post"><li class="post-item">
+	     						<a href="https://www.dominicavibes.dm/lifestyle-262215/" class="post-item-thumbnail"><img src="https://www.dominicavibes.dm/wp-content/uploads/2020/01/corona-infographic-symptoms.jpg" alt="post image"/></a>
+	     						<div class="post-item-meta">
+	     							<div class="post-item-categories pure-u-1">
+	     								<a href="https://www.dominicavibes.dm/category/announcements/" class="post-item-category">Announcements</a><a href="https://www.dominicavibes.dm/category/international/" class="post-item-category">International</a><a href="https://www.dominicavibes.dm/category/lifestyle/" class="post-item-category">Lifestyle</a><a href="https://www.dominicavibes.dm/category/news/local/" class="post-item-category">Local</a><a href="https://www.dominicavibes.dm/category/news/" class="post-item-category">News</a><a href="https://www.dominicavibes.dm/category/news/regional/" class="post-item-category">Regional</a>
+	     							</div>
+	     							<h3 class="post-item-title"><a href="https://www.dominicavibes.dm/lifestyle-262215/">Coronavirus FactBox: What You Should Know</a></h3>
+	     							<span class="post-item-author"></span> &nbsp; <span class="post-item-date">January 30, 2020</span>
+	     						</div>
+	     						<p class="post-item-excerpt">2019 Novel Coronavirus (2019-nCoV) is a virus (more specifically, a coronavirus) identified as the cause of an outbreak of respiratory illness... <a href="https://www.dominicavibes.dm/lifestyle-262215/">(more)</a></p>
+	     					</li><li class="post-item">
+	     						<a href="https://www.dominicavibes.dm/announcements-261927/" class="post-item-thumbnail"><img src="https://www.dominicavibes.dm/wp-content/themes/vibesnews/images/default-thumbnail.jpg" alt="post image"/></a>
+	     						<div class="post-item-meta">
+	     							<div class="post-item-categories pure-u-1">
+	     								<a href="https://www.dominicavibes.dm/category/announcements/" class="post-item-category">Announcements</a>
+	     							</div>
+	     							<h3 class="post-item-title"><a href="https://www.dominicavibes.dm/announcements-261927/">Student Program for Innovation in Science and Engineering 2020</a></h3>
+	     							<span class="post-item-author"></span> &nbsp; <span class="post-item-date">January 24, 2020</span>
+	     						</div>
+	     						<p class="post-item-excerpt">... <a href="https://www.dominicavibes.dm/announcements-261927/">(more)</a></p>
+	     					</li><li class="post-item">
+	     						<a href="https://www.dominicavibes.dm/announcements-261822/" class="post-item-thumbnail"><img src="https://www.dominicavibes.dm/wp-content/themes/vibesnews/images/default-thumbnail.jpg" alt="post image"/></a>
+	     						<div class="post-item-meta">
+	     							<div class="post-item-categories pure-u-1">
+	     								<a href="https://www.dominicavibes.dm/category/announcements/" class="post-item-category">Announcements</a>
+	     							</div>
+	     							<h3 class="post-item-title"><a href="https://www.dominicavibes.dm/announcements-261822/">Cabrits Resort &#038; Spa: Director of Sales and Marketing</a></h3>
+	     							<span class="post-item-author"></span> &nbsp; <span class="post-item-date">January 21, 2020</span>
+	     						</div>
+	     						<p class="post-item-excerpt">Director of Sales and Marketing The overall scope of the Director of Sales &amp; Marketing is to assist the General... <a href="https://www.dominicavibes.dm/announcements-261822/">(more)</a></p>
+	     					</li><li class="post-item">
+	     						<a href="https://www.dominicavibes.dm/announcements-261775/" class="post-item-thumbnail"><img src="https://www.dominicavibes.dm/wp-content/themes/vibesnews/images/default-thumbnail.jpg" alt="post image"/></a>
+	     						<div class="post-item-meta">
+	     							<div class="post-item-categories pure-u-1">
+	     								<a href="https://www.dominicavibes.dm/category/announcements/" class="post-item-category">Announcements</a>
+	     							</div>
+	     							<h3 class="post-item-title"><a href="https://www.dominicavibes.dm/announcements-261775/">Assistant Director of Finance &#8211; Cabrits Resort</a></h3>
+	     							<span class="post-item-author"></span> &nbsp; <span class="post-item-date">January 17, 2020</span>
+	     						</div>
+	     						<p class="post-item-excerpt">The overall scope of this role is to be able to perform all duties assigned by the Controller and to... <a href="https://www.dominicavibes.dm/announcements-261775/">(more)</a></p>
+	     					</li><li class="post-item">
+	     						<a href="https://www.dominicavibes.dm/announcements-261772/" class="post-item-thumbnail"><img src="https://www.dominicavibes.dm/wp-content/themes/vibesnews/images/default-thumbnail.jpg" alt="post image"/></a>
+	     						<div class="post-item-meta">
+	     							<div class="post-item-categories pure-u-1">
+	     								<a href="https://www.dominicavibes.dm/category/announcements/" class="post-item-category">Announcements</a>
+	     							</div>
+	     							<h3 class="post-item-title"><a href="https://www.dominicavibes.dm/announcements-261772/">Front Office Manager &#8211; Cabrits Resort</a></h3>
+	     							<span class="post-item-author"></span> &nbsp; <span class="post-item-date">January 17, 2020</span>
+	     						</div>
+	     						<p class="post-item-excerpt">Kempinski is expanding in the Americas, and is looking for experienced hoteliers: people with an adventurous spirit, eager to pioneer... <a href="https://www.dominicavibes.dm/announcements-261772/">(more)</a></p>
+	     					</li></ul>
+
+			<h4>Columns</h4>
+			<ul class="grid-post"><li class="post-item">
+	     						<a href="https://www.dominicavibes.dm/columns-261963/" class="post-item-thumbnail"><img src="https://www.dominicavibes.dm/wp-content/uploads/2020/01/Putting-The-Horse-Before-The-Cart.jpg" alt="post image"/></a>
+	     						<div class="post-item-meta">
+	     							<div class="post-item-categories pure-u-1">
+	     								<a href="https://www.dominicavibes.dm/category/columns/built-environment/" class="post-item-category">The Built Environment</a><a href="https://www.dominicavibes.dm/category/columns/" class="post-item-category">Weekly Columns</a>
+	     							</div>
+	     							<h3 class="post-item-title"><a href="https://www.dominicavibes.dm/columns-261963/">Putting the Horse Before the Cart</a></h3>
+	     							<span class="post-item-author"></span> &nbsp; <span class="post-item-date">January 27, 2020</span>
+	     						</div>
+	     						<p class="post-item-excerpt">&nbsp; &nbsp; If you actually wanted to get to your destination, would you put the cart before the horse? We... <a href="https://www.dominicavibes.dm/columns-261963/">(more)</a></p>
+	     					</li><li class="post-item">
+	     						<a href="https://www.dominicavibes.dm/lifestyle-261443/" class="post-item-thumbnail"><img src="https://www.dominicavibes.dm/wp-content/uploads/2020/01/STEEL.jpg" alt="post image"/></a>
+	     						<div class="post-item-meta">
+	     							<div class="post-item-categories pure-u-1">
+	     								<a href="https://www.dominicavibes.dm/category/lifestyle/" class="post-item-category">Lifestyle</a><a href="https://www.dominicavibes.dm/category/readers/" class="post-item-category">Reader Bites</a><a href="https://www.dominicavibes.dm/category/columns/built-environment/" class="post-item-category">The Built Environment</a>
+	     							</div>
+	     							<h3 class="post-item-title"><a href="https://www.dominicavibes.dm/lifestyle-261443/">Out With The Old In With The Steel</a></h3>
+	     							<span class="post-item-author"></span> &nbsp; <span class="post-item-date">January 7, 2020</span>
+	     						</div>
+	     						<p class="post-item-excerpt">Steel framing is a construction method where steel columns and beams are assembled using a variety of fasteners usually in... <a href="https://www.dominicavibes.dm/lifestyle-261443/">(more)</a></p>
+	     					</li><li class="post-item">
+	     						<a href="https://www.dominicavibes.dm/lifestyle-260873/" class="post-item-thumbnail"><img src="https://www.dominicavibes.dm/wp-content/uploads/2019/12/Organize-Your-Office-Space.png" alt="post image"/></a>
+	     						<div class="post-item-meta">
+	     							<div class="post-item-categories pure-u-1">
+	     								<a href="https://www.dominicavibes.dm/category/lifestyle/" class="post-item-category">Lifestyle</a><a href="https://www.dominicavibes.dm/category/columns/built-environment/" class="post-item-category">The Built Environment</a>
+	     							</div>
+	     							<h3 class="post-item-title"><a href="https://www.dominicavibes.dm/lifestyle-260873/">Organize Your Office Space</a></h3>
+	     							<span class="post-item-author"></span> &nbsp; <span class="post-item-date">December 12, 2019</span>
+	     						</div>
+	     						<p class="post-item-excerpt">&nbsp; Organize Your Office Space Here are six (6) tips to help you create a workspace that is efficient, well-organized... <a href="https://www.dominicavibes.dm/lifestyle-260873/">(more)</a></p>
+	     					</li></ul>		</div> 
+</div>	
+</div>
+	<footer class="global-footer pure-u-1">
+		<script type="text/javascript">
+    		var ajaxurl = "https://www.dominicavibes.dm/wp-admin/admin-ajax.php";
+		</script>
+		<!-- ngg_resource_manager_marker --><script type='text/javascript' src='https://www.dominicavibes.dm/wp-content/themes/vibesnews/inc/post-handler/posts.js?ver=v1'></script>
+<script type='text/javascript' src='https://www.dominicavibes.dm/wp-content/plugins/contact-form-7/includes/js/jquery.form.min.js?ver=3.51.0-2014.06.20'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var _wpcf7 = {"loaderUrl":"https:\/\/www.dominicavibes.dm\/wp-content\/plugins\/contact-form-7\/images\/ajax-loader.gif","sending":"Sending ..."};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://www.dominicavibes.dm/wp-content/plugins/contact-form-7/includes/js/scripts.js?ver=4.3'></script>
+<script type='text/javascript' src='https://www.dominicavibes.dm/wp-includes/js/jquery/ui/core.min.js?ver=1.11.4'></script>
+<script type='text/javascript' src='https://www.dominicavibes.dm/wp-includes/js/jquery/ui/widget.min.js?ver=1.11.4'></script>
+<script type='text/javascript' src='https://www.dominicavibes.dm/wp-includes/js/jquery/ui/mouse.min.js?ver=1.11.4'></script>
+<script type='text/javascript' src='https://www.dominicavibes.dm/wp-includes/js/jquery/ui/resizable.min.js?ver=1.11.4'></script>
+<script type='text/javascript' src='https://www.dominicavibes.dm/wp-includes/js/jquery/ui/draggable.min.js?ver=1.11.4'></script>
+<script type='text/javascript' src='https://www.dominicavibes.dm/wp-includes/js/jquery/ui/button.min.js?ver=1.11.4'></script>
+<script type='text/javascript' src='https://www.dominicavibes.dm/wp-includes/js/jquery/ui/position.min.js?ver=1.11.4'></script>
+<script type='text/javascript' src='https://www.dominicavibes.dm/wp-includes/js/jquery/ui/dialog.min.js?ver=1.11.4'></script>
+<script type='text/javascript' src='https://www.dominicavibes.dm/wp-content/themes/vibesnews/js/fancybox/jquery.fancybox.pack.js?ver=2014-02-20'></script>
+<script type='text/javascript' src='https://www.dominicavibes.dm/wp-content/themes/vibesnews/js/website.js?ver=4.9.13'></script>
+<script type='text/javascript' src='https://www.dominicavibes.dm/wp-content/themes/vibesnews/js/jquery-newsticker/jquery.li-scroller.1.0.js?ver=4.9.13'></script>
+<script type='text/javascript' src='https://www.dominicavibes.dm/wp-includes/js/wp-embed.min.js?ver=4.9.13'></script>
+	<script type='text/javascript'>
+		
+		Galleria.configure({
+			debug			: false, // debug is now off for deployment
+			imageCrop		: true,
+			thumbCrop		: true,
+			carousel		: true,
+			thumbnails		: true,
+			transition		: 'fade',
+			transitionSpeed	: 400,
+			thumbEventType	: 'click',
+			autoplay		: true,
+			clicknext		: false,
+			showImagenav	: true,
+			showCounter		: false,
+			lightbox		: true,
+			imagePan		: true,
+			width			: 600,
+			height			: 460,
+			showInfo		: true,
+			_toggleInfo		: true
+		});
+	</script>
+	<style type="text/css" media="screen" rel="stylesheet">
+	#galleria
+	{
+		height:460px;
+	}
+	.galleria-container 
+	{
+		background:#000000;
+	}
+	.galleria-stage
+	{
+		left: 10px;
+		right: 10px;
+		top: 10px;
+		bottom: 60px;
+	}
+	.galleria-thumbnails-container
+	{
+		left:10px;
+		right:10px;
+	}
+	.galleria-thumbnails .galleria-image
+	{
+		border: 1px solid #000000;
+		height:40px;
+		width:60px;
+	}
+	.galleria-info-link
+	{
+		background-color: #000000; 
+	}
+	.galleria-info-text
+	{
+		background-color: #000000;
+	}
+	.galleria-lightbox-shadow
+	{
+		background:#000000;
+	}
+	
+	.galleria-lightbox-content
+	{
+		background-color:#FFFFFF;
+		left:10px;
+		right:10px;
+		top:10px;
+		bottom:10px;
+	}
+	.galleria-thumb-nav-right
+	{
+		background-color:#000000;
+	}
+	.galleria-thumb-nav-left
+	{
+		background-color:#000000;
+	}
+	.galleria-lightbox-image
+	{
+		left:0;
+		right:0;
+		bottom:30px;
+		top:0;
+	}
+		</style><script type="text/javascript">
+//<![CDATA[
+var s2jQuery = jQuery.noConflict();
+s2jQuery(document).ready(function() {
+	var dialog = s2jQuery('<div></div>');
+	if (s2jQuery('a.s2popup').attr('id') === 'unsubscribe') {
+		dialog.html('<form method="post" action=""><input type="hidden" name="ip" value="190.58.128.230" /><span style="display:none !important"><label for="name">Leave Blank:</label><input type="text" id="name" name="name" /><label for="uri">Do Not Change:</label><input type="text" id="uri" name="uri" value="http://" /></span><p><label for="s2email">Your email:</label><br /><input type="text" name="email" id="s2email" value="" size="20" /></p><p><input type="submit" name="subscribe" value="Subscribe" /></p></form>');
+	} else if (s2jQuery('a.s2popup').attr('id') === 'subscribe') {
+		dialog.html('<form method="post" action=""><input type="hidden" name="ip" value="190.58.128.230" /><span style="display:none !important"><label for="name">Leave Blank:</label><input type="text" id="name" name="name" /><label for="uri">Do Not Change:</label><input type="text" id="uri" name="uri" value="http://" /></span><p><label for="s2email">Your email:</label><br /><input type="text" name="email" id="s2email" value="" size="20" /></p><p><input type="submit" name="unsubscribe" value="Unsubscribe" /></p></form>');
+	} else {
+		dialog.html('<form method="post" action=""><input type="hidden" name="ip" value="190.58.128.230" /><span style="display:none !important"><label for="name">Leave Blank:</label><input type="text" id="name" name="name" /><label for="uri">Do Not Change:</label><input type="text" id="uri" name="uri" value="http://" /></span><p><label for="s2email">Your email:</label><br /><input type="text" name="email" id="s2email" value="" size="20" /></p><p><input type="submit" name="subscribe" value="Subscribe" />&nbsp;<input type="submit" name="unsubscribe" value="Unsubscribe" /></p></form>');
+	}
+	dialog.dialog({autoOpen: false, modal: true, zIndex: 10000, title: 'Subscribe to this blog'});
+	s2jQuery('a.s2popup').click(function(){
+		dialog.dialog('open');
+		return false;
+	});
+});
+//]]>
+</script>
+<script type='text/javascript' src='https://www.dominicavibes.dm/wp-content/plugins/akismet/_inc/form.js?ver=3.3'></script>
+		<div class="content-wrap pure-u-23-24">
+			<div class="latest-comments pure-u-7-24">
+				<h2>Recent Comments</h2>
+			</div>
+
+			<div class="footer-tag-cloud pure-u-1-3">
+				<h2>Tags</h2>
+				<a href="#">Local News</a>
+				<a href="#">Regional News</a>
+				<a href="#">Sports</a>
+				<a href="#">Politics</a>
+				<a href="#">Business</a>
+				<a href="#">Health</a>
+				<a href="#">Relationship</a>
+				<a href="#">Travel</a>
+				<a href="#">Food</a>
+				<a href="#">Dining</a>
+				<a href="#">Faith</a>
+				<a href="#">Money</a>
+				<a href="#">Commentary</a>
+				<a href="#">Opinions</a>
+				<a href="#">Letters</a>
+				<a href="#">Just Thinking</a>
+				<a href="#">The Economy and You</a>
+			</div>
+
+			<div class="latest-comments pure-u-1-3 footer-about">
+				<h2>Dominica Vibes</h2>
+				<p>
+					DA Vibes’ mission is to empower the general public with up to date news and information. In addition to Dominica Vibes, DA Vibes is home to the vibrant Vibes Radio.
+					<br/><br/>
+					If you are a marketer looking for ways to connect your brand with Dominica Vibes’ influential audiences, please contact us at sales@dominicavibes.dm or 1-767-440-8152.
+					<br/> <br/>
+					For media inquiries, please contact our reporting team at info@dominicavibes.dm.
+				</p>
+			</div>
+		</div>
+		<div class="legal">
+			<div class="content-wrap pure-u-23-24">
+				<div class="footer-sub-links">
+					<a href="https://www.dominicavibes.dm/lifestyle-262190/">Usage Policy</a> |
+					<a href="https://www.dominicavibes.dm/lifestyle-262190/">Disclaimer</a> |
+					<a href="https://www.dominicavibes.dm/lifestyle-262190/">Contact Us</a>
+				</div>
+				<a href="https://www.dominicavibes.dm/lifestyle-262190/">&copy; 2014 Vibes Media Group</a>
+			</div>
+		</div>
+	</footer>
+	</div>
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"fc77f51dbd","applicationID":"3895855","transactionName":"bgMEbEdYW0tRWkUKCVdJJ1tBUFpWH0pYDQFVAw==","queueTime":0,"applicationTime":3958,"atts":"QkQHGg9CSEU=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>

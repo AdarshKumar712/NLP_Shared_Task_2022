@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8"><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"1502e4f90c",applicationID:"58634209"};window.NREUM||(NREUM={}),__nr_require=function(n,e,t){function r(t){if(!e[t]){var i=e[t]={exports:{}};n[t][0].call(i.exports,function(e){var i=n[t][1][e];return r(i||e)},i,i.exports)}return e[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(n,e,t){function r(){}function i(n,e,t){return function(){return o(n,[u.now()].concat(f(arguments)),e?null:this,t),e?void 0:this}}var o=n("handle"),a=n(4),f=n(5),c=n("ee").get("tracer"),u=n("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(n,e){s[e]=i(d+e,!0,"api")}),s.addPageAction=i(d+"addPageAction",!0),s.setCurrentRouteName=i(d+"routeName",!0),e.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(n,e){var t={},r=this,i="function"==typeof e;return o(l+"tracer",[u.now(),n,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return e.apply(this,arguments)}catch(n){throw c.emit("fn-err",[arguments,this,n],t),n}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(n,e){m[e]=i(l+e)}),newrelic.noticeError=function(n,e){"string"==typeof n&&(n=new Error(n)),o("err",[n,u.now(),!1,e])}},{}],2:[function(n,e,t){function r(n,e){var t=n.getEntries();t.forEach(function(n){"first-paint"===n.name?a("timing",["fp",Math.floor(n.startTime)]):"first-contentful-paint"===n.name&&a("timing",["fcp",Math.floor(n.startTime)])})}function i(n){if(n instanceof c&&!s){var e,t=Math.round(n.timeStamp);e=t>1e12?Date.now()-t:f.now()-t,s=!0,a("timing",["fi",t,{type:n.type,fid:e}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var o,a=n("handle"),f=n("loader"),c=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){o=new PerformanceObserver(r);try{o.observe({entryTypes:["paint"]})}catch(u){}}if("addEventListener"in document){var s=!1,p=["click","keydown","mousedown","pointerdown","touchstart"];p.forEach(function(n){document.addEventListener(n,i,!1)})}}},{}],3:[function(n,e,t){function r(n,e){if(!i)return!1;if(n!==i)return!1;if(!e)return!0;if(!o)return!1;for(var t=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],4:[function(n,e,t){function r(n,e){var t=[],r="",o=0;for(r in n)i.call(n,r)&&(t[o]=e(r,n[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],5:[function(n,e,t){function r(n,e,t){e||(e=0),"undefined"==typeof t&&(t=n?n.length:0);for(var r=-1,i=t-e||0,o=Array(i<0?0:i);++r<i;)o[r]=n[e+r];return o}e.exports=r},{}],6:[function(n,e,t){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(n,e,t){function r(){}function i(n){function e(n){return n&&n instanceof r?n:n?c(n,f,o):o()}function t(t,r,i,o){if(!d.aborted||o){n&&n(t,r,i);for(var a=e(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function l(n,e){h[n]=v(n).concat(e)}function m(n,e){var t=h[n];if(t)for(var r=0;r<t.length;r++)t[r]===e&&t.splice(r,1)}function v(n){return h[n]||[]}function g(n){return p[n]=p[n]||i(t)}function w(n,e){u(n,function(n,t){e=e||"feature",y[t]=e,e in s||(s[e]=[])})}var h={},y={},b={on:l,addEventListener:l,removeEventListener:m,emit:t,get:g,listeners:v,context:e,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var f="nr@context",c=n("gos"),u=n(4),s={},p={},d=e.exports=i();d.backlog=s},{}],gos:[function(n,e,t){function r(n,e,t){if(i.call(n,e))return n[e];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(n,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return n[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(n,e,t){function r(n,e,t,r){i.buffer([n],r),i.emit(n,e,t)}var i=n("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(n,e,t){function r(n){var e=typeof n;return!n||"object"!==e&&"function"!==e?-1:n===window?0:a(n,o,function(){return i++})}var i=1,o="nr@id",a=n("gos");e.exports=r},{}],loader:[function(n,e,t){function r(){if(!x++){var n=E.info=NREUM.info,e=l.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(n&&n.licenseKey&&n.applicationID&&e))return s.abort();u(y,function(e,t){n[e]||(n[e]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=l.createElement("script");t.src="https://"+n.agent,e.parentNode.insertBefore(t,e)}}function i(){"complete"===l.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=n("handle"),u=n(4),s=n("ee"),p=n(3),d=window,l=d.document,m="addEventListener",v="attachEvent",g=d.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:g,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1158.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=e.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};n(1),n(2),l[m]?(l[m]("DOMContentLoaded",o,!1),d[m]("load",r,!1)):(l[v]("onreadystatechange",i),d[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=n(6)},{}],"wrap-function":[function(n,e,t){function r(n){return!(n&&n instanceof Function&&n.apply&&!n[a])}var i=n("ee"),o=n(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;e.exports=function(n,e){function t(n,e,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){d([u,"",[r,a,i],f])}s(e+"start",[r,a,i],f);try{return c=n.apply(a,r)}catch(p){throw s(e+"err",[r,a,p],f),p}finally{s(e+"end",[r,a,c],f)}}return r(n)?n:(e||(e=""),nrWrapper[a]=n,p(n,nrWrapper),nrWrapper)}function u(n,e,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<e.length;c++)f=e[c],a=n[f],r(a)||(n[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||e){var o=c;c=!0;try{n.emit(t,r,i,e)}catch(a){d([a,t,r,i])}c=o}}function p(n,e){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(n);return t.forEach(function(t){Object.defineProperty(e,t,{get:function(){return n[t]},set:function(e){return n[t]=e,e}})}),e}catch(r){d([r])}for(var i in n)f.call(n,i)&&(e[i]=n[i]);return e}function d(e){try{n.emit("internal-error",e)}catch(t){}}return n||(n=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script>
+		<title>Phoenix moving company U-Haul will no longer hire nicotine users</title>
+	<meta name="keywords" content="Phoenix and Arizona Breaking News And News Headlines - Home, Home,92.3 KTAR">
+		<meta name="author" content="">
+
+	<meta name="verify-v1" content="XrJiQDsWmPaoqGKN0EHKs7ult0rBB0W9zj4cWkAPRVI=" />
+
+	<meta name="viewport" content="width=device-width, maximum-scale=1.0">
+	<meta name="apple-itunes-app" content="app-id=719630055">
+	<meta property="fb:pages" content="42794977621" />
+	<meta name="google-play-app" content="app-id=com.jacobsmedia.KTAR">
+	<link rel="stylesheet" href="https://ktar.com/wp-content/themes/ktar/assets/jquery-smartbanner/jquery.smartbanner.css" type="text/css" media="screen">
+
+			<script type="text/javascript">
+		var ajaxurl = 'https://ktar.com/wp-admin/admin-ajax.php';
+		</script>
+		
+<!-- This site is optimized with the Yoast SEO plugin v11.5 - https://yoast.com/wordpress/plugins/seo/ -->
+<meta name="description" content="Starting in February, the do-it-yourself moving company headquartered in Phoenix will no longer hire nicotine users in Arizona and 20 other states."/>
+<link rel="canonical" href="https://ktar.com/story/2900558/phoenix-moving-company-u-haul-will-no-longer-hire-nicotine-users/" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Phoenix moving company U-Haul will no longer hire nicotine users" />
+<meta property="og:description" content="Starting in February, the do-it-yourself moving company headquartered in Phoenix will no longer hire nicotine users in Arizona and 20 other states." />
+<meta property="og:url" content="https://ktar.com/story/2900558/phoenix-moving-company-u-haul-will-no-longer-hire-nicotine-users/" />
+<meta property="og:site_name" content="KTAR.com" />
+<meta property="article:publisher" content="https://www.facebook.com/KTARNews" />
+<meta property="article:tag" content="arizona" />
+<meta property="article:tag" content="hiring" />
+<meta property="article:tag" content="moving" />
+<meta property="article:tag" content="nicotine" />
+<meta property="article:tag" content="phoenix" />
+<meta property="article:tag" content="tobacco" />
+<meta property="article:tag" content="U-Haul" />
+<meta property="article:section" content="Arizona News" />
+<meta property="article:published_time" content="2019-12-31T21:30:09+00:00" />
+<meta property="article:modified_time" content="2019-12-31T20:37:49+00:00" />
+<meta property="og:updated_time" content="2019-12-31T20:37:49+00:00" />
+<meta property="og:image" content="https://ktar.com/wp-content/uploads/2019/12/u-haul-nicotine-free.png" />
+<meta property="og:image:secure_url" content="https://ktar.com/wp-content/uploads/2019/12/u-haul-nicotine-free.png" />
+<meta property="og:image:width" content="620" />
+<meta property="og:image:height" content="370" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:description" content="Starting in February, the do-it-yourself moving company headquartered in Phoenix will no longer hire nicotine users in Arizona and 20 other states." />
+<meta name="twitter:title" content="Phoenix moving company U-Haul will no longer hire nicotine users" />
+<meta name="twitter:site" content="@ktar923" />
+<meta name="twitter:image" content="https://ktar.com/wp-content/uploads/2019/12/u-haul-nicotine-free.png" />
+<meta name="twitter:creator" content="@GriseldaZetino" />
+<script type='application/ld+json' class='yoast-schema-graph yoast-schema-graph--main'>{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://ktar.com/#organization","name":"","url":"https://ktar.com/","sameAs":["https://www.facebook.com/KTARNews","https://twitter.com/ktar923"]},{"@type":"WebSite","@id":"https://ktar.com/#website","url":"https://ktar.com/","name":"KTAR.com","publisher":{"@id":"https://ktar.com/#organization"},"potentialAction":{"@type":"SearchAction","target":"https://ktar.com/?s={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"ImageObject","@id":"https://ktar.com/story/2900558/phoenix-moving-company-u-haul-will-no-longer-hire-nicotine-users/#primaryimage","url":"https://ktar.com/wp-content/uploads/2019/12/u-haul-nicotine-free.png","width":"620","height":"370"},{"@type":"WebPage","@id":"https://ktar.com/story/2900558/phoenix-moving-company-u-haul-will-no-longer-hire-nicotine-users/#webpage","url":"https://ktar.com/story/2900558/phoenix-moving-company-u-haul-will-no-longer-hire-nicotine-users/","inLanguage":"en-US","name":"Phoenix moving company U-Haul will no longer hire nicotine users","isPartOf":{"@id":"https://ktar.com/#website"},"primaryImageOfPage":{"@id":"https://ktar.com/story/2900558/phoenix-moving-company-u-haul-will-no-longer-hire-nicotine-users/#primaryimage"},"datePublished":"2019-12-31T21:30:09+00:00","dateModified":"2019-12-31T20:37:49+00:00","description":"Starting in February, the do-it-yourself moving company headquartered in Phoenix will no longer hire nicotine users in Arizona and 20 other states."},{"@type":"NewsArticle","@id":"https://ktar.com/story/2900558/phoenix-moving-company-u-haul-will-no-longer-hire-nicotine-users/#article","isPartOf":{"@id":"https://ktar.com/story/2900558/phoenix-moving-company-u-haul-will-no-longer-hire-nicotine-users/#webpage"},"author":{"@id":"https://ktar.com/story/author/gzetino/#author"},"headline":"Phoenix moving company U-Haul will no longer hire nicotine users","datePublished":"2019-12-31T21:30:09+00:00","dateModified":"2019-12-31T20:37:49+00:00","commentCount":0,"mainEntityOfPage":{"@id":"https://ktar.com/story/2900558/phoenix-moving-company-u-haul-will-no-longer-hire-nicotine-users/#webpage"},"publisher":{"@id":"https://ktar.com/#organization"},"image":{"@id":"https://ktar.com/story/2900558/phoenix-moving-company-u-haul-will-no-longer-hire-nicotine-users/#primaryimage"},"keywords":"arizona,hiring,moving,nicotine,phoenix,tobacco,U-Haul","articleSection":"Arizona Business,Arizona Health News,Arizona News","copyrightYear":"2019","copyrightHolder":{"@id":"https://ktar.com#organization"}},{"@type":["Person"],"@id":"https://ktar.com/story/author/gzetino/#author","name":"Griselda Zetino","image":{"@type":"ImageObject","@id":"https://ktar.com/#authorlogo","url":"https://secure.gravatar.com/avatar/cfd8586dd2d5845560036fcb7c2ec5ff?s=96&d=mm&r=g","caption":"Griselda Zetino"},"description":"Griselda Zetino, a multimedia reporter, has a passion for storytelling. She joined the KTAR News team in December 2016. Prior to that, she worked as a freelance journalist. Her clients included NBC Latino, The Guardian and the Arizona Center for Investigative Reporting. She enjoys covering politics, education and immigration. The Mexico native earned a bachelor\u2019s degree in journalism from Arizona State University in May 2011, and she is currently a board member for the Arizona Latino Media Association. @GriseldaZetino.","sameAs":["https://twitter.com/GriseldaZetino"]}]}</script>
+<!-- / Yoast SEO plugin. -->
+
+<link rel="amphtml" href="https://ktar.com/story/2900558/phoenix-moving-company-u-haul-will-no-longer-hire-nicotine-users/amp/" /><meta name="generator" content="AMP for WP 0.9.97.63"/><link rel='dns-prefetch' href='//ajax.googleapis.com' />
+<link rel='dns-prefetch' href='//cdnjs.cloudflare.com' />
+<link rel='dns-prefetch' href='//d26fhcku9pa5f4.cloudfront.net' />
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//netdna.bootstrapcdn.com' />
+<link rel='dns-prefetch' href='//code.jquery.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="KTAR.com &raquo; Phoenix moving company U-Haul will no longer hire nicotine users Comments Feed" href="https://ktar.com/story/2900558/phoenix-moving-company-u-haul-will-no-longer-hire-nicotine-users/feed/" />
+<link rel='stylesheet' id='smw-plugin-style-css'  href='https://ktar.com/wp-content/plugins/premium-stock-market-widgets/css/style.css?ver=1.8.9' type='text/css' media='all' />
+<link rel='stylesheet' id='smw-font-awesome-css'  href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css?ver=1.8.9' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-block-library-css'  href='https://ktar.com/wp-includes/css/dist/block-library/style.min.css?ver=5.2.2' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-polls-css'  href='https://ktar.com/wp-content/plugins/wp-polls/polls-css.css?ver=1.0' type='text/css' media='all' />
+<style id='wp-polls-inline-css' type='text/css'>
+.wp-polls .pollbar {
+	margin: 1px;
+	font-size: 16px;
+	line-height: 18px;
+	height: 18px;
+	background: #DC1A22;
+	border: 1px solid #DC1A22;
+}
+
+</style>
+<link rel='stylesheet' id='3.0-statsshs-css'  href='https://d26fhcku9pa5f4.cloudfront.net/shsdefault.css?ver=20191017' type='text/css' media='all' />
+<link rel='stylesheet' id='3.0-statsmulti-css'  href='https://d26fhcku9pa5f4.cloudfront.net/multidefault.css?ver=20191017' type='text/css' media='all' />
+<link rel='stylesheet' id='3.0-main-css'  href='https://d26fhcku9pa5f4.cloudfront.net/web3-main.css?ver=20191017' type='text/css' media='all' />
+<link rel='stylesheet' id='3.0-ktar-css'  href='https://ktar.com/wp-content/themes/ktar/assets/css/ktar.css?ver=20180512' type='text/css' media='all' />
+<link rel='stylesheet' id='3.0-nonhomepage-style-css'  href='https://d26fhcku9pa5f4.cloudfront.net/nonhome.css?ver=20191017' type='text/css' media='all' />
+<link rel='stylesheet' id='3.0-nonhomepage-style-override-css'  href='https://ktar.com/wp-content/themes/ktar/assets/css/nonhome.css?ver=20170405' type='text/css' media='all' />
+<link rel='stylesheet' id='3.0-dark-css'  href='https://d26fhcku9pa5f4.cloudfront.net/dark.css?ver=20191017' type='text/css' media='all' />
+<link rel='stylesheet' id='unity-roboto-slab-css'  href='https://fonts.googleapis.com/css?family=Roboto+Slab%3A400%2C900&#038;ver=5.2.2' type='text/css' media='all' />
+<link rel='stylesheet' id='font-awesome-css'  href='https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css?ver=4.0.3' type='text/css' media='all' />
+<link rel='stylesheet' id='events-css'  href='https://ktar.com/wp-content/plugins/tweak-events/assets/css/events.css?ver=1.0' type='text/css' media='all' />
+<link rel='stylesheet' id='jquery-ui-smoothness-css'  href='https://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css?ver=1.0' type='text/css' media='all' />
+<link rel='stylesheet' id='weather-css-css'  href='https://ktar.com/wp-content/plugins/weather-widgets/assets/css/weather-icons.min.css?ver=1.0' type='text/css' media='all' />
+<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js?ver=1.11.0'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var smwGlobals = {"debug":"1","code":"smw","ajaxUrl":"https:\/\/ktar.com\/wp-content\/plugins\/premium-stock-market-widgets\/ajax.php","ajaxMethod":"POST","pluginUrl":"https:\/\/ktar.com\/wp-content\/plugins\/premium-stock-market-widgets\/","dependencies":{"marquee":"https:\/\/ktar.com\/wp-content\/plugins\/premium-stock-market-widgets\/vendor\/jquery.marquee\/jquery.marquee.min.js","tablesort":"https:\/\/ktar.com\/wp-content\/plugins\/premium-stock-market-widgets\/vendor\/jquery.tablesort\/jquery.tablesort.min.js","sparkline":"https:\/\/ktar.com\/wp-content\/plugins\/premium-stock-market-widgets\/vendor\/jquery.sparkline\/jquery.sparkline.min.js","chart":"https:\/\/ktar.com\/wp-content\/plugins\/premium-stock-market-widgets\/vendor\/chart.js\/Chart.min.js"}};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://ktar.com/wp-content/plugins/premium-stock-market-widgets/js/app.js?ver=1.8.9'></script>
+<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js?ver=1.10.4'></script>
+<script type='text/javascript' src='https://ktar.com/wp-content/themes/ktar/assets/js/jquery.functions.js?ver=4.4.14'></script>
+<script type='text/javascript' src='https://ktar.com/wp-content/themes/ktar/assets/js/blockadblock.js?ver=1.0'></script>
+<link rel='https://api.w.org/' href='https://ktar.com/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://ktar.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://ktar.com/wp-includes/wlwmanifest.xml" /> 
+<link rel='shortlink' href='https://ktar.com/?p=2900558' />
+<link rel="alternate" type="application/json+oembed" href="https://ktar.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fktar.com%2Fstory%2F2900558%2Fphoenix-moving-company-u-haul-will-no-longer-hire-nicotine-users%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://ktar.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fktar.com%2Fstory%2F2900558%2Fphoenix-moving-company-u-haul-will-no-longer-hire-nicotine-users%2F&#038;format=xml" />
+	<!-- Include google_services.js -->
+<script type='text/javascript'>
+var googletag = googletag || {};
+googletag.cmd = googletag.cmd || [];
+(function() {
+var gads = document.createElement('script');
+gads.async = true;
+gads.type = 'text/javascript';
+var useSSL = 'https:' == document.location.protocol;
+gads.src = (useSSL ? 'https:' : 'http:') +
+'//www.googletagservices.com/tag/js/gpt.js';
+var node = document.getElementsByTagName('script')[0];
+node.parentNode.insertBefore(gads, node);
+})();
+</script>
+
+	<!-- Google Tag Manager -->
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-MJT8PCK');</script>
+	<!-- End Google Tag Manager -->
+
+	<!--[if lt IE 9]>
+	<script src="https://ktar.com/wp-content/themes/ktar/assets/js/html5shiv.js"></script>
+	<script type="text/javascript" src="https://ktar.com/wp-content/themes/ktar/assets/js/selectivizr.js"></script>
+	<![endif]-->
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-5965569640055032",
+    enable_page_level_ads: true
+  });
+</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MJT8PCK"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<!-- Bonneville Phoenix KMVP 92.3 FM Container tag; Do not remove or alter code in any way.
+
+        Placement: Place on all site pages immediately after the opening <body> tag.
+
+        Generated: 1/5/2016 -->
+
+        <!-- Google Tag Manager -->
+        <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-PMHZCQ"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-PMHZCQ');</script>
+        <!-- End Google Tag Manager -->
+        <script>
+
+        var versaTag = {};
+        versaTag.id = "5532";
+        versaTag.sync = 0;
+        versaTag.dispType = "js";
+        versaTag.ptcl = "HTTPS";
+        versaTag.bsUrl = "bs.serving-sys.com/BurstingPipe";
+        //VersaTag activity parameters include all conversion parameters including custom parameters and Predefined parameters. Syntax: "ParamName1":"ParamValue1", "ParamName2":"ParamValue2". ParamValue can be empty.
+        versaTag.activityParams = {
+        //Predefined parameters:
+        "OrderID":"","Session":"","Value":"","productid":"","productinfo":"","Quantity":""
+        //Custom parameters:
+        };
+        //Static retargeting tags parameters. Syntax: "TagID1":"ParamValue1", "TagID2":"ParamValue2". ParamValue can be empty.
+        versaTag.retargetParams = {};
+        //Dynamic retargeting tags parameters. Syntax: "TagID1":"ParamValue1", "TagID2":"ParamValue2". ParamValue can be empty.
+        versaTag.dynamicRetargetParams = {};
+        // Third party tags conditional parameters and mapping rule parameters. Syntax: "CondParam1":"ParamValue1", "CondParam2":"ParamValue2". ParamValue can be empty.
+        versaTag.conditionalParams = {};
+        </script>
+        <script id="ebOneTagUrlId" src="https://secure-ds.serving-sys.com/SemiCachedScripts/ebOneTag.js"></script>
+        <noscript>
+        <iframe src="https://bs.serving-sys.com/BurstingPipe?
+        cn=ot&amp;
+        onetagid=5532&amp;
+        ns=1&amp;
+        activityValues=$=[Value]&amp;OrderID=[OrderID]&amp;Session=[Session]&amp;ProductID=[ProductID]&amp;ProductInfo=[ProductInfo]&amp;Quantity=[Quantity]$$&amp;
+        retargetingValues=$$$$&amp;
+        dynamicRetargetingValues=$$$$&amp;
+        acp=$$$$&amp;"
+        style="display:none;width:0px;height:0px"></iframe>
+        </noscript>
+        
+
+<div id="menu" class="screencover">
+	<div class="menuicon">
+		<a href="#" class="close_menu">x</a>
+	</div>
+	<ul>
+		<li class="section">KTAR News</li>
+			<li><a href="/">Home</a></li>
+			<li><a href="/?s=1"><i class="fa fa-search"></i> Search</a></li>
+			<li><a href="/topstories">Top Stories</a></li>
+			<li><a href="http://rewards.ktar.com/">Rewards</a></li>
+			<li><a href="/listen-live">Listen Live</a></li>
+			<li><a href="/podcasts">Podcasts</a></li>
+
+		<li class="section">News</li>
+			<li><a href="/arizonanews">Arizona News</a></li>
+			<li><a href="http://arizonasports.com">Arizona Sports</a></li>
+			<li><a href="/business">Arizona Business</a></li>
+			<li><a href="/immigration">Arizona Immigration</a></li>
+			<li><a href="/arizonavotes">Arizona Votes</a></li>
+			<li><a href="/tech">Arizona Technology</a></li>
+			<li><a href="/education">Arizona Education</a></li>
+			<li><a href="/category/eyes-on-parenting/">Eyes On Parenting</a></li>
+			<li><a href="/health">Arizona Health</a></li>
+			<li><a href="/wildfires">Arizona Wildfires</a></li>
+			<li><a href="/national-news">National</a></li>
+			<li><a href="/traffic">Arizona Traffic</a></li>
+			<li><a href="/weather">Arizona Weather</a></li>
+
+		<li class="section">Shows</li>
+			<li><a href="/arizonasmorningnews">Arizona's Morning News</a></li>
+			<li><a href="/bruceandpamela">Bruce St James &amp; Pamela Hughes</a></li>
+			<li><a href="/category/dave-ramsey/">The Dave Ramsey Show</a></li>
+			<li><a href="/gaydos-in-the-afternoon/">Gaydos In The Afternoon</a></li>
+			<li><a href="/category/the-chad-benson-show/">The Chad Benson Show</a></li>
+			<li><a href="/on-air-schedule/">Complete Lineup</a></li>
+
+        <li class="section">Blogs</li>
+			<li><a href="/the-lasso">The Lasso</a></li>
+			<li><a href="/silent-witness">Silent Witness</a></li>
+			<li><a href="/rosie-on-the-house">Rosie on the House</a></li>
+			<li><a href="/chew-on-this">Chew On This</a></li>
+			<li><a href="/monica-lindstrom">Monica Lindstrom</a></li>
+			<li><a href="/data-doctors">Data Doctors</a></li>
+			<li><a href="/category/dr-sky-blog">Dr. Sky</a></li>
+
+		<li class="section">KTAR News On 92.3FM</li>
+			<li><a href="/on-air-schedule">On-Air Schedule</a></li>
+			<li><a href="https://bonneville.com/everyday-strong/" target="_blank">EveryDay Strong</a></li>
+			<li><a href="/ktar-contests/">Rewards</a></li>
+			<li><a href="/ktar-contests/">Contests</a></li>
+			<li><a href="/events/featured">Events</a></li>
+			<li><a href="/newsletters/">Newsletter</a></li>
+			<li><a href="/text-alerts">Text Alerts</a></li>
+			<li><a href="/the-ktar-newstalk-app">KTAR Apps</a></li>
+			<li><a href="javascript:void()" onclick="popWindow('http://www.facebook.com/KTARNews')">Facebook</a></li>
+			<li><a href="javascript:void()" onclick="popWindow('https://twitter.com/KTAR923')">Twitter</a></li>
+			<li><a href="javascript:void()" onclick="popWindow('http://instagram.com/ktarnews')">Instagram</a></li>
+    </ul>
+</div>
+	<div id="share" class="screencover">
+	<div class="menuicon">
+		<a href="#" class="close_share">x</a>
+	</div>
+	<div class="colheader">
+		Share this story...
+	</div>
+
+    
+						<img width="620" height="370" src="https://ktar.com/wp-content/uploads/2019/12/u-haul-nicotine-free-620x370.png" class="wide-share wp-post-image" alt="" srcset="https://ktar.com/wp-content/uploads/2019/12/u-haul-nicotine-free.png 620w, https://ktar.com/wp-content/uploads/2019/12/u-haul-nicotine-free-300x179.png 300w, https://ktar.com/wp-content/uploads/2019/12/u-haul-nicotine-free-120x72.png 120w, https://ktar.com/wp-content/uploads/2019/12/u-haul-nicotine-free-294x175.png 294w, https://ktar.com/wp-content/uploads/2019/12/u-haul-nicotine-free-250x149.png 250w" sizes="(max-width: 620px) 100vw, 620px" />			    
+
+		<ul>
+		<li><div>Phoenix moving company U-Haul will no longer hire nicotine users</div></li>
+		<li><a href="javascript:void();" onClick="popShare('http://www.facebook.com/sharer.php?u=https%3A%2F%2Fktar.com%2Fstory%2F2900558%2Fphoenix-moving-company-u-haul-will-no-longer-hire-nicotine-users%2F&t=https://ktar.com | https%3A%2F%2Fktar.com%2Fstory%2F2900558%2Fphoenix-moving-company-u-haul-will-no-longer-hire-nicotine-users%2F')">Facebook</a></li>
+		<li><a href="javascript:void();" onClick="popShare('http://twitter.com/share?text=Phoenix moving company U-Haul will no longer hire nicotine users&url=https://ktar.com/story/2900558/phoenix-moving-company-u-haul-will-no-longer-hire-nicotine-users/')">Twitter</a></li>
+		<li><a href="javascript:void();" onClick="popShare('http://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Fktar.com%2Fstory%2F2900558%2Fphoenix-moving-company-u-haul-will-no-longer-hire-nicotine-users%2F&amp;title=Phoenix moving company U-Haul will no longer hire nicotine users&amp;summary=')">LinkedIn</a></li>
+		<li><a href="/email-story/?Subject=The+following+article+has+been+shared+with+you%3A%0A%0APhoenix+moving+company+U-Haul+will+no+longer+hire+nicotine+users%0A%0AClick+the+following+link+to+view%3A+https%3A%2F%2Fktar.com%2Fstory%2F2900558%2Fphoenix-moving-company-u-haul-will-no-longer-hire-nicotine-users%2F">Email Story</a></li>
+	</ul>
+
+
+</div>
+
+
+<div id="wrapper">
+
+	<!--OVERLAY WHEN NAVIGATION IS OPEN-->
+	<div id="overlay_back"></div>
+	<!--OVERLAY WHEN NAVIGATION IS OPEN-->
+
+	<header>
+		<!--HEADER-->
+		<div class="headerwrapper primary">
+
+			<div id="topnav">
+				<div id="topnav_body">
+					<ul class="left">
+						<li><a href="https://www.facebook.com/KTARNews" target="_blank"><div class="fa fa-facebook-square fonticon"></div> FACEBOOK</a></li>
+						<li><a href="https://twitter.com/ktar923" target="_blank"><div class="fa fa-twitter-square fonticon"></div> TWITTER</a></li>
+						<li><a href="/newsletters/"><div class="fa fa-envelope fonticon"></div> EMAIL ALERTS</a></li>
+						<li><a href="/the-ktar-newstalk-app/"><div class="fa fa-mobile fonticon"></div> GET THE APP</a></li>
+
+					</ul>
+
+					<ul class="right">
+																		<li><span class="news-nav-icon"></span><a style="border-bottom: 1px solid #DC1928;" href="http://ktar.com/">KTAR News</a></li>
+						<li><span class="sports-nav-icon"></span><a href="http://arizonasports.com">Arizona Sports</a></li>
+					</ul>
+				</div>
+			</div>
+
+
+			<div class="header">
+				<div class="menuicon primary">
+					<a href="#" class="menu_link"><i class="fa fa-bars" aria-hidden="true"></i></a>
+				</div>
+									<div class="shareicon primary">
+						<a href="#" class="share_link"><i class="fa fa-share" aria-hidden="true"></i></a>
+					</div>
+								<ul class="upper">
+					<li><a href="/top-stories" class="border">Top Stories</a></li>
+					<li><a href="/listen-live" class="border"><i class="fa fa-circle" aria-hidden="true"></i> Listen Live</a></li>
+					<li><a href="/category/podcasts" class="border">Podcasts</a></li>
+					<li><a href="http://rewards.ktar.com" class="border">Rewards</a></li>
+
+					<li class="farright secondary"><a href="#" class="menu_link borderlight">Menu <i class="fa fa-bars" aria-hidden="true"></i></a></li>
+				</ul>
+				<a href="/"><img src="https://ktar.com/wp-content/themes/ktar/assets/logo/ktar_horz_923_neg.svg"></a>
+
+			</div>
+		</div>
+
+	</header>
+	<!--HEADER-->
+	<div id="mobilespacer"></div>
+	<div id="deskspacer"></div>
+<div class="farleftcolumn">
+    <div class="colheader">Latest News</div>
+    
+    <ul class="morestories">
+                            <li >
+                <a href="https://ktar.com/story/2900419/taco-bell-cantina-serving-alcohol-opens-on-mill-avenue/" onclick="_gaq.push(['_trackEvent','Latest News Nav','https://ktar.com/story/2900419/taco-bell-cantina-serving-alcohol-opens-on-mill-avenue/','Latest News 1']);" class="thumb">
+                    <img width="60" height="60" src="https://ktar.com/wp-content/uploads/2019/12/taco-bell-cantina-mill-ave-60x60.jpg" class="thumb wp-post-image" alt="" srcset="https://ktar.com/wp-content/uploads/2019/12/taco-bell-cantina-mill-ave-60x60.jpg 60w, https://ktar.com/wp-content/uploads/2019/12/taco-bell-cantina-mill-ave-150x150.jpg 150w" sizes="(max-width: 60px) 100vw, 60px" />                </a>
+                <a href="https://ktar.com/story/2900419/taco-bell-cantina-serving-alcohol-opens-on-mill-avenue/" onclick="_gaq.push(['_trackEvent','Latest News Nav','https://ktar.com/story/2900419/taco-bell-cantina-serving-alcohol-opens-on-mill-avenue/','Latest News 1']);">
+                    <span>KTAR.com<br></span>
+                    Taco Bell Cantina serving alcohol opens on Mill Avenue                </a>
+            </li>
+                    <li class="active">
+                <a href="https://ktar.com/story/2900558/phoenix-moving-company-u-haul-will-no-longer-hire-nicotine-users/" onclick="_gaq.push(['_trackEvent','Latest News Nav','https://ktar.com/story/2900558/phoenix-moving-company-u-haul-will-no-longer-hire-nicotine-users/','Latest News 1']);" class="thumb">
+                    <img width="60" height="60" src="https://ktar.com/wp-content/uploads/2019/12/u-haul-nicotine-free-60x60.png" class="thumb wp-post-image" alt="" srcset="https://ktar.com/wp-content/uploads/2019/12/u-haul-nicotine-free-60x60.png 60w, https://ktar.com/wp-content/uploads/2019/12/u-haul-nicotine-free-150x150.png 150w" sizes="(max-width: 60px) 100vw, 60px" />                </a>
+                <a href="https://ktar.com/story/2900558/phoenix-moving-company-u-haul-will-no-longer-hire-nicotine-users/" onclick="_gaq.push(['_trackEvent','Latest News Nav','https://ktar.com/story/2900558/phoenix-moving-company-u-haul-will-no-longer-hire-nicotine-users/','Latest News 1']);">
+                    <span>Griselda Zetino<br></span>
+                    Phoenix moving company U-Haul will no longer hire nicotine users                </a>
+            </li>
+                    <li >
+                <a href="https://ktar.com/story/2900700/hard-rock-cafe-in-downtown-phoenix-to-close-after-almost-25-years/" onclick="_gaq.push(['_trackEvent','Latest News Nav','https://ktar.com/story/2900700/hard-rock-cafe-in-downtown-phoenix-to-close-after-almost-25-years/','Latest News 1']);" class="thumb">
+                    <img width="60" height="60" src="https://ktar.com/wp-content/uploads/2019/12/hard-rock-phoenix-60x60.jpg" class="thumb wp-post-image" alt="" srcset="https://ktar.com/wp-content/uploads/2019/12/hard-rock-phoenix-60x60.jpg 60w, https://ktar.com/wp-content/uploads/2019/12/hard-rock-phoenix-150x150.jpg 150w" sizes="(max-width: 60px) 100vw, 60px" />                </a>
+                <a href="https://ktar.com/story/2900700/hard-rock-cafe-in-downtown-phoenix-to-close-after-almost-25-years/" onclick="_gaq.push(['_trackEvent','Latest News Nav','https://ktar.com/story/2900700/hard-rock-cafe-in-downtown-phoenix-to-close-after-almost-25-years/','Latest News 1']);">
+                    <span>KTAR.com<br></span>
+                    Hard Rock Cafe in downtown Phoenix to close after almost 25 years                </a>
+            </li>
+                    <li >
+                <a href="https://ktar.com/story/2900762/attack-on-us-embassy-in-iraq-shows-stark-choices-for-trump/" onclick="_gaq.push(['_trackEvent','Latest News Nav','https://ktar.com/story/2900762/attack-on-us-embassy-in-iraq-shows-stark-choices-for-trump/','Latest News 1']);" class="thumb">
+                    <img width="60" height="60" src="https://ktar.com/wp-content/uploads/2019/12/ap_1d0895eda81b45bdba054fc11f207a65-60x60.jpg" class="thumb wp-post-image" alt="" srcset="https://ktar.com/wp-content/uploads/2019/12/ap_1d0895eda81b45bdba054fc11f207a65-60x60.jpg 60w, https://ktar.com/wp-content/uploads/2019/12/ap_1d0895eda81b45bdba054fc11f207a65-150x150.jpg 150w" sizes="(max-width: 60px) 100vw, 60px" />                </a>
+                <a href="https://ktar.com/story/2900762/attack-on-us-embassy-in-iraq-shows-stark-choices-for-trump/" onclick="_gaq.push(['_trackEvent','Latest News Nav','https://ktar.com/story/2900762/attack-on-us-embassy-in-iraq-shows-stark-choices-for-trump/','Latest News 1']);">
+                    <span>Associated Press<br></span>
+                    Attack on US Embassy in Iraq shows stark choices for Trump                </a>
+            </li>
+                    <li >
+                <a href="https://ktar.com/story/2900299/arizona-dui-task-force-gears-up-for-new-years-eve/" onclick="_gaq.push(['_trackEvent','Latest News Nav','https://ktar.com/story/2900299/arizona-dui-task-force-gears-up-for-new-years-eve/','Latest News 1']);" class="thumb">
+                    <img width="60" height="60" src="https://ktar.com/wp-content/uploads/2019/12/dui-driving-nhtsa-60x60.jpg" class="thumb wp-post-image" alt="" srcset="https://ktar.com/wp-content/uploads/2019/12/dui-driving-nhtsa-60x60.jpg 60w, https://ktar.com/wp-content/uploads/2019/12/dui-driving-nhtsa-150x150.jpg 150w" sizes="(max-width: 60px) 100vw, 60px" />                </a>
+                <a href="https://ktar.com/story/2900299/arizona-dui-task-force-gears-up-for-new-years-eve/" onclick="_gaq.push(['_trackEvent','Latest News Nav','https://ktar.com/story/2900299/arizona-dui-task-force-gears-up-for-new-years-eve/','Latest News 1']);">
+                    <span>KTAR.com<br></span>
+                    Arizona DUI task force gears up for New Year's Eve                </a>
+            </li>
+                    <li >
+                <a href="https://ktar.com/story/2889872/dave-ramsey-says-put-off-investing-use-extra-money-to-pay-down-bills/" onclick="_gaq.push(['_trackEvent','Latest News Nav','https://ktar.com/story/2889872/dave-ramsey-says-put-off-investing-use-extra-money-to-pay-down-bills/','Latest News 1']);" class="thumb">
+                    <img width="60" height="60" src="https://ktar.com/wp-content/uploads/2019/12/money-548948_640-60x60.jpg" class="thumb wp-post-image" alt="" srcset="https://ktar.com/wp-content/uploads/2019/12/money-548948_640-60x60.jpg 60w, https://ktar.com/wp-content/uploads/2019/12/money-548948_640-150x150.jpg 150w" sizes="(max-width: 60px) 100vw, 60px" />                </a>
+                <a href="https://ktar.com/story/2889872/dave-ramsey-says-put-off-investing-use-extra-money-to-pay-down-bills/" onclick="_gaq.push(['_trackEvent','Latest News Nav','https://ktar.com/story/2889872/dave-ramsey-says-put-off-investing-use-extra-money-to-pay-down-bills/','Latest News 1']);">
+                    <span>Dave Ramsey<br></span>
+                    Dave Ramsey says: Put off investing, use extra money to pay down bills                </a>
+            </li>
+                    <li >
+                <a href="https://ktar.com/story/2900247/here-are-5-of-ktar-news-feel-good-stories-from-2019/" onclick="_gaq.push(['_trackEvent','Latest News Nav','https://ktar.com/story/2900247/here-are-5-of-ktar-news-feel-good-stories-from-2019/','Latest News 1']);" class="thumb">
+                    <img width="60" height="60" src="https://ktar.com/wp-content/uploads/2019/11/glendale-officer-veteran-road-trip-60x60.png" class="thumb wp-post-image" alt="" srcset="https://ktar.com/wp-content/uploads/2019/11/glendale-officer-veteran-road-trip-60x60.png 60w, https://ktar.com/wp-content/uploads/2019/11/glendale-officer-veteran-road-trip-150x150.png 150w" sizes="(max-width: 60px) 100vw, 60px" />                </a>
+                <a href="https://ktar.com/story/2900247/here-are-5-of-ktar-news-feel-good-stories-from-2019/" onclick="_gaq.push(['_trackEvent','Latest News Nav','https://ktar.com/story/2900247/here-are-5-of-ktar-news-feel-good-stories-from-2019/','Latest News 1']);">
+                    <span>KTAR.com<br></span>
+                    Here are 5 of KTAR News' feel-good stories from 2019                </a>
+            </li>
+                    <li >
+                <a href="https://ktar.com/story/2900155/expect-a-dry-but-chilly-new-years-eve-in-the-phoenix-area/" onclick="_gaq.push(['_trackEvent','Latest News Nav','https://ktar.com/story/2900155/expect-a-dry-but-chilly-new-years-eve-in-the-phoenix-area/','Latest News 1']);" class="thumb">
+                    <img width="60" height="60" src="https://ktar.com/wp-content/uploads/2019/12/new-years-eve-chilly-60x60.jpg" class="thumb wp-post-image" alt="" srcset="https://ktar.com/wp-content/uploads/2019/12/new-years-eve-chilly-60x60.jpg 60w, https://ktar.com/wp-content/uploads/2019/12/new-years-eve-chilly-150x150.jpg 150w" sizes="(max-width: 60px) 100vw, 60px" />                </a>
+                <a href="https://ktar.com/story/2900155/expect-a-dry-but-chilly-new-years-eve-in-the-phoenix-area/" onclick="_gaq.push(['_trackEvent','Latest News Nav','https://ktar.com/story/2900155/expect-a-dry-but-chilly-new-years-eve-in-the-phoenix-area/','Latest News 1']);">
+                    <span>Jessica Swarner<br></span>
+                    Expect a dry but chilly New Year's Eve in the Phoenix area                </a>
+            </li>
+                    <li >
+                <a href="https://ktar.com/story/2900175/trump-says-hell-sign-first-step-china-trade-deal-on-jan-15/" onclick="_gaq.push(['_trackEvent','Latest News Nav','https://ktar.com/story/2900175/trump-says-hell-sign-first-step-china-trade-deal-on-jan-15/','Latest News 1']);" class="thumb">
+                    <img width="60" height="60" src="https://ktar.com/wp-content/uploads/2019/12/ap_7c94eee2eb5c4c8186c2a96f47febe76-60x60.jpg" class="thumb wp-post-image" alt="" srcset="https://ktar.com/wp-content/uploads/2019/12/ap_7c94eee2eb5c4c8186c2a96f47febe76-60x60.jpg 60w, https://ktar.com/wp-content/uploads/2019/12/ap_7c94eee2eb5c4c8186c2a96f47febe76-150x150.jpg 150w" sizes="(max-width: 60px) 100vw, 60px" />                </a>
+                <a href="https://ktar.com/story/2900175/trump-says-hell-sign-first-step-china-trade-deal-on-jan-15/" onclick="_gaq.push(['_trackEvent','Latest News Nav','https://ktar.com/story/2900175/trump-says-hell-sign-first-step-china-trade-deal-on-jan-15/','Latest News 1']);">
+                    <span>Associated Press<br></span>
+                    Trump says he'll sign first-step China trade deal on Jan. 15                </a>
+            </li>
+                    <li >
+                <a href="https://ktar.com/story/2899680/push-for-us-uranium-production-opposed-near-grand-canyon/" onclick="_gaq.push(['_trackEvent','Latest News Nav','https://ktar.com/story/2899680/push-for-us-uranium-production-opposed-near-grand-canyon/','Latest News 1']);" class="thumb">
+                    <img width="60" height="60" src="https://ktar.com/wp-content/uploads/2019/12/Mine-thru-fence-60x60.jpg" class="thumb wp-post-image" alt="" srcset="https://ktar.com/wp-content/uploads/2019/12/Mine-thru-fence-60x60.jpg 60w, https://ktar.com/wp-content/uploads/2019/12/Mine-thru-fence-150x150.jpg 150w" sizes="(max-width: 60px) 100vw, 60px" />                </a>
+                <a href="https://ktar.com/story/2899680/push-for-us-uranium-production-opposed-near-grand-canyon/" onclick="_gaq.push(['_trackEvent','Latest News Nav','https://ktar.com/story/2899680/push-for-us-uranium-production-opposed-near-grand-canyon/','Latest News 1']);">
+                    <span>James Carr I Cronkite News<br></span>
+                    Push for US uranium production opposed near Grand Canyon                </a>
+            </li>
+                    <li >
+                <a href="https://ktar.com/story/2899628/valley-smoke-shop-owner-reacts-to-new-legal-age-to-buy-tobacco-products/" onclick="_gaq.push(['_trackEvent','Latest News Nav','https://ktar.com/story/2899628/valley-smoke-shop-owner-reacts-to-new-legal-age-to-buy-tobacco-products/','Latest News 1']);" class="thumb">
+                    <img width="60" height="60" src="https://ktar.com/wp-content/uploads/2019/12/smoke-shop-60x60.jpg" class="thumb wp-post-image" alt="" srcset="https://ktar.com/wp-content/uploads/2019/12/smoke-shop-60x60.jpg 60w, https://ktar.com/wp-content/uploads/2019/12/smoke-shop-150x150.jpg 150w" sizes="(max-width: 60px) 100vw, 60px" />                </a>
+                <a href="https://ktar.com/story/2899628/valley-smoke-shop-owner-reacts-to-new-legal-age-to-buy-tobacco-products/" onclick="_gaq.push(['_trackEvent','Latest News Nav','https://ktar.com/story/2899628/valley-smoke-shop-owner-reacts-to-new-legal-age-to-buy-tobacco-products/','Latest News 1']);">
+                    <span>Griselda Zetino<br></span>
+                    Valley smoke shop owner reacts to new legal age to buy tobacco products                </a>
+            </li>
+                    <li >
+                <a href="https://ktar.com/story/2899542/scottsdale-ranked-as-the-best-place-to-celebrate-new-years-eve-in-arizona/" onclick="_gaq.push(['_trackEvent','Latest News Nav','https://ktar.com/story/2899542/scottsdale-ranked-as-the-best-place-to-celebrate-new-years-eve-in-arizona/','Latest News 1']);" class="thumb">
+                    <img width="60" height="60" src="https://ktar.com/wp-content/uploads/2018/08/fireworks-60x60.jpg" class="thumb wp-post-image" alt="" srcset="https://ktar.com/wp-content/uploads/2018/08/fireworks-60x60.jpg 60w, https://ktar.com/wp-content/uploads/2018/08/fireworks-150x150.jpg 150w" sizes="(max-width: 60px) 100vw, 60px" />                </a>
+                <a href="https://ktar.com/story/2899542/scottsdale-ranked-as-the-best-place-to-celebrate-new-years-eve-in-arizona/" onclick="_gaq.push(['_trackEvent','Latest News Nav','https://ktar.com/story/2899542/scottsdale-ranked-as-the-best-place-to-celebrate-new-years-eve-in-arizona/','Latest News 1']);">
+                    <span>KTAR.com<br></span>
+                    Scottsdale ranked as the best place to celebrate New Year’s Eve in Arizona                </a>
+            </li>
+                    <li >
+                <a href="https://ktar.com/story/2899557/arizona-cities-to-ring-in-2020-with-unique-boot-pine-cone-card-drops/" onclick="_gaq.push(['_trackEvent','Latest News Nav','https://ktar.com/story/2899557/arizona-cities-to-ring-in-2020-with-unique-boot-pine-cone-card-drops/','Latest News 1']);" class="thumb">
+                    <img width="60" height="60" src="https://ktar.com/wp-content/uploads/2016/12/arizona-unique-drops-new-years-eve-60x60.jpg" class="thumb wp-post-image" alt="" srcset="https://ktar.com/wp-content/uploads/2016/12/arizona-unique-drops-new-years-eve-60x60.jpg 60w, https://ktar.com/wp-content/uploads/2016/12/arizona-unique-drops-new-years-eve-150x150.jpg 150w" sizes="(max-width: 60px) 100vw, 60px" />                </a>
+                <a href="https://ktar.com/story/2899557/arizona-cities-to-ring-in-2020-with-unique-boot-pine-cone-card-drops/" onclick="_gaq.push(['_trackEvent','Latest News Nav','https://ktar.com/story/2899557/arizona-cities-to-ring-in-2020-with-unique-boot-pine-cone-card-drops/','Latest News 1']);">
+                    <span>KTAR.com<br></span>
+                    Arizona cities to ring in 2020 with unique boot, pine cone, card drops                </a>
+            </li>
+                    <li >
+                <a href="https://ktar.com/story/2895460/final-goodbye-recalling-influential-people-who-died-in-2019-2/" onclick="_gaq.push(['_trackEvent','Latest News Nav','https://ktar.com/story/2895460/final-goodbye-recalling-influential-people-who-died-in-2019-2/','Latest News 1']);" class="thumb">
+                    <img width="60" height="60" src="https://ktar.com/wp-content/uploads/2019/12/ap_32d3ca2639324e81bcb8c53a22c2983d-60x60.jpg" class="thumb wp-post-image" alt="" srcset="https://ktar.com/wp-content/uploads/2019/12/ap_32d3ca2639324e81bcb8c53a22c2983d-60x60.jpg 60w, https://ktar.com/wp-content/uploads/2019/12/ap_32d3ca2639324e81bcb8c53a22c2983d-150x150.jpg 150w" sizes="(max-width: 60px) 100vw, 60px" />                </a>
+                <a href="https://ktar.com/story/2895460/final-goodbye-recalling-influential-people-who-died-in-2019-2/" onclick="_gaq.push(['_trackEvent','Latest News Nav','https://ktar.com/story/2895460/final-goodbye-recalling-influential-people-who-died-in-2019-2/','Latest News 1']);">
+                    <span>Associated Press<br></span>
+                    Final goodbye: Recalling influential people who died in 2019                </a>
+            </li>
+                    <li >
+                <a href="https://ktar.com/story/2899809/silver-alert-canceled-for-82-year-old-missing-phoenix-man/" onclick="_gaq.push(['_trackEvent','Latest News Nav','https://ktar.com/story/2899809/silver-alert-canceled-for-82-year-old-missing-phoenix-man/','Latest News 1']);" class="thumb">
+                    <img width="60" height="60" src="https://ktar.com/wp-content/uploads/2019/12/TuoiLe-60x60.jpg" class="thumb wp-post-image" alt="" srcset="https://ktar.com/wp-content/uploads/2019/12/TuoiLe-60x60.jpg 60w, https://ktar.com/wp-content/uploads/2019/12/TuoiLe-150x150.jpg 150w" sizes="(max-width: 60px) 100vw, 60px" />                </a>
+                <a href="https://ktar.com/story/2899809/silver-alert-canceled-for-82-year-old-missing-phoenix-man/" onclick="_gaq.push(['_trackEvent','Latest News Nav','https://ktar.com/story/2899809/silver-alert-canceled-for-82-year-old-missing-phoenix-man/','Latest News 1']);">
+                    <span>KTAR.com<br></span>
+                    Silver Alert canceled for 82-year-old Phoenix man                </a>
+            </li>
+                    <li >
+                <a href="https://ktar.com/story/2899660/bot-or-not-mystery-over-anonymous-user-retweeted-by-trump/" onclick="_gaq.push(['_trackEvent','Latest News Nav','https://ktar.com/story/2899660/bot-or-not-mystery-over-anonymous-user-retweeted-by-trump/','Latest News 1']);" class="thumb">
+                    <img width="60" height="60" src="https://ktar.com/wp-content/uploads/2019/12/ap_19ca60993fb5440ebbb8fd111d3d8d7b-60x60.jpg" class="thumb wp-post-image" alt="" srcset="https://ktar.com/wp-content/uploads/2019/12/ap_19ca60993fb5440ebbb8fd111d3d8d7b-60x60.jpg 60w, https://ktar.com/wp-content/uploads/2019/12/ap_19ca60993fb5440ebbb8fd111d3d8d7b-150x150.jpg 150w" sizes="(max-width: 60px) 100vw, 60px" />                </a>
+                <a href="https://ktar.com/story/2899660/bot-or-not-mystery-over-anonymous-user-retweeted-by-trump/" onclick="_gaq.push(['_trackEvent','Latest News Nav','https://ktar.com/story/2899660/bot-or-not-mystery-over-anonymous-user-retweeted-by-trump/','Latest News 1']);">
+                    <span>Associated Press<br></span>
+                    Bot or not? Mystery over anonymous user retweeted by Trump                </a>
+            </li>
+                    <li >
+                <a href="https://ktar.com/story/2899617/nypd-times-square-safest-place-on-earth-for-new-years-eve/" onclick="_gaq.push(['_trackEvent','Latest News Nav','https://ktar.com/story/2899617/nypd-times-square-safest-place-on-earth-for-new-years-eve/','Latest News 1']);" class="thumb">
+                    <img width="60" height="60" src="https://ktar.com/wp-content/uploads/2019/12/ap_235eb587f1044def9ddd487e53dc81ff-60x60.jpg" class="thumb wp-post-image" alt="" srcset="https://ktar.com/wp-content/uploads/2019/12/ap_235eb587f1044def9ddd487e53dc81ff-60x60.jpg 60w, https://ktar.com/wp-content/uploads/2019/12/ap_235eb587f1044def9ddd487e53dc81ff-150x150.jpg 150w" sizes="(max-width: 60px) 100vw, 60px" />                </a>
+                <a href="https://ktar.com/story/2899617/nypd-times-square-safest-place-on-earth-for-new-years-eve/" onclick="_gaq.push(['_trackEvent','Latest News Nav','https://ktar.com/story/2899617/nypd-times-square-safest-place-on-earth-for-new-years-eve/','Latest News 1']);">
+                    <span>Associated Press<br></span>
+                    NYPD: Times Square safest place on Earth for New Year's Eve                </a>
+            </li>
+                    <li >
+                <a href="https://ktar.com/story/2899659/dps-trooper-tyler-edenhofer-three-others-honored-with-medal-of-valor/" onclick="_gaq.push(['_trackEvent','Latest News Nav','https://ktar.com/story/2899659/dps-trooper-tyler-edenhofer-three-others-honored-with-medal-of-valor/','Latest News 1']);" class="thumb">
+                    <img width="60" height="60" src="https://ktar.com/wp-content/uploads/2018/07/dps-trooper-60x60.jpg" class="thumb wp-post-image" alt="" srcset="https://ktar.com/wp-content/uploads/2018/07/dps-trooper-60x60.jpg 60w, https://ktar.com/wp-content/uploads/2018/07/dps-trooper-150x150.jpg 150w" sizes="(max-width: 60px) 100vw, 60px" />                </a>
+                <a href="https://ktar.com/story/2899659/dps-trooper-tyler-edenhofer-three-others-honored-with-medal-of-valor/" onclick="_gaq.push(['_trackEvent','Latest News Nav','https://ktar.com/story/2899659/dps-trooper-tyler-edenhofer-three-others-honored-with-medal-of-valor/','Latest News 1']);">
+                    <span>KTAR.com<br></span>
+                    DPS trooper Tyler Edenhofer, 3 others honored with Medal of Valor                </a>
+            </li>
+                    <li >
+                <a href="https://ktar.com/story/2899610/start-the-new-year-with-events-at-arizona-state-parks/" onclick="_gaq.push(['_trackEvent','Latest News Nav','https://ktar.com/story/2899610/start-the-new-year-with-events-at-arizona-state-parks/','Latest News 1']);" class="thumb">
+                    <img width="60" height="60" src="https://ktar.com/wp-content/uploads/2019/01/alamo-lake-60x60.png" class="thumb wp-post-image" alt="" srcset="https://ktar.com/wp-content/uploads/2019/01/alamo-lake-60x60.png 60w, https://ktar.com/wp-content/uploads/2019/01/alamo-lake-150x150.png 150w" sizes="(max-width: 60px) 100vw, 60px" />                </a>
+                <a href="https://ktar.com/story/2899610/start-the-new-year-with-events-at-arizona-state-parks/" onclick="_gaq.push(['_trackEvent','Latest News Nav','https://ktar.com/story/2899610/start-the-new-year-with-events-at-arizona-state-parks/','Latest News 1']);">
+                    <span>KTAR.com<br></span>
+                    Start the new year with events at Arizona state parks                </a>
+            </li>
+                    <li >
+                <a href="https://ktar.com/story/2899633/silver-alert-canceled-for-casa-grande-man/" onclick="_gaq.push(['_trackEvent','Latest News Nav','https://ktar.com/story/2899633/silver-alert-canceled-for-casa-grande-man/','Latest News 1']);" class="thumb">
+                    <img width="60" height="60" src="https://ktar.com/wp-content/uploads/2019/12/elmer-king-60x60.jpg" class="thumb wp-post-image" alt="" srcset="https://ktar.com/wp-content/uploads/2019/12/elmer-king-60x60.jpg 60w, https://ktar.com/wp-content/uploads/2019/12/elmer-king-150x150.jpg 150w" sizes="(max-width: 60px) 100vw, 60px" />                </a>
+                <a href="https://ktar.com/story/2899633/silver-alert-canceled-for-casa-grande-man/" onclick="_gaq.push(['_trackEvent','Latest News Nav','https://ktar.com/story/2899633/silver-alert-canceled-for-casa-grande-man/','Latest News 1']);">
+                    <span>KTAR.com<br></span>
+                    Silver Alert canceled for Casa Grande man                </a>
+            </li>
+                    <li >
+                <a href="https://ktar.com/story/2899533/pedal-haus-expanding-to-open-location-in-chandler-in-february/" onclick="_gaq.push(['_trackEvent','Latest News Nav','https://ktar.com/story/2899533/pedal-haus-expanding-to-open-location-in-chandler-in-february/','Latest News 1']);" class="thumb">
+                    <img width="60" height="60" src="https://ktar.com/wp-content/uploads/2019/12/PHC-Back-Patio-Alley-View-1-60x60.jpg" class="thumb wp-post-image" alt="" srcset="https://ktar.com/wp-content/uploads/2019/12/PHC-Back-Patio-Alley-View-1-60x60.jpg 60w, https://ktar.com/wp-content/uploads/2019/12/PHC-Back-Patio-Alley-View-1-150x150.jpg 150w" sizes="(max-width: 60px) 100vw, 60px" />                </a>
+                <a href="https://ktar.com/story/2899533/pedal-haus-expanding-to-open-location-in-chandler-in-february/" onclick="_gaq.push(['_trackEvent','Latest News Nav','https://ktar.com/story/2899533/pedal-haus-expanding-to-open-location-in-chandler-in-february/','Latest News 1']);">
+                    <span>KTAR.com<br></span>
+                    Pedal Haus expanding, to open location in Chandler in February                </a>
+            </li>
+                    <li >
+                <a href="https://ktar.com/story/2899537/tesla-rear-ends-fire-truck-in-indiana-killing-arizona-woman/" onclick="_gaq.push(['_trackEvent','Latest News Nav','https://ktar.com/story/2899537/tesla-rear-ends-fire-truck-in-indiana-killing-arizona-woman/','Latest News 1']);" class="thumb">
+                    <img width="60" height="60" src="https://ktar.com/wp-content/uploads/2019/02/tesla-logo-car-ap-60x60.jpg" class="thumb wp-post-image" alt="" srcset="https://ktar.com/wp-content/uploads/2019/02/tesla-logo-car-ap-60x60.jpg 60w, https://ktar.com/wp-content/uploads/2019/02/tesla-logo-car-ap-150x150.jpg 150w" sizes="(max-width: 60px) 100vw, 60px" />                </a>
+                <a href="https://ktar.com/story/2899537/tesla-rear-ends-fire-truck-in-indiana-killing-arizona-woman/" onclick="_gaq.push(['_trackEvent','Latest News Nav','https://ktar.com/story/2899537/tesla-rear-ends-fire-truck-in-indiana-killing-arizona-woman/','Latest News 1']);">
+                    <span>Associated Press<br></span>
+                    Tesla rear-ends fire truck in Indiana, killing Arizona woman                </a>
+            </li>
+                    <li >
+                <a href="https://ktar.com/story/2899491/heres-how-to-party-in-the-valley-on-new-years-eve-without-driving/" onclick="_gaq.push(['_trackEvent','Latest News Nav','https://ktar.com/story/2899491/heres-how-to-party-in-the-valley-on-new-years-eve-without-driving/','Latest News 1']);" class="thumb">
+                    <img width="60" height="60" src="https://ktar.com/wp-content/uploads/2019/12/new-years-eve-valley-driving-60x60.jpg" class="thumb wp-post-image" alt="" srcset="https://ktar.com/wp-content/uploads/2019/12/new-years-eve-valley-driving-60x60.jpg 60w, https://ktar.com/wp-content/uploads/2019/12/new-years-eve-valley-driving-150x150.jpg 150w" sizes="(max-width: 60px) 100vw, 60px" />                </a>
+                <a href="https://ktar.com/story/2899491/heres-how-to-party-in-the-valley-on-new-years-eve-without-driving/" onclick="_gaq.push(['_trackEvent','Latest News Nav','https://ktar.com/story/2899491/heres-how-to-party-in-the-valley-on-new-years-eve-without-driving/','Latest News 1']);">
+                    <span>KTAR.com<br></span>
+                    Here's how to party in the Valley on New Year's Eve without driving                </a>
+            </li>
+                    <li >
+                <a href="https://ktar.com/story/2899427/here-are-the-best-instagram-photos-of-arizona-from-2019/" onclick="_gaq.push(['_trackEvent','Latest News Nav','https://ktar.com/story/2899427/here-are-the-best-instagram-photos-of-arizona-from-2019/','Latest News 1']);" class="thumb">
+                    <img width="60" height="60" src="https://ktar.com/wp-content/uploads/2019/12/az-insta-1-60x60.jpg" class="thumb wp-post-image" alt="" srcset="https://ktar.com/wp-content/uploads/2019/12/az-insta-1-60x60.jpg 60w, https://ktar.com/wp-content/uploads/2019/12/az-insta-1-150x150.jpg 150w" sizes="(max-width: 60px) 100vw, 60px" />                </a>
+                <a href="https://ktar.com/story/2899427/here-are-the-best-instagram-photos-of-arizona-from-2019/" onclick="_gaq.push(['_trackEvent','Latest News Nav','https://ktar.com/story/2899427/here-are-the-best-instagram-photos-of-arizona-from-2019/','Latest News 1']);">
+                    <span>KTAR.com<br></span>
+                    Here are the best Instagram photos of Arizona from 2019                </a>
+            </li>
+                    <li >
+                <a href="https://ktar.com/story/2899375/yuma-mayor-lifts-emergency-order-as-migrant-drop-offs-fall-to-zero/" onclick="_gaq.push(['_trackEvent','Latest News Nav','https://ktar.com/story/2899375/yuma-mayor-lifts-emergency-order-as-migrant-drop-offs-fall-to-zero/','Latest News 1']);" class="thumb">
+                    <img width="60" height="60" src="https://ktar.com/wp-content/uploads/2019/12/border-migrants-fence-ap-60x60.jpg" class="thumb wp-post-image" alt="" srcset="https://ktar.com/wp-content/uploads/2019/12/border-migrants-fence-ap-60x60.jpg 60w, https://ktar.com/wp-content/uploads/2019/12/border-migrants-fence-ap-150x150.jpg 150w" sizes="(max-width: 60px) 100vw, 60px" />                </a>
+                <a href="https://ktar.com/story/2899375/yuma-mayor-lifts-emergency-order-as-migrant-drop-offs-fall-to-zero/" onclick="_gaq.push(['_trackEvent','Latest News Nav','https://ktar.com/story/2899375/yuma-mayor-lifts-emergency-order-as-migrant-drop-offs-fall-to-zero/','Latest News 1']);">
+                    <span>KTAR.com<br></span>
+                    Yuma mayor lifts emergency order as migrant drop-offs fall to zero                </a>
+            </li>
+                    <li >
+                <a href="https://ktar.com/story/2899417/authorities-searching-for-man-who-went-missing-at-grand-canyon/" onclick="_gaq.push(['_trackEvent','Latest News Nav','https://ktar.com/story/2899417/authorities-searching-for-man-who-went-missing-at-grand-canyon/','Latest News 1']);" class="thumb">
+                    <img width="60" height="60" src="https://ktar.com/wp-content/uploads/2019/01/arizona-snow-edit-60x60.jpg" class="thumb wp-post-image" alt="" srcset="https://ktar.com/wp-content/uploads/2019/01/arizona-snow-edit-60x60.jpg 60w, https://ktar.com/wp-content/uploads/2019/01/arizona-snow-edit-150x150.jpg 150w" sizes="(max-width: 60px) 100vw, 60px" />                </a>
+                <a href="https://ktar.com/story/2899417/authorities-searching-for-man-who-went-missing-at-grand-canyon/" onclick="_gaq.push(['_trackEvent','Latest News Nav','https://ktar.com/story/2899417/authorities-searching-for-man-who-went-missing-at-grand-canyon/','Latest News 1']);">
+                    <span>KTAR.com<br></span>
+                    Authorities searching for man who went missing at Grand Canyon                </a>
+            </li>
+                    <li >
+                <a href="https://ktar.com/story/2899374/ring-in-2020-with-the-ktar-new-years-eve-events-map/" onclick="_gaq.push(['_trackEvent','Latest News Nav','https://ktar.com/story/2899374/ring-in-2020-with-the-ktar-new-years-eve-events-map/','Latest News 1']);" class="thumb">
+                    <img width="60" height="60" src="https://ktar.com/wp-content/uploads/2019/12/new-years-events-valley-220-60x60.jpg" class="thumb wp-post-image" alt="" srcset="https://ktar.com/wp-content/uploads/2019/12/new-years-events-valley-220-60x60.jpg 60w, https://ktar.com/wp-content/uploads/2019/12/new-years-events-valley-220-150x150.jpg 150w" sizes="(max-width: 60px) 100vw, 60px" />                </a>
+                <a href="https://ktar.com/story/2899374/ring-in-2020-with-the-ktar-new-years-eve-events-map/" onclick="_gaq.push(['_trackEvent','Latest News Nav','https://ktar.com/story/2899374/ring-in-2020-with-the-ktar-new-years-eve-events-map/','Latest News 1']);">
+                    <span>KTAR.com<br></span>
+                    Ring in 2020 with the KTAR New Year's Eve events map                </a>
+            </li>
+                    <li >
+                <a href="https://ktar.com/story/2899346/hikers-base-jumper-rescued-from-phoenix-area-mountains-on-same-day/" onclick="_gaq.push(['_trackEvent','Latest News Nav','https://ktar.com/story/2899346/hikers-base-jumper-rescued-from-phoenix-area-mountains-on-same-day/','Latest News 1']);" class="thumb">
+                    <img width="60" height="60" src="https://ktar.com/wp-content/uploads/2019/12/basejumper2-sfmd-60x60.jpg" class="thumb wp-post-image" alt="" srcset="https://ktar.com/wp-content/uploads/2019/12/basejumper2-sfmd-60x60.jpg 60w, https://ktar.com/wp-content/uploads/2019/12/basejumper2-sfmd-150x150.jpg 150w" sizes="(max-width: 60px) 100vw, 60px" />                </a>
+                <a href="https://ktar.com/story/2899346/hikers-base-jumper-rescued-from-phoenix-area-mountains-on-same-day/" onclick="_gaq.push(['_trackEvent','Latest News Nav','https://ktar.com/story/2899346/hikers-base-jumper-rescued-from-phoenix-area-mountains-on-same-day/','Latest News 1']);">
+                    <span>KTAR.com<br></span>
+                    Hikers, base jumper rescued from Phoenix-area mountains on same day                </a>
+            </li>
+                    <li >
+                <a href="https://ktar.com/story/2899307/armed-congregants-kill-gunman-who-shot-2-at-texas-church/" onclick="_gaq.push(['_trackEvent','Latest News Nav','https://ktar.com/story/2899307/armed-congregants-kill-gunman-who-shot-2-at-texas-church/','Latest News 1']);" class="thumb">
+                    <img width="60" height="60" src="https://ktar.com/wp-content/uploads/2019/12/ap_990119771d7648949d3db408951e8660-60x60.jpg" class="thumb wp-post-image" alt="" srcset="https://ktar.com/wp-content/uploads/2019/12/ap_990119771d7648949d3db408951e8660-60x60.jpg 60w, https://ktar.com/wp-content/uploads/2019/12/ap_990119771d7648949d3db408951e8660-150x150.jpg 150w" sizes="(max-width: 60px) 100vw, 60px" />                </a>
+                <a href="https://ktar.com/story/2899307/armed-congregants-kill-gunman-who-shot-2-at-texas-church/" onclick="_gaq.push(['_trackEvent','Latest News Nav','https://ktar.com/story/2899307/armed-congregants-kill-gunman-who-shot-2-at-texas-church/','Latest News 1']);">
+                    <span>Associated Press<br></span>
+                    Firearms instructor took out gunman at Texas church service                </a>
+            </li>
+                    <li >
+                <a href="https://ktar.com/story/279632/phoenix-police-looking-to-identify-suspect-who-killed-navy-veteran-in-2014/" onclick="_gaq.push(['_trackEvent','Latest News Nav','https://ktar.com/story/279632/phoenix-police-looking-to-identify-suspect-who-killed-navy-veteran-in-2014/','Latest News 1']);" class="thumb">
+                    <img width="60" height="60" src="https://ktar.com/wp-content/uploads/2014/06/Kevin-Ore-60x60.png" class="thumb wp-post-image" alt="" srcset="https://ktar.com/wp-content/uploads/2014/06/Kevin-Ore-60x60.png 60w, https://ktar.com/wp-content/uploads/2014/06/Kevin-Ore-150x150.png 150w" sizes="(max-width: 60px) 100vw, 60px" />                </a>
+                <a href="https://ktar.com/story/279632/phoenix-police-looking-to-identify-suspect-who-killed-navy-veteran-in-2014/" onclick="_gaq.push(['_trackEvent','Latest News Nav','https://ktar.com/story/279632/phoenix-police-looking-to-identify-suspect-who-killed-navy-veteran-in-2014/','Latest News 1']);">
+                    <span>Jayme West<br></span>
+                    Phoenix police looking to identify suspect who killed Navy veteran in 2014                </a>
+            </li>
+            </ul>
+</div>
+<div id="wrapper">
+	<div id="mainbody">
+					<div style="z-index:-1;" id="adtop" class="primaryad">
+      			</div>
+    
+<!-- Content -->
+<article itemscope itemtype="http://schema.org/Article" class="pad">
+            <div id="holder">
+            <!--HEADLINE AND ART-->
+            <div class="lead primary">
+                                                                                
+                <div class="category"><a href="https://ktar.com/category/arizona-news/">Arizona News</a></div>
+
+                <h1 itemprop="name headline">Phoenix moving company U-Haul will no longer hire nicotine users</h1>
+                                <div class="byline">
+                    <div class="share-button right">
+                        <a href="#" class="share_link">Share &nbsp; <i class="fa fa-share" aria-hidden="true"></i></a>
+                    </div>
+
+                    
+                        
+                             By <a href="https://ktar.com/story/author/gzetino/" style="font-weight:500;"><span itemprop="author">Griselda Zetino</span></a><br>
+                            <span class="small"><span itemprop="datePublished" content="December 31, 2019 2:30 pm">December 31, 2019 at 2:30 pm</span></span>
+
+                        
+                    
+                </div>
+            </div>
+            <!--HEADLINE AND ART-->
+
+            <!--STORY-->
+            <div class="story">
+                <!-- Image Block -->
+                                                                                        <div id="horiz_photo" >
+                                <img class="storyimg" itemprop="image" src="https://ktar.com/wp-content/uploads/2019/12/u-haul-nicotine-free.png" />
+                                <div class="caption">(Facebook Photo) </div>
+                            </div>
+
+                            
+                                                            
+
+                 <p><iframe src="https://omny.fm/shows/ktar-reporter-audio/u-haul-will-no-longer-hire-nicotine-users/embed?style=cover" width="100%" height="180" frameborder="0"></iframe></p>
+<p>PHOENIX &#8212; If you want to work for U-Haul, you better quit that smoking habit.</p>
+<p>Starting in February, the do-it-yourself moving company headquartered in Phoenix will no longer hire nicotine users in Arizona and 20 other states where the company says this type of policy is lawful.</p>
+<p>“We’re hoping to build a workforce that is free from nicotine addiction as a whole,” said Jessica Lopez, chief of staff for U-Haul.</p><div style="text-align: center;"><script type='text/javascript'>
+googletag.cmd.push(function() {
+	//Nick, I’m the happiest if you use me for the default ad mapping
+
+
+
+
+
+									var mappingArticle = googletag.sizeMapping().
+							    // Same width as mapping above, more available height
+							    addSize([320, 400], [300, 250]).
+							    // Landscape tablet
+							    addSize([750, 200], [300, 250]).build();
+								console.log('Article');
+
+googletag.defineSlot('/1034751/ktar_left_1', [[300,250]], "acm-ad-tag-ktar_left_1-5e0bd214989f00.59779280").defineSizeMapping(mappingArticle).addService(googletag.pubads()).setCollapseEmptyDiv(true,true);
+googletag.pubads().collapseEmptyDivs();
+googletag.enableServices();
+});
+</script>
+
+<div id='acm-ad-tag-ktar_left_1-5e0bd214989f00.59779280' class='ktar_left_1 in_article_1'>
+<script type='text/javascript'>
+googletag.cmd.push(function() { googletag.display('acm-ad-tag-ktar_left_1-5e0bd214989f00.59779280'); });
+</script>
+</div>
+</div></p>
+<p>Workers hired prior to February will not be impacted, and their jobs are not in jeopardy. They will instead have access to the company’s nicotine cessation program to help them quit smoking.</p>
+<div class="relatedLinks alignright"><div class="colheader">Related Links</div><div><ul class="head_list"><li><a href="https://ktar.com/story/2899628/valley-smoke-shop-owner-reacts-to-new-legal-age-to-buy-tobacco-products/" onclick="_gaq.push(['_trackEvent','article','related links','2899628'])">Valley smoke shop owner reacts to new legal age to buy tobacco products</a></li><li><a href="https://ktar.com/story/2897653/heres-what-ktar-news-learned-about-vaping-among-arizona-teens-in-2019/" onclick="_gaq.push(['_trackEvent','article','related links','2897653'])">Here's what KTAR News learned about vaping among Arizona teens in 2019</a></li></ul></div></div>
+<p>Lopez said the new policy is part of U-Haul’s efforts to establish one of the healthiest corporate cultures in the United States and Canada. The company has a “Healthier You” program launched in 2016 to help employees in four areas: health, mindset, nutrition and fitness.</p>
+<p>“Each year it has been our mission to increase our wellness benefits program’s resources to help the needs of all team members and families to conquer their health goals,” she said. “This nicotine/tobacco-free hiring policy is the next step.”</p>
+<p>The new policy also comes after U-Haul broke ground on a new conference and fitness center at its Midtown campus near Central Avenue and 3rd Street in Phoenix.</p>
+<p>When it’s completed in December 2020, the center will house a medical clinic, a full-size basketball court, a two-lane track, and cardio and weightlifting equipment, among other amenities.</p>
+<p>“If we take care of our team members, they take care of our business,” Lopez said.</p>
+<script src="https://embed.secondstreetapp.com/Scripts/dist/optin.js" data-ss-embed="optin" data-design-id="318665" ></script>
+<p><a class="twitter-follow-button" href="https://twitter.com/GriseldaZetino" data-show-count="false">Follow @GriseldaZetino</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></p><div style="text-align: center;"><script type='text/javascript'>
+googletag.cmd.push(function() {
+	//Nick, I’m the happiest if you use me for the default ad mapping
+
+
+
+
+
+									var mappingArticle = googletag.sizeMapping().
+							    // Same width as mapping above, more available height
+							    addSize([320, 400], [300, 250]).
+							    // Landscape tablet
+							    addSize([750, 200], [300, 250]).build();
+								console.log('Article');
+
+googletag.defineSlot('/1034751/ktar_left_2', [[300,250]], "acm-ad-tag-ktar_left_2-5e0bd21498aab1.15509766").defineSizeMapping(mappingArticle).addService(googletag.pubads()).setCollapseEmptyDiv(true,true);
+googletag.pubads().collapseEmptyDivs();
+googletag.enableServices();
+});
+</script>
+
+<div id='acm-ad-tag-ktar_left_2-5e0bd21498aab1.15509766' class='ktar_left_2 in_article_2'>
+<script type='text/javascript'>
+googletag.cmd.push(function() { googletag.display('acm-ad-tag-ktar_left_2-5e0bd21498aab1.15509766'); });
+</script>
+</div>
+</div></p>
+                
+                <div class="lowertools">
+                    <ul>
+                        
+                                                    <li><a href="?show=comments#comments" onclick="_gaq.push(['_trackEvent','KTAR Article','https://ktar.com/story/2900558/phoenix-moving-company-u-haul-will-no-longer-hire-nicotine-users/','Comments']);"><span class="disqus-comment-count" data-disqus-url="https://ktar.com/story/2900558/phoenix-moving-company-u-haul-will-no-longer-hire-nicotine-users/"></span> Comments &nbsp; <i class="fa fa-comments" aria-hidden="true"></i></a></li>
+                                                <li><a href="#" class="share_link"> Share &nbsp; <i class="fa fa-share" aria-hidden="true"></i></a></li>
+                    </ul>
+                </div>
+
+                <div style="clear:both;"></div>
+                <div id="article_footer">
+
+                    <div class="bottom_cluster">
+                                                    
+<div class="lowerstories">
+    <div class="colheader">
+                    Top Stories            </div>
+    <ul>
+            <li>
+            <a href="https://ktar.com/story/2900299/arizona-dui-task-force-gears-up-for-new-years-eve/" onclick="_gaq.push(['_trackEvent','KTAR Article','https://ktar.com/story/2900299/arizona-dui-task-force-gears-up-for-new-years-eve/','Top_Stories_1']);">
+                <img width="250" height="149" src="https://ktar.com/wp-content/uploads/2019/12/dui-driving-nhtsa-250x149.jpg" class="attachment-post_list size-post_list" alt="" srcset="https://ktar.com/wp-content/uploads/2019/12/dui-driving-nhtsa-250x149.jpg 250w, https://ktar.com/wp-content/uploads/2019/12/dui-driving-nhtsa-300x179.jpg 300w, https://ktar.com/wp-content/uploads/2019/12/dui-driving-nhtsa.jpg 620w, https://ktar.com/wp-content/uploads/2019/12/dui-driving-nhtsa-120x72.jpg 120w, https://ktar.com/wp-content/uploads/2019/12/dui-driving-nhtsa-294x175.jpg 294w" sizes="(max-width: 250px) 100vw, 250px" />            </a>
+            <a href="https://ktar.com/story/2900299/arizona-dui-task-force-gears-up-for-new-years-eve/" class="subline" onclick="_gaq.push(['_trackEvent','KTAR Article','https://ktar.com/story/2900299/arizona-dui-task-force-gears-up-for-new-years-eve/','Top_Stories_1']);">
+                <b>Arizona DUI task force gears up for New Year&#39;s Eve</b>
+            </a>
+        </li>
+	                            					<li style="position:relative;" >
+		
+		<a href="https://ktar.com/story/2900247/here-are-5-of-ktar-news-feel-good-stories-from-2019/" onclick="_gaq.push(['_trackEvent','KTAR Article','https://ktar.com/story/2900247/here-are-5-of-ktar-news-feel-good-stories-from-2019/','Top_Stories_2']);">
+			<!--<img src="https://ktar.com/wp-content/uploads/2019/11/glendale-officer-veteran-road-trip-300x179.png" alt="Here are 5 of KTAR News&#039; feel-good stories from 2019" width="250">-->
+			<img width="250" height="149" src="https://ktar.com/wp-content/uploads/2019/11/glendale-officer-veteran-road-trip-250x149.png" class="attachment-post_list size-post_list" alt="" srcset="https://ktar.com/wp-content/uploads/2019/11/glendale-officer-veteran-road-trip-250x149.png 250w, https://ktar.com/wp-content/uploads/2019/11/glendale-officer-veteran-road-trip-300x179.png 300w, https://ktar.com/wp-content/uploads/2019/11/glendale-officer-veteran-road-trip.png 620w, https://ktar.com/wp-content/uploads/2019/11/glendale-officer-veteran-road-trip-120x72.png 120w, https://ktar.com/wp-content/uploads/2019/11/glendale-officer-veteran-road-trip-294x175.png 294w" sizes="(max-width: 250px) 100vw, 250px" />		</a>
+		<a href="https://ktar.com/story/2900247/here-are-5-of-ktar-news-feel-good-stories-from-2019/" class="subline" onclick="_gaq.push(['_trackEvent','KTAR Article','https://ktar.com/story/2900247/here-are-5-of-ktar-news-feel-good-stories-from-2019/','Top_Stories_2']);">
+			<b>Here are 5 of KTAR News&#39; feel-good stories from 2019</b>
+		</a>
+
+	</li>
+						<li style="position:relative;" >
+		
+		<a href="https://ktar.com/story/2899557/arizona-cities-to-ring-in-2020-with-unique-boot-pine-cone-card-drops/" onclick="_gaq.push(['_trackEvent','KTAR Article','https://ktar.com/story/2899557/arizona-cities-to-ring-in-2020-with-unique-boot-pine-cone-card-drops/','Top_Stories_3']);">
+			<!--<img src="https://ktar.com/wp-content/uploads/2016/12/arizona-unique-drops-new-years-eve-300x179.jpg" alt="Arizona cities to ring in 2020 with unique boot, pine cone, card drops" width="250">-->
+			<img width="250" height="149" src="https://ktar.com/wp-content/uploads/2016/12/arizona-unique-drops-new-years-eve-250x149.jpg" class="attachment-post_list size-post_list" alt="" srcset="https://ktar.com/wp-content/uploads/2016/12/arizona-unique-drops-new-years-eve-250x149.jpg 250w, https://ktar.com/wp-content/uploads/2016/12/arizona-unique-drops-new-years-eve-300x179.jpg 300w, https://ktar.com/wp-content/uploads/2016/12/arizona-unique-drops-new-years-eve.jpg 620w, https://ktar.com/wp-content/uploads/2016/12/arizona-unique-drops-new-years-eve-120x72.jpg 120w, https://ktar.com/wp-content/uploads/2016/12/arizona-unique-drops-new-years-eve-294x175.jpg 294w" sizes="(max-width: 250px) 100vw, 250px" />		</a>
+		<a href="https://ktar.com/story/2899557/arizona-cities-to-ring-in-2020-with-unique-boot-pine-cone-card-drops/" class="subline" onclick="_gaq.push(['_trackEvent','KTAR Article','https://ktar.com/story/2899557/arizona-cities-to-ring-in-2020-with-unique-boot-pine-cone-card-drops/','Top_Stories_3']);">
+			<b>Arizona cities to ring in 2020 with unique boot, pine cone, card drops</b>
+		</a>
+
+	</li>
+						<li style="position:relative;" >
+		
+		<a href="https://ktar.com/story/2899374/ring-in-2020-with-the-ktar-new-years-eve-events-map/" onclick="_gaq.push(['_trackEvent','KTAR Article','https://ktar.com/story/2899374/ring-in-2020-with-the-ktar-new-years-eve-events-map/','Top_Stories_4']);">
+			<!--<img src="https://ktar.com/wp-content/uploads/2019/12/new-years-events-valley-220-300x179.jpg" alt="Find fun with the KTAR New Year&#039;s Eve events map" width="250">-->
+			<img width="250" height="149" src="https://ktar.com/wp-content/uploads/2019/12/new-years-events-valley-220-250x149.jpg" class="attachment-post_list size-post_list" alt="" srcset="https://ktar.com/wp-content/uploads/2019/12/new-years-events-valley-220-250x149.jpg 250w, https://ktar.com/wp-content/uploads/2019/12/new-years-events-valley-220-300x179.jpg 300w, https://ktar.com/wp-content/uploads/2019/12/new-years-events-valley-220.jpg 620w, https://ktar.com/wp-content/uploads/2019/12/new-years-events-valley-220-120x72.jpg 120w, https://ktar.com/wp-content/uploads/2019/12/new-years-events-valley-220-294x175.jpg 294w" sizes="(max-width: 250px) 100vw, 250px" />		</a>
+		<a href="https://ktar.com/story/2899374/ring-in-2020-with-the-ktar-new-years-eve-events-map/" class="subline" onclick="_gaq.push(['_trackEvent','KTAR Article','https://ktar.com/story/2899374/ring-in-2020-with-the-ktar-new-years-eve-events-map/','Top_Stories_4']);">
+			<b>Find fun with the KTAR New Year&#39;s Eve events map</b>
+		</a>
+
+	</li>
+	
+</ul>
+
+</div>                                            </div>
+                    <div style="text-align: center;">
+                        <script>
+jQuery(document).ready(function($){
+
+        googletag.cmd.push(function() {
+        googletag.defineSlot('/1034751/ktar_native_takeover', [[300,250], [300,600]], "takeover-ad-tag-ktar_native_takeover-5e0bd2149bc483.97336072").addService(googletag.pubads().setTargeting('keyword', 'azoncology-health'));
+        
+        googletag.pubads().collapseEmptyDivs();
+        googletag.enableServices();
+        });
+
+        googletag.cmd.push(function() { googletag.display('takeover-ad-tag-ktar_native_takeover-5e0bd2149bc483.97336072'); });
+});
+</script>
+<div id='takeover-ad-tag-ktar_native_takeover-5e0bd2149bc483.97336072' class='ktar_native_takeover'>
+</div>
+                    </div>
+                    
+<div class="sponsoredstories">
+
+    <div class="colheader">
+                    Sponsored Stories            </div>
+
+    <ul>
+
+                            <li>
+                <a href="https://ktar.com/story/2768764/see-20-20-in-2020-with-new-technologies-in-eye-care/" onclick="_gaq.push(['_trackEvent','KTAR Article','https://ktar.com/story/2768764/see-20-20-in-2020-with-new-technologies-in-eye-care/','Sponsored_1']);">
+                    <img src="https://ktar.com/wp-content/uploads/2019/10/canstockphoto29873832-1-250x149.jpg" alt="See 20/20 in 2020 with new technologies in eye care">
+                </a>
+                <a href="https://ktar.com/story/2768764/see-20-20-in-2020-with-new-technologies-in-eye-care/" class="subline" onclick="_gaq.push(['_trackEvent','KTAR Article','https://ktar.com/story/2768764/see-20-20-in-2020-with-new-technologies-in-eye-care/','Sponsored_1']);">
+                    <b>See 20/20 in 2020 with new technologies in eye care</b>
+                </a>
+
+            </li>
+                                <li>
+                <a href="https://ktar.com/story/2740466/made-for-monday/" onclick="_gaq.push(['_trackEvent','KTAR Article','https://ktar.com/story/2740466/made-for-monday/','Sponsored_2']);">
+                    <img src="https://ktar.com/wp-content/uploads/2019/09/CCV-KTAR_Hero-Mondays-250x149.jpg" alt="Made for Monday">
+                </a>
+                <a href="https://ktar.com/story/2740466/made-for-monday/" class="subline" onclick="_gaq.push(['_trackEvent','KTAR Article','https://ktar.com/story/2740466/made-for-monday/','Sponsored_2']);">
+                    <b>Made for Monday</b>
+                </a>
+
+            </li>
+                                <li>
+                <a href="https://ktar.com/story/2647309/arizona-families-arizona-farms-legacy-of-tradition-embracing-science-and-technology/" onclick="_gaq.push(['_trackEvent','KTAR Article','https://ktar.com/story/2647309/arizona-families-arizona-farms-legacy-of-tradition-embracing-science-and-technology/','Sponsored_3']);">
+                    <img src="https://ktar.com/wp-content/uploads/2019/07/Stephanie-Taylor-Favorites-0005-1-250x149.jpg" alt="Arizona families, Arizona farms: A legacy of tradition embracing animal care and comfort through modern technology">
+                </a>
+                <a href="https://ktar.com/story/2647309/arizona-families-arizona-farms-legacy-of-tradition-embracing-science-and-technology/" class="subline" onclick="_gaq.push(['_trackEvent','KTAR Article','https://ktar.com/story/2647309/arizona-families-arizona-farms-legacy-of-tradition-embracing-science-and-technology/','Sponsored_3']);">
+                    <b>Arizona families, Arizona farms: A legacy of tradition embracing animal care and comfort through modern technology</b>
+                </a>
+
+            </li>
+                        </ul>
+
+</div>
+
+                                                                
+                </div>
+
+
+            </div>
+            <!--STORY-->
+
+            <!--RIGHT COLUMN...BELOW STORY ON MOBILE-->
+            <!--<div class="rightcolumn">
+        <div style="margin-bottom: 30px; text-align:center;">
+          </div>
+            </div>-->
+
+
+<div class="rightcolumn">
+    <script>
+jQuery(document).ready(function($){
+
+        googletag.cmd.push(function() {
+        googletag.defineSlot('/1034751/ktar_native_takeover', [[300,250], [300,600]], "takeover-ad-tag-ktar_native_takeover-5e0bd2149fd492.52857224").addService(googletag.pubads().setTargeting('keyword', 'azoncology-health'));
+        
+        googletag.pubads().collapseEmptyDivs();
+        googletag.enableServices();
+        });
+
+        googletag.cmd.push(function() { googletag.display('takeover-ad-tag-ktar_native_takeover-5e0bd2149fd492.52857224'); });
+});
+</script>
+<div id='takeover-ad-tag-ktar_native_takeover-5e0bd2149fd492.52857224' class='ktar_native_takeover'>
+</div>
+    <div class="textwidget custom-html-widget"><h3>Show Podcasts and Interviews</h3>
+<iframe src="https://omny.fm/shows/ktar-reporter-audio/playlists/ktar-news-92-3-show-podcasts/embed?style=cover&size=square" width="100%" height="700" frameborder="0"></iframe></div><div class="textwidget custom-html-widget"><h3>Reporter Stories</h3>
+<iframe src="https://omny.fm/shows/ktar-reporter-audio/playlists/podcast/embed?style=cover&size=square" width="100%" height="700" frameborder="0"></iframe></div>        <div class="subleads">
+
+    <div class="colheader">
+            Most Popular          </div>
+    
+    <ul class="head_list">
+                    <li><a href="https://ktar.com/story/2900247/here-are-5-of-ktar-news-feel-good-stories-from-2019/"  onclick="_gaq.push(['_trackEvent','Most Popular','https://ktar.com/story/2900247/here-are-5-of-ktar-news-feel-good-stories-from-2019/','Headline 1']);">Here are 5 of KTAR News&#39; feel-good stories from 2019</a></li>
+                      <li><a href="https://ktar.com/story/2899628/valley-smoke-shop-owner-reacts-to-new-legal-age-to-buy-tobacco-products/"  onclick="_gaq.push(['_trackEvent','Most Popular','https://ktar.com/story/2899628/valley-smoke-shop-owner-reacts-to-new-legal-age-to-buy-tobacco-products/','Headline 2']);">Valley smoke shop owner reacts to new legal age to buy tobacco products</a></li>
+                      <li><a href="https://ktar.com/story/2899542/scottsdale-ranked-as-the-best-place-to-celebrate-new-years-eve-in-arizona/"  onclick="_gaq.push(['_trackEvent','Most Popular','https://ktar.com/story/2899542/scottsdale-ranked-as-the-best-place-to-celebrate-new-years-eve-in-arizona/','Headline 3']);">Scottsdale ranked as the best place to celebrate New Year’s Eve in Arizona</a></li>
+                    
+      <li><a href="/newsletters/"  onclick="_gaq.push(['_trackEvent','Most Popular','Newsletter','Headline 4']);">Sign up for the KTAR Daily Connect email</a></li>
+
+    </ul>
+
+</div>
+                    <script>
+jQuery(document).ready(function($){
+
+        googletag.cmd.push(function() {
+        googletag.defineSlot('/1034751/ktar_native_takeover', [[300,250], [300,600]], "takeover-ad-tag-ktar_native_takeover-5e0bd214a27658.84054422").addService(googletag.pubads().setTargeting('keyword', 'azoncology-health'));
+        
+        googletag.pubads().collapseEmptyDivs();
+        googletag.enableServices();
+        });
+
+        googletag.cmd.push(function() { googletag.display('takeover-ad-tag-ktar_native_takeover-5e0bd214a27658.84054422'); });
+});
+</script>
+<div id='takeover-ad-tag-ktar_native_takeover-5e0bd214a27658.84054422' class='ktar_native_takeover'>
+</div>
+</div>
+            <!--RIGHT COLUMN...BELOW STORY ON MOBILE-->
+
+
+            <!--STORY HOLDER-->
+
+        </div>
+    </article> <!-- End Content -->
+	</div>
+</div>
+
+<div id="bottom_mobile_heads">
+</div>
+
+<div id="footwrapper">
+	<div id="footbody" class="primary">
+		<footer>
+
+			<a href="/"><img src="https://ktar.com/wp-content/themes/ktar/assets/logo/KTAR-NEWS-Vertical-neg.svg" alt="KTAR News 92.3 FM" style="width:300px;border:none;"></a><br>
+			<span>Phoenix, Arizona, USA</span>
+
+			<ul class="footlisten">
+				<li>
+					<div style="float:left;">On the radio:</div><div style="float:right;"><a href="/listen-to-ktar-92-3-fm-anywhere/">92.3 FM</a></div>
+				</li>
+				<li>
+					<div style="float:left;">Online:</div><div style="float:right;"><a href="/">KTAR.com</a></div>
+				</li>
+				<li>
+					<div style="float:left;">On Your Phone:</div><div style="float:right;"><a href="/the-ktar-newstalk-app/">92.3 KTAR Apps</a></div>
+				</li>
+				<li>
+					<div style="float:left;">On Demand:</div><div style="float:right;"><a href="/category/podcasts/">92.3 KTAR Podcasts</a></div>
+				</li>
+				<li>
+					<div style="float:left;">More:</div><div style="float:right;"><a href="https://itunes.apple.com/" target="new">iTunes</a>, <a href="http://tunein.com/radio/KTAR-FM-923-s33477/" target="new">TuneIn</a>, <a href="http://stitcher.com" target="new">Stitcher</a></div>
+				</li>
+				<li>
+					<div style="float:left;">Call In:</div><div style="float:right;"><a href="tel:602.277.5827">602.277.5827</a></div>
+				</li>
+				<li>
+					<div style="float:left;">Text In:</div><div style="float:right;"><a href="/text-alerts/">411923</a></div>
+				</li>
+			</ul>
+
+
+
+			<ul class="footlinks">
+				<li><a href="/contact-us/">Contact Us</a></li>
+				<li>
+					<a href="http://ktar.com/wp-content/uploads/2018/06/General-Contest-Rules-KTAR.pdf">Contest Rules</a>
+				</li>
+				<li><a href="http://facebook.com/KTARNews">Follow on Facebook</a></li>
+				<li><a href="http://twitter.com/KTAR923">Follow on Twitter</a></li>
+				<li><a href="/newsletters/">Email Alerts</a></li>
+				<!--<li><a href="#">Site Map</a></li>
+                <li><a href="http://jobs.bonnint.net/">Advertise With Us</a></li>-->
+                <li><a href="http://bonneville.com/careers">Employment</a></li>
+			</ul>
+
+
+			<div class="copyright">© 2019 Bonneville International. <a href="/2012/05/01/terms-of-use/">Terms of Use</a> and <a href="/2012/05/01/privacy-statement/">Privacy Policy</a>. All rights reserved.<br><a href="http://ktar.com/wp-content/uploads/2019/05/Phoenix-EEO-Public-File-Report-2019.pdf">EEO Public File Report</a> -  <a href="/story/1409292/copyright-info/">Copyright Infringement</a> <a href="https://bonneville.com/copyright-clearance/">Licensing</a> <br /> FCC Public File: <a href="https://publicfiles.fcc.gov/fm-profile/ktar-fm" target="_blank">KTAR-FM</a> | FCC Station Representative: Natalie Barton &#149; <a href="mailto:nbarton@bonneville.com?subject=Need Assist with FCC Public File">nbarton@bonneville.com</a> &#149; 602.200.2638 </div>
+
+
+
+		</footer>
+	</div>
+</div>
+
+<div id="mobile_ad" style="display: none; text-align: center;">
+	</div>
+
+<!-- Disqus Comment Counts -->
+<script id="dsq-count-scr" src="//ktar.disqus.com/count.js" async></script>
+
+<script type='text/javascript' src='https://ktar.com/wp-content/plugins/ad-code-timing/assets/js/mobile-detect.min.js?ver=1.0'></script>
+<script type='text/javascript' src='https://ktar.com/wp-content/plugins/ad-code-timing/assets/js/jquery.cookie.js?ver=1.0'></script>
+<script type='text/javascript' src='https://ktar.com/wp-content/plugins/ad-code-timing/assets/js/takeover.js?ver=1.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var qpprFrontData = {"linkData":{"https:\/\/ktar.com\/?p=988083":[0,0,""],"https:\/\/ktar.com\/?p=1078309":[0,0,""],"https:\/\/ktar.com\/?p=1078423":[0,0,""],"https:\/\/ktar.com\/?p=1095748":[0,0,""],"https:\/\/ktar.com\/?p=1108762":[0,0,""],"https:\/\/ktar.com\/?p=1070104":[0,0,""],"https:\/\/ktar.com\/?p=1119304":[0,0,""],"https:\/\/ktar.com\/?p=1120010":[0,0,""],"https:\/\/ktar.com\/?p=1131204":[0,0,""],"https:\/\/ktar.com\/story\/1131224\/john-cleese-eric-idle-together-again-at-last-for-the-very-first-time\/":[0,0,""],"https:\/\/ktar.com\/?p=1131256":[0,0,""],"https:\/\/ktar.com\/?p=1131313":[0,0,""],"https:\/\/ktar.com\/?p=1149576":[0,0,""],"https:\/\/ktar.com\/?p=1149606":[0,0,""],"https:\/\/ktar.com\/?p=1149624":[0,0,""],"https:\/\/ktar.com\/?p=1160153":[0,0,""],"https:\/\/ktar.com\/?p=1171210":[0,0,""],"https:\/\/ktar.com\/?p=1171268":[0,0,""],"https:\/\/ktar.com\/?p=1132533":[0,0,""],"https:\/\/ktar.com\/?p=1198172":[0,0,""],"https:\/\/ktar.com\/?p=1198240":[0,0,""],"https:\/\/ktar.com\/?p=1206777":[0,0,""],"https:\/\/ktar.com\/?p=1206927":[0,0,""],"https:\/\/ktar.com\/?p=1222428":[0,0,""],"https:\/\/ktar.com\/?p=1233364":[0,0,""],"https:\/\/ktar.com\/?p=1233448":[0,0,""],"https:\/\/ktar.com\/?p=1233576":[0,0,""],"https:\/\/ktar.com\/?p=1233932":[0,0,""],"https:\/\/ktar.com\/?p=1246260":[0,0,""],"https:\/\/ktar.com\/?p=1256784":[0,0,""],"https:\/\/ktar.com\/?p=1256807":[0,0,""],"https:\/\/ktar.com\/?p=1256972":[0,0,""],"https:\/\/ktar.com\/?p=1262506":[0,0,""],"https:\/\/ktar.com\/?p=1262671":[0,0,""],"https:\/\/ktar.com\/?p=1271694":[0,0,""],"https:\/\/ktar.com\/?p=1284041":[0,0,""],"https:\/\/ktar.com\/?p=1302676":[0,0,""],"https:\/\/ktar.com\/?p=1303022":[0,0,""],"https:\/\/ktar.com\/?p=1303103":[0,0,""],"https:\/\/ktar.com\/?p=1312669":[0,0,""],"https:\/\/ktar.com\/?p=1312698":[0,0,""],"https:\/\/ktar.com\/?p=1319582":[0,0,""],"https:\/\/ktar.com\/?p=1332564":[0,0,""],"https:\/\/ktar.com\/?p=1332584":[0,0,""],"https:\/\/ktar.com\/?p=1341537":[0,0,""],"https:\/\/ktar.com\/?p=1341563":[0,0,""],"https:\/\/ktar.com\/?p=1341606":[0,0,""],"https:\/\/ktar.com\/?p=1353126":[0,0,""],"https:\/\/ktar.com\/?p=1353191":[0,0,""],"https:\/\/ktar.com\/?p=1353763":[0,0,""],"https:\/\/ktar.com\/?p=1361092":[0,0,""],"https:\/\/ktar.com\/?p=1361152":[0,0,""],"https:\/\/ktar.com\/?p=1370005":[0,0,""],"https:\/\/ktar.com\/?p=1370022":[0,0,""],"https:\/\/ktar.com\/?p=1374514":[0,0,""],"https:\/\/ktar.com\/?p=1381464":[0,0,""],"https:\/\/ktar.com\/?p=1381497":[0,0,""],"https:\/\/ktar.com\/?p=1391108":[0,0,""],"https:\/\/ktar.com\/?p=1391136":[0,0,""],"https:\/\/ktar.com\/?p=1399010":[0,0,""],"https:\/\/ktar.com\/?p=1399021":[0,0,""],"https:\/\/ktar.com\/?p=1412463":[0,0,""],"https:\/\/ktar.com\/?p=1420773":[0,0,""],"https:\/\/ktar.com\/?p=1428756":[0,0,""],"https:\/\/ktar.com\/?p=1444083":[0,0,""],"https:\/\/ktar.com\/?p=1444127":[0,0,""],"https:\/\/ktar.com\/?p=1439377":[0,0,""],"https:\/\/ktar.com\/?p=1453439":[0,0,""],"https:\/\/ktar.com\/?p=1453482":[0,0,""],"https:\/\/ktar.com\/?p=1453643":[0,0,""],"https:\/\/ktar.com\/?p=1476630":[0,0,""],"https:\/\/ktar.com\/?p=1476633":[0,0,""],"https:\/\/ktar.com\/?p=1468039":[0,0,""],"https:\/\/ktar.com\/?p=1484458":[0,0,""],"https:\/\/ktar.com\/?p=1484507":[0,0,""],"https:\/\/ktar.com\/?p=1484391":[0,0,""],"https:\/\/ktar.com\/?p=1491397":[0,0,""],"https:\/\/ktar.com\/?p=1491440":[0,0,""],"https:\/\/ktar.com\/story\/1499494\/mac-gaydos-pay-tribute-teacher\/":[0,0,""],"https:\/\/ktar.com\/?p=1501992":[0,0,""],"https:\/\/ktar.com\/?p=1510559":[0,0,""],"https:\/\/ktar.com\/?p=1510639":[0,0,""],"https:\/\/ktar.com\/?p=1520183":[0,0,""],"https:\/\/ktar.com\/?p=1521110":[0,0,""],"https:\/\/ktar.com\/?p=1526498":[0,0,""],"https:\/\/ktar.com\/?p=1527750":[0,0,""],"https:\/\/ktar.com\/?p=1545462":[0,0,""],"https:\/\/ktar.com\/?p=1555584":[0,0,""],"https:\/\/ktar.com\/?p=1577010":[0,0,""],"https:\/\/ktar.com\/?p=1587550":[0,0,""],"https:\/\/ktar.com\/?p=1587576":[0,0,""],"https:\/\/ktar.com\/?p=1587518":[0,0,""],"https:\/\/ktar.com\/?p=1600638":[0,0,""],"https:\/\/ktar.com\/?p=1600646":[0,0,""],"https:\/\/ktar.com\/?p=1611495":[0,0,""],"https:\/\/ktar.com\/?p=1611505":[0,0,""],"https:\/\/ktar.com\/?p=1619584":[0,0,""],"https:\/\/ktar.com\/?p=1619594":[0,0,""],"https:\/\/ktar.com\/?p=1621500":[0,0,""],"https:\/\/ktar.com\/?p=1621534":[0,0,""],"https:\/\/ktar.com\/?p=1621962":[0,0,""],"https:\/\/ktar.com\/?p=1630416":[0,0,""],"https:\/\/ktar.com\/?p=1630422":[0,0,""],"https:\/\/ktar.com\/?p=1638188":[0,0,""],"https:\/\/ktar.com\/?p=1638193":[0,0,""],"https:\/\/ktar.com\/?p=1642671":[0,0,""],"https:\/\/ktar.com\/?p=1651884":[0,0,""],"https:\/\/ktar.com\/?p=1653174":[0,0,""],"https:\/\/ktar.com\/?p=1653190":[0,0,""],"https:\/\/ktar.com\/?p=1661576":[0,0,""],"https:\/\/ktar.com\/?p=1670718":[0,0,""],"https:\/\/ktar.com\/?p=1680190":[0,0,""],"https:\/\/ktar.com\/?p=1688399":[0,0,""],"https:\/\/ktar.com\/?p=1703328":[0,0,""],"https:\/\/ktar.com\/?p=1712672":[0,0,""],"https:\/\/ktar.com\/?p=1712677":[0,0,""],"https:\/\/ktar.com\/?p=1721599":[0,0,""],"https:\/\/ktar.com\/?p=1721625":[0,0,""],"https:\/\/ktar.com\/?p=1726072":[0,0,""],"https:\/\/ktar.com\/?p=1734631":[0,0,""],"https:\/\/ktar.com\/?p=1734819":[0,0,""],"https:\/\/ktar.com\/?p=1743223":[0,0,""],"https:\/\/ktar.com\/?p=1744613":[0,0,""],"https:\/\/ktar.com\/?p=1758460":[0,0,""],"https:\/\/ktar.com\/?p=1758486":[0,0,""],"https:\/\/ktar.com\/?p=1758495":[0,0,""],"https:\/\/ktar.com\/?p=1770479":[0,0,""],"https:\/\/ktar.com\/?p=1770550":[0,0,""],"https:\/\/ktar.com\/?p=1781016":[0,0,""],"https:\/\/ktar.com\/?p=1781081":[0,0,""],"https:\/\/ktar.com\/?p=1782264":[0,0,""],"https:\/\/ktar.com\/?p=1792414":[0,0,""],"https:\/\/ktar.com\/?p=1792423":[0,0,""],"https:\/\/ktar.com\/?p=1793807":[0,0,""],"https:\/\/ktar.com\/?p=1813065":[0,0,""],"https:\/\/ktar.com\/?p=1814615":[0,0,""],"https:\/\/ktar.com\/?p=1814629":[0,0,""],"https:\/\/ktar.com\/?p=1823402":[0,0,""],"https:\/\/ktar.com\/?p=1823439":[0,0,""],"https:\/\/ktar.com\/?p=1823448":[0,0,""],"https:\/\/ktar.com\/?p=1833047":[0,0,""],"https:\/\/ktar.com\/?p=1833063":[0,0,""],"https:\/\/ktar.com\/?p=1852647":[0,0,""],"https:\/\/ktar.com\/?p=1852672":[0,0,""],"https:\/\/ktar.com\/?p=1833100":[0,0,""],"https:\/\/ktar.com\/?p=1867828":[0,0,""],"https:\/\/ktar.com\/?p=1867902":[0,0,""],"https:\/\/ktar.com\/?p=1867921":[0,0,""],"https:\/\/ktar.com\/?p=1952859":[0,0,""],"https:\/\/ktar.com\/?p=1999655":[0,0,""],"https:\/\/ktar.com\/?p=2017144":[0,0,""],"https:\/\/ktar.com\/?p=2048497":[0,0,""],"https:\/\/ktar.com\/?p=2069178":[0,0,""],"https:\/\/ktar.com\/?p=2091312":[0,0,""],"https:\/\/ktar.com\/?p=2127745":[0,0,""],"https:\/\/ktar.com\/?p=2189005":[0,0,""],"https:\/\/ktar.com\/?p=2212083":[0,0,""],"https:\/\/ktar.com\/?p=2254023":[0,0,""],"https:\/\/ktar.com\/?p=2297375":[0,0,""],"https:\/\/ktar.com\/?p=2384876":[0,0,""],"https:\/\/ktar.com\/?p=2497860":[0,0,""],"https:\/\/ktar.com\/?p=2509323":[0,0,""],"https:\/\/ktar.com\/?p=2535236":[0,0,""],"https:\/\/ktar.com\/?p=2560053":[0,0,""],"https:\/\/ktar.com\/?p=2597689":[0,0,""],"https:\/\/ktar.com\/?p=2600774":[0,0,""],"https:\/\/ktar.com\/?p=2707195":[0,0,""],"https:\/\/ktar.com\/?p=2772634":[0,0,""],"https:\/\/ktar.com\/?p=2838608":[0,0,""]},"siteURL":"https:\/\/ktar.com","siteURLq":"https:\/\/ktar.com"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://ktar.com/wp-content/plugins/quick-pagepost-redirect-plugin/js/qppr_frontend_script.min.js?ver=5.1.5'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var pollsL10n = {"ajax_url":"https:\/\/ktar.com\/wp-admin\/admin-ajax.php","text_wait":"Your last request is still being processed. Please wait a while ...","text_valid":"Please choose a valid poll answer.","text_multiple":"Maximum number of choices allowed: ","show_loading":"1","show_fading":"1"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://ktar.com/wp-content/plugins/wp-polls/polls-js.js?ver=2.73.8'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var share = {"url":"https:\/\/ktar.com\/story\/2900558\/phoenix-moving-company-u-haul-will-no-longer-hire-nicotine-users\/"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://ktar.com/wp-content/themes/ktar/assets/js/sharecounts.js?ver=1.0'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var data = {"ajax_url":"https:\/\/ktar.com\/wp-admin\/admin-ajax.php","a_value":"10"};
+var data = {"ajax_url":"https:\/\/ktar.com\/wp-admin\/admin-ajax.php","a_value":"10"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://ktar.com/wp-content/plugins/tweak-events/assets/js/plusdate.js?ver=1.0'></script>
+<script type='text/javascript' src='https://ktar.com/wp-includes/js/jquery/ui/core.min.js?ver=1.11.4'></script>
+<script type='text/javascript' src='https://ktar.com/wp-includes/js/jquery/ui/datepicker.min.js?ver=1.11.4'></script>
+<script type='text/javascript'>
+jQuery(document).ready(function(jQuery){jQuery.datepicker.setDefaults({"closeText":"Close","currentText":"Today","monthNames":["January","February","March","April","May","June","July","August","September","October","November","December"],"monthNamesShort":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"nextText":"Next","prevText":"Previous","dayNames":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"dayNamesShort":["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],"dayNamesMin":["S","M","T","W","T","F","S"],"dateFormat":"MM d, yy","firstDay":1,"isRTL":false});});
+</script>
+<script type='text/javascript' src='https://ktar.com/wp-content/plugins/tweak-events/assets/js/datepicker.js?ver=1.0'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var data = {"ajax_url":"https:\/\/ktar.com\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://ktar.com/wp-content/plugins/tweak-events/assets/js/event-submit-validate.js?ver=1.1'></script>
+<script type='text/javascript' src='https://ktar.com/wp-content/plugins/tweak-events/assets/js/datepicker-submit.js?ver=1.0'></script>
+<script type='text/javascript' src='https://ktar.com/wp-includes/js/wp-embed.min.js?ver=5.2.2'></script>
+
+<!-- Analytics -->
+<!-- Google Analytics -->
+<script>
+  var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-333933-4']);
+_gaq.push(['_setCustomVar',
+    1,
+    'Article"',
+    'Sports',
+    3
+ ]);;
+_gaq.push(['_setDomainName', 'ktar.com ']);
+  _gaq.push(['_setPageGroup', 1, 'Arizona News']);
+  _gaq.push(['_setPageGroup', 1, 'Arizona Business']);
+  _gaq.push(['_setPageGroup', 1, 'Arizona Health News']);
+
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<!-- End Google Analytics --><!-- End Analytics -->
+<script src="https://ktar.com/wp-content/themes/ktar/assets/jquery-smartbanner/jquery.smartbanner.js"></script>
+<script type="text/javascript">
+	jQuery.smartbanner();
+</script>
+
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"1502e4f90c","applicationID":"58634209","transactionName":"ZAYDZ0cFXxFVUxZZDF1MIFBBDV4MG0MLXgRfBg==","queueTime":0,"applicationTime":468,"atts":"SEEAEQ8fTB8=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>

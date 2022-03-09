@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8"/><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"46dfefc7c4",applicationID:"150869872"};window.NREUM||(NREUM={}),__nr_require=function(n,e,t){function r(t){if(!e[t]){var i=e[t]={exports:{}};n[t][0].call(i.exports,function(e){var i=n[t][1][e];return r(i||e)},i,i.exports)}return e[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(n,e,t){function r(){}function i(n,e,t){return function(){return o(n,[u.now()].concat(f(arguments)),e?null:this,t),e?void 0:this}}var o=n("handle"),a=n(4),f=n(5),c=n("ee").get("tracer"),u=n("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(n,e){s[e]=i(d+e,!0,"api")}),s.addPageAction=i(d+"addPageAction",!0),s.setCurrentRouteName=i(d+"routeName",!0),e.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(n,e){var t={},r=this,i="function"==typeof e;return o(l+"tracer",[u.now(),n,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return e.apply(this,arguments)}catch(n){throw c.emit("fn-err",[arguments,this,n],t),n}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(n,e){m[e]=i(l+e)}),newrelic.noticeError=function(n,e){"string"==typeof n&&(n=new Error(n)),o("err",[n,u.now(),!1,e])}},{}],2:[function(n,e,t){function r(n,e){var t=n.getEntries();t.forEach(function(n){"first-paint"===n.name?a("timing",["fp",Math.floor(n.startTime)]):"first-contentful-paint"===n.name&&a("timing",["fcp",Math.floor(n.startTime)])})}function i(n){if(n instanceof c&&!s){var e,t=Math.round(n.timeStamp);e=t>1e12?Date.now()-t:f.now()-t,s=!0,a("timing",["fi",t,{type:n.type,fid:e}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var o,a=n("handle"),f=n("loader"),c=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){o=new PerformanceObserver(r);try{o.observe({entryTypes:["paint"]})}catch(u){}}if("addEventListener"in document){var s=!1,p=["click","keydown","mousedown","pointerdown","touchstart"];p.forEach(function(n){document.addEventListener(n,i,!1)})}}},{}],3:[function(n,e,t){function r(n,e){if(!i)return!1;if(n!==i)return!1;if(!e)return!0;if(!o)return!1;for(var t=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],4:[function(n,e,t){function r(n,e){var t=[],r="",o=0;for(r in n)i.call(n,r)&&(t[o]=e(r,n[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],5:[function(n,e,t){function r(n,e,t){e||(e=0),"undefined"==typeof t&&(t=n?n.length:0);for(var r=-1,i=t-e||0,o=Array(i<0?0:i);++r<i;)o[r]=n[e+r];return o}e.exports=r},{}],6:[function(n,e,t){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(n,e,t){function r(){}function i(n){function e(n){return n&&n instanceof r?n:n?c(n,f,o):o()}function t(t,r,i,o){if(!d.aborted||o){n&&n(t,r,i);for(var a=e(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function l(n,e){h[n]=v(n).concat(e)}function m(n,e){var t=h[n];if(t)for(var r=0;r<t.length;r++)t[r]===e&&t.splice(r,1)}function v(n){return h[n]||[]}function g(n){return p[n]=p[n]||i(t)}function w(n,e){u(n,function(n,t){e=e||"feature",y[t]=e,e in s||(s[e]=[])})}var h={},y={},b={on:l,addEventListener:l,removeEventListener:m,emit:t,get:g,listeners:v,context:e,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var f="nr@context",c=n("gos"),u=n(4),s={},p={},d=e.exports=i();d.backlog=s},{}],gos:[function(n,e,t){function r(n,e,t){if(i.call(n,e))return n[e];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(n,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return n[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(n,e,t){function r(n,e,t,r){i.buffer([n],r),i.emit(n,e,t)}var i=n("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(n,e,t){function r(n){var e=typeof n;return!n||"object"!==e&&"function"!==e?-1:n===window?0:a(n,o,function(){return i++})}var i=1,o="nr@id",a=n("gos");e.exports=r},{}],loader:[function(n,e,t){function r(){if(!x++){var n=E.info=NREUM.info,e=l.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(n&&n.licenseKey&&n.applicationID&&e))return s.abort();u(y,function(e,t){n[e]||(n[e]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=l.createElement("script");t.src="https://"+n.agent,e.parentNode.insertBefore(t,e)}}function i(){"complete"===l.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=n("handle"),u=n(4),s=n("ee"),p=n(3),d=window,l=d.document,m="addEventListener",v="attachEvent",g=d.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:g,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1158.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=e.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};n(1),n(2),l[m]?(l[m]("DOMContentLoaded",o,!1),d[m]("load",r,!1)):(l[v]("onreadystatechange",i),d[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=n(6)},{}],"wrap-function":[function(n,e,t){function r(n){return!(n&&n instanceof Function&&n.apply&&!n[a])}var i=n("ee"),o=n(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;e.exports=function(n,e){function t(n,e,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){d([u,"",[r,a,i],f])}s(e+"start",[r,a,i],f);try{return c=n.apply(a,r)}catch(p){throw s(e+"err",[r,a,p],f),p}finally{s(e+"end",[r,a,c],f)}}return r(n)?n:(e||(e=""),nrWrapper[a]=n,p(n,nrWrapper),nrWrapper)}function u(n,e,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<e.length;c++)f=e[c],a=n[f],r(a)||(n[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||e){var o=c;c=!0;try{n.emit(t,r,i,e)}catch(a){d([a,t,r,i])}c=o}}function p(n,e){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(n);return t.forEach(function(t){Object.defineProperty(e,t,{get:function(){return n[t]},set:function(e){return n[t]=e,e}})}),e}catch(r){d([r])}for(var i in n)f.call(n,i)&&(e[i]=n[i]);return e}function d(e){try{n.emit("internal-error",e)}catch(t){}}return n||(n=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="profile" href="https://gmpg.org/xfn/11" />
+	<link rel="pingback" href="https://www.prestonhollowpeople.com/xmlrpc.php"/>
+	
+<!-- MapPress Easy Google Maps Version:2.50.8 (http://www.mappresspro.com/mappress) -->
+<script type='text/javascript'>mapp = window.mapp || {}; mapp.data = [];</script>
+<title>Best of 2019: &#039;Life Finds a Way&#039; | Preston Hollow People</title>
+<script>(function(d, s, id){
+				 var js, fjs = d.getElementsByTagName(s)[0];
+				 if (d.getElementById(id)) {return;}
+				 js = d.createElement(s); js.id = id;
+				 js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6";
+				 fjs.parentNode.insertBefore(js, fjs);
+			   }(document, 'script', 'facebook-jssdk'));</script>
+<!-- All in One SEO Pack 2.8 by Michael Torbert of Semper Fi Web Design[444,513] -->
+
+<meta name="keywords"  content="best of,community,preston hollow" />
+
+<link rel="canonical" href="https://www.prestonhollowpeople.com/2020/01/01/best-of-2019-life-finds-a-way/" />
+<!-- /all in one seo pack -->
+<link rel='dns-prefetch' href='//www.prestonhollowpeople.com' />
+<link rel='dns-prefetch' href='//ws.sharethis.com' />
+<link rel='dns-prefetch' href='//maxcdn.bootstrapcdn.com' />
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="Preston Hollow People &raquo; Feed" href="https://www.prestonhollowpeople.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Preston Hollow People &raquo; Comments Feed" href="https://www.prestonhollowpeople.com/comments/feed/" />
+<link rel="alternate" type="text/calendar" title="Preston Hollow People &raquo; iCal Feed" href="https://www.prestonhollowpeople.com/old-events/?ical=1" />
+<link rel="alternate" type="application/rss+xml" title="Preston Hollow People &raquo; Best of 2019: ‘Life Finds a Way’ Comments Feed" href="https://www.prestonhollowpeople.com/2020/01/01/best-of-2019-life-finds-a-way/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/www.prestonhollowpeople.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.9.8"}};
+			!function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55358,56760,9792,65039],[55358,56760,8203,9792,65039]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='mappress-leaflet-css'  href='https://www.prestonhollowpeople.com/wp-content/plugins/mappress-google-maps-for-wordpress/css/leaflet/leaflet.css?ver=1.3.1' type='text/css' media='all' />
+<link rel='stylesheet' id='mappress-css'  href='https://www.prestonhollowpeople.com/wp-content/plugins/mappress-google-maps-for-wordpress/css/mappress.css?ver=2.50.8' type='text/css' media='all' />
+<link rel='stylesheet' id='simple-share-buttons-adder-font-awesome-css'  href='//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css?ver=4.9.8' type='text/css' media='all' />
+<link rel='stylesheet' id='colormag_google_fonts-css'  href='//fonts.googleapis.com/css?family=Open+Sans%3A400%2C600&#038;ver=4.9.8' type='text/css' media='all' />
+<link rel='stylesheet' id='colormag_style-css'  href='https://www.prestonhollowpeople.com/wp-content/themes/colormag/style.css?ver=4.9.8' type='text/css' media='all' />
+<link rel='stylesheet' id='colormag-fontawesome-css'  href='https://www.prestonhollowpeople.com/wp-content/themes/colormag/fontawesome/css/font-awesome.css?ver=4.2.1' type='text/css' media='all' />
+<script type='text/javascript' src='https://www.prestonhollowpeople.com/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+<script type='text/javascript' src='https://www.prestonhollowpeople.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var ai_front = {"wp_ai":"4.9.8+2.5.0","insertion_before":"BEFORE","insertion_after":"AFTER","insertion_prepend":"PREPEND CONTENT","insertion_append":"APPEND CONTENT","insertion_replace_content":"REPLACE CONTENT","insertion_replace_element":"REPLACE ELEMENT","cancel":"Cancel","use":"Use","add":"Add","parent":"Parent","cancel_element_selection":"Cancel element selection","select_parent_element":"Select parent element","css_selector":"CSS selector","use_current_selector":"Use current selector","element":"ELEMENT","path":"PATH","selector":"SELECTOR","visible":"VISIBLE","hidden":"HIDDEN"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://www.prestonhollowpeople.com/wp-content/plugins/ad-inserter/includes/js/ai-jquery.js?ver=4.9.8+2.5.0'></script>
+<script type='text/javascript'>
+function ai_insert(a,e,h){var f=-1!=e.indexOf(":eq")?jQuery(e):document.querySelectorAll(e);Array.prototype.forEach.call(f,function(b,f){selector_string=b.hasAttribute("id")?"#"+b.getAttribute("id"):b.hasAttribute("class")?"."+b.getAttribute("class").replace(RegExp(" ","g"),"."):"";var d=document.createElement("div");d.innerHTML=h;var c=d.getElementsByClassName("ai-selector-counter")[0];null!=c&&(c.innerText=f+1);c=d.getElementsByClassName("ai-debug-name ai-main")[0];if(null!=c){var g="";"before"==
+a?g=ai_front.insertion_before:"after"==a?g=ai_front.insertion_after:"prepend"==a?g=ai_front.insertion_prepend:"append"==a?g=ai_front.insertion_append:"replace-content"==a?g=ai_front.insertion_replace_content:"replace-element"==a&&(g=ai_front.insertion_replace_element);c.innerText=g+" "+e+" ("+b.tagName.toLowerCase()+selector_string+")"}c=document.createRange().createContextualFragment(d.innerHTML);"before"==a?b.parentNode.insertBefore(c,b):"after"==a?b.parentNode.insertBefore(c,b.nextSibling):"prepend"==
+a?b.insertBefore(c,b.firstChild):"append"==a?b.insertBefore(c,null):"replace-content"==a?b.innerHTML=d.innerHTML:"replace-element"==a&&(b.parentNode.insertBefore(c,b),b.parentNode.removeChild(b))})}
+function ai_insert_code(a){function e(a,b){return null==a?!1:a.classList?a.classList.contains(b):-1<(" "+a.className+" ").indexOf(" "+b+" ")}function h(a,b){null!=a&&(a.classList?a.classList.add(b):a.className+=" "+b)}function f(a,b){null!=a&&(a.classList?a.classList.remove(b):a.className=a.className.replace(new RegExp("(^|\\b)"+b.split(" ").join("|")+"(\\b|$)","gi")," "))}var b=e(a,"no-visibility-check")?!0:!!(a.offsetWidth||a.offsetHeight||a.getClientRects().length);a.getAttribute("data-block");
+if(b){b=a.getAttribute("data-code");var k=a.getAttribute("data-insertion"),d=a.getAttribute("data-selector");null!=b&&(null!=k&&null!=d?document.querySelectorAll(d).length&&(ai_insert(k,d,b64d(b)),f(a,"ai-viewports")):(b=document.createRange().createContextualFragment(b64d(b)),a.parentNode.insertBefore(b,a.nextSibling),f(a,"ai-viewports")));a=a.getElementsByClassName("ai-check-block");"undefined"!=typeof a[0]&&a[0].parentNode.removeChild(a[0])}else b=a.previousElementSibling,e(b,"ai-debug-bar")&&
+e(b,"ai-debug-script")&&(f(b,"ai-debug-script"),h(b,"ai-debug-viewport-invisible")),f(a,"ai-viewports")}function b64e(a){return btoa(encodeURIComponent(a).replace(/%([0-9A-F]{2})/g,function(a,h){return String.fromCharCode("0x"+h)}))}function b64d(a){return decodeURIComponent(atob(a).split("").map(function(a){return"%"+("00"+a.charCodeAt(0).toString(16)).slice(-2)}).join(""))};
+</script>
+<script id='st_insights_js' type='text/javascript' src='https://ws.sharethis.com/button/st_insights.js?publisher=4d48b7c5-0ae3-43d4-bfbe-3ff8c17a8ae6&#038;product=simpleshare'></script>
+<script type='text/javascript' src='https://www.prestonhollowpeople.com/wp-content/plugins/wp-hide-post/public/js/wp-hide-post-public.js?ver=2.0.10'></script>
+<script type='text/javascript' src='https://www.prestonhollowpeople.com/wp-content/themes/colormag/js/colormag-custom.js?ver=4.9.8'></script>
+<!--[if lte IE 8]>
+<script type='text/javascript' src='https://www.prestonhollowpeople.com/wp-content/themes/colormag/js/html5shiv.min.js?ver=4.9.8'></script>
+<![endif]-->
+<link rel='https://api.w.org/' href='https://www.prestonhollowpeople.com/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.prestonhollowpeople.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://www.prestonhollowpeople.com/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='Best of 2019: Stone, Panthers Roar to TAPPS Title' href='https://www.prestonhollowpeople.com/2019/12/31/best-of-2019-stone-panthers-roar-to-tapps-title/' />
+<link rel='next' title='Panther Pride: Success Didn&#8217;t Come Easy for State Champion Parish' href='https://www.prestonhollowpeople.com/2020/01/01/panther-pride-success-didnt-come-easy-for-state-champion-parish/' />
+<meta name="generator" content="WordPress 4.9.8" />
+<link rel='shortlink' href='https://www.prestonhollowpeople.com/?p=211970' />
+<link rel="alternate" type="application/json+oembed" href="https://www.prestonhollowpeople.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.prestonhollowpeople.com%2F2020%2F01%2F01%2Fbest-of-2019-life-finds-a-way%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://www.prestonhollowpeople.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.prestonhollowpeople.com%2F2020%2F01%2F01%2Fbest-of-2019-life-finds-a-way%2F&#038;format=xml" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-466309-35"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-466309-35');
+</script>
+<meta name="tec-api-version" content="v1"><meta name="tec-api-origin" content="https://www.prestonhollowpeople.com"><link rel="https://theeventscalendar.com/" href="https://www.prestonhollowpeople.com/wp-json/tribe/events/v1/" /><!-- Preston Hollow People Internal Styles -->        <style type="text/css"> .colormag-button,blockquote,button,input[type=reset],input[type=button],input[type=submit],
+		#masthead.colormag-header-clean #site-navigation.main-small-navigation .menu-toggle{background-color:#2459b5}
+		#site-title a,.next a:hover,.previous a:hover,.social-links i.fa:hover,a,
+		#masthead.colormag-header-clean .social-links li:hover i.fa,
+		#masthead.colormag-header-classic .social-links li:hover i.fa,
+		#masthead.colormag-header-clean .breaking-news .newsticker a:hover,
+		#masthead.colormag-header-classic .breaking-news .newsticker a:hover,
+		#masthead.colormag-header-classic #site-navigation .fa.search-top:hover,
+		#masthead.colormag-header-classic #site-navigation .random-post a:hover .fa-random,
+		#masthead .main-small-navigation li:hover > .sub-toggle i,
+		.better-responsive-menu #masthead .main-small-navigation .sub-toggle.active .fa  {color:#2459b5}
+		.fa.search-top:hover,
+		#masthead.colormag-header-classic #site-navigation.main-small-navigation .menu-toggle,
+		.main-navigation ul li.focus > a,
+        #masthead.colormag-header-classic .main-navigation ul ul.sub-menu li.focus > a {background-color:#2459b5}
+		#site-navigation{border-top:4px solid #2459b5}
+		.home-icon.front_page_on,.main-navigation a:hover,.main-navigation ul li ul li a:hover,
+		.main-navigation ul li ul li:hover>a,
+		.main-navigation ul li.current-menu-ancestor>a,
+		.main-navigation ul li.current-menu-item ul li a:hover,
+		.main-navigation ul li.current-menu-item>a,
+		.main-navigation ul li.current_page_ancestor>a,
+		.main-navigation ul li.current_page_item>a,
+		.main-navigation ul li:hover>a,
+		.main-small-navigation li a:hover,
+		.site-header .menu-toggle:hover,
+		#masthead.colormag-header-classic .main-navigation ul ul.sub-menu li:hover > a,
+		#masthead.colormag-header-classic .main-navigation ul ul.sub-menu li.current-menu-ancestor > a,
+		#masthead.colormag-header-classic .main-navigation ul ul.sub-menu li.current-menu-item > a,
+		#masthead .main-small-navigation li:hover > a,
+		#masthead .main-small-navigation li.current-page-ancestor > a,
+		#masthead .main-small-navigation li.current-menu-ancestor > a,
+		#masthead .main-small-navigation li.current-page-item > a,
+		#masthead .main-small-navigation li.current-menu-item > a{background-color:#2459b5}
+		.main-small-navigation .current-menu-item>a,.main-small-navigation .current_page_item>a {background:#2459b5}
+		#masthead.colormag-header-classic .main-navigation ul ul.sub-menu li:hover,
+		#masthead.colormag-header-classic .main-navigation ul ul.sub-menu li.current-menu-ancestor,
+		#masthead.colormag-header-classic .main-navigation ul ul.sub-menu li.current-menu-item,
+		#masthead.colormag-header-classic #site-navigation .menu-toggle,
+		#masthead.colormag-header-classic #site-navigation .menu-toggle:hover,
+		#masthead.colormag-header-classic .main-navigation ul > li:hover > a, 
+        #masthead.colormag-header-classic .main-navigation ul > li.current-menu-item > a, 
+        #masthead.colormag-header-classic .main-navigation ul > li.current-menu-ancestor > a,
+        #masthead.colormag-header-classic .main-navigation ul li.focus > a{ border-color:#2459b5}
+		.promo-button-area a:hover{border:2px solid #2459b5;background-color:#2459b5}
+		#content .wp-pagenavi .current,
+		#content .wp-pagenavi a:hover,.format-link .entry-content a,.pagination span{ background-color:#2459b5}
+		.pagination a span:hover{color:#2459b5;border-color:#2459b5}
+		#content .comments-area a.comment-edit-link:hover,#content .comments-area a.comment-permalink:hover,
+		#content .comments-area article header cite a:hover,.comments-area .comment-author-link a:hover{color:#2459b5}
+		.comments-area .comment-author-link span{background-color:#2459b5}
+		.comment .comment-reply-link:hover,.nav-next a,.nav-previous a{color:#2459b5}
+		#secondary .widget-title{border-bottom:2px solid #2459b5}
+		#secondary .widget-title span{background-color:#2459b5}
+		.footer-widgets-area .widget-title{border-bottom:2px solid #2459b5}
+		.footer-widgets-area .widget-title span,
+		.colormag-footer--classic .footer-widgets-area .widget-title span::before{background-color:#2459b5}
+		.footer-widgets-area a:hover{color:#2459b5}
+		.advertisement_above_footer .widget-title{ border-bottom:2px solid #2459b5}
+		.advertisement_above_footer .widget-title span{background-color:#2459b5}
+		a#scroll-up i{color:#2459b5}
+		.page-header .page-title{border-bottom:2px solid #2459b5}
+		#content .post .article-content .above-entry-meta .cat-links a,
+		.page-header .page-title span{ background-color:#2459b5}
+		#content .post .article-content .entry-title a:hover,
+		.entry-meta .byline i,.entry-meta .cat-links i,.entry-meta a,
+		.post .entry-title a:hover,.search .entry-title a:hover{color:#2459b5}
+		.entry-meta .post-format i{background-color:#2459b5}
+		.entry-meta .comments-link a:hover,.entry-meta .edit-link a:hover,.entry-meta .posted-on a:hover,
+		.entry-meta .tag-links a:hover,.single #content .tags a:hover{color:#2459b5}.more-link,
+		.no-post-thumbnail{background-color:#2459b5}
+		.post-box .entry-meta .cat-links a:hover,.post-box .entry-meta .posted-on a:hover,
+		.post.post-box .entry-title a:hover{color:#2459b5}
+		.widget_featured_slider .slide-content .above-entry-meta .cat-links a{background-color:#2459b5}
+		.widget_featured_slider .slide-content .below-entry-meta .byline a:hover,
+		.widget_featured_slider .slide-content .below-entry-meta .comments a:hover,
+		.widget_featured_slider .slide-content .below-entry-meta .posted-on a:hover,
+		.widget_featured_slider .slide-content .entry-title a:hover{color:#2459b5}
+		.widget_highlighted_posts .article-content .above-entry-meta .cat-links a {background-color:#2459b5}
+		.byline a:hover,.comments a:hover,.edit-link a:hover,.posted-on a:hover,.tag-links a:hover,
+		.widget_highlighted_posts .article-content .below-entry-meta .byline a:hover,
+		.widget_highlighted_posts .article-content .below-entry-meta .comments a:hover,
+		.widget_highlighted_posts .article-content .below-entry-meta .posted-on a:hover,
+		.widget_highlighted_posts .article-content .entry-title a:hover{color:#2459b5}
+		.widget_featured_posts .article-content .above-entry-meta .cat-links a{background-color:#2459b5}
+		.widget_featured_posts .article-content .entry-title a:hover{color:#2459b5}
+		.widget_featured_posts .widget-title{border-bottom:2px solid #2459b5}
+		.widget_featured_posts .widget-title span{background-color:#2459b5}
+		.related-posts-main-title .fa,.single-related-posts .article-content .entry-title a:hover{color:#2459b5}
+		@media (max-width: 768px) {.better-responsive-menu .sub-toggle{background-color:#063b97}}</style>
+				<style type="text/css" id="wp-custom-css">
+			/* Hiding Categories on Slider */
+.widget_featured_slider .slide-content .above-entry-meta .cat-links a {
+	display: none;
+}
+
+/* Hiding Categories on Homepage */
+.widget_featured_posts .article-content .above-entry-meta .cat-links a {
+	display: none;
+}
+
+/* Hiding Tags */
+.entry-meta , .tag-links { display: none; }
+
+/* Hiding Dates */
+.below-entry-meta .comments {
+  display: none;
+}
+
+/* Button Under Issue */
+.button {
+  display: block;
+  padding: 12px 85px;
+  border-radius: 5px;
+  border: 0;
+  font-weight: bold;
+  letter-spacing: 0.0625em;
+  text-transform: uppercase;
+  background: #2459b5;
+  color: #fff;
+}
+/* Add a rollover background colour but keep the text white */
+.button:hover,
+.button:focus,
+.button:active {
+  background: #b7b6cd;
+  color: #fff;
+}
+
+/* Read More Button */
+.more-link {
+	display: inline-block;
+	background-color: #ababab;
+	border-radius: 3px;
+}
+
+/* Opacity in Slider Text */
+.widget_featured_slider .slide-content .entry-title a {
+	color: #ffffff;
+	text-shadow: 1px 1px 2px rgba(0, 0, 0, 2);
+}
+
+/* Featured Image Caption */
+.ccfic {
+	padding: 10px;
+	color: 	#808080;
+	text-align: left;
+	font-size: 13px;
+	font-family: "opensans";
+}
+
+/* Captions In Interior Images */
+.wp-caption-text {
+	text-align: left;
+	font-size: 12px;
+	font-family: "opensans";
+	padding: 1px 8px;
+	color: 	#808080;
+}
+.wp-caption {
+	border: none
+}
+
+/* Newsletter 390x150 Sign Up */
+#mailchimp {
+	background: #115B87;
+	text-align: center;
+	line-height: 200%;
+	color: #ffffff;
+	padding: 5px 5px;
+	font-family: helvetica;
+	font-size: 13px;
+	
+}
+	#mailchimp input {
+		 border: medium none;
+    color: gray;
+    font-family: helvetica;
+    font-size: 12px;
+		text-align: center;
+    font-style: italic;
+    margin-bottom: 10px;
+    padding: 1px;
+	}
+		#mailchimp input.email { background: #fff }
+		#mailchimp input.name { background: #fff}
+		#mailchimp input[type="submit"] {
+			background: #115B87;
+			color: #fff;
+			font-size: 12px;
+			width: 30%;
+
+		}
+			#mailchimp input[type="submit"]:hover { color: #F2C94C }
+
+
+/* Pop Up Mobile*/
+@media screen and (max-width: 460px) {
+    .hustle-modal-one .hustle-modal-body section{
+        height: auto !important;
+        overflow:scroll !important;
+    }
+}
+
+@media screen and (max-height: 460px) {
+    .wph-modal.wph-modal-active{
+        overflow:scroll;
+    }
+}		</style>
+		
+<script async='async' src='https://www.googletagservices.com/tag/js/gpt.js'></script>
+<script>
+  var googletag = googletag || {};
+  googletag.cmd = googletag.cmd || [];
+</script>
+
+<script>
+  googletag.cmd.push(function() {
+    googletag.defineSlot('/1045645/PrestonHollow_Leaderboard', [[575, 100], [350, 50]], 'div-gpt-ad-1531947744211-0').addService(googletag.pubads());
+	googletag.defineSlot('/1045645/PrestonHollow_Banner1', [[350, 50], [795, 100]], 'div-gpt-ad-1531948557816-0').addService(googletag.pubads());
+	googletag.defineSlot('/1045645/PrestonHollow_Banner2', [[350, 50], [795, 100]], 'div-gpt-ad-1531948774957-0').addService(googletag.pubads());
+	googletag.defineSlot('/1045645/PrestonHollow_Square1', [300, 300], 'div-gpt-ad-1532017500044-0').addService(googletag.pubads());
+	googletag.defineSlot('/1045645/PrestonHollow_Square2', [300, 300], 'div-gpt-ad-1532017746061-0').addService(googletag.pubads());
+	googletag.defineSlot('/1045645/PrestonHollow_Square3', [300, 300], 'div-gpt-ad-1532017927787-0').addService(googletag.pubads());
+	googletag.defineSlot('/1045645/PrestonHollow_Weddings', [[350, 50], [795, 100]], 'div-gpt-ad-1556637118115-0').addService(googletag.pubads());
+	googletag.defineSlot('/1045645/PrestonHollow_Community', [[350, 50], [795, 100]], 'div-gpt-ad-1549038569022-0').addService(googletag.pubads());
+	googletag.defineSlot('/1045645/PrestonHollow_Society', [[795, 100], [350, 50]], 'div-gpt-ad-1549060269076-0').addService(googletag.pubads());
+	googletag.defineSlot('/1045645/PrestonHollow_Engagements', [[350, 50], [795, 100]], 'div-gpt-ad-1558725353068-0').addService(googletag.pubads());
+	googletag.defineSlot('/1045645/PrestonHollow_Crime', [[350, 50], [795, 100]], 'div-gpt-ad-1566588494118-0').addService(googletag.pubads());
+	googletag.defineSlot('/1045645/PrestonHollow_Rectangle1', [390, 150], 'div-gpt-ad-1552426671109-0').addService(googletag.pubads());
+	googletag.defineSlot('/1045645/PrestonHollow_Rectangle2', [390, 150], 'div-gpt-ad-1552426301631-0').addService(googletag.pubads());
+	googletag.defineSlot('/1045645/PrestonHollow_WideTower1', [300, 600], 'div-gpt-ad-1547497430973-0').addService(googletag.pubads());
+	googletag.defineSlot('/1045645/PrestonHollow_WideTower2', [300, 600], 'div-gpt-ad-1547506510983-0').addService(googletag.pubads());
+	googletag.defineSlot('/1045645/POPUP_PH', [300, 600], 'div-gpt-ad-1567538422706-0').addService(googletag.pubads());
+    googletag.pubads().enableSingleRequest();
+    googletag.enableServices();
+  });
+</script>
+	
+</head>
+
+<body class="post-template-default single single-post postid-211970 single-format-standard wp-custom-logo tribe-no-js tribe-theme-colormag  wide">
+
+
+<div id="page" class="hfeed site">
+	
+	
+	<header id="masthead" class="site-header clearfix ">
+		<div id="header-text-nav-container" class="clearfix">
+
+						<div class="news-bar">
+				<div class="inner-wrap clearfix">
+					
+        <div class="date-in-header">
+			Wednesday, January 1, 2020        </div>
+
+		
+					
+							<div class="social-links clearfix">
+			<ul>
+				<li><a href="https://www.facebook.com/phollowpeople" target="_blank"><i class="fa fa-facebook"></i></a></li><li><a href="https://twitter.com/phollowpeople" target="_blank"><i class="fa fa-twitter"></i></a></li><li><a href="https://www.instagram.com/peoplenewspapers/" target="_blank"><i class="fa fa-instagram"></i></a></li>			</ul>
+		</div><!-- .social-links -->
+						</div>
+			</div>
+		
+			
+			
+		<div class="inner-wrap">
+
+			<div id="header-text-nav-wrap" class="clearfix">
+				<div id="header-left-section">
+											<div id="header-logo-image">
+							
+							<a href="https://www.prestonhollowpeople.com/" class="custom-logo-link" rel="home" itemprop="url"><img width="500" height="70" src="https://www.prestonhollowpeople.com/wp-content/uploads/2018/05/cropped-PHP-Logo-e1527784619636.jpg" class="custom-logo" alt="Preston Hollow People" itemprop="logo" srcset="https://www.prestonhollowpeople.com/wp-content/uploads/2018/05/cropped-PHP-Logo-e1527784619636.jpg 500w, https://www.prestonhollowpeople.com/wp-content/uploads/2018/05/cropped-PHP-Logo-e1527784619636-300x42.jpg 300w" sizes="(max-width: 500px) 100vw, 500px" /></a>						</div><!-- #header-logo-image -->
+											<div id="header-text" class="screen-reader-text">
+													<h3 id="site-title">
+								<a href="https://www.prestonhollowpeople.com/" title="Preston Hollow People" rel="home">Preston Hollow People</a>
+							</h3>
+																		<p id="site-description">Preston Hollow People</p>
+						<!-- #site-description -->
+					</div><!-- #header-text -->
+				</div><!-- #header-left-section -->
+				<div id="header-right-section">
+											<div id="header-right-sidebar" class="clearfix">
+							<aside id="custom_html-3" class="widget_text widget widget_custom_html clearfix"><div class="textwidget custom-html-widget"><!-- /1045645/PrestonHollow_Leaderboard -->
+<div id='div-gpt-ad-1531947744211-0'>
+<script>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1531947744211-0'); });
+</script>
+</div></div></aside>						</div>
+										</div><!-- #header-right-section -->
+
+			</div><!-- #header-text-nav-wrap -->
+
+		</div><!-- .inner-wrap -->
+
+		
+			
+			
+		<nav id="site-navigation" class="main-navigation clearfix" role="navigation">
+			<div class="inner-wrap clearfix">
+				
+				<h4 class="menu-toggle"></h4>
+				<div class="menu-primary-container"><ul id="menu-header" class="menu"><li id="menu-item-185782" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-185782"><a href="https://www.prestonhollowpeople.com/category/business/">Business</a></li>
+<li id="menu-item-185772" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-185772"><a href="https://www.prestonhollowpeople.com/category/community/">Community</a></li>
+<li id="menu-item-186038" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-186038"><a href="https://www.prestonhollowpeople.com/category/news/">News</a>
+<ul class="sub-menu">
+	<li id="menu-item-185771" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-185771"><a href="https://www.prestonhollowpeople.com/category/crime/">Crime</a></li>
+</ul>
+</li>
+<li id="menu-item-186669" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-186669"><a href="https://www.prestonhollowpeople.com/category/life/">Life</a>
+<ul class="sub-menu">
+	<li id="menu-item-205188" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-205188"><a href="https://www.prestonhollowpeople.com/category/arts/">Arts</a></li>
+	<li id="menu-item-205189" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-205189"><a href="https://www.prestonhollowpeople.com/category/food/">Food</a></li>
+	<li id="menu-item-204566" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-204566"><a href="https://www.prestonhollowpeople.com/events/">Events</a></li>
+	<li id="menu-item-185777" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-185777"><a href="https://www.prestonhollowpeople.com/category/worship/">Faith</a></li>
+	<li id="menu-item-185773" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-185773"><a href="https://www.prestonhollowpeople.com/category/living-well/">Living Well</a></li>
+	<li id="menu-item-185786" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-185786"><a href="https://www.prestonhollowpeople.com/category/society/">Society</a></li>
+</ul>
+</li>
+<li id="menu-item-185783" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-185783"><a href="https://www.prestonhollowpeople.com/category/real-estate/">Real Estate</a>
+<ul class="sub-menu">
+	<li id="menu-item-193893" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-193893"><a href="https://www.prestonhollowpeople.com/featured-properties/">Featured Properties</a></li>
+</ul>
+</li>
+<li id="menu-item-185781" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-185781"><a href="https://www.prestonhollowpeople.com/category/schools/">Schools</a>
+<ul class="sub-menu">
+	<li id="menu-item-188291" class="menu-item menu-item-type-taxonomy menu-item-object-acadp_categories menu-item-188291"><a href="https://www.prestonhollowpeople.com/acadp_categories/schools/">School Listings</a></li>
+</ul>
+</li>
+<li id="menu-item-185780" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-185780"><a href="https://www.prestonhollowpeople.com/category/sports/">Sports</a></li>
+<li id="menu-item-191695" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-191695"><a href="https://www.prestonhollowpeople.com/listing-categories/">Classifieds</a>
+<ul class="sub-menu">
+	<li id="menu-item-204746" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-204746"><a href="https://www.prestonhollowpeople.com/listing-categories/">Business Listings</a></li>
+</ul>
+</li>
+<li id="menu-item-191960" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-191960"><a href="https://www.prestonhollowpeople.com/category/announcements/">Announcements</a>
+<ul class="sub-menu">
+	<li id="menu-item-185630" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-185630"><a href="https://www.prestonhollowpeople.com/listing-categories/">Directory</a>
+	<ul class="sub-menu">
+		<li id="menu-item-185631" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-185631"><a href="https://www.prestonhollowpeople.com/listings/">Directory Listings</a></li>
+	</ul>
+</li>
+	<li id="menu-item-186189" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-186189"><a href="https://www.prestonhollowpeople.com/category/engagements/">Engagements</a></li>
+	<li id="menu-item-185751" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-185751"><a href="https://www.prestonhollowpeople.com/category/weddings/">Weddings</a></li>
+	<li id="menu-item-185752" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-185752"><a href="https://www.prestonhollowpeople.com/category/obituaries/">Obituaries</a></li>
+</ul>
+</li>
+</ul></div>
+				
+									<i class="fa fa-search search-top"></i>
+					<div class="search-form-top">
+						<form action="https://www.prestonhollowpeople.com/" class="search-form searchform clearfix" method="get">
+   <div class="search-wrap">
+      <input type="text" placeholder="Search" class="s field" name="s">
+      <button class="search-icon" type="submit"></button>
+   </div>
+</form><!-- .searchform -->					</div>
+							</div>
+		</nav>
+
+		
+		</div><!-- #header-text-nav-container -->
+
+		
+	</header>
+
+		
+	<div id="main" class="clearfix">
+		<div class="inner-wrap clearfix">
+
+	
+	<div id="primary">
+		<div id="content" class="clearfix">
+
+			
+				
+<article id="post-211970" class="post-211970 post type-post status-publish format-standard has-post-thumbnail hentry category-best-of category-community category-preston-hollow">
+	
+   
+         <div class="featured-image">
+               <img width="800" height="445" src="https://www.prestonhollowpeople.com/wp-content/uploads/2019/12/17_FiveDeepsMarianaTrench_©ReeveJolliffe©_7503123-800x445.jpg" class="attachment-colormag-featured-image size-colormag-featured-image wp-post-image" alt="" srcset="https://www.prestonhollowpeople.com/wp-content/uploads/2019/12/17_FiveDeepsMarianaTrench_©ReeveJolliffe©_7503123-800x445.jpg 800w, https://www.prestonhollowpeople.com/wp-content/uploads/2019/12/17_FiveDeepsMarianaTrench_©ReeveJolliffe©_7503123-800x445-300x167.jpg 300w, https://www.prestonhollowpeople.com/wp-content/uploads/2019/12/17_FiveDeepsMarianaTrench_©ReeveJolliffe©_7503123-800x445-768x427.jpg 768w" sizes="(max-width: 800px) 100vw, 800px" /><div class="ccfic"><span class="ccfic-text">Victor Vescovo and his crew prepare for his historic 35,787-foot-deep dive in the Pacific Ocean’s Mariana Trench. Courtesy photo</span></div>            </div>
+   
+   <div class="article-content clearfix">
+
+   
+   <div class="above-entry-meta"><span class="cat-links"><a href="https://www.prestonhollowpeople.com/category/best-of/"  rel="category tag">Best Of</a>&nbsp;<a href="https://www.prestonhollowpeople.com/category/community/"  rel="category tag">Community</a>&nbsp;<a href="https://www.prestonhollowpeople.com/category/preston-hollow/"  rel="category tag">Preston Hollow</a>&nbsp;</span></div>
+      <header class="entry-header">
+   		<h1 class="entry-title">
+   			Best of 2019: ‘Life Finds a Way’   		</h1>
+   	</header>
+
+   	<div class="below-entry-meta">
+			<span class="posted-on"><a href="https://www.prestonhollowpeople.com/2020/01/01/best-of-2019-life-finds-a-way/" title="7:30 am" rel="bookmark"><i class="fa fa-calendar-o"></i> <time class="entry-date published" datetime="2020-01-01T07:30:31+00:00">January 1, 2020</time><time class="updated" datetime="2019-12-31T20:12:05+00:00">December 31, 2019</time></a></span>
+            <span class="byline"><span class="author vcard"><i class="fa fa-user"></i><a class="url fn n"
+                                                                                         href="https://www.prestonhollowpeople.com/author/staff-report/"
+                                                                                         title="Staff Report">Staff Report</a></span></span>
+
+			                <span class="comments"><a href="https://www.prestonhollowpeople.com/2020/01/01/best-of-2019-life-finds-a-way/#respond"><i class="fa fa-comment"></i> 0 Comments</a></span>
+			</div>
+   	<div class="entry-content clearfix">
+   		<p><strong><em>Editor’s note: As 2019 turns into 2020, we’re taking the opportunity to look back at some of our best and biggest stories of the year. Written by Timothy Glaze, this story about St. Mark&#8217;s grad-turned-undersea explorer Victor Vescovo was one of those stories.</em></strong></p>
+<p>Exploring unheard-of ocean depths is nothing new for <a href="https://www.smtexas.org/" target="_blank" rel="noopener">St. Mark</a>’s alumnus Victor Vescovo, who has dived to the deepest points of the Atlantic Ocean, Southern Ocean, and the Indian Ocean.</p>
+<p>But on April 28, Vescovo hit a new low, so to speak.</p>
+<p>Vescovo and his vehicle, the DSV Limiting Factor, reached a depth of 35,853 feet in the Mariana Trench of the Pacific Ocean. The dive broke the record of 35,787 feet by movie director James Cameron, who hit the mark with his dive in 2012.</p>
+<p>Vescovo and his team remained in the section of the trench known as <a href="https://en.wikipedia.org/wiki/Challenger_Deep" target="_blank" rel="noopener">Challenger Deep</a> until May 5, exploring and collecting biological samples from an area of the Pacific Ocean nearly seven miles below the surface.</p>
+<p>Vescovo then capped off the month of May with a commencement speech at St. Mark’s 2019 graduation.</p>
+<p><a href="https://www.prestonhollowpeople.com/2019/06/28/life-finds-a-way/" target="_blank" rel="noopener">Read more here</a>.</p>
+<!-- Simple Share Buttons Adder (7.4.18) simplesharebuttons.com --><div id="ssba-classic-2" class="ssba ssbp-wrap left ssbp--theme-1"><div style="text-align:center"><span class="ssba-share-text">Share this article...</span><br/><a data-site="email" class="ssba_email_share" href="/cdn-cgi/l/email-protection#ad92ded8cfc7c8ced990efc8ded9889f9dc2cb889f9d9f9d9c9497889f9d4f2d35e1c4cbc8889f9debc4c3c9de889f9dcc889f9dfaccd44f2d348b8e9d9e9596cfc2c9d490889f9dc5d9d9ddde978282dadada83dddfc8ded9c2c3c5c2c1c1c2daddc8c2ddc1c883cec2c0829f9d9f9d829d9c829d9c82cfc8ded980c2cb809f9d9c9480c1c4cbc880cbc4c3c9de80cc80daccd482"><img src="https://www.prestonhollowpeople.com/wp-content/plugins/simple-share-buttons-adder/buttons/somacro/email.png" style="width: 35px;" title="Email" class="ssba ssba-img" alt="Email this to someone" /><div title="email" class="ssbp-text">email</div></a><a data-site="" class="ssba_facebook_share" href="https://www.facebook.com/sharer.php?u=https://www.prestonhollowpeople.com/2020/01/01/best-of-2019-life-finds-a-way/" target="_blank"><img src="https://www.prestonhollowpeople.com/wp-content/plugins/simple-share-buttons-adder/buttons/somacro/facebook.png" style="width: 35px;" title="Facebook" class="ssba ssba-img" alt="Share on Facebook" /><div title="Facebook" class="ssbp-text">Facebook</div></a><a data-site="" class="ssba_google_share" href="https://plus.google.com/share?url=https://www.prestonhollowpeople.com/2020/01/01/best-of-2019-life-finds-a-way/"  target=&quot;_blank&quot; ><img src="https://www.prestonhollowpeople.com/wp-content/plugins/simple-share-buttons-adder/buttons/somacro/google.png" style="width: 35px;" title="Google+" class="ssba ssba-img" alt="Share on Google+" /><div title="Google+" class="ssbp-text">Google+</div></a><a data-site="" class="ssba_twitter_share" href="https://twitter.com/share?url=https://www.prestonhollowpeople.com/2020/01/01/best-of-2019-life-finds-a-way/&amp;text=Best%20of%202019%3A%20%E2%80%98Life%20Finds%20a%20Way%E2%80%99%20" target=&quot;_blank&quot;><img src="https://www.prestonhollowpeople.com/wp-content/plugins/simple-share-buttons-adder/buttons/somacro/twitter.png" style="width: 35px;" title="Twitter" class="ssba ssba-img" alt="Tweet about this on Twitter" /><div title="Twitter" class="ssbp-text">Twitter</div></a><a data-site="linkedin" class="ssba_linkedin_share ssba_share_link" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://www.prestonhollowpeople.com/2020/01/01/best-of-2019-life-finds-a-way/" target=&quot;_blank&quot;><img src="https://www.prestonhollowpeople.com/wp-content/plugins/simple-share-buttons-adder/buttons/somacro/linkedin.png" style="width: 35px;" title="LinkedIn" class="ssba ssba-img" alt="Share on LinkedIn" /><div title="Linkedin" class="ssbp-text">Linkedin</div></a></div></div>   	</div>
+
+   </div>
+
+	</article>
+
+			
+		</div><!-- #content -->
+
+      
+		<ul class="default-wp-page clearfix">
+			<li class="previous"><a href="https://www.prestonhollowpeople.com/2019/12/31/best-of-2019-stone-panthers-roar-to-tapps-title/" rel="prev"><span class="meta-nav">&larr;</span> Best of 2019: Stone, Panthers Roar to TAPPS Title</a></li>
+			<li class="next"><a href="https://www.prestonhollowpeople.com/2020/01/01/panther-pride-success-didnt-come-easy-for-state-champion-parish/" rel="next">Panther Pride: Success Didn&#8217;t Come Easy for State Champion Parish <span class="meta-nav">&rarr;</span></a></li>
+		</ul>
+	
+      
+      
+
+
+      
+<div id="comments" class="comments-area">
+
+	
+	
+	
+		<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="/2020/01/01/best-of-2019-life-finds-a-way/#respond" style="display:none;">Cancel reply</a></small></h3>			<form action="https://www.prestonhollowpeople.com/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate>
+				<p class="comment-notes"><span id="email-notes">Your email address will not be published.</span> Required fields are marked <span class="required">*</span></p><p class="comment-form-comment"><label for="comment">Comment</label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea></p><p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" required='required' /></p>
+<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="email" value="" size="30" maxlength="100" aria-describedby="email-notes" required='required' /></p>
+<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="url" value="" size="30" maxlength="200" /></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment" /> <input type='hidden' name='comment_post_ID' value='211970' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="c2dfde52ea" /></p><p style="display: none;"><input type="hidden" id="ak_js" name="ak_js" value="61"/></p>			</form>
+			</div><!-- #respond -->
+	
+</div><!-- #comments -->
+	</div><!-- #primary -->
+
+	
+<div id="secondary">
+			
+		<aside id="custom_html-16" class="widget_text widget widget_custom_html clearfix"><div class="textwidget custom-html-widget"><!-- /1045645/PrestonHollow_Square1 -->
+<div id='div-gpt-ad-1532017500044-0' style='height:300px; width:300px;'>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1532017500044-0'); });
+</script>
+</div></div></aside><aside id="custom_html-14" class="widget_text widget widget_custom_html clearfix"><div class="textwidget custom-html-widget"><!-- /1045645/PrestonHollow_Square2 -->
+<div id='div-gpt-ad-1532017746061-0' style='height:300px; width:300px;'>
+<script>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1532017746061-0'); });
+</script>
+</div></div></aside><aside id="custom_html-11" class="widget_text widget widget_custom_html clearfix"><div class="textwidget custom-html-widget"><!-- /1045645/PrestonHollow_Square3 -->
+<div id='div-gpt-ad-1532017927787-0' style='height:300px; width:300px;'>
+<script>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1532017927787-0'); });
+</script>
+</div></div></aside><aside id="custom_html-12" class="widget_text widget widget_custom_html clearfix"><div class="textwidget custom-html-widget"><iframe allowfullscreen allow="fullscreen" style="border:none;width:100%;height:326px;" src="//e.issuu.com/embed.html?d=ph_january_2020_web&hideIssuuLogo=true&showOtherPublicationsAsSuggestions=true&u=pcpphp"></iframe>
+
+<a class="button" href="https://www.prestonhollowpeople.com/previous-issues/">previous issues</a></div></aside><aside id="custom_html-27" class="widget_text widget widget_custom_html clearfix"><div class="textwidget custom-html-widget"><a href="https://www.prestonhollowpeople.com/category/goransonbain-ausley/"><img src="https://www.prestonhollowpeople.com/wp-content/uploads/2019/09/GoransonBainn_300x150_Oct2019.jpg"/></a>
+&nbsp; • <a href="https://www.prestonhollowpeople.com/2019/09/30/how-you-can-achieve-your-divorce-goals/" target="_blank" rel="noopener">How You Can Achieve Your Divorce Goals</a></div></aside><aside id="custom_html-7" class="widget_text widget widget_custom_html clearfix"><div class="textwidget custom-html-widget"><a class="twitter-timeline" href="https://twitter.com/phollowpeople" data-widget-id="552625642542354432" data-chrome="noscrollbar">Tweets by @phollowpeople</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></div></aside><aside id="custom_html-32" class="widget_text widget widget_custom_html clearfix"><div class="textwidget custom-html-widget"><!-- People Newspapers / Creative Circle eventlink calendar rail widget v0.1 -->
+<iframe width="100%" height="400" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" src="https://api.dallasnewslink.com/rail-widget/prestonhollow"></iframe></div></aside>
+	</div>
+	
+
+</div><!-- .inner-wrap -->
+</div><!-- #main -->
+
+
+
+
+<footer id="colophon" class="clearfix colormag-footer--classic">
+	
+<div class="footer-widgets-wrapper">
+	<div class="inner-wrap">
+		<div class="footer-widgets-area clearfix">
+         <div class="tg-footer-main-widget">
+   			<div class="tg-first-footer-widget">
+   				<aside id="text-13" class="widget widget_text clearfix"><h3 class="widget-title"><span>People Newspapers</span></h3>			<div class="textwidget"><ul>
+<li><a href="https://www.prestonhollowpeople.com/about-us/">About Us</a></li>
+<li><a href="https://www.prestonhollowpeople.com/careers/">Careers</a></li>
+<li><a href="https://www.prestonhollowpeople.com/meet-the-staff/">Meet the Staff</a></li>
+<li><a href="https://www.prestonhollowpeople.com/rack-locations/">News Rack Locations</a></li>
+<li><a href="https://www.prestonhollowpeople.com/advertise/">Advertise</a></li>
+<li><a href="https://www.parkcitiespeople.com">Park Cities People</a></li>
+</ul>
+</div>
+		</aside>   			</div>
+         </div>
+         <div class="tg-footer-other-widgets">
+   			<div class="tg-second-footer-widget">
+   				<aside id="text-14" class="widget widget_text clearfix"><h3 class="widget-title"><span>Contact Us</span></h3>			<div class="textwidget"><ul>
+<li><a href="https://www.prestonhollowpeople.com/letter-to-the-editor/">Letter to the Editor</a></li>
+<li><a href="https://www.prestonhollowpeople.com/print-subscriptions/">Print Subscription</a></li>
+<li><a href="https://www.prestonhollowpeople.com/subscribe-to-our-newsletter/">Newsletter Subscription</a></li>
+<li><a href="https://www.prestonhollowpeople.com/request-a-pdf/">Request a PDF</a></li>
+<li><a href="https://www.prestonhollowpeople.com/submit-a-tip/">Submit a Story Tip</a></li>
+<li><a href="http://dallaseventlink.creativecirclemedia.com/">Submit an Event</a></li>
+<li><a href="https://dmagazine.wufoo.com/forms/s21cvce0baixp4/">Report A Problem</a></li>
+</ul>
+</div>
+		</aside>   			</div>
+            <div class="tg-third-footer-widget">
+                           </div>
+            <div class="tg-fourth-footer-widget">
+               <aside id="text-11" class="widget widget_text clearfix">			<div class="textwidget"><p>Preston Hollow People is a D Magazine Partner affiliate.</p>
+<p>750 St. Paul Street<br />
+Suite 2100<br />
+Dallas, TX 75201</p>
+</div>
+		</aside>            </div>
+         </div>
+		</div>
+	</div>
+</div>	<div class="footer-socket-wrapper clearfix">
+		<div class="inner-wrap">
+			<div class="footer-socket-area">
+				<div class="footer-socket-right-section">
+							<div class="social-links clearfix">
+			<ul>
+				<li><a href="https://www.facebook.com/phollowpeople" target="_blank"><i class="fa fa-facebook"></i></a></li><li><a href="https://twitter.com/phollowpeople" target="_blank"><i class="fa fa-twitter"></i></a></li><li><a href="https://www.instagram.com/peoplenewspapers/" target="_blank"><i class="fa fa-instagram"></i></a></li>			</ul>
+		</div><!-- .social-links -->
+						</div>
+
+				<div class="footer-socket-left-section">
+					<div class="copyright">Copyright &copy; 2020 <a href="https://www.prestonhollowpeople.com/" title="Preston Hollow People" ><span>Preston Hollow People</span></a>. All rights reserved.<br>Theme: ColorMag by <a href="https://themegrill.com/themes/colormag" target="_blank" title="ThemeGrill" rel="author"><span>ThemeGrill</span></a>. Powered by <a href="https://wordpress.org" target="_blank" title="WordPress"><span>WordPress</span></a>.</div>				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+
+<a href="#masthead" id="scroll-up"><i class="fa fa-chevron-up"></i></a>
+
+</div><!-- #page -->
+<script>
+setTimeout (function() {Array.prototype.forEach.call (document.querySelectorAll (".ai-viewports"), function (element, index) {ai_insert_code (element);});}, 10);
+
+</script>
+		<script>
+		( function ( body ) {
+			'use strict';
+			body.className = body.className.replace( /\btribe-no-js\b/, 'tribe-js' );
+		} )( document.body );
+		</script>
+		<script> /* <![CDATA[ */var tribe_l10n_datatables = {"aria":{"sort_ascending":": activate to sort column ascending","sort_descending":": activate to sort column descending"},"length_menu":"Show _MENU_ entries","empty_table":"No data available in table","info":"Showing _START_ to _END_ of _TOTAL_ entries","info_empty":"Showing 0 to 0 of 0 entries","info_filtered":"(filtered from _MAX_ total entries)","zero_records":"No matching records found","search":"Search:","all_selected_text":"All items on this page were selected. ","select_all_link":"Select all pages","clear_selection":"Clear Selection.","pagination":{"all":"All","next":"Next","previous":"Previous"},"select":{"rows":{"0":"","_":": Selected %d rows","1":": Selected 1 row"}},"datepicker":{"dayNames":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"dayNamesShort":["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],"dayNamesMin":["S","M","T","W","T","F","S"],"monthNames":["January","February","March","April","May","June","July","August","September","October","November","December"],"monthNamesShort":["January","February","March","April","May","June","July","August","September","October","November","December"],"nextText":"Next","prevText":"Prev","currentText":"Today","closeText":"Done"}};var tribe_system_info = {"sysinfo_optin_nonce":"0a91aac042","clipboard_btn_text":"Copy to clipboard","clipboard_copied_text":"System info copied","clipboard_fail_text":"Press \"Cmd + C\" to copy"};/* ]]> */ </script><link rel='stylesheet' id='simple-share-buttons-adder-ssba-css'  href='https://www.prestonhollowpeople.com/wp-content/plugins/simple-share-buttons-adder/css/ssba.css?ver=4.9.8' type='text/css' media='all' />
+<style id='simple-share-buttons-adder-ssba-inline-css' type='text/css'>
+	.ssba {
+									
+									
+									
+									
+								}
+								.ssba img
+								{
+									width: 35px !important;
+									padding: 10px;
+									border:  0;
+									box-shadow: none !important;
+									display: inline !important;
+									vertical-align: middle;
+									box-sizing: unset;
+								}
+								
+								#ssba-classic-2 .ssbp-text {
+									display: none!important;
+								}
+								
+								.ssba .fb-save
+								{
+								padding: 10px;
+								line-height: 30px; }
+								.ssba, .ssba a
+								{
+									text-decoration:none;
+									background: none;
+									
+									font-size: 15px;
+									
+									font-weight: bold;
+								}
+								
+@font-face {
+				font-family: 'ssbp';
+				src:url('https://www.prestonhollowpeople.com/wp-content/plugins/simple-share-buttons-adder/fonts/ssbp.eot?xj3ol1');
+				src:url('https://www.prestonhollowpeople.com/wp-content/plugins/simple-share-buttons-adder/fonts/ssbp.eot?#iefixxj3ol1') format('embedded-opentype'),
+					url('https://www.prestonhollowpeople.com/wp-content/plugins/simple-share-buttons-adder/fonts/ssbp.woff?xj3ol1') format('woff'),
+					url('https://www.prestonhollowpeople.com/wp-content/plugins/simple-share-buttons-adder/fonts/ssbp.ttf?xj3ol1') format('truetype'),
+					url('https://www.prestonhollowpeople.com/wp-content/plugins/simple-share-buttons-adder/fonts/ssbp.svg?xj3ol1#ssbp') format('svg');
+				font-weight: normal;
+				font-style: normal;
+
+				/* Better Font Rendering =========== */
+				-webkit-font-smoothing: antialiased;
+				-moz-osx-font-smoothing: grayscale;
+			}
+</style>
+<script type='text/javascript' src='https://www.prestonhollowpeople.com/wp-content/plugins/simple-share-buttons-adder/js/ssba.js?ver=4.9.8'></script>
+<script type='text/javascript'>
+Main.boot( [] );
+</script>
+<script type='text/javascript' src='https://www.prestonhollowpeople.com/wp-includes/js/comment-reply.min.js?ver=4.9.8'></script>
+<script type='text/javascript' src='https://www.prestonhollowpeople.com/wp-content/themes/colormag/js/jquery.bxslider.min.js?ver=4.2.10'></script>
+<script type='text/javascript' src='https://www.prestonhollowpeople.com/wp-content/themes/colormag/js/colormag-slider-setting.js?ver=4.9.8'></script>
+<script type='text/javascript' src='https://www.prestonhollowpeople.com/wp-content/themes/colormag/js/navigation.js?ver=4.9.8'></script>
+<script type='text/javascript' src='https://www.prestonhollowpeople.com/wp-content/themes/colormag/js/sticky/jquery.sticky.js?ver=20150309'></script>
+<script type='text/javascript' src='https://www.prestonhollowpeople.com/wp-content/themes/colormag/js/sticky/sticky-setting.js?ver=20150309'></script>
+<script type='text/javascript' src='https://www.prestonhollowpeople.com/wp-content/themes/colormag/js/fitvids/jquery.fitvids.js?ver=20150311'></script>
+<script type='text/javascript' src='https://www.prestonhollowpeople.com/wp-content/themes/colormag/js/fitvids/fitvids-setting.js?ver=20150311'></script>
+<script type='text/javascript' src='https://www.prestonhollowpeople.com/wp-content/plugins/wp-gallery-custom-links/wp-gallery-custom-links.js?ver=1.1'></script>
+<script type='text/javascript' src='https://www.prestonhollowpeople.com/wp-includes/js/wp-embed.min.js?ver=4.9.8'></script>
+<script async="async" type='text/javascript' src='https://www.prestonhollowpeople.com/wp-content/plugins/akismet/_inc/form.js?ver=4.0.8'></script>
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"46dfefc7c4","applicationID":"150869872","transactionName":"YAQDMEEAXBVVUhVZXFlOIAdHCF0IG0IIXlRbBA==","queueTime":0,"applicationTime":349,"atts":"TEMARgkaTxs=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>

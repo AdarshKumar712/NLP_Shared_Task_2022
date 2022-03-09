@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="og: http://ogp.me/ns#">
+  <head>
+    <meta charset="utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"b07dd8afc5",applicationID:"109864073"};window.NREUM||(NREUM={}),__nr_require=function(n,e,t){function r(t){if(!e[t]){var i=e[t]={exports:{}};n[t][0].call(i.exports,function(e){var i=n[t][1][e];return r(i||e)},i,i.exports)}return e[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(n,e,t){function r(){}function i(n,e,t){return function(){return o(n,[u.now()].concat(f(arguments)),e?null:this,t),e?void 0:this}}var o=n("handle"),a=n(4),f=n(5),c=n("ee").get("tracer"),u=n("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(n,e){s[e]=i(d+e,!0,"api")}),s.addPageAction=i(d+"addPageAction",!0),s.setCurrentRouteName=i(d+"routeName",!0),e.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(n,e){var t={},r=this,i="function"==typeof e;return o(l+"tracer",[u.now(),n,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return e.apply(this,arguments)}catch(n){throw c.emit("fn-err",[arguments,this,n],t),n}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(n,e){m[e]=i(l+e)}),newrelic.noticeError=function(n,e){"string"==typeof n&&(n=new Error(n)),o("err",[n,u.now(),!1,e])}},{}],2:[function(n,e,t){function r(n,e){var t=n.getEntries();t.forEach(function(n){"first-paint"===n.name?a("timing",["fp",Math.floor(n.startTime)]):"first-contentful-paint"===n.name&&a("timing",["fcp",Math.floor(n.startTime)])})}function i(n){if(n instanceof c&&!s){var e,t=Math.round(n.timeStamp);e=t>1e12?Date.now()-t:f.now()-t,s=!0,a("timing",["fi",t,{type:n.type,fid:e}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var o,a=n("handle"),f=n("loader"),c=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){o=new PerformanceObserver(r);try{o.observe({entryTypes:["paint"]})}catch(u){}}if("addEventListener"in document){var s=!1,p=["click","keydown","mousedown","pointerdown","touchstart"];p.forEach(function(n){document.addEventListener(n,i,!1)})}}},{}],3:[function(n,e,t){function r(n,e){if(!i)return!1;if(n!==i)return!1;if(!e)return!0;if(!o)return!1;for(var t=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],4:[function(n,e,t){function r(n,e){var t=[],r="",o=0;for(r in n)i.call(n,r)&&(t[o]=e(r,n[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],5:[function(n,e,t){function r(n,e,t){e||(e=0),"undefined"==typeof t&&(t=n?n.length:0);for(var r=-1,i=t-e||0,o=Array(i<0?0:i);++r<i;)o[r]=n[e+r];return o}e.exports=r},{}],6:[function(n,e,t){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(n,e,t){function r(){}function i(n){function e(n){return n&&n instanceof r?n:n?c(n,f,o):o()}function t(t,r,i,o){if(!d.aborted||o){n&&n(t,r,i);for(var a=e(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function l(n,e){h[n]=v(n).concat(e)}function m(n,e){var t=h[n];if(t)for(var r=0;r<t.length;r++)t[r]===e&&t.splice(r,1)}function v(n){return h[n]||[]}function g(n){return p[n]=p[n]||i(t)}function w(n,e){u(n,function(n,t){e=e||"feature",y[t]=e,e in s||(s[e]=[])})}var h={},y={},b={on:l,addEventListener:l,removeEventListener:m,emit:t,get:g,listeners:v,context:e,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var f="nr@context",c=n("gos"),u=n(4),s={},p={},d=e.exports=i();d.backlog=s},{}],gos:[function(n,e,t){function r(n,e,t){if(i.call(n,e))return n[e];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(n,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return n[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(n,e,t){function r(n,e,t,r){i.buffer([n],r),i.emit(n,e,t)}var i=n("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(n,e,t){function r(n){var e=typeof n;return!n||"object"!==e&&"function"!==e?-1:n===window?0:a(n,o,function(){return i++})}var i=1,o="nr@id",a=n("gos");e.exports=r},{}],loader:[function(n,e,t){function r(){if(!x++){var n=E.info=NREUM.info,e=l.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(n&&n.licenseKey&&n.applicationID&&e))return s.abort();u(y,function(e,t){n[e]||(n[e]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=l.createElement("script");t.src="https://"+n.agent,e.parentNode.insertBefore(t,e)}}function i(){"complete"===l.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=n("handle"),u=n(4),s=n("ee"),p=n(3),d=window,l=d.document,m="addEventListener",v="attachEvent",g=d.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:g,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1158.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=e.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};n(1),n(2),l[m]?(l[m]("DOMContentLoaded",o,!1),d[m]("load",r,!1)):(l[v]("onreadystatechange",i),d[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=n(6)},{}],"wrap-function":[function(n,e,t){function r(n){return!(n&&n instanceof Function&&n.apply&&!n[a])}var i=n("ee"),o=n(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;e.exports=function(n,e){function t(n,e,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){d([u,"",[r,a,i],f])}s(e+"start",[r,a,i],f);try{return c=n.apply(a,r)}catch(p){throw s(e+"err",[r,a,p],f),p}finally{s(e+"end",[r,a,c],f)}}return r(n)?n:(e||(e=""),nrWrapper[a]=n,p(n,nrWrapper),nrWrapper)}function u(n,e,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<e.length;c++)f=e[c],a=n[f],r(a)||(n[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||e){var o=c;c=!0;try{n.emit(t,r,i,e)}catch(a){d([a,t,r,i])}c=o}}function p(n,e){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(n);return t.forEach(function(t){Object.defineProperty(e,t,{get:function(){return n[t]},set:function(e){return n[t]=e,e}})}),e}catch(r){d([r])}for(var i in n)f.call(n,i)&&(e[i]=n[i]);return e}function d(e){try{n.emit("internal-error",e)}catch(t){}}return n||(n=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script>
+<meta name="title" content="Two killed, several wounded in Melville drive-by shooting | eNCA" />
+<meta http-equiv="content-language" content="en" />
+<meta name="robots" content="index, follow" />
+<meta property="og:site_name" content="eNCA" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="description" content="It&#039;s been a tragic start to the new year in Johannesburg as two women are killed in a drive-by shooting in Melville." />
+<meta name="twitter:description" content="It&#039;s been a tragic start to the new year in Johannesburg as two women are killed in a drive-by shooting in Melville." />
+<meta property="og:type" content="article" />
+<meta name="image_src" content="" />
+<meta property="og:title" content="Two killed, several wounded in Melville drive-by shooting" />
+<meta name="referrer" content="no-referrer" />
+<meta property="og:description" content="It&#039;s been a tragic start to the new year in Johannesburg as two women are killed in a drive-by shooting in Melville." />
+<meta name="twitter:image:width" content="1024" />
+<meta name="twitter:image" content="https://www.enca.com/sites/default/files/styles/twitter/public/2020-01/web_photo_melvilleshooting_010120.png?h=83f3d97f&amp;itok=OhZ9YpM6" />
+<meta name="twitter:image:height" content="512" />
+<meta property="og:image" content="https://www.enca.com/sites/default/files/styles/facebook/public/2020-01/web_photo_melvilleshooting_010120.png?h=83f3d97f&amp;itok=s_HrVg5w" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:updated_time" content="2020-01-01T08:50:22+0200" />
+<meta name="Generator" content="Drupal 8 (Thunder | http://www.thunder.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<script type="text/javascript">
+// Initialize the google variables.
+var googletag = googletag || {};
+googletag.cmd = googletag.cmd || [];
+// Add a place to store the slot name variable.
+googletag.slots = googletag.slots || {};
+(function() {
+  var useSSL = "https:" == document.location.protocol;
+  var src = (useSSL ? 'https:' : 'http:') + '//www.googletagservices.com/tag/js/gpt.js';
+  document.write('<scr' + 'ipt src="' + src + '"></scr' + 'ipt>');
+})();
+</script>
+<script type="text/javascript">
+  
+  googletag.slots["news_mobile_sticky"] = googletag.defineSlot("/8372/eNCA-V2/news", [320, 50], "js-dfp-tag-news_mobile_sticky")
+
+    .addService(googletag.pubads())
+
+  
+  
+  
+      .setTargeting('pos', ['sticky'])
+      ;
+</script>
+<script type="text/javascript">
+  
+  googletag.slots["news_half_page"] = googletag.defineSlot("/8372/eNCA-V2/news", [[300, 600], [160, 600]], "js-dfp-tag-news_half_page")
+
+    .addService(googletag.pubads())
+
+  
+  
+  
+      ;
+</script>
+<script type="text/javascript">
+  
+  googletag.slots["news_medium_rectangle_btf"] = googletag.defineSlot("/8372/eNCA-V2/news", [300, 250], "js-dfp-tag-news_medium_rectangle_btf")
+
+    .addService(googletag.pubads())
+
+  
+  
+  
+      .setTargeting('pos', ['bot-mpu'])
+      ;
+</script>
+<script type="text/javascript">
+  
+  googletag.slots["news_medium_rectangle"] = googletag.defineSlot("/8372/eNCA-V2/news", [300, 250], "js-dfp-tag-news_medium_rectangle")
+
+    .addService(googletag.pubads())
+
+  
+  
+  
+      .setTargeting('pos', ['top-mpu'])
+      ;
+</script>
+<script type="text/javascript">
+  
+  googletag.slots["news_takeover"] = googletag.defineSlot("/8372/eNCA-V2/news", [1, 1], "js-dfp-tag-news_takeover")
+
+    .addService(googletag.pubads())
+
+  
+  
+  
+      ;
+</script>
+<script type="text/javascript">
+        // Start by defining breakpoints for this ad.
+      var mapping = googletag.sizeMapping()
+              .addSize([750, 0], [728, 90])
+              .addSize([0, 0], [[320, 50], [300, 50]])
+            .build();
+  
+  googletag.slots["news_leaderboard"] = googletag.defineSlot("/8372/eNCA-V2/news", [[970, 250], [970, 90], [728, 90]], "js-dfp-tag-news_leaderboard")
+
+    .addService(googletag.pubads())
+
+  
+  
+  
+      .setTargeting('pos', ['top-ldr'])
+        // Apply size mapping when there are breakpoints.
+    .defineSizeMapping(mapping)
+    ;
+</script>
+<script type="text/javascript">
+googletag.cmd.push(function() {
+      googletag.pubads().enableAsyncRendering();
+        googletag.pubads().enableSingleRequest();
+        googletag.pubads().collapseEmptyDivs(true);
+          googletag.pubads().setTargeting('articleid', ['https://www.enca.com/news/two-killed-several-wounded-melville-drive-shooting']);
+      googletag.pubads().setTargeting('node_title', ['Two killed','several wounded in Melville drive-by shooting']);
+      googletag.pubads().setTargeting('node_tags', ['south africa','melville','drive-by shooting']);
+      googletag.pubads().setTargeting('node_channel', ['News']);
+      googletag.pubads().setTargeting('node_id', ['827921']);
+  });
+googletag.enableServices();
+</script>
+<link rel="shortcut icon" href="/sites/default/files/favicon_new_96x96_sep_icon.ico" type="image/vnd.microsoft.icon" />
+<link rel="canonical" href="https://www.enca.com/news/two-killed-several-wounded-melville-drive-shooting" />
+<link rel="shortlink" href="https://www.enca.com/node/827921" />
+<link rel="revision" href="https://www.enca.com/news/two-killed-several-wounded-melville-drive-shooting" />
+<script src="/sites/default/files/google_tag/primary/google_tag.script.js?q2z0t8" defer="true"></script>
+
+    <title>Two killed, several wounded in Melville drive-by shooting | eNCA</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,700i,800" rel="stylesheet">
+    <link rel="stylesheet" media="all" href="/sites/default/files/css/css_xI15J_VzJ9Rw8ZcQXdzmfH0X4Ja2WKY8XxB2fIXihtE.css?q2z0t8" />
+<link rel="stylesheet" media="all" href="/sites/default/files/css/css_cQGHpIrmN6LbXTl4mosZIoNcA9Sv4l0qCg1Eyb4xWu8.css?q2z0t8" />
+
+    
+<!--[if lte IE 8]>
+<script src="/sites/default/files/js/js_VtafjXmRvoUgAzqzYTA3Wrjkx9wcWhjP0G4ZnnqRamA.js"></script>
+<![endif]-->
+<script src="https://static.vic-m.co/ads/vicinity-head-tag-v1.js?zoneId=2225" async></script>
+<script src="/sites/default/files/js/js_wso1fVERCVP8pcpSzLVsXEknN0xaYIBftaYrMu7Fg7s.js"></script>
+
+  </head>
+  <body class="path-node page-node-type-article enca-life-detail">
+        <a href="#main-content" class="visually-hidden focusable skip-link">
+      Skip to main content
+    </a>
+    <noscript aria-hidden="true"><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KRX2KW" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+   <div class="page">   <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    <!--Wrapper Begins-->
+<div class="wrapper">
+<!--Header Begins-->
+        <header>
+            <div class="container">
+                                    <div class="google-ads hidden-xs">
+                        <div class="region region-googleadd">
+    <div id="block-dfptagnewsleaderboard" class="block block-dfp block-dfp-adac266e25-c52f-4470-8a71-bdaaae74a249">
+  
+    
+      <div id="js-dfp-tag-news_leaderboard">
+        <script type="text/javascript">
+        googletag.cmd.push(function() {
+            googletag.display('js-dfp-tag-news_leaderboard');
+        });
+    </script>
+</div>
+
+  </div>
+<div id="block-dfptagnewstakeover" class="block block-dfp block-dfp-ad072de724-d378-49e0-a919-8a242f25e287">
+  
+    
+      <div id="js-dfp-tag-news_takeover">
+        <script type="text/javascript">
+        googletag.cmd.push(function() {
+            googletag.display('js-dfp-tag-news_takeover');
+        });
+    </script>
+</div>
+
+  </div>
+
+  </div>
+
+                    </div>
+                                            </div>
+
+
+            <nav class="navbar navbar-default navbar-custom" role="navigation">
+
+                <div class="container">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar bar-one"></span>
+                            <span class="icon-bar bar-two"></span>
+                            <span class="icon-bar bar-three"></span>
+                        </button>
+                        <a class="navbar-brand logo" href="/" title="Enca Logo"><img src="/sites/all/themes/custom/enca/images/eNCA_logo.svg" alt="enca logo" />
+                        <span class="logo-text">DStv Channel 403</span>
+                        </a>
+                    </div>
+                    <div class="collapse navbar-collapse navbar-ex1-collapse custom-collapse">
+
+                                                                              <div class="region region-primary-menu">
+    <nav role="navigation" aria-labelledby="block-enca-main-menu-menu" id="block-enca-main-menu" class="block block-menu navigation menu--main">
+            
+  <h2 class="visually-hidden" id="block-enca-main-menu-menu">Main navigation</h2>
+  
+
+        
+              <ul class="nav navbar-nav">
+                    <li class="menu-item">
+        <a href="/" data-drupal-link-system-path="&lt;front&gt;">Top Stories</a>
+              </li>
+                <li class="menu-item">
+        <a href="/watch" title="Watch Videos" data-drupal-link-system-path="watch">Videos</a>
+              </li>
+                <li class="menu-item">
+        <a href="/news" data-drupal-link-system-path="news-list">News</a>
+              </li>
+                <li class="menu-item">
+        <a href="/business" data-drupal-link-system-path="business-listing">Business</a>
+              </li>
+                <li class="menu-item">
+        <a href="/sports" data-drupal-link-system-path="sports">Sport</a>
+              </li>
+                <li class="menu-item">
+        <a href="/analysis" data-drupal-link-system-path="analysis-listing">Analysis</a>
+              </li>
+                <li class="menu-item">
+        <a href="/life" data-drupal-link-system-path="life-listing">Life</a>
+              </li>
+                <li class="menu-item">
+        <a href="/show-listings" data-drupal-link-system-path="show-listings">Shows</a>
+              </li>
+                <li class="menu-item">
+        <a href="/weather-report" data-drupal-link-system-path="weather-report">Weather</a>
+              </li>
+                <li class="menu-item">
+        <a href="/nuus" data-drupal-link-system-path="nuus">Nuus</a>
+              </li>
+        </ul>
+  
+
+
+  </nav>
+<nav role="navigation" aria-labelledby="block-secondmainmenu-menu" id="block-secondmainmenu" class="block block-menu navigation menu--second-main-menu">
+            
+  <h2 class="visually-hidden" id="block-secondmainmenu-menu">Second Main Menu</h2>
+  
+
+        
+              <ul class="menu">
+                    <li class="menu-item">
+        <a href="/12-days-of-crazy" data-drupal-link-system-path="taxonomy/term/54781">12 Days of Crazy</a>
+              </li>
+                <li class="menu-item">
+        <a href="https://www.enca.com/load-shedding">Load-Shedding</a>
+              </li>
+                <li class="menu-item">
+        <a href="/picture-of-the-day" data-drupal-link-system-path="picture-of-the-day">Pictures from the field</a>
+              </li>
+                <li class="menu-item">
+        <a href="https://www.enca.com/shows/tech-matters-0">Tech Matters</a>
+              </li>
+        </ul>
+  
+
+
+  </nav>
+
+  </div>
+
+                                            </div>
+                    <!-- /.navbar-collapse -->
+                </div>
+            </nav>
+            <div class="clearfix"></div>
+        </header>
+<!--Header Ends-->
+                    <div class="container">
+                      <div class="region region-featured-top">
+    <div class="views-element-container block block-views block-views-blockbreaking-news-block-1" id="block-views-block-breaking-news-block-1-2">
+  
+    
+      <div><div class="notification-alert view view-breaking-news view-id-breaking_news view-display-id-block_1 js-view-dom-id-1dd33dc2adb5efb426de3e26a5526cc0d454e3c3cf3334b8a1783cc6ad070fb1">
+  
+    
+      
+  
+          </div>
+</div>
+
+  </div>
+
+  </div>
+
+            </div>
+                            <div class="container">
+                <div class="google-ads visible-xs">
+                      <div class="region region-googleadd">
+    <div id="block-dfptagnewsleaderboard" class="block block-dfp block-dfp-adac266e25-c52f-4470-8a71-bdaaae74a249">
+  
+    
+      <div id="js-dfp-tag-news_leaderboard">
+        <script type="text/javascript">
+        googletag.cmd.push(function() {
+            googletag.display('js-dfp-tag-news_leaderboard');
+        });
+    </script>
+</div>
+
+  </div>
+<div id="block-dfptagnewstakeover" class="block block-dfp block-dfp-ad072de724-d378-49e0-a919-8a242f25e287">
+  
+    
+      <div id="js-dfp-tag-news_takeover">
+        <script type="text/javascript">
+        googletag.cmd.push(function() {
+            googletag.display('js-dfp-tag-news_takeover');
+        });
+    </script>
+</div>
+
+  </div>
+
+  </div>
+
+                </div>
+            </div>
+                 <div class="container">
+             <main class="main p-b-20 p-t-20">
+                <div class="row">
+                                                                         <div class="col-sm-7 col-md-8 col-md-push-4 col-sm-push-5">
+                                <!--Trending topics Begins-->
+                                <div class="trendings m-b-10 hidden-xs">
+                                    <div class="">
+                                        <div class="trending-topics-wrapper">
+                                                                                                                                        <div class="live-btn-wrapper">
+                                                    <div class="dropdown live-toggle">
+                                                          <div class="region region-live-button">
+    <nav role="navigation" aria-labelledby="block-livebuttonmenu-menu" id="block-livebuttonmenu" class="block block-menu navigation menu--live-button-menu">
+            
+  <h2 class="visually-hidden" id="block-livebuttonmenu-menu">Live Button Menu</h2>
+  
+
+        
+              <ul class="dropdown-menu custom-menu">
+                    <li class="menu-item">
+        <a href="/" data-drupal-link-system-path="&lt;front&gt;">LIVE VIDEO: MPs grill Public Protector</a>
+              </li>
+                <li class="menu-item">
+        <a href="/" data-drupal-link-system-path="&lt;front&gt;">Malema addresses striking miners</a>
+              </li>
+        </ul>
+  
+
+
+  </nav>
+
+  </div>
+
+                                                    </div>
+                                                </div>
+                                                                                    </div>
+                                    </div>
+                                </div>
+                                <!--Trending topics Begins-->
+                                  <div class="region region-content">
+    <div data-drupal-messages-fallback class="hidden"></div>
+<div id="block-enca-page-title" class="block block-core block-page-title-block">
+  
+    
+      
+  <h1 class="page-title"><span class="field field--name-title field--type-string field--label-hidden">Two killed, several wounded in Melville drive-by shooting</span>
+</h1>
+
+
+  </div>
+<div id="block-sharingbuttonwidget" class="block block-enca-api block-enca-sharing-widget">
+  
+    
+      <div class="a2a_kit a2a_kit_size_32 a2a_default_style social-icons-list">
+    <a class="a2a_button_facebook"></a>
+    <a class="a2a_button_twitter"></a>
+    <a class="a2a_button_email"></a>    <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+</div>
+<script async src="https://static.addtoany.com/menu/page.js"></script>
+  </div>
+<div id="block-enca-content" class="block block-system block-system-main-block">
+  
+    
+      
+<article role="article" class="node node--type-article node--promoted node--sticky node--view-mode-full">
+
+  
+    
+      <footer class="node__meta">
+      <article class="profile">
+  </article>
+
+      <div class="node__submitted">
+													        Wednesday 1 January 2020 - 8:50am        
+      </div>
+    </footer>
+    <div class="node__content">
+    
+      <div class="field field--name-field-paragraphs field--type-entity-reference-revisions field--label-hidden field__items">
+              <div class="field__item">  <div class="paragraph paragraph--type--video paragraph--view-mode--default">
+          
+            <div class="field field--name-field-video field--type-entity-reference field--label-hidden field__item"><article class="media media-video view-mode-default media--type- media--unpublished">
+  
+      
+            <div class="field field--name-field-media-video-embed-field field--type-video-embed-field field--label-hidden field__item"><div class="video-embed-field-provider-youtube video-embed-field-responsive-video"><iframe width="854" height="480" frameborder="0" allowfullscreen="allowfullscreen" src="https://www.youtube.com/embed/GqI-KlYaZf4?autoplay=0&amp;start=0&amp;rel=0"></iframe>
+</div>
+</div>
+      
+            <div class="clearfix text-formatted field field--name-field-description field--type-text-long field--label-hidden field__item"><p>Police have launched a manhunt after two women were killed in a drive-by shooting in Melville.</p></div>
+      
+  </article>
+</div>
+      
+      </div>
+</div>
+              <div class="field__item">  <div class="paragraph paragraph--type--text paragraph--view-mode--default">
+          
+            <div class="clearfix text-formatted field field--name-field-text field--type-text-long field--label-hidden field__item"><p>JOHANNESBURG - A manhunt is underway after two women were killed and six others wounded in a drive-by shooting in Melville, Johannesburg.</p>
+
+<p>The shooting took place just after midnight at a restaurant.</p>
+
+<p>Police said in a statement that a vehicle approached the restaurant and fired multiple shots at patrons sitting outside.</p>
+
+<p>The two victims are aged between 30 and 40.</p>
+
+<p>The wounded were rushed to nearby hospitals. Police said that two of the victims are in critical condition.</p>
+
+<p>Gauteng police commissioner Lieutenant-General Elias Mawela has condemned the incident.</p>
+
+<p>Mawela urged the investigators to ensure that no stone is left unturned in ensuring that the suspects are found and brought to book.</p>
+
+<p>Anyone who may have witnessed the incident or have information is urged to call the crime stop number 08600 10111 or by giving a tip-off on the MySAPS app, anonymously if they so choose.</p></div>
+      
+      </div>
+</div>
+              <div class="field__item">  <div class="paragraph paragraph--type--video paragraph--view-mode--default">
+          
+            <div class="field field--name-field-video field--type-entity-reference field--label-hidden field__item"><article class="media media-video view-mode-default media--type- media--unpublished">
+  
+      
+            <div class="field field--name-field-media-video-embed-field field--type-video-embed-field field--label-hidden field__item"><div class="video-embed-field-provider-youtube video-embed-field-responsive-video"><iframe width="854" height="480" frameborder="0" allowfullscreen="allowfullscreen" src="https://www.youtube.com/embed/JDM_9uvjVfE?autoplay=0&amp;start=0&amp;rel=0"></iframe>
+</div>
+</div>
+      
+            <div class="clearfix text-formatted field field--name-field-description field--type-text-long field--label-hidden field__item"><p>There has been a tragic start to the New Year in Melville, Johannesburg. Two people have died and several wounded in a drive-by shooting.</p></div>
+      
+  </article>
+</div>
+      
+      </div>
+</div>
+              <div class="field__item">  <div class="paragraph paragraph--type--twitter paragraph--view-mode--default">
+          
+            <div class="field field--name-field-media field--type-entity-reference field--label-hidden field__item"><article class="media media-twitter view-mode-default media--type- media--unpublished">
+  
+      
+            <div class="field field--name-field-url field--type-link field--label-hidden field__item"><blockquote class="twitter-tweet element-hidden" data-conversation="none" lang="en">
+  <a href="https://twitter.com/HeidiGiokos/statuses/1212241362369875968"></a>
+</blockquote>
+</div>
+      
+  </article>
+</div>
+      
+      </div>
+</div>
+          </div>
+  
+  <div class="field field--name-field-source field--type-entity-reference field--label-inline">
+    <div class="field__label">Source</div>
+              <div class="field__item">eNCA</div>
+          </div>
+
+  </div>
+</article>
+
+  </div>
+<div id="block-newsroomendofarticle" class="block block-block-content block-block-contentc5aa8dc6-0eb3-4be8-a7aa-bc44911da197">
+  
+    
+      
+            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><script async="" src="//tags.chargeplatform.com/112694/"></script></div>
+      
+  </div>
+<div class="views-element-container block block-views block-views-blockrelated-stories-block-1" id="block-views-block-related-stories-block-1">
+  
+      <h2>Related News</h2>
+    
+      <div><div class="view view-related-stories view-id-related_stories view-display-id-block_1 js-view-dom-id-04b1f7fa094b8bf6556709e5ba529b24381d25ba4b7cfab496c6ab49d08fff56">
+  
+    
+      
+  
+          </div>
+</div>
+
+  </div>
+<div id="block-newsroomrecommendedcontent" class="block block-block-content block-block-content41cb5380-eefe-4c6c-8be0-d4083b8688a0">
+  
+    
+      
+            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"> <script async="" src="//tags.chargeplatform.com/112695/"></script></div>
+      
+  </div>
+<div id="block-contentfield" class="block block-fieldblock block-fieldblocknode">
+  
+    
+      
+            <div class="field field--name-field-diquscomment field--type-disqus-comment field--label-hidden field__item"><div id="disqus_thread"><noscript>
+  <p>
+    <a href="http://encacom.disqus.com/">View the discussion thread.</a>
+  </p>
+</noscript>
+</div>
+</div>
+      
+  </div>
+
+  </div>
+
+                             </div>
+                                               <div class="col-sm-5 col-md-4 sidebar-wrapper col-md-pull-8 col-sm-pull-7">
+                              <div class="region region-sidebar-first">
+    <div id="block-dfptagnewsmediumrectangle" class="block block-dfp block-dfp-adfaa0b7e7-ddb9-47dc-9954-bd753984e870">
+  
+    
+      <div id="js-dfp-tag-news_medium_rectangle">
+        <script type="text/javascript">
+        googletag.cmd.push(function() {
+            googletag.display('js-dfp-tag-news_medium_rectangle');
+        });
+    </script>
+</div>
+
+  </div>
+<div id="block-chartbeattrendingstories" class="block block-chartbeat-trending-stories block-chartbeat-trending-stories-block">
+  
+    
+      <div class="trending-block">
+    <h2>Trending</h2>
+    <div class="trending-story-wrapper">
+                    <div class="trending-list">
+                <a href="https://www.enca.com/news/two-killed-several-wounded-melville-drive-shooting">
+                    <div class="count-wrap"><span class="count-no">1</span></div>
+                    <div class="trending-story">
+                        <h4>Two killed, several wounded in Melville drive-by shooting </h4>
+                    </div>
+                </a>
+            </div>
+                    <div class="trending-list">
+                <a href="https://www.enca.com/news/mass-looting-discovered-kzn-municipality">
+                    <div class="count-wrap"><span class="count-no">2</span></div>
+                    <div class="trending-story">
+                        <h4>Mass looting discovered in KZN municipality </h4>
+                    </div>
+                </a>
+            </div>
+                    <div class="trending-list">
+                <a href="https://www.enca.com/news/more-thousand-firearms-surrendered-police-stations">
+                    <div class="count-wrap"><span class="count-no">3</span></div>
+                    <div class="trending-story">
+                        <h4>More than 1,000 firearms surrendered to police stations </h4>
+                    </div>
+                </a>
+            </div>
+                    <div class="trending-list">
+                <a href="https://www.enca.com/life/watch-kfc-couple-prepares-wed">
+                    <div class="count-wrap"><span class="count-no">4</span></div>
+                    <div class="trending-story">
+                        <h4>WATCH: &#039;KFC couple&#039; getting ready to tie the knot </h4>
+                    </div>
+                </a>
+            </div>
+                    <div class="trending-list">
+                <a href="https://www.enca.com/analysis/7-strategies-succeed-your-new-years-resolutions">
+                    <div class="count-wrap"><span class="count-no">5</span></div>
+                    <div class="trending-story">
+                        <h4>7 strategies to succeed with your New Year’s resolutions </h4>
+                    </div>
+                </a>
+            </div>
+            </div>
+</div>
+
+  </div>
+<div id="block-dfptagnewsmediumrectanglebtf" class="block block-dfp block-dfp-ad1f4e707f-7460-4388-bc48-e6154f62d28c">
+  
+    
+      <div id="js-dfp-tag-news_medium_rectangle_btf">
+        <script type="text/javascript">
+        googletag.cmd.push(function() {
+            googletag.display('js-dfp-tag-news_medium_rectangle_btf');
+        });
+    </script>
+</div>
+
+  </div>
+<div class="views-element-container block block-views block-views-blockgenerice-news-exclude-business-latest-block-2" id="block-views-block-generice-news-exclude-business-latest-block-2-2">
+  
+    
+      <div><div class="trending-story-wrapper view view-generice-news-exclude-business-latest view-id-generice_news_exclude_business_latest view-display-id-block_2 js-view-dom-id-c1c043356856c40b0c8b50d4209d664b2d364d19009143c04d52df63d2e323ba">
+  
+    
+      <div class="view-header">
+      <div class="trending-block">
+    <h2>LATEST</h2>
+</div>
+    </div>
+          <div class="attachment attachment-before">
+      <div class="views-element-container"><div class="trending-story-wrapper view view-generice-news-exclude-business-latest view-id-generice_news_exclude_business_latest view-display-id-attachment_3 js-view-dom-id-7459bb66265fec30b0156a95916bf738224a38e68ee1f69c0abc7888688824db">
+  
+    
+      
+      <div class="view-content">
+          <div class="election-stories  views-row"><div class="views-field views-field-field-teaser-media"><div class="field-content">  <a href="/news/paid-paternity-leave-kicks" hreflang="en"><img src="/sites/default/files/styles/desktop_promotion_images/public/2020-01/web_photo_dad_010120.jpg?itok=yQ7w-I0v" width="298" height="199" alt="Thumbnail" title="File: Fathers of newborns can look forward to spending a bit more time with their babies." class="image-style-desktop-promotion-images" />
+
+</a>
+</div></div><h2><span><a href="/news/paid-paternity-leave-kicks" hreflang="en">Paid paternity leave kicks in</a></span></h2></div>
+
+    </div>
+  
+          </div>
+</div>
+
+    </div>
+  
+      <div class="view-content">
+          <div class="trending-list"><h4 class="trending-story"><span><a href="/news/more-thousand-firearms-surrendered-police-stations" hreflang="en">More than 1,000 firearms surrendered to police stations</a></span></h4></div>
+    <div class="trending-list"><h4 class="trending-story"><span><a href="/news/two-killed-several-wounded-melville-drive-shooting" hreflang="en">Two killed, several wounded in Melville drive-by shooting</a></span></h4></div>
+    <div class="trending-list"><h4 class="trending-story"><span><a href="/news/australia-scrambles-reach-thousands-stranded-bushfires" hreflang="en">Australia scrambles to reach thousands stranded by bushfires</a></span></h4></div>
+    <div class="trending-list"><h4 class="trending-story"><span><a href="/news/yvonne-chaka-chaka-says-not-deported-uganda" hreflang="en">Yvonne Chaka Chaka says not deported from Uganda</a></span></h4></div>
+
+    </div>
+  
+          </div>
+</div>
+
+  </div>
+<div class="views-element-container block block-views block-views-blockpromotions-block-block-1" id="block-views-block-promotions-block-block-1">
+  
+      <h2>Highlights</h2>
+    
+      <div><div class="promotionBlock view view-promotions-block view-id-promotions_block view-display-id-block_1 js-view-dom-id-5c82978cb2ce1ef1d5026512864543edb16f4d6160dc1b397e1c714933aa2ff2">
+  
+    
+      
+  
+          </div>
+</div>
+
+  </div>
+<div class="views-element-container block block-views block-views-blockanalysis-landing-block-1" id="block-views-block-analysis-landing-block-1">
+  
+      <h2>Featured</h2>
+    
+      <div><div class="section-life-list-main view view-analysis-landing view-id-analysis_landing view-display-id-block_1 js-view-dom-id-c49ae546ac8ba5b0f8096e2b3383cdbe74d9ea12c205fff6327eae2b3804fd44">
+  
+    
+      
+      <div class="view-content">
+      <div class="item-list--blazy item-list--blazy-column item-list"><ul class="blazy blazy--grid block-column block-count-3 small-block-column-1 medium-block-column-1 large-block-column-1" data-blazy=""><li class="grid grid--0"><div class="grid__content"><div class="sport-landing-image-wrapper">
+  <div class="views-field views-field-field-teaser-media"><div class="field-content">  <a href="/business/small-businesses-feel-pinch-going-new-year" hreflang="en"><img src="/sites/default/files/styles/desktop_promotion_images/public/2019-07/web_photo_finances_290719.jpg?itok=XApeB9ar" width="298" height="175" alt="Thumbnail" title="File: Researchers asked families if their income covered all their expenses. Almost 60 percent said they had enough money, but only some of the time." class="image-style-desktop-promotion-images" />
+
+</a>
+</div></div></div>
+<div class="sport-listing-fieldswrapper">
+  <h3 class="article-heading"><span><a href="/business/small-businesses-feel-pinch-going-new-year" hreflang="en">Small businesses feel the pinch going into the new year</a></span></h3><p class="views-field views-field-field-teaser-text"><div class="field-content">2019 has been a tough economic year, with South Africans feeling the pinch all round.<br />
+<br />
+</div></p></div>
+</div>
+</li><li class="grid grid--1"><div class="grid__content"><div class="sport-landing-image-wrapper">
+  <div class="views-field views-field-field-teaser-media"><div class="field-content">  <a href="/news/parliaments-new-years-wishes-south-africans" hreflang="en"><img src="/sites/default/files/styles/desktop_promotion_images/public/2019-05/web_photo_parliament_230519.jpg?itok=NXyhDo7w" width="298" height="199" alt="Thumbnail" title="Members of Parliament pose for a photograph behind a statue of Nelson Mandela outside Parliament." class="image-style-desktop-promotion-images" />
+
+</a>
+</div></div></div>
+<div class="sport-listing-fieldswrapper">
+  <h3 class="article-heading"><span><a href="/news/parliaments-new-years-wishes-south-africans" hreflang="en">WATCH: Well wishes from Ramaphosa, Parliament</a></span></h3><p class="views-field views-field-field-teaser-text"><div class="field-content">Parliament and President Cyril Ramaphosa are wishing South Africans a happy and successful 2020. </div></p></div>
+</div>
+</li><li class="grid grid--2"><div class="grid__content"><div class="sport-landing-image-wrapper">
+  <div class="views-field views-field-field-teaser-media"><div class="field-content">  <a href="/news/psyche-killer-moms" hreflang="en"><img src="/sites/default/files/styles/desktop_promotion_images/public/2019-09/Maditla.jpg?itok=NBhKbY76" width="298" height="188" alt="Thumbnail" title="Tears began to flow when Zinhle Maditla apologised to her family, her mother and the fathers of her children." class="image-style-desktop-promotion-images" />
+
+</a>
+</div></div></div>
+<div class="sport-listing-fieldswrapper">
+  <h3 class="article-heading"><span><a href="/news/psyche-killer-moms" hreflang="en">The psyche of killer moms</a></span></h3><p class="views-field views-field-field-teaser-text"><div class="field-content">25-year-old Zinhle Maditla is serving four life sentences for killing her children.</div></p></div>
+</div>
+</li></ul></div>
+    </div>
+  
+          </div>
+</div>
+
+  </div>
+<div id="block-dfptagnewshalf-page" class="block block-dfp block-dfp-ad9019c88b-1993-4439-a9ad-a735a5c50b64">
+  
+    
+      <div id="js-dfp-tag-news_half_page">
+        <script type="text/javascript">
+        googletag.cmd.push(function() {
+            googletag.display('js-dfp-tag-news_half_page');
+        });
+    </script>
+</div>
+
+  </div>
+
+  </div>
+
+                        </div>
+
+                                    </div>
+            </main>
+         </div>
+        <!--main content Ends-->
+
+    <!--footer Begins-->
+        <footer>
+            <div class="container">
+                <div class="row">
+                                            <div class="col-xs-6 col-sm-4 col-md-3">
+                                <div class="footer-links">
+                                      <div class="region region-footer-first">
+    <nav role="navigation" aria-labelledby="block-enca-footer1-menu" id="block-enca-footer1" class="block block-menu navigation menu--footer-1">
+            
+  <h2 class="visually-hidden" id="block-enca-footer1-menu">Footer 1</h2>
+  
+
+        
+              <ul class="menu">
+                    <li class="menu-item">
+        <a href="/" data-drupal-link-system-path="&lt;front&gt;">LATEST</a>
+              </li>
+                <li class="menu-item">
+        <a href="/news" data-drupal-link-system-path="news-list">NEWS</a>
+              </li>
+                <li class="menu-item">
+        <a href="/business" data-drupal-link-system-path="business-listing">BUSINESS</a>
+              </li>
+                <li class="menu-item">
+        <a href="/sports" data-drupal-link-system-path="sports">SPORT</a>
+              </li>
+                <li class="menu-item">
+        <a href="/analysis" data-drupal-link-system-path="analysis-listing">ANALYSIS</a>
+              </li>
+                <li class="menu-item">
+        <a href="/life" data-drupal-link-system-path="life-listing">LIFE</a>
+              </li>
+                <li class="menu-item">
+        <a href="/weather-report" data-drupal-link-system-path="weather-report">WEATHER</a>
+              </li>
+        </ul>
+  
+
+
+  </nav>
+
+  </div>
+
+                                </div>
+                        </div>
+                                                                 <div class="col-xs-6 col-sm-4 col-md-3">
+                            <div class="footer-links">
+                                      <div class="region region-footer-second">
+    <nav role="navigation" aria-labelledby="block-enca-footer2-menu" id="block-enca-footer2" class="block block-menu navigation menu--footer-2">
+            
+  <h2 class="visually-hidden" id="block-enca-footer2-menu">Footer 2</h2>
+  
+
+        
+              <ul class="menu">
+                    <li class="menu-item">
+        <a href="/show-listing">Shows</a>
+              </li>
+                <li class="menu-item">
+        <a href="/tv-guide" data-drupal-link-system-path="tv-guide">Tv Guide</a>
+              </li>
+                <li class="menu-item">
+        <a href="/about-enca" data-drupal-link-system-path="node/351">About</a>
+              </li>
+                <li class="menu-item">
+        <a href="/contactus" data-drupal-link-system-path="webform/concat_us">Contact Us</a>
+              </li>
+                <li class="menu-item">
+        <a href="/subscribe" data-drupal-link-system-path="node/716651">NewsLetters</a>
+              </li>
+                <li class="menu-item">
+        <a href="/press-releases" data-drupal-link-system-path="custom/press-release">Press Releases</a>
+              </li>
+        </ul>
+  
+
+
+  </nav>
+
+  </div>
+
+                            </div>
+                        </div>
+                                                            <div class="col-xs-6 col-sm-4 col-md-3 hidden-xs">
+                        <div class="footer-links">
+                              <div class="region region-footer-third">
+    <nav role="navigation" aria-labelledby="block-enca-footer3-menu" id="block-enca-footer3" class="block block-menu navigation menu--footer-3">
+            
+  <h2 class="visually-hidden" id="block-enca-footer3-menu">Footer 3</h2>
+  
+
+        
+              <ul class="menu">
+                    <li class="menu-item">
+        <a href="/jobs" data-drupal-link-system-path="job">Jobs</a>
+              </li>
+                <li class="menu-item">
+        <a href="/privacy-policy" data-drupal-link-system-path="node/381">Privacy Policy</a>
+              </li>
+                <li class="menu-item">
+        <a href="/licensing" data-drupal-link-system-path="node/386">Licensing</a>
+              </li>
+                <li class="menu-item">
+        <a href="/discussion-policy" data-drupal-link-system-path="node/391">Discussion Policy</a>
+              </li>
+                <li class="menu-item">
+        <a href="/sales-advertising" data-drupal-link-system-path="node/401">Advertise on Enca.com</a>
+              </li>
+                <li class="menu-item">
+        <a href="https://bccsa.co.za/">Bccsa</a>
+              </li>
+        </ul>
+  
+
+
+  </nav>
+
+  </div>
+
+                        </div>
+                    </div>
+                                                                <div class="col-xs-12 col-sm-12 col-md-3 footer-txt-center">
+                            <div class="social-links clearfix">
+                                  <div class="region region-footer-fourth">
+    <div id="block-footersociallinks" class="block block-block-content block-block-content4cc8b644-9409-404c-9036-dfffea685da6">
+  
+    
+      
+            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><ul><li><a href="https://www.youtube.com/enewschannel" target="_blank" title="Youtube"><img alt="youtube" src="/sites/all/themes/custom/enca/images/icons/youtube.svg" /></a></li>
+	<li><a href="http://twitter.com/eNCA" target="_blank" title="Twitter"><img alt="Twitter" src="/sites/all/themes/custom/enca/images/icons/twitter.svg" /></a></li>
+	<li><a href="https://www.facebook.com/eNCAnews" target="_blank" title="Facebook"><img alt="Facebook" src="/sites/all/themes/custom/enca/images/icons/FB.svg" /></a></li>
+	<li><a href="https://www.instagram.com/encanews/" target="_blank" title="Instagram"><img alt="Instagram" src="/sites/all/themes/custom/enca/images/icons/IG.svg" /></a></li>
+</ul></div>
+      
+  </div>
+
+  </div>
+
+                            </div>
+                        </div>
+                    
+                                           <div class="col-xs-12 hidden visible-xs mb-text-center">
+                            <div class="footer-links footer-extra-links">
+                                  <div class="region region-footer-third">
+    <nav role="navigation" aria-labelledby="block-enca-footer3-menu" id="block-enca-footer3" class="block block-menu navigation menu--footer-3">
+            
+  <h2 class="visually-hidden" id="block-enca-footer3-menu">Footer 3</h2>
+  
+
+        
+              <ul class="menu">
+                    <li class="menu-item">
+        <a href="/jobs" data-drupal-link-system-path="job">Jobs</a>
+              </li>
+                <li class="menu-item">
+        <a href="/privacy-policy" data-drupal-link-system-path="node/381">Privacy Policy</a>
+              </li>
+                <li class="menu-item">
+        <a href="/licensing" data-drupal-link-system-path="node/386">Licensing</a>
+              </li>
+                <li class="menu-item">
+        <a href="/discussion-policy" data-drupal-link-system-path="node/391">Discussion Policy</a>
+              </li>
+                <li class="menu-item">
+        <a href="/sales-advertising" data-drupal-link-system-path="node/401">Advertise on Enca.com</a>
+              </li>
+                <li class="menu-item">
+        <a href="https://bccsa.co.za/">Bccsa</a>
+              </li>
+        </ul>
+  
+
+
+  </nav>
+
+  </div>
+
+                            </div>
+                        </div>
+                    
+
+                                            <div class="col-xs-12 footer-bottom p-b-30">
+                              <div class="region region-footer-fifth">
+    <div id="block-copyrightfooter" class="block block-block-content block-block-content96d55cce-45f9-461b-a781-148ac37814b9">
+  
+    
+      
+            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><div class="enca-logo">
+<div class="logo"><a href="/"><img alt="enca logo" src="/sites/all/themes/custom/enca/images/eNCA_logo.svg" width="85px" /></a></div>
+
+<p class="copyright">© 2018 eNCA, an eMedia Holdings company. All rights reserved.</p>
+</div>
+
+<div class="footer-extra-logo"><span class="left-logo"><a href="http://www.openviewhd.co.za/" target="_blank"><img alt="logo" src="/sites/all/themes/custom/enca/images/oepn_view.svg" style="width:auto;" /></a> <a href="http://www.etv.co.za/" target="_blank"><img alt="logo" src="/sites/all/themes/custom/enca/images/e_tv.svg" style="width:auto;" /></a> </span> <span class="right-logo hidden-xs"> <a class="right" href="https://www.iabsa.net" target="_blank"><img alt="logo" src="/sites/default/files/2018-06/ica-southafrica.png" /></a> </span></div>
+</div>
+      
+  </div>
+
+  </div>
+
+                        </div>
+                                    </div>
+            </div>
+
+            <div class="container">
+                              <div class="google-ads-mobile visible-xs-block">
+                    <div class="region region-goooglead-mobile-footer">
+    <div id="block-dfptagnewsmobile-sticky" class="block block-dfp block-dfp-ad720ad735-f4da-4ee6-9980-82da139b1a9e">
+  
+    
+      <div id="js-dfp-tag-news_mobile_sticky">
+        <script type="text/javascript">
+        googletag.cmd.push(function() {
+            googletag.display('js-dfp-tag-news_mobile_sticky');
+        });
+    </script>
+</div>
+
+  </div>
+
+  </div>
+
+                </div>
+                          </div>
+
+            <div class="container">
+                          </div>
+        </footer>
+        <!--footer Ends-->
+</div>
+<!--Wrapper Ends-->
+
+  </div>
+ </div>
+    
+    <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/827921","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"en"},"pluralDelimiter":"\u0003","disqusComments":"encacom","chartbeat":{"chartbeatJS":{"nid":"827921","nodetitle":"Two killed, several wounded in Melville drive-by shooting","author_name":"Estelle","section_name":"News"}},"disqus":{"domain":"encacom","url":"https:\/\/www.enca.com\/news\/two-killed-several-wounded-melville-drive-shooting","title":"Two killed, several wounded in Melville drive-by shooting","identifier":"node\/827921","disable_mobile":true,"language":"en"},"user":{"uid":0,"permissionsHash":"4b407fc076b16110f20583de4b975bc2e262c7f89ce40f96e00abba13ddfb59d"}}</script>
+<script src="/sites/default/files/js/js_cH289CbifvZnAdSd1Q3JfdmuLp7nGkrqsQf1pXv8Ph4.js"></script>
+<script src="https://widgets.outbrain.com/outbrain.js"></script>
+<script src="/sites/default/files/js/js_AacII4CUBLF05d1nlxR5TWc3fMn44boWhLxlRCPq47Q.js"></script>
+<script src="//platform.twitter.com/widgets.js"></script>
+<script src="/sites/default/files/js/js_6zgrreONasLF5-7mYUqFOMXolf2HBC4qa2A9_o7eDK8.js"></script>
+
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"b07dd8afc5","applicationID":"109864073","transactionName":"ZQBUZUcDDEMFVEUNCVxKd1JBCw1eS3NDERZTCWpGUAAEXxZabgoJVgBqcFYBB0MXa2YBBFQKRFx7DQZVJVRSARVBSAhSXQcBWzNSUwIJQAhkVEYXDkQXdlIHA0EW","queueTime":0,"applicationTime":381,"atts":"SUdXEw8ZH00=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>

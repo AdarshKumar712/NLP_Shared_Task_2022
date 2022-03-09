@@ -1,0 +1,1358 @@
+<!DOCTYPE html>
+<html itemscope xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es" xmlns:fb="http://www.facebook.com/2008/fbml"
+      itemid="https://www.elchubut.com.ar/nota/2020-3-16-23-31-0-arcioni-presento-el-aula-virtual-chubut-educa"
+      itemtype="http://schema.org/NewsArticle"
+    itemscope  xmlns:og="http://opengraphprotocol.org/schema/">
+
+    <head prefix="og: http://ogp.me/ns#">
+    <link href="https://fonts.googleapis.com/css?family=Anton|Contrail+One|Francois+One|Hind+Guntur|Montserrat:700|Noto+Sans:700|Rambla:700|Roboto|Signika:300" rel="stylesheet">
+    <style>
+      #header_superior, .original, .centro_rojo, .header_mobile {
+        display: none;
+      }
+    </style>
+    <script>
+      lastUpdate="1584462007169";
+      actual = "/nota/2020-3-16-23-31-0-arcioni-presento-el-aula-virtual-chubut-educa";
+      staticHost = "";
+      _realTime_time = "";
+      refresh_time = parseInt("600000");
+      timer = '';
+      _refresh_enabled = "";
+      actual_url = "https://www.elchubut.com.ar";
+      publiIndex = 0;
+      initDiarios = false;
+
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-5429340-1', 'auto');
+    </script>
+    <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-messaging.js"></script>
+    
+    <script>
+    var config = {
+    	messagingSenderId: "1092572577381"
+    };
+    
+    firebase.initializeApp(config);
+    const messaging = firebase.messaging();
+    messaging.usePublicVapidKey("BPOfJGiZR9pXVyUyuBk3sQIy1cQEPysLgWD0AGwEqwGxlchNK8vWO8oSMxPrNPULGl3YNCCT6FmnncVvuFx6NF0");
+    
+    if ('serviceWorker' in navigator && 'PushManager' in window) {
+    	console.log('Service Worker and Push is supported');
+    	navigator.serviceWorker.register("/sw.js?messagingSenderId=1092572577381&version=D")
+    	.then(function(registration) {
+    	  	console.log('Service Worker is registered', registration);
+    		messaging.useServiceWorker(registration);  
+    
+    		messaging
+    			.requestPermission()
+    			.then(function() {
+    				console.log("Notification permission granted firebase.");
+    				messaging.getToken().then(function(currentToken) {
+    				      if (currentToken) {
+    				        sendTokenToServer(currentToken);
+    				      } else {
+    				        console.log('No Instance ID token available. Request permission to generate one.');
+    				        updateUIForPushPermissionRequired();
+    				        setTokenSentToServer(false);
+    				      }
+    			    }).catch(function(err) {
+    			      console.log('An error occurred while retrieving token. ', err);
+    			      setTokenSentToServer(false);
+    			    });
+    			})
+    			.catch(function(err) {
+    				console.log("Unable to get permission to notify.", err);
+    			});
+    	})
+    	.catch(function(error) {
+    	  console.error('Service Worker Error', error);
+    	});
+    } else {
+    	console.warn('Push messaging is not supported');
+    }
+    
+    function doPost(url, body, get) {
+    	var xhr = new XMLHttpRequest();
+    	if (get)
+    		xhr.open("GET", url);
+    	else
+    		xhr.open("POST", url);
+    	xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    	if (body)
+    		xhr.send(JSON.stringify(body));
+    	else
+    		xhr.send("");
+    }
+    
+    messaging.onMessage(function(payload) {
+    	console.log("onMessage" , payload)
+        const notificationTitle = "EL CHUBUT";
+        const notificationOptions = {
+    		icon: 'img/push/notification.png',
+    		badge: 'img/push/badge.png',
+    		vibrate: [100, 50, 100],
+    		data: {
+    			dateOfArrival: Date.now(),
+    			nota: payload.data.nota,
+    			id_notificacion: payload.data.id_notificacion
+    		},
+          	body : payload.data.body
+        };
+    
+        if (payload.data.image)
+        	notificationOptions.image = payload.data.image
+    
+        if (!("Notification" in window)) {
+            console.log("This browser does not support system notifications");
+        } else if (Notification.permission === "granted") {
+        	try {
+    	        var notification = new Notification(notificationTitle,notificationOptions);
+    	        //setTimeout(function() {
+    	        	doPost("/webpush/" + payload.data.id_notificacion + "/show", null, true)
+    	        //}, (Math.floor(Math.random() * 90) + 5) * 1000)
+    	        notification.onclick = function(event) {
+    	            event.preventDefault();
+    	            if (payload.data.nota)
+    	            	window.open(payload.data.nota, '_blank');
+    	            notification.close();
+    	            doPost("/webpush/" + payload.data.id_notificacion + "/click", null, true)
+    	        }
+        	}
+        	catch(e) { //TODO MOSTRAR LA NOTIFICACION EN EL HTML ?
+        		console.log("Error al mostrar notificacion en primer plano", e)
+        	}
+        }
+    });
+    
+    messaging.onTokenRefresh(function() {
+    	messaging
+    		.getToken()
+    		.then(function(refreshedToken) {
+    			console.log("Token refreshed.");
+    			setTokenSentToServer(false);
+    			sendTokenToServer(refreshedToken);
+    		})
+    		.catch(function(err) {
+    			console.log("Unable to retrieve refreshed token ", err);
+    			showToken("Unable to retrieve refreshed token ", err);
+    		});
+    });
+    
+    function sendTokenToServer(currentToken) {
+    	if (!isTokenSentToServer()) {
+    		console.log("Sending token to server...");
+    		setTokenSentToServer(true);
+    
+    		doPost("/webpush/subscribe", {
+    			token: currentToken
+    		});
+    	} else {
+    		console.log(
+    			"Token already sent to server so won't send it again " +
+    				"unless it changes"
+    		);
+    	}
+    }
+    
+    function isTokenSentToServer() {
+    	return window.localStorage.getItem("sentToServer") === 1;
+    }
+    
+    function setTokenSentToServer(sent) {
+    	window.localStorage.setItem("sentToServer", sent ? 1 : 0);
+    }
+    </script>
+    <link rel="manifest" href="/manifest.json">    
+    
+    <!--    METAS   -->
+    
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="author" content="elchubut.com.ar"/>
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@elchubut" />
+    <meta name="twitter:creator" content="@elchubut" />
+    <meta property="og:site_name" content="elchubut.com.ar" />
+    <meta name="robots" content="index, follow"/>
+    <meta name="distribution" content="global"/>
+    <meta name="rating" content="general"/>
+    <meta name="language" content="es"/>
+    <meta itemscope itemprop="mainEntityOfPage" itemType="https://schema.org/WebPage"/>
+    <meta itemprop="genre" content="News" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta property="og:site_name" content="elchubut.com.ar" />
+    <meta itemprop="author" content="elchubut.com.ar" />
+    
+    
+    
+    <meta name="country" content="Argentina">
+    <meta name="city" content="Mendoza">
+    <meta name="geo.region" content="AR-M"/>
+    <meta name="geo.placename" content="Mendoza"/>
+    <meta name="geo.position" content="-32.908645;-68.860848"/>
+    <meta name="ICBM" content="-32.908645, -68.860848"/>
+    
+    
+    
+    
+    <meta property="og:title" content="Arcioni presentó el aula virtual «Chubut Educa»" />
+    <meta itemprop="name" content="Arcioni presentó el aula virtual «Chubut Educa»" />
+    <meta name="twitter:title" content="Arcioni presentó el aula virtual «Chubut Educa»" />
+    <title>Arcioni presentó el aula virtual «Chubut Educa»</title>
+    
+    <!-- NOTA  -->
+    <meta name="keywords" content="arcioni, presentó, virtual, «chubut, educa»"/>
+    <meta name="news_keywords" content="arcioni, presentó, virtual, «chubut, educa»"/>
+    
+    <meta property="fb:admins" content="@elchubut"/>
+    <meta property="fb:admins" content="@elchubut"/>
+    <meta property="fb:admins" content="@elchubut"/>
+    
+    <meta property="fb:app_id" content="599601216900924"/>
+    <meta property="fb:pages" content="" />
+    <meta itemprop="headline" content="Arcioni presentó el aula virtual «Chubut Educa»"/>
+    <link rel="shortcut icon" href="https://www.elchubut.com.ar/favicon.png">
+    
+    
+    <meta name="application-name" content="elchubut.com.a" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+      <link rel="canonical" href="https://www.elchubut.com.ar/nota/2020-3-16-23-31-0-arcioni-presento-el-aula-virtual-chubut-educa" />
+      <meta property="og:url" content="https://www.elchubut.com.ar/nota/2020-3-16-23-31-0-arcioni-presento-el-aula-virtual-chubut-educa"/>
+      <link rel="amphtml" href="https://www.elchubut.com.ar/nota/2020-3-16-23-31-0-arcioni-presento-el-aula-virtual-chubut-educa/amp">
+      <meta property="og:type" content="article" />
+      <meta property="og:description" content="La herramienta virtual fue dise&amp;ntilde;ada por empleados provinciales. Chubut es una de las primeras jurisdicciones en implementar esta plataforma. Transforma el aula f&amp;iacute;sica en un espacio virtual con los mismos chicos y docentes de cada grado."/>
+      <meta name="description" content="La herramienta virtual fue dise&amp;ntilde;ada por empleados provinciales. Chubut es una de las primeras jurisdicciones en implementar esta plataforma. Transforma el aula f&amp;iacute;sica en un espacio virtual con los mismos chicos y docentes de cada grado." />
+      <meta property="description" content="La herramienta virtual fue dise&amp;ntilde;ada por empleados provinciales. Chubut es una de las primeras jurisdicciones en implementar esta plataforma. Transforma el aula f&amp;iacute;sica en un espacio virtual con los mismos chicos y docentes de cada grado."/>
+      <meta name="twitter:description" content="La herramienta virtual fue dise&amp;ntilde;ada por empleados provinciales. Chubut es una de las primeras jurisdicciones en implementar esta plataforma. Transforma el aula f&amp;iacute;sica en un espacio virtual con los mismos chicos y docentes de cada grado." />
+      <meta itemprop="datePublished" content="2020-03-17T03:00:47.494Z">
+      <meta itemprop="dateModified" content="2020-03-17T03:00:47.378Z">
+    
+    
+    
+      <meta property="og:image" content="https://pxb.cdn.elchubut.com.ar/chubut/032020/1584412321409.jpg?cw=600&ch=365"/>
+    
+      <meta property="twitter:image" content="https://pxb.cdn.elchubut.com.ar/chubut/032020/1584412321409.jpg?cw=600&ch=365"/>
+    
+    
+      <meta property="og:image:width" content="600" />
+      <meta property="og:image:height" content="365" />
+      <div style="display: none" itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
+          <img itemprop="url" src="https://pxb.cdn.elchubut.com.ar/chubut/032020/1584412321409.jpg?cw=600&ch=365"/>
+      </div> 
+    
+    <div style="display: none" itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+        <div itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
+            <meta itemprop="url" content="https://www.elchubut.com.ar/img/datos_estructurados.png">
+            <meta itemprop="width" content="391">
+            <meta itemprop="height" content="41">
+        </div>
+        <meta itemprop="name" content="elchubut.com.ar">
+    </div>    <link rel="shortcut icon" href="/favicon.ico">
+    <link href='https://fonts.googleapis.com/css?family=Lato|Roboto+Slab:400,700|Roboto:300,400,700|Open+Sans' rel='stylesheet' type='text/css'>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false&key=AIzaSyDKBJ24Cy1R_oNnc8fE9QAMvgqyJYATCnI"></script>
+    <link rel="stylesheet" type="text/css" href="/css/style.min.css?C6">
+    <script type="text/javascript" src="/js/all.min.js?C6"></script>  
+    
+
+  </head>
+
+  <body>
+    <div class="popup ppp ppp_OH  " data-popup="popup" data-spot=5e69a3b4504f420013fede78 data-id=5e69a653504f420013fee1b0 data-pos=OH data-width='650' data-height='619' data-fixed='undefined' style='undefined'><div class="popup-inner"><img src="https://pxb.cdn.elchubut.com.ar/chubut/5e69a3b4504f420013fede78/1583982840872.jpg"><a class="popup-close" data-popup-close="popup" href="#">x</a></div></div><script>$(document).ready(function(){var popup_clase = "popup";var close_time_seconds=14; var cookie_expire_minutes=0;if (document.cookie.indexOf("OH") < 0) {    $('[data-popup="' + popup_clase + '"]').fadeIn(350,function(){if(close_time_seconds != 0){    var close_time_ms=close_time_seconds * 1000;    setTimeout(function(){$('[data-popup="' + popup_clase + '"]').fadeOut(350);},close_time_ms);}});    if(cookie_expire_minutes!=0){SetearCookie(cookie_expire_minutes,"OH");}}})</script>
+
+    <div id="fb-root"></div>
+    <div class="main_container">
+      <header>
+        <!--<div id="header_superior">
+          <div class="header_centrado">
+            
+            <div class="iconos_menu">
+              <div class="menu_config"></div>
+              <div class="icono_separador"></div>
+              <a class="icono_main" target="_blank" href="http://www.facebook.com/diarioelchubut/"><div class="header_facebook"></div></a>
+              <div class="icono_separador"></div>
+              <a class="icono_main" target="_blank" href="http://twitter.com/elchubut"><div class="header_twitter"></div></a>
+              <div class="icono_separador"></div>
+              <a class="icono_main" target="_blank" href="https://plus.google.com/s/0223mdq"><div class="header_gplus"></div></a>
+              <div class="icono_separador"></div>
+              <a class="icono_main" target="_blank"><div class="header_lupa"></div></a>
+              <div class="trapezoide_lupa"></div>
+            </div>
+          </div>
+        </div>-->
+
+        <div class="centro_rojo">
+
+          <div class="header_left">
+            <div class="contenedor_clima_header">
+              <a id="a_clima_refresh" href="/servicios/clima">
+                <div class="menu_hide_900 icono_clima_header icono_clima_clima_parcial"></div>
+                <label class="menu_hide_900" >19°</label>
+                <label class="lugar">Trelew</label>
+              </a>
+            </div>
+            <div class="iconos_left">
+              <a target="_blank"><div class="nd_iconos icono_search header_lupa"></div></a>
+              <a class="menu-icon" target="_blank"><div class="nd_iconos icono_menu"></div>MENÚ</a>
+            </div>
+
+          </div>
+
+          <div class="header_center">
+            <div class="contenedor_center">
+              <span class="texto_logo">Edición Digital</span>
+              <a href="/" ><img class="logo_normal" src="/img/logo_transp.png"></a>
+              <a href="/" ><img class="logo_rojo" src="/img/logo.png"></a>
+            </div>
+
+            <ul>
+              <li><a href="/">Ultimas Noticias</a></li>
+              <li><a href="/ediciones-anteriores">Edición impresa</a></li>
+              <li><a href="https://www.elchubutonline.com.ar" target="_blank">Clasificados</a></li>
+              <li><a href="/seccion/Club-Chubutin">Club Chubutin</a></li>
+            </ul>
+            <!-- 
+              <ul>
+              </ul>
+            -->
+          </div>
+
+          <div class="header_right">
+            <div class="nd_iconos icono_mail lateral"></div>
+            <div class="nd_iconos icono_share lateral"></div>
+            <a><div class="nd_iconos icono_user lateral"></div></a>
+
+            <div class="iconos_right">
+              <a href="/radio">
+                <div class="nd_iconos icono_radio radio">
+                </div>
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        <label class="header_fecha">Martes 17 de Marzo de 2020, Actualizado: 13:20</label>
+
+          <div class="menu_open menu_close">
+            <div class="menu_container">
+              <ul class="menu_lateral" id="desplegable">
+                <li data-id="edicion-digital" class="submenu">
+                  <a>Edición Digital</a>
+                  <ul>
+                    <a href="/seccion/trelew"><li>Trelew</li></a>
+                    <a href="/seccion/rawson"><li>Rawson</li></a>
+                    <a href="/seccion/puerto-madryn"><li>Puerto Madryn</li></a>
+                    <a href="/seccion/regionales"><li>Regionales</li></a>
+                    <a href="/seccion/deportes"><li>Deportes</li></a>
+                    <a href="/seccion/policiales"><li>Policiales</li></a>
+                    <a href="/seccion/nacionales"><li>Nacionales</li></a>
+                    <a href="/seccion/Internacionales"><li>Internacionales</li></a>
+                  </ul>
+                </li>
+                <li data-id="edicion-impresa" class="submenu">
+                  <a>Edición Impresa</a>
+                  <ul>
+                    <a href="/seccion/regionales/edicion-impresa"><li>Regionales</li></a>
+                    <a href="/seccion/rawson/edicion-impresa"><li>Rawson</li></a>
+                    <a href="/seccion/puerto-madryn/edicion-impresa"><li>Puerto Madryn</li></a>
+                    <a href="/seccion/esquel/edicion-impresa"><li>Esquel</li></a>
+                    <a href="/seccion/deportes/edicion-impresa"><li>Deportes</li></a>
+                    <a href="/seccion/policiales/edicion-impresa"><li>Policiales</li></a>
+                    <a href="/cartas-lector"><li>Carta del Lector</li></a>
+                    <a href="/ediciones-anteriores"><li>Edición de Papel</li></a>
+                  </ul>
+                </li>
+                <li data-id="suplementos" class="submenu">
+                  <a href="/suplementos" class="flecha_sup">Suplementos</a><span class="flecha_sup1">></span>
+                  <ul>
+                          <a href="http://asp-es.secure-zone.net/v2/index.jsp?id=81/365/38759&amp;lng=es" target="_blank"><li>Economía &amp; Empresas</li></a>
+                          <a href="/seccion/Club-Chubutin"><li>Club Chubutin</li></a>
+                          <a href="/seccion/Arte-Mudich"><li>Arte Mudich</li></a>
+                          <a href="http://asp-es.secure-zone.net/v2/index.jsp?id=81/365/38853&amp;lng=es" target="_blank"><li>Mujeres</li></a>
+                          <a href="/seccion/Meseta-y-Comarca"><li>Meseta y Comarca</li></a>
+                          <a href="/seccion/El-aguante"><li>El aguante</li></a>
+                          <a href="/seccion/Deportes-capital"><li>Deportes capital</li></a>
+                          <a href="/seccion/Todo-futbol"><li>Todo futbol</li></a>
+                  </ul>
+                </li>
+                <li><a href="/fotografias">Fotografías</a></li>
+                
+                <li data-id="columnas"><a href="/opiniones">Columnas</a></li>
+                <li data-id="servicios" class="submenu">
+                  <a >Servicios</a>
+                  <ul>
+                    <a href="/servicios/horoscopo"><li>Horóscopo</li></a>
+                    <a href="/servicios/quiniela"><li>Quiniela</li></a>
+                    <a href="/servicios/funebres"><li>Fúnebres</li></a>
+                    <a href="/servicios/clima"><li>Clima</li></a>
+                  </ul>
+                </li>
+                <li data-id="clasificados"><a href="https://www.elchubutonline.com.ar" target="_blank">Clasificados</a></li>
+                <li data-id="radio"><a href="/radio">FM El Chubut</a></li>
+                <li data-id="encuestas"><a href="/encuestas">Encuestas</a></li>
+                               
+              </ul>
+
+              <div class="menu_notas">
+                <div class="menu_bloque">
+                  <ul>
+                    <li><img src="/img/home_iconos_01.png"><p>Versión Digital de<br/> la Edición Impresa</p> 
+                        <a href="" target="_blank" class="menu_leer">LEER</a>
+                    </li>
+                    <li>
+                      <a href="https://www.elchubutonline.com.ar" target="_blank">
+                        <img src="/img/home_iconos_02.png"><p>Desde donde estés<br/> publicá tu clasificado</p><img src="/img/home_iconos_02_2.png">
+                      </a>
+                    </li>
+                    <li><a href="/seccion/Arte-Mudich"><img src="/img/home_iconos_03.png" class="mbottom"><p>Espacio Cultural y Museo<br/> Diario El CHUBUT</p></a></li>
+                    <li class="radio"><a href="/radio"><img src="/img/home_iconos_04.png" class="mbottom mtop_radio"><p>Escuchanos en VIVO</p></a></li>
+                    <li><a href="/seccion/Club-Chubutin"><img src="/img/chubutin.png" class="mtop_chubut"></a></li>
+                    <li class="redes">
+                      <div class="redes_top">
+                        <a href="https://www.facebook.com/diarioelchubut/" target="_blank"><span class="nd_iconos icono_facebook"></span></a>
+                        <a href="https://twitter.com/elchubut" target="_blank"><span class="nd_iconos icono_twitter"></span></a>
+                        <!--<a href="FB" target="_blank"><span class="nd_iconos icono_whatsapp"></span></a>-->
+                      </div>
+                      <div>
+                        <a href="https://www.youtube.com/user/ELCHUBUTTV" target="_blank"><span class="nd_iconos icono_youtube"></span></a>
+                        <a href="https://www.instagram.com/diarioelchubut/" target="_blank"><span class="nd_iconos icono_instagram"></span></a>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="header_mobile">
+          <div class="header_interior_cont">
+
+
+            <a class="menu-icon" target="_blank"><div class="nd_iconos icono_menu menu_header"></div>MENÚ</a>
+            <a href="/" ><img width="206" height="115" class="logo_normal" src="/img/logo_transp.png"></a>
+            <a href="/" ><img width="206" height="115" class="logo_rojo" src="/img/logo.png"></a>
+
+            <div class="header_user"></div>
+            <div class="user_cont_mobile"></div>
+            <!--<ul>
+            </ul>-->
+
+            <ul>
+              <li><a href="/">Ultimas Noticias</a></li>
+              <li><a href="/ediciones-anteriores">Edición Impresa</a></li>
+              <li><a href="https://www.elchubutonline.com.ar" target="_blank">Clasificados</a></li>
+              <li><a href="/seccion/Club-Chubutin">Club Chubutin</a></li>
+            </ul>
+
+            <div class="iconos_menu header_iconos">
+              <a target="_blank"><div class="nd_iconos icono_search header_lupa enlinea"></div></a>
+              <a><div class="nd_iconos icono_user enlinea"></div></a>
+              <div class="nd_iconos icono_share enlinea"></div>
+            </div>
+          </div>
+        </div>
+
+      </header>
+
+      <div class="buscador_form">
+          <div class="trapezoide_lupa nd_iconos icono_close"></div>
+          <div class="contenedor_form">
+            <input class="input_buscador" placeholder="Buscar" onkeydown="js_press_search(event, 2)"></input>
+            <div class="input_buscar_click nd_iconos_big lupa" onclick="js_search($('.input_buscador').val())"></div>
+          </div>
+      </div>
+
+      <div class="user_cont_mobile_menu"></div>
+
+     <div id="ppp"><div class="loader">Cargando...</div></div>
+
+      <!--<div class="header_mobile_texto"></div>-->
+
+      <div id="sitio" class="sitio">
+        
+<!--<label class="header_fecha" style="position: relative; top: -22px;">Martes 17 de Marzo de 2020, Actualizado: 13:20</label>-->
+<div class="notapage">
+  <input type="hidden" id="page_sitio" class="datos_ubicacion" data-ubicacion="nota" data-titulo="Arcioni presentó el aula virtual «Chubut Educa»" data-id="5e70368e44949100137e2106" data-ucreador="Marcelo Diaz" data-fecha_c="2020-03-17 00:00:47">
+  
+  <div id="fbgallery" style="display:none"></div>
+
+
+  
+  <div class="np_titulo" style="clear: both">
+
+    <div class="masnoticias_fondo" style="border: none"></div>
+      <div id="main_body" class="central no-item central_interior regionales,edicion-impresa">
+      <a href="/seccion/regionales"><div class="nota_tag nota_tag_page" ><label>Regionales</label></div></a>
+
+      <h2 id="title">Arcioni presentó el aula virtual «Chubut Educa»</h2>
+
+      <div class="np_nota_descripcion"><p>La herramienta virtual fue dise&ntilde;ada por empleados provinciales. Chubut es una de las primeras jurisdicciones en implementar esta plataforma. Transforma el aula f&iacute;sica en un espacio virtual con los mismos chicos y docentes de cada grado.</p></div>
+     <!-- <div class="nd_iconos icono_share right interiorNota"></div>-->
+      <div style="clear:both"></div>
+    </div>
+  </div>  
+
+  <div id="main_body" class="central no-item central_interior regionales,edicion-impresa">
+
+      <input id="header_tipo" type="hidden" data-clasif="" data-tipo="0">
+
+
+
+      <div id="notas">     
+          
+          <div>
+
+                <div class="tapa_contenedort_imagen">
+                  <div class="tapa_imagen">
+                    <div class="videoWrapper" style="padding-bottom:61.04%">
+                        <a href="/nota/2020-3-16-23-31-0-arcioni-presento-el-aula-virtual-chubut-educa" class="imagenLink" data-gallery="">
+                          <img class="panel_imagen" src="https://pxb.cdn.elchubut.com.ar/chubut/032020/1584412321409.jpg" >
+                        </a>
+
+
+                        
+                    </div>
+                        <div class="epigrafe"></div>
+
+                  </div>
+              </div>
+              
+
+
+
+          
+
+            <table class="np_superior">  
+              <td class="np_autor">
+                Por 
+                  
+                    <a target="_blank" href="http://twitter.com/elchubut"><span class="firma">REDACCIÓN CHUBUT</span></a>
+                
+              </td>
+              <td><label class="np_fecha">|&nbsp;&nbsp;&nbsp;17/03/2020 00:00</label></td>  
+
+            </table>   
+
+
+
+
+            <div id="notapage_texto" class="notapage_cuerpo">              
+
+              <p>Tiene como finalidad no perder contenidos frente a los d&iacute;as de paro y la suspensi&oacute;n de clases por el Coronavirus.<br />El gobernador del Chubut, Mariano Arcioni, encabez&oacute; ayer la presentaci&oacute;n del programa de ense&ntilde;anza virtual Chubut Educa, dirigido a todos los alumnos de nivel primario y secundario y de educaci&oacute;n especial, mediante el cual los estudiantes podr&aacute;n continuar educ&aacute;ndose a trav&eacute;s de esta plataforma.<br />Del acto tambi&eacute;n participaron el ministro de Educaci&oacute;n, Andr&eacute;s Meiszner, los subsecretarios de Coordinaci&oacute;n, Sergio De Cicco, y de Recursos, Apoyo y Servicios Auxiliares, Pablo Abraham.<br />La puesta en marcha de aulas virtuales apunta para favorecer el contacto entre los alumnos y sus docentes en este tiempo de distanciamiento social dispuesto por el Poder Ejecutivo Nacional, hasta el 31 de marzo, por el coronavirus.<br />Arcioni sostuvo que &laquo;dado las medidas que hemos tomado, entre ellas la suspensi&oacute;n de clases, el Ministerio de Educaci&oacute;n ha elaborado esta herramienta virtual que van a tener todos los chicos de Chubut a disposici&oacute;n, para que contin&uacute;e la ense&ntilde;anza y el aprendizaje&raquo;.<br />&laquo;Quiero felicitarlos porque la han elaborado de una manera urgente, impecable y diligente y es muy valorable todo el esfuerzo que han hecho para lograr esta herramienta para nuestros estudiantes&raquo;, expres&oacute;.</p><p>TRASLADAR EL AULA FISICA A UN AULA VIRTUAL<br />&laquo;Buscamos trasladar el aula f&iacute;sica con los alumnos a un aula virtual con el mismo docente y compa&ntilde;eros para que puedan seguir la curricula ordinaria de la provincia y donde tambi&eacute;n el docente los podr&aacute; evaluar y no perder d&iacute;as de clase&raquo;, dijo Meiszner. El funcionario indic&oacute; que &laquo;Chubut es una de las primeras provincias en aplicar esta tecnolog&iacute;a, y estamos orgullosos porque es una aplicaci&oacute;n que ha sido dise&ntilde;ada por los trabajadores del Ministerio de Chubut. A partir de ma&ntilde;ana va a estar a disposici&oacute;n de los alumnos y el sector docente&raquo;.</p>
+              
+            </div>
+          </div>          
+
+          
+
+
+          
+          
+          <table class="tblCompartir"> 
+            </tr> 
+              <td class="compartir_interior compartir_fb_interior">
+                <a target='_blank'
+                     onclick="javascript:myPopup('https://www.facebook.com/dialog/feed?app_id=599601216900924&amp;link=https://www.elchubut.com.ar/nota/2020-3-16-23-31-0-arcioni-presento-el-aula-virtual-chubut-educa&amp;name=Arcioni%20present%C3%B3%20el%20aula%20virtual%20%C2%ABChubut%20Educa%C2%BB&amp;description=La%20herramienta%20virtual%20fue%20dise%26ntilde%3Bada%20por%20empleados%20provinciales.%20Chubut%20es%20una%20de%20las%20primeras%20jurisdicciones%20en%20implementar%20esta%20plataforma.%20Transforma%20el%20aula%20f%26iacute%3Bsica%20en%20un%20espacio%20virtual%20con%20los%20mismos%20chicos%20y%20docentes%20de%20cada%20grado.&amp;display=popup&amp;picture=https://pxb.cdn.elchubut.com.ar/chubut/032020/1584412321409.jpg&amp;redirect_uri=https://www.elchubut.com.ar/nota/2020-3-16-23-31-0-arcioni-presento-el-aula-virtual-chubut-educa%2F%23close_window')">
+                      <div >Compartir en facebook</div>
+                </a>
+              </td>
+              <td class="compartir_interior compartir_tw_interior">
+                <a target='_blank' onclick="javascript:myPopup('https://twitter.com/intent/tweet?url=https://www.elchubut.com.ar/nota/2020-3-16-23-31-0-arcioni-presento-el-aula-virtual-chubut-educa&amp;text=Arcioni%20present%C3%B3%20el%20aula%20virtual%20%C2%ABChubut%20Educa%C2%BB')">
+                      <div >Compartir en twitter</div>
+                </a>
+              </td>
+              <td class="compartir_interior compartir_wp_interior">
+                  <a target="_blank" href="whatsapp://send?text=Arcioni%20present%C3%B3%20el%20aula%20virtual%20%C2%ABChubut%20Educa%C2%BB - https://www.elchubut.com.ar/nota/2020-3-16-23-31-0-arcioni-presento-el-aula-virtual-chubut-educa">
+                  <div >Compartir en whatsapp</div>
+                  </a>
+             </td>    
+           </tr>
+         </table>    
+          
+          
+          <p class="aclaracion_nota">Diario EL CHUBUT no se responsabiliza por los comentarios vertidos por sus lectores. Y se reserva el derecho de bloquear 
+  y o eliminar aquellos que contengan mensajes con contenido xenófobo, racista, y o discriminatorios.</p>
+
+          <div class="notapage_tags">
+           
+              <a href="/seccion/regionales"><span>Regionales</span></a>
+          
+           
+              <a href="/seccion/edicion-impresa"><span>Edición impresa</span></a>
+          
+          
+          </div>
+
+         
+      
+          <div class="notapage_comentarios">Comentarios</div>
+
+          <div>
+            <div style="margin-bottom: 20px;" id="fb-comments" class="fb-comments" data-href="https://www.elchubut.com.ar/nota/2020-3-16-23-31-0-arcioni-presento-el-aula-virtual-chubut-educa" data-num-posts="100" data-width="606"></div>
+          </div>
+
+        </div> 
+
+        <div class="columna3">
+
+        
+
+
+        
+        
+        <div data-spot=58fbc2dbb57f1800105ab5b7 data-id=5e06c46919909f00133ae100 data-pos=P4 data-width='300' data-height='250' data-fixed='undefined' style='undefined' class='ppp item ppp_P4'><div style='margin: 0 0 15px 0; overflow: hidden; position: relative; height: auto; '><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-4125425223781700"
+     data-ad-slot="8613304759"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div></div>
+        <div data-spot=1523131636447-5ac924f42cf8eb0013b12a5f data-id=5dbb8bc6fbe7540013891762 data-pos=P5 data-width='300' data-height='600' data-fixed='undefined' style='undefined' class='ppp item ppp_P5'><div style='margin: 0 0 15px 0; overflow: hidden; position: relative; height: auto; '><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 300 x 600 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:600px"
+     data-ad-client="ca-pub-4125425223781700"
+     data-ad-slot="4933315813"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div></div>
+        
+        <div class="masnoticias_cont item">
+            <div class="masnoticias_1 ultimas" style="clear: both;">
+        
+            <div class="header_ultimas">
+                <label>ÚLTIMAS NOTICIAS</label>
+            </div>
+        
+                
+                    <div class="nota_gen ultimas" data-fecha_m="1584459425203">
+            
+                        
+                        <div class="cont_dobletriple">
+                           <div class="videoWrapper" style="padding-bottom:60.98%">
+                        
+            
+                            <a href="/nota/2020-3-17-12-17-0-suspenden-trenes-colectivos-de-larga-distancia-y-aviones-a-partir-de-este-viernes" class="imagenLink" data-gallery="">
+                                <img class="panel_imagen lazy" width=615 height=375 src="https://pxb.cdn.elchubut.com.ar/chubut/032020/1584458546063.jpg" >
+                            </a>
+                                           
+                        </div>
+                         </div>
+            
+                        <div class="datos_nota">
+                            <a href="/seccion/nacionales"><div class="nota_tag " ><label>Nacionales</label></div></a>
+            
+                            <a href="/nota/2020-3-17-12-17-0-suspenden-trenes-colectivos-de-larga-distancia-y-aviones-a-partir-de-este-viernes">
+                                <h4 class="nota_titulo">Un país paralizado: No habrá vuelos, colectivos de larga distancia ni trenes a partir del viernes</h4>
+                            </a>
+                        </div>
+            
+                    </div>
+            
+            
+                
+                    <table class="lml_container" id="leidas">
+                   
+                        <tr>
+                            <td class="lml_imagen">
+                                <a href="/nota/2020-3-17-10-10-0-garayalde-detectaron-una-pareja-de-turistas-franceses-y-la-mujer-presenta-fuertes-sintomas-de-coronavirus" class="imagenLink" data-gallery="">
+                                    <img class="panel_imagen lazy" width=1500 height=914 src="https://pxb.cdn.elchubut.com.ar/chubut/032020/1584450855888.jpg" >
+                                </a>
+                            </td>
+                            <td class="lml_label_titulo"><a href="/nota/2020-3-17-10-10-0-garayalde-detectaron-una-pareja-de-turistas-franceses-y-la-mujer-presenta-fuertes-sintomas-de-coronavirus">Garayalde: Detectaron una pareja de turistas franceses  y la mujer presenta fuertes síntomas de Coronavirus</a></td>
+                        </tr>
+                    </table>
+            
+                
+                    <table class="lml_container" id="leidas">
+                   
+                        <tr>
+                            <td class="lml_imagen">
+                                <a href="/nota/2020-3-17-11-38-0-al-dia-de-la-fecha-no-hay-casos-confirmados-de-coronavirus-en-chubut" class="imagenLink" data-gallery="">
+                                    <img class="panel_imagen lazy" width=1280 height=728 src="https://pxb.cdn.elchubut.com.ar/chubut/032020/1584460553930.jpg" >
+                                </a>
+                            </td>
+                            <td class="lml_label_titulo"><a href="/nota/2020-3-17-11-38-0-al-dia-de-la-fecha-no-hay-casos-confirmados-de-coronavirus-en-chubut">Al día de la fecha, no hay casos confirmados de Coronavirus en Chubut</a></td>
+                        </tr>
+                    </table>
+        	
+        	    
+        	        <table class="lml_container" id="leidas">
+        	       
+        	            <tr>
+        	                <td class="lml_imagen">
+        	                    <a href="/nota/2020-3-17-12-37-0-banco-del-chubut-aumenta-limites-de-extracciones-por-cajeros-automaticos-y-en-compras-posnet-diarias" class="imagenLink" data-gallery="">
+        	                        <img class="panel_imagen lazy" width=1107 height=674 src="https://pxb.cdn.elchubut.com.ar/chubut/032020/1584459571375.jpg" >
+        	                    </a>
+        	                </td>
+        	                <td class="lml_label_titulo"><a href="/nota/2020-3-17-12-37-0-banco-del-chubut-aumenta-limites-de-extracciones-por-cajeros-automaticos-y-en-compras-posnet-diarias">Banco del Chubut aumenta límites de extracciones por cajeros automáticos y en compras posnet diarias</a></td>
+        	            </tr>
+        	        </table>
+        	
+        	    
+        	        <table class="lml_container" id="leidas">
+        	       
+        	            <tr>
+        	                <td class="lml_imagen">
+        	                    <a href="/nota/2020-3-17-8-39-0-la-policia-activa-protocolo-de-seguridad-en-ruta-n-7" class="imagenLink" data-gallery="">
+        	                        <img class="panel_imagen lazy" width=957 height=584 src="https://pxb.cdn.elchubut.com.ar/chubut/032020/1584457445456.jpeg" >
+        	                    </a>
+        	                </td>
+        	                <td class="lml_label_titulo"><a href="/nota/2020-3-17-8-39-0-la-policia-activa-protocolo-de-seguridad-en-ruta-n-7">La Policía realiza protocolo de seguridad en Rutas 3, 7 y 25</a></td>
+        	            </tr>
+        	        </table>
+        	</div>
+        </div>
+      </div>
+      <div data-spot=59602f089eb93f00109b3d12 data-id=5e3c33d1af6df200139777db data-pos=P7 data-width='728' data-height='100' data-fixed='true' style='undefined' class='ppp item ppp_P7'><div style='margin: 10px auto; width: 100%; height: 100px; '><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- Display new 2017 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-4125425223781700"
+     data-ad-slot="6532912212"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div></div>
+      
+        <div class="masnoticias_home item masnoticias_home_notapage">  
+                
+          <label class="mas_noticias_label">Más noticias</label>
+              
+          <div class="notapage_panel notapage_notasSeccion">
+          	<div class="panel_contenedor_imagen">
+          		<div class="panel_imagen_control"></div>
+          		<div class="panel_imagen">
+          			<a href="/nota/2020-3-17-13-17-0-el-stj-decreto-un-receso-judicial-hasta-el-31-de-marzo">
+          				<div class="videoWrapper">
+          					<img class="lazy panel_imagen" width=1032 height=629 src="https://pxb.cdn.elchubut.com.ar/chubut/032020/1584461908266.jpg" >
+          				</div>
+          			</a>
+          		</div>
+          		<a href="/seccion/regionales"><div class="nota_tag nota_tag_seccion" ><label>Regionales</label></div></a>
+          		<a href="/nota/2020-3-17-13-17-0-el-stj-decreto-un-receso-judicial-hasta-el-31-de-marzo">
+          			<div class="panel_imagen_text"><label>El STJ decretó un receso judicial hasta el 31 de marzo</label></div>
+          		</a>
+          	</div>
+          </div>  
+          <div class="notapage_panel notapage_notasSeccion">
+          	<div class="panel_contenedor_imagen">
+          		<div class="panel_imagen_control"></div>
+          		<div class="panel_imagen">
+          			<a href="/nota/2020-3-17-12-57-0-suspenden-la-emision-de-licencias-de-conducir">
+          				<div class="videoWrapper">
+          					<img class="lazy panel_imagen" width=1500 height=914 src="https://pxb.cdn.elchubut.com.ar/chubut/032020/1584460946296.jpg" >
+          				</div>
+          			</a>
+          		</div>
+          		<a href="/seccion/regionales"><div class="nota_tag nota_tag_seccion" ><label>Regionales</label></div></a>
+          		<a href="/nota/2020-3-17-12-57-0-suspenden-la-emision-de-licencias-de-conducir">
+          			<div class="panel_imagen_text"><label>Suspenden la emisión de licencias de conducir</label></div>
+          		</a>
+          	</div>
+          </div>  
+          <div class="notapage_panel notapage_notasSeccion">
+          	<div class="panel_contenedor_imagen">
+          		<div class="panel_imagen_control"></div>
+          		<div class="panel_imagen">
+          			<a href="/nota/2020-3-17-12-42-0-el-hoyo-suspende-actividad-turistica-y-recomienda-el-aislamiento-preventivo">
+          				<div class="videoWrapper">
+          					<img class="lazy panel_imagen" width=1349 height=823 src="https://pxb.cdn.elchubut.com.ar/chubut/032020/1584459855391.jpg" >
+          				</div>
+          			</a>
+          		</div>
+          		<a href="/seccion/regionales"><div class="nota_tag nota_tag_seccion" ><label>Regionales</label></div></a>
+          		<a href="/nota/2020-3-17-12-42-0-el-hoyo-suspende-actividad-turistica-y-recomienda-el-aislamiento-preventivo">
+          			<div class="panel_imagen_text"><label>El Hoyo suspende actividad turística y recomienda el aislamiento preventivo</label></div>
+          		</a>
+          	</div>
+          </div>  
+      
+        </div>
+      
+      
+
+  </div>
+
+  <div class="bloque9" style="display:block; clear:both;">
+    <div class="col1_tapa" style="float:left;">
+      <div data-spot=5a066128addac1001100fc6f data-id=5c47b9223841500012ae17a8 data-pos=H12 data-width='300' data-height='250' data-fixed='true' style='undefined' class='ppp item ppp_H12'><div style='margin: 10px auto; width: 100%; height: 250px; '><a target='_blank' href='http://www.grafica24horas.com.ar'><script type="text/javascript">
+var bannersnack_embed = {"hash":"bcjfo5mmd","width":300,"height":250,"t":1510342374,"userId":19803501,"type":"html5"};
+</script>
+<script type="text/javascript" src="//cdn.bannersnack.com/iframe/embed.js"></script></a></div></div>
+    </div>    
+    <div class="col1_tapa" style="float:left">
+      <div data-spot=58fbc2dbb57f1800105ab5b7 data-id=5b671a5fe95c240013592316 data-pos=H13 data-width='300' data-height='260' data-fixed='undefined' style='undefined' class='ppp item ppp_H13'><div style='margin: 0 0 15px 0; overflow: hidden; position: relative; height: auto; '><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-4125425223781700"
+     data-ad-slot="8613304759"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div></div>
+    </div>
+    <div class="col1_tapa" style="float:left">
+      <div data-spot=5a205ec84a23c4001113cb90 data-id=5afb0e8e6477870013005fd0 data-pos=H14 data-width='300' data-height='250' data-fixed='undefined' style='undefined' class='ppp item ppp_H14'><div style='margin: 0 0 15px 0; overflow: hidden; position: relative; height: auto; '><a target='_blank' href='http://www.mbutinof.com.ar/elchubutweb'><a target="_blank" href="http://www.mbutinof.com.ar/elchubutweb"><img src="https://s3.amazonaws.com/us.cdn.elchubut.com.ar/5a205ec84a23c4001113cb90/1531015572791.gif"></a></a></div></div>
+    </div>
+    <div class="col1_tapa" style="float:left;">
+      <div data-spot=5a066128addac1001100fc6f data-id=5a137549cbc12c0011ed4dbc data-pos=H15 data-width='300' data-height='250' data-fixed='true' style='undefined' class='ppp item ppp_H15'><div style='margin: 10px auto; width: 100%; height: 250px; '><a target='_blank' href='http://www.grafica24horas.com.ar'><script type="text/javascript">
+var bannersnack_embed = {"hash":"bcjfo5mmd","width":300,"height":250,"t":1510342374,"userId":19803501,"type":"html5"};
+</script>
+<script type="text/javascript" src="//cdn.bannersnack.com/iframe/embed.js"></script></a></div></div>
+    </div>
+  </div>
+  
+
+
+</div>
+
+<script>
+  $(document).ready(function() {
+
+    getShares("5e70368e44949100137e2106","https://www.elchubut.com.ar/nota/2020-3-16-23-31-0-arcioni-presento-el-aula-virtual-chubut-educa","","","","");
+
+    setTimeout(function() {
+      $(".compartir_notapage").css("margin-bottom","20px");
+      $(".compartir_notapage span").css("opacity","1");
+
+
+      $(".mk_cont").css('top', $(".np_titulo").height() - 130)
+    }, 1000)
+
+    $("#foto").click(function() {
+      $(".tapa_contenedort_imagen").removeClass('not_visible');
+      $(".tapa_contenedort_video").addClass('not_visible');
+      $('.solapa_selected').removeClass('solapa_selected');
+      $(this).addClass('solapa_selected')
+    })
+
+    $("#video").click(function() {
+      $(".tapa_contenedort_imagen").addClass('not_visible');
+      $(".tapa_contenedort_video").removeClass('not_visible');
+      $('.solapa_selected').removeClass('solapa_selected');
+      $(this).addClass('solapa_selected')
+    })
+
+    $("img[data-src]").each(function() {
+      $(this).attr('src', $(this).attr('data-src'))
+    })
+
+    var cookies = get_cookies();
+    if (cookies && cookies.login_mustang) {
+      $(".columna3").prepend(
+      '<a href="http://manager.elchubut.com.ar/edit/notas/5e70368e44949100137e2106" target="_blank">' +
+        '<div class="boton_editar">Editar</div>' +
+      "</a>")
+    }
+  });
+
+  function iniciarGaleria() {
+    if ("")
+       $(".boton_galeria").click();
+  }
+</script>
+
+<div class="printable">
+  <img class="logo_cloned" src="/img/logo.png" alt="">
+
+  <div class="np_titulo"><h2 id="title" itemprop="headline">Arcioni presentó el aula virtual «Chubut Educa»</h2></div>    
+
+  <div class="np_nota_descripcion " itemprop="description"><p>La herramienta virtual fue dise&ntilde;ada por empleados provinciales. Chubut es una de las primeras jurisdicciones en implementar esta plataforma. Transforma el aula f&iacute;sica en un espacio virtual con los mismos chicos y docentes de cada grado.</p></div>
+  <img class="panel_imagen" src="https://pxb.cdn.elchubut.com.ar/chubut/032020/1584412321409.jpg">
+
+  <div class="notapage_cuerpo_printable"  itemprop="articleBody"><p>Tiene como finalidad no perder contenidos frente a los d&iacute;as de paro y la suspensi&oacute;n de clases por el Coronavirus.<br />El gobernador del Chubut, Mariano Arcioni, encabez&oacute; ayer la presentaci&oacute;n del programa de ense&ntilde;anza virtual Chubut Educa, dirigido a todos los alumnos de nivel primario y secundario y de educaci&oacute;n especial, mediante el cual los estudiantes podr&aacute;n continuar educ&aacute;ndose a trav&eacute;s de esta plataforma.<br />Del acto tambi&eacute;n participaron el ministro de Educaci&oacute;n, Andr&eacute;s Meiszner, los subsecretarios de Coordinaci&oacute;n, Sergio De Cicco, y de Recursos, Apoyo y Servicios Auxiliares, Pablo Abraham.<br />La puesta en marcha de aulas virtuales apunta para favorecer el contacto entre los alumnos y sus docentes en este tiempo de distanciamiento social dispuesto por el Poder Ejecutivo Nacional, hasta el 31 de marzo, por el coronavirus.<br />Arcioni sostuvo que &laquo;dado las medidas que hemos tomado, entre ellas la suspensi&oacute;n de clases, el Ministerio de Educaci&oacute;n ha elaborado esta herramienta virtual que van a tener todos los chicos de Chubut a disposici&oacute;n, para que contin&uacute;e la ense&ntilde;anza y el aprendizaje&raquo;.<br />&laquo;Quiero felicitarlos porque la han elaborado de una manera urgente, impecable y diligente y es muy valorable todo el esfuerzo que han hecho para lograr esta herramienta para nuestros estudiantes&raquo;, expres&oacute;.</p><p>TRASLADAR EL AULA FISICA A UN AULA VIRTUAL<br />&laquo;Buscamos trasladar el aula f&iacute;sica con los alumnos a un aula virtual con el mismo docente y compa&ntilde;eros para que puedan seguir la curricula ordinaria de la provincia y donde tambi&eacute;n el docente los podr&aacute; evaluar y no perder d&iacute;as de clase&raquo;, dijo Meiszner. El funcionario indic&oacute; que &laquo;Chubut es una de las primeras provincias en aplicar esta tecnolog&iacute;a, y estamos orgullosos porque es una aplicaci&oacute;n que ha sido dise&ntilde;ada por los trabajadores del Ministerio de Chubut. A partir de ma&ntilde;ana va a estar a disposici&oacute;n de los alumnos y el sector docente&raquo;.</p></div>
+
+</div>
+
+  <div itemprop="alternativeHeadline" style="display:none;"><a href="/seccion/regionales"><div class="nota_tag " ><label>Regionales</label></div></a></div>
+
+<style>
+  body{
+    background: #f2f2f2;
+  }
+</style>
+
+<script>
+  //audio
+    var sound = false;
+    
+
+    $('.nd_iconos_nota.audio').click(function(){
+    
+      var audio = $(this).find('.audio')[0];
+
+      if (!sound) {
+        audio.play();
+        sound = true;
+        
+      } else {
+        audio.pause();
+        sound = false;
+      }
+    });
+</script>
+      </div>
+
+      
+        <div style="clear:both"></div>
+      
+      <div class="footer_cont">
+        <div class="footer_redes">
+          <div class="tw">
+            <a href="https://twitter.com/elchubut" target="_blank">
+            <div class="contenedor_redes">  
+              <img src="/img/twitter.png" />
+              <div class="der">  
+                <span class="tw_name">Twitter</span>
+                <span class="rs_cantidad">
+                    27160
+                </span>
+              </div>
+            </div>
+            </a>
+          </div>
+          <div class="fb">
+          <a href="https://www.facebook.com/diarioelchubut/" target="_blank">
+            <div class="contenedor_redes">
+              <img src="/img/facebook.png" />
+              <div class="der">  
+                <span class="fb_name">Facebook</span>
+                <span class="rs_cantidad facebook_count"></span>
+              </div>
+            </div>
+          </a>
+          </div>
+          <div class="ig">
+            <a href="https://www.instagram.com/diarioelchubut/" target="_blank">
+            <div class="contenedor_redes">
+              <img src="/img/instagram.png" />
+              <div class="der">
+                <span class="ig_name">Instagram</span>
+                <span class="rs_cantidad gplus_count"></span>
+              </div>
+            </div>
+            </a>
+          </div>
+        </div>
+      
+      
+        <div id="footer_main" class="degradado_azul">
+          <div id="footer_unico">
+            <div class="footer_contenedor">
+              <h5 class="footer_titulo">Impresora Chubutense S.A.</h5>
+              <div class="footer_col" style="width:50%">
+                <h6 class="doble_margin trelew">TRELEW</h6>
+      
+                <div class="footer_info">
+                  9 de Julio 329 - 1º Piso - Cp U-9100H<br />
+                  Teléfono (+54) 280 4434 802/3<br />
+                  Fax: (+54) 280 4420 799<br />
+                  E-Mail: info@elchubut.com.ar<br />
+                  publicidad@elchubut.com.ar
+                </div>
+      
+      
+                 <h6 class="doble_margin">RAWSON</h6>
+      
+                <div class="footer_info">
+                  Belgrano 187<br />
+                  Teléfono (+54) 0280 4482111
+      
+                </div>
+              </div>
+      
+              <div class="footer_col" style="width:50%; border-right:none">
+                <h6>Puerto Madryn</h6>
+                
+                <div class="footer_info">
+                 Roque Saenz Peña 61<br />
+                Teléfono (+54) 0280 4455555 / Fax : 0280 4454567<br />
+                E-Mail: elchubut-madryn@speedy.com.ar
+      
+                </div>
+      
+                <h6 class="doble_margin">ESQUEL</h6>
+                
+                <div class="footer_info">
+                 Av. Fontana 762<br />
+                Teléfono (+54) 02945 451887 / Fax: 453131<br />
+                E-Mail: elchubutesquel@speedy.com.ar
+      
+                </div>
+              </div>
+              
+              <!--<div class="footer_col">
+              <div class="izq">  
+                  <h6><b>EL CHUBUT</b></h6>
+                  
+                  <ul>
+                    <li>Apps</li>
+                    <li>Últimas Noticias</li>
+                    <li>RSS</li>
+                    <li>Sitemap</li>
+                    <li>Publicidad</li>
+                    <li>Media Kit</li>  
+                  </ul>
+                  <div class="iconos_footer">
+                   <a href="/contacto"><div class="nd_iconos icono_mail lateral"></div></a>
+                    <div class="nd_iconos icono_user lateral"></div>
+                    <div class="nd_iconos icono_share lateral"></div>
+                  </div>
+      
+                </div>
+                <div class="der">
+                  
+                </div>
+              </div>
+      
+              <div class="footer_col_der">
+                <h6 class="suscripcion">Suscripción Boletín</h6>
+                <input type="text" name="txtSuscripcion" class="txtSuscripcion" />
+                <div class="footer_legal">
+                  <div class="col_izq">
+                    <h6>LEGAL</h6>
+                    <div class="footer_info">
+                      Términos y Condiciones<br />
+                      Política de Privacidad
+                    </div>
+                  </div>
+                  <img src="/img/data-fiscal.jpg" alt="data fiscal" class="data_fiscal" />
+                  
+                </div>
+            </div>
+            -->
+            <div style="clear:both" style="margin-bottom:20px"></div>
+          </div>
+          <div class="mustang_div">
+              <a target="_blank" href="http://mustangcloud.com/">
+                <img style="margin-right: 10px; width: 40px; height: auto;" width="96" height="55" src="/img/css/mustang.png" alt="Mustang">
+                <span>Mustang Cloud - CMS para portales de noticias</span>
+              </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="opacityBody"></div>
+      <div id="modalLogin">
+      
+      	<img id="login_cruz" src="/img/cruz.png">
+      	<img id="sus_loading" src="/img/loading.gif">
+      
+      	<label id="login_texto">CONECTARSE</label>
+      	
+      	<div id="login_pad">
+      
+      		<label class="login_linea">Ingresá tus datos</label>
+      
+      		<form id="formLogin">
+      			<div>
+      				<label>Email</label>
+      				<input id="name" type="text" name="email">
+      			</div>
+      			<div>
+      				<label>Contraseña</label>
+      				<input id="pass" type="password" name="password">
+      			</div>
+      		</form>
+      
+      		<div id="ingresar">Conectar</div>
+      		<label id="login_recuperar">¿Olvidaste tu contraseña?</label>
+      
+      		<label id="response"></label>
+      		
+      		<div class="conectate">
+      			<label class="login_linea">Conectate con</label>
+      			<ul>
+      				<div class="redes_top">
+      					<li class="redes" style="margin: 0 auto; text-align:center">
+      						<a id="login-fb" href="/auth/facebook" class="login_redes">
+      							<span class="nd_iconos icono_facebook" style="display:inline-block; margin-right:10px"></span>
+      						</a>
+      						<a id="login-fb" href="/auth/google" class="login_redes">
+      							<span class="nd_iconos icono_gplus" style="display:inline-block; margin-right:10px"></span>
+      						</a> 
+      
+      						<a id="login-fb" href="/auth/twitter" class="login_redes">
+      							<span class="nd_iconos icono_twitter" style="display:inline-block;"></span>
+      						</a>
+      					</li>
+      				</div>
+      			</ul>	
+      		</div>
+      
+      		<hr class="linea-login">
+      
+      		<label class="login_texto_registrate">Registrate para acceder a la edición digital del diario El Chubut</label>
+      
+      		<div id="suscribir">Crear cuenta</div>
+      
+      	</div>
+      
+      	<script type="text/javascript">
+      
+      		$(document).ready(function() {
+      			$("#suscribir").click(function(event) {
+      				$("#sus_loading").hide();
+      	            $("#opacityBody").finish().fadeOut('400');
+      	            $("#modalLogin").finish().fadeOut('400', function() {
+      	              $("#opacityBody").finish().hide();
+      	            });
+      				render('/suscripcion');
+      			});
+      
+      			$("#login_recuperar").click(function(event) {
+      				if ($("#name").val() == '')
+      					return $("#response").text("Debe ingresar un e-mail válido").css('color','red');
+      				$("#sus_loading").show();
+      				$("#response").text(" ");
+      				
+      			    $.ajax({
+      			        url: "/suscripcion/recuperar/",
+      			        data: { mail: $("#name").val() },
+      			        type: 'POST',
+      			    }).done(function(res) {
+      			    	$("#response").text("Se ha enviado correctamente un mail a " + $("#name").val() + " para cambio de password.").css('color','green')
+      			    	$("#login_recuperar").hide();
+      			    	$("#sus_loading").hide();
+      			    }).error(function(res) {
+      			    	if (res.status == 409)
+      			    		$("#response").html("El mail " + $("#name").val() + " no esta registrado.");
+      			    	else
+      			    		$("#response").text("Ha ocurrido un error al enviar el mail a " + $("#name").val() + ". Intentelo nuevamente más tarde.")
+      			    	$("#response").css('color','red')
+      			    	$("#sus_loading").hide();
+      			    });
+      			});
+      
+      			$("#name").keypress(function(event) {
+      		        if (event.which == 13)
+      		          $("#pass").focus();
+      	    	});
+      
+      			$("#pass").keypress(function(event) {
+      		        if (event.which == 13)
+      		          $("#ingresar").click();
+      	    	});
+      
+      			$("#ingresar").click(function(event) {
+      				if ($("#name").val() == '')
+      					return $("#response").text("Debe ingresar un e-mail válido").css('color','red');
+      				if ($("#pass").val() == '')
+      					return $("#response").text("Debe ingresar un password válido").css('color','red');
+      				$("#suscribir").attr('disabled','disabled');
+      				$("#recuperar").attr('disabled','disabled');
+      				$("#ingresar").attr('disabled','disabled');
+      				$("#token").attr('disabled','disabled');
+      				$("#sus_loading").show();
+      				$(".loginIniciar").hide();
+      				$("#response").text(" ");
+      			    $.ajax({
+      			        url: "/suscripcion/login",
+      			        data: { mail: $("#name").val().toLowerCase(), pass: $("#pass").val() },
+      			        type: 'POST',
+      			    }).done(function(res) {
+      			    	if (!res.userToken || !res.userName || !res.userLastName)
+      			    		$("#response").text("Ha ocurrido un error, intentelo nuevamente más tarde.")
+      			    	else
+      						doLogin(res.userToken, res.userName, res.userLastName);
+      					$("#response").css('color','red')
+      			    	$("#sus_loading").hide();
+      			    }).error(function(res) {
+      			    	if (res.status == 409)
+      			    		$("#response").text("Mail no validado.")
+      			    	else
+      			    		if (res.status == 410)
+      			    			$("#response").text("Usuario o contraseña inválida.")
+      			    		else
+      			    			$("#response").text("Ha ocurrido un error, intentelo nuevamente más tarde.")
+      			    	$("#response").css('color','red')
+      			    	$("#sus_loading").hide();
+      			    });
+      
+      			});
+      
+      			$("#token").click(function(event) {
+      				if ($("#name").val() == '')
+      					return $("#response").text("Debe ingresar un e-mail válido").css('color','red');
+      				$("#suscribir").attr('disabled','disabled');
+      				$("#recuperar").attr('disabled','disabled');
+      				$("#ingresar").attr('disabled','disabled');
+      				$("#token").attr('disabled','disabled');
+      				$("#sus_loading").show();
+      				$("#response").text(" ");
+      			    $.ajax({
+      			        url: "/suscripcion/reenviar-mail",
+      			        data: { mail: $("#name").val() },
+      			        type: 'POST',
+      			    }).done(function(res) {
+      			    	$("#response").text("Se ha enviado correctamente un mail a " + $("#name").val() + " para validarlo.").css('color','green')
+      			    	$("#sus_loading").hide();
+      					$("#ingresar").attr('disabled',false);
+      			    }).error(function(res) {
+      			    	if (res.status == 409)
+      			    		$("#response").html("El mail " + $("#name").val() + " no esta registrado.");
+      			    	else
+      			    		$("#response").text("Ha ocurrido un error al enviar el mail a " + $("#name").val() + ". Intentelo nuevamente más tarde.")
+      			    	$("#response").css('color','red')
+      			    	$("#sus_loading").hide();
+      					$("#suscribir").attr('disabled',false);
+      					$("#recuperar").attr('disabled',false);
+      					$("#ingresar").attr('disabled',false);
+      					$("#token").attr('disabled',false);
+      			    });
+      
+      			});
+      		});
+      
+      	</script>
+      
+      </div>      
+      <div id="modalContacto">
+      	<img id="login_cruz" src="/img/cruz.png">
+      	<img id="sus_loading" src="/img/loading.gif">
+      
+      		<div id="login_pad">
+      
+      			<label class="login_linea">Formulario de contacto</label>
+      
+      				<form id="formLogin" class="frmContacto" method="post">
+      
+      					<div>
+      						<label for="" class="nombre">Nombre</label>
+      						<input type="text" id="nombre" name="nombre" required="" />
+      					</div>
+      					<div>
+      						<label for="" class="correo">Correo</label>
+      						<input type="email" id="email" name="email" required="" />
+      					</div>
+      					<div>
+      						<label for="" class="telefono">Teléfono</label>
+      						<input type="text" id="telefono" name="telefono" required="" />
+      					</div>
+      					<div>
+      						<label for="" class="">Enviar a:</label>
+      						<select id="destinatario" name="destinatario">
+      							<option value="redaccion" selected>Redacción</option>
+      							<option value="publicidad">Publicidad</option>
+      							<option value="soporte">Soporte</option>
+      						</select>
+      					</div>
+      					<div>
+      						<label for="" class="mensaje">Mensaje</label>
+      						<textarea name="mensaje" id="mensaje" cols="20" rows="8" required=""></textarea>
+      					</div>
+      
+      				<button type="submit" class="enviar">Enviar</button>
+      
+      			</form>	
+      		</div>
+      		
+      </div>
+      
+      <script>
+      $(document).ready(function(){
+      	
+      	$('.frmContacto').submit(function(event){
+      
+      		var $form = $('.frmContacto');
+      		var nombre = $form.find("#nombre").val();
+              var email = $form.find("#email").val();
+              var telefono = $form.find("#telefono").val();
+              var mensaje = $form.find("#mensaje").val();
+              var destinatario = $form.find("#destinatario").val();
+              var btnEnviar = $form.find('.enviar');
+      		 	 
+      	 	var datos = {
+      	 		'nombre': nombre,
+      	 		'email': email,
+      	 		'telefono': telefono,
+      	 		'mensaje': mensaje,
+      	 		'destinatario': destinatario
+      	 	}; 	
+      
+       	 	event.preventDefault();
+      			
+      		$.ajax({
+      			type: "POST",
+      			url: "/dfhgdtmp",
+      			data: datos,
+      			beforeSend: function() {
+      			    $('.enviar').attr('disabled', true);
+      			 	$('.frmContacto').append("<div class='loader'>Cargando...</div>");
+      				}			    
+      			})
+      			.done(function() {
+      				console.log("mensaje enviado")
+      				$('.loader').remove();
+      				$('.enviar').attr('disabled', false);
+      				$('.frmContacto').append("<div class='mensaje_enviado'>El Mensaje ha sido enviado correctamente</div>");
+      			});
+      	});
+      });
+      
+      	$("#footer_main").show();
+      </script>      
+      <div id="modalRedes">
+      
+      	<img id="login_cruz" src="/img/cruz.png">
+      	<img id="sus_loading" src="/img/loading.gif">
+      
+      	
+      
+      	<label class="seguinosRedes">Seguinos en las Redes Sociales</label>
+      
+            <ul>
+              
+              <li class="redes">
+                <div class="redes_top">
+                  <a href="https://www.facebook.com/diarioelchubut/" target="_blank"><span class="nd_iconos icono_facebook"></span></a>
+                  <a href="https://twitter.com/elchubut" target="_blank"><span class="nd_iconos icono_twitter"></span></a>
+                  <!--<a target="_blank"><span class="nd_iconos icono_whatsapp"></span></a>-->
+                </div>
+                <div>
+                  <a href="https://www.youtube.com/user/ELCHUBUTTV" target="_blank"><span class="nd_iconos icono_youtube"></span></a>
+                  <a href="https://www.instagram.com/diarioelchubut/" target="_blank"><span class="nd_iconos icono_instagram"></span></a>
+                  <!--<a href="https://plus.google.com/106007062462528262359" target="_blank"><span class="nd_iconos icono_gplus"></span></a>-->
+                </div>
+              </li>
+            </ul>	
+      </div>
+
+    </div>
+  </body>
+</html>
+
+  <div class="portadas_div" style="display:none;" >
+      <div class="galeria_portadas" data-src="https://pxb.cdn.elchubut.com.ar/chubut/5e70293b44949100137e1aaa/1584408914228.jpg" data-name="Portada principal" /></div>
+      <div class="galeria_portadas" data-src="https://pxb.cdn.elchubut.com.ar/chubut/5e70293b44949100137e1aaa/1584408964979.jpg" data-name="Rawson" /></div>
+      <div class="galeria_portadas" data-src="https://pxb.cdn.elchubut.com.ar/chubut/5e70293b44949100137e1aaa/1584408929946.jpg" data-name="Deportes" /></div>
+      <div class="galeria_portadas" data-src="https://pxb.cdn.elchubut.com.ar/chubut/5e70293b44949100137e1aaa/1584408979034.jpg" data-name="Puerto Madryn" /></div>
+      <div class="galeria_portadas" data-src="https://pxb.cdn.elchubut.com.ar/chubut/5e70293b44949100137e1aaa/1584408946190.jpg" data-name="Esquel" /></div>
+  </div>
+
+<script>
+
+$( document ).ready(function() {
+
+ 
+$('#footer_main').show();
+$('#footer_redes').show();
+
+});
+
+
+</script>

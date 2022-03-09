@@ -1,0 +1,3408 @@
+
+<!doctype html>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8"><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"bb199f70cb",applicationID:"222037236"};window.NREUM||(NREUM={}),__nr_require=function(n,e,t){function r(t){if(!e[t]){var i=e[t]={exports:{}};n[t][0].call(i.exports,function(e){var i=n[t][1][e];return r(i||e)},i,i.exports)}return e[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(n,e,t){function r(){}function i(n,e,t){return function(){return o(n,[u.now()].concat(f(arguments)),e?null:this,t),e?void 0:this}}var o=n("handle"),a=n(4),f=n(5),c=n("ee").get("tracer"),u=n("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(n,e){s[e]=i(d+e,!0,"api")}),s.addPageAction=i(d+"addPageAction",!0),s.setCurrentRouteName=i(d+"routeName",!0),e.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(n,e){var t={},r=this,i="function"==typeof e;return o(l+"tracer",[u.now(),n,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return e.apply(this,arguments)}catch(n){throw c.emit("fn-err",[arguments,this,n],t),n}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(n,e){m[e]=i(l+e)}),newrelic.noticeError=function(n,e){"string"==typeof n&&(n=new Error(n)),o("err",[n,u.now(),!1,e])}},{}],2:[function(n,e,t){function r(n,e){var t=n.getEntries();t.forEach(function(n){"first-paint"===n.name?a("timing",["fp",Math.floor(n.startTime)]):"first-contentful-paint"===n.name&&a("timing",["fcp",Math.floor(n.startTime)])})}function i(n){if(n instanceof c&&!s){var e,t=Math.round(n.timeStamp);e=t>1e12?Date.now()-t:f.now()-t,s=!0,a("timing",["fi",t,{type:n.type,fid:e}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var o,a=n("handle"),f=n("loader"),c=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){o=new PerformanceObserver(r);try{o.observe({entryTypes:["paint"]})}catch(u){}}if("addEventListener"in document){var s=!1,p=["click","keydown","mousedown","pointerdown","touchstart"];p.forEach(function(n){document.addEventListener(n,i,!1)})}}},{}],3:[function(n,e,t){function r(n,e){if(!i)return!1;if(n!==i)return!1;if(!e)return!0;if(!o)return!1;for(var t=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],4:[function(n,e,t){function r(n,e){var t=[],r="",o=0;for(r in n)i.call(n,r)&&(t[o]=e(r,n[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],5:[function(n,e,t){function r(n,e,t){e||(e=0),"undefined"==typeof t&&(t=n?n.length:0);for(var r=-1,i=t-e||0,o=Array(i<0?0:i);++r<i;)o[r]=n[e+r];return o}e.exports=r},{}],6:[function(n,e,t){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(n,e,t){function r(){}function i(n){function e(n){return n&&n instanceof r?n:n?c(n,f,o):o()}function t(t,r,i,o){if(!d.aborted||o){n&&n(t,r,i);for(var a=e(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function l(n,e){h[n]=v(n).concat(e)}function m(n,e){var t=h[n];if(t)for(var r=0;r<t.length;r++)t[r]===e&&t.splice(r,1)}function v(n){return h[n]||[]}function g(n){return p[n]=p[n]||i(t)}function w(n,e){u(n,function(n,t){e=e||"feature",y[t]=e,e in s||(s[e]=[])})}var h={},y={},b={on:l,addEventListener:l,removeEventListener:m,emit:t,get:g,listeners:v,context:e,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var f="nr@context",c=n("gos"),u=n(4),s={},p={},d=e.exports=i();d.backlog=s},{}],gos:[function(n,e,t){function r(n,e,t){if(i.call(n,e))return n[e];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(n,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return n[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(n,e,t){function r(n,e,t,r){i.buffer([n],r),i.emit(n,e,t)}var i=n("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(n,e,t){function r(n){var e=typeof n;return!n||"object"!==e&&"function"!==e?-1:n===window?0:a(n,o,function(){return i++})}var i=1,o="nr@id",a=n("gos");e.exports=r},{}],loader:[function(n,e,t){function r(){if(!x++){var n=E.info=NREUM.info,e=l.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(n&&n.licenseKey&&n.applicationID&&e))return s.abort();u(y,function(e,t){n[e]||(n[e]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=l.createElement("script");t.src="https://"+n.agent,e.parentNode.insertBefore(t,e)}}function i(){"complete"===l.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=n("handle"),u=n(4),s=n("ee"),p=n(3),d=window,l=d.document,m="addEventListener",v="attachEvent",g=d.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:g,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1158.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=e.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};n(1),n(2),l[m]?(l[m]("DOMContentLoaded",o,!1),d[m]("load",r,!1)):(l[v]("onreadystatechange",i),d[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=n(6)},{}],"wrap-function":[function(n,e,t){function r(n){return!(n&&n instanceof Function&&n.apply&&!n[a])}var i=n("ee"),o=n(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;e.exports=function(n,e){function t(n,e,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){d([u,"",[r,a,i],f])}s(e+"start",[r,a,i],f);try{return c=n.apply(a,r)}catch(p){throw s(e+"err",[r,a,p],f),p}finally{s(e+"end",[r,a,c],f)}}return r(n)?n:(e||(e=""),nrWrapper[a]=n,p(n,nrWrapper),nrWrapper)}function u(n,e,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<e.length;c++)f=e[c],a=n[f],r(a)||(n[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||e){var o=c;c=!0;try{n.emit(t,r,i,e)}catch(a){d([a,t,r,i])}c=o}}function p(n,e){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(n);return t.forEach(function(t){Object.defineProperty(e,t,{get:function(){return n[t]},set:function(e){return n[t]=e,e}})}),e}catch(r){d([r])}for(var i in n)f.call(n,i)&&(e[i]=n[i]);return e}function d(e){try{n.emit("internal-error",e)}catch(t){}}return n||(n=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="refresh" content="1200">
+	<link rel="profile" href="https://gmpg.org/xfn/11">
+
+			
+	<!-- OneTrust Cookies Consent Notice start -->
+	<script
+		type="text/javascript"
+		src="https://cdn.cookielaw.org/consent/555b9549-df78-4d71-a3d6-67d27115fbef/OtAutoBlock.js"
+	></script>
+
+	<script
+		src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js"
+		type="text/javascript"
+		charset="UTF-8"
+		data-domain-script="555b9549-df78-4d71-a3d6-67d27115fbef"
+	></script>
+
+	<script type="text/javascript">
+		function OptanonWrapper() { }
+	</script>
+	<!-- OneTrust Cookies Consent Notice end -->
+		
+						<script src="https://cdn.blueconic.net/nexstar.js"></script>
+	
+	
+<!-- BoB -->
+<script async type="text/javascript" id="bob_tag_loader">
+var page_url = "https:\/\/www.wfla.com\/news\/florida\/fugitive-arrested-in-florida-after-going-live-on-social-media-deputies-say\/" || "";
+var cats = "Crime,Florida,Mobile,News,Top Stories" || "";
+var bob_kw = "" || "";
+var bob_desc = "In body camera video released by officials, Gaines is shown on a cellphone doing a live feed on his Instagram account, which revealed his location." || "";
+var bob_story_author = "Kelsi Thorud, WESH" || "";
+var cat_data = "&cats=" + encodeURIComponent(cats) + "&bob_kw=" + encodeURIComponent(bob_kw) + "&bob_desc=" + encodeURIComponent(bob_desc) + "&story_author=" + encodeURIComponent(bob_story_author) + "&page_url=" + encodeURIComponent(page_url);
+
+var bob_cb = '1';
+bob_cb = ((new Date()).getTime() + "" + Math.floor(Math.random() * 1000000)).substr(0, 16);
+(function () {
+var bob_tag = document.createElement('script');
+bob_tag.type = 'text/javascript';
+bob_tag.async = true;
+bob_tag.id = "bob_tag";
+bob_tag.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'bob.dmpxs.com/static/bob_001.js?bob_cb=' + bob_cb + cat_data;
+var bts = document.getElementsByTagName('script')[0];
+bts.parentNode.insertBefore(bob_tag, bts);
+})();
+</script>
+
+<script type="text/javascript" id="bob_003_tag_loader">
+var page_url = "https:\/\/www.wfla.com\/news\/florida\/fugitive-arrested-in-florida-after-going-live-on-social-media-deputies-say\/" || "";
+var video_asset_url = "https:\/\/nxsglobal.storage.googleapis.com\/wfla\/video\/video_studio\/484\/19\/12\/31\/4210144\/4210144_C80C23CA9FD14FE9B8F5AB89AA47F832_191231_4210144_Fugitive_arrested_in_Florida_after_going_live_on_6000.mp4" || "";
+
+var bob_cb = '1';
+bob_cb = ((new Date()).getTime() + "" + Math.floor(Math.random() * 1000000)).substr(0, 16);
+(function() {
+var bob_tag_003 = document.createElement('script');
+bob_tag_003.type = 'text/javascript';
+bob_tag_003.id = "bob_tag_003";
+bob_tag_003.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'bob.dmpxs.com/static/bob_003.js?bob_cb=' + bob_cb + '&page_url=' + page_url  + '&vid_asset_url=' + video_asset_url;
+var bts_003 = document.getElementsByTagName('script')[0];
+bts_003.parentNode.insertBefore(bob_tag_003,bts_003);
+})();
+</script>
+
+			
+	
+				
+<!-- Index Exchange -->
+<script async src="https://js-sec.indexww.com/ht/p/184979-164251977320883.js"></script> 	
+				
+<!-- A9 APS -->
+<script type="text/javascript">
+!function(a9,a,p,s,t,A,g){if(a[a9])return;function q(c,r){a[a9]._Q.push([c,r])}a[a9]={init:function(){q("i",arguments)},fetchBids:function(){q("f",arguments)},setDisplayBids:function(){},targetingKeys:function(){return[]},_Q:[]};A=p.createElement(s);A.async=!0;A.src=t;g=p.getElementsByTagName(s)[0];g.parentNode.insertBefore(A,g)}("apstag",window,document,"script","//c.amazon-adsystem.com/aax2/apstag.js");
+
+apstag.init({"pubID":"3410","adServer":"googletag"});
+</script>
+	
+				
+<!-- Confiant ad fraud protection -->
+<script async="" src="https://confiant-integrations.global.ssl.fastly.net/Y2Nn8JmiAY8HpnF4sl5n7J71jaI/gpt_and_prebid/config.js"></script> 	
+	
+<script type="text/javascript">
+(function() {
+	var _sf_async_config = window._sf_async_config = (window._sf_async_config || {});
+	_sf_async_config.uid = "23192";
+	_sf_async_config.domain = "wfla.com";
+	_sf_async_config.flickerControl = false; 	_sf_async_config.useCanonical = true;
+	_sf_async_config.useCanonicalDomain = true;
+})();
+</script>
+<script async src="//static.chartbeat.com/js/chartbeat_mab.js"></script>
+
+	
+<!-- Google Publisher Tag -->
+<script async="async" src="https://www.googletagservices.com/tag/js/gpt.js"></script>
+<script>
+var googletag = googletag || {};
+googletag.cmd = googletag.cmd || [];
+</script>
+<!-- End Google Publisher Tag -->
+
+
+	
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer',"GTM-KJJZHXD");</script>
+<!-- End Google Tag Manager -->
+
+	
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer',"GTM-WFQ88RX");</script>
+<!-- End Google Tag Manager -->
+
+	
+	<title>Fugitive arrested in Florida after going live on social media, deputies say | WFLA</title>
+<link rel='dns-prefetch' href='//s0.wp.com' />
+<link rel='dns-prefetch' href='//s7.addthis.com' />
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="WFLA &raquo; Feed" href="https://www.wfla.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="WFLA &raquo; Comments Feed" href="https://www.wfla.com/comments/feed/" />
+<script class="wp-asset-manager page_attributes" type="text/javascript">window.amScripts = window.amScripts || {}; window.amScripts["page_attributes"] = {"page_url":"https:\/\/www.wfla.com\/news\/florida\/fugitive-arrested-in-florida-after-going-live-on-social-media-deputies-say\/","page_slug":"fugitive-arrested-in-florida-after-going-live-on-social-media-deputies-say","page_type":"story","page_category":"florida","article_id":322558,"subpath":"\/news\/florida"}</script><script class="wp-asset-manager ns-ad-loader-js" type="text/javascript">!function(e){var t={};function n(o){if(t[o])return t[o].exports;var i=t[o]={i:o,l:!1,exports:{}};return e[o].call(i.exports,i,i.exports,n),i.l=!0,i.exports}n.m=e,n.c=t,n.d=function(e,t,o){n.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:o})},n.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},n.t=function(e,t){if(1&t&&(e=n(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var o=Object.create(null);if(n.r(o),Object.defineProperty(o,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var i in e)n.d(o,i,function(t){return e[t]}.bind(null,i));return o},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,"a",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p="/wp-content/themes/nexstar/client/build/",n(n.s=242)}({242:function(e,t,n){e.exports=n(243)},243:function(e,t,n){"use strict";var o=a(n(244)),i=a(n(245));function a(e){return e&&e.__esModule?e:{default:e}}var s=window.amScripts.page_attributes;window.googletag=window.googletag||{},window.googletag.cmd=googletag.cmd||[],googletag.cmd.push(function(){var e=function(e,t,n){var o=void 0;try{o=e.slot[t].apply(e.slot,n)}catch(e){o="[unknown]"}return o};googletag.pubads().addEventListener("slotRenderEnded",function(t){if(t.slot){var n=t.slot,o=t.isEmpty,i=t.size,a=n.getSlotElementId(),s="AD SLOT RENDERED {\n  containerId: "+a+",\n  isEmpty: "+o+",\n  size: "+i+",\n  adUnitPath: "+e(t,"getAdUnitPath")+",\n  position: "+e(t,"getTargeting",["pos"])+",\n}";if(window.setTimeout(function(){console.info(s)},10),a.startsWith("acm-ad-tag-adhesion")&&!o){var r=document.getElementById(a).parentNode;r.classList.remove("pre-render"),r.querySelector(".close-btn-container").addEventListener("click",function(e){e.preventDefault(),r.parentNode.remove()},!1)}if(a.startsWith("acm-ad-tag-oop")&&!o&&document.body.classList.add("has-loaded-super-billboard-ad"),a&&!o&&"function"==typeof document.getElementById(a).closest){var l=document.getElementById(a).closest(".ad-unit");l&&l.classList.add("ad-unit--is-rendered")}}})}),googletag.cmd.push(function(){googletag.pubads().enableSingleRequest(),googletag.pubads().enableAsyncRendering(),googletag.pubads().collapseEmptyDivs(),googletag.companionAds().setRefreshUnfilledSlots(!0),googletag.pubads().disableInitialLoad(),googletag.pubads().enableVideoAds(),googletag.enableServices()}),googletag.cmd.push(function(){var e=googletag.pubads();s.article_id&&e.setTargeting("pid",String(s.article_id)),s.page_type&&e.setTargeting("pagetype",s.page_type)});var r=new o.default(window.googletag,s);window.addEventListener("nsDfpSlotRendered",r.setUpSlot),(0,i.default)(function(){r.initVisibleSlots()}),window.addEventListener("nsDfpRefreshSlots",r.refreshSlots)},244:function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var o=function(){function e(e,t){for(var n=0;n<t.length;n++){var o=t[n];o.enumerable=o.enumerable||!1,o.configurable=!0,"value"in o&&(o.writable=!0),Object.defineProperty(e,o.key,o)}}return function(t,n,o){return n&&e(t.prototype,n),o&&e(t,o),t}}();var i=function(){function e(t,n){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,e),this.apstagSlots=[],this.googletag=t,this.pageAttributes=n,this.setUpSlot=this.setUpSlot.bind(this),this.refreshSlots=this.refreshSlots.bind(this)}return o(e,[{key:"setUpSlot",value:function(e){var t=this,n=e.detail.id,o=document.getElementById(n);if(o){var i=JSON.parse(o.dataset.slot);if(i&&Object.keys(i).length){var a=JSON.parse(o.dataset.unit);if(a&&Object.keys(a).length){var s=o.dataset.path;if(s){var r=JSON.parse(o.dataset.targeting);this.pushCmd(function(){var e=null;if((e=i.is_oop?t.googletag.defineOutOfPageSlot(s,n):t.googletag.defineSlot(s,i.size,n))&&(r&&Object.keys(r).forEach(function(t){e.setTargeting(t,r[t])}),i.sizes.length&&e.defineSizeMapping(i.sizes),i.is_companion&&e.addService(t.googletag.companionAds()),e.addService(t.googletag.pubads())),e){var o=[];e.getSizes?o=e.getSizes(window.innerWidth,window.innerHeight).map(function(e){return[e.getWidth(),e.getHeight()]}):i.sizes.length&&(o=Object.values(i.sizes.reduce(function(e,t){var n=e;return t[1].forEach(function(e){n[e.join(",")]=e}),n},{}))),o.length&&(o=o.filter(function(e){return!(88===e[0]&&31===e[1])})),o.length&&t.apstagSlots.push({sizes:o,slotID:e.getSlotElementId(),slotName:e.getAdUnitPath()})}})}}}}}},{key:"initVisibleSlots",value:function(){var e=this;this.pushCmd(function(){e.googletag.pubads().getSlots().forEach(function(t){e.pushCmd(function(){e.googletag.display(t.getSlotElementId())})})}),this.refreshSlots()}},{key:"refreshSlots",value:function(){var e=this;this.pushCmd(function(){e.initPrebidRequest(function(){e.googletag.pubads().refresh()})})}},{key:"initPrebidRequest",value:function(e){var t=this,n=this.constructor.apstag();n&&this.apstagSlots?n.fetchBids({slots:this.apstagSlots,timeout:2e3},function(){n.setDisplayBids(),t.pushCmd(e)}):this.pushCmd(e)}},{key:"pushCmd",value:function(e){this.googletag.cmd.push(e)}}],[{key:"apstag",value:function(){return window.apstag||null}}]),e}();t.default=i},245:function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.default=function(e){"complete"===document.readyState&&e(),document.addEventListener("DOMContentLoaded",e)}}});
+//# sourceMappingURL=adLoader.8f7662ce15504f3219c3.bundle.min.js.map</script><meta name='description' content='In body camera video released by officials, Gaines is shown on a cellphone doing a live feed on his Instagram account, which revealed his location.' /><!-- WP SEO -->
+<meta name='google-site-verification' content='8Mh1SkVecal2ozeBi-z6vlPQSsCj66NekrxNBhqbllA' /><!-- WP SEO -->
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/www.wfla.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.3.2"}};
+			!function(e,a,t){var r,n,o,i,p=a.createElement("canvas"),s=p.getContext&&p.getContext("2d");function c(e,t){var a=String.fromCharCode;s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,e),0,0);var r=p.toDataURL();return s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,t),0,0),r===p.toDataURL()}function l(e){if(!s||!s.fillText)return!1;switch(s.textBaseline="top",s.font="600 32px Arial",e){case"flag":return!c([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])&&(!c([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!c([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]));case"emoji":return!c([55357,56424,55356,57342,8205,55358,56605,8205,55357,56424,55356,57340],[55357,56424,55356,57342,8203,55358,56605,8203,55357,56424,55356,57340])}return!1}function d(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(i=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},o=0;o<i.length;o++)t.supports[i[o]]=l(i[o]),t.supports.everything=t.supports.everything&&t.supports[i[o]],"flag"!==i[o]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[i[o]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(r=t.source||{}).concatemoji?d(r.concatemoji):r.wpemoji&&r.twemoji&&(d(r.twemoji),d(r.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	
+<style>
+	:root {
+		--primary_color: #1975BE;
+		--alert_banner_label_sep: '/';
+	}
+</style>
+<link rel='stylesheet' id='all-css-0' href='https://www.wfla.com/wp-includes/css/dist/block-library/style.min.css?m=1576710965g' type='text/css' media='all' />
+<link crossorigin="anonymous" rel='stylesheet' id='ns-google-fonts-css'  href='https://fonts.googleapis.com/css?family=Lora%3A400%2C400i%2C700%2C700i%7CRoboto+Condensed%3A400%2C700&#038;ver=1.0' media='all' />
+<link rel='stylesheet' id='all-css-2' href='https://www.wfla.com/_static/??-eJyVzMsOwiAQheEXskxwuLkwPssUphUF2hSIPr7WuHTj7uTkzwePdfBLaVwatCtnrlD4WRtt4FPc37HHFMDXCnNaRkoikGOltAtIDs1kg1NB5FjEuznAHx5tLfrE4ojGTEjaoAxWWi0Nnn6CuQ9r6nMsFW7cVvL3j/Pde37JZ6mtddIq416pqUwm' type='text/css' media='all' />
+<style id='ns-article-css-inline-css'>
+.article--is-condensed .article-content { max-height: 600px; }
+</style>
+<script type='text/javascript' src='https://www.wfla.com/_static/??-eJzTLy/QzcxLzilNSS3WzwKiwtLUokoopZdVrKOPT4FubmZ6UWJJql5uZh5QsX2uraGpuZm5oYGlmVkWACWvILY='></script>
+<link rel='https://api.w.org/' href='https://www.wfla.com/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.wfla.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://www.wfla.com/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 5.3.2" />
+<link rel="canonical" href="https://www.wfla.com/news/florida/fugitive-arrested-in-florida-after-going-live-on-social-media-deputies-say/" />
+<link rel='shortlink' href='https://www.wfla.com/?p=322558' />
+<link rel="alternate" type="application/json+oembed" href="https://www.wfla.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.wfla.com%2Fnews%2Fflorida%2Ffugitive-arrested-in-florida-after-going-live-on-social-media-deputies-say%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://www.wfla.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.wfla.com%2Fnews%2Fflorida%2Ffugitive-arrested-in-florida-after-going-live-on-social-media-deputies-say%2F&#038;format=xml" />
+<style id="lakana-art-direction"></style>
+			<meta property="fb:pages" content="112651575499" />
+			
+<link rel='dns-prefetch' href='//v0.wordpress.com'/>
+<style type='text/css'>img#wpstats{display:none}</style><script type="text/javascript" src=""></script><link rel="amphtml" href="https://www.wfla.com/news/florida/fugitive-arrested-in-florida-after-going-live-on-social-media-deputies-say/amp/">
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Fugitive arrested in Florida after going live on social media, deputies say" />
+<meta property="og:url" content="https://www.wfla.com/news/florida/fugitive-arrested-in-florida-after-going-live-on-social-media-deputies-say/" />
+<meta property="og:description" content="In body camera video released by officials, Gaines is shown on a cellphone doing a live feed on his Instagram account, which revealed his location." />
+<meta property="article:published_time" content="2019-12-31T11:27:09+00:00" />
+<meta property="article:modified_time" content="2019-12-31T18:17:19+00:00" />
+<meta property="og:site_name" content="WFLA" />
+<meta property="og:image:width" content="1280" />
+<meta property="og:image:height" content="720" />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:text:title" content="Fugitive arrested in Florida after going live on social media, deputies say" />
+<meta name="twitter:image" content="https://www.wfla.com/wp-content/uploads/sites/71/2019/12/FUGITIVE-ARRESTED.jpg?w=640" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="og:image" content="https://www.wfla.com/wp-content/uploads/sites/71/2019/12/FUGITIVE-ARRESTED.jpg?w=1280&amp;h=720&amp;crop=1" />
+<meta property="og:image:secure_url" content="https://www.wfla.com/wp-content/uploads/sites/71/2019/12/FUGITIVE-ARRESTED.jpg?w=1280&#038;h=720&#038;crop=1" />
+<meta name="twitter:title" content="Fugitive arrested in Florida after going live on social media, deputies say" />
+<meta name="twitter:description" content="In body camera video released by officials, Gaines is shown on a cellphone doing a live feed on his Instagram account, which revealed his location." />
+
+<!-- End Jetpack Open Graph Tags -->
+<link rel="icon" href="https://www.wfla.com/wp-content/uploads/sites/71/2019/06/apple-touch-icon-ipad-retina.png?w=32" sizes="32x32" />
+<link rel="icon" href="https://www.wfla.com/wp-content/uploads/sites/71/2019/06/apple-touch-icon-ipad-retina.png?w=152" sizes="192x192" />
+<link rel="apple-touch-icon-precomposed" href="https://www.wfla.com/wp-content/uploads/sites/71/2019/06/apple-touch-icon-ipad-retina.png?w=152" />
+<meta name="msapplication-TileImage" content="https://www.wfla.com/wp-content/uploads/sites/71/2019/06/apple-touch-icon-ipad-retina.png?w=152" />
+</head>
+
+<body class="post-template-default single single-post postid-322558 single-format-standard wp-custom-logo">
+	
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-KJJZHXDheight="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+	
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-WFQ88RXheight="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+	<div id="page" class="site">
+		<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+
+		
+<header id="masthead" class="site-header" role="banner" data-component="siteHeader">
+	<div class="site-header__content">
+					<p class="screen-reader-text"><a href="https://www.wfla.com/" rel="home">WFLA</a></p>
+		
+		<div class="site-header__branding">
+			<div class="site-header__branding__content">
+				<div class="site-header__logo">
+					<a href="https://www.wfla.com/" rel="home">
+						<img src="https://www.wfla.com/wp-content/uploads/sites/71/2019/05/wfla_digitalbrand-min.png" alt="Florida" />
+						<div class="site-header__logo-bg" style="background-image: url('https://www.wfla.com/wp-content/uploads/sites/71/2019/05/wfla_digitalbrand-min.png');"></div>
+					</a>
+				</div>
+				<div class="site-header__weather">
+											<a href="https://www.wfla.com/weather/">
+							<span class="site-header__weather-region">Tampa</span>
+							<span class="site-header__weather-forecast">
+								<span class="site-header__weather-forecast__text">57&deg;</span>
+								<figure class="site-header__weather-forecast__icon">
+									<span class="weather-icon weather-icon-sm weather-icon-light-66"></span>
+								</figure>
+							</span>
+						</a>
+									</div>
+				<div class="site-header__widget">
+					<div class="site-header__sponsor">
+						<aside class="ad-unit ad-unit--microbar ad-unit--microbar--header">
+															<span class="ad_unit__label">Sponsored By</span>
+														<div class="ad-unit__content">
+								  <div   id="acm-ad-tag-header-microbar-header-microbar"   data-slot='{"pos":"header-microbar","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[88,31],"sizes":[[[900,0],[[88,31]]],[[0,0],[]]],"amp_multi_size":"88x31","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"atf"}'   data-unit='{"tag":"header-microbar","tag_id":"header-microbar","dfp_id":"5678","tag_name":"mg.wfla","ad_disabled":"0"}'   data-targeting='{"pos":"header-microbar","fold":"atf","category":"florida","kw":"fugitive-arrested-in-florida-after-going-live-on-social-media-deputies-say"}'   data-path='/5678/mg.wfla/news/florida'  ></div>  <script>  (function () {   try {    var event = new CustomEvent(     "nsDfpSlotRendered",     {      detail: {       id: 'acm-ad-tag-header-microbar-header-microbar'      }     }    );     window.dispatchEvent(event);   } catch (err) {}  })();  </script>  							</div>
+						</aside>
+
+					</div>
+					<button class="site-header__toggle" aria-controls="supernav" aria-expanded="false">
+						<span class="screen-reader-text">Toggle Menu</span>
+						<span class="icon icon--navicon">
+							
+<svg aria-hidden="true" tabindex="-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.969 12.063">
+	<title>Open Navigation</title>
+	<path fill="#fff" d="M.793 1.556h18.363a.778.778 0 1 0 0-1.555H.793a.854.854 0 0 0-.809.778.73.73 0 0 0 .809.777zm18.363 3.695H.793a.778.778 0 1 0 0 1.555h18.363a.778.778 0 1 0 0-1.555zm0 5.25H.793a.779.779 0 1 0 0 1.556h18.363a.779.779 0 1 0 0-1.557z" />
+</svg>
+						</span>
+						<span class="icon icon--close">
+							
+<svg aria-hidden="true" tabindex="-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16.85 16.875">
+	<title>Close Navigation</title>
+	<path fill="#fff" d="M9.65 8.454l6.88-7.063a.809.809 0 0 0 0-1.15.782.782 0 0 0-1.14 0L8.52 7.305 1.37.241a.782.782 0 0 0-1.14 0 .809.809 0 0 0 0 1.15l7.15 7.063-7.15 7.063a.809.809 0 0 0 0 1.15.824.824 0 0 0 .6.219.787.787 0 0 0 .59-.219l7.15-7.063 6.87 7.063a.824.824 0 0 0 .6.219.619.619 0 0 0 .54-.219.792.792 0 0 0 0-1.15z" />
+</svg>
+						</span>
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<nav id="siteNavigation" class="site-header__navigation">
+			<div class="site-header__search-full">
+				
+<form role="search" class="site-header__search-form" action="https://www.wfla.com/">
+	<span class="screen-reader-text">Search</span>
+	<input type="search" name="s" placeholder="Site Search..." />
+	<input type="submit" name="submit" value="" />
+</form>
+			</div>
+
+			<div class="site-header__navigation__content">
+				<h2 class="screen-reader-text">Primary Menu</h2>
+
+
+				<ul id="supernav" class="menu">
+	<li id="menu-item-52441" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-has-children menu-item-has-articles menu-item-52441"><a href="https://www.wfla.com/news/">News</a>
+<div class="dropnav dropnav--4-col dropnav--full-width">
+	<div class="dropnav__section dropnav__section--sub-menu dropnav__section--autofill">
+		<ul class="sub-menu" data-columns="3">
+	<li id="menu-item-53876" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-53876"><a href="https://www.wfla.com/news/local-news/">Local News</a></li>
+	<li id="menu-item-53878" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-53878"><a href="https://www.wfla.com/news/around-town/">Living Local</a></li>
+	<li id="menu-item-112389" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-112389"><a href="https://www.wfla.com/news/welcome-to-florida/">Welcome To Florida</a></li>
+	<li id="menu-item-53879" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-53879"><a href="https://www.wfla.com/news/viral-news/">Viral News</a></li>
+	<li id="menu-item-97654" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-97654"><a href="https://www.wfla.com/8-on-your-side/recall-alerts/">Recalls</a></li>
+	<li id="menu-item-53881" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-53881"><a href="https://www.wfla.com/news/florida/">Florida</a></li>
+	<li id="menu-item-236142" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-236142"><a href="https://www.wfla.com/border-report-tour/">Border Report Tour</a></li>
+	<li id="menu-item-53882" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-53882"><a href="https://www.wfla.com/news/national/">National</a></li>
+	<li id="menu-item-53877" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-53877"><a href="https://www.wfla.com/entertainment-news/">Entertainment</a></li>
+	<li id="menu-item-53883" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-53883"><a href="https://www.wfla.com/news/politics/">Politics</a></li>
+	<li id="menu-item-53884" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-53884"><a href="https://www.wfla.com/news/washington-dc/">Washington D.C.</a></li>
+	<li id="menu-item-53961" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-53961"><a href="https://www.wfla.com/eagle-8/">Eagle 8</a></li>
+	<li id="menu-item-103704" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-103704"><a href="https://www.wfla.com/51-days/">51 Days of Terror podcast</a></li>
+	<li id="menu-item-250190" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-250190"><a href="https://www.wfla.com/entertainment-news/cma-awards/">CMA Awards</a></li>
+	<li id="menu-item-320452" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-320452"><a href="https://www.wfla.com/horoscopes/">Horoscopes</a></li>
+	<li id="menu-item-320462" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-320462"><a href="https://www.wfla.com/florida-lottery/">Florida lottery</a></li>
+</ul>
+</div><div class="dropnav__section dropnav__section--article-list dropnav__section--quarter"><div class="article-list article-list--bulleted"><h3 class="article-list__heading">Top Stories</h3><div class="article-list__content"><article class="article-list__article">
+<div
+	class="article-list__article-text"
+	data-article-list-id=""
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[]"
+>
+			<h4 class="article-list__article-title">
+							<a
+					href="https://www.wfla.com/news/aaa-offering-tow-to-go-until-january-2/"
+									>
+			
+				AAA offering Tow to Go until January 2
+							</a>
+					</h4>
+	
+	
+	
+	
+	</div>
+
+</article><article class="article-list__article">
+<div
+	class="article-list__article-text"
+	data-article-list-id=""
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[]"
+>
+			<h4 class="article-list__article-title">
+							<a
+					href="https://www.wfla.com/news/national/happy-2020-server-at-michigan-restaurant-gets-2020-tip/"
+									>
+			
+				Happy 2020: Server at Michigan restaurant gets $2,020 tip
+							</a>
+					</h4>
+	
+	
+	
+	
+	</div>
+
+</article><article class="article-list__article">
+<div
+	class="article-list__article-text"
+	data-article-list-id=""
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[]"
+>
+			<h4 class="article-list__article-title">
+							<a
+					href="https://www.wfla.com/news/local-news/st-josephs-hospital-welcomes-first-baby-of-2020/"
+									>
+			
+				St. Joseph&#8217;s Hospital welcomes first baby of 2020
+							</a>
+					</h4>
+	
+	
+	
+	
+	</div>
+
+</article><article class="article-list__article">
+<div
+	class="article-list__article-text"
+	data-article-list-id=""
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[]"
+>
+			<h4 class="article-list__article-title">
+							<a
+					href="https://www.wfla.com/news/hillsborough-county/hillsborough-county-deputies-investigating-jewelry-heist-at-university-mall/"
+									>
+			
+				Hillsborough County deputies investigating jewelry heist at University Mall
+							</a>
+					</h4>
+	
+	
+	
+	
+	</div>
+
+</article></div></div></div></div></li>
+<li id="menu-item-52526" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-has-articles menu-item-52526"><a href="https://www.wfla.com/video/">Video</a>
+<div class="dropnav dropnav--4-col dropnav--full-width">
+	<div class="dropnav__section dropnav__section--sub-menu dropnav__section--quarter">
+		<ul class="sub-menu" data-columns="1">
+	<li id="menu-item-54064" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-54064"><a href="https://www.wfla.com/newscast/">Newscast</a></li>
+	<li id="menu-item-54113" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-54113"><a href="https://www.wfla.com/wflanow/">WFLA NOW</a></li>
+	<li id="menu-item-54189" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-54189"><a href="https://www.wfla.com/live-coverage/">Live coverage</a></li>
+	<li id="menu-item-54217" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-54217"><a href="https://www.wfla.com/more-live/">More live</a></li>
+	<li id="menu-item-54248" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-54248"><a href="https://www.wfla.com/wfla-wtta-tv-schedule/">WFLA / WTTA TV Schedule</a></li>
+</ul>
+</div><div class="dropnav__section dropnav__section--article-list dropnav__section--quarter"><div class="article-list article-list--top-story"><h3 class="article-list__heading">Top Stories</h3><div class="article-list__content"><article class="article-list__article article-list__article--is-stacked article-list__article--has-thumb article-list__article--is-media-type">
+<div
+	class="article-list__article-text"
+	data-article-list-id=""
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[]"
+>
+			<h4 class="article-list__article-title">
+							<a
+					href="https://www.wfla.com/news/hillsborough-county/hillsborough-county-deputies-investigating-jewelry-heist-at-university-mall/"
+									>
+			
+				Hillsborough County deputies investigating jewelry heist at University Mall
+							</a>
+					</h4>
+	
+	
+	
+	
+	</div>
+
+	<figure class="article-list__article-thumb">
+					<a
+				href="https://www.wfla.com/news/hillsborough-county/hillsborough-county-deputies-investigating-jewelry-heist-at-university-mall/"
+							>
+		
+		<div class="article-list__article-image-wrapper">
+			
+<div class="image-wrapper landscape">
+	<img
+		src="https://i0.wp.com/www.wfla.com/wp-content/uploads/sites/71/2019/12/HCSO-jewelry-theif-.jpg?w=2000&#038;ssl=1"
+		alt=""
+		srcset=""
+		sizes=""
+	/>
+</div>
+
+							
+<span aria-hidden="true" tabindex="-1" class="article-list__article-mediaicon">
+	<span class="article-list__article-mediaicon-svg">
+		<svg viewBox="0 0 24 24">
+			<path d="M8,5.14V19.14L19,12.14L8,5.14Z" />
+		</svg>
+	</span>
+	</span>
+					</div>
+
+					</a>
+			</figure>
+	</article></div></div></div><div class="dropnav__section dropnav__section--article-list dropnav__section--quarter"><div class="article-list article-list--top-story"><h3 class="article-list__heading article-list__heading--hidden">Top Stories</h3><div class="article-list__content"><article class="article-list__article article-list__article--is-stacked article-list__article--has-thumb article-list__article--is-media-type">
+<div
+	class="article-list__article-text"
+	data-article-list-id=""
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[]"
+>
+			<h4 class="article-list__article-title">
+							<a
+					href="https://www.wfla.com/weather/forecast/storm-team-8-forecast-cool-and-sunny-to-start-the-new-year/"
+									>
+			
+				STORM TEAM 8 FORECAST: Cool and sunny to start the new year
+							</a>
+					</h4>
+	
+	
+	
+	
+	</div>
+
+	<figure class="article-list__article-thumb">
+					<a
+				href="https://www.wfla.com/weather/forecast/storm-team-8-forecast-cool-and-sunny-to-start-the-new-year/"
+							>
+		
+		<div class="article-list__article-image-wrapper">
+			
+<div class="image-wrapper landscape">
+	<img
+		src="https://i0.wp.com/www.wfla.com/wp-content/uploads/sites/71/2020/01/feature.jpg?w=2000&#038;ssl=1"
+		alt=""
+		srcset=""
+		sizes=""
+	/>
+</div>
+
+							
+<span aria-hidden="true" tabindex="-1" class="article-list__article-mediaicon">
+	<span class="article-list__article-mediaicon-svg">
+		<svg viewBox="0 0 24 24">
+			<path d="M8,5.14V19.14L19,12.14L8,5.14Z" />
+		</svg>
+	</span>
+	</span>
+					</div>
+
+					</a>
+			</figure>
+	</article></div></div></div><div class="dropnav__section dropnav__section--article-list dropnav__section--quarter"><div class="article-list article-list--bulleted"><h3 class="article-list__heading article-list__heading--hidden">Top Stories</h3><div class="article-list__content"><article class="article-list__article">
+<div
+	class="article-list__article-text"
+	data-article-list-id=""
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[]"
+>
+			<h4 class="article-list__article-title">
+							<a
+					href="https://www.wfla.com/news/washington-dc/newseum-closes-doors-in-washington-amid-financial-struggles/"
+									>
+			
+				Newseum closes doors in Washington amid financial struggles
+							</a>
+					</h4>
+	
+	
+	
+	
+	</div>
+
+</article><article class="article-list__article">
+<div
+	class="article-list__article-text"
+	data-article-list-id=""
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[]"
+>
+			<h4 class="article-list__article-title">
+							<a
+					href="https://www.wfla.com/news/polk-county/polk-detectives-hope-side-view-mirror-leads-them-to-hit-and-run-driver/"
+									>
+			
+				Polk detectives hope side-view mirror leads them to hit-and-run driver
+							</a>
+					</h4>
+	
+	
+	
+	
+	</div>
+
+</article><article class="article-list__article">
+<div
+	class="article-list__article-text"
+	data-article-list-id=""
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[]"
+>
+			<h4 class="article-list__article-title">
+							<a
+					href="https://www.wfla.com/news/hillsborough-county/video-tampa-man-rescues-dog-hanging-from-elevator-door/"
+									>
+			
+				VIDEO: Tampa man rescues dog hanging from elevator door
+							</a>
+					</h4>
+	
+	
+	
+	
+	</div>
+
+</article><article class="article-list__article">
+<div
+	class="article-list__article-text"
+	data-article-list-id=""
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[]"
+>
+			<h4 class="article-list__article-title">
+							<a
+					href="https://www.wfla.com/news/national/human-angel-saves-caged-dog-left-at-park/"
+									>
+			
+				&#8216;Human angel&#8217; saves caged dog left inside port-a-potty
+							</a>
+					</h4>
+	
+	
+	
+	
+	</div>
+
+</article></div></div></div></div></li>
+<li id="menu-item-98063" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-98063"><a href="https://www.wfla.com/weather/">Weather</a>
+<div class="dropnav dropnav--2-col">
+	<div class="dropnav__section dropnav__section--sub-menu">
+		<ul class="sub-menu" data-columns="2">
+	<li id="menu-item-65517" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-65517"><a href="https://www.wfla.com/storm-team-8-forecast/">Storm Team 8 Forecast</a></li>
+	<li id="menu-item-65516" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-65516"><a href="https://www.wfla.com/max-defender-8-app/">Max Defender 8 App</a></li>
+	<li id="menu-item-98622" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-98622"><a href="https://www.wfla.com/weather/weather-alerts/">Weather Alerts</a></li>
+	<li id="menu-item-122305" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-122305"><a href="https://www.wfla.com/interactive-radar/">Max Defender 8 Radar</a></li>
+	<li id="menu-item-65513" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-65513"><a href="https://www.wfla.com/current-conditions/">Current Conditions</a></li>
+	<li id="menu-item-98152" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-98152"><a href="https://www.wfla.com/7-day-forecast/">8 Day Forecast</a></li>
+	<li id="menu-item-65565" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-65565"><a href="https://www.wfla.com/webcams/">Webcams</a></li>
+	<li id="menu-item-98159" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-98159"><a href="https://www.wfla.com/tracking-the-tropics/">Tracking the Tropics</a></li>
+	<li id="menu-item-65628" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-65628"><a href="https://www.wfla.com/marine-forecast/">Marine Forecast</a></li>
+	<li id="menu-item-65584" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-65584"><a href="https://www.wfla.com/weather/red-tide/">Red Tide</a></li>
+</ul>
+</div></div></li>
+<li id="menu-item-61" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-61"><a href="https://www.wfla.com/traffic/">Traffic</a></li>
+<li id="menu-item-52528" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-has-articles menu-item-52528"><a href="https://www.wfla.com/8-on-your-side/">8 On Your Side</a>
+<div class="dropnav dropnav--4-col dropnav--full-width">
+	<div class="dropnav__section dropnav__section--sub-menu dropnav__section--quarter">
+		<ul class="sub-menu" data-columns="1">
+	<li id="menu-item-103844" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-103844"><a href="https://www.wfla.com/8-on-your-side/investigations/">8 On Your Side Investigates</a></li>
+	<li id="menu-item-52630" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-52630"><a href="https://www.wfla.com/8-on-your-side/better-call-behnken/">Better Call Behnken</a></li>
+	<li id="menu-item-52695" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-52695"><a href="https://www.wfla.com/8-on-your-side/restaurant-ratings/">Restaurant Ratings</a></li>
+	<li id="menu-item-52728" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-52728"><a href="https://www.wfla.com/8-on-your-side/consumer-reports/">Consumer Reports</a></li>
+</ul>
+</div><div class="dropnav__section dropnav__section--article-list dropnav__section--quarter"><div class="article-list article-list--top-story"><h3 class="article-list__heading">Top Stories</h3><div class="article-list__content"><article class="article-list__article article-list__article--is-stacked article-list__article--has-thumb article-list__article--is-media-type">
+<div
+	class="article-list__article-text"
+	data-article-list-id=""
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[]"
+>
+			<h4 class="article-list__article-title">
+							<a
+					href="https://www.wfla.com/8-on-your-side/better-call-behnken/parents-fed-up-that-childrens-medical-records-are-stuck-in-storage-unit-following-doctors-death/"
+									>
+			
+				Parents fed up that children&#8217;s medical records are stuck in storage unit, following doctor&#8217;s death
+							</a>
+					</h4>
+	
+	
+	
+	
+	</div>
+
+	<figure class="article-list__article-thumb">
+					<a
+				href="https://www.wfla.com/8-on-your-side/better-call-behnken/parents-fed-up-that-childrens-medical-records-are-stuck-in-storage-unit-following-doctors-death/"
+							>
+		
+		<div class="article-list__article-image-wrapper">
+			
+<div class="image-wrapper landscape">
+	<img
+		src="https://i0.wp.com/www.wfla.com/wp-content/uploads/sites/71/2019/12/Babies-and-Beyond.jpg?w=2000&#038;ssl=1"
+		alt=""
+		srcset=""
+		sizes=""
+	/>
+</div>
+
+							
+<span aria-hidden="true" tabindex="-1" class="article-list__article-mediaicon">
+	<span class="article-list__article-mediaicon-svg">
+		<svg viewBox="0 0 24 24">
+			<path d="M8,5.14V19.14L19,12.14L8,5.14Z" />
+		</svg>
+	</span>
+	</span>
+					</div>
+
+					</a>
+			</figure>
+	</article></div></div></div><div class="dropnav__section dropnav__section--article-list dropnav__section--quarter"><div class="article-list article-list--top-story"><h3 class="article-list__heading article-list__heading--hidden">Top Stories</h3><div class="article-list__content"><article class="article-list__article article-list__article--is-stacked article-list__article--has-thumb article-list__article--is-media-type">
+<div
+	class="article-list__article-text"
+	data-article-list-id=""
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[]"
+>
+			<h4 class="article-list__article-title">
+							<a
+					href="https://www.wfla.com/8-on-your-side/hot-crime-spots-in-one-bay-area-city/"
+									>
+			
+				Top crime spots in Lakeland
+							</a>
+					</h4>
+	
+	
+	
+	
+	</div>
+
+	<figure class="article-list__article-thumb">
+					<a
+				href="https://www.wfla.com/8-on-your-side/hot-crime-spots-in-one-bay-area-city/"
+							>
+		
+		<div class="article-list__article-image-wrapper">
+			
+<div class="image-wrapper landscape">
+	<img
+		src="https://i1.wp.com/www.wfla.com/wp-content/uploads/sites/71/2019/12/C14EBE59CDE940D78D4C0F6267FC6ABD.jpg?w=2000&#038;ssl=1"
+		alt=""
+		srcset=""
+		sizes=""
+	/>
+</div>
+
+							
+<span aria-hidden="true" tabindex="-1" class="article-list__article-mediaicon">
+	<span class="article-list__article-mediaicon-svg">
+		<svg viewBox="0 0 24 24">
+			<path d="M8,5.14V19.14L19,12.14L8,5.14Z" />
+		</svg>
+	</span>
+	</span>
+					</div>
+
+					</a>
+			</figure>
+	</article></div></div></div><div class="dropnav__section dropnav__section--article-list dropnav__section--quarter"><div class="article-list article-list--bulleted"><h3 class="article-list__heading article-list__heading--hidden">Top Stories</h3><div class="article-list__content"><article class="article-list__article">
+<div
+	class="article-list__article-text"
+	data-article-list-id=""
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[]"
+>
+			<h4 class="article-list__article-title">
+							<a
+					href="https://www.wfla.com/news/local-news/dont-drink-and-drive-how-to-get-free-or-discounted-rides-in-tampa-bay-on-new-years-eve/"
+									>
+			
+				Don&#8217;t drink and drive: How to get free or discounted rides in Tampa Bay on New Year&#8217;s Eve
+							</a>
+					</h4>
+	
+	
+	
+	
+	</div>
+
+</article><article class="article-list__article">
+<div
+	class="article-list__article-text"
+	data-article-list-id=""
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[]"
+>
+			<h4 class="article-list__article-title">
+							<a
+					href="https://www.wfla.com/8-on-your-side/monster-mess-next-door-has-neighbors-worried-about-their-homes-and-safety/"
+									>
+			
+				Monster mess next door has Riverview neighbors worried about homes and safety
+							</a>
+					</h4>
+	
+	
+	
+	
+	</div>
+
+</article><article class="article-list__article">
+<div
+	class="article-list__article-text"
+	data-article-list-id=""
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[]"
+>
+			<h4 class="article-list__article-title">
+							<a
+					href="https://www.wfla.com/news/wfla-plus/tampa-father-wants-stand-your-ground-law-changed-following-sons-murder/"
+									>
+			
+				Tampa father wants &#8216;stand your ground&#8217; law changed following son&#8217;s murder
+							</a>
+					</h4>
+	
+	
+	
+	
+	</div>
+
+</article><article class="article-list__article">
+<div
+	class="article-list__article-text"
+	data-article-list-id=""
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[]"
+>
+			<h4 class="article-list__article-title">
+							<a
+					href="https://www.wfla.com/8-on-your-side/better-call-behnken/good-news-for-some-customers-of-shut-down-st-petersburg-funeral-home/"
+									>
+			
+				Good news for some customers of shut-down St. Petersburg funeral home
+							</a>
+					</h4>
+	
+	
+	
+	
+	</div>
+
+</article></div></div></div></div></li>
+<li id="menu-item-52375" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-has-articles menu-item-52375"><a href="https://www.wfla.com/sports/">Sports</a>
+<div class="dropnav dropnav--4-col dropnav--full-width">
+	<div class="dropnav__section dropnav__section--sub-menu dropnav__section--half">
+		<ul class="sub-menu" data-columns="2">
+	<li id="menu-item-314995" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-314995"><a href="https://www.wfla.com/japan-2020/">Japan 2020</a></li>
+	<li id="menu-item-52696" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-52696"><a href="https://www.wfla.com/sports/buccaneers/">Buccaneers</a></li>
+	<li id="menu-item-52376" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-52376"><a href="https://www.wfla.com/sports/tampa-bay-lightning/">Lightning</a></li>
+	<li id="menu-item-52697" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-52697"><a href="https://www.wfla.com/sports/rays/">Rays</a></li>
+	<li id="menu-item-189159" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-189159"><a href="https://www.wfla.com/sports/usf-bulls/">USF Bulls</a></li>
+	<li id="menu-item-201260" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-201260"><a href="https://www.wfla.com/friday-night-blitz/">Friday Night Blitz</a></li>
+	<li id="menu-item-207606" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-207606"><a href="https://www.wfla.com/sports/sec-football/">SEC Football</a></li>
+	<li id="menu-item-216062" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-216062"><a href="https://www.wfla.com/sports/the-big-game/">The Big Game</a></li>
+</ul>
+</div><div class="dropnav__section dropnav__section--article-list dropnav__section--quarter"><div class="article-list article-list--top-story"><h3 class="article-list__heading">Top Stories</h3><div class="article-list__content"><article class="article-list__article article-list__article--is-stacked article-list__article--has-thumb">
+<div
+	class="article-list__article-text"
+	data-article-list-id=""
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[]"
+>
+			<h4 class="article-list__article-title">
+							<a
+					href="https://www.wfla.com/sports/tampa-bay-lightning/killorn-scores-twice-lightning-come-back-to-beat-sabres-6-4/"
+									>
+			
+				Killorn scores twice, Lightning come back to beat Sabres 6-4
+							</a>
+					</h4>
+	
+	
+	
+	
+	</div>
+
+	<figure class="article-list__article-thumb">
+					<a
+				href="https://www.wfla.com/sports/tampa-bay-lightning/killorn-scores-twice-lightning-come-back-to-beat-sabres-6-4/"
+							>
+		
+		<div class="article-list__article-image-wrapper">
+			
+<div class="image-wrapper landscape">
+	<img
+		src="https://i1.wp.com/www.wfla.com/wp-content/uploads/sites/71/2019/12/Lightning-win-Kevin-Shattenkirk-.jpg?w=2000&#038;ssl=1"
+		alt=""
+		srcset=""
+		sizes=""
+	/>
+</div>
+
+					</div>
+
+					</a>
+			</figure>
+	</article></div></div></div><div class="dropnav__section dropnav__section--article-list dropnav__section--quarter"><div class="article-list article-list--bulleted"><h3 class="article-list__heading article-list__heading--hidden">Top Stories</h3><div class="article-list__content"><article class="article-list__article">
+<div
+	class="article-list__article-text"
+	data-article-list-id=""
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[]"
+>
+			<h4 class="article-list__article-title">
+							<a
+					href="https://www.wfla.com/news/florida/south-florida-football-player-dies-after-being-hit-by-freight-train/"
+									>
+			
+				South Florida football player dies after being hit by freight train
+							</a>
+					</h4>
+	
+	
+	
+	
+	</div>
+
+</article><article class="article-list__article">
+<div
+	class="article-list__article-text"
+	data-article-list-id=""
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[]"
+>
+			<h4 class="article-list__article-title">
+							<a
+					href="https://www.wfla.com/news/wfla-plus/they-never-give-up-students-from-blind-marching-band-prepare-for-outback-bowl-performance/"
+									>
+			
+				‘They never give up:’ Blind marching band prepares for Outback Bowl performance at Raymond James
+							</a>
+					</h4>
+	
+	
+	
+	
+	</div>
+
+</article><article class="article-list__article">
+<div
+	class="article-list__article-text"
+	data-article-list-id=""
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[]"
+>
+			<h4 class="article-list__article-title">
+							<a
+					href="https://www.wfla.com/news/viral-news/tony-hawk-dressed-as-santa-gave-gifts-to-california-skaters-for-christmas/"
+									>
+			
+				Tony Hawk dressed as Santa, gave gifts to California skaters for Christmas
+							</a>
+					</h4>
+	
+	
+	
+	
+	</div>
+
+</article><article class="article-list__article">
+<div
+	class="article-list__article-text"
+	data-article-list-id=""
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[]"
+>
+			<h4 class="article-list__article-title">
+							<a
+					href="https://www.wfla.com/sports/tampa-bay-lightning/victor-hedman-named-to-nhl-all-star-game/"
+									>
+			
+				Victor Hedman named to NHL All-Star Game
+							</a>
+					</h4>
+	
+	
+	
+	
+	</div>
+
+</article></div></div></div></div></li>
+<li id="menu-item-58" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-58"><a href="https://www.wfla.com/send-it/">Send It</a>
+<div class="dropnav dropnav--1-col">
+	<div class="dropnav__section dropnav__section--sub-menu">
+		<ul class="sub-menu" data-columns="1">
+	<li id="menu-item-94978" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-94978"><a href="https://www.wfla.com/news/photo-galleries/">Photo Galleries</a></li>
+</ul>
+</div></div></li>
+<li id="menu-item-52823" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-has-articles menu-item-52823"><a href="https://www.wfla.com/community/">Community</a>
+<div class="dropnav dropnav--4-col dropnav--full-width">
+	<div class="dropnav__section dropnav__section--sub-menu dropnav__section--half">
+		<ul class="sub-menu" data-columns="2">
+	<li id="menu-item-147" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-147"><a href="https://www.wfla.com/events-calendar/">Events Calendar</a></li>
+	<li id="menu-item-65764" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-65764"><a href="https://www.wfla.com/news/gasparilla/">Gasparilla</a></li>
+	<li id="menu-item-145" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-145"><a href="https://www.wfla.com/kindness-day/">Kindness Day</a></li>
+	<li id="menu-item-144" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-144"><a href="https://www.wfla.com/teddy-bear-roundup/">Teddy Bear Roundup</a></li>
+	<li id="menu-item-143" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-143"><a href="https://www.wfla.com/health-fitness-expo/">Health &#038; Fitness Expo</a></li>
+	<li id="menu-item-142" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-142"><a href="https://www.wfla.com/clear-the-shelters/">Clear The Shelters</a></li>
+	<li id="menu-item-52904" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-52904"><a href="https://www.wfla.com/heart-walk/">Heart Walk</a></li>
+	<li id="menu-item-140" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-140"><a href="https://www.wfla.com/outdoors-expo-and-boat-show/">Outdoors Expo and Boat Show</a></li>
+	<li id="menu-item-65882" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-65882"><a href="https://www.wfla.com/hidden-history/hispanic-heritage-month/">Hispanic Heritage Month</a></li>
+	<li id="menu-item-65885" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-65885"><a href="https://www.wfla.com/news/veterans-voices/">Veterans Voices</a></li>
+	<li id="menu-item-65887" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-65887"><a href="https://www.wfla.com/hidden-history/black-history-month/">Black History Month</a></li>
+	<li id="menu-item-65890" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-65890"><a href="https://www.wfla.com/hidden-history/womens-history/">Womens History</a></li>
+	<li id="menu-item-246308" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-246308"><a href="https://www.wfla.com/pledge-of-allegiance/">Pledge of Allegiance</a></li>
+	<li id="menu-item-285526" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-285526"><a href="https://www.wfla.com/home-for-the-holidays/">Home For The Holidays</a></li>
+</ul>
+</div><div class="dropnav__section dropnav__section--article-list dropnav__section--quarter"><div class="article-list article-list--top-story"><h3 class="article-list__heading">Top Stories</h3><div class="article-list__content"><article class="article-list__article article-list__article--is-stacked article-list__article--has-thumb">
+<div
+	class="article-list__article-text"
+	data-article-list-id=""
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[]"
+>
+			<h4 class="article-list__article-title">
+							<a
+					href="https://www.wfla.com/news/local-news/how-to-get-a-free-ride-on-new-years-eve-in-tampa/"
+									>
+			
+				How to get a free ride on New Year&#8217;s Eve in Tampa
+							</a>
+					</h4>
+	
+	
+	
+	
+	</div>
+
+	<figure class="article-list__article-thumb">
+					<a
+				href="https://www.wfla.com/news/local-news/how-to-get-a-free-ride-on-new-years-eve-in-tampa/"
+							>
+		
+		<div class="article-list__article-image-wrapper">
+			
+<div class="image-wrapper landscape">
+	<img
+		src="https://i0.wp.com/www.wfla.com/wp-content/uploads/sites/71/2019/12/free-rides.jpg?w=2000&#038;ssl=1"
+		alt=""
+		srcset=""
+		sizes=""
+	/>
+</div>
+
+					</div>
+
+					</a>
+			</figure>
+	</article></div></div></div><div class="dropnav__section dropnav__section--article-list dropnav__section--quarter"><div class="article-list article-list--bulleted"><h3 class="article-list__heading article-list__heading--hidden">Top Stories</h3><div class="article-list__content"><article class="article-list__article">
+<div
+	class="article-list__article-text"
+	data-article-list-id=""
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[]"
+>
+			<h4 class="article-list__article-title">
+							<a
+					href="https://www.wfla.com/community/recipes/dessert-diva-shares-her-recipe-for-champagne-chocolate-ganache-truffles/"
+									>
+			
+				Dessert Diva shares her recipe for Champagne Chocolate Ganache Truffles
+							</a>
+					</h4>
+	
+	
+	
+	
+	</div>
+
+</article><article class="article-list__article">
+<div
+	class="article-list__article-text"
+	data-article-list-id=""
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[]"
+>
+			<h4 class="article-list__article-title">
+							<a
+					href="https://www.wfla.com/news/wfla-plus/st-pete-pediatrician-seeing-peak-in-flu-and-rsv-patients/"
+									>
+			
+				St. Pete pediatrician seeing peak in flu and RSV patients
+							</a>
+					</h4>
+	
+	
+	
+	
+	</div>
+
+</article><article class="article-list__article">
+<div
+	class="article-list__article-text"
+	data-article-list-id=""
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[]"
+>
+			<h4 class="article-list__article-title">
+							<a
+					href="https://www.wfla.com/community/holidays/tampa-bay-man-provides-christmas-feast-for-less-fortunate/"
+									>
+			
+				Tampa Bay man provides Christmas feast for less fortunate
+							</a>
+					</h4>
+	
+	
+	
+	
+	</div>
+
+</article><article class="article-list__article">
+<div
+	class="article-list__article-text"
+	data-article-list-id=""
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[]"
+>
+			<h4 class="article-list__article-title">
+							<a
+					href="https://www.wfla.com/news/local-news/community-steps-up-for-4-children-removed-from-home-of-murder-suicide/"
+									>
+			
+				Community steps up for children removed from home of murder-suicide
+							</a>
+					</h4>
+	
+	
+	
+	
+	</div>
+
+</article></div></div></div></div></li>
+<li id="menu-item-56" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-56"><a href="https://www.wfla.com/station-info/">Station Info</a>
+<div class="dropnav dropnav--3-col">
+	<div class="dropnav__section dropnav__section--sub-menu">
+		<ul class="sub-menu" data-columns="3">
+	<li id="menu-item-68044" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-68044"><a href="https://www.wfla.com/daytime/">Daytime</a></li>
+	<li id="menu-item-178768" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-178768"><a href="https://www.wfla.com/bloom/">Bloom</a></li>
+	<li id="menu-item-68094" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-68094"><a href="https://www.wfla.com/great-38/">Great 38</a></li>
+	<li id="menu-item-216242" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-216242"><a href="https://www.wfla.com/the-mel-robbins-show/">The Mel Robbins Show</a></li>
+	<li id="menu-item-68113" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-68113"><a href="https://www.wfla.com/contests/">Contests</a></li>
+	<li id="menu-item-284648" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-284648"><a href="https://www.wfla.com/contest-winners/">Contest Winners</a></li>
+	<li id="menu-item-69" class="menu-item menu-item-type-post_type menu-item-object-page current-post-parent menu-item-69"><a href="https://www.wfla.com/contact-us/">Contact Us</a></li>
+	<li id="menu-item-107" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-107"><a href="https://www.wfla.com/meet-the-team/">Meet the Team</a></li>
+	<li id="menu-item-106" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-106"><a href="https://www.wfla.com/mobile-apps/">Mobile Apps</a></li>
+	<li id="menu-item-105" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-105"><a href="https://www.wfla.com/email-alerts/">Email Alerts</a></li>
+	<li id="menu-item-104" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-104"><a href="https://www.wfla.com/health-advisors/">Health Advisors</a></li>
+	<li id="menu-item-103" class="menu-item menu-item-type-post_type menu-item-object-page current-post-parent menu-item-103"><a href="https://www.wfla.com/wfla-experts/">WFLA Experts</a></li>
+	<li id="menu-item-102" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-102"><a href="https://www.wfla.com/work-for-us/">Work For Us</a></li>
+	<li id="menu-item-101" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-101"><a href="https://www.wfla.com/station-tours/">Station Tours</a></li>
+	<li id="menu-item-100" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-100"><a href="https://www.wfla.com/advertising/">Advertise With Us</a></li>
+</ul>
+</div></div></li>
+</ul>
+
+				<div class="site-header__search-drop">
+					<a class="site-header__search-drop__toggle" href="#">
+						<span class="screen-reader-text">Search</span>
+						<span class="icon">
+							
+<svg  aria-hidden="true" tabindex="-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 17">
+	<title>Search</title>
+	<path d="M15.72 15.4l-3.75-3.8a7 7 0 0 0 1.72-4.612 6.851 6.851 0 1 0-6.85 6.98 6.713 6.713 0 0 0 3.72-1.127l3.85 3.9a.9.9 0 0 0 .65.276.92.92 0 0 0 .66-.276.965.965 0 0 0 0-1.341zM1.85 6.984a4.991 4.991 0 1 1 4.99 5.087 5.036 5.036 0 0 1-4.99-5.09z" />
+</svg>
+						</span>
+					</a>
+					
+<form role="search" class="site-header__search-form" action="https://www.wfla.com/">
+	<span class="screen-reader-text">Search</span>
+	<input type="search" name="s" placeholder="What are you looking for?" />
+	<input type="submit" name="submit" value="Search" />
+</form>
+				</div>
+			</div>
+		</nav>
+	</div>
+</header>
+
+		<div class="site-content-wrapper">
+			
+<div class="alert-banners js-alert-banners has-messages">
+	
+	<div class="weather-alerts" data-react-component="WeatherAlerts"></div>
+</div>
+
+
+			
+<div id="content" class="site-content">
+	<aside class="ad-unit ad-unit--leaderboard">
+		<div class="ad-unit__content">
+			  <div   id="acm-ad-tag-billboard1-billboard1"   data-slot='{"pos":"billboard1","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[320,50],"sizes":[[[1280,0],[[728,90],[970,250],[970,90],[970,30]]],[[1024,0],[[728,90],[970,250],[970,90],[970,30]]],[[768,0],[[728,90]]],[[641,0],[[320,50]]],[[0,0],[[320,50]]]],"amp_multi_size":"320x50","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"atf"}'   data-unit='{"tag":"billboard1","tag_id":"billboard1","dfp_id":"5678","tag_name":"mg.wfla","ad_disabled":"0"}'   data-targeting='{"pos":"billboard1","fold":"atf","category":"florida","kw":"fugitive-arrested-in-florida-after-going-live-on-social-media-deputies-say"}'   data-path='/5678/mg.wfla/news/florida'  ></div>  <script>  (function () {   try {    var event = new CustomEvent(     "nsDfpSlotRendered",     {      detail: {       id: 'acm-ad-tag-billboard1-billboard1'      }     }    );     window.dispatchEvent(event);   } catch (err) {}  })();  </script>  		</div>
+	</aside>
+
+			<div class="zone-container--below-supernav">
+					</div>
+	
+	
+	<div class="site-content__layout site-content__layout--has-sidebar">
+		
+		
+		
+		<div id="primary" class="content-area">
+			<main id="main" class="site-main">
+
+				
+<article class="article post-322558 post type-post status-publish format-standard has-post-thumbnail hentry category-crime category-florida category-mobile category-news category-top-stories" data-component="article">
+	
+<header class="article-header">
+	<h1 class="article-title">
+		Fugitive arrested in Florida after going live on social media, deputies say	</h1>
+
+			<div class="article-eyebrow">
+			<a href="https://www.wfla.com/news/florida/">Florida</a>
+		</div>
+	
+	
+	<div class="article-meta">
+					<p>by:  Kelsi Thorud, WESH</p>
+		
+					Posted: <time datetime="2019-12-31T06:27:09-05:00">Dec 31, 2019 / 06:27 AM EST</time>		
+					<span class="article-meta--sep"> / </span>Updated: <time datetime="2019-12-31T13:17:19-05:00">Dec 31, 2019 / 01:17 PM EST</time>			</div><!-- .article-meta -->
+
+			<figure class="article-featured-media">
+			<div class="media-wrapper">
+				<div id="p2"></div><script data-anvato-params type="application/json">{"mcp":"LIN","width":"100%","height":"100%","video":"4210144","autoplay":true,"pInstance":"p2","plugins":{"comscore":{"clientId":"6036439","c3":"https://www.wfla.com","script":"//w3.cdn.anvato.net/player/prod/v3/plugins/comscore/comscoreplugin.min.js","useDerivedMetadata":true,"mapping":{"video":{"ns_st_st":"wfla","ns_st_pu":"Nexstar","c3":"wfla","ns_st_ge":"News,Video"},"ad":{"ns_st_st":"wfla","ns_st_pu":"Nexstar","c3":"wfla","ns_st_ge":"News,Video"}}},"dfp":{"adTagUrl":"https://pubads.g.doubleclick.net/gampad/ads?sz=1x1000&iu=/5678/mg.wfla/news/florida&impl=s&gdfp_req=1&env=vp&output=vmap&unviewed_position_start=1&vid=short_onecue&cmsid=1234&url=https://www.wfla.com/news/florida/fugitive-arrested-in-florida-after-going-live-on-social-media-deputies-say/&ciu_szs=728x90,300x250&ad_rule=1&cust_params=vid%3D4210144%26cmsid%3D322558%26pid%3D322558%26vidcat%3D/news/florida%26bob_ck%3D[bob_ck_val]%26description_url%3Dhttps://www.wfla.com/news/florida/fugitive-arrested-in-florida-after-going-live-on-social-media-deputies-say/%26correlator%3D1577883675.9157%26d_code%3D189%2C186%2C63%2C77%2C55%2C196%2C210%2C5%2C150%2C201%2C131%2C33%2C37%2C105%2C213%2C212%2C109%2C202%2C25%2C89"}},"nxs":{"mp4Url":"https://nxsglobal.storage.googleapis.com/wfla/video/video_studio/484/19/12/31/4210144/4210144_C80C23CA9FD14FE9B8F5AB89AA47F832_191231_4210144_Fugitive_arrested_in_Florida_after_going_live_on_6000.mp4"},"disableMutedAutoplay":false,"recommendations":true,"expectPreroll":true,"titleVisible":true}</script>			</div>
+		</figure>
+	
+	<div class="article-lead-share">
+		
+<div class="social-share addthis">
+	<div class="addthis_inline_share_toolbox"></div>
+</div>
+	</div>
+</header><!-- .article-header -->
+
+	
+	<div class="article-content rich-text">
+		
+		
+<p>VOLUSIA COUNTY, Fla. (WESH) — Authorities arrested a man after he outed himself on social media.</p>
+
+
+
+<p>Volusia County sheriff&#8217;s deputies said Kevin Gaines, 20, was wanted for numerous charges, including grand theft auto.</p>
+
+
+
+<p>In body camera video released by officials, Gaines is shown on a cellphone doing a live feed on his Instagram account, which revealed his location.</p>
+
+
+
+<p>Deputies are heard in the video saying Gaines turned off his live feed when he saw the blue lights of law enforcement.</p>
+
+
+
+<p>Gaines was taken into custody without incident.</p>
+
+
+
+<p>Investigators said several weapons were found in the home.</p>
+
+
+
+<p>Along with existing charges, Gaines was also charged with possession of a firearm by a delinquent.</p>
+
+
+
+<p><strong>LATEST STORIES:</strong></p>
+
+
+<ul class="wp-block-latest-posts wp-block-latest-posts__list"><li><a href="https://www.wfla.com/news/florida/baby-jesus-goes-missing-from-popular-florida-nativity-scene/">Baby Jesus goes missing from popular Florida nativity scene</a></li>
+<li><a href="https://www.wfla.com/news/local-news/aaa-offering-tow-to-go-until-january-2/">AAA offering Tow to Go until January 2</a></li>
+<li><a href="https://www.wfla.com/news/national/happy-2020-server-at-michigan-restaurant-gets-2020-tip/">Happy 2020: Server at Michigan restaurant gets $2,020 tip</a></li>
+<li><a href="https://www.wfla.com/news/local-news/st-josephs-hospital-welcomes-first-baby-of-2020/">St. Joseph&#8217;s Hospital welcomes first baby of 2020</a></li>
+<li><a href="https://www.wfla.com/news/hillsborough-county/hillsborough-county-deputies-investigating-jewelry-heist-at-university-mall/">Hillsborough County deputies investigating jewelry heist at University Mall</a></li>
+</ul>
+		
+	</div><!-- .rich-text -->
+
+	
+<footer class="article-footer">
+			<p class="article-copyright">Copyright 2020 Nexstar Broadcasting, Inc. All rights reserved. This material may not be published, broadcast, rewritten, or redistributed.</p>
+	
+	
+	<div class="article-footer-share">
+					<h2 class="article-footer-share__heading">Share this story</h2>
+				
+<div class="social-share addthis">
+	<div class="addthis_inline_share_toolbox"></div>
+</div>
+	</div>
+
+	</footer><!-- .article-footer -->
+
+	<section id="custom_html-6" class="widget_text widget widget_custom_html"><div class="textwidget custom-html-widget"><div class="rich-text-cascade"><div id="lkqd-outstream"></div></div></div></section></article>
+
+<aside class="ad-unit ad-unit--mr1-mobile">
+	<div class="ad-unit__content">
+		  <div   id="acm-ad-tag-mr1_mobile-mr1_mobile"   data-slot='{"pos":"mr1_mobile","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[300,250],"sizes":[[[900,0],[]],[[0,0],[[300,250]]]],"amp_multi_size":"300x250","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"atf"}'   data-unit='{"tag":"mr1_mobile","tag_id":"mr1_mobile","dfp_id":"5678","tag_name":"mg.wfla","ad_disabled":"0"}'   data-targeting='{"pos":"mr1_mobile","fold":"atf","category":"florida","kw":"fugitive-arrested-in-florida-after-going-live-on-social-media-deputies-say"}'   data-path='/5678/mg.wfla/news/florida'  ></div>  <script>  (function () {   try {    var event = new CustomEvent(     "nsDfpSlotRendered",     {      detail: {       id: 'acm-ad-tag-mr1_mobile-mr1_mobile'      }     }    );     window.dispatchEvent(event);   } catch (err) {}  })();  </script>  	</div>
+</aside>
+
+
+	<div
+		id="widget1"
+		data-rc-widget
+		data-widget-host="habitat"
+		data-endpoint="trends.revcontent.com"
+		data-widget-id="114858"
+	></div>
+	<script src="https://assets.revcontent.com/master/delivery.js" defer="defer"></script> 	
+	<aside class="article-list article-list--full-width">
+		
+	<h2 class="article-list__heading article-list__heading--notched">
+		More Florida Stories	</h2>
+
+
+<div class="article-list__content">
+						<a class="article-list__blanketing-link" href="https://www.wfla.com/news/florida/baby-jesus-goes-missing-from-popular-florida-nativity-scene/">
+		
+		<article
+			class="article-list__article article-list__article--is-stacked article-list__article--has-thumb article-list__article--has-excerpt"
+			data-index="0"
+			data-collection="article-list1"
+			data-anvato-params="null"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list1"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb article-list__article-thumb--is-fullbleed-on-mobile"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px&quot;]"
+>
+			<h3 class="article-list__article-title">
+			
+				Baby Jesus goes missing from popular Florida nativity scene
+					</h3>
+	
+			<footer class="article-list__article-byline">
+			by The Associated Press <span class="sep">/</span> <time datetime="2020-01-01T07:58:39-05:00">Jan 1, 2020</time>		</footer>
+	
+			<div class="article-list__article-excerpt article-list__article-excerpt--is-faded rich-text">
+			<p>TALLAHASSEE, Fla. (AP) — On the sixth day of Christmas, Baby Jesus vanished from his manger in a popular nativity scene at a Florida park — right under the noses of Mary, Joseph and bowing kings.</p>
+<p>The disappearance of the replica startled 8-year-old Nate Takacs, who had rushed to get a glimpse of angels and the infant Savior only to find an empty crib at the display at Dorothy B. Oven Park in Tallahassee. The park each year hosts a well-trafficked and colorful Christmas display.</p>
+		</div>
+	
+			<div class="article-list__read-more article-list__read-more--w-arrow">
+							<span>
+					Read the Full Article
+											<span class="icon icon--arrow">
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17.938 10.94">
+		<path d="M17.944 5.55a.733.733 0 0 1-.032.34v.03c0 .01-.006.01-.008.01a.189.189 0 0 1-.028.05.619.619 0 0 1-.123.17c-.009.01-.013.02-.023.03l-4.927 4.56a.733.733 0 0 1-.5.19.753.753 0 0 1-.54-.23.737.737 0 0 1 .041-1.04l3.547-3.28H.738a.735.735 0 1 1 0-1.47h14.693l-3.74-3.68a.735.735 0 0 1 1.03-1.05l5.022 4.94s0 .01.008.01a.016.016 0 0 0 .017.01.8.8 0 0 1 .163.32c.007.03.009.06.013.09z"/>
+	</svg>
+</span>
+									</span>
+					</div>
+	
+	</div>
+
+	<figure class="article-list__article-thumb article-list__article-thumb--is-fullbleed-on-mobile">
+		
+		<div class="article-list__article-image-wrapper">
+			
+<div class="image-wrapper landscape">
+	<img
+		src="https://i2.wp.com/www.wfla.com/wp-content/uploads/sites/71/2020/01/Baby-jesus-stolen.jpg?resize=2560%2C1440&#038;ssl=1"
+		alt=""
+		srcset="https://www.wfla.com/wp-content/uploads/sites/71/2020/01/Baby-jesus-stolen.jpg?w=320&amp;h=180&amp;crop=1 320w, https://www.wfla.com/wp-content/uploads/sites/71/2020/01/Baby-jesus-stolen.jpg?w=640&amp;h=360&amp;crop=1 640w, https://www.wfla.com/wp-content/uploads/sites/71/2020/01/Baby-jesus-stolen.jpg?w=960&amp;h=540&amp;crop=1 960w, https://www.wfla.com/wp-content/uploads/sites/71/2020/01/Baby-jesus-stolen.jpg?w=1280&amp;h=720&amp;crop=1 1280w, https://i2.wp.com/www.wfla.com/wp-content/uploads/sites/71/2020/01/Baby-jesus-stolen.jpg?resize=1920%2C1080&amp;ssl=1 1920w, https://i2.wp.com/www.wfla.com/wp-content/uploads/sites/71/2020/01/Baby-jesus-stolen.jpg?resize=2560%2C1440&amp;ssl=1 2560w"
+		sizes="(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px"
+	/>
+</div>
+
+					</div>
+
+			</figure>
+			</article>
+
+					</a>
+								<a class="article-list__blanketing-link" href="https://www.wfla.com/news/local-news/aaa-offering-tow-to-go-until-january-2/">
+		
+		<article
+			class="article-list__article article-list__article--is-stacked article-list__article--has-thumb article-list__article--has-excerpt"
+			data-index="1"
+			data-collection="article-list1"
+			data-anvato-params="null"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list1"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb article-list__article-thumb--is-fullbleed-on-mobile"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px&quot;]"
+>
+			<h3 class="article-list__article-title">
+			
+				AAA offering Tow to Go until January 2
+					</h3>
+	
+			<footer class="article-list__article-byline">
+			by CNN Newsource <span class="sep">/</span> <time datetime="2020-01-01T07:53:19-05:00">Jan 1, 2020</time>		</footer>
+	
+			<div class="article-list__article-excerpt article-list__article-excerpt--is-faded rich-text">
+			<p>(CNN) - Party too hard on New Year's Eve and couldn't drive your car home? AAA has an option for you and your car to get home safely. </p>
+<p>AAA is offering its Tow to Go service. It will help people get home safely by having a tow truck take you and your car home. </p>
+		</div>
+	
+			<div class="article-list__read-more article-list__read-more--w-arrow">
+							<span>
+					Read the Full Article
+											<span class="icon icon--arrow">
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17.938 10.94">
+		<path d="M17.944 5.55a.733.733 0 0 1-.032.34v.03c0 .01-.006.01-.008.01a.189.189 0 0 1-.028.05.619.619 0 0 1-.123.17c-.009.01-.013.02-.023.03l-4.927 4.56a.733.733 0 0 1-.5.19.753.753 0 0 1-.54-.23.737.737 0 0 1 .041-1.04l3.547-3.28H.738a.735.735 0 1 1 0-1.47h14.693l-3.74-3.68a.735.735 0 0 1 1.03-1.05l5.022 4.94s0 .01.008.01a.016.016 0 0 0 .017.01.8.8 0 0 1 .163.32c.007.03.009.06.013.09z"/>
+	</svg>
+</span>
+									</span>
+					</div>
+	
+	</div>
+
+	<figure class="article-list__article-thumb article-list__article-thumb--is-fullbleed-on-mobile">
+		
+		<div class="article-list__article-image-wrapper">
+			
+<div class="image-wrapper landscape">
+	<img
+		src="https://i1.wp.com/www.wfla.com/wp-content/uploads/sites/71/2018/07/aaa-1_1530753549407_47681370_ver1.0.jpg?resize=2560%2C1440&#038;ssl=1"
+		alt="AAA LOGO_1530753549407"
+		srcset="https://www.wfla.com/wp-content/uploads/sites/71/2018/07/aaa-1_1530753549407_47681370_ver1.0.jpg?w=320&amp;h=180&amp;crop=1 320w, https://i1.wp.com/www.wfla.com/wp-content/uploads/sites/71/2018/07/aaa-1_1530753549407_47681370_ver1.0.jpg?resize=640%2C360&amp;ssl=1 640w, https://i1.wp.com/www.wfla.com/wp-content/uploads/sites/71/2018/07/aaa-1_1530753549407_47681370_ver1.0.jpg?resize=960%2C540&amp;ssl=1 960w, https://i1.wp.com/www.wfla.com/wp-content/uploads/sites/71/2018/07/aaa-1_1530753549407_47681370_ver1.0.jpg?resize=1280%2C720&amp;ssl=1 1280w, https://i1.wp.com/www.wfla.com/wp-content/uploads/sites/71/2018/07/aaa-1_1530753549407_47681370_ver1.0.jpg?resize=1920%2C1080&amp;ssl=1 1920w, https://i1.wp.com/www.wfla.com/wp-content/uploads/sites/71/2018/07/aaa-1_1530753549407_47681370_ver1.0.jpg?resize=2560%2C1440&amp;ssl=1 2560w"
+		sizes="(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px"
+	/>
+</div>
+
+							
+<span aria-hidden="true" tabindex="-1" class="article-list__article-mediaicon">
+	<span class="article-list__article-mediaicon-svg">
+		<svg viewBox="0 0 24 24">
+			<path d="M8,5.14V19.14L19,12.14L8,5.14Z" />
+		</svg>
+	</span>
+	</span>
+					</div>
+
+			</figure>
+			</article>
+
+					</a>
+								<a class="article-list__blanketing-link" href="https://www.wfla.com/news/florida/florida-man-crashes-truck-into-bar-to-steal-dr-pepper-deputies-say/">
+		
+		<article
+			class="article-list__article article-list__article--is-stacked article-list__article--has-thumb article-list__article--has-excerpt"
+			data-index="2"
+			data-collection="article-list1"
+			data-anvato-params="null"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list1"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb article-list__article-thumb--is-fullbleed-on-mobile"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px&quot;]"
+>
+			<h3 class="article-list__article-title">
+			
+				Florida man crashes truck into bar to steal Dr. Pepper, deputies say
+					</h3>
+	
+			<footer class="article-list__article-byline">
+			by WMBB Web Staff <span class="sep">/</span> <time datetime="2019-12-31T19:40:27-05:00">Dec 31, 2019</time>		</footer>
+	
+			<div class="article-list__article-excerpt article-list__article-excerpt--is-faded rich-text">
+			<p>PANAMA CITY, Fla. — A Florida man was arrested after he crashed his vehicle into a bar to steal a Dr. Pepper,&nbsp;deputies told WMBB.</p>
+<p>Gavin Lee, 28, is charged with armed burglary.</p>
+		</div>
+	
+			<div class="article-list__read-more article-list__read-more--w-arrow">
+							<span>
+					Read the Full Article
+											<span class="icon icon--arrow">
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17.938 10.94">
+		<path d="M17.944 5.55a.733.733 0 0 1-.032.34v.03c0 .01-.006.01-.008.01a.189.189 0 0 1-.028.05.619.619 0 0 1-.123.17c-.009.01-.013.02-.023.03l-4.927 4.56a.733.733 0 0 1-.5.19.753.753 0 0 1-.54-.23.737.737 0 0 1 .041-1.04l3.547-3.28H.738a.735.735 0 1 1 0-1.47h14.693l-3.74-3.68a.735.735 0 0 1 1.03-1.05l5.022 4.94s0 .01.008.01a.016.016 0 0 0 .017.01.8.8 0 0 1 .163.32c.007.03.009.06.013.09z"/>
+	</svg>
+</span>
+									</span>
+					</div>
+	
+	</div>
+
+	<figure class="article-list__article-thumb article-list__article-thumb--is-fullbleed-on-mobile">
+		
+		<div class="article-list__article-image-wrapper">
+			
+<div class="image-wrapper landscape">
+	<img
+		src="https://i2.wp.com/www.wfla.com/wp-content/uploads/sites/71/2019/12/Gavin-Lee-.jpg?resize=2560%2C1440&#038;ssl=1"
+		alt=""
+		srcset="https://www.wfla.com/wp-content/uploads/sites/71/2019/12/Gavin-Lee-.jpg?w=320&amp;h=180&amp;crop=1 320w, https://www.wfla.com/wp-content/uploads/sites/71/2019/12/Gavin-Lee-.jpg?w=640&amp;h=360&amp;crop=1 640w, https://www.wfla.com/wp-content/uploads/sites/71/2019/12/Gavin-Lee-.jpg?w=960&amp;h=540&amp;crop=1 960w, https://www.wfla.com/wp-content/uploads/sites/71/2019/12/Gavin-Lee-.jpg?w=1280&amp;h=720&amp;crop=1 1280w, https://i2.wp.com/www.wfla.com/wp-content/uploads/sites/71/2019/12/Gavin-Lee-.jpg?resize=1920%2C1080&amp;ssl=1 1920w, https://i2.wp.com/www.wfla.com/wp-content/uploads/sites/71/2019/12/Gavin-Lee-.jpg?resize=2560%2C1440&amp;ssl=1 2560w"
+		sizes="(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px"
+	/>
+</div>
+
+					</div>
+
+			</figure>
+			</article>
+
+					</a>
+			</div>
+
+
+	</aside>
+	
+<aside class="ad-unit ad-unit--leader-mr1">
+	<div class="ad-unit__content">
+		  <div   id="acm-ad-tag-leader_mr1-leader_mr1-story-pages"   data-slot='{"pos":"leader_mr1","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[300,250],"sizes":[[[1152,0],[[728,90]]],[[0,0],[[300,250]]]],"amp_multi_size":"300x250","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"btf"}'   data-unit='{"tag":"leader_mr1","tag_id":"leader_mr1 Story pages","dfp_id":"5678","tag_name":"mg.wfla","ad_disabled":"0"}'   data-targeting='{"pos":"leader_mr1","fold":"btf","category":"florida","kw":"fugitive-arrested-in-florida-after-going-live-on-social-media-deputies-say"}'   data-path='/5678/mg.wfla/news/florida'  ></div>  <script>  (function () {   try {    var event = new CustomEvent(     "nsDfpSlotRendered",     {      detail: {       id: 'acm-ad-tag-leader_mr1-leader_mr1-story-pages'      }     }    );     window.dispatchEvent(event);   } catch (err) {}  })();  </script>  	</div>
+</aside>
+
+	<aside class="article-list article-list--grid article-list--grid-2">
+		
+	<h2 class="article-list__heading article-list__heading--notched">
+		More Stories	</h2>
+
+
+<div class="article-list__content">
+			
+		<article
+			class="article-list__article article-list__article--is-stacked article-list__article--has-thumb article-list__article--is-media-type"
+			data-index="0"
+			data-collection="article-list2"
+			data-anvato-params="null"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list2"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px&quot;]"
+>
+			<h3 class="article-list__article-title">
+							<a
+					href="https://www.wfla.com/news/breaking-news/deputies-man-shot-during-celebratory-gunfire-at-gandy-beach/"
+									>
+			
+				Deputies: Man shot during celebratory gunfire at Gandy Beach
+							</a>
+					</h3>
+	
+			<footer class="article-list__article-meta">
+			<a href="https://www.wfla.com/news/breaking-news/">Breaking News</a> / <time datetime="2020-01-01T05:55:49-05:00">2 hours ago</time>		</footer>
+	
+	
+	
+	</div>
+
+	<figure class="article-list__article-thumb">
+					<a
+				href="https://www.wfla.com/news/breaking-news/deputies-man-shot-during-celebratory-gunfire-at-gandy-beach/"
+							>
+		
+		<div class="article-list__article-image-wrapper">
+			
+<div class="image-wrapper landscape square-on-mobile">
+	<img
+		src="https://i0.wp.com/www.wfla.com/wp-content/uploads/sites/71/2020/01/celebratory-gunfire-gandy-beach.jpg?resize=2560%2C1440&#038;ssl=1"
+		alt=""
+		srcset="https://www.wfla.com/wp-content/uploads/sites/71/2020/01/celebratory-gunfire-gandy-beach.jpg?w=320&amp;h=180&amp;crop=1 320w, https://www.wfla.com/wp-content/uploads/sites/71/2020/01/celebratory-gunfire-gandy-beach.jpg?w=640&amp;h=360&amp;crop=1 640w, https://www.wfla.com/wp-content/uploads/sites/71/2020/01/celebratory-gunfire-gandy-beach.jpg?w=960&amp;h=540&amp;crop=1 960w, https://www.wfla.com/wp-content/uploads/sites/71/2020/01/celebratory-gunfire-gandy-beach.jpg?w=1280&amp;h=720&amp;crop=1 1280w, https://i0.wp.com/www.wfla.com/wp-content/uploads/sites/71/2020/01/celebratory-gunfire-gandy-beach.jpg?resize=1920%2C1080&amp;ssl=1 1920w, https://i0.wp.com/www.wfla.com/wp-content/uploads/sites/71/2020/01/celebratory-gunfire-gandy-beach.jpg?resize=2560%2C1440&amp;ssl=1 2560w"
+		sizes="(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px"
+	/>
+</div>
+
+							
+<span aria-hidden="true" tabindex="-1" class="article-list__article-mediaicon">
+	<span class="article-list__article-mediaicon-svg">
+		<svg viewBox="0 0 24 24">
+			<path d="M8,5.14V19.14L19,12.14L8,5.14Z" />
+		</svg>
+	</span>
+	</span>
+					</div>
+
+					</a>
+			</figure>
+			</article>
+
+					
+		<article
+			class="article-list__article article-list__article--is-stacked article-list__article--has-thumb article-list__article--is-media-type"
+			data-index="1"
+			data-collection="article-list2"
+			data-anvato-params="null"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list2"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px&quot;]"
+>
+			<h3 class="article-list__article-title">
+							<a
+					href="https://www.wfla.com/news/local-news/st-josephs-hospital-welcomes-first-baby-of-2020/"
+									>
+			
+				St. Joseph&#8217;s Hospital welcomes first baby of 2020
+							</a>
+					</h3>
+	
+			<footer class="article-list__article-meta">
+			<a href="https://www.wfla.com/news/local-news/">Local News</a> / <time datetime="2020-01-01T06:48:39-05:00">1 hour ago</time>		</footer>
+	
+	
+	
+	</div>
+
+	<figure class="article-list__article-thumb">
+					<a
+				href="https://www.wfla.com/news/local-news/st-josephs-hospital-welcomes-first-baby-of-2020/"
+							>
+		
+		<div class="article-list__article-image-wrapper">
+			
+<div class="image-wrapper landscape square-on-mobile">
+	<img
+		src="https://i1.wp.com/www.wfla.com/wp-content/uploads/sites/71/2020/01/St.-Josephs-1st-2020-baby.jpg?resize=2560%2C1440&#038;ssl=1"
+		alt=""
+		srcset="https://www.wfla.com/wp-content/uploads/sites/71/2020/01/St.-Josephs-1st-2020-baby.jpg?w=320&amp;h=180&amp;crop=1 320w, https://www.wfla.com/wp-content/uploads/sites/71/2020/01/St.-Josephs-1st-2020-baby.jpg?w=640&amp;h=360&amp;crop=1 640w, https://www.wfla.com/wp-content/uploads/sites/71/2020/01/St.-Josephs-1st-2020-baby.jpg?w=960&amp;h=540&amp;crop=1 960w, https://www.wfla.com/wp-content/uploads/sites/71/2020/01/St.-Josephs-1st-2020-baby.jpg?w=1280&amp;h=720&amp;crop=1 1280w, https://i1.wp.com/www.wfla.com/wp-content/uploads/sites/71/2020/01/St.-Josephs-1st-2020-baby.jpg?resize=1920%2C1080&amp;ssl=1 1920w, https://i1.wp.com/www.wfla.com/wp-content/uploads/sites/71/2020/01/St.-Josephs-1st-2020-baby.jpg?resize=2560%2C1440&amp;ssl=1 2560w"
+		sizes="(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px"
+	/>
+</div>
+
+					</div>
+
+					</a>
+			</figure>
+			</article>
+
+					
+		<article
+			class="article-list__article article-list__article--is-stacked article-list__article--has-thumb article-list__article--is-media-type"
+			data-index="2"
+			data-collection="article-list2"
+			data-anvato-params="null"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list2"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px&quot;]"
+>
+			<h3 class="article-list__article-title">
+							<a
+					href="https://www.wfla.com/news/local-news/hernando-county/7-year-old-child-hit-by-car-in-spring-hill/"
+									>
+			
+				7-year-old child on tricycle hit by car in Spring Hill
+							</a>
+					</h3>
+	
+			<footer class="article-list__article-meta">
+			<a href="https://www.wfla.com/news/local-news/hernando-county/">Hernando County</a> / <time datetime="2020-01-01T06:59:01-05:00">1 hour ago</time>		</footer>
+	
+	
+	
+	</div>
+
+	<figure class="article-list__article-thumb">
+					<a
+				href="https://www.wfla.com/news/local-news/hernando-county/7-year-old-child-hit-by-car-in-spring-hill/"
+							>
+		
+		<div class="article-list__article-image-wrapper">
+			
+<div class="image-wrapper landscape square-on-mobile">
+	<img
+		src="https://i2.wp.com/www.wfla.com/wp-content/uploads/sites/71/2019/12/7-year-old-tricycle-accident-.jpg?resize=2560%2C1440&#038;ssl=1"
+		alt=""
+		srcset="https://www.wfla.com/wp-content/uploads/sites/71/2019/12/7-year-old-tricycle-accident-.jpg?w=320&amp;h=180&amp;crop=1 320w, https://www.wfla.com/wp-content/uploads/sites/71/2019/12/7-year-old-tricycle-accident-.jpg?w=640&amp;h=360&amp;crop=1 640w, https://www.wfla.com/wp-content/uploads/sites/71/2019/12/7-year-old-tricycle-accident-.jpg?w=960&amp;h=540&amp;crop=1 960w, https://www.wfla.com/wp-content/uploads/sites/71/2019/12/7-year-old-tricycle-accident-.jpg?w=1280&amp;h=720&amp;crop=1 1280w, https://i2.wp.com/www.wfla.com/wp-content/uploads/sites/71/2019/12/7-year-old-tricycle-accident-.jpg?resize=1920%2C1080&amp;ssl=1 1920w, https://i2.wp.com/www.wfla.com/wp-content/uploads/sites/71/2019/12/7-year-old-tricycle-accident-.jpg?resize=2560%2C1440&amp;ssl=1 2560w"
+		sizes="(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px"
+	/>
+</div>
+
+							
+<span aria-hidden="true" tabindex="-1" class="article-list__article-mediaicon">
+	<span class="article-list__article-mediaicon-svg">
+		<svg viewBox="0 0 24 24">
+			<path d="M8,5.14V19.14L19,12.14L8,5.14Z" />
+		</svg>
+	</span>
+	</span>
+					</div>
+
+					</a>
+			</figure>
+			</article>
+
+					
+		<article
+			class="article-list__article article-list__article--is-stacked article-list__article--has-thumb article-list__article--is-media-type"
+			data-index="3"
+			data-collection="article-list2"
+			data-anvato-params="null"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list2"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px&quot;]"
+>
+			<h3 class="article-list__article-title">
+							<a
+					href="https://www.wfla.com/weather/forecast/storm-team-8-forecast-cool-and-sunny-to-start-the-new-year/"
+									>
+			
+				STORM TEAM 8 FORECAST: Cool and sunny to start the new year
+							</a>
+					</h3>
+	
+			<footer class="article-list__article-meta">
+			<a href="https://www.wfla.com/weather/forecast/">Forecast</a> / <time datetime="2020-01-01T04:03:41-05:00">4 hours ago</time>		</footer>
+	
+	
+	
+	</div>
+
+	<figure class="article-list__article-thumb">
+					<a
+				href="https://www.wfla.com/weather/forecast/storm-team-8-forecast-cool-and-sunny-to-start-the-new-year/"
+							>
+		
+		<div class="article-list__article-image-wrapper">
+			
+<div class="image-wrapper landscape square-on-mobile">
+	<img
+		src="https://i0.wp.com/www.wfla.com/wp-content/uploads/sites/71/2020/01/feature.jpg?resize=2560%2C1440&#038;ssl=1"
+		alt=""
+		srcset="https://www.wfla.com/wp-content/uploads/sites/71/2020/01/feature.jpg?w=320&amp;h=180&amp;crop=1 320w, https://www.wfla.com/wp-content/uploads/sites/71/2020/01/feature.jpg?w=640&amp;h=360&amp;crop=1 640w, https://i0.wp.com/www.wfla.com/wp-content/uploads/sites/71/2020/01/feature.jpg?resize=960%2C540&amp;ssl=1 960w, https://i0.wp.com/www.wfla.com/wp-content/uploads/sites/71/2020/01/feature.jpg?resize=1280%2C720&amp;ssl=1 1280w, https://i0.wp.com/www.wfla.com/wp-content/uploads/sites/71/2020/01/feature.jpg?resize=1920%2C1080&amp;ssl=1 1920w, https://i0.wp.com/www.wfla.com/wp-content/uploads/sites/71/2020/01/feature.jpg?resize=2560%2C1440&amp;ssl=1 2560w"
+		sizes="(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px"
+	/>
+</div>
+
+							
+<span aria-hidden="true" tabindex="-1" class="article-list__article-mediaicon">
+	<span class="article-list__article-mediaicon-svg">
+		<svg viewBox="0 0 24 24">
+			<path d="M8,5.14V19.14L19,12.14L8,5.14Z" />
+		</svg>
+	</span>
+	</span>
+					</div>
+
+					</a>
+			</figure>
+			</article>
+
+			</div>
+
+	<div class="article-list__read-more article-list__read-more--w-arrow">
+		<a href="/news/">
+			Read more stories
+							<span class="icon icon--arrow">
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17.938 10.94">
+		<path d="M17.944 5.55a.733.733 0 0 1-.032.34v.03c0 .01-.006.01-.008.01a.189.189 0 0 1-.028.05.619.619 0 0 1-.123.17c-.009.01-.013.02-.023.03l-4.927 4.56a.733.733 0 0 1-.5.19.753.753 0 0 1-.54-.23.737.737 0 0 1 .041-1.04l3.547-3.28H.738a.735.735 0 1 1 0-1.47h14.693l-3.74-3.68a.735.735 0 0 1 1.03-1.05l5.022 4.94s0 .01.008.01a.016.016 0 0 0 .017.01.8.8 0 0 1 .163.32c.007.03.009.06.013.09z"/>
+	</svg>
+</span>
+					</a>
+	</div>
+	
+	</aside>
+	<section id="ns-article-bin-6" class="widget widget_ns-article-bin">				<section
+					class="article-list article-list-carousel article-list-carousel--dropin"
+					data-component="articleListCarousel"
+					data-context="carousel_dropin"
+				>
+					
+	<h2 class="article-list__heading article-list__heading--notched">
+		Latest Videos	</h2>
+
+
+<div class="article-list__content">
+			
+		<article
+			class="article-list__article article-list__article--is-stacked article-list__article--has-thumb article-list__article--is-media-type"
+			data-index="0"
+			data-collection="article-list3"
+			data-anvato-params="null"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list3"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px&quot;]"
+>
+			<h3 class="article-list__article-title">
+							<a
+					href="https://www.wfla.com/news/hillsborough-county/hillsborough-county-deputies-investigating-jewelry-heist-at-university-mall/"
+									>
+			
+				Hillsborough County deputies investigating jewelry heist at University Mall
+							</a>
+					</h3>
+	
+			<footer class="article-list__article-meta">
+			<a href="https://www.wfla.com/news/hillsborough-county/">Hillsborough County</a> / <time datetime="2020-01-01T06:39:22-05:00">1 hour ago</time>		</footer>
+	
+	
+	
+	</div>
+
+	<figure class="article-list__article-thumb">
+					<a
+				href="https://www.wfla.com/news/hillsborough-county/hillsborough-county-deputies-investigating-jewelry-heist-at-university-mall/"
+							>
+		
+		<div class="article-list__article-image-wrapper">
+			
+<div class="image-wrapper landscape">
+	<img
+		src="https://i0.wp.com/www.wfla.com/wp-content/uploads/sites/71/2019/12/HCSO-jewelry-theif-.jpg?resize=2560%2C1440&#038;ssl=1"
+		alt=""
+		srcset="https://www.wfla.com/wp-content/uploads/sites/71/2019/12/HCSO-jewelry-theif-.jpg?w=320&amp;h=180&amp;crop=1 320w, https://www.wfla.com/wp-content/uploads/sites/71/2019/12/HCSO-jewelry-theif-.jpg?w=640&amp;h=360&amp;crop=1 640w, https://www.wfla.com/wp-content/uploads/sites/71/2019/12/HCSO-jewelry-theif-.jpg?w=960&amp;h=540&amp;crop=1 960w, https://www.wfla.com/wp-content/uploads/sites/71/2019/12/HCSO-jewelry-theif-.jpg?w=1280&amp;h=720&amp;crop=1 1280w, https://i0.wp.com/www.wfla.com/wp-content/uploads/sites/71/2019/12/HCSO-jewelry-theif-.jpg?resize=1920%2C1080&amp;ssl=1 1920w, https://i0.wp.com/www.wfla.com/wp-content/uploads/sites/71/2019/12/HCSO-jewelry-theif-.jpg?resize=2560%2C1440&amp;ssl=1 2560w"
+		sizes="(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px"
+	/>
+</div>
+
+							
+<span aria-hidden="true" tabindex="-1" class="article-list__article-mediaicon">
+	<span class="article-list__article-mediaicon-svg">
+		<svg viewBox="0 0 24 24">
+			<path d="M8,5.14V19.14L19,12.14L8,5.14Z" />
+		</svg>
+	</span>
+	</span>
+					</div>
+
+					</a>
+			</figure>
+			</article>
+
+					
+		<article
+			class="article-list__article article-list__article--is-stacked article-list__article--has-thumb article-list__article--is-media-type"
+			data-index="1"
+			data-collection="article-list3"
+			data-anvato-params="null"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list3"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px&quot;]"
+>
+			<h3 class="article-list__article-title">
+							<a
+					href="https://www.wfla.com/weather/forecast/storm-team-8-forecast-cool-and-sunny-to-start-the-new-year/"
+									>
+			
+				STORM TEAM 8 FORECAST: Cool and sunny to start the new year
+							</a>
+					</h3>
+	
+			<footer class="article-list__article-meta">
+			<a href="https://www.wfla.com/weather/forecast/">Forecast</a> / <time datetime="2020-01-01T04:03:41-05:00">4 hours ago</time>		</footer>
+	
+	
+	
+	</div>
+
+	<figure class="article-list__article-thumb">
+					<a
+				href="https://www.wfla.com/weather/forecast/storm-team-8-forecast-cool-and-sunny-to-start-the-new-year/"
+							>
+		
+		<div class="article-list__article-image-wrapper">
+			
+<div class="image-wrapper landscape">
+	<img
+		src="https://i0.wp.com/www.wfla.com/wp-content/uploads/sites/71/2020/01/feature.jpg?resize=2560%2C1440&#038;ssl=1"
+		alt=""
+		srcset="https://www.wfla.com/wp-content/uploads/sites/71/2020/01/feature.jpg?w=320&amp;h=180&amp;crop=1 320w, https://www.wfla.com/wp-content/uploads/sites/71/2020/01/feature.jpg?w=640&amp;h=360&amp;crop=1 640w, https://i0.wp.com/www.wfla.com/wp-content/uploads/sites/71/2020/01/feature.jpg?resize=960%2C540&amp;ssl=1 960w, https://i0.wp.com/www.wfla.com/wp-content/uploads/sites/71/2020/01/feature.jpg?resize=1280%2C720&amp;ssl=1 1280w, https://i0.wp.com/www.wfla.com/wp-content/uploads/sites/71/2020/01/feature.jpg?resize=1920%2C1080&amp;ssl=1 1920w, https://i0.wp.com/www.wfla.com/wp-content/uploads/sites/71/2020/01/feature.jpg?resize=2560%2C1440&amp;ssl=1 2560w"
+		sizes="(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px"
+	/>
+</div>
+
+							
+<span aria-hidden="true" tabindex="-1" class="article-list__article-mediaicon">
+	<span class="article-list__article-mediaicon-svg">
+		<svg viewBox="0 0 24 24">
+			<path d="M8,5.14V19.14L19,12.14L8,5.14Z" />
+		</svg>
+	</span>
+	</span>
+					</div>
+
+					</a>
+			</figure>
+			</article>
+
+					
+		<article
+			class="article-list__article article-list__article--is-stacked article-list__article--has-thumb article-list__article--is-media-type"
+			data-index="2"
+			data-collection="article-list3"
+			data-anvato-params="null"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list3"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px&quot;]"
+>
+			<h3 class="article-list__article-title">
+							<a
+					href="https://www.wfla.com/news/washington-dc/newseum-closes-doors-in-washington-amid-financial-struggles/"
+									>
+			
+				Newseum closes doors in Washington amid financial struggles
+							</a>
+					</h3>
+	
+			<footer class="article-list__article-meta">
+			<a href="https://www.wfla.com/news/washington-dc/">Washington D.C.</a> / <time datetime="2019-12-31T18:01:19-05:00">14 hours ago</time>		</footer>
+	
+	
+	
+	</div>
+
+	<figure class="article-list__article-thumb">
+					<a
+				href="https://www.wfla.com/news/washington-dc/newseum-closes-doors-in-washington-amid-financial-struggles/"
+							>
+		
+		<div class="article-list__article-image-wrapper">
+			
+<div class="image-wrapper landscape">
+	<img
+		src="https://i1.wp.com/www.wfla.com/wp-content/uploads/sites/71/2019/12/newseum-final-day.jpg?resize=2560%2C1440&#038;ssl=1"
+		alt=""
+		srcset="https://www.wfla.com/wp-content/uploads/sites/71/2019/12/newseum-final-day.jpg?w=320&amp;h=180&amp;crop=1 320w, https://www.wfla.com/wp-content/uploads/sites/71/2019/12/newseum-final-day.jpg?w=640&amp;h=360&amp;crop=1 640w, https://www.wfla.com/wp-content/uploads/sites/71/2019/12/newseum-final-day.jpg?w=960&amp;h=540&amp;crop=1 960w, https://www.wfla.com/wp-content/uploads/sites/71/2019/12/newseum-final-day.jpg?w=1280&amp;h=720&amp;crop=1 1280w, https://i1.wp.com/www.wfla.com/wp-content/uploads/sites/71/2019/12/newseum-final-day.jpg?resize=1920%2C1080&amp;ssl=1 1920w, https://i1.wp.com/www.wfla.com/wp-content/uploads/sites/71/2019/12/newseum-final-day.jpg?resize=2560%2C1440&amp;ssl=1 2560w"
+		sizes="(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px"
+	/>
+</div>
+
+							
+<span aria-hidden="true" tabindex="-1" class="article-list__article-mediaicon">
+	<span class="article-list__article-mediaicon-svg">
+		<svg viewBox="0 0 24 24">
+			<path d="M8,5.14V19.14L19,12.14L8,5.14Z" />
+		</svg>
+	</span>
+	</span>
+					</div>
+
+					</a>
+			</figure>
+			</article>
+
+					
+		<article
+			class="article-list__article article-list__article--is-stacked article-list__article--has-thumb article-list__article--is-media-type"
+			data-index="3"
+			data-collection="article-list3"
+			data-anvato-params="null"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list3"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px&quot;]"
+>
+			<h3 class="article-list__article-title">
+							<a
+					href="https://www.wfla.com/news/polk-county/polk-detectives-hope-side-view-mirror-leads-them-to-hit-and-run-driver/"
+									>
+			
+				Polk detectives hope side-view mirror leads them to hit-and-run driver
+							</a>
+					</h3>
+	
+			<footer class="article-list__article-meta">
+			<a href="https://www.wfla.com/news/polk-county/">Polk County</a> / <time datetime="2019-12-31T17:54:52-05:00">14 hours ago</time>		</footer>
+	
+	
+	
+	</div>
+
+	<figure class="article-list__article-thumb">
+					<a
+				href="https://www.wfla.com/news/polk-county/polk-detectives-hope-side-view-mirror-leads-them-to-hit-and-run-driver/"
+							>
+		
+		<div class="article-list__article-image-wrapper">
+			
+<div class="image-wrapper landscape">
+	<img
+		src="https://i2.wp.com/www.wfla.com/wp-content/uploads/sites/71/2019/12/patch-of-road.jpg?resize=2560%2C1440&#038;ssl=1"
+		alt=""
+		srcset="https://www.wfla.com/wp-content/uploads/sites/71/2019/12/patch-of-road.jpg?w=320&amp;h=180&amp;crop=1 320w, https://www.wfla.com/wp-content/uploads/sites/71/2019/12/patch-of-road.jpg?w=640&amp;h=360&amp;crop=1 640w, https://www.wfla.com/wp-content/uploads/sites/71/2019/12/patch-of-road.jpg?w=960&amp;h=540&amp;crop=1 960w, https://www.wfla.com/wp-content/uploads/sites/71/2019/12/patch-of-road.jpg?w=1280&amp;h=720&amp;crop=1 1280w, https://i2.wp.com/www.wfla.com/wp-content/uploads/sites/71/2019/12/patch-of-road.jpg?resize=1920%2C1080&amp;ssl=1 1920w, https://i2.wp.com/www.wfla.com/wp-content/uploads/sites/71/2019/12/patch-of-road.jpg?resize=2560%2C1440&amp;ssl=1 2560w"
+		sizes="(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px"
+	/>
+</div>
+
+							
+<span aria-hidden="true" tabindex="-1" class="article-list__article-mediaicon">
+	<span class="article-list__article-mediaicon-svg">
+		<svg viewBox="0 0 24 24">
+			<path d="M8,5.14V19.14L19,12.14L8,5.14Z" />
+		</svg>
+	</span>
+	</span>
+					</div>
+
+					</a>
+			</figure>
+			</article>
+
+					
+		<article
+			class="article-list__article article-list__article--is-stacked article-list__article--has-thumb article-list__article--is-media-type"
+			data-index="4"
+			data-collection="article-list3"
+			data-anvato-params="null"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list3"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px&quot;]"
+>
+			<h3 class="article-list__article-title">
+							<a
+					href="https://www.wfla.com/news/hillsborough-county/video-tampa-man-rescues-dog-hanging-from-elevator-door/"
+									>
+			
+				VIDEO: Tampa man rescues dog hanging from elevator door
+							</a>
+					</h3>
+	
+			<footer class="article-list__article-meta">
+			<a href="https://www.wfla.com/news/hillsborough-county/">Hillsborough County</a> / <time datetime="2020-01-01T07:28:22-05:00">29 mins ago</time>		</footer>
+	
+	
+	
+	</div>
+
+	<figure class="article-list__article-thumb">
+					<a
+				href="https://www.wfla.com/news/hillsborough-county/video-tampa-man-rescues-dog-hanging-from-elevator-door/"
+							>
+		
+		<div class="article-list__article-image-wrapper">
+			
+<div class="image-wrapper landscape">
+	<img
+		src="https://i1.wp.com/www.wfla.com/wp-content/uploads/sites/71/2019/12/Dog-caught-in-elevator.jpg?resize=2560%2C1440&#038;ssl=1"
+		alt=""
+		srcset="https://www.wfla.com/wp-content/uploads/sites/71/2019/12/Dog-caught-in-elevator.jpg?w=320&amp;h=180&amp;crop=1 320w, https://www.wfla.com/wp-content/uploads/sites/71/2019/12/Dog-caught-in-elevator.jpg?w=640&amp;h=360&amp;crop=1 640w, https://www.wfla.com/wp-content/uploads/sites/71/2019/12/Dog-caught-in-elevator.jpg?w=960&amp;h=540&amp;crop=1 960w, https://i1.wp.com/www.wfla.com/wp-content/uploads/sites/71/2019/12/Dog-caught-in-elevator.jpg?resize=1280%2C720&amp;ssl=1 1280w, https://i1.wp.com/www.wfla.com/wp-content/uploads/sites/71/2019/12/Dog-caught-in-elevator.jpg?resize=1920%2C1080&amp;ssl=1 1920w, https://i1.wp.com/www.wfla.com/wp-content/uploads/sites/71/2019/12/Dog-caught-in-elevator.jpg?resize=2560%2C1440&amp;ssl=1 2560w"
+		sizes="(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px"
+	/>
+</div>
+
+							
+<span aria-hidden="true" tabindex="-1" class="article-list__article-mediaicon">
+	<span class="article-list__article-mediaicon-svg">
+		<svg viewBox="0 0 24 24">
+			<path d="M8,5.14V19.14L19,12.14L8,5.14Z" />
+		</svg>
+	</span>
+	</span>
+					</div>
+
+					</a>
+			</figure>
+			</article>
+
+					
+		<article
+			class="article-list__article article-list__article--is-stacked article-list__article--has-thumb article-list__article--is-media-type"
+			data-index="5"
+			data-collection="article-list3"
+			data-anvato-params="null"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list3"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px&quot;]"
+>
+			<h3 class="article-list__article-title">
+							<a
+					href="https://www.wfla.com/news/national/human-angel-saves-caged-dog-left-at-park/"
+									>
+			
+				&#8216;Human angel&#8217; saves caged dog left inside port-a-potty
+							</a>
+					</h3>
+	
+			<footer class="article-list__article-meta">
+			<a href="https://www.wfla.com/news/national/">National</a> / <time datetime="2019-12-31T12:02:46-05:00">20 hours ago</time>		</footer>
+	
+	
+	
+	</div>
+
+	<figure class="article-list__article-thumb">
+					<a
+				href="https://www.wfla.com/news/national/human-angel-saves-caged-dog-left-at-park/"
+							>
+		
+		<div class="article-list__article-image-wrapper">
+			
+<div class="image-wrapper landscape">
+	<img
+		src="https://i0.wp.com/www.wfla.com/wp-content/uploads/sites/71/2019/12/jon-2.jpg?resize=2560%2C1440&#038;ssl=1"
+		alt=""
+		srcset="https://www.wfla.com/wp-content/uploads/sites/71/2019/12/jon-2.jpg?w=320&amp;h=180&amp;crop=1 320w, https://www.wfla.com/wp-content/uploads/sites/71/2019/12/jon-2.jpg?w=640&amp;h=360&amp;crop=1 640w, https://www.wfla.com/wp-content/uploads/sites/71/2019/12/jon-2.jpg?w=960&amp;h=540&amp;crop=1 960w, https://www.wfla.com/wp-content/uploads/sites/71/2019/12/jon-2.jpg?w=1280&amp;h=720&amp;crop=1 1280w, https://i0.wp.com/www.wfla.com/wp-content/uploads/sites/71/2019/12/jon-2.jpg?resize=1920%2C1080&amp;ssl=1 1920w, https://i0.wp.com/www.wfla.com/wp-content/uploads/sites/71/2019/12/jon-2.jpg?resize=2560%2C1440&amp;ssl=1 2560w"
+		sizes="(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px"
+	/>
+</div>
+
+							
+<span aria-hidden="true" tabindex="-1" class="article-list__article-mediaicon">
+	<span class="article-list__article-mediaicon-svg">
+		<svg viewBox="0 0 24 24">
+			<path d="M8,5.14V19.14L19,12.14L8,5.14Z" />
+		</svg>
+	</span>
+	</span>
+					</div>
+
+					</a>
+			</figure>
+			</article>
+
+					
+		<article
+			class="article-list__article article-list__article--is-stacked article-list__article--has-thumb article-list__article--is-media-type"
+			data-index="6"
+			data-collection="article-list3"
+			data-anvato-params="null"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list3"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px&quot;]"
+>
+			<h3 class="article-list__article-title">
+							<a
+					href="https://www.wfla.com/news/international/militiamen-breach-us-embassy-in-baghdad-trump-blames-iran/"
+									>
+			
+				Militiamen breach US Embassy in Baghdad; Trump blames Iran
+							</a>
+					</h3>
+	
+			<footer class="article-list__article-meta">
+			<a href="https://www.wfla.com/news/international/">International</a> / <time datetime="2019-12-31T10:52:05-05:00">21 hours ago</time>		</footer>
+	
+	
+	
+	</div>
+
+	<figure class="article-list__article-thumb">
+					<a
+				href="https://www.wfla.com/news/international/militiamen-breach-us-embassy-in-baghdad-trump-blames-iran/"
+							>
+		
+		<div class="article-list__article-image-wrapper">
+			
+<div class="image-wrapper landscape">
+	<img
+		src="https://i1.wp.com/www.wfla.com/wp-content/uploads/sites/71/2019/12/EMBASSY-IN-BAGHDAD.jpg?resize=2560%2C1440&#038;ssl=1"
+		alt=""
+		srcset="https://www.wfla.com/wp-content/uploads/sites/71/2019/12/EMBASSY-IN-BAGHDAD.jpg?w=320&amp;h=180&amp;crop=1 320w, https://www.wfla.com/wp-content/uploads/sites/71/2019/12/EMBASSY-IN-BAGHDAD.jpg?w=640&amp;h=360&amp;crop=1 640w, https://www.wfla.com/wp-content/uploads/sites/71/2019/12/EMBASSY-IN-BAGHDAD.jpg?w=960&amp;h=540&amp;crop=1 960w, https://www.wfla.com/wp-content/uploads/sites/71/2019/12/EMBASSY-IN-BAGHDAD.jpg?w=1280&amp;h=720&amp;crop=1 1280w, https://i1.wp.com/www.wfla.com/wp-content/uploads/sites/71/2019/12/EMBASSY-IN-BAGHDAD.jpg?resize=1920%2C1080&amp;ssl=1 1920w, https://i1.wp.com/www.wfla.com/wp-content/uploads/sites/71/2019/12/EMBASSY-IN-BAGHDAD.jpg?resize=2560%2C1440&amp;ssl=1 2560w"
+		sizes="(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px"
+	/>
+</div>
+
+							
+<span aria-hidden="true" tabindex="-1" class="article-list__article-mediaicon">
+	<span class="article-list__article-mediaicon-svg">
+		<svg viewBox="0 0 24 24">
+			<path d="M8,5.14V19.14L19,12.14L8,5.14Z" />
+		</svg>
+	</span>
+	</span>
+					</div>
+
+					</a>
+			</figure>
+			</article>
+
+					
+		<article
+			class="article-list__article article-list__article--is-stacked article-list__article--has-thumb article-list__article--is-media-type"
+			data-index="7"
+			data-collection="article-list3"
+			data-anvato-params="null"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list3"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px&quot;]"
+>
+			<h3 class="article-list__article-title">
+							<a
+					href="https://www.wfla.com/news/around-town/great-explorations-to-ring-in-2020-with-noon-years-eve-kids-celebration/"
+									>
+			
+				Great Explorations to ring in 2020 with &#8216;Noon Years Eve&#8217; kids celebration
+							</a>
+					</h3>
+	
+			<footer class="article-list__article-meta">
+			<a href="https://www.wfla.com/news/around-town/">Living Local</a> / <time datetime="2019-12-31T11:22:14-05:00">21 hours ago</time>		</footer>
+	
+	
+	
+	</div>
+
+	<figure class="article-list__article-thumb">
+					<a
+				href="https://www.wfla.com/news/around-town/great-explorations-to-ring-in-2020-with-noon-years-eve-kids-celebration/"
+							>
+		
+		<div class="article-list__article-image-wrapper">
+			
+<div class="image-wrapper landscape">
+	<img
+		src="https://i1.wp.com/www.wfla.com/wp-content/uploads/sites/71/2019/12/balloon-drop.jpg?resize=2560%2C1440&#038;ssl=1"
+		alt=""
+		srcset="https://www.wfla.com/wp-content/uploads/sites/71/2019/12/balloon-drop.jpg?w=320&amp;h=180&amp;crop=1 320w, https://www.wfla.com/wp-content/uploads/sites/71/2019/12/balloon-drop.jpg?w=640&amp;h=360&amp;crop=1 640w, https://www.wfla.com/wp-content/uploads/sites/71/2019/12/balloon-drop.jpg?w=960&amp;h=540&amp;crop=1 960w, https://i1.wp.com/www.wfla.com/wp-content/uploads/sites/71/2019/12/balloon-drop.jpg?resize=1280%2C720&amp;ssl=1 1280w, https://i1.wp.com/www.wfla.com/wp-content/uploads/sites/71/2019/12/balloon-drop.jpg?resize=1920%2C1080&amp;ssl=1 1920w, https://i1.wp.com/www.wfla.com/wp-content/uploads/sites/71/2019/12/balloon-drop.jpg?resize=2560%2C1440&amp;ssl=1 2560w"
+		sizes="(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px"
+	/>
+</div>
+
+							
+<span aria-hidden="true" tabindex="-1" class="article-list__article-mediaicon">
+	<span class="article-list__article-mediaicon-svg">
+		<svg viewBox="0 0 24 24">
+			<path d="M8,5.14V19.14L19,12.14L8,5.14Z" />
+		</svg>
+	</span>
+	</span>
+					</div>
+
+					</a>
+			</figure>
+			</article>
+
+					
+		<article
+			class="article-list__article article-list__article--is-stacked article-list__article--has-thumb article-list__article--is-media-type"
+			data-index="8"
+			data-collection="article-list3"
+			data-anvato-params="null"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list3"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px&quot;]"
+>
+			<h3 class="article-list__article-title">
+							<a
+					href="https://www.wfla.com/news/florida/law-enforcement-cracking-down-on-texting-and-driving-starting-jan-1/"
+									>
+			
+				Law enforcement cracking down on texting and driving starting Jan. 1
+							</a>
+					</h3>
+	
+			<footer class="article-list__article-meta">
+			<a href="https://www.wfla.com/news/florida/">Florida</a> / <time datetime="2019-12-31T09:16:03-05:00">23 hours ago</time>		</footer>
+	
+	
+	
+	</div>
+
+	<figure class="article-list__article-thumb">
+					<a
+				href="https://www.wfla.com/news/florida/law-enforcement-cracking-down-on-texting-and-driving-starting-jan-1/"
+							>
+		
+		<div class="article-list__article-image-wrapper">
+			
+<div class="image-wrapper landscape">
+	<img
+		src="https://i1.wp.com/www.wfla.com/wp-content/uploads/sites/71/2019/12/text-and-drive.jpg?resize=2560%2C1440&#038;ssl=1"
+		alt=""
+		srcset="https://www.wfla.com/wp-content/uploads/sites/71/2019/12/text-and-drive.jpg?w=320&amp;h=180&amp;crop=1 320w, https://www.wfla.com/wp-content/uploads/sites/71/2019/12/text-and-drive.jpg?w=640&amp;h=360&amp;crop=1 640w, https://www.wfla.com/wp-content/uploads/sites/71/2019/12/text-and-drive.jpg?w=960&amp;h=540&amp;crop=1 960w, https://www.wfla.com/wp-content/uploads/sites/71/2019/12/text-and-drive.jpg?w=1280&amp;h=720&amp;crop=1 1280w, https://i1.wp.com/www.wfla.com/wp-content/uploads/sites/71/2019/12/text-and-drive.jpg?resize=1920%2C1080&amp;ssl=1 1920w, https://i1.wp.com/www.wfla.com/wp-content/uploads/sites/71/2019/12/text-and-drive.jpg?resize=2560%2C1440&amp;ssl=1 2560w"
+		sizes="(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px"
+	/>
+</div>
+
+							
+<span aria-hidden="true" tabindex="-1" class="article-list__article-mediaicon">
+	<span class="article-list__article-mediaicon-svg">
+		<svg viewBox="0 0 24 24">
+			<path d="M8,5.14V19.14L19,12.14L8,5.14Z" />
+		</svg>
+	</span>
+	</span>
+					</div>
+
+					</a>
+			</figure>
+			</article>
+
+					
+		<article
+			class="article-list__article article-list__article--is-stacked article-list__article--has-thumb article-list__article--is-media-type"
+			data-index="9"
+			data-collection="article-list3"
+			data-anvato-params="null"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list3"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px&quot;]"
+>
+			<h3 class="article-list__article-title">
+							<a
+					href="https://www.wfla.com/news/polk-county/2-children-removed-from-lakeland-home-after-christmas-eve-murder-suicide-doing-well-family-says/"
+									>
+			
+				2 children removed from Lakeland home after Christmas Eve murder-suicide doing well, family says
+							</a>
+					</h3>
+	
+			<footer class="article-list__article-meta">
+			<a href="https://www.wfla.com/news/polk-county/">Polk County</a> / <time datetime="2019-12-30T19:04:19-05:00">2 days ago</time>		</footer>
+	
+	
+	
+	</div>
+
+	<figure class="article-list__article-thumb">
+					<a
+				href="https://www.wfla.com/news/polk-county/2-children-removed-from-lakeland-home-after-christmas-eve-murder-suicide-doing-well-family-says/"
+							>
+		
+		<div class="article-list__article-image-wrapper">
+			
+<div class="image-wrapper landscape">
+	<img
+		src="https://i1.wp.com/www.wfla.com/wp-content/uploads/sites/71/2019/12/Kids-1.jpg?resize=2560%2C1440&#038;ssl=1"
+		alt=""
+		srcset="https://www.wfla.com/wp-content/uploads/sites/71/2019/12/Kids-1.jpg?w=320&amp;h=180&amp;crop=1 320w, https://www.wfla.com/wp-content/uploads/sites/71/2019/12/Kids-1.jpg?w=640&amp;h=360&amp;crop=1 640w, https://www.wfla.com/wp-content/uploads/sites/71/2019/12/Kids-1.jpg?w=960&amp;h=540&amp;crop=1 960w, https://www.wfla.com/wp-content/uploads/sites/71/2019/12/Kids-1.jpg?w=1280&amp;h=720&amp;crop=1 1280w, https://i1.wp.com/www.wfla.com/wp-content/uploads/sites/71/2019/12/Kids-1.jpg?resize=1920%2C1080&amp;ssl=1 1920w, https://i1.wp.com/www.wfla.com/wp-content/uploads/sites/71/2019/12/Kids-1.jpg?resize=2560%2C1440&amp;ssl=1 2560w"
+		sizes="(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px"
+	/>
+</div>
+
+							
+<span aria-hidden="true" tabindex="-1" class="article-list__article-mediaicon">
+	<span class="article-list__article-mediaicon-svg">
+		<svg viewBox="0 0 24 24">
+			<path d="M8,5.14V19.14L19,12.14L8,5.14Z" />
+		</svg>
+	</span>
+	</span>
+					</div>
+
+					</a>
+			</figure>
+			</article>
+
+					
+		<article
+			class="article-list__article article-list__article--is-stacked article-list__article--has-thumb article-list__article--is-media-type"
+			data-index="10"
+			data-collection="article-list3"
+			data-anvato-params="null"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list3"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px&quot;]"
+>
+			<h3 class="article-list__article-title">
+							<a
+					href="https://www.wfla.com/news/national/trump-obama-tied-as-most-admired-man-in-2019/"
+									>
+			
+				Trump, Obama tied as most admired man in 2019
+							</a>
+					</h3>
+	
+			<footer class="article-list__article-meta">
+			<a href="https://www.wfla.com/news/national/">National</a> / <time datetime="2019-12-30T17:55:43-05:00">2 days ago</time>		</footer>
+	
+	
+	
+	</div>
+
+	<figure class="article-list__article-thumb">
+					<a
+				href="https://www.wfla.com/news/national/trump-obama-tied-as-most-admired-man-in-2019/"
+							>
+		
+		<div class="article-list__article-image-wrapper">
+			
+<div class="image-wrapper landscape">
+	<img
+		src="https://i1.wp.com/www.wfla.com/wp-content/uploads/sites/71/2019/12/TRUMP-AND-OBAMA.jpg?resize=2560%2C1440&#038;ssl=1"
+		alt=""
+		srcset="https://www.wfla.com/wp-content/uploads/sites/71/2019/12/TRUMP-AND-OBAMA.jpg?w=320&amp;h=180&amp;crop=1 320w, https://www.wfla.com/wp-content/uploads/sites/71/2019/12/TRUMP-AND-OBAMA.jpg?w=640&amp;h=360&amp;crop=1 640w, https://www.wfla.com/wp-content/uploads/sites/71/2019/12/TRUMP-AND-OBAMA.jpg?w=960&amp;h=540&amp;crop=1 960w, https://www.wfla.com/wp-content/uploads/sites/71/2019/12/TRUMP-AND-OBAMA.jpg?w=1280&amp;h=720&amp;crop=1 1280w, https://i1.wp.com/www.wfla.com/wp-content/uploads/sites/71/2019/12/TRUMP-AND-OBAMA.jpg?resize=1920%2C1080&amp;ssl=1 1920w, https://i1.wp.com/www.wfla.com/wp-content/uploads/sites/71/2019/12/TRUMP-AND-OBAMA.jpg?resize=2560%2C1440&amp;ssl=1 2560w"
+		sizes="(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px"
+	/>
+</div>
+
+							
+<span aria-hidden="true" tabindex="-1" class="article-list__article-mediaicon">
+	<span class="article-list__article-mediaicon-svg">
+		<svg viewBox="0 0 24 24">
+			<path d="M8,5.14V19.14L19,12.14L8,5.14Z" />
+		</svg>
+	</span>
+	</span>
+					</div>
+
+					</a>
+			</figure>
+			</article>
+
+					
+		<article
+			class="article-list__article article-list__article--is-stacked article-list__article--has-thumb article-list__article--is-media-type"
+			data-index="11"
+			data-collection="article-list3"
+			data-anvato-params="null"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list3"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px&quot;]"
+>
+			<h3 class="article-list__article-title">
+							<a
+					href="https://www.wfla.com/news/florida/wanted-florida-man-caught-after-going-live-on-instagram/"
+									>
+			
+				Wanted Florida man caught after going live on Instagram
+							</a>
+					</h3>
+	
+			<footer class="article-list__article-meta">
+			<a href="https://www.wfla.com/news/florida/">Florida</a> / <time datetime="2019-12-31T18:27:15-05:00">13 hours ago</time>		</footer>
+	
+	
+	
+	</div>
+
+	<figure class="article-list__article-thumb">
+					<a
+				href="https://www.wfla.com/news/florida/wanted-florida-man-caught-after-going-live-on-instagram/"
+							>
+		
+		<div class="article-list__article-image-wrapper">
+			
+<div class="image-wrapper landscape">
+	<img
+		src="https://i2.wp.com/www.wfla.com/wp-content/uploads/sites/71/2019/12/instagram-live-arrest.jpg?resize=2560%2C1440&#038;ssl=1"
+		alt=""
+		srcset="https://www.wfla.com/wp-content/uploads/sites/71/2019/12/instagram-live-arrest.jpg?w=320&amp;h=180&amp;crop=1 320w, https://www.wfla.com/wp-content/uploads/sites/71/2019/12/instagram-live-arrest.jpg?w=640&amp;h=360&amp;crop=1 640w, https://www.wfla.com/wp-content/uploads/sites/71/2019/12/instagram-live-arrest.jpg?w=960&amp;h=540&amp;crop=1 960w, https://www.wfla.com/wp-content/uploads/sites/71/2019/12/instagram-live-arrest.jpg?w=1280&amp;h=720&amp;crop=1 1280w, https://i2.wp.com/www.wfla.com/wp-content/uploads/sites/71/2019/12/instagram-live-arrest.jpg?resize=1920%2C1080&amp;ssl=1 1920w, https://i2.wp.com/www.wfla.com/wp-content/uploads/sites/71/2019/12/instagram-live-arrest.jpg?resize=2560%2C1440&amp;ssl=1 2560w"
+		sizes="(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px"
+	/>
+</div>
+
+							
+<span aria-hidden="true" tabindex="-1" class="article-list__article-mediaicon">
+	<span class="article-list__article-mediaicon-svg">
+		<svg viewBox="0 0 24 24">
+			<path d="M8,5.14V19.14L19,12.14L8,5.14Z" />
+		</svg>
+	</span>
+	</span>
+					</div>
+
+					</a>
+			</figure>
+			</article>
+
+			</div>
+
+	<div class="article-list__read-more article-list__read-more--w-arrow">
+		<a href="https://www.wfla.com/video/">
+			More Video
+							<span class="icon icon--arrow">
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17.938 10.94">
+		<path d="M17.944 5.55a.733.733 0 0 1-.032.34v.03c0 .01-.006.01-.008.01a.189.189 0 0 1-.028.05.619.619 0 0 1-.123.17c-.009.01-.013.02-.023.03l-4.927 4.56a.733.733 0 0 1-.5.19.753.753 0 0 1-.54-.23.737.737 0 0 1 .041-1.04l3.547-3.28H.738a.735.735 0 1 1 0-1.47h14.693l-3.74-3.68a.735.735 0 0 1 1.03-1.05l5.022 4.94s0 .01.008.01a.016.016 0 0 0 .017.01.8.8 0 0 1 .163.32c.007.03.009.06.013.09z"/>
+	</svg>
+</span>
+					</a>
+	</div>
+	
+				</section>
+				</section>
+			</main>
+		</div>
+
+		
+<section id="secondary" class="widget-area">
+	<!-- Ad Unit Square -->
+	<aside class="ad-unit ad-unit--square">
+		<div class="ad-unit__content">
+			  <div   id="acm-ad-tag-mr_combo1-mr_combo1"   data-slot='{"pos":"mr_combo1","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[300,250],"sizes":[[[1280,0],[[300,600],[300,250]]],[[1024,0],[[300,600],[300,250]]],[[768,0],[[300,250]]],[[641,0],[[300,250]]],[[0,0],[[300,250]]]],"amp_multi_size":"300x250","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"atf"}'   data-unit='{"tag":"mr_combo1","tag_id":"mr_combo1","dfp_id":"5678","tag_name":"mg.wfla","ad_disabled":"0"}'   data-targeting='{"pos":"mr_combo1","fold":"atf","category":"florida","kw":"fugitive-arrested-in-florida-after-going-live-on-social-media-deputies-say"}'   data-path='/5678/mg.wfla/news/florida'  ></div>  <script>  (function () {   try {    var event = new CustomEvent(     "nsDfpSlotRendered",     {      detail: {       id: 'acm-ad-tag-mr_combo1-mr_combo1'      }     }    );     window.dispatchEvent(event);   } catch (err) {}  })();  </script>  		</div>
+	</aside>
+	<!-- END Ad Unit Square -->
+
+	
+	
+			<!-- Nativo -->
+		<div id="native-rr"></div>
+		<!-- END Nativo -->
+	
+	<section id="custom_html-8" class="widget_text widget widget_custom_html"><div class="textwidget custom-html-widget"><div class="rich-text-cascade"><div class="baron-weather-widget" id="baron-div-7days" style="height: 250px; width: 100%;">
+<iframe frameborder="0" height="100%" id="baron-iframe-7days" marginheight="0" marginwidth="0" 
+name="map-widget" scrolling="no" 
+src="https://s3.amazonaws.com/static.baron.web.apps/digitial_wx/pages/n2.adaptive/7day/index.html?initjson=https://s3.amazonaws.com/static.baron.web.apps/digitial_wx/widgets/dcms/5aadecb4-25a6-494e-805c-6e75b4344c3c/live/init.js&initjsonvar=initdata"
+ style="position: static; top: 0; left: 0;" width="100%">no iframe support!</iframe></div></div></div></section><section id="custom_html-3" class="widget_text widget widget_custom_html"><div class="textwidget custom-html-widget"><div class="rich-text-cascade"><style type="text/css">@media only screen and (min-width: 515px) {
+#baron-widget-div-map-desktop-hr {
+padding-bottom: 93.25%;
+}
+}
+@media only screen and (min-width: 345px) and (max-width: 514px) {
+#baron-widget-div-map-desktop-hr {
+padding-bottom: 150%;
+}
+}
+@media only screen and (min-width: 0px) and (max-width: 344px) {
+#baron-widget-div-map-desktop-hr {
+padding-bottom: 300%;
+}
+}
+</style>
+<div id="baron-widget-div-map-desktop-h" style="height: 500px; width: 320px;" class="baron-weather-widget">
+<div id="leaderboard-ad-container-map-desktop-h" style = "text-align: center;"></div>
+<iframe id="baron-widget-frame-map-desktop-h" name="map-widget" src="https://s3.amazonaws.com/static.baron.web.apps/digitial_wx/pages/n2.adaptive/map/index.html?initjson=https://s3.amazonaws.com/static.baron.web.apps/digitial_wx/widgets/dcms/4585d590-0664-42d4-a962-f89915b5a733/live/init.js&initjsonvar=initdata" marginwidth="0" marginheight="0" height="100%" width="100%" frameborder="0" scrolling="no" style="z-index: 1; position: static; top: 0; left: 0; float: left;">no iframe support!</iframe>
+</div>
+</div></div></section><section id="ns-article-bin-8" class="widget widget_ns-article-bin">				<section
+					class="article-list article-list--trending"
+					data-component=""
+					data-context="numbered_list"
+				>
+					
+	<h2 class="article-list__heading article-list__heading--bottom-divider">
+		Trending Stories	</h2>
+
+
+<div class="article-list__content">
+			
+		<article
+			class="article-list__article article-list__article--is-slat"
+			data-index="0"
+			data-collection="article-list3"
+			data-anvato-params="null"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list3"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, 300px&quot;]"
+>
+			<h3 class="article-list__article-title">
+							<a
+					href="https://www.wfla.com/news/florida/disney-offering-49-tickets-to-florida-residents/"
+									>
+			
+				Disney offering $49 ticket deal to Florida residents
+							</a>
+					</h3>
+	
+	
+	
+	
+	</div>
+
+		</article>
+
+					
+		<article
+			class="article-list__article article-list__article--is-slat"
+			data-index="1"
+			data-collection="article-list3"
+			data-anvato-params="null"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list3"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, 300px&quot;]"
+>
+			<h3 class="article-list__article-title">
+							<a
+					href="https://www.wfla.com/news/breaking-news/deputies-man-shot-during-celebratory-gunfire-at-gandy-beach/"
+									>
+			
+				Deputies: Man shot during celebratory gunfire at Gandy Beach
+							</a>
+					</h3>
+	
+	
+	
+	
+	</div>
+
+		</article>
+
+					
+		<article
+			class="article-list__article article-list__article--is-slat"
+			data-index="2"
+			data-collection="article-list3"
+			data-anvato-params="null"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list3"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, 300px&quot;]"
+>
+			<h3 class="article-list__article-title">
+							<a
+					href="https://www.wfla.com/8-on-your-side/monster-mess-next-door-has-neighbors-worried-about-their-homes-and-safety/"
+									>
+			
+				Monster mess next door has Riverview neighbors worried about homes and safety
+							</a>
+					</h3>
+	
+	
+	
+	
+	</div>
+
+		</article>
+
+					
+		<article
+			class="article-list__article article-list__article--is-slat"
+			data-index="3"
+			data-collection="article-list3"
+			data-anvato-params="null"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list3"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, 300px&quot;]"
+>
+			<h3 class="article-list__article-title">
+							<a
+					href="https://www.wfla.com/8-on-your-side/hot-crime-spots-in-one-bay-area-city/"
+									>
+			
+				Top crime spots in Lakeland
+							</a>
+					</h3>
+	
+	
+	
+	
+	</div>
+
+		</article>
+
+					
+		<article
+			class="article-list__article article-list__article--is-slat"
+			data-index="4"
+			data-collection="article-list3"
+			data-anvato-params="null"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list3"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, 300px&quot;]"
+>
+			<h3 class="article-list__article-title">
+							<a
+					href="https://www.wfla.com/news/hillsborough-county/hillsborough-county-deputies-investigating-jewelry-heist-at-university-mall/"
+									>
+			
+				Hillsborough County deputies investigating jewelry heist at University Mall
+							</a>
+					</h3>
+	
+	
+	
+	
+	</div>
+
+		</article>
+
+					
+		<article
+			class="article-list__article article-list__article--is-slat"
+			data-index="5"
+			data-collection="article-list3"
+			data-anvato-params="null"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list3"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, 300px&quot;]"
+>
+			<h3 class="article-list__article-title">
+							<a
+					href="https://www.wfla.com/news/pinellas-county/st-pete-mom-intentionally-rams-another-moms-vehicle-after-dispute/"
+									>
+			
+				St. Pete mom intentionally rams another mom&#8217;s vehicle after dispute, police say
+							</a>
+					</h3>
+	
+	
+	
+	
+	</div>
+
+		</article>
+
+					
+		<article
+			class="article-list__article article-list__article--is-slat"
+			data-index="6"
+			data-collection="article-list3"
+			data-anvato-params="null"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list3"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, 300px&quot;]"
+>
+			<h3 class="article-list__article-title">
+							<a
+					href="https://www.wfla.com/news/hillsborough-county/tampa-welcomes-2020-with-first-ever-new-yarrghs-eve-booty-drop/"
+									>
+			
+				Tampa welcomes 2020 with first-ever New Yarrgh&#8217;s Eve Booty Drop
+							</a>
+					</h3>
+	
+	
+	
+	
+	</div>
+
+		</article>
+
+					
+		<article
+			class="article-list__article article-list__article--is-slat"
+			data-index="7"
+			data-collection="article-list3"
+			data-anvato-params="null"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list3"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, 300px&quot;]"
+>
+			<h3 class="article-list__article-title">
+							<a
+					href="https://www.wfla.com/military/pres-trump-deploys-more-troops-to-mideast-after-embassy-attack/"
+									>
+			
+				Pres. Trump deploys more troops to Mideast after embassy attack
+							</a>
+					</h3>
+	
+	
+	
+	
+	</div>
+
+		</article>
+
+			</div>
+
+
+				</section>
+				</section><section id="custom_html-61" class="widget_text widget widget_custom_html"><div class="textwidget custom-html-widget"><div class="rich-text-cascade"><style>
+.widget_custom_html {
+        width:100%;
+}
+.main-alert-wrapper {
+	background-color: #000000;
+	width: 320px;
+	font-family: Roboto Condensed,arial,helvetica,verdana,sans-serif;
+	padding: 15px 10px 10px 10px;
+}
+
+.alert-message {
+	color: white;
+	margin-left: 15px;
+	display: inline-block;
+	font-weight: 700;
+    	text-transform: uppercase;
+    	position: relative;
+	letter-spacing: .05em;
+    	z-index: 2;
+}
+
+.alert-text {
+	color: white;
+	margin-left: 10px;
+	display: inline-block;
+	font-weight: 400;
+    	letter-spacing: .05em;
+    	position: relative;
+    	z-index: 2;
+
+}
+.live-now  {
+ 	float: left;
+	background-color: #cc1f3b;
+    	border-radius: .75rem;
+    	content: " ";
+    	display: block;
+    	height: .75rem;
+    	margin-top: .1875rem;
+    	width: .75rem;
+	}
+
+  .site-promo__apps h2, .site-promo__weather-apps h2 {
+      font-family: Roboto Condensed,arial,helvetica,verdana,sans-serif;
+      font-size: .6875rem;
+      font-weight: 700;
+      line-height: 1;
+      text-transform: uppercase;
+      margin: .9375rem 0;
+  }
+
+  .site-promo__apps .app-links, .site-promo__weather-apps .app-links {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    margin: 0 0 .5rem;
+}
+
+.site-promo {
+    color:
+    #fff;
+    font-family: arial,helvetica,verdana,sans-serif;
+    text-align: center;
+}
+
+.app-links .app-link {
+    margin: 0 .625rem;
+}
+
+</style>
+
+
+<div class="main-alert-wrapper">
+
+ 	<img src="https://www.wfla.com/wp-		content/uploads/sites/71/2019/10/app-widgetart.jpg" alt="get the app" 	height="145" width="320">
+
+<div class="site-promo">
+
+<div class="site-promo__apps">
+		<h2>News App</h2>
+		<div class="app-links">
+							<div class="app-link">
+					<a href="https://apps.apple.com/us/app/wfla-news-channel-8-tampa-fl/id567655039">
+						<img src="https://www.wfla.com/wp-content/themes/nexstar/client/src/images/footer/app-stores/appstore_footer.png" alt="Get the iOS app" />
+					</a>
+				</div>
+										<div class="app-link">
+					<a href="https://play.google.com/store/apps/details?id=com.nexstar.id3567new&#038;hl">
+						<img src="https://www.wfla.com/wp-content/themes/nexstar/client/src/images/footer/app-stores/googleplay_footer.png" alt="Get the Android app from Google Play" />
+					</a>
+				</div>
+					</div>
+	</div>
+	<div class="site-promo__weather-apps">
+		<h2>Weather App</h2>
+		<div class="app-links">
+							<div class="app-link">
+					<a href="https://apps.apple.com/us/app/max-defender-8-weather-app/id533796437">
+						<img src="https://www.wfla.com/wp-content/themes/nexstar/client/src/images/footer/app-stores/appstore_footer.png" alt="Get the iOS Weather app" />
+					</a>
+				</div>
+										<div class="app-link">
+					<a href="https://play.google.com/store/apps/details?id=com.wfila.android.weather&#038;hl">
+						<img src="https://www.wfla.com/wp-content/themes/nexstar/client/src/images/footer/app-stores/googleplay_footer.png" alt="Get the Android Weather app from Google Play" />
+					</a>
+				</div>
+					</div>
+	</div>
+
+  	</div>
+
+  	</div>
+</div></div></section><section id="ns-article-bin-3" class="widget widget_ns-article-bin">				<section
+					class="article-list article-list--story-grid article-list--story-grid--one-col"
+					data-component=""
+					data-context="headline_list"
+				>
+					
+	<h2 class="article-list__heading">
+		Don't Miss	</h2>
+
+
+<div class="article-list__content">
+			
+		<article
+			class="article-list__article article-list__article--is-stacked article-list__article--has-thumb article-list__article--is-media-type"
+			data-index="0"
+			data-collection="article-list3"
+			data-anvato-params="null"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list3"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb article-list__article-thumb--is-fullbleed-on-mobile"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, 300px&quot;]"
+>
+			<h3 class="article-list__article-title">
+							<a
+					href="https://www.wfla.com/remarkable-women-contest/"
+									>
+			
+				Nominate a remarkable woman in your life
+							</a>
+					</h3>
+	
+			<footer class="article-list__article-meta">
+			<a href="https://www.wfla.com/contests/">Contests</a> / <time datetime="2019-12-12T23:00:13-05:00">3 weeks ago</time>		</footer>
+	
+	
+	
+	</div>
+
+	<figure class="article-list__article-thumb article-list__article-thumb--is-fullbleed-on-mobile">
+					<a
+				href="https://www.wfla.com/remarkable-women-contest/"
+							>
+		
+		<div class="article-list__article-image-wrapper">
+			
+<div class="image-wrapper landscape">
+	<img
+		src="https://i1.wp.com/www.wfla.com/wp-content/uploads/sites/71/2019/12/remarkable-women_story.jpg?resize=2560%2C1440&#038;ssl=1"
+		alt=""
+		srcset="https://www.wfla.com/wp-content/uploads/sites/71/2019/12/remarkable-women_story.jpg?w=320&amp;h=180&amp;crop=1 320w, https://www.wfla.com/wp-content/uploads/sites/71/2019/12/remarkable-women_story.jpg?w=640&amp;h=360&amp;crop=1 640w, https://www.wfla.com/wp-content/uploads/sites/71/2019/12/remarkable-women_story.jpg?w=960&amp;h=540&amp;crop=1 960w, https://www.wfla.com/wp-content/uploads/sites/71/2019/12/remarkable-women_story.jpg?w=1280&amp;h=720&amp;crop=1 1280w, https://i1.wp.com/www.wfla.com/wp-content/uploads/sites/71/2019/12/remarkable-women_story.jpg?resize=1920%2C1080&amp;ssl=1 1920w, https://i1.wp.com/www.wfla.com/wp-content/uploads/sites/71/2019/12/remarkable-women_story.jpg?resize=2560%2C1440&amp;ssl=1 2560w"
+		sizes="(max-width: 899px) 100%, 300px"
+	/>
+</div>
+
+					</div>
+
+					</a>
+			</figure>
+			</article>
+
+					
+		<article
+			class="article-list__article article-list__article--is-slat  article-list__article--is-media-type"
+			data-index="1"
+			data-collection="article-list3"
+			data-anvato-params="null"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list3"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb article-list__article-thumb--is-fullbleed-on-mobile"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, 300px&quot;]"
+>
+			<h3 class="article-list__article-title">
+							<a
+					href="https://www.wfla.com/news/national/happy-2020-server-at-michigan-restaurant-gets-2020-tip/"
+									>
+			
+				Happy 2020: Server at Michigan restaurant gets $2,020 tip
+							</a>
+					</h3>
+	
+			<footer class="article-list__article-meta">
+			<a href="https://www.wfla.com/news/national/">National</a> / <time datetime="2020-01-01T07:33:05-05:00">24 mins ago</time>		</footer>
+	
+	
+	
+	</div>
+
+		</article>
+
+					
+		<article
+			class="article-list__article article-list__article--is-slat  article-list__article--is-media-type"
+			data-index="2"
+			data-collection="article-list3"
+			data-anvato-params="null"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list3"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb article-list__article-thumb--is-fullbleed-on-mobile"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, 300px&quot;]"
+>
+			<h3 class="article-list__article-title">
+							<a
+					href="https://www.wfla.com/news/local-news/st-josephs-hospital-welcomes-first-baby-of-2020/"
+									>
+			
+				St. Joseph&#8217;s Hospital welcomes first baby of 2020
+							</a>
+					</h3>
+	
+			<footer class="article-list__article-meta">
+			<a href="https://www.wfla.com/news/local-news/">Local News</a> / <time datetime="2020-01-01T06:48:39-05:00">1 hour ago</time>		</footer>
+	
+	
+	
+	</div>
+
+		</article>
+
+					
+		<article
+			class="article-list__article article-list__article--is-slat  article-list__article--is-media-type"
+			data-index="3"
+			data-collection="article-list3"
+			data-anvato-params="null"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list3"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb article-list__article-thumb--is-fullbleed-on-mobile"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, 300px&quot;]"
+>
+			<h3 class="article-list__article-title">
+							<a
+					href="https://www.wfla.com/news/national/school-bus-joins-funeral-procession-for-long-serving-driver/"
+									>
+			
+				School bus joins funeral procession for long-serving driver
+							</a>
+					</h3>
+	
+			<footer class="article-list__article-meta">
+			<a href="https://www.wfla.com/news/national/">National</a> / <time datetime="2019-12-31T21:24:46-05:00">11 hours ago</time>		</footer>
+	
+	
+	
+	</div>
+
+		</article>
+
+					
+		<article
+			class="article-list__article article-list__article--is-slat  article-list__article--is-media-type"
+			data-index="4"
+			data-collection="article-list3"
+			data-anvato-params="null"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list3"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb article-list__article-thumb--is-fullbleed-on-mobile"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, 300px&quot;]"
+>
+			<h3 class="article-list__article-title">
+							<a
+					href="https://www.wfla.com/news/local-news/is-florida-next-to-loosen-fireworks-laws/"
+									>
+			
+				Will Florida be next state to loosen fireworks laws?
+							</a>
+					</h3>
+	
+			<footer class="article-list__article-meta">
+			<a href="https://www.wfla.com/news/local-news/">Local News</a> / <time datetime="2019-12-31T15:00:51-05:00">17 hours ago</time>		</footer>
+	
+	
+	
+			
+<span aria-hidden="true" tabindex="-1" class="article-list__article-mediaicon">
+	<span class="article-list__article-mediaicon-svg">
+		<svg viewBox="0 0 24 24">
+			<path d="M8,5.14V19.14L19,12.14L8,5.14Z" />
+		</svg>
+	</span>
+	</span>
+	</div>
+
+		</article>
+
+			</div>
+
+	<div class="article-list__read-more article-list__read-more--w-arrow">
+		<a href="https://www.wfla.com/dont-miss/">
+			More Don&#039;t Miss
+							<span class="icon icon--arrow">
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17.938 10.94">
+		<path d="M17.944 5.55a.733.733 0 0 1-.032.34v.03c0 .01-.006.01-.008.01a.189.189 0 0 1-.028.05.619.619 0 0 1-.123.17c-.009.01-.013.02-.023.03l-4.927 4.56a.733.733 0 0 1-.5.19.753.753 0 0 1-.54-.23.737.737 0 0 1 .041-1.04l3.547-3.28H.738a.735.735 0 1 1 0-1.47h14.693l-3.74-3.68a.735.735 0 0 1 1.03-1.05l5.022 4.94s0 .01.008.01a.016.016 0 0 0 .017.01.8.8 0 0 1 .163.32c.007.03.009.06.013.09z"/>
+	</svg>
+</span>
+					</a>
+	</div>
+	
+				</section>
+				</section>
+	<aside class="ad-unit ad-unit--square ad-unit--sticky">
+		<div class="ad-unit__content">
+			  <div   id="acm-ad-tag-mr_combo2-mr_combo2"   data-slot='{"pos":"mr_combo2","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[300,250],"sizes":[[[1280,0],[[300,600],[300,250]]],[[1024,0],[[300,600],[300,250]]],[[768,0],[[300,250]]],[[641,0],[[300,250]]],[[0,0],[[300,250]]]],"amp_multi_size":"300x250","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"btf"}'   data-unit='{"tag":"mr_combo2","tag_id":"mr_combo2","dfp_id":"5678","tag_name":"mg.wfla","ad_disabled":"0"}'   data-targeting='{"pos":"mr_combo2","fold":"btf","category":"florida","kw":"fugitive-arrested-in-florida-after-going-live-on-social-media-deputies-say"}'   data-path='/5678/mg.wfla/news/florida'  ></div>  <script>  (function () {   try {    var event = new CustomEvent(     "nsDfpSlotRendered",     {      detail: {       id: 'acm-ad-tag-mr_combo2-mr_combo2'      }     }    );     window.dispatchEvent(event);   } catch (err) {}  })();  </script>  		</div>
+	</aside>
+	<!-- END Ad Unit Square -->
+</section><!-- #secondary -->
+	</div>
+
+			<aside class="ad-unit ad-unit--leaderboard">
+			<div class="ad-unit__content">
+				  <div   id="acm-ad-tag-leaderboard3-leaderboard3"   data-slot='{"pos":"leaderboard3","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[320,50],"sizes":[[[1280,0],[[728,90]]],[[1024,0],[[728,90]]],[[768,0],[[728,90]]],[[641,0],[[320,50]]],[[0,0],[[320,50]]]],"amp_multi_size":"320x50","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"btf"}'   data-unit='{"tag":"leaderboard3","tag_id":"leaderboard3","dfp_id":"5678","tag_name":"mg.wfla","ad_disabled":"0"}'   data-targeting='{"pos":"leaderboard3","fold":"btf","category":"florida","kw":"fugitive-arrested-in-florida-after-going-live-on-social-media-deputies-say"}'   data-path='/5678/mg.wfla/news/florida'  ></div>  <script>  (function () {   try {    var event = new CustomEvent(     "nsDfpSlotRendered",     {      detail: {       id: 'acm-ad-tag-leaderboard3-leaderboard3'      }     }    );     window.dispatchEvent(event);   } catch (err) {}  })();  </script>  			</div>
+		</aside>
+	
+	
+</div><!-- #content -->
+		</div>
+
+		<footer id="footer" class="site-footer">
+	<div class="site-footer__site-branding">
+		<div class="site-footer__logo">
+			<a href="https://www.wfla.com/" rel="home">
+				<img src="https://www.wfla.com/wp-content/uploads/sites/71/2019/05/wfla_digitalbrand-min.png" alt="WFLA" />
+			</a>
+		</div>
+	</div>
+
+		<div class="site-footer__social">
+		<h2>Follow Us</h2>
+		
+<aside class="social-links social-links--default">
+	<ul class="social-links__list">
+					<li class="social-links__list-item social-links__list-item--facebook">
+				<a href="https://www.facebook.com/WFLANewsChannel8/">
+					
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 58 58" style="enable-background:new 0 0 58 58;" xml:space="preserve">
+	<title>Facebook</title>
+	<style type="text/css">
+		.facebook-st0{fill:#4267B2;}
+		.facebook-st1{fill:#FFFFFF;}
+	</style>
+	<path class="facebook-st0" d="M54.8,0H3.2C1.43,0,0,1.43,0,3.2v51.6C0,56.57,1.43,58,3.2,58h0H31V35.57h-7.55v-8.78H31v-6.46
+		c0-7.49,4.58-11.57,11.26-11.57c2.25,0,4.5,0.11,6.74,0.34v7.83h-4.6c-3.64,0-4.35,1.72-4.35,4.26v5.59h8.7l-1.13,8.78H40V58h14.8
+		c1.77,0,3.2-1.43,3.2-3.2l0,0V3.2C58,1.43,56.57,0,54.8,0L54.8,0z"/>
+	<path id="f" class="facebook-st1" d="M40,58V35.57h7.57l1.13-8.78H40V21.2c0-2.54,0.71-4.26,4.35-4.26H49V9.1c-2.24-0.23-4.5-0.35-6.75-0.34
+	C35.56,8.76,31,12.84,31,20.33v6.46h-7.55v8.78H31V58H40z"/>
+</svg>
+				</a>
+			</li>
+							<li class="social-links__list-item social-links__list-item--twitter">
+				<a href="https://twitter.com/WFLA">
+					
+<svg version="1.1" id="Logo__x2014__FIXED" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 259.77 218.57" style="enable-background:new 0 0 33 33;" xml:space="preserve">
+	<title>Twitter</title>
+	<style type="text/css">
+		.twitter-st0{fill:none;}
+		.twitter-st1{fill:#1DA1F2;}
+	</style>
+	<g>
+		<rect x="-69.49" y="-90.72" class="twitter-st0" width="400" height="400"/>
+		<path class="twitter-st1" d="M84.13,210.87c94.34,0,145.94-78.16,145.94-145.94c0-2.22-0.05-4.43-0.15-6.63
+			c10.01-7.24,18.72-16.27,25.59-26.56c-9.19,4.08-19.08,6.83-29.46,8.07c10.59-6.35,18.72-16.4,22.55-28.37
+			c-9.91,5.88-20.89,10.15-32.57,12.45c-9.36-9.97-22.69-16.21-37.44-16.21c-28.33,0-51.3,22.97-51.3,51.29
+			c0,4.03,0.45,7.94,1.33,11.69C86,68.53,48.2,48.12,22.91,17.09c-4.41,7.58-6.95,16.39-6.95,25.78c0,17.8,9.06,33.5,22.82,42.69
+			c-8.41-0.26-16.32-2.57-23.23-6.42c-0.01,0.21-0.01,0.43-0.01,0.65c0,24.84,17.68,45.58,41.15,50.28c-4.31,1.17-8.84,1.8-13.52,1.8
+			c-3.3,0-6.52-0.33-9.64-0.93c6.53,20.38,25.46,35.21,47.92,35.62c-17.56,13.76-39.67,21.96-63.7,21.96
+			c-4.14,0-8.22-0.24-12.24-0.71C28.21,202.38,55.16,210.87,84.13,210.87"/>
+	</g>
+</svg>
+				</a>
+			</li>
+							<li class="social-links__list-item social-links__list-item--instagram">
+				<a href="https://www.instagram.com/wfla/">
+					<img src="https://www.wfla.com/wp-content/themes/nexstar/client/src/images/footer/social/instagram.png" alt="Instagram" />
+				</a>
+			</li>
+							<li class="social-links__list-item social-links__list-item--pinterest">
+				<a href="https://www.pinterest.com/wfla8tv/">
+					
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 243 243" style="enable-background:new 0 0 243 243;" xml:space="preserve">
+	<title>Pinterest</title>
+	<style type="text/css">
+		.pinterest-st0{fill:#FFFFFF;}
+		.pinterest-st1{fill:#E60019;}
+	</style>
+	<g id="art">
+		<g>
+			<circle class="pinterest-st0" cx="121.5" cy="121.5" r="121.5"/>
+			<g>
+				<path class="pinterest-st1" d="M121.5,0C54.4,0,0,54.4,0,121.5C0,173,32,217,77.2,234.7c-1.1-9.6-2-24.4,0.4-34.9
+					c2.2-9.5,14.2-60.4,14.2-60.4s-3.6-7.3-3.6-18c0-16.9,9.8-29.5,22-29.5c10.4,0,15.4,7.8,15.4,17.1c0,10.4-6.6,26-10.1,40.5
+					c-2.9,12.1,6.1,22,18,22c21.6,0,38.2-22.8,38.2-55.6c0-29.1-20.9-49.4-50.8-49.4C86.3,66.5,66,92.4,66,119.2
+					c0,10.4,4,21.6,9,27.7c1,1.2,1.1,2.3,0.8,3.5c-0.9,3.8-3,12.1-3.4,13.8c-0.5,2.2-1.8,2.7-4.1,1.6c-15.2-7.1-24.7-29.2-24.7-47.1
+					c0-38.3,27.8-73.5,80.3-73.5c42.1,0,74.9,30,74.9,70.2c0,41.9-26.4,75.6-63,75.6c-12.3,0-23.9-6.4-27.8-14c0,0-6.1,23.2-7.6,28.9
+					c-2.7,10.6-10.1,23.8-15.1,31.9c11.4,3.5,23.4,5.4,36,5.4c67.1,0,121.5-54.4,121.5-121.5C243,54.4,188.6,0,121.5,0z"/>
+			</g>
+		</g>
+	</g>
+</svg>
+				</a>
+			</li>
+							<li class="social-links__list-item social-links__list-item--youtube">
+				<a href="https://www.youtube.com/channel/UCDvJcb8Adv-_bOrtnRLmiDw">
+					
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 192 192" style="enable-background:new 0 0 192 192;" xml:space="preserve">
+	<title>YouTube</title>
+	<style type="text/css">
+		.youtube-st0{fill:#FF0000;}
+		.youtube-st1{fill:#FFFFFF;}
+	</style>
+	<g id="XMLID_184_">
+		<path id="XMLID_182_" class="youtube-st0" d="M180.32,53.36c-2.02-7.62-7.99-13.62-15.56-15.66C151.04,34,96,34,96,34s-55.04,0-68.76,3.7
+			c-7.57,2.04-13.54,8.04-15.56,15.66C8,67.18,8,96,8,96s0,28.82,3.68,42.64c2.02,7.62,7.99,13.62,15.56,15.66
+			C40.96,158,96,158,96,158s55.04,0,68.76-3.7c7.57-2.04,13.54-8.04,15.56-15.66C184,124.82,184,96,184,96S184,67.18,180.32,53.36z"
+			/>
+		<polygon id="XMLID_1355_" class="youtube-st1" points="78,122.17 124,96 78,69.83 	"/>
+	</g>
+</svg>
+				</a>
+			</li>
+									<li class="social-links__list-item social-links__list-item--email">
+				<a href="mailto:online@wfla.com">
+					
+<svg xmlns="http://www.w3.org/2000/svg" width="29.35" height="22" viewBox="0 0 29.35 22">
+	<title>Email</title>
+	<defs>
+		<style>
+			.email-cls-1 {
+				fill: #eb6823;
+				fill-rule: evenodd;
+			}
+		</style>
+	</defs>
+	<path class="email-cls-1" d="M1168.41,189.824a0.347,0.347,0,0,1,.56.269v11.719a2.75,2.75,0,0,1-2.75,2.751h-23.84a2.75,2.75,0,0,1-2.75-2.751V190.1a0.338,0.338,0,0,1,.55-0.269c1.29,1,2.99,2.263,8.83,6.51,1.21,0.882,3.25,2.739,5.29,2.727,2.04,0.017,4.12-1.879,5.29-2.727C1165.43,192.093,1167.13,190.821,1168.41,189.824Zm-14.11,7.4c1.33,0.023,3.24-1.674,4.2-2.373,7.61-5.518,8.19-6,9.94-7.375a1.381,1.381,0,0,0,.53-1.083v-1.089a2.75,2.75,0,0,0-2.75-2.75h-23.84a2.75,2.75,0,0,0-2.75,2.75V186.4a1.359,1.359,0,0,0,.53,1.083c1.75,1.37,2.33,1.857,9.93,7.375,0.96,0.7,2.88,2.4,4.21,2.373h0Z" transform="translate(-1139.62 -182.562)"/>
+</svg>
+				</a>
+			</li>
+			</ul>
+</aside>
+	</div>
+	
+		<div class="site-footer__apps">
+		<h2>News App</h2>
+		<div class="app-links">
+							<div class="app-link">
+					<a href="https://apps.apple.com/us/app/wfla-news-channel-8-tampa-fl/id567655039">
+						<img src="https://www.wfla.com/wp-content/themes/nexstar/client/src/images/footer/app-stores/appstore_footer.png" alt="Get the iOS app" />
+					</a>
+				</div>
+										<div class="app-link">
+					<a href="https://play.google.com/store/apps/details?id=com.nexstar.id3567new&#038;hl">
+						<img src="https://www.wfla.com/wp-content/themes/nexstar/client/src/images/footer/app-stores/googleplay_footer.png" alt="Get the Android app from Google Play" />
+					</a>
+				</div>
+					</div>
+	</div>
+	<div class="site-footer__weather-apps">
+		<h2>Weather App</h2>
+		<div class="app-links">
+							<div class="app-link">
+					<a href="https://apps.apple.com/us/app/max-defender-8-weather-app/id533796437">
+						<img src="https://www.wfla.com/wp-content/themes/nexstar/client/src/images/footer/app-stores/appstore_footer.png" alt="Get the iOS Weather app" />
+					</a>
+				</div>
+										<div class="app-link">
+					<a href="https://play.google.com/store/apps/details?id=com.wfila.android.weather&#038;hl">
+						<img src="https://www.wfla.com/wp-content/themes/nexstar/client/src/images/footer/app-stores/googleplay_footer.png" alt="Get the Android Weather app from Google Play" />
+					</a>
+				</div>
+					</div>
+	</div>
+	
+	
+<div class="site-footer__primary-nav">
+	</div>
+
+<div class="site-footer__secondary-nav">
+	<div class="menu-footer-secondary-container"><ul id="menu-footer-secondary" class="menu"><li id="menu-item-98669" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-98669"><a href="https://www.wfla.com/privacy-policy/">Privacy Policy</a></li>
+<li id="menu-item-98668" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-98668"><a href="https://www.wfla.com/terms-of-use/">Terms of Use</a></li>
+<li id="menu-item-98670" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-98670"><a href="https://publicfiles.fcc.gov/tv-profile/wfla-tv">WFLA FCC Public File</a></li>
+<li id="menu-item-98671" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-98671"><a href="https://publicfiles.fcc.gov/api/manager/download/f50c3ef2-1b17-ea89-7ec3-0d585edd2547/8feea150-63ed-432b-9600-4437fc282f18.pdf">WFLA EEO Report</a></li>
+<li id="menu-item-98672" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-98672"><a href="https://publicfiles.fcc.gov/tv-profile/wtta">WTTA FCC Public File</a></li>
+<li id="menu-item-98673" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-98673"><a href="https://publicfiles.fcc.gov/api/manager/download/3f2d728e-d550-4dac-594c-8dec590b882b/f250a11b-885e-418c-a15b-4e8db9739451.pdf">WTTA EEO Report</a></li>
+<li id="menu-item-98674" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-98674"><a href="https://publicfiles.fcc.gov/tv-profile/wfla-tv/programs-list">WFLA Children&#8217;s TV Report</a></li>
+<li id="menu-item-98675" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-98675"><a href="https://www.wfla.com/closed-captioning/">Closed Captioning</a></li>
+<li id="menu-item-98676" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-98676"><a href="https://www.wfla.com/advertising/">Advertise With Us</a></li>
+<li id="menu-item-235160" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-235160"><a href="https://www.wfla.com/contact-us/">Public File Assistance</a></li>
+</ul></div></div>
+
+	<div class="site-footer__network-branding">
+								<a href="https://www.nexstar.tv" title="Go to Nexstar">
+				<img src="https://www.wfla.com/wp-content/themes/nexstar/client/src/images/footer/nexstar-logo-white-nmg.png" alt="LAKANA">
+			</a>
+			</div>
+	<div class="site-footer__copyright">
+		&copy; 1998 - 2020 Nexstar Broadcasting, Inc. | All Rights Reserved.	</div>
+</footer>
+	</div><!-- #page -->
+
+	
+<script type='text/javascript'>
+(function() {
+	var _sf_async_config = window._sf_async_config = (window._sf_async_config || {});
+
+	_sf_async_config.sections = "Florida";
+	_sf_async_config.authors = "Kelsi Thorud, WESH";
+	function loadChartbeat() {
+			var e = document.createElement('script');
+			var n = document.getElementsByTagName('script')[0];
+			e.type = 'text/javascript';
+			e.async = true;
+			e.src = '//static.chartbeat.com/js/chartbeat.js';
+			n.parentNode.insertBefore(e, n);
+	}
+	loadChartbeat();
+})();
+</script>
+
+	<aside class="ad-unit ad-unit--adhesion">
+		<div class="ad-unit__content pre-render">
+			<div class="close-btn-container">
+				<div class="close-btn" aria-label="Close Viewport Adhesion Ad">&times; Close Ad</div>
+			</div>
+			  <div   id="acm-ad-tag-adhesion-adhesion"   data-slot='{"pos":"adhesion","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[320,50],"sizes":[[[1280,0],[[728,90]]],[[1024,0],[[728,90]]],[[768,0],[[728,90]]],[[480,0],[[320,50]]],[[0,0],[[320,50]]]],"amp_multi_size":"320x50","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"atf"}'   data-unit='{"tag":"adhesion","tag_id":"adhesion","dfp_id":"5678","tag_name":"mg.wfla","ad_disabled":"0"}'   data-targeting='{"pos":"adhesion","fold":"atf","category":"florida","kw":"fugitive-arrested-in-florida-after-going-live-on-social-media-deputies-say"}'   data-path='/5678/mg.wfla/news/florida'  ></div>  <script>  (function () {   try {    var event = new CustomEvent(     "nsDfpSlotRendered",     {      detail: {       id: 'acm-ad-tag-adhesion-adhesion'      }     }    );     window.dispatchEvent(event);   } catch (err) {}  })();  </script>  		</div>
+	</aside>
+
+	<div id="aria-dialog-overlay"></div>
+	<script src='https://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=202001'></script>
+<script>
+var wpApiSettings = {"root":"https:\/\/www.wfla.com\/wp-json\/","nonce":"23c7ff287d","versionString":"wp\/v2\/"};
+</script>
+<script>
+var lakana = {"a9":{"aps":{"enabled":"1","ad_server":"googletag","pub_id":"3410"}},"addthis_script_url":"https:\/\/s7.addthis.com\/js\/300\/addthis_widget.js#pubid=ra-5b7190c0239b8829","auto_refresh":{"landing_duration":"10","post_duration":"20","disable_homepage":"0"},"blueconic_enabled":"1","blueconic_script_url":"https:\/\/cdn.blueconic.net\/nexstar.js","chartbeat":{"enabled":"1","uid":"23192"},"confiant":{"script_url":"https:\/\/confiant-integrations.global.ssl.fastly.net\/Y2Nn8JmiAY8HpnF4sl5n7J71jaI\/gpt_and_prebid\/config.js","enabled":"1"},"copyright_text":"Copyright 2020 Nexstar Broadcasting, Inc. All rights reserved. This material may not be published, broadcast, rewritten, or redistributed.","devcon":{"status":"0","data_key":"f0d16886-0300-4694-9b7b-37da481f4449","data_e":"5"},"gtm":{"id":"GTM-KJJZHXD"},"id":"1","index_exchange":{"script_url":"https:\/\/js-sec.indexww.com\/ht\/p\/184979-164251977320883.js"},"nativo_enabled":"1","revcontent":{"status":"1"},"send_to_news":{"enabled":"1"}};
+var nexstar = {"alert_banners":{"l10n":{"nexstar":{"label_sep":"\/"}},"summary_messages":{"Breaking News":[],"Live Now":[],"Weather Alerts":[],"Closings":[]},"messages":{"Breaking News":[],"Live Now":[],"Weather Alerts":[],"Closings":[]},"settings":{"Breaking News":{"id":16,"slug":"breaking-news","term_name":"Breaking News","label":"Breaking News","summary_only":false,"url":"#\/","view_options":"number_of_areas"},"Live Now":{"id":17,"slug":"live-now","term_name":"Live Now","label":"Live Now","summary_only":false,"url":"#\/","view_options":"number_of_areas"},"Weather Alerts":{"id":18,"slug":"weather-alerts","term_name":"Weather Alerts","label":"Weather Alerts","summary_only":false,"url":"https:\/\/www.wfla.com\/weather\/weather-alerts\/","view_options":"number_of_areas"},"Closings":{"id":4258,"slug":"closings","term_name":"Closings","label":"Closings","summary_only":false,"url":"#\/","view_options":"number_of_areas"}},"modified_time":{"Breaking News":[],"Live Now":[],"Weather Alerts":[],"Closings":"Jan 1, 2020 \/ 08:00 AM EST"}},"app_links":{"google_play_link":"https:\/\/play.google.com\/store\/apps\/details?id=com.nexstar.id3567new&hl","google_play_weather_link":"https:\/\/play.google.com\/store\/apps\/details?id=com.wfila.android.weather&hl","ios_app_store_link":"https:\/\/apps.apple.com\/us\/app\/wfla-news-channel-8-tampa-fl\/id567655039","ios_app_store_weather_link":"https:\/\/apps.apple.com\/us\/app\/max-defender-8-weather-app\/id533796437"},"article_bins":{"rest_endpoint":"https:\/\/www.wfla.com\/wp-json\/nexstar\/v1\/article-bin"},"auto_refresh":{"landing_duration":"","post_duration":"","disable_homepage":"0"},"blueconic_enabled":"1","call_letters":"WFLA","chartbeat":{"domain":"wfla.com"},"continue_reading_cta":{"l10n":{"cta_text":"Continue Reading"},"breakpoint":768,"min_content_height":600},"copyright_start_year":"1998","devcon":{"status":"0"},"dfp":{"mobile_desktop_breakpoint":1024,"register_event":"nsDfpSlotRendered","slots":{"adhesion":{"pos":"adhesion","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[320,50],"sizes":[[[1280,0],[[728,90]]],[[1024,0],[[728,90]]],[[768,0],[[728,90]]],[[480,0],[[320,50]]],[[0,0],[[320,50]]]],"amp_multi_size":"320x50","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"atf"},"billboard1":{"pos":"billboard1","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[320,50],"sizes":[[[1280,0],[[728,90],[970,250],[970,90],[970,30]]],[[1024,0],[[728,90],[970,250],[970,90],[970,30]]],[[768,0],[[728,90]]],[[641,0],[[320,50]]],[[0,0],[[320,50]]]],"amp_multi_size":"320x50","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"atf"},"header-microbar":{"pos":"header-microbar","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[88,31],"sizes":[[[900,0],[[88,31]]],[[0,0],[]]],"amp_multi_size":"88x31","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"atf"},"hover":{"pos":"hover","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[1,1],"sizes":[[[900,0],[[1,1]]],[[0,0],[]]],"amp_multi_size":"1x1","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"atf"},"leader_mr1":{"pos":"leader_mr1","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[300,250],"sizes":[[[1152,0],[[728,90]]],[[0,0],[[300,250]]]],"amp_multi_size":"300x250","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"btf"},"leaderboard1":{"pos":"leaderboard1","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[320,50],"sizes":[[[1280,0],[[728,90]]],[[1024,0],[[728,90]]],[[768,0],[[728,90]]],[[641,0],[[320,50]]],[[0,0],[[320,50]]]],"amp_multi_size":"320x50","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"mid"},"leaderboard2":{"pos":"leaderboard2","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[320,50],"sizes":[[[1280,0],[[728,90]]],[[1024,0],[[728,90]]],[[768,0],[[728,90]]],[[641,0],[[320,50]]],[[0,0],[[320,50]]]],"amp_multi_size":"320x50","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"mid"},"leaderboard3":{"pos":"leaderboard3","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[320,50],"sizes":[[[1280,0],[[728,90]]],[[1024,0],[[728,90]]],[[768,0],[[728,90]]],[[641,0],[[320,50]]],[[0,0],[[320,50]]]],"amp_multi_size":"320x50","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"btf"},"microbar":{"pos":"microbar","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[88,31],"sizes":[[[0,0],[[88,31]]]],"amp_multi_size":"88x31","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"mid"},"mr1":{"pos":"mr1","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[300,250],"sizes":[[[1280,0],[[300,250]]],[[1024,0],[[300,250]]],[[768,0],[[300,250]]],[[641,0],[[300,250]]],[[0,0],[[300,250]]]],"amp_multi_size":"300x250","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"mid"},"mr1_mobile":{"pos":"mr1_mobile","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[300,250],"sizes":[[[900,0],[]],[[0,0],[[300,250]]]],"amp_multi_size":"300x250","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"atf"},"mr2":{"pos":"mr2","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[300,250],"sizes":[[[1280,0],[[300,250]]],[[1024,0],[[300,250]]],[[768,0],[[300,250]]],[[641,0],[[300,250]]],[[0,0],[[300,250]]]],"amp_multi_size":"300x250","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"mid"},"mr3":{"pos":"mr3","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[300,250],"sizes":[[[1280,0],[[300,250]]],[[1024,0],[[300,250]]],[[768,0],[[300,250]]],[[641,0],[[300,250]]],[[0,0],[[300,250]]]],"amp_multi_size":"300x250","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"mid"},"mr4":{"pos":"mr4","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[300,250],"sizes":[[[1280,0],[[300,250]]],[[1024,0],[[300,250]]],[[768,0],[[300,250]]],[[641,0],[[300,250]]],[[0,0],[[300,250]]]],"amp_multi_size":"300x250","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"mid"},"mr_combo1":{"pos":"mr_combo1","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[300,250],"sizes":[[[1280,0],[[300,600],[300,250]]],[[1024,0],[[300,600],[300,250]]],[[768,0],[[300,250]]],[[641,0],[[300,250]]],[[0,0],[[300,250]]]],"amp_multi_size":"300x250","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"atf"},"mr_combo2":{"pos":"mr_combo2","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[300,250],"sizes":[[[1280,0],[[300,600],[300,250]]],[[1024,0],[[300,600],[300,250]]],[[768,0],[[300,250]]],[[641,0],[[300,250]]],[[0,0],[[300,250]]]],"amp_multi_size":"300x250","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"btf"},"oop":{"pos":"oop","is_companion":true,"is_oop":true,"refresh_on_resize":true,"size":[1,1],"sizes":[[[0,0],[[1,1]]]],"amp_multi_size":"1x1","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"atf"}}},"extended_scroll":{"l10n":{"more_in_category_read_more":"Read the Full Article","more_in_category_title":"More %s Stories","more_stories_read_more":"Read more stories","more_stories_title":"More Stories"},"max_blocks_per_snippet":2,"more_stories_read_more_link":"\/news\/","num_more_in_category_posts":3,"num_more_stories_posts":4},"footer_logo":"9","ga":{"id":"UA-60088952-2"},"gtm":{"id":"GTM-WFQ88RX"},"home_url":"https:\/\/www.wfla.com\/","homepage":{"l10n":{"hero_title":"Headlines","hero_read_more_title":"More Top Stories","headline_list_read_more_title":"More %s News","top_stories_title":"Top Stories","top_stories_read_more_title":"More Top Stories"},"default_hero_read_more_link":"https:\/\/www.wfla.com\/news\/","num_headline_lists":6,"num_headline_list_articles":5,"num_hero_articles":5,"num_top_stories_articles":10,"top_stories_read_more_link":"https:\/\/www.wfla.com\/news\/"},"id":"71","lead_media":{"allowed_block_types":["lakana\/anvplayer"],"video":{"autoplay":"1"}},"logo":"9","name":"WFLA","nativo_enabled":"1","onetrust":{"consent_script_src":"https:\/\/cdn.cookielaw.org\/consent\/{domain_guid}\/OtAutoBlock.js","templates_script_src":"https:\/\/cdn.cookielaw.org\/scripttemplates\/otSDKStub.js"},"primary_color":"#1975BE","related_posts":{"l10n":{"default_title":"Related Content"}},"revcontent":{"status":"1","web_id":"114858","amp_id":"114619","amp_wrapper":"wfla_114619","app_code":"<div id=\"rc-widget-1fb347\" data-rc-widget data-widget-host=\"habitat\" data-endpoint=\"\/\/trends.revcontent.com\" data-widget-id=\"115457\"><\/div>\r\n<script type=\"text\/javascript\" src=\"\/\/assets.revcontent.com\/master\/delivery.js\" defer=\"defer\"><\/script>"},"section_fronts":{"l10n":{"headlines":"Headlines","more_headlines_title":"More %s Headlines","top_stories_title":"Top Stories"},"hero_read_more_link":"https:\/\/www.wfla.com\/news\/","num_headline_lists":6,"num_headline_list_articles":5,"num_hero_articles":5,"num_top_stories_articles":10,"top_stories_read_more_link":"https:\/\/www.wfla.com\/news\/"},"send_to_news":{"url":"http:\/\/embed.sendtonews.com\/oembed\/?fk=vZXcGHcH&cid=9417&sound=off&format=json&offsetx=0&offsety=140&floatwidth=400&floatposition=top-right&float=on","enabled":"1"},"sidebar":{"l10n":{"dont_miss_title":"Don't Miss"},"num_dont_miss_articles":7},"social_links":{"email":"online@wfla.com","facebook":"https:\/\/www.facebook.com\/WFLANewsChannel8\/","instagram":"https:\/\/www.instagram.com\/wfla\/","pinterest":"https:\/\/www.pinterest.com\/wfla8tv\/","rss":"","twitter":"https:\/\/twitter.com\/WFLA","youtube":"https:\/\/www.youtube.com\/channel\/UCDvJcb8Adv-_bOrtnRLmiDw"},"supernav":{"l10n":{"close_navigation":"Close Navigation","open_navigation":"Open Navigation","looking_for?":"What are you looking for?","primary_menu":"Primary Menu","toggle_menu":"Toggle Menu","top_stories":"Top Stories"},"max_depth":2,"nav_menu_location":"supernav","num_children_per_column":7,"num_columns":4,"num_columns_without_thumbnails":1,"num_posts_in_column_with_thumbnails":1,"num_posts_in_column_without_thumbnails":4,"post_type_feature":"supernav"},"template_variables":{"l10n":{"article_date":"M j, Y \/ h:i A T","article_list_by":"by %1$s %2$s %3$s","article_list_category":"%1$s \/ %2$s","author_by":"by: %s","author_sep":", ","infinite_button_text":"Load More","infinite_error_text":"Error loading articles","infinite_loading":"Loading...","more":"More","more_term":"More %s","next_page":"Next page","now_playing":"Now Playing","previous_page":"Previous page","posted":"Posted: %s","read_more_arrow":"Read More &raquo;","relative_date_format":"%s ago","search":"Search","sep":"\/","share_this_story":"Share this story","site_search":"Site Search...","snippet_date":"M j, Y","sponsored_by":"Sponsored By","top_stories_from":"Top Stories From %s","updated":"Updated: %s","up_next":"Up Next","video":"Video","exit_sticky_player":"Exit sticky player","form_processing":"Processing...","form_message_sent":"Message Sent!","form_error":"Error"},"num_404_top_stories_articles":5},"weather":{"city_name":"","latitude":"27.9506","longitude":"-82.4572","zipcode":"33606"},"weather_alerts":{"l10n":{"loading_alerts":"Checking for current alerts","no_current_alerts":"There are no active weather alerts. Check back later."}}};
+var weatherAlerts = {"alert_types":["911 Telephone Outage Emergency","Administrative Message","Air Quality Alert","Air Stagnation Advisory","Arroyo And Small Stream Flood Advisory","Ashfall Advisory","Ashfall Warning","Beach Hazards Statement","Blowing Dust Advisory","Blowing Dust Warning","Brisk Wind Advisory","Child Abduction Emergency","Civil Danger Warning","Civil Emergency Message","Coastal Flood Advisory","Coastal Flood Statement","Coastal Flood Warning","Coastal Flood Watch","Dense Fog Advisory","Dense Smoke Advisory","Dust Advisory","Dust Storm Warning","Earthquake Warning","Evacuation - Immediate","Excessive Heat Warning","Excessive Heat Watch","Extreme Cold Warning","Extreme Cold Watch","Extreme Fire Danger","Extreme Wind Warning","Fire Warning","Fire Weather Watch","Flash Flood Statement","Flash Flood Warning","Flash Flood Watch","Flood Advisory","Flood Statement","Flood Warning","Flood Watch","Freeze Warning","Freeze Watch","Freezing Fog Advisory","Freezing Rain Advisory","Freezing Spray Advisory","Frost Advisory","Gale Warning","Gale Watch","Hard Freeze Warning","Hard Freeze Watch","Hazardous Materials Warning","Hazardous Seas Warning","Hazardous Seas Watch","Hazardous Weather Outlook","Heat Advisory","Heavy Freezing Spray Warning","Heavy Freezing Spray Watch","High Surf Advisory","High Surf Warning","High Wind Warning","High Wind Watch","Hurricane Force Wind Warning","Hurricane Force Wind Watch","Hurricane Local Statement","Hurricane Warning","Hurricane Watch","Hydrologic Advisory","Hydrologic Outlook","Ice Storm Warning","Lakeshore Flood Advisory","Lakeshore Flood Statement","Lakeshore Flood Warning","Lakeshore Flood Watch","Law Enforcement Warning","Local Area Emergency","Low Water Advisory","Marine Weather Statement","Nuclear Power Plant Warning","Radiological Hazard Warning","Red Flag Warning","Rip Current Statement","Severe Thunderstorm Warning","Severe Thunderstorm Watch","Severe Weather Statement","Shelter In Place Warning","Small Craft Advisory","Small Craft Advisory For Hazardous Seas","Small Craft Advisory For Rough Bar","Small Craft Advisory For Winds","Small Stream Flood Advisory","Special Marine Warning","Special Weather Statement","Storm Surge Warning","Storm Surge Watch","Storm Warning","Storm Watch","Tornado Warning","Tornado Watch","Tropical Depression Local Statement","Tropical Storm Local Statement","Tropical Storm Warning","Tropical Storm Watch","Tsunami Advisory","Tsunami Warning","Tsunami Watch","Urban And Small Stream Flood Advisory","Wind Advisory","Wind Chill Advisory","Wind Chill Warning","Wind Chill Watch","Winter Weather Advisory"],"fips":["12057","12105","12103","12101","12115","12081","12055","12017","12053","12049"]};
+</script>
+<script type='text/javascript' src='https://www.wfla.com/_static/??-eJydjEkSwiAQAD9kWBIJ8WD5lmEYFIqQhKX0+ZKjV69d3c3f++ATxmap8FA47H7IdDQqla0+sVAuvCu4pUqp8vqitYuJPqVC5hj9SU3z0Z71M24GIkNAbcCMoxMETt4UATLTko30xxRy9dhLY61VWuhZykmAIkGT+70+1rtUWi9SX+clfAFdmE0T'></script>
+<script async src='https://s7.addthis.com/js/300/addthis_widget.js?ver=1.0#pubid=ra-5b7190c0239b8829'></script>
+<script>
+var addthis_config=addthis_config||{};addthis_config.data_track_addressbar=false;addthis_config.data_track_clickback=false;
+</script>
+<script type='text/javascript' src='https://www.wfla.com/wp-includes/js/wp-embed.min.js?m=1576710967g'></script>
+<script type='text/javascript' src='https://stats.wp.com/e-202001.js' async='async' defer='defer'></script>
+<script type='text/javascript'>
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:8.0',blog:'162794734',post:'322558',tz:'-5',srv:'www.wfla.com'} ]);
+	_stq.push([ 'clickTrackerInit', '162794734', '322558' ]);
+</script>
+
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"bb199f70cb","applicationID":"222037236","transactionName":"MQNTMhdXDxECABBZDAhJchMWQg4PTBQUHxVUSUEJFkISTUtcNAwKAlhqOgFrSks=","queueTime":0,"applicationTime":640,"atts":"HURERF9NHE5BAkYKGBsb","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>

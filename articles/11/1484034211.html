@@ -1,0 +1,1765 @@
+
+<!doctype html>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8"><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"bb199f70cb",applicationID:"222037236"};window.NREUM||(NREUM={}),__nr_require=function(n,e,t){function r(t){if(!e[t]){var i=e[t]={exports:{}};n[t][0].call(i.exports,function(e){var i=n[t][1][e];return r(i||e)},i,i.exports)}return e[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(n,e,t){function r(){}function i(n,e,t){return function(){return o(n,[u.now()].concat(f(arguments)),e?null:this,t),e?void 0:this}}var o=n("handle"),a=n(4),f=n(5),c=n("ee").get("tracer"),u=n("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(n,e){s[e]=i(d+e,!0,"api")}),s.addPageAction=i(d+"addPageAction",!0),s.setCurrentRouteName=i(d+"routeName",!0),e.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(n,e){var t={},r=this,i="function"==typeof e;return o(l+"tracer",[u.now(),n,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return e.apply(this,arguments)}catch(n){throw c.emit("fn-err",[arguments,this,n],t),n}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(n,e){m[e]=i(l+e)}),newrelic.noticeError=function(n,e){"string"==typeof n&&(n=new Error(n)),o("err",[n,u.now(),!1,e])}},{}],2:[function(n,e,t){function r(n,e){var t=n.getEntries();t.forEach(function(n){"first-paint"===n.name?a("timing",["fp",Math.floor(n.startTime)]):"first-contentful-paint"===n.name&&a("timing",["fcp",Math.floor(n.startTime)])})}function i(n){if(n instanceof c&&!s){var e,t=Math.round(n.timeStamp);e=t>1e12?Date.now()-t:f.now()-t,s=!0,a("timing",["fi",t,{type:n.type,fid:e}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var o,a=n("handle"),f=n("loader"),c=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){o=new PerformanceObserver(r);try{o.observe({entryTypes:["paint"]})}catch(u){}}if("addEventListener"in document){var s=!1,p=["click","keydown","mousedown","pointerdown","touchstart"];p.forEach(function(n){document.addEventListener(n,i,!1)})}}},{}],3:[function(n,e,t){function r(n,e){if(!i)return!1;if(n!==i)return!1;if(!e)return!0;if(!o)return!1;for(var t=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],4:[function(n,e,t){function r(n,e){var t=[],r="",o=0;for(r in n)i.call(n,r)&&(t[o]=e(r,n[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],5:[function(n,e,t){function r(n,e,t){e||(e=0),"undefined"==typeof t&&(t=n?n.length:0);for(var r=-1,i=t-e||0,o=Array(i<0?0:i);++r<i;)o[r]=n[e+r];return o}e.exports=r},{}],6:[function(n,e,t){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(n,e,t){function r(){}function i(n){function e(n){return n&&n instanceof r?n:n?c(n,f,o):o()}function t(t,r,i,o){if(!d.aborted||o){n&&n(t,r,i);for(var a=e(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function l(n,e){h[n]=v(n).concat(e)}function m(n,e){var t=h[n];if(t)for(var r=0;r<t.length;r++)t[r]===e&&t.splice(r,1)}function v(n){return h[n]||[]}function g(n){return p[n]=p[n]||i(t)}function w(n,e){u(n,function(n,t){e=e||"feature",y[t]=e,e in s||(s[e]=[])})}var h={},y={},b={on:l,addEventListener:l,removeEventListener:m,emit:t,get:g,listeners:v,context:e,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var f="nr@context",c=n("gos"),u=n(4),s={},p={},d=e.exports=i();d.backlog=s},{}],gos:[function(n,e,t){function r(n,e,t){if(i.call(n,e))return n[e];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(n,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return n[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(n,e,t){function r(n,e,t,r){i.buffer([n],r),i.emit(n,e,t)}var i=n("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(n,e,t){function r(n){var e=typeof n;return!n||"object"!==e&&"function"!==e?-1:n===window?0:a(n,o,function(){return i++})}var i=1,o="nr@id",a=n("gos");e.exports=r},{}],loader:[function(n,e,t){function r(){if(!x++){var n=E.info=NREUM.info,e=l.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(n&&n.licenseKey&&n.applicationID&&e))return s.abort();u(y,function(e,t){n[e]||(n[e]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=l.createElement("script");t.src="https://"+n.agent,e.parentNode.insertBefore(t,e)}}function i(){"complete"===l.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=n("handle"),u=n(4),s=n("ee"),p=n(3),d=window,l=d.document,m="addEventListener",v="attachEvent",g=d.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:g,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1158.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=e.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};n(1),n(2),l[m]?(l[m]("DOMContentLoaded",o,!1),d[m]("load",r,!1)):(l[v]("onreadystatechange",i),d[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=n(6)},{}],"wrap-function":[function(n,e,t){function r(n){return!(n&&n instanceof Function&&n.apply&&!n[a])}var i=n("ee"),o=n(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;e.exports=function(n,e){function t(n,e,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){d([u,"",[r,a,i],f])}s(e+"start",[r,a,i],f);try{return c=n.apply(a,r)}catch(p){throw s(e+"err",[r,a,p],f),p}finally{s(e+"end",[r,a,c],f)}}return r(n)?n:(e||(e=""),nrWrapper[a]=n,p(n,nrWrapper),nrWrapper)}function u(n,e,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<e.length;c++)f=e[c],a=n[f],r(a)||(n[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||e){var o=c;c=!0;try{n.emit(t,r,i,e)}catch(a){d([a,t,r,i])}c=o}}function p(n,e){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(n);return t.forEach(function(t){Object.defineProperty(e,t,{get:function(){return n[t]},set:function(e){return n[t]=e,e}})}),e}catch(r){d([r])}for(var i in n)f.call(n,i)&&(e[i]=n[i]);return e}function d(e){try{n.emit("internal-error",e)}catch(t){}}return n||(n=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="refresh" content="1200">
+	<link rel="profile" href="https://gmpg.org/xfn/11">
+
+			
+	<!-- OneTrust Cookies Consent Notice start -->
+	<script
+		type="text/javascript"
+		src="https://cdn.cookielaw.org/consent/5d3ebc69-98ff-40fd-84ca-70940e960491/OtAutoBlock.js"
+	></script>
+
+	<script
+		src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js"
+		type="text/javascript"
+		charset="UTF-8"
+		data-domain-script="5d3ebc69-98ff-40fd-84ca-70940e960491"
+	></script>
+
+	<script type="text/javascript">
+		function OptanonWrapper() { }
+	</script>
+	<!-- OneTrust Cookies Consent Notice end -->
+		
+						<script src="https://cdn.blueconic.net/nexstar.js"></script>
+	
+	
+<!-- BoB -->
+<script async type="text/javascript" id="bob_tag_loader">
+var page_url = "https:\/\/www.conchovalleyhomepage.com\/local-news-2\/our-water-a-look-ahead-at-2020\/" || "";
+var cats = "Local,Local News,Local News,Top Headlines,Top Stories,Top Video,Traffic,Water" || "";
+var bob_kw = "Billing,Community,Concho River,Funding,Growth,Hickory Aquifer,Infrastructure,invoice cloud,Local News,Streets,Victor Z Glenn,Video,Water" || "";
+var bob_desc = "SAN ANGELO, TX &#8211; San Angelo took many bold steps in 2019, and is preparing to kick off the 2020&#8217;s with numerous important water expansion and improvement projects.\u200b &#8220;Of some things to look forward to for the utility in 2020, one is to continue the efforts that we&#8217;re making with the Concho River Project,&#8221; said [&hellip;]" || "";
+var bob_story_author = "Victor Glenn" || "";
+var cat_data = "&cats=" + encodeURIComponent(cats) + "&bob_kw=" + encodeURIComponent(bob_kw) + "&bob_desc=" + encodeURIComponent(bob_desc) + "&story_author=" + encodeURIComponent(bob_story_author) + "&page_url=" + encodeURIComponent(page_url);
+
+var bob_cb = '1';
+bob_cb = ((new Date()).getTime() + "" + Math.floor(Math.random() * 1000000)).substr(0, 16);
+(function () {
+var bob_tag = document.createElement('script');
+bob_tag.type = 'text/javascript';
+bob_tag.async = true;
+bob_tag.id = "bob_tag";
+bob_tag.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'bob.dmpxs.com/static/bob_001.js?bob_cb=' + bob_cb + cat_data;
+var bts = document.getElementsByTagName('script')[0];
+bts.parentNode.insertBefore(bob_tag, bts);
+})();
+</script>
+
+<script type="text/javascript" id="bob_003_tag_loader">
+var page_url = "https:\/\/www.conchovalleyhomepage.com\/local-news-2\/our-water-a-look-ahead-at-2020\/" || "";
+var video_asset_url = "https:\/\/nxsglobal.storage.googleapis.com\/ksan\/video\/video_studio\/2019\/12\/30\/OUR_WATER__a_look_ahead_at_2020_4208283_1200.mp4" || "";
+
+var bob_cb = '1';
+bob_cb = ((new Date()).getTime() + "" + Math.floor(Math.random() * 1000000)).substr(0, 16);
+(function() {
+var bob_tag_003 = document.createElement('script');
+bob_tag_003.type = 'text/javascript';
+bob_tag_003.id = "bob_tag_003";
+bob_tag_003.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'bob.dmpxs.com/static/bob_003.js?bob_cb=' + bob_cb + '&page_url=' + page_url  + '&vid_asset_url=' + video_asset_url;
+var bts_003 = document.getElementsByTagName('script')[0];
+bts_003.parentNode.insertBefore(bob_tag_003,bts_003);
+})();
+</script>
+
+			
+	
+				
+<!-- Index Exchange -->
+<script async src="https://js-sec.indexww.com/ht/p/184979-164251977320883.js"></script> 	
+				
+<!-- A9 APS -->
+<script type="text/javascript">
+!function(a9,a,p,s,t,A,g){if(a[a9])return;function q(c,r){a[a9]._Q.push([c,r])}a[a9]={init:function(){q("i",arguments)},fetchBids:function(){q("f",arguments)},setDisplayBids:function(){},targetingKeys:function(){return[]},_Q:[]};A=p.createElement(s);A.async=!0;A.src=t;g=p.getElementsByTagName(s)[0];g.parentNode.insertBefore(A,g)}("apstag",window,document,"script","//c.amazon-adsystem.com/aax2/apstag.js");
+
+apstag.init({"pubID":"3410","adServer":"googletag"});
+</script>
+	
+				
+<!-- Confiant ad fraud protection -->
+<script async="" src="https://confiant-integrations.global.ssl.fastly.net/Y2Nn8JmiAY8HpnF4sl5n7J71jaI/gpt_and_prebid/config.js"></script> 	
+	
+<script type="text/javascript">
+(function() {
+	var _sf_async_config = window._sf_async_config = (window._sf_async_config || {});
+	_sf_async_config.uid = "23192";
+	_sf_async_config.domain = "conchovalleyhomepage.com";
+	_sf_async_config.flickerControl = false; 	_sf_async_config.useCanonical = true;
+	_sf_async_config.useCanonicalDomain = true;
+})();
+</script>
+<script async src="//static.chartbeat.com/js/chartbeat_mab.js"></script>
+
+	
+<!-- Google Publisher Tag -->
+<script async="async" src="https://www.googletagservices.com/tag/js/gpt.js"></script>
+<script>
+var googletag = googletag || {};
+googletag.cmd = googletag.cmd || [];
+</script>
+<!-- End Google Publisher Tag -->
+
+
+	
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer',"GTM-KJJZHXD");</script>
+<!-- End Google Tag Manager -->
+
+	
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer',"GTM-KQD4ZM");</script>
+<!-- End Google Tag Manager -->
+
+	
+	<title>OUR WATER: a look ahead at 2020</title>
+<link rel='dns-prefetch' href='//s0.wp.com' />
+<link rel='dns-prefetch' href='//s7.addthis.com' />
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="ConchoValleyHomepage.com &raquo; Feed" href="https://www.conchovalleyhomepage.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="ConchoValleyHomepage.com &raquo; Comments Feed" href="https://www.conchovalleyhomepage.com/comments/feed/" />
+<script class="wp-asset-manager page_attributes" type="text/javascript">window.amScripts = window.amScripts || {}; window.amScripts["page_attributes"] = {"page_url":"https:\/\/www.conchovalleyhomepage.com\/local-news-2\/our-water-a-look-ahead-at-2020\/","page_slug":"our-water-a-look-ahead-at-2020","page_type":"story","page_category":"local_news","article_id":225470,"subpath":"\/local_news"}</script><script class="wp-asset-manager ns-ad-loader-js" type="text/javascript">!function(e){var t={};function n(o){if(t[o])return t[o].exports;var i=t[o]={i:o,l:!1,exports:{}};return e[o].call(i.exports,i,i.exports,n),i.l=!0,i.exports}n.m=e,n.c=t,n.d=function(e,t,o){n.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:o})},n.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},n.t=function(e,t){if(1&t&&(e=n(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var o=Object.create(null);if(n.r(o),Object.defineProperty(o,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var i in e)n.d(o,i,function(t){return e[t]}.bind(null,i));return o},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,"a",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p="/wp-content/themes/nexstar/client/build/",n(n.s=242)}({242:function(e,t,n){e.exports=n(243)},243:function(e,t,n){"use strict";var o=a(n(244)),i=a(n(245));function a(e){return e&&e.__esModule?e:{default:e}}var s=window.amScripts.page_attributes;window.googletag=window.googletag||{},window.googletag.cmd=googletag.cmd||[],googletag.cmd.push(function(){var e=function(e,t,n){var o=void 0;try{o=e.slot[t].apply(e.slot,n)}catch(e){o="[unknown]"}return o};googletag.pubads().addEventListener("slotRenderEnded",function(t){if(t.slot){var n=t.slot,o=t.isEmpty,i=t.size,a=n.getSlotElementId(),s="AD SLOT RENDERED {\n  containerId: "+a+",\n  isEmpty: "+o+",\n  size: "+i+",\n  adUnitPath: "+e(t,"getAdUnitPath")+",\n  position: "+e(t,"getTargeting",["pos"])+",\n}";if(window.setTimeout(function(){console.info(s)},10),a.startsWith("acm-ad-tag-adhesion")&&!o){var r=document.getElementById(a).parentNode;r.classList.remove("pre-render"),r.querySelector(".close-btn-container").addEventListener("click",function(e){e.preventDefault(),r.parentNode.remove()},!1)}if(a.startsWith("acm-ad-tag-oop")&&!o&&document.body.classList.add("has-loaded-super-billboard-ad"),a&&!o&&"function"==typeof document.getElementById(a).closest){var l=document.getElementById(a).closest(".ad-unit");l&&l.classList.add("ad-unit--is-rendered")}}})}),googletag.cmd.push(function(){googletag.pubads().enableSingleRequest(),googletag.pubads().enableAsyncRendering(),googletag.pubads().collapseEmptyDivs(),googletag.companionAds().setRefreshUnfilledSlots(!0),googletag.pubads().disableInitialLoad(),googletag.pubads().enableVideoAds(),googletag.enableServices()}),googletag.cmd.push(function(){var e=googletag.pubads();s.article_id&&e.setTargeting("pid",String(s.article_id)),s.page_type&&e.setTargeting("pagetype",s.page_type)});var r=new o.default(window.googletag,s);window.addEventListener("nsDfpSlotRendered",r.setUpSlot),(0,i.default)(function(){r.initVisibleSlots()}),window.addEventListener("nsDfpRefreshSlots",r.refreshSlots)},244:function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var o=function(){function e(e,t){for(var n=0;n<t.length;n++){var o=t[n];o.enumerable=o.enumerable||!1,o.configurable=!0,"value"in o&&(o.writable=!0),Object.defineProperty(e,o.key,o)}}return function(t,n,o){return n&&e(t.prototype,n),o&&e(t,o),t}}();var i=function(){function e(t,n){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,e),this.apstagSlots=[],this.googletag=t,this.pageAttributes=n,this.setUpSlot=this.setUpSlot.bind(this),this.refreshSlots=this.refreshSlots.bind(this)}return o(e,[{key:"setUpSlot",value:function(e){var t=this,n=e.detail.id,o=document.getElementById(n);if(o){var i=JSON.parse(o.dataset.slot);if(i&&Object.keys(i).length){var a=JSON.parse(o.dataset.unit);if(a&&Object.keys(a).length){var s=o.dataset.path;if(s){var r=JSON.parse(o.dataset.targeting);this.pushCmd(function(){var e=null;if((e=i.is_oop?t.googletag.defineOutOfPageSlot(s,n):t.googletag.defineSlot(s,i.size,n))&&(r&&Object.keys(r).forEach(function(t){e.setTargeting(t,r[t])}),i.sizes.length&&e.defineSizeMapping(i.sizes),i.is_companion&&e.addService(t.googletag.companionAds()),e.addService(t.googletag.pubads())),e){var o=[];e.getSizes?o=e.getSizes(window.innerWidth,window.innerHeight).map(function(e){return[e.getWidth(),e.getHeight()]}):i.sizes.length&&(o=Object.values(i.sizes.reduce(function(e,t){var n=e;return t[1].forEach(function(e){n[e.join(",")]=e}),n},{}))),o.length&&(o=o.filter(function(e){return!(88===e[0]&&31===e[1])})),o.length&&t.apstagSlots.push({sizes:o,slotID:e.getSlotElementId(),slotName:e.getAdUnitPath()})}})}}}}}},{key:"initVisibleSlots",value:function(){var e=this;this.pushCmd(function(){e.googletag.pubads().getSlots().forEach(function(t){e.pushCmd(function(){e.googletag.display(t.getSlotElementId())})})}),this.refreshSlots()}},{key:"refreshSlots",value:function(){var e=this;this.pushCmd(function(){e.initPrebidRequest(function(){e.googletag.pubads().refresh()})})}},{key:"initPrebidRequest",value:function(e){var t=this,n=this.constructor.apstag();n&&this.apstagSlots?n.fetchBids({slots:this.apstagSlots,timeout:2e3},function(){n.setDisplayBids(),t.pushCmd(e)}):this.pushCmd(e)}},{key:"pushCmd",value:function(e){this.googletag.cmd.push(e)}}],[{key:"apstag",value:function(){return window.apstag||null}}]),e}();t.default=i},245:function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.default=function(e){"complete"===document.readyState&&e(),document.addEventListener("DOMContentLoaded",e)}}});
+//# sourceMappingURL=adLoader.8f7662ce15504f3219c3.bundle.min.js.map</script><meta name='description' content='San Angelo took many bold steps in 2019, and is preparing to kick off the 2020&#039;s with numerous important water expansion and improvement projects.​' /><!-- WP SEO -->
+<meta name='keywords' content='video, local news, water, concho river, hickory aquifer, invoice cloud, streets, infrastructure, funding, billing, community, growth, victor z glenn' /><!-- WP SEO -->
+<meta name='google-site-verification' content='pXavqUzRuGwLKhZpWkITGBwB3wZ-tYwDBHrx9nZrMhs' /><!-- WP SEO -->
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/www.conchovalleyhomepage.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.3.2"}};
+			!function(e,a,t){var r,n,o,i,p=a.createElement("canvas"),s=p.getContext&&p.getContext("2d");function c(e,t){var a=String.fromCharCode;s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,e),0,0);var r=p.toDataURL();return s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,t),0,0),r===p.toDataURL()}function l(e){if(!s||!s.fillText)return!1;switch(s.textBaseline="top",s.font="600 32px Arial",e){case"flag":return!c([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])&&(!c([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!c([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]));case"emoji":return!c([55357,56424,55356,57342,8205,55358,56605,8205,55357,56424,55356,57340],[55357,56424,55356,57342,8203,55358,56605,8203,55357,56424,55356,57340])}return!1}function d(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(i=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},o=0;o<i.length;o++)t.supports[i[o]]=l(i[o]),t.supports.everything=t.supports.everything&&t.supports[i[o]],"flag"!==i[o]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[i[o]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(r=t.source||{}).concatemoji?d(r.concatemoji):r.wpemoji&&r.twemoji&&(d(r.twemoji),d(r.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	
+<style>
+	:root {
+		--primary_color: #7e0303;
+		--alert_banner_label_sep: '/';
+	}
+</style>
+<link rel='stylesheet' id='all-css-0' href='https://www.conchovalleyhomepage.com/wp-includes/css/dist/block-library/style.min.css?m=1576710967g' type='text/css' media='all' />
+<link crossorigin="anonymous" rel='stylesheet' id='ns-google-fonts-css'  href='https://fonts.googleapis.com/css?family=Lora%3A400%2C400i%2C700%2C700i%7CRoboto+Condensed%3A400%2C700&#038;ver=1.0' media='all' />
+<link rel='stylesheet' id='all-css-2' href='https://www.conchovalleyhomepage.com/_static/??-eJyVzMsOwiAQheEXskwol8GF8VmmMK0o0KbQ1MfXGpdu3J2c/PlgXzo/l8alQbtx5gqFn7XRCj7F4x22mAL4WmFK80BJBHKstXFBkVN2xOB0EDkW8W5O8IdHa4s+seiVtaMiY5UMKNFIq84/wbx1S9qmWCrcuS3kHx/nu4/8mi/SIDqJGvsXqaVMIQ==' type='text/css' media='all' />
+<style id='ns-article-css-inline-css'>
+.article--is-condensed .article-content { max-height: 600px; }
+</style>
+<script type='text/javascript' src='https://www.conchovalleyhomepage.com/_static/??-eJzTLy/QzcxLzilNSS3WzwKiwtLUokoopZdVrKOPT4FubmZ6UWJJql5uZh5QsX2uraGpuZm5oYGlmXkWACWxILc='></script>
+<link rel='https://api.w.org/' href='https://www.conchovalleyhomepage.com/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.conchovalleyhomepage.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://www.conchovalleyhomepage.com/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 5.3.2" />
+<link rel="canonical" href="https://www.conchovalleyhomepage.com/local-news-2/our-water-a-look-ahead-at-2020/" />
+<link rel='shortlink' href='https://www.conchovalleyhomepage.com/?p=225470' />
+<link rel="alternate" type="application/json+oembed" href="https://www.conchovalleyhomepage.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.conchovalleyhomepage.com%2Flocal-news-2%2Four-water-a-look-ahead-at-2020%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://www.conchovalleyhomepage.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.conchovalleyhomepage.com%2Flocal-news-2%2Four-water-a-look-ahead-at-2020%2F&#038;format=xml" />
+<style id="lakana-art-direction"></style>
+			<meta property="fb:pages" content="355946094777" />
+			
+<link rel='dns-prefetch' href='//v0.wordpress.com'/>
+<script type="text/javascript" src=""></script><link rel="amphtml" href="https://www.conchovalleyhomepage.com/local-news-2/our-water-a-look-ahead-at-2020/amp/">
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article" />
+<meta property="og:title" content="OUR WATER: a look ahead at 2020" />
+<meta property="og:url" content="https://www.conchovalleyhomepage.com/local-news-2/our-water-a-look-ahead-at-2020/" />
+<meta property="og:description" content="SAN ANGELO, TX &#8211; San Angelo took many bold steps in 2019, and is preparing to kick off the 2020&#8217;s with numerous important water expansion and improvement projects.​ &#8220;Of some thing…" />
+<meta property="article:published_time" content="2020-01-01T14:30:00+00:00" />
+<meta property="article:modified_time" content="2019-12-30T17:59:59+00:00" />
+<meta property="og:site_name" content="ConchoValleyHomepage.com" />
+<meta property="og:image:width" content="1280" />
+<meta property="og:image:height" content="720" />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:text:title" content="OUR WATER: a look ahead at 2020" />
+<meta name="twitter:image" content="https://www.conchovalleyhomepage.com/wp-content/uploads/sites/83/2019/12/2020article.jpg?w=640" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="og:image" content="https://www.conchovalleyhomepage.com/wp-content/uploads/sites/83/2019/12/2020article.jpg?w=1280&amp;h=720&amp;crop=1" />
+<meta property="og:image:secure_url" content="https://www.conchovalleyhomepage.com/wp-content/uploads/sites/83/2019/12/2020article.jpg?w=1280&#038;h=720&#038;crop=1" />
+<meta name="twitter:title" content="OUR WATER: a look ahead at 2020" />
+<meta name="twitter:description" content="SAN ANGELO, TX &#8211; San Angelo took many bold steps in 2019, and is preparing to kick off the 2020&#8217;s with numerous important water expansion and improvement projects.​ &#8220;Of some thing…" />
+
+<!-- End Jetpack Open Graph Tags -->
+<link rel="icon" href="https://www.conchovalleyhomepage.com/wp-content/uploads/sites/83/2019/06/cropped-CVHP-Favicon-1.jpg?w=32" sizes="32x32" />
+<link rel="icon" href="https://www.conchovalleyhomepage.com/wp-content/uploads/sites/83/2019/06/cropped-CVHP-Favicon-1.jpg?w=192" sizes="192x192" />
+<link rel="apple-touch-icon-precomposed" href="https://www.conchovalleyhomepage.com/wp-content/uploads/sites/83/2019/06/cropped-CVHP-Favicon-1.jpg?w=180" />
+<meta name="msapplication-TileImage" content="https://www.conchovalleyhomepage.com/wp-content/uploads/sites/83/2019/06/cropped-CVHP-Favicon-1.jpg?w=270" />
+</head>
+
+<body class="post-template-default single single-post postid-225470 single-format-standard wp-custom-logo">
+	
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-KJJZHXDheight="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+	
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-KQD4ZMheight="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+	<div id="page" class="site">
+		<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+
+		
+<header id="masthead" class="site-header" role="banner" data-component="siteHeader">
+	<div class="site-header__content">
+					<p class="screen-reader-text"><a href="https://www.conchovalleyhomepage.com/" rel="home">ConchoValleyHomepage.com</a></p>
+		
+		<div class="site-header__branding">
+			<div class="site-header__branding__content">
+				<div class="site-header__logo">
+					<a href="https://www.conchovalleyhomepage.com/" rel="home">
+						<img src="https://www.conchovalleyhomepage.com/wp-content/uploads/sites/83/2019/05/CVHP20Logo20Solid20White20for20FrontPageHeader_1526421073544.png_42689100_ver1.0.png" alt="Local News" />
+						<div class="site-header__logo-bg" style="background-image: url('https://www.conchovalleyhomepage.com/wp-content/uploads/sites/83/2019/05/CVHP20Logo20Solid20White20for20FrontPageHeader_1526421073544.png_42689100_ver1.0.png');"></div>
+					</a>
+				</div>
+				<div class="site-header__weather">
+											<a href="https://www.conchovalleyhomepage.com/weather/">
+							<span class="site-header__weather-region">San Angelo</span>
+							<span class="site-header__weather-forecast">
+								<span class="site-header__weather-forecast__text">46&deg;</span>
+								<figure class="site-header__weather-forecast__icon">
+									<span class="weather-icon weather-icon-sm weather-icon-light-65"></span>
+								</figure>
+							</span>
+						</a>
+									</div>
+				<div class="site-header__widget">
+					<div class="site-header__sponsor">
+						<aside class="ad-unit ad-unit--microbar ad-unit--microbar--header">
+															<span class="ad_unit__label">Sponsored By</span>
+														<div class="ad-unit__content">
+								  <div   id="acm-ad-tag-header-microbar-header-microbar"   data-slot='{"pos":"header-microbar","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[88,31],"sizes":[[[900,0],[[88,31]]],[[0,0],[]]],"amp_multi_size":"88x31","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"atf"}'   data-unit='{"tag":"header-microbar","tag_id":"header-microbar","dfp_id":"5678","tag_name":"nx.klst","ad_disabled":"0"}'   data-targeting='{"pos":"header-microbar","fold":"atf","category":"local_news","kw":"our-water-a-look-ahead-at-2020"}'   data-path='/5678/nx.klst/local_news'  ></div>  <script>  (function () {   try {    var event = new CustomEvent(     "nsDfpSlotRendered",     {      detail: {       id: 'acm-ad-tag-header-microbar-header-microbar'      }     }    );     window.dispatchEvent(event);   } catch (err) {}  })();  </script>  							</div>
+						</aside>
+
+					</div>
+					<button class="site-header__toggle" aria-controls="supernav" aria-expanded="false">
+						<span class="screen-reader-text">Toggle Menu</span>
+						<span class="icon icon--navicon">
+							
+<svg aria-hidden="true" tabindex="-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.969 12.063">
+	<title>Open Navigation</title>
+	<path fill="#fff" d="M.793 1.556h18.363a.778.778 0 1 0 0-1.555H.793a.854.854 0 0 0-.809.778.73.73 0 0 0 .809.777zm18.363 3.695H.793a.778.778 0 1 0 0 1.555h18.363a.778.778 0 1 0 0-1.555zm0 5.25H.793a.779.779 0 1 0 0 1.556h18.363a.779.779 0 1 0 0-1.557z" />
+</svg>
+						</span>
+						<span class="icon icon--close">
+							
+<svg aria-hidden="true" tabindex="-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16.85 16.875">
+	<title>Close Navigation</title>
+	<path fill="#fff" d="M9.65 8.454l6.88-7.063a.809.809 0 0 0 0-1.15.782.782 0 0 0-1.14 0L8.52 7.305 1.37.241a.782.782 0 0 0-1.14 0 .809.809 0 0 0 0 1.15l7.15 7.063-7.15 7.063a.809.809 0 0 0 0 1.15.824.824 0 0 0 .6.219.787.787 0 0 0 .59-.219l7.15-7.063 6.87 7.063a.824.824 0 0 0 .6.219.619.619 0 0 0 .54-.219.792.792 0 0 0 0-1.15z" />
+</svg>
+						</span>
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<nav id="siteNavigation" class="site-header__navigation">
+			<div class="site-header__search-full">
+				
+<form role="search" class="site-header__search-form" action="https://www.conchovalleyhomepage.com/">
+	<span class="screen-reader-text">Search</span>
+	<input type="search" name="s" placeholder="Site Search..." />
+	<input type="submit" name="submit" value="" />
+</form>
+			</div>
+
+			<div class="site-header__navigation__content">
+				<h2 class="screen-reader-text">Primary Menu</h2>
+
+
+				<ul id="supernav" class="menu">
+	<li id="menu-item-173132" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-173132"><a href="https://www.conchovalleyhomepage.com/video/"><span style="color:orangered">LIVE</span> / Video</a>
+<div class="dropnav dropnav--1-col">
+	<div class="dropnav__section dropnav__section--sub-menu">
+		<ul class="sub-menu" data-columns="1">
+	<li id="menu-item-204109" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-204109"><a href="https://www.conchovalleyhomepage.com/live/">Live</a></li>
+	<li id="menu-item-212716" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-212716"><a href="https://www.conchovalleyhomepage.com/video/">Latest Video</a></li>
+</ul>
+</div></div></li>
+<li id="menu-item-2460" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-has-articles menu-item-2460"><a href="https://www.conchovalleyhomepage.com/news/">News</a>
+<div class="dropnav dropnav--4-col dropnav--full-width">
+	<div class="dropnav__section dropnav__section--sub-menu dropnav__section--autofill">
+		<ul class="sub-menu" data-columns="3">
+	<li id="menu-item-218115" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-218115"><a href="https://www.conchovalleyhomepage.com/remarkable-women/">Remarkable Women</a></li>
+	<li id="menu-item-191365" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-191365"><a href="https://www.conchovalleyhomepage.com/your-local-election-hq/">Your Local Election HQ</a></li>
+	<li id="menu-item-199601" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-199601"><a href="https://www.conchovalleyhomepage.com/home-for-holidays/">Home for the Holidays</a></li>
+	<li id="menu-item-2461" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2461"><a href="https://www.conchovalleyhomepage.com/news/local-news/">Local News</a></li>
+	<li id="menu-item-200240" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-200240"><a href="https://www.conchovalleyhomepage.com/lone-star-nye-2020/">Lone Star NYE 2020</a></li>
+	<li id="menu-item-2525" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2525"><a href="https://www.conchovalleyhomepage.com/crime/">Crime</a></li>
+	<li id="menu-item-2526" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2526"><a href="https://www.conchovalleyhomepage.com/crime/jail-logs/">Jail Logs</a></li>
+	<li id="menu-item-2519" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2519"><a href="https://www.conchovalleyhomepage.com/water/">Our Water</a></li>
+	<li id="menu-item-2512" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2512"><a href="https://www.conchovalleyhomepage.com/concho-valley-live/">Concho Valley Live</a></li>
+	<li id="menu-item-178983" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-178983"><a href="https://www.conchovalleyhomepage.com/news/veterans-voices/">Veterans Voices</a></li>
+	<li id="menu-item-170127" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-170127"><a href="https://www.conchovalleyhomepage.com/hispanic-heritage-month/">Hispanic Heritage Month</a></li>
+	<li id="menu-item-164929" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-164929"><a href="https://www.borderreport.com/">BorderReport.com</a></li>
+	<li id="menu-item-2477" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2477"><a href="https://www.conchovalleyhomepage.com/news/news-connection/">News Connection</a></li>
+	<li id="menu-item-163682" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-163682"><a href="https://www.conchovalleyhomepage.com/news/west-texas-strong/">West Texas Strong</a></li>
+	<li id="menu-item-2509" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2509"><a href="https://www.conchovalleyhomepage.com/news/state-regional-news/">State &#038; Regional</a></li>
+	<li id="menu-item-59729" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-59729"><a href="https://www.conchovalleyhomepage.com/news/texas-politics/">Texas Politics</a></li>
+	<li id="menu-item-2489" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2489"><a href="https://www.conchovalleyhomepage.com/news/national-news/">National News</a></li>
+	<li id="menu-item-59947" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-59947"><a href="https://www.conchovalleyhomepage.com/washington/washington-dc/">CVHP D.C. Bureau</a></li>
+	<li id="menu-item-2506" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2506"><a href="https://www.conchovalleyhomepage.com/news/business/">Business</a></li>
+	<li id="menu-item-3783" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3783"><a href="https://www.conchovalleyhomepage.com/ag-news/">AG News</a></li>
+</ul>
+</div><div class="dropnav__section dropnav__section--article-list dropnav__section--quarter"><div class="article-list article-list--bulleted"><h3 class="article-list__heading">Top Stories</h3><div class="article-list__content"><article class="article-list__article">
+<div
+	class="article-list__article-text"
+	data-article-list-id=""
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[]"
+>
+			<h4 class="article-list__article-title">
+							<a
+					href="https://www.conchovalleyhomepage.com/news/democrat-julian-castro-drops-out-of-2020-presidential-race/"
+									>
+			
+				Democrat Julián Castro drops out of 2020 presidential race
+							</a>
+					</h4>
+	
+	
+	
+	
+	</div>
+
+</article><article class="article-list__article">
+<div
+	class="article-list__article-text"
+	data-article-list-id=""
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[]"
+>
+			<h4 class="article-list__article-title">
+							<a
+					href="https://www.conchovalleyhomepage.com/news/sanders-raises-impressive-34-5m-in-2019s-final-quarter/"
+									>
+			
+				Sanders raises impressive $34.5M in 2019&#8217;s final quarter
+							</a>
+					</h4>
+	
+	
+	
+	
+	</div>
+
+</article><article class="article-list__article">
+<div
+	class="article-list__article-text"
+	data-article-list-id=""
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[]"
+>
+			<h4 class="article-list__article-title">
+							<a
+					href="https://www.conchovalleyhomepage.com/crime/jail-logs/jail-log-january-1-2-2020/"
+									>
+			
+				Jail Log: January 1-2, 2020
+							</a>
+					</h4>
+	
+	
+	
+	
+	</div>
+
+</article><article class="article-list__article">
+<div
+	class="article-list__article-text"
+	data-article-list-id=""
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[]"
+>
+			<h4 class="article-list__article-title">
+							<a
+					href="https://www.conchovalleyhomepage.com/news/poll-white-evangelicals-distinct-on-abortion-lgbt-policy/"
+									>
+			
+				Poll: White evangelicals distinct on abortion, LGBT policy
+							</a>
+					</h4>
+	
+	
+	
+	
+	</div>
+
+</article></div></div></div></div></li>
+<li id="menu-item-2389" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-2389"><a href="https://www.conchovalleyhomepage.com/weather/">Weather</a>
+<div class="dropnav dropnav--2-col">
+	<div class="dropnav__section dropnav__section--sub-menu">
+		<ul class="sub-menu" data-columns="2">
+	<li id="menu-item-66788" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-66788"><a href="https://www.conchovalleyhomepage.com/weather/interactive-radar/">Interactive Radar</a></li>
+	<li id="menu-item-66786" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-66786"><a href="https://www.conchovalleyhomepage.com/weather/">Forecast/Map Center</a></li>
+	<li id="menu-item-65960" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-65960"><a href="https://www.conchovalleyhomepage.com/weather/submit-your-weather-photos/">Submit your weather photos</a></li>
+	<li id="menu-item-2464" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2464"><a href="https://www.conchovalleyhomepage.com/weather/klst-weather/">KLST Weather</a></li>
+	<li id="menu-item-2469" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2469"><a href="https://www.conchovalleyhomepage.com/weather/ksan-weather/">KSAN Weather</a></li>
+	<li id="menu-item-161095" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-161095"><a href="https://www.conchovalleyhomepage.com/tracking-the-tropics/">Tracking the Tropics</a></li>
+	<li id="menu-item-2458" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2458"><a href="https://www.conchovalleyhomepage.com/weather/skylive-cactus-west/">Skylive Cactus West</a></li>
+	<li id="menu-item-2501" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2501"><a href="https://www.conchovalleyhomepage.com/weather/skylive-cactus-north/">Skylive Cactus North</a></li>
+	<li id="menu-item-2497" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2497"><a href="https://www.conchovalleyhomepage.com/weather/skylive-cactus-east/">Skylive Cactus East</a></li>
+	<li id="menu-item-2515" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2515"><a href="https://www.conchovalleyhomepage.com/weather/skylive-cactus-south/">Skylive Cactus South</a></li>
+	<li id="menu-item-2531" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2531"><a href="https://www.conchovalleyhomepage.com/severe-weather-special-2019/">Severe Weather Special 2019</a></li>
+	<li id="menu-item-164728" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-164728"><a href="https://www.conchovalleyhomepage.com/weather/closings/">Closings</a></li>
+	<li id="menu-item-164727" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-164727"><a href="https://www.conchovalleyhomepage.com/closings-login/">Closings Login</a></li>
+</ul>
+</div></div></li>
+<li id="menu-item-2462" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-has-articles menu-item-2462"><a href="https://www.conchovalleyhomepage.com/sports/">Sports</a>
+<div class="dropnav dropnav--4-col dropnav--full-width">
+	<div class="dropnav__section dropnav__section--sub-menu dropnav__section--half">
+		<ul class="sub-menu" data-columns="2">
+	<li id="menu-item-2465" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2465"><a href="https://www.conchovalleyhomepage.com/sports/local-sports/">Local Sports</a></li>
+	<li id="menu-item-221217" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-221217"><a href="https://www.conchovalleyhomepage.com/news/rodeo/">Rodeo</a></li>
+	<li id="menu-item-134531" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-134531"><a href="https://www.conchovalleyhomepage.com/cv-crossover/">CV Crossover</a></li>
+	<li id="menu-item-220133" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-220133"><a href="https://www.conchovalleyhomepage.com/japan-2020/">Japan 2020</a></li>
+	<li id="menu-item-164051" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-164051"><a href="https://www.conchovalleyhomepage.com/sports/the-big-game/">The Big Game</a></li>
+	<li id="menu-item-117243" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-117243"><a href="https://www.conchovalleyhomepage.com/sports/silver-star-nation/">Silver Star Nation</a></li>
+	<li id="menu-item-2518" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2518"><a href="https://www.conchovalleyhomepage.com/locker-room/">Locker Room</a></li>
+	<li id="menu-item-59914" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-59914"><a href="https://www.conchovalleyhomepage.com/inside-the-game/">Inside the Game</a></li>
+	<li id="menu-item-2510" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2510"><a href="https://www.conchovalleyhomepage.com/season-pass/">Season Pass</a></li>
+	<li id="menu-item-166684" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-166684"><a href="https://www.conchovalleyhomepage.com/sports/texas-online-overtime/">Texas Online Overtime</a></li>
+	<li id="menu-item-2466" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2466"><a href="https://www.conchovalleyhomepage.com/sports/big-race-indy/">Big Race &#8211; Indy</a></li>
+</ul>
+</div><div class="dropnav__section dropnav__section--article-list dropnav__section--quarter"><div class="article-list article-list--top-story"><h3 class="article-list__heading">Top Stories</h3><div class="article-list__content"><article class="article-list__article article-list__article--is-stacked article-list__article--has-thumb">
+<div
+	class="article-list__article-text"
+	data-article-list-id=""
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[]"
+>
+			<h4 class="article-list__article-title">
+							<a
+					href="https://www.conchovalleyhomepage.com/news/former-nba-commissioner-david-stern-dies-at-77/"
+									>
+			
+				Former NBA commissioner David Stern dies at 77
+							</a>
+					</h4>
+	
+	
+	
+	
+	</div>
+
+	<figure class="article-list__article-thumb">
+					<a
+				href="https://www.conchovalleyhomepage.com/news/former-nba-commissioner-david-stern-dies-at-77/"
+							>
+		
+		<div class="article-list__article-image-wrapper">
+			
+<div class="image-wrapper landscape">
+	<img
+		src="https://i1.wp.com/www.conchovalleyhomepage.com/wp-content/uploads/sites/83/2020/01/AP19347137981963.jpg?w=2000&#038;ssl=1"
+		alt=""
+		srcset=""
+		sizes=""
+	/>
+</div>
+
+					</div>
+
+					</a>
+			</figure>
+	</article></div></div></div><div class="dropnav__section dropnav__section--article-list dropnav__section--quarter"><div class="article-list article-list--bulleted"><h3 class="article-list__heading article-list__heading--hidden">Top Stories</h3><div class="article-list__content"><article class="article-list__article">
+<div
+	class="article-list__article-text"
+	data-article-list-id=""
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[]"
+>
+			<h4 class="article-list__article-title">
+							<a
+					href="https://www.conchovalleyhomepage.com/news/dallas-becomes-first-southern-city-to-host-nhl-winter-classic-draws-85k-at-cotton-bowl/"
+									>
+			
+				Dallas becomes first southern city to host NHL Winter Classic, draws 85k at Cotton Bowl
+							</a>
+					</h4>
+	
+	
+	
+	
+	</div>
+
+</article><article class="article-list__article">
+<div
+	class="article-list__article-text"
+	data-article-list-id=""
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[]"
+>
+			<h4 class="article-list__article-title">
+							<a
+					href="https://www.conchovalleyhomepage.com/sports/local-sports/highlights-central-jv-steamrolls-eden-to-win-concho-classic/"
+									>
+			
+				HIGHLIGHTS: Central JV steamrolls Eden to win Concho Classic
+							</a>
+					</h4>
+	
+	
+	
+	
+	</div>
+
+</article><article class="article-list__article">
+<div
+	class="article-list__article-text"
+	data-article-list-id=""
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[]"
+>
+			<h4 class="article-list__article-title">
+							<a
+					href="https://www.conchovalleyhomepage.com/local-sports-2/highlights-eden-gets-revenge-against-robert-lee-crowned-concho-classic-champions/"
+									>
+			
+				HIGHLIGHTS: Eden gets revenge against Robert Lee, crowned Concho Classic champions
+							</a>
+					</h4>
+	
+	
+	
+	
+	</div>
+
+</article><article class="article-list__article">
+<div
+	class="article-list__article-text"
+	data-article-list-id=""
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[]"
+>
+			<h4 class="article-list__article-title">
+							<a
+					href="https://www.conchovalleyhomepage.com/local-sports-2/central-lake-view-soccer-finish-preseason/"
+									>
+			
+				Central, Lake View soccer finish preseason
+							</a>
+					</h4>
+	
+	
+	
+	
+	</div>
+
+</article></div></div></div></div></li>
+<li id="menu-item-2362" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-2362"><a href="https://www.conchovalleyhomepage.com/marketplace/concho-valley-experts/">Local Businesses</a>
+<div class="dropnav dropnav--1-col">
+	<div class="dropnav__section dropnav__section--sub-menu">
+		<ul class="sub-menu" data-columns="1">
+	<li id="menu-item-71986" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-71986"><a href="https://www.conchovalleyhomepage.com/marketplace/concho-valley-experts/">Concho Valley Experts</a></li>
+	<li id="menu-item-69961" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-69961"><a href="https://www.conchovalleyhomepage.com/ww-afco-steel-hirschfeld-division/">W&#038;W AFCO Steel–Hirschfeld Division</a></li>
+</ul>
+</div></div></li>
+<li id="menu-item-2484" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-has-articles menu-item-2484"><a href="https://www.conchovalleyhomepage.com/entertainment-news/">Entertainment</a>
+<div class="dropnav dropnav--4-col dropnav--full-width">
+	<div class="dropnav__section dropnav__section--sub-menu dropnav__section--half">
+		<ul class="sub-menu" data-columns="2">
+	<li id="menu-item-218572" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-218572"><a href="https://www.conchovalleyhomepage.com/contests/nominate-a-remarkable-woman-in-your-life/#//">Nominate a Remarkable Woman</a></li>
+	<li id="menu-item-146302" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-146302"><a href="https://www.conchovalleyhomepage.com/contests/">Contests</a></li>
+	<li id="menu-item-221912" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-221912"><a href="https://www.conchovalleyhomepage.com/texas-lottery/">Texas Lottery</a></li>
+	<li id="menu-item-221913" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-221913"><a href="https://www.conchovalleyhomepage.com/horoscopes/">Horoscopes</a></li>
+	<li id="menu-item-154986" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-154986"><a href="https://cvhpprofootball.upickem.net">Pro Football Challenge</a></li>
+	<li id="menu-item-181821" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-181821"><a href="https://www.conchovalleyhomepage.com/cma-awards/">CMA Awards</a></li>
+	<li id="menu-item-70298" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-70298"><a href="https://www.conchovalleyhomepage.com/entertainment-news/">Entertainment</a></li>
+	<li id="menu-item-59665" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-59665"><a href="https://www.conchovalleyhomepage.com/tv-schedule/">TV Schedule</a></li>
+	<li id="menu-item-59933" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-59933"><a href="https://www.conchovalleyhomepage.com/concho-valley-live/">Concho Valley Live</a></li>
+</ul>
+</div><div class="dropnav__section dropnav__section--article-list dropnav__section--quarter"><div class="article-list article-list--top-story"><h3 class="article-list__heading">Top Stories</h3><div class="article-list__content"><article class="article-list__article article-list__article--is-stacked article-list__article--has-thumb">
+<div
+	class="article-list__article-text"
+	data-article-list-id=""
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[]"
+>
+			<h4 class="article-list__article-title">
+							<a
+					href="https://www.conchovalleyhomepage.com/entertainment-news/golden-globes-will-serve-plant-based-meal-at-awards-ceremony/"
+									>
+			
+				Golden Globes will serve plant-based meal at awards ceremony
+							</a>
+					</h4>
+	
+	
+	
+	
+	</div>
+
+	<figure class="article-list__article-thumb">
+					<a
+				href="https://www.conchovalleyhomepage.com/entertainment-news/golden-globes-will-serve-plant-based-meal-at-awards-ceremony/"
+							>
+		
+		<div class="article-list__article-image-wrapper">
+			
+<div class="image-wrapper landscape">
+	<img
+		src="https://i2.wp.com/www.conchovalleyhomepage.com/wp-content/uploads/sites/83/2020/01/19dffb73020848938e8721fc0ecb2e48.jpg?w=2000&#038;ssl=1"
+		alt="Lorenzo Soria"
+		srcset=""
+		sizes=""
+	/>
+</div>
+
+					</div>
+
+					</a>
+			</figure>
+	</article></div></div></div><div class="dropnav__section dropnav__section--article-list dropnav__section--quarter"><div class="article-list article-list--bulleted"><h3 class="article-list__heading article-list__heading--hidden">Top Stories</h3><div class="article-list__content"><article class="article-list__article">
+<div
+	class="article-list__article-text"
+	data-article-list-id=""
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[]"
+>
+			<h4 class="article-list__article-title">
+							<a
+					href="https://www.conchovalleyhomepage.com/entertainment-news/charlize-theron-daniel-craig-among-golden-globe-presenters/"
+									>
+			
+				Charlize Theron, Daniel Craig among Golden Globe presenters
+							</a>
+					</h4>
+	
+	
+	
+	
+	</div>
+
+</article><article class="article-list__article">
+<div
+	class="article-list__article-text"
+	data-article-list-id=""
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[]"
+>
+			<h4 class="article-list__article-title">
+							<a
+					href="https://www.conchovalleyhomepage.com/entertainment-news/bobbi-kristina-browns-ex-partner-nick-gordon-dies-at-30/"
+									>
+			
+				Bobbi Kristina Brown&#8217;s ex-partner Nick Gordon dies at 30
+							</a>
+					</h4>
+	
+	
+	
+	
+	</div>
+
+</article><article class="article-list__article">
+<div
+	class="article-list__article-text"
+	data-article-list-id=""
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[]"
+>
+			<h4 class="article-list__article-title">
+							<a
+					href="https://www.conchovalleyhomepage.com/entertainment-news/captain-america-actress-charged-with-killing-mom-in-kansas/"
+									>
+			
+				`Captain America&#8217; actress charged with killing mom in Kansas
+							</a>
+					</h4>
+	
+	
+	
+	
+	</div>
+
+</article><article class="article-list__article">
+<div
+	class="article-list__article-text"
+	data-article-list-id=""
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[]"
+>
+			<h4 class="article-list__article-title">
+							<a
+					href="https://www.conchovalleyhomepage.com/news/live-stream/watch-live-131st-rose-parade-a-new-years-day-tradition/"
+									>
+			
+				Watch Live: 131st Rose Parade, a New Year&#8217;s Day Tradition
+							</a>
+					</h4>
+	
+	
+	
+	
+	</div>
+
+</article></div></div></div></div></li>
+<li id="menu-item-2488" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-has-articles menu-item-2488"><a href="https://www.conchovalleyhomepage.com/community/">Community</a>
+<div class="dropnav dropnav--4-col dropnav--full-width">
+	<div class="dropnav__section dropnav__section--sub-menu dropnav__section--half">
+		<ul class="sub-menu" data-columns="2">
+	<li id="menu-item-211468" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-211468"><a href="https://www.conchovalleyhomepage.com/beyond-borders/">Beyond Borders</a></li>
+	<li id="menu-item-59481" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-59481"><a href="https://www.conchovalleyhomepage.com/teacher-of-the-week/">Teacher of the Week</a></li>
+	<li id="menu-item-59001" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-59001"><a href="https://www.conchovalleyhomepage.com/birthday-greetings/">Birthday Greetings</a></li>
+	<li id="menu-item-199600" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-199600"><a href="https://www.conchovalleyhomepage.com/home-for-holidays/">Home for the Holidays</a></li>
+	<li id="menu-item-214186" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-214186"><a href="https://www.conchovalleyhomepage.com/ksan-stadium-park-gift-guide-2019/">KSAN Stadium Park Gift Guide 2019</a></li>
+	<li id="menu-item-193451" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-193451"><a href="https://www.conchovalleyhomepage.com/submit-your-display-31-nights-of-lights/">31 Nights of Lights….Submit your display!</a></li>
+	<li id="menu-item-200239" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-200239"><a href="https://www.conchovalleyhomepage.com/lone-star-nye-2020/">Lone Star NYE 2020</a></li>
+	<li id="menu-item-70000" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-70000"><a href="https://www.conchovalleyhomepage.com/clear-the-shelters/">Clear the Shelters</a></li>
+	<li id="menu-item-2511" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2511"><a href="https://www.conchovalleyhomepage.com/community/events/">Events</a></li>
+	<li id="menu-item-69967" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-69967"><a href="https://www.conchovalleyhomepage.com/saisd-graduation/">SAISD Graduations – replay</a></li>
+</ul>
+</div><div class="dropnav__section dropnav__section--article-list dropnav__section--quarter"><div class="article-list article-list--top-story"><h3 class="article-list__heading">Top Stories</h3><div class="article-list__content"><article class="article-list__article article-list__article--is-stacked article-list__article--has-thumb">
+<div
+	class="article-list__article-text"
+	data-article-list-id=""
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[]"
+>
+			<h4 class="article-list__article-title">
+							<a
+					href="https://www.conchovalleyhomepage.com/community/community-events/3rd-annual-pearl-fest-returns-to-san-angelo-in-january/"
+									>
+			
+				3rd annual Pearl Fest returns to San Angelo in January
+							</a>
+					</h4>
+	
+	
+	
+	
+	</div>
+
+	<figure class="article-list__article-thumb">
+					<a
+				href="https://www.conchovalleyhomepage.com/community/community-events/3rd-annual-pearl-fest-returns-to-san-angelo-in-january/"
+							>
+		
+		<div class="article-list__article-image-wrapper">
+			
+<div class="image-wrapper landscape">
+	<img
+		src="https://i1.wp.com/www.conchovalleyhomepage.com/wp-content/uploads/sites/83/2019/12/pearl-fest.jpeg?w=2000&#038;ssl=1"
+		alt=""
+		srcset=""
+		sizes=""
+	/>
+</div>
+
+					</div>
+
+					</a>
+			</figure>
+	</article></div></div></div><div class="dropnav__section dropnav__section--article-list dropnav__section--quarter"><div class="article-list article-list--bulleted"><h3 class="article-list__heading article-list__heading--hidden">Top Stories</h3><div class="article-list__content"><article class="article-list__article">
+<div
+	class="article-list__article-text"
+	data-article-list-id=""
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[]"
+>
+			<h4 class="article-list__article-title">
+							<a
+					href="https://www.conchovalleyhomepage.com/news/top-stories/hon-marilyn-aboussie-board-chair-of-the-san-angelo-health-foundation-announces-retirement-of-president-tom-early/"
+									>
+			
+				Hon. Marilyn Aboussie, board chair of the San Angelo Health Foundation announces retirement of  president Tom Early
+							</a>
+					</h4>
+	
+	
+	
+	
+	</div>
+
+</article><article class="article-list__article">
+<div
+	class="article-list__article-text"
+	data-article-list-id=""
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[]"
+>
+			<h4 class="article-list__article-title">
+							<a
+					href="https://www.conchovalleyhomepage.com/news/top-stories/blood-drive-4/"
+									>
+			
+				Blood drive
+							</a>
+					</h4>
+	
+	
+	
+	
+	</div>
+
+</article></div></div></div></div></li>
+<li id="menu-item-59079" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-59079"><a href="https://www.conchovalleyhomepage.com/lifestyle/">Lifestyle</a>
+<div class="dropnav dropnav--1-col">
+	<div class="dropnav__section dropnav__section--sub-menu">
+		<ul class="sub-menu" data-columns="1">
+	<li id="menu-item-218114" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-218114"><a href="https://www.conchovalleyhomepage.com/remarkable-women/">Remarkable Women</a></li>
+	<li id="menu-item-2508" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2508"><a href="https://www.conchovalleyhomepage.com/news/health-news/">Health News</a></li>
+	<li id="menu-item-69969" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-69969"><a href="https://www.conchovalleyhomepage.com/health-resource-center/">Health Resource Center</a></li>
+	<li id="menu-item-66793" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-66793"><a href="https://www.conchovalleyhomepage.com/shannon-health-beat/">Health Beat</a></li>
+	<li id="menu-item-2487" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2487"><a href="https://www.conchovalleyhomepage.com/savor/">Savor</a></li>
+	<li id="menu-item-2548" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2548"><a href="https://www.conchovalleyhomepage.com/financial-services-center/">Financial Services Center</a></li>
+	<li id="menu-item-2490" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2490"><a href="https://www.conchovalleyhomepage.com/news/education/">Education</a></li>
+</ul>
+</div></div></li>
+<li id="menu-item-2534" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-2534"><a href="https://www.conchovalleyhomepage.com/about-us/">About Us</a>
+<div class="dropnav dropnav--2-col">
+	<div class="dropnav__section dropnav__section--sub-menu">
+		<ul class="sub-menu" data-columns="2">
+	<li id="menu-item-59657" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-59657"><a href="https://www.conchovalleyhomepage.com/tv-schedule/">TV Schedule</a></li>
+	<li id="menu-item-2535" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2535"><a href="https://www.conchovalleyhomepage.com/contact-us/">Contact Us</a></li>
+	<li id="menu-item-173087" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-173087"><a href="https://nexstar.wd5.myworkdayjobs.com/nexstar/">Work for Us</a></li>
+	<li id="menu-item-75724" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75724"><a href="https://www.conchovalleyhomepage.com/sign-up-for-email/">Sign Up for Email</a></li>
+	<li id="menu-item-59688" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-59688"><a href="https://www.conchovalleyhomepage.com/marketplace/expert/digital-marketing-services/">Digital Marketing Services</a></li>
+	<li id="menu-item-59145" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-59145"><a href="https://www.conchovalleyhomepage.com/meet-the-klst-team/">KLST – Meet the team</a></li>
+	<li id="menu-item-59204" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-59204"><a href="https://www.conchovalleyhomepage.com/meet-the-ksan-team/">KSAN – Meet the team</a></li>
+	<li id="menu-item-2536" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-privacy-policy menu-item-2536"><a href="https://www.conchovalleyhomepage.com/privacy-policy/">Privacy Policy</a></li>
+	<li id="menu-item-2537" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2537"><a href="https://www.conchovalleyhomepage.com/terms-of-use/">Terms of Use</a></li>
+</ul>
+</div></div></li>
+</ul>
+
+				<div class="site-header__search-drop">
+					<a class="site-header__search-drop__toggle" href="#">
+						<span class="screen-reader-text">Search</span>
+						<span class="icon">
+							
+<svg  aria-hidden="true" tabindex="-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 17">
+	<title>Search</title>
+	<path d="M15.72 15.4l-3.75-3.8a7 7 0 0 0 1.72-4.612 6.851 6.851 0 1 0-6.85 6.98 6.713 6.713 0 0 0 3.72-1.127l3.85 3.9a.9.9 0 0 0 .65.276.92.92 0 0 0 .66-.276.965.965 0 0 0 0-1.341zM1.85 6.984a4.991 4.991 0 1 1 4.99 5.087 5.036 5.036 0 0 1-4.99-5.09z" />
+</svg>
+						</span>
+					</a>
+					
+<form role="search" class="site-header__search-form" action="https://www.conchovalleyhomepage.com/">
+	<span class="screen-reader-text">Search</span>
+	<input type="search" name="s" placeholder="What are you looking for?" />
+	<input type="submit" name="submit" value="Search" />
+</form>
+				</div>
+			</div>
+		</nav>
+	</div>
+</header>
+
+		<div class="site-content-wrapper">
+			
+<div class="alert-banners js-alert-banners has-messages">
+	
+	<div class="weather-alerts" data-react-component="WeatherAlerts"></div>
+</div>
+
+
+			
+<div id="content" class="site-content">
+	<aside class="ad-unit ad-unit--leaderboard">
+		<div class="ad-unit__content">
+			  <div   id="acm-ad-tag-billboard1-billboard1"   data-slot='{"pos":"billboard1","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[320,50],"sizes":[[[1280,0],[[728,90],[970,250],[970,90],[970,30]]],[[1024,0],[[728,90],[970,250],[970,90],[970,30]]],[[768,0],[[728,90]]],[[641,0],[[320,50]]],[[0,0],[[320,50]]]],"amp_multi_size":"320x50","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"atf"}'   data-unit='{"tag":"billboard1","tag_id":"billboard1","dfp_id":"5678","tag_name":"nx.klst","ad_disabled":"0"}'   data-targeting='{"pos":"billboard1","fold":"atf","category":"local_news","kw":"our-water-a-look-ahead-at-2020"}'   data-path='/5678/nx.klst/local_news'  ></div>  <script>  (function () {   try {    var event = new CustomEvent(     "nsDfpSlotRendered",     {      detail: {       id: 'acm-ad-tag-billboard1-billboard1'      }     }    );     window.dispatchEvent(event);   } catch (err) {}  })();  </script>  		</div>
+	</aside>
+
+	
+	
+	<div class="site-content__layout site-content__layout--has-sidebar">
+		
+		
+		
+		<div id="primary" class="content-area">
+			<main id="main" class="site-main">
+
+				
+<article class="article post-225470 post type-post status-publish format-standard has-post-thumbnail hentry category-local category-local-news category-local-news-2 category-top-headlines category-top-stories category-top-video category-traffic category-water tag-billing tag-community tag-concho-river tag-funding tag-growth tag-hickory-aquifer tag-infrastructure tag-invoice-cloud tag-local-news tag-streets tag-victor-z-glenn tag-video tag-water" data-component="article">
+	
+<header class="article-header">
+	<h1 class="article-title">
+		OUR WATER: a look ahead at 2020	</h1>
+
+			<div class="article-eyebrow">
+			<a href="https://www.conchovalleyhomepage.com/local-news-2/">Local News</a>
+		</div>
+	
+			<div class="article-lead-text">
+			<p>Several key projects include water source expansion and road work</p>
+		</div>
+	
+	<div class="article-meta">
+					<p>by: <a href="https://www.conchovalleyhomepage.com/author/victor-glenn/" title="Posts by Victor Glenn" class="author url fn" rel="author">Victor Glenn</a></p>
+		
+					Posted: <time datetime="2020-01-01T08:30:00-06:00">Jan 1, 2020 / 08:30 AM CST</time>		
+					<span class="article-meta--sep"> / </span>Updated: <time datetime="2019-12-30T11:59:59-06:00">Dec 30, 2019 / 11:59 AM CST</time>			</div><!-- .article-meta -->
+
+			<figure class="article-featured-media">
+			<div class="media-wrapper">
+				<div id="p8"></div><script data-anvato-params type="application/json">{"mcp":"LIN","width":"100%","height":"100%","video":"4208283","autoplay":true,"pInstance":"p8","plugins":{"comscore":{"clientId":"6036439","c3":"https://www.conchovalleyhomepage.com/","script":"//w3.cdn.anvato.net/player/prod/v3/plugins/comscore/comscoreplugin.min.js","useDerivedMetadata":true,"mapping":{"video":{"ns_st_st":"klst","ns_st_pu":"Nexstar","c3":"klst","ns_st_ge":"News,Local,News,Video"},"ad":{"ns_st_st":"klst","ns_st_pu":"Nexstar","c3":"klst","ns_st_ge":"News,Local,News,Video"}}},"dfp":{"adTagUrl":"https://pubads.g.doubleclick.net/gampad/ads?sz=1x1000&iu=/5678/nx.klst/local_news&impl=s&gdfp_req=1&env=vp&output=vmap&unviewed_position_start=1&vid=short_onecue&cmsid=1234&url=https://www.conchovalleyhomepage.com/local-news-2/our-water-a-look-ahead-at-2020/&ciu_szs=728x90,300x250&ad_rule=1&cust_params=vid%3D4208283%26cmsid%3D225470%26pid%3D225470%26vidcat%3D/local_news%26bob_ck%3D[bob_ck_val]%26description_url%3Dhttps://www.conchovalleyhomepage.com/local-news-2/our-water-a-look-ahead-at-2020/%26correlator%3D1577975954.7504%26d_code%3Dna003"}},"nxs":{"mp4Url":"https://nxsglobal.storage.googleapis.com/ksan/video/video_studio/2019/12/30/OUR_WATER__a_look_ahead_at_2020_4208283_1200.mp4"},"disableMutedAutoplay":false,"recommendations":true,"expectPreroll":true,"titleVisible":true}</script>			</div>
+		</figure>
+	
+	<div class="article-lead-share">
+		
+<div class="social-share addthis">
+	<div class="addthis_inline_share_toolbox"></div>
+</div>
+	</div>
+</header><!-- .article-header -->
+
+	
+	<div class="article-content rich-text">
+		
+		
+<p>SAN ANGELO, TX &#8211; San Angelo took many <a rel="noreferrer noopener" aria-label="bold steps in 2019 (opens in a new tab)" href="https://www.conchovalleyhomepage.com/water/our-water-a-look-back-at-2019/" target="_blank">bold steps in 2019</a>, and is preparing to kick off the 2020&#8217;s with numerous important water expansion and improvement projects.​</p>
+
+
+
+<p>&#8220;Of some things to look forward to for the utility in 2020, one is to continue the efforts that we&#8217;re making with the Concho River Project,&#8221; said San Angelo Water Utility Director Allison Strube. &#8220;We are still working on those applications, the two necessary applications, one being the bed and banks application and one being the discharge permit.&#8221;​<br> ​</p>
+
+
+
+<p>Another water project which is already being utilized, and which will likely reach completion sooner, is the <a rel="noreferrer noopener" aria-label="Hickory Aquifer expansion (opens in a new tab)" href="https://www.conchovalleyhomepage.com/news/city-presses-forward-with-hickory-improvements/" target="_blank">Hickory Aquifer expansion</a>.​ The five wells slated to be added will increase the pumping and treatment capacity by four million gallons per day when complete.</p>
+
+
+
+<p>Also after the start of the new year, san angelo water billing customers can look forward to more a more secure online experience.​ &#8220;On January 2 we will be launching our new online payment portal,&#8221; explained Strube. &#8220;We&#8217;ve been working on this since march of this year when council approved us working with that vendor.​ We have been working behind the scenes to get all the billing and payment portions connected, and we are ready to launch that on January 2.&#8221;​</p>
+
+
+
+<p>Several new features will be available with <a rel="noreferrer noopener" aria-label="the Invoice Cloud system (opens in a new tab)" href="https://www.conchovalleyhomepage.com/news/top-headlines/city-investigating-water-billing-security-breach/" target="_blank">the Invoice Cloud system</a>, including pay by text and paperless billing.​ One important note, all customers must sign-up on the new system as user details will not carry over from Click-to-Gov.​</p>
+
+
+
+<p>Beyond that, several street and utility projects are also coming up in 2020.​ Most notably the <a rel="noreferrer noopener" aria-label="Avenue P detention pond (opens in a new tab)" href="https://www.conchovalleyhomepage.com/local-news-2/our-water-avenue-p-detention-pond-plan-and-funding-approved/" target="_blank">Avenue P detention pond</a> and<a rel="noreferrer noopener" aria-label=" the Chadbourne overhaul (opens in a new tab)" href="https://www.conchovalleyhomepage.com/news/san-angelo-city-council-approves-city-engineers-move-ahead-with-chadbourne-project/" target="_blank"> the Chadbourne overhaul</a>. For full details on these projects, visit the <a rel="noreferrer noopener" aria-label="city of San Angelo webpage (opens in a new tab)" href="https://www.cosatx.us/" target="_blank">city of San Angelo webpage</a>.​</p>
+
+
+
+<hr class="wp-block-separator" />
+
+
+
+<hr class="wp-block-separator" />
+
+
+
+<h3><strong><em>More Stories for you</em></strong></h3>
+
+
+
+<p><strong>•&nbsp;<a href="https://www.conchovalleyhomepage.com/water/our-water-a-look-back-at-2019/?utm_source=related_links&amp;utm_medium=WordPress&amp;utm_campaign=PVs">Our Water: a look back at 2019</a></strong><br>SAN ANGELO, TX &#8211; A lot has happened in 2019 regarding San Angelo&#8217;s water supply and infrastructure. Voters approved the&#8230;</p>
+
+
+
+<p><strong>•&nbsp;<a href="https://www.conchovalleyhomepage.com/local-news-2/our-water-sewer-main-repair-expected-to-take-weeks/?utm_source=related_links&amp;utm_medium=WordPress&amp;utm_campaign=PVs">OUR WATER: sewer main repair expected to take weeks</a></strong><br>SAN ANGELO, TX &#8211; City of San Angelo crews worked through the night to get a bypass system in place on the sewer main&#8230;</p>
+
+
+
+<p><strong>•&nbsp;<a href="https://www.conchovalleyhomepage.com/local-news-2/our-water-rain-levels-in-2019-versus-2018/?utm_source=related_links&amp;utm_medium=WordPress&amp;utm_campaign=PVs">OUR WATER: rain levels in 2019 versus 2018</a></strong><br>SAN ANGELO, TX &#8211; Much of the Concho Valley appears to be in a moderate to severe drought. While it is true that we have&#8230;</p>
+
+
+
+<p><strong>•&nbsp;<a href="https://www.conchovalleyhomepage.com/local-news-2/san-angelo-clear-to-use-lake-nasworthy-trust-funds-for-projects/?utm_source=related_links&amp;utm_medium=WordPress&amp;utm_campaign=PVs">San Angelo clear to use Lake Nasworthy Trust funds for projects</a></strong><br>SAN ANGELO, TX &#8211; San Angelo city council approved a resolution on Monday, November 18 canvassing returns and declaring&#8230;</p>
+
+
+
+<p><strong>•&nbsp;<a href="https://www.conchovalleyhomepage.com/local-news-2/our-water-avenue-p-detention-pond-plan-and-funding-approved/?utm_source=related_links&amp;utm_medium=WordPress&amp;utm_campaign=PVs">OUR WATER: Avenue P detention pond plan and funding approved</a></strong><br>SAN ANGELO, TX &#8211; As part of ongoing efforts to reduce roadway flooding, the San Angelo city council recently&#8230;</p>
+
+
+
+<p><strong>•&nbsp;<a href="https://www.conchovalleyhomepage.com/news/top-headlines/city-investigating-water-billing-security-breach/?utm_source=related_links&amp;utm_medium=WordPress&amp;utm_campaign=PVs">OUR WATER: San Angelo set to change water billing vendor</a></strong><br>&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;..https://www.youtube.com/watch?v=A0yul4D1Fv0 SAN ANGELO, TX &#8211; UPDATE: The city of San Angelo is&#8230;</p>
+
+
+
+<p><strong>•&nbsp;<a href="https://www.conchovalleyhomepage.com/local-news-2/our-water-san-angelo-voters-support-lake-nasworthy-improvements/?utm_source=related_links&amp;utm_medium=WordPress&amp;utm_campaign=PVs">OUR WATER: San Angelo voters support Lake Nasworthy improvements</a></strong><br>&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;..https://www.youtube.com/watch?v=HFvYvyc7HSo SAN ANGELO &#8211; San Angelo voted and several changes are&#8230;</p>
+
+
+
+<p><strong>•&nbsp;<a href="https://www.conchovalleyhomepage.com/news/city-of-eden-under-boil-water-notice/?utm_source=related_links&amp;utm_medium=WordPress&amp;utm_campaign=PVs">City of Eden under boil water notice</a></strong><br>UPDATE: The City of Eden Boil Water Notice has been officially rescinded as of October 28, 2019. The public water&#8230;</p>
+
+
+
+<p><strong>•&nbsp;<a href="https://www.conchovalleyhomepage.com/local-news-2/our-water-san-angelo-receives-56-million-in-water-funding/?utm_source=related_links&amp;utm_medium=WordPress&amp;utm_campaign=PVs">OUR WATER: San Angelo receives 56 million in water funding</a></strong><br>SAN ANGELO, TX &#8211; The Texas Water Development Board has approved a $56,000,000 low interest loan from the Drinking Water&#8230;</p>
+
+
+
+<p><strong>•&nbsp;<a href="https://www.conchovalleyhomepage.com/news/top-stories/our-water-goodyear-proving-grounds-works-to-conserve-water-in-tire-test-area/?utm_source=related_links&amp;utm_medium=WordPress&amp;utm_campaign=PVs">OUR WATER: Goodyear Proving Grounds works to conserve water in tire test area</a></strong><br>SAN ANGELO, TX &#8211; The Good</p>
+
+		
+	</div><!-- .rich-text -->
+
+	
+<footer class="article-footer">
+			<p class="article-copyright">Copyright 2020 Nexstar Broadcasting, Inc. All rights reserved. This material may not be published, broadcast, rewritten, or redistributed.</p>
+	
+	
+	<div class="article-footer-share">
+					<h2 class="article-footer-share__heading">Share this story</h2>
+				
+<div class="social-share addthis">
+	<div class="addthis_inline_share_toolbox"></div>
+</div>
+	</div>
+
+	</footer><!-- .article-footer -->
+
+	<section id="custom_html-21" class="widget_text widget widget_custom_html"><div class="textwidget custom-html-widget"><div class="rich-text-cascade"><div id="lkqd-outstream"></div></div></div></section></article>
+
+<aside class="ad-unit ad-unit--mr1-mobile">
+	<div class="ad-unit__content">
+		  <div   id="acm-ad-tag-mr1_mobile-mr1_mobile"   data-slot='{"pos":"mr1_mobile","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[300,250],"sizes":[[[900,0],[]],[[0,0],[[300,250]]]],"amp_multi_size":"300x250","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"atf"}'   data-unit='{"tag":"mr1_mobile","tag_id":"mr1_mobile","dfp_id":"5678","tag_name":"nx.klst","ad_disabled":"0"}'   data-targeting='{"pos":"mr1_mobile","fold":"atf","category":"local_news","kw":"our-water-a-look-ahead-at-2020"}'   data-path='/5678/nx.klst/local_news'  ></div>  <script>  (function () {   try {    var event = new CustomEvent(     "nsDfpSlotRendered",     {      detail: {       id: 'acm-ad-tag-mr1_mobile-mr1_mobile'      }     }    );     window.dispatchEvent(event);   } catch (err) {}  })();  </script>  	</div>
+</aside>
+
+
+	<div
+		id="widget1"
+		data-rc-widget
+		data-widget-host="habitat"
+		data-endpoint="trends.revcontent.com"
+		data-widget-id="114845"
+	></div>
+	<script src="https://assets.revcontent.com/master/delivery.js" defer="defer"></script> 	
+	<aside class="article-list article-list--full-width">
+		
+	<h2 class="article-list__heading article-list__heading--notched">
+		More Local News Stories	</h2>
+
+
+<div class="article-list__content">
+						<a class="article-list__blanketing-link" href="https://www.conchovalleyhomepage.com/local-news-2/concho-valley-birthday-roll-call-for-thursday-january-2nd/">
+		
+		<article
+			class="article-list__article article-list__article--is-stacked article-list__article--has-thumb article-list__article--has-excerpt"
+			data-index="0"
+			data-collection="article-list1"
+			data-anvato-params="null"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list1"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb article-list__article-thumb--is-fullbleed-on-mobile"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px&quot;]"
+>
+			<h3 class="article-list__article-title">
+			
+				Concho Valley Birthday Roll Call for Thursday, January 2nd
+					</h3>
+	
+			<footer class="article-list__article-byline">
+			by James Smith <span class="sep">/</span> <time datetime="2020-01-02T06:02:39-06:00">Jan 2, 2020</time>		</footer>
+	
+			<div class="article-list__article-excerpt article-list__article-excerpt--is-faded rich-text">
+			<p>Good morning Concho Valley! It's time for the Concho Valley Birthday Roll Call! People in the Concho Valley celebrating a birthday on Thursday, January 2nd include:</p>
+<p>Maribel Hernandez    17Jazlen Cuellar              11Nick Ruiz                        3</p>
+		</div>
+	
+			<div class="article-list__read-more article-list__read-more--w-arrow">
+							<span>
+					Read the Full Article
+											<span class="icon icon--arrow">
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17.938 10.94">
+		<path d="M17.944 5.55a.733.733 0 0 1-.032.34v.03c0 .01-.006.01-.008.01a.189.189 0 0 1-.028.05.619.619 0 0 1-.123.17c-.009.01-.013.02-.023.03l-4.927 4.56a.733.733 0 0 1-.5.19.753.753 0 0 1-.54-.23.737.737 0 0 1 .041-1.04l3.547-3.28H.738a.735.735 0 1 1 0-1.47h14.693l-3.74-3.68a.735.735 0 0 1 1.03-1.05l5.022 4.94s0 .01.008.01a.016.016 0 0 0 .017.01.8.8 0 0 1 .163.32c.007.03.009.06.013.09z"/>
+	</svg>
+</span>
+									</span>
+					</div>
+	
+	</div>
+
+	<figure class="article-list__article-thumb article-list__article-thumb--is-fullbleed-on-mobile">
+		
+		<div class="article-list__article-image-wrapper">
+			
+<div class="image-wrapper landscape">
+	<img
+		src="https://i0.wp.com/www.conchovalleyhomepage.com/wp-content/uploads/sites/83/2019/11/birthdays.jpg?resize=2560%2C1440&#038;ssl=1"
+		alt=""
+		srcset="https://www.conchovalleyhomepage.com/wp-content/uploads/sites/83/2019/11/birthdays.jpg?w=320&amp;h=180&amp;crop=1 320w, https://www.conchovalleyhomepage.com/wp-content/uploads/sites/83/2019/11/birthdays.jpg?w=640&amp;h=360&amp;crop=1 640w, https://www.conchovalleyhomepage.com/wp-content/uploads/sites/83/2019/11/birthdays.jpg?w=960&amp;h=540&amp;crop=1 960w, https://www.conchovalleyhomepage.com/wp-content/uploads/sites/83/2019/11/birthdays.jpg?w=1280&amp;h=720&amp;crop=1 1280w, https://i0.wp.com/www.conchovalleyhomepage.com/wp-content/uploads/sites/83/2019/11/birthdays.jpg?resize=1920%2C1080&amp;ssl=1 1920w, https://i0.wp.com/www.conchovalleyhomepage.com/wp-content/uploads/sites/83/2019/11/birthdays.jpg?resize=2560%2C1440&amp;ssl=1 2560w"
+		sizes="(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px"
+	/>
+</div>
+
+							
+<span aria-hidden="true" tabindex="-1" class="article-list__article-mediaicon">
+	<span class="article-list__article-mediaicon-svg">
+		<svg viewBox="0 0 24 24">
+			<path d="M8,5.14V19.14L19,12.14L8,5.14Z" />
+		</svg>
+	</span>
+	</span>
+					</div>
+
+			</figure>
+			</article>
+
+					</a>
+								<a class="article-list__blanketing-link" href="https://www.conchovalleyhomepage.com/local-news-2/out-the-door-forecast-for-thursday-january-2nd/">
+		
+		<article
+			class="article-list__article article-list__article--is-stacked article-list__article--has-thumb article-list__article--has-excerpt"
+			data-index="1"
+			data-collection="article-list1"
+			data-anvato-params="null"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list1"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb article-list__article-thumb--is-fullbleed-on-mobile"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px&quot;]"
+>
+			<h3 class="article-list__article-title">
+			
+				Out-the-door Forecast for Thursday, January 2nd
+					</h3>
+	
+			<footer class="article-list__article-byline">
+			by James Smith <span class="sep">/</span> <time datetime="2020-01-02T05:51:18-06:00">Jan 2, 2020</time>		</footer>
+	
+			<div class="article-list__article-excerpt article-list__article-excerpt--is-faded rich-text">
+			<p>Temperatures to start you day will be in the upper 40s as you head out the door, so you may want to consider taking your jacket with you as there is a breeze that may make it feel a little cooler. Temperatures for the afternoon hours will reach the lower 60s around lunch time and mid 60s to end your day. </p>
+<p>•&nbsp;KLST Weather Forecast; Wednesday January 1, 2020Near average temperatures for today with cloudy conditions lingering in the Concho Valley. These overcast skies will...</p>
+		</div>
+	
+			<div class="article-list__read-more article-list__read-more--w-arrow">
+							<span>
+					Read the Full Article
+											<span class="icon icon--arrow">
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17.938 10.94">
+		<path d="M17.944 5.55a.733.733 0 0 1-.032.34v.03c0 .01-.006.01-.008.01a.189.189 0 0 1-.028.05.619.619 0 0 1-.123.17c-.009.01-.013.02-.023.03l-4.927 4.56a.733.733 0 0 1-.5.19.753.753 0 0 1-.54-.23.737.737 0 0 1 .041-1.04l3.547-3.28H.738a.735.735 0 1 1 0-1.47h14.693l-3.74-3.68a.735.735 0 0 1 1.03-1.05l5.022 4.94s0 .01.008.01a.016.016 0 0 0 .017.01.8.8 0 0 1 .163.32c.007.03.009.06.013.09z"/>
+	</svg>
+</span>
+									</span>
+					</div>
+	
+	</div>
+
+	<figure class="article-list__article-thumb article-list__article-thumb--is-fullbleed-on-mobile">
+		
+		<div class="article-list__article-image-wrapper">
+			
+<div class="image-wrapper landscape">
+	<img
+		src="https://i0.wp.com/www.conchovalleyhomepage.com/wp-content/uploads/sites/83/2020/01/out-the-dorr-1.jpg?resize=2560%2C1440&#038;ssl=1"
+		alt=""
+		srcset="https://www.conchovalleyhomepage.com/wp-content/uploads/sites/83/2020/01/out-the-dorr-1.jpg?w=320&amp;h=180&amp;crop=1 320w, https://www.conchovalleyhomepage.com/wp-content/uploads/sites/83/2020/01/out-the-dorr-1.jpg?w=640&amp;h=360&amp;crop=1 640w, https://www.conchovalleyhomepage.com/wp-content/uploads/sites/83/2020/01/out-the-dorr-1.jpg?w=960&amp;h=540&amp;crop=1 960w, https://www.conchovalleyhomepage.com/wp-content/uploads/sites/83/2020/01/out-the-dorr-1.jpg?w=1280&amp;h=720&amp;crop=1 1280w, https://i0.wp.com/www.conchovalleyhomepage.com/wp-content/uploads/sites/83/2020/01/out-the-dorr-1.jpg?resize=1920%2C1080&amp;ssl=1 1920w, https://i0.wp.com/www.conchovalleyhomepage.com/wp-content/uploads/sites/83/2020/01/out-the-dorr-1.jpg?resize=2560%2C1440&amp;ssl=1 2560w"
+		sizes="(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px"
+	/>
+</div>
+
+							
+<span aria-hidden="true" tabindex="-1" class="article-list__article-mediaicon">
+	<span class="article-list__article-mediaicon-svg">
+		<svg viewBox="0 0 24 24">
+			<path d="M8,5.14V19.14L19,12.14L8,5.14Z" />
+		</svg>
+	</span>
+	</span>
+					</div>
+
+			</figure>
+			</article>
+
+					</a>
+								<a class="article-list__blanketing-link" href="https://www.conchovalleyhomepage.com/news/top-headlines/klst-weather-forecast-wednesday-january-1-2020/">
+		
+		<article
+			class="article-list__article article-list__article--is-stacked article-list__article--has-thumb article-list__article--has-excerpt"
+			data-index="2"
+			data-collection="article-list1"
+			data-anvato-params="null"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list1"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb article-list__article-thumb--is-fullbleed-on-mobile"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px&quot;]"
+>
+			<h3 class="article-list__article-title">
+			
+				KLST Weather Forecast; Wednesday January 1, 2020
+					</h3>
+	
+			<footer class="article-list__article-byline">
+			by Athena Masson <span class="sep">/</span> <time datetime="2020-01-01T18:24:03-06:00">Jan 1, 2020</time>		</footer>
+	
+			<div class="article-list__article-excerpt article-list__article-excerpt--is-faded rich-text">
+			<p>Near average temperatures for today with cloudy conditions lingering in the Concho Valley. These overcast skies will follow us into tomorrow and beginning to clear by Friday. Winds expected to pick up tonight and tomorrow primarily from the southwest at 20 to 25 mph with gusts of 40 mph possible. </p>
+<p>Isolated chance of sprinkles possible primarily for our southeastern counties with conditions clearing in time for the weekend. Expect temperatures to rise into the mid to upper 70s over the weekend.</p>
+		</div>
+	
+			<div class="article-list__read-more article-list__read-more--w-arrow">
+							<span>
+					Read the Full Article
+											<span class="icon icon--arrow">
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17.938 10.94">
+		<path d="M17.944 5.55a.733.733 0 0 1-.032.34v.03c0 .01-.006.01-.008.01a.189.189 0 0 1-.028.05.619.619 0 0 1-.123.17c-.009.01-.013.02-.023.03l-4.927 4.56a.733.733 0 0 1-.5.19.753.753 0 0 1-.54-.23.737.737 0 0 1 .041-1.04l3.547-3.28H.738a.735.735 0 1 1 0-1.47h14.693l-3.74-3.68a.735.735 0 0 1 1.03-1.05l5.022 4.94s0 .01.008.01a.016.016 0 0 0 .017.01.8.8 0 0 1 .163.32c.007.03.009.06.013.09z"/>
+	</svg>
+</span>
+									</span>
+					</div>
+	
+	</div>
+
+	<figure class="article-list__article-thumb article-list__article-thumb--is-fullbleed-on-mobile">
+		
+		<div class="article-list__article-image-wrapper">
+			
+<div class="image-wrapper landscape">
+	<img
+		src="https://i0.wp.com/www.conchovalleyhomepage.com/wp-content/uploads/sites/83/2020/01/C6416F6284B9432CBDB7E9EF7D4B8775.jpg?resize=2560%2C1440&#038;ssl=1"
+		alt=""
+		srcset="https://www.conchovalleyhomepage.com/wp-content/uploads/sites/83/2020/01/C6416F6284B9432CBDB7E9EF7D4B8775.jpg?w=320&amp;h=180&amp;crop=1 320w, https://www.conchovalleyhomepage.com/wp-content/uploads/sites/83/2020/01/C6416F6284B9432CBDB7E9EF7D4B8775.jpg?w=640&amp;h=360&amp;crop=1 640w, https://www.conchovalleyhomepage.com/wp-content/uploads/sites/83/2020/01/C6416F6284B9432CBDB7E9EF7D4B8775.jpg?w=960&amp;h=540&amp;crop=1 960w, https://www.conchovalleyhomepage.com/wp-content/uploads/sites/83/2020/01/C6416F6284B9432CBDB7E9EF7D4B8775.jpg?w=1280&amp;h=720&amp;crop=1 1280w, https://i0.wp.com/www.conchovalleyhomepage.com/wp-content/uploads/sites/83/2020/01/C6416F6284B9432CBDB7E9EF7D4B8775.jpg?resize=1920%2C1080&amp;ssl=1 1920w, https://i0.wp.com/www.conchovalleyhomepage.com/wp-content/uploads/sites/83/2020/01/C6416F6284B9432CBDB7E9EF7D4B8775.jpg?resize=2560%2C1440&amp;ssl=1 2560w"
+		sizes="(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px"
+	/>
+</div>
+
+							
+<span aria-hidden="true" tabindex="-1" class="article-list__article-mediaicon">
+	<span class="article-list__article-mediaicon-svg">
+		<svg viewBox="0 0 24 24">
+			<path d="M8,5.14V19.14L19,12.14L8,5.14Z" />
+		</svg>
+	</span>
+	</span>
+					</div>
+
+			</figure>
+			</article>
+
+					</a>
+			</div>
+
+
+	</aside>
+	
+<aside class="ad-unit ad-unit--leader-mr1">
+	<div class="ad-unit__content">
+		  <div   id="acm-ad-tag-leader_mr1-leader_mr1-story-pages"   data-slot='{"pos":"leader_mr1","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[300,250],"sizes":[[[1152,0],[[728,90]]],[[0,0],[[300,250]]]],"amp_multi_size":"300x250","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"btf"}'   data-unit='{"tag":"leader_mr1","tag_id":"leader_mr1 Story pages","dfp_id":"5678","tag_name":"nx.klst","ad_disabled":"0"}'   data-targeting='{"pos":"leader_mr1","fold":"btf","category":"local_news","kw":"our-water-a-look-ahead-at-2020"}'   data-path='/5678/nx.klst/local_news'  ></div>  <script>  (function () {   try {    var event = new CustomEvent(     "nsDfpSlotRendered",     {      detail: {       id: 'acm-ad-tag-leader_mr1-leader_mr1-story-pages'      }     }    );     window.dispatchEvent(event);   } catch (err) {}  })();  </script>  	</div>
+</aside>
+
+	<aside class="article-list article-list--grid article-list--grid-2">
+		
+	<h2 class="article-list__heading article-list__heading--notched">
+		More Stories	</h2>
+
+
+<div class="article-list__content">
+			
+		<article
+			class="article-list__article article-list__article--is-stacked article-list__article--has-thumb article-list__article--is-media-type"
+			data-index="0"
+			data-collection="article-list2"
+			data-anvato-params="null"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list2"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px&quot;]"
+>
+			<h3 class="article-list__article-title">
+							<a
+					href="https://www.conchovalleyhomepage.com/crime/jail-logs/jail-log-january-1-2-2020/"
+									>
+			
+				Jail Log: January 1-2, 2020
+							</a>
+					</h3>
+	
+			<footer class="article-list__article-meta">
+			<a href="https://www.conchovalleyhomepage.com/crime/jail-logs/">Jail Logs</a> / <time datetime="2020-01-02T07:13:55-06:00">1 hour ago</time>		</footer>
+	
+	
+	
+	</div>
+
+	<figure class="article-list__article-thumb">
+					<a
+				href="https://www.conchovalleyhomepage.com/crime/jail-logs/jail-log-january-1-2-2020/"
+							>
+		
+		<div class="article-list__article-image-wrapper">
+			
+<div class="image-wrapper landscape square-on-mobile">
+	<img
+		src="https://i0.wp.com/www.conchovalleyhomepage.com/wp-content/uploads/sites/83/2018/08/CVHP-1920x1080-ArrestRecords_1532710866928_49811766_ver1.0-29.jpg?resize=2560%2C1440&#038;ssl=1"
+		alt="CVHP-1920x1080-ArrestRecords_1532710866928.jpg"
+		srcset="https://www.conchovalleyhomepage.com/wp-content/uploads/sites/83/2018/08/CVHP-1920x1080-ArrestRecords_1532710866928_49811766_ver1.0-29.jpg?w=320&amp;h=180&amp;crop=1 320w, https://i0.wp.com/www.conchovalleyhomepage.com/wp-content/uploads/sites/83/2018/08/CVHP-1920x1080-ArrestRecords_1532710866928_49811766_ver1.0-29.jpg?resize=640%2C360&amp;ssl=1 640w, https://i0.wp.com/www.conchovalleyhomepage.com/wp-content/uploads/sites/83/2018/08/CVHP-1920x1080-ArrestRecords_1532710866928_49811766_ver1.0-29.jpg?resize=960%2C540&amp;ssl=1 960w, https://i0.wp.com/www.conchovalleyhomepage.com/wp-content/uploads/sites/83/2018/08/CVHP-1920x1080-ArrestRecords_1532710866928_49811766_ver1.0-29.jpg?resize=1280%2C720&amp;ssl=1 1280w, https://i0.wp.com/www.conchovalleyhomepage.com/wp-content/uploads/sites/83/2018/08/CVHP-1920x1080-ArrestRecords_1532710866928_49811766_ver1.0-29.jpg?resize=1920%2C1080&amp;ssl=1 1920w, https://i0.wp.com/www.conchovalleyhomepage.com/wp-content/uploads/sites/83/2018/08/CVHP-1920x1080-ArrestRecords_1532710866928_49811766_ver1.0-29.jpg?resize=2560%2C1440&amp;ssl=1 2560w"
+		sizes="(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px"
+	/>
+</div>
+
+					</div>
+
+					</a>
+			</figure>
+			</article>
+
+					
+		<article
+			class="article-list__article article-list__article--is-stacked article-list__article--has-thumb article-list__article--is-media-type"
+			data-index="1"
+			data-collection="article-list2"
+			data-anvato-params="null"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list2"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px&quot;]"
+>
+			<h3 class="article-list__article-title">
+							<a
+					href="https://www.conchovalleyhomepage.com/local-news-2/out-the-door-forecast-for-thursday-january-2nd/"
+									>
+			
+				Out-the-door Forecast for Thursday, January 2nd
+							</a>
+					</h3>
+	
+			<footer class="article-list__article-meta">
+			<a href="https://www.conchovalleyhomepage.com/local-news-2/">Local News</a> / <time datetime="2020-01-02T05:51:18-06:00">3 hours ago</time>		</footer>
+	
+	
+	
+	</div>
+
+	<figure class="article-list__article-thumb">
+					<a
+				href="https://www.conchovalleyhomepage.com/local-news-2/out-the-door-forecast-for-thursday-january-2nd/"
+							>
+		
+		<div class="article-list__article-image-wrapper">
+			
+<div class="image-wrapper landscape square-on-mobile">
+	<img
+		src="https://i0.wp.com/www.conchovalleyhomepage.com/wp-content/uploads/sites/83/2020/01/out-the-dorr-1.jpg?resize=2560%2C1440&#038;ssl=1"
+		alt=""
+		srcset="https://www.conchovalleyhomepage.com/wp-content/uploads/sites/83/2020/01/out-the-dorr-1.jpg?w=320&amp;h=180&amp;crop=1 320w, https://www.conchovalleyhomepage.com/wp-content/uploads/sites/83/2020/01/out-the-dorr-1.jpg?w=640&amp;h=360&amp;crop=1 640w, https://www.conchovalleyhomepage.com/wp-content/uploads/sites/83/2020/01/out-the-dorr-1.jpg?w=960&amp;h=540&amp;crop=1 960w, https://www.conchovalleyhomepage.com/wp-content/uploads/sites/83/2020/01/out-the-dorr-1.jpg?w=1280&amp;h=720&amp;crop=1 1280w, https://i0.wp.com/www.conchovalleyhomepage.com/wp-content/uploads/sites/83/2020/01/out-the-dorr-1.jpg?resize=1920%2C1080&amp;ssl=1 1920w, https://i0.wp.com/www.conchovalleyhomepage.com/wp-content/uploads/sites/83/2020/01/out-the-dorr-1.jpg?resize=2560%2C1440&amp;ssl=1 2560w"
+		sizes="(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px"
+	/>
+</div>
+
+							
+<span aria-hidden="true" tabindex="-1" class="article-list__article-mediaicon">
+	<span class="article-list__article-mediaicon-svg">
+		<svg viewBox="0 0 24 24">
+			<path d="M8,5.14V19.14L19,12.14L8,5.14Z" />
+		</svg>
+	</span>
+	</span>
+					</div>
+
+					</a>
+			</figure>
+			</article>
+
+					
+		<article
+			class="article-list__article article-list__article--is-stacked article-list__article--has-thumb article-list__article--is-media-type"
+			data-index="2"
+			data-collection="article-list2"
+			data-anvato-params="null"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list2"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px&quot;]"
+>
+			<h3 class="article-list__article-title">
+							<a
+					href="https://www.conchovalleyhomepage.com/weather/ksan-weather/ksan-storm-team-daily-forecast-update-wednesday-january-1-2020/"
+									>
+			
+				KSAN Storm Team daily forecast update &#8211; Wednesday, January 1, 2020
+							</a>
+					</h3>
+	
+			<footer class="article-list__article-meta">
+			<a href="https://www.conchovalleyhomepage.com/weather/ksan-weather/">KSAN Weather</a> / <time datetime="2020-01-01T23:00:31-06:00">10 hours ago</time>		</footer>
+	
+	
+	
+	</div>
+
+	<figure class="article-list__article-thumb">
+					<a
+				href="https://www.conchovalleyhomepage.com/weather/ksan-weather/ksan-storm-team-daily-forecast-update-wednesday-january-1-2020/"
+							>
+		
+		<div class="article-list__article-image-wrapper">
+			
+<div class="image-wrapper landscape square-on-mobile">
+	<img
+		src="https://i2.wp.com/www.conchovalleyhomepage.com/wp-content/uploads/sites/83/2020/01/snapshot-18.jpg?resize=2560%2C1440&#038;ssl=1"
+		alt=""
+		srcset="https://www.conchovalleyhomepage.com/wp-content/uploads/sites/83/2020/01/snapshot-18.jpg?w=320&amp;h=180&amp;crop=1 320w, https://www.conchovalleyhomepage.com/wp-content/uploads/sites/83/2020/01/snapshot-18.jpg?w=640&amp;h=360&amp;crop=1 640w, https://www.conchovalleyhomepage.com/wp-content/uploads/sites/83/2020/01/snapshot-18.jpg?w=960&amp;h=540&amp;crop=1 960w, https://www.conchovalleyhomepage.com/wp-content/uploads/sites/83/2020/01/snapshot-18.jpg?w=1280&amp;h=720&amp;crop=1 1280w, https://i2.wp.com/www.conchovalleyhomepage.com/wp-content/uploads/sites/83/2020/01/snapshot-18.jpg?resize=1920%2C1080&amp;ssl=1 1920w, https://i2.wp.com/www.conchovalleyhomepage.com/wp-content/uploads/sites/83/2020/01/snapshot-18.jpg?resize=2560%2C1440&amp;ssl=1 2560w"
+		sizes="(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px"
+	/>
+</div>
+
+							
+<span aria-hidden="true" tabindex="-1" class="article-list__article-mediaicon">
+	<span class="article-list__article-mediaicon-svg">
+		<svg viewBox="0 0 24 24">
+			<path d="M8,5.14V19.14L19,12.14L8,5.14Z" />
+		</svg>
+	</span>
+	</span>
+					</div>
+
+					</a>
+			</figure>
+			</article>
+
+					
+		<article
+			class="article-list__article article-list__article--is-stacked article-list__article--has-thumb article-list__article--is-media-type"
+			data-index="3"
+			data-collection="article-list2"
+			data-anvato-params="null"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list2"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px&quot;]"
+>
+			<h3 class="article-list__article-title">
+							<a
+					href="https://www.conchovalleyhomepage.com/news/top-headlines/klst-weather-forecast-wednesday-january-1-2020/"
+									>
+			
+				KLST Weather Forecast; Wednesday January 1, 2020
+							</a>
+					</h3>
+	
+			<footer class="article-list__article-meta">
+			<a href="https://www.conchovalleyhomepage.com/news/top-headlines/">Top Headlines</a> / <time datetime="2020-01-01T18:24:03-06:00">14 hours ago</time>		</footer>
+	
+	
+	
+	</div>
+
+	<figure class="article-list__article-thumb">
+					<a
+				href="https://www.conchovalleyhomepage.com/news/top-headlines/klst-weather-forecast-wednesday-january-1-2020/"
+							>
+		
+		<div class="article-list__article-image-wrapper">
+			
+<div class="image-wrapper landscape square-on-mobile">
+	<img
+		src="https://i0.wp.com/www.conchovalleyhomepage.com/wp-content/uploads/sites/83/2020/01/C6416F6284B9432CBDB7E9EF7D4B8775.jpg?resize=2560%2C1440&#038;ssl=1"
+		alt=""
+		srcset="https://www.conchovalleyhomepage.com/wp-content/uploads/sites/83/2020/01/C6416F6284B9432CBDB7E9EF7D4B8775.jpg?w=320&amp;h=180&amp;crop=1 320w, https://www.conchovalleyhomepage.com/wp-content/uploads/sites/83/2020/01/C6416F6284B9432CBDB7E9EF7D4B8775.jpg?w=640&amp;h=360&amp;crop=1 640w, https://www.conchovalleyhomepage.com/wp-content/uploads/sites/83/2020/01/C6416F6284B9432CBDB7E9EF7D4B8775.jpg?w=960&amp;h=540&amp;crop=1 960w, https://www.conchovalleyhomepage.com/wp-content/uploads/sites/83/2020/01/C6416F6284B9432CBDB7E9EF7D4B8775.jpg?w=1280&amp;h=720&amp;crop=1 1280w, https://i0.wp.com/www.conchovalleyhomepage.com/wp-content/uploads/sites/83/2020/01/C6416F6284B9432CBDB7E9EF7D4B8775.jpg?resize=1920%2C1080&amp;ssl=1 1920w, https://i0.wp.com/www.conchovalleyhomepage.com/wp-content/uploads/sites/83/2020/01/C6416F6284B9432CBDB7E9EF7D4B8775.jpg?resize=2560%2C1440&amp;ssl=1 2560w"
+		sizes="(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px"
+	/>
+</div>
+
+							
+<span aria-hidden="true" tabindex="-1" class="article-list__article-mediaicon">
+	<span class="article-list__article-mediaicon-svg">
+		<svg viewBox="0 0 24 24">
+			<path d="M8,5.14V19.14L19,12.14L8,5.14Z" />
+		</svg>
+	</span>
+	</span>
+					</div>
+
+					</a>
+			</figure>
+			</article>
+
+			</div>
+
+	<div class="article-list__read-more article-list__read-more--w-arrow">
+		<a href="/news/">
+			Read more stories
+							<span class="icon icon--arrow">
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17.938 10.94">
+		<path d="M17.944 5.55a.733.733 0 0 1-.032.34v.03c0 .01-.006.01-.008.01a.189.189 0 0 1-.028.05.619.619 0 0 1-.123.17c-.009.01-.013.02-.023.03l-4.927 4.56a.733.733 0 0 1-.5.19.753.753 0 0 1-.54-.23.737.737 0 0 1 .041-1.04l3.547-3.28H.738a.735.735 0 1 1 0-1.47h14.693l-3.74-3.68a.735.735 0 0 1 1.03-1.05l5.022 4.94s0 .01.008.01a.016.016 0 0 0 .017.01.8.8 0 0 1 .163.32c.007.03.009.06.013.09z"/>
+	</svg>
+</span>
+					</a>
+	</div>
+	
+	</aside>
+	
+			</main>
+		</div>
+
+		
+<section id="secondary" class="widget-area">
+	<!-- Ad Unit Square -->
+	<aside class="ad-unit ad-unit--square">
+		<div class="ad-unit__content">
+			  <div   id="acm-ad-tag-mr_combo1-mr_combo1"   data-slot='{"pos":"mr_combo1","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[300,250],"sizes":[[[1280,0],[[300,600],[300,250]]],[[1024,0],[[300,600],[300,250]]],[[768,0],[[300,250]]],[[641,0],[[300,250]]],[[0,0],[[300,250]]]],"amp_multi_size":"300x250","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"atf"}'   data-unit='{"tag":"mr_combo1","tag_id":"mr_combo1","dfp_id":"5678","tag_name":"nx.klst","ad_disabled":"0"}'   data-targeting='{"pos":"mr_combo1","fold":"atf","category":"local_news","kw":"our-water-a-look-ahead-at-2020"}'   data-path='/5678/nx.klst/local_news'  ></div>  <script>  (function () {   try {    var event = new CustomEvent(     "nsDfpSlotRendered",     {      detail: {       id: 'acm-ad-tag-mr_combo1-mr_combo1'      }     }    );     window.dispatchEvent(event);   } catch (err) {}  })();  </script>  		</div>
+	</aside>
+	<!-- END Ad Unit Square -->
+
+	
+	
+			<!-- Nativo -->
+		<div id="native-rr"></div>
+		<!-- END Nativo -->
+	
+	<section id="custom_html-10" class="widget_text widget widget_custom_html"><div class="textwidget custom-html-widget"><div class="rich-text-cascade"><style type="text/css">.my-resp-container {
+	position: relative;
+	overflow: hidden;
+	/*padding-top: 56.25%; for 16:9 ratio*/
+	padding-top: 41.53%; /*for 4:3 ratio*/
+}
+.my-resp-item {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	border: 0;
+}
+</style>
+<div class="my-resp-container"><a href="https://www.conchovalleyhomepage.com/derailed"><img class="my-resp-item" src="https://www.conchovalleyhomepage.com/wp-content/uploads/sites/83/2019/08/DERAILED-WP-SIDEBAR-1110x461.png" /></a></div></div></div></section><section id="custom_html-11" class="widget_text widget widget_custom_html"><div class="textwidget custom-html-widget"><div class="rich-text-cascade"><p></p>
+<p style="text-align: center;"><a href="https://www.conchovalleyhomepage.com/water">Click here&nbsp;for the current status of our Concho Valley reservoirs. Updated regularly.<img alt="" height="125" src="https://www.cvhpdigital.com/images/Our-Water-RightRail.png" style="max-width: 100%; margin-top: 10px; margin-bottom: 10px;" /> </a></p>
+</div></div></section>
+	<aside class="ad-unit ad-unit--square ad-unit--sticky">
+		<div class="ad-unit__content">
+			  <div   id="acm-ad-tag-mr_combo2-mr_combo2"   data-slot='{"pos":"mr_combo2","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[300,250],"sizes":[[[1280,0],[[300,600],[300,250]]],[[1024,0],[[300,600],[300,250]]],[[768,0],[[300,250]]],[[641,0],[[300,250]]],[[0,0],[[300,250]]]],"amp_multi_size":"300x250","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"btf"}'   data-unit='{"tag":"mr_combo2","tag_id":"mr_combo2","dfp_id":"5678","tag_name":"nx.klst","ad_disabled":"0"}'   data-targeting='{"pos":"mr_combo2","fold":"btf","category":"local_news","kw":"our-water-a-look-ahead-at-2020"}'   data-path='/5678/nx.klst/local_news'  ></div>  <script>  (function () {   try {    var event = new CustomEvent(     "nsDfpSlotRendered",     {      detail: {       id: 'acm-ad-tag-mr_combo2-mr_combo2'      }     }    );     window.dispatchEvent(event);   } catch (err) {}  })();  </script>  		</div>
+	</aside>
+	<!-- END Ad Unit Square -->
+</section><!-- #secondary -->
+	</div>
+
+			<aside class="ad-unit ad-unit--leaderboard">
+			<div class="ad-unit__content">
+				  <div   id="acm-ad-tag-leaderboard3-leaderboard3"   data-slot='{"pos":"leaderboard3","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[320,50],"sizes":[[[1280,0],[[728,90]]],[[1024,0],[[728,90]]],[[768,0],[[728,90]]],[[641,0],[[320,50]]],[[0,0],[[320,50]]]],"amp_multi_size":"320x50","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"btf"}'   data-unit='{"tag":"leaderboard3","tag_id":"leaderboard3","dfp_id":"5678","tag_name":"nx.klst","ad_disabled":"0"}'   data-targeting='{"pos":"leaderboard3","fold":"btf","category":"local_news","kw":"our-water-a-look-ahead-at-2020"}'   data-path='/5678/nx.klst/local_news'  ></div>  <script>  (function () {   try {    var event = new CustomEvent(     "nsDfpSlotRendered",     {      detail: {       id: 'acm-ad-tag-leaderboard3-leaderboard3'      }     }    );     window.dispatchEvent(event);   } catch (err) {}  })();  </script>  			</div>
+		</aside>
+	
+	
+</div><!-- #content -->
+		</div>
+
+		<footer id="footer" class="site-footer">
+	<div class="site-footer__site-branding">
+		<div class="site-footer__logo">
+			<a href="https://www.conchovalleyhomepage.com/" rel="home">
+				<img src="https://www.conchovalleyhomepage.com/wp-content/uploads/sites/83/2019/05/CVHP20Logo20Solid20White20for20FrontPageHeader_1526421073544.png_42689100_ver1.0.png" alt="KLST/KSAN" />
+			</a>
+		</div>
+	</div>
+
+		<div class="site-footer__social">
+		<h2>Follow Us</h2>
+		
+<aside class="social-links social-links--default">
+	<ul class="social-links__list">
+					<li class="social-links__list-item social-links__list-item--facebook">
+				<a href="https://www.facebook.com/klstnews">
+					
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 58 58" style="enable-background:new 0 0 58 58;" xml:space="preserve">
+	<title>Facebook</title>
+	<style type="text/css">
+		.facebook-st0{fill:#4267B2;}
+		.facebook-st1{fill:#FFFFFF;}
+	</style>
+	<path class="facebook-st0" d="M54.8,0H3.2C1.43,0,0,1.43,0,3.2v51.6C0,56.57,1.43,58,3.2,58h0H31V35.57h-7.55v-8.78H31v-6.46
+		c0-7.49,4.58-11.57,11.26-11.57c2.25,0,4.5,0.11,6.74,0.34v7.83h-4.6c-3.64,0-4.35,1.72-4.35,4.26v5.59h8.7l-1.13,8.78H40V58h14.8
+		c1.77,0,3.2-1.43,3.2-3.2l0,0V3.2C58,1.43,56.57,0,54.8,0L54.8,0z"/>
+	<path id="f" class="facebook-st1" d="M40,58V35.57h7.57l1.13-8.78H40V21.2c0-2.54,0.71-4.26,4.35-4.26H49V9.1c-2.24-0.23-4.5-0.35-6.75-0.34
+	C35.56,8.76,31,12.84,31,20.33v6.46h-7.55v8.78H31V58H40z"/>
+</svg>
+				</a>
+			</li>
+							<li class="social-links__list-item social-links__list-item--twitter">
+				<a href="https://twitter.com/klstnews">
+					
+<svg version="1.1" id="Logo__x2014__FIXED" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 259.77 218.57" style="enable-background:new 0 0 33 33;" xml:space="preserve">
+	<title>Twitter</title>
+	<style type="text/css">
+		.twitter-st0{fill:none;}
+		.twitter-st1{fill:#1DA1F2;}
+	</style>
+	<g>
+		<rect x="-69.49" y="-90.72" class="twitter-st0" width="400" height="400"/>
+		<path class="twitter-st1" d="M84.13,210.87c94.34,0,145.94-78.16,145.94-145.94c0-2.22-0.05-4.43-0.15-6.63
+			c10.01-7.24,18.72-16.27,25.59-26.56c-9.19,4.08-19.08,6.83-29.46,8.07c10.59-6.35,18.72-16.4,22.55-28.37
+			c-9.91,5.88-20.89,10.15-32.57,12.45c-9.36-9.97-22.69-16.21-37.44-16.21c-28.33,0-51.3,22.97-51.3,51.29
+			c0,4.03,0.45,7.94,1.33,11.69C86,68.53,48.2,48.12,22.91,17.09c-4.41,7.58-6.95,16.39-6.95,25.78c0,17.8,9.06,33.5,22.82,42.69
+			c-8.41-0.26-16.32-2.57-23.23-6.42c-0.01,0.21-0.01,0.43-0.01,0.65c0,24.84,17.68,45.58,41.15,50.28c-4.31,1.17-8.84,1.8-13.52,1.8
+			c-3.3,0-6.52-0.33-9.64-0.93c6.53,20.38,25.46,35.21,47.92,35.62c-17.56,13.76-39.67,21.96-63.7,21.96
+			c-4.14,0-8.22-0.24-12.24-0.71C28.21,202.38,55.16,210.87,84.13,210.87"/>
+	</g>
+</svg>
+				</a>
+			</li>
+															<li class="social-links__list-item social-links__list-item--email">
+				<a href="mailto:digitalmedia@klst.net">
+					
+<svg xmlns="http://www.w3.org/2000/svg" width="29.35" height="22" viewBox="0 0 29.35 22">
+	<title>Email</title>
+	<defs>
+		<style>
+			.email-cls-1 {
+				fill: #eb6823;
+				fill-rule: evenodd;
+			}
+		</style>
+	</defs>
+	<path class="email-cls-1" d="M1168.41,189.824a0.347,0.347,0,0,1,.56.269v11.719a2.75,2.75,0,0,1-2.75,2.751h-23.84a2.75,2.75,0,0,1-2.75-2.751V190.1a0.338,0.338,0,0,1,.55-0.269c1.29,1,2.99,2.263,8.83,6.51,1.21,0.882,3.25,2.739,5.29,2.727,2.04,0.017,4.12-1.879,5.29-2.727C1165.43,192.093,1167.13,190.821,1168.41,189.824Zm-14.11,7.4c1.33,0.023,3.24-1.674,4.2-2.373,7.61-5.518,8.19-6,9.94-7.375a1.381,1.381,0,0,0,.53-1.083v-1.089a2.75,2.75,0,0,0-2.75-2.75h-23.84a2.75,2.75,0,0,0-2.75,2.75V186.4a1.359,1.359,0,0,0,.53,1.083c1.75,1.37,2.33,1.857,9.93,7.375,0.96,0.7,2.88,2.4,4.21,2.373h0Z" transform="translate(-1139.62 -182.562)"/>
+</svg>
+				</a>
+			</li>
+			</ul>
+</aside>
+	</div>
+	
+		<div class="site-footer__apps">
+		<h2>News App</h2>
+		<div class="app-links">
+							<div class="app-link">
+					<a href="https://itunes.apple.com/us/app/conchovalleyhomepage-home/id644527751?mt=8&#038;ign-mpt=uo%3D4">
+						<img src="https://www.conchovalleyhomepage.com/wp-content/themes/nexstar/client/src/images/footer/app-stores/appstore_footer.png" alt="Get the iOS app" />
+					</a>
+				</div>
+										<div class="app-link">
+					<a href="https://play.google.com/store/apps/details?id=com.newssynergy.concho">
+						<img src="https://www.conchovalleyhomepage.com/wp-content/themes/nexstar/client/src/images/footer/app-stores/googleplay_footer.png" alt="Get the Android app from Google Play" />
+					</a>
+				</div>
+					</div>
+	</div>
+
+	
+<div class="site-footer__primary-nav">
+	<div class="menu-footer-primary-container"><ul id="menu-footer-primary" class="menu"><li id="menu-item-75725" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-75725"><a href="https://www.conchovalleyhomepage.com/news/local-news/">LOCAL NEWS</a></li>
+<li id="menu-item-173136" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-173136"><a href="https://www.conchovalleyhomepage.com/video/">VIDEO CENTER</a></li>
+<li id="menu-item-75727" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-75727"><a href="https://www.conchovalleyhomepage.com/weather/interactive-radar/">INTERACTIVE RADAR</a></li>
+<li id="menu-item-75726" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-75726"><a href="https://www.conchovalleyhomepage.com/weather/">FORECAST</a></li>
+<li id="menu-item-75728" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-75728"><a href="https://www.conchovalleyhomepage.com/sports/local-sports/">LOCAL SPORTS</a></li>
+<li id="menu-item-75729" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-75729"><a href="https://www.conchovalleyhomepage.com/marketplace/concho-valley-experts/">CV EXPERTS</a></li>
+<li id="menu-item-75736" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-75736"><a href="https://www.conchovalleyhomepage.com/tv-schedule/">TV SCHEDULE</a></li>
+<li id="menu-item-75737" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-75737"><a href="https://www.conchovalleyhomepage.com/birthday-greetings/">BIRTHDAY GREETINGS</a></li>
+</ul></div></div>
+
+<div class="site-footer__secondary-nav">
+	<div class="menu-footer-secondary-container"><ul id="menu-footer-secondary" class="menu"><li id="menu-item-69951" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-69951"><a href="https://publicfiles.fcc.gov/tv-profile/klst">KLST FCC Public Profile</a></li>
+<li id="menu-item-69952" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-69952"><a href="https://publicfiles.fcc.gov/tv-profile/ksan-tv">KSAN FCC Public File</a></li>
+<li id="menu-item-69953" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-69953"><a href="https://www.cvhpdigital.com/docs/NexstarCCCertification.pdf">Nexstar CC Certification</a></li>
+<li id="menu-item-69954" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-69954"><a href="https://www.cvhpdigital.com/docs/KLST%20FCC%20%20EEO%20Report%20April%201%202018%20to%20March%2031%202019_1554925721178_81610158_ver1.0.pdf">KLST EEO Report</a></li>
+<li id="menu-item-69955" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-69955"><a href="https://www.conchovalleyhomepage.com/privacy-policy/">About Our Ads</a></li>
+<li id="menu-item-208499" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-208499"><a href="https://www.conchovalleyhomepage.com/terms-of-use/">Terms of Use</a></li>
+</ul></div></div>
+
+	<div class="site-footer__network-branding">
+								<a href="https://www.nexstar.tv" title="Go to Nexstar">
+				<img src="https://www.conchovalleyhomepage.com/wp-content/themes/nexstar/client/src/images/footer/nexstar-logo-white-nmg.png" alt="LAKANA">
+			</a>
+			</div>
+	<div class="site-footer__copyright">
+		&copy; 1998 - 2020 Nexstar Broadcasting, Inc. | All Rights Reserved.	</div>
+</footer>
+	</div><!-- #page -->
+
+	
+<script type='text/javascript'>
+(function() {
+	var _sf_async_config = window._sf_async_config = (window._sf_async_config || {});
+
+	_sf_async_config.sections = "Local News";
+	_sf_async_config.authors = "Victor Glenn";
+	function loadChartbeat() {
+			var e = document.createElement('script');
+			var n = document.getElementsByTagName('script')[0];
+			e.type = 'text/javascript';
+			e.async = true;
+			e.src = '//static.chartbeat.com/js/chartbeat.js';
+			n.parentNode.insertBefore(e, n);
+	}
+	loadChartbeat();
+})();
+</script>
+
+	<aside class="ad-unit ad-unit--adhesion">
+		<div class="ad-unit__content pre-render">
+			<div class="close-btn-container">
+				<div class="close-btn" aria-label="Close Viewport Adhesion Ad">&times; Close Ad</div>
+			</div>
+			  <div   id="acm-ad-tag-adhesion-adhesion"   data-slot='{"pos":"adhesion","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[320,50],"sizes":[[[1280,0],[[728,90]]],[[1024,0],[[728,90]]],[[768,0],[[728,90]]],[[480,0],[[320,50]]],[[0,0],[[320,50]]]],"amp_multi_size":"320x50","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"atf"}'   data-unit='{"tag":"adhesion","tag_id":"adhesion","dfp_id":"5678","tag_name":"nx.klst","ad_disabled":"0"}'   data-targeting='{"pos":"adhesion","fold":"atf","category":"local_news","kw":"our-water-a-look-ahead-at-2020"}'   data-path='/5678/nx.klst/local_news'  ></div>  <script>  (function () {   try {    var event = new CustomEvent(     "nsDfpSlotRendered",     {      detail: {       id: 'acm-ad-tag-adhesion-adhesion'      }     }    );     window.dispatchEvent(event);   } catch (err) {}  })();  </script>  		</div>
+	</aside>
+
+	<div id="aria-dialog-overlay"></div>
+	<script src='https://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=202001'></script>
+<script>
+var wpApiSettings = {"root":"https:\/\/www.conchovalleyhomepage.com\/wp-json\/","nonce":"e66a2a8c22","versionString":"wp\/v2\/"};
+</script>
+<script>
+var lakana = {"a9":{"aps":{"enabled":"1","ad_server":"googletag","pub_id":"3410"}},"addthis_script_url":"https:\/\/s7.addthis.com\/js\/300\/addthis_widget.js#pubid=ra-5b7190c0239b8829","auto_refresh":{"landing_duration":"10","post_duration":"20","disable_homepage":"0"},"blueconic_enabled":"1","blueconic_script_url":"https:\/\/cdn.blueconic.net\/nexstar.js","chartbeat":{"enabled":"1","uid":"23192"},"confiant":{"script_url":"https:\/\/confiant-integrations.global.ssl.fastly.net\/Y2Nn8JmiAY8HpnF4sl5n7J71jaI\/gpt_and_prebid\/config.js","enabled":"1"},"copyright_text":"Copyright 2020 Nexstar Broadcasting, Inc. All rights reserved. This material may not be published, broadcast, rewritten, or redistributed.","devcon":{"status":"0","data_key":"f0d16886-0300-4694-9b7b-37da481f4449","data_e":"5"},"gtm":{"id":"GTM-KJJZHXD"},"id":"1","index_exchange":{"script_url":"https:\/\/js-sec.indexww.com\/ht\/p\/184979-164251977320883.js"},"nativo_enabled":"1","revcontent":{"status":"1"},"send_to_news":{"enabled":"1"}};
+var nexstar = {"alert_banners":{"l10n":{"nexstar":{"label_sep":"\/"}},"summary_messages":{"Breaking News":[],"Live Now":[],"Weather Alerts":[],"Closings":[]},"messages":{"Breaking News":[],"Live Now":[],"Weather Alerts":[],"Closings":[]},"settings":{"Breaking News":{"id":16,"slug":"breaking-news","term_name":"Breaking News","label":"Breaking News","summary_only":false,"url":"#\/","view_options":"number_of_areas"},"Live Now":{"id":17,"slug":"live-now","term_name":"Live Now","label":"Live Now","summary_only":true,"url":"https:\/\/www.conchovalleyhomepage.com\/live\/","view_options":"number_of_areas"},"Weather Alerts":{"id":18,"slug":"weather-alerts","term_name":"Weather Alerts","label":"Weather Alerts","summary_only":false,"url":"https:\/\/www.conchovalleyhomepage.com\/weather\/weather-alerts\/","view_options":"number_of_areas"},"Closings":{"id":20304,"slug":"closings","term_name":"Closings","label":"Closings","summary_only":true,"url":"https:\/\/www.conchovalleyhomepage.com\/weather\/closings\/","view_options":"number_of_areas"}},"modified_time":{"Breaking News":[],"Live Now":[],"Weather Alerts":[],"Closings":"Jan 2, 2020 \/ 08:38 AM CST"}},"app_links":{"google_play_link":"https:\/\/play.google.com\/store\/apps\/details?id=com.newssynergy.concho","google_play_weather_link":"","ios_app_store_link":"https:\/\/itunes.apple.com\/us\/app\/conchovalleyhomepage-home\/id644527751?mt=8&ign-mpt=uo%3D4","ios_app_store_weather_link":""},"article_bins":{"rest_endpoint":"https:\/\/www.conchovalleyhomepage.com\/wp-json\/nexstar\/v1\/article-bin"},"auto_refresh":{"landing_duration":"","post_duration":"","disable_homepage":"0"},"blueconic_enabled":"1","call_letters":"KLST\/KSAN","chartbeat":{"domain":"conchovalleyhomepage.com"},"continue_reading_cta":{"l10n":{"cta_text":"Continue Reading"},"breakpoint":768,"min_content_height":600},"copyright_start_year":"1998","devcon":{"status":"0"},"dfp":{"mobile_desktop_breakpoint":1024,"register_event":"nsDfpSlotRendered","slots":{"adhesion":{"pos":"adhesion","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[320,50],"sizes":[[[1280,0],[[728,90]]],[[1024,0],[[728,90]]],[[768,0],[[728,90]]],[[480,0],[[320,50]]],[[0,0],[[320,50]]]],"amp_multi_size":"320x50","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"atf"},"billboard1":{"pos":"billboard1","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[320,50],"sizes":[[[1280,0],[[728,90],[970,250],[970,90],[970,30]]],[[1024,0],[[728,90],[970,250],[970,90],[970,30]]],[[768,0],[[728,90]]],[[641,0],[[320,50]]],[[0,0],[[320,50]]]],"amp_multi_size":"320x50","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"atf"},"header-microbar":{"pos":"header-microbar","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[88,31],"sizes":[[[900,0],[[88,31]]],[[0,0],[]]],"amp_multi_size":"88x31","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"atf"},"hover":{"pos":"hover","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[1,1],"sizes":[[[900,0],[[1,1]]],[[0,0],[]]],"amp_multi_size":"1x1","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"atf"},"leader_mr1":{"pos":"leader_mr1","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[300,250],"sizes":[[[1152,0],[[728,90]]],[[0,0],[[300,250]]]],"amp_multi_size":"300x250","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"btf"},"leaderboard1":{"pos":"leaderboard1","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[320,50],"sizes":[[[1280,0],[[728,90]]],[[1024,0],[[728,90]]],[[768,0],[[728,90]]],[[641,0],[[320,50]]],[[0,0],[[320,50]]]],"amp_multi_size":"320x50","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"mid"},"leaderboard2":{"pos":"leaderboard2","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[320,50],"sizes":[[[1280,0],[[728,90]]],[[1024,0],[[728,90]]],[[768,0],[[728,90]]],[[641,0],[[320,50]]],[[0,0],[[320,50]]]],"amp_multi_size":"320x50","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"mid"},"leaderboard3":{"pos":"leaderboard3","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[320,50],"sizes":[[[1280,0],[[728,90]]],[[1024,0],[[728,90]]],[[768,0],[[728,90]]],[[641,0],[[320,50]]],[[0,0],[[320,50]]]],"amp_multi_size":"320x50","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"btf"},"microbar":{"pos":"microbar","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[88,31],"sizes":[[[0,0],[[88,31]]]],"amp_multi_size":"88x31","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"mid"},"mr1":{"pos":"mr1","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[300,250],"sizes":[[[1280,0],[[300,250]]],[[1024,0],[[300,250]]],[[768,0],[[300,250]]],[[641,0],[[300,250]]],[[0,0],[[300,250]]]],"amp_multi_size":"300x250","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"mid"},"mr1_mobile":{"pos":"mr1_mobile","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[300,250],"sizes":[[[900,0],[]],[[0,0],[[300,250]]]],"amp_multi_size":"300x250","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"atf"},"mr2":{"pos":"mr2","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[300,250],"sizes":[[[1280,0],[[300,250]]],[[1024,0],[[300,250]]],[[768,0],[[300,250]]],[[641,0],[[300,250]]],[[0,0],[[300,250]]]],"amp_multi_size":"300x250","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"mid"},"mr3":{"pos":"mr3","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[300,250],"sizes":[[[1280,0],[[300,250]]],[[1024,0],[[300,250]]],[[768,0],[[300,250]]],[[641,0],[[300,250]]],[[0,0],[[300,250]]]],"amp_multi_size":"300x250","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"mid"},"mr4":{"pos":"mr4","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[300,250],"sizes":[[[1280,0],[[300,250]]],[[1024,0],[[300,250]]],[[768,0],[[300,250]]],[[641,0],[[300,250]]],[[0,0],[[300,250]]]],"amp_multi_size":"300x250","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"mid"},"mr_combo1":{"pos":"mr_combo1","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[300,250],"sizes":[[[1280,0],[[300,600],[300,250]]],[[1024,0],[[300,600],[300,250]]],[[768,0],[[300,250]]],[[641,0],[[300,250]]],[[0,0],[[300,250]]]],"amp_multi_size":"300x250","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"atf"},"mr_combo2":{"pos":"mr_combo2","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[300,250],"sizes":[[[1280,0],[[300,600],[300,250]]],[[1024,0],[[300,600],[300,250]]],[[768,0],[[300,250]]],[[641,0],[[300,250]]],[[0,0],[[300,250]]]],"amp_multi_size":"300x250","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"btf"},"oop":{"pos":"oop","is_companion":true,"is_oop":true,"refresh_on_resize":true,"size":[1,1],"sizes":[[[0,0],[[1,1]]]],"amp_multi_size":"1x1","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"atf"}}},"extended_scroll":{"l10n":{"more_in_category_read_more":"Read the Full Article","more_in_category_title":"More %s Stories","more_stories_read_more":"Read more stories","more_stories_title":"More Stories"},"max_blocks_per_snippet":2,"more_stories_read_more_link":"\/news\/","num_more_in_category_posts":3,"num_more_stories_posts":4},"footer_logo":"9","ga":{"id":"UA-37144901-31"},"gtm":{"id":"GTM-KQD4ZM"},"home_url":"https:\/\/www.conchovalleyhomepage.com\/","homepage":{"l10n":{"hero_title":"Headlines","hero_read_more_title":"More Top Stories","headline_list_read_more_title":"More %s News","top_stories_title":"Top Stories","top_stories_read_more_title":"More Top Stories"},"default_hero_read_more_link":"https:\/\/www.conchovalleyhomepage.com\/news\/","num_headline_lists":6,"num_headline_list_articles":5,"num_hero_articles":5,"num_top_stories_articles":10,"top_stories_read_more_link":"https:\/\/www.conchovalleyhomepage.com\/news\/"},"id":"83","lead_media":{"allowed_block_types":["lakana\/anvplayer"],"video":{"autoplay":"1"}},"logo":"9","name":"ConchoValleyHomepage.com","nativo_enabled":"1","onetrust":{"consent_script_src":"https:\/\/cdn.cookielaw.org\/consent\/{domain_guid}\/OtAutoBlock.js","templates_script_src":"https:\/\/cdn.cookielaw.org\/scripttemplates\/otSDKStub.js"},"primary_color":"#7e0303","related_posts":{"l10n":{"default_title":"Related Content"}},"revcontent":{"status":"1","web_id":"114845","amp_id":"114574","amp_wrapper":"conchovalleyhomepage_114574","app_code":"<div id=\"rc-widget-c06e36\" data-rc-widget data-widget-host=\"habitat\" data-endpoint=\"\/\/trends.revcontent.com\" data-widget-id=\"116059\"><\/div>\r\n<script type=\"text\/javascript\" src=\"\/\/assets.revcontent.com\/master\/delivery.js\" defer=\"defer\"><\/script>"},"section_fronts":{"l10n":{"headlines":"Headlines","more_headlines_title":"More %s Headlines","top_stories_title":"Top Stories"},"hero_read_more_link":"https:\/\/www.conchovalleyhomepage.com\/news\/","num_headline_lists":6,"num_headline_list_articles":5,"num_hero_articles":5,"num_top_stories_articles":10,"top_stories_read_more_link":"https:\/\/www.conchovalleyhomepage.com\/news\/"},"send_to_news":{"url":"http:\/\/embed.sendtonews.com\/oembed\/?fk=TrKiYZGr&cid=9784&sound=off&format=json&offsetx=0&offsety=140&floatwidth=400&floatposition=top-right&float=on","enabled":"1"},"sidebar":{"l10n":{"dont_miss_title":"Don't Miss"},"num_dont_miss_articles":7},"social_links":{"email":"digitalmedia@klst.net","facebook":"https:\/\/www.facebook.com\/klstnews","instagram":"","pinterest":"","rss":"","twitter":"https:\/\/twitter.com\/klstnews","youtube":""},"supernav":{"l10n":{"close_navigation":"Close Navigation","open_navigation":"Open Navigation","looking_for?":"What are you looking for?","primary_menu":"Primary Menu","toggle_menu":"Toggle Menu","top_stories":"Top Stories"},"max_depth":2,"nav_menu_location":"supernav","num_children_per_column":7,"num_columns":4,"num_columns_without_thumbnails":1,"num_posts_in_column_with_thumbnails":1,"num_posts_in_column_without_thumbnails":4,"post_type_feature":"supernav"},"template_variables":{"l10n":{"article_date":"M j, Y \/ h:i A T","article_list_by":"by %1$s %2$s %3$s","article_list_category":"%1$s \/ %2$s","author_by":"by: %s","author_sep":", ","infinite_button_text":"Load More","infinite_error_text":"Error loading articles","infinite_loading":"Loading...","more":"More","more_term":"More %s","next_page":"Next page","now_playing":"Now Playing","previous_page":"Previous page","posted":"Posted: %s","read_more_arrow":"Read More &raquo;","relative_date_format":"%s ago","search":"Search","sep":"\/","share_this_story":"Share this story","site_search":"Site Search...","snippet_date":"M j, Y","sponsored_by":"Sponsored By","top_stories_from":"Top Stories From %s","updated":"Updated: %s","up_next":"Up Next","video":"Video","exit_sticky_player":"Exit sticky player","form_processing":"Processing...","form_message_sent":"Message Sent!","form_error":"Error"},"num_404_top_stories_articles":5},"weather":{"city_name":"","latitude":"31.4638","longitude":"-100.4370","zipcode":"76902"},"weather_alerts":{"l10n":{"loading_alerts":"Checking for current alerts","no_current_alerts":"There are no active weather alerts. Check back later."}}};
+var weatherAlerts = {"alert_types":["Administrative Message","Blowing Dust Advisory","Blowing Dust Warning","Brisk Wind Advisory","Child Abduction Emergency","Civil Danger Warning","Civil Emergency Message","Dense Fog Advisory","Dense Smoke Advisory","Dust Advisory","Dust Storm Warning","Evacuation - Immediate","Excessive Heat Warning","Excessive Heat Watch","Extreme Cold Warning","Extreme Cold Watch","Extreme Fire Danger","Extreme Wind Warning","Fire Warning","Fire Weather Watch","Flash Flood Statement","Flash Flood Warning","Flash Flood Watch","Flood Advisory","Flood Statement","Flood Warning","Flood Watch","Freeze Warning","Freeze Watch","Freezing Fog Advisory","Freezing Rain Advisory","Freezing Spray Advisory","Frost Advisory","Hard Freeze Warning","Hard Freeze Watch","Hazardous Materials Warning","Hazardous Weather Outlook","Heat Advisory","High Wind Warning","High Wind Watch","Ice Storm Warning","Law Enforcement Warning","Local Area Emergency","Red Flag Warning","Severe Thunderstorm Warning","Severe Thunderstorm Watch","Severe Weather Statement","Shelter In Place Warning","Special Weather Statement","Storm Warning","Storm Watch","Tornado Warning","Tornado Watch","Urban And Small Stream Flood Advisory","Wind Advisory","Wind Chill Advisory","Wind Chill Warning","Wind Chill Watch","Winter Storm Warning","Winter Storm Watch","Winter Weather Advisory"],"fips":["48451","48413","48431","48081","48399","48083","48095","48307","48319","48327","48267","48435","48105","48235","48383","48173"]};
+</script>
+<script type='text/javascript' src='https://www.conchovalleyhomepage.com/_static/??-eJydjEkSwiAQAD9kWBJx9GD5lmGYKBSQhKX0+SZHr167ulu+18Fnit1xlaFKXP1QeOtcm0g+i1BPcldoyY1zk+3FaRczf2rDIin6g9ruozvqZ1wsRkFIYNGO46wYZ30zjCRszy7yH1MszdNeWuecAQUXrSeFhhVP8+/1ke7aAFw1nGEMX12PTQ4='></script>
+<script async src='https://s7.addthis.com/js/300/addthis_widget.js?ver=1.0#pubid=ra-5b7190c0239b8829'></script>
+<script>
+var addthis_config=addthis_config||{};addthis_config.data_track_addressbar=false;addthis_config.data_track_clickback=false;
+</script>
+<script type='text/javascript' src='https://www.conchovalleyhomepage.com/wp-includes/js/wp-embed.min.js?m=1576710968g'></script>
+<script type='text/javascript' src='https://stats.wp.com/e-202001.js' async='async' defer='defer'></script>
+<script type='text/javascript'>
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:8.0',blog:'162794825',post:'225470',tz:'-6',srv:'www.conchovalleyhomepage.com'} ]);
+	_stq.push([ 'clickTrackerInit', '162794825', '225470' ]);
+</script>
+
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"bb199f70cb","applicationID":"222037236","transactionName":"MQNTMhdXDxECABBZDAhJchMWQg4PTBQUHxVUSUEJFkISTUtcNAwKAlhqOgFrSks=","queueTime":0,"applicationTime":834,"atts":"HURERF9NHE5BAkYKGBsb","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>

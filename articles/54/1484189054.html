@@ -1,0 +1,1403 @@
+
+<!doctype html>
+<html lang="en-US" xmlns:fb="https://www.facebook.com/2008/fbml" xmlns:addthis="https://www.addthis.com/help/api-spec"  class="no-js">
+<head>
+	<!-- DNS Prefetching -->
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//www.googletagservices.com">
+	<link rel="dns-prefetch" href="//www.googletagmanager.com">
+
+	<meta charset="UTF-8"><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"34f9066ae4",applicationID:"6329638"};window.NREUM||(NREUM={}),__nr_require=function(n,e,t){function r(t){if(!e[t]){var i=e[t]={exports:{}};n[t][0].call(i.exports,function(e){var i=n[t][1][e];return r(i||e)},i,i.exports)}return e[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(n,e,t){function r(){}function i(n,e,t){return function(){return o(n,[u.now()].concat(f(arguments)),e?null:this,t),e?void 0:this}}var o=n("handle"),a=n(4),f=n(5),c=n("ee").get("tracer"),u=n("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(n,e){s[e]=i(d+e,!0,"api")}),s.addPageAction=i(d+"addPageAction",!0),s.setCurrentRouteName=i(d+"routeName",!0),e.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(n,e){var t={},r=this,i="function"==typeof e;return o(l+"tracer",[u.now(),n,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return e.apply(this,arguments)}catch(n){throw c.emit("fn-err",[arguments,this,n],t),n}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(n,e){m[e]=i(l+e)}),newrelic.noticeError=function(n,e){"string"==typeof n&&(n=new Error(n)),o("err",[n,u.now(),!1,e])}},{}],2:[function(n,e,t){function r(n,e){var t=n.getEntries();t.forEach(function(n){"first-paint"===n.name?a("timing",["fp",Math.floor(n.startTime)]):"first-contentful-paint"===n.name&&a("timing",["fcp",Math.floor(n.startTime)])})}function i(n){if(n instanceof c&&!s){var e,t=Math.round(n.timeStamp);e=t>1e12?Date.now()-t:f.now()-t,s=!0,a("timing",["fi",t,{type:n.type,fid:e}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var o,a=n("handle"),f=n("loader"),c=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){o=new PerformanceObserver(r);try{o.observe({entryTypes:["paint"]})}catch(u){}}if("addEventListener"in document){var s=!1,p=["click","keydown","mousedown","pointerdown","touchstart"];p.forEach(function(n){document.addEventListener(n,i,!1)})}}},{}],3:[function(n,e,t){function r(n,e){if(!i)return!1;if(n!==i)return!1;if(!e)return!0;if(!o)return!1;for(var t=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],4:[function(n,e,t){function r(n,e){var t=[],r="",o=0;for(r in n)i.call(n,r)&&(t[o]=e(r,n[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],5:[function(n,e,t){function r(n,e,t){e||(e=0),"undefined"==typeof t&&(t=n?n.length:0);for(var r=-1,i=t-e||0,o=Array(i<0?0:i);++r<i;)o[r]=n[e+r];return o}e.exports=r},{}],6:[function(n,e,t){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(n,e,t){function r(){}function i(n){function e(n){return n&&n instanceof r?n:n?c(n,f,o):o()}function t(t,r,i,o){if(!d.aborted||o){n&&n(t,r,i);for(var a=e(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function l(n,e){h[n]=v(n).concat(e)}function m(n,e){var t=h[n];if(t)for(var r=0;r<t.length;r++)t[r]===e&&t.splice(r,1)}function v(n){return h[n]||[]}function g(n){return p[n]=p[n]||i(t)}function w(n,e){u(n,function(n,t){e=e||"feature",y[t]=e,e in s||(s[e]=[])})}var h={},y={},b={on:l,addEventListener:l,removeEventListener:m,emit:t,get:g,listeners:v,context:e,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var f="nr@context",c=n("gos"),u=n(4),s={},p={},d=e.exports=i();d.backlog=s},{}],gos:[function(n,e,t){function r(n,e,t){if(i.call(n,e))return n[e];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(n,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return n[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(n,e,t){function r(n,e,t,r){i.buffer([n],r),i.emit(n,e,t)}var i=n("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(n,e,t){function r(n){var e=typeof n;return!n||"object"!==e&&"function"!==e?-1:n===window?0:a(n,o,function(){return i++})}var i=1,o="nr@id",a=n("gos");e.exports=r},{}],loader:[function(n,e,t){function r(){if(!x++){var n=E.info=NREUM.info,e=l.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(n&&n.licenseKey&&n.applicationID&&e))return s.abort();u(y,function(e,t){n[e]||(n[e]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=l.createElement("script");t.src="https://"+n.agent,e.parentNode.insertBefore(t,e)}}function i(){"complete"===l.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=n("handle"),u=n(4),s=n("ee"),p=n(3),d=window,l=d.document,m="addEventListener",v="attachEvent",g=d.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:g,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1158.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=e.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};n(1),n(2),l[m]?(l[m]("DOMContentLoaded",o,!1),d[m]("load",r,!1)):(l[v]("onreadystatechange",i),d[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=n(6)},{}],"wrap-function":[function(n,e,t){function r(n){return!(n&&n instanceof Function&&n.apply&&!n[a])}var i=n("ee"),o=n(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;e.exports=function(n,e){function t(n,e,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){d([u,"",[r,a,i],f])}s(e+"start",[r,a,i],f);try{return c=n.apply(a,r)}catch(p){throw s(e+"err",[r,a,p],f),p}finally{s(e+"end",[r,a,c],f)}}return r(n)?n:(e||(e=""),nrWrapper[a]=n,p(n,nrWrapper),nrWrapper)}function u(n,e,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<e.length;c++)f=e[c],a=n[f],r(a)||(n[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||e){var o=c;c=!0;try{n.emit(t,r,i,e)}catch(a){d([a,t,r,i])}c=o}}function p(n,e){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(n);return t.forEach(function(t){Object.defineProperty(e,t,{get:function(){return n[t]},set:function(e){return n[t]=e,e}})}),e}catch(r){d([r])}for(var i in n)f.call(n,i)&&(e[i]=n[i]);return e}function d(e){try{n.emit("internal-error",e)}catch(t){}}return n||(n=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	<script>
+		document.documentElement.className = document.documentElement.className.replace('no-js', ' ');
+		document.documentElement.className += ' js ';
+	</script>
+	<title>In France, a killer&#039;s successful insanity defense sparks outrage - Jewish Telegraphic Agency</title>
+
+<!-- This site is optimized with the Yoast SEO plugin v12.6.2 - https://yoast.com/wordpress/plugins/seo/ -->
+<meta name="robots" content="max-snippet:-1, max-image-preview:large, max-video-preview:-1"/>
+<link rel="canonical" href="https://www.jta.org/2019/12/31/global/in-france-a-killers-successful-insanity-defense-sparks-outrage" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="In France, a killer&#039;s successful insanity defense sparks outrage - Jewish Telegraphic Agency" />
+<meta property="og:description" content="Kobili Troare will not stand trial for the 2017 slaying of Sarah Halimi because the courts said he was too high on marijuana to control himself." />
+<meta property="og:url" content="https://www.jta.org/2019/12/31/global/in-france-a-killers-successful-insanity-defense-sparks-outrage" />
+<meta property="og:site_name" content="Jewish Telegraphic Agency" />
+<meta property="article:tag" content="anti-semitic violence in france" />
+<meta property="article:tag" content="anti-semitism in france" />
+<meta property="article:tag" content="anti-semitism in paris" />
+<meta property="article:tag" content="bnvca" />
+<meta property="article:tag" content="CRIF" />
+<meta property="article:tag" content="Halimi" />
+<meta property="article:tag" content="sammy ghozlan" />
+<meta property="article:section" content="Global" />
+<meta property="article:published_time" content="2019-12-31T19:54:05+00:00" />
+<meta property="article:modified_time" content="2019-12-31T19:55:18+00:00" />
+<meta property="og:updated_time" content="2019-12-31T19:55:18+00:00" />
+<meta property="og:image" content="https://www.jta.org/wp-content/uploads/2019/12/paris-antisemitisme-1024x578.jpg" />
+<meta property="og:image:secure_url" content="https://www.jta.org/wp-content/uploads/2019/12/paris-antisemitisme-1024x578.jpg" />
+<meta property="og:image:width" content="1024" />
+<meta property="og:image:height" content="578" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:description" content="Kobili Troare will not stand trial for the 2017 slaying of Sarah Halimi because the courts said he was too high on marijuana to control himself." />
+<meta name="twitter:title" content="In France, a killer&#039;s successful insanity defense sparks outrage - Jewish Telegraphic Agency" />
+<meta name="twitter:image" content="https://www.jta.org/wp-content/uploads/2019/12/paris-antisemitisme.jpg" />
+<script type='application/ld+json' class='yoast-schema-graph yoast-schema-graph--main'>{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://www.jta.org/#website","url":"https://www.jta.org/","name":"Jewish Telegraphic Agency","description":"The Global Jewish News Source","potentialAction":{"@type":"SearchAction","target":"https://www.jta.org/?s={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"ImageObject","@id":"https://www.jta.org/2019/12/31/global/in-france-a-killers-successful-insanity-defense-sparks-outrage#primaryimage","url":"https://www.jta.org/wp-content/uploads/2019/12/paris-antisemitisme.jpg","width":2160,"height":1220,"caption":"French Jews at a march protestic anti-Semitic violence in Paris, France on March 28, 2018. (Cnaan Liphshiz)"},{"@type":"WebPage","@id":"https://www.jta.org/2019/12/31/global/in-france-a-killers-successful-insanity-defense-sparks-outrage#webpage","url":"https://www.jta.org/2019/12/31/global/in-france-a-killers-successful-insanity-defense-sparks-outrage","inLanguage":"en-US","name":"In France, a killer&#039;s successful insanity defense sparks outrage - Jewish Telegraphic Agency","isPartOf":{"@id":"https://www.jta.org/#website"},"primaryImageOfPage":{"@id":"https://www.jta.org/2019/12/31/global/in-france-a-killers-successful-insanity-defense-sparks-outrage#primaryimage"},"datePublished":"2019-12-31T19:54:05+00:00","dateModified":"2019-12-31T19:55:18+00:00","author":{"@id":"https://www.jta.org/#/schema/person/3cbdebf19545c7495fcaa1c309ce5f1f"}},{"@type":["Person"],"@id":"https://www.jta.org/#/schema/person/3cbdebf19545c7495fcaa1c309ce5f1f","name":"Cnaan Liphshiz","image":{"@type":"ImageObject","@id":"https://www.jta.org/#authorlogo","url":"https://secure.gravatar.com/avatar/e031c3547cc2cfd4e8eb8dd4df0d4142?s=96&d=mm&r=g","caption":"Cnaan Liphshiz"},"description":"is JTA's news and features correspondent in Europe. Follow him on Twitter at <a href=\"https://twitter.com/hebrish\">@hebrish</a>","sameAs":[]}]}</script>
+<!-- / Yoast SEO plugin. -->
+
+<link rel='dns-prefetch' href='//www.jta.org' />
+<link rel='dns-prefetch' href='//www.google.com' />
+<link rel='dns-prefetch' href='//cdn.polyfill.io' />
+<link rel='dns-prefetch' href='//s7.addthis.com' />
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="Jewish Telegraphic Agency &raquo; Feed" href="https://www.jta.org/feed" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/www.jta.org\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.2.4"}};
+			!function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55357,56424,55356,57342,8205,55358,56605,8205,55357,56424,55356,57340],[55357,56424,55356,57342,8203,55358,56605,8203,55357,56424,55356,57340]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='wp-block-library-css'  href='https://www.jta.org/wp-includes/css/dist/block-library/style.min.css?ver=5.2.4' type='text/css' media='all' />
+<link rel='stylesheet' id='sfm_shared-css'  href='https://www.jta.org/wp-content/mu-plugins/sfm-core/dist/css/shared-style.min.css?ver=0.1.6' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-parsely-style-css'  href='https://www.jta.org/wp-content/plugins/wp-parsely/wp-parsely.css?ver=1577813743' type='text/css' media='all' />
+<link rel='stylesheet' id='styles-css'  href='https://www.jta.org/wp-content/themes/JTA-Redesign/dist/css/style.min.css?ver=0.1.22' type='text/css' media='all' />
+<link crossorigin="anonymous" rel='stylesheet' id='gfonts-css'  href='https://fonts.googleapis.com/css?family=Neuton%3A400%2C400i%2C700%7CRoboto%3A400%2C400i%2C500%2C+500i%2C700%2C700i&#038;ver=0.1.22' type='text/css' media='all' />
+<link rel='stylesheet' id='addthis_all_pages-css'  href='https://www.jta.org/wp-content/plugins/addthis/frontend/build/addthis_wordpress_public.min.css?ver=5.2.4' type='text/css' media='all' />
+<script type='text/javascript' src='https://www.google.com/recaptcha/api.js?ver=0.1.22'></script>
+<script type='text/javascript' src='https://www.jta.org/wp-includes/js/jquery/jquery.js?ver=1.12.4-wp'></script>
+<script type='text/javascript' src='https://www.jta.org/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<script type='text/javascript' src='https://cdn.polyfill.io/v2/polyfill.min.js?ver=0.1.22'></script>
+<script type='text/javascript' src='https://www.jta.org/wp-content/themes/JTA-Redesign/assets/js/frontend/vendor/prebid.js?ver=2.27.0'></script>
+<link rel='https://api.w.org/' href='https://www.jta.org/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.jta.org/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://www.jta.org/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 5.2.4" />
+<link rel='shortlink' href='https://www.jta.org/?p=1668316' />
+<link rel="alternate" type="application/json+oembed" href="https://www.jta.org/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.jta.org%2F2019%2F12%2F31%2Fglobal%2Fin-france-a-killers-successful-insanity-defense-sparks-outrage" />
+<link rel="alternate" type="text/xml+oembed" href="https://www.jta.org/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.jta.org%2F2019%2F12%2F31%2Fglobal%2Fin-france-a-killers-successful-insanity-defense-sparks-outrage&#038;format=xml" />
+
+<!-- BEGIN wp-parsely Plugin Version 2.0 -->
+<meta name="wp-parsely_version" id="wp-parsely_version" content="2.0"/>
+			<script type="application/ld+json">
+		{"@context":"http:\/\/schema.org","@type":"NewsArticle","mainEntityOfPage":{"@type":"WebPage","@id":"http:\/\/www.jta.org\/2019\/12\/31\/global\/in-france-a-killers-successful-insanity-defense-sparks-outrage"},"headline":"In France, a killer&#8217;s successful insanity defense sparks outrage","url":"http:\/\/www.jta.org\/2019\/12\/31\/global\/in-france-a-killers-successful-insanity-defense-sparks-outrage","thumbnailUrl":"https:\/\/www.jta.org\/wp-content\/uploads\/2019\/12\/paris-antisemitisme-156x88.jpg","image":{"@type":"ImageObject","url":"https:\/\/www.jta.org\/wp-content\/uploads\/2019\/12\/paris-antisemitisme-156x88.jpg"},"dateCreated":"2019-12-31T19:54:05Z","datePublished":"2019-12-31T19:54:05Z","dateModified":"2019-12-31T19:54:05Z","articleSection":"Global","author":[{"@type":"Person","name":"Cnaan Liphshiz"}],"creator":["Cnaan Liphshiz"],"keywords":["anti-semitic violence in france","anti-semitism in france","anti-semitism in paris","bnvca","crif","halimi","sammy ghozlan"],"publisher":{"@type":"Organization","name":"Jewish Telegraphic Agency","logo":{"@type":"ImageObject","url":"https:\/\/live-jta.pantheonsite.io\/wp-content\/uploads\/2018\/12\/cropped-homeicon-square@2x-1.png"}}}
+		</script>
+
+			<!-- END wp-parsely Plugin Version 2.0 -->
+
+	<script>
+		dataLayer = [{"canonicalURL":"https:\/\/www.jta.org\/2019\/12\/31\/global\/in-france-a-killers-successful-insanity-defense-sparks-outrage","postId":"1668316","pageType":"post","pageSlug":"in-france-a-killers-successful-insanity-defense-sparks-outrage","publishDate":"20191231","cat":"global","subcat":"","categoryId":"39926","postTag":"anti-semitic-violence-in-france,anti-semitism-in-france,anti-semitism-in-paris,bnvca,crif,halimi,sammy-ghozlan","postTagId":"33376,38975,38976,20115,1369,3329,31412","articleType":"story","author":"cnaan-liphshiz","authorId":"444250"}];
+	</script>
+
+	<!-- Google Tag Manager -->
+	<script>
+		(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+		'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+		})(window,document,'script','dataLayer','GTM-TKZ5V3');
+	</script>
+	<!-- End Google Tag Manager -->
+
+	<script async='async' src='https://www.googletagservices.com/tag/js/gpt.js'></script>
+
+			<script>
+		// Load the apstag.js library.
+		!function(a9,a,p,s,t,A,g){if(a[a9])return;function q(c,r){a[a9]._Q.push([c,r]);}a[a9]={init:function(){q('i',arguments);},fetchBids:function(){q('f',arguments);},setDisplayBids:function(){},targetingKeys:function(){return[];},_Q:[]};A=p.createElement(s);A.async=!0;A.src=t;g=p.getElementsByTagName(s)[0];g.parentNode.insertBefore(A,g);}('apstag',window,document,'script','//c.amazon-adsystem.com/aax2/apstag.js');
+		</script>
+		<script>
+		var JTAAds = {
+			headerBiddingSlots: [],
+			adPartners: [],
+			biddingEndEventsList: [],
+			adServerRequestSent: false,
+			addHeaderBiddingSlot: function(gptSlot) {
+				this.headerBiddingSlots.push(gptSlot);
+
+				// If DFP has been called already, just refresh the ad.
+				if(this.adServerRequestSent) {
+					var googletag = googletag || {};
+					googletag.cmd = googletag.cmd || [];
+					googletag.pubads().refresh([gptSlot]);
+				}
+			},
+			addBiddingPartner: function(adPartner) {
+				this.adPartners.push(adPartner);
+				console.log('JTAAds -- Added bidder',adPartner);
+
+			},
+			maybeSendAdserverRequest: function() {
+				console.log('JTAAds -- maybeSendAdserverRequest!');
+				if(this.adPartners.length === 2) {
+					var JTAheaderBiddingSlots = this.headerBiddingSlots || [];
+					var googletag = window.googletag || {};
+					googletag.cmd = googletag.cmd || [];
+
+					if(pbjs){
+						console.log('JTAAds -- setTargetingForGPTAsync');
+						pbjs.setTargetingForGPTAsync();
+					}
+
+					if(apstag){
+						console.log('JTAAds -- setDisplayBids');
+						apstag.setDisplayBids();
+					}
+
+					// Refresh these slots.
+					if(JTAheaderBiddingSlots.length > 0 && 'undefined' !== typeof googletag.pubads) {
+						googletag.pubads().refresh(JTAheaderBiddingSlots);
+						this.adServerRequestSent = true;
+
+						// Trigger event callbacks once bidding is done.
+						this.biddingEndEventsList.forEach(function(event){
+							event.call(this);
+						});
+
+						return true;
+					}
+				}
+
+				return false;
+			},
+			biddingEndEvents: function(callbackFunc) {
+				this.biddingEndEventsList.push(callbackFunc);
+			}
+		};
+		</script>
+		<script async src="https://www.jta.org/wp-content/themes/JTA-Redesign/dist/js/prebid.js?v=0.1.22"></script>
+		<script src="https://www.jta.org/wp-content/themes/JTA-Redesign/dist/js/amazon.js?v=0.1.22"></script>
+			
+	<script>
+		var googletag = googletag || {};
+		googletag.cmd = googletag.cmd || [];
+		var gptAdSlots = gptAdSlots || {};
+
+		window.sfm = window.sfm || {};
+
+		googletag.cmd.push(function() {
+				
+						window.sfm.topLeaderMapping = googletag.sizeMapping()
+				.addSize([1050, 300], [[728, 90], [970, 90], [970, 250]])
+				.addSize([768, 200], [728, 90])
+				.addSize([0, 0], [[320, 50], [320, 100]])
+				.build();
+			
+	var bottomLeaderMapping = googletag.sizeMapping()
+		.addSize([1050, 200], [[728, 90], [970, 90], [970, 250]])
+		.addSize([768, 200], [728, 90])
+		.addSize([0, 0], [[320, 50], [320, 100], [300, 250]])
+		.build();
+
+	// Store the right rail mapping globally because it needs to be accessed outside of this scope.
+	window.sfm.rightRailMapping = googletag.sizeMapping()
+		.addSize([1050, 200], [[300, 250], [300, 600]])
+		.addSize([768, 200], [300, 250])
+		.addSize([0, 0], [300, 250])
+		.build();
+
+				// Run refresh ads function every 30 seconds
+		var setRefreshRailTimeout = function() {
+			setInterval(function(){
+				refreshAdSlots();
+			}, 30000)
+		}
+
+		function refreshAdSlots(){
+			if (gptAdSlots['rail0']) {
+				googletag.cmd.push(function(){
+					if('undefined' !== typeof googletag.pubads) {
+						googletag.pubads().refresh( [ gptAdSlots['rail0'] ] )
+					}
+				});
+			}
+		};
+
+		if(pbjs && apstag && JTAAds) {
+			JTAAds.biddingEndEvents(function() {
+				console.log('JTAAds -- Bidding ended, set refresh rail ad!');
+				setRefreshRailTimeout();
+			});
+		} else {
+			console.log('No header bidding. Just set the refresh ads.');
+			setRefreshRailTimeout();
+		}
+	
+
+	gptAdSlots['leaderboard_bottom'] = googletag.defineSlot(
+		'/1052128/JTA_leaderboard',
+		[[300, 250], [320, 50], [320, 100], [728, 90], [970, 90], [970, 250]],
+		'leaderboard_bottom')
+		.setTargeting('pos', ['bottom'])
+		.defineSizeMapping(bottomLeaderMapping)
+		.addService(googletag.pubads());
+
+			gptAdSlots['textad'] = googletag.defineSlot('/1052128/JTA_textad', ['fluid'], 'textad')
+			.addService(googletag.pubads());
+
+		gptAdSlots['teads'] = googletag.defineSlot('/1052128/JTA_teads', [1, 1], 'teads')
+			.addService(googletag.pubads());
+	
+			gptAdSlots['skin'] = googletag.defineOutOfPageSlot('/1052128/JTA_skin', 'skin')
+			.addService(googletag.pubads());
+
+		gptAdSlots['prestitial'] = googletag.defineOutOfPageSlot('/1052128/JTA_prestitial', 'prestitial')
+			.addService(googletag.pubads());
+		JTAAds.addHeaderBiddingSlot(gptAdSlots['leaderboard_bottom']);
+	
+			googletag.pubads().setTargeting("canonicalURL", "https:\/\/www.jta.org\/2019\/12\/31\/global\/in-france-a-killers-successful-insanity-defense-sparks-outrage");
+googletag.pubads().setTargeting("postId", "1668316");
+googletag.pubads().setTargeting("pageType", "post");
+googletag.pubads().setTargeting("pageSlug", "in-france-a-killers-successful-insanity-defense-sparks-outrage");
+googletag.pubads().setTargeting("publishDate", "20191231");
+googletag.pubads().setTargeting("cat", ["global"]);
+googletag.pubads().setTargeting("subcat", []);
+googletag.pubads().setTargeting("categoryId", [39926]);
+googletag.pubads().setTargeting("postTag", ["anti-semitic-violence-in-france","anti-semitism-in-france","anti-semitism-in-paris","bnvca","crif","halimi","sammy-ghozlan"]);
+googletag.pubads().setTargeting("postTagId", [33376,38975,38976,20115,1369,3329,31412]);
+googletag.pubads().setTargeting("articleType", "story");
+googletag.pubads().setTargeting("author", ["cnaan-liphshiz"]);
+googletag.pubads().setTargeting("authorId", ["444250"]);
+
+			googletag.pubads().enableSingleRequest();
+			googletag.pubads().collapseEmptyDivs();
+			googletag.pubads().disableInitialLoad();
+			googletag.pubads().setCentering(true);
+			googletag.enableServices();
+		});
+
+	</script>
+		<!-- Hotjar Tracking Code for https://www.jta.org/ -->
+	<script>
+		(function(h,o,t,j,a,r){
+			h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+			h._hjSettings={hjid:1148709,hjsv:6};
+			a=o.getElementsByTagName('head')[0];
+			r=o.createElement('script');r.async=1;
+			r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+			a.appendChild(r);
+		})(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+	</script>
+	<link rel="amphtml" href="https://www.jta.org/2019/12/31/global/in-france-a-killers-successful-insanity-defense-sparks-outrage/amp"><link rel="icon" href="https://www.jta.org/wp-content/uploads/2018/12/cropped-homeicon-square@2x-1-32x32.png" sizes="32x32" />
+<link rel="icon" href="https://www.jta.org/wp-content/uploads/2018/12/cropped-homeicon-square@2x-1-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon-precomposed" href="https://www.jta.org/wp-content/uploads/2018/12/cropped-homeicon-square@2x-1-180x180.png" />
+<meta name="msapplication-TileImage" content="https://www.jta.org/wp-content/uploads/2018/12/cropped-homeicon-square@2x-1-270x270.png" />
+</head>
+
+<body class="post-template-default single single-post postid-1668316 single-format-standard">
+	
+	<!-- Google Tag Manager (noscript) -->
+	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=http://GTM-TKZ5V3"
+		height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+	<!-- End Google Tag Manager (noscript) -->
+	
+	<div id="page" class="site">
+
+		<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+
+		<div class="site-header__top-bar">
+			<div class="wrapper secondary-menu-items">
+
+				<a href="https://www.jta.org/donatenav" class="site-header__donate button">
+					Donate				</a>
+
+				<a class="site-header__reduced-logo" href="https://www.jta.org/" rel="home">
+					<svg role="img" class="jta-icon jta-icon-jta-sticky-logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-label="jta-sticky-logo"><use xlink:href="https://www.jta.org/wp-content/themes/JTA-Redesign/dist/svg/svg.svg#jta-sticky-logo" /></svg>					<span class="screen-reader-text">JTA</span>
+				</a>
+
+				<nav id="site-navigation" class="primary-menu">
+					<div class="menu-primary-container"><ul id="primary-menu" class="primary-navigation"><li id="menu-item-1623122" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1623122"><a href="https://www.jta.org/category/united-states">US</a></li>
+<li id="menu-item-1623123" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1623123"><a href="https://www.jta.org/category/israel">Israel</a></li>
+<li id="menu-item-1623124" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-1623124"><a href="https://www.jta.org/category/global">Global</a></li>
+<li id="menu-item-1623125" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1623125"><a href="https://www.jta.org/category/politics">Politics</a></li>
+<li id="menu-item-1623126" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1623126"><a href="https://www.jta.org/category/culture">Culture</a></li>
+<li id="menu-item-1623127" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1623127"><a href="https://www.jta.org/category/opinion">Opinion</a></li>
+<li id="menu-item-1623128" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1623128"><a href="https://www.jta.org/category/food">Food</a></li>
+<li id="menu-item-1623129" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1623129"><a href="https://www.jta.org/category/sports">Sports</a></li>
+<li id="menu-item-1623130" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1623130"><a href="https://www.jta.org/category/lifestyle">Lifestyle</a></li>
+<li id="menu-item-1623131" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1623131"><a href="https://www.jta.org/category/health">Health</a></li>
+<li id="menu-item-1623132" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1623132"><a href="https://www.jta.org/category/obituaries">Obituaries</a></li>
+<li id="menu-item-1623133" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1623133"><a href="/archive">Archive</a></li>
+<li id="menu-item-1623134" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1623134"><a href="https://www.jta.org/category/video">Video</a></li>
+<li id="menu-item-1623135" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1623135"><a href="/jewniverse">Jewniverse</a></li>
+<li id="menu-item-1623136" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1623136"><a href="/quick-reads">Quick Reads</a></li>
+<li id="menu-item-1623137" class="primary-menu__more-button menu-item menu-item-type-custom menu-item-object-custom menu-item-1623137"><a href="#">More</a></li>
+</ul></div>					<ul class="primary-menu__more-list">
+					</ul>
+				</nav>
+
+				<div class="site-header__search" aria-expanded="false">
+
+					<button class="site-header__search-toggle button">
+						<svg role="img" class="jta-icon site-header__search-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-label="search"><use xlink:href="https://www.jta.org/wp-content/themes/JTA-Redesign/dist/svg/svg.svg#search" /></svg>
+						<svg role="img" class="jta-icon site-header__search-icon-close" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-label="close"><use xlink:href="https://www.jta.org/wp-content/themes/JTA-Redesign/dist/svg/svg.svg#close" /></svg>						<span class="screen-reader-text">
+							Search ToggleSearch toggle</span>
+						</button>
+
+						<div class="site-header__search-form">
+							<form role="search" method="get" class="search-form" action="https://www.jta.org/">
+				<label>
+					<span class="screen-reader-text">Search for:</span>
+					<input type="search" class="search-field" placeholder="Search &hellip;" value="" name="s" />
+				</label>
+				<input type="submit" class="search-submit" value="Search" />
+			</form>						</div>
+					</div>
+
+
+				</div>
+			</div>
+
+			<header id="masthead" class="site-header">
+
+				<div class="wrapper">
+
+					
+<div class="mobile-menu-container">
+
+	<a href="https://www.jta.org/quick-reads" class="mobile-quick-reads-link">
+		Quick Reads		<svg role="img" class="jta-icon jta-icon-long-arrow-right" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-label="long-arrow-right"><use xlink:href="https://www.jta.org/wp-content/themes/JTA-Redesign/dist/svg/svg.svg#long-arrow-right" /></svg>	</a>
+
+	<h3 class="small-subhead -light -overline">Sections</h3>
+	<nav id="site-navigation-mobile" class="primary-menu-mobile">
+		<div class="menu-primary-container"><ul id="primary-menu-mobile" class="primary-navigation-mobile"><li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1623122"><a href="https://www.jta.org/category/united-states">US</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1623123"><a href="https://www.jta.org/category/israel">Israel</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-1623124"><a href="https://www.jta.org/category/global">Global</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1623125"><a href="https://www.jta.org/category/politics">Politics</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1623126"><a href="https://www.jta.org/category/culture">Culture</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1623127"><a href="https://www.jta.org/category/opinion">Opinion</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1623128"><a href="https://www.jta.org/category/food">Food</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1623129"><a href="https://www.jta.org/category/sports">Sports</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1623130"><a href="https://www.jta.org/category/lifestyle">Lifestyle</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1623131"><a href="https://www.jta.org/category/health">Health</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1623132"><a href="https://www.jta.org/category/obituaries">Obituaries</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1623133"><a href="/archive">Archive</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1623134"><a href="https://www.jta.org/category/video">Video</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1623135"><a href="/jewniverse">Jewniverse</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1623136"><a href="/quick-reads">Quick Reads</a></li>
+<li class="primary-menu__more-button menu-item menu-item-type-custom menu-item-object-custom menu-item-1623137"><a href="#">More</a></li>
+</ul></div>	</nav>
+
+	
+	<div class="mobile-menu-container__search">
+		<form role="search" method="get" class="search-form" action="https://www.jta.org/">
+				<label>
+					<span class="screen-reader-text">Search for:</span>
+					<input type="search" class="search-field" placeholder="Search &hellip;" value="" name="s" />
+				</label>
+				<input type="submit" class="search-submit" value="Search" />
+			</form>	</div>
+
+	<div class="mobile-menu-container__about-donate">
+					<a href="https://www.jta.org/about-us" class="site-header__donate button">
+				About			</a>
+		
+		<a href="https://www.jta.org/donatenav" class="site-header__donate button">
+			Donate		</a>
+	</div>
+
+</div>
+
+	<a href="https://www.jta.org/about-us" class="site-header__about button">
+		About	</a>
+
+<h1 class="site-title" itemscope="" itemtype="https://schema.org/Organization">
+	<a href="https://www.jta.org/" rel="home">
+		<svg role="img" class="jta-icon site-header__logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-label="jta-logo"><use xlink:href="https://www.jta.org/wp-content/themes/JTA-Redesign/dist/svg/svg.svg#jta-logo" /></svg>		<span class="screen-reader-text">JTA</span>
+	</a>
+
+</h1>
+
+<div class="site-title__sub-head">EST 1917</div>
+
+<div class="trending-topics-container">
+	</div>
+
+					<button
+						class="hamburger-toggle"
+						id="hamburger-toggle"
+						aria-label="Expand mobile menu"
+						title="Mobile menu toggle">
+
+						<span class="linescontain">
+							<span class="lines"></span>
+						</span>
+					</button>
+				</div>
+
+			</header>
+
+
+			
+			<!-- @TODO should only appear on the archive content and archive post -->
+			<!-- @TODO needs a metabox for an image -->
+
+			
+		<div id="content" class="site-content">
+
+<div id="primary" class="content-area">
+	<main id="main" class="site-main">
+
+		
+<article id="post-1668316" class="wrapper-narrow post-1668316 post type-post status-publish format-standard has-post-thumbnail hentry category-global tag-anti-semitic-violence-in-france tag-anti-semitism-in-france tag-anti-semitism-in-paris tag-bnvca tag-crif tag-halimi tag-sammy-ghozlan article_type-story" itemscope itemtype="https://schema.org/BlogPosting">
+
+	<div itemprop="mainEntityOfPage">
+
+		
+<div class="post-categories ">
+	
+	
+					<a href="https://www.jta.org/category/global" class="post-category -underlinedcat" itemprop="articleSection">Global</a>
+			</div>
+
+		<h1 class="entry-title" itemprop="headline">In France, a killer&#8217;s successful insanity defense sparks outrage</h1>
+
+		
+	<div class="post-info post-info-single is-flex">
+		<div class="post-meta-info-inner">
+
+							
+				
+					
+					
+					
+						<span class="post-meta-info__author-name">By							<a href="https://www.jta.org/author/cnaan-liphshiz">
+								<span class="-underlined-yellow" itemprop="author">
+									Cnaan Liphshiz								</span>
+							</a>
+						</span>
+
+					
+					
+				
+			
+																	<span class="post-meta-info__published-date " itemprop="datePublished">
+						<time datetime="2019-12-31T14:54:05-05:00">
+							<span class="post-meta-info__date">December 31, 2019</span>
+							<span class="post-meta-info__time">2:54 pm</span>
+						</time>
+					</span>
+
+					
+							
+		</div>
+
+		
+			</div>
+
+
+		
+					<!-- Featured image or video-->
+			
+
+				<div class="featured-image" itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
+					<div class="featured-image__img-wrap">
+						<img width="2160" height="1200" src="https://www.jta.org/wp-content/uploads/2019/12/paris-antisemitisme-2160x1200.jpg" class="attachment-single-posts-large size-single-posts-large wp-post-image" alt="French Jews at a march protestic anti-Semitic violence in Paris, France on March 28, 2018. (Cnaan Liphshiz)" srcset="https://www.jta.org/wp-content/uploads/2019/12/paris-antisemitisme-2160x1200.jpg 2160w, https://www.jta.org/wp-content/uploads/2019/12/paris-antisemitisme-156x88.jpg 156w, https://www.jta.org/wp-content/uploads/2019/12/paris-antisemitisme-1080x600.jpg 1080w, https://www.jta.org/wp-content/uploads/2019/12/paris-antisemitisme-540x300.jpg 540w" sizes="(max-width: 2160px) 100vw, 2160px" />					</div>
+
+											<div class="featured-image__caption">
+							French Jews protest anti-Semitic violence in Paris, March 28, 2018. (Cnaan Liphshiz)						</div>
+					
+					<meta itemprop="url" content="https://www.jta.org/wp-content/uploads/2019/12/paris-antisemitisme.jpg" />
+					<meta itemprop="width" content="2160" />
+					<meta itemprop="height" content="1220" />
+				</div>
+					 <!-- end Jewniverse content conditional check -->
+
+		
+		<!-- leaderboard ad  -->
+		<div class="leaderboard-ad">
+			
+<div class="leaderboard -centered -desktop">
+	<div class="leaderboard__title">Advertisement</div>
+
+	<!-- /1052128/JTA_leaderboard -->
+	<div id='leaderboard_top'>
+	</div>
+</div>
+
+
+
+		</div>
+		<!-- leaderboard ad  -->
+
+		
+		<!-- entry content and sidebar -->
+		<div class="is-flex">
+			<div class="entry-content"  itemprop="articleBody">
+
+				 <!-- end Jewniverse content conditional check -->
+
+				<div class="at-above-post addthis_tool" data-url="https://www.jta.org/2019/12/31/global/in-france-a-killers-successful-insanity-defense-sparks-outrage"></div><p>(<a href="http://www.jta.org">JTA</a>) &#8212; An appeals court ruling that a man who killed a Jewish woman in her home while shouting Quranic verses is unfit to stand trial is prompting outraged reactions from French Jews who fear it sets a dangerous precedent that will undermine the fight against anti-Semitism.</p>
+<p>Kobili Troare admitted to <a href="https://www.jta.org/2017/06/13/global/a-french-jews-killing-provides-a-test-for-the-new-macron-administration">killing</a> 67-year-old Sarah Halimi in 2017 in a long and gruesome beating in which neighbors heard him quoting from the Quran and calling his victim a “demon.” But despite Troare having no history of mental illness, the Paris Appeals Court earlier this month <a href="https://www.jta.org/quick-reads/paris-appeals-court-killer-of-jewish-woman-not-responsible-for-his-actions-because-he-was-too-high-on-marijuana">upheld</a> a lower court ruling that Traore is unfit to stand trial because he had a “delirious episode” brought on by his consumption of marijuana. The judge in the case also determined that Troare was anti-Semitic.</p>
+<p>It “left me speechless,” Francis Kalifat, the president of the CRIF umbrella group of French Jewish communities, wrote last week in an emotional <a href="http://www.crif.org/fr/actualites/crif-lettre-ouverte-du-president-du-crif-francis-kalifat-madame-la-procureure-generale-pres-la-cour-dappel-de-paris">open letter</a> to the head of the court.</p>
+<p>“Does the court wish to set a new jurisprudence in our country, making cannabis, which is normally an aggravating factor, a mitigating one for an anti-Semitic murder?” Kalifat asked.</p>
+<p>Traore is not the first killer of Jews to avoid standing trial in France. In 2003, Abel Amastaibou told his mother that he was &#8220;going to heaven&#8221; for killing a Jew after stabbing Sebastian Selam to death. Amastaibou, a Muslim, was found unfit to stand trial despite having no prior history of mental illness.</p>
+<p>In 2015, another Muslim with no prior history of mental illness, Farid Haddouche, was deemed unfit to stand trial for stabbing Jews in Marseille &#8212; though further inquiries, conducted amid an outcry, ultimately led to his sentencing to four years in jail.</p>
+<p>In his letter, Kalifat wondered whether the court ruling was driven by a desire to avoid addressing the role of Muslim anti-Semitism in the targeting of Jews in France while adding he couldn&#8217;t bring himself to believe this was the case. Gilles-William Goldnadel, a former member of the CRIF executive board and a lawyer representing the Halimi family, had no such qualms.</p>
+<p>The ruling on Traore “was an ideological decision born of a great reluctance to condemn those deemed as society’s victims,” he <a href="https://www.lemonde.fr/societe/article/2019/12/19/meurtre-de-sarah-halimi-le-suspect-juge-penalement-irresponsable_6023491_3224.html">told</a> reporters.</p>
+<p>The case “destroyed my confidence that anti-Semitic hate crimes in France are handled properly,” <a href="https://www.jta.org/2019/05/01/global/french-jews-say-officials-are-reluctant-to-call-out-anti-semitism-by-muslims">Sammy Ghozlan</a>, a former French police commissioner who now heads the BNVCA anti-Semitism watchdog, told the Jewish Telegraphic Agency. “There have been a series of massive failures unlike any I’d seen.”</p>
+<p>Ghozlan’s investigation led to the discovery that several police officers had stood outside the door of Halimi’s apartment while she was being pummeled by Traore. Neighbors had called the police upon hearing the commotion, but the officers stayed outside due to what a police spokesperson later said was concern about “terrorist activity.&#8221;</p>
+<p>“I personally believe the decision to not prosecute Traore is to avoid scrutiny of how police performed that night,” Ghozlan said. “It’s the only explanation I can think of to a chain of events that is otherwise inexplicable, at least to me.&#8221;</p>
+<p>The decision not to prosecute Traore was based on three rounds of psychiatric examinations that determined he was not responsible for his actions because the cannabis had induced a &#8220;delirious episode,&#8221; which the appeals court <a href="http://www.leparisien.fr/faits-divers/le-meurtrier-presume-de-sarah-halimi-ne-sera-pas-juge-six-questions-sur-un-dossier-sensible-27-12-2019-8224848.php">stated</a> did not subtract from the fact that his actions were the result of anti-Semitic bias. Some of the psychiatric evaluations were ordered by the judge evaluating the case and not at the request of Traore’s lawyer.</p>
+<p>Prosecutors disputed the claim that Traore was not in charge of his faculties when he killed Halimi. But even if he were, the prosecution argued in June, by &#8220;voluntarily consuming&#8221; marijuana, Traore &#8220;directly contributed” to his delirium and is therefore criminally liable for his actions.</p>
+<p>Halimi&#8217;s killing on April 3, 2017, came just three weeks before the first round of a presidential election in which Marine Le Pen, the leader of the far-right National Rally party and a fierce critic of Islam, took one-third of the vote. Many French Jews believe the media swept the case under the carpet in order not to give fodder to Le Pen’s campaign.</p>
+<p>The killing was reported at length in the mainstream French media only two months later, largely thanks to an <a href="https://www.jta.org/2017/06/09/global/french-intellectuals-accuse-authorities-of-covering-up-jews-slaying-by-muslim-neighbor">open letter</a> by 17 of France’s foremost intellectuals.</p>
+<p>“Everything about this crime suggests there is an ongoing denial of reality,” they wrote.</p>
+<p>Only in September 2017 did prosecutors for the first time say that Traore’s actions were the result of anti-Semitic hatred, a claim the judges who deemed him unfit to stand trial accepted in their reasoning.</p>
+<p>The case has brought back “bad memories,&#8221; according to Shmuel Trigano, a French Jewish author and researcher well-known for chronicling how the French authorities ignored a wave of violent anti-Semitism in France in the early 2000s sparked by the outbreak of the Second Intifada in Israel. Daniel Vaillant, then France&#8217;s interior minister, later acknowledged that the incidents were squelched in order to “not pour oil on the fire.”</p>
+<p>But French authorities have since grown less reticent as the death toll from Islamic militants has grown. In October, President Emmanuel Macron <a href="https://www.reuters.com/article/us-france-security-victims-macron/france-needs-society-of-vigilance-against-islamist-hydra-macron-idUSKBN1WN168">urged</a> the country to be “vigilant” against the threat of Islamism following the slaying of four people by a Muslim convert at the Paris police headquarters.</p>
+<p>Still, some critics see French authorities as reluctant to call out the Muslim role in violence against French Jews. According to BNVCA, most physical assaults on Jews in France are perpetrated by people from families that immigrated to France from Muslim-majority countries.</p>
+<p>In its annual report for 2016, the French government&#8217;s human rights body, French National Consultative Commission on Human Rights, wrote that a “significant part of the anti-Semitic acts (actions and threats) pertains to neo-Nazi ideology, whereas in most other cases the perpetrators’ motivations are difficult to ascertain.”</p>
+<p>The report did not mention attacks by Muslims.</p>
+<p>The report also questioned the existence of a new anti-Semitism tied to animosity toward Israel, saying that if such an anti-Semitism exists, “then it pertains to a minority” of cases.</p>
+<!-- AddThis Advanced Settings above via filter on the_content --><!-- AddThis Advanced Settings below via filter on the_content --><!-- AddThis Advanced Settings generic via filter on the_content --><!-- AddThis Share Buttons above via filter on the_content --><!-- AddThis Share Buttons below via filter on the_content --><div class="at-below-post addthis_tool" data-url="https://www.jta.org/2019/12/31/global/in-france-a-killers-successful-insanity-defense-sparks-outrage"></div><!-- AddThis Share Buttons generic via filter on the_content -->
+				
+				
+																								
+				
+				
+				
+<div class="inline-ad">
+	<!-- /1052128/JTA_textad -->
+	<div id='textad'>
+		<script>
+			googletag.cmd.push( function() {
+				googletag.display('textad');
+				googletag.pubads().refresh( [ gptAdSlots['textad'] ] );
+			} );
+		</script>
+	</div>
+</div>
+
+
+
+<!-- /1052128/JTA_teads -->
+<div id='teads' style='height:1px; width:1px;'>
+	<script>
+		googletag.cmd.push( function() {
+			googletag.display('teads');
+			googletag.pubads().refresh( [ gptAdSlots['teads'] ] );
+		} );
+	</script>
+</div>
+
+
+
+			</div>
+
+			
+<aside id="secondary" class="top-stories-widget sticky-aside">
+
+	<!-- Jewniverse Content -->
+	
+			
+	<h3 class="flag-heading -smaller -underlined">
+					<span>Trending on JTA</span>
+			</h3>
+
+<div class="top-stories ">
+
+	
+<div class="top-story">
+
+	<div class="top-story__wrapper">
+
+		
+		<div class="top-story__left">
+			
+			<div class="top-story__link-container">
+
+				<a class="top-story__link " href="https://www.jta.org/quick-reads/new-age-guru-ram-dass-born-richard-alpert-dies-at-88">
+					New age guru Ram Dass, born Richard Alpert, dies at 88				</a>
+			</div>
+
+							<div class="top-story__image-container">
+					<div class="top-story__image">
+						<a class="top-story__image-link" href="https://www.jta.org/quick-reads/new-age-guru-ram-dass-born-richard-alpert-dies-at-88">
+							<img width="540" height="300" src="https://www.jta.org/wp-content/uploads/2019/12/Zalman_Schachter-Shalomi__Ram_Dass-540x300.jpg" class="attachment-single-posts-small size-single-posts-small wp-post-image" alt="Ram Dass" srcset="https://www.jta.org/wp-content/uploads/2019/12/Zalman_Schachter-Shalomi__Ram_Dass-540x300.jpg 540w, https://www.jta.org/wp-content/uploads/2019/12/Zalman_Schachter-Shalomi__Ram_Dass-156x87.jpg 156w, https://www.jta.org/wp-content/uploads/2019/12/Zalman_Schachter-Shalomi__Ram_Dass-350x194.jpg 350w, https://www.jta.org/wp-content/uploads/2019/12/Zalman_Schachter-Shalomi__Ram_Dass-768x427.jpg 768w, https://www.jta.org/wp-content/uploads/2019/12/Zalman_Schachter-Shalomi__Ram_Dass-1024x569.jpg 1024w, https://www.jta.org/wp-content/uploads/2019/12/Zalman_Schachter-Shalomi__Ram_Dass-500x278.jpg 500w, https://www.jta.org/wp-content/uploads/2019/12/Zalman_Schachter-Shalomi__Ram_Dass.jpg 1080w" sizes="(max-width: 540px) 100vw, 540px" />						</a>
+					</div>
+				</div>
+					</div>
+	</div>
+
+</div>
+
+<div class="top-story">
+
+	<div class="top-story__wrapper">
+
+		
+		<div class="top-story__left">
+			
+			<div class="top-story__link-container">
+
+				<a class="top-story__link " href="https://www.jta.org/quick-reads/three-assaults-against-jews-reported-in-new-york-just-over-24-hours">
+					Three assaults against Jews reported in New York in just over 24 hours				</a>
+			</div>
+
+							<div class="top-story__image-container">
+					<div class="top-story__image">
+						<a class="top-story__image-link" href="https://www.jta.org/quick-reads/three-assaults-against-jews-reported-in-new-york-just-over-24-hours">
+							<img width="540" height="300" src="https://www.jta.org/wp-content/uploads/2019/10/crown_heights-540x300.jpg" class="attachment-single-posts-small size-single-posts-small wp-post-image" alt="Crown Heights" srcset="https://www.jta.org/wp-content/uploads/2019/10/crown_heights-540x300.jpg 540w, https://www.jta.org/wp-content/uploads/2019/10/crown_heights-156x87.jpg 156w, https://www.jta.org/wp-content/uploads/2019/10/crown_heights-350x194.jpg 350w, https://www.jta.org/wp-content/uploads/2019/10/crown_heights-768x427.jpg 768w, https://www.jta.org/wp-content/uploads/2019/10/crown_heights-1024x569.jpg 1024w, https://www.jta.org/wp-content/uploads/2019/10/crown_heights-1080x600.jpg 1080w, https://www.jta.org/wp-content/uploads/2019/10/crown_heights-500x278.jpg 500w" sizes="(max-width: 540px) 100vw, 540px" />						</a>
+					</div>
+				</div>
+					</div>
+	</div>
+
+</div>
+
+<div class="top-story">
+
+	<div class="top-story__wrapper">
+
+		
+		<div class="top-story__left">
+			
+			<div class="top-story__link-container">
+
+				<a class="top-story__link " href="https://www.jta.org/quick-reads/2-years-after-tweeting-an-anti-semitic-article-screed-valerie-plame-is-attending-synagogue">
+					2 years after tweeting an anti-Semitic article, Valerie Plame is attending synagogue				</a>
+			</div>
+
+							<div class="top-story__image-container">
+					<div class="top-story__image">
+						<a class="top-story__image-link" href="https://www.jta.org/quick-reads/2-years-after-tweeting-an-anti-semitic-article-screed-valerie-plame-is-attending-synagogue">
+							<img width="540" height="300" src="https://www.jta.org/wp-content/uploads/2019/09/09-11-2019-Valerie-Plame-540x300.jpg" class="attachment-single-posts-small size-single-posts-small wp-post-image" alt="" srcset="https://www.jta.org/wp-content/uploads/2019/09/09-11-2019-Valerie-Plame-540x300.jpg 540w, https://www.jta.org/wp-content/uploads/2019/09/09-11-2019-Valerie-Plame-156x87.jpg 156w, https://www.jta.org/wp-content/uploads/2019/09/09-11-2019-Valerie-Plame-350x195.jpg 350w, https://www.jta.org/wp-content/uploads/2019/09/09-11-2019-Valerie-Plame-768x427.jpg 768w, https://www.jta.org/wp-content/uploads/2019/09/09-11-2019-Valerie-Plame-1024x570.jpg 1024w, https://www.jta.org/wp-content/uploads/2019/09/09-11-2019-Valerie-Plame-1080x600.jpg 1080w, https://www.jta.org/wp-content/uploads/2019/09/09-11-2019-Valerie-Plame-500x278.jpg 500w" sizes="(max-width: 540px) 100vw, 540px" />						</a>
+					</div>
+				</div>
+					</div>
+	</div>
+
+</div>
+</div>
+	
+	<div class="sticky">
+		
+<div class="right-rail-container">
+	<div class="right-rail rail -centered -desktop">
+
+		<div class="leaderboard__title">Advertisement</div>
+
+		<!-- /1052128/JTA_rail -->
+		<div id='rail0' class="">
+															<script>
+						var gptAdSlots = gptAdSlots || {};
+						googletag.cmd.push(function() {
+							var slotName = 'rail0';
+							gptAdSlots[slotName] = googletag.defineSlot( '/1052128/JTA_rail', [[300, 250], [300, 600]], slotName )
+								.defineSizeMapping(window.sfm.rightRailMapping)
+								.addService(
+									googletag.pubads().addEventListener(
+										'slotRenderEnded',
+										function(event) {
+											if ( 'rail0' === event.slot.getSlotElementId() && event.size ) {
+												var rightRailLoaded = new CustomEvent("JTArightRailLoaded", {
+													"detail": {size: event.size[1] }
+												});
+												document.dispatchEvent(rightRailLoaded);
+											}
+										}
+									)
+								);
+
+							googletag.display( slotName );
+							JTAAds.addHeaderBiddingSlot(gptAdSlots[slotName]);
+						});
+					</script>
+									</div>
+
+	</div>
+</div>
+	</div>
+
+
+</aside>
+
+		</div>
+		<!-- entry content and sidebar -->
+
+	</div>
+</article>
+
+
+
+
+
+
+
+
+			<!-- Newsletter component -->
+			
+<div class="newsletter-signup -with-ad">
+	<div class="wrapper-narrow">
+		<div class="newsletter-signup__content">
+			<div>
+				<h3 class="newsletter-signup__title">
+					Get JTA&#039;s Daily Briefing in your inbox				</h3>
+				<form class="newsletter-form is-flex">
+					<input type="hidden" value="1668316" class="newsletter-form__pageid">
+					<input type="text" placeholder="Email" class="newsletter-form__email">
+					<input type="button" value="Subscribe" class="newsletter-form__submit">
+
+					<div class="newsletter-form__policy">
+						<div class="newsletter-form__checkbox-wrapper">
+							<input type="checkbox" hidden required id="gdpr-checkbox" name="gdpr-checkbox" class="newsletter-form__checkbox" />
+							<label for="gdpr-checkbox" class="newsletter-form__checkbox-label"></label>
+						</div>
+						<p>I accept the JTA <a href="/privacy-policy">Privacy Policy</a>.</p>
+					</div>
+
+					<input type="hidden" id="jta-subscription-form" name="jta-subscription-form" value="7e6ebfa727" /><input type="hidden" name="_wp_http_referer" value="/2019/12/31/global/in-france-a-killers-successful-insanity-defense-sparks-outrage" />
+					<div class="newsletter-form__validation-message -no-error -invalid">
+						<svg role="img" class="jta-icon jta-icon-chevron-up" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-label="chevron-up"><use xlink:href="https://www.jta.org/wp-content/themes/JTA-Redesign/dist/svg/svg.svg#chevron-up" /></svg>						Please accept the JTA Privacy Policy					</div>
+
+					<div class="newsletter-form__terms">
+						<p>By submitting the above I agree to the <a href="/privacy-policy">privacy policy</a> and <a href="/terms-of-use">terms of use</a> of JTA.org</p>
+					</div>
+
+											<div class="g-recaptcha" data-sitekey="6LfzUnwUAAAAACgF2tcUuRqXc8Q-vtSf7AKGhgid" style="display: none;"></div>
+					
+				</form>
+
+				<div class="feedback"></div>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+			<!-- Newsletter component -->
+
+				<!-- Related posts -->
+	<div class="single-post-related-content-container wrapper-narrow">
+		<h2 class="flag-heading -unmargin -margin-top">
+			<span class="flag-heading__text">Recommended from JTA</span>
+		</h2>
+
+		<div class="is-flex">
+			<div class="alternating-grid-wrapper">
+				<div class="alternating-grid">
+					
+<article id="post-1667973" class="alternating-grid-post post-1667973 post type-post status-publish format-standard has-post-thumbnail hentry category-global category-israel article_type-story" itemscope itemtype="https://schema.org/BlogPosting">
+	
+		
+		<div class="alternating-grid-post__image-container">
+			<div class="alternating-grid-post__image" itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
+				<a class="alternating-grid-post__link" href="https://www.jta.org/2019/12/30/global/whats-behind-the-iccs-push-to-try-israelis-for-war-crimes">
+					<span class="alternating-grid-post__image-bg"></span>
+					<img width="540" height="300" src="https://www.jta.org/wp-content/uploads/2019/12/12-30-19-fatou-bensouda-540x300.jpg" class="attachment-single-posts-small size-single-posts-small wp-post-image" alt="Fatou Bensouda" srcset="https://www.jta.org/wp-content/uploads/2019/12/12-30-19-fatou-bensouda-540x300.jpg 540w, https://www.jta.org/wp-content/uploads/2019/12/12-30-19-fatou-bensouda-156x87.jpg 156w, https://www.jta.org/wp-content/uploads/2019/12/12-30-19-fatou-bensouda-350x194.jpg 350w, https://www.jta.org/wp-content/uploads/2019/12/12-30-19-fatou-bensouda-768x427.jpg 768w, https://www.jta.org/wp-content/uploads/2019/12/12-30-19-fatou-bensouda-1024x569.jpg 1024w, https://www.jta.org/wp-content/uploads/2019/12/12-30-19-fatou-bensouda-1080x600.jpg 1080w, https://www.jta.org/wp-content/uploads/2019/12/12-30-19-fatou-bensouda-500x278.jpg 500w" sizes="(max-width: 540px) 100vw, 540px" />									</a>
+				<meta itemprop="url" content="https://www.jta.org/wp-content/uploads/2019/12/12-30-19-fatou-bensouda.jpg" />
+				<meta itemprop="width" content="2160" />
+				<meta itemprop="height" content="1200" />
+			</div>
+		</div>
+
+	
+	<div class="alternating-grid-post__content">
+
+		
+<div class="post-categories ">
+	
+	
+					<a href="https://www.jta.org/category/global" class="post-category -underlinedcat" itemprop="articleSection">Global</a>
+			</div>
+
+		<h2 class="alternating-grid-post__title" itemprop="headline">
+			<a href="https://www.jta.org/2019/12/30/global/whats-behind-the-iccs-push-to-try-israelis-for-war-crimes" itemprop="url">Some think the International Criminal Court is biased against African countries. Prosecuting Israel could lend it credibility.</a>
+		</h2>
+
+		
+	<div class="post-meta-info">
+		<div class="post-meta-info-inner">
+
+							
+				
+					
+					
+					
+						<span class="post-meta-info__author-name">By							<a href="https://www.jta.org/author/cnaan-liphshiz">
+								<span class="-underlined-yellow" itemprop="author">
+									Cnaan Liphshiz								</span>
+							</a>
+						</span>
+
+					
+					
+				
+			
+																	<span class="post-meta-info__published-date " itemprop="datePublished">
+						<time datetime="2019-12-30T16:07:42-05:00">
+							<span class="post-meta-info__date">December 30, 2019</span>
+							<span class="post-meta-info__time">4:07 pm</span>
+						</time>
+					</span>
+
+					
+							
+		</div>
+
+		
+			</div>
+
+
+	</div>
+</article>
+
+
+<article id="post-1665709" class="alternating-grid-post post-1665709 post type-post status-publish format-standard has-post-thumbnail hentry category-culture category-global category-israel category-politics category-united-states article_type-story" itemscope itemtype="https://schema.org/BlogPosting">
+	
+		
+		<div class="alternating-grid-post__image-container">
+			<div class="alternating-grid-post__image" itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
+				<a class="alternating-grid-post__link" href="https://www.jta.org/2019/12/27/culture/the-jews-who-defined-the-2010s">
+					<span class="alternating-grid-post__image-bg"></span>
+					<img width="540" height="300" src="https://www.jta.org/wp-content/uploads/2019/12/12-26-19-EOD-header-540x300.jpg" class="attachment-single-posts-small size-single-posts-small wp-post-image" alt="" srcset="https://www.jta.org/wp-content/uploads/2019/12/12-26-19-EOD-header-540x300.jpg 540w, https://www.jta.org/wp-content/uploads/2019/12/12-26-19-EOD-header-156x87.jpg 156w, https://www.jta.org/wp-content/uploads/2019/12/12-26-19-EOD-header-350x194.jpg 350w, https://www.jta.org/wp-content/uploads/2019/12/12-26-19-EOD-header-768x427.jpg 768w, https://www.jta.org/wp-content/uploads/2019/12/12-26-19-EOD-header-1024x569.jpg 1024w, https://www.jta.org/wp-content/uploads/2019/12/12-26-19-EOD-header-1080x600.jpg 1080w, https://www.jta.org/wp-content/uploads/2019/12/12-26-19-EOD-header-500x278.jpg 500w" sizes="(max-width: 540px) 100vw, 540px" />									</a>
+				<meta itemprop="url" content="https://www.jta.org/wp-content/uploads/2019/12/12-26-19-EOD-header.jpg" />
+				<meta itemprop="width" content="2160" />
+				<meta itemprop="height" content="1200" />
+			</div>
+		</div>
+
+	
+	<div class="alternating-grid-post__content">
+
+		
+<div class="post-categories ">
+	
+	
+					<a href="https://www.jta.org/category/culture" class="post-category -underlinedcat" itemprop="articleSection">Culture</a>
+			</div>
+
+		<h2 class="alternating-grid-post__title" itemprop="headline">
+			<a href="https://www.jta.org/2019/12/27/culture/the-jews-who-defined-the-2010s" itemprop="url">The Jews who defined the 2010s</a>
+		</h2>
+
+		
+	<div class="post-meta-info">
+		<div class="post-meta-info-inner">
+
+							
+				
+					
+					
+					
+						<span class="post-meta-info__author-name">By							<a href="https://www.jta.org/author/jta-staff">
+								<span class="-underlined-yellow" itemprop="author">
+									JTA Staff								</span>
+							</a>
+						</span>
+
+					
+					
+				
+			
+																	<span class="post-meta-info__published-date " itemprop="datePublished">
+						<time datetime="2019-12-27T10:26:54-05:00">
+							<span class="post-meta-info__date">December 27, 2019</span>
+							<span class="post-meta-info__time">10:26 am</span>
+						</time>
+					</span>
+
+					
+							
+		</div>
+
+		
+			</div>
+
+
+	</div>
+</article>
+
+
+<article id="post-1667821" class="alternating-grid-post post-1667821 post type-post status-publish format-standard has-post-thumbnail hentry category-culture category-global tag-auschwitz-museum tag-dutch-jews tag-hanukkah tag-menorah article_type-story" itemscope itemtype="https://schema.org/BlogPosting">
+	
+		
+		<div class="alternating-grid-post__image-container">
+			<div class="alternating-grid-post__image" itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
+				<a class="alternating-grid-post__link" href="https://www.jta.org/2019/12/26/global/in-amsterdam-the-worlds-priciest-hanukkah-lamp-again-lands-on-its-feet">
+					<span class="alternating-grid-post__image-bg"></span>
+					<img width="540" height="300" src="https://www.jta.org/wp-content/uploads/2019/12/rintel-540x300.jpg" class="attachment-single-posts-small size-single-posts-small wp-post-image" alt="The Rintel Menorah on display at the Jewish Historical Museum of Amsterdam, the Netherlands. (Courtesy of the Jewish Cultural Quarter/JCK)" srcset="https://www.jta.org/wp-content/uploads/2019/12/rintel-540x300.jpg 540w, https://www.jta.org/wp-content/uploads/2019/12/rintel-156x88.jpg 156w, https://www.jta.org/wp-content/uploads/2019/12/rintel-1080x600.jpg 1080w" sizes="(max-width: 540px) 100vw, 540px" />									</a>
+				<meta itemprop="url" content="https://www.jta.org/wp-content/uploads/2019/12/rintel.jpg" />
+				<meta itemprop="width" content="2160" />
+				<meta itemprop="height" content="1220" />
+			</div>
+		</div>
+
+	
+	<div class="alternating-grid-post__content">
+
+		
+<div class="post-categories ">
+	
+	
+					<a href="https://www.jta.org/category/global" class="post-category -underlinedcat" itemprop="articleSection">Global</a>
+			</div>
+
+		<h2 class="alternating-grid-post__title" itemprop="headline">
+			<a href="https://www.jta.org/2019/12/26/global/in-amsterdam-the-worlds-priciest-hanukkah-lamp-again-lands-on-its-feet" itemprop="url">In Amsterdam, the world&#8217;s priciest menorah gets a new life</a>
+		</h2>
+
+		
+	<div class="post-meta-info">
+		<div class="post-meta-info-inner">
+
+							
+				
+					
+					
+					
+						<span class="post-meta-info__author-name">By							<a href="https://www.jta.org/author/cnaan-liphshiz">
+								<span class="-underlined-yellow" itemprop="author">
+									Cnaan Liphshiz								</span>
+							</a>
+						</span>
+
+					
+					
+				
+			
+																	<span class="post-meta-info__published-date " itemprop="datePublished">
+						<time datetime="2019-12-26T16:06:35-05:00">
+							<span class="post-meta-info__date">December 26, 2019</span>
+							<span class="post-meta-info__time">4:06 pm</span>
+						</time>
+					</span>
+
+					
+							
+		</div>
+
+		
+			</div>
+
+
+	</div>
+</article>
+
+
+<article id="post-1667116" class="alternating-grid-post post-1667116 post type-post status-publish format-standard has-post-thumbnail hentry category-culture category-global tag-hummus tag-jdc tag-jewish-food tag-ukraine tag-yemen article_type-story" itemscope itemtype="https://schema.org/BlogPosting">
+	
+		
+		<div class="alternating-grid-post__image-container">
+			<div class="alternating-grid-post__image" itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
+				<a class="alternating-grid-post__link" href="https://www.jta.org/2019/12/23/global/jews-in-ukraine-bring-a-spicy-idea-to-fundraising-starting-the-countrys-first-zhug-factory">
+					<span class="alternating-grid-post__image-bg"></span>
+					<img width="540" height="300" src="https://www.jta.org/wp-content/uploads/2019/12/zhug-540x300.jpg" class="attachment-single-posts-small size-single-posts-small wp-post-image" alt="A jar of Dragon&#039;s Breath zhug produced by Jewish community members in Odessa, Ukraine. (Cnaan Liphshiz)" srcset="https://www.jta.org/wp-content/uploads/2019/12/zhug-540x300.jpg 540w, https://www.jta.org/wp-content/uploads/2019/12/zhug-156x88.jpg 156w, https://www.jta.org/wp-content/uploads/2019/12/zhug-1080x600.jpg 1080w" sizes="(max-width: 540px) 100vw, 540px" />									</a>
+				<meta itemprop="url" content="https://www.jta.org/wp-content/uploads/2019/12/zhug.jpg" />
+				<meta itemprop="width" content="2160" />
+				<meta itemprop="height" content="1220" />
+			</div>
+		</div>
+
+	
+	<div class="alternating-grid-post__content">
+
+		
+<div class="post-categories ">
+	
+	
+					<a href="https://www.jta.org/category/global" class="post-category -underlinedcat" itemprop="articleSection">Global</a>
+			</div>
+
+		<h2 class="alternating-grid-post__title" itemprop="headline">
+			<a href="https://www.jta.org/2019/12/23/global/jews-in-ukraine-bring-a-spicy-idea-to-fundraising-starting-the-countrys-first-zhug-factory" itemprop="url">Hummus is becoming popular in Ukraine. Jews there opened a zhug factory to capitalize on it.</a>
+		</h2>
+
+		
+	<div class="post-meta-info">
+		<div class="post-meta-info-inner">
+
+							
+				
+					
+					
+					
+						<span class="post-meta-info__author-name">By							<a href="https://www.jta.org/author/cnaan-liphshiz">
+								<span class="-underlined-yellow" itemprop="author">
+									Cnaan Liphshiz								</span>
+							</a>
+						</span>
+
+					
+					
+				
+			
+																	<span class="post-meta-info__published-date " itemprop="datePublished">
+						<time datetime="2019-12-23T16:11:30-05:00">
+							<span class="post-meta-info__date">December 23, 2019</span>
+							<span class="post-meta-info__time">4:11 pm</span>
+						</time>
+					</span>
+
+					
+							
+		</div>
+
+		
+			</div>
+
+
+	</div>
+</article>
+
+
+<article id="post-1667442" class="alternating-grid-post post-1667442 post type-post status-publish format-standard has-post-thumbnail hentry category-global tag-alfred-dreyfus tag-anti-semitism-in-belgium tag-espionage tag-michael-freilich tag-treason article_type-story" itemscope itemtype="https://schema.org/BlogPosting">
+	
+		
+		<div class="alternating-grid-post__image-container">
+			<div class="alternating-grid-post__image" itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
+				<a class="alternating-grid-post__link" href="https://www.jta.org/2019/12/23/global/belgian-daily-accuses-jewish-lawmaker-of-spying-for-israel">
+					<span class="alternating-grid-post__image-bg"></span>
+					<img width="540" height="300" src="https://www.jta.org/wp-content/uploads/2019/12/Michael-Freilich-540x300.jpg" class="attachment-single-posts-small size-single-posts-small wp-post-image" alt="Michael Freilich, wearing a kippah, attending a meeting with federal lawmakers and pro-Palestinian activists in Brussels, Belgium on Nov, 7, 2019. (Inge Verhelst/Belgian Federal Parliament)" srcset="https://www.jta.org/wp-content/uploads/2019/12/Michael-Freilich-540x300.jpg 540w, https://www.jta.org/wp-content/uploads/2019/12/Michael-Freilich-156x88.jpg 156w, https://www.jta.org/wp-content/uploads/2019/12/Michael-Freilich-1080x600.jpg 1080w" sizes="(max-width: 540px) 100vw, 540px" />									</a>
+				<meta itemprop="url" content="https://www.jta.org/wp-content/uploads/2019/12/Michael-Freilich.jpg" />
+				<meta itemprop="width" content="2160" />
+				<meta itemprop="height" content="1220" />
+			</div>
+		</div>
+
+	
+	<div class="alternating-grid-post__content">
+
+		
+<div class="post-categories ">
+	
+	
+					<a href="https://www.jta.org/category/global" class="post-category -underlinedcat" itemprop="articleSection">Global</a>
+			</div>
+
+		<h2 class="alternating-grid-post__title" itemprop="headline">
+			<a href="https://www.jta.org/2019/12/23/global/belgian-daily-accuses-jewish-lawmaker-of-spying-for-israel" itemprop="url">Belgian daily accuses Jewish lawmaker of spying for Israel</a>
+		</h2>
+
+		
+	<div class="post-meta-info">
+		<div class="post-meta-info-inner">
+
+							
+				
+					
+					
+					
+						<span class="post-meta-info__author-name">By							<a href="https://www.jta.org/author/cnaan-liphshiz">
+								<span class="-underlined-yellow" itemprop="author">
+									Cnaan Liphshiz								</span>
+							</a>
+						</span>
+
+					
+					
+				
+			
+																	<span class="post-meta-info__published-date " itemprop="datePublished">
+						<time datetime="2019-12-23T15:05:24-05:00">
+							<span class="post-meta-info__date">December 23, 2019</span>
+							<span class="post-meta-info__time">3:05 pm</span>
+						</time>
+					</span>
+
+					
+							
+		</div>
+
+		
+			</div>
+
+
+	</div>
+</article>
+
+				</div>
+			</div>
+
+
+			<aside class="-newsletter-offset">
+				<div class="hide-on-tablet">
+
+					<h3 class="flag-heading -smaller -underlined">
+						<span>Quick Reads</span>
+					</h3>
+
+					
+<ul class="quick-reads">
+	<li class="quick-read">
+
+	<div class="quick-read__time-ago">
+		<svg role="img" class="jta-icon quick-read__clock-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-label="clock"><use xlink:href="https://www.jta.org/wp-content/themes/JTA-Redesign/dist/svg/svg.svg#clock" /></svg>		<span class="quick-read__date-published" itemprop="datePublished">
+			<time datetime="2019-12-31T14:58:14-05:00" class="quick-read__timestamp" pubdate>3h ago</time>
+		</span>
+
+	</div>
+
+	<div class="quick-read__title">
+		<a href="https://www.jta.org/quick-reads/danny-danons-term-as-israels-ambassador-to-the-united-nations-ends-abruptly">
+			Netanyahu ends Danny Danon&#8217;s term as Israel&#8217;s ambassador to the United Nations		</a>
+	</div>
+
+</li>
+<li class="quick-read">
+
+	<div class="quick-read__time-ago">
+		<svg role="img" class="jta-icon quick-read__clock-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-label="clock"><use xlink:href="https://www.jta.org/wp-content/themes/JTA-Redesign/dist/svg/svg.svg#clock" /></svg>		<span class="quick-read__date-published" itemprop="datePublished">
+			<time datetime="2019-12-31T14:44:42-05:00" class="quick-read__timestamp" pubdate>3h ago</time>
+		</span>
+
+	</div>
+
+	<div class="quick-read__title">
+		<a href="https://www.jta.org/quick-reads/belgian-jewish-lawmaker-takes-heat-for-lighting-menorah-near-parliament-nativity-scene">
+			Belgian Jewish lawmaker takes heat for lighting menorah near Parliament nativity scene		</a>
+	</div>
+
+</li>
+<li class="quick-read">
+
+	<div class="quick-read__time-ago">
+		<svg role="img" class="jta-icon quick-read__clock-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-label="clock"><use xlink:href="https://www.jta.org/wp-content/themes/JTA-Redesign/dist/svg/svg.svg#clock" /></svg>		<span class="quick-read__date-published" itemprop="datePublished">
+			<time datetime="2019-12-31T13:51:50-05:00" class="quick-read__timestamp" pubdate>4h ago</time>
+		</span>
+
+	</div>
+
+	<div class="quick-read__title">
+		<a href="https://www.jta.org/quick-reads/jewish-groups-to-hold-solidarity-march-in-new-york-city">
+			Jewish groups to hold solidarity march in New York City		</a>
+	</div>
+
+</li>
+<li class="quick-read">
+
+	<div class="quick-read__time-ago">
+		<svg role="img" class="jta-icon quick-read__clock-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-label="clock"><use xlink:href="https://www.jta.org/wp-content/themes/JTA-Redesign/dist/svg/svg.svg#clock" /></svg>		<span class="quick-read__date-published" itemprop="datePublished">
+			<time datetime="2019-12-31T13:43:16-05:00" class="quick-read__timestamp" pubdate>4h ago</time>
+		</span>
+
+	</div>
+
+	<div class="quick-read__title">
+		<a href="https://www.jta.org/quick-reads/newly-renovated-historic-synagogue-in-greece-vandalized">
+			Newly renovated historic synagogue in Greece vandalized		</a>
+	</div>
+
+</li>
+<li class="quick-read">
+
+	<div class="quick-read__time-ago">
+		<svg role="img" class="jta-icon quick-read__clock-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-label="clock"><use xlink:href="https://www.jta.org/wp-content/themes/JTA-Redesign/dist/svg/svg.svg#clock" /></svg>		<span class="quick-read__date-published" itemprop="datePublished">
+			<time datetime="2019-12-31T13:35:42-05:00" class="quick-read__timestamp" pubdate>5h ago</time>
+		</span>
+
+	</div>
+
+	<div class="quick-read__title">
+		<a href="https://www.jta.org/quick-reads/chuck-schumer-calls-to-quadruple-funding-for-federal-security-grants-for-nonprofits">
+			Chuck Schumer calls to quadruple funding for federal security grants for nonprofits		</a>
+	</div>
+
+</li>
+<li class="quick-read">
+
+	<div class="quick-read__time-ago">
+		<svg role="img" class="jta-icon quick-read__clock-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-label="clock"><use xlink:href="https://www.jta.org/wp-content/themes/JTA-Redesign/dist/svg/svg.svg#clock" /></svg>		<span class="quick-read__date-published" itemprop="datePublished">
+			<time datetime="2019-12-31T12:18:03-05:00" class="quick-read__timestamp" pubdate>6h ago</time>
+		</span>
+
+	</div>
+
+	<div class="quick-read__title">
+		<a href="https://www.jta.org/quick-reads/anti-semitic-flyers-dropped-on-cars-in-georgia-county-with-large-jewish-population">
+			Anti-Semitic flyers dropped on cars in Georgia county with large Jewish population		</a>
+	</div>
+
+</li>
+</ul>
+				</div>
+			</aside>
+		</div>
+	</div>
+	<!-- End related posts-->
+
+		
+		<div itemprop="publisher" itemscope="itemscope" itemtype="https://schema.org/Organization">
+	<div itemprop="logo" itemscope="itemscope" itemtype="https://schema.org/ImageObject">
+		<meta itemprop="url" content="https://www.jta.org/wp-content/themes/JTA-Redesign/assets/svg/jta-sticky-logo.svg" />
+		<meta itemprop="width" content="70px" />
+		<meta itemprop="height" content="39px" />
+		<meta itemprop="encodingFormat" content="svg+xml" />
+	</div>
+	<meta itemprop="name" content="Jewish Telegraphic Agency" />
+	<meta itemprop="url" content="https://www.jta.org" />
+</div>
+
+
+	</main><!-- #main -->
+</div><!-- #primary -->
+
+		</div><!-- #content -->
+
+		
+<div class="leaderboard -centered -desktop" id="leaderboard_bottom_wrapper">
+	<div class="leaderboard__title">Advertisement</div>
+
+	<!-- /1052128/JTA_leaderboard -->
+	<div id='leaderboard_bottom'>
+		<script>
+			googletag.cmd.push( function() {
+				googletag.display('leaderboard_bottom');
+			} );
+		</script>
+	</div>
+</div>
+
+
+
+
+		<footer class="site-footer">
+			<div class="wrapper">
+				<div class="site-footer__address-bar">
+					<span itemscope="" itemtype="https://schema.org/Organization">
+						<svg role="img" class="jta-icon jta-logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-label="jta-logo"><use xlink:href="https://www.jta.org/wp-content/themes/JTA-Redesign/dist/svg/svg.svg#jta-logo" /></svg>					</span>
+					<div class="site-footer__social-links">
+													<nav class="">
+								<div class="menu-footer-social-container"><ul id="footer-social-menu" class="footer-social-menu"><li id="menu-item-1623118" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1623118"><a href="https://www.facebook.com/JTAnews"><span class="screen-reader-text">Facebook</span></a></li>
+<li id="menu-item-1623119" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1623119"><a href="https://twitter.com/JTAnews"><span class="screen-reader-text">Twitter</span></a></li>
+<li id="menu-item-1623120" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1623120"><a href="https://www.instagram.com/jtanews/"><span class="screen-reader-text">Instagram</span></a></li>
+<li id="menu-item-1623121" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1623121"><a href="https://www.youtube.com/channel/UCDyTKLG1BzCgbzjRvtcKtHg"><span class="screen-reader-text">YouTube</span></a></li>
+</ul></div>							</nav>
+											</div>
+				</div>
+				<div class="footer-widgets columns is-mobile is-multiline">
+											<nav class="footer-widgets__links footer-widgets__links--uppercase column is-half-mobile">
+							<div class="menu-footer-column-1-container"><ul id="footer-menu-col-1" class="footer-menu"><li id="menu-item-1623096" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1623096"><a href="https://www.jta.org/category/united-states">US</a></li>
+<li id="menu-item-1623095" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1623095"><a href="https://www.jta.org/category/israel">Israel</a></li>
+<li id="menu-item-1623097" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-1623097"><a href="https://www.jta.org/category/global">Global</a></li>
+<li id="menu-item-1623098" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1623098"><a href="https://www.jta.org/category/politics">Politics</a></li>
+<li id="menu-item-1623099" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1623099"><a href="https://www.jta.org/category/culture">Culture</a></li>
+</ul></div>						</nav>
+																<nav class="footer-widgets__links footer-widgets__links--uppercase column is-half-mobile">
+							<div class="menu-footer-column-2-container"><ul id="footer-menu-col-2" class="footer-menu"><li id="menu-item-1623103" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1623103"><a href="https://www.jta.org/category/lifestyle">Lifestyle</a></li>
+<li id="menu-item-1623104" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1623104"><a href="https://www.jta.org/category/opinion">Opinion</a></li>
+<li id="menu-item-1623101" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1623101"><a href="https://www.jta.org/category/food">Food</a></li>
+<li id="menu-item-1623102" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1623102"><a href="https://www.jta.org/category/sports">Sports</a></li>
+<li id="menu-item-1623100" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1623100"><a href="/jewniverse">Jewniverse</a></li>
+</ul></div>						</nav>
+																<nav class="footer-widgets__links column is-half-mobile">
+							<div class="menu-footer-column-3-container"><ul id="footer-menu-col-3" class="footer-menu"><li id="menu-item-1623105" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1623105"><a href="https://www.jta.org/advertise">Advertise</a></li>
+<li id="menu-item-1625193" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1625193"><a href="https://70facesmedia.networkforgood.com/projects/42406-jta-donation?utm_source=jta_site&#038;utm_medium=direct&#038;utm_campaign=jta_top">Donate</a></li>
+<li id="menu-item-1623107" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1623107"><a href="https://www.jta.org/syndication">Syndication</a></li>
+<li id="menu-item-1623781" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1623781"><a href="https://www.jta.org/archive">Archive</a></li>
+</ul></div>						</nav>
+																<nav class="footer-widgets__links column is-half-mobile">
+							<div class="menu-footer-column-4-container"><ul id="footer-menu-col-4" class="footer-menu"><li id="menu-item-1623109" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1623109"><a href="https://www.jta.org/newsletters">Newsletters</a></li>
+<li id="menu-item-1624174" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1624174"><a href="https://www.jta.org/submit-a-news-tip">News Tips</a></li>
+<li id="menu-item-1623108" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1623108"><a href="https://www.jta.org/about-us">About JTA</a></li>
+<li id="menu-item-1636508" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1636508"><a href="https://www.jta.org/contact">Contact Us</a></li>
+</ul></div>						</nav>
+									</div>
+				<div class="footer-privacy">
+					  						  <nav class="">
+							  <div class="menu-footer-privacy-container"><ul id="footer-privacy-menu" class="footer-privacy-links"><li id="menu-item-1623110" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1623110"><a href="/privacy-policy">Privacy Policy</a></li>
+<li id="menu-item-1623111" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1623111"><a href="/terms-of-use">Terms of Use and Re-Using content</a></li>
+</ul></div>						  </nav>
+												<div class="footer-privacy_copyright">
+							&copy; 2019 jewish telegraphic agency all rights reserved.						</div>
+					</div>
+				<div class="footer-associated-sites">
+					<span class="faces-logo--desktop" itemscope="" itemtype="https://schema.org/Organization">
+							<svg role="img" class="jta-icon jta-icon-70-faces-logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-label="70-faces-logo"><use xlink:href="https://www.jta.org/wp-content/themes/JTA-Redesign/dist/svg/svg.svg#70-faces-logo" /></svg>					</span>
+					<div>
+					  						  <nav class="footer-associated-sites__links">
+							  <div class="menu-footer-sites-container"><ul id="footer-sites-menu" class="footer-menu"><li id="menu-item-1623114" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1623114"><a href="https://www.myjewishlearning.com">My Jewish Learning</a></li>
+<li id="menu-item-1623115" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1623115"><a href="https://www.kveller.com">Kveller</a></li>
+<li id="menu-item-1623116" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1623116"><a href="https://www.heyalma.com">Alma</a></li>
+<li id="menu-item-1623117" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1623117"><a href="https://www.myjewishlearning.com/the-nosher/">The Nosher</a></li>
+</ul></div>						  </nav>
+					  					</div>
+					<span class="faces-logo--mobile" itemscope="" itemtype="https://schema.org/Organization">
+							<svg role="img" class="jta-icon jta-icon-70-faces-logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-label="70-faces-logo"><use xlink:href="https://www.jta.org/wp-content/themes/JTA-Redesign/dist/svg/svg.svg#70-faces-logo" /></svg>					</span>
+				</div>
+			</footer>
+		</div>
+	</div><!-- #page -->
+
+		<script>
+		var siteCanonical = document.querySelector("link[rel='canonical']");
+		var urlref = '';
+
+		if(null !== siteCanonical) {
+			urlref = siteCanonical.href;
+		} else {
+			var fullPath = location.pathname.split('/');
+			var endPath = fullPath[2];
+			urlref = location.href.replace(endPath,'');
+		}
+		PARSELY = {
+			// after PARSELY tracking code loads asynchronously
+			onload: function() {
+				PARSELY.isLoaded = true,
+				PARSELY.siteCanonical = urlref
+			}
+		};
+	</script>
+	
+
+<!-- START Parse.ly Include: Standard -->
+
+<script data-cfasync="false" id="parsely-cfg" data-parsely-site="jta.org" src="//cdn.parsely.com/keys/jta.org/p.js"></script>
+
+<!-- END Parse.ly Include: Standard -->
+<script type='text/javascript'>
+/* <![CDATA[ */
+var load_more_posts = {"load_more_endpoint":"https:\/\/www.jta.org\/wp-json\/sfm\/v1\/load-more-posts"};
+var notification_bar = {"notification_endpoint":"https:\/\/www.jta.org\/wp-json\/sfm\/v1\/notification-bar"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://www.jta.org/wp-content/mu-plugins/sfm-core/dist/js/frontend.min.js?ver=0.1.6'></script>
+<script type='text/javascript' src='https://www.jta.org/wp-content/themes/JTA-Redesign/dist/js/frontend.min.js?ver=0.1.22'></script>
+<script type='text/javascript' src='https://www.jta.org/wp-admin/admin-ajax.php?action=addthis_global_options_settings&#038;ver=5.2.4'></script>
+<script type='text/javascript' src='https://s7.addthis.com/js/300/addthis_widget.js?ver=5.2.4#pubid=wp-f0467d482287fc0ae8553f67ad61201b'></script>
+<script type='text/javascript' src='https://www.jta.org/wp-includes/js/wp-embed.min.js?ver=5.2.4'></script>
+
+	
+<!-- /1052128/JTA_prestitial -->
+<div id='prestitial'>
+	<script>
+		googletag.cmd.push( function() {
+			googletag.display('prestitial');
+			googletag.pubads().refresh( [ gptAdSlots['prestitial'] ] );
+		} );
+	</script>
+</div>
+
+<!-- /1052128/JTA_skin -->
+<div id='skin'>
+	<script>
+		googletag.cmd.push( function() {
+			googletag.display('skin');
+			googletag.pubads().refresh( [ gptAdSlots['skin'] ] );
+		} );
+	</script>
+</div>
+
+		<script async>(function(s,u,m,o,j,v){j=u.createElement(m);v=u.getElementsByTagName(m)[0];j.async=1;j.src=o;j.dataset.sumoSiteId='ffe8f6ffff958d961136518c14483a162f2d3ceb9c69b97501c7efa91adea0d5';v.parentNode.insertBefore(j,v)})(window,document,'script','//load.sumo.com/');</script>
+
+	<!-- Maropost JTA script -->
+	<script async src='//content.maropost.com/uploads/1161/websites/1/a481f59b8d040e6eb700771a4d112f90da231c73-v3.js' type='text/javascript'></script>
+	
+	<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"34f9066ae4","applicationID":"6329638","transactionName":"MwAANkJRXUFTBkVQWApKIwFEWVxcHRZYV1AIAA==","queueTime":0,"applicationTime":733,"atts":"H0cDQApLTk8=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>

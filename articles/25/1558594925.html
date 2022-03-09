@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+<meta charset="UTF-8"><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"1f719b4b96",applicationID:"87586888"};window.NREUM||(NREUM={}),__nr_require=function(e,n,t){function r(t){if(!n[t]){var i=n[t]={exports:{}};e[t][0].call(i.exports,function(n){var i=e[t][1][n];return r(i||n)},i,i.exports)}return n[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(e,n,t){function r(){}function i(e,n,t){return function(){return o(e,[u.now()].concat(f(arguments)),n?null:this,t),n?void 0:this}}var o=e("handle"),a=e(4),f=e(5),c=e("ee").get("tracer"),u=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",d=l+"ixn-";a(p,function(e,n){s[n]=i(l+n,!0,"api")}),s.addPageAction=i(l+"addPageAction",!0),s.setCurrentRouteName=i(l+"routeName",!0),n.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,n){var t={},r=this,i="function"==typeof n;return o(d+"tracer",[u.now(),e,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return n.apply(this,arguments)}catch(e){throw c.emit("fn-err",[arguments,this,e],t),e}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,n){m[n]=i(d+n)}),newrelic.noticeError=function(e,n){"string"==typeof e&&(e=new Error(e)),o("err",[e,u.now(),!1,n])}},{}],2:[function(e,n,t){function r(e,n){var t=e.getEntries();t.forEach(function(e){"first-paint"===e.name?c("timing",["fp",Math.floor(e.startTime)]):"first-contentful-paint"===e.name&&c("timing",["fcp",Math.floor(e.startTime)])})}function i(e,n){var t=e.getEntries();t.length>0&&c("lcp",[t[t.length-1]])}function o(e){if(e instanceof s&&!l){var n,t=Math.round(e.timeStamp);n=t>1e12?Date.now()-t:u.now()-t,l=!0,c("timing",["fi",t,{type:e.type,fid:n}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var a,f,c=e("handle"),u=e("loader"),s=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){a=new PerformanceObserver(r),f=new PerformanceObserver(i);try{a.observe({entryTypes:["paint"]}),f.observe({entryTypes:["largest-contentful-paint"]})}catch(p){}}if("addEventListener"in document){var l=!1,d=["click","keydown","mousedown","pointerdown","touchstart"];d.forEach(function(e){document.addEventListener(e,o,!1)})}}},{}],3:[function(e,n,t){function r(e,n){if(!i)return!1;if(e!==i)return!1;if(!n)return!0;if(!o)return!1;for(var t=o.split("."),r=n.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}n.exports={agent:i,version:o,match:r}},{}],4:[function(e,n,t){function r(e,n){var t=[],r="",o=0;for(r in e)i.call(e,r)&&(t[o]=n(r,e[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;n.exports=r},{}],5:[function(e,n,t){function r(e,n,t){n||(n=0),"undefined"==typeof t&&(t=e?e.length:0);for(var r=-1,i=t-n||0,o=Array(i<0?0:i);++r<i;)o[r]=e[n+r];return o}n.exports=r},{}],6:[function(e,n,t){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,n,t){function r(){}function i(e){function n(e){return e&&e instanceof r?e:e?c(e,f,o):o()}function t(t,r,i,o){if(!l.aborted||o){e&&e(t,r,i);for(var a=n(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function d(e,n){h[e]=v(e).concat(n)}function m(e,n){var t=h[e];if(t)for(var r=0;r<t.length;r++)t[r]===n&&t.splice(r,1)}function v(e){return h[e]||[]}function g(e){return p[e]=p[e]||i(t)}function w(e,n){u(e,function(e,t){n=n||"feature",y[t]=n,n in s||(s[n]=[])})}var h={},y={},b={on:d,addEventListener:d,removeEventListener:m,emit:t,get:g,listeners:v,context:n,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(l.aborted=!0,s=l.backlog={})}var f="nr@context",c=e("gos"),u=e(4),s={},p={},l=n.exports=i();l.backlog=s},{}],gos:[function(e,n,t){function r(e,n,t){if(i.call(e,n))return e[n];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,n,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return e[n]=r,r}var i=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(e,n,t){function r(e,n,t,r){i.buffer([e],r),i.emit(e,n,t)}var i=e("ee").get("handle");n.exports=r,r.ee=i},{}],id:[function(e,n,t){function r(e){var n=typeof e;return!e||"object"!==n&&"function"!==n?-1:e===window?0:a(e,o,function(){return i++})}var i=1,o="nr@id",a=e("gos");n.exports=r},{}],loader:[function(e,n,t){function r(){if(!x++){var e=E.info=NREUM.info,n=d.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&n))return s.abort();u(y,function(n,t){e[n]||(e[n]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=d.createElement("script");t.src="https://"+e.agent,n.parentNode.insertBefore(t,n)}}function i(){"complete"===d.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=e("handle"),u=e(4),s=e("ee"),p=e(3),l=window,d=l.document,m="addEventListener",v="attachEvent",g=l.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:l.setImmediate,CT:clearTimeout,XHR:g,REQ:l.Request,EV:l.Event,PR:l.Promise,MO:l.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1167.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=n.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};e(1),e(2),d[m]?(d[m]("DOMContentLoaded",o,!1),l[m]("load",r,!1)):(d[v]("onreadystatechange",i),l[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=e(6)},{}],"wrap-function":[function(e,n,t){function r(e){return!(e&&e instanceof Function&&e.apply&&!e[a])}var i=e("ee"),o=e(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;n.exports=function(e,n){function t(e,n,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){l([u,"",[r,a,i],f])}s(n+"start",[r,a,i],f);try{return c=e.apply(a,r)}catch(p){throw s(n+"err",[r,a,p],f),p}finally{s(n+"end",[r,a,c],f)}}return r(e)?e:(n||(n=""),nrWrapper[a]=e,p(e,nrWrapper),nrWrapper)}function u(e,n,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<n.length;c++)f=n[c],a=e[f],r(a)||(e[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||n){var o=c;c=!0;try{e.emit(t,r,i,n)}catch(a){l([a,t,r,i])}c=o}}function p(e,n){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(e);return t.forEach(function(t){Object.defineProperty(n,t,{get:function(){return e[t]},set:function(n){return e[t]=n,n}})}),n}catch(r){l([r])}for(var i in e)f.call(e,i)&&(n[i]=e[i]);return n}function l(n){try{e.emit("internal-error",n)}catch(t){}}return e||(e=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script>
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="profile" href="http://gmpg.org/xfn/11">
+
+
+<title>Houston performer Roxanne Collins' 'QuaranTina' livestream will feature Tina Turner's hits | Datebook</title>
+		<script type="text/javascript">
+
+		wp_source = {"authorName":"Joey Guerra","authorTitle":"","authorEmail":"","publishingSite":"preview.houstonchronicle","sourceSite":"","originalSourceSite":""};
+		wp_content = {"blogName":"Preview | Houston Arts &amp; Entertainment Guide","blogPath":"\/","blogType":"staff","blogId":"8","title":"Houston performer Roxanne Collins&#8217; &#8216;QuaranTina&#8217; livestream will feature Tina Turner&#8217;s hits","subtitle":"","objectId":10922,"objectType":"post","displayTemplate":"Datebook 2019 Houston Preview","sectionPath":["entertainment",""],"wordCount":0,"keywords":[],"pubDate":"2020-03-25 07:09:28","lastModifiedDate":"2020-03-25 12:56:37","syndicationRights":""};
+		wp_href = {"pageUrl":"https:\/\/preview.houstonchronicle.com","canonicalUrl":"https:\/\/preview.houstonchronicle.com\/music\/houston-performer-roxanne-collins-quarantina-15155647"};
+		wp_presentation = {"hasSlideshow":false,"hasSlideshowListView":false,"hasVideo":false,"hasInteractive":false};
+		var HDN = HDN || {};
+                if (!HDN.hasOwnProperty('dataLayer')){ HDN.dataLayer={}; }
+		HDN.dataLayer.source  = wp_source;
+		HDN.dataLayer.content = wp_content;
+		HDN.dataLayer.href = wp_href;
+		HDN.dataLayer.href.pageUrlPath = window.location.pathname;
+	        HDN.dataLayer.href.pageUrlPathFolders = window.location.pathname.replace(/[A-Za-z0-9-_.]+$/, '');
+	        HDN.dataLayer.href.pageUrlQueryParams = window.location.search.replace(/^\?/, '');
+	        HDN.dataLayer.href.pageUrlHash = window.location.hash;
+		</script>
+				<script type="text/javascript">
+		var ajaxurl = 'https://preview.houstonchronicle.com/wp-admin/admin-ajax.php';
+		</script>
+		<link rel='dns-prefetch' href='//ak.sail-horizon.com' />
+<link rel='dns-prefetch' href='//aps.hearstnp.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="Preview | Houston Arts &amp; Entertainment Guide &raquo; Feed" href="https://preview.houstonchronicle.com/feed" />
+<link rel="alternate" type="application/rss+xml" title="Preview | Houston Arts &amp; Entertainment Guide &raquo; Comments Feed" href="https://preview.houstonchronicle.com/comments/feed" />
+<link rel="alternate" type="text/calendar" title="Preview | Houston Arts &amp; Entertainment Guide &raquo; iCal Feed" href="https://preview.houstonchronicle.com/events/?ical=1" />
+		<meta name="google-site-verification" content="DATEBOOK_GOOGLE_SITE_VERIFICATION" />
+		<meta name="msvalidate.01" content="DATEBOOK_BING_SITE_VERIFICATION" />
+		<meta name="description" content="We've heard a lot, and rightfully so, about how the coronavirus closures are affecting live music and the livelihood of musical acts. The closure of bars and clubs has affected&hellip;" />
+	<meta property="og:title" content="Houston performer Roxanne Collins&#8217; &#8216;QuaranTina&#8217; livestream will feature Tina Turner&#8217;s hits">
+	<meta property="og:description" content="We've heard a lot, and rightfully so, about how the coronavirus closures are affecting live music and the livelihood of musical acts. The closure of bars and clubs has affected&hellip;">
+	<meta property="og:type" content="article">
+	<meta property="og:url" content="https://preview.houstonchronicle.com/music/houston-performer-roxanne-collins-quarantina-15155647">
+	<meta property="og:site_name" content="Preview | Houston Arts &amp; Entertainment Guide">
+
+	<meta property="og:image" content="https://s3.amazonaws.com/sfc-datebook-wordpress/wp-content/uploads/sites/8/2020/03/featured_event10922--700x500.jpg">
+				<meta property="og:image:width" content="700">
+			<meta property="og:image:height" content="500">
+			<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:title" content="Houston performer Roxanne Collins&#8217; &#8216;QuaranTina&#8217; livestream will feature Tina Turner&#8217;s hits">
+	<meta name="twitter:site" content="@previewnow">
+	<meta name="twitter:url" content="https://preview.houstonchronicle.com/music/houston-performer-roxanne-collins-quarantina-15155647">
+	<meta name="twitter:image" content="https://s3.amazonaws.com/sfc-datebook-wordpress/wp-content/uploads/sites/8/2020/03/featured_event10922--700x500.jpg">
+	<meta name="twitter:description" content="We've heard a lot, and rightfully so, about how the coronavirus closures are affecting live music and the livelihood of musical acts. The closure of bars and clubs has affected&hellip;">
+	
+		
+	<meta property="sailthru.title" content="Houston performer Roxanne Collins&#8217; &#8216;QuaranTina&#8217; livestream will feature Tina Turner&#8217;s hits" />
+	<meta name="sailthru.author" content="Joey Guerra" />
+	<meta name="sailthru.date" content="2020-03-25 07:03:28" /> 
+	<meta name="sailthru.description" content="We've heard a lot, and rightfully so, about how the coronavirus closures are affecting live music and the livelihood of musical acts. The closure of bars and clubs has affected&hellip;" /> 
+	<meta name="sailthru.tags" content="" />
+	<meta name="sailthru.image.full" content="https://s3.amazonaws.com/sfc-datebook-wordpress/wp-content/uploads/sites/8/2020/03/featured_event10922--700x500.jpg" />
+	<meta name="sailthru_siteid" content="preview | houston arts &amp; entertainment guide" />
+
+	<script>
+		var HDN = HDN || {};
+		HDN.ping = function(data) {
+		var pingUrl = "https://p.ctpost.com/"
+		+ (data.type + "?" )
+		+ (data.id ? "i=" + escape(data.id) + "&" : "" )
+		+ (data.site ? "s=" + data.site + "&" : "" )
+		+ (data.channel ? "c=" + data.channel + "&" : "" )
+		+ (data.title ? "t=" + escape(data.title) + "&" : "" )
+		+ (data.url ? "u=" + escape(data.url) + "&" : "" )
+		+ "ts=" + Number(new Date())
+		new Image().src = pingUrl;
+		
+		};
+				HDN.ping( {
+			"url": window.location.href,
+			"id": "Preview-8-10922",
+			"site": "premiumchron",
+			"type": "blogEntry",
+			"title": "Houston performer Roxanne Collins&amp;#8217; &amp;#8216;QuaranTina&amp;#8217; livestream will feature Tina Turner&amp;#8217;s hits"
+		});
+	</script>
+	 
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/preview.houstonchronicle.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.2.3"}};
+			!function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55357,56424,55356,57342,8205,55358,56605,8205,55357,56424,55356,57340],[55357,56424,55356,57342,8203,55358,56605,8203,55357,56424,55356,57340]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='wp-block-library-css'  href='https://preview.houstonchronicle.com/wp-includes/css/dist/block-library/style.min.css?ver=5.2.3' type='text/css' media='all' />
+<link rel='stylesheet' id='datebook-parent-style-css'  href='https://preview.houstonchronicle.com/wp-content/themes/datebook-2019-base/style.css?ver=5.2.3' type='text/css' media='all' />
+<link rel='stylesheet' id='datebook-style-css'  href='https://preview.houstonchronicle.com/wp-content/themes/datebook-2019-houston/style.css?ver=5.2.3-p19.2-20200311-0820' type='text/css' media='all' />
+<script type='text/javascript' src='https://preview.houstonchronicle.com/wp-content/themes/datebook-2019-base/assets/js/libs/jquery.min.js?ver=2.0.s'></script>
+<script type='text/javascript' src='//ak.sail-horizon.com/spm/spm.v1.min.js'></script>
+<script type='text/javascript' src='//aps.hearstnp.com/Scripts/loadAds.js'></script>
+<link rel='https://api.w.org/' href='https://preview.houstonchronicle.com/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://preview.houstonchronicle.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://preview.houstonchronicle.com/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='Preview Picks: &#8216;Derry Girls,&#8217; Tanya Tucker' href='https://preview.houstonchronicle.com/families/preview-picks-derry-girls-tanya-tucker-15150843' />
+<link rel='next' title='Backstage with Selena: A fan recounts his memories of the Tejano singer' href='https://preview.houstonchronicle.com/selena/backstage-with-selena-a-fan-recounts-his-15154867' />
+<meta name="generator" content="WordPress 5.2.3" />
+<link rel="canonical" href="https://preview.houstonchronicle.com/music/houston-performer-roxanne-collins-quarantina-15155647" />
+<link rel='shortlink' href='https://preview.houstonchronicle.com/?p=10922' />
+<link rel="alternate" type="application/json+oembed" href="https://preview.houstonchronicle.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fpreview.houstonchronicle.com%2Fmusic%2Fhouston-performer-roxanne-collins-quarantina-15155647" />
+<link rel="alternate" type="text/xml+oembed" href="https://preview.houstonchronicle.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fpreview.houstonchronicle.com%2Fmusic%2Fhouston-performer-roxanne-collins-quarantina-15155647&#038;format=xml" />
+<script>
+window.searchAPIUrl="https://preview.houstonchronicle.com/wp-json/datebook/v1/search";</script>
+<meta name="tec-api-version" content="v1"><meta name="tec-api-origin" content="https://preview.houstonchronicle.com"><link rel="https://theeventscalendar.com/" href="https://preview.houstonchronicle.com/wp-json/tribe/events/v1/" /><link rel="amphtml" href="https://preview.houstonchronicle.com/music/houston-performer-roxanne-collins-quarantina-15155647/amp"><link rel="icon" href="https://s3.amazonaws.com/sfc-datebook-wordpress/wp-content/uploads/sites/8/2019/12/cropped-Preview_Logo20_1C_violet-32x32.png" sizes="32x32" />
+<link rel="icon" href="https://s3.amazonaws.com/sfc-datebook-wordpress/wp-content/uploads/sites/8/2019/12/cropped-Preview_Logo20_1C_violet-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon-precomposed" href="https://s3.amazonaws.com/sfc-datebook-wordpress/wp-content/uploads/sites/8/2019/12/cropped-Preview_Logo20_1C_violet-180x180.png" />
+<meta name="msapplication-TileImage" content="https://s3.amazonaws.com/sfc-datebook-wordpress/wp-content/uploads/sites/8/2019/12/cropped-Preview_Logo20_1C_violet-270x270.png" />
+<style>
+/*fix for collections, prob from archive update 16 oct*/
+HTML BODY.page-template-datebook-collections-template #page #content .main-content .panel.bottom .content-group.articles-content.articles-by-category:first-of-type {
+     border: none; 
+}
+
+/*fix for link color in slideshow caption*/
+.single #page #content article section.post-body .sfc-slideshow p a {color:#FFF;}
+</style>
+<script>
+	//jan 28 2020 843
+	if(location.href.indexOf("/search") > -1){
+	    //needs to be in search page before the nativo script  //s.ntv.io/serve/load.js inits.
+	    var _prx = window._prx || [];
+	    _prx.push(["cfg.SetNoAutoStart"]);
+	}
+</script>
+<script type="text/javascript" src="//s.ntv.io/serve/load.js" async></script>
+<script>
+var HP_NEWSLETTER_SAILTHRU_ID = "48e30b5083cf6bf47c519651453c9e8a";
+</script>
+</head>
+
+<body class="post-template-default single single-post postid-10922 single-format-standard tribe-no-js">
+<div id="page" class="site">
+	<header class="site-header" role="banner">
+		<div class="inner-content top-bar">
+			<div class="top-navigation">
+				<a href="https://houstonchronicle.com" class="parent-site-logo"></a>
+				<div id="o-wrapper" class="o-wrapper">
+					<div class="menu-icons">
+						<div id="menu-icons-button" class="menu-icons-button navTrigger">
+							<i class="icon-hamburger" aria-hidden="true"></i>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<h1 class="logo"><a href="https://preview.houstonchronicle.com"></a></h1>
+			
+<script type="text/javascript" src="//treg.hearstnp.com/treg.js"></script>
+
+
+    <!-- DETAILS -->
+    <div id="treg-and-subscription" class="treg-and-subscription hide" data-hdn-env="PROD">
+	    <div class="container subscription" >
+	    	<ul class="list-unstyled">
+	    	<li id="subscription" class="hide">
+	            <a class ="btn" target="_blank" href="https://checkout.houstonchronicle.com/HCButton?origin=hc.button&ipid=wcm.business.site.id.33" >Subscribe</a>
+	        </li>
+	        <li id="e-edition" class="hide">
+	            <a class="e-edition" target="_blank" href="https://www.houstonchronicle.com/e-edition">e-edition</a>
+	        </li>
+
+	    </ul>
+	    </div>
+
+	    <div class="container treg" >
+	        <div class="row">
+	            <div>
+	                <div class="banner">
+	                    <div class="signInBox">
+	                        <ul class="list-unstyled" >
+	                            <li class="treg-is-gigya gigya_menu">
+	                                <div class="gya-title expandable treg-conditional treg-not-logged-in request"><span>Sign&nbsp;In</span></div>
+	                                <div class="gya-title expandable treg-conditional treg-logged-in"><span></span></div>
+	                                <!-- inline styles because this is an example -->
+	                                <div class="gya-content expandable" style="margin-right: 78px;margin-top: 10px;">
+	                                    <div class="treg-gya-login-widget"></div>
+	                                </div> <!-- /.gya-content -->
+	                            </li>
+	                        </ul>
+	                        <!-- EO: TREG WIDGET AND MENU-->
+	                    </div>
+	                </div>
+	                <div style="clear:both;"></div>
+	            </div>
+	        </div>
+	        <div class="row">
+	            <ul class="list-unstyled list-inline"></ul>
+	        </div>
+	        <div class="row">
+	            <ul class="list-unstyled list-inline"></ul>
+	        </div>
+	    </div>
+	</div>
+    <script type="text/javascript">
+        //example of hooking into event system
+        var treg = treg || {};
+        treg.cmd = treg.cmd || [];
+        //Register for the session events...
+        treg.cmd.push(function () {
+
+            //onSessionNotFound
+            treg.realm.events.register("treg.onSessionNotFound", function (parms) {
+                //console.log("user not found");
+                document.querySelector("#treg-and-subscription").classList.remove("hide");
+                document.querySelector("li#subscription").classList.remove("hide");
+                document.querySelector("li#e-edition").classList.add("hide");
+            });
+
+            //onSessionFound
+            treg.realm.events.register("treg.onSessionFound", function (parms) {
+                //console.log({ "user found": treg.realm.core.identity });
+                document.querySelector("#treg-and-subscription").classList.remove("hide");
+                if(treg.realm.core.identity && treg.realm.core.identity.entitlementId){
+                	document.querySelector("li#e-edition").classList.remove("hide");
+                	document.querySelector("li#subscription").classList.add("hide");
+                } else{
+                	document.querySelector("li#subscription").classList.remove("hide");
+                	document.querySelector("li#e-edition").classList.add("hide");
+                }
+            });
+
+        });
+
+    </script>
+ 			<div class="search-box">
+				<form method="GET" action="https://preview.houstonchronicle.com/" role="search">
+    <div class="outline">
+        
+        <input type="text" autocomplete="off" class="field" name="s" value="" placeholder="Search Events or Categories" />
+        <span class="search-icon"><i class="icon-search"></i><i class="icon-close hide"></i></span>
+    </div>
+    <input type="hidden" name="search_button" value="Search"/>
+</form>			</div>
+		</div>
+
+		<div id="c-mask" class="c-mask"></div>
+		<nav id="menu-nav" class="menu-nav">
+			<div class="menu-nav__header">
+				<h1 class="logo"><a href="https://preview.houstonchronicle.com"></a></h1>
+				<button class="menu-nav__close">
+					<div class="ex2"></div>
+				</button>
+			</div>
+			<div class="menu-nav__body">
+				<ul class="menu-nav__items">
+					<li class="c-menu__item search-box">
+						<form method="GET" action="https://preview.houstonchronicle.com/" role="search">
+    <div class="outline">
+        
+        <input type="text" autocomplete="off" class="field" name="s" value="" placeholder="Search Events or Categories" />
+        <span class="search-icon"><i class="icon-search"></i><i class="icon-close hide"></i></span>
+    </div>
+    <input type="hidden" name="search_button" value="Search"/>
+</form>					</li>
+					<a target="_parent" class="c-menu__link menubuilder search" href="https://preview.houstonchronicle.com/search" alt="View all posts in Event Search"><span class="">Event Search</span></a><a target="_parent" class="c-menu__link menubuilder categoryselena" href="https://preview.houstonchronicle.com/category/selena" alt="View all posts in Selena"><span class="">Selena</span></a><a target="_parent" class="c-menu__link menubuilder categorymovies-tv" href="https://preview.houstonchronicle.com/category/movies-tv" alt="View all posts in Movies &amp; TV"><span class="">Movies &amp; TV</span></a><a target="_parent" class="c-menu__link menubuilder categorymusic" href="https://preview.houstonchronicle.com/category/music" alt="View all posts in Music"><span class="">Music</span></a><a target="_parent" class="c-menu__link menubuilder categoryart-exhibits" href="https://preview.houstonchronicle.com/category/art-exhibits" alt="View all posts in Art &amp; Exhibits"><span class="">Art &amp; Exhibits</span></a><a target="_parent" class="c-menu__link menubuilder categoryclassical" href="https://preview.houstonchronicle.com/category/classical" alt="View all posts in Classical"><span class="">Classical</span></a><a target="_parent" class="c-menu__link menubuilder categorydance" href="https://preview.houstonchronicle.com/category/dance" alt="View all posts in Dance"><span class="">Dance</span></a><a target="_parent" class="c-menu__link menubuilder categorydining" href="https://preview.houstonchronicle.com/category/dining" alt="View all posts in Dining"><span class="">Dining</span></a><a target="_parent" class="c-menu__link menubuilder categorytheater" href="https://preview.houstonchronicle.com/category/theater" alt="View all posts in Theater"><span class="">Theater</span></a><a target="_parent" class="c-menu__link menubuilder movie-search" href="https://preview.houstonchronicle.com/movie-search" alt="View all posts in Movie Search"><span class="">Movie Search</span></a>					<a target="_blank" 
+						rel="noopener" 
+						class="c-menu__link categories " 
+						href="https://www.sfchronicle.com/mydata/" 
+						alt="Do Not Sell My Info"><span>Do Not Sell My Info</span></a>
+					
+				</ul>
+				<div class="social-icons">
+    <h3>Follow Us</h3>
+    <div class="icons">
+    	        	<a class="fb-link" href="https://www.facebook.com/PreviewHouston/" target="_blank"><i class="icon-facebook" aria-hidden="true"></i></a>
+                            	<a class="twtr-link" href="https://twitter.com/previewnow" target="_blank"><i class="icon-twitter" aria-hidden="true"></i></a>
+                                </div>
+</div>
+			</div>
+		</nav>
+		<div class="navigation-content">
+			<div class="primary-navigation">
+				<div class="inner-content">
+					<a target="_parent" class="c-menu__link menubuilder search" href="https://preview.houstonchronicle.com/search" alt="View all posts in Event Search"><span class="">Event Search</span></a><a target="_parent" class="c-menu__link menubuilder categoryselena" href="https://preview.houstonchronicle.com/category/selena" alt="View all posts in Selena"><span class="">Selena</span></a><a target="_parent" class="c-menu__link menubuilder categorymovies-tv" href="https://preview.houstonchronicle.com/category/movies-tv" alt="View all posts in Movies &amp; TV"><span class="">Movies &amp; TV</span></a><a target="_parent" class="c-menu__link menubuilder categorymusic" href="https://preview.houstonchronicle.com/category/music" alt="View all posts in Music"><span class="">Music</span></a><a target="_parent" class="c-menu__link menubuilder categoryart-exhibits" href="https://preview.houstonchronicle.com/category/art-exhibits" alt="View all posts in Art &amp; Exhibits"><span class="">Art &amp; Exhibits</span></a><a target="_parent" class="c-menu__link menubuilder categoryclassical" href="https://preview.houstonchronicle.com/category/classical" alt="View all posts in Classical"><span class="">Classical</span></a><a target="_parent" class="c-menu__link menubuilder categorydance" href="https://preview.houstonchronicle.com/category/dance" alt="View all posts in Dance"><span class="">Dance</span></a><a target="_parent" class="c-menu__link menubuilder categorydining" href="https://preview.houstonchronicle.com/category/dining" alt="View all posts in Dining"><span class="">Dining</span></a><a target="_parent" class="c-menu__link menubuilder categorytheater" href="https://preview.houstonchronicle.com/category/theater" alt="View all posts in Theater"><span class="">Theater</span></a><a target="_parent" class="c-menu__link menubuilder movie-search" href="https://preview.houstonchronicle.com/movie-search" alt="View all posts in Movie Search"><span class="">Movie Search</span></a>				</div>
+			</div>
+		</div>
+		<div class="shadow"></div>
+	</header>
+
+	<div id="content" class="site-content"><!-- displaying post cached-post-10922 from redis-->	
+	<div class="ad-wrapper leaderboard" ><div id="DTBK_AP951">
+<script type="text/javascript">/*<![CDATA[*/hearstPlaceAd("DTBK_AP951");/*]]>*/</script></div></div><article id="post-10922">
+		<header class="entry-header">
+		<div class="article-category-list"><a href="https://preview.houstonchronicle.com/category/music" rel="category tag">Music</a></div>
+		<h1>Houston performer Roxanne Collins&#8217; &#8216;QuaranTina&#8217; livestream will feature Tina Turner&#8217;s hits</h1>	
+				<h2>The closure of bars and clubs has affected another community of performers: drag queens</h2>
+				<div class="byline-and-share-links">	
+			<div class="byline">
+				
+
+
+			    
+								<div class="byline-details">
+					<span class="author">Joey Guerra</span><span class="dateline">March 25, 2020</span><span class="dateline updated">Updated: March 25, 2020, 12:56 pm</span>				</div>
+			</div>
+
+			
+<div class="share-links">
+  <div class="social">
+    <a id="facebook-icon" title="Share on Facebook" href="#" target="_blank" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=https://preview.houstonchronicle.com/music/houston-performer-roxanne-collins-quarantina-15155647', 'facebook-share-dialog', 'width=626,height=436'); return false;">
+      <i class="icon-facebook"></i>
+    </a>
+  </div>
+
+  <div class="social">
+    <a id="twitter-icon" title="Share on Twitter" target="_blank" href="https://twitter.com/intent/tweet?url=https://preview.houstonchronicle.com/music/houston-performer-roxanne-collins-quarantina-15155647&text=Houston performer Roxanne Collins&#8217; &#8216;QuaranTina&#8217; livestream will feature Tina Turner&#8217;s hits">
+      <i class="icon-twitter"></i>
+    </a>
+  </div>
+
+    <div class="social">
+    <a id="pinterest-icon" title="Share on Pinterest"  target="_blank" href="http://pinterest.com/pin/create/button/?url=https://preview.houstonchronicle.com/music/houston-performer-roxanne-collins-quarantina-15155647&media=https://s3.amazonaws.com/sfc-datebook-wordpress/wp-content/uploads/sites/8/2020/03/featured_event10922-.jpg&description=Houston performer Roxanne Collins&#8217; &#8216;QuaranTina&#8217; livestream will feature Tina Turner&#8217;s hits">
+      <i class="icon-pinterest"></i>
+    </a>
+  </div>
+
+  <div class="social">
+    <a id="reddit-icon" title="Share on Reddit" target="_blank" href="https://www.reddit.com/submit?url=https://preview.houstonchronicle.com/music/houston-performer-roxanne-collins-quarantina-15155647&text=Houston performer Roxanne Collins&#8217; &#8216;QuaranTina&#8217; livestream will feature Tina Turner&#8217;s hits">
+      <i class="icon-reddit"></i>
+    </a>
+  </div>
+
+
+  <div class="social">
+    <a id="mail-icon" title="Share via email" href="mailto:?subject=Your friend has shared a Preview | Houston Arts &amp; Entertainment Guide link with you: Houston performer Roxanne Collins&#8217; &#8216;QuaranTina&#8217; livestream will feature Tina Turner&#8217;s hits&body=Houston performer Roxanne Collins&#8217; &#8216;QuaranTina&#8217; livestream will feature Tina Turner&#8217;s hits%0A%0Ahttps://preview.houstonchronicle.com/music/houston-performer-roxanne-collins-quarantina-15155647%0A%0AThis message was sent via https://preview.houstonchronicle.com.">
+      <i class="icon-mail" aria-hidden="true"></i>
+    </a>
+  </div>
+  </div>
+
+
+		</div>
+	</header>
+
+	
+	<section class="post-body">
+		<div class="interior">
+			<!-- Begin WCM content--><div class="sfc-slideshow-container"><div class="sfc-slideshow-title"></div><div class="sfc-slideshow"><div class="fullscreen"></div><div class="slideshow-image" data-current-slide="0" style="background-image: url('https://s.hdnux.com/photos/01/11/22/16/19211194/3/rawImage.jpg');"></div><div class="arrow left-arrow" style="display: none;"></div><div class="arrow right-arrow" style="display: block;"></div><div class="info"><div class="slide-number"><span class="count"></span></div><div class="text">Houston performer Roxanne Collins is a renowned Tina Turner impersonator. Photo: courtesy of Roxanne Collins</div></div></div></div><script>var sfcSlideshowJsonWrapper = [{"title":"","slides":[{"type":"image","manual":false,"params":{"mtime":1585136472,"guid":"photo_19211194","id":19211194,"layout":"slide","rank":1,"title":"","byline":"courtesy of Roxanne Collins","caption":{"html1":"Houston performer Roxanne Collins is a renowned Tina Turner impersonator.","html2":"Houston performer Roxanne Collins is a renowned Tina Turner impersonator.","html3":"Houston performer Roxanne Collins is a renowned Tina Turner impersonator.","plain":"Houston performer Roxanne Collins is a renowned Tina Turner impersonator."},"publicationDate":"2020-03-25 07:38:34","publicationDateTimestamp":1585121914,"lastModifiedDate":"2020-03-25 11:41:12","lastModifiedDateTimestamp":1585136472,"expirationDate":"","resaleLink":"","isCover":true,"orientation":"portrait","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/22\/16\/19211194\/3\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/22\/16\/19211194\/3\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/22\/16\/19211194\/3\/rawImage.jpg","width":1018,"height":1024}}}},{"type":"image","manual":false,"params":{"mtime":1585136474,"guid":"photo_19211196","id":19211196,"layout":"slide","rank":2,"title":"","byline":"courtesy of Roxanne Collins","caption":{"html1":"Houston performer Roxanne Collins is a renowned Tina Turner impersonator.","html2":"Houston performer Roxanne Collins is a renowned Tina Turner impersonator.","html3":"Houston performer Roxanne Collins is a renowned Tina Turner impersonator.","plain":"Houston performer Roxanne Collins is a renowned Tina Turner impersonator."},"publicationDate":"2020-03-25 07:38:34","publicationDateTimestamp":1585121914,"lastModifiedDate":"2020-03-25 11:41:14","lastModifiedDateTimestamp":1585136474,"expirationDate":"","resaleLink":"","isCover":false,"orientation":"landscape","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/22\/16\/19211196\/3\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/22\/16\/19211196\/3\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/22\/16\/19211196\/3\/rawImage.jpg","width":1024,"height":1024}}}},{"type":"image","manual":false,"params":{"mtime":1585136475,"guid":"photo_19211197","id":19211197,"layout":"slide","rank":3,"title":"","byline":"courtesy of Roxanne Collins","caption":{"html1":"<p>Houston performer Roxanne Collins is a renowned Tina Turner impersonator. The two post together in the middle photo.<\/p>","html2":"Houston performer Roxanne Collins is a renowned Tina Turner impersonator. The two post together in the middle photo.","html3":"<p>Houston performer Roxanne Collins is a renowned Tina Turner impersonator. The two post together in the middle photo.\n<\/p>","plain":"Houston performer Roxanne Collins is a renowned Tina Turner impersonator. The two post together in the middle photo."},"publicationDate":"2020-03-25 07:38:35","publicationDateTimestamp":1585121915,"lastModifiedDate":"2020-03-25 11:41:15","lastModifiedDateTimestamp":1585136475,"expirationDate":"","resaleLink":"","isCover":false,"orientation":"landscape","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/22\/16\/19211197\/3\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/22\/16\/19211197\/3\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/22\/16\/19211197\/3\/rawImage.jpg","width":1024,"height":1024}}}},{"type":"image","manual":false,"params":{"mtime":1585136473,"guid":"photo_19211195","id":19211195,"layout":"slide","rank":4,"title":"","byline":"courtesy of Roxanne Collins","caption":{"html1":"Houston performer Roxanne Collins is a renowned Tina Turner impersonator.","html2":"Houston performer Roxanne Collins is a renowned Tina Turner impersonator.","html3":"Houston performer Roxanne Collins is a renowned Tina Turner impersonator.","plain":"Houston performer Roxanne Collins is a renowned Tina Turner impersonator."},"publicationDate":"2020-03-25 07:38:34","publicationDateTimestamp":1585121914,"lastModifiedDate":"2020-03-25 11:41:13","lastModifiedDateTimestamp":1585136473,"expirationDate":"","resaleLink":"","isCover":false,"orientation":"landscape","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/22\/16\/19211195\/3\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/22\/16\/19211195\/3\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/22\/16\/19211195\/3\/rawImage.jpg","width":1024,"height":1024}}}}]}];var sfcSlideshowJson  = (sfcSlideshowJsonWrapper.length > 0) ? sfcSlideshowJsonWrapper[0] : [];</script><p>We've heard a lot, and rightfully so, about how the coronavirus closures are affecting live music and the <a href="https://preview.houstonchronicle.com/music/as-venues-close-bands-host-quarantine-15132007"><strong>livelihood of musical acts</strong></a>. The closure of bars and clubs has affected another community of performers: drag queens.</p>
+<p>No more drag brunches or midnight shows, at least for the time being. Roxanne Collins, a&nbsp; lauded Houston performer and renowned Tina Turner impersonator, is doing something about it.</p>
+<p>Collins will host "QuaranTina" at 9 p.m. Friday from her <a href="https://www.facebook.com/donnie.t.hutchins" target="_blank" rel="noopener"><strong>Facebook page</strong></a>. The hourlong show will feature songs from several of Turner's albums, including "Private Dancer," "Break Every Rule" and "Foreign Affair." And of course Collins will do "Proud Mary." She'll continue doing livestreams while she's home, digging into Turner's more recent work.</p>
+<p>"As the isolation became a stay home order and off work extension, I knew I needed to do something," Collins says. "People often underestimate the love I receive through my work that translates financially. I have been so blessed to make a career out of doing what I love to do. I have faith, and my faith is strong. I will be OK, and in the end, better than before this happened. You will make it through this, too. We are gonna make it together."</p>
+<p>Spoken like a true diva.</p>
+<p>The stars of "RuPaul's Drag Race" are also doing their part. The Werq the World livestream will feature performances by some of the show's most popular queens, 7 p.m. April 4 at <a href="http://www.vossevents.com" target="_blank" rel="noopener"><strong>vossevents.com</strong></a>. Bianca Del Rio and Lady Bunny will host. Admission is $7.99 for the first 5,000 people. Proceeds will go to local performers across the country.</p>
+<p>Houston drag entertainers who have lost all income due to shutdowns can apply for aid at <a href="http://www.vossevents.com/aid" target="_blank" rel="noopener"><strong>vossevents.com/aid</strong></a>.</p>
+<p><strong>Joey Guerra</strong><em>&nbsp;is the music critic for the Houston Chronicle. Follow him on&nbsp;</em><strong><a href="http://twitter.com/" target="_blank" rel="noopener">Twitter</a></strong><em>.&nbsp;Get experts&rsquo; picks for concerts, kids&rsquo; stuff, fine arts, movies and more by subscribing to the&nbsp;</em><strong><a href="https://www.houstonchronicle.com/newsletters/preview/">Preview entertainment</a><a href="https://www.houstonchronicle.com/newsletters/preview/">&nbsp;newsletter</a></strong><em>.</em></p>
+<!-- END WCM content-->
+			<!-- Related event -->
+						<!-- Related event -->
+
+			<!-- Related Movie -->
+						<!-- Related Movie -->
+			
+<div class="share-links">
+  <div class="social">
+    <a id="facebook-icon" title="Share on Facebook" href="#" target="_blank" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=https://preview.houstonchronicle.com/music/houston-performer-roxanne-collins-quarantina-15155647', 'facebook-share-dialog', 'width=626,height=436'); return false;">
+      <i class="icon-facebook"></i>
+    </a>
+  </div>
+
+  <div class="social">
+    <a id="twitter-icon" title="Share on Twitter" target="_blank" href="https://twitter.com/intent/tweet?url=https://preview.houstonchronicle.com/music/houston-performer-roxanne-collins-quarantina-15155647&text=Houston performer Roxanne Collins&#8217; &#8216;QuaranTina&#8217; livestream will feature Tina Turner&#8217;s hits">
+      <i class="icon-twitter"></i>
+    </a>
+  </div>
+
+    <div class="social">
+    <a id="pinterest-icon" title="Share on Pinterest"  target="_blank" href="http://pinterest.com/pin/create/button/?url=https://preview.houstonchronicle.com/music/houston-performer-roxanne-collins-quarantina-15155647&media=https://s3.amazonaws.com/sfc-datebook-wordpress/wp-content/uploads/sites/8/2020/03/featured_event10922-.jpg&description=Houston performer Roxanne Collins&#8217; &#8216;QuaranTina&#8217; livestream will feature Tina Turner&#8217;s hits">
+      <i class="icon-pinterest"></i>
+    </a>
+  </div>
+
+  <div class="social">
+    <a id="reddit-icon" title="Share on Reddit" target="_blank" href="https://www.reddit.com/submit?url=https://preview.houstonchronicle.com/music/houston-performer-roxanne-collins-quarantina-15155647&text=Houston performer Roxanne Collins&#8217; &#8216;QuaranTina&#8217; livestream will feature Tina Turner&#8217;s hits">
+      <i class="icon-reddit"></i>
+    </a>
+  </div>
+
+
+  <div class="social">
+    <a id="mail-icon" title="Share via email" href="mailto:?subject=Your friend has shared a Preview | Houston Arts &amp; Entertainment Guide link with you: Houston performer Roxanne Collins&#8217; &#8216;QuaranTina&#8217; livestream will feature Tina Turner&#8217;s hits&body=Houston performer Roxanne Collins&#8217; &#8216;QuaranTina&#8217; livestream will feature Tina Turner&#8217;s hits%0A%0Ahttps://preview.houstonchronicle.com/music/houston-performer-roxanne-collins-quarantina-15155647%0A%0AThis message was sent via https://preview.houstonchronicle.com.">
+      <i class="icon-mail" aria-hidden="true"></i>
+    </a>
+  </div>
+  </div>
+
+
+			<div class="content-group author">
+	<ul>
+		<li>
+			<div class="avatar-follow">
+				
+
+
+			    				<div class="details">
+					<span class="name">Joey Guerra</span>
+									</div>
+			</div>
+					</li>
+	</ul>
+</div>			
+		</div>
+	</section>
+
+	<aside>
+				<div class="ad-wrapper medium_rectangle" ><div id="DTBK_AP300">
+<script type="text/javascript">/*<![CDATA[*/hearstPlaceAd("DTBK_AP300");/*]]>*/</script></div></div>		<div class="ad-wrapper medium_rectangle" ><div id="DTBK_AP300_M">
+<script type="text/javascript">/*<![CDATA[*/hearstPlaceAd("DTBK_AP300_M");/*]]>*/</script></div></div>		
+<div class="content-group newsletter articles-content">
+
+	
+	<div class="newsletter-form-wrap">
+		<p>Your weekly guide to Houston arts & entertainment.</p>
+				<form class="newsletter-form" onsubmit="DatebookNewsletter.handleSailThruSubmit(this);return false;" novalidate>
+			<input type="hidden" id="lists" name="lists" value= "Chron Preview" />
+			<input type="hidden" id="source" name="source" value= "WP_ART_HC_Preview" />
+			<input type="email" class="form-control" id="email" placeholder="E-mail Address">
+			<input type="submit" class="btn btn-primary" id="submit-btn" value="Sign Up">
+			<!-- <input id="submit-btn" class="btn btn-primary" type="submit" value=""> -->
+			<div class="check-mark"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="white" d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg></div>
+		</form>
+		<div class="signup-message"></div>
+	</div>
+</div>
+
+		
+		
+	<h2><span>More In Music</span></h2>
+
+	<div class="content-group related-articles">
+		<h2>
+			<span>More In Music</span>		</h2>
+		<ul>
+			<li><!-- returning card-10967 from redis -->		<a href="https://preview.houstonchronicle.com/music/d-nice-michelle-obama-and-voting-in-the-time-of-15156997" class="card article objectcard list-text small " data-date="Mar 25. 2020" data-categories="Music">
+		<div class="hoverstate">
+			<div  class="image lazyload  "  data-lazy-background="https://s3.amazonaws.com/sfc-datebook-wordpress/wp-content/uploads/sites/8/2020/03/featured_event10967--825x550.jpg" >
+			</div>
+		</div>
+		<div class="details">
+			<div class="category">
+				Music
+			</div>
+			
+			<div class="title"><span>D-Nice, Michelle Obama hold voter-registration party</span></div>
+				<div class="excerpt">
+					
+				</div>
+			<div class="author">By Andrew Dansby </div>
+		</div>
+	</a></li><li><!-- returning card-10943 from redis -->		<a href="https://preview.houstonchronicle.com/music/selena-glen-campbell-dr-dre-recordings-added-15156153" class="card article objectcard list-text small " data-date="Mar 25. 2020" data-categories="Music">
+		<div class="hoverstate">
+			<div  class="image lazyload  "  data-lazy-background="https://s3.amazonaws.com/sfc-datebook-wordpress/wp-content/uploads/sites/8/2020/03/featured_event10943--825x550.jpg" >
+			</div>
+		</div>
+		<div class="details">
+			<div class="category">
+				Music
+			</div>
+			
+			<div class="title"><span>Selena, Glen Campbell, Dr. Dre recordings added to Library of Congress</span></div>
+				<div class="excerpt">
+					
+				</div>
+			<div class="author">By Joey Guerra </div>
+		</div>
+	</a></li><li><!-- returning card-10835 from redis -->		<a href="https://preview.houstonchronicle.com/music/what-we-lose-when-live-music-goes-silent-15149118" class="card article objectcard list-text small " data-date="Mar 23. 2020" data-categories="Music">
+		<div class="hoverstate">
+			<div  class="image lazyload  "  data-lazy-background="https://s3.amazonaws.com/sfc-datebook-wordpress/wp-content/uploads/sites/8/2020/03/featured_event10835--825x550.jpg" >
+			</div>
+		</div>
+		<div class="details">
+			<div class="category">
+				Music
+			</div>
+			
+			<div class="title"><span>What we lose when live music goes silent</span></div>
+				<div class="excerpt">
+					
+				</div>
+			<div class="author">By Preston Jones </div>
+		</div>
+	</a></li><li><!-- returning card-10777 from redis -->		<a href="https://preview.houstonchronicle.com/music/kenny-rogers-country-icon-and-houston-native-15147582" class="card article objectcard list-text small " data-date="Mar 21. 2020" data-categories="Music">
+		<div class="hoverstate">
+			<div  class="image lazyload  "  data-lazy-background="https://s3.amazonaws.com/sfc-datebook-wordpress/wp-content/uploads/sites/8/2020/03/featured_event10777--825x550.jpg" >
+			</div>
+		</div>
+		<div class="details">
+			<div class="category">
+				Music
+			</div>
+			
+			<div class="title"><span>Kenny Rogers, country icon and Houston native, dead at 81</span></div>
+				<div class="excerpt">
+					
+				</div>
+			<div class="author">By Joey Guerra </div>
+		</div>
+	</a></li><li><!-- returning card-10771 from redis -->		<a href="https://preview.houstonchronicle.com/music/garth-brooks-is-taking-fan-requests-for-a-15147042" class="card article objectcard list-text small " data-date="Mar 20. 2020" data-categories="Music">
+		<div class="hoverstate">
+			<div  class="image lazyload  "  data-lazy-background="https://s3.amazonaws.com/sfc-datebook-wordpress/wp-content/uploads/sites/8/2020/03/featured_event10771--825x550.jpg" >
+			</div>
+		</div>
+		<div class="details">
+			<div class="category">
+				Music
+			</div>
+			
+			<div class="title"><span>Garth Brooks is taking fan requests for a livestream concert</span></div>
+				<div class="excerpt">
+					
+				</div>
+			<div class="author">By Joey Guerra </div>
+		</div>
+	</a></li>		</ul>
+	</div>
+
+		<!-- Related event -->
+				<!-- Related event -->
+
+		<!-- Related Movie -->
+				<!-- Related Movie -->
+
+		<!-- Slot -->
+
+		<div class="ad-wrapper medium_rectangle" ><div id="DTBK_BP300">
+<script type="text/javascript">/*<![CDATA[*/hearstPlaceAd("DTBK_BP300");/*]]>*/</script></div></div>		<!-- Slot -->
+
+	</aside>
+
+	<div class="after-content">
+						<div class="content-group related-articles grid">
+
+					<h2><span>More In Music</span></h2>
+					<ul>
+						<li  id="NTVDTBKArticle1" ><!-- returning card-10720 from redis -->		<a href="https://preview.houstonchronicle.com/music/chron-concerts-american-idol-hopeful-ren-15144040" class="card article objectcard list-text large " data-date="Mar 19. 2020" data-categories="Music">
+		<div class="hoverstate">
+			<div  class="image lazyload  "  data-lazy-background="https://s3.amazonaws.com/sfc-datebook-wordpress/wp-content/uploads/sites/8/2020/03/featured_event10720--825x550.jpg" >
+			</div>
+		</div>
+		<div class="details">
+			<div class="category">
+				Music
+			</div>
+			
+			<div class="title"><span>Chron concerts: 'American Idol' Ren Patrick sings from Cypress</span></div>
+				<div class="excerpt">
+					
+				</div>
+			<div class="author">By Joey Guerra </div>
+		</div>
+	</a></li><li ><!-- returning card-10653 from redis -->		<a href="https://preview.houstonchronicle.com/music/songs-to-make-you-not-feel-so-alone-when-you-re-15139986" class="card article objectcard list-text large " data-date="Mar 19. 2020" data-categories="Music">
+		<div class="hoverstate">
+			<div  class="image lazyload  "  data-lazy-background="https://s3.amazonaws.com/sfc-datebook-wordpress/wp-content/uploads/sites/8/2020/03/featured_event10653--825x550.jpg" >
+			</div>
+		</div>
+		<div class="details">
+			<div class="category">
+				Music
+			</div>
+			
+			<div class="title"><span>Dancing with Myself: A 'social distancing' playlist to deal with coronavirus</span></div>
+				<div class="excerpt">
+					
+				</div>
+			<div class="author">By Joey Guerra </div>
+		</div>
+	</a></li><li ><!-- returning card-10571 from redis -->		<a href="https://preview.houstonchronicle.com/music/stay-at-home-singer-ariel-de-cuba-says-quedate-15137476" class="card article objectcard list-text large " data-date="Mar 17. 2020" data-categories="Music">
+		<div class="hoverstate">
+			<div  class="image lazyload  "  data-lazy-background="https://s3.amazonaws.com/sfc-datebook-wordpress/wp-content/uploads/sites/8/2020/03/featured_event10571--825x550.jpg" >
+			</div>
+		</div>
+		<div class="details">
+			<div class="category">
+				Music
+			</div>
+			
+			<div class="title"><span>Stay at home: Singer Ariel de Cuba says 'quedate en casa' to stop the coronavirus</span></div>
+				<div class="excerpt">
+					
+				</div>
+			<div class="author">By Joey Guerra </div>
+		</div>
+	</a></li>					</ul>
+				</div>
+		
+
+	<div class="content-group related-events list">
+		<h2><span>Related Events</span></h2>
+		<ul>
+			<li  id="NTVDTBKEvent1" ><!-- returning card-10894 from redis -->		<a href="https://preview.houstonchronicle.com/event/music/tanya-tucker-2/" class="card event objectcard
+		critics-pick
+		list
+		"
+		data-date="March 24" data-event-start-datetime="#event_start_datetime#" data-categories="music" data-critics-pick="true"
+			data-venue-zones="#venue-zones#">
+				
+			
+			<div class="hoverstate">
+				<div class="badges">
+					<div class="critics-pick-badge"><span>Preview Pick</span></div>
+				</div>
+					<div  class="image lazyload  "  data-lazy-background="https://s3.amazonaws.com/sfc-datebook-wordpress/wp-content/uploads/sites/8/2020/03/Tanya-Tucker1-830x531.jpg" >
+					</div>
+			</div>
+			<div class="info">
+					<div class="date">
+						<div class="month" data-month="Mar">
+							Mar
+						</div>
+						<div class="day-of-month" data-day="26">
+							26
+						</div>
+					</div>
+				<div class="details">
+						<div class="date-expanded">Through Jun 30</div>
+					<div class="title" ><span>Tanya Tucker</span></div>
+						<div class="category">	
+							Music
+						</div>
+				</div>
+				<div class="venue-and-price">
+					<div class="venue">
+						<i class="icon-pinpoint-thick" aria-hidden="true"></i>
+						
+					</div>
+					<div class="price"></div>
+				</div>
+				
+			</div>
+		</a></li><li ><!-- returning card-10888 from redis -->		<a href="https://preview.houstonchronicle.com/event/music/jessie-reyez/" class="card event objectcard
+		critics-pick
+		list
+		"
+		data-date="March 24" data-event-start-datetime="#event_start_datetime#" data-categories="music" data-critics-pick="true"
+			data-venue-zones="#venue-zones#">
+				
+			
+			<div class="hoverstate">
+				<div class="badges">
+					<div class="critics-pick-badge"><span>Preview Pick</span></div>
+				</div>
+					<div  class="image lazyload  portrait"  data-lazy-background="https://s3.amazonaws.com/sfc-datebook-wordpress/wp-content/uploads/sites/8/2020/03/Jessie-Reyez-550x550.jpg" >
+					</div>
+			</div>
+			<div class="info">
+					<div class="date">
+						<div class="month" data-month="Mar">
+							Mar
+						</div>
+						<div class="day-of-month" data-day="26">
+							26
+						</div>
+					</div>
+				<div class="details">
+						<div class="date-expanded">Through Jun 30</div>
+					<div class="title" ><span>Jessie Reyez</span></div>
+						<div class="category">	
+							Music
+						</div>
+				</div>
+				<div class="venue-and-price">
+					<div class="venue">
+						<i class="icon-pinpoint-thick" aria-hidden="true"></i>
+						
+					</div>
+					<div class="price"></div>
+				</div>
+				
+			</div>
+		</a></li><li ><!-- returning card-10881 from redis -->		<a href="https://preview.houstonchronicle.com/event/music/ally-brooke/" class="card event objectcard
+		critics-pick
+		list
+		"
+		data-date="March 24" data-event-start-datetime="#event_start_datetime#" data-categories="music" data-critics-pick="true"
+			data-venue-zones="#venue-zones#">
+				
+			
+			<div class="hoverstate">
+				<div class="badges">
+					<div class="critics-pick-badge"><span>Preview Pick</span></div>
+				</div>
+					<div  class="image lazyload  "  data-lazy-background="https://s3.amazonaws.com/sfc-datebook-wordpress/wp-content/uploads/sites/8/2020/03/Ally-Brooke-830x463.jpg" >
+					</div>
+			</div>
+			<div class="info">
+					<div class="date">
+						<div class="month" data-month="Mar">
+							Mar
+						</div>
+						<div class="day-of-month" data-day="26">
+							26
+						</div>
+					</div>
+				<div class="details">
+						<div class="date-expanded">Through Jun 30</div>
+					<div class="title" ><span>Ally Brooke</span></div>
+						<div class="category">	
+							Music
+						</div>
+				</div>
+				<div class="venue-and-price">
+					<div class="venue">
+						<i class="icon-pinpoint-thick" aria-hidden="true"></i>
+						
+					</div>
+					<div class="price"></div>
+				</div>
+				
+			</div>
+		</a></li>		</ul>
+	</div>
+			</div>
+</article>
+
+
+
+
+
+	<div class="clearfix"></div>
+	<div class="clearfix"></div>
+	</div><!-- #content -->
+
+	<div class="clearfix"></div>
+		<footer>
+		<div class="footer-content clearfix">
+			<div class="top">
+				<div class="group">
+					<a href="https://preview.houstonchronicle.com" class="logo white"></a>
+					<a href="https://houstonchronicle.com" class="parent-site-logo"></a>
+					<div class="clearfix"></div>
+					<div class="social-icons">
+    <h3>Follow Us</h3>
+    <div class="icons">
+    	        	<a class="fb-link" href="https://www.facebook.com/PreviewHouston/" target="_blank"><i class="icon-facebook" aria-hidden="true"></i></a>
+                            	<a class="twtr-link" href="https://twitter.com/previewnow" target="_blank"><i class="icon-twitter" aria-hidden="true"></i></a>
+                                </div>
+</div>
+	
+				</div>
+				<div class="group">
+					<div class="hcsf_links">
+						<h3>Websites</h3>
+						<div class="clearfix"></div>
+						<div class="hcsf_linklist">
+							<a href="https://www.houstonchronicle.com/" target="_blank">Houston Chronicle</a>
+							<a href="https://www.chron.com" target="_blank">Chron</a>
+							<a href="https://www.renewhouston.com" target="_blank">ReNew</a>
+							<a href="https://www.texassportsnation.com" target="_blank">Texas Sports Nation</a>
+							<a href="https://www.chron.com/education/" target="_blank">The Educationist</a>
+						</div>
+					</div>
+				</div>
+				<div class="group">
+					<div class="hcsf_links">
+						
+					</div>
+				</div>
+				<div class="group">
+					<div class="hcsf_links">
+						<h3>About</h3>
+						<div class="clearfix"></div>
+						<div class="hcsf_linklist">
+							<a href="https://www.houstonchronicle.com/privacy_policy" target="_blank">Privacy Notice</a>
+							<a href="https://www.houstonchronicle.com/privacy_policy/#caprivacyrights" target="_blank">Your California Privacy Rights</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="bottom">
+				<div class="copyright-wrap">
+					
+					<p class="copyright">&copy;Copyright 2020 Hearst Communications, Inc.</p>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+</div><!-- #page -->
+
+		<script>
+		( function ( body ) {
+			'use strict';
+			body.className = body.className.replace( /\btribe-no-js\b/, 'tribe-js' );
+		} )( document.body );
+		</script>
+		<script> /* <![CDATA[ */var tribe_l10n_datatables = {"aria":{"sort_ascending":": activate to sort column ascending","sort_descending":": activate to sort column descending"},"length_menu":"Show _MENU_ entries","empty_table":"No data available in table","info":"Showing _START_ to _END_ of _TOTAL_ entries","info_empty":"Showing 0 to 0 of 0 entries","info_filtered":"(filtered from _MAX_ total entries)","zero_records":"No matching records found","search":"Search:","all_selected_text":"All items on this page were selected. ","select_all_link":"Select all pages","clear_selection":"Clear Selection.","pagination":{"all":"All","next":"Next","previous":"Previous"},"select":{"rows":{"0":"","_":": Selected %d rows","1":": Selected 1 row"}},"datepicker":{"dayNames":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"dayNamesShort":["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],"dayNamesMin":["S","M","T","W","T","F","S"],"monthNames":["January","February","March","April","May","June","July","August","September","October","November","December"],"monthNamesShort":["January","February","March","April","May","June","July","August","September","October","November","December"],"monthNamesMin":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"nextText":"Next","prevText":"Prev","currentText":"Today","closeText":"Done","today":"Today","clear":"Clear"}};var tribe_system_info = {"sysinfo_optin_nonce":"6fadb9e252","clipboard_btn_text":"Copy to clipboard","clipboard_copied_text":"System info copied","clipboard_fail_text":"Press \"Cmd + C\" to copy"};/* ]]> */ </script><script type='text/javascript' src='https://preview.houstonchronicle.com/wp-content/themes/datebook-2019-base/assets/js/datebook.js?ver=5.2.3-p19.2-20200311-0820'></script>
+<script type='text/javascript'>
+DatebookSearchPage.datebookPickLabel="Preview Pick"; DatebookCard.datebookPickLabel ="Preview Pick";
+</script>
+<script type='text/javascript' src='https://preview.houstonchronicle.com/wp-includes/js/wp-embed.min.js?ver=5.2.3'></script>
+<script>
+if (document.body.classList.contains('postid-10927')) {
+
+var sfcSlideshowJsonWrapper = [{"title":"","slides":[{"type":"image","manual":false,"params":{"mtime":1585149999,"guid":"photo_19211813","id":19211813,"layout":"slide","rank":1,"title":"","byline":"Martin Gomez","caption":{"html1":"Martin Gomez and Selena in 1994 backstage at her fashion show in San Antonio.","html2":"Martin Gomez and Selena in 1994 backstage at her fashion show in San Antonio.","html3":"Martin Gomez and Selena in 1994 backstage at her fashion show in San Antonio.","plain":"Martin Gomez and Selena in 1994 backstage at her fashion show in San Antonio."},"publicationDate":"2020-03-25 15:26:39","publicationDateTimestamp":1585149999,"lastModifiedDate":"2020-03-25 15:26:39","lastModifiedDateTimestamp":1585149999,"expirationDate":"","resaleLink":"","isCover":true,"orientation":"landscape","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/22\/30\/19211813\/4\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/22\/30\/19211813\/4\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/22\/30\/19211813\/4\/rawImage.jpg","width":861,"height":615}}}},{"type":"image","manual":false,"params":{"mtime":1585148440,"guid":"photo_19210054","id":19210054,"layout":"slide","rank":3,"title":"","byline":"Martin Gomez \/ Martin Gomez","caption":{"html1":"<p><typographytag class=\"character\" displayname=\"TypographyTag(1)\" name=\"TypographyTag1\">Martin Gomez is the designer who<\/typographytag><typographytag class=\"character\" displayname=\"TypographyTag(11)\" name=\"TypographyTag11\">worked wit<typographytag class=\"character\" displayname=\"TypographyTag(12)\" name=\"TypographyTag12\">h<\/typographytag><\/typographytag><typographytag class=\"character\" displayname=\"TypographyTag(12)\" name=\"TypographyTag12\"><typographytag class=\"character\" displayname=\"TypographyTag(13)\" name=\"TypographyTag13\"><typographytag class=\"character\" displayname=\"TypographyTag(14)\" name=\"TypographyTag14\"><typographytag class=\"character\" displayname=\"TypographyTag(15)\" name=\"TypographyTag15\">Selena in the '90s to create her<\/typographytag><\/typographytag><\/typographytag><\/typographytag><typographytag class=\"character\" displayname=\"TypographyTag(13)\" name=\"TypographyTag13\"><typographytag class=\"character\" displayname=\"TypographyTag(14)\" name=\"TypographyTag14\"><typographytag class=\"character\" displayname=\"TypographyTag(15)\" name=\"TypographyTag15\"> fashion brand.<\/typographytag><\/typographytag><\/typographytag><\/p>","html2":"Martin Gomez is the designer whoworked withSelena in the '90s to create her fashion brand.","html3":"<p>Martin Gomez is the designer whoworked withSelena in the '90s to create her fashion brand.\n<\/p>","plain":"Martin Gomez is the designer whoworked withSelena in the '90s to create her fashion brand."},"publicationDate":"2020-03-25 15:00:00","publicationDateTimestamp":1585148400,"lastModifiedDate":"2020-03-25 15:00:40","lastModifiedDateTimestamp":1585148440,"expirationDate":"","resaleLink":"","isCover":false,"orientation":"portrait","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/21\/75\/19210054\/3\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/21\/75\/19210054\/3\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/21\/75\/19210054\/3\/rawImage.jpg","width":767,"height":973}}}},{"type":"image","manual":false,"params":{"mtime":1585148440,"guid":"photo_19210055","id":19210055,"layout":"slide","rank":4,"title":"","byline":"Joey Guerra \/ Joey Guerra","caption":{"html1":"<p>One of Selena’s original costumes, housed inside the Selena Museum in Corpus Christi.<\/p>","html2":"One of Selena’s original costumes, housed inside the Selena Museum in Corpus Christi.","html3":"<p>One of Selena’s original costumes, housed inside the Selena Museum in Corpus Christi.\n<\/p>","plain":"One of Selena's original costumes, housed inside the Selena Museum in Corpus Christi."},"publicationDate":"2020-03-25 15:00:00","publicationDateTimestamp":1585148400,"lastModifiedDate":"2020-03-25 15:00:40","lastModifiedDateTimestamp":1585148440,"expirationDate":"","resaleLink":"","isCover":false,"orientation":"portrait","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/21\/75\/19210055\/3\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/21\/75\/19210055\/3\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/21\/75\/19210055\/3\/rawImage.jpg","width":1536,"height":2048}}}},{"type":"image","manual":false,"params":{"mtime":1585148440,"guid":"photo_19210056","id":19210056,"layout":"slide","rank":5,"title":"","byline":"Joey Guerra \/ Joey Guerra","caption":{"html1":"<p>One of Selena’s original costumes, housed inside the Selena Museum in Corpus Christi.<\/p>","html2":"One of Selena’s original costumes, housed inside the Selena Museum in Corpus Christi.","html3":"<p>One of Selena’s original costumes, housed inside the Selena Museum in Corpus Christi.\n<\/p>","plain":"One of Selena's original costumes, housed inside the Selena Museum in Corpus Christi."},"publicationDate":"2020-03-25 15:00:00","publicationDateTimestamp":1585148400,"lastModifiedDate":"2020-03-25 15:00:40","lastModifiedDateTimestamp":1585148440,"expirationDate":"","resaleLink":"","isCover":false,"orientation":"portrait","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/21\/75\/19210056\/3\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/21\/75\/19210056\/3\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/21\/75\/19210056\/3\/rawImage.jpg","width":1536,"height":2048}}}},{"type":"image","manual":false,"params":{"mtime":1585148440,"guid":"photo_19210058","id":19210058,"layout":"slide","rank":6,"title":"","byline":"EMI Latin","caption":{"html1":"<p>Selena wearing one of the designs by Martin Gomez.<\/p>","html2":"Selena wearing one of the designs by Martin Gomez.","html3":"<p>Selena wearing one of the designs by Martin Gomez.\n<\/p>","plain":"Selena wearing one of the designs by Martin Gomez."},"publicationDate":"2020-03-25 15:00:00","publicationDateTimestamp":1585148400,"lastModifiedDate":"2020-03-25 15:00:40","lastModifiedDateTimestamp":1585148440,"expirationDate":"","resaleLink":"","isCover":false,"orientation":"portrait","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/21\/75\/19210058\/3\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/21\/75\/19210058\/3\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/21\/75\/19210058\/3\/rawImage.jpg","width":1371,"height":2048}}}},{"type":"image","manual":false,"params":{"mtime":1396265401,"guid":"photo_6097464","id":6097464,"layout":"slide","rank":7,"title":"","byline":"","caption":{"html1":"Martin Gomez makes some last minute adjustments to Selena's dress before the style show December 3, 1994.","html2":"Martin Gomez makes some last minute adjustments to Selena's dress before the style show December 3, 1994.","html3":"Martin Gomez makes some last minute adjustments to Selena's dress before the style show December 3, 1994.","plain":"Martin Gomez makes some last minute adjustments to Selena's dress before the style show December 3, 1994."},"publicationDate":"2010-11-03 03:54:33","publicationDateTimestamp":1288756473,"lastModifiedDate":"2014-03-31 11:30:01","lastModifiedDateTimestamp":1396265401,"expirationDate":"","resaleLink":"","isCover":false,"orientation":"portrait","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/27\/20\/50\/6097464\/6\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/27\/20\/50\/6097464\/6\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/27\/20\/50\/6097464\/6\/rawImage.jpg","width":239,"height":430}}}},{"type":"image","manual":false,"params":{"mtime":1585148440,"guid":"photo_19210052","id":19210052,"layout":"slide","rank":8,"title":"","byline":"Martin Gomez \/ Martin Gomez","caption":{"html1":"<p>Martin Gomez and Selena in 1994 backstage at their fashion show in San Antonio.<\/p>","html2":"Martin Gomez and Selena in 1994 backstage at their fashion show in San Antonio.","html3":"<p>Martin Gomez and Selena in 1994 backstage at their fashion show in San Antonio.\n<\/p>","plain":"Martin Gomez and Selena in 1994 backstage at their fashion show in San Antonio."},"publicationDate":"2020-03-25 15:00:00","publicationDateTimestamp":1585148400,"lastModifiedDate":"2020-03-25 15:00:40","lastModifiedDateTimestamp":1585148440,"expirationDate":"","resaleLink":"","isCover":false,"orientation":"portrait","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/21\/75\/19210052\/3\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/21\/75\/19210052\/3\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/21\/75\/19210052\/3\/rawImage.jpg","width":862,"height":1185}}}},{"type":"image","manual":false,"params":{"mtime":1585148440,"guid":"photo_19210057","id":19210057,"layout":"slide","rank":9,"title":"","byline":"Paul S. Howell, Staff \/ Houston Chronicle","caption":{"html1":"<p>Selena with one of her original outfits in March 1995.<\/p>","html2":"Selena with one of her original outfits in March 1995.","html3":"<p>Selena with one of her original outfits in March 1995.\n<\/p>","plain":"Selena with one of her original outfits in March 1995."},"publicationDate":"2020-03-25 15:00:00","publicationDateTimestamp":1585148400,"lastModifiedDate":"2020-03-25 15:00:40","lastModifiedDateTimestamp":1585148440,"expirationDate":"","resaleLink":"","isCover":false,"orientation":"landscape","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/21\/75\/19210057\/3\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/21\/75\/19210057\/3\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/21\/75\/19210057\/3\/rawImage.jpg","width":2048,"height":1321}}}}]}];var sfcSlideshowJson  = (sfcSlideshowJsonWrapper.length > 0) ? sfcSlideshowJsonWrapper[0] : [];
+console.log("sfcSlideshowJson ",sfcSlideshowJson );
+
+}
+</script>
+<script>
+if (document.body.classList.contains('postid-10940')) {
+var sfcSlideshowJsonWrapper = [{"title":"","slides":[{"type":"image","manual":false,"params":{"mtime":1585151281,"guid":"photo_19211900","id":19211900,"layout":"slide","rank":1,"title":"","byline":"MAC","caption":{"html1":"MAC's Selena La Reina collection is the second to honor the Tejano singer.","html2":"MAC's Selena La Reina collection is the second to honor the Tejano singer.","html3":"MAC's Selena La Reina collection is the second to honor the Tejano singer.","plain":"MAC's Selena La Reina collection is the second to honor the Tejano singer."},"publicationDate":"2020-03-20 23:54:03","publicationDateTimestamp":1584748443,"lastModifiedDate":"2020-03-25 15:48:01","lastModifiedDateTimestamp":1585151281,"expirationDate":"","resaleLink":"","isCover":true,"orientation":"landscape","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/22\/31\/19211900\/3\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/22\/31\/19211900\/3\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/22\/31\/19211900\/3\/rawImage.jpg","width":1024,"height":791}}}},{"type":"image","manual":false,"params":{"mtime":1585151467,"guid":"photo_19211934","id":19211934,"layout":"slide","rank":3,"title":"","byline":"MAC","caption":{"html1":"Extra Dimension Skinfinish from MAC's\u00a0Selena La Reina collection, a rich gold pearlescent liquid-powder highlighter.","html2":"Extra Dimension Skinfinish from MAC's\u00a0Selena La Reina collection, a rich gold pearlescent liquid-powder highlighter.","html3":"Extra Dimension Skinfinish from MAC's\u00a0Selena La Reina collection, a rich gold pearlescent liquid-powder highlighter.","plain":"Extra Dimension Skinfinish from MAC's\u00a0Selena La Reina collection, a rich gold pearlescent liquid-powder highlighter."},"publicationDate":"2020-03-20 23:55:25","publicationDateTimestamp":1584748525,"lastModifiedDate":"2020-03-25 15:51:07","lastModifiedDateTimestamp":1585151467,"expirationDate":"","resaleLink":"","isCover":false,"orientation":"portrait","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/22\/32\/19211934\/3\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/22\/32\/19211934\/3\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/22\/32\/19211934\/3\/rawImage.jpg","width":791,"height":1024}}}},{"type":"image","manual":false,"params":{"mtime":1585151279,"guid":"photo_19211899","id":19211899,"layout":"slide","rank":4,"title":"","byline":"MAC","caption":{"html1":"Extra Dimension Skinfinish from MAC's\u00a0Selena La Reina collection, a rich gold pearlescent liquid-powder highlighter.","html2":"Extra Dimension Skinfinish from MAC's\u00a0Selena La Reina collection, a rich gold pearlescent liquid-powder highlighter.","html3":"Extra Dimension Skinfinish from MAC's\u00a0Selena La Reina collection, a rich gold pearlescent liquid-powder highlighter.","plain":"Extra Dimension Skinfinish from MAC's\u00a0Selena La Reina collection, a rich gold pearlescent liquid-powder highlighter."},"publicationDate":"2020-03-20 23:55:24","publicationDateTimestamp":1584748524,"lastModifiedDate":"2020-03-25 15:47:59","lastModifiedDateTimestamp":1585151279,"expirationDate":"","resaleLink":"","isCover":false,"orientation":"portrait","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/22\/31\/19211899\/3\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/22\/31\/19211899\/3\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/22\/31\/19211899\/3\/rawImage.jpg","width":791,"height":1024}}}},{"type":"image","manual":false,"params":{"mtime":1585151282,"guid":"photo_19211901","id":19211901,"layout":"slide","rank":5,"title":"","byline":"MAC","caption":{"html1":"MAC's Selena La Reina collection will reintroduce the\u00a0Bidi Bidi Bom\u00a0Lipglass,\u00a0a bubblegum pink with silver pearl lip glass.","html2":"MAC's Selena La Reina collection will reintroduce the\u00a0Bidi Bidi Bom\u00a0Lipglass,\u00a0a bubblegum pink with silver pearl lip glass.","html3":"MAC's Selena La Reina collection will reintroduce the\u00a0Bidi Bidi Bom\u00a0Lipglass,\u00a0a bubblegum pink with silver pearl lip glass.","plain":"MAC's Selena La Reina collection will reintroduce the\u00a0Bidi Bidi Bom\u00a0Lipglass,\u00a0a bubblegum pink with silver pearl lip glass."},"publicationDate":"2020-03-20 23:54:47","publicationDateTimestamp":1584748487,"lastModifiedDate":"2020-03-25 15:48:02","lastModifiedDateTimestamp":1585151282,"expirationDate":"","resaleLink":"","isCover":false,"orientation":"portrait","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/22\/31\/19211901\/3\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/22\/31\/19211901\/3\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/22\/31\/19211901\/3\/rawImage.jpg","width":791,"height":1024}}}},{"type":"image","manual":false,"params":{"mtime":1585151283,"guid":"photo_19211902","id":19211902,"layout":"slide","rank":6,"title":"","byline":"MAC","caption":{"html1":"MAC's Selena La Reina collection will reintroduce the\u00a0Bidi Bidi Bom\u00a0Lipglass,\u00a0a bubblegum pink with silver pearl lip glass.","html2":"MAC's Selena La Reina collection will reintroduce the\u00a0Bidi Bidi Bom\u00a0Lipglass,\u00a0a bubblegum pink with silver pearl lip glass.","html3":"MAC's Selena La Reina collection will reintroduce the\u00a0Bidi Bidi Bom\u00a0Lipglass,\u00a0a bubblegum pink with silver pearl lip glass.","plain":"MAC's Selena La Reina collection will reintroduce the\u00a0Bidi Bidi Bom\u00a0Lipglass,\u00a0a bubblegum pink with silver pearl lip glass."},"publicationDate":"2020-03-20 23:54:46","publicationDateTimestamp":1584748486,"lastModifiedDate":"2020-03-25 15:48:03","lastModifiedDateTimestamp":1585151283,"expirationDate":"","resaleLink":"","isCover":false,"orientation":"portrait","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/22\/31\/19211902\/3\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/22\/31\/19211902\/3\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/22\/31\/19211902\/3\/rawImage.jpg","width":791,"height":1024}}}},{"type":"image","manual":false,"params":{"mtime":1482524765,"guid":"photo_11203159","id":11203159,"layout":"slide","rank":7,"title":"","byline":"Gabe Hernandez\/MBO","caption":{"html1":"<p>The MAC Selena makeup collection from 2016 sold out immediately.<\/p>","html2":"The MAC Selena makeup collection from 2016 sold out immediately.","html3":"<p>The MAC Selena makeup collection from 2016 sold out immediately.\n<\/p>","plain":"The MAC Selena makeup collection from 2016 sold out immediately."},"publicationDate":"2016-12-23 20:24:59","publicationDateTimestamp":1482524699,"lastModifiedDate":"2016-12-23 20:26:05","lastModifiedDateTimestamp":1482524765,"expirationDate":"","resaleLink":"","isCover":false,"orientation":"landscape","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/57\/11\/11203159\/9\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/57\/11\/11203159\/9\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/52\/57\/11\/11203159\/9\/rawImage.jpg","width":2048,"height":1498}}}},{"type":"image","manual":false,"params":{"mtime":1475251659,"guid":"photo_11198633","id":11198633,"layout":"slide","rank":1,"title":"","byline":"Joey Guerra","caption":{"html1":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.<\/p><p><b>Click through for more from the world premiere event!<\/b><\/p>","html2":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.\n\n<b>Click through for more from the world premiere event!<\/b>","html3":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.\n<\/p>\n<p><b>Click through for more from the world premiere event!<\/b>\n<\/p>","plain":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016. Click through for more from the world premiere event!"},"publicationDate":"2016-09-30 16:07:34","publicationDateTimestamp":1475251654,"lastModifiedDate":"2016-09-30 16:07:39","lastModifiedDateTimestamp":1475251659,"expirationDate":"","resaleLink":"","isCover":false,"orientation":"landscape","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/02\/11198633\/3\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/02\/11198633\/3\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/02\/11198633\/3\/rawImage.jpg","width":2048,"height":1536}}}},{"type":"image","manual":false,"params":{"mtime":1475251746,"guid":"photo_11198683","id":11198683,"layout":"slide","rank":2,"title":"","byline":"Joey Guerra","caption":{"html1":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.<\/p>","html2":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.","html3":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.\n<\/p>","plain":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016."},"publicationDate":"2016-09-30 16:09:01","publicationDateTimestamp":1475251741,"lastModifiedDate":"2016-09-30 16:09:06","lastModifiedDateTimestamp":1475251746,"expirationDate":"","resaleLink":"","isCover":false,"orientation":"portrait","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/03\/11198683\/3\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/03\/11198683\/3\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/03\/11198683\/3\/rawImage.jpg","width":1536,"height":2048}}}},{"type":"image","manual":false,"params":{"mtime":1475251740,"guid":"photo_11198675","id":11198675,"layout":"slide","rank":3,"title":"","byline":"Joey Guerra","caption":{"html1":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.<\/p>","html2":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.","html3":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.\n<\/p>","plain":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016."},"publicationDate":"2016-09-30 16:08:55","publicationDateTimestamp":1475251735,"lastModifiedDate":"2016-09-30 16:09:00","lastModifiedDateTimestamp":1475251740,"expirationDate":"","resaleLink":"","isCover":false,"orientation":"portrait","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/03\/11198675\/3\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/03\/11198675\/3\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/03\/11198675\/3\/rawImage.jpg","width":1536,"height":2048}}}},{"type":"image","manual":false,"params":{"mtime":1475251745,"guid":"photo_11198681","id":11198681,"layout":"slide","rank":4,"title":"","byline":"Joey Guerra","caption":{"html1":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.<\/p>","html2":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.","html3":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.\n<\/p>","plain":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016."},"publicationDate":"2016-09-30 16:09:01","publicationDateTimestamp":1475251741,"lastModifiedDate":"2016-09-30 16:09:05","lastModifiedDateTimestamp":1475251745,"expirationDate":"","resaleLink":"","isCover":false,"orientation":"landscape","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/03\/11198681\/3\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/03\/11198681\/3\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/03\/11198681\/3\/rawImage.jpg","width":2048,"height":1536}}}},{"type":"image","manual":false,"params":{"mtime":1475251751,"guid":"photo_11198687","id":11198687,"layout":"slide","rank":5,"title":"","byline":"Joey Guerra","caption":{"html1":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.<\/p>","html2":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.","html3":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.\n<\/p>","plain":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016."},"publicationDate":"2016-09-30 16:09:07","publicationDateTimestamp":1475251747,"lastModifiedDate":"2016-09-30 16:09:11","lastModifiedDateTimestamp":1475251751,"expirationDate":"","resaleLink":"","isCover":false,"orientation":"landscape","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/03\/11198687\/3\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/03\/11198687\/3\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/03\/11198687\/3\/rawImage.jpg","width":2048,"height":1536}}}},{"type":"image","manual":false,"params":{"mtime":1475251671,"guid":"photo_11198646","id":11198646,"layout":"slide","rank":6,"title":"","byline":"Joey Guerra","caption":{"html1":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.<\/p>","html2":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.","html3":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.\n<\/p>","plain":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016."},"publicationDate":"2016-09-30 16:07:46","publicationDateTimestamp":1475251666,"lastModifiedDate":"2016-09-30 16:07:51","lastModifiedDateTimestamp":1475251671,"expirationDate":"","resaleLink":"","isCover":false,"orientation":"portrait","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/02\/11198646\/3\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/02\/11198646\/3\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/02\/11198646\/3\/rawImage.jpg","width":1536,"height":2048}}}},{"type":"image","manual":false,"params":{"mtime":1475251659,"guid":"photo_11198632","id":11198632,"layout":"slide","rank":7,"title":"","byline":"Joey Guerra","caption":{"html1":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.<\/p>","html2":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.","html3":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.\n<\/p>","plain":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016."},"publicationDate":"2016-09-30 16:07:34","publicationDateTimestamp":1475251654,"lastModifiedDate":"2016-09-30 16:07:39","lastModifiedDateTimestamp":1475251659,"expirationDate":"","resaleLink":"","isCover":false,"orientation":"portrait","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/02\/11198632\/3\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/02\/11198632\/3\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/02\/11198632\/3\/rawImage.jpg","width":1536,"height":2048}}}},{"type":"image","manual":false,"params":{"mtime":1475251670,"guid":"photo_11198643","id":11198643,"layout":"slide","rank":8,"title":"","byline":"Joey Guerra","caption":{"html1":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.<\/p>","html2":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.","html3":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.\n<\/p>","plain":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016."},"publicationDate":"2016-09-30 16:07:46","publicationDateTimestamp":1475251666,"lastModifiedDate":"2016-09-30 16:07:50","lastModifiedDateTimestamp":1475251670,"expirationDate":"","resaleLink":"","isCover":false,"orientation":"portrait","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/02\/11198643\/3\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/02\/11198643\/3\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/02\/11198643\/3\/rawImage.jpg","width":1536,"height":2048}}}},{"type":"image","manual":false,"params":{"mtime":1475251659,"guid":"photo_11198631","id":11198631,"layout":"slide","rank":9,"title":"","byline":"Joey Guerra","caption":{"html1":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.<\/p>","html2":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.","html3":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.\n<\/p>","plain":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016."},"publicationDate":"2016-09-30 16:07:34","publicationDateTimestamp":1475251654,"lastModifiedDate":"2016-09-30 16:07:39","lastModifiedDateTimestamp":1475251659,"expirationDate":"","resaleLink":"","isCover":false,"orientation":"landscape","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/02\/11198631\/3\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/02\/11198631\/3\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/02\/11198631\/3\/rawImage.jpg","width":2048,"height":1536}}}},{"type":"image","manual":false,"params":{"mtime":1475251659,"guid":"photo_11198630","id":11198630,"layout":"slide","rank":10,"title":"","byline":"Joey Guerra","caption":{"html1":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.<\/p>","html2":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.","html3":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.\n<\/p>","plain":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016."},"publicationDate":"2016-09-30 16:07:34","publicationDateTimestamp":1475251654,"lastModifiedDate":"2016-09-30 16:07:39","lastModifiedDateTimestamp":1475251659,"expirationDate":"","resaleLink":"","isCover":false,"orientation":"portrait","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/02\/11198630\/3\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/02\/11198630\/3\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/02\/11198630\/3\/rawImage.jpg","width":1536,"height":2048}}}},{"type":"image","manual":false,"params":{"mtime":1475251675,"guid":"photo_11198653","id":11198653,"layout":"slide","rank":11,"title":"","byline":"Joey Guerra","caption":{"html1":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.<\/p>","html2":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.","html3":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.\n<\/p>","plain":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016."},"publicationDate":"2016-09-30 16:07:51","publicationDateTimestamp":1475251671,"lastModifiedDate":"2016-09-30 16:07:55","lastModifiedDateTimestamp":1475251675,"expirationDate":"","resaleLink":"","isCover":false,"orientation":"landscape","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/02\/11198653\/3\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/02\/11198653\/3\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/02\/11198653\/3\/rawImage.jpg","width":2048,"height":1536}}}},{"type":"image","manual":false,"params":{"mtime":1475251665,"guid":"photo_11198638","id":11198638,"layout":"slide","rank":12,"title":"","byline":"Joey Guerra","caption":{"html1":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.<\/p>","html2":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.","html3":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.\n<\/p>","plain":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016."},"publicationDate":"2016-09-30 16:07:40","publicationDateTimestamp":1475251660,"lastModifiedDate":"2016-09-30 16:07:45","lastModifiedDateTimestamp":1475251665,"expirationDate":"","resaleLink":"","isCover":false,"orientation":"landscape","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/02\/11198638\/3\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/02\/11198638\/3\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/02\/11198638\/3\/rawImage.jpg","width":2048,"height":1536}}}},{"type":"image","manual":false,"params":{"mtime":1475251664,"guid":"photo_11198637","id":11198637,"layout":"slide","rank":13,"title":"","byline":"Joey Guerra","caption":{"html1":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.<\/p>","html2":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.","html3":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.\n<\/p>","plain":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016."},"publicationDate":"2016-09-30 16:07:40","publicationDateTimestamp":1475251660,"lastModifiedDate":"2016-09-30 16:07:44","lastModifiedDateTimestamp":1475251664,"expirationDate":"","resaleLink":"","isCover":false,"orientation":"landscape","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/02\/11198637\/3\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/02\/11198637\/3\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/02\/11198637\/3\/rawImage.jpg","width":2048,"height":1536}}}},{"type":"image","manual":false,"params":{"mtime":1475251669,"guid":"photo_11198642","id":11198642,"layout":"slide","rank":14,"title":"","byline":"Joey Guerra","caption":{"html1":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.<\/p>","html2":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.","html3":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.\n<\/p>","plain":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016."},"publicationDate":"2016-09-30 16:07:44","publicationDateTimestamp":1475251664,"lastModifiedDate":"2016-09-30 16:07:49","lastModifiedDateTimestamp":1475251669,"expirationDate":"","resaleLink":"","isCover":false,"orientation":"landscape","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/02\/11198642\/3\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/02\/11198642\/3\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/02\/11198642\/3\/rawImage.jpg","width":2048,"height":1536}}}},{"type":"image","manual":false,"params":{"mtime":1475251671,"guid":"photo_11198645","id":11198645,"layout":"slide","rank":15,"title":"","byline":"Joey Guerra","caption":{"html1":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.<\/p>","html2":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.","html3":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.\n<\/p>","plain":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016."},"publicationDate":"2016-09-30 16:07:46","publicationDateTimestamp":1475251666,"lastModifiedDate":"2016-09-30 16:07:51","lastModifiedDateTimestamp":1475251671,"expirationDate":"","resaleLink":"","isCover":false,"orientation":"portrait","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/02\/11198645\/3\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/02\/11198645\/3\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/02\/11198645\/3\/rawImage.jpg","width":1536,"height":2048}}}},{"type":"image","manual":false,"params":{"mtime":1475251670,"guid":"photo_11198644","id":11198644,"layout":"slide","rank":16,"title":"","byline":"Joey Guerra","caption":{"html1":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.<\/p>","html2":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.","html3":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.\n<\/p>","plain":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016."},"publicationDate":"2016-09-30 16:07:46","publicationDateTimestamp":1475251666,"lastModifiedDate":"2016-09-30 16:07:50","lastModifiedDateTimestamp":1475251670,"expirationDate":"","resaleLink":"","isCover":false,"orientation":"landscape","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/02\/11198644\/3\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/02\/11198644\/3\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/02\/11198644\/3\/rawImage.jpg","width":2048,"height":1536}}}},{"type":"image","manual":false,"params":{"mtime":1475251674,"guid":"photo_11198650","id":11198650,"layout":"slide","rank":17,"title":"","byline":"Joey Guerra","caption":{"html1":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.<\/p>","html2":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.","html3":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.\n<\/p>","plain":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016."},"publicationDate":"2016-09-30 16:07:50","publicationDateTimestamp":1475251670,"lastModifiedDate":"2016-09-30 16:07:54","lastModifiedDateTimestamp":1475251674,"expirationDate":"","resaleLink":"","isCover":false,"orientation":"portrait","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/02\/11198650\/3\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/02\/11198650\/3\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/02\/11198650\/3\/rawImage.jpg","width":1536,"height":2048}}}},{"type":"image","manual":false,"params":{"mtime":1475251676,"guid":"photo_11198654","id":11198654,"layout":"slide","rank":18,"title":"","byline":"Joey Guerra","caption":{"html1":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.<\/p>","html2":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.","html3":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.\n<\/p>","plain":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016."},"publicationDate":"2016-09-30 16:07:51","publicationDateTimestamp":1475251671,"lastModifiedDate":"2016-09-30 16:07:56","lastModifiedDateTimestamp":1475251676,"expirationDate":"","resaleLink":"","isCover":false,"orientation":"portrait","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/02\/11198654\/3\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/02\/11198654\/3\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/02\/11198654\/3\/rawImage.jpg","width":1536,"height":2048}}}},{"type":"image","manual":false,"params":{"mtime":1475251677,"guid":"photo_11198656","id":11198656,"layout":"slide","rank":19,"title":"","byline":"Joey Guerra","caption":{"html1":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.<\/p>","html2":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.","html3":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.\n<\/p>","plain":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016."},"publicationDate":"2016-09-30 16:07:52","publicationDateTimestamp":1475251672,"lastModifiedDate":"2016-09-30 16:07:57","lastModifiedDateTimestamp":1475251677,"expirationDate":"","resaleLink":"","isCover":false,"orientation":"portrait","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/03\/11198656\/3\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/03\/11198656\/3\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/03\/11198656\/3\/rawImage.jpg","width":1536,"height":2048}}}},{"type":"image","manual":false,"params":{"mtime":1475251676,"guid":"photo_11198655","id":11198655,"layout":"slide","rank":20,"title":"","byline":"Joey Guerra","caption":{"html1":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.<\/p>","html2":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.","html3":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.\n<\/p>","plain":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016."},"publicationDate":"2016-09-30 16:07:52","publicationDateTimestamp":1475251672,"lastModifiedDate":"2016-09-30 16:07:56","lastModifiedDateTimestamp":1475251676,"expirationDate":"","resaleLink":"","isCover":false,"orientation":"portrait","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/02\/11198655\/3\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/02\/11198655\/3\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/02\/11198655\/3\/rawImage.jpg","width":1536,"height":2048}}}},{"type":"image","manual":false,"params":{"mtime":1475251733,"guid":"photo_11198670","id":11198670,"layout":"slide","rank":21,"title":"","byline":"Joey Guerra","caption":{"html1":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.<\/p>","html2":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.","html3":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.\n<\/p>","plain":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016."},"publicationDate":"2016-09-30 16:08:48","publicationDateTimestamp":1475251728,"lastModifiedDate":"2016-09-30 16:08:53","lastModifiedDateTimestamp":1475251733,"expirationDate":"","resaleLink":"","isCover":false,"orientation":"landscape","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/03\/11198670\/3\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/03\/11198670\/3\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/03\/11198670\/3\/rawImage.jpg","width":2048,"height":1536}}}},{"type":"image","manual":false,"params":{"mtime":1475251733,"guid":"photo_11198672","id":11198672,"layout":"slide","rank":22,"title":"","byline":"Joey Guerra","caption":{"html1":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.<\/p>","html2":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.","html3":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.\n<\/p>","plain":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016."},"publicationDate":"2016-09-30 16:08:49","publicationDateTimestamp":1475251729,"lastModifiedDate":"2016-09-30 16:08:53","lastModifiedDateTimestamp":1475251733,"expirationDate":"","resaleLink":"","isCover":false,"orientation":"portrait","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/03\/11198672\/3\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/03\/11198672\/3\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/03\/11198672\/3\/rawImage.jpg","width":1536,"height":2048}}}},{"type":"image","manual":false,"params":{"mtime":1475251733,"guid":"photo_11198671","id":11198671,"layout":"slide","rank":23,"title":"","byline":"Joey Guerra","caption":{"html1":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.<\/p>","html2":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.","html3":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.\n<\/p>","plain":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016."},"publicationDate":"2016-09-30 16:08:49","publicationDateTimestamp":1475251729,"lastModifiedDate":"2016-09-30 16:08:53","lastModifiedDateTimestamp":1475251733,"expirationDate":"","resaleLink":"","isCover":false,"orientation":"landscape","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/03\/11198671\/3\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/03\/11198671\/3\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/03\/11198671\/3\/rawImage.jpg","width":2048,"height":1536}}}},{"type":"image","manual":false,"params":{"mtime":1475251735,"guid":"photo_11198673","id":11198673,"layout":"slide","rank":24,"title":"","byline":"Joey Guerra","caption":{"html1":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.<\/p>","html2":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.","html3":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.\n<\/p>","plain":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016."},"publicationDate":"2016-09-30 16:08:49","publicationDateTimestamp":1475251729,"lastModifiedDate":"2016-09-30 16:08:55","lastModifiedDateTimestamp":1475251735,"expirationDate":"","resaleLink":"","isCover":false,"orientation":"portrait","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/03\/11198673\/3\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/03\/11198673\/3\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/03\/11198673\/3\/rawImage.jpg","width":1536,"height":2048}}}},{"type":"image","manual":false,"params":{"mtime":1475251735,"guid":"photo_11198674","id":11198674,"layout":"slide","rank":25,"title":"","byline":"Joey Guerra","caption":{"html1":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.<\/p>","html2":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.","html3":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.\n<\/p>","plain":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016."},"publicationDate":"2016-09-30 16:08:49","publicationDateTimestamp":1475251729,"lastModifiedDate":"2016-09-30 16:08:55","lastModifiedDateTimestamp":1475251735,"expirationDate":"","resaleLink":"","isCover":false,"orientation":"portrait","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/03\/11198674\/3\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/03\/11198674\/3\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/03\/11198674\/3\/rawImage.jpg","width":1536,"height":2048}}}},{"type":"image","manual":false,"params":{"mtime":1475251740,"guid":"photo_11198677","id":11198677,"layout":"slide","rank":26,"title":"","byline":"Joey Guerra","caption":{"html1":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.<\/p>","html2":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.","html3":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.\n<\/p>","plain":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016."},"publicationDate":"2016-09-30 16:08:55","publicationDateTimestamp":1475251735,"lastModifiedDate":"2016-09-30 16:09:00","lastModifiedDateTimestamp":1475251740,"expirationDate":"","resaleLink":"","isCover":false,"orientation":"landscape","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/03\/11198677\/3\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/03\/11198677\/3\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/03\/11198677\/3\/rawImage.jpg","width":2048,"height":1536}}}},{"type":"image","manual":false,"params":{"mtime":1475251740,"guid":"photo_11198676","id":11198676,"layout":"slide","rank":27,"title":"","byline":"Joey Guerra","caption":{"html1":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.<\/p>","html2":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.","html3":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.\n<\/p>","plain":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016."},"publicationDate":"2016-09-30 16:08:55","publicationDateTimestamp":1475251735,"lastModifiedDate":"2016-09-30 16:09:00","lastModifiedDateTimestamp":1475251740,"expirationDate":"","resaleLink":"","isCover":false,"orientation":"landscape","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/03\/11198676\/3\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/03\/11198676\/3\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/03\/11198676\/3\/rawImage.jpg","width":2048,"height":1536}}}},{"type":"image","manual":false,"params":{"mtime":1475251740,"guid":"photo_11198678","id":11198678,"layout":"slide","rank":28,"title":"","byline":"Joey Guerra","caption":{"html1":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.<\/p>","html2":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.","html3":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.\n<\/p>","plain":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016."},"publicationDate":"2016-09-30 16:08:56","publicationDateTimestamp":1475251736,"lastModifiedDate":"2016-09-30 16:09:00","lastModifiedDateTimestamp":1475251740,"expirationDate":"","resaleLink":"","isCover":false,"orientation":"portrait","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/03\/11198678\/3\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/03\/11198678\/3\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/03\/11198678\/3\/rawImage.jpg","width":1536,"height":2048}}}},{"type":"image","manual":false,"params":{"mtime":1475251741,"guid":"photo_11198679","id":11198679,"layout":"slide","rank":29,"title":"","byline":"Joey Guerra","caption":{"html1":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.<\/p>","html2":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.","html3":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.\n<\/p>","plain":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016."},"publicationDate":"2016-09-30 16:08:57","publicationDateTimestamp":1475251737,"lastModifiedDate":"2016-09-30 16:09:01","lastModifiedDateTimestamp":1475251741,"expirationDate":"","resaleLink":"","isCover":false,"orientation":"portrait","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/03\/11198679\/3\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/03\/11198679\/3\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/03\/11198679\/3\/rawImage.jpg","width":1536,"height":2048}}}},{"type":"image","manual":false,"params":{"mtime":1475251746,"guid":"photo_11198682","id":11198682,"layout":"slide","rank":30,"title":"","byline":"Joey Guerra","caption":{"html1":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.<\/p>","html2":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.","html3":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.\n<\/p>","plain":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016."},"publicationDate":"2016-09-30 16:09:01","publicationDateTimestamp":1475251741,"lastModifiedDate":"2016-09-30 16:09:06","lastModifiedDateTimestamp":1475251746,"expirationDate":"","resaleLink":"","isCover":false,"orientation":"landscape","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/03\/11198682\/3\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/03\/11198682\/3\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/03\/11198682\/3\/rawImage.jpg","width":2048,"height":1536}}}},{"type":"image","manual":false,"params":{"mtime":1475251747,"guid":"photo_11198685","id":11198685,"layout":"slide","rank":31,"title":"","byline":"Joey Guerra","caption":{"html1":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.<\/p>","html2":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.","html3":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.\n<\/p>","plain":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016."},"publicationDate":"2016-09-30 16:09:02","publicationDateTimestamp":1475251742,"lastModifiedDate":"2016-09-30 16:09:07","lastModifiedDateTimestamp":1475251747,"expirationDate":"","resaleLink":"","isCover":false,"orientation":"portrait","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/03\/11198685\/3\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/03\/11198685\/3\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/03\/11198685\/3\/rawImage.jpg","width":1536,"height":2048}}}},{"type":"image","manual":false,"params":{"mtime":1475251746,"guid":"photo_11198684","id":11198684,"layout":"slide","rank":32,"title":"","byline":"Joey Guerra","caption":{"html1":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.<\/p>","html2":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.","html3":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.\n<\/p>","plain":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016."},"publicationDate":"2016-09-30 16:09:02","publicationDateTimestamp":1475251742,"lastModifiedDate":"2016-09-30 16:09:06","lastModifiedDateTimestamp":1475251746,"expirationDate":"","resaleLink":"","isCover":false,"orientation":"landscape","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/03\/11198684\/3\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/03\/11198684\/3\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/03\/11198684\/3\/rawImage.jpg","width":2048,"height":1536}}}},{"type":"image","manual":false,"params":{"mtime":1475251752,"guid":"photo_11198688","id":11198688,"layout":"slide","rank":33,"title":"","byline":"Joey Guerra","caption":{"html1":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.<\/p>","html2":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.","html3":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.\n<\/p>","plain":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016."},"publicationDate":"2016-09-30 16:09:07","publicationDateTimestamp":1475251747,"lastModifiedDate":"2016-09-30 16:09:12","lastModifiedDateTimestamp":1475251752,"expirationDate":"","resaleLink":"","isCover":false,"orientation":"portrait","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/03\/11198688\/3\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/03\/11198688\/3\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/03\/11198688\/3\/rawImage.jpg","width":1536,"height":2048}}}},{"type":"image","manual":false,"params":{"mtime":1475251752,"guid":"photo_11198689","id":11198689,"layout":"slide","rank":34,"title":"","byline":"Joey Guerra","caption":{"html1":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.<\/p>","html2":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.","html3":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.\n<\/p>","plain":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016."},"publicationDate":"2016-09-30 16:09:07","publicationDateTimestamp":1475251747,"lastModifiedDate":"2016-09-30 16:09:12","lastModifiedDateTimestamp":1475251752,"expirationDate":"","resaleLink":"","isCover":false,"orientation":"landscape","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/03\/11198689\/3\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/03\/11198689\/3\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/03\/11198689\/3\/rawImage.jpg","width":2048,"height":1536}}}},{"type":"image","manual":false,"params":{"mtime":1475251752,"guid":"photo_11198690","id":11198690,"layout":"slide","rank":35,"title":"","byline":"Joey Guerra","caption":{"html1":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.<\/p>","html2":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.","html3":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.\n<\/p>","plain":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016."},"publicationDate":"2016-09-30 16:09:07","publicationDateTimestamp":1475251747,"lastModifiedDate":"2016-09-30 16:09:12","lastModifiedDateTimestamp":1475251752,"expirationDate":"","resaleLink":"","isCover":false,"orientation":"landscape","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/03\/11198690\/3\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/03\/11198690\/3\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/03\/11198690\/3\/rawImage.jpg","width":2048,"height":1536}}}},{"type":"image","manual":false,"params":{"mtime":1475251751,"guid":"photo_11198686","id":11198686,"layout":"slide","rank":36,"title":"","byline":"Joey Guerra","caption":{"html1":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.<\/p>","html2":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.","html3":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.\n<\/p>","plain":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016."},"publicationDate":"2016-09-30 16:09:07","publicationDateTimestamp":1475251747,"lastModifiedDate":"2016-09-30 16:09:11","lastModifiedDateTimestamp":1475251751,"expirationDate":"","resaleLink":"","isCover":true,"orientation":"landscape","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/03\/11198686\/3\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/03\/11198686\/3\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/03\/11198686\/3\/rawImage.jpg","width":2048,"height":1536}}}},{"type":"image","manual":false,"params":{"mtime":1475251665,"guid":"photo_11198641","id":11198641,"layout":"slide","rank":37,"title":"","byline":"Joey Guerra","caption":{"html1":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.<\/p>","html2":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.","html3":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.\n<\/p>","plain":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016."},"publicationDate":"2016-09-30 16:07:40","publicationDateTimestamp":1475251660,"lastModifiedDate":"2016-09-30 16:07:45","lastModifiedDateTimestamp":1475251665,"expirationDate":"","resaleLink":"","isCover":false,"orientation":"landscape","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/02\/11198641\/3\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/02\/11198641\/3\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/02\/11198641\/3\/rawImage.jpg","width":2048,"height":1536}}}},{"type":"image","manual":false,"params":{"mtime":1475251665,"guid":"photo_11198639","id":11198639,"layout":"slide","rank":38,"title":"","byline":"Joey Guerra","caption":{"html1":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.<\/p>","html2":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.","html3":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.\n<\/p>","plain":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016."},"publicationDate":"2016-09-30 16:07:40","publicationDateTimestamp":1475251660,"lastModifiedDate":"2016-09-30 16:07:45","lastModifiedDateTimestamp":1475251665,"expirationDate":"","resaleLink":"","isCover":false,"orientation":"landscape","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/02\/11198639\/3\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/02\/11198639\/3\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/02\/11198639\/3\/rawImage.jpg","width":2048,"height":1536}}}},{"type":"image","manual":false,"params":{"mtime":1475251665,"guid":"photo_11198640","id":11198640,"layout":"slide","rank":39,"title":"","byline":"Joey Guerra","caption":{"html1":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.<\/p>","html2":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.","html3":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.\n<\/p>","plain":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016."},"publicationDate":"2016-09-30 16:07:40","publicationDateTimestamp":1475251660,"lastModifiedDate":"2016-09-30 16:07:45","lastModifiedDateTimestamp":1475251665,"expirationDate":"","resaleLink":"","isCover":false,"orientation":"landscape","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/02\/11198640\/3\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/02\/11198640\/3\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/02\/11198640\/3\/rawImage.jpg","width":2048,"height":1536}}}},{"type":"image","manual":false,"params":{"mtime":1475251659,"guid":"photo_11198634","id":11198634,"layout":"slide","rank":40,"title":"","byline":"Joey Guerra","caption":{"html1":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.<\/p>","html2":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.","html3":"<p>Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016.\n<\/p>","plain":"Fans came out for the launch of the Selena MAC makeup collection in Corpus Christi, Friday, Sept 30, 2016."},"publicationDate":"2016-09-30 16:07:35","publicationDateTimestamp":1475251655,"lastModifiedDate":"2016-09-30 16:07:39","lastModifiedDateTimestamp":1475251659,"expirationDate":"","resaleLink":"","isCover":false,"orientation":"landscape","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/02\/11198634\/3\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/02\/11198634\/3\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/52\/56\/02\/11198634\/3\/rawImage.jpg","width":2048,"height":1536}}}}]}];var sfcSlideshowJson  = (sfcSlideshowJsonWrapper.length > 0) ? sfcSlideshowJsonWrapper[0] : [];
+}
+</script>
+<script>
+if (document.body.classList.contains('postid-10934')) {
+var sfcSlideshowJsonWrapper = [{"title":"","slides":[{"type":"image","manual":false,"params":{"mtime":1585148442,"guid":"photo_19210005","id":19210005,"layout":"slide","rank":1,"title":"","byline":"Jose H. Rios Jr. \/ Jose H. Rios Jr.","caption":{"html1":"<p>Selena with fan Jose H. Rios Jr. from Galveston.<\/p>","html2":"Selena with fan Jose H. Rios Jr. from Galveston.","html3":"<p>Selena with fan Jose H. Rios Jr. from Galveston.\n<\/p>","plain":"Selena with fan Jose H. Rios Jr. from Galveston."},"publicationDate":"2020-03-25 15:00:00","publicationDateTimestamp":1585148400,"lastModifiedDate":"2020-03-25 15:00:42","lastModifiedDateTimestamp":1585148442,"expirationDate":"","resaleLink":"","isCover":true,"orientation":"landscape","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/21\/74\/19210005\/3\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/21\/74\/19210005\/3\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/21\/74\/19210005\/3\/rawImage.jpg","width":1233,"height":831}}}},{"type":"image","manual":false,"params":{"mtime":1585148441,"guid":"photo_19210006","id":19210006,"layout":"slide","rank":2,"title":"","byline":"Jose H. Rios Jr. \/ Jose H. Rios Jr.","caption":{"html1":"<p>Selena with fan Jose H. Rios Jr. from Galveston.<\/p>","html2":"Selena with fan Jose H. Rios Jr. from Galveston.","html3":"<p>Selena with fan Jose H. Rios Jr. from Galveston.\n<\/p>","plain":"Selena with fan Jose H. Rios Jr. from Galveston."},"publicationDate":"2020-03-25 15:00:00","publicationDateTimestamp":1585148400,"lastModifiedDate":"2020-03-25 15:00:41","lastModifiedDateTimestamp":1585148441,"expirationDate":"","resaleLink":"","isCover":false,"orientation":"landscape","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/21\/74\/19210006\/3\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/21\/74\/19210006\/3\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/21\/74\/19210006\/3\/rawImage.jpg","width":720,"height":401}}}},{"type":"image","manual":false,"params":{"mtime":1585148442,"guid":"photo_19210007","id":19210007,"layout":"slide","rank":3,"title":"","byline":"Jose H. Rios Jr. \/ Jose H. Rios Jr.","caption":{"html1":"<p>Jose H. Rios Jr. gets onstage with Selena in Galveston.<\/p>","html2":"Jose H. Rios Jr. gets onstage with Selena in Galveston.","html3":"<p>Jose H. Rios Jr. gets onstage with Selena in Galveston.\n<\/p>","plain":"Jose H. Rios Jr. gets onstage with Selena in Galveston."},"publicationDate":"2020-03-25 15:00:00","publicationDateTimestamp":1585148400,"lastModifiedDate":"2020-03-25 15:00:42","lastModifiedDateTimestamp":1585148442,"expirationDate":"","resaleLink":"","isCover":false,"orientation":"portrait","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/21\/74\/19210007\/3\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/21\/74\/19210007\/3\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/21\/74\/19210007\/3\/rawImage.jpg","width":1153,"height":1744}}}},{"type":"image","manual":false,"params":{"mtime":1585148441,"guid":"photo_19210018","id":19210018,"layout":"slide","rank":4,"title":"","byline":"Jose H. Rios Jr.","caption":{"html1":"<p>Tejano legend Selena Quintanilla Perez with fan Jose H. Rios Jr.<\/p>","html2":"Tejano legend Selena Quintanilla Perez with fan Jose H. Rios Jr.","html3":"<p>Tejano legend Selena Quintanilla Perez with fan Jose H. Rios Jr.\n<\/p>","plain":"Tejano legend Selena Quintanilla Perez with fan Jose H. Rios Jr."},"publicationDate":"2020-03-25 15:00:00","publicationDateTimestamp":1585148400,"lastModifiedDate":"2020-03-25 15:00:41","lastModifiedDateTimestamp":1585148441,"expirationDate":"","resaleLink":"","isCover":false,"orientation":"landscape","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/21\/74\/19210018\/3\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/21\/74\/19210018\/3\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/21\/74\/19210018\/3\/rawImage.jpg","width":960,"height":759}}}},{"type":"image","manual":false,"params":{"mtime":1585148442,"guid":"photo_19210008","id":19210008,"layout":"slide","rank":5,"title":"","byline":"Jose H. Rios Jr \/ Jose H. Rios Jr.","caption":{"html1":"<p>Selena tattoo on the leg of\u00a0Jose H. Rios Jr.<\/p>","html2":"Selena tattoo on the leg of\u00a0Jose H. Rios Jr.","html3":"<p>Selena tattoo on the leg of\u00a0Jose H. Rios Jr.\n<\/p>","plain":"Selena tattoo on the leg of\u00a0Jose H. Rios Jr."},"publicationDate":"2020-03-25 15:00:00","publicationDateTimestamp":1585148400,"lastModifiedDate":"2020-03-25 15:00:42","lastModifiedDateTimestamp":1585148442,"expirationDate":"","resaleLink":"","isCover":false,"orientation":"portrait","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/21\/74\/19210008\/3\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/21\/74\/19210008\/3\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/21\/74\/19210008\/3\/rawImage.jpg","width":1155,"height":2048}}}},{"type":"image","manual":false,"params":{"mtime":1585148441,"guid":"photo_19210019","id":19210019,"layout":"slide","rank":6,"title":"","byline":"Jose H. Rios Jr.","caption":{"html1":"<p>Autograph from Tejano legend Selena Quintanilla Perez.<\/p>","html2":"Autograph from Tejano legend Selena Quintanilla Perez.","html3":"<p>Autograph from Tejano legend Selena Quintanilla Perez.\n<\/p>","plain":"Autograph from Tejano legend Selena Quintanilla Perez."},"publicationDate":"2020-03-25 15:00:00","publicationDateTimestamp":1585148400,"lastModifiedDate":"2020-03-25 15:00:41","lastModifiedDateTimestamp":1585148441,"expirationDate":"","resaleLink":"","isCover":false,"orientation":"landscape","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/21\/74\/19210019\/3\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/21\/74\/19210019\/3\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/21\/74\/19210019\/3\/rawImage.jpg","width":579,"height":579}}}},{"type":"image","manual":false,"params":{"mtime":1585148441,"guid":"photo_19210025","id":19210025,"layout":"slide","rank":7,"title":"","byline":"Jose H. Rios Jr.","caption":{"html1":"<p>Tejano legend Selena Quintanilla Perez.<\/p>","html2":"Tejano legend Selena Quintanilla Perez.","html3":"<p>Tejano legend Selena Quintanilla Perez.\n<\/p>","plain":"Tejano legend Selena Quintanilla Perez."},"publicationDate":"2020-03-25 15:00:00","publicationDateTimestamp":1585148400,"lastModifiedDate":"2020-03-25 15:00:41","lastModifiedDateTimestamp":1585148441,"expirationDate":"","resaleLink":"","isCover":false,"orientation":"portrait","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/21\/74\/19210025\/3\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/21\/74\/19210025\/3\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/21\/74\/19210025\/3\/rawImage.jpg","width":394,"height":720}}}},{"type":"image","manual":false,"params":{"mtime":1585148441,"guid":"photo_19210020","id":19210020,"layout":"slide","rank":9,"title":"","byline":"Jose H. Rios Jr.","caption":{"html1":"<p>Tejano legend Selena Quintanilla Perez with fan Jose H. Rios Jr.<\/p>","html2":"Tejano legend Selena Quintanilla Perez with fan Jose H. Rios Jr.","html3":"<p>Tejano legend Selena Quintanilla Perez with fan Jose H. Rios Jr.\n<\/p>","plain":"Tejano legend Selena Quintanilla Perez with fan Jose H. Rios Jr."},"publicationDate":"2020-03-25 15:00:00","publicationDateTimestamp":1585148400,"lastModifiedDate":"2020-03-25 15:00:41","lastModifiedDateTimestamp":1585148441,"expirationDate":"","resaleLink":"","isCover":false,"orientation":"portrait","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/21\/74\/19210020\/3\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/21\/74\/19210020\/3\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/21\/74\/19210020\/3\/rawImage.jpg","width":625,"height":720}}}},{"type":"image","manual":false,"params":{"mtime":1585148442,"guid":"photo_19210009","id":19210009,"layout":"slide","rank":10,"title":"","byline":"Jose H. Rios Jr \/ Jose H. Rios Jr","caption":{"html1":"<p>Jose H. Rios Jr photographed Selena several times in Houston and eventually became friends with the singer.<\/p>","html2":"Jose H. Rios Jr photographed Selena several times in Houston and eventually became friends with the singer.","html3":"<p>Jose H. Rios Jr photographed Selena several times in Houston and eventually became friends with the singer.\n<\/p>","plain":"Jose H. Rios Jr photographed Selena several times in Houston and eventually became friends with the singer."},"publicationDate":"2020-03-25 15:00:00","publicationDateTimestamp":1585148400,"lastModifiedDate":"2020-03-25 15:00:42","lastModifiedDateTimestamp":1585148442,"expirationDate":"","resaleLink":"","isCover":false,"orientation":"landscape","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/21\/74\/19210009\/3\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/21\/74\/19210009\/3\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/21\/74\/19210009\/3\/rawImage.jpg","width":1744,"height":1168}}}},{"type":"image","manual":false,"params":{"mtime":1585148442,"guid":"photo_19210010","id":19210010,"layout":"slide","rank":11,"title":"","byline":"Jose H. Rios Jr \/ Jose H. Rios Jr","caption":{"html1":"<p>Jose H. Rios Jr photographed Selena several times in Houston and eventually became friends with the singer.<\/p>","html2":"Jose H. Rios Jr photographed Selena several times in Houston and eventually became friends with the singer.","html3":"<p>Jose H. Rios Jr photographed Selena several times in Houston and eventually became friends with the singer.\n<\/p>","plain":"Jose H. Rios Jr photographed Selena several times in Houston and eventually became friends with the singer."},"publicationDate":"2020-03-25 15:00:00","publicationDateTimestamp":1585148400,"lastModifiedDate":"2020-03-25 15:00:42","lastModifiedDateTimestamp":1585148442,"expirationDate":"","resaleLink":"","isCover":false,"orientation":"portrait","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/21\/74\/19210010\/3\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/21\/74\/19210010\/3\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/21\/74\/19210010\/3\/rawImage.jpg","width":930,"height":1421}}}},{"type":"image","manual":false,"params":{"mtime":1585148442,"guid":"photo_19210011","id":19210011,"layout":"slide","rank":12,"title":"","byline":"Jose H. Rios Jr \/ Jose H. Rios Jr","caption":{"html1":"<p>Joe Rios photographed Selena during concerts and eventually became friends with the singer.<\/p>","html2":"Joe Rios photographed Selena during concerts and eventually became friends with the singer.","html3":"<p>Joe Rios photographed Selena during concerts and eventually became friends with the singer.\n<\/p>","plain":"Joe Rios photographed Selena during concerts and eventually became friends with the singer."},"publicationDate":"2020-03-25 15:00:00","publicationDateTimestamp":1585148400,"lastModifiedDate":"2020-03-25 15:00:42","lastModifiedDateTimestamp":1585148442,"expirationDate":"","resaleLink":"","isCover":false,"orientation":"portrait","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/21\/74\/19210011\/3\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/21\/74\/19210011\/3\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/21\/74\/19210011\/3\/rawImage.jpg","width":1184,"height":1776}}}},{"type":"image","manual":false,"params":{"mtime":1585148442,"guid":"photo_19210012","id":19210012,"layout":"slide","rank":13,"title":"","byline":"Jose H. Rios Jr \/ Jose H. Rios Jr","caption":{"html1":"<p>Jose H. Rios Jr photographed Selena several times in Houston and eventually became friends with the singer.<\/p>","html2":"Jose H. Rios Jr photographed Selena several times in Houston and eventually became friends with the singer.","html3":"<p>Jose H. Rios Jr photographed Selena several times in Houston and eventually became friends with the singer.\n<\/p>","plain":"Jose H. Rios Jr photographed Selena several times in Houston and eventually became friends with the singer."},"publicationDate":"2020-03-25 15:00:00","publicationDateTimestamp":1585148400,"lastModifiedDate":"2020-03-25 15:00:42","lastModifiedDateTimestamp":1585148442,"expirationDate":"","resaleLink":"","isCover":false,"orientation":"landscape","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/21\/74\/19210012\/3\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/21\/74\/19210012\/3\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/21\/74\/19210012\/3\/rawImage.jpg","width":1744,"height":1184}}}},{"type":"image","manual":false,"params":{"mtime":1585148441,"guid":"photo_19210013","id":19210013,"layout":"slide","rank":14,"title":"","byline":"Jose H. Rios Jr \/ Jose H. Rios Jr","caption":{"html1":"<p>Jose H. Rios Jr photographed Selena several times in Houston and eventually became friends with the singer.<\/p>","html2":"Jose H. Rios Jr photographed Selena several times in Houston and eventually became friends with the singer.","html3":"<p>Jose H. Rios Jr photographed Selena several times in Houston and eventually became friends with the singer.\n<\/p>","plain":"Jose H. Rios Jr photographed Selena several times in Houston and eventually became friends with the singer."},"publicationDate":"2020-03-25 15:00:00","publicationDateTimestamp":1585148400,"lastModifiedDate":"2020-03-25 15:00:41","lastModifiedDateTimestamp":1585148441,"expirationDate":"","resaleLink":"","isCover":false,"orientation":"portrait","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/21\/74\/19210013\/3\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/21\/74\/19210013\/3\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/21\/74\/19210013\/3\/rawImage.jpg","width":1184,"height":1744}}}},{"type":"image","manual":false,"params":{"mtime":1585148441,"guid":"photo_19210014","id":19210014,"layout":"slide","rank":15,"title":"","byline":"Jose H. Rios Jr \/ Jose H. Rios Jr","caption":{"html1":"<p>Jose H. Rios Jr photographed Selena several times in Houston and eventually became friends with the singer.<\/p>","html2":"Jose H. Rios Jr photographed Selena several times in Houston and eventually became friends with the singer.","html3":"<p>Jose H. Rios Jr photographed Selena several times in Houston and eventually became friends with the singer.\n<\/p>","plain":"Jose H. Rios Jr photographed Selena several times in Houston and eventually became friends with the singer."},"publicationDate":"2020-03-25 15:00:00","publicationDateTimestamp":1585148400,"lastModifiedDate":"2020-03-25 15:00:41","lastModifiedDateTimestamp":1585148441,"expirationDate":"","resaleLink":"","isCover":false,"orientation":"landscape","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/21\/74\/19210014\/3\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/21\/74\/19210014\/3\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/21\/74\/19210014\/3\/rawImage.jpg","width":1760,"height":1200}}}},{"type":"image","manual":false,"params":{"mtime":1585148441,"guid":"photo_19210015","id":19210015,"layout":"slide","rank":16,"title":"","byline":"Jose H. Rios Jr \/ Jose H. Rios Jr","caption":{"html1":"<p>Jose H. Rios Jr photographed Selena several times in Houston and eventually became friends with the singer.<\/p>","html2":"Jose H. Rios Jr photographed Selena several times in Houston and eventually became friends with the singer.","html3":"<p>Jose H. Rios Jr photographed Selena several times in Houston and eventually became friends with the singer.\n<\/p>","plain":"Jose H. Rios Jr photographed Selena several times in Houston and eventually became friends with the singer."},"publicationDate":"2020-03-25 15:00:00","publicationDateTimestamp":1585148400,"lastModifiedDate":"2020-03-25 15:00:41","lastModifiedDateTimestamp":1585148441,"expirationDate":"","resaleLink":"","isCover":false,"orientation":"portrait","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/21\/74\/19210015\/3\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/21\/74\/19210015\/3\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/21\/74\/19210015\/3\/rawImage.jpg","width":1153,"height":1744}}}},{"type":"image","manual":false,"params":{"mtime":1585148441,"guid":"photo_19210016","id":19210016,"layout":"slide","rank":17,"title":"","byline":"Jose H. Rios Jr \/ Jose H. Rios Jr","caption":{"html1":"<p>Jose H. Rios Jr photographed Selena several times in Houston and eventually became friends with the singer.<\/p>","html2":"Jose H. Rios Jr photographed Selena several times in Houston and eventually became friends with the singer.","html3":"<p>Jose H. Rios Jr photographed Selena several times in Houston and eventually became friends with the singer.\n<\/p>","plain":"Jose H. Rios Jr photographed Selena several times in Houston and eventually became friends with the singer."},"publicationDate":"2020-03-25 15:00:00","publicationDateTimestamp":1585148400,"lastModifiedDate":"2020-03-25 15:00:41","lastModifiedDateTimestamp":1585148441,"expirationDate":"","resaleLink":"","isCover":false,"orientation":"portrait","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/21\/74\/19210016\/3\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/21\/74\/19210016\/3\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/21\/74\/19210016\/3\/rawImage.jpg","width":1168,"height":1760}}}},{"type":"image","manual":false,"params":{"mtime":1585148441,"guid":"photo_19210021","id":19210021,"layout":"slide","rank":18,"title":"","byline":"Jose H. Rios Jr.","caption":{"html1":"<p>Tejano legend Selena Quintanilla Perez.<\/p>","html2":"Tejano legend Selena Quintanilla Perez.","html3":"<p>Tejano legend Selena Quintanilla Perez.\n<\/p>","plain":"Tejano legend Selena Quintanilla Perez."},"publicationDate":"2020-03-25 15:00:00","publicationDateTimestamp":1585148400,"lastModifiedDate":"2020-03-25 15:00:41","lastModifiedDateTimestamp":1585148441,"expirationDate":"","resaleLink":"","isCover":false,"orientation":"portrait","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/21\/74\/19210021\/3\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/21\/74\/19210021\/3\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/21\/74\/19210021\/3\/rawImage.jpg","width":696,"height":960}}}},{"type":"image","manual":false,"params":{"mtime":1585148441,"guid":"photo_19210023","id":19210023,"layout":"slide","rank":19,"title":"","byline":"Jose H. Rios Jr.","caption":{"html1":"<p>Tejano legend Selena Quintanilla Perez at El Dorado Ranch in Houston. \"This is one of the pics I gave to the family. They used it for the 2008 calendar and in the 10-year anniversary bonus DVD from the movie.\" - Jose H. Rios Jr.<\/p>","html2":"Tejano legend Selena Quintanilla Perez at El Dorado Ranch in Houston. \"This is one of the pics I gave to the family. They used it for the 2008 calendar and in the 10-year anniversary bonus DVD from the movie.\" - Jose H. Rios Jr.","html3":"<p>Tejano legend Selena Quintanilla Perez at El Dorado Ranch in Houston. \"This is one of the pics I gave to the family. They used it for the 2008 calendar and in the 10-year anniversary bonus DVD from the movie.\" - Jose H. Rios Jr.\n<\/p>","plain":"Tejano legend Selena Quintanilla Perez at El Dorado Ranch in Houston. \"This is one of the pics I gave to the family. They used it for the 2008 calendar and in the 10-year anniversary bonus DVD from the movie.\" - Jose H. Rios Jr."},"publicationDate":"2020-03-25 15:00:00","publicationDateTimestamp":1585148400,"lastModifiedDate":"2020-03-25 15:00:41","lastModifiedDateTimestamp":1585148441,"expirationDate":"","resaleLink":"","isCover":false,"orientation":"portrait","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/21\/74\/19210023\/3\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/21\/74\/19210023\/3\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/21\/74\/19210023\/3\/rawImage.jpg","width":753,"height":960}}}},{"type":"image","manual":false,"params":{"mtime":1585148441,"guid":"photo_19210024","id":19210024,"layout":"slide","rank":20,"title":"","byline":"Jose H. Rios Jr.","caption":{"html1":"<p>I have seven autographs, and they all have personal greetings addressing me as 'a friend.'\" - Jose H. Rios Jr.<\/p>","html2":"I have seven autographs, and they all have personal greetings addressing me as 'a friend.'\" - Jose H. Rios Jr.","html3":"<p>I have seven autographs, and they all have personal greetings addressing me as 'a friend.'\" - Jose H. Rios Jr.\n<\/p>","plain":"I have seven autographs, and they all have personal greetings addressing me as 'a friend.'\" - Jose H. Rios Jr."},"publicationDate":"2020-03-25 15:00:00","publicationDateTimestamp":1585148400,"lastModifiedDate":"2020-03-25 15:00:41","lastModifiedDateTimestamp":1585148441,"expirationDate":"","resaleLink":"","isCover":false,"orientation":"portrait","sizes":{"16x9_3x":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/21\/74\/19210024\/3\/mobile_landscape.jpg","width":600,"height":338},"3x2_3x":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/21\/74\/19210024\/3\/gallery_large.jpg","width":900,"height":600},"original":{"url":"https:\/\/s.hdnux.com\/photos\/01\/11\/21\/74\/19210024\/3\/rawImage.jpg","width":540,"height":960}}}}]}];var sfcSlideshowJson  = (sfcSlideshowJsonWrapper.length > 0) ? sfcSlideshowJsonWrapper[0] : [];
+
+}
+</script>
+<script>
+if (document.body.classList.contains('postid-10927') || document.body.classList.contains('postid-10934') || document.body.classList.contains('postid-10940') ) {
+
+console.log("selena carve-out")
+
+
+var DatebookSlideshow = DatebookSlideshow || {
+	init: function(lock){
+		if(!lock){
+			return;
+		}
+		DatebookSlideshow.sfcSlideshowJson = window.sfcSlideshowJson;
+		DatebookSlideshow.sfcSlideshow = document.querySelectorAll(".sfc-slideshow")[0];
+		if(DatebookSlideshow.sfcSlideshow && DatebookSlideshow.sfcSlideshowJson){
+
+			DatebookSlideshow.sfcSlideshowImage = document.querySelectorAll(".slideshow-image")[0];
+			DatebookSlideshow.sfcSlideshowContainer = document.querySelectorAll(".sfc-slideshow-container")[0];
+			DatebookSlideshow.sfcSlideshowFullScreenToggle = document.querySelectorAll(".sfc-slideshow .fullscreen")[0];
+			DatebookSlideshow.sfcSlideshowTitle = document.querySelectorAll(".sfc-slideshow-title")[0];
+			DatebookSlideshow.sfcSlideshowText = document.querySelectorAll(".sfc-slideshow .text")[0];
+			DatebookSlideshow.sfcSlideshowLeftArrow = document.querySelectorAll(".sfc-slideshow .left-arrow")[0];
+			DatebookSlideshow.sfcSlideshowRightArrow = document.querySelectorAll(".sfc-slideshow .right-arrow")[0];
+			DatebookSlideshow.sfcSlideshowSlideNumber = document.querySelectorAll(".sfc-slideshow .slide-number")[0];
+			DatebookSlideshow.sfcSlideshowImage.setAttribute("data-current-slide",-1);
+			DatebookSlideshow.sfcSlideshowSlideNumber.innerHTML =  "1";
+			DatebookSlideshow.sfcSlideshowTitle.innerHTML = DatebookSlideshow.sfcSlideshowJson.title;
+			DatebookSlideshow.advanceSlideshow();
+			DatebookSlideshow.preloadImages();
+
+			DatebookSlideshow.sfcSlideshowFullScreenToggle.onclick = function(event) {
+				DatebookSlideshow.toggleFullscreen(event);
+				return false;
+			};
+
+			//advance slideshow onclick
+			DatebookSlideshow.sfcSlideshowImage.onclick = function() {
+				DatebookSlideshow.advanceSlideshow();
+				return false;
+			};
+			//advance slideshow onclick
+			DatebookSlideshow.sfcSlideshowLeftArrow.onclick = function(event) {
+				event.stopPropagation();
+				DatebookSlideshow.advanceSlideshow({"back":true});
+				return false;
+			};
+
+			DatebookSlideshow.sfcSlideshowRightArrow.onclick = function(event) {
+				event.stopPropagation();
+				DatebookSlideshow.advanceSlideshow();
+				return false;
+			};
+		}
+	},
+
+	preloadImages: function(){
+		for(var i = 0 ; i < DatebookSlideshow.sfcSlideshowJson.slides.length; i++  ){
+			var slideData = DatebookSlideshow.sfcSlideshowJson.slides[i];
+			var img = document.createElement("img");
+			if(slideData.params){
+				img.setAttribute("src",slideData.params.sizes["original"].url );
+			
+			}else{
+				img.setAttribute("src",slideData.image.original.url );
+			}
+			
+		}
+	},
+
+	toggleFullscreen: function (event){
+		if(DatebookSlideshow.sfcSlideshowContainer.classList.contains("fullscreen")){
+			DatebookSlideshow.sfcSlideshowContainer.classList.remove("fullscreen");
+		} else{
+			DatebookSlideshow.sfcSlideshowContainer.classList.add("fullscreen");
+		}
+		event.stopPropagation();
+	},
+
+	advanceSlideshow: function(args){
+
+		var currentSlide = DatebookSlideshow.sfcSlideshowImage.getAttribute("data-current-slide");
+
+		if(args && args.back){
+			currentSlide --;
+		} else{
+			currentSlide ++;
+		}
+
+		//handle wrap-around
+		if(currentSlide >= DatebookSlideshow.sfcSlideshowJson.slides.length){
+			currentSlide = (DatebookSlideshow.sfcSlideshowJson.slides.length -1);
+
+		}
+
+		if(currentSlide < 0 ){
+			currentSlide = 0;
+		}
+
+		DatebookSlideshow.sfcSlideshowImage.setAttribute("data-current-slide",currentSlide);
+
+		//hide arrows when not needed
+		if(currentSlide === 0 ){
+			DatebookSlideshow.sfcSlideshowLeftArrow.style.display="none";
+		} else{
+			DatebookSlideshow.sfcSlideshowLeftArrow.style.display="block";
+		}
+		if(currentSlide === (DatebookSlideshow.sfcSlideshowJson.slides.length -1) ){
+			DatebookSlideshow.sfcSlideshowRightArrow.style.display="none";
+		}else{
+			DatebookSlideshow.sfcSlideshowRightArrow.style.display="block";
+		}
+		//all galleries imported from wcm as of feb 2020 -tmetzger
+		if(DatebookSlideshow.sfcSlideshowJson.slides[currentSlide].params){
+
+			DatebookSlideshow.sfcSlideshowImage.style.backgroundImage = "url(" +  DatebookSlideshow.sfcSlideshowJson.slides[currentSlide].params.sizes["3x2_3x"].url + ")";
+			DatebookSlideshow.sfcSlideshowText.innerHTML =  DatebookSlideshow.sfcSlideshowJson.slides[currentSlide].params.caption.html1 + " Photo: " +DatebookSlideshow.sfcSlideshowJson.slides[currentSlide].params.byline ;
+
+		}else{//legacy slideshows added to preview dec 2019 jan 2020 -tmetzger
+
+			DatebookSlideshow.sfcSlideshowImage.style.backgroundImage = "url(" + DatebookSlideshow.sfcSlideshowJson.slides[currentSlide].image.original.url + ")";
+			DatebookSlideshow.sfcSlideshowText.innerHTML =  DatebookSlideshow.sfcSlideshowJson.slides[currentSlide].text + " Photo: " +DatebookSlideshow.sfcSlideshowJson.slides[currentSlide].byline ;
+		}
+		DatebookSlideshow.sfcSlideshowSlideNumber.innerHTML =  "<span class='count'>"+(parseInt(currentSlide )+1) + "</span>" + " of " + DatebookSlideshow.sfcSlideshowJson.slides.length;
+	
+
+   },
+
+};
+
+
+
+
+DatebookSlideshow.init(true);
+
+}else{
+   console.log("not selena article carve-out");
+}
+
+</script>    <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "NewsArticle",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://preview.houstonchronicle.com/music/houston-performer-roxanne-collins-quarantina-15155647"
+      },
+      "headline": "Houston performer Roxanne Collins&#8217; &#8216;QuaranTina&#8217; livestream will feature Tina Turner&#8217;s hits",
+      "image": [
+        "https://s3.amazonaws.com/sfc-datebook-wordpress/wp-content/uploads/sites/8/2020/03/featured_event10922--600x400.jpg"
+       ],
+      "datePublished": "2020-03-25 07:09:28",
+      "dateModified": "2020-03-25 12:56:37",
+      "author": {
+        "@type": "Person",
+        "name": "Joey Guerra"
+      },
+       "publisher": {
+        "@type": "Organization",
+        "name": "Preview | Houston Arts &amp; Entertainment Guide",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://datebook.sfchronicle.com/wp-content/themes/datebook-2018/assets/img/social_default.jpg"
+        }
+      },
+      "description": "The closure of bars and clubs has affected another community of performers: drag queens"
+    }
+    </script>
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@id": "https://preview.houstonchronicle.com/category/music",
+        "name": "Preview | Houston Arts &amp; Entertainment Guide articles and events in Music"
+      }
+    }
+        ]
+  }
+</script>
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"1f719b4b96","applicationID":"87586888","transactionName":"blUBZBEDChdRVEFeX1cfIlMXCwsKH0RcWVdVVQ==","queueTime":0,"applicationTime":331,"atts":"QhICElkZGRk=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>
