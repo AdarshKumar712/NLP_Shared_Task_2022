@@ -1,0 +1,731 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+	<script src="https://cookie-cdn.cookiepro.com/scripttemplates/otSDKStub.js"  type="text/javascript" charset="UTF-8" data-domain-script="313aff84-84ef-43eb-b58d-25db39701fed"></script>
+	<script type="text/javascript">
+		function OptanonWrapper() { }
+	</script>
+	<meta charset="UTF-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"VgQAVlZaARACXFNXAQEOUVw=",licenseKey:"34a1865437",applicationID:"282560978"};window.NREUM||(NREUM={}),__nr_require=function(t,n,e){function r(e){if(!n[e]){var o=n[e]={exports:{}};t[e][0].call(o.exports,function(n){var o=t[e][1][n];return r(o||n)},o,o.exports)}return n[e].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<e.length;o++)r(e[o]);return r}({1:[function(t,n,e){function r(t){try{s.console&&console.log(t)}catch(n){}}var o,i=t("ee"),a=t(20),s={};try{o=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(s.console=!0,o.indexOf("dev")!==-1&&(s.dev=!0),o.indexOf("nr_dev")!==-1&&(s.nrDev=!0))}catch(c){}s.nrDev&&i.on("internal-error",function(t){r(t.stack)}),s.dev&&i.on("fn-err",function(t,n,e){r(e.stack)}),s.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(s,function(t,n){return t}).join(", ")))},{}],2:[function(t,n,e){function r(t,n,e,r,s){try{p?p-=1:o(s||new UncaughtException(t,n,e),!0)}catch(f){try{i("ierr",[f,c.now(),!0])}catch(d){}}return"function"==typeof u&&u.apply(this,a(arguments))}function UncaughtException(t,n,e){this.message=t||"Uncaught error with no additional information",this.sourceURL=n,this.line=e}function o(t,n){var e=n?null:c.now();i("err",[t,e])}var i=t("handle"),a=t(21),s=t("ee"),c=t("loader"),f=t("gos"),u=window.onerror,d=!1,l="nr@seenError",p=0;c.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(h){"stack"in h&&(t(9),t(8),"addEventListener"in window&&t(5),c.xhrWrappable&&t(10),d=!0)}s.on("fn-start",function(t,n,e){d&&(p+=1)}),s.on("fn-err",function(t,n,e){d&&!e[l]&&(f(e,l,function(){return!0}),this.thrown=!0,o(e))}),s.on("fn-end",function(){d&&!this.thrown&&p>0&&(p-=1)}),s.on("internal-error",function(t){i("ierr",[t,c.now(),!0])})},{}],3:[function(t,n,e){t("loader").features.ins=!0},{}],4:[function(t,n,e){function r(t){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var o=t("ee"),i=t("handle"),a=t(9),s=t(8),c="learResourceTimings",f="addEventListener",u="resourcetimingbufferfull",d="bstResource",l="resource",p="-start",h="-end",m="fn"+p,w="fn"+h,v="bstTimer",g="pushState",y=t("loader");y.features.stn=!0,t(7),"addEventListener"in window&&t(5);var x=NREUM.o.EV;o.on(m,function(t,n){var e=t[0];e instanceof x&&(this.bstStart=y.now())}),o.on(w,function(t,n){var e=t[0];e instanceof x&&i("bst",[e,n,this.bstStart,y.now()])}),a.on(m,function(t,n,e){this.bstStart=y.now(),this.bstType=e}),a.on(w,function(t,n){i(v,[n,this.bstStart,y.now(),this.bstType])}),s.on(m,function(){this.bstStart=y.now()}),s.on(w,function(t,n){i(v,[n,this.bstStart,y.now(),"requestAnimationFrame"])}),o.on(g+p,function(t){this.time=y.now(),this.startPath=location.pathname+location.hash}),o.on(g+h,function(t){i("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),f in window.performance&&(window.performance["c"+c]?window.performance[f](u,function(t){i(d,[window.performance.getEntriesByType(l)]),window.performance["c"+c]()},!1):window.performance[f]("webkit"+u,function(t){i(d,[window.performance.getEntriesByType(l)]),window.performance["webkitC"+c]()},!1)),document[f]("scroll",r,{passive:!0}),document[f]("keypress",r,!1),document[f]("click",r,!1)}},{}],5:[function(t,n,e){function r(t){for(var n=t;n&&!n.hasOwnProperty(u);)n=Object.getPrototypeOf(n);n&&o(n)}function o(t){s.inPlace(t,[u,d],"-",i)}function i(t,n){return t[1]}var a=t("ee").get("events"),s=t("wrap-function")(a,!0),c=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";n.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(o(window),o(f.prototype)),a.on(u+"-start",function(t,n){var e=t[1],r=c(e,"nr@wrapped",function(){function t(){if("function"==typeof e.handleEvent)return e.handleEvent.apply(e,arguments)}var n={object:t,"function":e}[typeof e];return n?s(n,"fn-",null,n.name||"anonymous"):e});this.wrapped=t[1]=r}),a.on(d+"-start",function(t){t[1]=this.wrapped||t[1]})},{}],6:[function(t,n,e){function r(t,n,e){var r=t[n];"function"==typeof r&&(t[n]=function(){var t=i(arguments),n={};o.emit(e+"before-start",[t],n);var a;n[m]&&n[m].dt&&(a=n[m].dt);var s=r.apply(this,t);return o.emit(e+"start",[t,a],s),s.then(function(t){return o.emit(e+"end",[null,t],s),t},function(t){throw o.emit(e+"end",[t],s),t})})}var o=t("ee").get("fetch"),i=t(21),a=t(20);n.exports=o;var s=window,c="fetch-",f=c+"body-",u=["arrayBuffer","blob","json","text","formData"],d=s.Request,l=s.Response,p=s.fetch,h="prototype",m="nr@context";d&&l&&p&&(a(u,function(t,n){r(d[h],n,f),r(l[h],n,f)}),r(s,"fetch",c),o.on(c+"end",function(t,n){var e=this;if(n){var r=n.headers.get("content-length");null!==r&&(e.rxSize=r),o.emit(c+"done",[null,n],e)}else o.emit(c+"done",[t],e)}))},{}],7:[function(t,n,e){var r=t("ee").get("history"),o=t("wrap-function")(r);n.exports=r;var i=window.history&&window.history.constructor&&window.history.constructor.prototype,a=window.history;i&&i.pushState&&i.replaceState&&(a=i),o.inPlace(a,["pushState","replaceState"],"-")},{}],8:[function(t,n,e){var r=t("ee").get("raf"),o=t("wrap-function")(r),i="equestAnimationFrame";n.exports=r,o.inPlace(window,["r"+i,"mozR"+i,"webkitR"+i,"msR"+i],"raf-"),r.on("raf-start",function(t){t[0]=o(t[0],"fn-")})},{}],9:[function(t,n,e){function r(t,n,e){t[0]=a(t[0],"fn-",null,e)}function o(t,n,e){this.method=e,this.timerDuration=isNaN(t[1])?0:+t[1],t[0]=a(t[0],"fn-",this,e)}var i=t("ee").get("timer"),a=t("wrap-function")(i),s="setTimeout",c="setInterval",f="clearTimeout",u="-start",d="-";n.exports=i,a.inPlace(window,[s,"setImmediate"],s+d),a.inPlace(window,[c],c+d),a.inPlace(window,[f,"clearImmediate"],f+d),i.on(c+u,r),i.on(s+u,o)},{}],10:[function(t,n,e){function r(t,n){d.inPlace(n,["onreadystatechange"],"fn-",s)}function o(){var t=this,n=u.context(t);t.readyState>3&&!n.resolved&&(n.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,g,"fn-",s)}function i(t){y.push(t),h&&(b?b.then(a):w?w(a):(E=-E,O.data=E))}function a(){for(var t=0;t<y.length;t++)r([],y[t]);y.length&&(y=[])}function s(t,n){return n}function c(t,n){for(var e in t)n[e]=t[e];return n}t(5);var f=t("ee"),u=f.get("xhr"),d=t("wrap-function")(u),l=NREUM.o,p=l.XHR,h=l.MO,m=l.PR,w=l.SI,v="readystatechange",g=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],y=[];n.exports=u;var x=window.XMLHttpRequest=function(t){var n=new p(t);try{u.emit("new-xhr",[n],n),n.addEventListener(v,o,!1)}catch(e){try{u.emit("internal-error",[e])}catch(r){}}return n};if(c(p,x),x.prototype=p.prototype,d.inPlace(x.prototype,["open","send"],"-xhr-",s),u.on("send-xhr-start",function(t,n){r(t,n),i(n)}),u.on("open-xhr-start",r),h){var b=m&&m.resolve();if(!w&&!m){var E=1,O=document.createTextNode(E);new h(a).observe(O,{characterData:!0})}}else f.on("fn-end",function(t){t[0]&&t[0].type===v||a()})},{}],11:[function(t,n,e){function r(t){if(!i(t))return null;var n=window.NREUM;if(!n.loader_config)return null;var e=(n.loader_config.accountID||"").toString()||null,r=(n.loader_config.agentID||"").toString()||null,s=(n.loader_config.trustKey||"").toString()||null;if(!e||!r)return null;var c=a.generateCatId(),f=a.generateCatId(),u=Date.now(),d=o(c,f,u,e,r,s);return{header:d,guid:c,traceId:f,timestamp:u}}function o(t,n,e,r,o,i){var a="btoa"in window&&"function"==typeof window.btoa;if(!a)return null;var s={v:[0,1],d:{ty:"Browser",ac:r,ap:o,id:t,tr:n,ti:e}};return i&&r!==i&&(s.d.tk=i),btoa(JSON.stringify(s))}function i(t){var n=!1,e=!1,r={};if("init"in NREUM&&"distributed_tracing"in NREUM.init&&(r=NREUM.init.distributed_tracing,e=!!r.enabled),e)if(t.sameOrigin)n=!0;else if(r.allowed_origins instanceof Array)for(var o=0;o<r.allowed_origins.length;o++){var i=s(r.allowed_origins[o]);if(t.hostname===i.hostname&&t.protocol===i.protocol&&t.port===i.port){n=!0;break}}return e&&n}var a=t(18),s=t(13);n.exports={generateTracePayload:r,shouldGenerateTrace:i}},{}],12:[function(t,n,e){function r(t){var n=this.params,e=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;r<p;r++)t.removeEventListener(l[r],this.listener,!1);n.aborted||(e.duration=s.now()-this.startTime,this.loadCaptureCalled||4!==t.readyState?null==n.status&&(n.status=0):a(this,t),e.cbTime=this.cbTime,d.emit("xhr-done",[t],t),c("xhr",[n,e,this.startTime]))}}function o(t,n){var e=t.responseType;if("json"===e&&null!==n)return n;var r="arraybuffer"===e||"blob"===e||"json"===e?t.response:t.responseText;return w(r)}function i(t,n){var e=f(n),r=t.params;r.host=e.hostname+":"+e.port,r.pathname=e.pathname,t.parsedOrigin=f(n),t.sameOrigin=t.parsedOrigin.sameOrigin}function a(t,n){t.params.status=n.status;var e=o(n,t.lastSize);if(e&&(t.metrics.rxSize=e),t.sameOrigin){var r=n.getResponseHeader("X-NewRelic-App-Data");r&&(t.params.cat=r.split(", ").pop())}t.loadCaptureCalled=!0}var s=t("loader");if(s.xhrWrappable){var c=t("handle"),f=t(13),u=t(11).generateTracePayload,d=t("ee"),l=["load","error","abort","timeout"],p=l.length,h=t("id"),m=t(16),w=t(15),v=window.XMLHttpRequest;s.features.xhr=!0,t(10),t(6),d.on("new-xhr",function(t){var n=this;n.totalCbs=0,n.called=0,n.cbTime=0,n.end=r,n.ended=!1,n.xhrGuids={},n.lastSize=null,n.loadCaptureCalled=!1,t.addEventListener("load",function(e){a(n,t)},!1),m&&(m>34||m<10)||window.opera||t.addEventListener("progress",function(t){n.lastSize=t.loaded},!1)}),d.on("open-xhr-start",function(t){this.params={method:t[0]},i(this,t[1]),this.metrics={}}),d.on("open-xhr-end",function(t,n){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&n.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid);var e=u(this.parsedOrigin);e&&e.header&&(n.setRequestHeader("newrelic",e.header),this.dt=e)}),d.on("send-xhr-start",function(t,n){var e=this.metrics,r=t[0],o=this;if(e&&r){var i=w(r);i&&(e.txSize=i)}this.startTime=s.now(),this.listener=function(t){try{"abort"!==t.type||o.loadCaptureCalled||(o.params.aborted=!0),("load"!==t.type||o.called===o.totalCbs&&(o.onloadCalled||"function"!=typeof n.onload))&&o.end(n)}catch(e){try{d.emit("internal-error",[e])}catch(r){}}};for(var a=0;a<p;a++)n.addEventListener(l[a],this.listener,!1)}),d.on("xhr-cb-time",function(t,n,e){this.cbTime+=t,n?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof e.onload||this.end(e)}),d.on("xhr-load-added",function(t,n){var e=""+h(t)+!!n;this.xhrGuids&&!this.xhrGuids[e]&&(this.xhrGuids[e]=!0,this.totalCbs+=1)}),d.on("xhr-load-removed",function(t,n){var e=""+h(t)+!!n;this.xhrGuids&&this.xhrGuids[e]&&(delete this.xhrGuids[e],this.totalCbs-=1)}),d.on("addEventListener-end",function(t,n){n instanceof v&&"load"===t[0]&&d.emit("xhr-load-added",[t[1],t[2]],n)}),d.on("removeEventListener-end",function(t,n){n instanceof v&&"load"===t[0]&&d.emit("xhr-load-removed",[t[1],t[2]],n)}),d.on("fn-start",function(t,n,e){n instanceof v&&("onload"===e&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=s.now()))}),d.on("fn-end",function(t,n){this.xhrCbStart&&d.emit("xhr-cb-time",[s.now()-this.xhrCbStart,this.onload,n],n)}),d.on("fetch-before-start",function(t){var n,e=t[1]||{};"string"==typeof t[0]?n=t[0]:t[0]&&t[0].url&&(n=t[0].url),n&&(this.parsedOrigin=f(n),this.sameOrigin=this.parsedOrigin.sameOrigin);var r=u(this.parsedOrigin);if(r&&r.header){var o=r.header;if("string"==typeof t[0]){var i={};for(var a in e)i[a]=e[a];i.headers=new Headers(e.headers||{}),i.headers.set("newrelic",o),this.dt=r,t.length>1?t[1]=i:t.push(i)}else t[0]&&t[0].headers&&(t[0].headers.append("newrelic",o),this.dt=r)}})}},{}],13:[function(t,n,e){var r={};n.exports=function(t){if(t in r)return r[t];var n=document.createElement("a"),e=window.location,o={};n.href=t,o.port=n.port;var i=n.href.split("://");!o.port&&i[1]&&(o.port=i[1].split("/")[0].split("@").pop().split(":")[1]),o.port&&"0"!==o.port||(o.port="https"===i[0]?"443":"80"),o.hostname=n.hostname||e.hostname,o.pathname=n.pathname,o.protocol=i[0],"/"!==o.pathname.charAt(0)&&(o.pathname="/"+o.pathname);var a=!n.protocol||":"===n.protocol||n.protocol===e.protocol,s=n.hostname===document.domain&&n.port===e.port;return o.sameOrigin=a&&(!n.hostname||s),"/"===o.pathname&&(r[t]=o),o}},{}],14:[function(t,n,e){function r(){}function o(t,n,e){return function(){return i(t,[f.now()].concat(s(arguments)),n?null:this,e),n?void 0:this}}var i=t("handle"),a=t(20),s=t(21),c=t("ee").get("tracer"),f=t("loader"),u=NREUM;"undefined"==typeof window.newrelic&&(newrelic=u);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",p=l+"ixn-";a(d,function(t,n){u[n]=o(l+n,!0,"api")}),u.addPageAction=o(l+"addPageAction",!0),u.setCurrentRouteName=o(l+"routeName",!0),n.exports=newrelic,u.interaction=function(){return(new r).get()};var h=r.prototype={createTracer:function(t,n){var e={},r=this,o="function"==typeof n;return i(p+"tracer",[f.now(),t,e],r),function(){if(c.emit((o?"":"no-")+"fn-start",[f.now(),r,o],e),o)try{return n.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],e),t}finally{c.emit("fn-end",[f.now()],e)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,n){h[n]=o(p+n)}),newrelic.noticeError=function(t,n){"string"==typeof t&&(t=new Error(t)),i("err",[t,f.now(),!1,n])}},{}],15:[function(t,n,e){n.exports=function(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(n){return}}}},{}],16:[function(t,n,e){var r=0,o=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);o&&(r=+o[1]),n.exports=r},{}],17:[function(t,n,e){function r(t,n){var e=t.getEntries();e.forEach(function(t){"first-paint"===t.name?a("timing",["fp",Math.floor(t.startTime)]):"first-contentful-paint"===t.name&&a("timing",["fcp",Math.floor(t.startTime)])})}function o(t){if(t instanceof c&&!u){var n,e=Math.round(t.timeStamp);n=e>1e12?Date.now()-e:s.now()-e,u=!0,a("timing",["fi",e,{type:t.type,fid:n}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var i,a=t("handle"),s=t("loader"),c=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){i=new PerformanceObserver(r);try{i.observe({entryTypes:["paint"]})}catch(f){}}if("addEventListener"in document){var u=!1,d=["click","keydown","mousedown","pointerdown","touchstart"];d.forEach(function(t){document.addEventListener(t,o,!1)})}}},{}],18:[function(t,n,e){function r(){function t(){return n?15&n[e++]:16*Math.random()|0}var n=null,e=0,r=window.crypto||window.msCrypto;r&&r.getRandomValues&&(n=r.getRandomValues(new Uint8Array(31)));for(var o,i="xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx",a="",s=0;s<i.length;s++)o=i[s],"x"===o?a+=t().toString(16):"y"===o?(o=3&t()|8,a+=o.toString(16)):a+=o;return a}function o(){function t(){return n?15&n[e++]:16*Math.random()|0}var n=null,e=0,r=window.crypto||window.msCrypto;r&&r.getRandomValues&&Uint8Array&&(n=r.getRandomValues(new Uint8Array(31)));for(var o=[],i=0;i<16;i++)o.push(t().toString(16));return o.join("")}n.exports={generateUuid:r,generateCatId:o}},{}],19:[function(t,n,e){function r(t,n){if(!o)return!1;if(t!==o)return!1;if(!n)return!0;if(!i)return!1;for(var e=i.split("."),r=n.split("."),a=0;a<r.length;a++)if(r[a]!==e[a])return!1;return!0}var o=null,i=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var s=navigator.userAgent,c=s.match(a);c&&s.indexOf("Chrome")===-1&&s.indexOf("Chromium")===-1&&(o="Safari",i=c[1])}n.exports={agent:o,version:i,match:r}},{}],20:[function(t,n,e){function r(t,n){var e=[],r="",i=0;for(r in t)o.call(t,r)&&(e[i]=n(r,t[r]),i+=1);return e}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],21:[function(t,n,e){function r(t,n,e){n||(n=0),"undefined"==typeof e&&(e=t?t.length:0);for(var r=-1,o=e-n||0,i=Array(o<0?0:o);++r<o;)i[r]=t[n+r];return i}n.exports=r},{}],22:[function(t,n,e){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(t,n,e){function r(){}function o(t){function n(t){return t&&t instanceof r?t:t?c(t,s,i):i()}function e(e,r,o,i){if(!l.aborted||i){t&&t(e,r,o);for(var a=n(o),s=m(e),c=s.length,f=0;f<c;f++)s[f].apply(a,r);var d=u[y[e]];return d&&d.push([x,e,r,a]),a}}function p(t,n){g[t]=m(t).concat(n)}function h(t,n){var e=g[t];if(e)for(var r=0;r<e.length;r++)e[r]===n&&e.splice(r,1)}function m(t){return g[t]||[]}function w(t){return d[t]=d[t]||o(e)}function v(t,n){f(t,function(t,e){n=n||"feature",y[e]=n,n in u||(u[n]=[])})}var g={},y={},x={on:p,addEventListener:p,removeEventListener:h,emit:e,get:w,listeners:m,context:n,buffer:v,abort:a,aborted:!1};return x}function i(){return new r}function a(){(u.api||u.feature)&&(l.aborted=!0,u=l.backlog={})}var s="nr@context",c=t("gos"),f=t(20),u={},d={},l=n.exports=o();l.backlog=u},{}],gos:[function(t,n,e){function r(t,n,e){if(o.call(t,n))return t[n];var r=e();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,n,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return t[n]=r,r}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(t,n,e){function r(t,n,e,r){o.buffer([t],r),o.emit(t,n,e)}var o=t("ee").get("handle");n.exports=r,r.ee=o},{}],id:[function(t,n,e){function r(t){var n=typeof t;return!t||"object"!==n&&"function"!==n?-1:t===window?0:a(t,i,function(){return o++})}var o=1,i="nr@id",a=t("gos");n.exports=r},{}],loader:[function(t,n,e){function r(){if(!E++){var t=b.info=NREUM.info,n=p.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&n))return u.abort();f(y,function(n,e){t[n]||(t[n]=e)}),c("mark",["onload",a()+b.offset],null,"api");var e=p.createElement("script");e.src="https://"+t.agent,n.parentNode.insertBefore(e,n)}}function o(){"complete"===p.readyState&&i()}function i(){c("mark",["domContent",a()+b.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(s=Math.max((new Date).getTime(),s))-b.offset}var s=(new Date).getTime(),c=t("handle"),f=t(20),u=t("ee"),d=t(19),l=window,p=l.document,h="addEventListener",m="attachEvent",w=l.XMLHttpRequest,v=w&&w.prototype;NREUM.o={ST:setTimeout,SI:l.setImmediate,CT:clearTimeout,XHR:w,REQ:l.Request,EV:l.Event,PR:l.Promise,MO:l.MutationObserver};var g=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1158.min.js"},x=w&&v&&v[h]&&!/CriOS/.test(navigator.userAgent),b=n.exports={offset:s,now:a,origin:g,features:{},xhrWrappable:x,userAgent:d};t(14),t(17),p[h]?(p[h]("DOMContentLoaded",i,!1),l[h]("load",r,!1)):(p[m]("onreadystatechange",o),l[m]("onload",r)),c("mark",["firstbyte",s],null,"api");var E=0,O=t(22)},{}],"wrap-function":[function(t,n,e){function r(t){return!(t&&t instanceof Function&&t.apply&&!t[a])}var o=t("ee"),i=t(21),a="nr@original",s=Object.prototype.hasOwnProperty,c=!1;n.exports=function(t,n){function e(t,n,e,o){function nrWrapper(){var r,a,s,c;try{a=this,r=i(arguments),s="function"==typeof e?e(r,a):e||{}}catch(f){l([f,"",[r,a,o],s])}u(n+"start",[r,a,o],s);try{return c=t.apply(a,r)}catch(d){throw u(n+"err",[r,a,d],s),d}finally{u(n+"end",[r,a,c],s)}}return r(t)?t:(n||(n=""),nrWrapper[a]=t,d(t,nrWrapper),nrWrapper)}function f(t,n,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<n.length;c++)s=n[c],a=t[s],r(a)||(t[s]=e(a,f?s+o:o,i,s))}function u(e,r,o){if(!c||n){var i=c;c=!0;try{t.emit(e,r,o,n)}catch(a){l([a,e,r,o])}c=i}}function d(t,n){if(Object.defineProperty&&Object.keys)try{var e=Object.keys(t);return e.forEach(function(e){Object.defineProperty(n,e,{get:function(){return t[e]},set:function(n){return t[e]=n,n}})}),n}catch(r){l([r])}for(var o in t)s.call(t,o)&&(n[o]=t[o]);return n}function l(n){try{t.emit("internal-error",n)}catch(e){}}return t||(t=o),e.inPlace=f,e.flag=a,e}},{}]},{},["loader",2,12,4,3]);</script>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="profile" href="https://gmpg.org/xfn/11" />
+	<title>Beauty Resolutions I Plan To Keep In 2020, And You Should Too - Essence</title>
+
+<!-- This site is optimized with the Yoast SEO Premium plugin v12.5 - https://yoast.com/wordpress/plugins/seo/ -->
+<meta name="description" content="New year, new decade. Get your hair, skin, and nails right in 2020 with these beauty resolutions that are easy to stick to."/>
+<meta name="robots" content="max-snippet:-1, max-image-preview:large, max-video-preview:-1"/>
+<link rel="canonical" href="https://www.essence.com/beauty/beauty-resolutions-to-keep-in-2020/" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="15 Beauty Resolutions I Plan To Keep In 2020, And You Should Too" />
+<meta property="og:description" content="New year, new decade. Get your hair, skin, and nails right in 2020 with these beauty resolutions that are easy to stick to." />
+<meta property="og:url" content="https://www.essence.com/beauty/beauty-resolutions-to-keep-in-2020/" />
+<meta property="og:site_name" content="Essence" />
+<meta property="article:publisher" content="https://www.facebook.com/essence" />
+<meta property="fb:app_id" content="2453509358209265" />
+<meta property="og:image" content="https://www.essence.com/wp-content/uploads/2019/12/Beauty-Resolutions-tout-900x600.jpg" />
+<meta property="og:image:secure_url" content="https://www.essence.com/wp-content/uploads/2019/12/Beauty-Resolutions-tout-900x600.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:description" content="New year, new decade. Get your hair, skin, and nails right in 2020 with these beauty resolutions that are easy to stick to." />
+<meta name="twitter:title" content="15 Beauty Resolutions I Plan To Keep In 2020, And You Should Too" />
+<meta name="twitter:site" content="@essence" />
+<meta name="twitter:image" content="https://www.essence.com/wp-content/uploads/2019/12/Beauty-Resolutions-tout-1568x1176.jpg" />
+<meta name="twitter:creator" content="@essence" />
+<!-- / Yoast SEO Premium plugin. -->
+
+<link rel='dns-prefetch' href='//www.essence.com' />
+<link rel='dns-prefetch' href='//platform.instagram.com' />
+<link rel='dns-prefetch' href='//z-na.amazon-adsystem.com' />
+<link rel='dns-prefetch' href='//s.skimresources.com' />
+<link rel='dns-prefetch' href='//cdn.adsafeprotected.com' />
+<link rel='dns-prefetch' href='//www.googletagservices.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="Essence &raquo; Feed" href="https://www.essence.com/feed/" />
+<link rel='stylesheet' id='essence_blocks-style-css-css'  href='https://www.essence.com/wp-content/plugins/essence-blocks/dist/blocks.style.build.css?ver=1577845002' type='text/css' media='all' />
+<link rel='stylesheet' id='essence-main-css-css'  href='https://www.essence.com/wp-content/themes/essence/dist/main.d1202266565f31b95121.css?ver=5.2.4' type='text/css' media='all' />
+<link rel='stylesheet' id='essence-print-style-css'  href='https://www.essence.com/wp-content/themes/essence/print.css?ver=1.1' type='text/css' media='print' />
+<script type='text/javascript' src='https://www.essence.com/wp-includes/js/dist/vendor/wp-polyfill.min.js?ver=7.0.0'></script>
+<script type='text/javascript'>
+( 'fetch' in window ) || document.write( '<script src="https://www.essence.com/wp-includes/js/dist/vendor/wp-polyfill-fetch.min.js?ver=3.0.0"></scr' + 'ipt>' );( document.contains ) || document.write( '<script src="https://www.essence.com/wp-includes/js/dist/vendor/wp-polyfill-node-contains.min.js?ver=3.26.0-0"></scr' + 'ipt>' );( window.FormData && window.FormData.prototype.keys ) || document.write( '<script src="https://www.essence.com/wp-includes/js/dist/vendor/wp-polyfill-formdata.min.js?ver=3.0.12"></scr' + 'ipt>' );( Element.prototype.matches && Element.prototype.closest ) || document.write( '<script src="https://www.essence.com/wp-includes/js/dist/vendor/wp-polyfill-element-closest.min.js?ver=2.0.2"></scr' + 'ipt>' );
+</script>
+<script type='text/javascript' src='https://www.essence.com/wp-includes/js/jquery/jquery.js?ver=1.12.4-wp'></script>
+<script type='text/javascript' src='https://www.essence.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<script type='text/javascript' src='https://www.essence.com/wp-content/plugins/stop-user-enumeration/frontend/js/frontend.js?ver=1.3.24'></script>
+<script type='text/javascript' src='//cdn.adsafeprotected.com/iasPET.1.js?ver=5.2.4'></script>
+<script type='text/javascript' src='https://www.googletagservices.com/tag/js/gpt.js?ver=5.2.4' async='async'></script>
+<script type='text/javascript'>
+		var googletag = googletag || {};
+		googletag.cmd = googletag.cmd || [];
+		var gpt_ad_slots = gpt_ad_slots || [];
+</script>
+<link rel='https://api.w.org/' href='https://www.essence.com/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.essence.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://www.essence.com/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 5.2.4" />
+<link rel='shortlink' href='https://www.essence.com/?p=490675' />
+<link rel="alternate" type="application/json+oembed" href="https://www.essence.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.essence.com%2Fbeauty%2Fbeauty-resolutions-to-keep-in-2020%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://www.essence.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.essence.com%2Fbeauty%2Fbeauty-resolutions-to-keep-in-2020%2F&#038;format=xml" />
+
+<!-- BEGIN wp-parsely Plugin Version 2.0 -->
+<meta name="wp-parsely_version" id="wp-parsely_version" content="2.0"/>
+			<script type="application/ld+json">
+		{"@context":"http:\/\/schema.org","@type":"NewsArticle","mainEntityOfPage":{"@type":"WebPage","@id":"http:\/\/www.essence.com\/beauty\/beauty-resolutions-to-keep-in-2020\/"},"headline":"Beauty Resolutions I Plan To Keep In 2020, And You Should Too","url":"http:\/\/www.essence.com\/beauty\/beauty-resolutions-to-keep-in-2020\/","dateCreated":"2020-01-01T10:00:20Z","datePublished":"2020-01-01T10:00:20Z","dateModified":"2020-01-01T10:00:20Z","articleSection":"Beauty","author":[{"@type":"Person","name":"Shalwah Evans"}],"creator":["Shalwah Evans"],"keywords":[],"publisher":{"@type":"Organization","name":"Essence","logo":{"@type":"ImageObject","url":"https:\/\/www.essence.com\/wp-content\/themes\/essence_theme\/assets\/images\/logo.png"}}}
+		</script>
+
+			<!-- END wp-parsely Plugin Version 2.0 -->
+		<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+		<link rel="amphtml" href="https://www.essence.com/amp/beauty/beauty-resolutions-to-keep-in-2020/">			<!-- BEGIN ControlTag for "Essence" -->
+			<script class="kxct" data-id="uj4ovrs17" data-timing="async" data-version="3.0" type="text/javascript">
+			window.Krux||((Krux=function(){Krux.q.push(arguments)}).q=[]);
+			(function(){
+			var k=document.createElement('script');k.type='text/javascript';k.async=true;
+			k.src=(location.protocol==='https:'?'https:':'http:')+'//cdn.krxd.net/controltag/uj4ovrs17.js';
+			var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(k,s);
+			}());
+			</script>
+			<!-- END ControlTag -->
+					<script>
+				window.fbAsyncInit = function () {
+					FB.init({
+						appId: '2453509358209265',
+						autoLogAppEvents: true,
+						xfbml: true,
+						version: 'v3.2'
+					});
+				};
+
+				(function (d, s, id) {
+					var js, fjs = d.getElementsByTagName(s)[0];
+					if (d.getElementById(id)) {
+						return;
+					}
+					js = d.createElement(s);
+					js.id = id;
+					js.src = "https://connect.facebook.net/en_US/sdk.js";
+					fjs.parentNode.insertBefore(js, fjs);
+				}(document, 'script', 'facebook-jssdk'));
+			</script>
+			<link rel="icon" href="https://www.essence.com/wp-content/uploads/2018/04/cropped-essence-fav-icon-32x32.png" sizes="32x32" />
+<link rel="icon" href="https://www.essence.com/wp-content/uploads/2018/04/cropped-essence-fav-icon-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon-precomposed" href="https://www.essence.com/wp-content/uploads/2018/04/cropped-essence-fav-icon-180x180.png" />
+<meta name="msapplication-TileImage" content="https://www.essence.com/wp-content/uploads/2018/04/cropped-essence-fav-icon-270x270.png" />
+</head>
+
+<body class="article-template-default single single-article postid-490675 wp-embed-responsive article beauty-resolutions-to-keep-in-2020 second-menubar-article singular image-filters-enabled">
+		<div id="div-gpt-ad-21700267070-0"
+			 class="ad-position outofpage dfp-ads-outofpage"
+			 data-sizes="[[[0, 0], [[1, 1]]]]">
+		</div>
+		<div class="expanded-menu">
+	<span class="close"><svg class="svg-icon" width="24" height="24" aria-hidden="true" role="img" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span>
+	<div class="logo">
+		<a href="https://www.essence.com/" rel="home">
+			<svg class="svg-icon" width="24" height="24" aria-hidden="true" role="img" focusable="false" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="161px" height="33px" viewBox="0 0 161 33" version="1.1"><g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="top_navigation_00" transform="translate(-66.000000, -11.000000)" fill="#630A5D"><g id="logo_essence"><path d="M193.469294,43.9883529 C184.918412,43.9883529 180.286765,38.6132353 180.286765,27.0079118 C180.286765,15.3482353 185.890941,11.0805588 193.370294,11.0805588 C202.2075,11.0805588 204.114706,17.1011176 204.459265,21.2494118 L200.175088,21.2494118 C199.829559,18.3357059 198.357176,14.8338235 193.470265,14.8338235 C188.274706,14.8338235 184.670912,18.0270588 184.670912,26.9428824 C184.670912,36.278 188.177647,40.2690588 193.503265,40.2690588 C198.4125,40.2690588 199.829559,37.1573529 200.210029,33.4264118 L204.461206,33.4264118 C204.076853,38.6772941 201.585353,43.9883529 193.470265,43.9883529 M175.152353,43.2312941 L160.661471,17.8271176 L160.661471,43.2312941 L156.638382,43.2312941 L156.638382,11.7065882 L162.034853,11.7065882 L175.086353,34.5775294 L175.086353,11.7065882 L179.044412,11.7065882 L179.044412,43.2312941 M134.7885,43.2312941 L134.7885,11.7065882 L155.166,11.7065882 L155.166,15.4239412 L138.974647,15.4239412 L138.974647,24.7707059 L154.511824,24.7707059 L154.511824,28.5870588 L138.974647,28.5870588 L138.974647,39.5129706 L155.166,39.5129706 L155.166,43.2303235 M99.0368824,43.9883529 C89.9191765,43.9883529 87.2607353,39.0849412 87.1306765,33.8864706 L91.4818235,33.8864706 C91.6128529,38.1648235 93.6607941,40.3360294 99.2009118,40.3360294 C102.944471,40.3360294 105.579618,38.3696176 105.579618,34.7415588 C105.579618,31.0339118 102.070941,30.0866176 98.1546176,29.1800882 C93.1046471,28.0153824 87.2296765,26.6546176 87.2296765,19.5712647 C87.2296765,13.5924412 92.5135588,11.0815294 97.8605294,11.0815294 C106.958824,11.0815294 108.424412,16.1509118 108.621441,19.1762353 L104.336294,19.1762353 C104.173235,17.5650588 102.854206,14.7348235 97.8275294,14.7348235 C94.6731176,14.7348235 91.6468235,16.2683529 91.6468235,19.2771765 C91.6468235,23.5516471 95.733,24.1737941 100.052118,25.2327059 C104.866235,26.4129412 109.930765,27.896 109.930765,34.6115 C109.930765,40.9853529 104.949706,43.9893235 99.0388235,43.9893235 M66,43.2312941 L66,11.7065882 L86.3784706,11.7065882 L86.3784706,15.4239412 L70.1871176,15.4239412 L70.1871176,24.7707059 L85.7223529,24.7707059 L85.7223529,28.5870588 L70.1880882,28.5870588 L70.1880882,39.5129706 L86.3794412,39.5129706 L86.3794412,43.2303235 M205.768588,43.2312941 L205.768588,11.7065882 L226.145118,11.7065882 L226.145118,15.4239412 L209.953765,15.4239412 L209.953765,24.7707059 L225.490941,24.7707059 L225.490941,28.5870588 L209.953765,28.5870588 L209.953765,39.5129706 L226.145118,39.5129706 L226.145118,43.2303235 M122.685265,43.9883529 C113.567559,43.9883529 110.910088,39.0849412 110.779059,33.8864706 L115.129235,33.8864706 C115.260265,38.1648235 117.308206,40.3360294 122.849294,40.3360294 C126.592853,40.3360294 129.228,38.3696176 129.228,34.7415588 C129.228,31.0339118 125.718353,30.0866176 121.803,29.1800882 C116.753029,28.0153824 110.877088,26.6546176 110.877088,19.5712647 C110.877088,13.5924412 116.160971,11.0815294 121.507941,11.0815294 C130.607206,11.0815294 132.072794,16.1509118 132.268853,19.1762353 L127.984676,19.1762353 C127.819676,17.5650588 126.501618,14.7348235 121.474941,14.7348235 C118.320529,14.7348235 115.292294,16.2683529 115.292294,19.2771765 C115.292294,23.5516471 119.380412,24.1737941 123.699529,25.2327059 C128.511706,26.4129412 133.577206,27.896 133.577206,34.6115 C133.577206,40.9853529 128.598088,43.9893235 122.685265,43.9893235"/></g></g></g></svg>		</a>
+	</div>
+	
+	<div class="site-search">
+		<form action="https://www.essence.com/" method="GET">
+			<input name="s" class="search" type="search" placeholder="" />
+			<span class="icon"><svg class="svg-icon" width="24" height="24" aria-hidden="true" role="img" focusable="false" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25"><path data-name="Search Icon" d="M10.612,18.03A8.073,8.073,0,0,1,2.5,10.012a8.113,8.113,0,0,1,16.225,0A8.077,8.077,0,0,1,10.612,18.03Zm13.6,4.04-5.774-5.713a9.911,9.911,0,0,0,2.294-6.346A10.07,10.07,0,0,0,10.612,0,10.067,10.067,0,0,0,.49,10.012a10.147,10.147,0,0,0,16.534,7.747L22.8,23.465a1,1,0,0,0,1.417,0A0.973,0.973,0,0,0,24.215,22.071Z"     transform="translate(-.5)" fill="#ffffff" fill-rule="evenodd"/></svg></span>
+		</form>
+	</div>
+	<div class="scroll-area">
+		<div class="expanded-menu-list"><ul id="menu-expanded-menu" class="expanded-menu-inner"><li id="menu-item-423539" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-423539 nav-item dropdown menu-item"><a href="#" aria-haspopup="true" aria-expanded="false">Discover</a>
+<ul class="sub-menu">
+	<li id="menu-item-423573" class="menu-item menu-item-type-taxonomy menu-item-object-article_category menu-item-423573 nav-item dropdown menu-item"><a href="https://www.essence.com/celebrity/">Celebrity</a></li>
+	<li id="menu-item-423568" class="menu-item menu-item-type-taxonomy menu-item-object-article_category menu-item-423568 nav-item dropdown menu-item"><a href="https://www.essence.com/fashion/">Fashion</a></li>
+	<li id="menu-item-459706" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-459706 nav-item dropdown menu-item"><a href="https://www.essence.com/fashionhouse/">Fashion House</a></li>
+	<li id="menu-item-423571" class="menu-item menu-item-type-taxonomy menu-item-object-article_category current-article-ancestor current-menu-parent current-article-parent menu-item-423571 nav-item dropdown menu-item"><a href="https://www.essence.com/beauty/">Beauty</a></li>
+	<li id="menu-item-423570" class="menu-item menu-item-type-taxonomy menu-item-object-article_category menu-item-423570 nav-item dropdown menu-item"><a href="https://www.essence.com/hair/">Hair</a></li>
+	<li id="menu-item-423567" class="menu-item menu-item-type-taxonomy menu-item-object-article_category menu-item-423567 nav-item dropdown menu-item"><a href="https://www.essence.com/love/">Love</a></li>
+	<li id="menu-item-423804" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-423804 nav-item dropdown menu-item"><a href="http://www.essence.com/lifestyle/">Lifestyle</a></li>
+	<li id="menu-item-423565" class="menu-item menu-item-type-taxonomy menu-item-object-article_category menu-item-423565 nav-item dropdown menu-item"><a href="https://www.essence.com/news/">News</a></li>
+	<li id="menu-item-423569" class="menu-item menu-item-type-taxonomy menu-item-object-article_category menu-item-423569 nav-item dropdown menu-item"><a href="https://www.essence.com/videos/">Videos</a></li>
+	<li id="menu-item-427922" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-427922 nav-item dropdown menu-item"><a href="https://www.naturallycurly.com/">NaturallyCurly</a></li>
+	<li id="menu-item-427923" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-427923 nav-item dropdown menu-item"><a href="https://shop.essence.com/">Shop Essence</a></li>
+</ul>
+</li>
+<li id="menu-item-423542" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-423542 nav-item dropdown menu-item"><a href="#" aria-haspopup="true" aria-expanded="false">Experiences</a>
+<ul class="sub-menu">
+	<li id="menu-item-475599" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-475599 nav-item dropdown menu-item"><a href="https://www.essence.com/market-summit/">Entrepreneur Summit and Holiday Market</a></li>
+	<li id="menu-item-423807" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-423807 nav-item dropdown menu-item"><a href="https://www.essence.com/festival2020">ESSENCE Festival</a></li>
+	<li id="menu-item-435711" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-435711 nav-item dropdown menu-item"><a href="https://www.essence.com/beautycarnival/archive/">Beauty Carnival-Archive</a></li>
+	<li id="menu-item-435713" class="menu-item menu-item-type-post_type menu-item-object-topic menu-item-435713 nav-item dropdown menu-item"><a href="https://www.essence.com/festival/2018-essence-festival/festival-2018/">News &#038; Announcements</a></li>
+</ul>
+</li>
+<li id="menu-item-435708" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-435708 nav-item dropdown menu-item"><a href="#" aria-haspopup="true" aria-expanded="false">Essence Family</a>
+<ul class="sub-menu">
+	<li id="menu-item-423543" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-423543 nav-item dropdown menu-item"><a href="https://shop.essence.com/">Shop Essence</a></li>
+	<li id="menu-item-435709" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-435709 nav-item dropdown menu-item"><a href="https://www.naturallycurly.com/">NaturallyCurly</a></li>
+	<li id="menu-item-435710" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-435710 nav-item dropdown menu-item"><a href="https://www.essence.com/girls-united/">Girls United</a></li>
+</ul>
+</li>
+<li id="menu-item-423545" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-423545 nav-item dropdown menu-item"><a href="#" aria-haspopup="true" aria-expanded="false">Company</a>
+<ul class="sub-menu">
+	<li id="menu-item-423547" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-423547 nav-item dropdown menu-item"><a href="https://www.essence.com/about/">Our Company</a></li>
+	<li id="menu-item-424244" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-424244 nav-item dropdown menu-item"><a href="https://subs.essence.com/servlet/CSGateway?cds_mag_code=ESS">Customer Service</a></li>
+	<li id="menu-item-424245" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-424245 nav-item dropdown menu-item"><a href="https://subs.essence.com/servlet/CSGateway?cds_mag_code=ESS">Change Your Address</a></li>
+	<li id="menu-item-423548" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-423548 nav-item dropdown menu-item"><a href="https://www.essence.com/about/contact/">Contact Us</a></li>
+	<li id="menu-item-424252" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-424252 nav-item dropdown menu-item"><a href="https://www.essence.com/careers/">Job Opportunities</a></li>
+	<li id="menu-item-424254" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-424254 nav-item dropdown menu-item"><a href="https://www.essence.com/interns">Internships</a></li>
+	<li id="menu-item-423554" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-423554 nav-item dropdown menu-item"><a href="https://www.directactionmedia.com/wp-content/uploads/2016/05/ESSENCE-MEDIA-KIT-2019_9.20.18.pdf">Media Kit</a></li>
+</ul>
+</li>
+<li id="menu-item-424266" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-424266 nav-item dropdown menu-item"><a href="https://subs.essence.com/pubs/EV/ESS/ESS_subpage_absplit_2019.jsp?cds_mag_code=ESS&#038;cds_page_id=246314" aria-haspopup="true" aria-expanded="false">Subscribe</a>
+<ul class="sub-menu">
+	<li id="menu-item-424271" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-424271 nav-item dropdown menu-item"><a href="https://www.essence.com/newsletters/">Newsletters</a></li>
+	<li id="menu-item-424274" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-424274 nav-item dropdown menu-item"><a href="https://subs.essence.com/servlet/GiftsGateway?cds_mag_code=ESS&#038;cds_page_id=228460">Give a Gift of ESSENCE</a></li>
+	<li id="menu-item-424276" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-424276 nav-item dropdown menu-item"><a href="https://subscription-assets.essence.com/prod/assets/themes/magazines/default/template-resources/html/EE/allaccess/learnmore.html">Magazine Tablet Edition</a></li>
+</ul>
+</li>
+</ul></div>		<div class="expanded-footer">
+						<h4 class="col-header">Follow Us</h4>
+			<ul class="footer-social-links">
+									<li><a target="_blank" href="https://facebook.com/essence" rel='noopener'><svg class="svg-icon" width="29" height="29" aria-hidden="true" role="img" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg></a></li>
+													<li><a target="_blank" href="https://twitter.com/essence" rel='noopener'><svg class="svg-icon" width="29" height="29" aria-hidden="true" role="img" focusable="false" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M22.23,5.924c-0.736,0.326-1.527,0.547-2.357,0.646c0.847-0.508,1.498-1.312,1.804-2.27 c-0.793,0.47-1.671,0.812-2.606,0.996C18.324,4.498,17.257,4,16.077,4c-2.266,0-4.103,1.837-4.103,4.103 c0,0.322,0.036,0.635,0.106,0.935C8.67,8.867,5.647,7.234,3.623,4.751C3.27,5.357,3.067,6.062,3.067,6.814 c0,1.424,0.724,2.679,1.825,3.415c-0.673-0.021-1.305-0.206-1.859-0.513c0,0.017,0,0.034,0,0.052c0,1.988,1.414,3.647,3.292,4.023 c-0.344,0.094-0.707,0.144-1.081,0.144c-0.264,0-0.521-0.026-0.772-0.074c0.522,1.63,2.038,2.816,3.833,2.85 c-1.404,1.1-3.174,1.756-5.096,1.756c-0.331,0-0.658-0.019-0.979-0.057c1.816,1.164,3.973,1.843,6.29,1.843 c7.547,0,11.675-6.252,11.675-11.675c0-0.178-0.004-0.355-0.012-0.531C20.985,7.47,21.68,6.747,22.23,5.924z"></path></svg></a></li>
+													<li><a target="_blank" href="https://www.instagram.com/essence" rel='noopener'><svg class="svg-icon" width="29" height="29" aria-hidden="true" role="img" focusable="false" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M12,4.622c2.403,0,2.688,0.009,3.637,0.052c0.877,0.04,1.354,0.187,1.671,0.31c0.42,0.163,0.72,0.358,1.035,0.673 c0.315,0.315,0.51,0.615,0.673,1.035c0.123,0.317,0.27,0.794,0.31,1.671c0.043,0.949,0.052,1.234,0.052,3.637 s-0.009,2.688-0.052,3.637c-0.04,0.877-0.187,1.354-0.31,1.671c-0.163,0.42-0.358,0.72-0.673,1.035 c-0.315,0.315-0.615,0.51-1.035,0.673c-0.317,0.123-0.794,0.27-1.671,0.31c-0.949,0.043-1.233,0.052-3.637,0.052 s-2.688-0.009-3.637-0.052c-0.877-0.04-1.354-0.187-1.671-0.31c-0.42-0.163-0.72-0.358-1.035-0.673 c-0.315-0.315-0.51-0.615-0.673-1.035c-0.123-0.317-0.27-0.794-0.31-1.671C4.631,14.688,4.622,14.403,4.622,12 s0.009-2.688,0.052-3.637c0.04-0.877,0.187-1.354,0.31-1.671c0.163-0.42,0.358-0.72,0.673-1.035 c0.315-0.315,0.615-0.51,1.035-0.673c0.317-0.123,0.794-0.27,1.671-0.31C9.312,4.631,9.597,4.622,12,4.622 M12,3 C9.556,3,9.249,3.01,8.289,3.054C7.331,3.098,6.677,3.25,6.105,3.472C5.513,3.702,5.011,4.01,4.511,4.511 c-0.5,0.5-0.808,1.002-1.038,1.594C3.25,6.677,3.098,7.331,3.054,8.289C3.01,9.249,3,9.556,3,12c0,2.444,0.01,2.751,0.054,3.711 c0.044,0.958,0.196,1.612,0.418,2.185c0.23,0.592,0.538,1.094,1.038,1.594c0.5,0.5,1.002,0.808,1.594,1.038 c0.572,0.222,1.227,0.375,2.185,0.418C9.249,20.99,9.556,21,12,21s2.751-0.01,3.711-0.054c0.958-0.044,1.612-0.196,2.185-0.418 c0.592-0.23,1.094-0.538,1.594-1.038c0.5-0.5,0.808-1.002,1.038-1.594c0.222-0.572,0.375-1.227,0.418-2.185 C20.99,14.751,21,14.444,21,12s-0.01-2.751-0.054-3.711c-0.044-0.958-0.196-1.612-0.418-2.185c-0.23-0.592-0.538-1.094-1.038-1.594 c-0.5-0.5-1.002-0.808-1.594-1.038c-0.572-0.222-1.227-0.375-2.185-0.418C14.751,3.01,14.444,3,12,3L12,3z M12,7.378 c-2.552,0-4.622,2.069-4.622,4.622S9.448,16.622,12,16.622s4.622-2.069,4.622-4.622S14.552,7.378,12,7.378z M12,15 c-1.657,0-3-1.343-3-3s1.343-3,3-3s3,1.343,3,3S13.657,15,12,15z M16.804,6.116c-0.596,0-1.08,0.484-1.08,1.08 s0.484,1.08,1.08,1.08c0.596,0,1.08-0.484,1.08-1.08S17.401,6.116,16.804,6.116z"></path></svg></a></li>
+													<li><a target="_blank" href="https://pinterest.com/essence" rel='noopener'><svg class="svg-icon" width="29" height="29" aria-hidden="true" role="img" focusable="false" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M12.289,2C6.617,2,3.606,5.648,3.606,9.622c0,1.846,1.025,4.146,2.666,4.878c0.25,0.111,0.381,0.063,0.439-0.169 c0.044-0.175,0.267-1.029,0.365-1.428c0.032-0.128,0.017-0.237-0.091-0.362C6.445,11.911,6.01,10.75,6.01,9.668 c0-2.777,2.194-5.464,5.933-5.464c3.23,0,5.49,2.108,5.49,5.122c0,3.407-1.794,5.768-4.13,5.768c-1.291,0-2.257-1.021-1.948-2.277 c0.372-1.495,1.089-3.112,1.089-4.191c0-0.967-0.542-1.775-1.663-1.775c-1.319,0-2.379,1.309-2.379,3.059 c0,1.115,0.394,1.869,0.394,1.869s-1.302,5.279-1.54,6.261c-0.405,1.666,0.053,4.368,0.094,4.604 c0.021,0.126,0.167,0.169,0.25,0.063c0.129-0.165,1.699-2.419,2.142-4.051c0.158-0.59,0.817-2.995,0.817-2.995 c0.43,0.784,1.681,1.446,3.013,1.446c3.963,0,6.822-3.494,6.822-7.833C20.394,5.112,16.849,2,12.289,2"></path></svg></a></li>
+													<li><a target="_blank" href="https://plus.google.com/+essencemag" rel='noopener'><svg class="svg-icon" width="29" height="29" aria-hidden="true" role="img" focusable="false" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M8,11h6.61c0.06,0.35,0.11,0.7,0.11,1.16c0,4-2.68,6.84-6.72,6.84c-3.87,0-7-3.13-7-7s3.13-7,7-7 c1.89,0,3.47,0.69,4.69,1.83l-1.9,1.83C10.27,8.16,9.36,7.58,8,7.58c-2.39,0-4.34,1.98-4.34,4.42S5.61,16.42,8,16.42 c2.77,0,3.81-1.99,3.97-3.02H8V11L8,11z M23,11h-2V9h-2v2h-2v2h2v2h2v-2h2"></path></svg></a></li>
+													<li><a target="_blank" href="https://www.youtube.com/channel/UC_b9CfN5Yeb_c2hQNRGKXUw" rel='noopener'><svg class="svg-icon" width="29" height="29" aria-hidden="true" role="img" focusable="false" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M21.8,8.001c0,0-0.195-1.378-0.795-1.985c-0.76-0.797-1.613-0.801-2.004-0.847c-2.799-0.202-6.997-0.202-6.997-0.202 h-0.009c0,0-4.198,0-6.997,0.202C4.608,5.216,3.756,5.22,2.995,6.016C2.395,6.623,2.2,8.001,2.2,8.001S2,9.62,2,11.238v1.517 c0,1.618,0.2,3.237,0.2,3.237s0.195,1.378,0.795,1.985c0.761,0.797,1.76,0.771,2.205,0.855c1.6,0.153,6.8,0.201,6.8,0.201 s4.203-0.006,7.001-0.209c0.391-0.047,1.243-0.051,2.004-0.847c0.6-0.607,0.795-1.985,0.795-1.985s0.2-1.618,0.2-3.237v-1.517 C22,9.62,21.8,8.001,21.8,8.001z M9.935,14.594l-0.001-5.62l5.404,2.82L9.935,14.594z"></path></svg></a></li>
+							</ul>
+		</div>
+	</div>
+</div>
+<div class="overlay"></div>
+<div id="page" class="site">
+	<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+		<header id="masthead" class="site-header">
+
+			<div class="site-branding-container">
+					<nav class="preheader-menu hide-on-mobile" aria-label="Preheader Menu">
+		<ul id="menu-preheader-menu" class="preheader-menu"><li id="menu-item-434855" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-434855 nav-item dropdown menu-item"><a href="https://girlsunited.essence.com">Girls United</a></li>
+<li id="menu-item-423591" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-423591 nav-item dropdown menu-item"><a href="https://www.naturallycurly.com/">NaturallyCurly</a></li>
+<li id="menu-item-423592" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-423592 nav-item dropdown menu-item"><a href="https://marche.essence.com/">Shop Essence</a></li>
+</ul>	</nav><!-- .preheader-menu -->
+<div class="site-branding">
+	<span class="hamburger-menu">
+		<svg class="svg-icon" width="24" height="24" aria-hidden="true" role="img" focusable="false" xmlns="http://www.w3.org/2000/svg" width="34" height="25" viewBox="0 0 34 25"><path data-name="Menu Hamburger" d="M0 21.334h33.333v3.333H0v-3.333zm0-10.668h33.333V14H0v-3.334zM0 0h33.333v3.333H0V0z" fill="#ffffff" fill-rule="evenodd"/></svg>	</span>
+			<div class="site-logo"><a href="https://www.essence.com/" rel="home"><svg class="svg-icon" width="41" height="41" aria-hidden="true" role="img" focusable="false" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="161px" height="33px" viewBox="0 0 161 33" version="1.1"><g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="top_navigation_00" transform="translate(-66.000000, -11.000000)" fill="#630A5D"><g id="logo_essence"><path d="M193.469294,43.9883529 C184.918412,43.9883529 180.286765,38.6132353 180.286765,27.0079118 C180.286765,15.3482353 185.890941,11.0805588 193.370294,11.0805588 C202.2075,11.0805588 204.114706,17.1011176 204.459265,21.2494118 L200.175088,21.2494118 C199.829559,18.3357059 198.357176,14.8338235 193.470265,14.8338235 C188.274706,14.8338235 184.670912,18.0270588 184.670912,26.9428824 C184.670912,36.278 188.177647,40.2690588 193.503265,40.2690588 C198.4125,40.2690588 199.829559,37.1573529 200.210029,33.4264118 L204.461206,33.4264118 C204.076853,38.6772941 201.585353,43.9883529 193.470265,43.9883529 M175.152353,43.2312941 L160.661471,17.8271176 L160.661471,43.2312941 L156.638382,43.2312941 L156.638382,11.7065882 L162.034853,11.7065882 L175.086353,34.5775294 L175.086353,11.7065882 L179.044412,11.7065882 L179.044412,43.2312941 M134.7885,43.2312941 L134.7885,11.7065882 L155.166,11.7065882 L155.166,15.4239412 L138.974647,15.4239412 L138.974647,24.7707059 L154.511824,24.7707059 L154.511824,28.5870588 L138.974647,28.5870588 L138.974647,39.5129706 L155.166,39.5129706 L155.166,43.2303235 M99.0368824,43.9883529 C89.9191765,43.9883529 87.2607353,39.0849412 87.1306765,33.8864706 L91.4818235,33.8864706 C91.6128529,38.1648235 93.6607941,40.3360294 99.2009118,40.3360294 C102.944471,40.3360294 105.579618,38.3696176 105.579618,34.7415588 C105.579618,31.0339118 102.070941,30.0866176 98.1546176,29.1800882 C93.1046471,28.0153824 87.2296765,26.6546176 87.2296765,19.5712647 C87.2296765,13.5924412 92.5135588,11.0815294 97.8605294,11.0815294 C106.958824,11.0815294 108.424412,16.1509118 108.621441,19.1762353 L104.336294,19.1762353 C104.173235,17.5650588 102.854206,14.7348235 97.8275294,14.7348235 C94.6731176,14.7348235 91.6468235,16.2683529 91.6468235,19.2771765 C91.6468235,23.5516471 95.733,24.1737941 100.052118,25.2327059 C104.866235,26.4129412 109.930765,27.896 109.930765,34.6115 C109.930765,40.9853529 104.949706,43.9893235 99.0388235,43.9893235 M66,43.2312941 L66,11.7065882 L86.3784706,11.7065882 L86.3784706,15.4239412 L70.1871176,15.4239412 L70.1871176,24.7707059 L85.7223529,24.7707059 L85.7223529,28.5870588 L70.1880882,28.5870588 L70.1880882,39.5129706 L86.3794412,39.5129706 L86.3794412,43.2303235 M205.768588,43.2312941 L205.768588,11.7065882 L226.145118,11.7065882 L226.145118,15.4239412 L209.953765,15.4239412 L209.953765,24.7707059 L225.490941,24.7707059 L225.490941,28.5870588 L209.953765,28.5870588 L209.953765,39.5129706 L226.145118,39.5129706 L226.145118,43.2303235 M122.685265,43.9883529 C113.567559,43.9883529 110.910088,39.0849412 110.779059,33.8864706 L115.129235,33.8864706 C115.260265,38.1648235 117.308206,40.3360294 122.849294,40.3360294 C126.592853,40.3360294 129.228,38.3696176 129.228,34.7415588 C129.228,31.0339118 125.718353,30.0866176 121.803,29.1800882 C116.753029,28.0153824 110.877088,26.6546176 110.877088,19.5712647 C110.877088,13.5924412 116.160971,11.0815294 121.507941,11.0815294 C130.607206,11.0815294 132.072794,16.1509118 132.268853,19.1762353 L127.984676,19.1762353 C127.819676,17.5650588 126.501618,14.7348235 121.474941,14.7348235 C118.320529,14.7348235 115.292294,16.2683529 115.292294,19.2771765 C115.292294,23.5516471 119.380412,24.1737941 123.699529,25.2327059 C128.511706,26.4129412 133.577206,27.896 133.577206,34.6115 C133.577206,40.9853529 128.598088,43.9893235 122.685265,43.9893235"/></g></g></g></svg></a></div>
+	
+			<nav id="site-navigation" class="main-navigation hide-on-mobile" aria-label="Top Menu">
+			<div class="menu-main-primary-menu-container"><ul id="menu-main-primary-menu" class="main-menu"><li id="menu-item-389489" class="menu-item menu-item-type-post_type menu-item-object-topic menu-item-has-children menu-item-389489 nav-item dropdown menu-item"><a href="https://www.essence.com/celebrity/" aria-haspopup="true" aria-expanded="false">Celebrity</a>
+<ul class="sub-menu">
+	<li id="menu-item--1" class="mobile-parent-nav-menu-item menu-item--1 nav-item dropdown menu-item"><a href="https://www.essence.com/celebrity/">Celebrity</a></li>
+	<li id="menu-item-389490" class="menu-item menu-item-type-post_type menu-item-object-topic menu-item-389490 nav-item dropdown menu-item"><a href="https://www.essence.com/celebrity/">Celebrity News</a></li>
+	<li id="menu-item-391773" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-391773 nav-item dropdown menu-item"><a href="https://art19.com/shows/yes-girl">&#8216;Yes, Girl!&#8217; Podcast</a></li>
+	<li id="menu-item-389495" class="menu-item menu-item-type-post_type menu-item-object-topic menu-item-389495 nav-item dropdown menu-item"><a href="https://www.essence.com/entertainment/">Entertainment</a></li>
+	<li id="menu-item-389491" class="menu-item menu-item-type-post_type menu-item-object-topic menu-item-389491 nav-item dropdown menu-item"><a href="https://www.essence.com/black-women-music/">Black Women in Music</a></li>
+	<li id="menu-item-389493" class="menu-item menu-item-type-post_type menu-item-object-topic menu-item-389493 nav-item dropdown menu-item"><a href="https://www.essence.com/celebrity/black-celeb-couples/">Black Celeb Couples</a></li>
+	<li id="menu-item-389494" class="menu-item menu-item-type-post_type menu-item-object-topic menu-item-389494 nav-item dropdown menu-item"><a href="https://www.essence.com/celebrity/celebrity-moms/">Celebrity Moms</a></li>
+	<li id="menu-item-389548" class="menu-item menu-item-type-post_type menu-item-object-topic menu-item-389548 nav-item dropdown menu-item"><a href="https://www.essence.com/awards-events/red-carpet/">Red Carpet</a></li>
+</ul>
+</li>
+<li id="menu-item-389496" class="menu-item menu-item-type-post_type menu-item-object-topic menu-item-has-children menu-item-389496 nav-item dropdown menu-item"><a href="https://www.essence.com/fashion/" aria-haspopup="true" aria-expanded="false">Fashion</a>
+<ul class="sub-menu">
+	<li id="menu-item--2" class="mobile-parent-nav-menu-item menu-item--2 nav-item dropdown menu-item"><a href="https://www.essence.com/fashion/">Fashion</a></li>
+	<li id="menu-item-389497" class="menu-item menu-item-type-post_type menu-item-object-topic menu-item-389497 nav-item dropdown menu-item"><a href="https://www.essence.com/fashion/">Fashion News</a></li>
+	<li id="menu-item-389498" class="menu-item menu-item-type-post_type menu-item-object-topic menu-item-389498 nav-item dropdown menu-item"><a href="https://www.essence.com/fashion/street-style/street_style/">Street Style</a></li>
+	<li id="menu-item-389499" class="menu-item menu-item-type-post_type menu-item-object-topic menu-item-389499 nav-item dropdown menu-item"><a href="https://www.essence.com/fashion/accessories/">Accessories</a></li>
+	<li id="menu-item-460116" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-460116 nav-item dropdown menu-item"><a href="https://www.essence.com/fashion-house/">Fashion House</a></li>
+	<li id="menu-item-389500" class="menu-item menu-item-type-post_type menu-item-object-topic menu-item-389500 nav-item dropdown menu-item"><a href="https://www.essence.com/fashion/fashion-week/">Fashion Week</a></li>
+</ul>
+</li>
+<li id="menu-item-389501" class="menu-item menu-item-type-post_type menu-item-object-topic menu-item-has-children menu-item-389501 nav-item dropdown menu-item"><a href="https://www.essence.com/beauty/" aria-haspopup="true" aria-expanded="false">Beauty</a>
+<ul class="sub-menu">
+	<li id="menu-item--3" class="mobile-parent-nav-menu-item menu-item--3 nav-item dropdown menu-item"><a href="https://www.essence.com/beauty/">Beauty</a></li>
+	<li id="menu-item-389504" class="menu-item menu-item-type-post_type menu-item-object-topic menu-item-389504 nav-item dropdown menu-item"><a href="https://www.essence.com/beauty/skin/">Skin</a></li>
+	<li id="menu-item-389505" class="menu-item menu-item-type-post_type menu-item-object-topic menu-item-389505 nav-item dropdown menu-item"><a href="https://www.essence.com/beauty/makeup/">Makeup</a></li>
+	<li id="menu-item-468713" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-468713 nav-item dropdown menu-item"><a href="https://art19.com/shows/the-color-files">Color Files Podcast</a></li>
+	<li id="menu-item-389506" class="menu-item menu-item-type-post_type menu-item-object-topic menu-item-389506 nav-item dropdown menu-item"><a href="https://www.essence.com/beauty/nails/">Nails</a></li>
+	<li id="menu-item-389507" class="menu-item menu-item-type-post_type menu-item-object-topic menu-item-389507 nav-item dropdown menu-item"><a href="https://www.essence.com/how-to/">How-To</a></li>
+	<li id="menu-item-416156" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-416156 nav-item dropdown menu-item"><a href="https://www.essence.com/beautycarnival/archive/">Beauty Carnival-Archive</a></li>
+	<li id="menu-item-389503" class="menu-item menu-item-type-post_type menu-item-object-topic menu-item-389503 nav-item dropdown menu-item"><a href="https://www.essence.com/beauty/dope-stuff-my-desk/">Dope Stuff On My Desk</a></li>
+	<li id="menu-item-468317" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-468317 nav-item dropdown menu-item"><a href="https://www.essence.com/beautifulpossibilities/">Girls United: Beautiful Possibilities</a></li>
+	<li id="menu-item-389502" class="menu-item menu-item-type-post_type menu-item-object-topic menu-item-389502 nav-item dropdown menu-item"><a href="https://www.essence.com/beauty/">Beauty News</a></li>
+</ul>
+</li>
+<li id="menu-item-389508" class="menu-item menu-item-type-post_type menu-item-object-topic menu-item-has-children menu-item-389508 nav-item dropdown menu-item"><a href="https://www.essence.com/hair/" aria-haspopup="true" aria-expanded="false">Hair</a>
+<ul class="sub-menu">
+	<li id="menu-item--4" class="mobile-parent-nav-menu-item menu-item--4 nav-item dropdown menu-item"><a href="https://www.essence.com/hair/">Hair</a></li>
+	<li id="menu-item-389509" class="menu-item menu-item-type-post_type menu-item-object-topic menu-item-389509 nav-item dropdown menu-item"><a href="https://www.essence.com/hair/">Hair News</a></li>
+	<li id="menu-item-389510" class="menu-item menu-item-type-post_type menu-item-object-topic menu-item-389510 nav-item dropdown menu-item"><a href="https://www.essence.com/natural/">Natural</a></li>
+	<li id="menu-item-389511" class="menu-item menu-item-type-post_type menu-item-object-topic menu-item-389511 nav-item dropdown menu-item"><a href="https://www.essence.com/hair/relaxed/">Relaxed</a></li>
+	<li id="menu-item-389512" class="menu-item menu-item-type-post_type menu-item-object-topic menu-item-389512 nav-item dropdown menu-item"><a href="https://www.essence.com/hair/transitioning/">Transitioning</a></li>
+	<li id="menu-item-389513" class="menu-item menu-item-type-post_type menu-item-object-topic menu-item-389513 nav-item dropdown menu-item"><a href="https://www.essence.com/hair/weave/">Weaves</a></li>
+	<li id="menu-item-389514" class="menu-item menu-item-type-post_type menu-item-object-topic menu-item-389514 nav-item dropdown menu-item"><a href="https://www.essence.com/hair/4c/">4C</a></li>
+	<li id="menu-item-389515" class="menu-item menu-item-type-post_type menu-item-object-topic menu-item-389515 nav-item dropdown menu-item"><a href="https://www.essence.com/hair/spring-hair-and-beauty/">Spring Hair And Beauty</a></li>
+</ul>
+</li>
+<li id="menu-item-389516" class="menu-item menu-item-type-post_type menu-item-object-topic menu-item-has-children menu-item-389516 nav-item dropdown menu-item"><a href="https://www.essence.com/love/" aria-haspopup="true" aria-expanded="false">Love</a>
+<ul class="sub-menu">
+	<li id="menu-item--5" class="mobile-parent-nav-menu-item menu-item--5 nav-item dropdown menu-item"><a href="https://www.essence.com/love/">Love</a></li>
+	<li id="menu-item-389517" class="menu-item menu-item-type-post_type menu-item-object-topic menu-item-389517 nav-item dropdown menu-item"><a href="https://www.essence.com/love/">Love &#038; Sex News</a></li>
+	<li id="menu-item-468715" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-468715 nav-item dropdown menu-item"><a href="https://art19.com/shows/the-solve">The Solve Podcast</a></li>
+	<li id="menu-item-389518" class="menu-item menu-item-type-post_type menu-item-object-topic menu-item-389518 nav-item dropdown menu-item"><a href="https://www.essence.com/love/weddings/">Weddings</a></li>
+	<li id="menu-item-389519" class="menu-item menu-item-type-post_type menu-item-object-topic menu-item-389519 nav-item dropdown menu-item"><a href="https://www.essence.com/lifestyle/parenting/">Parenting</a></li>
+	<li id="menu-item-389520" class="menu-item menu-item-type-post_type menu-item-object-topic menu-item-389520 nav-item dropdown menu-item"><a href="https://www.essence.com/love/relationships/">Relationships</a></li>
+</ul>
+</li>
+<li id="menu-item-389522" class="menu-item menu-item-type-post_type menu-item-object-topic menu-item-has-children menu-item-389522 nav-item dropdown menu-item"><a href="https://www.essence.com/lifestyle/" aria-haspopup="true" aria-expanded="false">Lifestyle</a>
+<ul class="sub-menu">
+	<li id="menu-item--6" class="mobile-parent-nav-menu-item menu-item--6 nav-item dropdown menu-item"><a href="https://www.essence.com/lifestyle/">Lifestyle</a></li>
+	<li id="menu-item-481501" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-481501 nav-item dropdown menu-item"><a href="https://www.essence.com/holiday-gift-guide/">Holiday Gift Guide</a></li>
+	<li id="menu-item-389521" class="menu-item menu-item-type-post_type menu-item-object-topic menu-item-389521 nav-item dropdown menu-item"><a href="https://www.essence.com/lifestyle/">Lifestyle News</a></li>
+	<li id="menu-item-468714" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-468714 nav-item dropdown menu-item"><a href="https://art19.com/shows/unbossed">Unbossed Podcast</a></li>
+	<li id="menu-item-389523" class="menu-item menu-item-type-post_type menu-item-object-topic menu-item-389523 nav-item dropdown menu-item"><a href="https://www.essence.com/lifestyle/health-wellness/">Health &#038; Wellness</a></li>
+	<li id="menu-item-389524" class="menu-item menu-item-type-post_type menu-item-object-topic menu-item-389524 nav-item dropdown menu-item"><a href="https://www.essence.com/essence-eats/">ESSENCE Eats</a></li>
+	<li id="menu-item-428671" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-428671 nav-item dropdown menu-item"><a href="https://www.essence.com/girls-united/">Girls United</a></li>
+	<li id="menu-item-389525" class="menu-item menu-item-type-post_type menu-item-object-topic menu-item-389525 nav-item dropdown menu-item"><a href="https://www.essence.com/lifestyle/money-career/">Money &#038; Career</a></li>
+	<li id="menu-item-389526" class="menu-item menu-item-type-post_type menu-item-object-topic menu-item-389526 nav-item dropdown menu-item"><a href="https://www.essence.com/lifestyle/money-career/entrepreneurship/">Entrepreneurship</a></li>
+	<li id="menu-item-389528" class="menu-item menu-item-type-post_type menu-item-object-topic menu-item-389528 nav-item dropdown menu-item"><a href="https://www.essence.com/lifestyle/travel/">Travel</a></li>
+	<li id="menu-item-389527" class="menu-item menu-item-type-post_type menu-item-object-topic menu-item-389527 nav-item dropdown menu-item"><a href="https://www.essence.com/lifestyle/black-travel-guide/">Black Travel Guide</a></li>
+	<li id="menu-item-424835" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-424835 nav-item dropdown menu-item"><a href="https://currencyconversations.com/">Currency Conversations</a></li>
+	<li id="menu-item-440274" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-440274 nav-item dropdown menu-item"><a href="https://www.essence.com/lifestyle/food-drinks/">Food &#038; Drink</a></li>
+</ul>
+</li>
+<li id="menu-item-389529" class="menu-item menu-item-type-post_type menu-item-object-topic menu-item-has-children menu-item-389529 nav-item dropdown menu-item"><a href="https://www.essence.com/news/" aria-haspopup="true" aria-expanded="false">News</a>
+<ul class="sub-menu">
+	<li id="menu-item--7" class="mobile-parent-nav-menu-item menu-item--7 nav-item dropdown menu-item"><a href="https://www.essence.com/news/">News</a></li>
+	<li id="menu-item-389530" class="menu-item menu-item-type-post_type menu-item-object-topic menu-item-389530 nav-item dropdown menu-item"><a href="https://www.essence.com/news/">Latest News</a></li>
+	<li id="menu-item-389531" class="menu-item menu-item-type-post_type menu-item-object-topic menu-item-389531 nav-item dropdown menu-item"><a href="https://www.essence.com/culture/">Culture</a></li>
+	<li id="menu-item-389532" class="menu-item menu-item-type-post_type menu-item-object-topic menu-item-389532 nav-item dropdown menu-item"><a href="https://www.essence.com/news/politics/">Politics</a></li>
+</ul>
+</li>
+<li id="menu-item-389533" class="menu-item menu-item-type-post_type menu-item-object-topic menu-item-389533 nav-item dropdown menu-item"><a href="https://www.essence.com/videos/">Videos</a></li>
+<li id="menu-item-389537" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-389537 nav-item dropdown menu-item"><a href="/festival/" aria-haspopup="true" aria-expanded="false">Events</a>
+<ul class="sub-menu">
+	<li id="menu-item--8" class="mobile-parent-nav-menu-item menu-item--8 nav-item dropdown menu-item"><a href="/festival/">Events</a></li>
+	<li id="menu-item-459876" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-459876 nav-item dropdown menu-item"><a href="https://www.essence.com/fashion-house">Fashion House</a></li>
+	<li id="menu-item-389539" class="menu-item menu-item-type-post_type menu-item-object-topic menu-item-389539 nav-item dropdown menu-item"><a href="https://www.essence.com/festival/2018-essence-festival/festival-2018/">News &#038; Announcement</a></li>
+	<li id="menu-item-475595" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-475595 nav-item dropdown menu-item"><a href="https://www.essence.com/market-summit/">Entrepreneur Summit and Holiday Market</a></li>
+</ul>
+</li>
+<li id="menu-item-389540" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-389540 nav-item dropdown menu-item"><a href="/festival2020">Festival</a></li>
+<li id="menu-item-426722" class="color-magenta menu-item menu-item-type-custom menu-item-object-custom menu-item-426722 nav-item dropdown menu-item"><a href="https://subs.essence.com/pubs/EV/ESS/ESS_subpage_absplit_2019.jsp?cds_mag_code=ESS&#038;cds_page_id=246314">Subscribe</a></li>
+</ul></div>		</nav><!-- #site-navigation -->
+		<span class="search hide-on-mobile">
+		<svg class="svg-icon" width="24" height="24" aria-hidden="true" role="img" focusable="false" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25"><path data-name="Search Icon" d="M10.612,18.03A8.073,8.073,0,0,1,2.5,10.012a8.113,8.113,0,0,1,16.225,0A8.077,8.077,0,0,1,10.612,18.03Zm13.6,4.04-5.774-5.713a9.911,9.911,0,0,0,2.294-6.346A10.07,10.07,0,0,0,10.612,0,10.067,10.067,0,0,0,.49,10.012a10.147,10.147,0,0,0,16.534,7.747L22.8,23.465a1,1,0,0,0,1.417,0A0.973,0.973,0,0,0,24.215,22.071Z"     transform="translate(-.5)" fill="#ffffff" fill-rule="evenodd"/></svg>	</span>
+</div><!-- .site-branding -->
+			</div><!-- .layout-wrap -->
+		</header><!-- #masthead -->
+			<div id="div-gpt-ad-21700267070-1"
+			 class="ad-position leaderboard dfp-ads-horizontal first-top-ad"
+			 data-sizes="[[[0, 0], [[300, 250], [320, 50], [101, 1]]] , [[768, 0], [[728, 90], [101, 1]]], [[1024, 0], [[728, 90], [970, 250], [970, 66], [994, 250], [101, 1]]]]">
+		</div>
+		
+	<div id="content" class="site-content">
+
+	<section id="primary" class="content-area">
+		<main id="main" class="site-main">
+
+			<div class="essence-post-header" style="display: none;" data-url="https://www.essence.com/beauty/beauty-resolutions-to-keep-in-2020/"
+	 data-title="15 Beauty Resolutions I Plan To Keep In 2020, And You Should Too"
+	 data-post-info='{"date":"01-01-2020","author":"[Shalwah Evans]","category":"Beauty","sub_category":"","terms":"2020-beauty-resolutions,new-year-beauty-resolutions,new-years-resolution","pagetype":"article","page_url":"https:\/\/www.essence.com\/beauty\/beauty-resolutions-to-keep-in-2020\/","post_title":"Beauty Resolutions I Plan To Keep In 2020, And You Should Too","page_slug":"\/beauty\/beauty-resolutions-to-keep-in-2020\/","platform":"own"}'
+	 data-post_type="article"
+	 data-page_targeting='{"aid":"490675","ctype":"article","ch":"beauty","tags":["2020 beauty resolutions","new year beauty resolutions","new years resolution"]}'
+	 data-slot_name="ess/beauty">
+</div>
+<article id="post-490675" class="article post-490675 type-article status-publish hentry article_category-beauty article_author-shalwah-evans article_tags-2020-beauty-resolutions article_tags-new-year-beauty-resolutions article_tags-new-years-resolution entry contains-video">
+		<header class="entry-header">
+		<div class="entry-category-list"><a href="https://www.essence.com">Home</a> &middot; <a href="https://www.essence.com/beauty/">Beauty</a></div>
+<h1 class="entry-title">
+15 Beauty Resolutions I Plan To Keep In 2020, And You Should Too</h1>
+<div class="headline-deck">
+I'm getting the next decade of flawless beauty off to a good start with healthy habits now.</div>
+	</header>
+
+		<div class="entry-content with-rightrail">
+		<div class="main-content">
+			<div class="entry-featured-image default">
+				<div class="common-article-sec first-sec" data-hash="" data-post-id="490675">
+					<!-- image -->
+					<div class="d-flex">
+												<div class="picture ">
+																	<figure class="hero-img landscape"><picture><source srcset="https://www.essence.com/wp-content/uploads/2019/12/Beauty-Resolutions-hero.jpg?width=1280&height=720 1x, https://www.essence.com/wp-content/uploads/2019/12/Beauty-Resolutions-hero.jpg?width=1920&height=1080 2x" media="(min-width: 1440px)"><source srcset="https://www.essence.com/wp-content/uploads/2019/12/Beauty-Resolutions-hero.jpg?width=1280&height=720 1x, https://www.essence.com/wp-content/uploads/2019/12/Beauty-Resolutions-hero.jpg?width=1920&height=1080 2x" media="(min-width: 1280px)"><source srcset="https://www.essence.com/wp-content/uploads/2019/12/Beauty-Resolutions-hero.jpg?width=1280&height=720 1x, https://www.essence.com/wp-content/uploads/2019/12/Beauty-Resolutions-hero.jpg?width=1920&height=1080 2x" media="(min-width: 1028px)"><source srcset="https://www.essence.com/wp-content/uploads/2019/12/Beauty-Resolutions-hero.jpg?width=640&height=360 1x, https://www.essence.com/wp-content/uploads/2019/12/Beauty-Resolutions-hero.jpg?width=1280&height=720 2x" media="(min-width: 768px)"><source srcset="https://www.essence.com/wp-content/uploads/2019/12/Beauty-Resolutions-hero.jpg?width=640&height=360 1x, https://www.essence.com/wp-content/uploads/2019/12/Beauty-Resolutions-hero.jpg?width=640&height=360 2x" media="(min-width: 0px)"><img src="https://www.essence.com/wp-content/uploads/2019/12/Beauty-Resolutions-hero.jpg?width=1920&height=1080" alt="Beauty Resolutions I Plan To Keep In 2020, And You Should Too" /></picture></figure>										<div class="quick-social-icon">
+											<a rel="noopener" class="js-pintrest-share-btn"
+											   href="https://www.pinterest.com/pin/create/link/?url=https://www.essence.com/beauty/beauty-resolutions-to-keep-in-2020/?utm_source=pinterest.com&utm_medium=social&utm_campaign=essence&media=490677&description=15+Beauty+Resolutions+I+Plan+To+Keep+In+2020%2C+And+You+Should+Too"
+											   target="_blank">
+												<svg class="svg-icon" width="24" height="24" aria-hidden="true" role="img" focusable="false" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M12.289,2C6.617,2,3.606,5.648,3.606,9.622c0,1.846,1.025,4.146,2.666,4.878c0.25,0.111,0.381,0.063,0.439-0.169 c0.044-0.175,0.267-1.029,0.365-1.428c0.032-0.128,0.017-0.237-0.091-0.362C6.445,11.911,6.01,10.75,6.01,9.668 c0-2.777,2.194-5.464,5.933-5.464c3.23,0,5.49,2.108,5.49,5.122c0,3.407-1.794,5.768-4.13,5.768c-1.291,0-2.257-1.021-1.948-2.277 c0.372-1.495,1.089-3.112,1.089-4.191c0-0.967-0.542-1.775-1.663-1.775c-1.319,0-2.379,1.309-2.379,3.059 c0,1.115,0.394,1.869,0.394,1.869s-1.302,5.279-1.54,6.261c-0.405,1.666,0.053,4.368,0.094,4.604 c0.021,0.126,0.167,0.169,0.25,0.063c0.129-0.165,1.699-2.419,2.142-4.051c0.158-0.59,0.817-2.995,0.817-2.995 c0.43,0.784,1.681,1.446,3.013,1.446c3.963,0,6.822-3.494,6.822-7.833C20.394,5.112,16.849,2,12.289,2"></path></svg>											</a>
+										</div>
+										<figcaption>
+																					</figcaption>
+																								</div>
+					</div>
+				</div>
+			</div>
+			<div class="icon-bar left hide-on-mobile">
+	<a href="https://www.facebook.com/sharer/sharer.php?u=https://www.essence.com/beauty/beauty-resolutions-to-keep-in-2020/" class="facebook"><svg class="svg-icon" width="24" height="24" aria-hidden="true" role="img" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg></a> 
+	<a rel="noopener" class="pintrest" href="https://www.facebook.com/sharer/sharer.php?u=https://www.essence.com/beauty/beauty-resolutions-to-keep-in-2020/" target="_blank"><svg class="svg-icon" width="24" height="24" aria-hidden="true" role="img" focusable="false" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M12.289,2C6.617,2,3.606,5.648,3.606,9.622c0,1.846,1.025,4.146,2.666,4.878c0.25,0.111,0.381,0.063,0.439-0.169 c0.044-0.175,0.267-1.029,0.365-1.428c0.032-0.128,0.017-0.237-0.091-0.362C6.445,11.911,6.01,10.75,6.01,9.668 c0-2.777,2.194-5.464,5.933-5.464c3.23,0,5.49,2.108,5.49,5.122c0,3.407-1.794,5.768-4.13,5.768c-1.291,0-2.257-1.021-1.948-2.277 c0.372-1.495,1.089-3.112,1.089-4.191c0-0.967-0.542-1.775-1.663-1.775c-1.319,0-2.379,1.309-2.379,3.059 c0,1.115,0.394,1.869,0.394,1.869s-1.302,5.279-1.54,6.261c-0.405,1.666,0.053,4.368,0.094,4.604 c0.021,0.126,0.167,0.169,0.25,0.063c0.129-0.165,1.699-2.419,2.142-4.051c0.158-0.59,0.817-2.995,0.817-2.995 c0.43,0.784,1.681,1.446,3.013,1.446c3.963,0,6.822-3.494,6.822-7.833C20.394,5.112,16.849,2,12.289,2"></path></svg></a> 
+	<a href="https://twitter.com/intent/tweet?text=15+Beauty+Resolutions+I+Plan+To+Keep+In+2020%2C+And+You+Should+Too&nbsp;https://www.essence.com/beauty/beauty-resolutions-to-keep-in-2020/%3Futm_source%3Dtwitter.com%26utm_medium%3Dsocial%26utm_campaign%3Dsocial-button-sharing+via+%40ESSENCE" class="twitter"><svg class="svg-icon" width="24" height="24" aria-hidden="true" role="img" focusable="false" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M22.23,5.924c-0.736,0.326-1.527,0.547-2.357,0.646c0.847-0.508,1.498-1.312,1.804-2.27 c-0.793,0.47-1.671,0.812-2.606,0.996C18.324,4.498,17.257,4,16.077,4c-2.266,0-4.103,1.837-4.103,4.103 c0,0.322,0.036,0.635,0.106,0.935C8.67,8.867,5.647,7.234,3.623,4.751C3.27,5.357,3.067,6.062,3.067,6.814 c0,1.424,0.724,2.679,1.825,3.415c-0.673-0.021-1.305-0.206-1.859-0.513c0,0.017,0,0.034,0,0.052c0,1.988,1.414,3.647,3.292,4.023 c-0.344,0.094-0.707,0.144-1.081,0.144c-0.264,0-0.521-0.026-0.772-0.074c0.522,1.63,2.038,2.816,3.833,2.85 c-1.404,1.1-3.174,1.756-5.096,1.756c-0.331,0-0.658-0.019-0.979-0.057c1.816,1.164,3.973,1.843,6.29,1.843 c7.547,0,11.675-6.252,11.675-11.675c0-0.178-0.004-0.355-0.012-0.531C20.985,7.47,21.68,6.747,22.23,5.924z"></path></svg></a> 
+	<a href="mailto:?subject=15 Beauty Resolutions I Plan To Keep In 2020, And You Should Too&body=https://www.essence.com/beauty/beauty-resolutions-to-keep-in-2020/" class="email"><svg class="svg-icon" width="24" height="24" aria-hidden="true" role="img" focusable="false" viewBox="0 0 24 15.84" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M0 0v15.84h24V0zm1.53 13.41v-11l6.33 5.5zM12 9.5l-9.22-8h18.43zm9.22 4.83H2.78L9 8.92l3 2.59 3-2.59zm-5.08-6.41l6.33-5.5v11z"></path></svg></a> 
+</div>
+			<div class="article-meta entry-meta">
+				<span class="byline"><span class="author vcard">By <a class="url fn n" href="https://www.essence.com/authors/shalwah-evans/">Shalwah Evans</a></span></span>				<span class="article-meta__sep entry-meta__sep">&middot;</span>
+				<span class="posted-on"><a href="https://www.essence.com/beauty/beauty-resolutions-to-keep-in-2020/" rel="bookmark"><time class="entry-date published" datetime="2020-01-01T05:00:20-05:00">January 1, 2020</time><time class="updated" datetime="2019-12-31T12:22:46-05:00">December 31, 2019</time></a></span>											</div><!-- .meta-info -->
+			
+<p>It&#8217;s officially 2020, so it&#8217;s time for the resolutions to begin. I typically don&#8217;t like to make resolutions for the new year because they tend to feel like promises I&#8217;ll break to myself around month three or four.</p>
+
+
+
+<p>But in light of it being a new year and a new decade, I thought it made sense to set some goals for the health of my skin, hair, and nails. So I&#8217;m starting off the 2020&#8217;s with these 15 resolutions in a concerted effort to do better when it comes to my beauty habits. And this time I plan to make it through the entire year. </p>		<div id="div-gpt-ad-21700267070-2"
+			 class="ad-position phone-only dfp-ads-horizontal"
+			 data-sizes="[[[0, 0], []], [[320, 0], [[320, 50]]], [[768, 0], []]]">
+		</div>
+		
+
+
+<div class="ess-embed-content brightcove">
+	<div class="vjs-pip-container">
+		<video-js id="brightcove-6103022347001"
+			   data-video-id="6103022347001"
+			   data-account="716147494"
+			   data-is-livestream=""
+			   data-player="default"
+			   data-embed="default"
+			   class="video-js"
+			   data-brand="essence"
+			   controls
+			   playsinline>
+		</video-js>
+	</div>
+</div>
+
+
+
+
+<p><strong>Wash my face twice daily.</strong> Celebrities like Ciara and La La Anthony pressed how necessary it is to wash your face in the morning and night. And based on the glow of their skin I would certainly take their advice. Washing at night is intuitive, but not in the morning. So I&#8217;ve built a wake up routine to keep me on track. I&#8217;m already starting to see a difference.</p>
+
+
+
+<p><strong>Trim my hair every quarter.</strong> Hair growth guru Whitney Eaddy explained that excessive trimming is actually bad for hair growth. “For my clients, I say once a quarter, for some, every three and a half months. I have a proprietary trim that I developed because cosmetologists are taught to cut for shape, but not actually retention,” she told ESSENCE. So I&#8217;m taking my cues from her and her growing hands, and only trimming four times a year, and keeping that appointment. </p>
+
+
+
+<p><strong>Learn to apply false lashes.</strong> I&#8217;m very transparent about the fact that I am awful at putting on falsies. I can apply magnetics but not lashes that require glue. That limits the different styles I can wear. Right now I have several pairs of false lashes from brands such as KISS, Sephora, Absolute New York, and more. I&#8217;m not willing to consistently pay for lash extensions so this is the year I master this.</p>		<div id="div-gpt-ad-21700267070-3"
+			 class="ad-position phone-only dfp-ads-horizontal"
+			 data-sizes="[[[0, 0], []], [[320, 0], [[320, 50]]], [[768, 0], []]]">
+		</div>
+		
+
+
+
+<div class="wp-block-image"><figure class="aligncenter is-resized"><img src="https://www.essence.com/wp-content/uploads/2019/12/Screen-Shot-2019-12-31-at-11.43.32-AM.png" alt="" class="wp-image-490731" width="603" height="417" srcset="https://www.essence.com/wp-content/uploads/2019/12/Screen-Shot-2019-12-31-at-11.43.32-AM.png 1332w, https://www.essence.com/wp-content/uploads/2019/12/Screen-Shot-2019-12-31-at-11.43.32-AM-1568x1087.png 1568w" sizes="(max-width: 603px) 100vw, 603px" /><figcaption><a href="https://absolutenewyork.com/collections/false-eyelashes/products/darling-lashes?variant=31314273992813" target="_blank" rel="noreferrer noopener" aria-label="Absolute New York Darling Lashes, $2, absolutenewyork.com (opens in a new tab)">Absolute New York Darling Lashes, $2, absolutenewyork.com</a></figcaption></figure></div>
+
+
+
+<p><strong>Use hair masks.</strong> With my low porosity hair it&#8217;s always a process finding the right products. And even when I like a product I typically have to deep condition with a heat cap every time I wash with it. For that reason I&#8217;ve stayed away from extra steps, like masks. But masks can be great for hydrating thirsty strands, and even for deep conditioning. This year I&#8217;ll make sure I find the right masks, and start to reap their benefits for the sake of my strands.</p>
+
+
+
+<p><strong>Drink more water.</strong> Every year I say I&#8217;ll drink more water and every year I fail. It&#8217;s mainly because I don&#8217;t drink a lot of liquids overall. But your skin will always benefit from an abundance of clean water. It goes hand in hand with washing your face twice a day.</p>
+
+
+
+<p><strong>Drink less wine.</strong> This goes hand in hand with drinking more water. I love wine, but alcohol undoubtedly ages your skin. If I can replace some of my wine with water I&#8217;ll be on my way to truly making 40 look like the new 20.</p>		<div id="div-gpt-ad-21700267070-4"
+			 class="ad-position phone-only dfp-ads-horizontal"
+			 data-sizes="[[[0, 0], []], [[320, 0], [[320, 50]]], [[768, 0], []]]">
+		</div>
+		
+
+
+
+<p><strong>Experiment with hair color.</strong> It&#8217;s been years since I&#8217;ve colored my hair in an attempt to get it back to its virgin state. But when I see celebs like Megan Thee Stallion and Cardi B sporting brightly colored tresses I get a little nostalgic. I don&#8217;t necessarily need to dye my curls, but this year I want to explore more colored units, hair gels, and temporary color sprays.</p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter is-resized"><img src="https://www.essence.com/wp-content/uploads/2019/12/Megan-Thee-Stallion-tout.jpg" alt="" class="wp-image-490733" width="604" height="452" srcset="https://www.essence.com/wp-content/uploads/2019/12/Megan-Thee-Stallion-tout.jpg 632w, https://www.essence.com/wp-content/uploads/2019/12/Megan-Thee-Stallion-tout-1568x1176.jpg 1568w" sizes="(max-width: 604px) 100vw, 604px" /><figcaption>Megan Thee Stallion<br>(Getty Images)</figcaption></figure></div>
+
+
+
+<p><strong>Invest in eco-friendly brands</strong> (specifically ones who cut down on plastic use). We had significant conversations about climate change in 2019 and it shook me. I realized that I needed to do more in my daily life to combat environmental issues. Most plastics are non-recyclable and they dominate when it comes to our beauty product containers. It&#8217;ll take more work on my part to find the brands and products that use alternatives, but well worth it.</p>
+
+
+
+<p><strong>Do more natural DIY skincare.</strong> One of my face washes contained something called sodium lauroamphoacetate. When I looked it up I still didn&#8217;t understand what it was made of and why I needed it in my facial cleanser. That was one of 10 chemicals that I couldn&#8217;t pronounce in this one product. It made me yearn for the days of avocado and banana masks to keep my breakouts at bay. So in 2020 there will be more of that, and less PEG 120 methyl glucose dioleate.</p>		<div id="div-gpt-ad-21700267070-5"
+			 class="ad-position phone-only dfp-ads-horizontal"
+			 data-sizes="[[[0, 0], []], [[320, 0], [[320, 50]]], [[768, 0], []]]">
+		</div>
+		
+
+
+
+<p><strong>Don&#8217;t sweat the small stuff.</strong> Stress leads to breakouts, and breakouts stress you out. This year I&#8217;m committing to spending less time worrying about the little daily stressors. This is a lofty goal for someone who lives in a city of more than 8 million people. More people, more problems. But I&#8217;m also not going to obsess about the occasional pimple on the cheek, gray hair sprouting at the hairline, or quickly disintegrating manicure.</p>
+
+
+
+<p><strong>Treat my edges like a newborn baby.</strong> I&#8217;m going to feed them only the best stuff. I&#8217;m going to care for them like they&#8217;re delicate. I will massage them gently, and make sure I&#8217;m doing the most to care for them daily. This year my edges will grow for me!</p>
+
+
+
+<p><strong>Be consistent with supplements.</strong> I&#8217;ve seen firsthand the benefits of supplements when I use them as directed, and consistently. It can feel like an extra thing to do in the morning but once you work it into your schedule it becomes second nature. I want enviable skin, hair, and nails for the next decade.</p>		<div id="div-gpt-ad-21700267070-6"
+			 class="ad-position phone-only dfp-ads-horizontal"
+			 data-sizes="[[[0, 0], []], [[320, 0], [[320, 50]]], [[768, 0], []]]">
+		</div>
+		
+
+
+
+<div class="wp-block-image"><figure class="aligncenter is-resized"><img src="https://www.essence.com/wp-content/uploads/2019/12/Phyto-edit.png" alt="" class="wp-image-490736" width="555" height="534" srcset="https://www.essence.com/wp-content/uploads/2019/12/Phyto-edit.png 828w, https://www.essence.com/wp-content/uploads/2019/12/Phyto-edit-1568x1511.png 1568w" sizes="(max-width: 555px) 100vw, 555px" /><figcaption><a href="https://www.ulta.com/phytophanere-dietary-supplement-hair-nails?productId=xlsImpprod1260422" target="_blank" rel="noreferrer noopener" aria-label="PHYTOPHANÈRE Dietary Supplement for Hair &amp; Nails, $42, ulta.com (opens in a new tab)">PHYTOPHANÈRE Dietary Supplement for Hair &amp; Nails, $42, ulta.com</a></figcaption></figure></div>
+
+
+
+<p><strong>Ask more questions.</strong> I&#8217;m a journalist so I&#8217;m always asking lots of questions, all the time. But when I&#8217;m talking to brands about their ingredients claims I could stand to ask their reps more questions, not just my dermatologist. It&#8217;s never enough to just know what&#8217;s in your products, but it&#8217;s imperative to know exactly what they do, and if they&#8217;re worth what you&#8217;re paying.</p>
+
+
+
+<p><strong>Eat less carbs.</strong> I love my pizza, pasta, breads, and chips, but all that stuff turns to sugar and sugar gives me pimples and rough skin. While health and beauty go hand in hand in many ways this is completely for skincare purposes. What you eat can show up on your face. A sugary face might sound like a sweet dream, but it&#8217;s really an exfoliating nightmare.</p>
+
+
+
+<p><strong>Use less products overall.</strong> It&#8217;s so important to find what works for you and stick to those products. While I&#8217;m never going to stop trying products (I&#8217;m a beauty editor and a product lover), I&#8217;ll be better about not switching my main items so often. This will keep the clogged pores away for face and hair.</p>
+<span class="icon-bar-title center mobile-only">Share :</span>
+<div class="icon-bar center mobile-only">
+	<a href="https://www.facebook.com/sharer/sharer.php?u=https://www.essence.com/beauty/beauty-resolutions-to-keep-in-2020/" class="facebook"><svg class="svg-icon" width="24" height="24" aria-hidden="true" role="img" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg></a> 
+	<a rel="noopener" class="pintrest" href="https://www.facebook.com/sharer/sharer.php?u=https://www.essence.com/beauty/beauty-resolutions-to-keep-in-2020/" target="_blank"><svg class="svg-icon" width="24" height="24" aria-hidden="true" role="img" focusable="false" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M12.289,2C6.617,2,3.606,5.648,3.606,9.622c0,1.846,1.025,4.146,2.666,4.878c0.25,0.111,0.381,0.063,0.439-0.169 c0.044-0.175,0.267-1.029,0.365-1.428c0.032-0.128,0.017-0.237-0.091-0.362C6.445,11.911,6.01,10.75,6.01,9.668 c0-2.777,2.194-5.464,5.933-5.464c3.23,0,5.49,2.108,5.49,5.122c0,3.407-1.794,5.768-4.13,5.768c-1.291,0-2.257-1.021-1.948-2.277 c0.372-1.495,1.089-3.112,1.089-4.191c0-0.967-0.542-1.775-1.663-1.775c-1.319,0-2.379,1.309-2.379,3.059 c0,1.115,0.394,1.869,0.394,1.869s-1.302,5.279-1.54,6.261c-0.405,1.666,0.053,4.368,0.094,4.604 c0.021,0.126,0.167,0.169,0.25,0.063c0.129-0.165,1.699-2.419,2.142-4.051c0.158-0.59,0.817-2.995,0.817-2.995 c0.43,0.784,1.681,1.446,3.013,1.446c3.963,0,6.822-3.494,6.822-7.833C20.394,5.112,16.849,2,12.289,2"></path></svg></a> 
+	<a href="https://twitter.com/intent/tweet?text=15+Beauty+Resolutions+I+Plan+To+Keep+In+2020%2C+And+You+Should+Too&nbsp;https://www.essence.com/beauty/beauty-resolutions-to-keep-in-2020/%3Futm_source%3Dtwitter.com%26utm_medium%3Dsocial%26utm_campaign%3Dsocial-button-sharing+via+%40ESSENCE" class="twitter"><svg class="svg-icon" width="24" height="24" aria-hidden="true" role="img" focusable="false" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M22.23,5.924c-0.736,0.326-1.527,0.547-2.357,0.646c0.847-0.508,1.498-1.312,1.804-2.27 c-0.793,0.47-1.671,0.812-2.606,0.996C18.324,4.498,17.257,4,16.077,4c-2.266,0-4.103,1.837-4.103,4.103 c0,0.322,0.036,0.635,0.106,0.935C8.67,8.867,5.647,7.234,3.623,4.751C3.27,5.357,3.067,6.062,3.067,6.814 c0,1.424,0.724,2.679,1.825,3.415c-0.673-0.021-1.305-0.206-1.859-0.513c0,0.017,0,0.034,0,0.052c0,1.988,1.414,3.647,3.292,4.023 c-0.344,0.094-0.707,0.144-1.081,0.144c-0.264,0-0.521-0.026-0.772-0.074c0.522,1.63,2.038,2.816,3.833,2.85 c-1.404,1.1-3.174,1.756-5.096,1.756c-0.331,0-0.658-0.019-0.979-0.057c1.816,1.164,3.973,1.843,6.29,1.843 c7.547,0,11.675-6.252,11.675-11.675c0-0.178-0.004-0.355-0.012-0.531C20.985,7.47,21.68,6.747,22.23,5.924z"></path></svg></a> 
+	<a href="mailto:?subject=15 Beauty Resolutions I Plan To Keep In 2020, And You Should Too&body=https://www.essence.com/beauty/beauty-resolutions-to-keep-in-2020/" class="email"><svg class="svg-icon" width="24" height="24" aria-hidden="true" role="img" focusable="false" viewBox="0 0 24 15.84" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M0 0v15.84h24V0zm1.53 13.41v-11l6.33 5.5zM12 9.5l-9.22-8h18.43zm9.22 4.83H2.78L9 8.92l3 2.59 3-2.59zm-5.08-6.41l6.33-5.5v11z"></path></svg></a> 
+</div>
+<span class="tags-links"><span class="topics">TOPICS: </span><a href="https://www.essence.com/beauty/" rel="tag">Beauty</a> <a href="https://www.essence.com/tags/2020-beauty-resolutions/" rel="tag">2020 beauty resolutions</a> <a href="https://www.essence.com/tags/new-year-beauty-resolutions/" rel="tag">new year beauty resolutions</a> <a href="https://www.essence.com/tags/new-years-resolution/" rel="tag">new years resolution</a></span>
+					</div> <!-- .main-content -->
+		<div class="entry-rightrail">
+									<div id="div-gpt-ad-21700267070-7"
+			 class="ad-position vertical-desktop dfp-ads-vertical"
+			 data-sizes="[[[0, 0], []], [[768, 0], []], [[1024, 0], [[300, 250], [300, 600]]]]">
+		</div>
+												<div class="article-right-widgets"><h2 class="article-right-title">Read More</h2>
+		<div class="read-more-blog">
+							<div class="card-blog">
+					<div class="blog-img icon-gallery"><a rel="noopener" href="https://www.essence.com/celebrity/inspirational-quotes-black-women/" title="7 Inspirational Quotes From Black Celebrity Women To Help You Level Up In 2020"><picture class="lazy" data-iesrc="https://www.essence.com/wp-content/uploads/2019/10/GettyImages-1135975319-1-1472x1472.jpg?width=860&height=860" data-alt="7 Inspirational Quotes From Black Celebrity Women To Help You Level Up In 2020"><source srcset="https://www.essence.com/wp-content/uploads/2019/10/GettyImages-1135975319-1-1472x1472.jpg?width=150&height=150 1x, https://www.essence.com/wp-content/uploads/2019/10/GettyImages-1135975319-1-1472x1472.jpg?width=470&height=470 2x" media="(min-width: 1440px)"><source srcset="https://www.essence.com/wp-content/uploads/2019/10/GettyImages-1135975319-1-1472x1472.jpg?width=150&height=150 1x, https://www.essence.com/wp-content/uploads/2019/10/GettyImages-1135975319-1-1472x1472.jpg?width=470&height=470 2x" media="(min-width: 1280px)"><source srcset="https://www.essence.com/wp-content/uploads/2019/10/GettyImages-1135975319-1-1472x1472.jpg?width=470&height=470 1x, https://www.essence.com/wp-content/uploads/2019/10/GettyImages-1135975319-1-1472x1472.jpg?width=860&height=860 2x" media="(min-width: 1028px)"><source srcset="https://www.essence.com/wp-content/uploads/2019/10/GettyImages-1135975319-1-1472x1472.jpg?width=470&height=470 1x, https://www.essence.com/wp-content/uploads/2019/10/GettyImages-1135975319-1-1472x1472.jpg?width=860&height=860 2x" media="(min-width: 768px)"><source srcset="https://www.essence.com/wp-content/uploads/2019/10/GettyImages-1135975319-1-1472x1472.jpg?width=150&height=150 1x, https://www.essence.com/wp-content/uploads/2019/10/GettyImages-1135975319-1-1472x1472.jpg?width=470&height=470 2x" media="(min-width: 0px)"><img class="lazy" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="https://www.essence.com/wp-content/uploads/2019/10/GettyImages-1135975319-1-1472x1472.jpg?width=860&height=860" /></picture></a></div>					<div class="blog-data">
+													<a rel="noopener" href="https://www.essence.com/celebrity/">
+								<h6 class="category">Celebrity</h6></a>
+												<a rel="noopener" class="article-title" href="https://www.essence.com/celebrity/inspirational-quotes-black-women/">7 Inspirational Quotes From Our Favorite Black Celebrity Wom...</a>
+					</div>
+				</div>
+							<div class="card-blog">
+					<div class="blog-img icon-article"><a rel="noopener" href="https://www.essence.com/beauty/beauty-resolutions-to-keep-in-2020/" title="Beauty Resolutions I Plan To Keep In 2020, And You Should Too"><picture class="lazy" data-iesrc="https://www.essence.com/wp-content/uploads/2019/12/Beauty-Resolutions-tout-1472x1472.jpg?width=860&height=860" data-alt="Beauty Resolutions I Plan To Keep In 2020, And You Should Too"><source srcset="https://www.essence.com/wp-content/uploads/2019/12/Beauty-Resolutions-tout-1472x1472.jpg?width=150&height=150 1x, https://www.essence.com/wp-content/uploads/2019/12/Beauty-Resolutions-tout-1472x1472.jpg?width=470&height=470 2x" media="(min-width: 1440px)"><source srcset="https://www.essence.com/wp-content/uploads/2019/12/Beauty-Resolutions-tout-1472x1472.jpg?width=150&height=150 1x, https://www.essence.com/wp-content/uploads/2019/12/Beauty-Resolutions-tout-1472x1472.jpg?width=470&height=470 2x" media="(min-width: 1280px)"><source srcset="https://www.essence.com/wp-content/uploads/2019/12/Beauty-Resolutions-tout-1472x1472.jpg?width=470&height=470 1x, https://www.essence.com/wp-content/uploads/2019/12/Beauty-Resolutions-tout-1472x1472.jpg?width=860&height=860 2x" media="(min-width: 1028px)"><source srcset="https://www.essence.com/wp-content/uploads/2019/12/Beauty-Resolutions-tout-1472x1472.jpg?width=470&height=470 1x, https://www.essence.com/wp-content/uploads/2019/12/Beauty-Resolutions-tout-1472x1472.jpg?width=860&height=860 2x" media="(min-width: 768px)"><source srcset="https://www.essence.com/wp-content/uploads/2019/12/Beauty-Resolutions-tout-1472x1472.jpg?width=150&height=150 1x, https://www.essence.com/wp-content/uploads/2019/12/Beauty-Resolutions-tout-1472x1472.jpg?width=470&height=470 2x" media="(min-width: 0px)"><img class="lazy" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="https://www.essence.com/wp-content/uploads/2019/12/Beauty-Resolutions-tout-1472x1472.jpg?width=860&height=860" /></picture></a></div>					<div class="blog-data">
+													<a rel="noopener" href="https://www.essence.com/beauty/">
+								<h6 class="category">Beauty</h6></a>
+												<a rel="noopener" class="article-title" href="https://www.essence.com/beauty/beauty-resolutions-to-keep-in-2020/">15 Beauty Resolutions I Plan To Keep In 2020, And You Should Too</a>
+					</div>
+				</div>
+							<div class="card-blog">
+					<div class="blog-img icon-article"><a rel="noopener" href="https://www.essence.com/fashion/most-searched-fashion-trends-on-google-in-2019/" title="The Top Trending Fashion News For 2019"><picture class="lazy" data-iesrc="https://www.essence.com/wp-content/uploads/2019/12/lupita-tout-1472x1472.jpg?width=860&height=860" data-alt="The Top Trending Fashion News For 2019"><source srcset="https://www.essence.com/wp-content/uploads/2019/12/lupita-tout-1472x1472.jpg?width=150&height=150 1x, https://www.essence.com/wp-content/uploads/2019/12/lupita-tout-1472x1472.jpg?width=470&height=470 2x" media="(min-width: 1440px)"><source srcset="https://www.essence.com/wp-content/uploads/2019/12/lupita-tout-1472x1472.jpg?width=150&height=150 1x, https://www.essence.com/wp-content/uploads/2019/12/lupita-tout-1472x1472.jpg?width=470&height=470 2x" media="(min-width: 1280px)"><source srcset="https://www.essence.com/wp-content/uploads/2019/12/lupita-tout-1472x1472.jpg?width=470&height=470 1x, https://www.essence.com/wp-content/uploads/2019/12/lupita-tout-1472x1472.jpg?width=860&height=860 2x" media="(min-width: 1028px)"><source srcset="https://www.essence.com/wp-content/uploads/2019/12/lupita-tout-1472x1472.jpg?width=470&height=470 1x, https://www.essence.com/wp-content/uploads/2019/12/lupita-tout-1472x1472.jpg?width=860&height=860 2x" media="(min-width: 768px)"><source srcset="https://www.essence.com/wp-content/uploads/2019/12/lupita-tout-1472x1472.jpg?width=150&height=150 1x, https://www.essence.com/wp-content/uploads/2019/12/lupita-tout-1472x1472.jpg?width=470&height=470 2x" media="(min-width: 0px)"><img class="lazy" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="https://www.essence.com/wp-content/uploads/2019/12/lupita-tout-1472x1472.jpg?width=860&height=860" /></picture></a></div>					<div class="blog-data">
+													<a rel="noopener" href="https://www.essence.com/fashion/">
+								<h6 class="category">Fashion</h6></a>
+												<a rel="noopener" class="article-title" href="https://www.essence.com/fashion/most-searched-fashion-trends-on-google-in-2019/">The Top Trending Fashion News For 2019</a>
+					</div>
+				</div>
+							<div class="card-blog">
+					<div class="blog-img icon-article"><a rel="noopener" href="https://www.essence.com/lifestyle/health-wellness/what-you-need-to-know-keto-diet/" title="Considering Keto In The New Year? Here’s What You Need To Know"><picture class="lazy" data-iesrc="https://www.essence.com/wp-content/uploads/2019/12/GettyImages-84231413-1472x1472.jpg?width=860&height=860" data-alt="Considering Keto In The New Year? Here’s What You Need To Know"><source srcset="https://www.essence.com/wp-content/uploads/2019/12/GettyImages-84231413-1472x1472.jpg?width=150&height=150 1x, https://www.essence.com/wp-content/uploads/2019/12/GettyImages-84231413-1472x1472.jpg?width=470&height=470 2x" media="(min-width: 1440px)"><source srcset="https://www.essence.com/wp-content/uploads/2019/12/GettyImages-84231413-1472x1472.jpg?width=150&height=150 1x, https://www.essence.com/wp-content/uploads/2019/12/GettyImages-84231413-1472x1472.jpg?width=470&height=470 2x" media="(min-width: 1280px)"><source srcset="https://www.essence.com/wp-content/uploads/2019/12/GettyImages-84231413-1472x1472.jpg?width=470&height=470 1x, https://www.essence.com/wp-content/uploads/2019/12/GettyImages-84231413-1472x1472.jpg?width=860&height=860 2x" media="(min-width: 1028px)"><source srcset="https://www.essence.com/wp-content/uploads/2019/12/GettyImages-84231413-1472x1472.jpg?width=470&height=470 1x, https://www.essence.com/wp-content/uploads/2019/12/GettyImages-84231413-1472x1472.jpg?width=860&height=860 2x" media="(min-width: 768px)"><source srcset="https://www.essence.com/wp-content/uploads/2019/12/GettyImages-84231413-1472x1472.jpg?width=150&height=150 1x, https://www.essence.com/wp-content/uploads/2019/12/GettyImages-84231413-1472x1472.jpg?width=470&height=470 2x" media="(min-width: 0px)"><img class="lazy" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="https://www.essence.com/wp-content/uploads/2019/12/GettyImages-84231413-1472x1472.jpg?width=860&height=860" /></picture></a></div>					<div class="blog-data">
+													<a rel="noopener" href="https://www.essence.com/lifestyle/health-wellness/">
+								<h6 class="category">Health &amp; Wellness</h6></a>
+												<a rel="noopener" class="article-title" href="https://www.essence.com/lifestyle/health-wellness/what-you-need-to-know-keto-diet/">Considering Keto In The New Year? Here’s What You Need To Know</a>
+					</div>
+				</div>
+					</div>
+		</div>						<div id="div-gpt-ad-21700267070-8"
+			 class="ad-position vertical-desktop-sticky dfp-ads-vertical-sticky"
+			 data-sizes="[[[0, 0], []] , [[768, 0], []], [[1125, 0], [[300, 250], [300, 600]]]]">
+		</div>
+						<div class="sticky-ad-spacer"></div>
+					</div><!-- .entry-rightrail -->
+	</div><!-- .entry-content -->
+
+				
+</article><!-- #post-${post_id} -->
+
+<div class="essence-infinite-scroll"
+	 data-next_article="490683"
+	 data-post_type="article"
+	 data-post-info='{"date":"12-31-2019","author":"[Jennifer Ford]","category":"Beauty","sub_category":"","terms":"Alicia-Keys,skin-care","pagetype":"article","page_url":"https:\/\/www.essence.com\/beauty\/alicia-keys-reveals-her-secrets-to-glowing-skin-in-get-unready-with-me-tutorial\/","post_title":"Alicia Keys Reveals Her Secrets To Glowing Skin In &#8220;Get Unready With Me&#8221; Tutorial","page_slug":"\/beauty\/alicia-keys-reveals-her-secrets-to-glowing-skin-in-get-unready-with-me-tutorial\/","platform":"own"}'
+	 style="display: none;">
+</div>
+
+		</main><!-- #main -->
+	</section><!-- #primary -->
+
+
+	</div><!-- #content -->
+
+	<footer id="colophon" class="site-footer">
+		<div class="footer-magenta lazy" data-background-image="https://www.essence.com/wp-content/themes/essence/assets/images/mobile-newsletter.png" role="complementary" aria-label="Footer">
+	<div class="footer-container">
+					<div class="footer-col-list footer__company-info">
+				<div id="text-3" class=" widget_text"><h6 class="widget-title">COMPANY INFORMATION</h6>			<div class="textwidget"><ul>
+<li><a href="https://www.essence.com/about/">Our Company</a></li>
+<li><a href="https://subs.essence.com/servlet/CSGateway?cds_mag_code=ESS">Customer Service</a></li>
+<li><a href="https://subs.essence.com/servlet/CSGateway?cds_mag_code=ESS">Change Your Address</a></li>
+<li><a href="https://www.essence.com/about/contact/">Contact Us</a></li>
+<li><a href="https://www.essence.com/careers/">Job Opportunities</a></li>
+<li><a href="https://www.essence.com/interns">Internships</a></li>
+<li><a href="https://www.essence.com/wp-content/uploads/2019/10/ESSENCE-MEDIA-KIT-2020-9.24.pdf">Media Kit</a></li>
+</ul>
+</div>
+		</div>			</div>
+				<div class="footer-col-list footer__follow">
+					<div id="text-4" class="hide-on-mobile widget_text"><h6 class="widget-title">SUBSCRIBE</h6>			<div class="textwidget"><ul>
+<li><a href="https://www.essence.com/newsletters/">Newsletters</a></li>
+<li><a href="https://subs.essence.com/servlet/GiftsGateway?cds_mag_code=ESS&#038;cds_page_id=228460">Give a Gift of ESSENCE</a></li>
+<li><a href="https://subscription-assets.essence.com/prod/assets/themes/magazines/default/template-resources/html/EE/allaccess/learnmore.html">Magazine Tablet Edition</a></li>
+</ul>
+</div>
+		</div>				<h6 class="wiget-title">FOLLOW US</h6>
+			<ul class="footer-social-links">
+									<li><a target="_blank" href="https://facebook.com/essence" rel='noopener'><svg class="svg-icon" width="24" height="24" aria-hidden="true" role="img" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg></a></li>
+													<li><a target="_blank" href="https://twitter.com/essence" rel='noopener'><svg class="svg-icon" width="24" height="24" aria-hidden="true" role="img" focusable="false" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M22.23,5.924c-0.736,0.326-1.527,0.547-2.357,0.646c0.847-0.508,1.498-1.312,1.804-2.27 c-0.793,0.47-1.671,0.812-2.606,0.996C18.324,4.498,17.257,4,16.077,4c-2.266,0-4.103,1.837-4.103,4.103 c0,0.322,0.036,0.635,0.106,0.935C8.67,8.867,5.647,7.234,3.623,4.751C3.27,5.357,3.067,6.062,3.067,6.814 c0,1.424,0.724,2.679,1.825,3.415c-0.673-0.021-1.305-0.206-1.859-0.513c0,0.017,0,0.034,0,0.052c0,1.988,1.414,3.647,3.292,4.023 c-0.344,0.094-0.707,0.144-1.081,0.144c-0.264,0-0.521-0.026-0.772-0.074c0.522,1.63,2.038,2.816,3.833,2.85 c-1.404,1.1-3.174,1.756-5.096,1.756c-0.331,0-0.658-0.019-0.979-0.057c1.816,1.164,3.973,1.843,6.29,1.843 c7.547,0,11.675-6.252,11.675-11.675c0-0.178-0.004-0.355-0.012-0.531C20.985,7.47,21.68,6.747,22.23,5.924z"></path></svg></a></li>
+												<li><a target="_blank" href="https://www.instagram.com/essence" rel='noopener'><svg class="svg-icon" width="24" height="24" aria-hidden="true" role="img" focusable="false" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M12,4.622c2.403,0,2.688,0.009,3.637,0.052c0.877,0.04,1.354,0.187,1.671,0.31c0.42,0.163,0.72,0.358,1.035,0.673 c0.315,0.315,0.51,0.615,0.673,1.035c0.123,0.317,0.27,0.794,0.31,1.671c0.043,0.949,0.052,1.234,0.052,3.637 s-0.009,2.688-0.052,3.637c-0.04,0.877-0.187,1.354-0.31,1.671c-0.163,0.42-0.358,0.72-0.673,1.035 c-0.315,0.315-0.615,0.51-1.035,0.673c-0.317,0.123-0.794,0.27-1.671,0.31c-0.949,0.043-1.233,0.052-3.637,0.052 s-2.688-0.009-3.637-0.052c-0.877-0.04-1.354-0.187-1.671-0.31c-0.42-0.163-0.72-0.358-1.035-0.673 c-0.315-0.315-0.51-0.615-0.673-1.035c-0.123-0.317-0.27-0.794-0.31-1.671C4.631,14.688,4.622,14.403,4.622,12 s0.009-2.688,0.052-3.637c0.04-0.877,0.187-1.354,0.31-1.671c0.163-0.42,0.358-0.72,0.673-1.035 c0.315-0.315,0.615-0.51,1.035-0.673c0.317-0.123,0.794-0.27,1.671-0.31C9.312,4.631,9.597,4.622,12,4.622 M12,3 C9.556,3,9.249,3.01,8.289,3.054C7.331,3.098,6.677,3.25,6.105,3.472C5.513,3.702,5.011,4.01,4.511,4.511 c-0.5,0.5-0.808,1.002-1.038,1.594C3.25,6.677,3.098,7.331,3.054,8.289C3.01,9.249,3,9.556,3,12c0,2.444,0.01,2.751,0.054,3.711 c0.044,0.958,0.196,1.612,0.418,2.185c0.23,0.592,0.538,1.094,1.038,1.594c0.5,0.5,1.002,0.808,1.594,1.038 c0.572,0.222,1.227,0.375,2.185,0.418C9.249,20.99,9.556,21,12,21s2.751-0.01,3.711-0.054c0.958-0.044,1.612-0.196,2.185-0.418 c0.592-0.23,1.094-0.538,1.594-1.038c0.5-0.5,0.808-1.002,1.038-1.594c0.222-0.572,0.375-1.227,0.418-2.185 C20.99,14.751,21,14.444,21,12s-0.01-2.751-0.054-3.711c-0.044-0.958-0.196-1.612-0.418-2.185c-0.23-0.592-0.538-1.094-1.038-1.594 c-0.5-0.5-1.002-0.808-1.594-1.038c-0.572-0.222-1.227-0.375-2.185-0.418C14.751,3.01,14.444,3,12,3L12,3z M12,7.378 c-2.552,0-4.622,2.069-4.622,4.622S9.448,16.622,12,16.622s4.622-2.069,4.622-4.622S14.552,7.378,12,7.378z M12,15 c-1.657,0-3-1.343-3-3s1.343-3,3-3s3,1.343,3,3S13.657,15,12,15z M16.804,6.116c-0.596,0-1.08,0.484-1.08,1.08 s0.484,1.08,1.08,1.08c0.596,0,1.08-0.484,1.08-1.08S17.401,6.116,16.804,6.116z"></path></svg></a></li>
+													<li><a target="_blank" href="https://pinterest.com/essence" rel='noopener'><svg class="svg-icon" width="24" height="24" aria-hidden="true" role="img" focusable="false" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M12.289,2C6.617,2,3.606,5.648,3.606,9.622c0,1.846,1.025,4.146,2.666,4.878c0.25,0.111,0.381,0.063,0.439-0.169 c0.044-0.175,0.267-1.029,0.365-1.428c0.032-0.128,0.017-0.237-0.091-0.362C6.445,11.911,6.01,10.75,6.01,9.668 c0-2.777,2.194-5.464,5.933-5.464c3.23,0,5.49,2.108,5.49,5.122c0,3.407-1.794,5.768-4.13,5.768c-1.291,0-2.257-1.021-1.948-2.277 c0.372-1.495,1.089-3.112,1.089-4.191c0-0.967-0.542-1.775-1.663-1.775c-1.319,0-2.379,1.309-2.379,3.059 c0,1.115,0.394,1.869,0.394,1.869s-1.302,5.279-1.54,6.261c-0.405,1.666,0.053,4.368,0.094,4.604 c0.021,0.126,0.167,0.169,0.25,0.063c0.129-0.165,1.699-2.419,2.142-4.051c0.158-0.59,0.817-2.995,0.817-2.995 c0.43,0.784,1.681,1.446,3.013,1.446c3.963,0,6.822-3.494,6.822-7.833C20.394,5.112,16.849,2,12.289,2"></path></svg></a></li>
+													<li><a target="_blank" href="https://plus.google.com/+essencemag" rel='noopener'><svg class="svg-icon" width="24" height="24" aria-hidden="true" role="img" focusable="false" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M8,11h6.61c0.06,0.35,0.11,0.7,0.11,1.16c0,4-2.68,6.84-6.72,6.84c-3.87,0-7-3.13-7-7s3.13-7,7-7 c1.89,0,3.47,0.69,4.69,1.83l-1.9,1.83C10.27,8.16,9.36,7.58,8,7.58c-2.39,0-4.34,1.98-4.34,4.42S5.61,16.42,8,16.42 c2.77,0,3.81-1.99,3.97-3.02H8V11L8,11z M23,11h-2V9h-2v2h-2v2h2v2h2v-2h2"></path></svg></a></li>
+													<li><a target="_blank" href="https://www.youtube.com/channel/UC_b9CfN5Yeb_c2hQNRGKXUw" rel='noopener'><svg class="svg-icon" width="24" height="24" aria-hidden="true" role="img" focusable="false" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M21.8,8.001c0,0-0.195-1.378-0.795-1.985c-0.76-0.797-1.613-0.801-2.004-0.847c-2.799-0.202-6.997-0.202-6.997-0.202 h-0.009c0,0-4.198,0-6.997,0.202C4.608,5.216,3.756,5.22,2.995,6.016C2.395,6.623,2.2,8.001,2.2,8.001S2,9.62,2,11.238v1.517 c0,1.618,0.2,3.237,0.2,3.237s0.195,1.378,0.795,1.985c0.761,0.797,1.76,0.771,2.205,0.855c1.6,0.153,6.8,0.201,6.8,0.201 s4.203-0.006,7.001-0.209c0.391-0.047,1.243-0.051,2.004-0.847c0.6-0.607,0.795-1.985,0.795-1.985s0.2-1.618,0.2-3.237v-1.517 C22,9.62,21.8,8.001,21.8,8.001z M9.935,14.594l-0.001-5.62l5.404,2.82L9.935,14.594z"></path></svg></a></li>
+							</ul>
+		</div>
+					<div class="footer-col-list footer__more">
+				<div id="text-5" class=" widget_text"><h6 class="widget-title">MORE ON ESSENCE</h6>			<div class="textwidget"><ul>
+<li><a href="https://www.essence.com/">Home</a></li>
+<li><a href="https://www.essence.com/love-sex/">Love</a></li>
+<li><a href="https://www.essence.com/celebrity/">Celebrity</a></li>
+<li><a href="https://www.essence.com/beauty/">Beauty</a></li>
+<li><a href="https://www.essence.com/hair/">Hair</a></li>
+<li><a href="https://www.essence.com/fashion/">Fashion</a></li>
+<li><a href="https://www.essence.com/festival/">ESSENCE festival</a></li>
+</ul>
+</div>
+		</div>			</div>
+				<div class="site-info">
+			<div class="legal-text">
+ESSENCE.com is part of ESSENCE Communications, Inc.<br>Essence may receive compensation for some links to products and services on this website. Offers may be subject to change without notice.
+</div>
+<div class="legal-text">
+© 2018 ESSENCE Communications Inc. All Rights Reserved. |
+<a href="https://www.essence.com/privacy-policy/" target="_blank">Privacy Policy</a> |
+<a href="https://www.essence.com/terms-of-use/" target="_blank">Terms of Use</a> |
+<a href="https://www.essence.com/advertising-terms/" target="_blank">Essence.com Advertising Terms</a> |
+<a href="http://optout.aboutads.info/?c=2&lang=EN" target="_blank">AD CHOICES</a>
+</div>					</div><!-- .site-info -->
+	</div>
+</div>
+
+		<div class="footer-fixed lazy" data-background-image="https://www.essence.com/wp-content/themes/essence/assets/images/footer-bg.jpg">
+	<div class="footer-container">
+	<div class="footer-col-list">			
+			<h6 class="col-header">Get The <b>ESSENCE Newsletter</b> and <br /><b>Special Offers</b> delivered to your inbox</h6>
+			<form action="https://www.essence.com/newsletters" method="get">
+				<div class="sec-form">
+				<input type="email" name="email_address" placeholder="Email">
+				<input type="hidden" name="source" value="EE_CMS_footer">
+				<input type="submit" class="btn" value="Sign Up"/>
+				</div>
+				<p class="sec-terms">
+				By clicking Sign Up, you agree to our
+				<a  rel="noopener" href="https://www.essence.com/terms-of-use/">Terms of Use</a> and <a  rel="noopener" href="https://www.essence.com/privacy-policy/">Privacy Policy.</a>
+				</p>
+			</form>
+		</div>
+		<div class="footer-col-list">
+			<h6 class="col-header">Get The <b>ESSENCE Magazine</b><br />by subscribing below</h6>	
+			<a  rel="noopener" href="https://subs.essence.com/pubs/EV/ESS/ESS_subpage_absplit_2019.jsp?cds_mag_code=ESS&cds_page_id=246314" class="btn">subscribe now</a>
+		</div>
+	</div>
+</div>
+	</footer><!-- #colophon -->
+	
+</div><!-- #page -->
+			<div id="div-gpt-ad-21700267070-9"
+			 class="ad-position phone-only-fixed fixed-mobile-ad"
+			 data-sizes="[[[0, 0], []], [[320, 0], [[320, 50], [320, 51]]], [[768, 0], []]]">
+		</div>
+		<div id="amzn-assoc-ad-8c622602-e003-469e-86cf-8a3a87294d7f"></div>
+
+
+<!-- START Parse.ly Include: Standard -->
+	<script data-cfasync="false">
+
+		function uuidProfileCall() {
+			var rootUrl = 'https://api.parsely.com/v2/profile?apikey=essence.com';
+			var uuid = '&uuid=' + PARSELY.config.parsely_site_uuid;
+			var requestUrl = rootUrl + uuid + '&url=' + window.location.href;
+			jQuery.ajax({
+				url: requestUrl,
+				dataType: "jsonp"
+			});
+		}
+
+		if (typeof PARSELY == 'object') {
+			var oldonload = PARSELY.onload;
+			if (typeof PARSELY.onload != 'function') {
+				PARSELY.onload = uuidProfileCall
+			}
+			else {
+				PARSELY.onload = function () {
+					if (oldonload) {
+						oldonload();
+					}
+					uuidProfileCall();
+				};
+			}
+		}
+
+		else {
+			PARSELY = {
+				onload: uuidProfileCall
+			}
+		}
+	</script>
+
+<script data-cfasync="false" id="parsely-cfg" data-parsely-site="essence.com" src="//cdn.parsely.com/keys/essence.com/p.js"></script>
+
+<!-- END Parse.ly Include: Standard -->
+<script type='text/javascript' src='https://www.essence.com/wp-includes/js/dist/i18n.min.js?ver=3.3.0'></script>
+<script type='text/javascript' src='https://www.essence.com/wp-includes/js/dist/vendor/react.min.js?ver=16.8.4'></script>
+<script type='text/javascript' src='https://www.essence.com/wp-includes/js/dist/vendor/react-dom.min.js?ver=16.8.4'></script>
+<script type='text/javascript' src='https://www.essence.com/wp-includes/js/dist/vendor/lodash.min.js?ver=4.17.11'></script>
+<script type='text/javascript'>
+window.lodash = _.noConflict();
+</script>
+<script type='text/javascript' src='https://www.essence.com/wp-includes/js/dist/escape-html.min.js?ver=1.2.0'></script>
+<script type='text/javascript' src='https://www.essence.com/wp-includes/js/dist/element.min.js?ver=2.3.0'></script>
+<script type='text/javascript' src='https://www.essence.com/wp-content/plugins/essence-blocks/dist/frontend.build.js?ver=1577845002'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var essence = {"ajaxUrl":"https:\/\/www.essence.com\/wp-admin\/admin-ajax.php","restUrl":"https:\/\/www.essence.com\/wp-json\/","brightcovePlayer":"default","srcUrl":"https:\/\/www.essence.com\/wp-content\/plugins\/essence-blocks\/"};
+var WP_ADMIN_AJAX = {"url":"https:\/\/www.essence.com\/wp-admin\/admin-ajax.php"};
+var dfp_ad_object = [{"asynch":true,"account_id":"\/21698916284\/","slot_name":"ess\/beauty","page_targeting":{"aid":"490675","ctype":"article","ch":"beauty","tags":["2020 beauty resolutions","new year beauty resolutions","new years resolution"]},"ias_pubid":"929481","ias_timeout":2000}];
+var dataLayer = [{"gacd7":"own","gacd6":"01-01-2020","gacd9":"front end","gacd10":"essence.com","gacd1":"[Shalwah Evans]","gacd2":"Beauty","gacd8":"article","gacd25":"490675","gacd3":"","gacd4":"2020-beauty-resolutions,new-year-beauty-resolutions,new-years-resolution"}];
+var sf_dataLayer = {"categories":[["Beauty",0]],"tags":["2020 beauty resolutions","new year beauty resolutions","new years resolution"]};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://www.essence.com/wp-content/themes/essence/dist/main.d1202266565f31b95121.js'></script>
+<script type='text/javascript'>
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TJXBVJL');
+</script>
+<script type='text/javascript' src='//platform.instagram.com/en_US/embeds.js?ver=5.2.4'></script>
+<script type='text/javascript' src='//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US&#038;adInstanceId=8c622602-e003-469e-86cf-8a3a87294d7f&#038;ver=5.2.4' async='async'></script>
+<script type='text/javascript' src='//s.skimresources.com/js/127531X1589222.skimlinks.js?ver=5.2.4'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var wpcf7cf_global_settings = {"ajaxurl":"https:\/\/www.essence.com\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://www.essence.com/wp-content/plugins/cf7-conditional-fields/js/scripts.js?ver=1.7.8'></script>
+<script type='text/javascript' src='//widgets.outbrain.com/outbrain.js' async='async'></script>
+	<script>
+		/(trident|msie)/i.test(navigator.userAgent) && document.getElementById && window.addEventListener && window.addEventListener("hashchange", function () {
+			var t, e = location.hash.substring(1);
+			/^[A-z0-9_-]+$/.test(e) && (t = document.getElementById(e)) && (/^(?:a|select|input|button|textarea)$/i.test(t.tagName) || (t.tabIndex = -1), t.focus())
+		}, !1);
+	</script>
+			<script>
+			var dc_seg = 774524815;
+			var axel = Math.random() + '';
+			var a = axel * 10000000000000;
+			var dfp = document.createElement("IMG");
+			dfp.setAttribute("src", "https://pubads.g.doubleclick.net/activity;dc_iu=/21698916284/DFPAudiencePixel;ord=" + a + ";dc_seg=" + dc_seg + "?");
+			dfp.setAttribute("width", "1px");
+			dfp.setAttribute("height", "1px");
+			document.body.appendChild(dfp);
+		</script>
+			<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"34a1865437","applicationID":"282560978","transactionName":"ZldVbBMCWUpZURUNXF8ddlsVClhXF0EIClRdVw==","queueTime":0,"applicationTime":436,"atts":"ShBWGlsYSkQ=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>

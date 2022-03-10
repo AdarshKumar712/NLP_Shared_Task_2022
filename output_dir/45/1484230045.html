@@ -1,0 +1,2957 @@
+
+<!doctype html>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8"><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"bb199f70cb",applicationID:"222037236"};window.NREUM||(NREUM={}),__nr_require=function(n,e,t){function r(t){if(!e[t]){var i=e[t]={exports:{}};n[t][0].call(i.exports,function(e){var i=n[t][1][e];return r(i||e)},i,i.exports)}return e[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(n,e,t){function r(){}function i(n,e,t){return function(){return o(n,[u.now()].concat(f(arguments)),e?null:this,t),e?void 0:this}}var o=n("handle"),a=n(4),f=n(5),c=n("ee").get("tracer"),u=n("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(n,e){s[e]=i(d+e,!0,"api")}),s.addPageAction=i(d+"addPageAction",!0),s.setCurrentRouteName=i(d+"routeName",!0),e.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(n,e){var t={},r=this,i="function"==typeof e;return o(l+"tracer",[u.now(),n,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return e.apply(this,arguments)}catch(n){throw c.emit("fn-err",[arguments,this,n],t),n}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(n,e){m[e]=i(l+e)}),newrelic.noticeError=function(n,e){"string"==typeof n&&(n=new Error(n)),o("err",[n,u.now(),!1,e])}},{}],2:[function(n,e,t){function r(n,e){var t=n.getEntries();t.forEach(function(n){"first-paint"===n.name?a("timing",["fp",Math.floor(n.startTime)]):"first-contentful-paint"===n.name&&a("timing",["fcp",Math.floor(n.startTime)])})}function i(n){if(n instanceof c&&!s){var e,t=Math.round(n.timeStamp);e=t>1e12?Date.now()-t:f.now()-t,s=!0,a("timing",["fi",t,{type:n.type,fid:e}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var o,a=n("handle"),f=n("loader"),c=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){o=new PerformanceObserver(r);try{o.observe({entryTypes:["paint"]})}catch(u){}}if("addEventListener"in document){var s=!1,p=["click","keydown","mousedown","pointerdown","touchstart"];p.forEach(function(n){document.addEventListener(n,i,!1)})}}},{}],3:[function(n,e,t){function r(n,e){if(!i)return!1;if(n!==i)return!1;if(!e)return!0;if(!o)return!1;for(var t=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],4:[function(n,e,t){function r(n,e){var t=[],r="",o=0;for(r in n)i.call(n,r)&&(t[o]=e(r,n[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],5:[function(n,e,t){function r(n,e,t){e||(e=0),"undefined"==typeof t&&(t=n?n.length:0);for(var r=-1,i=t-e||0,o=Array(i<0?0:i);++r<i;)o[r]=n[e+r];return o}e.exports=r},{}],6:[function(n,e,t){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(n,e,t){function r(){}function i(n){function e(n){return n&&n instanceof r?n:n?c(n,f,o):o()}function t(t,r,i,o){if(!d.aborted||o){n&&n(t,r,i);for(var a=e(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function l(n,e){h[n]=v(n).concat(e)}function m(n,e){var t=h[n];if(t)for(var r=0;r<t.length;r++)t[r]===e&&t.splice(r,1)}function v(n){return h[n]||[]}function g(n){return p[n]=p[n]||i(t)}function w(n,e){u(n,function(n,t){e=e||"feature",y[t]=e,e in s||(s[e]=[])})}var h={},y={},b={on:l,addEventListener:l,removeEventListener:m,emit:t,get:g,listeners:v,context:e,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var f="nr@context",c=n("gos"),u=n(4),s={},p={},d=e.exports=i();d.backlog=s},{}],gos:[function(n,e,t){function r(n,e,t){if(i.call(n,e))return n[e];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(n,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return n[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(n,e,t){function r(n,e,t,r){i.buffer([n],r),i.emit(n,e,t)}var i=n("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(n,e,t){function r(n){var e=typeof n;return!n||"object"!==e&&"function"!==e?-1:n===window?0:a(n,o,function(){return i++})}var i=1,o="nr@id",a=n("gos");e.exports=r},{}],loader:[function(n,e,t){function r(){if(!x++){var n=E.info=NREUM.info,e=l.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(n&&n.licenseKey&&n.applicationID&&e))return s.abort();u(y,function(e,t){n[e]||(n[e]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=l.createElement("script");t.src="https://"+n.agent,e.parentNode.insertBefore(t,e)}}function i(){"complete"===l.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=n("handle"),u=n(4),s=n("ee"),p=n(3),d=window,l=d.document,m="addEventListener",v="attachEvent",g=d.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:g,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1158.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=e.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};n(1),n(2),l[m]?(l[m]("DOMContentLoaded",o,!1),d[m]("load",r,!1)):(l[v]("onreadystatechange",i),d[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=n(6)},{}],"wrap-function":[function(n,e,t){function r(n){return!(n&&n instanceof Function&&n.apply&&!n[a])}var i=n("ee"),o=n(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;e.exports=function(n,e){function t(n,e,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){d([u,"",[r,a,i],f])}s(e+"start",[r,a,i],f);try{return c=n.apply(a,r)}catch(p){throw s(e+"err",[r,a,p],f),p}finally{s(e+"end",[r,a,c],f)}}return r(n)?n:(e||(e=""),nrWrapper[a]=n,p(n,nrWrapper),nrWrapper)}function u(n,e,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<e.length;c++)f=e[c],a=n[f],r(a)||(n[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||e){var o=c;c=!0;try{n.emit(t,r,i,e)}catch(a){d([a,t,r,i])}c=o}}function p(n,e){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(n);return t.forEach(function(t){Object.defineProperty(e,t,{get:function(){return n[t]},set:function(e){return n[t]=e,e}})}),e}catch(r){d([r])}for(var i in n)f.call(n,i)&&(e[i]=n[i]);return e}function d(e){try{n.emit("internal-error",e)}catch(t){}}return n||(n=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="refresh" content="600">
+	<link rel="profile" href="https://gmpg.org/xfn/11">
+
+			
+	<!-- OneTrust Cookies Consent Notice start -->
+	<script
+		type="text/javascript"
+		src="https://cdn.cookielaw.org/consent/e1ad80fc-8c4f-4e68-9c6a-43b5a612378f/OtAutoBlock.js"
+	></script>
+
+	<script
+		src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js"
+		type="text/javascript"
+		charset="UTF-8"
+		data-domain-script="e1ad80fc-8c4f-4e68-9c6a-43b5a612378f"
+	></script>
+
+	<script type="text/javascript">
+		function OptanonWrapper() { }
+	</script>
+	<!-- OneTrust Cookies Consent Notice end -->
+		
+						<script src="https://cdn.blueconic.net/nexstar.js"></script>
+	
+	
+<!-- BoB -->
+<script async type="text/javascript" id="bob_tag_loader">
+var page_url = "https:\/\/www.nwahomepage.com\/news\/knwa\/tactical-urbanism-project-brings-creative-seating-to-bus-stops\/" || "";
+var cats = "Featured Stories,KNWA,Local News,News" || "";
+var bob_kw = "Bus Stops,Fayetteville,Transit" || "";
+var bob_desc = "Starting today, the University of Arkansas\u2019s Office of Sustainability will place hardwood tree stumps at bus stops around Fayetteville." || "";
+var bob_story_author = "Megan Wilson" || "";
+var cat_data = "&cats=" + encodeURIComponent(cats) + "&bob_kw=" + encodeURIComponent(bob_kw) + "&bob_desc=" + encodeURIComponent(bob_desc) + "&story_author=" + encodeURIComponent(bob_story_author) + "&page_url=" + encodeURIComponent(page_url);
+
+var bob_cb = '1';
+bob_cb = ((new Date()).getTime() + "" + Math.floor(Math.random() * 1000000)).substr(0, 16);
+(function () {
+var bob_tag = document.createElement('script');
+bob_tag.type = 'text/javascript';
+bob_tag.async = true;
+bob_tag.id = "bob_tag";
+bob_tag.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'bob.dmpxs.com/static/bob_001.js?bob_cb=' + bob_cb + cat_data;
+var bts = document.getElementsByTagName('script')[0];
+bts.parentNode.insertBefore(bob_tag, bts);
+})();
+</script>
+
+<script type="text/javascript" id="bob_003_tag_loader">
+var page_url = "https:\/\/www.nwahomepage.com\/news\/knwa\/tactical-urbanism-project-brings-creative-seating-to-bus-stops\/" || "";
+var video_asset_url = "" || "";
+
+var bob_cb = '1';
+bob_cb = ((new Date()).getTime() + "" + Math.floor(Math.random() * 1000000)).substr(0, 16);
+(function() {
+var bob_tag_003 = document.createElement('script');
+bob_tag_003.type = 'text/javascript';
+bob_tag_003.id = "bob_tag_003";
+bob_tag_003.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'bob.dmpxs.com/static/bob_003.js?bob_cb=' + bob_cb + '&page_url=' + page_url  + '&vid_asset_url=' + video_asset_url;
+var bts_003 = document.getElementsByTagName('script')[0];
+bts_003.parentNode.insertBefore(bob_tag_003,bts_003);
+})();
+</script>
+
+			
+	
+				
+<!-- Index Exchange -->
+<script async src="https://js-sec.indexww.com/ht/p/184979-164251977320883.js"></script> 	
+				
+<!-- A9 APS -->
+<script type="text/javascript">
+!function(a9,a,p,s,t,A,g){if(a[a9])return;function q(c,r){a[a9]._Q.push([c,r])}a[a9]={init:function(){q("i",arguments)},fetchBids:function(){q("f",arguments)},setDisplayBids:function(){},targetingKeys:function(){return[]},_Q:[]};A=p.createElement(s);A.async=!0;A.src=t;g=p.getElementsByTagName(s)[0];g.parentNode.insertBefore(A,g)}("apstag",window,document,"script","//c.amazon-adsystem.com/aax2/apstag.js");
+
+apstag.init({"pubID":"3410","adServer":"googletag"});
+</script>
+	
+				
+<!-- Confiant ad fraud protection -->
+<script async="" src="https://confiant-integrations.global.ssl.fastly.net/Y2Nn8JmiAY8HpnF4sl5n7J71jaI/gpt_and_prebid/config.js"></script> 	
+	
+<script type="text/javascript">
+(function() {
+	var _sf_async_config = window._sf_async_config = (window._sf_async_config || {});
+	_sf_async_config.uid = "23192";
+	_sf_async_config.domain = "nwahomepage.com";
+	_sf_async_config.flickerControl = false; 	_sf_async_config.useCanonical = true;
+	_sf_async_config.useCanonicalDomain = true;
+})();
+</script>
+<script async src="//static.chartbeat.com/js/chartbeat_mab.js"></script>
+
+	
+<!-- Google Publisher Tag -->
+<script async="async" src="https://www.googletagservices.com/tag/js/gpt.js"></script>
+<script>
+var googletag = googletag || {};
+googletag.cmd = googletag.cmd || [];
+</script>
+<!-- End Google Publisher Tag -->
+
+
+	
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer',"GTM-KJJZHXD");</script>
+<!-- End Google Tag Manager -->
+
+	
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer',"GTM-5WBWJC");</script>
+<!-- End Google Tag Manager -->
+
+	
+	<title>Tactical Urbanism project brings creative seating to bus stops</title>
+<link rel='dns-prefetch' href='//s0.wp.com' />
+<link rel='dns-prefetch' href='//s7.addthis.com' />
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="KNWA &raquo; Feed" href="https://www.nwahomepage.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="KNWA &raquo; Comments Feed" href="https://www.nwahomepage.com/comments/feed/" />
+<script class="wp-asset-manager page_attributes" type="text/javascript">window.amScripts = window.amScripts || {}; window.amScripts["page_attributes"] = {"page_url":"https:\/\/www.nwahomepage.com\/news\/knwa\/tactical-urbanism-project-brings-creative-seating-to-bus-stops\/","page_slug":"tactical-urbanism-project-brings-creative-seating-to-bus-stops","page_type":"story","page_category":"knwa","article_id":347819,"subpath":"\/news\/knwa"}</script><script class="wp-asset-manager ns-ad-loader-js" type="text/javascript">!function(e){var t={};function n(o){if(t[o])return t[o].exports;var i=t[o]={i:o,l:!1,exports:{}};return e[o].call(i.exports,i,i.exports,n),i.l=!0,i.exports}n.m=e,n.c=t,n.d=function(e,t,o){n.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:o})},n.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},n.t=function(e,t){if(1&t&&(e=n(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var o=Object.create(null);if(n.r(o),Object.defineProperty(o,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var i in e)n.d(o,i,function(t){return e[t]}.bind(null,i));return o},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,"a",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p="/wp-content/themes/nexstar/client/build/",n(n.s=242)}({242:function(e,t,n){e.exports=n(243)},243:function(e,t,n){"use strict";var o=a(n(244)),i=a(n(245));function a(e){return e&&e.__esModule?e:{default:e}}var s=window.amScripts.page_attributes;window.googletag=window.googletag||{},window.googletag.cmd=googletag.cmd||[],googletag.cmd.push(function(){var e=function(e,t,n){var o=void 0;try{o=e.slot[t].apply(e.slot,n)}catch(e){o="[unknown]"}return o};googletag.pubads().addEventListener("slotRenderEnded",function(t){if(t.slot){var n=t.slot,o=t.isEmpty,i=t.size,a=n.getSlotElementId(),s="AD SLOT RENDERED {\n  containerId: "+a+",\n  isEmpty: "+o+",\n  size: "+i+",\n  adUnitPath: "+e(t,"getAdUnitPath")+",\n  position: "+e(t,"getTargeting",["pos"])+",\n}";if(window.setTimeout(function(){console.info(s)},10),a.startsWith("acm-ad-tag-adhesion")&&!o){var r=document.getElementById(a).parentNode;r.classList.remove("pre-render"),r.querySelector(".close-btn-container").addEventListener("click",function(e){e.preventDefault(),r.parentNode.remove()},!1)}if(a.startsWith("acm-ad-tag-oop")&&!o&&document.body.classList.add("has-loaded-super-billboard-ad"),a&&!o&&"function"==typeof document.getElementById(a).closest){var l=document.getElementById(a).closest(".ad-unit");l&&l.classList.add("ad-unit--is-rendered")}}})}),googletag.cmd.push(function(){googletag.pubads().enableSingleRequest(),googletag.pubads().enableAsyncRendering(),googletag.pubads().collapseEmptyDivs(),googletag.companionAds().setRefreshUnfilledSlots(!0),googletag.pubads().disableInitialLoad(),googletag.pubads().enableVideoAds(),googletag.enableServices()}),googletag.cmd.push(function(){var e=googletag.pubads();s.article_id&&e.setTargeting("pid",String(s.article_id)),s.page_type&&e.setTargeting("pagetype",s.page_type)});var r=new o.default(window.googletag,s);window.addEventListener("nsDfpSlotRendered",r.setUpSlot),(0,i.default)(function(){r.initVisibleSlots()}),window.addEventListener("nsDfpRefreshSlots",r.refreshSlots)},244:function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var o=function(){function e(e,t){for(var n=0;n<t.length;n++){var o=t[n];o.enumerable=o.enumerable||!1,o.configurable=!0,"value"in o&&(o.writable=!0),Object.defineProperty(e,o.key,o)}}return function(t,n,o){return n&&e(t.prototype,n),o&&e(t,o),t}}();var i=function(){function e(t,n){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,e),this.apstagSlots=[],this.googletag=t,this.pageAttributes=n,this.setUpSlot=this.setUpSlot.bind(this),this.refreshSlots=this.refreshSlots.bind(this)}return o(e,[{key:"setUpSlot",value:function(e){var t=this,n=e.detail.id,o=document.getElementById(n);if(o){var i=JSON.parse(o.dataset.slot);if(i&&Object.keys(i).length){var a=JSON.parse(o.dataset.unit);if(a&&Object.keys(a).length){var s=o.dataset.path;if(s){var r=JSON.parse(o.dataset.targeting);this.pushCmd(function(){var e=null;if((e=i.is_oop?t.googletag.defineOutOfPageSlot(s,n):t.googletag.defineSlot(s,i.size,n))&&(r&&Object.keys(r).forEach(function(t){e.setTargeting(t,r[t])}),i.sizes.length&&e.defineSizeMapping(i.sizes),i.is_companion&&e.addService(t.googletag.companionAds()),e.addService(t.googletag.pubads())),e){var o=[];e.getSizes?o=e.getSizes(window.innerWidth,window.innerHeight).map(function(e){return[e.getWidth(),e.getHeight()]}):i.sizes.length&&(o=Object.values(i.sizes.reduce(function(e,t){var n=e;return t[1].forEach(function(e){n[e.join(",")]=e}),n},{}))),o.length&&(o=o.filter(function(e){return!(88===e[0]&&31===e[1])})),o.length&&t.apstagSlots.push({sizes:o,slotID:e.getSlotElementId(),slotName:e.getAdUnitPath()})}})}}}}}},{key:"initVisibleSlots",value:function(){var e=this;this.pushCmd(function(){e.googletag.pubads().getSlots().forEach(function(t){e.pushCmd(function(){e.googletag.display(t.getSlotElementId())})})}),this.refreshSlots()}},{key:"refreshSlots",value:function(){var e=this;this.pushCmd(function(){e.initPrebidRequest(function(){e.googletag.pubads().refresh()})})}},{key:"initPrebidRequest",value:function(e){var t=this,n=this.constructor.apstag();n&&this.apstagSlots?n.fetchBids({slots:this.apstagSlots,timeout:2e3},function(){n.setDisplayBids(),t.pushCmd(e)}):this.pushCmd(e)}},{key:"pushCmd",value:function(e){this.googletag.cmd.push(e)}}],[{key:"apstag",value:function(){return window.apstag||null}}]),e}();t.default=i},245:function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.default=function(e){"complete"===document.readyState&&e(),document.addEventListener("DOMContentLoaded",e)}}});
+//# sourceMappingURL=adLoader.8f7662ce15504f3219c3.bundle.min.js.map</script><meta name='description' content='Starting today, the University of Arkansas’s Office of Sustainability will place hardwood tree stumps at bus stops around Fayetteville.' /><!-- WP SEO -->
+<meta name='keywords' content='Fayetteville, Bus Stops, Transit,' /><!-- WP SEO -->
+<meta name='google-site-verification' content='cQCm-HtV7IccCARDbl608QuuJ-YiUaPJZUId56LhdFE' /><!-- WP SEO -->
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/www.nwahomepage.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.3.2"}};
+			!function(e,a,t){var r,n,o,i,p=a.createElement("canvas"),s=p.getContext&&p.getContext("2d");function c(e,t){var a=String.fromCharCode;s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,e),0,0);var r=p.toDataURL();return s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,t),0,0),r===p.toDataURL()}function l(e){if(!s||!s.fillText)return!1;switch(s.textBaseline="top",s.font="600 32px Arial",e){case"flag":return!c([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])&&(!c([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!c([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]));case"emoji":return!c([55357,56424,55356,57342,8205,55358,56605,8205,55357,56424,55356,57340],[55357,56424,55356,57342,8203,55358,56605,8203,55357,56424,55356,57340])}return!1}function d(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(i=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},o=0;o<i.length;o++)t.supports[i[o]]=l(i[o]),t.supports.everything=t.supports.everything&&t.supports[i[o]],"flag"!==i[o]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[i[o]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(r=t.source||{}).concatemoji?d(r.concatemoji):r.wpemoji&&r.twemoji&&(d(r.twemoji),d(r.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	
+<style>
+	:root {
+		--primary_color: #3F5EDB;
+		--alert_banner_label_sep: '/';
+	}
+</style>
+<link rel='stylesheet' id='all-css-0' href='https://www.nwahomepage.com/wp-includes/css/dist/block-library/style.min.css?m=1576710970g' type='text/css' media='all' />
+<link crossorigin="anonymous" rel='stylesheet' id='ns-google-fonts-css'  href='https://fonts.googleapis.com/css?family=Lora%3A400%2C400i%2C700%2C700i%7CRoboto+Condensed%3A400%2C700&#038;ver=1.0' media='all' />
+<link rel='stylesheet' id='all-css-2' href='https://www.nwahomepage.com/_static/??-eJyVzMsOwiAQheEXskyQy+DC+CxTmFYUaFMg+vha49KNu5OTPx881sEvpXFp0K6cuULhZ220gU9xf8ceUwBfK8xpGSmJQI61Ni4ocspOGJwOIsci3s0B/vBoa9EnFkdl7aTIWCUDSjTSqtNPMPdhTX2OpcKN20r+/nG+e88v+SwNopOoUb4AqaRMIA==' type='text/css' media='all' />
+<style id='ns-article-css-inline-css'>
+.article--is-condensed .article-content { max-height: 600px; }
+</style>
+<script type='text/javascript' src='https://www.nwahomepage.com/_static/??-eJzTLy/QzcxLzilNSS3WzwKiwtLUokoopZdVrKOPT4FubmZ6UWJJql5uZh5QsX2uraGpuZm5oYGluWEWACWoILI='></script>
+<link rel='https://api.w.org/' href='https://www.nwahomepage.com/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.nwahomepage.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://www.nwahomepage.com/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 5.3.2" />
+<link rel="canonical" href="https://www.nwahomepage.com/news/knwa/tactical-urbanism-project-brings-creative-seating-to-bus-stops/" />
+<link rel='shortlink' href='https://www.nwahomepage.com/?p=347819' />
+<link rel="alternate" type="application/json+oembed" href="https://www.nwahomepage.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.nwahomepage.com%2Fnews%2Fknwa%2Ftactical-urbanism-project-brings-creative-seating-to-bus-stops%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://www.nwahomepage.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.nwahomepage.com%2Fnews%2Fknwa%2Ftactical-urbanism-project-brings-creative-seating-to-bus-stops%2F&#038;format=xml" />
+<style id="lakana-art-direction"></style>
+			<meta property="fb:pages" content="269193847335" />
+			
+<link rel='dns-prefetch' href='//v0.wordpress.com'/>
+<style type='text/css'>img#wpstats{display:none}</style><script type="text/javascript" src=""></script><link rel="amphtml" href="https://www.nwahomepage.com/news/knwa/tactical-urbanism-project-brings-creative-seating-to-bus-stops/amp/">
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Tactical Urbanism project brings creative seating to bus stops" />
+<meta property="og:url" content="https://www.nwahomepage.com/news/knwa/tactical-urbanism-project-brings-creative-seating-to-bus-stops/" />
+<meta property="og:description" content="Starting today, the University of Arkansas’s Office of Sustainability will place hardwood tree stumps at bus stops around Fayetteville." />
+<meta property="article:published_time" content="2020-01-01T22:49:24+00:00" />
+<meta property="article:modified_time" content="2020-01-01T22:49:28+00:00" />
+<meta property="og:site_name" content="KNWA" />
+<meta property="og:image:width" content="1280" />
+<meta property="og:image:height" content="720" />
+<meta property="og:image:alt" content="Ozark Regional Transit Looking to Expand_6697150725230444907" />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:text:title" content="Tactical Urbanism project brings creative seating to bus stops" />
+<meta name="twitter:image" content="https://www.nwahomepage.com/wp-content/uploads/sites/90/2016/12/Story_2176453_ver1.0.jpg?w=640" />
+<meta name="twitter:image:alt" content="Ozark Regional Transit Looking to Expand_6697150725230444907" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="og:image" content="https://www.nwahomepage.com/wp-content/uploads/sites/90/2016/12/Story_2176453_ver1.0.jpg?w=690&amp;h=460&amp;crop=1&amp;resize=1280,720" />
+<meta property="og:image:secure_url" content="https://www.nwahomepage.com/wp-content/uploads/sites/90/2016/12/Story_2176453_ver1.0.jpg?w=690&#038;h=460&#038;crop=1&#038;resize=1280,720" />
+<meta name="twitter:title" content="Tactical Urbanism project brings creative seating to bus stops" />
+<meta name="twitter:description" content="Starting today, the University of Arkansas’s Office of Sustainability will place hardwood tree stumps at bus stops around Fayetteville." />
+
+<!-- End Jetpack Open Graph Tags -->
+<link rel="icon" href="https://www.nwahomepage.com/wp-content/uploads/sites/90/2019/12/cropped-KNWA-app-icon.png?w=32" sizes="32x32" />
+<link rel="icon" href="https://www.nwahomepage.com/wp-content/uploads/sites/90/2019/12/cropped-KNWA-app-icon.png?w=192" sizes="192x192" />
+<link rel="apple-touch-icon-precomposed" href="https://www.nwahomepage.com/wp-content/uploads/sites/90/2019/12/cropped-KNWA-app-icon.png?w=180" />
+<meta name="msapplication-TileImage" content="https://www.nwahomepage.com/wp-content/uploads/sites/90/2019/12/cropped-KNWA-app-icon.png?w=270" />
+</head>
+
+<body class="post-template-default single single-post postid-347819 single-format-standard wp-custom-logo">
+	
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-KJJZHXDheight="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+	
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-5WBWJCheight="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+	<div id="page" class="site">
+		<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+
+		
+<header id="masthead" class="site-header" role="banner" data-component="siteHeader">
+	<div class="site-header__content">
+					<p class="screen-reader-text"><a href="https://www.nwahomepage.com/" rel="home">KNWA</a></p>
+		
+		<div class="site-header__branding">
+			<div class="site-header__branding__content">
+				<div class="site-header__logo">
+					<a href="https://www.nwahomepage.com/" rel="home">
+						<img src="https://www.nwahomepage.com/wp-content/uploads/sites/90/2019/11/KNWA-Logo-for-HOmepage.png" alt="KNWA" />
+						<div class="site-header__logo-bg" style="background-image: url('https://www.nwahomepage.com/wp-content/uploads/sites/90/2019/11/KNWA-Logo-for-HOmepage.png');"></div>
+					</a>
+				</div>
+				<div class="site-header__weather">
+											<a href="https://www.nwahomepage.com/weather/">
+							<span class="site-header__weather-region">Springdale</span>
+							<span class="site-header__weather-forecast">
+								<span class="site-header__weather-forecast__text">48&deg;</span>
+								<figure class="site-header__weather-forecast__icon">
+									<span class="weather-icon weather-icon-sm weather-icon-light-97"></span>
+								</figure>
+							</span>
+						</a>
+									</div>
+				<div class="site-header__widget">
+					<div class="site-header__sponsor">
+						<aside class="ad-unit ad-unit--microbar ad-unit--microbar--header">
+															<span class="ad_unit__label">Sponsored By</span>
+														<div class="ad-unit__content">
+								  <div   id="acm-ad-tag-header-microbar-header-microbar"   data-slot='{"pos":"header-microbar","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[88,31],"sizes":[[[900,0],[[88,31]]],[[0,0],[]]],"amp_multi_size":"88x31","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"atf"}'   data-unit='{"tag":"header-microbar","tag_id":"header-microbar","dfp_id":"5678","tag_name":"nx.knwa","ad_disabled":"0"}'   data-targeting='{"pos":"header-microbar","fold":"atf","category":"knwa","kw":"tactical-urbanism-project-brings-creative-seating-to-bus-stops"}'   data-path='/5678/nx.knwa/news/knwa'  ></div>  <script>  (function () {   try {    var event = new CustomEvent(     "nsDfpSlotRendered",     {      detail: {       id: 'acm-ad-tag-header-microbar-header-microbar'      }     }    );     window.dispatchEvent(event);   } catch (err) {}  })();  </script>  							</div>
+						</aside>
+
+					</div>
+					<button class="site-header__toggle" aria-controls="supernav" aria-expanded="false">
+						<span class="screen-reader-text">Toggle Menu</span>
+						<span class="icon icon--navicon">
+							
+<svg aria-hidden="true" tabindex="-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.969 12.063">
+	<title>Open Navigation</title>
+	<path fill="#fff" d="M.793 1.556h18.363a.778.778 0 1 0 0-1.555H.793a.854.854 0 0 0-.809.778.73.73 0 0 0 .809.777zm18.363 3.695H.793a.778.778 0 1 0 0 1.555h18.363a.778.778 0 1 0 0-1.555zm0 5.25H.793a.779.779 0 1 0 0 1.556h18.363a.779.779 0 1 0 0-1.557z" />
+</svg>
+						</span>
+						<span class="icon icon--close">
+							
+<svg aria-hidden="true" tabindex="-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16.85 16.875">
+	<title>Close Navigation</title>
+	<path fill="#fff" d="M9.65 8.454l6.88-7.063a.809.809 0 0 0 0-1.15.782.782 0 0 0-1.14 0L8.52 7.305 1.37.241a.782.782 0 0 0-1.14 0 .809.809 0 0 0 0 1.15l7.15 7.063-7.15 7.063a.809.809 0 0 0 0 1.15.824.824 0 0 0 .6.219.787.787 0 0 0 .59-.219l7.15-7.063 6.87 7.063a.824.824 0 0 0 .6.219.619.619 0 0 0 .54-.219.792.792 0 0 0 0-1.15z" />
+</svg>
+						</span>
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<nav id="siteNavigation" class="site-header__navigation">
+			<div class="site-header__search-full">
+				
+<form role="search" class="site-header__search-form" action="https://www.nwahomepage.com/">
+	<span class="screen-reader-text">Search</span>
+	<input type="search" name="s" placeholder="Site Search..." />
+	<input type="submit" name="submit" value="" />
+</form>
+			</div>
+
+			<div class="site-header__navigation__content">
+				<h2 class="screen-reader-text">Primary Menu</h2>
+
+
+				<ul id="supernav" class="menu">
+	<li id="menu-item-93581" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-has-children menu-item-has-articles menu-item-93581"><a href="https://www.nwahomepage.com/news/">News</a>
+<div class="dropnav dropnav--4-col dropnav--full-width">
+	<div class="dropnav__section dropnav__section--sub-menu dropnav__section--half">
+		<ul class="sub-menu" data-columns="2">
+	<li id="menu-item-62220" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-62220"><a href="https://www.nwahomepage.com/news/knwa/">KNWA</a></li>
+	<li id="menu-item-62221" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-62221"><a href="https://www.nwahomepage.com/myfox24/">FOX24</a></li>
+	<li id="menu-item-96474" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-96474"><a href="https://www.nwahomepage.com/around-arkansas/">Around Arkansas</a></li>
+	<li id="menu-item-329356" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-329356"><a href="https://www.nwahomepage.com/news/around-the-region/">Around the Region</a></li>
+	<li id="menu-item-61190" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-61190"><a href="https://www.nwahomepage.com/election/your-local-election/">Election HQ</a></li>
+	<li id="menu-item-93703" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-93703"><a href="https://www.nwahomepage.com/live-streams/">Live Streams</a></li>
+	<li id="menu-item-61191" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-61191"><a href="https://www.nwahomepage.com/news/national/">National</a></li>
+	<li id="menu-item-61192" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-61192"><a href="https://www.nwahomepage.com/news/newsfeed-now/">Newsfeed Now</a></li>
+	<li id="menu-item-329343" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-329343"><a href="https://www.nwahomepage.com/news/take-this-job-and-love-it/">Take This Job and Love It</a></li>
+	<li id="menu-item-270680" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-270680"><a href="https://www.nwahomepage.com/veterans-voices/">Veterans Voices</a></li>
+	<li id="menu-item-260390" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-260390"><a href="https://www.nwahomepage.com/video-center/">Video Center</a></li>
+	<li id="menu-item-61193" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-61193"><a href="https://www.nwahomepage.com/washington/washington-dc/">Washington-DC</a></li>
+	<li id="menu-item-61701" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-61701"><a href="https://www.nwahomepage.com/news/weird-news/">Weird News</a></li>
+	<li id="menu-item-230914" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-230914"><a href="https://www.nwahomepage.com/news/you-ask-we-investigate/">You Ask, We Investigate</a></li>
+</ul>
+</div><div class="dropnav__section dropnav__section--article-list dropnav__section--quarter"><div class="article-list article-list--top-story"><h3 class="article-list__heading">Top Stories</h3><div class="article-list__content"><article class="article-list__article article-list__article--is-stacked article-list__article--has-thumb">
+<div
+	class="article-list__article-text"
+	data-article-list-id=""
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[]"
+>
+			<h4 class="article-list__article-title">
+							<a
+					href="https://www.nwahomepage.com/weather/weather-talk/thursday-january-2-showers-possible-for-rest-of-week/"
+									>
+			
+				Thursday, January 2: Showers possible for rest of week
+							</a>
+					</h4>
+	
+	
+	
+	
+	</div>
+
+	<figure class="article-list__article-thumb">
+					<a
+				href="https://www.nwahomepage.com/weather/weather-talk/thursday-january-2-showers-possible-for-rest-of-week/"
+							>
+		
+		<div class="article-list__article-image-wrapper">
+			
+<div class="image-wrapper landscape">
+	<img
+		src="https://i0.wp.com/www.nwahomepage.com/wp-content/uploads/sites/90/2020/01/jan27day.jpg?w=2000&#038;ssl=1"
+		alt=""
+		srcset=""
+		sizes=""
+	/>
+</div>
+
+					</div>
+
+					</a>
+			</figure>
+	</article></div></div></div><div class="dropnav__section dropnav__section--article-list dropnav__section--quarter"><div class="article-list article-list--bulleted"><h3 class="article-list__heading article-list__heading--hidden">Top Stories</h3><div class="article-list__content"><article class="article-list__article">
+<div
+	class="article-list__article-text"
+	data-article-list-id=""
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[]"
+>
+			<h4 class="article-list__article-title">
+							<a
+					href="https://www.nwahomepage.com/news/knwa/first-baby-of-the-year-is-a-girl-2/"
+									>
+			
+				First baby of the year in NWA is a girl
+							</a>
+					</h4>
+	
+	
+	
+	
+	</div>
+
+</article><article class="article-list__article">
+<div
+	class="article-list__article-text"
+	data-article-list-id=""
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[]"
+>
+			<h4 class="article-list__article-title">
+							<a
+					href="https://www.nwahomepage.com/news/knwa/arkansans-approved-for-medical-marijuana-id-cards-2/"
+									>
+			
+				Arkansans approved for medical marijuana ID cards
+							</a>
+					</h4>
+	
+	
+	
+	
+	</div>
+
+</article><article class="article-list__article">
+<div
+	class="article-list__article-text"
+	data-article-list-id=""
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[]"
+>
+			<h4 class="article-list__article-title">
+							<a
+					href="https://www.nwahomepage.com/around-arkansas/former-maumelle-firefighter-killed-in-plane-crash-in-kansas/"
+									>
+			
+				Former Maumelle firefighter killed in plane crash in Kansas
+							</a>
+					</h4>
+	
+	
+	
+	
+	</div>
+
+</article><article class="article-list__article">
+<div
+	class="article-list__article-text"
+	data-article-list-id=""
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[]"
+>
+			<h4 class="article-list__article-title">
+							<a
+					href="https://www.nwahomepage.com/news/meet-the-man-who-has-run-every-day-for-the-past-20-years/"
+									>
+			
+				Meet the man who has run every day for the past 20 years
+							</a>
+					</h4>
+	
+	
+	
+	
+	</div>
+
+</article></div></div></div></div></li>
+<li id="menu-item-33" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-33"><a href="https://www.nwahomepage.com/weather/">Weather</a>
+<div class="dropnav dropnav--2-col">
+	<div class="dropnav__section dropnav__section--sub-menu">
+		<ul class="sub-menu" data-columns="2">
+	<li id="menu-item-61195" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-61195"><a href="https://www.nwahomepage.com/weather/">Weather</a></li>
+	<li id="menu-item-61196" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-61196"><a href="https://www.nwahomepage.com/interactive-radar/">Interactive Radar</a></li>
+	<li id="menu-item-310143" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-310143"><a href="https://www.nwahomepage.com/weather/closings/">Closings &#038; Delays</a></li>
+	<li id="menu-item-311591" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-311591"><a href="https://www.nwahomepage.com/closings-admin/">Post Your Closings Here</a></li>
+	<li id="menu-item-165258" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-165258"><a href="https://www.nwahomepage.com/weather/cameras/">Weather Cameras</a></li>
+	<li id="menu-item-61203" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-61203"><a href="https://www.nwahomepage.com/weather/livestream/">Livestream</a></li>
+	<li id="menu-item-61198" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-61198"><a href="https://www.nwahomepage.com/weather/super-weather-kid/">Super Weather Kid</a></li>
+	<li id="menu-item-271304" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-271304"><a href="https://www.nwahomepage.com/biking-forecast/">Biking Forecast</a></li>
+	<li id="menu-item-322834" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-322834"><a href="https://www.nwahomepage.com/weather/weather-blog/">Weather Blog</a></li>
+	<li id="menu-item-165341" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-165341"><a href="https://www.nwahomepage.com/weather/weather-guests/">Weather Guests</a></li>
+	<li id="menu-item-61200" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-61200"><a href="https://www.nwahomepage.com/weather/weatherteam/">Weather Team</a></li>
+	<li id="menu-item-61201" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-61201"><a href="https://www.nwahomepage.com/weather/weatherradios/">Weather Radios</a></li>
+	<li id="menu-item-61202" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-61202"><a href="https://www.nwahomepage.com/weather/weathercall/">Weather Call</a></li>
+</ul>
+</div></div></li>
+<li id="menu-item-93855" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-has-articles menu-item-93855"><a href="https://www.nwahomepage.com/sports/pig-trail-nation/">Pig Trail Nation</a>
+<div class="dropnav dropnav--4-col dropnav--full-width">
+	<div class="dropnav__section dropnav__section--sub-menu dropnav__section--half">
+		<ul class="sub-menu" data-columns="2">
+	<li id="menu-item-231200" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-231200"><a href="https://www.nwahomepage.com/sports/pig-trail-nation/">Pig Trail Nation News</a></li>
+	<li id="menu-item-96467" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-96467"><a href="https://www.nwahomepage.com/sports/pig-trail-nation/hog-recruiting/">Hog Recruiting</a></li>
+	<li id="menu-item-173809" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-173809"><a href="https://www.nwahomepage.com/hog-football-stats/">2019 Schedule &#038; Stats</a></li>
+	<li id="menu-item-319237" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-319237"><a href="https://www.nwahomepage.com/pig-trail-nation-live-stream/">PTN Live Stream</a></li>
+	<li id="menu-item-273704" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-273704"><a href="https://www.nwahomepage.com/sports/pig-trail-nation/ask-mike/">Ask Mike</a></li>
+	<li id="menu-item-238905" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-238905"><a href="https://www.hogville.net/">Hogville</a></li>
+	<li id="menu-item-61484" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-61484"><a href="https://www.nwahomepage.com/fearless-friday/fearless-friday-nwa/">Fearless Friday NWA</a></li>
+	<li id="menu-item-242892" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-242892"><a href="https://www.nwahomepage.com/the-big-game/">The Big Game</a></li>
+	<li id="menu-item-338262" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-338262"><a href="https://www.nwahomepage.com/japan-2020/">Japan 2020</a></li>
+	<li id="menu-item-238608" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-238608"><a href="https://www.nwahomepage.com/sports/sec-football/">SEC Football</a></li>
+	<li id="menu-item-178580" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-178580"><a href="https://www.nwahomepage.com/sports/silver-star-nation/">Silver Star Nation</a></li>
+	<li id="menu-item-136048" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-136048"><a href="https://www.nwahomepage.com/news/national-sports/">National Sports</a></li>
+	<li id="menu-item-173798" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-173798"><a href="https://www.nwahomepage.com/ncaaa/">NCAA</a></li>
+</ul>
+</div><div class="dropnav__section dropnav__section--article-list dropnav__section--quarter"><div class="article-list article-list--top-story"><h3 class="article-list__heading">Top Stories</h3><div class="article-list__content"><article class="article-list__article article-list__article--is-stacked article-list__article--has-thumb article-list__article--is-media-type">
+<div
+	class="article-list__article-text"
+	data-article-list-id=""
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[]"
+>
+			<h4 class="article-list__article-title">
+							<a
+					href="https://www.nwahomepage.com/sports/pig-trail-nation/ptn-analysis-breaking-down-mens-womens-sec-openers/"
+									>
+			
+				PTN Analysis: Breaking down Men&#8217;s &amp; Women&#8217;s SEC openers
+							</a>
+					</h4>
+	
+	
+	
+	
+	</div>
+
+	<figure class="article-list__article-thumb">
+					<a
+				href="https://www.nwahomepage.com/sports/pig-trail-nation/ptn-analysis-breaking-down-mens-womens-sec-openers/"
+							>
+		
+		<div class="article-list__article-image-wrapper">
+			
+<div class="image-wrapper landscape">
+	<img
+		src="https://i0.wp.com/www.nwahomepage.com/wp-content/uploads/sites/90/2020/01/LATE-SPORTS-1-1.jpg?w=2000&#038;ssl=1"
+		alt=""
+		srcset=""
+		sizes=""
+	/>
+</div>
+
+							
+<span aria-hidden="true" tabindex="-1" class="article-list__article-mediaicon">
+	<span class="article-list__article-mediaicon-svg">
+		<svg viewBox="0 0 24 24">
+			<path d="M8,5.14V19.14L19,12.14L8,5.14Z" />
+		</svg>
+	</span>
+	</span>
+					</div>
+
+					</a>
+			</figure>
+	</article></div></div></div><div class="dropnav__section dropnav__section--article-list dropnav__section--quarter"><div class="article-list article-list--bulleted"><h3 class="article-list__heading article-list__heading--hidden">Top Stories</h3><div class="article-list__content"><article class="article-list__article">
+<div
+	class="article-list__article-text"
+	data-article-list-id=""
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[]"
+>
+			<h4 class="article-list__article-title">
+							<a
+					href="https://www.nwahomepage.com/sports/pig-trail-nation/5-things-arkansas-has-to-do-in-2020-for-possible-bowl-game/"
+									>
+			
+				5 Things Arkansas Has to do in 2020 for Possible Bowl Game
+							</a>
+					</h4>
+	
+	
+	
+	
+	</div>
+
+</article><article class="article-list__article">
+<div
+	class="article-list__article-text"
+	data-article-list-id=""
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[]"
+>
+			<h4 class="article-list__article-title">
+							<a
+					href="https://www.nwahomepage.com/sports/pig-trail-nation/hog-recruiting/five-key-uncommitted-arkansas-football-targets/"
+									>
+			
+				Five Key Uncommitted Arkansas Football Targets
+							</a>
+					</h4>
+	
+	
+	
+	
+	</div>
+
+</article><article class="article-list__article">
+<div
+	class="article-list__article-text"
+	data-article-list-id=""
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[]"
+>
+			<h4 class="article-list__article-title">
+							<a
+					href="https://www.nwahomepage.com/sports/pig-trail-nation/ptns-ask-mike-for-december-30th/"
+									>
+			
+				PTN&#8217;s &#8220;Ask Mike&#8221; for December 30th
+							</a>
+					</h4>
+	
+	
+	
+	
+	</div>
+
+</article><article class="article-list__article">
+<div
+	class="article-list__article-text"
+	data-article-list-id=""
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[]"
+>
+			<h4 class="article-list__article-title">
+							<a
+					href="https://www.nwahomepage.com/sports/pig-trail-nation/former-razorback-headed-to-oklahoma-state/"
+									>
+			
+				Former Razorback Headed to Oklahoma State
+							</a>
+					</h4>
+	
+	
+	
+	
+	</div>
+
+</article></div></div></div></div></li>
+<li id="menu-item-35" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-35"><a href="https://www.nwahomepage.com/contests/">Contests</a>
+<div class="dropnav dropnav--2-col">
+	<div class="dropnav__section dropnav__section--sub-menu">
+		<ul class="sub-menu" data-columns="2">
+	<li id="menu-item-346398" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-346398"><a href="https://www.nwahomepage.com/watch-and-win/">Watch and Win</a></li>
+	<li id="menu-item-342838" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-342838"><a href="https://www.nwahomepage.com/shopping-spree/">Allen&#8217;s Food Market Shopping Spree</a></li>
+	<li id="menu-item-312818" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-312818"><a href="https://www.nwahomepage.com/home-for-the-holidays/">Home for the Holidays</a></li>
+	<li id="menu-item-323865" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-323865"><a href="https://www.nwahomepage.com/light-up-your-neighborhood/">Light Up Your Neighborhood</a></li>
+	<li id="menu-item-238903" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-238903"><a href="https://www.nwahomepage.com/pro-football-challenge/">Pro Football Challenge</a></li>
+	<li id="menu-item-335142" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-335142"><a href="https://www.nwahomepage.com/remarkable-women-contest/">Remarkable Women</a></li>
+	<li id="menu-item-95681" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-95681"><a href="https://www.nwahomepage.com/snap-of-the-day/">Snap Of The Day</a></li>
+	<li id="menu-item-61550" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-61550"><a href="https://www.nwahomepage.com/weather/super-weather-kid/">Super Weather Kid</a></li>
+</ul>
+</div></div></li>
+<li id="menu-item-36" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-36"><a href="https://www.nwahomepage.com/community/">Community</a>
+<div class="dropnav dropnav--3-col">
+	<div class="dropnav__section dropnav__section--sub-menu">
+		<ul class="sub-menu" data-columns="3">
+	<li id="menu-item-310215" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-310215"><a href="https://www.nwahomepage.com/news/a-closer-look/">A Closer Look</a></li>
+	<li id="menu-item-226859" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-226859"><a href="https://www.nwahomepage.com/biking-the-ozarks/">Biking the Ozarks</a></li>
+	<li id="menu-item-61188" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-61188"><a href="https://www.nwahomepage.com/clear-the-shelters/">Clear the Shelters</a></li>
+	<li id="menu-item-123617" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-123617"><a href="http://www.nwahomepage.com/calendar/#/">Community Calendar</a></li>
+	<li id="menu-item-61636" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-61636"><a href="https://www.nwahomepage.com/community/doinggood/">General Mills Doing Good</a></li>
+	<li id="menu-item-179781" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-179781"><a href="https://www.nwahomepage.com/miracle/">Give Kids a Miracle</a></li>
+	<li id="menu-item-61638" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-61638"><a href="https://www.nwahomepage.com/golden-apple/">Golden Apple</a></li>
+	<li id="menu-item-243029" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-243029"><a href="https://www.nwahomepage.com/hidden-history/hispanic-heritage-month/">Hispanic Heritage</a></li>
+	<li id="menu-item-309994" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-309994"><a href="https://www.nwahomepage.com/home-for-the-holidays/">Home for the Holidays</a></li>
+	<li id="menu-item-340272" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-340272"><a href="https://www.nwahomepage.com/horoscopes/">Horoscopes</a></li>
+	<li id="menu-item-315425" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-315425"><a href="https://www.nwahomepage.com/hot-holiday-toys/">Hot Holiday Toys</a></li>
+	<li id="menu-item-308104" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-308104"><a href="https://www.nwahomepage.com/lone-star-nye-2020/">Lone Star NYE 2020</a></li>
+	<li id="menu-item-340273" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-340273"><a href="https://www.nwahomepage.com/lottery/">Lottery</a></li>
+	<li id="menu-item-311795" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-311795"><a href="https://www.nwahomepage.com/no-shave-november/">No Shave November</a></li>
+	<li id="menu-item-61640" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-61640"><a href="https://www.nwahomepage.com/community/pet-of-the-week/">Pet of the Week</a></li>
+	<li id="menu-item-335328" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-335328"><a href="https://www.nwahomepage.com/remarkable-women-contest/">Remarkable Women</a></li>
+	<li id="menu-item-136952" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-136952"><a href="https://www.nwahomepage.com/news/special-report/">Special Report</a></li>
+	<li id="menu-item-217679" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-217679"><a href="https://www.nwahomepage.com/news/nwa-spotlight/supplier-community/">Supplier Community</a></li>
+	<li id="menu-item-61872" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-61872"><a href="https://nwahomepagedeals.com/">NWA Homepage Deals</a></li>
+	<li id="menu-item-61870" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-61870"><a href="https://www.nwahomepage.com/news/nwa-spotlight/">NWA Spotlight</a></li>
+	<li id="menu-item-61871" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-61871"><a href="http://arjobsonline.com/">ARJobsOnline</a></li>
+</ul>
+</div></div></li>
+<li id="menu-item-63257" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-has-articles menu-item-63257"><a href="https://www.nwahomepage.com/lifestyle/good-day-nwa/">Good Day NWA</a>
+<div class="dropnav dropnav--4-col dropnav--full-width">
+	<div class="dropnav__section dropnav__section--sub-menu dropnav__section--quarter">
+		<ul class="sub-menu" data-columns="1">
+	<li id="menu-item-181469" class="menu-item menu-item-type-taxonomy menu-item-object-post_tag menu-item-181469"><a href="https://www.nwahomepage.com/tag/idrive-crain/">iDrive Crain</a></li>
+	<li id="menu-item-274110" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-274110"><a href="https://www.nwahomepage.com/news/entertainment-news/cma-awards/">CMA Awards</a></li>
+	<li id="menu-item-136168" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-136168"><a href="https://www.nwahomepage.com/news/entertainment-news/">Entertainment News</a></li>
+	<li id="menu-item-95697" class="menu-item menu-item-type-taxonomy menu-item-object-post_tag menu-item-95697"><a href="https://www.nwahomepage.com/tag/tasty-tuesday/">Tasty Tuesday</a></li>
+	<li id="menu-item-330613" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-330613"><a href="https://knwanews.secondstreetapp.com/What-Holiday-Movie-Are-You/questions/2410640?allow-full-viewport=true">What Holiday Movie Are You?</a></li>
+</ul>
+</div><div class="dropnav__section dropnav__section--article-list dropnav__section--quarter"><div class="article-list article-list--top-story"><h3 class="article-list__heading">Top Stories</h3><div class="article-list__content"><article class="article-list__article article-list__article--is-stacked article-list__article--has-thumb article-list__article--is-media-type">
+<div
+	class="article-list__article-text"
+	data-article-list-id=""
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[]"
+>
+			<h4 class="article-list__article-title">
+							<a
+					href="https://www.nwahomepage.com/lifestyle/good-day-nwa/good-day-nwa-get-moving-in-2020/"
+									>
+			
+				Good Day NWA: Get Moving in 2020
+							</a>
+					</h4>
+	
+	
+	
+	
+	</div>
+
+	<figure class="article-list__article-thumb">
+					<a
+				href="https://www.nwahomepage.com/lifestyle/good-day-nwa/good-day-nwa-get-moving-in-2020/"
+							>
+		
+		<div class="article-list__article-image-wrapper">
+			
+<div class="image-wrapper landscape">
+	<img
+		src="https://i0.wp.com/www.nwahomepage.com/wp-content/uploads/sites/90/2019/12/GET-MOVING-IN-2020-WEB.jpg?w=2000&#038;ssl=1"
+		alt=""
+		srcset=""
+		sizes=""
+	/>
+</div>
+
+							
+<span aria-hidden="true" tabindex="-1" class="article-list__article-mediaicon">
+	<span class="article-list__article-mediaicon-svg">
+		<svg viewBox="0 0 24 24">
+			<path d="M8,5.14V19.14L19,12.14L8,5.14Z" />
+		</svg>
+	</span>
+	</span>
+					</div>
+
+					</a>
+			</figure>
+	</article></div></div></div><div class="dropnav__section dropnav__section--article-list dropnav__section--quarter"><div class="article-list article-list--top-story"><h3 class="article-list__heading article-list__heading--hidden">Top Stories</h3><div class="article-list__content"><article class="article-list__article article-list__article--is-stacked article-list__article--has-thumb article-list__article--is-media-type">
+<div
+	class="article-list__article-text"
+	data-article-list-id=""
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[]"
+>
+			<h4 class="article-list__article-title">
+							<a
+					href="https://www.nwahomepage.com/lifestyle/good-day-nwa/good-day-nwa-jackson-hewitt-provides-tax-tips-for-ending-the-year/"
+									>
+			
+				Good Day NWA: Jackson Hewitt Provides Tax Tips for Ending the Year
+							</a>
+					</h4>
+	
+	
+	
+	
+	</div>
+
+	<figure class="article-list__article-thumb">
+					<a
+				href="https://www.nwahomepage.com/lifestyle/good-day-nwa/good-day-nwa-jackson-hewitt-provides-tax-tips-for-ending-the-year/"
+							>
+		
+		<div class="article-list__article-image-wrapper">
+			
+<div class="image-wrapper landscape">
+	<img
+		src="https://i1.wp.com/www.nwahomepage.com/wp-content/uploads/sites/90/2019/12/JACKSON-HEWITT-WEB.jpg?w=2000&#038;ssl=1"
+		alt=""
+		srcset=""
+		sizes=""
+	/>
+</div>
+
+							
+<span aria-hidden="true" tabindex="-1" class="article-list__article-mediaicon">
+	<span class="article-list__article-mediaicon-svg">
+		<svg viewBox="0 0 24 24">
+			<path d="M8,5.14V19.14L19,12.14L8,5.14Z" />
+		</svg>
+	</span>
+	</span>
+					</div>
+
+					</a>
+			</figure>
+	</article></div></div></div><div class="dropnav__section dropnav__section--article-list dropnav__section--quarter"><div class="article-list article-list--bulleted"><h3 class="article-list__heading article-list__heading--hidden">Top Stories</h3><div class="article-list__content"><article class="article-list__article">
+<div
+	class="article-list__article-text"
+	data-article-list-id=""
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[]"
+>
+			<h4 class="article-list__article-title">
+							<a
+					href="https://www.nwahomepage.com/lifestyle/good-day-nwa/good-day-nwa-wardrobe-looks-for-2020-with-the-organizer-chicks/"
+									>
+			
+				Good Day NWA: Wardrobe Looks for 2020 with The Organizer Chicks
+							</a>
+					</h4>
+	
+	
+	
+	
+	</div>
+
+</article><article class="article-list__article">
+<div
+	class="article-list__article-text"
+	data-article-list-id=""
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[]"
+>
+			<h4 class="article-list__article-title">
+							<a
+					href="https://www.nwahomepage.com/lifestyle/good-day-nwa/good-day-nwa-new-years-eve-celebrations-cocktails/"
+									>
+			
+				Good Day NWA: New Year&#8217;s Eve Celebrations &amp; Cocktails
+							</a>
+					</h4>
+	
+	
+	
+	
+	</div>
+
+</article><article class="article-list__article">
+<div
+	class="article-list__article-text"
+	data-article-list-id=""
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[]"
+>
+			<h4 class="article-list__article-title">
+							<a
+					href="https://www.nwahomepage.com/lifestyle/good-day-nwa/good-day-nwa-creating-festive-poppers-for-nye/"
+									>
+			
+				Good Day NWA: Creating Festive Poppers for NYE
+							</a>
+					</h4>
+	
+	
+	
+	
+	</div>
+
+</article><article class="article-list__article">
+<div
+	class="article-list__article-text"
+	data-article-list-id=""
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[]"
+>
+			<h4 class="article-list__article-title">
+							<a
+					href="https://www.nwahomepage.com/lifestyle/good-day-nwa/good-day-nwa-elvis-tribute-artist-delvis-performs/"
+									>
+			
+				Good Day NWA: Elvis Tribute Artist &#8220;Delvis&#8221; Performs
+							</a>
+					</h4>
+	
+	
+	
+	
+	</div>
+
+</article></div></div></div></div></li>
+<li id="menu-item-147104" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-has-articles menu-item-147104"><a href="https://www.nwahomepage.com/ask-the-expert/">Advice Network</a>
+<div class="dropnav dropnav--4-col dropnav--full-width">
+	<div class="dropnav__section dropnav__section--sub-menu dropnav__section--half">
+		<ul class="sub-menu" data-columns="2">
+	<li id="menu-item-329989" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-329989"><a href="https://www.nwahomepage.com/bills-fence-company/">Bill&#8217;s Fence Company</a></li>
+	<li id="menu-item-326996" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-326996"><a href="https://www.nwahomepage.com/bio-tech-md/">Bio-Tech M&#038;D</a></li>
+	<li id="menu-item-293064" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-293064"><a href="https://www.nwahomepage.com/bio-tech-pharmacal/">Bio Tech Pharmacal</a></li>
+	<li id="menu-item-61877" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-61877"><a href="https://www.nwahomepage.com/financial/">Chastain Financial</a></li>
+	<li id="menu-item-277057" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-277057"><a href="https://www.nwahomepage.com/dr-earl-md/">Dr. Earl MD</a></li>
+	<li id="menu-item-193943" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-193943"><a href="https://www.nwahomepage.com/ent-center-of-the-ozarks/">ENT Center of the Ozarks</a></li>
+	<li id="menu-item-61875" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-61875"><a href="https://www.nwahomepage.com/nwa-urology/">NWA Urology</a></li>
+	<li id="menu-item-256989" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-256989"><a href="https://www.nwahomepage.com/smile-shoppe/">Smile Shoppe</a></li>
+	<li id="menu-item-61878" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-61878"><a href="https://www.nwahomepage.com/marketplace/solera-dental-spa/">Solera Dental Spa</a></li>
+	<li id="menu-item-61700" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-61700"><a href="https://www.nwahomepage.com/your-health/">Your Health</a></li>
+	<li id="menu-item-95758" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-95758"><a href="https://www.nwahomepage.com/vold-vision/">Vold Vision</a></li>
+	<li id="menu-item-281614" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-281614"><a href="https://www.nwahomepage.com/wave-rural-connect/">WAVE Rural Connect</a></li>
+</ul>
+</div><div class="dropnav__section dropnav__section--article-list dropnav__section--quarter"><div class="article-list article-list--top-story"><h3 class="article-list__heading">Top Stories</h3><div class="article-list__content"><article class="article-list__article article-list__article--is-stacked article-list__article--has-thumb article-list__article--is-media-type">
+<div
+	class="article-list__article-text"
+	data-article-list-id=""
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[]"
+>
+			<h4 class="article-list__article-title">
+							<a
+					href="https://www.nwahomepage.com/ent/plastic-surgery-options-at-any-age/"
+									>
+			
+				Plastic surgery options at any age
+							</a>
+					</h4>
+	
+	
+	
+	
+	</div>
+
+	<figure class="article-list__article-thumb">
+					<a
+				href="https://www.nwahomepage.com/ent/plastic-surgery-options-at-any-age/"
+							>
+		
+		<div class="article-list__article-image-wrapper">
+			
+<div class="image-wrapper landscape">
+	<img
+		src="https://i1.wp.com/www.nwahomepage.com/wp-content/uploads/sites/90/2019/12/ENT-0.jpg?w=2000&#038;ssl=1"
+		alt=""
+		srcset=""
+		sizes=""
+	/>
+</div>
+
+							
+<span aria-hidden="true" tabindex="-1" class="article-list__article-mediaicon">
+	<span class="article-list__article-mediaicon-svg">
+		<svg viewBox="0 0 24 24">
+			<path d="M8,5.14V19.14L19,12.14L8,5.14Z" />
+		</svg>
+	</span>
+	</span>
+					</div>
+
+					</a>
+			</figure>
+	</article></div></div></div><div class="dropnav__section dropnav__section--article-list dropnav__section--quarter"><div class="article-list article-list--bulleted"><h3 class="article-list__heading article-list__heading--hidden">Top Stories</h3><div class="article-list__content"><article class="article-list__article">
+<div
+	class="article-list__article-text"
+	data-article-list-id=""
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[]"
+>
+			<h4 class="article-list__article-title">
+							<a
+					href="https://www.nwahomepage.com/your-health/mothers-milk-bank-at-washington-regional-seeks-donations/"
+									>
+			
+				Mothers&#8217; Milk Bank at Washington Regional seeks donations
+							</a>
+					</h4>
+	
+	
+	
+	
+	</div>
+
+</article><article class="article-list__article">
+<div
+	class="article-list__article-text"
+	data-article-list-id=""
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[]"
+>
+			<h4 class="article-list__article-title">
+							<a
+					href="https://www.nwahomepage.com/smile-shoppe/when-should-you-have-your-childs-first-dental-visit/"
+									>
+			
+				When should you have your child&#8217;s first dental visit?
+							</a>
+					</h4>
+	
+	
+	
+	
+	</div>
+
+</article></div></div></div></div></li>
+<li id="menu-item-23" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-23"><a href="https://www.nwahomepage.com/about-us/">About Us</a>
+<div class="dropnav dropnav--2-col">
+	<div class="dropnav__section dropnav__section--sub-menu">
+		<ul class="sub-menu" data-columns="2">
+	<li id="menu-item-61908" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-61908"><a href="https://www.nwahomepage.com/advertise-with-us/">Advertise With Us</a></li>
+	<li id="menu-item-24" class="menu-item menu-item-type-post_type menu-item-object-page current-post-parent menu-item-24"><a href="https://www.nwahomepage.com/contact-us/">Contact Us</a></li>
+	<li id="menu-item-259489" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-259489"><a href="https://nexstar.wd5.myworkdayjobs.com/nexstar/1/refreshFacet/318c8bb6f553100021d223d9780d30be">Work For Us</a></li>
+	<li id="menu-item-233802" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-233802"><a href="https://www.nwahomepage.com/meet-the-team/">Meet the Team</a></li>
+	<li id="menu-item-61910" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-61910"><a href="https://www.nwahomepage.com/alerts/">Sign Up for Text Alerts</a></li>
+	<li id="menu-item-61905" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-61905"><a href="https://www.nwahomepage.com/signal-reception-help/">Signal Reception Help</a></li>
+	<li id="menu-item-61907" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-61907"><a href="https://www.nwahomepage.com/stay-connected/">Stay Connected</a></li>
+	<li id="menu-item-323863" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-323863"><a href="https://www.nwahomepage.com/tv-schedule-nbc/">TV Schedule – NBC</a></li>
+	<li id="menu-item-323862" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-323862"><a href="https://www.nwahomepage.com/tv-schedule-fox-24/">TV Schedule – Fox 24</a></li>
+	<li id="menu-item-323864" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-323864"><a href="https://www.nwahomepage.com/tv-schedule-mynetworktv/">TV Schedule – MyNetworkTV</a></li>
+</ul>
+</div></div></li>
+</ul>
+
+				<div class="site-header__search-drop">
+					<a class="site-header__search-drop__toggle" href="#">
+						<span class="screen-reader-text">Search</span>
+						<span class="icon">
+							
+<svg  aria-hidden="true" tabindex="-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 17">
+	<title>Search</title>
+	<path d="M15.72 15.4l-3.75-3.8a7 7 0 0 0 1.72-4.612 6.851 6.851 0 1 0-6.85 6.98 6.713 6.713 0 0 0 3.72-1.127l3.85 3.9a.9.9 0 0 0 .65.276.92.92 0 0 0 .66-.276.965.965 0 0 0 0-1.341zM1.85 6.984a4.991 4.991 0 1 1 4.99 5.087 5.036 5.036 0 0 1-4.99-5.09z" />
+</svg>
+						</span>
+					</a>
+					
+<form role="search" class="site-header__search-form" action="https://www.nwahomepage.com/">
+	<span class="screen-reader-text">Search</span>
+	<input type="search" name="s" placeholder="What are you looking for?" />
+	<input type="submit" name="submit" value="Search" />
+</form>
+				</div>
+			</div>
+		</nav>
+	</div>
+</header>
+
+		<div class="site-content-wrapper">
+			
+<div class="alert-banners js-alert-banners has-messages">
+	
+	<div class="weather-alerts" data-react-component="WeatherAlerts"></div>
+</div>
+
+
+			
+<div id="content" class="site-content">
+	<aside class="ad-unit ad-unit--leaderboard">
+		<div class="ad-unit__content">
+			  <div   id="acm-ad-tag-billboard1-billboard1"   data-slot='{"pos":"billboard1","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[320,50],"sizes":[[[1280,0],[[728,90],[970,250],[970,90],[970,30]]],[[1024,0],[[728,90],[970,250],[970,90],[970,30]]],[[768,0],[[728,90]]],[[641,0],[[320,50]]],[[0,0],[[320,50]]]],"amp_multi_size":"320x50","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"atf"}'   data-unit='{"tag":"billboard1","tag_id":"billboard1","dfp_id":"5678","tag_name":"nx.knwa","ad_disabled":"0"}'   data-targeting='{"pos":"billboard1","fold":"atf","category":"knwa","kw":"tactical-urbanism-project-brings-creative-seating-to-bus-stops"}'   data-path='/5678/nx.knwa/news/knwa'  ></div>  <script>  (function () {   try {    var event = new CustomEvent(     "nsDfpSlotRendered",     {      detail: {       id: 'acm-ad-tag-billboard1-billboard1'      }     }    );     window.dispatchEvent(event);   } catch (err) {}  })();  </script>  		</div>
+	</aside>
+
+			<div class="zone-container--below-supernav">
+			<section id="acm_ad_zones-2" class="widget acm_ad_zones"><script type="text/javascript" src=""></script></section><section id="custom_html-110" class="widget_text widget widget_custom_html"><div class="textwidget custom-html-widget"><div class="rich-text-cascade"></div></div></section>		</div>
+	
+	
+	<div class="site-content__layout site-content__layout--has-sidebar">
+		
+		
+		
+		<div id="primary" class="content-area">
+			<main id="main" class="site-main">
+
+				
+<article class="article post-347819 post type-post status-publish format-standard has-post-thumbnail hentry category-featured-stories category-knwa category-local-news category-news tag-bus-stops tag-fayetteville tag-transit" data-component="article">
+	
+<header class="article-header">
+	<h1 class="article-title">
+		Tactical Urbanism project brings creative seating to bus stops	</h1>
+
+			<div class="article-eyebrow">
+			<a href="https://www.nwahomepage.com/news/knwa/">KNWA</a>
+		</div>
+	
+	
+	<div class="article-meta">
+					<p>by: Megan Wilson</p>
+		
+					Posted: <time datetime="2020-01-01T16:49:24-06:00">Jan 1, 2020 / 04:49 PM CST</time>		
+					<span class="article-meta--sep"> / </span>Updated: <time datetime="2020-01-01T16:49:28-06:00">Jan 1, 2020 / 04:49 PM CST</time>			</div><!-- .article-meta -->
+
+			<figure class="article-featured-media article-featured-media--is-image">
+			
+<div class="image-wrapper landscape">
+	<img
+		src="https://i1.wp.com/www.nwahomepage.com/wp-content/uploads/sites/90/2016/12/Story_2176453_ver1.0.jpg?resize=2560%2C1440&#038;ssl=1"
+		alt="Ozark Regional Transit Looking to Expand_6697150725230444907"
+		srcset="https://www.nwahomepage.com/wp-content/uploads/sites/90/2016/12/Story_2176453_ver1.0.jpg?w=320&amp;h=180&amp;crop=1 320w, https://www.nwahomepage.com/wp-content/uploads/sites/90/2016/12/Story_2176453_ver1.0.jpg?w=640&amp;h=360&amp;crop=1 640w, https://i1.wp.com/www.nwahomepage.com/wp-content/uploads/sites/90/2016/12/Story_2176453_ver1.0.jpg?resize=960%2C540&amp;ssl=1 960w, https://i1.wp.com/www.nwahomepage.com/wp-content/uploads/sites/90/2016/12/Story_2176453_ver1.0.jpg?resize=1280%2C720&amp;ssl=1 1280w, https://i1.wp.com/www.nwahomepage.com/wp-content/uploads/sites/90/2016/12/Story_2176453_ver1.0.jpg?resize=1920%2C1080&amp;ssl=1 1920w, https://i1.wp.com/www.nwahomepage.com/wp-content/uploads/sites/90/2016/12/Story_2176453_ver1.0.jpg?resize=2560%2C1440&amp;ssl=1 2560w"
+		sizes="(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px"
+	/>
+</div>
+
+					</figure>
+	
+	<div class="article-lead-share">
+		
+<div class="social-share addthis">
+	<div class="addthis_inline_share_toolbox"></div>
+</div>
+	</div>
+</header><!-- .article-header -->
+
+	
+	<div class="article-content rich-text">
+		
+		
+<p>FAYETTEVILLE, Ark. (KNWA) — Starting today, the University of Arkansas’s Office of Sustainability will place hardwood tree stumps at bus stops around Fayetteville. </p>
+
+
+
+<p>Colorful designs are painted and clear coated on a sanded stump surface, offering a place to sit while passengers wait for the next bus.</p>
+
+
+
+<p>In 2017, the Fayetteville developed a Tactical Urbanism process to encourage community-led projects that test temporary and low-cost changes for improving neighborhoods and gathering places.  </p>
+
+
+
+<p>Eric Boles, director for the Office of Sustainability said, “The goal is to improve the experience of our transit patrons. The project will be considered a success if people relax on the seats. The hardwood logs are extremely durable and can become firewood – ensuring that the log will never become litter.&#8221;</p>
+
+
+
+<p>The project aims to have stump seating at 10 bus stops. The first two installations are at:<br>W. Poplar Street near Chestnut Apartments<br>N. Leverett Avenue near Noble Oaks Apartments</p>
+
+
+
+<p>One of the next steps in improving transit services is identifying what type of bus stop amenities, such as shelters and benches, are needed and where. The stump seating project will assist with the goal.</p>
+
+		
+	</div><!-- .rich-text -->
+
+	
+<footer class="article-footer">
+			<p class="article-copyright">Copyright 2020 Nexstar Broadcasting, Inc. All rights reserved. This material may not be published, broadcast, rewritten, or redistributed.</p>
+	
+	
+	<div class="article-footer-share">
+					<h2 class="article-footer-share__heading">Share this story</h2>
+				
+<div class="social-share addthis">
+	<div class="addthis_inline_share_toolbox"></div>
+</div>
+	</div>
+
+	</footer><!-- .article-footer -->
+
+	<section id="ns-video-bin-11" class="widget widget_ns-video-bin">				<section
+					class="article-list article-list-carousel article-list-carousel--dropin video-playlist video-playlist--carousel"
+					data-component="videoPlaylist"
+					data-context="carousel_dropin--video"
+				>
+					
+	<h2 class="article-list__heading article-list__heading--notched">
+		Latest Video	</h2>
+
+
+<div class="article-list__content">
+			
+		<article
+			class="article-list__article article-list__article--is-stacked article-list__article--has-thumb article-list__article--is-media-type"
+			data-index="0"
+			data-collection="article-list1"
+			data-anvato-params="{&quot;ns&quot;:{&quot;id&quot;:&quot;4213810&quot;,&quot;title&quot;:&quot;First baby of the year is a girl&quot;,&quot;link&quot;:&quot;https:\/\/www.nwahomepage.com\/video\/first-baby-of-the-year-is-a-girl\/4213810\/&quot;,&quot;thumbnail&quot;:{&quot;src&quot;:&quot;https:\/\/jkvdxu3faz4qgr2j6w5qctdnde.gcdn.anvato.net\/iupl_lin\/227\/4D7\/2274D7471B0C45D2B9462C17F9D735AD.jpg?Expires=1672547172&amp;KeyName=mcpkey1&amp;Signature=0lJmB6xXavzu2Rmy1-NEHePq-2I&quot;,&quot;alt_text&quot;:&quot;Thumbnail for the video titled \&quot;First baby of the year is a girl\&quot;&quot;},&quot;date&quot;:[],&quot;lead_media&quot;:true},&quot;mcp&quot;:&quot;LIN&quot;,&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:&quot;100%&quot;,&quot;video&quot;:&quot;4213810&quot;,&quot;autoplay&quot;:false,&quot;pInstance&quot;:&quot;p10&quot;,&quot;plugins&quot;:{&quot;comscore&quot;:{&quot;clientId&quot;:&quot;6036439&quot;,&quot;c3&quot;:&quot;https:\/\/www.nwahomepage.com\/&quot;,&quot;script&quot;:&quot;\/\/w3.cdn.anvato.net\/player\/prod\/v3\/plugins\/comscore\/comscoreplugin.min.js&quot;,&quot;useDerivedMetadata&quot;:true,&quot;mapping&quot;:{&quot;video&quot;:{&quot;ns_st_st&quot;:&quot;knwa&quot;,&quot;ns_st_pu&quot;:&quot;Nexstar&quot;,&quot;c3&quot;:&quot;knwa&quot;,&quot;ns_st_ge&quot;:&quot;News,Featured Stories&quot;},&quot;ad&quot;:{&quot;ns_st_st&quot;:&quot;knwa&quot;,&quot;ns_st_pu&quot;:&quot;Nexstar&quot;,&quot;c3&quot;:&quot;knwa&quot;,&quot;ns_st_ge&quot;:&quot;News,Featured Stories&quot;}}},&quot;dfp&quot;:{&quot;adTagUrl&quot;:&quot;https:\/\/pubads.g.doubleclick.net\/gampad\/ads?sz=1x1000&amp;iu=\/5678\/nx.knwa\/around_arkansas&amp;impl=s&amp;gdfp_req=1&amp;env=vp&amp;output=vmap&amp;unviewed_position_start=1&amp;vid=short_onecue&amp;cmsid=1234&amp;url=https:\/\/www.nwahomepage.com\/around-arkansas\/former-maumelle-firefighter-killed-in-plane-crash-in-kansas\/&amp;ciu_szs=728x90,300x250&amp;ad_rule=1&amp;cust_params=vid%3D4213810%26cmsid%3D348010%26pid%3D348010%26vidcat%3D\/around_arkansas%26bob_ck%3D[bob_ck_val]%26description_url%3Dhttps:\/\/www.nwahomepage.com\/around-arkansas\/former-maumelle-firefighter-killed-in-plane-crash-in-kansas\/%26correlator%3D1577970716.6268%26d_code%3Dna003&quot;}},&quot;nxs&quot;:{&quot;mp4Url&quot;:&quot;https:\/\/nxsglobal.storage.googleapis.com\/knwa\/video\/video_studio\/2020\/01\/01\/First_baby_of_the_year_is_a_girl_4213810_600.mp4&quot;},&quot;disableMutedAutoplay&quot;:false,&quot;recommendations&quot;:true,&quot;expectPreroll&quot;:true,&quot;titleVisible&quot;:true}"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list1"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px&quot;]"
+>
+			<h3 class="article-list__article-title">
+							<a
+					href="https://www.nwahomepage.com/video/first-baby-of-the-year-is-a-girl/4213810/"
+									>
+			
+				First baby of the year is a girl
+							</a>
+					</h3>
+	
+	
+	
+	
+	</div>
+
+	<figure class="article-list__article-thumb">
+					<a
+				href="https://www.nwahomepage.com/video/first-baby-of-the-year-is-a-girl/4213810/"
+							>
+		
+		<div class="article-list__article-image-wrapper">
+			
+<div class="image-wrapper landscape">
+	<img
+		src="https://jkvdxu3faz4qgr2j6w5qctdnde.gcdn.anvato.net/iupl_lin/227/4D7/2274D7471B0C45D2B9462C17F9D735AD.jpg?Expires=1672547172&#038;KeyName=mcpkey1&#038;Signature=0lJmB6xXavzu2Rmy1-NEHePq-2I"
+		alt="Thumbnail for the video titled &quot;First baby of the year is a girl&quot;"
+		srcset=""
+		sizes="(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px"
+	/>
+</div>
+
+							
+<span aria-hidden="true" tabindex="-1" class="article-list__article-mediaicon">
+	<span class="article-list__article-mediaicon-svg">
+		<svg viewBox="0 0 24 24">
+			<path d="M8,5.14V19.14L19,12.14L8,5.14Z" />
+		</svg>
+	</span>
+			<span class="article-list__article-mediaicon-text">Video</span>
+	</span>
+					</div>
+
+					</a>
+			</figure>
+			</article>
+
+					
+		<article
+			class="article-list__article article-list__article--is-stacked article-list__article--has-thumb article-list__article--is-media-type"
+			data-index="1"
+			data-collection="article-list1"
+			data-anvato-params="{&quot;ns&quot;:{&quot;id&quot;:&quot;4213778&quot;,&quot;title&quot;:&quot;KNWA News fb&quot;,&quot;link&quot;:&quot;https:\/\/www.nwahomepage.com\/video\/knwa-news-fb\/4213778\/&quot;,&quot;thumbnail&quot;:{&quot;src&quot;:&quot;https:\/\/jkvdxu3faz4qgr2j6w5qctdnde.gcdn.anvato.net\/iupl_lin\/761\/933\/7619337768E944F3B5995ECF2C10464B.jpg?Expires=1672547172&amp;KeyName=mcpkey1&amp;Signature=erZDzvdAqPXuGQfEtVph6SntX4c&quot;,&quot;alt_text&quot;:&quot;Thumbnail for the video titled \&quot;KNWA News fb\&quot;&quot;},&quot;date&quot;:[],&quot;lead_media&quot;:true},&quot;mcp&quot;:&quot;LIN&quot;,&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:&quot;100%&quot;,&quot;video&quot;:&quot;4213778&quot;,&quot;autoplay&quot;:false,&quot;pInstance&quot;:&quot;p11&quot;,&quot;plugins&quot;:{&quot;comscore&quot;:{&quot;clientId&quot;:&quot;6036439&quot;,&quot;c3&quot;:&quot;https:\/\/www.nwahomepage.com\/&quot;,&quot;script&quot;:&quot;\/\/w3.cdn.anvato.net\/player\/prod\/v3\/plugins\/comscore\/comscoreplugin.min.js&quot;,&quot;useDerivedMetadata&quot;:true,&quot;mapping&quot;:{&quot;video&quot;:{&quot;ns_st_st&quot;:&quot;knwa&quot;,&quot;ns_st_pu&quot;:&quot;Nexstar&quot;,&quot;c3&quot;:&quot;knwa&quot;,&quot;ns_st_ge&quot;:&quot;News,Featured Stories&quot;},&quot;ad&quot;:{&quot;ns_st_st&quot;:&quot;knwa&quot;,&quot;ns_st_pu&quot;:&quot;Nexstar&quot;,&quot;c3&quot;:&quot;knwa&quot;,&quot;ns_st_ge&quot;:&quot;News,Featured Stories&quot;}}},&quot;dfp&quot;:{&quot;adTagUrl&quot;:&quot;https:\/\/pubads.g.doubleclick.net\/gampad\/ads?sz=1x1000&amp;iu=\/5678\/nx.knwa\/around_arkansas&amp;impl=s&amp;gdfp_req=1&amp;env=vp&amp;output=vmap&amp;unviewed_position_start=1&amp;vid=short_onecue&amp;cmsid=1234&amp;url=https:\/\/www.nwahomepage.com\/around-arkansas\/former-maumelle-firefighter-killed-in-plane-crash-in-kansas\/&amp;ciu_szs=728x90,300x250&amp;ad_rule=1&amp;cust_params=vid%3D4213778%26cmsid%3D348010%26pid%3D348010%26vidcat%3D\/around_arkansas%26bob_ck%3D[bob_ck_val]%26description_url%3Dhttps:\/\/www.nwahomepage.com\/around-arkansas\/former-maumelle-firefighter-killed-in-plane-crash-in-kansas\/%26correlator%3D1577970716.6284%26d_code%3Dna003&quot;}},&quot;nxs&quot;:{&quot;mp4Url&quot;:&quot;https:\/\/nxsglobal.storage.googleapis.com\/knwa\/video\/video_studio\/2020\/01\/01\/KNWA_News_fb_4213778_600.mp4&quot;},&quot;disableMutedAutoplay&quot;:false,&quot;recommendations&quot;:true,&quot;expectPreroll&quot;:true,&quot;titleVisible&quot;:true}"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list1"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px&quot;]"
+>
+			<h3 class="article-list__article-title">
+							<a
+					href="https://www.nwahomepage.com/video/knwa-news-fb/4213778/"
+									>
+			
+				KNWA News fb
+							</a>
+					</h3>
+	
+	
+	
+	
+	</div>
+
+	<figure class="article-list__article-thumb">
+					<a
+				href="https://www.nwahomepage.com/video/knwa-news-fb/4213778/"
+							>
+		
+		<div class="article-list__article-image-wrapper">
+			
+<div class="image-wrapper landscape">
+	<img
+		src="https://jkvdxu3faz4qgr2j6w5qctdnde.gcdn.anvato.net/iupl_lin/761/933/7619337768E944F3B5995ECF2C10464B.jpg?Expires=1672547172&#038;KeyName=mcpkey1&#038;Signature=erZDzvdAqPXuGQfEtVph6SntX4c"
+		alt="Thumbnail for the video titled &quot;KNWA News fb&quot;"
+		srcset=""
+		sizes="(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px"
+	/>
+</div>
+
+							
+<span aria-hidden="true" tabindex="-1" class="article-list__article-mediaicon">
+	<span class="article-list__article-mediaicon-svg">
+		<svg viewBox="0 0 24 24">
+			<path d="M8,5.14V19.14L19,12.14L8,5.14Z" />
+		</svg>
+	</span>
+			<span class="article-list__article-mediaicon-text">Video</span>
+	</span>
+					</div>
+
+					</a>
+			</figure>
+			</article>
+
+					
+		<article
+			class="article-list__article article-list__article--is-stacked article-list__article--has-thumb article-list__article--is-media-type"
+			data-index="2"
+			data-collection="article-list1"
+			data-anvato-params="{&quot;ns&quot;:{&quot;id&quot;:&quot;4213770&quot;,&quot;title&quot;:&quot;KNWA News running&quot;,&quot;link&quot;:&quot;https:\/\/www.nwahomepage.com\/video\/knwa-news-running\/4213770\/&quot;,&quot;thumbnail&quot;:{&quot;src&quot;:&quot;https:\/\/jkvdxu3faz4qgr2j6w5qctdnde.gcdn.anvato.net\/iupl_lin\/B1E\/52B\/B1E52B2FBD8F45A49B17B15288C7BF87.jpg?Expires=1672547172&amp;KeyName=mcpkey1&amp;Signature=nR9DZz8j1QxVU14uVtOvhPH2igE&quot;,&quot;alt_text&quot;:&quot;Thumbnail for the video titled \&quot;KNWA News running\&quot;&quot;},&quot;date&quot;:[],&quot;lead_media&quot;:true},&quot;mcp&quot;:&quot;LIN&quot;,&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:&quot;100%&quot;,&quot;video&quot;:&quot;4213770&quot;,&quot;autoplay&quot;:false,&quot;pInstance&quot;:&quot;p12&quot;,&quot;plugins&quot;:{&quot;comscore&quot;:{&quot;clientId&quot;:&quot;6036439&quot;,&quot;c3&quot;:&quot;https:\/\/www.nwahomepage.com\/&quot;,&quot;script&quot;:&quot;\/\/w3.cdn.anvato.net\/player\/prod\/v3\/plugins\/comscore\/comscoreplugin.min.js&quot;,&quot;useDerivedMetadata&quot;:true,&quot;mapping&quot;:{&quot;video&quot;:{&quot;ns_st_st&quot;:&quot;knwa&quot;,&quot;ns_st_pu&quot;:&quot;Nexstar&quot;,&quot;c3&quot;:&quot;knwa&quot;,&quot;ns_st_ge&quot;:&quot;News,Featured Stories&quot;},&quot;ad&quot;:{&quot;ns_st_st&quot;:&quot;knwa&quot;,&quot;ns_st_pu&quot;:&quot;Nexstar&quot;,&quot;c3&quot;:&quot;knwa&quot;,&quot;ns_st_ge&quot;:&quot;News,Featured Stories&quot;}}},&quot;dfp&quot;:{&quot;adTagUrl&quot;:&quot;https:\/\/pubads.g.doubleclick.net\/gampad\/ads?sz=1x1000&amp;iu=\/5678\/nx.knwa\/around_arkansas&amp;impl=s&amp;gdfp_req=1&amp;env=vp&amp;output=vmap&amp;unviewed_position_start=1&amp;vid=short_onecue&amp;cmsid=1234&amp;url=https:\/\/www.nwahomepage.com\/around-arkansas\/former-maumelle-firefighter-killed-in-plane-crash-in-kansas\/&amp;ciu_szs=728x90,300x250&amp;ad_rule=1&amp;cust_params=vid%3D4213770%26cmsid%3D348010%26pid%3D348010%26vidcat%3D\/around_arkansas%26bob_ck%3D[bob_ck_val]%26description_url%3Dhttps:\/\/www.nwahomepage.com\/around-arkansas\/former-maumelle-firefighter-killed-in-plane-crash-in-kansas\/%26correlator%3D1577970716.6288%26d_code%3D189%2C63%2C77%2C55%2C210%2C5%2C117%2C211%2C150%2C201%2C131%2C33%2C37%2C105%2C212%2C109%2C25%2C89&quot;}},&quot;nxs&quot;:{&quot;mp4Url&quot;:&quot;https:\/\/nxsglobal.storage.googleapis.com\/knwa\/video\/video_studio\/2020\/01\/01\/KNWA_News_running_4213770_600.mp4&quot;},&quot;disableMutedAutoplay&quot;:false,&quot;recommendations&quot;:true,&quot;expectPreroll&quot;:true,&quot;titleVisible&quot;:true}"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list1"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px&quot;]"
+>
+			<h3 class="article-list__article-title">
+							<a
+					href="https://www.nwahomepage.com/video/knwa-news-running/4213770/"
+									>
+			
+				KNWA News running
+							</a>
+					</h3>
+	
+	
+	
+	
+	</div>
+
+	<figure class="article-list__article-thumb">
+					<a
+				href="https://www.nwahomepage.com/video/knwa-news-running/4213770/"
+							>
+		
+		<div class="article-list__article-image-wrapper">
+			
+<div class="image-wrapper landscape">
+	<img
+		src="https://jkvdxu3faz4qgr2j6w5qctdnde.gcdn.anvato.net/iupl_lin/B1E/52B/B1E52B2FBD8F45A49B17B15288C7BF87.jpg?Expires=1672547172&#038;KeyName=mcpkey1&#038;Signature=nR9DZz8j1QxVU14uVtOvhPH2igE"
+		alt="Thumbnail for the video titled &quot;KNWA News running&quot;"
+		srcset=""
+		sizes="(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px"
+	/>
+</div>
+
+							
+<span aria-hidden="true" tabindex="-1" class="article-list__article-mediaicon">
+	<span class="article-list__article-mediaicon-svg">
+		<svg viewBox="0 0 24 24">
+			<path d="M8,5.14V19.14L19,12.14L8,5.14Z" />
+		</svg>
+	</span>
+			<span class="article-list__article-mediaicon-text">Video</span>
+	</span>
+					</div>
+
+					</a>
+			</figure>
+			</article>
+
+					
+		<article
+			class="article-list__article article-list__article--is-stacked article-list__article--has-thumb article-list__article--is-media-type"
+			data-index="3"
+			data-collection="article-list1"
+			data-anvato-params="{&quot;ns&quot;:{&quot;id&quot;:&quot;4213727&quot;,&quot;title&quot;:&quot;Former Maumelle firefighter killed in plane crash in Kansas&quot;,&quot;link&quot;:&quot;https:\/\/www.nwahomepage.com\/video\/former-maumelle-firefighter-killed-in-plane-crash-in-kansas\/4213727\/&quot;,&quot;thumbnail&quot;:{&quot;src&quot;:&quot;https:\/\/jkvdxu3faz4qgr2j6w5qctdnde.gcdn.anvato.net\/pvw_lin\/6CC\/AC1\/6CCAC1975CDB42568E3F406F332BB7EB_8.jpg?Expires=1672545989&amp;KeyName=mcpkey1&amp;Signature=BQSquQwUnF9iellcZuP_rmuVAAE&quot;,&quot;alt_text&quot;:&quot;Thumbnail for the video titled \&quot;Former Maumelle firefighter killed in plane crash in Kansas\&quot;&quot;},&quot;date&quot;:[],&quot;lead_media&quot;:true},&quot;mcp&quot;:&quot;LIN&quot;,&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:&quot;100%&quot;,&quot;video&quot;:&quot;4213727&quot;,&quot;autoplay&quot;:false,&quot;pInstance&quot;:&quot;p13&quot;,&quot;plugins&quot;:{&quot;comscore&quot;:{&quot;clientId&quot;:&quot;6036439&quot;,&quot;c3&quot;:&quot;https:\/\/www.nwahomepage.com\/&quot;,&quot;script&quot;:&quot;\/\/w3.cdn.anvato.net\/player\/prod\/v3\/plugins\/comscore\/comscoreplugin.min.js&quot;,&quot;useDerivedMetadata&quot;:true,&quot;mapping&quot;:{&quot;video&quot;:{&quot;ns_st_st&quot;:&quot;knwa&quot;,&quot;ns_st_pu&quot;:&quot;Nexstar&quot;,&quot;c3&quot;:&quot;knwa&quot;,&quot;ns_st_ge&quot;:&quot;News,Featured Stories&quot;},&quot;ad&quot;:{&quot;ns_st_st&quot;:&quot;knwa&quot;,&quot;ns_st_pu&quot;:&quot;Nexstar&quot;,&quot;c3&quot;:&quot;knwa&quot;,&quot;ns_st_ge&quot;:&quot;News,Featured Stories&quot;}}},&quot;dfp&quot;:{&quot;adTagUrl&quot;:&quot;https:\/\/pubads.g.doubleclick.net\/gampad\/ads?sz=1x1000&amp;iu=\/5678\/nx.knwa\/around_arkansas&amp;impl=s&amp;gdfp_req=1&amp;env=vp&amp;output=vmap&amp;unviewed_position_start=1&amp;vid=short_onecue&amp;cmsid=1234&amp;url=https:\/\/www.nwahomepage.com\/around-arkansas\/former-maumelle-firefighter-killed-in-plane-crash-in-kansas\/&amp;ciu_szs=728x90,300x250&amp;ad_rule=1&amp;cust_params=vid%3D4213727%26cmsid%3D348010%26pid%3D348010%26vidcat%3D\/around_arkansas%26bob_ck%3D[bob_ck_val]%26description_url%3Dhttps:\/\/www.nwahomepage.com\/around-arkansas\/former-maumelle-firefighter-killed-in-plane-crash-in-kansas\/%26correlator%3D1577970716.6292%26d_code%3Dna003&quot;}},&quot;nxs&quot;:{&quot;mp4Url&quot;:&quot;https:\/\/nxsglobal.storage.googleapis.com\/knwa\/video\/video_studio\/2020\/01\/01\/Former_Maumelle_firefighter_killed_in_plane_cras_4213727_600.mp4&quot;},&quot;disableMutedAutoplay&quot;:false,&quot;recommendations&quot;:true,&quot;expectPreroll&quot;:true,&quot;titleVisible&quot;:true}"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list1"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px&quot;]"
+>
+			<h3 class="article-list__article-title">
+							<a
+					href="https://www.nwahomepage.com/video/former-maumelle-firefighter-killed-in-plane-crash-in-kansas/4213727/"
+									>
+			
+				Former Maumelle firefighter killed in plane crash in Kansas
+							</a>
+					</h3>
+	
+	
+	
+	
+	</div>
+
+	<figure class="article-list__article-thumb">
+					<a
+				href="https://www.nwahomepage.com/video/former-maumelle-firefighter-killed-in-plane-crash-in-kansas/4213727/"
+							>
+		
+		<div class="article-list__article-image-wrapper">
+			
+<div class="image-wrapper landscape">
+	<img
+		src="https://jkvdxu3faz4qgr2j6w5qctdnde.gcdn.anvato.net/pvw_lin/6CC/AC1/6CCAC1975CDB42568E3F406F332BB7EB_8.jpg?Expires=1672545989&#038;KeyName=mcpkey1&#038;Signature=BQSquQwUnF9iellcZuP_rmuVAAE"
+		alt="Thumbnail for the video titled &quot;Former Maumelle firefighter killed in plane crash in Kansas&quot;"
+		srcset=""
+		sizes="(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px"
+	/>
+</div>
+
+							
+<span aria-hidden="true" tabindex="-1" class="article-list__article-mediaicon">
+	<span class="article-list__article-mediaicon-svg">
+		<svg viewBox="0 0 24 24">
+			<path d="M8,5.14V19.14L19,12.14L8,5.14Z" />
+		</svg>
+	</span>
+			<span class="article-list__article-mediaicon-text">Video</span>
+	</span>
+					</div>
+
+					</a>
+			</figure>
+			</article>
+
+					
+		<article
+			class="article-list__article article-list__article--is-stacked article-list__article--has-thumb article-list__article--is-media-type"
+			data-index="4"
+			data-collection="article-list1"
+			data-anvato-params="{&quot;ns&quot;:{&quot;id&quot;:&quot;4213633&quot;,&quot;title&quot;:&quot;Ozark Mountain School District switching to four-day school week&quot;,&quot;link&quot;:&quot;https:\/\/www.nwahomepage.com\/video\/ozark-mountain-school-district-switching-to-four-day-school-week\/4213633\/&quot;,&quot;thumbnail&quot;:{&quot;src&quot;:&quot;https:\/\/jkvdxu3faz4qgr2j6w5qctdnde.gcdn.anvato.net\/pvw_lin\/BF7\/9AD\/BF79AD02CAC44DA9BAE763B39AE24E02_2.jpg?Expires=1672542612&amp;KeyName=mcpkey1&amp;Signature=GlFOmfK-ZnqWRPnFFvFnaCpOk80&quot;,&quot;alt_text&quot;:&quot;Thumbnail for the video titled \&quot;Ozark Mountain School District switching to four-day school week\&quot;&quot;},&quot;date&quot;:[],&quot;lead_media&quot;:true},&quot;mcp&quot;:&quot;LIN&quot;,&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:&quot;100%&quot;,&quot;video&quot;:&quot;4213633&quot;,&quot;autoplay&quot;:false,&quot;pInstance&quot;:&quot;p14&quot;,&quot;plugins&quot;:{&quot;comscore&quot;:{&quot;clientId&quot;:&quot;6036439&quot;,&quot;c3&quot;:&quot;https:\/\/www.nwahomepage.com\/&quot;,&quot;script&quot;:&quot;\/\/w3.cdn.anvato.net\/player\/prod\/v3\/plugins\/comscore\/comscoreplugin.min.js&quot;,&quot;useDerivedMetadata&quot;:true,&quot;mapping&quot;:{&quot;video&quot;:{&quot;ns_st_st&quot;:&quot;knwa&quot;,&quot;ns_st_pu&quot;:&quot;Nexstar&quot;,&quot;c3&quot;:&quot;knwa&quot;,&quot;ns_st_ge&quot;:&quot;News,Featured Stories&quot;},&quot;ad&quot;:{&quot;ns_st_st&quot;:&quot;knwa&quot;,&quot;ns_st_pu&quot;:&quot;Nexstar&quot;,&quot;c3&quot;:&quot;knwa&quot;,&quot;ns_st_ge&quot;:&quot;News,Featured Stories&quot;}}},&quot;dfp&quot;:{&quot;adTagUrl&quot;:&quot;https:\/\/pubads.g.doubleclick.net\/gampad\/ads?sz=1x1000&amp;iu=\/5678\/nx.knwa\/around_arkansas&amp;impl=s&amp;gdfp_req=1&amp;env=vp&amp;output=vmap&amp;unviewed_position_start=1&amp;vid=short_onecue&amp;cmsid=1234&amp;url=https:\/\/www.nwahomepage.com\/around-arkansas\/former-maumelle-firefighter-killed-in-plane-crash-in-kansas\/&amp;ciu_szs=728x90,300x250&amp;ad_rule=1&amp;cust_params=vid%3D4213633%26cmsid%3D348010%26pid%3D348010%26vidcat%3D\/around_arkansas%26bob_ck%3D[bob_ck_val]%26description_url%3Dhttps:\/\/www.nwahomepage.com\/around-arkansas\/former-maumelle-firefighter-killed-in-plane-crash-in-kansas\/%26correlator%3D1577970716.6304%26d_code%3D189%2C63%2C55%2C204%2C210%2C5%2C211%2C172%2C201%2C131%2C185%2C33%2C214%2C37%2C171%2C213%2C212%2C109%2C202%2C89%2C184&quot;}},&quot;nxs&quot;:{&quot;mp4Url&quot;:&quot;https:\/\/nxsglobal.storage.googleapis.com\/knwa\/video\/video_studio\/2020\/01\/01\/Ozark_Mountain_School_District_switching_to_four_4213633_600.mp4&quot;},&quot;disableMutedAutoplay&quot;:false,&quot;recommendations&quot;:true,&quot;expectPreroll&quot;:true,&quot;titleVisible&quot;:true}"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list1"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px&quot;]"
+>
+			<h3 class="article-list__article-title">
+							<a
+					href="https://www.nwahomepage.com/video/ozark-mountain-school-district-switching-to-four-day-school-week/4213633/"
+									>
+			
+				Ozark Mountain School District switching to four-day school week
+							</a>
+					</h3>
+	
+	
+	
+	
+	</div>
+
+	<figure class="article-list__article-thumb">
+					<a
+				href="https://www.nwahomepage.com/video/ozark-mountain-school-district-switching-to-four-day-school-week/4213633/"
+							>
+		
+		<div class="article-list__article-image-wrapper">
+			
+<div class="image-wrapper landscape">
+	<img
+		src="https://jkvdxu3faz4qgr2j6w5qctdnde.gcdn.anvato.net/pvw_lin/BF7/9AD/BF79AD02CAC44DA9BAE763B39AE24E02_2.jpg?Expires=1672542612&#038;KeyName=mcpkey1&#038;Signature=GlFOmfK-ZnqWRPnFFvFnaCpOk80"
+		alt="Thumbnail for the video titled &quot;Ozark Mountain School District switching to four-day school week&quot;"
+		srcset=""
+		sizes="(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px"
+	/>
+</div>
+
+							
+<span aria-hidden="true" tabindex="-1" class="article-list__article-mediaicon">
+	<span class="article-list__article-mediaicon-svg">
+		<svg viewBox="0 0 24 24">
+			<path d="M8,5.14V19.14L19,12.14L8,5.14Z" />
+		</svg>
+	</span>
+			<span class="article-list__article-mediaicon-text">Video</span>
+	</span>
+					</div>
+
+					</a>
+			</figure>
+			</article>
+
+					
+		<article
+			class="article-list__article article-list__article--is-stacked article-list__article--has-thumb article-list__article--is-media-type"
+			data-index="5"
+			data-collection="article-list1"
+			data-anvato-params="{&quot;ns&quot;:{&quot;id&quot;:&quot;4213575&quot;,&quot;title&quot;:&quot;11-year-old writes book inspiring others to stand up against bullying&quot;,&quot;link&quot;:&quot;https:\/\/www.nwahomepage.com\/video\/11-year-old-writes-book-inspiring-others-to-stand-up-against-bullying\/4213575\/&quot;,&quot;thumbnail&quot;:{&quot;src&quot;:&quot;https:\/\/jkvdxu3faz4qgr2j6w5qctdnde.gcdn.anvato.net\/pvw_lin\/75D\/B0A\/75DB0A6F53B045C494CCB36A9BC46547_4.jpg?Expires=1672537486&amp;KeyName=mcpkey1&amp;Signature=VrpdnaGVry6GKNr_4-4VpTD47eY&quot;,&quot;alt_text&quot;:&quot;Thumbnail for the video titled \&quot;11-year-old writes book inspiring others to stand up against bullying\&quot;&quot;},&quot;date&quot;:[],&quot;lead_media&quot;:true},&quot;mcp&quot;:&quot;LIN&quot;,&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:&quot;100%&quot;,&quot;video&quot;:&quot;4213575&quot;,&quot;autoplay&quot;:false,&quot;pInstance&quot;:&quot;p15&quot;,&quot;plugins&quot;:{&quot;comscore&quot;:{&quot;clientId&quot;:&quot;6036439&quot;,&quot;c3&quot;:&quot;https:\/\/www.nwahomepage.com\/&quot;,&quot;script&quot;:&quot;\/\/w3.cdn.anvato.net\/player\/prod\/v3\/plugins\/comscore\/comscoreplugin.min.js&quot;,&quot;useDerivedMetadata&quot;:true,&quot;mapping&quot;:{&quot;video&quot;:{&quot;ns_st_st&quot;:&quot;knwa&quot;,&quot;ns_st_pu&quot;:&quot;Nexstar&quot;,&quot;c3&quot;:&quot;knwa&quot;,&quot;ns_st_ge&quot;:&quot;News,Featured Stories&quot;},&quot;ad&quot;:{&quot;ns_st_st&quot;:&quot;knwa&quot;,&quot;ns_st_pu&quot;:&quot;Nexstar&quot;,&quot;c3&quot;:&quot;knwa&quot;,&quot;ns_st_ge&quot;:&quot;News,Featured Stories&quot;}}},&quot;dfp&quot;:{&quot;adTagUrl&quot;:&quot;https:\/\/pubads.g.doubleclick.net\/gampad\/ads?sz=1x1000&amp;iu=\/5678\/nx.knwa\/around_arkansas&amp;impl=s&amp;gdfp_req=1&amp;env=vp&amp;output=vmap&amp;unviewed_position_start=1&amp;vid=short_onecue&amp;cmsid=1234&amp;url=https:\/\/www.nwahomepage.com\/around-arkansas\/former-maumelle-firefighter-killed-in-plane-crash-in-kansas\/&amp;ciu_szs=728x90,300x250&amp;ad_rule=1&amp;cust_params=vid%3D4213575%26cmsid%3D348010%26pid%3D348010%26vidcat%3D\/around_arkansas%26bob_ck%3D[bob_ck_val]%26description_url%3Dhttps:\/\/www.nwahomepage.com\/around-arkansas\/former-maumelle-firefighter-killed-in-plane-crash-in-kansas\/%26correlator%3D1577970716.6308%26d_code%3Dna003&quot;}},&quot;nxs&quot;:{&quot;mp4Url&quot;:&quot;https:\/\/nxsglobal.storage.googleapis.com\/knwa\/video\/video_studio\/2020\/01\/01\/11_year_old_writes_book_inspiring_others_to_stan_4213575_600.mp4&quot;},&quot;disableMutedAutoplay&quot;:false,&quot;recommendations&quot;:true,&quot;expectPreroll&quot;:true,&quot;titleVisible&quot;:true}"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list1"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px&quot;]"
+>
+			<h3 class="article-list__article-title">
+							<a
+					href="https://www.nwahomepage.com/video/11-year-old-writes-book-inspiring-others-to-stand-up-against-bullying/4213575/"
+									>
+			
+				11-year-old writes book inspiring others to stand up against bullying
+							</a>
+					</h3>
+	
+	
+	
+	
+	</div>
+
+	<figure class="article-list__article-thumb">
+					<a
+				href="https://www.nwahomepage.com/video/11-year-old-writes-book-inspiring-others-to-stand-up-against-bullying/4213575/"
+							>
+		
+		<div class="article-list__article-image-wrapper">
+			
+<div class="image-wrapper landscape">
+	<img
+		src="https://jkvdxu3faz4qgr2j6w5qctdnde.gcdn.anvato.net/pvw_lin/75D/B0A/75DB0A6F53B045C494CCB36A9BC46547_4.jpg?Expires=1672537486&#038;KeyName=mcpkey1&#038;Signature=VrpdnaGVry6GKNr_4-4VpTD47eY"
+		alt="Thumbnail for the video titled &quot;11-year-old writes book inspiring others to stand up against bullying&quot;"
+		srcset=""
+		sizes="(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px"
+	/>
+</div>
+
+							
+<span aria-hidden="true" tabindex="-1" class="article-list__article-mediaicon">
+	<span class="article-list__article-mediaicon-svg">
+		<svg viewBox="0 0 24 24">
+			<path d="M8,5.14V19.14L19,12.14L8,5.14Z" />
+		</svg>
+	</span>
+			<span class="article-list__article-mediaicon-text">Video</span>
+	</span>
+					</div>
+
+					</a>
+			</figure>
+			</article>
+
+			</div>
+
+
+				</section>
+				</section><section id="custom_html-2" class="widget_text widget widget_custom_html"><div class="textwidget custom-html-widget"><div class="rich-text-cascade"><div id="lkqd-outstream"></div></div></div></section></article>
+
+<aside class="ad-unit ad-unit--mr1-mobile">
+	<div class="ad-unit__content">
+		  <div   id="acm-ad-tag-mr1_mobile-mr1_mobile"   data-slot='{"pos":"mr1_mobile","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[300,250],"sizes":[[[900,0],[]],[[0,0],[[300,250]]]],"amp_multi_size":"300x250","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"atf"}'   data-unit='{"tag":"mr1_mobile","tag_id":"mr1_mobile","dfp_id":"5678","tag_name":"nx.knwa","ad_disabled":"0"}'   data-targeting='{"pos":"mr1_mobile","fold":"atf","category":"knwa","kw":"tactical-urbanism-project-brings-creative-seating-to-bus-stops"}'   data-path='/5678/nx.knwa/news/knwa'  ></div>  <script>  (function () {   try {    var event = new CustomEvent(     "nsDfpSlotRendered",     {      detail: {       id: 'acm-ad-tag-mr1_mobile-mr1_mobile'      }     }    );     window.dispatchEvent(event);   } catch (err) {}  })();  </script>  	</div>
+</aside>
+
+
+	<div
+		id="widget1"
+		data-rc-widget
+		data-widget-host="habitat"
+		data-endpoint="trends.revcontent.com"
+		data-widget-id="114882"
+	></div>
+	<script src="https://assets.revcontent.com/master/delivery.js" defer="defer"></script> 	
+	<aside class="article-list article-list--full-width">
+		
+	<h2 class="article-list__heading article-list__heading--notched">
+		More KNWA Stories	</h2>
+
+
+<div class="article-list__content">
+						<a class="article-list__blanketing-link" href="https://www.nwahomepage.com/weather/weather-talk/thursday-january-2-showers-possible-for-rest-of-week/">
+		
+		<article
+			class="article-list__article article-list__article--is-stacked article-list__article--has-thumb article-list__article--has-excerpt"
+			data-index="0"
+			data-collection="article-list1"
+			data-anvato-params="null"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list1"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb article-list__article-thumb--is-fullbleed-on-mobile"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px&quot;]"
+>
+			<h3 class="article-list__article-title">
+			
+				Thursday, January 2: Showers possible for rest of week
+					</h3>
+	
+			<footer class="article-list__article-meta">
+			<time datetime="2020-01-02T06:56:00-06:00">Jan 2, 2020</time>		</footer>
+	
+			<div class="article-list__article-excerpt article-list__article-excerpt--is-faded rich-text">
+			<p>NORTHWEST ARKANSAS (KNWA) — Here's a look at your upcoming forecast for January 2, 2020:</p>
+<p>Today: a 20 percent chance of showers after noon. Cloudy, with a high near 56. South wind 10 to 15 mph, with gusts as high as 20 mph.</p>
+		</div>
+	
+			<div class="article-list__read-more article-list__read-more--w-arrow">
+							<span>
+					Read the Full Article
+											<span class="icon icon--arrow">
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17.938 10.94">
+		<path d="M17.944 5.55a.733.733 0 0 1-.032.34v.03c0 .01-.006.01-.008.01a.189.189 0 0 1-.028.05.619.619 0 0 1-.123.17c-.009.01-.013.02-.023.03l-4.927 4.56a.733.733 0 0 1-.5.19.753.753 0 0 1-.54-.23.737.737 0 0 1 .041-1.04l3.547-3.28H.738a.735.735 0 1 1 0-1.47h14.693l-3.74-3.68a.735.735 0 0 1 1.03-1.05l5.022 4.94s0 .01.008.01a.016.016 0 0 0 .017.01.8.8 0 0 1 .163.32c.007.03.009.06.013.09z"/>
+	</svg>
+</span>
+									</span>
+					</div>
+	
+	</div>
+
+	<figure class="article-list__article-thumb article-list__article-thumb--is-fullbleed-on-mobile">
+		
+		<div class="article-list__article-image-wrapper">
+			
+<div class="image-wrapper landscape">
+	<img
+		src="https://i0.wp.com/www.nwahomepage.com/wp-content/uploads/sites/90/2020/01/jan27day.jpg?resize=2560%2C1440&#038;ssl=1"
+		alt=""
+		srcset="https://www.nwahomepage.com/wp-content/uploads/sites/90/2020/01/jan27day.jpg?w=320&amp;h=180&amp;crop=1 320w, https://www.nwahomepage.com/wp-content/uploads/sites/90/2020/01/jan27day.jpg?w=640&amp;h=360&amp;crop=1 640w, https://www.nwahomepage.com/wp-content/uploads/sites/90/2020/01/jan27day.jpg?w=960&amp;h=540&amp;crop=1 960w, https://www.nwahomepage.com/wp-content/uploads/sites/90/2020/01/jan27day.jpg?w=1280&amp;h=720&amp;crop=1 1280w, https://i0.wp.com/www.nwahomepage.com/wp-content/uploads/sites/90/2020/01/jan27day.jpg?resize=1920%2C1080&amp;ssl=1 1920w, https://i0.wp.com/www.nwahomepage.com/wp-content/uploads/sites/90/2020/01/jan27day.jpg?resize=2560%2C1440&amp;ssl=1 2560w"
+		sizes="(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px"
+	/>
+</div>
+
+					</div>
+
+			</figure>
+			</article>
+
+					</a>
+								<a class="article-list__blanketing-link" href="https://www.nwahomepage.com/news/knwa/first-baby-of-the-year-is-a-girl-2/">
+		
+		<article
+			class="article-list__article article-list__article--is-stacked article-list__article--has-thumb article-list__article--has-excerpt"
+			data-index="1"
+			data-collection="article-list1"
+			data-anvato-params="null"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list1"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb article-list__article-thumb--is-fullbleed-on-mobile"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px&quot;]"
+>
+			<h3 class="article-list__article-title">
+			
+				First baby of the year in NWA is a girl
+					</h3>
+	
+			<footer class="article-list__article-byline">
+			by Megan Wilson <span class="sep">/</span> <time datetime="2020-01-02T06:26:08-06:00">Jan 2, 2020</time>		</footer>
+	
+			<div class="article-list__article-excerpt article-list__article-excerpt--is-faded rich-text">
+			<p>FAYETTEVILLE, Ark. (KNWA) —  The first baby born this decade in Northwest Arkansas is named Ruby-Faye after her great-grandmother.</p>
+<p>She was born at 12:30 this morning at Willow Creek.</p>
+		</div>
+	
+			<div class="article-list__read-more article-list__read-more--w-arrow">
+							<span>
+					Read the Full Article
+											<span class="icon icon--arrow">
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17.938 10.94">
+		<path d="M17.944 5.55a.733.733 0 0 1-.032.34v.03c0 .01-.006.01-.008.01a.189.189 0 0 1-.028.05.619.619 0 0 1-.123.17c-.009.01-.013.02-.023.03l-4.927 4.56a.733.733 0 0 1-.5.19.753.753 0 0 1-.54-.23.737.737 0 0 1 .041-1.04l3.547-3.28H.738a.735.735 0 1 1 0-1.47h14.693l-3.74-3.68a.735.735 0 0 1 1.03-1.05l5.022 4.94s0 .01.008.01a.016.016 0 0 0 .017.01.8.8 0 0 1 .163.32c.007.03.009.06.013.09z"/>
+	</svg>
+</span>
+									</span>
+					</div>
+	
+	</div>
+
+	<figure class="article-list__article-thumb article-list__article-thumb--is-fullbleed-on-mobile">
+		
+		<div class="article-list__article-image-wrapper">
+			
+<div class="image-wrapper landscape">
+	<img
+		src="https://i0.wp.com/www.nwahomepage.com/wp-content/uploads/sites/90/2020/01/baby-knwa.jpg?resize=2560%2C1440&#038;ssl=1"
+		alt=""
+		srcset="https://www.nwahomepage.com/wp-content/uploads/sites/90/2020/01/baby-knwa.jpg?w=320&amp;h=180&amp;crop=1 320w, https://www.nwahomepage.com/wp-content/uploads/sites/90/2020/01/baby-knwa.jpg?w=640&amp;h=360&amp;crop=1 640w, https://www.nwahomepage.com/wp-content/uploads/sites/90/2020/01/baby-knwa.jpg?w=960&amp;h=540&amp;crop=1 960w, https://www.nwahomepage.com/wp-content/uploads/sites/90/2020/01/baby-knwa.jpg?w=1280&amp;h=720&amp;crop=1 1280w, https://i0.wp.com/www.nwahomepage.com/wp-content/uploads/sites/90/2020/01/baby-knwa.jpg?resize=1920%2C1080&amp;ssl=1 1920w, https://i0.wp.com/www.nwahomepage.com/wp-content/uploads/sites/90/2020/01/baby-knwa.jpg?resize=2560%2C1440&amp;ssl=1 2560w"
+		sizes="(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px"
+	/>
+</div>
+
+							
+<span aria-hidden="true" tabindex="-1" class="article-list__article-mediaicon">
+	<span class="article-list__article-mediaicon-svg">
+		<svg viewBox="0 0 24 24">
+			<path d="M8,5.14V19.14L19,12.14L8,5.14Z" />
+		</svg>
+	</span>
+	</span>
+					</div>
+
+			</figure>
+			</article>
+
+					</a>
+								<a class="article-list__blanketing-link" href="https://www.nwahomepage.com/news/knwa/arkansans-approved-for-medical-marijuana-id-cards-2/">
+		
+		<article
+			class="article-list__article article-list__article--is-stacked article-list__article--has-thumb article-list__article--has-excerpt"
+			data-index="2"
+			data-collection="article-list1"
+			data-anvato-params="null"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list1"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb article-list__article-thumb--is-fullbleed-on-mobile"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px&quot;]"
+>
+			<h3 class="article-list__article-title">
+			
+				Arkansans approved for medical marijuana ID cards
+					</h3>
+	
+			<footer class="article-list__article-byline">
+			by Megan Wilson <span class="sep">/</span> <time datetime="2020-01-01T22:08:28-06:00">Jan 1, 2020</time>		</footer>
+	
+			<div class="article-list__article-excerpt article-list__article-excerpt--is-faded rich-text">
+			<p>FAYETTEVILLE, Ark. (KNWA) — As of this past Friday over 32,000 Arkansans have been approved for a medical marijuana ID card to purchase medicinal cannabis. </p>
+<p>Patients must be diagnosed with at least one of 18 specific conditions to qualify for a card along with a doctor's recommendation. </p>
+		</div>
+	
+			<div class="article-list__read-more article-list__read-more--w-arrow">
+							<span>
+					Read the Full Article
+											<span class="icon icon--arrow">
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17.938 10.94">
+		<path d="M17.944 5.55a.733.733 0 0 1-.032.34v.03c0 .01-.006.01-.008.01a.189.189 0 0 1-.028.05.619.619 0 0 1-.123.17c-.009.01-.013.02-.023.03l-4.927 4.56a.733.733 0 0 1-.5.19.753.753 0 0 1-.54-.23.737.737 0 0 1 .041-1.04l3.547-3.28H.738a.735.735 0 1 1 0-1.47h14.693l-3.74-3.68a.735.735 0 0 1 1.03-1.05l5.022 4.94s0 .01.008.01a.016.016 0 0 0 .017.01.8.8 0 0 1 .163.32c.007.03.009.06.013.09z"/>
+	</svg>
+</span>
+									</span>
+					</div>
+	
+	</div>
+
+	<figure class="article-list__article-thumb article-list__article-thumb--is-fullbleed-on-mobile">
+		
+		<div class="article-list__article-image-wrapper">
+			
+<div class="image-wrapper landscape">
+	<img
+		src="https://i0.wp.com/www.nwahomepage.com/wp-content/uploads/sites/90/2020/01/medical-m-knwa.jpg?resize=2560%2C1440&#038;ssl=1"
+		alt=""
+		srcset="https://www.nwahomepage.com/wp-content/uploads/sites/90/2020/01/medical-m-knwa.jpg?w=320&amp;h=180&amp;crop=1 320w, https://www.nwahomepage.com/wp-content/uploads/sites/90/2020/01/medical-m-knwa.jpg?w=640&amp;h=360&amp;crop=1 640w, https://www.nwahomepage.com/wp-content/uploads/sites/90/2020/01/medical-m-knwa.jpg?w=960&amp;h=540&amp;crop=1 960w, https://www.nwahomepage.com/wp-content/uploads/sites/90/2020/01/medical-m-knwa.jpg?w=1280&amp;h=720&amp;crop=1 1280w, https://i0.wp.com/www.nwahomepage.com/wp-content/uploads/sites/90/2020/01/medical-m-knwa.jpg?resize=1920%2C1080&amp;ssl=1 1920w, https://i0.wp.com/www.nwahomepage.com/wp-content/uploads/sites/90/2020/01/medical-m-knwa.jpg?resize=2560%2C1440&amp;ssl=1 2560w"
+		sizes="(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px"
+	/>
+</div>
+
+							
+<span aria-hidden="true" tabindex="-1" class="article-list__article-mediaicon">
+	<span class="article-list__article-mediaicon-svg">
+		<svg viewBox="0 0 24 24">
+			<path d="M8,5.14V19.14L19,12.14L8,5.14Z" />
+		</svg>
+	</span>
+	</span>
+					</div>
+
+			</figure>
+			</article>
+
+					</a>
+			</div>
+
+
+	</aside>
+	
+<aside class="ad-unit ad-unit--leader-mr1">
+	<div class="ad-unit__content">
+		  <div   id="acm-ad-tag-leader_mr1-leader_mr1-story-pages"   data-slot='{"pos":"leader_mr1","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[300,250],"sizes":[[[1152,0],[[728,90]]],[[0,0],[[300,250]]]],"amp_multi_size":"300x250","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"btf"}'   data-unit='{"tag":"leader_mr1","tag_id":"leader_mr1 Story pages","dfp_id":"5678","tag_name":"nx.knwa","ad_disabled":"0"}'   data-targeting='{"pos":"leader_mr1","fold":"btf","category":"knwa","kw":"tactical-urbanism-project-brings-creative-seating-to-bus-stops"}'   data-path='/5678/nx.knwa/news/knwa'  ></div>  <script>  (function () {   try {    var event = new CustomEvent(     "nsDfpSlotRendered",     {      detail: {       id: 'acm-ad-tag-leader_mr1-leader_mr1-story-pages'      }     }    );     window.dispatchEvent(event);   } catch (err) {}  })();  </script>  	</div>
+</aside>
+
+	<aside class="article-list article-list--grid article-list--grid-2">
+		
+	<h2 class="article-list__heading article-list__heading--notched">
+		More Stories	</h2>
+
+
+<div class="article-list__content">
+			
+		<article
+			class="article-list__article article-list__article--is-stacked article-list__article--has-thumb article-list__article--is-media-type"
+			data-index="0"
+			data-collection="article-list2"
+			data-anvato-params="null"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list2"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px&quot;]"
+>
+			<h3 class="article-list__article-title">
+							<a
+					href="https://www.nwahomepage.com/weather/weather-talk/thursday-january-2-showers-possible-for-rest-of-week/"
+									>
+			
+				Thursday, January 2: Showers possible for rest of week
+							</a>
+					</h3>
+	
+			<footer class="article-list__article-meta">
+			<a href="https://www.nwahomepage.com/weather/weather-talk/">Weather Talk</a> / <time datetime="2020-01-02T06:56:00-06:00">16 mins ago</time>		</footer>
+	
+	
+	
+	</div>
+
+	<figure class="article-list__article-thumb">
+					<a
+				href="https://www.nwahomepage.com/weather/weather-talk/thursday-january-2-showers-possible-for-rest-of-week/"
+							>
+		
+		<div class="article-list__article-image-wrapper">
+			
+<div class="image-wrapper landscape square-on-mobile">
+	<img
+		src="https://i0.wp.com/www.nwahomepage.com/wp-content/uploads/sites/90/2020/01/jan27day.jpg?resize=2560%2C1440&#038;ssl=1"
+		alt=""
+		srcset="https://www.nwahomepage.com/wp-content/uploads/sites/90/2020/01/jan27day.jpg?w=320&amp;h=180&amp;crop=1 320w, https://www.nwahomepage.com/wp-content/uploads/sites/90/2020/01/jan27day.jpg?w=640&amp;h=360&amp;crop=1 640w, https://www.nwahomepage.com/wp-content/uploads/sites/90/2020/01/jan27day.jpg?w=960&amp;h=540&amp;crop=1 960w, https://www.nwahomepage.com/wp-content/uploads/sites/90/2020/01/jan27day.jpg?w=1280&amp;h=720&amp;crop=1 1280w, https://i0.wp.com/www.nwahomepage.com/wp-content/uploads/sites/90/2020/01/jan27day.jpg?resize=1920%2C1080&amp;ssl=1 1920w, https://i0.wp.com/www.nwahomepage.com/wp-content/uploads/sites/90/2020/01/jan27day.jpg?resize=2560%2C1440&amp;ssl=1 2560w"
+		sizes="(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px"
+	/>
+</div>
+
+					</div>
+
+					</a>
+			</figure>
+			</article>
+
+					
+		<article
+			class="article-list__article article-list__article--is-stacked article-list__article--has-thumb article-list__article--is-media-type"
+			data-index="1"
+			data-collection="article-list2"
+			data-anvato-params="null"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list2"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px&quot;]"
+>
+			<h3 class="article-list__article-title">
+							<a
+					href="https://www.nwahomepage.com/news/knwa/first-baby-of-the-year-is-a-girl-2/"
+									>
+			
+				First baby of the year in NWA is a girl
+							</a>
+					</h3>
+	
+			<footer class="article-list__article-meta">
+			<a href="https://www.nwahomepage.com/news/knwa/">KNWA</a> / <time datetime="2020-01-02T06:26:08-06:00">46 mins ago</time>		</footer>
+	
+	
+	
+	</div>
+
+	<figure class="article-list__article-thumb">
+					<a
+				href="https://www.nwahomepage.com/news/knwa/first-baby-of-the-year-is-a-girl-2/"
+							>
+		
+		<div class="article-list__article-image-wrapper">
+			
+<div class="image-wrapper landscape square-on-mobile">
+	<img
+		src="https://i0.wp.com/www.nwahomepage.com/wp-content/uploads/sites/90/2020/01/baby-knwa.jpg?resize=2560%2C1440&#038;ssl=1"
+		alt=""
+		srcset="https://www.nwahomepage.com/wp-content/uploads/sites/90/2020/01/baby-knwa.jpg?w=320&amp;h=180&amp;crop=1 320w, https://www.nwahomepage.com/wp-content/uploads/sites/90/2020/01/baby-knwa.jpg?w=640&amp;h=360&amp;crop=1 640w, https://www.nwahomepage.com/wp-content/uploads/sites/90/2020/01/baby-knwa.jpg?w=960&amp;h=540&amp;crop=1 960w, https://www.nwahomepage.com/wp-content/uploads/sites/90/2020/01/baby-knwa.jpg?w=1280&amp;h=720&amp;crop=1 1280w, https://i0.wp.com/www.nwahomepage.com/wp-content/uploads/sites/90/2020/01/baby-knwa.jpg?resize=1920%2C1080&amp;ssl=1 1920w, https://i0.wp.com/www.nwahomepage.com/wp-content/uploads/sites/90/2020/01/baby-knwa.jpg?resize=2560%2C1440&amp;ssl=1 2560w"
+		sizes="(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px"
+	/>
+</div>
+
+							
+<span aria-hidden="true" tabindex="-1" class="article-list__article-mediaicon">
+	<span class="article-list__article-mediaicon-svg">
+		<svg viewBox="0 0 24 24">
+			<path d="M8,5.14V19.14L19,12.14L8,5.14Z" />
+		</svg>
+	</span>
+	</span>
+					</div>
+
+					</a>
+			</figure>
+			</article>
+
+					
+		<article
+			class="article-list__article article-list__article--is-stacked article-list__article--has-thumb article-list__article--is-media-type"
+			data-index="2"
+			data-collection="article-list2"
+			data-anvato-params="null"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list2"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px&quot;]"
+>
+			<h3 class="article-list__article-title">
+							<a
+					href="https://www.nwahomepage.com/news/knwa/arkansans-approved-for-medical-marijuana-id-cards-2/"
+									>
+			
+				Arkansans approved for medical marijuana ID cards
+							</a>
+					</h3>
+	
+			<footer class="article-list__article-meta">
+			<a href="https://www.nwahomepage.com/news/knwa/">KNWA</a> / <time datetime="2020-01-01T22:08:28-06:00">9 hours ago</time>		</footer>
+	
+	
+	
+	</div>
+
+	<figure class="article-list__article-thumb">
+					<a
+				href="https://www.nwahomepage.com/news/knwa/arkansans-approved-for-medical-marijuana-id-cards-2/"
+							>
+		
+		<div class="article-list__article-image-wrapper">
+			
+<div class="image-wrapper landscape square-on-mobile">
+	<img
+		src="https://i0.wp.com/www.nwahomepage.com/wp-content/uploads/sites/90/2020/01/medical-m-knwa.jpg?resize=2560%2C1440&#038;ssl=1"
+		alt=""
+		srcset="https://www.nwahomepage.com/wp-content/uploads/sites/90/2020/01/medical-m-knwa.jpg?w=320&amp;h=180&amp;crop=1 320w, https://www.nwahomepage.com/wp-content/uploads/sites/90/2020/01/medical-m-knwa.jpg?w=640&amp;h=360&amp;crop=1 640w, https://www.nwahomepage.com/wp-content/uploads/sites/90/2020/01/medical-m-knwa.jpg?w=960&amp;h=540&amp;crop=1 960w, https://www.nwahomepage.com/wp-content/uploads/sites/90/2020/01/medical-m-knwa.jpg?w=1280&amp;h=720&amp;crop=1 1280w, https://i0.wp.com/www.nwahomepage.com/wp-content/uploads/sites/90/2020/01/medical-m-knwa.jpg?resize=1920%2C1080&amp;ssl=1 1920w, https://i0.wp.com/www.nwahomepage.com/wp-content/uploads/sites/90/2020/01/medical-m-knwa.jpg?resize=2560%2C1440&amp;ssl=1 2560w"
+		sizes="(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px"
+	/>
+</div>
+
+							
+<span aria-hidden="true" tabindex="-1" class="article-list__article-mediaicon">
+	<span class="article-list__article-mediaicon-svg">
+		<svg viewBox="0 0 24 24">
+			<path d="M8,5.14V19.14L19,12.14L8,5.14Z" />
+		</svg>
+	</span>
+	</span>
+					</div>
+
+					</a>
+			</figure>
+			</article>
+
+					
+		<article
+			class="article-list__article article-list__article--is-stacked article-list__article--has-thumb article-list__article--is-media-type"
+			data-index="3"
+			data-collection="article-list2"
+			data-anvato-params="null"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list2"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px&quot;]"
+>
+			<h3 class="article-list__article-title">
+							<a
+					href="https://www.nwahomepage.com/around-arkansas/former-maumelle-firefighter-killed-in-plane-crash-in-kansas/"
+									>
+			
+				Former Maumelle firefighter killed in plane crash in Kansas
+							</a>
+					</h3>
+	
+			<footer class="article-list__article-meta">
+			<a href="https://www.nwahomepage.com/around-arkansas/">Around Arkansas</a> / <time datetime="2020-01-01T21:50:34-06:00">9 hours ago</time>		</footer>
+	
+	
+	
+	</div>
+
+	<figure class="article-list__article-thumb">
+					<a
+				href="https://www.nwahomepage.com/around-arkansas/former-maumelle-firefighter-killed-in-plane-crash-in-kansas/"
+							>
+		
+		<div class="article-list__article-image-wrapper">
+			
+<div class="image-wrapper landscape square-on-mobile">
+	<img
+		src="https://i1.wp.com/www.nwahomepage.com/wp-content/uploads/sites/90/2020/01/E61C1C1DEDFB47C0AF9F5D31B63D44A7.jpg?resize=2560%2C1440&#038;ssl=1"
+		alt=""
+		srcset="https://www.nwahomepage.com/wp-content/uploads/sites/90/2020/01/E61C1C1DEDFB47C0AF9F5D31B63D44A7.jpg?w=320&amp;h=180&amp;crop=1 320w, https://www.nwahomepage.com/wp-content/uploads/sites/90/2020/01/E61C1C1DEDFB47C0AF9F5D31B63D44A7.jpg?w=640&amp;h=360&amp;crop=1 640w, https://www.nwahomepage.com/wp-content/uploads/sites/90/2020/01/E61C1C1DEDFB47C0AF9F5D31B63D44A7.jpg?w=960&amp;h=540&amp;crop=1 960w, https://www.nwahomepage.com/wp-content/uploads/sites/90/2020/01/E61C1C1DEDFB47C0AF9F5D31B63D44A7.jpg?w=1280&amp;h=720&amp;crop=1 1280w, https://i1.wp.com/www.nwahomepage.com/wp-content/uploads/sites/90/2020/01/E61C1C1DEDFB47C0AF9F5D31B63D44A7.jpg?resize=1920%2C1080&amp;ssl=1 1920w, https://i1.wp.com/www.nwahomepage.com/wp-content/uploads/sites/90/2020/01/E61C1C1DEDFB47C0AF9F5D31B63D44A7.jpg?resize=2560%2C1440&amp;ssl=1 2560w"
+		sizes="(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px"
+	/>
+</div>
+
+							
+<span aria-hidden="true" tabindex="-1" class="article-list__article-mediaicon">
+	<span class="article-list__article-mediaicon-svg">
+		<svg viewBox="0 0 24 24">
+			<path d="M8,5.14V19.14L19,12.14L8,5.14Z" />
+		</svg>
+	</span>
+	</span>
+					</div>
+
+					</a>
+			</figure>
+			</article>
+
+			</div>
+
+	<div class="article-list__read-more article-list__read-more--w-arrow">
+		<a href="/news/">
+			Read more stories
+							<span class="icon icon--arrow">
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17.938 10.94">
+		<path d="M17.944 5.55a.733.733 0 0 1-.032.34v.03c0 .01-.006.01-.008.01a.189.189 0 0 1-.028.05.619.619 0 0 1-.123.17c-.009.01-.013.02-.023.03l-4.927 4.56a.733.733 0 0 1-.5.19.753.753 0 0 1-.54-.23.737.737 0 0 1 .041-1.04l3.547-3.28H.738a.735.735 0 1 1 0-1.47h14.693l-3.74-3.68a.735.735 0 0 1 1.03-1.05l5.022 4.94s0 .01.008.01a.016.016 0 0 0 .017.01.8.8 0 0 1 .163.32c.007.03.009.06.013.09z"/>
+	</svg>
+</span>
+					</a>
+	</div>
+	
+	</aside>
+	<section id="ns-video-bin-12" class="widget widget_ns-video-bin">				<section
+					class="article-list article-list-carousel article-list-carousel--dropin video-playlist video-playlist--carousel"
+					data-component="videoPlaylist"
+					data-context="carousel_dropin--video"
+				>
+					
+	<h2 class="article-list__heading article-list__heading--notched">
+		Local News Video	</h2>
+
+
+<div class="article-list__content">
+			
+		<article
+			class="article-list__article article-list__article--is-stacked article-list__article--has-thumb article-list__article--is-media-type"
+			data-index="0"
+			data-collection="article-list3"
+			data-anvato-params="{&quot;ns&quot;:{&quot;id&quot;:&quot;4213749&quot;,&quot;title&quot;:&quot;KNWA News New state law bans public funding for human cloning&quot;,&quot;link&quot;:&quot;https:\/\/www.nwahomepage.com\/video\/knwa-news-new-state-law-bans-public-funding-for-human-cloning\/4213749\/&quot;,&quot;thumbnail&quot;:{&quot;src&quot;:&quot;https:\/\/jkvdxu3faz4qgr2j6w5qctdnde.gcdn.anvato.net\/iupl_lin\/412\/C75\/412C751E16A2475B8FFD11F11B3322EC.jpg?Expires=1672545985&amp;KeyName=mcpkey1&amp;Signature=kBq4XYk-R85V09CPC9nnA_wo1s4&quot;,&quot;alt_text&quot;:&quot;Thumbnail for the video titled \&quot;KNWA News New state law bans public funding for human cloning\&quot;&quot;},&quot;date&quot;:[],&quot;lead_media&quot;:true},&quot;mcp&quot;:&quot;LIN&quot;,&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:&quot;100%&quot;,&quot;video&quot;:&quot;4213749&quot;,&quot;autoplay&quot;:false,&quot;pInstance&quot;:&quot;p4&quot;,&quot;plugins&quot;:{&quot;comscore&quot;:{&quot;clientId&quot;:&quot;6036439&quot;,&quot;c3&quot;:&quot;https:\/\/www.nwahomepage.com\/&quot;,&quot;script&quot;:&quot;\/\/w3.cdn.anvato.net\/player\/prod\/v3\/plugins\/comscore\/comscoreplugin.min.js&quot;,&quot;useDerivedMetadata&quot;:true,&quot;mapping&quot;:{&quot;video&quot;:{&quot;ns_st_st&quot;:&quot;knwa&quot;,&quot;ns_st_pu&quot;:&quot;Nexstar&quot;,&quot;c3&quot;:&quot;knwa&quot;,&quot;ns_st_ge&quot;:&quot;News,Featured Stories&quot;},&quot;ad&quot;:{&quot;ns_st_st&quot;:&quot;knwa&quot;,&quot;ns_st_pu&quot;:&quot;Nexstar&quot;,&quot;c3&quot;:&quot;knwa&quot;,&quot;ns_st_ge&quot;:&quot;News,Featured Stories&quot;}}},&quot;dfp&quot;:{&quot;adTagUrl&quot;:&quot;https:\/\/pubads.g.doubleclick.net\/gampad\/ads?sz=1x1000&amp;iu=\/5678\/nx.knwa\/news&amp;impl=s&amp;gdfp_req=1&amp;env=vp&amp;output=vmap&amp;unviewed_position_start=1&amp;vid=short_onecue&amp;cmsid=1234&amp;url=https:\/\/www.nwahomepage.com\/news\/meet-the-man-who-has-run-every-day-for-the-past-20-years\/&amp;ciu_szs=728x90,300x250&amp;ad_rule=1&amp;cust_params=vid%3D4213749%26cmsid%3D347887%26pid%3D347887%26vidcat%3D\/news%26bob_ck%3D[bob_ck_val]%26description_url%3Dhttps:\/\/www.nwahomepage.com\/news\/meet-the-man-who-has-run-every-day-for-the-past-20-years\/%26correlator%3D1577970666.907%26d_code%3Dna003&quot;}},&quot;nxs&quot;:{&quot;mp4Url&quot;:&quot;https:\/\/nxsglobal.storage.googleapis.com\/knwa\/video\/video_studio\/2020\/01\/01\/KNWA_News_New_state_law_bans_public_funding_for__4213749_600.mp4&quot;},&quot;disableMutedAutoplay&quot;:false,&quot;recommendations&quot;:true,&quot;expectPreroll&quot;:true,&quot;titleVisible&quot;:true}"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list3"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px&quot;]"
+>
+			<h3 class="article-list__article-title">
+							<a
+					href="https://www.nwahomepage.com/video/knwa-news-new-state-law-bans-public-funding-for-human-cloning/4213749/"
+									>
+			
+				KNWA News New state law bans public funding for human cloning
+							</a>
+					</h3>
+	
+	
+	
+	
+	</div>
+
+	<figure class="article-list__article-thumb">
+					<a
+				href="https://www.nwahomepage.com/video/knwa-news-new-state-law-bans-public-funding-for-human-cloning/4213749/"
+							>
+		
+		<div class="article-list__article-image-wrapper">
+			
+<div class="image-wrapper landscape">
+	<img
+		src="https://jkvdxu3faz4qgr2j6w5qctdnde.gcdn.anvato.net/iupl_lin/412/C75/412C751E16A2475B8FFD11F11B3322EC.jpg?Expires=1672545985&#038;KeyName=mcpkey1&#038;Signature=kBq4XYk-R85V09CPC9nnA_wo1s4"
+		alt="Thumbnail for the video titled &quot;KNWA News New state law bans public funding for human cloning&quot;"
+		srcset=""
+		sizes="(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px"
+	/>
+</div>
+
+							
+<span aria-hidden="true" tabindex="-1" class="article-list__article-mediaicon">
+	<span class="article-list__article-mediaicon-svg">
+		<svg viewBox="0 0 24 24">
+			<path d="M8,5.14V19.14L19,12.14L8,5.14Z" />
+		</svg>
+	</span>
+			<span class="article-list__article-mediaicon-text">Video</span>
+	</span>
+					</div>
+
+					</a>
+			</figure>
+			</article>
+
+					
+		<article
+			class="article-list__article article-list__article--is-stacked article-list__article--has-thumb article-list__article--is-media-type"
+			data-index="1"
+			data-collection="article-list3"
+			data-anvato-params="{&quot;ns&quot;:{&quot;id&quot;:&quot;4206488&quot;,&quot;title&quot;:&quot;Air quality&quot;,&quot;link&quot;:&quot;https:\/\/www.nwahomepage.com\/video\/air-quality\/4206488\/&quot;,&quot;thumbnail&quot;:{&quot;src&quot;:&quot;https:\/\/jkvdxu3faz4qgr2j6w5qctdnde.gcdn.anvato.net\/iupl_lin\/1CE\/0D1\/1CE0D1EA85C54B1F8283F9ED2DA50B45.jpg?Expires=1672206587&amp;KeyName=mcpkey1&amp;Signature=ve-uXbk54J7sJF6XLdCm8w1vkYo&quot;,&quot;alt_text&quot;:&quot;Thumbnail for the video titled \&quot;Air quality\&quot;&quot;},&quot;date&quot;:[],&quot;lead_media&quot;:true},&quot;mcp&quot;:&quot;LIN&quot;,&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:&quot;100%&quot;,&quot;video&quot;:&quot;4206488&quot;,&quot;autoplay&quot;:false,&quot;pInstance&quot;:&quot;p5&quot;,&quot;plugins&quot;:{&quot;comscore&quot;:{&quot;clientId&quot;:&quot;6036439&quot;,&quot;c3&quot;:&quot;https:\/\/www.nwahomepage.com\/&quot;,&quot;script&quot;:&quot;\/\/w3.cdn.anvato.net\/player\/prod\/v3\/plugins\/comscore\/comscoreplugin.min.js&quot;,&quot;useDerivedMetadata&quot;:true,&quot;mapping&quot;:{&quot;video&quot;:{&quot;ns_st_st&quot;:&quot;knwa&quot;,&quot;ns_st_pu&quot;:&quot;Nexstar&quot;,&quot;c3&quot;:&quot;knwa&quot;,&quot;ns_st_ge&quot;:&quot;News,Featured Stories&quot;},&quot;ad&quot;:{&quot;ns_st_st&quot;:&quot;knwa&quot;,&quot;ns_st_pu&quot;:&quot;Nexstar&quot;,&quot;c3&quot;:&quot;knwa&quot;,&quot;ns_st_ge&quot;:&quot;News,Featured Stories&quot;}}},&quot;dfp&quot;:{&quot;adTagUrl&quot;:&quot;https:\/\/pubads.g.doubleclick.net\/gampad\/ads?sz=1x1000&amp;iu=\/5678\/nx.knwa\/news&amp;impl=s&amp;gdfp_req=1&amp;env=vp&amp;output=vmap&amp;unviewed_position_start=1&amp;vid=short_onecue&amp;cmsid=1234&amp;url=https:\/\/www.nwahomepage.com\/news\/meet-the-man-who-has-run-every-day-for-the-past-20-years\/&amp;ciu_szs=728x90,300x250&amp;ad_rule=1&amp;cust_params=vid%3D4206488%26cmsid%3D347887%26pid%3D347887%26vidcat%3D\/news%26bob_ck%3D[bob_ck_val]%26description_url%3Dhttps:\/\/www.nwahomepage.com\/news\/meet-the-man-who-has-run-every-day-for-the-past-20-years\/%26correlator%3D1577970666.909%26d_code%3D189%2C199%2C5%2C213%2C109%2C117%2C105%2C150%2C89%2C201%2C77%2C131%2C210%2C205%2C172%2C202%2C63%2C176&quot;}},&quot;nxs&quot;:{&quot;mp4Url&quot;:&quot;https:\/\/nxsglobal.storage.googleapis.com\/knwa\/video\/video_studio\/2019\/12\/29\/Air_quality_4206488_600.mp4&quot;},&quot;disableMutedAutoplay&quot;:false,&quot;recommendations&quot;:true,&quot;expectPreroll&quot;:true,&quot;titleVisible&quot;:true}"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list3"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px&quot;]"
+>
+			<h3 class="article-list__article-title">
+							<a
+					href="https://www.nwahomepage.com/video/air-quality/4206488/"
+									>
+			
+				Air quality
+							</a>
+					</h3>
+	
+	
+	
+	
+	</div>
+
+	<figure class="article-list__article-thumb">
+					<a
+				href="https://www.nwahomepage.com/video/air-quality/4206488/"
+							>
+		
+		<div class="article-list__article-image-wrapper">
+			
+<div class="image-wrapper landscape">
+	<img
+		src="https://jkvdxu3faz4qgr2j6w5qctdnde.gcdn.anvato.net/iupl_lin/1CE/0D1/1CE0D1EA85C54B1F8283F9ED2DA50B45.jpg?Expires=1672206587&#038;KeyName=mcpkey1&#038;Signature=ve-uXbk54J7sJF6XLdCm8w1vkYo"
+		alt="Thumbnail for the video titled &quot;Air quality&quot;"
+		srcset=""
+		sizes="(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px"
+	/>
+</div>
+
+							
+<span aria-hidden="true" tabindex="-1" class="article-list__article-mediaicon">
+	<span class="article-list__article-mediaicon-svg">
+		<svg viewBox="0 0 24 24">
+			<path d="M8,5.14V19.14L19,12.14L8,5.14Z" />
+		</svg>
+	</span>
+			<span class="article-list__article-mediaicon-text">Video</span>
+	</span>
+					</div>
+
+					</a>
+			</figure>
+			</article>
+
+					
+		<article
+			class="article-list__article article-list__article--is-stacked article-list__article--has-thumb article-list__article--is-media-type"
+			data-index="2"
+			data-collection="article-list3"
+			data-anvato-params="{&quot;ns&quot;:{&quot;id&quot;:&quot;4178865&quot;,&quot;title&quot;:&quot;Fox 24 News Kelly O&#039;neill live at Fay PD -- Officer Carr&quot;,&quot;link&quot;:&quot;https:\/\/www.nwahomepage.com\/video\/fox-24-news-kelly-oneill-live-at-fay-pd-officer-carr\/4178865\/&quot;,&quot;thumbnail&quot;:{&quot;src&quot;:&quot;https:\/\/jkvdxu3faz4qgr2j6w5qctdnde.gcdn.anvato.net\/iupl_lin\/A20\/CAB\/A20CABF3A1E74879A2EA439C26537F38.jpg?Expires=1671129356&amp;KeyName=mcpkey1&amp;Signature=uR1D4zeRUaYl0MFzszNDM_7G1cg&quot;,&quot;alt_text&quot;:&quot;Thumbnail for the video titled \&quot;Fox 24 News Kelly O&#039;neill live at Fay PD -- Officer Carr\&quot;&quot;},&quot;date&quot;:[],&quot;lead_media&quot;:true},&quot;mcp&quot;:&quot;LIN&quot;,&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:&quot;100%&quot;,&quot;video&quot;:&quot;4178865&quot;,&quot;autoplay&quot;:false,&quot;pInstance&quot;:&quot;p6&quot;,&quot;plugins&quot;:{&quot;comscore&quot;:{&quot;clientId&quot;:&quot;6036439&quot;,&quot;c3&quot;:&quot;https:\/\/www.nwahomepage.com\/&quot;,&quot;script&quot;:&quot;\/\/w3.cdn.anvato.net\/player\/prod\/v3\/plugins\/comscore\/comscoreplugin.min.js&quot;,&quot;useDerivedMetadata&quot;:true,&quot;mapping&quot;:{&quot;video&quot;:{&quot;ns_st_st&quot;:&quot;knwa&quot;,&quot;ns_st_pu&quot;:&quot;Nexstar&quot;,&quot;c3&quot;:&quot;knwa&quot;,&quot;ns_st_ge&quot;:&quot;News,Featured Stories&quot;},&quot;ad&quot;:{&quot;ns_st_st&quot;:&quot;knwa&quot;,&quot;ns_st_pu&quot;:&quot;Nexstar&quot;,&quot;c3&quot;:&quot;knwa&quot;,&quot;ns_st_ge&quot;:&quot;News,Featured Stories&quot;}}},&quot;dfp&quot;:{&quot;adTagUrl&quot;:&quot;https:\/\/pubads.g.doubleclick.net\/gampad\/ads?sz=1x1000&amp;iu=\/5678\/nx.knwa\/news&amp;impl=s&amp;gdfp_req=1&amp;env=vp&amp;output=vmap&amp;unviewed_position_start=1&amp;vid=short_onecue&amp;cmsid=1234&amp;url=https:\/\/www.nwahomepage.com\/news\/meet-the-man-who-has-run-every-day-for-the-past-20-years\/&amp;ciu_szs=728x90,300x250&amp;ad_rule=1&amp;cust_params=vid%3D4178865%26cmsid%3D347887%26pid%3D347887%26vidcat%3D\/news%26bob_ck%3D[bob_ck_val]%26description_url%3Dhttps:\/\/www.nwahomepage.com\/news\/meet-the-man-who-has-run-every-day-for-the-past-20-years\/%26correlator%3D1577970666.9108%26d_code%3Dna003&quot;}},&quot;nxs&quot;:{&quot;mp4Url&quot;:&quot;https:\/\/nxsglobal.storage.googleapis.com\/knwa\/video\/video_studio\/2019\/12\/16\/Fox_24_News_Kelly_O_neill_live_at_Fay_PD____Offi_4178865_600.mp4&quot;},&quot;disableMutedAutoplay&quot;:false,&quot;recommendations&quot;:true,&quot;expectPreroll&quot;:true,&quot;titleVisible&quot;:true}"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list3"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px&quot;]"
+>
+			<h3 class="article-list__article-title">
+							<a
+					href="https://www.nwahomepage.com/video/fox-24-news-kelly-oneill-live-at-fay-pd-officer-carr/4178865/"
+									>
+			
+				Fox 24 News Kelly O'neill live at Fay PD -- Officer Carr
+							</a>
+					</h3>
+	
+	
+	
+	
+	</div>
+
+	<figure class="article-list__article-thumb">
+					<a
+				href="https://www.nwahomepage.com/video/fox-24-news-kelly-oneill-live-at-fay-pd-officer-carr/4178865/"
+							>
+		
+		<div class="article-list__article-image-wrapper">
+			
+<div class="image-wrapper landscape">
+	<img
+		src="https://jkvdxu3faz4qgr2j6w5qctdnde.gcdn.anvato.net/iupl_lin/A20/CAB/A20CABF3A1E74879A2EA439C26537F38.jpg?Expires=1671129356&#038;KeyName=mcpkey1&#038;Signature=uR1D4zeRUaYl0MFzszNDM_7G1cg"
+		alt="Thumbnail for the video titled &quot;Fox 24 News Kelly O&#039;neill live at Fay PD -- Officer Carr&quot;"
+		srcset=""
+		sizes="(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px"
+	/>
+</div>
+
+							
+<span aria-hidden="true" tabindex="-1" class="article-list__article-mediaicon">
+	<span class="article-list__article-mediaicon-svg">
+		<svg viewBox="0 0 24 24">
+			<path d="M8,5.14V19.14L19,12.14L8,5.14Z" />
+		</svg>
+	</span>
+			<span class="article-list__article-mediaicon-text">Video</span>
+	</span>
+					</div>
+
+					</a>
+			</figure>
+			</article>
+
+					
+		<article
+			class="article-list__article article-list__article--is-stacked article-list__article--has-thumb article-list__article--is-media-type"
+			data-index="3"
+			data-collection="article-list3"
+			data-anvato-params="{&quot;ns&quot;:{&quot;id&quot;:&quot;4178860&quot;,&quot;title&quot;:&quot;KNWA Kelly O&#039;Neill live at Stephen Carr&#039;s funeral 3&quot;,&quot;link&quot;:&quot;https:\/\/www.nwahomepage.com\/video\/knwa-kelly-oneill-live-at-stephen-carrs-funeral-3\/4178860\/&quot;,&quot;thumbnail&quot;:{&quot;src&quot;:&quot;https:\/\/jkvdxu3faz4qgr2j6w5qctdnde.gcdn.anvato.net\/iupl_lin\/F22\/3F5\/F223F5857FF64DF1879F99C90AB804FF.jpg?Expires=1671129356&amp;KeyName=mcpkey1&amp;Signature=wSqT7xCjjWCR_zuCRusuhfKC7U4&quot;,&quot;alt_text&quot;:&quot;Thumbnail for the video titled \&quot;KNWA Kelly O&#039;Neill live at Stephen Carr&#039;s funeral 3\&quot;&quot;},&quot;date&quot;:[],&quot;lead_media&quot;:true},&quot;mcp&quot;:&quot;LIN&quot;,&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:&quot;100%&quot;,&quot;video&quot;:&quot;4178860&quot;,&quot;autoplay&quot;:false,&quot;pInstance&quot;:&quot;p7&quot;,&quot;plugins&quot;:{&quot;comscore&quot;:{&quot;clientId&quot;:&quot;6036439&quot;,&quot;c3&quot;:&quot;https:\/\/www.nwahomepage.com\/&quot;,&quot;script&quot;:&quot;\/\/w3.cdn.anvato.net\/player\/prod\/v3\/plugins\/comscore\/comscoreplugin.min.js&quot;,&quot;useDerivedMetadata&quot;:true,&quot;mapping&quot;:{&quot;video&quot;:{&quot;ns_st_st&quot;:&quot;knwa&quot;,&quot;ns_st_pu&quot;:&quot;Nexstar&quot;,&quot;c3&quot;:&quot;knwa&quot;,&quot;ns_st_ge&quot;:&quot;News,Featured Stories&quot;},&quot;ad&quot;:{&quot;ns_st_st&quot;:&quot;knwa&quot;,&quot;ns_st_pu&quot;:&quot;Nexstar&quot;,&quot;c3&quot;:&quot;knwa&quot;,&quot;ns_st_ge&quot;:&quot;News,Featured Stories&quot;}}},&quot;dfp&quot;:{&quot;adTagUrl&quot;:&quot;https:\/\/pubads.g.doubleclick.net\/gampad\/ads?sz=1x1000&amp;iu=\/5678\/nx.knwa\/news&amp;impl=s&amp;gdfp_req=1&amp;env=vp&amp;output=vmap&amp;unviewed_position_start=1&amp;vid=short_onecue&amp;cmsid=1234&amp;url=https:\/\/www.nwahomepage.com\/news\/meet-the-man-who-has-run-every-day-for-the-past-20-years\/&amp;ciu_szs=728x90,300x250&amp;ad_rule=1&amp;cust_params=vid%3D4178860%26cmsid%3D347887%26pid%3D347887%26vidcat%3D\/news%26bob_ck%3D[bob_ck_val]%26description_url%3Dhttps:\/\/www.nwahomepage.com\/news\/meet-the-man-who-has-run-every-day-for-the-past-20-years\/%26correlator%3D1577970666.9128%26d_code%3Dna003&quot;}},&quot;nxs&quot;:{&quot;mp4Url&quot;:&quot;https:\/\/nxsglobal.storage.googleapis.com\/knwa\/video\/video_studio\/2019\/12\/16\/KNWA_Kelly_O_Neill_live_at_Stephen_Carr_s_funera_4178860_600.mp4&quot;},&quot;disableMutedAutoplay&quot;:false,&quot;recommendations&quot;:true,&quot;expectPreroll&quot;:true,&quot;titleVisible&quot;:true}"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list3"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px&quot;]"
+>
+			<h3 class="article-list__article-title">
+							<a
+					href="https://www.nwahomepage.com/video/knwa-kelly-oneill-live-at-stephen-carrs-funeral-3/4178860/"
+									>
+			
+				KNWA Kelly O'Neill live at Stephen Carr's funeral 3
+							</a>
+					</h3>
+	
+	
+	
+	
+	</div>
+
+	<figure class="article-list__article-thumb">
+					<a
+				href="https://www.nwahomepage.com/video/knwa-kelly-oneill-live-at-stephen-carrs-funeral-3/4178860/"
+							>
+		
+		<div class="article-list__article-image-wrapper">
+			
+<div class="image-wrapper landscape">
+	<img
+		src="https://jkvdxu3faz4qgr2j6w5qctdnde.gcdn.anvato.net/iupl_lin/F22/3F5/F223F5857FF64DF1879F99C90AB804FF.jpg?Expires=1671129356&#038;KeyName=mcpkey1&#038;Signature=wSqT7xCjjWCR_zuCRusuhfKC7U4"
+		alt="Thumbnail for the video titled &quot;KNWA Kelly O&#039;Neill live at Stephen Carr&#039;s funeral 3&quot;"
+		srcset=""
+		sizes="(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px"
+	/>
+</div>
+
+							
+<span aria-hidden="true" tabindex="-1" class="article-list__article-mediaicon">
+	<span class="article-list__article-mediaicon-svg">
+		<svg viewBox="0 0 24 24">
+			<path d="M8,5.14V19.14L19,12.14L8,5.14Z" />
+		</svg>
+	</span>
+			<span class="article-list__article-mediaicon-text">Video</span>
+	</span>
+					</div>
+
+					</a>
+			</figure>
+			</article>
+
+					
+		<article
+			class="article-list__article article-list__article--is-stacked article-list__article--has-thumb article-list__article--is-media-type"
+			data-index="4"
+			data-collection="article-list3"
+			data-anvato-params="{&quot;ns&quot;:{&quot;id&quot;:&quot;4178856&quot;,&quot;title&quot;:&quot;KNWA Kelly O&#039;Neill live at Stephen Carr&#039;s funeral 2&quot;,&quot;link&quot;:&quot;https:\/\/www.nwahomepage.com\/video\/knwa-kelly-oneill-live-at-stephen-carrs-funeral-2\/4178856\/&quot;,&quot;thumbnail&quot;:{&quot;src&quot;:&quot;https:\/\/jkvdxu3faz4qgr2j6w5qctdnde.gcdn.anvato.net\/iupl_lin\/B5E\/C3F\/B5EC3F5058174846AF24A097E6B55BB4.jpg?Expires=1671129356&amp;KeyName=mcpkey1&amp;Signature=oPj37_MbexVgXmoU5qAtqmWDcAU&quot;,&quot;alt_text&quot;:&quot;Thumbnail for the video titled \&quot;KNWA Kelly O&#039;Neill live at Stephen Carr&#039;s funeral 2\&quot;&quot;},&quot;date&quot;:[],&quot;lead_media&quot;:true},&quot;mcp&quot;:&quot;LIN&quot;,&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:&quot;100%&quot;,&quot;video&quot;:&quot;4178856&quot;,&quot;autoplay&quot;:false,&quot;pInstance&quot;:&quot;p8&quot;,&quot;plugins&quot;:{&quot;comscore&quot;:{&quot;clientId&quot;:&quot;6036439&quot;,&quot;c3&quot;:&quot;https:\/\/www.nwahomepage.com\/&quot;,&quot;script&quot;:&quot;\/\/w3.cdn.anvato.net\/player\/prod\/v3\/plugins\/comscore\/comscoreplugin.min.js&quot;,&quot;useDerivedMetadata&quot;:true,&quot;mapping&quot;:{&quot;video&quot;:{&quot;ns_st_st&quot;:&quot;knwa&quot;,&quot;ns_st_pu&quot;:&quot;Nexstar&quot;,&quot;c3&quot;:&quot;knwa&quot;,&quot;ns_st_ge&quot;:&quot;News,Featured Stories&quot;},&quot;ad&quot;:{&quot;ns_st_st&quot;:&quot;knwa&quot;,&quot;ns_st_pu&quot;:&quot;Nexstar&quot;,&quot;c3&quot;:&quot;knwa&quot;,&quot;ns_st_ge&quot;:&quot;News,Featured Stories&quot;}}},&quot;dfp&quot;:{&quot;adTagUrl&quot;:&quot;https:\/\/pubads.g.doubleclick.net\/gampad\/ads?sz=1x1000&amp;iu=\/5678\/nx.knwa\/news&amp;impl=s&amp;gdfp_req=1&amp;env=vp&amp;output=vmap&amp;unviewed_position_start=1&amp;vid=short_onecue&amp;cmsid=1234&amp;url=https:\/\/www.nwahomepage.com\/news\/meet-the-man-who-has-run-every-day-for-the-past-20-years\/&amp;ciu_szs=728x90,300x250&amp;ad_rule=1&amp;cust_params=vid%3D4178856%26cmsid%3D347887%26pid%3D347887%26vidcat%3D\/news%26bob_ck%3D[bob_ck_val]%26description_url%3Dhttps:\/\/www.nwahomepage.com\/news\/meet-the-man-who-has-run-every-day-for-the-past-20-years\/%26correlator%3D1577970666.9976%26d_code%3Dna003&quot;}},&quot;nxs&quot;:{&quot;mp4Url&quot;:&quot;https:\/\/nxsglobal.storage.googleapis.com\/knwa\/video\/video_studio\/2019\/12\/16\/KNWA_Kelly_O_Neill_live_at_Stephen_Carr_s_funera_4178856_600.mp4&quot;},&quot;disableMutedAutoplay&quot;:false,&quot;recommendations&quot;:true,&quot;expectPreroll&quot;:true,&quot;titleVisible&quot;:true}"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list3"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px&quot;]"
+>
+			<h3 class="article-list__article-title">
+							<a
+					href="https://www.nwahomepage.com/video/knwa-kelly-oneill-live-at-stephen-carrs-funeral-2/4178856/"
+									>
+			
+				KNWA Kelly O'Neill live at Stephen Carr's funeral 2
+							</a>
+					</h3>
+	
+	
+	
+	
+	</div>
+
+	<figure class="article-list__article-thumb">
+					<a
+				href="https://www.nwahomepage.com/video/knwa-kelly-oneill-live-at-stephen-carrs-funeral-2/4178856/"
+							>
+		
+		<div class="article-list__article-image-wrapper">
+			
+<div class="image-wrapper landscape">
+	<img
+		src="https://jkvdxu3faz4qgr2j6w5qctdnde.gcdn.anvato.net/iupl_lin/B5E/C3F/B5EC3F5058174846AF24A097E6B55BB4.jpg?Expires=1671129356&#038;KeyName=mcpkey1&#038;Signature=oPj37_MbexVgXmoU5qAtqmWDcAU"
+		alt="Thumbnail for the video titled &quot;KNWA Kelly O&#039;Neill live at Stephen Carr&#039;s funeral 2&quot;"
+		srcset=""
+		sizes="(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px"
+	/>
+</div>
+
+							
+<span aria-hidden="true" tabindex="-1" class="article-list__article-mediaicon">
+	<span class="article-list__article-mediaicon-svg">
+		<svg viewBox="0 0 24 24">
+			<path d="M8,5.14V19.14L19,12.14L8,5.14Z" />
+		</svg>
+	</span>
+			<span class="article-list__article-mediaicon-text">Video</span>
+	</span>
+					</div>
+
+					</a>
+			</figure>
+			</article>
+
+					
+		<article
+			class="article-list__article article-list__article--is-stacked article-list__article--has-thumb article-list__article--is-media-type"
+			data-index="5"
+			data-collection="article-list3"
+			data-anvato-params="{&quot;ns&quot;:{&quot;id&quot;:&quot;4178835&quot;,&quot;title&quot;:&quot;KNWA Kelly O&#039;Neill live at Stephen Carr&#039;s funeral&quot;,&quot;link&quot;:&quot;https:\/\/www.nwahomepage.com\/video\/knwa-kelly-oneill-live-at-stephen-carrs-funeral\/4178835\/&quot;,&quot;thumbnail&quot;:{&quot;src&quot;:&quot;https:\/\/jkvdxu3faz4qgr2j6w5qctdnde.gcdn.anvato.net\/iupl_lin\/2CA\/49C\/2CA49C6B77F84622ADB72C7B20994870.jpg?Expires=1671128297&amp;KeyName=mcpkey1&amp;Signature=6zbMHuyyXaPttADUORlbcnyg1VU&quot;,&quot;alt_text&quot;:&quot;Thumbnail for the video titled \&quot;KNWA Kelly O&#039;Neill live at Stephen Carr&#039;s funeral\&quot;&quot;},&quot;date&quot;:[],&quot;lead_media&quot;:true},&quot;mcp&quot;:&quot;LIN&quot;,&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:&quot;100%&quot;,&quot;video&quot;:&quot;4178835&quot;,&quot;autoplay&quot;:false,&quot;pInstance&quot;:&quot;p9&quot;,&quot;plugins&quot;:{&quot;comscore&quot;:{&quot;clientId&quot;:&quot;6036439&quot;,&quot;c3&quot;:&quot;https:\/\/www.nwahomepage.com\/&quot;,&quot;script&quot;:&quot;\/\/w3.cdn.anvato.net\/player\/prod\/v3\/plugins\/comscore\/comscoreplugin.min.js&quot;,&quot;useDerivedMetadata&quot;:true,&quot;mapping&quot;:{&quot;video&quot;:{&quot;ns_st_st&quot;:&quot;knwa&quot;,&quot;ns_st_pu&quot;:&quot;Nexstar&quot;,&quot;c3&quot;:&quot;knwa&quot;,&quot;ns_st_ge&quot;:&quot;News,Featured Stories&quot;},&quot;ad&quot;:{&quot;ns_st_st&quot;:&quot;knwa&quot;,&quot;ns_st_pu&quot;:&quot;Nexstar&quot;,&quot;c3&quot;:&quot;knwa&quot;,&quot;ns_st_ge&quot;:&quot;News,Featured Stories&quot;}}},&quot;dfp&quot;:{&quot;adTagUrl&quot;:&quot;https:\/\/pubads.g.doubleclick.net\/gampad\/ads?sz=1x1000&amp;iu=\/5678\/nx.knwa\/news&amp;impl=s&amp;gdfp_req=1&amp;env=vp&amp;output=vmap&amp;unviewed_position_start=1&amp;vid=short_onecue&amp;cmsid=1234&amp;url=https:\/\/www.nwahomepage.com\/news\/meet-the-man-who-has-run-every-day-for-the-past-20-years\/&amp;ciu_szs=728x90,300x250&amp;ad_rule=1&amp;cust_params=vid%3D4178835%26cmsid%3D347887%26pid%3D347887%26vidcat%3D\/news%26bob_ck%3D[bob_ck_val]%26description_url%3Dhttps:\/\/www.nwahomepage.com\/news\/meet-the-man-who-has-run-every-day-for-the-past-20-years\/%26correlator%3D1577970666.9999%26d_code%3Dna003&quot;}},&quot;nxs&quot;:{&quot;mp4Url&quot;:&quot;https:\/\/nxsglobal.storage.googleapis.com\/knwa\/video\/video_studio\/2019\/12\/16\/KNWA_Kelly_O_Neill_live_at_Stephen_Carr_s_funera_4178835_600.mp4&quot;},&quot;disableMutedAutoplay&quot;:false,&quot;recommendations&quot;:true,&quot;expectPreroll&quot;:true,&quot;titleVisible&quot;:true}"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list3"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px&quot;]"
+>
+			<h3 class="article-list__article-title">
+							<a
+					href="https://www.nwahomepage.com/video/knwa-kelly-oneill-live-at-stephen-carrs-funeral/4178835/"
+									>
+			
+				KNWA Kelly O'Neill live at Stephen Carr's funeral
+							</a>
+					</h3>
+	
+	
+	
+	
+	</div>
+
+	<figure class="article-list__article-thumb">
+					<a
+				href="https://www.nwahomepage.com/video/knwa-kelly-oneill-live-at-stephen-carrs-funeral/4178835/"
+							>
+		
+		<div class="article-list__article-image-wrapper">
+			
+<div class="image-wrapper landscape">
+	<img
+		src="https://jkvdxu3faz4qgr2j6w5qctdnde.gcdn.anvato.net/iupl_lin/2CA/49C/2CA49C6B77F84622ADB72C7B20994870.jpg?Expires=1671128297&#038;KeyName=mcpkey1&#038;Signature=6zbMHuyyXaPttADUORlbcnyg1VU"
+		alt="Thumbnail for the video titled &quot;KNWA Kelly O&#039;Neill live at Stephen Carr&#039;s funeral&quot;"
+		srcset=""
+		sizes="(max-width: 899px) 100%, (max-width: 1023px) 75vw, 884px"
+	/>
+</div>
+
+							
+<span aria-hidden="true" tabindex="-1" class="article-list__article-mediaicon">
+	<span class="article-list__article-mediaicon-svg">
+		<svg viewBox="0 0 24 24">
+			<path d="M8,5.14V19.14L19,12.14L8,5.14Z" />
+		</svg>
+	</span>
+			<span class="article-list__article-mediaicon-text">Video</span>
+	</span>
+					</div>
+
+					</a>
+			</figure>
+			</article>
+
+			</div>
+
+
+				</section>
+				</section>
+			</main>
+		</div>
+
+		
+<section id="secondary" class="widget-area">
+	<!-- Ad Unit Square -->
+	<aside class="ad-unit ad-unit--square">
+		<div class="ad-unit__content">
+			  <div   id="acm-ad-tag-mr_combo1-mr_combo1"   data-slot='{"pos":"mr_combo1","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[300,250],"sizes":[[[1280,0],[[300,600],[300,250]]],[[1024,0],[[300,600],[300,250]]],[[768,0],[[300,250]]],[[641,0],[[300,250]]],[[0,0],[[300,250]]]],"amp_multi_size":"300x250","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"atf"}'   data-unit='{"tag":"mr_combo1","tag_id":"mr_combo1","dfp_id":"5678","tag_name":"nx.knwa","ad_disabled":"0"}'   data-targeting='{"pos":"mr_combo1","fold":"atf","category":"knwa","kw":"tactical-urbanism-project-brings-creative-seating-to-bus-stops"}'   data-path='/5678/nx.knwa/news/knwa'  ></div>  <script>  (function () {   try {    var event = new CustomEvent(     "nsDfpSlotRendered",     {      detail: {       id: 'acm-ad-tag-mr_combo1-mr_combo1'      }     }    );     window.dispatchEvent(event);   } catch (err) {}  })();  </script>  		</div>
+	</aside>
+	<!-- END Ad Unit Square -->
+
+	<section id="ns-article-bin-64" class="widget widget_ns-article-bin">				<section
+					class="article-list article-list--trending"
+					data-component=""
+					data-context="numbered_list"
+				>
+					
+	<h2 class="article-list__heading article-list__heading--bottom-divider">
+		Trending Stories	</h2>
+
+
+<div class="article-list__content">
+			
+		<article
+			class="article-list__article article-list__article--is-slat"
+			data-index="0"
+			data-collection="article-list3"
+			data-anvato-params="null"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list3"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, 300px&quot;]"
+>
+			<h3 class="article-list__article-title">
+							<a
+					href="https://www.nwahomepage.com/sports/pig-trail-nation/5-things-arkansas-has-to-do-in-2020-for-possible-bowl-game/"
+									>
+			
+				5 Things Arkansas Has to do in 2020 for Possible Bowl Game
+							</a>
+					</h3>
+	
+	
+	
+	
+	</div>
+
+		</article>
+
+					
+		<article
+			class="article-list__article article-list__article--is-slat"
+			data-index="1"
+			data-collection="article-list3"
+			data-anvato-params="null"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list3"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, 300px&quot;]"
+>
+			<h3 class="article-list__article-title">
+							<a
+					href="https://www.nwahomepage.com/news/meet-the-man-who-has-run-every-day-for-the-past-20-years/"
+									>
+			
+				Meet the man who has run every day for the past 20 years
+							</a>
+					</h3>
+	
+	
+	
+	
+	</div>
+
+		</article>
+
+					
+		<article
+			class="article-list__article article-list__article--is-slat"
+			data-index="2"
+			data-collection="article-list3"
+			data-anvato-params="null"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list3"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, 300px&quot;]"
+>
+			<h3 class="article-list__article-title">
+							<a
+					href="https://www.nwahomepage.com/sports/pig-trail-nation/hog-recruiting/five-key-uncommitted-arkansas-football-targets/"
+									>
+			
+				Five Key Uncommitted Arkansas Football Targets
+							</a>
+					</h3>
+	
+	
+	
+	
+	</div>
+
+		</article>
+
+					
+		<article
+			class="article-list__article article-list__article--is-slat"
+			data-index="3"
+			data-collection="article-list3"
+			data-anvato-params="null"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list3"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, 300px&quot;]"
+>
+			<h3 class="article-list__article-title">
+							<a
+					href="https://www.nwahomepage.com/weather/"
+									>
+			
+				Weather
+							</a>
+					</h3>
+	
+	
+	
+	
+	</div>
+
+		</article>
+
+					
+		<article
+			class="article-list__article article-list__article--is-slat"
+			data-index="4"
+			data-collection="article-list3"
+			data-anvato-params="null"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list3"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, 300px&quot;]"
+>
+			<h3 class="article-list__article-title">
+							<a
+					href="https://www.nwahomepage.com/news/"
+									>
+			
+				News
+							</a>
+					</h3>
+	
+	
+	
+	
+	</div>
+
+		</article>
+
+			</div>
+
+
+				</section>
+				</section><section id="custom_html-69" class="widget_text widget widget_custom_html"><div class="textwidget custom-html-widget"><div class="rich-text-cascade"><div style="border: 1px solid #DEDEDE;width: 300px;height: 250px;text-align: center;background-color: #E8E8E8;font-family: 'Open Sans', 'Helvetica Neue', 'Arial', sans-serif; overflow: hidden; position: relative;">
+  <img src="https://s3.amazonaws.com/static.mobilelocalnews.com/images/app_3356/branding/3356_icon_1024_app_icon_1565034624.PNG" style="z-index: 10;width: 100px;margin: 40px auto 40px auto;position: relative;">
+  <a href="http://marketplace-redirect.doapps.com/3356" target="_blank" style="z-index: 999;position: relative;background-color: #508AC8;border-radius: 5px;color: #ffffff;width: 80%;display: block;text-align: center;padding: 15px;font-size: 20px;margin: 0 auto 0 auto;text-decoration: none;" rel="noopener noreferrer">Get the mobile app!</a>
+  <div style="width: 300px; height: 141px; background-color: #e1e1e1; position: absolute; top: 125px; left: 106px; -moz-transform:rotate(45deg); -ms-transform:rotate(45deg); -webkit-transform: rotate(45deg);z-index: 5; transform: rotate(45deg);"></div>
+</div></div></div></section>
+	
+			<!-- Nativo -->
+		<div id="native-rr"></div>
+		<!-- END Nativo -->
+	
+	<section id="ns-article-bin-43" class="widget widget_ns-article-bin">				<section
+					class="article-list article-list--story-grid article-list--story-grid--one-col"
+					data-component=""
+					data-context="headline_list"
+				>
+					
+	<h2 class="article-list__heading">
+		Don't Miss	</h2>
+
+
+<div class="article-list__content">
+			
+		<article
+			class="article-list__article article-list__article--is-stacked article-list__article--has-thumb article-list__article--is-media-type"
+			data-index="0"
+			data-collection="article-list3"
+			data-anvato-params="null"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list3"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb article-list__article-thumb--is-fullbleed-on-mobile"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, 300px&quot;]"
+>
+			<h3 class="article-list__article-title">
+							<a
+					href="https://www.nwahomepage.com/dont-miss/win-allens-food-market-new-year-shopping-spree/"
+									>
+			
+				Win Allen&#8217;s Food Market New Year shopping spree
+							</a>
+					</h3>
+	
+			<footer class="article-list__article-meta">
+			<a href="https://www.nwahomepage.com/dont-miss/">Don&#039;t Miss</a> / <time datetime="2019-12-23T16:01:48-06:00">1 week ago</time>		</footer>
+	
+	
+	
+	</div>
+
+	<figure class="article-list__article-thumb article-list__article-thumb--is-fullbleed-on-mobile">
+					<a
+				href="https://www.nwahomepage.com/dont-miss/win-allens-food-market-new-year-shopping-spree/"
+							>
+		
+		<div class="article-list__article-image-wrapper">
+			
+<div class="image-wrapper landscape">
+	<img
+		src="https://i1.wp.com/www.nwahomepage.com/wp-content/uploads/sites/90/2019/12/Allens-Shopping-Spree.png?resize=2560%2C1440&#038;ssl=1"
+		alt=""
+		srcset="https://www.nwahomepage.com/wp-content/uploads/sites/90/2019/12/Allens-Shopping-Spree.png?w=320&amp;h=180&amp;crop=1 320w, https://www.nwahomepage.com/wp-content/uploads/sites/90/2019/12/Allens-Shopping-Spree.png?w=640&amp;h=360&amp;crop=1 640w, https://www.nwahomepage.com/wp-content/uploads/sites/90/2019/12/Allens-Shopping-Spree.png?w=960&amp;h=540&amp;crop=1 960w, https://www.nwahomepage.com/wp-content/uploads/sites/90/2019/12/Allens-Shopping-Spree.png?w=1280&amp;h=720&amp;crop=1 1280w, https://i1.wp.com/www.nwahomepage.com/wp-content/uploads/sites/90/2019/12/Allens-Shopping-Spree.png?resize=1920%2C1080&amp;ssl=1 1920w, https://i1.wp.com/www.nwahomepage.com/wp-content/uploads/sites/90/2019/12/Allens-Shopping-Spree.png?resize=2560%2C1440&amp;ssl=1 2560w"
+		sizes="(max-width: 899px) 100%, 300px"
+	/>
+</div>
+
+					</div>
+
+					</a>
+			</figure>
+			</article>
+
+					
+		<article
+			class="article-list__article article-list__article--is-slat  article-list__article--is-media-type"
+			data-index="1"
+			data-collection="article-list3"
+			data-anvato-params="null"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list3"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb article-list__article-thumb--is-fullbleed-on-mobile"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, 300px&quot;]"
+>
+			<h3 class="article-list__article-title">
+							<a
+					href="https://www.nwahomepage.com/contests/remarkable-women/"
+									>
+			
+				Nominate a Remarkable Woman in Your Life
+							</a>
+					</h3>
+	
+			<footer class="article-list__article-meta">
+			<a href="https://www.nwahomepage.com/contests/">Contests</a> / <time datetime="2019-12-12T11:45:39-06:00">3 weeks ago</time>		</footer>
+	
+	
+	
+	</div>
+
+		</article>
+
+					
+		<article
+			class="article-list__article article-list__article--is-slat  article-list__article--is-media-type"
+			data-index="2"
+			data-collection="article-list3"
+			data-anvato-params="null"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list3"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb article-list__article-thumb--is-fullbleed-on-mobile"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, 300px&quot;]"
+>
+			<h3 class="article-list__article-title">
+							<a
+					href="https://www.nwahomepage.com/contests/light-up-your-neighborhood-sweepstakes/"
+									>
+			
+				Light Up Your Neighborhood Sweepstakes
+							</a>
+					</h3>
+	
+			<footer class="article-list__article-meta">
+			<a href="https://www.nwahomepage.com/contests/">Contests</a> / <time datetime="2019-11-26T16:11:33-06:00">1 month ago</time>		</footer>
+	
+	
+	
+	</div>
+
+		</article>
+
+					
+		<article
+			class="article-list__article article-list__article--is-slat  article-list__article--is-media-type"
+			data-index="3"
+			data-collection="article-list3"
+			data-anvato-params="null"
+		>
+			
+<div
+	class="article-list__article-text"
+	data-article-list-id="article-list3"
+	data-article-text-classes="article-list__article-text"
+	data-article-thumb-classes="article-list__article-thumb article-list__article-thumb--is-fullbleed-on-mobile"
+	data-current-image-context="[&quot;16:9&quot;,&quot;(max-width: 899px) 100%, 300px&quot;]"
+>
+			<h3 class="article-list__article-title">
+							<a
+					href="https://www.nwahomepage.com/dont-miss/home-for-the-holidays/"
+									>
+			
+				Home for the Holidays
+							</a>
+					</h3>
+	
+			<footer class="article-list__article-meta">
+			<a href="https://www.nwahomepage.com/dont-miss/">Don&#039;t Miss</a> / <time datetime="2019-11-12T16:17:14-06:00">2 months ago</time>		</footer>
+	
+	
+	
+	</div>
+
+		</article>
+
+			</div>
+
+	<div class="article-list__read-more article-list__read-more--w-arrow">
+		<a href="https://www.nwahomepage.com/dont-miss/">
+			More Don&#039;t Miss
+							<span class="icon icon--arrow">
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17.938 10.94">
+		<path d="M17.944 5.55a.733.733 0 0 1-.032.34v.03c0 .01-.006.01-.008.01a.189.189 0 0 1-.028.05.619.619 0 0 1-.123.17c-.009.01-.013.02-.023.03l-4.927 4.56a.733.733 0 0 1-.5.19.753.753 0 0 1-.54-.23.737.737 0 0 1 .041-1.04l3.547-3.28H.738a.735.735 0 1 1 0-1.47h14.693l-3.74-3.68a.735.735 0 0 1 1.03-1.05l5.022 4.94s0 .01.008.01a.016.016 0 0 0 .017.01.8.8 0 0 1 .163.32c.007.03.009.06.013.09z"/>
+	</svg>
+</span>
+					</a>
+	</div>
+	
+				</section>
+				</section>
+	<aside class="ad-unit ad-unit--square ad-unit--sticky">
+		<div class="ad-unit__content">
+			  <div   id="acm-ad-tag-mr_combo2-mr_combo2"   data-slot='{"pos":"mr_combo2","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[300,250],"sizes":[[[1280,0],[[300,600],[300,250]]],[[1024,0],[[300,600],[300,250]]],[[768,0],[[300,250]]],[[641,0],[[300,250]]],[[0,0],[[300,250]]]],"amp_multi_size":"300x250","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"btf"}'   data-unit='{"tag":"mr_combo2","tag_id":"mr_combo2","dfp_id":"5678","tag_name":"nx.knwa","ad_disabled":"0"}'   data-targeting='{"pos":"mr_combo2","fold":"btf","category":"knwa","kw":"tactical-urbanism-project-brings-creative-seating-to-bus-stops"}'   data-path='/5678/nx.knwa/news/knwa'  ></div>  <script>  (function () {   try {    var event = new CustomEvent(     "nsDfpSlotRendered",     {      detail: {       id: 'acm-ad-tag-mr_combo2-mr_combo2'      }     }    );     window.dispatchEvent(event);   } catch (err) {}  })();  </script>  		</div>
+	</aside>
+	<!-- END Ad Unit Square -->
+</section><!-- #secondary -->
+	</div>
+
+			<aside class="ad-unit ad-unit--leaderboard">
+			<div class="ad-unit__content">
+				  <div   id="acm-ad-tag-leaderboard3-leaderboard3"   data-slot='{"pos":"leaderboard3","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[320,50],"sizes":[[[1280,0],[[728,90]]],[[1024,0],[[728,90]]],[[768,0],[[728,90]]],[[641,0],[[320,50]]],[[0,0],[[320,50]]]],"amp_multi_size":"320x50","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"btf"}'   data-unit='{"tag":"leaderboard3","tag_id":"leaderboard3","dfp_id":"5678","tag_name":"nx.knwa","ad_disabled":"0"}'   data-targeting='{"pos":"leaderboard3","fold":"btf","category":"knwa","kw":"tactical-urbanism-project-brings-creative-seating-to-bus-stops"}'   data-path='/5678/nx.knwa/news/knwa'  ></div>  <script>  (function () {   try {    var event = new CustomEvent(     "nsDfpSlotRendered",     {      detail: {       id: 'acm-ad-tag-leaderboard3-leaderboard3'      }     }    );     window.dispatchEvent(event);   } catch (err) {}  })();  </script>  			</div>
+		</aside>
+	
+	
+</div><!-- #content -->
+		</div>
+
+		<footer id="footer" class="site-footer">
+	<div class="site-footer__site-branding">
+		<div class="site-footer__logo">
+			<a href="https://www.nwahomepage.com/" rel="home">
+				<img src="https://www.nwahomepage.com/wp-content/uploads/sites/90/2019/11/cropped-KNWA-Logo-for-HOmepage-1.png" alt="KNWA/KFTA" />
+			</a>
+		</div>
+	</div>
+
+		<div class="site-footer__social">
+		<h2>Follow Us</h2>
+		
+<aside class="social-links social-links--default">
+	<ul class="social-links__list">
+					<li class="social-links__list-item social-links__list-item--facebook">
+				<a href="https://www.facebook.com/KNWAnews">
+					
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 58 58" style="enable-background:new 0 0 58 58;" xml:space="preserve">
+	<title>Facebook</title>
+	<style type="text/css">
+		.facebook-st0{fill:#4267B2;}
+		.facebook-st1{fill:#FFFFFF;}
+	</style>
+	<path class="facebook-st0" d="M54.8,0H3.2C1.43,0,0,1.43,0,3.2v51.6C0,56.57,1.43,58,3.2,58h0H31V35.57h-7.55v-8.78H31v-6.46
+		c0-7.49,4.58-11.57,11.26-11.57c2.25,0,4.5,0.11,6.74,0.34v7.83h-4.6c-3.64,0-4.35,1.72-4.35,4.26v5.59h8.7l-1.13,8.78H40V58h14.8
+		c1.77,0,3.2-1.43,3.2-3.2l0,0V3.2C58,1.43,56.57,0,54.8,0L54.8,0z"/>
+	<path id="f" class="facebook-st1" d="M40,58V35.57h7.57l1.13-8.78H40V21.2c0-2.54,0.71-4.26,4.35-4.26H49V9.1c-2.24-0.23-4.5-0.35-6.75-0.34
+	C35.56,8.76,31,12.84,31,20.33v6.46h-7.55v8.78H31V58H40z"/>
+</svg>
+				</a>
+			</li>
+							<li class="social-links__list-item social-links__list-item--twitter">
+				<a href="https://twitter.com/KNWAnews">
+					
+<svg version="1.1" id="Logo__x2014__FIXED" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 259.77 218.57" style="enable-background:new 0 0 33 33;" xml:space="preserve">
+	<title>Twitter</title>
+	<style type="text/css">
+		.twitter-st0{fill:none;}
+		.twitter-st1{fill:#1DA1F2;}
+	</style>
+	<g>
+		<rect x="-69.49" y="-90.72" class="twitter-st0" width="400" height="400"/>
+		<path class="twitter-st1" d="M84.13,210.87c94.34,0,145.94-78.16,145.94-145.94c0-2.22-0.05-4.43-0.15-6.63
+			c10.01-7.24,18.72-16.27,25.59-26.56c-9.19,4.08-19.08,6.83-29.46,8.07c10.59-6.35,18.72-16.4,22.55-28.37
+			c-9.91,5.88-20.89,10.15-32.57,12.45c-9.36-9.97-22.69-16.21-37.44-16.21c-28.33,0-51.3,22.97-51.3,51.29
+			c0,4.03,0.45,7.94,1.33,11.69C86,68.53,48.2,48.12,22.91,17.09c-4.41,7.58-6.95,16.39-6.95,25.78c0,17.8,9.06,33.5,22.82,42.69
+			c-8.41-0.26-16.32-2.57-23.23-6.42c-0.01,0.21-0.01,0.43-0.01,0.65c0,24.84,17.68,45.58,41.15,50.28c-4.31,1.17-8.84,1.8-13.52,1.8
+			c-3.3,0-6.52-0.33-9.64-0.93c6.53,20.38,25.46,35.21,47.92,35.62c-17.56,13.76-39.67,21.96-63.7,21.96
+			c-4.14,0-8.22-0.24-12.24-0.71C28.21,202.38,55.16,210.87,84.13,210.87"/>
+	</g>
+</svg>
+				</a>
+			</li>
+							<li class="social-links__list-item social-links__list-item--instagram">
+				<a href="https://www.instagram.com/knwanews/">
+					<img src="https://www.nwahomepage.com/wp-content/themes/nexstar/client/src/images/footer/social/instagram.png" alt="Instagram" />
+				</a>
+			</li>
+									<li class="social-links__list-item social-links__list-item--youtube">
+				<a href="https://www.youtube.com/channel/UCsQxtMGJ5qKg7Ov1DEIyqoQ">
+					
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 192 192" style="enable-background:new 0 0 192 192;" xml:space="preserve">
+	<title>YouTube</title>
+	<style type="text/css">
+		.youtube-st0{fill:#FF0000;}
+		.youtube-st1{fill:#FFFFFF;}
+	</style>
+	<g id="XMLID_184_">
+		<path id="XMLID_182_" class="youtube-st0" d="M180.32,53.36c-2.02-7.62-7.99-13.62-15.56-15.66C151.04,34,96,34,96,34s-55.04,0-68.76,3.7
+			c-7.57,2.04-13.54,8.04-15.56,15.66C8,67.18,8,96,8,96s0,28.82,3.68,42.64c2.02,7.62,7.99,13.62,15.56,15.66
+			C40.96,158,96,158,96,158s55.04,0,68.76-3.7c7.57-2.04,13.54-8.04,15.56-15.66C184,124.82,184,96,184,96S184,67.18,180.32,53.36z"
+			/>
+		<polygon id="XMLID_1355_" class="youtube-st1" points="78,122.17 124,96 78,69.83 	"/>
+	</g>
+</svg>
+				</a>
+			</li>
+									<li class="social-links__list-item social-links__list-item--email">
+				<a href="mailto:news@knwa.com">
+					
+<svg xmlns="http://www.w3.org/2000/svg" width="29.35" height="22" viewBox="0 0 29.35 22">
+	<title>Email</title>
+	<defs>
+		<style>
+			.email-cls-1 {
+				fill: #eb6823;
+				fill-rule: evenodd;
+			}
+		</style>
+	</defs>
+	<path class="email-cls-1" d="M1168.41,189.824a0.347,0.347,0,0,1,.56.269v11.719a2.75,2.75,0,0,1-2.75,2.751h-23.84a2.75,2.75,0,0,1-2.75-2.751V190.1a0.338,0.338,0,0,1,.55-0.269c1.29,1,2.99,2.263,8.83,6.51,1.21,0.882,3.25,2.739,5.29,2.727,2.04,0.017,4.12-1.879,5.29-2.727C1165.43,192.093,1167.13,190.821,1168.41,189.824Zm-14.11,7.4c1.33,0.023,3.24-1.674,4.2-2.373,7.61-5.518,8.19-6,9.94-7.375a1.381,1.381,0,0,0,.53-1.083v-1.089a2.75,2.75,0,0,0-2.75-2.75h-23.84a2.75,2.75,0,0,0-2.75,2.75V186.4a1.359,1.359,0,0,0,.53,1.083c1.75,1.37,2.33,1.857,9.93,7.375,0.96,0.7,2.88,2.4,4.21,2.373h0Z" transform="translate(-1139.62 -182.562)"/>
+</svg>
+				</a>
+			</li>
+			</ul>
+</aside>
+	</div>
+	
+		<div class="site-footer__apps">
+		<h2>News App</h2>
+		<div class="app-links">
+							<div class="app-link">
+					<a href="https://apps.apple.com/us/app/knwa-fox24-news/id641349012">
+						<img src="https://www.nwahomepage.com/wp-content/themes/nexstar/client/src/images/footer/app-stores/appstore_footer.png" alt="Get the iOS app" />
+					</a>
+				</div>
+										<div class="app-link">
+					<a href="https://play.google.com/store/apps/details?id=com.newssynergy.nwahomepage">
+						<img src="https://www.nwahomepage.com/wp-content/themes/nexstar/client/src/images/footer/app-stores/googleplay_footer.png" alt="Get the Android app from Google Play" />
+					</a>
+				</div>
+					</div>
+	</div>
+	<div class="site-footer__weather-apps">
+		<h2>Weather App</h2>
+		<div class="app-links">
+							<div class="app-link">
+					<a href="https://apps.apple.com/us/app/nwa-weather-authority-powered/id835244863">
+						<img src="https://www.nwahomepage.com/wp-content/themes/nexstar/client/src/images/footer/app-stores/appstore_footer.png" alt="Get the iOS Weather app" />
+					</a>
+				</div>
+										<div class="app-link">
+					<a href="https://play.google.com/store/apps/details?id=com.newssynergy.nwaweather">
+						<img src="https://www.nwahomepage.com/wp-content/themes/nexstar/client/src/images/footer/app-stores/googleplay_footer.png" alt="Get the Android Weather app from Google Play" />
+					</a>
+				</div>
+					</div>
+	</div>
+	
+	
+<div class="site-footer__primary-nav">
+	<div class="menu-footer-primary-container"><ul id="menu-footer-primary" class="menu"><li id="menu-item-93847" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-93847"><a href="https://www.nwahomepage.com/knwa/">KNWA</a></li>
+<li id="menu-item-102701" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-102701"><a href="https://www.nwahomepage.com/news-myfox24/">FOX24</a></li>
+<li id="menu-item-93849" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-93849"><a href="https://www.nwahomepage.com/news/">News</a></li>
+<li id="menu-item-93850" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-93850"><a href="https://www.nwahomepage.com/weather/">Weather</a></li>
+<li id="menu-item-93851" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-93851"><a href="https://www.nwahomepage.com/contact-us/">Contact Us</a></li>
+<li id="menu-item-93852" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-93852"><a href="https://www.nwahomepage.com/about-us/">About Us</a></li>
+</ul></div></div>
+
+<div class="site-footer__secondary-nav">
+	<div class="menu-footer-secondary-container"><ul id="menu-footer-secondary" class="menu"><li id="menu-item-94012" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-94012"><a href="https://www.nwahomepage.com/terms-of-use/">Terms of Use</a></li>
+<li id="menu-item-94013" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-privacy-policy menu-item-94013"><a href="https://www.nwahomepage.com/privacy-policy/">Privacy Policy</a></li>
+<li id="menu-item-94014" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-94014"><a href="https://www.nwahomepage.com/advertise-with-us/">Advertise With Us</a></li>
+<li id="menu-item-94015" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-94015"><a href="https://www.nwahomepage.com/contact-us/">Contact Us</a></li>
+<li id="menu-item-94016" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-94016"><a href="https://www.nwahomepage.com/tv-station-information/">TV Station Information</a></li>
+</ul></div></div>
+
+	<div class="site-footer__network-branding">
+								<a href="https://www.nexstar.tv" title="Go to Nexstar">
+				<img src="https://www.nwahomepage.com/wp-content/themes/nexstar/client/src/images/footer/nexstar-logo-white-nmg.png" alt="LAKANA">
+			</a>
+			</div>
+	<div class="site-footer__copyright">
+		&copy; 1998 - 2020 Nexstar Broadcasting, Inc. | All Rights Reserved.	</div>
+</footer>
+	</div><!-- #page -->
+
+	
+<script type='text/javascript'>
+(function() {
+	var _sf_async_config = window._sf_async_config = (window._sf_async_config || {});
+
+	_sf_async_config.sections = "KNWA";
+	_sf_async_config.authors = "Megan Wilson";
+	function loadChartbeat() {
+			var e = document.createElement('script');
+			var n = document.getElementsByTagName('script')[0];
+			e.type = 'text/javascript';
+			e.async = true;
+			e.src = '//static.chartbeat.com/js/chartbeat.js';
+			n.parentNode.insertBefore(e, n);
+	}
+	loadChartbeat();
+})();
+</script>
+
+	<aside class="ad-unit ad-unit--adhesion">
+		<div class="ad-unit__content pre-render">
+			<div class="close-btn-container">
+				<div class="close-btn" aria-label="Close Viewport Adhesion Ad">&times; Close Ad</div>
+			</div>
+			  <div   id="acm-ad-tag-adhesion-adhesion"   data-slot='{"pos":"adhesion","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[320,50],"sizes":[[[1280,0],[[728,90]]],[[1024,0],[[728,90]]],[[768,0],[[728,90]]],[[480,0],[[320,50]]],[[0,0],[[320,50]]]],"amp_multi_size":"320x50","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"atf"}'   data-unit='{"tag":"adhesion","tag_id":"adhesion","dfp_id":"5678","tag_name":"nx.knwa","ad_disabled":"0"}'   data-targeting='{"pos":"adhesion","fold":"atf","category":"knwa","kw":"tactical-urbanism-project-brings-creative-seating-to-bus-stops"}'   data-path='/5678/nx.knwa/news/knwa'  ></div>  <script>  (function () {   try {    var event = new CustomEvent(     "nsDfpSlotRendered",     {      detail: {       id: 'acm-ad-tag-adhesion-adhesion'      }     }    );     window.dispatchEvent(event);   } catch (err) {}  })();  </script>  		</div>
+	</aside>
+
+	<div id="aria-dialog-overlay"></div>
+	<script src='https://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=202001'></script>
+<script>
+var wpApiSettings = {"root":"https:\/\/www.nwahomepage.com\/wp-json\/","nonce":"e66a2a8c22","versionString":"wp\/v2\/"};
+</script>
+<script>
+var lakana = {"a9":{"aps":{"enabled":"1","ad_server":"googletag","pub_id":"3410"}},"addthis_script_url":"https:\/\/s7.addthis.com\/js\/300\/addthis_widget.js#pubid=ra-5b7190c0239b8829","auto_refresh":{"landing_duration":"10","post_duration":"20","disable_homepage":"0"},"blueconic_enabled":"1","blueconic_script_url":"https:\/\/cdn.blueconic.net\/nexstar.js","chartbeat":{"enabled":"1","uid":"23192"},"confiant":{"script_url":"https:\/\/confiant-integrations.global.ssl.fastly.net\/Y2Nn8JmiAY8HpnF4sl5n7J71jaI\/gpt_and_prebid\/config.js","enabled":"1"},"copyright_text":"Copyright 2020 Nexstar Broadcasting, Inc. All rights reserved. This material may not be published, broadcast, rewritten, or redistributed.","devcon":{"status":"0","data_key":"f0d16886-0300-4694-9b7b-37da481f4449","data_e":"5"},"gtm":{"id":"GTM-KJJZHXD"},"id":"1","index_exchange":{"script_url":"https:\/\/js-sec.indexww.com\/ht\/p\/184979-164251977320883.js"},"nativo_enabled":"1","revcontent":{"status":"1"},"send_to_news":{"enabled":"1"}};
+var nexstar = {"alert_banners":{"l10n":{"nexstar":{"label_sep":"\/"}},"summary_messages":{"Breaking News":[],"Live Now":[],"Weather Alerts":[],"Closings":[]},"messages":{"Breaking News":[],"Live Now":[],"Weather Alerts":[],"Closings":[]},"settings":{"Breaking News":{"id":16,"slug":"breaking-news","term_name":"Breaking News","label":"Breaking News","summary_only":false,"url":"#\/","view_options":"number_of_areas"},"Live Now":{"id":17,"slug":"live-now","term_name":"Live Now","label":"Live Now","summary_only":false,"url":"#\/","view_options":"number_of_areas"},"Weather Alerts":{"id":18,"slug":"weather-alerts","term_name":"Weather Alerts","label":"Weather Alerts","summary_only":false,"url":"https:\/\/www.nwahomepage.com\/weather\/weather-alerts\/","view_options":"number_of_areas"},"Closings":{"id":20189,"slug":"closings","term_name":"Closings","label":"Closings","summary_only":true,"url":"https:\/\/www.nwahomepage.com\/weather\/closings\/","view_options":"number_of_areas"}},"modified_time":{"Breaking News":[],"Live Now":[],"Weather Alerts":[],"Closings":"Jan 2, 2020 \/ 07:12 AM CST"}},"app_links":{"google_play_link":"https:\/\/play.google.com\/store\/apps\/details?id=com.newssynergy.nwahomepage","google_play_weather_link":"https:\/\/play.google.com\/store\/apps\/details?id=com.newssynergy.nwaweather","ios_app_store_link":"https:\/\/apps.apple.com\/us\/app\/knwa-fox24-news\/id641349012","ios_app_store_weather_link":"https:\/\/apps.apple.com\/us\/app\/nwa-weather-authority-powered\/id835244863"},"article_bins":{"rest_endpoint":"https:\/\/www.nwahomepage.com\/wp-json\/nexstar\/v1\/article-bin"},"auto_refresh":{"landing_duration":"7","post_duration":"10","disable_homepage":"0"},"blueconic_enabled":"1","call_letters":"KNWA\/KFTA","chartbeat":{"domain":"nwahomepage.com"},"continue_reading_cta":{"l10n":{"cta_text":"Continue Reading"},"breakpoint":768,"min_content_height":600},"copyright_start_year":"1998","devcon":{"status":"0"},"dfp":{"mobile_desktop_breakpoint":1024,"register_event":"nsDfpSlotRendered","slots":{"adhesion":{"pos":"adhesion","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[320,50],"sizes":[[[1280,0],[[728,90]]],[[1024,0],[[728,90]]],[[768,0],[[728,90]]],[[480,0],[[320,50]]],[[0,0],[[320,50]]]],"amp_multi_size":"320x50","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"atf"},"billboard1":{"pos":"billboard1","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[320,50],"sizes":[[[1280,0],[[728,90],[970,250],[970,90],[970,30]]],[[1024,0],[[728,90],[970,250],[970,90],[970,30]]],[[768,0],[[728,90]]],[[641,0],[[320,50]]],[[0,0],[[320,50]]]],"amp_multi_size":"320x50","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"atf"},"header-microbar":{"pos":"header-microbar","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[88,31],"sizes":[[[900,0],[[88,31]]],[[0,0],[]]],"amp_multi_size":"88x31","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"atf"},"hover":{"pos":"hover","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[1,1],"sizes":[[[900,0],[[1,1]]],[[0,0],[]]],"amp_multi_size":"1x1","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"atf"},"leader_mr1":{"pos":"leader_mr1","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[300,250],"sizes":[[[1152,0],[[728,90]]],[[0,0],[[300,250]]]],"amp_multi_size":"300x250","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"btf"},"leaderboard1":{"pos":"leaderboard1","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[320,50],"sizes":[[[1280,0],[[728,90]]],[[1024,0],[[728,90]]],[[768,0],[[728,90]]],[[641,0],[[320,50]]],[[0,0],[[320,50]]]],"amp_multi_size":"320x50","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"mid"},"leaderboard2":{"pos":"leaderboard2","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[320,50],"sizes":[[[1280,0],[[728,90]]],[[1024,0],[[728,90]]],[[768,0],[[728,90]]],[[641,0],[[320,50]]],[[0,0],[[320,50]]]],"amp_multi_size":"320x50","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"mid"},"leaderboard3":{"pos":"leaderboard3","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[320,50],"sizes":[[[1280,0],[[728,90]]],[[1024,0],[[728,90]]],[[768,0],[[728,90]]],[[641,0],[[320,50]]],[[0,0],[[320,50]]]],"amp_multi_size":"320x50","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"btf"},"microbar":{"pos":"microbar","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[88,31],"sizes":[[[0,0],[[88,31]]]],"amp_multi_size":"88x31","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"mid"},"mr1":{"pos":"mr1","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[300,250],"sizes":[[[1280,0],[[300,250]]],[[1024,0],[[300,250]]],[[768,0],[[300,250]]],[[641,0],[[300,250]]],[[0,0],[[300,250]]]],"amp_multi_size":"300x250","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"mid"},"mr1_mobile":{"pos":"mr1_mobile","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[300,250],"sizes":[[[900,0],[]],[[0,0],[[300,250]]]],"amp_multi_size":"300x250","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"atf"},"mr2":{"pos":"mr2","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[300,250],"sizes":[[[1280,0],[[300,250]]],[[1024,0],[[300,250]]],[[768,0],[[300,250]]],[[641,0],[[300,250]]],[[0,0],[[300,250]]]],"amp_multi_size":"300x250","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"mid"},"mr3":{"pos":"mr3","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[300,250],"sizes":[[[1280,0],[[300,250]]],[[1024,0],[[300,250]]],[[768,0],[[300,250]]],[[641,0],[[300,250]]],[[0,0],[[300,250]]]],"amp_multi_size":"300x250","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"mid"},"mr4":{"pos":"mr4","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[300,250],"sizes":[[[1280,0],[[300,250]]],[[1024,0],[[300,250]]],[[768,0],[[300,250]]],[[641,0],[[300,250]]],[[0,0],[[300,250]]]],"amp_multi_size":"300x250","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"mid"},"mr_combo1":{"pos":"mr_combo1","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[300,250],"sizes":[[[1280,0],[[300,600],[300,250]]],[[1024,0],[[300,600],[300,250]]],[[768,0],[[300,250]]],[[641,0],[[300,250]]],[[0,0],[[300,250]]]],"amp_multi_size":"300x250","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"atf"},"mr_combo2":{"pos":"mr_combo2","is_companion":true,"is_oop":false,"refresh_on_resize":true,"size":[300,250],"sizes":[[[1280,0],[[300,600],[300,250]]],[[1024,0],[[300,600],[300,250]]],[[768,0],[[300,250]]],[[641,0],[[300,250]]],[[0,0],[[300,250]]]],"amp_multi_size":"300x250","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"btf"},"oop":{"pos":"oop","is_companion":true,"is_oop":true,"refresh_on_resize":true,"size":[1,1],"sizes":[[[0,0],[[1,1]]]],"amp_multi_size":"1x1","lazyload":false,"wx_targeting":[],"module_refreshable":false,"fold":"atf"}}},"extended_scroll":{"l10n":{"more_in_category_read_more":"Read the Full Article","more_in_category_title":"More %s Stories","more_stories_read_more":"Read more stories","more_stories_title":"More Stories"},"max_blocks_per_snippet":2,"more_stories_read_more_link":"\/news\/","num_more_in_category_posts":3,"num_more_stories_posts":4},"footer_logo":"315391","ga":{"id":"UA-37144901-11"},"gtm":{"id":"GTM-5WBWJC"},"home_url":"https:\/\/www.nwahomepage.com\/","homepage":{"l10n":{"hero_title":"Headlines","hero_read_more_title":"More Top Stories","headline_list_read_more_title":"More %s News","top_stories_title":"Top Stories","top_stories_read_more_title":"More Top Stories"},"default_hero_read_more_link":"https:\/\/www.nwahomepage.com\/news\/","num_headline_lists":6,"num_headline_list_articles":5,"num_hero_articles":5,"num_top_stories_articles":10,"top_stories_read_more_link":"https:\/\/www.nwahomepage.com\/news\/"},"id":"90","lead_media":{"allowed_block_types":["lakana\/anvplayer"],"video":{"autoplay":"1"}},"logo":"315391","name":"KNWA","nativo_enabled":"1","onetrust":{"consent_script_src":"https:\/\/cdn.cookielaw.org\/consent\/{domain_guid}\/OtAutoBlock.js","templates_script_src":"https:\/\/cdn.cookielaw.org\/scripttemplates\/otSDKStub.js"},"primary_color":"#3F5EDB","related_posts":{"l10n":{"default_title":"Related Content"}},"revcontent":{"status":"1","web_id":"114882","amp_id":"114661","amp_wrapper":"nwahomepage_114661","app_code":"<div id=\"rc-widget-596f31\" data-rc-widget data-widget-host=\"habitat\" data-endpoint=\"\/\/trends.revcontent.com\" data-widget-id=\"116046\"><\/div>\r\n<script type=\"text\/javascript\" src=\"\/\/assets.revcontent.com\/master\/delivery.js\" defer=\"defer\"><\/script>"},"section_fronts":{"l10n":{"headlines":"Headlines","more_headlines_title":"More %s Headlines","top_stories_title":"Top Stories"},"hero_read_more_link":"https:\/\/www.nwahomepage.com\/news\/","num_headline_lists":6,"num_headline_list_articles":5,"num_hero_articles":5,"num_top_stories_articles":10,"top_stories_read_more_link":"https:\/\/www.nwahomepage.com\/news\/"},"send_to_news":{"url":"http:\/\/embed.sendtonews.com\/oembed\/?fk=W324v6z0&cid=9391&sound=off&format=json&offsetx=0&offsety=140&floatwidth=400&floatposition=top-right&float=on","enabled":"0"},"sidebar":{"l10n":{"dont_miss_title":"Don't Miss"},"num_dont_miss_articles":7},"social_links":{"email":"news@knwa.com","facebook":"https:\/\/www.facebook.com\/KNWAnews","instagram":"https:\/\/www.instagram.com\/knwanews\/","pinterest":"","rss":"","twitter":"https:\/\/twitter.com\/KNWAnews","youtube":"https:\/\/www.youtube.com\/channel\/UCsQxtMGJ5qKg7Ov1DEIyqoQ"},"supernav":{"l10n":{"close_navigation":"Close Navigation","open_navigation":"Open Navigation","looking_for?":"What are you looking for?","primary_menu":"Primary Menu","toggle_menu":"Toggle Menu","top_stories":"Top Stories"},"max_depth":2,"nav_menu_location":"supernav","num_children_per_column":7,"num_columns":4,"num_columns_without_thumbnails":1,"num_posts_in_column_with_thumbnails":1,"num_posts_in_column_without_thumbnails":4,"post_type_feature":"supernav"},"template_variables":{"l10n":{"article_date":"M j, Y \/ h:i A T","article_list_by":"by %1$s %2$s %3$s","article_list_category":"%1$s \/ %2$s","author_by":"by: %s","author_sep":", ","infinite_button_text":"Load More","infinite_error_text":"Error loading articles","infinite_loading":"Loading...","more":"More","more_term":"More %s","next_page":"Next page","now_playing":"Now Playing","previous_page":"Previous page","posted":"Posted: %s","read_more_arrow":"Read More &raquo;","relative_date_format":"%s ago","search":"Search","sep":"\/","share_this_story":"Share this story","site_search":"Site Search...","snippet_date":"M j, Y","sponsored_by":"Sponsored By","top_stories_from":"Top Stories From %s","updated":"Updated: %s","up_next":"Up Next","video":"Video","exit_sticky_player":"Exit sticky player","form_processing":"Processing...","form_message_sent":"Message Sent!","form_error":"Error"},"num_404_top_stories_articles":5},"weather":{"city_name":"","latitude":"36.186745","longitude":"-94.128815","zipcode":"72701"},"weather_alerts":{"l10n":{"loading_alerts":"Checking for current alerts","no_current_alerts":"There are no active weather alerts. Check back later."}}};
+var weatherAlerts = {"alert_types":["911 Telephone Outage Emergency","Air Quality Alert","Child Abduction Emergency","Dense Fog Advisory","Earthquake Warning","Evacuation - Immediate","Excessive Heat Warning","Excessive Heat Watch","Extreme Cold Warning","Extreme Cold Watch","Extreme Fire Danger","Extreme Wind Warning","Fire Warning","Fire Weather Watch","Flash Flood Statement","Flash Flood Warning","Flash Flood Watch","Flood Statement","Flood Warning","Flood Watch","Freeze Warning","Freeze Watch","Frost Advisory","Hard Freeze Warning","Hard Freeze Watch","Hazardous Materials Warning","Hazardous Weather Outlook","Heat Advisory","Heavy Freezing Spray Warning","Heavy Freezing Spray Watch","High Wind Warning","High Wind Watch","Ice Storm Warning","Local Area Emergency","Nuclear Power Plant Warning","Radiological Hazard Warning","Red Flag Warning","Severe Thunderstorm Warning","Severe Thunderstorm Watch","Severe Weather Statement","Shelter In Place Warning","Small Craft Advisory","Special Weather Statement","Storm Warning","Storm Watch","Tornado Warning","Tornado Watch","Tropical Depression Local Statement","Wind Advisory","Wind Chill Advisory","Wind Chill Warning","Wind Chill Watch","Winter Storm Warning","Winter Storm Watch","Winter Weather Advisory"],"fips":["05143","05007","05087","05015","05083","05047","05033","05131","29119","40041","40001","05127","40135","40079","05071","29019"]};
+</script>
+<script type='text/javascript' src='https://www.nwahomepage.com/_static/??-eJydjEkSwiAQAD9kWBJx9GD5lmEYlBQhCUvp8yVHr167ulu+tyEkis1xkXORuIUh8964VLGEJOZykl2hNVVOVdYXL11M/CkVs6QYDmpbiO6on3G1GAUhgUU7jl4xen0zjCRsSy7yH1PMNVAvrXPOgIKL1pNCw4on/3t9LHdtAK4azqDnL12NTQ0='></script>
+<script async src='https://s7.addthis.com/js/300/addthis_widget.js?ver=1.0#pubid=ra-5b7190c0239b8829'></script>
+<script>
+var addthis_config=addthis_config||{};addthis_config.data_track_addressbar=false;addthis_config.data_track_clickback=false;
+</script>
+<script type='text/javascript' src='https://www.nwahomepage.com/wp-includes/js/wp-embed.min.js?m=1576710972g'></script>
+<script type='text/javascript' src='https://stats.wp.com/e-202001.js' async='async' defer='defer'></script>
+<script type='text/javascript'>
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:8.0',blog:'162794897',post:'347819',tz:'-6',srv:'www.nwahomepage.com'} ]);
+	_stq.push([ 'clickTrackerInit', '162794897', '347819' ]);
+</script>
+
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"bb199f70cb","applicationID":"222037236","transactionName":"MQNTMhdXDxECABBZDAhJchMWQg4PTBQUHxVUSUEJFkISTUtcNAwKAlhqOgFrSks=","queueTime":0,"applicationTime":662,"atts":"HURERF9NHE5BAkYKGBsb","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>

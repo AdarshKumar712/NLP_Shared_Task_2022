@@ -1,0 +1,925 @@
+<!doctype html>
+<html lang="en-US" class="">
+<head>
+	<meta charset="UTF-8"><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"53cef82690",applicationID:"189190456"};window.NREUM||(NREUM={}),__nr_require=function(n,e,t){function r(t){if(!e[t]){var i=e[t]={exports:{}};n[t][0].call(i.exports,function(e){var i=n[t][1][e];return r(i||e)},i,i.exports)}return e[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(n,e,t){function r(){}function i(n,e,t){return function(){return o(n,[u.now()].concat(f(arguments)),e?null:this,t),e?void 0:this}}var o=n("handle"),a=n(4),f=n(5),c=n("ee").get("tracer"),u=n("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(n,e){s[e]=i(d+e,!0,"api")}),s.addPageAction=i(d+"addPageAction",!0),s.setCurrentRouteName=i(d+"routeName",!0),e.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(n,e){var t={},r=this,i="function"==typeof e;return o(l+"tracer",[u.now(),n,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return e.apply(this,arguments)}catch(n){throw c.emit("fn-err",[arguments,this,n],t),n}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(n,e){m[e]=i(l+e)}),newrelic.noticeError=function(n,e){"string"==typeof n&&(n=new Error(n)),o("err",[n,u.now(),!1,e])}},{}],2:[function(n,e,t){function r(n,e){var t=n.getEntries();t.forEach(function(n){"first-paint"===n.name?a("timing",["fp",Math.floor(n.startTime)]):"first-contentful-paint"===n.name&&a("timing",["fcp",Math.floor(n.startTime)])})}function i(n){if(n instanceof c&&!s){var e,t=Math.round(n.timeStamp);e=t>1e12?Date.now()-t:f.now()-t,s=!0,a("timing",["fi",t,{type:n.type,fid:e}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var o,a=n("handle"),f=n("loader"),c=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){o=new PerformanceObserver(r);try{o.observe({entryTypes:["paint"]})}catch(u){}}if("addEventListener"in document){var s=!1,p=["click","keydown","mousedown","pointerdown","touchstart"];p.forEach(function(n){document.addEventListener(n,i,!1)})}}},{}],3:[function(n,e,t){function r(n,e){if(!i)return!1;if(n!==i)return!1;if(!e)return!0;if(!o)return!1;for(var t=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],4:[function(n,e,t){function r(n,e){var t=[],r="",o=0;for(r in n)i.call(n,r)&&(t[o]=e(r,n[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],5:[function(n,e,t){function r(n,e,t){e||(e=0),"undefined"==typeof t&&(t=n?n.length:0);for(var r=-1,i=t-e||0,o=Array(i<0?0:i);++r<i;)o[r]=n[e+r];return o}e.exports=r},{}],6:[function(n,e,t){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(n,e,t){function r(){}function i(n){function e(n){return n&&n instanceof r?n:n?c(n,f,o):o()}function t(t,r,i,o){if(!d.aborted||o){n&&n(t,r,i);for(var a=e(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function l(n,e){h[n]=v(n).concat(e)}function m(n,e){var t=h[n];if(t)for(var r=0;r<t.length;r++)t[r]===e&&t.splice(r,1)}function v(n){return h[n]||[]}function g(n){return p[n]=p[n]||i(t)}function w(n,e){u(n,function(n,t){e=e||"feature",y[t]=e,e in s||(s[e]=[])})}var h={},y={},b={on:l,addEventListener:l,removeEventListener:m,emit:t,get:g,listeners:v,context:e,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var f="nr@context",c=n("gos"),u=n(4),s={},p={},d=e.exports=i();d.backlog=s},{}],gos:[function(n,e,t){function r(n,e,t){if(i.call(n,e))return n[e];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(n,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return n[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(n,e,t){function r(n,e,t,r){i.buffer([n],r),i.emit(n,e,t)}var i=n("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(n,e,t){function r(n){var e=typeof n;return!n||"object"!==e&&"function"!==e?-1:n===window?0:a(n,o,function(){return i++})}var i=1,o="nr@id",a=n("gos");e.exports=r},{}],loader:[function(n,e,t){function r(){if(!x++){var n=E.info=NREUM.info,e=l.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(n&&n.licenseKey&&n.applicationID&&e))return s.abort();u(y,function(e,t){n[e]||(n[e]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=l.createElement("script");t.src="https://"+n.agent,e.parentNode.insertBefore(t,e)}}function i(){"complete"===l.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=n("handle"),u=n(4),s=n("ee"),p=n(3),d=window,l=d.document,m="addEventListener",v="attachEvent",g=d.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:g,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1158.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=e.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};n(1),n(2),l[m]?(l[m]("DOMContentLoaded",o,!1),d[m]("load",r,!1)):(l[v]("onreadystatechange",i),d[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=n(6)},{}],"wrap-function":[function(n,e,t){function r(n){return!(n&&n instanceof Function&&n.apply&&!n[a])}var i=n("ee"),o=n(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;e.exports=function(n,e){function t(n,e,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){d([u,"",[r,a,i],f])}s(e+"start",[r,a,i],f);try{return c=n.apply(a,r)}catch(p){throw s(e+"err",[r,a,p],f),p}finally{s(e+"end",[r,a,c],f)}}return r(n)?n:(e||(e=""),nrWrapper[a]=n,p(n,nrWrapper),nrWrapper)}function u(n,e,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<e.length;c++)f=e[c],a=n[f],r(a)||(n[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||e){var o=c;c=!0;try{n.emit(t,r,i,e)}catch(a){d([a,t,r,i])}c=o}}function p(n,e){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(n);return t.forEach(function(t){Object.defineProperty(e,t,{get:function(){return n[t]},set:function(e){return n[t]=e,e}})}),e}catch(r){d([r])}for(var i in n)f.call(n,i)&&(e[i]=n[i]);return e}function d(e){try{n.emit("internal-error",e)}catch(t){}}return n||(n=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="profile" href="https://gmpg.org/xfn/11">
+
+	<title>Lawsuit Accusing Actor Kevin Spacey of Malibu Sex Assault Dismissed &#8211; NBC Los Angeles</title>
+<link rel='dns-prefetch' href='//s0.wp.com' />
+<link rel='dns-prefetch' href='//ak.sail-horizon.com' />
+<link rel='dns-prefetch' href='//native.sharethrough.com' />
+<link rel='dns-prefetch' href='//js-sec.indexww.com' />
+<link rel='dns-prefetch' href='//use.fontawesome.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="NBC Los Angeles &raquo; Feed" href="https://www.nbclosangeles.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="NBC Los Angeles &raquo; Comments Feed" href="https://www.nbclosangeles.com/comments/feed/" />
+<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='all-css-0' href='https://www.nbclosangeles.com/_static/??-eJyVjMEKwjAQRH/IdClFrQfxW3aTGBe3acgmlPy9QVA86MHjzLw3sCVj11h8LJCkBo4K6Ixg81lNJAtWPxt3TUNvdvCf99MJtUfyOQBVFgckq70bYcqYG2hp4t8uRyvVeX1eO9Qb9zcdFo7fEXR9MoT5hVyW87g/HsbTPE3zA8WgW6I=' type='text/css' media='all' />
+<style id='admin-bar-inline-css' type='text/css'>
+#wp-admin-bar-my-sites-search.hide-if-no-js {
+	display: none;
+}
+#wp-admin-bar-my-sites-search label[for="my-sites-search-text"] {
+	clip: rect(1px, 1px, 1px, 1px);
+	position: absolute !important;
+	height: 1px;
+	width: 1px;
+	overflow: hidden;
+}
+#wp-admin-bar-my-sites-search {
+	height: 38px;
+}
+#wp-admin-bar-my-sites-search .ab-item {
+	height: 34px;
+}
+#wp-admin-bar-my-sites-search input {
+	padding: 0 2px;
+	width: 95%;
+	width: calc( 100% - 4px );
+}
+	
+</style>
+<link crossorigin="anonymous" rel='stylesheet' id='font-awesome-css'  href='https://use.fontawesome.com/releases/v5.9.0/css/all.css' type='text/css' media='all' />
+<link rel='stylesheet' id='all-css-2' href='https://www.nbclosangeles.com/_static/??-eJydzE0OwiAQQOELWWCmpZSF8SzDAJbIj7E0Xt+68AB2/V4++X4O3GoPtcu+hhI2WR0PW6eeWpWc07e4PWUveTtiq1SeAiIGcpZReefYegQ9ipKqOJ6L/NPkVkqrQgdABuuJrAEeUU9Agte9Pk7L99wcZYHLzMY6jHZRMBIZmvC0Sa+eOAeBelZTNCoqCzAjOtb+h97KFbQxCxgA+AB7dno+' type='text/css' media='all' />
+<script type='text/javascript' src='https://www.nbclosangeles.com/wp-includes/js/jquery/jquery.js?ver=1.12.4-wp'></script>
+<script type='text/javascript'>
+jQuery(document).ready( function($) {
+	$('#wp-admin-bar-my-sites-search.hide-if-no-js').show();
+	$('#wp-admin-bar-my-sites-search input').keyup( function( ) {
+
+		var searchValRegex = new RegExp( $(this).val(), 'i');
+
+		$('#wp-admin-bar-my-sites-list > li.menupop').hide().filter(function() {
+
+			return searchValRegex.test( $(this).find('> a').text() );
+
+		}).show();
+
+	});
+});
+	
+</script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var adLayersDFP = {"layerDebugLabel":"Current ad layer","consoleDebugLabel":"Switch to Google console","adUnitPrefix":"div-gpt-ad-"};
+/* ]]> */
+</script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var adLayersAdServer = {"jsAPIClass":"AdLayersDFPAPI"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://www.nbclosangeles.com/_static/??-eJzTLy/QzcxLzilNSS3WzwKiwtLUokoopZubmV6UWJKql5uZp5dVrKMPVJycn1eSmleiX5BTmp6ZV6yfmKKbk1iZWlSsm5eUDDIBIZCSVkC6LqAO+1xbQ1NzM0NLC2NjiywAQuk6jQ=='></script>
+<script type='text/javascript' src='https://www.nbclosangeles.com/wp-includes/js/dist/vendor/wp-polyfill.min.js?ver=7.0.0'></script>
+<script type='text/javascript'>
+( 'fetch' in window ) || document.write( '<script src="https://www.nbclosangeles.com/wp-includes/js/dist/vendor/wp-polyfill-fetch.min.js?ver=3.0.0"></scr' + 'ipt>' );( document.contains ) || document.write( '<script src="https://www.nbclosangeles.com/wp-includes/js/dist/vendor/wp-polyfill-node-contains.min.js?ver=3.26.0-0"></scr' + 'ipt>' );( window.FormData && window.FormData.prototype.keys ) || document.write( '<script src="https://www.nbclosangeles.com/wp-includes/js/dist/vendor/wp-polyfill-formdata.min.js?ver=3.0.12"></scr' + 'ipt>' );( Element.prototype.matches && Element.prototype.closest ) || document.write( '<script src="https://www.nbclosangeles.com/wp-includes/js/dist/vendor/wp-polyfill-element-closest.min.js?ver=2.0.2"></scr' + 'ipt>' );
+</script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var nbc = {"brand":"nbc","callLetters":"KNBC","env":"production","fullDomain":"nbclosangeles.com","globalSiteKey":"la","comscore_c4":"NBC SOUTHERN CALIFORNIA","on_air_name":"NBC 4","host":"nbclosangeles.com","market":"nbclosangeles","pdkAcct":"Yh1nAC","sensitive":"","siteKey":"la","themeUrl":"https:\/\/www.nbclosangeles.com\/wp-content\/themes\/nbc-station","twitterVia":"nbcla","zipCode":"90012","dataLayer":{"adobe":{"prop1":"entertainment","eVar1":"entertainment","prop2":"article - general","prop3":"","eVar3":"","prop4":"","eVar4":"","eVar8":"nbc","prop8":"nbc","prop9":"D=v9","eVar9":"LA","prop10":"D=v10","eVar10":"KNBC","prop19":"true","prop20":"nbcuotsdivisiontotal","prop21":"10092283609","eVar21":"10092283609","prop22":"Lawsuit Accusing Actor Kevin Spacey of Malibu Sex Assault Dismissed","eVar22":"Lawsuit Accusing Actor Kevin Spacey of Malibu Sex Assault Dismissed","prop25":"City News Service","eVar25":"City News Service","prop28":"CNS - City News Service","eVar28":"CNS - City News Service","prop29":"entertainment, news, local, kevin-spacey, kevin-spacey-trial","prop32":"no keyword","prop57":"Entertainment, Home Top Stories, Local, Newsletter Top Stories","eVar57":"Entertainment, Home Top Stories, Local, Newsletter Top Stories","eVar68":"","eVar70":"Dec 31, 2019","prop74":"D=v74","eVar74":"page not sponsored","eVar76":"page not sponsored","eVar80":"article - general","eVar81":"10092283609","eVar90":"Kevin Spacey","list2":"entertainment, news, local, kevin-spacey, kevin-spacey-trial","attrs":[],"contextData":{"pagename":"","events":"","rsid":"nbcuotsdivisiontotal","callsign":"KNBC","businessunit":"nbclosangeles","division":"nbc","sitekey":"la","section":"entertainment","subsection":"","subsubsection":"","exitlink":"","url":"https:\/\/www.nbclosangeles.com\/entertainment\/lawsuit-accusing-actor-kevin-spacey-of-malibu-sex-assault-dismissed\/2283609\/","contentid":2283609,"localid":"1:9:2283609","contenttitle":"Lawsuit Accusing Actor Kevin Spacey of Malibu Sex Assault Dismissed","contenttype":"article","nationalized":true,"byline_authors":"City News Service","date":"","sourceid":"","source":"CNS - City News Service","pageName":"entertainment:detail content page","collections":"Entertainment, Home Top Stories, Local, Newsletter Top Stories"},"prop30":"Los Angeles","prop18":"City News Service","pageName":"entertainment:detail content page","pageType":"","prop23":"article ","eVar23":"article "},"page_name":["entertainment:detail","content","page"],"site_events":{},"division":"nbc","market":"KNBC","sitekey":"la","type":"post","network_id":"1:9:2283609","id":2283609,"source":"CNS - City News Service","title":"Lawsuit Accusing Actor Kevin Spacey of Malibu Sex Assault Dismissed","summary":"<p>A federal lawsuit filed by a massage therapist &#8212; who has since died &#8212; accusing actor Kevin&nbsp;Spacey&nbsp;of sexually assaulting him in Malibu three years ago has been dismissed. Attorneys for the plaintiff&#8217;s estate filed papers in federal court in Los Angeles Monday stipulating to the dismissal. There was no indication of whether a financial settlement had been reached. Spacey&#8217;s attorney,&#8230;<\/p>\n","link":"https:\/\/www.nbclosangeles.com\/entertainment\/lawsuit-accusing-actor-kevin-spacey-of-malibu-sex-assault-dismissed\/2283609\/","date":"","subtitle":"Spacey's attorney, Jennifer L. Keller, told the Los Angeles Times that Spacey \"paid no money to 'settle' the lawsuit,\" despite some media reports to the contrary.","sponsor":"","sst_source_id":"","linkout":"","linkout_url":"","syndicated":false,"nationalized":true,"originating_market":"","content_tag":"kevin-spacey|kevin-spacey-trial","section":"entertainment","subsection":"","subsubsection":"","all_sections":"entertainment|news|local","primary_tag":"Kevin Spacey","sponsored":false,"contentid":"10092283609","localid":"1:9:2283609","localid_combined":"10092283609","contenttitle":"Lawsuit Accusing Actor Kevin Spacey of Malibu Sex Assault Dismissed","contenttype":"article ","syndicatedid":"1:9:2283609","byline_authors":"City News Service","sourceid":"","pageName":"entertainment:detail content page","collections":"Entertainment, Home Top Stories, Local, Newsletter Top Stories","uri":"\/entertainment\/lawsuit-accusing-actor-kevin-spacey-of-malibu-sex-assault-dismissed\/2283609\/","uri_length":5,"section_name":"entertainment","detail_section_name":"","detail_subsection_name":"","this_contenttype":"article ","template":"article - general"},"browserTitle":"%s - NBC Los Angeles","pageType":"article","video":{"playerType":"articleplayer","fwSSID":"ots_knbc_entertainment","fwSSID_liveNoPre":"ots_live_nopreroll","fwNetworkID":"382114","fwManager":{"network":"_live","siteKey":""},"config":{"volume":100,"htmlPreRoll":true,"htmlOmniture":false,"tremorFlashKey":"52289094b872c","tremorFlashSyndKey":"5239b2feaee2e","tremorHTMLKey":"5239c44e7e9e1","tremorHTMLSyndKey":"5239c4849009"},"htmlOmniture":false,"pdkPath":"\/assets\/pdk587","plugins":["akamaiHD","FreeWheel","comscore","captions","capcon","liveCaptions","streamsense","chartbeat"]},"adobe":{"rsid":"nbcuotsdivisiontotal","link_internal_filters":"javascript:,nbclosangeles.com,media.nbclosangeles.com,events.nbclosangeles.com,tsn.nbclosangeles.com,autos.nbclosangeles.com"},"weather":{"weather_url":"https:\/\/www.nbclosangeles.com\/weather\/","alerts_url":"https:\/\/www.nbclosangeles.com\/weather\/severe-weather-alerts\/","closings_url":"https:\/\/www.nbclosangeles.com\/weather\/school-closings\/"},"sharethrough_codes":["nP3EagztciAhUuFBbE24BQsi"]};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://www.nbclosangeles.com/_static/??/wp-content/plugins/gutenberg/build/i18n/index.js,/wp-content/themes/nbc-station/client/build/js/analytics.3746cdab20ef9cbba198.bundle.min.js?m=1575967449j'></script>
+<link rel='https://api.w.org/' href='https://www.nbclosangeles.com/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.nbclosangeles.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://www.nbclosangeles.com/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 5.2.5" />
+<link rel="canonical" href="https://www.nbclosangeles.com/entertainment/lawsuit-accusing-actor-kevin-spacey-of-malibu-sex-assault-dismissed/2283609/" />
+<link rel='shortlink' href='https://www.nbclosangeles.com/?p=2283609' />
+<link rel="alternate" type="application/json+oembed" href="https://www.nbclosangeles.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.nbclosangeles.com%2Fentertainment%2Flawsuit-accusing-actor-kevin-spacey-of-malibu-sex-assault-dismissed%2F2283609%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://www.nbclosangeles.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.nbclosangeles.com%2Fentertainment%2Flawsuit-accusing-actor-kevin-spacey-of-malibu-sex-assault-dismissed%2F2283609%2F&#038;format=xml" />
+		<style>
+		.getty.aligncenter {
+			text-align: center;
+		}
+		.getty.alignleft {
+			float: none;
+			margin-right: 0;
+		}
+		.getty.alignleft > div {
+			float: left;
+			margin-right: 5px;
+		}
+		.getty.alignright {
+			float: none;
+			margin-left: 0;
+		}
+		.getty.alignright > div {
+			float: right;
+			margin-left: 5px;
+		}
+		</style>
+		<style type='text/css'>img#wpstats{display:none}</style><style type="text/css">
+	@media (max-width: 375px) {
+		.hero-background:empty { background-image: url('https://media.nbclosangeles.com/2019/09/1920_LA-2.png?resize=1440%2C415'); }
+	}
+	@media (min-width: 376px) and (max-width: 768px) {
+		.hero-background:empty { background-image: url('https://media.nbclosangeles.com/2019/09/1920_LA-2.png?resize=1440%2C415'); }
+	}
+	@media (min-width: 769px) {
+		.hero-background:empty { background-image: url('https://media.nbclosangeles.com/2019/09/1920_LA-2.png?resize=1440%2C415'); }
+	}
+</style>
+	<!-- Begin comScore Tag -->
+	<script>
+	var _comscore = _comscore || [];
+	_comscore.push({ c1: "2", c2: "6035083" });
+	(function() {
+		var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;
+		s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
+		el.parentNode.insertBefore(s, el);
+	})();
+	</script>
+	<noscript>
+	<img src="https://sb.scorecardresearch.com/p?c1=2&c2=6035083&cv=2.0&cj=1" />
+	</noscript>
+	<!-- End comScore Tag -->
+		<script type="text/javascript">
+			window._taboola = window._taboola || [];
+					_taboola.push({'article':'2283609', tracking:'_osource=taboola-recirc'});
+					!function (e, f, u) {
+				e.async = 1;
+				e.src = u;
+				f.parentNode.insertBefore(e, f);
+			}(document.createElement('script'),
+			document.getElementsByTagName('script')[0],
+			'//cdn.taboola.com/libtrc/nbcots-network/loader.js');
+	</script><script>
+		window._newsroom = window._newsroom || [];
+				!function (e, f, u) {
+			e.async = 1;
+			e.src = u;
+			f.parentNode.insertBefore(e, f);
+		}(document.createElement('script'),
+		document.getElementsByTagName('script')[0], '//c2.taboola.com/nr/nbcots-knbc/newsroom.js');
+	</script>
+	<meta property="og:site_name" content="NBC Los Angeles" /><meta name="google-site-verification" content="sWoyPxGwXLtX91VCyKxKQiQ_kRCPHsj_VIIRq7VdZsw" /><meta property="fb:app_id" content="61690781361" /><meta name="twitter:site" content="@nbcla" /><meta property="og:type" content="article" /><meta property="article:opinion" content="false" /><meta property="article:content_tier" content="free" /><meta name="twitter:creator" content="@nbcla" /><meta name="article:publisher" content="http://www.facebook.com/NBCLA" /><meta name="description" content="A federal lawsuit filed by a massage therapist — who has since died — accusing actor Kevin Spacey of sexually assaulting him in Malibu three years ago has been dismissed. Attorneys for the plaintiff’s estate filed papers in federal court in Los Angeles Monday stipulating to the dismissal. There was no indication of whether a financial settlement had been reached. Spacey’s attorney,…" /><meta property="og:description" content="A federal lawsuit filed by a massage therapist — who has since died — accusing actor Kevin Spacey of sexually assaulting him in Malibu three years ago has been dismissed. Attorneys for the plaintiff’s estate filed papers in federal court in Los Angeles Monday stipulating to the dismissal. There was no indication of whether a financial settlement had been reached. Spacey’s attorney,…" /><meta name="twitter:description" content="A federal lawsuit filed by a massage therapist — who has since died — accusing actor Kevin Spacey of sexually assaulting him in Malibu three years ago has been dismissed. Attorneys for the plaintiff’s estate filed papers in federal court in Los Angeles Monday stipulating to the dismissal. There was no indication of whether a financial settlement had been reached. Spacey’s attorney,…" /><meta property="og:title" content="Lawsuit Accusing Actor Kevin Spacey of Malibu Sex Assault Dismissed" /><meta name="twitter:title" content="Lawsuit Accusing Actor Kevin Spacey of Malibu Sex Assault Dismissed" /><meta property="og:url" content="https://www.nbclosangeles.com/entertainment/lawsuit-accusing-actor-kevin-spacey-of-malibu-sex-assault-dismissed/2283609/" /><meta name="twitter:url" content="https://www.nbclosangeles.com/entertainment/lawsuit-accusing-actor-kevin-spacey-of-malibu-sex-assault-dismissed/2283609/" /><meta name="keywords" content="estate, court, Malibu, estate, Los Angeles, Massachusetts, apartment, New York, court, Los Angeles Superior Court, Los Angeles Times, Office, lawsuit, massage therapist, allegations, hand, lawsuit, damages, dismissal, settlement, indication, lawsuit, lawsuit, money, massage, lawsuit, allegations, dismissal, behalf, media reports, contrary, prejudice, complaint, crotch, sex act, gender violence, battery, sexual assault charges, participation, misconduct, charges, advance, lawsuit, estate, distress, infliction, imprisonment, Kevin Spacey, Kevin Spacey trial" /><meta name="sailthru.title" content="Lawsuit Accusing Actor Kevin Spacey of Malibu Sex Assault Dismissed" /><meta name="sailthru.description" content="A federal lawsuit filed by a massage therapist — who has since died — accusing actor Kevin Spacey of sexually assaulting him in Malibu three years ago has been dismissed. Attorneys for the plaintiff’s estate filed papers in federal court in Los Angeles Monday stipulating to the dismissal. There was no indication of whether a financial settlement had been reached. Spacey’s attorney,…" /><meta name="sailthru.tags" content="estate, court, Malibu, estate, Los Angeles, Massachusetts, apartment, New York, court, Los Angeles Superior Court, Los Angeles Times, Office, lawsuit, massage therapist, allegations, hand, lawsuit, damages, dismissal, settlement, indication, lawsuit, lawsuit, money, massage, lawsuit, allegations, dismissal, behalf, media reports, contrary, prejudice, complaint, crotch, sex act, gender violence, battery, sexual assault charges, participation, misconduct, charges, advance, lawsuit, estate, distress, infliction, imprisonment, Kevin Spacey, Kevin Spacey trial" /><meta name="sailthru.tags" content="estate, court, Malibu, estate, Los Angeles, Massachusetts, apartment, New York, court, Los Angeles Superior Court, Los Angeles Times, Office, lawsuit, massage therapist, allegations, hand, lawsuit, damages, dismissal, settlement, indication, lawsuit, lawsuit, money, massage, lawsuit, allegations, dismissal, behalf, media reports, contrary, prejudice, complaint, crotch, sex act, gender violence, battery, sexual assault charges, participation, misconduct, charges, advance, lawsuit, estate, distress, infliction, imprisonment, Kevin Spacey, Kevin Spacey trial" /><meta name="sailthru.type" content="article" /><meta name="sailthru.date" content="2019-12-31T19:51:48+00:00" /><meta name="twitter:image" content="https://media.nbclosangeles.com/2019/09/Kevin-Spacey-dismissed-Dec-2019.jpg?resize=1200%2C675" /><meta property="og:image" content="https://media.nbclosangeles.com/2019/09/Kevin-Spacey-dismissed-Dec-2019.jpg?resize=1200%2C675" /><script type="application/ld+json">{"@context":"http:\/\/schema.org","@type":"NewsArticle","mainEntityOfPage":"https:\/\/www.nbclosangeles.com\/entertainment\/lawsuit-accusing-actor-kevin-spacey-of-malibu-sex-assault-dismissed\/2283609\/","headline":"Lawsuit Accusing Actor Kevin Spacey of Malibu Sex Assault Dismissed","datePublished":"2019-12-31T19:51:48","dateModified":"2020-01-01T01:00:15","description":"A federal lawsuit filed by a massage therapist &#8212; who has since died &#8212; accusing actor Kevin&nbsp;Spacey&nbsp;of sexually assaulting him in Malibu three years ago has been dismissed. Attorneys for the plaintiff&#8217;s estate filed papers in federal court in Los Angeles Monday stipulating to the dismissal. There was no indication of whether a financial settlement had been reached. Spacey&#8217;s attorney,&#8230;","speakable":{"@type":"SpeakableSpecification","cssSelector":[".article-headline",".article-subtitle"]},"keywords":"estate, court, Malibu, estate, Los Angeles, Massachusetts, apartment, New York, court, Los Angeles Superior Court, Los Angeles Times, Office, lawsuit, massage therapist, allegations, hand, lawsuit, damages, dismissal, settlement, indication, lawsuit, lawsuit, money, massage, lawsuit, allegations, dismissal, behalf, media reports, contrary, prejudice, complaint, crotch, sex act, gender violence, battery, sexual assault charges, participation, misconduct, charges, advance, lawsuit, estate, distress, infliction, imprisonment, Kevin Spacey, Kevin Spacey trial","publisher":{"@type":"Organization","name":"NBC Southern California","logo":{"@type":"ImageObject","height":60,"url":"https:\/\/media.nbclosangeles.com\/wp-content\/uploads\/2019\/09\/light_amp_knbc.png","width":160}},"image":{"@type":"ImageObject","height":675,"url":"https:\/\/media.nbclosangeles.com\/2019\/09\/Kevin-Spacey-dismissed-Dec-2019.jpg?resize=1200%2C675","width":1200},"author":{"@type":"Person","name":"City News Service"}}</script>							<script type='text/javascript'>
+				var dfpAdUnits = {};
+				var googletag = googletag || {};
+				googletag.cmd = googletag.cmd || [];
+				(function() {
+				var gads = document.createElement('script');
+				gads.async = true;
+				gads.type = 'text/javascript';
+				var useSSL = 'https:' == document.location.protocol;
+				gads.src = (useSSL ? 'https:' : 'http:') +
+				'//www.googletagservices.com/tag/js/gpt.js';
+				var node = document.getElementsByTagName('script')[0];
+				node.parentNode.insertBefore(gads, node);
+				})();
+				</script>
+												<script type="text/javascript">
+			var dfpBuiltMappings = {}, dfpAdUnits = {};
+
+			if (768 <= window.innerWidth) {									googletag.cmd.push(function() {
+					dfpBuiltMappings["bottombanner"] = googletag.sizeMapping().addSize([768,1],[[970,90],[970,66],[970,250],[728,90]]).build();
+dfpBuiltMappings["bottombox"] = googletag.sizeMapping().addSize([768,1],[[300,250],[300,600]]).build();
+dfpBuiltMappings["topbox"] = googletag.sizeMapping().addSize([768,1],[[300,250],[300,600]]).build();
+dfpBuiltMappings["topbanner"] = googletag.sizeMapping().addSize([768,1],[[970,90],[970,66],[970,250],[728,90]]).build();
+dfpBuiltMappings["logo"] = googletag.sizeMapping().addSize([768,1],[[88,31],[120,60]]).build();
+dfpBuiltMappings["interstitial"] = googletag.sizeMapping().addSize([768,1],[[1,1]]).build();
+					});
+					var dfpAdDetails = {"topbox":{"path":"\/2620\/ots_web\/knbc\/entertainment","sizes":[[300,250],[300,600]],"targeting":[]},"bottombox":{"path":"\/2620\/ots_web\/knbc\/entertainment","sizes":[[300,250],[300,600]],"targeting":[]},"logo":{"path":"\/2620\/ots_web\/knbc\/entertainment","sizes":[[88,31],[120,60]],"targeting":[]},"topbanner":{"path":"\/2620\/ots_web\/knbc\/entertainment","sizes":[[970,90],[970,66],[970,250],[728,90]],"targeting":[]},"interstitial":{"path":"\/2620\/ots_web\/knbc\/entertainment","sizes":[[1,1]],"targeting":[]},"bottombanner":{"path":"\/2620\/ots_web\/knbc\/entertainment","sizes":[[970,90],[970,66],[970,250],[728,90]],"targeting":[]}};
+					var dfpSizeMapping = {"bottombanner":[[[768,1],[[970,90],[970,66],[970,250],[728,90]]]],"bottombox":[[[768,1],[[300,250],[300,600]]]],"topbox":[[[768,1],[[300,250],[300,600]]]],"topbanner":[[[768,1],[[970,90],[970,66],[970,250],[728,90]]]],"logo":[[[768,1],[[88,31],[120,60]]]],"interstitial":[[[768,1],[[1,1]]]]};
+
+					 } else { 									googletag.cmd.push(function() {
+					dfpBuiltMappings["mobilemultibox"] = googletag.sizeMapping().addSize([1,1],[[300,250],[300,100],[320,50]]).build();
+dfpBuiltMappings["mobilebottombanner"] = googletag.sizeMapping().addSize([1,1],[[320,50],[300,100]]).build();
+dfpBuiltMappings["mobilebackstage"] = googletag.sizeMapping().addSize([1,1],[[1,1]]).build();
+dfpBuiltMappings["mobiletopbanner"] = googletag.sizeMapping().addSize([1,1],[[320,50],[300,100]]).build();
+					});
+					var dfpAdDetails = {"mobilemultibox":{"path":"\/2620\/ots_mobile\/knbc_mobileweb\/entertainment","sizes":[[300,250],[300,100],[320,50]],"targeting":[]},"mobilebackstage":{"path":"\/2620\/ots_mobile\/knbc_mobileweb\/entertainment","sizes":[[1,1]],"targeting":[]},"mobilebottombanner":{"path":"\/2620\/ots_mobile\/knbc_mobileweb\/entertainment","sizes":[[320,50],[300,100]],"targeting":[]},"mobiletopbanner":{"path":"\/2620\/ots_mobile\/knbc_mobileweb\/entertainment","sizes":[[320,50],[300,100]],"targeting":[]}};
+					var dfpSizeMapping = {"mobilemultibox":[[[1,1],[[300,250],[300,100],[320,50]]]],"mobilebottombanner":[[[1,1],[[320,50],[300,100]]]],"mobilebackstage":[[[1,1],[[1,1]]]],"mobiletopbanner":[[[1,1],[[320,50],[300,100]]]]};
+
+													}					googletag.cmd.push(function() {
+					googletag.pubads().enableAsyncRendering();
+googletag.pubads().collapseEmptyDivs();
+					googletag.pubads().addEventListener('slotRenderEnded', function(event) {
+						if (false === event.isEmpty) {
+							var slotElementId = event.slot.getSlotElementId();
+							if (0 <= slotElementId.indexOf('topbanner')) {
+								document.body.classList.add("topbanner");
+							}
+						}
+					});
+						googletag.pubads().setTargeting("zipcode", localStorage.getItem("zipCode") || nbc.zipCode );
+
+	var isMobile = window.matchMedia('screen and (max-width: 767px)').matches;
+	googletag.pubads().setTargeting("gpt1", isMobile ? "ots_mobile" : "ots_web");
+	googletag.pubads().setTargeting("platform", isMobile ? "mobile" : "desktop");
+			googletag.pubads().setTargeting("source", "www.nbclosangeles.com");
+				googletag.pubads().setTargeting("pageid", "10092283609");
+				googletag.pubads().setTargeting("pageid2", "10092283609");
+				googletag.pubads().setTargeting("sect", "entertainment");
+				googletag.pubads().setTargeting("sub", "");
+				googletag.pubads().setTargeting("call", "KNBC");
+				googletag.pubads().setTargeting("region", "losangeles");
+				googletag.pubads().setTargeting("stationtype", "nbc");
+				googletag.pubads().setTargeting("tags", "entertainment,news,local,kevin-spacey,kevin-spacey-trial");
+				googletag.pubads().setTargeting("gpt2", "KNBC");
+				googletag.pubads().setTargeting("station", "ots");
+				googletag.pubads().setTargeting("sponsor", "");
+				googletag.pubads().setTargeting("excl_cat", "entertainment");
+		
+					if ( typeof AdLayersAPI === 'undefined' || ! AdLayersAPI.isDebug() ) {
+						googletag.enableServices();
+					}
+				});
+								var dfpAdLayer = {"post_id":"2226187","title":"Article Ad Layer"};
+
+			</script>
+			<link rel="amphtml" href="https://www.nbclosangeles.com/entertainment/lawsuit-accusing-actor-kevin-spacey-of-malibu-sex-assault-dismissed/2283609/?amp"><link rel="icon" href="https://media.nbclosangeles.com/2019/09/cropped-favicon-la.png?fit=32%2C32" sizes="32x32" />
+<link rel="icon" href="https://media.nbclosangeles.com/2019/09/cropped-favicon-la.png?fit=192%2C192" sizes="192x192" />
+<link rel="apple-touch-icon-precomposed" href="https://media.nbclosangeles.com/2019/09/cropped-favicon-la.png?fit=180%2C180" />
+<meta name="msapplication-TileImage" content="https://media.nbclosangeles.com/2019/09/cropped-favicon-la.png?fit=270%2C270" />
+</head>
+
+<body class="post-template-default single single-post postid-2283609 single-format-standard station-nbc has-featured-image">
+	<div id="fb-root"></div>
+		<script
+			async
+			defer
+			crossorigin="anonymous"
+			src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.3&appId=61690781361&autoLogAppEvents=1"></script>
+	<div class="leaderboard_ad">
+	<div id="div-gpt-ad-topbanner_" class=" gpt-topbanner" data-beforetext="" data-fallbacktext=""></div><script style="text/javascript">
+				if (typeof adInstance === 'undefined') {
+					adInstance = new AdLayersAPI();
+				}
+				adInstance.lazyLoadAd({ slotName: 'topbanner_', format: 'topbanner', targeting: {"slot":"topbanner","pos":"topbanner"} });
+			</script><div id="div-gpt-ad-mobiletopbanner_" class=" gpt-mobiletopbanner" data-beforetext="" data-fallbacktext=""></div><script style="text/javascript">
+				if (typeof adInstance === 'undefined') {
+					adInstance = new AdLayersAPI();
+				}
+				adInstance.lazyLoadAd({ slotName: 'mobiletopbanner_', format: 'mobiletopbanner', targeting: {"slot":"mobiletopbanner","pos":"mobiletopbanner"} });
+			</script></div>
+<div id="page" class="site" data-component="wrapper">
+	
+<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+<header id="masthead" class="site-header" role="banner" data-component="siteHeader">
+		<div class="site-header__primary">
+		<div class="site-header__wrap">
+							<div class="site-header__logo">
+					<a href="https://www.nbclosangeles.com/">
+						<img
+							src="https://media.nbclosangeles.com/2019/09/LA_On_Dark@3x-2.png?fit=132%2C120"
+							alt="NBC Los Angeles"
+						/>
+					</a>
+				</div>
+						<div class="site-header__nav-search">
+				<div class="site-header__nav-main">
+					<button class="site-header__nav-main-toggle">
+						<span class="site-header__nav-main-toggle-text">Main Navigation</span>
+					</button>
+				</div>
+				<div class="site-header__search" data-component="headerSearch">
+					<button class="site-header__search-toggle">
+						<span class="site-header__search-toggle-text">Search</span>
+					</button>
+					<div class="site-header__search-form">
+						
+<form class="search-form" role="search" method="get" action="https://www.nbclosangeles.com/" >
+	<label>
+		<span class="screen-reader-text">Search for:</span>
+		<input type="search" value="" name="s" placeholder="Search" />
+	</label>
+	<input type="submit" class="search-submit" value="Search" />
+</form>
+					</div>
+				</div>
+			</div>
+			<div class="site-header__animated-section">
+				<nav class="site-header__nav-sections">
+					<div class="menu-primary-container"><nav id="primary-menu" class="menu"><a class=" menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent" href="/news/local/">Local</a></li>
+<a class=" menu-item menu-item-type-taxonomy menu-item-object-category" href="/news/national-international/">U.S. & World</a></li>
+<a class=" menu-item menu-item-type-custom menu-item-object-custom" href="/weather">Weather</a></li>
+<a class=" menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent" href="/entertainment/">Entertainment</a></li>
+<a class=" menu-item menu-item-type-taxonomy menu-item-object-category" href="/news/sports/">Sports</a></li>
+</nav></div>				</nav>
+				<div class="site-header__weather-tv">
+					<div
+						class="site-header__local-weather"
+						data-react-component="NBCWeather"
+						data-view="conditions"
+					>
+					</div>
+										<a class="site-header__live-tv" href="https://www.nbclosangeles.com/live">Live TV</a>
+									</div>
+				<button class="site-header__mobile-share-toggle">
+					<span class="text-share">Share</span>
+					<span class="text-close">Close</span>
+				</button>
+			</div>
+		</div> <!-- site-header__wrap -->
+	</div> <!-- site-header__primary -->
+	<div class="site-header__secondary">
+		<div class="site-header__wrap">
+							<div class="site-header__trending">
+					<span class="site-header__trending-label">Trending</span>
+											<nav class="site-header__trending-nav">
+												<a href="https://www.nbclosangeles.com/news/local/california-to-see-new-laws-go-into-effect-in-2020/2281447/" class="site-header__trending-nav-item">New Laws</a>
+					<a href="https://www.nbclosangeles.com/news/local/christmas-tree-sparks-electrical-fire-kills-father-and-2-children-in-hemet-fire/2282216/" class="site-header__trending-nav-item">Hemet Fire</a>
+					<a href="/the-scene/" class="site-header__trending-nav-item">Weekend</a>
+					<a href="https://www.nbclosangeles.com/news/local/photos-winter-storm-scenes-from-around-southern-california/2281215/" class="site-header__trending-nav-item">Storm Photos</a>
+					<a href="https://www.nbclosangeles.com/news/california-news/if-youre-heading-to-vegas-or-coming-home-to-la-hold-up-the-15-is-shut-down/2281535/" class="site-header__trending-nav-item">Holiday Travel</a>
+					<a href="https://www.nbclosangeles.com/news/sports/usc-fires-defensive-coordinator-special-teams-coach/2282342/" class="site-header__trending-nav-item">USC</a>
+		
+							</nav>
+										<div class="site-header__trending-toggle">
+						<button class="trending-toggle"><span class="screen-reader-text">Expand</span></button>
+					</div>
+				</div>
+
+				
+<div class="site-header__alerts">
+	<div
+		class="site-header__weather "
+		data-react-component="NBCWeather"
+		data-view="alerts"
+		data-alert-singular="Weather Alert"
+		data-alert-plural="Weather Alerts"
+		data-zip-code="90012">
+	</div>
+	</div> <!-- site-header__wrap -->
+					</div> <!-- site-header__secondary -->
+	</div>
+	</header>
+	<div id="content" class="site-content " data-component="formsContainer">
+		<div id="primary" class="content-area">
+			<main id="main" class="site-main">
+				<article id="post-2283609" data-component="article">
+
+	<div id="template-hero" class="template-hero " data-component="templateHero">
+			<div class="hero-background"></div>
+	
+	
+	
+				<div class="section-content--full hero-wrap">
+		<div class="section-content--primary">
+			<div class="article-header--wrap ">
+										<a class="article-eyebrow" href="https://www.nbclosangeles.com/tag/kevin-spacey/">Kevin Spacey</a>							<h1 class="article-headline">
+		Lawsuit Accusing Actor Kevin Spacey of Malibu Sex Assault Dismissed	</h1>
+			<h2 class="article-subtitle">
+			Spacey's attorney, Jennifer L. Keller, told the Los Angeles Times that Spacey "paid no money to 'settle' the lawsuit," despite some media reports to the contrary.		</h2>
+				
+<div class="article-meta" data-component="articleMeta">
+	<h4 class="article-byline">
+					By City News Service							<span class="meta-dot">&bull;</span>
+					
+							<span class="time-wrap">
+				<time class="entry-date published" datetime="2020-01-01T03:51:48-08:00">Published December 31, 2019</time>					<span class="meta-dot">&bull;</span>
+				<time class="entry-date updated" datetime="2020-01-01T09:00:16-08:00">Updated 1 hour ago</time>			</span>
+			</h4>
+	<div
+	class="share-buttons"
+	data-component="sharingBar"
+>
+			<a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.nbclosangeles.com%2Fentertainment%2Flawsuit-accusing-actor-kevin-spacey-of-malibu-sex-assault-dismissed%2F2283609%2F&#038;Lawsuit%20Accusing%20Actor%20Kevin%20Spacey%20of%20Malibu%20Sex%20Assault%20Dismissed?_osource=db_npd_nbc_knbc_fb_shr" data-service="facebook">
+			<i class="fab fa-facebook-f"></i>
+		</a>
+	
+			<a href="https://twitter.com/intent/tweet?text=Lawsuit%20Accusing%20Actor%20Kevin%20Spacey%20of%20Malibu%20Sex%20Assault%20Dismissed&#038;url=https%3A%2F%2Fwww.nbclosangeles.com%2Fentertainment%2Flawsuit-accusing-actor-kevin-spacey-of-malibu-sex-assault-dismissed%2F2283609%2F?_osource=db_npd_nbc_knbc_twt_shr" data-service="twitter">
+			<i class="fab fa-twitter"></i>
+		</a>
+	
+			<a href="mailto:?body=Lawsuit%20Accusing%20Actor%20Kevin%20Spacey%20of%20Malibu%20Sex%20Assault%20Dismissed%0D%0A%0D%0Ahttps%3A%2F%2Fwww.nbclosangeles.com%2Fentertainment%2Flawsuit-accusing-actor-kevin-spacey-of-malibu-sex-assault-dismissed%2F2283609%2F?_osource=db_npd_nbc_knbc_eml_shr" data-service="email">
+			<i class="fas fa-envelope"></i>
+		</a>
+	
+	</div>
+</div>
+	</div>
+		</div>
+	</div>
+		
+	
+	
+	
+	
+	
+	
+	</div>
+	
+	<div class="section-content--full below-hero">
+				<div class="section-content--primary">
+			<div class="article-content--wrap">
+
+				<figure class="article-featured-media">
+	<img
+		src="https://media.nbclosangeles.com/2019/09/Kevin-Spacey-dismissed-Dec-2019.jpg?resize=850%2C478"
+		alt=""
+	/>
+			<figcaption>
+							<cite>Ernesto Ruscio/Getty Images</cite>
+			
+												<div
+						class="caption"
+						data-react-component="NBCTruncate"
+						data-maxlines="2"
+						data-maxlinesmobile="4"
+						data-readmore="Read more"
+						data-text="File Photo: Actor Kevin Spacey attends the reading of the event &#8220;The Boxer &#8211; La nostalgia del poeta&#8221; (The Boxer &#8211; The nostalgia of the poet) at Palazzo Massimo alle Terme on August 02, 2019 in Rome, Italy. (Photo by Ernesto Ruscio/Getty Images)"
+						data-ellipsis="false">
+					</div>
+									</figcaption>
+	</figure>
+
+				<div class="article-content rich-text">
+					
+<p>A federal lawsuit filed by a massage therapist -- who has since died -- accusing actor Kevin&nbsp;Spacey&nbsp;of sexually assaulting him in Malibu three years ago has been dismissed.</p>
+
+<p>Attorneys for the plaintiff's estate filed papers in federal court in Los Angeles Monday stipulating to the dismissal. There was no indication of whether a financial settlement had been reached.</p>
+
+<p>Spacey's attorney, Jennifer L. Keller, told the Los Angeles Times that Spacey "paid no money to 'settle' the lawsuit," despite some media reports to the contrary.</p>
+<div class="recirc-module">
+	<h3 class="recirc__heading">Local</h3>
+	<p class="recirc__subheading">Local news from across Southern California</p>
+					<div class="recirc__post">
+			<div class="post__wrap">
+				<div class="post__image-wrapper">
+											<a href="https://www.nbclosangeles.com/news/local/feds-will-investigate-deadly-crash-in-gardena/2283631/">
+							<img class="post__image" src="https://media.nbclosangeles.com/2019/09/gardenapic.jpg?resize=850%2C478" alt="" />
+						</a>
+
+						
+															</div>
+
+				<div class="post__text">
+					<div class="post__meta">
+													<a class="post__tag" href="https://www.nbclosangeles.com/tag/tesla/">Tesla</a>
+																			<span class="post__date post__date--has-category">
+								4 hours ago							</span>
+											</div>
+
+											<h3 class="post__title">
+							<a class="post__title--link" href="https://www.nbclosangeles.com/news/local/feds-will-investigate-deadly-crash-in-gardena/2283631/">
+								<span data-ellipsis="true" data-text="Feds Will Investigate Deadly Tesla Crash in Gardena" data-react-component="NBCTruncate" data-maxlines="2" data-maxlinesmobile="2" data-readmore="">
+									Feds Will Investigate Deadly Tesla Crash in Gardena								</span>
+							</a>
+						</h3>
+									</div>
+			</div>
+		</div>
+					<div class="recirc__post">
+			<div class="post__wrap">
+				<div class="post__image-wrapper">
+											<a href="https://www.nbclosangeles.com/news/california-news/judge-allows-californias-shift-to-energy-saving-light-bulbs/2283618/">
+							<img class="post__image" src="https://media.nbclosangeles.com/2019/09/GettyImages-1159840959.jpg?resize=850%2C478" alt="" />
+						</a>
+
+						
+															</div>
+
+				<div class="post__text">
+					<div class="post__meta">
+													<a class="post__tag" href="https://www.nbclosangeles.com/tag/energy-saving-light-bulbs/">Energy Saving Light Bulbs</a>
+																			<span class="post__date post__date--has-category">
+								5 hours ago							</span>
+											</div>
+
+											<h3 class="post__title">
+							<a class="post__title--link" href="https://www.nbclosangeles.com/news/california-news/judge-allows-californias-shift-to-energy-saving-light-bulbs/2283618/">
+								<span data-ellipsis="true" data-text="Judge Allows California’s Shift to Energy Saving Light Bulbs" data-react-component="NBCTruncate" data-maxlines="2" data-maxlinesmobile="2" data-readmore="">
+									Judge Allows California’s Shift to Energy Saving Light Bulbs								</span>
+							</a>
+						</h3>
+									</div>
+			</div>
+		</div>
+	</div>
+
+<p>"The plaintiff's estate simply decided to dismiss the lawsuit with prejudice, meaning it cannot be (refiled) and we agreed to the dismissal," Keller told the paper.</p>
+
+<p>Spacey, a two-time Oscar winner, was sued last year in Los Angeles Superior Court by the masseur, who alleged the actor groped him while he was giving&nbsp;Spacey&nbsp;a private massage in Malibu in 2016. The lawsuit, filed on behalf of "John Doe," was moved to federal court in January.</p>
+
+<p>The therapist alleged in the complaint that&nbsp;Spacey&nbsp;grabbed the plaintiff's hand and pulled it toward his crotch to force a sex act. The lawsuit sought unspecified damages on allegations of sexual battery, gender violence, false imprisonment and intentional infliction of emotional distress.</p>
+
+<p>The plaintiff, however, died in September. The lawsuit was subsequently being handled by his estate.</p>
+
+<p>In October, the Los Angeles County District Attorney's Office declined to file any charges against&nbsp;Spacey&nbsp;over the allegations. Prosecutors said that since the alleged victim had died, the allegations could not be proven without his participation.</p>
+
+<p>Spacey, 60, has been accused by several men of sexual misconduct. In July, sexual assault charges filed against&nbsp;Spacey&nbsp;in Massachusetts involving an 18-year-old man were dropped.</p>
+
+<p>Spacey&nbsp;revealed that he was gay after publicly apologizing in October 2017 to "Star Trek: Discovery" actor Anthony Rapp, who accused&nbsp;<strong>Spacey</strong>&nbsp;of making a sexual advance years ago in his New York apartment, when&nbsp;Spacey&nbsp;was 26 and Rapp was 14. </p>
+				</div>
+							<div class="article-copyright">Copyright CNS - City News Service</div>
+	
+	<div class="article-footer">
+		<div class="article-tags">
+	<h4 class="article-tags__heading">This article tagged under:</h4>
+	<a class="article-tags__tag" href="https://www.nbclosangeles.com/tag/kevin-spacey/">Kevin Spacey</a><a class="article-tags__tag" href="https://www.nbclosangeles.com/tag/kevin-spacey-trial/">Kevin Spacey trial</a></div>
+		<div
+	class="share-buttons"
+	data-component="sharingBar"
+>
+			<a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.nbclosangeles.com%2Fentertainment%2Flawsuit-accusing-actor-kevin-spacey-of-malibu-sex-assault-dismissed%2F2283609%2F&#038;Lawsuit%20Accusing%20Actor%20Kevin%20Spacey%20of%20Malibu%20Sex%20Assault%20Dismissed?_osource=db_npd_nbc_knbc_fb_shr" data-service="facebook">
+			<i class="fab fa-facebook-f"></i>
+		</a>
+	
+			<a href="https://twitter.com/intent/tweet?text=Lawsuit%20Accusing%20Actor%20Kevin%20Spacey%20of%20Malibu%20Sex%20Assault%20Dismissed&#038;url=https%3A%2F%2Fwww.nbclosangeles.com%2Fentertainment%2Flawsuit-accusing-actor-kevin-spacey-of-malibu-sex-assault-dismissed%2F2283609%2F?_osource=db_npd_nbc_knbc_twt_shr" data-service="twitter">
+			<i class="fab fa-twitter"></i>
+		</a>
+	
+			<a href="mailto:?body=Lawsuit%20Accusing%20Actor%20Kevin%20Spacey%20of%20Malibu%20Sex%20Assault%20Dismissed%0D%0A%0D%0Ahttps%3A%2F%2Fwww.nbclosangeles.com%2Fentertainment%2Flawsuit-accusing-actor-kevin-spacey-of-malibu-sex-assault-dismissed%2F2283609%2F?_osource=db_npd_nbc_knbc_eml_shr" data-service="email">
+			<i class="fas fa-envelope"></i>
+		</a>
+	
+			<a href="#" data-service="comments">
+			<i class="fas fa-comment-alt"></i>
+
+			<div class="share-buttons__comment-count">
+				<div class="fb-comments-count" data-href="https://www.nbclosangeles.com/entertainment/lawsuit-accusing-actor-kevin-spacey-of-malibu-sex-assault-dismissed/2283609/">0</div>
+			</div>
+		</a>
+	</div>
+	</div>
+				<div id="div-gpt-ad-mobilemultibox_belowarticle" class="widget_ad_layers_ad_widget gpt-mobilemultibox" data-beforetext="" data-fallbacktext=""></div><script style="text/javascript">
+				if (typeof adInstance === 'undefined') {
+					adInstance = new AdLayersAPI();
+				}
+				adInstance.lazyLoadAd({ slotName: 'mobilemultibox_belowarticle', format: 'mobilemultibox', targeting: {"slot":"mobilemultibox","pos":"mobilemultibox"} });
+			</script>	<div id="taboola-below-article-thumbnails"></div>
+
+	<script type="text/javascript">
+		/** scroll cookie for scroll.com **/
+		if (document.cookie.indexOf("scroll0=") < 0) {
+			window._taboola = window._taboola || [];
+			_taboola.push({
+				mode: 'thumbnails-a',
+				container: 'taboola-below-article-thumbnails',
+				placement: 'Below Article Thumbnails',
+				target_type: 'text'
+			});
+		};
+	</script>
+	<div id="taboola-below-article-text-links"></div>
+		<script type="text/javascript">
+		/** scroll cookie for scroll.com **/
+			if (document.cookie.indexOf("scroll0=") < 0) {
+				window._taboola = window._taboola || [];
+				_taboola.push({
+					mode: 'hybrid-text-links-a',
+					container: 'taboola-below-article-text-links',
+					placement: 'Below Article Text Links',
+					target_type: 'text'
+				});
+			};
+		</script>
+				</div>
+		</div>
+		<div class="section-content--secondary">
+			<aside class="sidebar article-sidebar">
+						<section id="ad_layers_ad_widget-2" class="widget widget_ad_layers_ad_widget"><div id="div-gpt-ad-topbox_152" class=" gpt-topbox" data-beforetext="" data-fallbacktext=""></div><script style="text/javascript">
+				if (typeof adInstance === 'undefined') {
+					adInstance = new AdLayersAPI();
+				}
+				adInstance.lazyLoadAd({ slotName: 'topbox_152', format: 'topbox', targeting: {"slot":"topbox","pos":"topbox"} });
+			</script></section><section id="nbc_most_popular-2" class="widget widget_nbc_most_popular"><div class="nbc-most-popular" data-react-component="MostPopular" data-title="Trending Stories" data-include-sponsored="true" data-beforetext="Presented By"></div></section><section id="nbc_weather_widget-3" class="widget widget_nbc_weather_widget">		<div class="nbc-weather-widget">
+			<div class="nbc_owned_television_stations_weather_iframe">
+	<h2>Weather Forecast</h2><div class="widget_location">Los Angeles, CA</div>
+	<a class="weather-module__conditions" href="https://www.nbclosangeles.com/weather/">
+		<div data-react-component="IframeConditions" data-location="90012"></div>
+	</a>
+		<div class="widget_sponsor">
+		<div id="div-gpt-ad-logo_weather_259" class="sponsored-ad-unit gpt-logo" data-beforetext="Presented By" data-fallbacktext=""></div><script style="text/javascript">
+				if (typeof adInstance === 'undefined') {
+					adInstance = new AdLayersAPI();
+				}
+				adInstance.lazyLoadAd({ slotName: 'logo_weather_259', format: 'logo', targeting: {"module":"weather","slot":"logo","pos":"logo"} });
+			</script>	</div>
+</div>
+		</div>
+		</section><section id="ad_layers_ad_widget-9" class="widget widget_ad_layers_ad_widget"><div id="div-gpt-ad-mobilemultibox_600" class=" gpt-mobilemultibox" data-beforetext="" data-fallbacktext=""></div><script style="text/javascript">
+				if (typeof adInstance === 'undefined') {
+					adInstance = new AdLayersAPI();
+				}
+				adInstance.lazyLoadAd({ slotName: 'mobilemultibox_600', format: 'mobilemultibox', targeting: {"slot":"mobilemultibox","pos":"mobilemultibox"} });
+			</script></section><section id="nbc_civic_science-2" class="widget widget_nbc_civic_science"><div id="civsci-1583187804" class="module-civicScience"></div></section><section id="ad_layers_ad_widget-6" class="widget widget_ad_layers_ad_widget"><div id="div-gpt-ad-bottombox_139" class=" gpt-bottombox" data-beforetext="" data-fallbacktext=""></div><script style="text/javascript">
+				if (typeof adInstance === 'undefined') {
+					adInstance = new AdLayersAPI();
+				}
+				adInstance.lazyLoadAd({ slotName: 'bottombox_139', format: 'bottombox', targeting: {"slot":"bottombox","pos":"bottombox"} });
+			</script></section><section id="ad_layers_ad_widget-12" class="widget widget_ad_layers_ad_widget"><div id="div-gpt-ad-interstitial_667" class=" gpt-interstitial" data-beforetext="" data-fallbacktext=""></div><script style="text/javascript">
+				if (typeof adInstance === 'undefined') {
+					adInstance = new AdLayersAPI();
+				}
+				adInstance.lazyLoadAd({ slotName: 'interstitial_667', format: 'interstitial', targeting: {"slot":"interstitial","pos":"interstitial"} });
+			</script></section><section id="ad_layers_ad_widget-13" class="widget widget_ad_layers_ad_widget"><div id="div-gpt-ad-mobilebackstage_973" class=" gpt-mobilebackstage" data-beforetext="" data-fallbacktext=""></div><script style="text/javascript">
+				if (typeof adInstance === 'undefined') {
+					adInstance = new AdLayersAPI();
+				}
+				adInstance.lazyLoadAd({ slotName: 'mobilebackstage_973', format: 'mobilebackstage', targeting: {"slot":"mobilebackstage","pos":"mobilebackstage"} });
+			</script></section>			</aside>
+		</div>
+	</div>
+</article>
+
+			</main>
+		</div>
+
+							
+	</div><!-- #content -->
+	
+<footer role="contentinfo" class="site-footer">
+	<div class="site-footer__wrapper">
+		<div class="site-footer__identity">
+							<a href="https://www.nbclosangeles.com/" class="site-footer__logo">
+					<img
+						src="https://media.nbclosangeles.com/2019/09/LA_On_Light@3x.png?fit=132%2C120"
+						alt="NBC Los Angeles"
+					/>
+				</a>
+			
+			<ul class="site-footer__social-list">
+				
+									<li class="site-footer__social-list-item facebook">
+						<a href="http://www.facebook.com/NBCLA" target="_blank">
+							<span class="screen-reader-text">Facebook</span>
+							<i class="fab fa-facebook-f"></i>
+						</a>
+					</li>
+				
+									<li class="site-footer__social-list-item twitter">
+						<a href="https://twitter.com/nbcla" target="_blank">
+							<span class="screen-reader-text">Twitter</span>
+							<i class="fab fa-twitter"></i>
+						</a>
+					</li>
+				
+									<li class="site-footer__social-list-item instagram">
+						<a href="https://instagram.com/nbcla" target="_blank">
+							<span class="screen-reader-text">Instagram</span>
+							<i class="fab fa-instagram"></i>
+						</a>
+					</li>
+							</ul>
+		</div>
+
+		<ul id="menu-footer" class="footer-menu site-footer__menu-primary"><li id="menu-item-2252711" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2252711"><a href="/investigations/submit-tip">Submit Tips for Investigations</a></li>
+<li id="menu-item-2252388" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2252388"><a href="https://www.nbclosangeles.com/newsletters/">Newsletters</a></li>
+<li id="menu-item-2252389" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2252389"><a href="https://www.nbclosangeles.com/contact-us/">Contact Us</a></li>
+</ul><ul id="menu-secondary-footer" class="footer-menu-secondary site-footer__menu-secondary"><li id="menu-item-2227728" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2227728"><a href="https://publicfiles.fcc.gov/tv-profile/knbc">KNBC Public Inspection File</a></li>
+<li id="menu-item-2227730" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2227730"><a href="https://www.nbclosangeles.com/knbc-employment-information/">KNBC Employment Information</a></li>
+<li id="menu-item-2227731" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2227731"><a href="https://www.nbclosangeles.com/send-feedback/">Send Feedback</a></li>
+<li id="menu-item-2227732" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2227732"><a href="https://www.nbclosangeles.com/terms-of-service/">Terms of Service</a></li>
+<li id="menu-item-2227736" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2227736"><a href="http://www.nbcuniversal.com/privacy/?brandA=Owned_Stations&#038;intake=NBC_Southern_California">Privacy policy &#8211; New</a></li>
+<li id="menu-item-2227737" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2227737"><a href="http://www.nbcuniversal.com/privacy/notrtoo?brandA=Owned_Stations&#038;intake=NBC_Southern_California">Do Not Sell My Personal Information</a></li>
+</ul>
+				<div class="site-footer__corporate">
+			
+			<span class="site-footer__corporate-copyright">
+				Copyright © 2020 NBC Universal Inc. All rights reserved			</span>
+		</div>
+	</div><!-- wrapper -->
+</footer><!-- #colophon -->
+</div><!-- #page -->
+
+	<script type='text/javascript'>
+	(function() {
+		function CreateEvent(type, data) {
+			var event;
+
+			if ('undefined' === typeof data) {
+				data = {};
+			}
+
+			try {
+				event = new CustomEvent(type, { detail: data });
+			} catch (err) {
+				event = document.createEvent('CustomEvent');
+				event.initCustomEvent(type, true, true, data);
+			}
+
+			return event;
+		}
+
+		var pdk6Url = "https://www.nbclosangeles.com/wp-content/themes/nbc-station/static/video/pdk6/player.6.1.3.js";		var pdkScript = pdk6Url;
+
+		if ('undefined' !== typeof window['win7ie']) {
+			pdkScript = window['win7ie'] ?
+			"https://www.nbclosangeles.com/wp-content/themes/nbc-station/static/video/pdk5/tpPdk.js"			: pdk6Url;
+		}
+
+		if (pdkScript) {
+			var s = document.createElement('script');
+			s.type = 'text/javascript';
+			s.src = pdkScript;
+			s.onload = function() {
+				window.dispatchEvent(
+					CreateEvent('nbc:pdkLoaded')
+				);
+			};
+			document.body.appendChild(s);
+		}
+	})();
+	</script>
+	<link rel="stylesheet" href="https://www.nbclosangeles.com/wp-content/themes/nbc-station/static/video/pdk6/player_smooth.css?v=102319" type="text/css" />	<script type="text/javascript">
+	(function() {
+				var _sf_async_config      = {"domain":"nbclosangeles.com","uid":15527,"path":"www.nbclosangeles.com"};
+		_sf_async_config.sections = "";
+		_sf_async_config.authors  = "City News Service";
+		_sf_async_config.title    = "Lawsuit Accusing Actor Kevin Spacey of Malibu Sex Assault Dismissed";
+
+		function loadChartbeat() {
+			var e = document.createElement('script');
+			var n = document.getElementsByTagName('script')[0];
+			e.type = 'text/javascript';
+			e.async = true;
+			e.src = '//static.chartbeat.com/js/chartbeat.js';
+			n.parentNode.insertBefore(e, n);
+		}
+		loadChartbeat();
+	})();
+	</script>
+			<div class="facebook-comments">
+			<button class="facebook-comments__close"><i class="fas fa-chevron-left"></i> Back to Article</button>
+			<div class="fb-comments" data-href="https://www.nbclosangeles.com/entertainment/lawsuit-accusing-actor-kevin-spacey-of-malibu-sex-assault-dismissed/2283609/" data-width="100%"></div>
+		</div>
+		<div class="flyout-nav" data-component="flyoutNav">
+	<button class="flyout-nav__close"><i class="fas fa-times"></i> <span class="screen-reader-text">Close Menu</span></button>
+	<div class="flyout-nav__logo">
+		<a href="https://www.nbclosangeles.com/">
+					<img
+						src="https://media.nbclosangeles.com/2019/09/LA_On_Light@3x.png?fit=132%2C120"
+						alt="NBC Los Angeles"
+					/>
+		</a>
+	</div>
+	<div class="flyout-nav__search">
+<form class="search-form" role="search" method="get" action="https://www.nbclosangeles.com/" >
+	<label>
+		<span class="screen-reader-text">Search for:</span>
+		<input type="search" value="" name="s" placeholder="Search" />
+	</label>
+	<input type="submit" class="search-submit" value="Search" />
+</form>
+</div>
+	<div class="flyout-nav__menu">
+		<div class="flyout-nav__menu--upper">
+							<a class="flyout-nav__menu-item parent-item" href="/news/local/">
+					Local				</a>
+							<a class="flyout-nav__menu-item parent-item" href="/news/california-news/">
+					California				</a>
+							<a class="flyout-nav__menu-item parent-item" href="/news/national-international/">
+					US &amp; World				</a>
+							<a class="flyout-nav__menu-item parent-item" href="/weather">
+					Weather				</a>
+							<a class="flyout-nav__menu-item parent-item" href="/traffic">
+					Traffic				</a>
+							<a class="flyout-nav__menu-item parent-item" href="/videos">
+					Video				</a>
+							<a class="flyout-nav__menu-item parent-item" href="/investigations/">
+					I-Team				</a>
+							<a class="flyout-nav__menu-item child-item" href="/investigations/randy-responds/">
+					Randy Responds				</a>
+							<a class="flyout-nav__menu-item parent-item" href="/news/sports/">
+					Sports				</a>
+							<a class="flyout-nav__menu-item parent-item" href="/news/politics/">
+					Politics				</a>
+							<a class="flyout-nav__menu-item parent-item" href="/entertainment/">
+					Entertainment				</a>
+							<a class="flyout-nav__menu-item child-item" href="/the-scene/">
+					The Scene				</a>
+							<a class="flyout-nav__menu-item child-item" href="/california-live/">
+					California Live				</a>
+							<a class="flyout-nav__menu-item child-item" href="/worth-the-trip/">
+					Worth The Trip				</a>
+							<a class="flyout-nav__menu-item parent-item" href="/news/health-wellness/">
+					Health &amp; Wellness				</a>
+							<a class="flyout-nav__menu-item parent-item" href="/news/consumer/recall-alert/">
+					Recall Alert				</a>
+							<a class="flyout-nav__menu-item parent-item" href="/news/local/streets-of-shame/">
+					Streets Of Shame				</a>
+							<a class="flyout-nav__menu-item parent-item" href="/community/">
+					NBCLA in the Community				</a>
+					</div>
+		<div class="flyout-nav__menu--lower">
+							<a class="flyout-nav__menu-item child-item" href="/consumer-form">
+					Submit a Consumer Complaint				</a>
+							<a class="flyout-nav__menu-item child-item" href="https://www.nbclosangeles.com/ugc/">
+					Send us your photos and videos				</a>
+							<a class="flyout-nav__menu-item child-item" href="/contests/">
+					Contests				</a>
+							<a class="flyout-nav__menu-item child-item" href="/products">
+					Our Apps				</a>
+							<a class="flyout-nav__menu-item child-item" href="https://www.nbclosangeles.com/newsletters/">
+					Newsletters				</a>
+					</div>
+	</div>
+	<div class="flyout-nav__social">
+		<h4 class="flyout-nav__social-heading">Follow Us</h4>
+		<ul class="flyout-nav__social-list">
+			
+							<li class="site-footer__social-list-item facebook">
+					<a href="http://www.facebook.com/NBCLA" target="_blank">
+						<span class="screen-reader-text">Facebook</span>
+						<i class="fab fa-facebook-f"></i>
+					</a>
+				</li>
+			
+							<li class="site-footer__social-list-item twitter">
+					<a href="https://twitter.com/nbcla" target="_blank">
+						<span class="screen-reader-text">Twitter</span>
+						<i class="fab fa-twitter"></i>
+					</a>
+				</li>
+			
+							<li class="site-footer__social-list-item instagram">
+					<a href="https://instagram.com/nbcla" target="_blank">
+						<span class="screen-reader-text">Instagram</span>
+						<i class="fab fa-instagram"></i>
+					</a>
+				</li>
+					</ul>
+	</div>
+</div>
+<a class="flyout-contact-button"
+			href="/contact-us"
+	>
+	Contact Us</a>
+<script type='text/javascript' src='https://www.nbclosangeles.com/wp-content/client-mu-plugins/jetpack/_inc/build/photon/photon.min.js?m=1575967448g'></script>
+<script type='text/javascript' src='https://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=202001'></script>
+<script type='text/javascript'>
+( function( domain, translations ) {
+	var localeData = translations.locale_data[ domain ] || translations.locale_data.messages;
+	localeData[""].domain = domain;
+	wp.i18n.setLocaleData( localeData, domain );
+} )( "default", { "locale_data": { "messages": { "": {} } } } );
+</script>
+<script type='text/javascript' src='https://www.nbclosangeles.com/wp-content/plugins/gutenberg/build/url/index.js?ver=b0e45918823321e3aefb9a58a039baa8'></script>
+<script type='text/javascript'>
+( function( domain, translations ) {
+	var localeData = translations.locale_data[ domain ] || translations.locale_data.messages;
+	localeData[""].domain = domain;
+	wp.i18n.setLocaleData( localeData, domain );
+} )( "default", { "locale_data": { "messages": { "": {} } } } );
+</script>
+<script type='text/javascript' src='https://www.nbclosangeles.com/wp-content/plugins/gutenberg/build/hooks/index.js?ver=82bbdadd836ff5df9da42fa076feb0a6'></script>
+<script type='text/javascript'>
+( function( domain, translations ) {
+	var localeData = translations.locale_data[ domain ] || translations.locale_data.messages;
+	localeData[""].domain = domain;
+	wp.i18n.setLocaleData( localeData, domain );
+} )( "default", { "locale_data": { "messages": { "": {} } } } );
+</script>
+<script type='text/javascript' src='https://www.nbclosangeles.com/wp-content/plugins/gutenberg/build/api-fetch/index.js?ver=8275800a2afeb0bca99657932db08d5e'></script>
+<script type='text/javascript'>
+( function() {
+	var nonceMiddleware = wp.apiFetch.createNonceMiddleware( "f32ec09eaf" );
+	wp.apiFetch.use( nonceMiddleware );
+	wp.hooks.addAction(
+		"heartbeat.tick",
+		"core/api-fetch/create-nonce-middleware",
+		function( response ) {
+			if ( response[ "rest_nonce" ] ) {
+				nonceMiddleware.nonce = response[ "rest_nonce" ];
+			}
+		}
+	);
+} )();
+wp.apiFetch.use( wp.apiFetch.createRootURLMiddleware( "https://www.nbclosangeles.com/wp-json/" ) );
+wp.apiFetch.nonceMiddleware = wp.apiFetch.createNonceMiddleware( "f32ec09eaf" );wp.apiFetch.use( wp.apiFetch.nonceMiddleware );wp.apiFetch.nonceEndpoint = "https://www.nbclosangeles.com/wp-admin/admin-ajax.php?action=gutenberg_rest_nonce";
+wp.apiFetch.use( wp.apiFetch.createPreloadingMiddleware( {"\/nbc\/v1\/weather-alerts":{"body":[{"city_name":"Los Angeles","type":"High Surf Advisory","start_time":"20:01:01:18:00:00","end_time":"20:01:04:04:00:00","headline":"High Surf Advisory","bulletin":"CAZ041-087-011600-\n\/O.CON.KLOX.SU.Y.0028.200101T1800Z-200104T0400Z\/\nLos Angeles County Coast including Downtown Los Angeles-\nCatalina and Santa Barbara Islands-\n623 PM PST Tue Dec 31 2019\n\n...HIGH SURF ADVISORY REMAINS IN EFFECT FROM 10 AM WEDNESDAY TO\n8 PM PST FRIDAY...\n\n* WHAT...Large breaking waves of 5 to 7 feet with local sets to \n  8 feet will develop Wednesday morning, building to 7 to 10 \n  feet Wednesday night through Friday. Dangerous rip currents \n  are expected.\n\n* WHERE...Los Angeles County Coast and Catalina and Santa \n  Barbara Islands.\n\n* WHEN...From 10 AM Wednesday to 8 PM PST Friday.\n\n* IMPACTS...There is an increased risk for ocean drowning. Rip \n  currents can pull swimmers and surfers out to sea. Large \n  breaking waves can cause injury, wash people off beaches and \n  rocks, and capsize small boats near shore.\n\n* ADDITIONAL DETAILS...Highest surf will occur on west facing\n  beaches. \n\nPRECAUTIONARY\/PREPAREDNESS ACTIONS...\n\nA High Surf Advisory means that high surf will affect beaches in\nthe advisory area...producing localized beach erosion and\ndangerous swimming conditions. Swim near a lifeguard. If caught\nin a rip current, relax and float. Don't swim against the\ncurrent. If able, swim in a direction following the shoreline. If\nunable to escape, face the shore and call or wave for help.\n\n&&\n\n$$\n\n","county_name":"Los Angeles","state_abbr":"CA","state_name":"California","severity":3},{"city_name":"Santa Ana","type":"High Surf Advisory","start_time":"20:01:02:00:00:00","end_time":"20:01:04:12:00:00","headline":"High Surf Advisory","bulletin":"CAZ043-552-011300-\n\/O.CON.KSGX.SU.Y.0013.200102T0000Z-200104T1200Z\/\nSan Diego County Coastal Areas-Orange County Coastal Areas-\n802 PM PST Tue Dec 31 2019\n\n...HIGH SURF ADVISORY REMAINS IN EFFECT FROM 4 PM WEDNESDAY TO\n4 AM PST SATURDAY...\n\n* Surf...For San Diego County, the surf will be 7-10 ft with the\n  highest sets south of Del Mar. For Orange County, the surf will\n  be 5-7 ft. \n\n* Timing...Surf will build Wednesday night into Thursday, peaking\n  Thursday afternoon, then subside Friday night but is expected \n  to remain elevated through the weekend. \n\n* Tides...High tide 3.9 ft at 3 PM Thursday and 4.1 ft at 4 PM \n  Friday. \n\n* Impacts...Dangerous swimming conditions and a high risk of rip\n  currents. Local beach erosion. \n\nPRECAUTIONARY\/PREPAREDNESS ACTIONS...\n\nA High Surf Advisory means that high surf will affect beaches in\nthe advisory area...producing localized beach erosion and\ndangerous swimming conditions.\n\n&&\n\n$$\n\n","county_name":"Orange","state_abbr":"CA","state_name":"California","severity":3},{"city_name":"Ventura","type":"High Surf Advisory","start_time":"20:01:01:02:23:00","end_time":"20:01:04:04:00:00","headline":"High Surf Advisory","bulletin":"CAZ040-011600-\n\/O.CON.KLOX.SU.Y.0028.000000T0000Z-200104T0400Z\/\nVentura County Coast-\n623 PM PST Tue Dec 31 2019\n\n...HIGH SURF ADVISORY REMAINS IN EFFECT UNTIL 8 PM PST FRIDAY...\n\n* WHAT...Large breaking waves of 5 to 8 feet this evening will \n  build overnight to 8 to 10 feet with local sets to 12 feet, \n  and continue through Friday. Dangerous rip currents are \n  expected.\n\n* WHERE...Ventura County beaches. The largest surf is expected \n  on west facing shores.\n\n* WHEN...From 3 AM Tuesday to 8 PM PST Friday.\n\n* IMPACTS...There is an increased risk for ocean drowning. Rip \n  currents can pull swimmers and surfers out to sea. Large \n  breaking waves can cause injury, wash people off beaches and \n  rocks, and capsize small boats near shore.\n\n* ADDITIONAL DETAILS...Highest surf will occur on west facing\n  beaches. \n\nPRECAUTIONARY\/PREPAREDNESS ACTIONS...\n\nRemain out of the water due to dangerous surf conditions, or stay\nnear occupied lifeguard towers. Rock jetties can be deadly in\nsuch conditions, stay off the rocks.\n\n&&\n\n$$\n\n","county_name":"Ventura","state_abbr":"CA","state_name":"California","severity":3}],"headers":[]},"\/nbc\/v1\/top-stories?include_sponsored=1&section=entertainment":{"body":[{"title":"YouTuber Brittani Boren Leach Mourns Death of 3-Month-Old Son After Christmas Tragedy","link":"https:\/\/www.nbclosangeles.com\/news\/national-international\/youtuber-brittani-boren-leach-mourns-death-of-3-month-old-son-after-christmas-tragedy\/2283448\/","eyebrow":"YouTube","eyebrow_link":"https:\/\/www.nbclosangeles.com\/tag\/youtube\/","thumbnail_url":"https:\/\/media.nbclosangeles.com\/2019\/09\/GettyImages-1129575239-1.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Feds Will Investigate Deadly Tesla Crash in Gardena","link":"https:\/\/www.nbclosangeles.com\/news\/local\/feds-will-investigate-deadly-crash-in-gardena\/2283631\/","eyebrow":"Tesla","eyebrow_link":"https:\/\/www.nbclosangeles.com\/tag\/tesla\/","thumbnail_url":"https:\/\/media.nbclosangeles.com\/2019\/09\/gardenapic.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Illegal Pot Grow Found After Fire at Orange County Strip Mall","link":"https:\/\/www.nbclosangeles.com\/news\/local\/llegal-pot-grow-found-after-fire-at-orange-county-strip-mall\/2283598\/","eyebrow":"Anaheim Fire","eyebrow_link":"https:\/\/www.nbclosangeles.com\/tag\/anaheim-fire\/","thumbnail_url":"https:\/\/media.nbclosangeles.com\/2019\/09\/anaheim-fire.png?resize=100%2C56","type":"article","presented_by":""},{"title":"Spectators Begin Gathering for 131st Rose Parade","link":"https:\/\/www.nbclosangeles.com\/news\/local\/rose-parade-2020\/2283523\/","eyebrow":"Rose Parade 2019","eyebrow_link":"https:\/\/www.nbclosangeles.com\/tag\/rose-parade-2019\/","thumbnail_url":"https:\/\/media.nbclosangeles.com\/2019\/09\/Rose-Parade-2020.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Lawsuit Accusing Actor Kevin Spacey of Malibu Sex Assault Dismissed","link":"https:\/\/www.nbclosangeles.com\/entertainment\/lawsuit-accusing-actor-kevin-spacey-of-malibu-sex-assault-dismissed\/2283609\/","eyebrow":"Kevin Spacey","eyebrow_link":"https:\/\/www.nbclosangeles.com\/tag\/kevin-spacey\/","thumbnail_url":"https:\/\/media.nbclosangeles.com\/2019\/09\/Kevin-Spacey-dismissed-Dec-2019.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Quick-Moving Fire Damages Anaheim Strip Mall","link":"https:\/\/www.nbclosangeles.com\/news\/local\/authorities-work-to-put-out-fire-at-restaurant-in-anaheim\/2283279\/","eyebrow":"Anaheim","eyebrow_link":"https:\/\/www.nbclosangeles.com\/tag\/anaheim\/","thumbnail_url":"https:\/\/media.nbclosangeles.com\/2019\/09\/anaheim-fire.png?resize=100%2C56","type":"article","presented_by":""},{"title":"OC Inmates Filmed Their Own Daring Jail Break on Contraband Cellphone","link":"https:\/\/www.nbclosangeles.com\/news\/cellphone-video-shows-escape-orange-county-inmates\/20689\/","eyebrow":"attorney","eyebrow_link":"https:\/\/www.nbclosangeles.com\/tag\/attorney\/","thumbnail_url":"https:\/\/media.nbclosangeles.com\/2019\/09\/07.25.17_OC-Jail-Escape-Cellphone.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Tens of Thousands Expected to Flock to DTLA for NYE Bash","link":"https:\/\/www.nbclosangeles.com\/news\/local\/tens-of-thousands-expected-to-flock-to-dtla-for-nye-bash\/2283383\/","eyebrow":"Los Angeles","eyebrow_link":"https:\/\/www.nbclosangeles.com\/tag\/los-angeles\/","thumbnail_url":"https:\/\/media.nbclosangeles.com\/2019\/09\/New-Years-Eve-Grand-Park-123119.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"This 2020 Countdown Is Positively Colossal","link":"https:\/\/www.nbclosangeles.com\/the-scene\/this-2020-countdown-is-positively-colossal\/2283256\/","eyebrow":"New Year's Eve","eyebrow_link":"https:\/\/www.nbclosangeles.com\/tag\/new-years-eve\/","thumbnail_url":"https:\/\/media.nbclosangeles.com\/2019\/09\/ferriswheel2020.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Americans Are Flocking to These 10 Cities Where Jobs Are Plentiful","link":"https:\/\/www.nbclosangeles.com\/news\/national-international\/americans-are-flocking-to-these-10-cities-where-jobs-are-plentiful\/2283169\/","eyebrow":"Boomtowns","eyebrow_link":"https:\/\/www.nbclosangeles.com\/tag\/boomtowns\/","thumbnail_url":"https:\/\/media.nbclosangeles.com\/2019\/09\/longGettyImages-914687774.gif?crop=191px%2C338px%2C0px%2C0px&resize=100%2C56","type":"article","presented_by":""},{"title":"Little Tokyo\u2019s Free Oshogatsu Fest Dances into 2020","link":"https:\/\/www.nbclosangeles.com\/the-scene\/little-tokyos-free-oshogatsu-fest-dances-into-2020\/2282480\/","eyebrow":"New Year's Day","eyebrow_link":"https:\/\/www.nbclosangeles.com\/tag\/new-years-day\/","thumbnail_url":"https:\/\/media.nbclosangeles.com\/2019\/09\/nylittletokyo12-1.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Don\u2019t Drink and Drive This New Year\u2019s Eve. Take One of These Free Options Instead","link":"https:\/\/www.nbclosangeles.com\/news\/local\/dont-drink-and-drive-this-new-years-eve-take-one-of-these-free-options-instead\/2283363\/","eyebrow":"New Year's Eve","eyebrow_link":"https:\/\/www.nbclosangeles.com\/tag\/new-years-eve\/","thumbnail_url":"https:\/\/media.nbclosangeles.com\/2019\/09\/grand-park.png?resize=100%2C56","type":"article","presented_by":""},{"title":"California May Not Require Bail for Most Criminal Suspects","link":"https:\/\/www.nbclosangeles.com\/news\/california-may-not-require-bail-for-most-criminal-suspects\/11513\/","eyebrow":"California","eyebrow_link":"https:\/\/www.nbclosangeles.com\/tag\/california\/","thumbnail_url":"https:\/\/media.nbclosangeles.com\/2019\/09\/AP_17093742671965.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"US Coast Guard Seaman Headed to Court Martial Over Alaska Death","link":"https:\/\/www.nbclosangeles.com\/news\/national-international\/us-coast-guard-seaman-headed-to-court-martial-over-alaska-death\/2282688\/","eyebrow":"U.S. Coast Guard","eyebrow_link":"https:\/\/www.nbclosangeles.com\/tag\/u-s-coast-guard\/","thumbnail_url":"https:\/\/media.nbclosangeles.com\/2019\/09\/GettyImages-71152146.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Rams End Tenure at Coliseum on High Note With 31-24 Win Over Cardinals","link":"https:\/\/www.nbclosangeles.com\/news\/sports\/rams-end-tenure-at-coliseum-on-high-note\/2282658\/","eyebrow":"Los Angeles Rams","eyebrow_link":"https:\/\/www.nbclosangeles.com\/tag\/los-angeles-rams\/","thumbnail_url":"https:\/\/media.nbclosangeles.com\/2019\/09\/GettyImages-1196569592.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Serial Killer Phillip Jablonski Dies on California Death Row","link":"https:\/\/www.nbclosangeles.com\/news\/california-news\/serial-killer-phillip-jablonski-dies-on-california-death-row\/2283420\/","eyebrow":"San Quentin State Prison","eyebrow_link":"https:\/\/www.nbclosangeles.com\/tag\/san-quentin-state-prison\/","thumbnail_url":"https:\/\/media.nbclosangeles.com\/2019\/09\/PhillipJablonski.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Man Wearing Joker Mask in Televised Pursuit is Charged","link":"https:\/\/www.nbclosangeles.com\/news\/local\/socal-police-chases\/man-wearing-joker-mask-in-televised-pursuit-is-charged\/132755\/","eyebrow":"Los Angeles","eyebrow_link":"https:\/\/www.nbclosangeles.com\/tag\/los-angeles\/","thumbnail_url":"https:\/\/media.nbclosangeles.com\/2019\/09\/Venice-Beach-police-chase-July-20-2019.JPG?resize=100%2C56","type":"article","presented_by":""},{"title":"Watch the NBC4 News","link":"https:\/\/www.nbclosangeles.com\/news\/watch-the-nbc4-news\/2273356\/","eyebrow":"NBC4 News","eyebrow_link":"https:\/\/www.nbclosangeles.com\/tag\/nbc4-news\/","thumbnail_url":"https:\/\/media.nbclosangeles.com\/2019\/09\/nbc4-logo-genric-nbcla.jpeg?resize=100%2C56","type":"article","presented_by":""},{"title":"Two Killed, Two Injured When Tesla Hits Honda Civic","link":"https:\/\/www.nbclosangeles.com\/news\/local\/man-woman-killed-in-two-vehicle-crash-in-gardena\/2282444\/","eyebrow":"Tesla","eyebrow_link":"https:\/\/www.nbclosangeles.com\/tag\/tesla\/","thumbnail_url":"https:\/\/media.nbclosangeles.com\/2019\/09\/gardenapic.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Jerry Buss \u201cHad a Different Way of Looking at Things\u201d","link":"https:\/\/www.nbclosangeles.com\/news\/local\/jerry-buss-bob-steiner-lakers-owner-death\/2056041\/","eyebrow":"","eyebrow_link":"","thumbnail_url":"https:\/\/media.nbclosangeles.com\/2019\/09\/1483183_10-2.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Two Glendale Store Clerks Arrested For Allegedly Selling Tobacco to Minors","link":"https:\/\/www.nbclosangeles.com\/news\/local\/two-glendale-store-clerks-arrested-for-allegedly-selling-tobacco-to-minors\/2283148\/","eyebrow":"smoking","eyebrow_link":"https:\/\/www.nbclosangeles.com\/tag\/smoking\/","thumbnail_url":"https:\/\/media.nbclosangeles.com\/2019\/09\/handcuffs-generic-on-black.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"On Your Marx for This New Year\u2019s Day Laughfest","link":"https:\/\/www.nbclosangeles.com\/the-scene\/on-your-marx-for-this-new-years-day-laughfest\/2283266\/","eyebrow":"Screwball Classics","eyebrow_link":"https:\/\/www.nbclosangeles.com\/tag\/screwball-classics\/","thumbnail_url":"https:\/\/media.nbclosangeles.com\/2019\/09\/GrouchoBrosGetty1.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"San Bernardino County Mountain Rescues Rising","link":"https:\/\/www.nbclosangeles.com\/video\/san-bernardino-county-mountain-rescues-rising\/2276004\/","eyebrow":"mountain rescues","eyebrow_link":"https:\/\/www.nbclosangeles.com\/tag\/mountain-rescues\/","thumbnail_url":"https:\/\/media.nbclosangeles.com\/2019\/09\/San_Bernardino_County_Mountain_Rescues_On_the_Climb.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Robert Durst Wrote Incriminating \u2018Cadaver\u2019 Note, Lawyers Say","link":"https:\/\/www.nbclosangeles.com\/news\/robert-durst-wrote-incriminating-cadaver-note-lawyers-say\/2283577\/","eyebrow":"Robert Durst","eyebrow_link":"https:\/\/www.nbclosangeles.com\/tag\/robert-durst\/","thumbnail_url":"https:\/\/media.nbclosangeles.com\/2019\/09\/Robert-Durst-Cadaver-note-Dec-31-2019.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Beverly Hills Doctor Sues Over Shortfall of Late Wife\u2019s Ashes","link":"https:\/\/www.nbclosangeles.com\/news\/local\/beverly-hills-doctor-sues-over-shortfall-of-late-wifes-ashes\/2283166\/","eyebrow":"ashes","eyebrow_link":"https:\/\/www.nbclosangeles.com\/tag\/ashes\/","thumbnail_url":"https:\/\/media.nbclosangeles.com\/2019\/09\/GettyImages-1154150637.jpg?crop=0px%2C414px%2C2367px%2C1331px&resize=100%2C56","type":"article","presented_by":""},{"title":"Mandatory Evacuations Lifted as 1,000 Acres Burn North of Rancho Cucamonga","link":"https:\/\/www.nbclosangeles.com\/news\/national-international\/brush-fire-north-of-ranch-cucamonga\/71545\/","eyebrow":"","eyebrow_link":"","thumbnail_url":"https:\/\/media.nbclosangeles.com\/2019\/09\/fire-cucamonga-viewer-etiwanda.jpg?resize=100%2C56","type":"article","presented_by":""},{"title":"Wife of Google Whistleblower Killed In San Diego Crash","link":"https:\/\/www.nbclosangeles.com\/news\/california-news\/wife-of-google-whistleblower-killed-in-i-15-crash\/2283239\/","eyebrow":"Vista","eyebrow_link":"https:\/\/www.nbclosangeles.com\/tag\/vista\/","thumbnail_url":"https:\/\/media.nbclosangeles.com\/2019\/09\/Misti-Victim.jpg?resize=100%2C56","type":"article","presented_by":""}],"headers":[]}} ) );
+</script>
+<script type='text/javascript' src='https://www.nbclosangeles.com/wp-content/themes/nbc-station/client/build/js/common.dffc3afbe35f219ac460.chunk.min.js?m=1577817111g'></script>
+<script type='text/javascript'>
+nbc.preloadedResources = nbc.preloadedResources || {}; nbc.preloadedResources = Object.assign({}, nbc.preloadedResources, {"https:\/\/wsidata.weather.com\/200904-01\/369362872\/Weather\/Report\/90012?filter=1,4,9":"<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>\r\n<Cities>\r\n  <City Id=\"USCA0638\" Name=\"Los Angeles\" StateAbbr=\"CA\" StateName=\"California\" CountyFips=\"06037\" CountyName=\"Los Angeles\" CountryName=\"United States\" CountryFips=\"US\" StnIcao=\"KCQT\" ClimateStn=\"045115\" Latitude=\"34.05\" Longitude=\"-118.24\" TimeZone=\"-8\" IsDaylightSavings=\"False\" ObservesDaylightSavings=\"True\" PreferredZipCode=\"90012\" PreferredAirport=\"LAX \" PreferredTide=\"2226\" PreferredBuoy=\"smoc1\" PreferredSkiResort=\"909004\" Dma=\"803\">\r\n    <CurrentObservation StnIcao=\"KCQT\" ReportTime=\"1\/1\/2020 9:52:00 AM\" TempF=\"53\" TempC=\"12\" DewPtF=\"33\" DewPtC=\"1\" RelHumidity=\"47\" WndSpdMph=\"3\" WndDirDegr=\"360\" WndDirCardinal=\"N\" WndGustMph=\"\" Pressure=\"30.07\" Weather=\"\" Sky=\"Clear\" IconCode=\"97\" Ceiling=\"Unl\" Visibility=\"10\" HeatIdxF=\"53\" HeatIdxC=\"12\" WndChillF=\"53\" WndChillC=\"12\" FeelsLikeF=\"53\" FeelsLikeC=\"12\" SnowDepth=\"\" SixHrMax=\"73\" TwentyFourHrMax=\"75\" SixHrMin=\"57\" TwentyFourHrMin=\"49\" ThreeHrPrecip=\"0\" SixHrPrecip=\"0\" TwentyFourHrPrecip=\"\" CodedWeather=\"NSW\" EnhancedWeather=\"\" ReportText=\"KCQT 010952Z AUTO 36003KT 10SM CLR 12\/01 A3007 RMK AO2 SLP180 T01170006 \" DayNight=\"N\" TempTrend=\"STEADY\" \/>\r\n    <WeatherStations>\r\n      <Station Icao=\"KCQT\" DistanceMiles=\"3.37\" Name=\"LOS ANGELES\/USC\" CountryAbbr=\"US\" StateAbbr=\"CA\" Latitude=\"34.0167\" Longitude=\"-118.283\" ElevationFeet=\"56\">\r\n        <Conditions StnIcao=\"KCQT\" ReportTime=\"1\/1\/2020 9:52:00 AM\" TempF=\"53\" TempC=\"12\" DewPtF=\"33\" DewPtC=\"1\" RelHumidity=\"47\" WndSpdMph=\"3\" WndDirDegr=\"360\" WndDirCardinal=\"N\" WndGustMph=\"\" Pressure=\"30.07\" Weather=\"\" Sky=\"Clear\" IconCode=\"97\" Ceiling=\"Unl\" Visibility=\"10\" HeatIdxF=\"53\" HeatIdxC=\"12\" WndChillF=\"53\" WndChillC=\"12\" FeelsLikeF=\"53\" FeelsLikeC=\"12\" SnowDepth=\"\" SixHrMax=\"73\" TwentyFourHrMax=\"75\" SixHrMin=\"57\" TwentyFourHrMin=\"49\" ThreeHrPrecip=\"0\" SixHrPrecip=\"0\" TwentyFourHrPrecip=\"\" CodedWeather=\"NSW\" EnhancedWeather=\"\" ReportText=\"KCQT 010952Z AUTO 36003KT 10SM CLR 12\/01 A3007 RMK AO2 SLP180 T01170006 \" DayNight=\"N\" TempTrend=\"STEADY\" \/>\r\n      <\/Station>\r\n      <Station Icao=\"KHHR\" DistanceMiles=\"10.64\" Name=\"HAWTHORNE\" CountryAbbr=\"US\" StateAbbr=\"CA\" Latitude=\"33.9167\" Longitude=\"-118.333\" ElevationFeet=\"19\">\r\n        <Conditions StnIcao=\"KHHR\" ReportTime=\"1\/1\/2020 9:53:00 AM\" TempF=\"54\" TempC=\"12\" DewPtF=\"33\" DewPtC=\"1\" RelHumidity=\"45\" WndSpdMph=\"0\" WndDirDegr=\"\" WndDirCardinal=\"\" WndGustMph=\"\" Pressure=\"30.07\" Weather=\"\" Sky=\"Clear\" IconCode=\"97\" Ceiling=\"Unl\" Visibility=\"9\" HeatIdxF=\"54\" HeatIdxC=\"12\" WndChillF=\"54\" WndChillC=\"12\" FeelsLikeF=\"54\" FeelsLikeC=\"12\" SnowDepth=\"\" SixHrMax=\"73\" TwentyFourHrMax=\"74\" SixHrMin=\"58\" TwentyFourHrMin=\"47\" ThreeHrPrecip=\"0\" SixHrPrecip=\"0\" TwentyFourHrPrecip=\"\" CodedWeather=\"NSW\" EnhancedWeather=\"\" ReportText=\"KHHR 010953Z AUTO 00000KT 9SM CLR 12\/01 A3007 RMK AO2 SLP181     T01220006 \" DayNight=\"N\" TempTrend=\"LOWER\" \/>\r\n      <\/Station>\r\n      <Station Icao=\"KEMT\" DistanceMiles=\"12.07\" Name=\"EL MONTE\" CountryAbbr=\"US\" StateAbbr=\"CA\" Latitude=\"34.0833\" Longitude=\"-118.033\" ElevationFeet=\"91\">\r\n        <Conditions StnIcao=\"KEMT\" ReportTime=\"1\/1\/2020 3:50:00 AM\" TempF=\"55\" TempC=\"13\" DewPtF=\"37\" DewPtC=\"3\" RelHumidity=\"51\" WndSpdMph=\"3\" WndDirDegr=\"\" WndDirCardinal=\"\" WndGustMph=\"\" Pressure=\"30.07\" Weather=\"\" Sky=\"Few Clouds\" IconCode=\"98\" Ceiling=\"Unl\" Visibility=\"10\" HeatIdxF=\"55\" HeatIdxC=\"13\" WndChillF=\"55\" WndChillC=\"13\" FeelsLikeF=\"55\" FeelsLikeC=\"13\" SnowDepth=\"\" SixHrMax=\"\" TwentyFourHrMax=\"\" SixHrMin=\"\" TwentyFourHrMin=\"\" ThreeHrPrecip=\"\" SixHrPrecip=\"\" TwentyFourHrPrecip=\"\" CodedWeather=\"NSW\" EnhancedWeather=\"\" ReportText=\"KEMT 010350Z VRB03KT 10SM FEW039 13\/03 A3007  \" DayNight=\"N\" TempTrend=\"LOWER\" \/>\r\n      <\/Station>\r\n    <\/WeatherStations>\r\n    <DailyForecast>\r\n      <Day DayNum=\"1\" DayOfWk=\"Tuesday\" ValidDateUtc=\"12\/31\/2019 12:00:00 AM\" ValidDateLocal=\"12\/31\/2019 7:00:00 AM\" HiTempF=\"75\" LoTempF=\"49\" HiTempC=\"24\" LoTempC=\"9\" ShortPhrase=\"Mainly clear\" PhraseDay=\"\" PhraseNight=\"Mostly clear. Low 49F. Winds light and variable.\" IconCode=\"65\" SkyCode=\"33\" SkyText=\"Mostly Clear\" PrecipChance=\"0\" SnowChance=\"0\" RelHumidity=\"48\" WndSpdMph=\"2\" WndSpdKm=\"3\" WndSpdKn=\"2\" WndDirDegr=\"26\" WndDirCardinal=\"NNE\" CloudCoverage=\"12\" UvIdx=\"0\" UvDescr=\"Low\" UvWarn=\"0\" Sunrise=\"06:58:12 am\" Sunset=\"04:53:43 pm\" Moonrise=\"10:50:32 am\" Moonset=\"10:14:32 pm\" MoonPhase=\"1\" MoonPhaseText=\"Waxing Crescent\" SkyCodeDay=\"\" SkyCodeNight=\"33\" PrecipChanceDay=\"\" PrecipChanceNight=\"0\" IconCodeDay=\"86\" IconCodeNight=\"102\" SkyTextDay=\"\" SkyTextNight=\"Mostly Clear\" RelHumidityNight=\"48\" WndSpdMphNight=\"2\" WndSpdKmNight=\"3\" WndSpdKnNight=\"2\" WndDirDegrNight=\"26\" WndDirCardinalNight=\"NNE\" PhraseDayC=\"Plentiful sunshine. High 22C. Winds light and variable.\" PhraseNightC=\"Mostly clear. Low around 10C. Winds light and variable.\" SnowAmtIn=\"0.00\" SnowAmtCm=\"0.00\" \/>\r\n      <Day DayNum=\"2\" DayOfWk=\"Wednesday\" ValidDateUtc=\"1\/1\/2020 12:00:00 AM\" ValidDateLocal=\"1\/1\/2020 7:00:00 AM\" HiTempF=\"69\" LoTempF=\"50\" HiTempC=\"21\" LoTempC=\"10\" ShortPhrase=\"More sun than clouds\" PhraseDay=\"Mostly sunny skies. High 69F. Winds light and variable.\" PhraseNight=\"A few clouds. Low around 50F. Winds light and variable.\" IconCode=\"65\" SkyCode=\"34\" SkyText=\"Mostly Sunny\" PrecipChance=\"0\" SnowChance=\"0\" RelHumidity=\"44\" WndSpdMph=\"4\" WndSpdKm=\"6\" WndSpdKn=\"3\" WndDirDegr=\"166\" WndDirCardinal=\"SSE\" CloudCoverage=\"26\" UvIdx=\"3\" UvDescr=\"Moderate\" UvWarn=\"0\" Sunrise=\"06:58:26 am\" Sunset=\"04:54:27 pm\" Moonrise=\"11:19:58 am\" Moonset=\"11:09:22 pm\" MoonPhase=\"1\" MoonPhaseText=\"Waxing Crescent\" SkyCodeDay=\"34\" SkyCodeNight=\"29\" PrecipChanceDay=\"0\" PrecipChanceNight=\"10\" IconCodeDay=\"65\" IconCodeNight=\"98\" SkyTextDay=\"Mostly Sunny\" SkyTextNight=\"Partly Cloudy\" RelHumidityNight=\"74\" WndSpdMphNight=\"1\" WndSpdKmNight=\"2\" WndSpdKnNight=\"1\" WndDirDegrNight=\"60\" WndDirCardinalNight=\"ENE\" PhraseDayC=\"Except for a few afternoon clouds, mainly sunny. High near 20C. Winds light and variable.\" PhraseNightC=\"A few clouds from time to time. Low around 10C. Winds light and variable.\" SnowAmtIn=\"0.00\" SnowAmtCm=\"0.00\" \/>\r\n      <Day DayNum=\"3\" DayOfWk=\"Thursday\" ValidDateUtc=\"1\/2\/2020 12:00:00 AM\" ValidDateLocal=\"1\/2\/2020 7:00:00 AM\" HiTempF=\"70\" LoTempF=\"51\" HiTempC=\"21\" LoTempC=\"11\" ShortPhrase=\"Mostly sunny\" PhraseDay=\"Mostly sunny. Highs in the low 70s and lows in the low 50s.\" PhraseNight=\"\" IconCode=\"65\" SkyCode=\"34\" SkyText=\"Mostly Sunny\" PrecipChance=\"10\" SnowChance=\"0\" RelHumidity=\"58\" WndSpdMph=\"2\" WndSpdKm=\"3\" WndSpdKn=\"2\" WndDirDegr=\"178\" WndDirCardinal=\"S\" CloudCoverage=\"24\" UvIdx=\"3\" UvDescr=\"Moderate\" UvWarn=\"0\" Sunrise=\"06:58:37 am\" Sunset=\"04:55:13 pm\" Moonrise=\"11:47:48 am\" Moonset=\"12:01:00 am\" MoonPhase=\"1\" MoonPhaseText=\"Waxing Crescent\" SkyCodeDay=\"34\" SkyCodeNight=\"29\" PrecipChanceDay=\"10\" PrecipChanceNight=\"10\" IconCodeDay=\"65\" IconCodeNight=\"98\" SkyTextDay=\"Mostly Sunny\" SkyTextNight=\"Partly Cloudy\" RelHumidityNight=\"64\" WndSpdMphNight=\"1\" WndSpdKmNight=\"2\" WndSpdKnNight=\"1\" WndDirDegrNight=\"14\" WndDirCardinalNight=\"NNE\" PhraseDayC=\"Mostly sunny skies. High 21C. Winds light and variable.\" PhraseNightC=\"\" SnowAmtIn=\"0.00\" SnowAmtCm=\"0.00\" \/>\r\n      <Day DayNum=\"4\" DayOfWk=\"Friday\" ValidDateUtc=\"1\/3\/2020 12:00:00 AM\" ValidDateLocal=\"1\/3\/2020 7:00:00 AM\" HiTempF=\"72\" LoTempF=\"50\" HiTempC=\"22\" LoTempC=\"10\" ShortPhrase=\"Times of sun and clouds\" PhraseDay=\"Partly cloudy. Highs in the low 70s and lows in the low 50s.\" PhraseNight=\"\" IconCode=\"66\" SkyCode=\"30\" SkyText=\"Partly Cloudy\" PrecipChance=\"0\" SnowChance=\"0\" RelHumidity=\"41\" WndSpdMph=\"2\" WndSpdKm=\"3\" WndSpdKn=\"2\" WndDirDegr=\"164\" WndDirCardinal=\"SSE\" CloudCoverage=\"42\" UvIdx=\"3\" UvDescr=\"Moderate\" UvWarn=\"0\" Sunrise=\"06:58:47 am\" Sunset=\"04:56:01 pm\" Moonrise=\"12:15:04 pm\" Moonset=\"12:03:28 am\" MoonPhase=\"2\" MoonPhaseText=\"First Quarter\" SkyCodeDay=\"30\" SkyCodeNight=\"33\" PrecipChanceDay=\"0\" PrecipChanceNight=\"0\" IconCodeDay=\"66\" IconCodeNight=\"102\" SkyTextDay=\"Partly Cloudy\" SkyTextNight=\"Mostly Clear\" RelHumidityNight=\"66\" WndSpdMphNight=\"1\" WndSpdKmNight=\"2\" WndSpdKnNight=\"1\" WndDirDegrNight=\"21\" WndDirCardinalNight=\"NNE\" PhraseDayC=\"Intervals of clouds and sunshine. High 22C. Winds light and variable.\" PhraseNightC=\"\" SnowAmtIn=\"0.00\" SnowAmtCm=\"0.00\" \/>\r\n      <Day DayNum=\"5\" DayOfWk=\"Saturday\" ValidDateUtc=\"1\/4\/2020 12:00:00 AM\" ValidDateLocal=\"1\/4\/2020 7:00:00 AM\" HiTempF=\"70\" LoTempF=\"49\" HiTempC=\"21\" LoTempC=\"9\" ShortPhrase=\"Mix of sun and clouds\" PhraseDay=\"Mix of sun and clouds. Highs in the low 70s and lows in the upper 40s.\" PhraseNight=\"\" IconCode=\"66\" SkyCode=\"30\" SkyText=\"Partly Cloudy\" PrecipChance=\"0\" SnowChance=\"0\" RelHumidity=\"47\" WndSpdMph=\"3\" WndSpdKm=\"5\" WndSpdKn=\"3\" WndDirDegr=\"219\" WndDirCardinal=\"SW\" CloudCoverage=\"43\" UvIdx=\"3\" UvDescr=\"Moderate\" UvWarn=\"0\" Sunrise=\"06:58:55 am\" Sunset=\"04:56:49 pm\" Moonrise=\"12:43:44 pm\" Moonset=\"12:58:19 am\" MoonPhase=\"3\" MoonPhaseText=\"Waxing Gibbous\" SkyCodeDay=\"30\" SkyCodeNight=\"29\" PrecipChanceDay=\"0\" PrecipChanceNight=\"0\" IconCodeDay=\"66\" IconCodeNight=\"98\" SkyTextDay=\"Partly Cloudy\" SkyTextNight=\"Partly Cloudy\" RelHumidityNight=\"64\" WndSpdMphNight=\"2\" WndSpdKmNight=\"3\" WndSpdKnNight=\"2\" WndDirDegrNight=\"21\" WndDirCardinalNight=\"NNE\" PhraseDayC=\"Partly cloudy. High 21C. Winds light and variable.\" PhraseNightC=\"\" SnowAmtIn=\"0.00\" SnowAmtCm=\"0.00\" \/>\r\n      <Day DayNum=\"6\" DayOfWk=\"Sunday\" ValidDateUtc=\"1\/5\/2020 12:00:00 AM\" ValidDateLocal=\"1\/5\/2020 7:00:00 AM\" HiTempF=\"70\" LoTempF=\"50\" HiTempC=\"21\" LoTempC=\"10\" ShortPhrase=\"Times of sun and clouds\" PhraseDay=\"Mix of sun and clouds. Highs in the low 70s and lows in the low 50s.\" PhraseNight=\"\" IconCode=\"66\" SkyCode=\"30\" SkyText=\"Partly Cloudy\" PrecipChance=\"0\" SnowChance=\"0\" RelHumidity=\"44\" WndSpdMph=\"6\" WndSpdKm=\"10\" WndSpdKn=\"5\" WndDirDegr=\"37\" WndDirCardinal=\"NE\" CloudCoverage=\"39\" UvIdx=\"3\" UvDescr=\"Moderate\" UvWarn=\"0\" Sunrise=\"06:59:01 am\" Sunset=\"04:57:38 pm\" Moonrise=\"01:14:53 pm\" Moonset=\"01:54:34 am\" MoonPhase=\"3\" MoonPhaseText=\"Waxing Gibbous\" SkyCodeDay=\"30\" SkyCodeNight=\"33\" PrecipChanceDay=\"0\" PrecipChanceNight=\"0\" IconCodeDay=\"66\" IconCodeNight=\"102\" SkyTextDay=\"Partly Cloudy\" SkyTextNight=\"Mostly Clear\" RelHumidityNight=\"51\" WndSpdMphNight=\"6\" WndSpdKmNight=\"10\" WndSpdKnNight=\"5\" WndDirDegrNight=\"13\" WndDirCardinalNight=\"NNE\" PhraseDayC=\"Partly cloudy skies. High 21C. Winds light and variable.\" PhraseNightC=\"\" SnowAmtIn=\"0.00\" SnowAmtCm=\"0.00\" \/>\r\n      <Day DayNum=\"7\" DayOfWk=\"Monday\" ValidDateUtc=\"1\/6\/2020 12:00:00 AM\" ValidDateLocal=\"1\/6\/2020 7:00:00 AM\" HiTempF=\"72\" LoTempF=\"49\" HiTempC=\"22\" LoTempC=\"9\" ShortPhrase=\"Sunshine\" PhraseDay=\"Abundant sunshine. Highs in the low 70s and lows in the upper 40s.\" PhraseNight=\"\" IconCode=\"85\" SkyCode=\"32\" SkyText=\"Sunny\" PrecipChance=\"0\" SnowChance=\"0\" RelHumidity=\"30\" WndSpdMph=\"3\" WndSpdKm=\"5\" WndSpdKn=\"3\" WndDirDegr=\"27\" WndDirCardinal=\"NNE\" CloudCoverage=\"2\" UvIdx=\"3\" UvDescr=\"Moderate\" UvWarn=\"0\" Sunrise=\"06:59:05 am\" Sunset=\"04:58:28 pm\" Moonrise=\"01:49:20 pm\" Moonset=\"02:52:31 am\" MoonPhase=\"3\" MoonPhaseText=\"Waxing Gibbous\" SkyCodeDay=\"32\" SkyCodeNight=\"31\" PrecipChanceDay=\"0\" PrecipChanceNight=\"0\" IconCodeDay=\"85\" IconCodeNight=\"97\" SkyTextDay=\"Sunny\" SkyTextNight=\"Clear\" RelHumidityNight=\"40\" WndSpdMphNight=\"4\" WndSpdKmNight=\"6\" WndSpdKnNight=\"3\" WndDirDegrNight=\"22\" WndDirCardinalNight=\"NNE\" PhraseDayC=\"A mainly sunny sky. High 22C. Winds light and variable.\" PhraseNightC=\"\" SnowAmtIn=\"0.00\" SnowAmtCm=\"0.00\" \/>\r\n      <Day DayNum=\"8\" DayOfWk=\"Tuesday\" ValidDateUtc=\"1\/7\/2020 12:00:00 AM\" ValidDateLocal=\"1\/7\/2020 7:00:00 AM\" HiTempF=\"71\" LoTempF=\"50\" HiTempC=\"22\" LoTempC=\"10\" ShortPhrase=\"More sun than clouds\" PhraseDay=\"A few clouds. Highs in the low 70s and lows in the low 50s.\" PhraseNight=\"\" IconCode=\"65\" SkyCode=\"34\" SkyText=\"Mostly Sunny\" PrecipChance=\"0\" SnowChance=\"0\" RelHumidity=\"32\" WndSpdMph=\"4\" WndSpdKm=\"6\" WndSpdKn=\"3\" WndDirDegr=\"354\" WndDirCardinal=\"N\" CloudCoverage=\"19\" UvIdx=\"3\" UvDescr=\"Moderate\" UvWarn=\"0\" Sunrise=\"06:59:08 am\" Sunset=\"04:59:19 pm\" Moonrise=\"02:28:31 pm\" Moonset=\"03:53:04 am\" MoonPhase=\"3\" MoonPhaseText=\"Waxing Gibbous\" SkyCodeDay=\"34\" SkyCodeNight=\"29\" PrecipChanceDay=\"0\" PrecipChanceNight=\"0\" IconCodeDay=\"65\" IconCodeNight=\"98\" SkyTextDay=\"Mostly Sunny\" SkyTextNight=\"Partly Cloudy\" RelHumidityNight=\"45\" WndSpdMphNight=\"7\" WndSpdKmNight=\"11\" WndSpdKnNight=\"6\" WndDirDegrNight=\"14\" WndDirCardinalNight=\"NNE\" PhraseDayC=\"Except for a few afternoon clouds, mainly sunny. High 22C. Winds light and variable.\" PhraseNightC=\"\" SnowAmtIn=\"0.00\" SnowAmtCm=\"0.00\" \/>\r\n      <Day DayNum=\"9\" DayOfWk=\"Wednesday\" ValidDateUtc=\"1\/8\/2020 12:00:00 AM\" ValidDateLocal=\"1\/8\/2020 7:00:00 AM\" HiTempF=\"66\" LoTempF=\"47\" HiTempC=\"19\" LoTempC=\"8\" ShortPhrase=\"Abundant sunshine\" PhraseDay=\"Sunshine. Highs in the mid 60s and lows in the upper 40s.\" PhraseNight=\"\" IconCode=\"85\" SkyCode=\"32\" SkyText=\"Sunny\" PrecipChance=\"0\" SnowChance=\"0\" RelHumidity=\"33\" WndSpdMph=\"7\" WndSpdKm=\"11\" WndSpdKn=\"6\" WndDirDegr=\"316\" WndDirCardinal=\"NW\" CloudCoverage=\"20\" UvIdx=\"3\" UvDescr=\"Moderate\" UvWarn=\"0\" Sunrise=\"06:59:08 am\" Sunset=\"05:00:11 pm\" Moonrise=\"03:15:06 pm\" Moonset=\"04:54:52 am\" MoonPhase=\"3\" MoonPhaseText=\"Waxing Gibbous\" SkyCodeDay=\"32\" SkyCodeNight=\"31\" PrecipChanceDay=\"0\" PrecipChanceNight=\"10\" IconCodeDay=\"85\" IconCodeNight=\"97\" SkyTextDay=\"Sunny\" SkyTextNight=\"Clear\" RelHumidityNight=\"47\" WndSpdMphNight=\"4\" WndSpdKmNight=\"6\" WndSpdKnNight=\"3\" WndDirDegrNight=\"15\" WndDirCardinalNight=\"NNE\" PhraseDayC=\"Abundant sunshine. High 19C. Winds NW at 10 to 15 km\/h.\" PhraseNightC=\"\" SnowAmtIn=\"0.00\" SnowAmtCm=\"0.00\" \/>\r\n      <Day DayNum=\"10\" DayOfWk=\"Thursday\" ValidDateUtc=\"1\/9\/2020 12:00:00 AM\" ValidDateLocal=\"1\/9\/2020 7:00:00 AM\" HiTempF=\"65\" LoTempF=\"48\" HiTempC=\"18\" LoTempC=\"9\" ShortPhrase=\"Abundant sunshine\" PhraseDay=\"Abundant sunshine. Highs in the mid 60s and lows in the upper 40s.\" PhraseNight=\"\" IconCode=\"85\" SkyCode=\"32\" SkyText=\"Sunny\" PrecipChance=\"0\" SnowChance=\"0\" RelHumidity=\"41\" WndSpdMph=\"4\" WndSpdKm=\"6\" WndSpdKn=\"3\" WndDirDegr=\"193\" WndDirCardinal=\"SSW\" CloudCoverage=\"13\" UvIdx=\"3\" UvDescr=\"Moderate\" UvWarn=\"0\" Sunrise=\"06:59:06 am\" Sunset=\"05:01:04 pm\" Moonrise=\"04:08:34 pm\" Moonset=\"05:57:01 am\" MoonPhase=\"3\" MoonPhaseText=\"Waxing Gibbous\" SkyCodeDay=\"32\" SkyCodeNight=\"31\" PrecipChanceDay=\"0\" PrecipChanceNight=\"0\" IconCodeDay=\"85\" IconCodeNight=\"97\" SkyTextDay=\"Sunny\" SkyTextNight=\"Clear\" RelHumidityNight=\"52\" WndSpdMphNight=\"3\" WndSpdKmNight=\"5\" WndSpdKnNight=\"3\" WndDirDegrNight=\"27\" WndDirCardinalNight=\"NNE\" PhraseDayC=\"Sunny. High 19C. Winds light and variable.\" PhraseNightC=\"\" SnowAmtIn=\"0.00\" SnowAmtCm=\"0.00\" \/>\r\n    <\/DailyForecast>\r\n    <WeatherAlerts>\r\n      <Alert CountyFips=\"06037\" StateAbbr=\"CA\" Type=\"High Surf Advisory\" StartTime=\"20:01:01:18:00:00\" EndTime=\"20:01:04:04:00:00\" Headline=\"High Surf Advisory\" Bulletin=\"CAZ041-087-011600-&#xA;\/O.CON.KLOX.SU.Y.0028.200101T1800Z-200104T0400Z\/&#xA;Los Angeles County Coast including Downtown Los Angeles-&#xA;Catalina and Santa Barbara Islands-&#xA;623 PM PST Tue Dec 31 2019&#xA;&#xA;...HIGH SURF ADVISORY REMAINS IN EFFECT FROM 10 AM WEDNESDAY TO&#xA;8 PM PST FRIDAY...&#xA;&#xA;* WHAT...Large breaking waves of 5 to 7 feet with local sets to &#xA;  8 feet will develop Wednesday morning, building to 7 to 10 &#xA;  feet Wednesday night through Friday. Dangerous rip currents &#xA;  are expected.&#xA;&#xA;* WHERE...Los Angeles County Coast and Catalina and Santa &#xA;  Barbara Islands.&#xA;&#xA;* WHEN...From 10 AM Wednesday to 8 PM PST Friday.&#xA;&#xA;* IMPACTS...There is an increased risk for ocean drowning. Rip &#xA;  currents can pull swimmers and surfers out to sea. Large &#xA;  breaking waves can cause injury, wash people off beaches and &#xA;  rocks, and capsize small boats near shore.&#xA;&#xA;* ADDITIONAL DETAILS...Highest surf will occur on west facing&#xA;  beaches. &#xA;&#xA;PRECAUTIONARY\/PREPAREDNESS ACTIONS...&#xA;&#xA;A High Surf Advisory means that high surf will affect beaches in&#xA;the advisory area...producing localized beach erosion and&#xA;dangerous swimming conditions. Swim near a lifeguard. If caught&#xA;in a rip current, relax and float. Don't swim against the&#xA;current. If able, swim in a direction following the shoreline. If&#xA;unable to escape, face the shore and call or wave for help.&#xA;&#xA;&amp;&amp;&#xA;&#xA;$$&#xA;&#xA;\" Url=\"\" Category=\"\" Urgency=\"\" Severity=\"\" Certainty=\"\" GeographicName=\"Los Angeles County Coast including Downtown Los Angeles\" StateName=\"California\" CountyName=\"Los Angeles\" Id=\"43020894149048-06037\" Source=\"VTEC\" \/>\r\n    <\/WeatherAlerts>\r\n  <\/City>\r\n<\/Cities>"});
+</script>
+<script type='text/javascript' src='https://www.nbclosangeles.com/wp-content/themes/nbc-station/client/build/js/nonamp.1900929c2220d5ae3d52.bundle.min.js?ver=1.0.2'></script>
+<script type='text/javascript' async src='https://www.nbclosangeles.com/wp-content/themes/nbc-station/client/build/js/weatherConditions.09fb53be557a8a0e277f.bundle.min.js?ver=1.0.2'></script>
+<script type='text/javascript' async src='https://www.nbclosangeles.com/wp-content/themes/nbc-station/client/build/js/global.ce205c5938211212c209.bundle.min.js?ver=1.0.2'></script>
+<script type='text/javascript' async src='https://www.nbclosangeles.com/wp-content/themes/nbc-station/client/build/js/article.b95210a2714dd76746bb.bundle.min.js?ver=1.0.2'></script>
+<script type='text/javascript' async src='https://www.nbclosangeles.com/wp-content/themes/nbc-station/client/build/js/fonts.89f4991699740af2b8b6.bundle.min.js?ver=1.0.2'></script>
+<script type='text/javascript' src='https://ak.sail-horizon.com/spm/spm.v1.min.js?ver=1.0.0'></script>
+<script type='text/javascript'>
+if ("undefined" !== typeof Sailthru) { Sailthru.init({"customerId":"757cc89c051f4552fa5708e6f3b93a01"}); }
+</script>
+<script type='text/javascript' async src='https://www.nbclosangeles.com/wp-content/themes/nbc-station/client/build/js/videoPlayer.d3ef627da1a1d71db84d.bundle.min.js?ver=1.0.2'></script>
+<script type='text/javascript' src='https://native.sharethrough.com/assets/sfp.js?ver=5.2.5'></script>
+<script type='text/javascript' defer src='https://js-sec.indexww.com/ht/p/186439-8110681084214.js?ver=1.0.2'></script>
+<script type='text/javascript' src='https://www.nbclosangeles.com/wp-includes/js/wp-embed.min.js?m=1576198338g'></script>
+<script type='text/javascript' src='https://www.civicscience.com/widget/jspoll/?elt=civsci-1583187804&#038;tgtid=0909a40d-dd50-9874-ed1c-85b00dc31eb3&#038;ver=1.0.0'></script>
+<script type='text/javascript' src='https://stats.wp.com/e-202001.js' async='async' defer='defer'></script>
+<script type='text/javascript'>
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:7.9.1',blog:'165596152',post:'2283609',tz:'-8',srv:'www.nbclosangeles.com'} ]);
+	_stq.push([ 'clickTrackerInit', '165596152', '2283609' ]);
+</script>
+
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"53cef82690","applicationID":"189190456","transactionName":"YVBXYBEFVkZSU00NVlgadFcXDVdbHEdLBUlGUEc=","queueTime":0,"applicationTime":650,"atts":"TRdAFlkfRRkRURteQktI","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>

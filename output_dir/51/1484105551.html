@@ -1,0 +1,1423 @@
+
+<!doctype html>
+<html class="no-js" lang="en-CA" >
+    <head>
+
+        <meta charset="UTF-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"e4824da135",applicationID:"96620540"};window.NREUM||(NREUM={}),__nr_require=function(n,e,t){function r(t){if(!e[t]){var i=e[t]={exports:{}};n[t][0].call(i.exports,function(e){var i=n[t][1][e];return r(i||e)},i,i.exports)}return e[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(n,e,t){function r(){}function i(n,e,t){return function(){return o(n,[u.now()].concat(f(arguments)),e?null:this,t),e?void 0:this}}var o=n("handle"),a=n(4),f=n(5),c=n("ee").get("tracer"),u=n("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(n,e){s[e]=i(d+e,!0,"api")}),s.addPageAction=i(d+"addPageAction",!0),s.setCurrentRouteName=i(d+"routeName",!0),e.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(n,e){var t={},r=this,i="function"==typeof e;return o(l+"tracer",[u.now(),n,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return e.apply(this,arguments)}catch(n){throw c.emit("fn-err",[arguments,this,n],t),n}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(n,e){m[e]=i(l+e)}),newrelic.noticeError=function(n,e){"string"==typeof n&&(n=new Error(n)),o("err",[n,u.now(),!1,e])}},{}],2:[function(n,e,t){function r(n,e){var t=n.getEntries();t.forEach(function(n){"first-paint"===n.name?a("timing",["fp",Math.floor(n.startTime)]):"first-contentful-paint"===n.name&&a("timing",["fcp",Math.floor(n.startTime)])})}function i(n){if(n instanceof c&&!s){var e,t=Math.round(n.timeStamp);e=t>1e12?Date.now()-t:f.now()-t,s=!0,a("timing",["fi",t,{type:n.type,fid:e}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var o,a=n("handle"),f=n("loader"),c=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){o=new PerformanceObserver(r);try{o.observe({entryTypes:["paint"]})}catch(u){}}if("addEventListener"in document){var s=!1,p=["click","keydown","mousedown","pointerdown","touchstart"];p.forEach(function(n){document.addEventListener(n,i,!1)})}}},{}],3:[function(n,e,t){function r(n,e){if(!i)return!1;if(n!==i)return!1;if(!e)return!0;if(!o)return!1;for(var t=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],4:[function(n,e,t){function r(n,e){var t=[],r="",o=0;for(r in n)i.call(n,r)&&(t[o]=e(r,n[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],5:[function(n,e,t){function r(n,e,t){e||(e=0),"undefined"==typeof t&&(t=n?n.length:0);for(var r=-1,i=t-e||0,o=Array(i<0?0:i);++r<i;)o[r]=n[e+r];return o}e.exports=r},{}],6:[function(n,e,t){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(n,e,t){function r(){}function i(n){function e(n){return n&&n instanceof r?n:n?c(n,f,o):o()}function t(t,r,i,o){if(!d.aborted||o){n&&n(t,r,i);for(var a=e(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function l(n,e){h[n]=v(n).concat(e)}function m(n,e){var t=h[n];if(t)for(var r=0;r<t.length;r++)t[r]===e&&t.splice(r,1)}function v(n){return h[n]||[]}function g(n){return p[n]=p[n]||i(t)}function w(n,e){u(n,function(n,t){e=e||"feature",y[t]=e,e in s||(s[e]=[])})}var h={},y={},b={on:l,addEventListener:l,removeEventListener:m,emit:t,get:g,listeners:v,context:e,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var f="nr@context",c=n("gos"),u=n(4),s={},p={},d=e.exports=i();d.backlog=s},{}],gos:[function(n,e,t){function r(n,e,t){if(i.call(n,e))return n[e];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(n,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return n[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(n,e,t){function r(n,e,t,r){i.buffer([n],r),i.emit(n,e,t)}var i=n("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(n,e,t){function r(n){var e=typeof n;return!n||"object"!==e&&"function"!==e?-1:n===window?0:a(n,o,function(){return i++})}var i=1,o="nr@id",a=n("gos");e.exports=r},{}],loader:[function(n,e,t){function r(){if(!x++){var n=E.info=NREUM.info,e=l.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(n&&n.licenseKey&&n.applicationID&&e))return s.abort();u(y,function(e,t){n[e]||(n[e]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=l.createElement("script");t.src="https://"+n.agent,e.parentNode.insertBefore(t,e)}}function i(){"complete"===l.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=n("handle"),u=n(4),s=n("ee"),p=n(3),d=window,l=d.document,m="addEventListener",v="attachEvent",g=d.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:g,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1158.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=e.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};n(1),n(2),l[m]?(l[m]("DOMContentLoaded",o,!1),d[m]("load",r,!1)):(l[v]("onreadystatechange",i),d[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=n(6)},{}],"wrap-function":[function(n,e,t){function r(n){return!(n&&n instanceof Function&&n.apply&&!n[a])}var i=n("ee"),o=n(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;e.exports=function(n,e){function t(n,e,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){d([u,"",[r,a,i],f])}s(e+"start",[r,a,i],f);try{return c=n.apply(a,r)}catch(p){throw s(e+"err",[r,a,p],f),p}finally{s(e+"end",[r,a,c],f)}}return r(n)?n:(e||(e=""),nrWrapper[a]=n,p(n,nrWrapper),nrWrapper)}function u(n,e,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<e.length;c++)f=e[c],a=n[f],r(a)||(n[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||e){var o=c;c=!0;try{n.emit(t,r,i,e)}catch(a){d([a,t,r,i])}c=o}}function p(n,e){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(n);return t.forEach(function(t){Object.defineProperty(e,t,{get:function(){return n[t]},set:function(e){return n[t]=e,e}})}),e}catch(r){d([r])}for(var i in n)f.call(n,i)&&(e[i]=n[i]);return e}function d(e){try{n.emit("internal-error",e)}catch(t){}}return n||(n=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="cache-control" content="no-cache" />
+        <meta name="gpsid" content="19933109" />
+        <link rel="icon" href="https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/assets/images/icons/favicon.ico" type="image/x-icon">
+        <link rel="apple-touch-icon" sizes="144x144" href="https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/assets/images/icons/apple-touch-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/assets/images/icons/apple-touch-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/assets/images/icons/apple-touch-icon-72x72.png">
+        <link rel="apple-touch-icon" href="https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/assets/images/icons/apple-touch-icon.png">
+        <title>Editorial: Resolving for change &#8211; Vernon Morning Star</title>
+<!--
+<PageMap>
+	<DataObject type="thumbnail">
+		<Attribute name="src" value="https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19933109_web1_191218-SNM-M-happy-new-year-2020-greeting-card-with-fireworks-vector-26362982-300x200.jpg"/>
+		<Attribute name="width" value="300"/>
+		<Attribute name="height" value="200"/>
+	</DataObject>
+</PageMap>
+--><link rel="amphtml" href="https://www.vernonmorningstar.com/opinion/editorial-resolving-for-change/amp/" /><meta name="generator" content="AMP for WP 0.9.98.2"/><link rel='dns-prefetch' href='//ap.lijit.com' />
+<link rel='dns-prefetch' href='//ajax.googleapis.com' />
+<link rel='dns-prefetch' href='//content.jwplatform.com' />
+<link rel='dns-prefetch' href='//cdnjs.cloudflare.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel='stylesheet' id='wp-block-library-css'  href='https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-includes/css/dist/block-library/style.min.css?ver=5.2.5' type='text/css' media='all' />
+<link rel='stylesheet' id='slick-css'  href='//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css?ver=1.9.0' type='text/css' media='all' />
+<link rel='stylesheet' id='slick-theme-css'  href='//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css?ver=1.9.0' type='text/css' media='all' />
+<link rel='stylesheet' id='main-stylesheet-css'  href='https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/dest/css/foundation.min.css?ver=2.36.14' type='text/css' media='all' />
+<link rel='stylesheet' id='featherlight-css'  href='https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/assets/components/featherlight/featherlight.css?ver=1.6.1' type='text/css' media='all' />
+<script type="application/javascript">var googletag=googletag||{};googletag.cmd=googletag.cmd||[];googletag.cmd.push(function(){googletag.pubads().disableInitialLoad()});</script>
+<script type='text/javascript' src='//ap.lijit.com/www/headerauction/headersuite.min.js?configId=3304'></script>
+<script type='text/javascript' src='//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js?ver=2.1.0'></script>
+<link rel='https://api.w.org/' href='https://www.vernonmorningstar.com/wp-json/' />
+<link rel="alternate" type="application/json+oembed" href="https://www.vernonmorningstar.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.vernonmorningstar.com%2Fopinion%2Feditorial-resolving-for-change%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://www.vernonmorningstar.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.vernonmorningstar.com%2Fopinion%2Feditorial-resolving-for-change%2F&#038;format=xml" />
+<!-- Start Lotame Tags -->
+<script type='text/javascript' src='//tags.crwdcntrl.net/c/14238/cc.js?ns=_cc14238' id='LOTCC_14238'></script>
+<script type='text/javascript' language='javascript'>
+_cc14238.bcp();</script>
+<script type='text/javascript' src='https://ad.crwdcntrl.net/5/c=14235/pe=y/var=ccauds'></script>
+<!-- End Lotame Tags -->
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-17097096-18"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config','UA-17097096-18',{'dimension1': 'Wire Service','dimension2': 'editorials,home,opinion', 'dimension3': 'untagged', 'dimension4': 'post'});
+  gtag('config','UA-17099191-6',{'dimension1': 'Wire Service','dimension2': 'editorials,home,opinion', 'dimension3': 'untagged', 'dimension4': 'post'});
+  gtag('config','UA-17099191-1',{'dimension1': 'Wire Service','dimension2': 'editorials,home,opinion', 'dimension3': 'untagged', 'dimension4': 'post'});
+  gtag('config','UA-17099191-9',{'dimension1': 'Wire Service','dimension2': 'editorials,home,opinion', 'dimension3': 'untagged', 'dimension4': 'post'});
+</script>
+<!-- End Google Analytics -->
+<!-- Google Analytics Event elements -->
+<script type='text/javascript'>
+  $(document).ready(function(){
+    $("ul.dropdown.menu:first-child > li > a.search").click(function(){
+      gtag('event', 'Click', {'event_category': 'Main Navigation', 'event_label': 'Search Button'});
+    });
+    $("a.pub-logo-large").click(function(){
+      gtag('event', 'Click', {'event_category': 'Main Navigation', 'event_label': 'Header Logo'});
+    });
+    $(".module-adjacent-posts .adjacent-next a").click(function(){
+      gtag('event', 'Click', {'event_category': 'Recirculating Content', 'event_label': 'Next Adjacent Story'});
+    });
+    $(".module-adjacent-posts .adjacent-prev a").click(function(){
+      gtag('event', 'Click', {'event_category': 'Recirculating Content', 'event_label': 'Previous Adjacent Story'});
+    });
+    $("a.social").click(function(){
+      gtag('event', 'Click', {'event_category': 'Recirculating Content', 'event_label': 'Article Social Share'});
+    });
+    $("a.social").click(function(){
+      gtag('event', 'Click', {'event_category': 'Recirculating Content', 'event_label': 'Article Social Share'});
+    });
+  });
+</script>
+<!-- End Event elements -->
+
+<!-- Start Chartbeat -->
+<script type='text/javascript'>
+    (function() {
+        var _sf_async_config = window._sf_async_config = (window._sf_async_config || {});
+        _sf_async_config.uid = 65935
+        _sf_async_config.domain = 'vernonmorningstar.com'; 
+        _sf_async_config.useCanonical = false;
+        _sf_async_config.useCanonicalDomain = true;
+        _sf_async_config.authors = 'Wire Service'; 
+        _sf_async_config.sections = 'Editorials, Home, Opinion'; 
+        function loadChartbeat() {
+            var e = document.createElement('script');
+            var n = document.getElementsByTagName('script')[0];
+            e.type = 'text/javascript';
+            e.async = true;
+            e.src = '//static.chartbeat.com/js/chartbeat.js';
+            n.parentNode.insertBefore(e, n);
+        }
+        loadChartbeat();
+     })();
+</script>
+<!-- End Chartbeat -->
+			<style>
+				ul.dropdown.menu a {
+    				font-size: 0.84rem !important;
+				}
+				@media screen and (max-width: 39.9375em) {
+					ul.dropdown.menu a {
+						font-size: 0.74rem !important;
+					}
+				}
+			</style>
+		<!-- Start echo_header_meta_tags() for SEO -->
+<meta property="og:locale" content="en_CA" />
+<meta property="og:site_name" content="Vernon Morning Star" />
+<meta property="og:url" content="https://www.vernonmorningstar.com/opinion/editorial-resolving-for-change/" />
+<meta property="og:title" content="Editorial: Resolving for change - Vernon Morning Star" />
+<meta name="description" content="What&rsquo;s your New Year&rsquo;s resolution?" />
+<meta property="og:description" content="What&rsquo;s your New Year&rsquo;s resolution?" />
+<meta property="og:type" content="article" />
+<meta property="article:section" content="Opinion" />
+<meta property="article:published_time" content="2020-01-01T10:30:00-08:00" />
+<meta property="og:image" content="https://www.vernonmorningstar.com/wp-content/uploads/2020/01/19933109_web1_191218-SNM-M-happy-new-year-2020-greeting-card-with-fireworks-vector-26362982-1024x683.jpg" />
+<meta property="og:secure_url" content="https://www.vernonmorningstar.com/wp-content/uploads/2020/01/19933109_web1_191218-SNM-M-happy-new-year-2020-greeting-card-with-fireworks-vector-26362982-1024x683.jpg" />
+<meta property="og:image:width" content="1024" />
+<meta property="og:image:height" content="683" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Editorial: Resolving for change - Vernon Morning Star" />
+<meta property="twitter:description" content="What&rsquo;s your New Year&rsquo;s resolution?" />
+<meta property="twitter:image" content="https://www.vernonmorningstar.com/wp-content/uploads/2020/01/19933109_web1_191218-SNM-M-happy-new-year-2020-greeting-card-with-fireworks-vector-26362982-1024x683.jpg" />
+<meta property="fb:app_id" content="172407059517601" />
+<script type="application/ld+json">{"@context":"https:\/\/schema.org","@type":"NewsArticle","url":"https:\/\/www.vernonmorningstar.com\/opinion\/editorial-resolving-for-change\/","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/www.vernonmorningstar.com\/opinion\/editorial-resolving-for-change\/"},"headline":"Editorial: Resolving for change","datePublished":"2020-01-01T10:30:00-08:00","dateModified":"2020-01-01T10:30:00-08:00","thumbnailUrl":"https:\/\/www.vernonmorningstar.com\/wp-content\/uploads\/2020\/01\/19933109_web1_191218-SNM-M-happy-new-year-2020-greeting-card-with-fireworks-vector-26362982.jpg","image":{"@type":"ImageObject","url":"https:\/\/www.vernonmorningstar.com\/wp-content\/uploads\/2020\/01\/19933109_web1_191218-SNM-M-happy-new-year-2020-greeting-card-with-fireworks-vector-26362982.jpg","width":1200,"height":800},"author":{"@type":"Person","name":"Wire Service"},"publisher":{"@type":"Organization","name":"Vernon Morning Star","logo":{"@type":"ImageObject","url":"https:\/\/www.vernonmorningstar.com\/wp-content\/themes\/BlackPress\/assets\/images\/logos\/vms-logo.png","width":482,"height":51}},"contentLocation":{"@type":"Place","name":"Vernon,  British Columbia, Canada"},"dateline":"Vernon,  British Columbia, Canada","description":"\n\t\t\t\t&lt;p&gt;What&rsquo;s your New Year&rsquo;s resolution? &lt;\/p&gt;\n\t\t\t"}</script>
+<!-- End echo_header_meta_tags() for SEO -->
+
+    <!-- BEGIN: Dev Con Script -->
+    <script id='ns_script_dc' data-key='91532438-f31b-4086-8018-7cd68ddba2a3' data-e='5' src='//includemodal.global.ssl.fastly.net/sp.js' type='text/javascript'></script>
+    <!-- END: Dev Con Script -->  
+    
+        <script>window.twttr = (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0],
+            t = window.twttr || {};
+        if (d.getElementById(id)) return t;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "https://platform.twitter.com/widgets.js";
+        fjs.parentNode.insertBefore(js, fjs);
+
+        t._e = [];
+        t.ready = function(f) {
+            t._e.push(f);
+        };
+
+        return t;
+        }(document, "script", "twitter-wjs"));</script>
+        <style type='text/css'>
+.ai-viewport-3                { display: none !important;}
+.ai-viewport-2                { display: none !important;}
+.ai-viewport-1                { display: inherit !important;}
+.ai-viewport-0                { display: none !important;}
+@media (min-width: 768px) and (max-width: 979px) {
+.ai-viewport-1                { display: none !important;}
+.ai-viewport-2                { display: inherit !important;}
+}
+@media (max-width: 767px) {
+.ai-viewport-1                { display: none !important;}
+.ai-viewport-3                { display: inherit !important;}
+}
+</style>
+<!-- DoubleClick for Publishers -->
+<script type='text/javascript'>
+ var googletag = googletag || {};
+ googletag.cmd = googletag.cmd || [];
+ (function() {
+   var gads = document.createElement('script');
+   gads.async = true;
+   gads.type = 'text/javascript';
+   var useSSL = 'https:' == document.location.protocol;
+   gads.src = (useSSL ? 'https:' : 'http:') +
+     '//www.googletagservices.com/tag/js/gpt.js';
+   var node = document.getElementsByTagName('script')[0];
+   node.parentNode.insertBefore(gads, node);
+ })();
+</script>
+
+<script type='text/javascript'>
+ var gptAdSlots = [];
+ var gptRefreshSlots = [];
+ googletag.cmd.push(function() {
+   var mappingHorizontal = googletag.sizeMapping().
+     addSize([1024, 0],[[970, 90],[728, 90]]).
+     addSize([768, 0],[[728, 90], [320, 50]]).
+     addSize([320, 0],[[300, 250]]).
+     addSize([0, 0],[[320, 50], [300, 50], [300, 250]]).
+     build();
+   var mappingVertical = googletag.sizeMapping().
+     addSize([1024, 0],[[300, 600], [300, 250]]).
+     addSize([600, 0],[[300, 600],[300, 250]]).
+     addSize([400, 0],[300, 250]).
+     addSize([0, 0],[[300, 50], [300, 250]]).
+     build(); 
+   var mappingFeatured = googletag.sizeMapping().
+     addSize([1024, 0],[[300, 600]]).
+     addSize([600, 0],[[300, 600]]).
+     addSize([0, 0],[300, 250]).
+     build();   
+   var mappingBillboard = googletag.sizeMapping().
+     addSize([1024, 0],[[970,250]]).
+     addSize([600, 0],[320,50]).
+     addSize([320, 0], [320, 50]).
+     addSize([0, 0],[]).
+     build();   
+   var mappingPromo = googletag.sizeMapping().
+     addSize([1024, 0],[[970,90],[970,30],[728,90]]).
+     addSize([600, 0],[320, 50]).
+     addSize([320, 0], [320, 50]).
+     addSize([0, 0],[]).
+     build();   
+   var mappingMobileOnly = googletag.sizeMapping().
+     addSize([0, 0],[[280, 375],[320, 50],[300, 50],[300, 250],[1, 1]]).
+     addSize([320, 0], [[280, 375],[320, 50],[300, 50],[300, 250],[1, 1]]).
+     addSize([1024, 0],[]).
+     addSize([600, 0],[]).
+     build();   
+   var mappingMobileRectangle = googletag.sizeMapping().
+     addSize([0, 0],[[300, 250]]).
+     addSize([320, 0], [[300, 250]]).
+     addSize([1024, 0],[]).
+     addSize([600, 0],[]).
+     build();   
+  var mappingObitSidebar = googletag.sizeMapping().
+     addSize([1024, 0],[[300, 600]]).
+     addSize([600, 0],[[300, 250]]).
+     addSize([400, 0],[300, 250]).
+     addSize([0, 0],[[300, 250]]).
+     build(); 
+     
+   gptAdSlots[0] = googletag.defineSlot('/1036919/adunit0', [[320, 50],[970, 30],[728,90]], 'div-gpt-0').defineSizeMapping(mappingPromo).addService(googletag.pubads());
+   gptAdSlots[1] = googletag.defineSlot('/1036919/adunit1', [[970, 250],[300,250]], 'div-gpt-1').defineSizeMapping(mappingBillboard).addService(googletag.pubads());
+   gptAdSlots[2] = googletag.defineSlot('/1036919/adunit2', [[300, 250]], 'div-gpt-2').addService(googletag.pubads());
+   gptAdSlots[3] = googletag.defineSlot('/1036919/adunit3', [[970, 90],[728, 90],[320, 50]], 'div-gpt-3').defineSizeMapping(mappingHorizontal).addService(googletag.pubads());
+   gptAdSlots[4] = googletag.defineSlot('/1036919/adunit4', [[300, 600],[300, 250]], 'div-gpt-4').defineSizeMapping(mappingVertical).addService(googletag.pubads());
+   gptAdSlots[5] = googletag.defineSlot('/1036919/adunit5', [[970, 90],[728, 90],[320, 50]], 'div-gpt-5').defineSizeMapping(mappingHorizontal).addService(googletag.pubads());
+   gptAdSlots[6] = googletag.defineSlot('/1036919/adunit6', [[300, 600],[300, 250]], 'div-gpt-6').defineSizeMapping(mappingVertical).addService(googletag.pubads());
+   gptAdSlots[7] = googletag.defineSlot('/1036919/adunit7', [[970, 90],[728, 90],[320, 50]], 'div-gpt-7').defineSizeMapping(mappingHorizontal).addService(googletag.pubads());
+   gptAdSlots[8] = googletag.defineSlot('/1036919/adunit8', [[300, 600],[300, 250]], 'div-gpt-8').defineSizeMapping(mappingVertical).addService(googletag.pubads());
+   gptAdSlots[9] = googletag.defineSlot('/1036919/adunit9', [[970, 90],[728, 90],[320, 50]], 'div-gpt-9').defineSizeMapping(mappingHorizontal).addService(googletag.pubads());
+   gptAdSlots[10] = googletag.defineSlot('/1036919/adunit10', [[300, 600],[300,250]], 'div-gpt-10').defineSizeMapping(mappingFeatured).addService(googletag.pubads());
+   gptAdSlots[11] = googletag.defineSlot('/1036919/adunit11', [[970, 90],[728, 90],[320, 50]], 'div-gpt-11').defineSizeMapping(mappingHorizontal).addService(googletag.pubads());
+   gptAdSlots[12] = googletag.defineSlot('/1036919/adunit12', [[300, 600],[300, 250]], 'div-gpt-12').defineSizeMapping(mappingVertical).addService(googletag.pubads());
+   gptAdSlots[13] = googletag.defineSlot('/1036919/adunit13', [[970, 90],[728, 90],[320, 50]], 'div-gpt-13').defineSizeMapping(mappingHorizontal).addService(googletag.pubads());
+   gptAdSlots[14] = googletag.defineSlot('/1036919/adunit14', [300, 250], 'div-gpt-14').addService(googletag.pubads());
+   gptAdSlots[15] = googletag.defineSlot('/1036919/adunit15', [[970, 90],[728, 90],[320, 50]], 'div-gpt-15').defineSizeMapping(mappingHorizontal).addService(googletag.pubads());
+   gptAdSlots[17] = googletag.defineSlot('/1036919/adunit17', [[320, 50]], 'div-gpt-17').defineSizeMapping(mappingMobileOnly).addService(googletag.pubads());
+   gptAdSlots[18] = googletag.defineSlot('/1036919/adunit18', [[280, 375],[300, 250]], 'div-gpt-18').defineSizeMapping(mappingMobileOnly).addService(googletag.pubads());
+   gptAdSlots[19] = googletag.defineSlot('/1036919/adunit19', [300, 250], 'div-gpt-19').addService(googletag.pubads());
+   gptAdSlots[20] = googletag.defineSlot('/1036919/adunit20', [[300, 250]], 'div-gpt-20').addService(googletag.pubads());
+   gptAdSlots[21] = googletag.defineSlot('/1036919/vendor_library_0', [1, 1], 'div-gpt-21').addService(googletag.pubads());
+   gptAdSlots[22] = googletag.defineSlot('/1036919/adunit22', [300, 250], 'div-gpt-22').addService(googletag.pubads());
+   gptAdSlots[23] = googletag.defineSlot('/1036919/adunit23', [[970, 90],[728, 90],[320, 50]], 'div-gpt-23').defineSizeMapping(mappingHorizontal).addService(googletag.pubads());
+   gptAdSlots[24] = googletag.defineSlot('/1036919/adunit24', [[320, 50],[970, 30],[728,90]], 'div-gpt-24').defineSizeMapping(mappingPromo).addService(googletag.pubads());
+   gptAdSlots[30] = googletag.defineSlot('/1036919/obit0', [[970, 30],[970, 90], [728, 90],[320, 50]], 'div-gpt-30').defineSizeMapping(mappingPromo).addService(googletag.pubads());
+   gptAdSlots[32] = googletag.defineSlot('/1036919/obit2', [[300, 600],[300, 250]], 'div-gpt-32').defineSizeMapping(mappingObitSidebar).addService(googletag.pubads());
+   gptAdSlots[33] = googletag.defineSlot('/1036919/obit3', [[300, 600],[300, 250]], 'div-gpt-33').defineSizeMapping(mappingVertical).addService(googletag.pubads());
+   gptAdSlots[34] = googletag.defineSlot('/1036919/obit4', [[300, 600],[300, 250]], 'div-gpt-34').defineSizeMapping(mappingVertical).addService(googletag.pubads());
+   gptAdSlots[40] = googletag.defineSlot('/1036919/impress0', [[970, 30],[970, 90], [728, 90],[320, 50]], 'div-gpt-40').defineSizeMapping(mappingPromo).addService(googletag.pubads());
+   gptAdSlots[41] = googletag.defineSlot('/1036919/impress2', [[300, 600],[300, 250]], 'div-gpt-41').defineSizeMapping(mappingVertical).addService(googletag.pubads());
+   gptAdSlots[42] = googletag.defineSlot('/1036919/impress3', [[300, 600],[300, 250]], 'div-gpt-42').defineSizeMapping(mappingVertical).addService(googletag.pubads());
+   gptAdSlots[43] = googletag.defineSlot('/1036919/impress4', [[300, 600],[300, 250]], 'div-gpt-43').defineSizeMapping(mappingVertical).addService(googletag.pubads());
+   gptAdSlots[45] = googletag.defineSlot('/1036919/weather0', [[970, 30],[970, 90], [728, 90],[320, 50]], 'div-gpt-45').defineSizeMapping(mappingPromo).addService(googletag.pubads());
+   gptAdSlots[46] = googletag.defineSlot('/1036919/weather1', [[300, 600],[300, 250]], 'div-gpt-46').defineSizeMapping(mappingVertical).addService(googletag.pubads());
+   gptAdSlots[47] = googletag.defineSlot('/1036919/weather2', [[300, 600],[300, 250]], 'div-gpt-47').defineSizeMapping(mappingVertical).addService(googletag.pubads());
+   gptAdSlots[48] = googletag.defineSlot('/1036919/weather3', [[970, 30],[970, 90], [728, 90],[320, 50]], 'div-gpt-48').defineSizeMapping(mappingPromo).addService(googletag.pubads());
+   gptAdSlots[49] = googletag.defineSlot('/1036919/contest0', [[970, 30],[970, 90], [728, 90],[320, 50]], 'div-gpt-49').defineSizeMapping(mappingPromo).addService(googletag.pubads());
+   gptAdSlots[55] = googletag.defineSlot('/1036919/mf0', [300,250], 'div-gpt-55').defineSizeMapping(mappingMobileRectangle).addService(googletag.pubads());
+   gptAdSlots[56] = googletag.defineSlot('/1036919/mf1', [[320, 50],[300,250]], 'div-gpt-56').defineSizeMapping(mappingMobileOnly).addService(googletag.pubads());
+   gptAdSlots[57] = googletag.defineSlot('/1036919/mf2', [[320, 50],[300,250]], 'div-gpt-57').defineSizeMapping(mappingMobileOnly).addService(googletag.pubads());
+   var ccAudVals = "";
+if (typeof(ccauds) != "undefined")
+{
+  for (var cci = 0; cci < ccauds.Profile.Audiences.Audience.length; cci++)
+  {
+    if(ccauds.Profile.Audiences.Audience[cci].abbr == "all") 
+      continue;
+    
+    ccAudVals += ccauds.Profile.Audiences.Audience[cci].abbr;
+    
+    if(ccAudVals.length != 0) 
+      ccAudVals += ",";
+	}
+}
+console.log("ccAudVals = ", ccAudVals);
+   googletag.pubads().setTargeting('ccaud', ccAudVals);
+   googletag.pubads().setTargeting('site', ['vernonmorningstar.com']).setTargeting('section', ['editorials-opinion','opinion','ros']);
+   //googletag.pubads().enableSingleRequest();
+   googletag.pubads().disableInitialLoad();
+   googletag.pubads().collapseEmptyDivs();
+   googletag.enableServices();
+ });
+</script>
+<!-- End DoubleClick for Publishers -->
+<!-- 
+    * Script creates the global generalSettings js array. 
+    * Key/Value pair of Black Press general settings section: option name, option value 
+    * NOTE: new options should be added to this array 
+-->
+<script type='text/javascript'>
+        var generalSettings = {"postal_code":"V1T 2M0","pub_code":"VMS","secondstreet_contest_feed":"http:\/\/vernonmorningstar.upickem.net\/Engine\/XMLFeed.aspx?AffiliateID=VEMS"};
+
+</script>
+<!-- Begin comScore Tag -->
+<script>
+  var _comscore = _comscore || [];
+  _comscore.push({ c1: "2", c2: "6035032" });
+  (function() {
+    var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;
+    s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
+    el.parentNode.insertBefore(s, el);
+  })();
+</script>
+<noscript>
+  <img src="https://sb.scorecardresearch.com/p?c1=2&c2=6035032&cv=2.0&cj=1" />
+</noscript>
+<!-- End comScore Tag -->
+    </head>
+    <body class="post-template-default single single-post postid-196696 single-format-standard offcanvas">
+        <!-- BEGIN: FACE BOOK COMMENTS PLUGIN CODE -->
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+        <!-- END: FACE BOOK COMMENTS PLUGIN CODE -->
+
+    
+    
+    
+    
+    <header id="masthead" class="site-header row collapse" role="banner">
+        <!-- original divs replaced by code after. Note still have 2 divs, 
+             with different settings for mobile and desktop -->
+        <!-- <div  class="small-12 columns" data-sticky-container > -->
+        <!-- <div id="sticky-menu-bar-container" class="top-bar title-bar row collapse" data-sticky data-options="marginTop:0;" style="width:100%"> -->
+        <div  class="small-12 columns" data-sticky-container ><div id="sticky-menu-bar-container" class="top-bar title-bar row collapse" data-sticky data-options="marginTop:0;" style="width:100%">            
+            
+            <article id="text-1" class="menu-button-container small-1 medium-1 columns">
+                    <div id="mobile-menu-button" data-responsive-toggle="site-navigation" data-hide-for="medium">
+                        <button class="fa fa-bars menu" type="button" data-toggle="site-navigation"></button>
+                    </div>
+                    <ul id="menu-mainmenu" class="dropdown menu day-4 show-for-medium" data-dropdown-menu data-options="hoverDelay:150;"><li><a href="#"><i class="fa fa-bars menu"></i></a><ul class="dropdown menu" data-dropdown-menu><li class='nav-search'><a href='/search/'><i class='fa fa-search menu'></i>Search</a></li><li id="menu-item-68396" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-68396"><a href="https://www.vernonmorningstar.com/">Home</a></li>
+<li id="menu-item-97209" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-97209"><a href="https://www.vernonmorningstar.com/submit/">Submit News Tip</a></li>
+<li id="menu-item-169" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-169"><a href="https://www.vernonmorningstar.com/./news/">News</a>
+<ul class="dropdown menu vertical" data-toggle>
+	<li id="menu-item-170" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-170"><a href="https://www.vernonmorningstar.com/./local-news/">Local News</a></li>
+	<li id="menu-item-129420" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-129420"><a href="https://www.vernonmorningstar.com/./municipal-election/">Municipal Election</a></li>
+	<li id="menu-item-171" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-171"><a target="_blank" rel="noopener noreferrer" href="http://bclocalnews.com">BC</a></li>
+	<li id="menu-item-183079" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-183079"><a href="https://www.vernonmorningstar.com/./federal-election/">Federal Election 2019</a></li>
+	<li id="menu-item-172" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-172"><a href="https://www.vernonmorningstar.com/./national-news/">Canada &amp; World</a></li>
+	<li id="menu-item-173" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-173"><a href="https://www.vernonmorningstar.com/e-editions/">e-Editions</a></li>
+	<li id="menu-item-176" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-176"><a href="https://www.vernonmorningstar.com/submit/">Submit news tip or photo</a></li>
+</ul>
+</li>
+<li id="menu-item-177" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-177"><a href="https://www.vernonmorningstar.com/./sports/">Sports</a>
+<ul class="dropdown menu vertical" data-toggle>
+	<li id="menu-item-178" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-178"><a href="https://www.vernonmorningstar.com/./local-sports/">Local</a></li>
+	<li id="menu-item-68432" class="menu-item menu-item-type-taxonomy menu-item-object-post_tag menu-item-68432"><a href="https://www.vernonmorningstar.com/tag/vernon-vipers/">Vernon Vipers</a></li>
+	<li id="menu-item-68429" class="menu-item menu-item-type-taxonomy menu-item-object-post_tag menu-item-68429"><a href="https://www.vernonmorningstar.com/tag/bchl/">BCHL</a></li>
+	<li id="menu-item-68431" class="menu-item menu-item-type-taxonomy menu-item-object-post_tag menu-item-68431"><a href="https://www.vernonmorningstar.com/tag/north-okanagan-knights/">North Okanagan Knights</a></li>
+	<li id="menu-item-68430" class="menu-item menu-item-type-taxonomy menu-item-object-post_tag menu-item-68430"><a href="https://www.vernonmorningstar.com/tag/kijhl/">KIJHL</a></li>
+	<li id="menu-item-68433" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-68433"><a target="_blank" rel="noopener noreferrer" href="http://www.bclocalnews.com/sports/">BC</a></li>
+	<li id="menu-item-179" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-179"><a href="https://www.vernonmorningstar.com/./national-sports/">Canada &amp; World</a></li>
+	<li id="menu-item-180" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-180"><a href="https://www.vernonmorningstar.com/submit/">Submit sports tip or photo</a></li>
+</ul>
+</li>
+<li id="menu-item-181" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-181"><a href="https://www.vernonmorningstar.com/./trending-now/">Trending Now</a></li>
+<li id="menu-item-195367" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-195367"><a href="https://www.vernonmorningstar.com/newsletters/">Newsletters</a></li>
+<li id="menu-item-190097" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-190097"><a href="//autos.vernonmorningstar.com">Autos</a></li>
+<li id="menu-item-146470" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-146470"><a href="//classifieds.vernonmorningstar.com/classifieds/all?q=&#038;r=northokanagan">Classifieds</a></li>
+<li id="menu-item-117405" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-117405"><a target="_blank" rel="noopener noreferrer" href="//www.localwork.ca">Jobs</a></li>
+<li id="menu-item-182" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-182"><a href="https://www.vernonmorningstar.com/./business/">Business</a>
+<ul class="dropdown menu vertical" data-toggle>
+	<li id="menu-item-183" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-183"><a href="https://www.vernonmorningstar.com/./local-business/">Local</a></li>
+	<li id="menu-item-184" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-184"><a target="_blank" rel="noopener noreferrer" href="http://bclocalnews.com/business">BC</a></li>
+	<li id="menu-item-185" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-185"><a href="https://www.vernonmorningstar.com/submit/">Submit business tip or photo</a></li>
+</ul>
+</li>
+<li id="menu-item-186" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-186"><a href="https://www.vernonmorningstar.com/./entertainment/">Entertainment</a>
+<ul class="dropdown menu vertical" data-toggle>
+	<li id="menu-item-187" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-187"><a href="https://www.vernonmorningstar.com/./local-entertainment/">Local</a></li>
+	<li id="menu-item-188" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-188"><a target="_blank" rel="noopener noreferrer" href="http://bclocalnews.com/entertainment">BC</a></li>
+	<li id="menu-item-189" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-189"><a href="https://www.vernonmorningstar.com/submit/">Submit entertainment tip or photo</a></li>
+</ul>
+</li>
+<li id="menu-item-168176" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-168176"><a href="https://www.vernonmorningstar.com/./photo-galleries/">Photo Galleries</a></li>
+<li id="menu-item-190" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-190"><a href="https://www.vernonmorningstar.com/./life/">Life</a>
+<ul class="dropdown menu vertical" data-toggle>
+	<li id="menu-item-131953" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-131953"><a href="https://www.vernonmorningstar.com/./life/">Life</a></li>
+	<li id="menu-item-179617" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-179617"><a href="https://www.vernonmorningstar.com/./sip-savour/">Sip &amp; Savour</a></li>
+	<li id="menu-item-193" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-193"><a target="_blank" rel="noopener noreferrer" href="http://winetrails.ca">Wine Trails</a></li>
+	<li id="menu-item-194" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-194"><a href="https://www.vernonmorningstar.com/submit/">Submit life tip or photo</a></li>
+</ul>
+</li>
+<li id="menu-item-195" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-195"><a href="https://www.vernonmorningstar.com/./community/">Community</a>
+<ul class="dropdown menu vertical" data-toggle>
+	<li id="menu-item-196" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-196"><a href="https://www.vernonmorningstar.com/./community/">Local</a></li>
+	<li id="menu-item-124457" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-124457"><a href="https://www.vernonmorningstar.com/./miss-bc/">Miss BC</a></li>
+	<li id="menu-item-170403" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-170403"><a href="https://www.vernonmorningstar.com/./social-matters/">Social Matters</a></li>
+	<li id="menu-item-68438" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-68438"><a href="/e-editions/?iid=i20160515073833767&#038;pid=p20120309121148491">Let’s Play! 2016</a></li>
+	<li id="menu-item-68439" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-68439"><a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/iLoveBritishColumbia">I Love British Columbia</a></li>
+	<li id="menu-item-197" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-197"><a href="https://www.vernonmorningstar.com/calendar/">Calendar</a></li>
+	<li id="menu-item-198" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-198"><a href="https://www.vernonmorningstar.com/submit/">Submit community tip or photo</a></li>
+</ul>
+</li>
+<li id="menu-item-282" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-has-children menu-item-282"><a href="https://www.vernonmorningstar.com/./opinion/">Opinion</a>
+<ul class="dropdown menu vertical" data-toggle>
+	<li id="menu-item-204" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-204"><a href="https://www.vernonmorningstar.com/./opinion/">Local Opinion</a></li>
+	<li id="menu-item-202" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-202"><a href="https://www.vernonmorningstar.com/./editorials-opinion/">Editorials</a></li>
+	<li id="menu-item-201" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-201"><a href="https://www.vernonmorningstar.com/./columns/">Columnists</a></li>
+	<li id="menu-item-203" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-203"><a href="https://www.vernonmorningstar.com/./letters/">Letters</a></li>
+	<li id="menu-item-205" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-205"><a target="_blank" rel="noopener noreferrer" href="http://bclocalnews.com/opinion">BC Opinion</a></li>
+	<li id="menu-item-95866" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-95866"><a href="https://www.vernonmorningstar.com/./web-poll/">Web poll</a></li>
+	<li id="menu-item-206" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-206"><a href="https://www.vernonmorningstar.com/submitletters/">Submit letter</a></li>
+</ul>
+</li>
+<li id="menu-item-210" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-210"><a href="https://www.vernonmorningstar.com/videos/">Videos</a>
+<ul class="dropdown menu vertical" data-toggle>
+	<li id="menu-item-211" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-211"><a href="https://www.vernonmorningstar.com/videos/">Local</a></li>
+	<li id="menu-item-212" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-212"><a href="https://www.vernonmorningstar.com/submit/">Submit video</a></li>
+	<li id="menu-item-213" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-213"><a target="_blank" rel="noopener noreferrer" href="http://blackpress.tv">Black Press TV</a></li>
+</ul>
+</li>
+<li id="menu-item-214" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-214"><a href="https://www.vernonmorningstar.com/weather/">Weather</a></li>
+<li id="menu-item-216" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-216"><a href="https://www.vernonmorningstar.com/./obituaries/">Obituaries</a></li>
+<li id="menu-item-68434" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-68434"><a href="#">Special Sections</a>
+<ul class="dropdown menu vertical" data-toggle>
+	<li id="menu-item-68435" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-68435"><a href="/e-editions/?iid=i20180404085927874&#038;&#038;headline=TWFyY2ggMzAsIDIwMTg=&#038;&#038;doc_id=180404155953-52b7717c92874cd28d206c0a4f69e216&#038;&#038;pid=p20120309121148491">Progress: North Okanagan Business Review and Forecast 2018</a></li>
+	<li id="menu-item-68436" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-68436"><a href="/e-editions/?iid=i20160531125950897&#038;&#038;headline=TWF5IDI5LCAyMDE2&#038;&#038;doc_id=160531200419-ef226bc7807c4e5080fa790b3e63c2cb&#038;&#038;pid=p20120309121148491">Businesswomen of the North Okanagan</a></li>
+	<li id="menu-item-68437" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-68437"><a href="/e-editions/?iid=i20170618040444332&#038;&#038;headline=MjAxNy0wNi0xOA==&#038;&#038;doc_id=170618110759-a79871e13976460e871d1cb370b2c929&#038;&#038;pid=p20120309121148491">Community Leader Awards</a></li>
+</ul>
+</li>
+<li id="menu-item-217" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-217"><a href="https://www.vernonmorningstar.com/./marketplace/">Marketplace</a>
+<ul class="dropdown menu vertical" data-toggle>
+	<li id="menu-item-275" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-275"><a href="https://www.vernonmorningstar.com/advertise/">Place an ad</a></li>
+	<li id="menu-item-218" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-218"><a href="https://www.vernonmorningstar.com/./marketplace/">Impress branded content</a></li>
+	<li id="menu-item-189394" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-189394"><a href="/videos/#real-estate-tv-video-belt">Impress TV</a></li>
+	<li id="menu-item-78310" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-78310"><a href="https://www.vernonmorningstar.com/real-estate/">Real Estate</a></li>
+</ul>
+</li>
+<li id="menu-item-68397" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68397"><a href="https://www.vernonmorningstar.com/contests/">Contests</a></li>
+<li id="menu-item-224" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-224"><a href="https://www.vernonmorningstar.com/contact-us/">Contact Us</a>
+<ul class="dropdown menu vertical" data-toggle>
+	<li id="menu-item-225" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-225"><a href="https://www.vernonmorningstar.com/contact-us/">Contact Us</a></li>
+	<li id="menu-item-226" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-226"><a href="https://www.vernonmorningstar.com/our-team/">Our Team</a></li>
+	<li id="menu-item-230" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-230"><a target="_blank" rel="noopener noreferrer" href="http://blackpress.ca">Black Press</a></li>
+	<li id="menu-item-231" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-231"><a href="https://www.vernonmorningstar.com/submit/">Submit tip or photo</a></li>
+	<li id="menu-item-227" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-227"><a href="https://www.vernonmorningstar.com/faq/">FAQ</a></li>
+	<li id="menu-item-228" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-228"><a href="https://www.vernonmorningstar.com/privacy-policy/">Privacy Policy</a></li>
+	<li id="menu-item-229" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-229"><a href="https://www.vernonmorningstar.com/terms-of-use/">Terms of use</a></li>
+</ul>
+</li>
+<li id="menu-item-190193" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-190193"><a href="https://www.vernonmorningstar.com/site-map/">Site Map</a></li>
+</ul></li></ul>
+                </article>
+                <article id="text-2" class="small-10 medium-10 columns">
+                    <ul data-test="test" id="menu-secondarymenu" class="dropdown menu" data-dropdown-menu>
+                                    <li id="menu-item-140653" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-140653"><a href="https://www.vernonmorningstar.com/./local-news/">LOCAL</a></li>
+<li id="menu-item-249" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-249"><a href="https://www.vernonmorningstar.com/./news/">NEWS</a>
+<ul class="vertical nested menu">
+	<li id="menu-item-250" class="show-for-medium menu-item menu-item-type-taxonomy menu-item-object-category menu-item-250"><a href="https://www.vernonmorningstar.com/./local-news/">Local News</a></li>
+	<li id="menu-item-256" class="show-for-medium menu-item menu-item-type-custom menu-item-object-custom menu-item-256"><a target="_blank" rel="noopener noreferrer" href="http://bclocalnews.com">BC</a></li>
+	<li id="menu-item-129432" class="show-for-medium menu-item menu-item-type-taxonomy menu-item-object-category menu-item-129432"><a>Municipal Election</a></li>
+	<li id="menu-item-251" class="show-for-medium menu-item menu-item-type-taxonomy menu-item-object-category menu-item-251"><a href="https://www.vernonmorningstar.com/./national-news/">Canada &amp; World</a></li>
+	<li id="menu-item-252" class="show-for-medium menu-item menu-item-type-post_type menu-item-object-page menu-item-252"><a href="https://www.vernonmorningstar.com/e-editions/">e-Editions</a></li>
+	<li id="menu-item-195366" class="show-for-medium menu-item menu-item-type-post_type menu-item-object-page menu-item-195366"><a href="https://www.vernonmorningstar.com/newsletters/">Newsletters</a></li>
+	<li id="menu-item-26547" class="show-for-medium menu-item menu-item-type-custom menu-item-object-custom menu-item-26547"><a target="_blank" rel="noopener noreferrer" href="http://www.kelownacapnews.com/">Kelowna News</a></li>
+	<li id="menu-item-26548" class="show-for-medium menu-item menu-item-type-custom menu-item-object-custom menu-item-26548"><a target="_blank" rel="noopener noreferrer" href="http://www.pentictonwesternnews.com/">Penticton News</a></li>
+	<li id="menu-item-26549" class="show-for-medium menu-item menu-item-type-custom menu-item-object-custom menu-item-26549"><a target="_blank" rel="noopener noreferrer" href="http://www.saobserver.net/">Salmon Arm News</a></li>
+</ul>
+</li>
+<li id="menu-item-190095" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-190095"><a href="//autos.vernonmorningstar.com">AUTOS</a></li>
+<li id="menu-item-260" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-260"><a href="//classifieds.vernonmorningstar.com/classifieds/all?q=&#038;r=northokanagan">CLASSIFIEDS</a></li>
+<li id="menu-item-258" class="show-for-medium menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-258"><a href="https://www.vernonmorningstar.com/./obituaries/">OBITUARIES</a>
+<ul class="vertical nested menu">
+	<li id="menu-item-128572" class="menu-item menu-item-type-taxonomy menu-item-object-post_tag menu-item-128572"><a href="https://www.vernonmorningstar.com/tag/celebrations-of-life/">Celebrations Of Life</a></li>
+	<li id="menu-item-134348" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-134348"><a href="/funeral-care-services/">Funeral Care Services</a></li>
+</ul>
+</li>
+<li id="menu-item-68393" class="show-for-medium menu-item menu-item-type-taxonomy menu-item-object-category menu-item-68393"><a href="https://www.vernonmorningstar.com/./video/">VIDEO</a></li>
+<li id="menu-item-280" class="show-for-large e-editions menu-item menu-item-type-post_type menu-item-object-page menu-item-280"><a href="https://www.vernonmorningstar.com/e-editions/">E-EDITIONS</a></li>
+<li id="menu-item-68394" class="show-for-large menu-item menu-item-type-custom menu-item-object-custom menu-item-68394"><a target="_blank" rel="noopener noreferrer" href="//www.localwork.ca">JOBS</a></li>
+<li id="menu-item-23782" class="show-for-large menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-23782"><a href="https://www.vernonmorningstar.com/./marketplace/">MARKETPLACE</a>
+<ul class="vertical nested menu">
+	<li id="menu-item-274" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-274"><a href="https://www.vernonmorningstar.com/advertise/">Place an ad</a></li>
+	<li id="menu-item-262" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-262"><a href="https://www.vernonmorningstar.com/./marketplace/">Impress</a></li>
+	<li id="menu-item-189395" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-189395"><a href="/videos/#real-estate-tv-video-belt">Impress TV</a></li>
+	<li id="menu-item-78311" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-78311"><a href="https://www.vernonmorningstar.com/real-estate/">Real Estate</a></li>
+	<li id="menu-item-267" class="show-for-sr menu-item menu-item-type-custom menu-item-object-custom menu-item-267"><a target="_blank" rel="noopener noreferrer" href="http://blackpress.ca/impressions">Digital Marketing Services</a></li>
+</ul>
+</li>
+<li id="menu-item-68395" class="show-for-large menu-item menu-item-type-post_type menu-item-object-page menu-item-68395"><a href="https://www.vernonmorningstar.com/contests/">CONTESTS</a></li>
+<li id="nav-submit-button" >
+                                    <span data-tooltip aria-haspopup="true" data-disable-hover="false" tabindex="1" title="Submit News Tips">
+                                    <a href="https://www.vernonmorningstar.com/submit">
+                                    <img src="https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/assets/images/submit.png" id="header-submit-button">
+                                    </a>
+                                    </span>    
+                                </li><li id="nav-impress-button" >
+                                            <span data-tooltip aria-haspopup="true" data-disable-hover="false" tabindex="2" title="Impress TV">
+                                            <a href="http://impresstv.blackpress.ca/" target="_blank">
+                                            <img src="https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/assets/images/ImpressTV.png" id="header-impresstv-button">
+                                            </a>
+                                            </span>    
+                                        </li></ul>                </article>
+
+                <!-- Search -->
+                <article id="text-5" class="small-1 medium-1 columns">
+                    
+                        <button id="btn_search" type="button" class="float-right fa fa-search menu"></button>
+
+                </article>
+
+                <!-- Search -->
+                <article id="div_search" class="small-12 columns">
+                <!-- **************** -->
+                <!-- Search form container -->
+                    
+                                        <form name="searchForm" action="/search/">
+  
+                        <div class="row collapse">
+                            <div class="small-12 columns">
+
+                                <div class="row collapse">
+                                    <div class="small-2 medium-3 columns">
+                                        &nbsp;
+                                      <input name="cx" value="015619971846971042401:ufh1ywe-cms" type="hidden">
+                                    </div>
+
+                                    <div class="small-1 medium-3 columns">
+                                        &nbsp;
+                                      <input name="ie" value="UTF-8" type="hidden">
+                                    </div>
+
+                                    <div class="small-6 medium-4 columns">
+                                        <input id="google_search_field" class="google-search-field" name="q" value="Story Search" style="" type="text">
+                                      
+                                    </div>
+
+                                    <div class="small-3 medium-2 columns">
+                                      
+                                        <input class="google-search-button" value="Search" type="submit">
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                          
+                    </form>
+                 
+                <!-- **************** -->
+                </article>
+                
+                <article class="small-12 medium-12 columns">
+                    <div class="line"></div>
+                </article>
+            
+            </div>
+
+        </div>
+        
+        <div class ="row" id="header-second-row">
+            <article id="text-12" class="header-widget-left widget_text">			<div class="textwidget"><ul class="social header">
+	<!-- <li><a title="Weather" class="social fa fa-cloud" href="/weather/"></a></li> -->
+	<li><a title="Follow us on Facebook" class="social fa fa-facebook-f" href="https://www.facebook.com/vernonmorningstar/" target="_blank" rel="noopener noreferrer"></a></li>
+	<li><a title="Follow us on Twitter" class="social fa fa-twitter" href="https://twitter.com/vernonnews" target="_blank" rel="noopener noreferrer"></a></li>
+	<li><a title="Follow us on Instagram" class="social fa fa-instagram" href="https://www.instagram.com/vernonmorningstar/" target="_blank" rel="noopener noreferrer"></a></li>
+</ul></div>
+		</article>            <article id="text-11" class="header-widget-center widget_text">			<div class="textwidget"><a class="pub-logo-large day-4" href="https://www.vernonmorningstar.com/"><?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 20.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 512 54" style="enable-background:new 0 0 512 54;" xml:space="preserve">
+<g>
+	<g>
+		<path class="bp-pub-logo" d="M14.8,3.5h8.6l4.1,34h0.1l4.6-34h7.1l-7.3,48.4H22L14.8,3.5z"/>
+		<path class="bp-pub-logo" d="M42.5,3.5h20V11H51.4v12.4h8.2v7.9h-8.2v13.2H63v7.5H42.5V3.5z"/>
+		<path class="bp-pub-logo" d="M66.5,3.5h9.9c8.4,0,14,3.5,14,13.7c0,4.1-1.2,9.5-5.2,11.8l5.2,22.8h-8.9l-4.1-20.8h-2.1v20.8h-8.8V3.5z M75.3,24.1h1.8
+			c3.3,0,4.5-3.3,4.5-6.7c0-5.2-1.9-6.7-4.9-6.7h-1.4V24.1z"/>
+		<path class="bp-pub-logo" d="M93.8,3.5h8.6l8.1,25.6h0.1V3.5h7.1v48.4h-6.9l-9.5-29.3h-0.1v29.3h-7.5V3.5z"/>
+		<path class="bp-pub-logo" d="M134.7,2.6c7.8,0,12.9,6.1,12.9,25.2c0,19.1-5.1,25.2-12.9,25.2s-12.9-6.1-12.9-25.2C121.8,8.6,126.9,2.6,134.7,2.6z
+			 M131.5,32.8c0,10.5,1.2,12.6,3.3,12.6c2,0,3.3-2.1,3.3-12.6V22.6c0-10.5-1.2-12.6-3.3-12.6c-2,0-3.3,2.1-3.3,12.6V32.8z"/>
+		<path class="bp-pub-logo" d="M151.7,3.5h8.6l8.1,25.6h0.1V3.5h7.1v48.4h-6.9l-9.5-29.3h-0.1v29.3h-7.5V3.5z"/>
+		<path class="bp-pub-logo" d="M193.9,3.5h11.8l3.9,24.8h0.1l4.1-24.8h11.5v48.4h-7.9V16.4h-0.1l-6,35.5h-4.9l-5.9-35.5h-0.1v35.5h-6.5V3.5z"/>
+		<path class="bp-pub-logo" d="M242.4,2.6c7.8,0,12.9,6.1,12.9,25.2c0,19.1-5.1,25.2-12.9,25.2s-12.9-6.1-12.9-25.2C229.4,8.6,234.5,2.6,242.4,2.6z
+			 M239.1,32.8c0,10.5,1.2,12.6,3.3,12.6c2,0,3.3-2.1,3.3-12.6V22.6c0-10.5-1.2-12.6-3.3-12.6c-2,0-3.3,2.1-3.3,12.6V32.8z"/>
+		<path class="bp-pub-logo" d="M259.7,3.5h9.9c8.4,0,14,3.5,14,13.7c0,4.1-1.2,9.5-5.2,11.8l5.2,22.8h-8.9l-4.1-20.8h-2.1v20.8h-8.8V3.5z M268.5,24.1
+			h1.8c3.3,0,4.5-3.3,4.5-6.7c0-5.2-1.9-6.7-4.9-6.7h-1.4V24.1z"/>
+		<path class="bp-pub-logo" d="M287,3.5h8.6l8.1,25.6h0.1V3.5h7.1v48.4h-6.9l-9.5-29.3h-0.1v29.3H287V3.5z"/>
+		<path class="bp-pub-logo" d="M316,3.5h8.8v48.4H316V3.5z"/>
+		<path class="bp-pub-logo" d="M329.9,3.5h8.6l8.1,25.6h0.1V3.5h7.1v48.4h-6.9l-9.5-29.3h-0.1v29.3h-7.5V3.5z"/>
+		<path class="bp-pub-logo" d="M374.2,20.8c0-2.2,0.5-10.7-3.3-10.7c-2.2,0-3.8,2-3.8,17.6c0,15.9,1.5,17.7,4.2,17.7c3.3,0,3.6-6.7,3.6-9h-3.3v-7.1h10.7
+			v22.6h-3.7l-1.2-3.2c-1.4,2-3.9,4.1-7,4.1c-9.5,0-12.6-9.2-12.6-25.2c0-18.5,5.6-25.2,12.6-25.2c5.7,0,11.6,2.7,11.6,15.1v3.1
+			H374.2z"/>
+		<path class="bp-pub-logo" d="M406.1,37.9c0,2.7,0,7.5,3.8,7.5c2.9,0,3.9-2.7,3.9-4.7c0-8.6-16-10.6-16-25c0-7.3,3.9-13.2,11.4-13.2
+			c8,0,11,6.1,11.2,14.8h-7.9c0-2.7,0-7.3-3.5-7.3c-2.1,0-3.3,1.8-3.3,4.4c0,8.2,16,11,16,25.1c0,7.4-4.2,13.3-12.2,13.3
+			c-9.5,0-11.4-8.3-11.4-15H406.1z"/>
+		<path class="bp-pub-logo" d="M429.3,11h-7.6V3.5h24.1V11h-7.6v40.9h-8.8V11z"/>
+	</g>
+	<g>
+		<path class="bp-pub-logo" d="M449.8,3.5h12.8l6,48.4H460l-1.3-10.7h-7.1l-1.2,10.7H443L449.8,3.5z M455.4,11h-0.1l-2.8,23.1h5.5L455.4,11z"/>
+		<path class="bp-pub-logo" d="M471.8,3.5h9.9c8.4,0,14,3.5,14,13.7c0,4.1-1.2,9.5-5.2,11.8l5.2,22.8h-8.9l-4.1-20.8h-2.1v20.8h-8.8V3.5z M480.6,24.1
+			h1.8c3.3,0,4.5-3.3,4.5-6.7c0-5.2-1.9-6.7-4.9-6.7h-1.4V24.1z"/>
+	</g>
+</g>
+</svg>
+</a></div>
+		</article>            <article id="text-33" class="header-widget-right show-for-medium"><div id="weatherContainer" class="textwidget float-right" ><a href="https://www.accuweather.com/en/ca/vernon/v1t/weather-forecast/52852" 
+                                        class="aw-widget-legal">
+                                        </a><div id="awcc1517422034995" class="aw-widget-current"  data-locationkey="52852" data-unit="c" data-language="en-us" data-useip="false" data-uid="awcc1517422034995" data-targeturl="/weather/"></div><script type="text/javascript" src="https://oap.accuweather.com/launch.js"></script></div></article>        </div>
+        
+        <!-- Mobile menu -->
+        <nav id="site-navigation" class="main-navigation top-bar" role="navigation">
+            <div class="top-bar-right row">
+                                    
+<nav class="vertical menu" id="mobile-menu" role="navigation">
+    <ul id="menu-mainmenu-1" class="vertical menu accordion menu" data-accordion-menu><li class='nav-search'><a href='/search/'><i class='fa fa-search menu'></i>Search</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-68396"><a href="https://www.vernonmorningstar.com/">Home</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-97209"><a href="https://www.vernonmorningstar.com/submit/">Submit News Tip</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-169"><a href="https://www.vernonmorningstar.com/./news/">News</a>
+<ul class="vertical nested menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-170"><a href="https://www.vernonmorningstar.com/./local-news/">Local News</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-129420"><a href="https://www.vernonmorningstar.com/./municipal-election/">Municipal Election</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-171"><a target="_blank" rel="noopener noreferrer" href="http://bclocalnews.com">BC</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-183079"><a href="https://www.vernonmorningstar.com/./federal-election/">Federal Election 2019</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-172"><a href="https://www.vernonmorningstar.com/./national-news/">Canada &amp; World</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-173"><a href="https://www.vernonmorningstar.com/e-editions/">e-Editions</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-176"><a href="https://www.vernonmorningstar.com/submit/">Submit news tip or photo</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-177"><a href="https://www.vernonmorningstar.com/./sports/">Sports</a>
+<ul class="vertical nested menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-178"><a href="https://www.vernonmorningstar.com/./local-sports/">Local</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-post_tag menu-item-68432"><a href="https://www.vernonmorningstar.com/tag/vernon-vipers/">Vernon Vipers</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-post_tag menu-item-68429"><a href="https://www.vernonmorningstar.com/tag/bchl/">BCHL</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-post_tag menu-item-68431"><a href="https://www.vernonmorningstar.com/tag/north-okanagan-knights/">North Okanagan Knights</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-post_tag menu-item-68430"><a href="https://www.vernonmorningstar.com/tag/kijhl/">KIJHL</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-68433"><a target="_blank" rel="noopener noreferrer" href="http://www.bclocalnews.com/sports/">BC</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-179"><a href="https://www.vernonmorningstar.com/./national-sports/">Canada &amp; World</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-180"><a href="https://www.vernonmorningstar.com/submit/">Submit sports tip or photo</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-181"><a href="https://www.vernonmorningstar.com/./trending-now/">Trending Now</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-195367"><a href="https://www.vernonmorningstar.com/newsletters/">Newsletters</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-190097"><a href="//autos.vernonmorningstar.com">Autos</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-146470"><a href="//classifieds.vernonmorningstar.com/classifieds/all?q=&#038;r=northokanagan">Classifieds</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-117405"><a target="_blank" rel="noopener noreferrer" href="//www.localwork.ca">Jobs</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-182"><a href="https://www.vernonmorningstar.com/./business/">Business</a>
+<ul class="vertical nested menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-183"><a href="https://www.vernonmorningstar.com/./local-business/">Local</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-184"><a target="_blank" rel="noopener noreferrer" href="http://bclocalnews.com/business">BC</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-185"><a href="https://www.vernonmorningstar.com/submit/">Submit business tip or photo</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-186"><a href="https://www.vernonmorningstar.com/./entertainment/">Entertainment</a>
+<ul class="vertical nested menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-187"><a href="https://www.vernonmorningstar.com/./local-entertainment/">Local</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-188"><a target="_blank" rel="noopener noreferrer" href="http://bclocalnews.com/entertainment">BC</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-189"><a href="https://www.vernonmorningstar.com/submit/">Submit entertainment tip or photo</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-168176"><a href="https://www.vernonmorningstar.com/./photo-galleries/">Photo Galleries</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-190"><a href="https://www.vernonmorningstar.com/./life/">Life</a>
+<ul class="vertical nested menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-131953"><a href="https://www.vernonmorningstar.com/./life/">Life</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-179617"><a href="https://www.vernonmorningstar.com/./sip-savour/">Sip &amp; Savour</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-193"><a target="_blank" rel="noopener noreferrer" href="http://winetrails.ca">Wine Trails</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-194"><a href="https://www.vernonmorningstar.com/submit/">Submit life tip or photo</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-195"><a href="https://www.vernonmorningstar.com/./community/">Community</a>
+<ul class="vertical nested menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-196"><a href="https://www.vernonmorningstar.com/./community/">Local</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-124457"><a href="https://www.vernonmorningstar.com/./miss-bc/">Miss BC</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-170403"><a href="https://www.vernonmorningstar.com/./social-matters/">Social Matters</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-68438"><a href="/e-editions/?iid=i20160515073833767&#038;pid=p20120309121148491">Let’s Play! 2016</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-68439"><a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/iLoveBritishColumbia">I Love British Columbia</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-197"><a href="https://www.vernonmorningstar.com/calendar/">Calendar</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-198"><a href="https://www.vernonmorningstar.com/submit/">Submit community tip or photo</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-has-children menu-item-282"><a href="https://www.vernonmorningstar.com/./opinion/">Opinion</a>
+<ul class="vertical nested menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-204"><a href="https://www.vernonmorningstar.com/./opinion/">Local Opinion</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-202"><a href="https://www.vernonmorningstar.com/./editorials-opinion/">Editorials</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-201"><a href="https://www.vernonmorningstar.com/./columns/">Columnists</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-203"><a href="https://www.vernonmorningstar.com/./letters/">Letters</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-205"><a target="_blank" rel="noopener noreferrer" href="http://bclocalnews.com/opinion">BC Opinion</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-95866"><a href="https://www.vernonmorningstar.com/./web-poll/">Web poll</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-206"><a href="https://www.vernonmorningstar.com/submitletters/">Submit letter</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-210"><a href="https://www.vernonmorningstar.com/videos/">Videos</a>
+<ul class="vertical nested menu">
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-211"><a href="https://www.vernonmorningstar.com/videos/">Local</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-212"><a href="https://www.vernonmorningstar.com/submit/">Submit video</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-213"><a target="_blank" rel="noopener noreferrer" href="http://blackpress.tv">Black Press TV</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-214"><a href="https://www.vernonmorningstar.com/weather/">Weather</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-216"><a href="https://www.vernonmorningstar.com/./obituaries/">Obituaries</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-68434"><a href="#">Special Sections</a>
+<ul class="vertical nested menu">
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-68435"><a href="/e-editions/?iid=i20180404085927874&#038;&#038;headline=TWFyY2ggMzAsIDIwMTg=&#038;&#038;doc_id=180404155953-52b7717c92874cd28d206c0a4f69e216&#038;&#038;pid=p20120309121148491">Progress: North Okanagan Business Review and Forecast 2018</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-68436"><a href="/e-editions/?iid=i20160531125950897&#038;&#038;headline=TWF5IDI5LCAyMDE2&#038;&#038;doc_id=160531200419-ef226bc7807c4e5080fa790b3e63c2cb&#038;&#038;pid=p20120309121148491">Businesswomen of the North Okanagan</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-68437"><a href="/e-editions/?iid=i20170618040444332&#038;&#038;headline=MjAxNy0wNi0xOA==&#038;&#038;doc_id=170618110759-a79871e13976460e871d1cb370b2c929&#038;&#038;pid=p20120309121148491">Community Leader Awards</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-217"><a href="https://www.vernonmorningstar.com/./marketplace/">Marketplace</a>
+<ul class="vertical nested menu">
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-275"><a href="https://www.vernonmorningstar.com/advertise/">Place an ad</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-218"><a href="https://www.vernonmorningstar.com/./marketplace/">Impress branded content</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-189394"><a href="/videos/#real-estate-tv-video-belt">Impress TV</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-78310"><a href="https://www.vernonmorningstar.com/real-estate/">Real Estate</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-68397"><a href="https://www.vernonmorningstar.com/contests/">Contests</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-224"><a href="https://www.vernonmorningstar.com/contact-us/">Contact Us</a>
+<ul class="vertical nested menu">
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-225"><a href="https://www.vernonmorningstar.com/contact-us/">Contact Us</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-226"><a href="https://www.vernonmorningstar.com/our-team/">Our Team</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-230"><a target="_blank" rel="noopener noreferrer" href="http://blackpress.ca">Black Press</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-231"><a href="https://www.vernonmorningstar.com/submit/">Submit tip or photo</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-227"><a href="https://www.vernonmorningstar.com/faq/">FAQ</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-228"><a href="https://www.vernonmorningstar.com/privacy-policy/">Privacy Policy</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-229"><a href="https://www.vernonmorningstar.com/terms-of-use/">Terms of use</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-190193"><a href="https://www.vernonmorningstar.com/site-map/">Site Map</a></li>
+</ul></nav>
+                            </div>
+        </nav>
+        
+        
+        <!-- taboola code -->
+            <script type="text/javascript">
+            window._taboola = window._taboola || [];
+            _taboola.push({article:'auto'});
+            !function (e, f, u, i) {
+            if (!document.getElementById(i)){
+                e.async = 1;
+                e.src = u;
+                e.id = i;
+                f.parentNode.insertBefore(e, f);
+            }
+            }(document.createElement('script'),
+            document.getElementsByTagName('script')[0],
+            '//cdn.taboola.com/libtrc/blackpressmedia-network/loader.js',
+            'tb_loader_script');
+            if(window.performance && typeof window.performance.mark == 'function')
+            {window.performance.mark('tbl_ic');}
+        </script>
+        
+
+    </header>
+
+    <section class="container">
+        <!-- Elevator: return to Top -->
+        <a id="return-to-top" href="javascript:" ><i class="fa fa-chevron-up"></i></a>
+        
+        
+
+<div id="single-post" role="main">
+
+    <div class="row module ad">
+        <div class="large-12 columns ad text-center">
+                    <div class='code-block code-block-24' style='margin: 8px 0; clear: both;'>
+<!-- Replace AU0 on article pages -->
+<div id="div-gpt-24" class="gpt-ad horizontal">
+<script type='text/javascript'>
+    googletag.cmd.push(function() { googletag.display('div-gpt-24');gptRefreshSlots.push(24); });
+</script>
+</div></div>
+        </div>
+    </div>
+
+    <!-- Number of attachments: 1 --><!-- Featured Image Layout: medium -->
+
+                <article class="main-content post-196696 post type-post status-publish format-standard has-post-thumbnail hentry category-editorials-opinion category-home category-opinion" id="post-196696">
+
+        
+        <header>
+            <div class="post-attachment" alt="&lt;1024 - &gt;640"><img width="1200" height="800" src="https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19933109_web1_191218-SNM-M-happy-new-year-2020-greeting-card-with-fireworks-vector-26362982.jpg" class="attachment-full size-full" alt="" srcset="https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19933109_web1_191218-SNM-M-happy-new-year-2020-greeting-card-with-fireworks-vector-26362982.jpg 1200w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19933109_web1_191218-SNM-M-happy-new-year-2020-greeting-card-with-fireworks-vector-26362982-300x200.jpg 300w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19933109_web1_191218-SNM-M-happy-new-year-2020-greeting-card-with-fireworks-vector-26362982-768x512.jpg 768w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19933109_web1_191218-SNM-M-happy-new-year-2020-greeting-card-with-fireworks-vector-26362982-1024x683.jpg 1024w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19933109_web1_191218-SNM-M-happy-new-year-2020-greeting-card-with-fireworks-vector-26362982-640x427.jpg 640w" sizes="(max-width: 1200px) 100vw, 1200px" /><p></p></div>
+                                    <h2 class="entry-title">Editorial: Resolving for change</h2>
+            <p class="lead">What’s your New Year’s resolution?
+</p>
+            <ul class="author-meta"><li>Jan. 1, 2020 10:30 a.m.</li><li><a class="byline" href="https://www.vernonmorningstar.com/editorials-opinion/">Editorials</a></li><li><a class="byline" href="https://www.vernonmorningstar.com/opinion/">Opinion</a></li></ul>            <ul class="social story top">
+	<li><span data-tooltip aria-haspopup="true" data-disable-hover="false" tabindex="1" title="Post to Facebook"><a href="//www.facebook.com/sharer.php?u=https%3A%2F%2Fwww.vernonmorningstar.com%2Fopinion%2Feditorial-resolving-for-change%2F" class="social fa fa-facebook-f" target="_blank"></a></span></li>
+	<li><span data-tooltip aria-haspopup="true" data-disable-hover="false" tabindex="1" title="Post to Twitter"><a href="//twitter.com/intent/tweet?text=Editorial%3A+Resolving+for+change&amp;url=https%3A%2F%2Fwww.vernonmorningstar.com%2Fopinion%2Feditorial-resolving-for-change%2F" class="social fa fa-twitter" target="_blank"></a></span></li>
+	<li><span data-tooltip aria-haspopup="true" data-disable-hover="false" tabindex="1" title="Post to Reddit"><a href="//reddit.com/submit?url=https%3A%2F%2Fwww.vernonmorningstar.com%2Fopinion%2Feditorial-resolving-for-change%2F&title=Editorial%3A+Resolving+for+change" class="social fa fa-reddit-alien" target="_blank"></a></span></li>
+	<li><span data-tooltip aria-haspopup="true" data-disable-hover="false" tabindex="1" title="Email story"><a href="mailto:?subject=Editorial%3A%20Resolving%20for%20change&amp;body=https%3A%2F%2Fwww.vernonmorningstar.com%2Fopinion%2Feditorial-resolving-for-change%2F" class="social fa fa-envelope-o"></a></span></li>
+
+	<li><span data-tooltip aria-haspopup="true" data-disable-hover="false" tabindex="1" title="Print story"><a href="javascript:window.print();" class="social fa fa-print"></a></span></li>
+	<li><span data-tooltip aria-haspopup="true" data-disable-hover="false" tabindex="1" title="Jump to comments"><a href="#facebook-comments" class="social fa fa-comment-o"></a></span></li>
+
+
+
+</ul>
+        </header>
+                <div class="entry-content">
+
+        <p>Broken your New Year&rsquo;s resolution yet? </p>
+<p>Yes, we&rsquo;re only a few hours into the new decade, but let&rsquo;s face it, many people have already failed to meet the goals they set for themselves.</p>
+<p>If you&rsquo;re one of them, don&rsquo;t worry, you&rsquo;ll have lots of company.</p>
+<p>One reason people fail to achieve those lofty New Year&rsquo;s resolutions is the &ldquo;lofty&rdquo; part; they&rsquo;ve set that bar where it&rsquo;s just too far out of reach.</p>
+<p>Year after year, the top 10 list of resolutions looks much the same: Exercise more, lose weight is always up there, as are the money-related resolutions.</p>
+<p>It&rsquo;s in a good cause, for sure. Improving yourself is always important.</p>
+<p>But most people don&rsquo;t manage to make those drastic changes, especially at a stressful time of year, while suffering the after-effects on holiday indulgence, whether that be spirits, food or sweets.</p>
+<p>That&rsquo;s no way to set yourself up for success.</p>
+<p>Still, reflecting on making positive changes isn&rsquo;t a bad way to finish up the year. Even if you&rsquo;ve given up on making New Year&rsquo;s resolutions, taking the time to reflect on where you&rsquo;ve been and where you are going is always a good way to learn and improve.</p>
+<p>We can be awfully rough on ourselves this time of year with the goals we set, but why not set some more fun goals instead? You could, for example, resolve to spend more time with family or friends.</p>
+<p>Learning a new skill is another good one. It might take a little work, but if you pick something you&rsquo;re always wanted to do, the satisfaction will outweigh the effort.</p>
+<p>But there&rsquo;s another category that doesn&rsquo;t revolve around self-improvement, and that&rsquo;s making the world better for others. Charity doesn&rsquo;t usually make it too high on the top 10 resolutions list, but it is almost always there, which is a hopeful sign for humanity.</p>
+<p>For instance, think about what would happen if we all resolved to increase our donations to the food bank, or your favourite local charity, by a few dollars a month. How many more people could be helped?</p>
+<p>Making resolutions is fun, no matter whether your goal is improving your body or mind.</p>
+<p>But there is one resolution we&rsquo;d like to suggest for everyone. Be a little kinder to yourself and everyone around you. It&rsquo;s the first step on the road to making a better world.</p>
+<p><ins><strong>READ MORE: <a href="https://www.vernonmorningstar.com/news/silverstar-to-ring-in-new-year-with-a-pow/" target="_blank" rel="noopener noreferrer">SilverStar to ring in new year with a pow</a></strong></ins></p>
+<p><ins><strong>READ MORE: <a href="https://www.vernonmorningstar.com/trending-now/b-c-s-top-local-news-stories-of-2019/" target="_blank" rel="noopener noreferrer">B.C.&rsquo;s top local news stories of 2019</a></strong></ins></p>
+<hr width="75%">
+<p><a href="https://twitter.com/VernonNews" target="_blank" rel="noopener noreferrer">@VernonNews</a><a href="mailto:letters@vernonmorningstar.com" target="_blank" rel="noopener noreferrer"><br />letters@vernonmorningstar.com</a><br /><strong>Like us on <a href="http://www.facebook.com/vernonmorningstar" target="_blank" rel="noopener noreferrer">Facebook</a> and follow us on <a href="http://www.twitter.com/VernonNews" target="_blank" rel="noopener noreferrer">Twitter</a>. </strong></p>
+</p>
+<div class='row newsletters-row' >
+<div class='columns small-4 medium-3 large-2 newsletters-image-column' >
+                                        <img src='https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/assets/images/newsletters/bp-newsletters-icon.png' >
+                                    </div>
+<div class='columns small-8 medium-9 large-10 newsletters-text-column' >
+                                        Get local stories you won't find anywhere else right to your inbox.<br />
+                                        <a href='/newsletters/'>Sign up here</a>
+                                    </div>
+</p></div>
+                        </div>
+        
+        <!-- Start: Spot.IM setup -->
+                <!-- End: Spot.IM setup -->
+
+        <!-- BEGIN: Comments -->
+                                <div class="fb-comments" id="facebook-comments" data-href="https://www.vernonmorningstar.com/opinion/editorial-resolving-for-change/" data-width="100%" data-numposts="10" data-order-by="reverse_time" data-colorscheme="light"></div>
+                <!-- END: Comments -->
+
+        <footer>
+                    </footer>
+                
+        <!-- Comments disabled for now -->
+        <!-- <a class="hollow expanded button comments day-" href="">View Comments <i class="fa fa-comment-o"></i></a> -->
+        
+        
+        <div class="row" style="padding-bottom: 1.5rem;"><div class="columns small-12 medium-12 large-6"><div class='code-block code-block-14' style='margin: 8px auto; text-align: center; display: block; clear: both;'>
+<div id="div-gpt-14" class="gpt-ad">
+<script type='text/javascript'>
+    googletag.cmd.push(function() { googletag.display('div-gpt-14');gptRefreshSlots.push(14); });
+</script>
+</div></div>
+</div><div class="columns small-12 medium-12 large-6"><div class='code-block code-block-19' style='margin: 8px auto; text-align: center; display: block; clear: both;'>
+<div id="div-gpt-19" class="gpt-ad">
+<script type='text/javascript'>
+    googletag.cmd.push(function() { googletag.display('div-gpt-19');gptRefreshSlots.push(19); });
+</script>
+</div></div>
+</div></div>        
+    </article>
+
+
+<aside class="sidebar text-right">
+		<article id="ai_widget-10" class="widget ai_widget"><div class='code-block code-block-10' style='margin: 8px auto; text-align: center; display: block; clear: both;'>
+<div id="div-gpt-10" class="gpt-ad">
+<script type='text/javascript'>
+    googletag.cmd.push(function() { googletag.display('div-gpt-10');gptRefreshSlots.push(10); });
+</script>
+</div></div>
+</article><article id="ai_widget-8" class="widget ai_widget"><div class='code-block code-block-12' style='margin: 8px auto; text-align: center; display: block; clear: both;'>
+<div id="div-gpt-12" class="gpt-ad">
+<script type='text/javascript'>
+    googletag.cmd.push(function() { googletag.display('div-gpt-12');gptRefreshSlots.push(12); });
+</script>
+</div></div>
+</article>	
+        <!-- taboola code -->
+            <div id="taboola-right-rail"></div>
+            <script type="text/javascript">
+            window._taboola = window._taboola || [];
+            _taboola.push({
+                mode: 'thumbnails-c',
+                container: 'taboola-right-rail',
+                placement: 'Right Rail',
+                target_type: 'mix'
+            });
+            </script>
+            
+        
+
+	</aside>
+</div>
+
+<div class="row module-adjacent-posts" data-equalizer data-equalize-on="medium">
+	    <div class="small-6 adjacent-prev columns" data-equalizer-watch>
+                    <a class="button" onClick="__gaTracker('send','event','Recirculating Content','Click','Previous Adjacent Story');" href="https://www.vernonmorningstar.com/opinion/hergott-dont-believe-in-blind-luck-while-driving/">
+                <h5><i class="fa fa-chevron-left" aria-hidden="true"></i>Previous <span class="show-for-small-only">story </span></h5>
+                <span class="show-for-medium">
+                    <h6>HERGOTT: Don&#8217;t believe in blind luck while driving</h6>
+                </span>
+            </a>
+            </div>
+    <div class="small-6 adjacent-next columns" data-equalizer-watch>
+            </div>
+</div><div class="row module-recirc">
+	<div class="small-12 columns">
+		<h3 class="text-center"><a onClick="__gaTracker('send','event','Recirculating Content','Click','Opinion Header');" href="https://www.vernonmorningstar.com/./opinion/">Just Posted</a></h3>
+                <div class="row module-recirc">
+            <div class="small-12 large-8 module-recirc columns">
+                <!-- Transient Content single-18c1b3220292fa720e9a3a8a35ffea21 --><!-- story-recirc-block --><div class="small-up-2 medium-up-2 large-up-3"><!-- Start - Single Card --><div class="column"><div class='card '><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.vernonmorningstar.com/news/watch-snowstorm-no-problem-for-lumby-man-and-dog/"><img src="https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992618_web1_dog-sled-vms-1.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992618_web1_dog-sled-vms-1.jpg 771w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992618_web1_dog-sled-vms-1-300x200.jpg 300w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992618_web1_dog-sled-vms-1-768x512.jpg 768w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992618_web1_dog-sled-vms-1-640x427.jpg 640w" sizes="(max-width: 1199px) 98vw, 771px" /></a> <div class="card-section"><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.vernonmorningstar.com/news/watch-snowstorm-no-problem-for-lumby-man-and-dog/"><h5 class="active">WATCH: Snowstorm no problem for Lumby man and dog</h5></a><p class="lead show-for-medium">Six-year-old border collie tugs owner around town in snow sled
+</p></div></div></div><!-- End - Single Card --><!-- Start - Single Card --><div class="column"><div class='card '><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.vernonmorningstar.com/news/lumby-in-the-dark-after-snowstorm/"><img src="https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992644_web1_lumby-blackout.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992644_web1_lumby-blackout.jpg 1573w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992644_web1_lumby-blackout-300x200.jpg 300w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992644_web1_lumby-blackout-768x512.jpg 768w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992644_web1_lumby-blackout-1024x682.jpg 1024w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992644_web1_lumby-blackout-640x426.jpg 640w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992644_web1_lumby-blackout-1200x799.jpg 1200w" sizes="(max-width: 1199px) 98vw, 1200px" /></a> <div class="card-section"><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.vernonmorningstar.com/news/lumby-in-the-dark-after-snowstorm/"><h5 class="active">Lumby in the dark after snowstorm</h5></a><p class="lead show-for-medium">Snow plows working with BC Hydro to gain access to 23K affected customers in region
+</p></div></div></div><!-- End - Single Card --><!-- Start - Single Card --><div class="column"><div class='card '><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.vernonmorningstar.com/news/year-in-review-july-2019/"><img src="https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19877501_web1_DSC_0459.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19877501_web1_DSC_0459.jpg 1856w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19877501_web1_DSC_0459-300x200.jpg 300w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19877501_web1_DSC_0459-768x512.jpg 768w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19877501_web1_DSC_0459-1024x682.jpg 1024w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19877501_web1_DSC_0459-640x427.jpg 640w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19877501_web1_DSC_0459-1200x800.jpg 1200w" sizes="(max-width: 1199px) 98vw, 1200px" /></a> <div class="card-section"><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.vernonmorningstar.com/news/year-in-review-july-2019/"><h5 class="active">Year in Review: July 2019</h5></a><p class="lead show-for-medium">Human rights, drug busts and physical activity were highlighted in July 2019
+</p></div></div></div><!-- End - Single Card --><!-- Start - Single Card --><div class="column"><div class='card '><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.vernonmorningstar.com/news/year-in-review-june-2019/"><img src="https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19793590_web1_190605-VMS-Mabel-Lake-Vandal1.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19793590_web1_190605-VMS-Mabel-Lake-Vandal1.jpg 960w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19793590_web1_190605-VMS-Mabel-Lake-Vandal1-300x189.jpg 300w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19793590_web1_190605-VMS-Mabel-Lake-Vandal1-768x483.jpg 768w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19793590_web1_190605-VMS-Mabel-Lake-Vandal1-640x403.jpg 640w" sizes="(max-width: 1199px) 98vw, 960px" /></a> <div class="card-section"><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.vernonmorningstar.com/news/year-in-review-june-2019/"><h5 class="active">Year in Review: June 2019</h5></a><p class="lead show-for-medium">Top honours, llama kisses and bylaw officers were spotlighted in June 2019
+</p></div></div></div><!-- End - Single Card --><!-- Start - Single Card --><div class="column"><div class='card '><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.vernonmorningstar.com/news/year-in-review-august-2019/"><img src="https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19883107_web1_190731-VMS-TheRide.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19883107_web1_190731-VMS-TheRide.jpg 1200w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19883107_web1_190731-VMS-TheRide-300x200.jpg 300w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19883107_web1_190731-VMS-TheRide-768x512.jpg 768w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19883107_web1_190731-VMS-TheRide-1024x683.jpg 1024w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19883107_web1_190731-VMS-TheRide-640x427.jpg 640w" sizes="(max-width: 1200px) 100vw, 1200px" /></a> <div class="card-section"><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.vernonmorningstar.com/news/year-in-review-august-2019/"><h5 class="active">Year in Review: August 2019</h5></a><p class="lead show-for-medium">Robberies, law suits and heroism were spotlighted in August 2019
+</p></div></div></div><!-- End - Single Card --><!-- Start - Single Card --><div class="column"><div class='card '><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.vernonmorningstar.com/news/video-cheers-tears-and-prayers-as-world-rings-in-2020/"><img src="https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992288_web1_ISL101-1231_2019_115509.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992288_web1_ISL101-1231_2019_115509.jpg 450w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992288_web1_ISL101-1231_2019_115509-300x200.jpg 300w" sizes="(max-width: 1199px) 98vw, 450px" /></a> <div class="card-section"><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.vernonmorningstar.com/news/video-cheers-tears-and-prayers-as-world-rings-in-2020/"><h5 class="active">VIDEO: Cheers, tears and prayers as world rings in 2020</h5></a><p class="lead show-for-medium">Top events from the last decade were the rise of social media, the Arab Spring, the #MeToo movement
+</p></div></div></div><!-- End - Single Card --><!-- Start - Single Card --><div class="column"><div class='card '><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.vernonmorningstar.com/trending-now/b-c-s-first-baby-of-2020-arrives-in-new-westminster/"><img src="https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992018_web1_200101-BPD-M-2020BCBaby.jpeg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992018_web1_200101-BPD-M-2020BCBaby.jpeg 2048w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992018_web1_200101-BPD-M-2020BCBaby-300x200.jpeg 300w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992018_web1_200101-BPD-M-2020BCBaby-768x512.jpeg 768w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992018_web1_200101-BPD-M-2020BCBaby-1024x683.jpeg 1024w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992018_web1_200101-BPD-M-2020BCBaby-640x427.jpeg 640w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992018_web1_200101-BPD-M-2020BCBaby-1200x800.jpeg 1200w" sizes="(max-width: 1199px) 98vw, 1200px" /></a> <div class="card-section"><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.vernonmorningstar.com/trending-now/b-c-s-first-baby-of-2020-arrives-in-new-westminster/"><h5 class="active">B.C.&#8217;s first baby of 2020 arrives in New Westminster</h5></a><p class="lead show-for-medium">Girl was born at 12:01 a.m. at Royal Columbian Hospital
+</p></div></div></div><!-- End - Single Card --><!-- Start - Single Card --><div class="column"><div class='card '><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.vernonmorningstar.com/news/order-granted-vs-opponents-of-coastal-gaslink-pipeline-in-northern-b-c/"><img src="https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992494_web1_20393945.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992494_web1_20393945.jpg 2048w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992494_web1_20393945-300x200.jpg 300w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992494_web1_20393945-768x512.jpg 768w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992494_web1_20393945-1024x683.jpg 1024w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992494_web1_20393945-640x427.jpg 640w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992494_web1_20393945-1200x800.jpg 1200w" sizes="(max-width: 1199px) 98vw, 1200px" /></a> <div class="card-section"><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.vernonmorningstar.com/news/order-granted-vs-opponents-of-coastal-gaslink-pipeline-in-northern-b-c/"><h5 class="active">Order granted vs. opponents of Coastal GasLink pipeline in northern B.C.</h5></a><p class="lead show-for-medium">B.C. Supreme Court grants interlocutory order following protests by Wet’suwet’en First Nation
+</p></div></div></div><!-- End - Single Card --><!-- Start - Single Card --><div class="column"><div class='card '><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.vernonmorningstar.com/news/record-70-million-lotto-jackpot-up-for-grabs-in-b-c/"><img src="https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992275_web1_180209-IFD-wage.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992275_web1_180209-IFD-wage.jpg 1200w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992275_web1_180209-IFD-wage-300x200.jpg 300w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992275_web1_180209-IFD-wage-768x512.jpg 768w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992275_web1_180209-IFD-wage-1024x683.jpg 1024w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992275_web1_180209-IFD-wage-640x427.jpg 640w" sizes="(max-width: 1200px) 100vw, 1200px" /></a> <div class="card-section"><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.vernonmorningstar.com/news/record-70-million-lotto-jackpot-up-for-grabs-in-b-c/"><h5 class="active">Record $70-million lotto jackpot up for grabs in B.C.</h5></a><p class="lead show-for-medium">First Lotto Max draw of the year could make someone particularly rich
+</p></div></div></div><!-- End - Single Card --><!-- Start - Single Card --><div class="column"><div class='card '><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.vernonmorningstar.com/news/trans-canada-highway-closed-east-and-west-of-revelstoke/"><img src="https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992253_web1_200101-RTR-revelstoke-snow_1.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992253_web1_200101-RTR-revelstoke-snow_1.jpg 1200w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992253_web1_200101-RTR-revelstoke-snow_1-300x200.jpg 300w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992253_web1_200101-RTR-revelstoke-snow_1-768x512.jpg 768w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992253_web1_200101-RTR-revelstoke-snow_1-1024x683.jpg 1024w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992253_web1_200101-RTR-revelstoke-snow_1-640x427.jpg 640w" sizes="(max-width: 1200px) 100vw, 1200px" /></a> <div class="card-section"><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.vernonmorningstar.com/news/trans-canada-highway-closed-east-and-west-of-revelstoke/"><h5 class="active">Trans Canada Highway closed east and west of Revelstoke</h5></a><p class="lead show-for-medium">The highway will open around noon to the west and 1 p.m. to the east-DriveBC
+</p></div></div></div><!-- End - Single Card --><!-- Start - Single Card --><div class="column"><div class='card '><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.vernonmorningstar.com/news/lower-taxes-new-rrsp-rules-among-2020-changes-in-canada/"><img src="https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19988937_web1_170310-BPD-M-loonies-money.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19988937_web1_170310-BPD-M-loonies-money.jpg 900w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19988937_web1_170310-BPD-M-loonies-money-300x201.jpg 300w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19988937_web1_170310-BPD-M-loonies-money-768x514.jpg 768w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19988937_web1_170310-BPD-M-loonies-money-640x428.jpg 640w" sizes="(max-width: 1199px) 98vw, 900px" /></a> <div class="card-section"><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.vernonmorningstar.com/news/lower-taxes-new-rrsp-rules-among-2020-changes-in-canada/"><h5 class="active">Lower taxes, new RRSP rules among 2020 changes in Canada</h5></a><p class="lead show-for-medium">$75 credit for digital news subscriptions and no more federal carbon tax in Alberta, too
+</p></div></div></div><!-- End - Single Card --><!-- Start - Single Card --><div class="column"><div class='card '><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.vernonmorningstar.com/news/new-year-no-power-thousands-in-b-c-interior-in-the-dark-after-snowstorm/"><img src="https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992090_web1_poweroutage1.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992090_web1_poweroutage1.jpg 1344w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992090_web1_poweroutage1-300x200.jpg 300w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992090_web1_poweroutage1-768x512.jpg 768w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992090_web1_poweroutage1-1024x683.jpg 1024w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992090_web1_poweroutage1-640x427.jpg 640w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992090_web1_poweroutage1-1200x800.jpg 1200w" sizes="(max-width: 1199px) 98vw, 1200px" /></a> <div class="card-section"><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.vernonmorningstar.com/news/new-year-no-power-thousands-in-b-c-interior-in-the-dark-after-snowstorm/"><h5 class="active">New year, no power: Thousands in B.C. Interior in the dark after snowstorm</h5></a><p class="lead show-for-medium">More snow is expected in the southern and central interiors
+</p></div></div></div><!-- End - Single Card --><!-- Start - Single Card --><div class="column"><div class='card '><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.vernonmorningstar.com/trending-now/morning-start-how-to-make-and-keep-your-new-years-resolutions/"><img src="https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992163_web1_morning-start-logo.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992163_web1_morning-start-logo.jpg 1200w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992163_web1_morning-start-logo-300x200.jpg 300w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992163_web1_morning-start-logo-768x512.jpg 768w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992163_web1_morning-start-logo-1024x683.jpg 1024w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992163_web1_morning-start-logo-640x427.jpg 640w" sizes="(max-width: 1200px) 100vw, 1200px" /></a> <div class="card-section"><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.vernonmorningstar.com/trending-now/morning-start-how-to-make-and-keep-your-new-years-resolutions/"><h5 class="active">Morning start: How to make and keep your New Year&#8217;s resolutions</h5></a><p class="lead show-for-medium">Your morning start: Fun fact, weather, and video of the day
+</p></div></div></div><!-- End - Single Card --><!-- Start - Single Card --><div class="column"><div class='card '><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.vernonmorningstar.com/entertainment/long-running-hit-stage-show-we-will-rock-you-coming-to-south-okanagan/"><img src="https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992155_web1_200101-PWN-T-We-will-rock--6.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992155_web1_200101-PWN-T-We-will-rock--6.jpg 660w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992155_web1_200101-PWN-T-We-will-rock--6-300x200.jpg 300w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19992155_web1_200101-PWN-T-We-will-rock--6-640x427.jpg 640w" sizes="(max-width: 1199px) 98vw, 660px" /></a> <div class="card-section"><a onClick="__gaTracker('send','event','Recirculating Content','Click',' Post Block');" class="image" href="https://www.vernonmorningstar.com/entertainment/long-running-hit-stage-show-we-will-rock-you-coming-to-south-okanagan/"><h5 class="active">Long-running hit stage show We Will Rock You coming to South Okanagan</h5></a><p class="lead show-for-medium">A mild-mannered high school English teacher by day, Kevin Doe&rsquo;s nighttime alter-ego&hellip; <a class="inline-read-more" href="https://www.vernonmorningstar.com/entertainment/long-running-hit-stage-show-we-will-rock-you-coming-to-south-okanagan/">Continue reading</i></a></p></div></div></div><!-- End - Single Card --></div>            </div>
+
+            <div class="small-12 large-4 module-most-read columns">
+                <div class="row">
+    <div class="small-12 module-trending story columns">
+        <h3 class="text-center">Most Read</h3>
+        <ul class="trending-maxi">
+                            <li>
+                <div id="post-196626" class="row story-list-item collapse">
+	<div class="small-12 medium-8 photo content columns">
+					<h4 class="count"></h4><h5><a onClick="__gaTracker('send','event','Recirculating Content','Click','Opinion Most Read');" href="https://www.vernonmorningstar.com/news/lower-taxes-new-rrsp-rules-among-2020-changes-in-canada/">Lower taxes, new RRSP rules among 2020 changes in Canada</a></h5>
+				<p class="lead web show-for-medium hide-for-large">$75 credit for digital news subscriptions and no more federal carbon tax in Alberta, too
+</p>	</div>
+			<div class="show-for-medium medium-4 columns">
+							<a onClick="__gaTracker('send','event','Recirculating Content','Click','Opinion Most Read');" href="https://www.vernonmorningstar.com/news/lower-taxes-new-rrsp-rules-among-2020-changes-in-canada/"><img src="https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19988937_web1_170310-BPD-M-loonies-money.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19988937_web1_170310-BPD-M-loonies-money.jpg 900w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19988937_web1_170310-BPD-M-loonies-money-300x201.jpg 300w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19988937_web1_170310-BPD-M-loonies-money-768x514.jpg 768w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19988937_web1_170310-BPD-M-loonies-money-640x428.jpg 640w" sizes="(max-width: 1199px) 98vw, 900px" /></a>
+					</div>
+	</div>
+            </li>
+                            <li>
+                <div id="post-196650" class="row story-list-item collapse">
+	<div class="small-12 medium-8 photo content columns">
+					<h4 class="count"></h4><h5><a onClick="__gaTracker('send','event','Recirculating Content','Click','Opinion Most Read');" href="https://www.vernonmorningstar.com/news/police-incident-closes-bennett-bridge-in-kelowna/">Police incident closes Bennett bridge in Kelowna temporarily</a></h5>
+				<p class="lead web show-for-medium hide-for-large">Motorists warned they may expect delays due to congestion
+</p>	</div>
+			<div class="show-for-medium medium-4 columns">
+							<a onClick="__gaTracker('send','event','Recirculating Content','Click','Opinion Most Read');" href="https://www.vernonmorningstar.com/news/police-incident-closes-bennett-bridge-in-kelowna/"><img src="https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19991694_web1_bennett-bridge-nye-jam.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19991694_web1_bennett-bridge-nye-jam.jpg 579w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19991694_web1_bennett-bridge-nye-jam-300x200.jpg 300w" sizes="(max-width: 1199px) 98vw, 579px" /></a>
+					</div>
+	</div>
+            </li>
+                            <li>
+                <div id="post-196623" class="row story-list-item collapse">
+	<div class="small-12 medium-8 photo content columns">
+					<h4 class="count"></h4><h5><a onClick="__gaTracker('send','event','Recirculating Content','Click','Opinion Most Read');" href="https://www.vernonmorningstar.com/news/snowstorm-drives-up-need-for-warm-donations-for-vernons-homeless/">Snowstorm drives up need for warm donations for Vernon&#8217;s homeless</a></h5>
+				<p class="lead web show-for-medium hide-for-large">Upper Room Mission calls for hand warmers, warm clothes abd blankets
+</p>	</div>
+			<div class="show-for-medium medium-4 columns">
+							<a onClick="__gaTracker('send','event','Recirculating Content','Click','Opinion Most Read');" href="https://www.vernonmorningstar.com/news/snowstorm-drives-up-need-for-warm-donations-for-vernons-homeless/"><img src="https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19987491_web1_200103-VMS-homelesssWEB.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19987491_web1_200103-VMS-homelesssWEB.jpg 875w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19987491_web1_200103-VMS-homelesssWEB-300x200.jpg 300w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19987491_web1_200103-VMS-homelesssWEB-768x511.jpg 768w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19987491_web1_200103-VMS-homelesssWEB-640x426.jpg 640w" sizes="(max-width: 1199px) 98vw, 875px" /></a>
+					</div>
+	</div>
+            </li>
+                            <li>
+                <div id="post-196659" class="row story-list-item collapse">
+	<div class="small-12 medium-8 photo content columns">
+					<h4 class="count"></h4><h5><a onClick="__gaTracker('send','event','Recirculating Content','Click','Opinion Most Read');" href="https://www.vernonmorningstar.com/community/rolling-memorial-video-a-touching-tribute-to-north-okanagan-man/">Rolling memorial video a touching tribute to North Okanagan man</a></h5>
+				<p class="lead web show-for-medium hide-for-large">Friends and family remembered Jesse Haller in a big way
+</p>	</div>
+			<div class="show-for-medium medium-4 columns">
+							<a onClick="__gaTracker('send','event','Recirculating Content','Click','Opinion Most Read');" href="https://www.vernonmorningstar.com/community/rolling-memorial-video-a-touching-tribute-to-north-okanagan-man/"><img src="https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19983108_web1_200103-VMS-haller1.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19983108_web1_200103-VMS-haller1.jpg 1714w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19983108_web1_200103-VMS-haller1-300x200.jpg 300w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19983108_web1_200103-VMS-haller1-768x512.jpg 768w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19983108_web1_200103-VMS-haller1-1024x683.jpg 1024w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19983108_web1_200103-VMS-haller1-640x427.jpg 640w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19983108_web1_200103-VMS-haller1-1200x800.jpg 1200w" sizes="(max-width: 1199px) 98vw, 1200px" /></a>
+					</div>
+	</div>
+            </li>
+                            <li>
+                <div id="post-196621" class="row story-list-item collapse">
+	<div class="small-12 medium-8 photo content columns">
+					<h4 class="count"></h4><h5><a onClick="__gaTracker('send','event','Recirculating Content','Click','Opinion Most Read');" href="https://www.vernonmorningstar.com/news/designated-drivers-who-charge-for-rides-in-b-c-may-be-breaking-the-law/">Designated drivers who charge for rides in B.C. may be breaking the law</a></h5>
+				<p class="lead web show-for-medium hide-for-large">A specific licence, proper insurance among the requirements for ‘side-hustle’ rides
+</p>	</div>
+			<div class="show-for-medium medium-4 columns">
+							<a onClick="__gaTracker('send','event','Recirculating Content','Click','Opinion Most Read');" href="https://www.vernonmorningstar.com/news/designated-drivers-who-charge-for-rides-in-b-c-may-be-breaking-the-law/"><img src="https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19988887_web1_Uber.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19988887_web1_Uber.jpg 1200w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19988887_web1_Uber-300x200.jpg 300w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19988887_web1_Uber-768x512.jpg 768w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19988887_web1_Uber-1024x683.jpg 1024w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19988887_web1_Uber-640x427.jpg 640w" sizes="(max-width: 1200px) 100vw, 1200px" /></a>
+					</div>
+	</div>
+            </li>
+                            <li>
+                <div id="post-196641" class="row story-list-item collapse">
+	<div class="small-12 medium-8 photo content columns">
+					<h4 class="count"></h4><h5><a onClick="__gaTracker('send','event','Recirculating Content','Click','Opinion Most Read');" href="https://www.vernonmorningstar.com/news/gallery-looking-back-at-vernon-in-november-2019/">GALLERY: Looking back at Vernon in November 2019</a></h5>
+				<p class="lead web show-for-medium hide-for-large">Here’s a few of Vernon’s biggest headlines from November
+</p>	</div>
+			<div class="show-for-medium medium-4 columns">
+							<a onClick="__gaTracker('send','event','Recirculating Content','Click','Opinion Most Read');" href="https://www.vernonmorningstar.com/news/gallery-looking-back-at-vernon-in-november-2019/"><img src="https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19877397_web1_accident-1.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19877397_web1_accident-1.jpg 2000w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19877397_web1_accident-1-300x200.jpg 300w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19877397_web1_accident-1-768x512.jpg 768w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19877397_web1_accident-1-1024x682.jpg 1024w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19877397_web1_accident-1-640x427.jpg 640w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19877397_web1_accident-1-1200x800.jpg 1200w" sizes="(max-width: 1199px) 98vw, 1200px" /></a>
+					</div>
+	</div>
+            </li>
+                            <li>
+                <div id="post-196636" class="row story-list-item collapse">
+	<div class="small-12 medium-8 photo content columns">
+					<h4 class="count"></h4><h5><a onClick="__gaTracker('send','event','Recirculating Content','Click','Opinion Most Read');" href="https://www.vernonmorningstar.com/news/penticton-rcmp-press-charges-following-alleged-car-jacking/">Penticton RCMP press charges following alleged car-jacking</a></h5>
+				<p class="lead web show-for-medium hide-for-large">Jesse William Shawcross facing numerous charges after allegedly stealing five vehicles, fleeing
+</p>	</div>
+			<div class="show-for-medium medium-4 columns">
+							<a onClick="__gaTracker('send','event','Recirculating Content','Click','Opinion Most Read');" href="https://www.vernonmorningstar.com/news/penticton-rcmp-press-charges-following-alleged-car-jacking/"><img src="https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19991063_web1_RCMP-car.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19991063_web1_RCMP-car.jpg 1200w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19991063_web1_RCMP-car-300x200.jpg 300w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19991063_web1_RCMP-car-768x512.jpg 768w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19991063_web1_RCMP-car-1024x683.jpg 1024w, https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/19991063_web1_RCMP-car-640x427.jpg 640w" sizes="(max-width: 1200px) 100vw, 1200px" /></a>
+					</div>
+	</div>
+            </li>
+                </ul>
+    </div>
+</div>            </div>
+        </div>
+    </div>
+</div>
+
+<!-- [post-block post_type='post' taxonomy='category' tax_term='home' taxonomy_posts_per_page='5' taxonomy_2='category' tax_2_term='home2' taxonomy_2_posts_per_page='8' tax_operator='AND' post_template='story-recirc' current_story_id='$currentID' reverse_chron='$reverse_chron'] -->
+<!--//*** Taboola article code ***//-->
+<div class="row">
+	<div class="small-12 columns">
+		<div class="row">
+            <div class="small-12 large-8 columns">
+                
+        <!-- taboola code -->
+            <div id="taboola-below-article-thumbnails"></div>
+            <script type="text/javascript">
+            window._taboola = window._taboola || [];
+            _taboola.push({
+                mode: 'thumbnails-a',
+                container: 'taboola-below-article-thumbnails',
+                placement: 'Below Article Thumbnails',
+                target_type: 'mix'
+            });
+            </script>
+        
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+        </section>
+        <div id="footer-container">
+            <footer id="footer">
+                
+                
+<div id="bp-logo" class="row">
+
+    <div class="small-12 columns">
+ 
+    <!-- *** BEGIN LOGO *** -->
+        <div class="textwidget">
+            <a class="pub-logo-small day-4" href="https://www.vernonmorningstar.com/"><?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 20.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 512 54" style="enable-background:new 0 0 512 54;" xml:space="preserve">
+<g>
+	<g>
+		<path class="bp-pub-logo" d="M14.8,3.5h8.6l4.1,34h0.1l4.6-34h7.1l-7.3,48.4H22L14.8,3.5z"/>
+		<path class="bp-pub-logo" d="M42.5,3.5h20V11H51.4v12.4h8.2v7.9h-8.2v13.2H63v7.5H42.5V3.5z"/>
+		<path class="bp-pub-logo" d="M66.5,3.5h9.9c8.4,0,14,3.5,14,13.7c0,4.1-1.2,9.5-5.2,11.8l5.2,22.8h-8.9l-4.1-20.8h-2.1v20.8h-8.8V3.5z M75.3,24.1h1.8
+			c3.3,0,4.5-3.3,4.5-6.7c0-5.2-1.9-6.7-4.9-6.7h-1.4V24.1z"/>
+		<path class="bp-pub-logo" d="M93.8,3.5h8.6l8.1,25.6h0.1V3.5h7.1v48.4h-6.9l-9.5-29.3h-0.1v29.3h-7.5V3.5z"/>
+		<path class="bp-pub-logo" d="M134.7,2.6c7.8,0,12.9,6.1,12.9,25.2c0,19.1-5.1,25.2-12.9,25.2s-12.9-6.1-12.9-25.2C121.8,8.6,126.9,2.6,134.7,2.6z
+			 M131.5,32.8c0,10.5,1.2,12.6,3.3,12.6c2,0,3.3-2.1,3.3-12.6V22.6c0-10.5-1.2-12.6-3.3-12.6c-2,0-3.3,2.1-3.3,12.6V32.8z"/>
+		<path class="bp-pub-logo" d="M151.7,3.5h8.6l8.1,25.6h0.1V3.5h7.1v48.4h-6.9l-9.5-29.3h-0.1v29.3h-7.5V3.5z"/>
+		<path class="bp-pub-logo" d="M193.9,3.5h11.8l3.9,24.8h0.1l4.1-24.8h11.5v48.4h-7.9V16.4h-0.1l-6,35.5h-4.9l-5.9-35.5h-0.1v35.5h-6.5V3.5z"/>
+		<path class="bp-pub-logo" d="M242.4,2.6c7.8,0,12.9,6.1,12.9,25.2c0,19.1-5.1,25.2-12.9,25.2s-12.9-6.1-12.9-25.2C229.4,8.6,234.5,2.6,242.4,2.6z
+			 M239.1,32.8c0,10.5,1.2,12.6,3.3,12.6c2,0,3.3-2.1,3.3-12.6V22.6c0-10.5-1.2-12.6-3.3-12.6c-2,0-3.3,2.1-3.3,12.6V32.8z"/>
+		<path class="bp-pub-logo" d="M259.7,3.5h9.9c8.4,0,14,3.5,14,13.7c0,4.1-1.2,9.5-5.2,11.8l5.2,22.8h-8.9l-4.1-20.8h-2.1v20.8h-8.8V3.5z M268.5,24.1
+			h1.8c3.3,0,4.5-3.3,4.5-6.7c0-5.2-1.9-6.7-4.9-6.7h-1.4V24.1z"/>
+		<path class="bp-pub-logo" d="M287,3.5h8.6l8.1,25.6h0.1V3.5h7.1v48.4h-6.9l-9.5-29.3h-0.1v29.3H287V3.5z"/>
+		<path class="bp-pub-logo" d="M316,3.5h8.8v48.4H316V3.5z"/>
+		<path class="bp-pub-logo" d="M329.9,3.5h8.6l8.1,25.6h0.1V3.5h7.1v48.4h-6.9l-9.5-29.3h-0.1v29.3h-7.5V3.5z"/>
+		<path class="bp-pub-logo" d="M374.2,20.8c0-2.2,0.5-10.7-3.3-10.7c-2.2,0-3.8,2-3.8,17.6c0,15.9,1.5,17.7,4.2,17.7c3.3,0,3.6-6.7,3.6-9h-3.3v-7.1h10.7
+			v22.6h-3.7l-1.2-3.2c-1.4,2-3.9,4.1-7,4.1c-9.5,0-12.6-9.2-12.6-25.2c0-18.5,5.6-25.2,12.6-25.2c5.7,0,11.6,2.7,11.6,15.1v3.1
+			H374.2z"/>
+		<path class="bp-pub-logo" d="M406.1,37.9c0,2.7,0,7.5,3.8,7.5c2.9,0,3.9-2.7,3.9-4.7c0-8.6-16-10.6-16-25c0-7.3,3.9-13.2,11.4-13.2
+			c8,0,11,6.1,11.2,14.8h-7.9c0-2.7,0-7.3-3.5-7.3c-2.1,0-3.3,1.8-3.3,4.4c0,8.2,16,11,16,25.1c0,7.4-4.2,13.3-12.2,13.3
+			c-9.5,0-11.4-8.3-11.4-15H406.1z"/>
+		<path class="bp-pub-logo" d="M429.3,11h-7.6V3.5h24.1V11h-7.6v40.9h-8.8V11z"/>
+	</g>
+	<g>
+		<path class="bp-pub-logo" d="M449.8,3.5h12.8l6,48.4H460l-1.3-10.7h-7.1l-1.2,10.7H443L449.8,3.5z M455.4,11h-0.1l-2.8,23.1h5.5L455.4,11z"/>
+		<path class="bp-pub-logo" d="M471.8,3.5h9.9c8.4,0,14,3.5,14,13.7c0,4.1-1.2,9.5-5.2,11.8l5.2,22.8h-8.9l-4.1-20.8h-2.1v20.8h-8.8V3.5z M480.6,24.1
+			h1.8c3.3,0,4.5-3.3,4.5-6.7c0-5.2-1.9-6.7-4.9-6.7h-1.4V24.1z"/>
+	</g>
+</g>
+</svg>
+</a>        </div>
+
+    <!-- *** END LOGO *** -->
+    </div>            
+        
+</div><!-- row -->
+
+<div id="bp-social-footer" class="row">
+    <div class="small-12 columns">
+                    
+        <div class="textwidget">
+            <ul class="social footer">
+	<li><a title="Follow us on Facebook" class="social fa fa-facebook-f" href="https://www.facebook.com/vernonmorningstar/" target="_blank"></a></li>
+	<li><a title="Follow us on Twitter" class="social fa fa-twitter" href="https://twitter.com/vernonnews" target="_blank"></a></li>
+	<li><a title="Follow us on Instagram" class="social fa fa-instagram" href="https://www.instagram.com/vernonmorningstar/"  target="_blank"></a></li>
+	<!-- <li><a title="RSS Feed" class="social fa fa-rss" href="/feed/"></a></li> -->
+<li><a title="Submit a story" href="/submit/">
+            <img style="margin-bottom:0;width: 34px;height: 34px;" 
+            src="https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/assets/images/submit.png"></a>
+            </li>
+<li><a title="Impress TV" href="http://impresstv.blackpress.ca/" target="_blank">
+            <img style="margin-bottom:0;width: 34px;height: 34px;" 
+            src="https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/assets/images/ImpressTV.png"></a>
+            </li></ul>        </div>
+
+    </div>
+</div><!-- row -->
+
+<div id="bp-site-map-title" class="row" >
+    <div class="small-12 columns" >
+                
+        <div class="textwidget" >        
+             <h4 class="text-center">Explore Vernon Morning Star</h4>
+        </div>
+
+    </div>
+</div><!-- row -->   
+
+<!-- <div id="bp-site-map" class="row" > -->
+<div id="bp-site-map" class="small-12 column row" >
+    <!-- <div class="small-12 columns"> -->
+
+        <ul><li><a href="/news/">NEWS</a></li><li><a href="/sports/">SPORTS</a></li><li><a href="/trending-now/">TRENDING NOW</a></li><li><a href="/business/">BUSINESS</a></li><li><a href="/entertainment/">ENTERTAINMENT</a></li><li><a href="/life/">LIFE</a></li><li><a href="/community/">COMMUNITY</a></li><li><a href="/opinion/">OPINION</a></li><li><a href="/video/">VIDEOS</a></li><li><a href="/weather/">WEATHER</a></li><li><a href="/obituaries/">OBITUARIES</a></li><li><a href="/e-editions/">SPECIAL SECTIONS</a></li><li><a href="/marketplace/">MARKETPLACE</a></li><li><a href="/contests/">CONTESTS</a></li><li><a href="/contact-us/">CONTACT US</a></li></ul>                             
+
+    <!-- </div>  -->                        
+</div><!-- row -->
+
+<div id="bp-media-group" class="row" >
+    
+    <div class="small-12 columns">
+                
+        <div class="textwidget">
+            
+            <a href="//www.blackpress.ca/publications/" target="_blank">BLACK PRESS MEDIA</a>      
+           
+        </div>
+
+    </div>
+    
+    <div class="small-12 columns menu-footer-container">
+        <ul id="menu-footer" class="menu" >
+            
+                     
+                    
+                    <li class="menu-item" >
+                        <a  target="_blank" href="//www.kelownacapnews.com/">Kelowna Capital News</a>
+                    </li>
+                
+                     
+                    
+                    <li class="menu-item" >
+                        <a  target="_blank" href="//www.pentictonwesternnews.com/">Penticton Western News</a>
+                    </li>
+                
+                     
+                    
+                    <li class="menu-item" >
+                        <a  target="_blank" href="//www.saobserver.net">Salmon Arm Observer</a>
+                    </li>
+                
+                     
+                    
+                    <li class="menu-item" >
+                        <a  target="_blank" href="//www.eaglevalleynews.com">Eagle Valley News</a>
+                    </li>
+                
+                     
+                    
+                    <li class="menu-item" >
+                        <a  target="_blank" href="//www.lakecountrycalendar.com">Lake Country Calendar</a>
+                    </li>
+                
+                     
+                    
+                    <li class="menu-item" >
+                        <a  target="_blank" href="//www.summerlandreview.com">Summerland Review</a>
+                    </li>
+                
+                     
+                    
+                    <li class="menu-item" >
+                        <a  target="_blank" href="//www.keremeosreview.com/">Keremeos Review</a>
+                    </li>
+                
+                     
+                    
+                    <li class="menu-item" >
+                        <a  target="_blank" href="//www.similkameenspotlight.com">Similkameen Spotlight</a>
+                    </li>
+                
+                    
+        
+        </ul>
+        
+    </div>
+
+    <!-- black press media logo-->
+    <div class="small-12 columns">
+        <div class="textwidget">
+                   
+            <a href="//www.blackpress.ca/publications/">
+                        <img style="max-width: 300px;padding-top: 2rem;" src="https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/assets/images/BlackPressMedia.svg" alt="Black Press Media" ></a>        </div>
+
+    </div>
+
+
+</div><!-- row -->
+
+
+<div id="bp-terms" class="row" >
+    
+    <div class="small-12 columns">
+        
+        <ul id="menu-footer" class="menu">
+            
+            <li class="menu-item"><a target="_blank" href="https://www.vernonmorningstar.com/contact-us/">Contact Us</a></li><li class="menu-item"><a target="_blank" href="https://www.vernonmorningstar.com/our-team/">Our Team</a></li><li class="menu-item"><a target="_blank" href="https://www.vernonmorningstar.com/privacy-policy/">Privacy Policy</a></li><li class="menu-item"><a target="_blank" href="https://www.vernonmorningstar.com/terms-of-use/">Terms of use</a></li><li class="menu-item"><a target="_blank" href="https://www.vernonmorningstar.com/site-map/">Site Map</a></li><li class="menu-item"><a target="_blank" href="https://www.vernonmorningstar.com/./local-news/">Vernon News</a></li><li class="menu-item"><a target="_blank" href="https://www.vernonmorningstar.com/weather/">Vernon Weather</a></li><li class="menu-item"><a target="_blank" href="//okanaganclassifieds.vernonmorningstar.com/">Vernon Classifieds</a></li>      
+        </ul>
+
+    </div>
+
+    <div class="small-12 columns">
+                
+        <div class="textwidget">
+            &copy; 2020, <a href="#"></a>Vernon Morning Star and <a href="http://www.blackpress.ca/">Black Press Group Ltd.</a>
+
+
+        </div>
+
+    </div>
+
+</div><!-- row -->
+
+                            </footer>
+        </div>
+
+        
+
+<!-- Start Catfish ad -->
+<div style="position:fixed;bottom:0px;width:100%;background:white;">
+<div class='code-block code-block-17' style='margin: 8px 0; clear: both;'>
+<!-- Reserved for Catfish ad. See display call in Footer. -->
+<div id="div-gpt-17" class="gpt-ad" style="margin: 0 auto;width:320px;">
+<script type='text/javascript'>
+    googletag.cmd.push(function() {googletag.display('div-gpt-17');gptRefreshSlots.push(17);});
+</script>
+</div></div>
+</div>
+<!-- End Catfish ad -->
+
+
+<!-- Start Interstitial ad -->
+<div id='page-cover' style="z-index:999999; text-align:center;background-color:#FFF; position:fixed; top:0; left:0; width:100%; height:100%;padding-top: 25%;padding-left: 10px;padding-right: 10px;display: none;">
+<div class='code-block code-block-18' style='margin: 8px 0; clear: both;'>
+<!-- Reserved for Interstitial ad. See display call in Footer. -->
+<div id="div-gpt-18" class="gpt-ad">
+<script type='text/javascript'>
+  googletag.cmd.push(function() { googletag.display('div-gpt-18');gptRefreshSlots.push(18);googletag.pubads().addEventListener('slotRenderEnded', function(event) {
+                if (event.slot === gptAdSlots[18]) {
+                    if(event.isEmpty) {
+                        document.getElementById("page-cover").style.display = 'none';
+                    }
+                    else{
+                        console.log("setting timer")
+                    	//delay modal window from opening to allow ad tags to render; the above listener means the tags loaded, not necessarily showing the creative.
+                    	var delayModal = window.setTimeout(
+                    		function(){var timeoutID = window.setTimeout(function(){document.getElementById("page-cover").style.display = 'none';},8000);document.getElementById("page-cover").style.display = 'block';}
+                    	,5000);
+                    }
+                }
+            });
+  });
+  $(document).ready(function() {
+    	$("#close-interstitial").click(function() {
+        	document.getElementById("page-cover").style.display = 'none';
+    	});
+	}); 
+</script>
+</div>
+<div><a id="close-interstitial" href="#">Close ad</a></div></div>
+</div>
+<!-- End Interstitial ad -->
+
+
+<!-- Start vendor library call -->
+<!-- /1036919/vendor_library_0 -->
+<div id='div-gpt-21' style='height:1px; width:1px;'>
+<script>
+googletag.cmd.push(function() { googletag.display('div-gpt-21');gptRefreshSlots.push(21); });
+</script>
+</div>
+<!-- End vendor library call -->
+<!--<script type='text/javascript'>
+    googletag.cmd.push(function() {
+        for (i = 0; i < gptAdSlots.length; i++) { 
+            if(gptRefreshSlots.indexOf(i) == -1){                
+                googletag.destroySlots([gptAdSlots[i]]);
+                console.log('destroyed ' + i);
+            }
+        }
+        googletag.pubads().refresh(gptAdSlots);
+    });
+</script>-->
+                    <style type="text/css">
+                        div.aw-widget-36hour-inner a.aw-arrow {
+                            z-index: 1 !important;
+                        }
+                                                            
+                        div.aw-widget-current [class*="bg-"] {
+                            background: none !important;
+                        }
+
+                        div.aw-current-weather-inner h3 {
+                            display: none;
+                        }
+
+                        div.aw-widget-current-inner div.aw-widget-content {
+                            border: none !important;
+                        }
+
+                        div.aw-widget-current-inner div.aw-widget-content.bg-cl, 
+                        div.aw-widget-current-inner div.aw-widget-content.bg-cl a.aw-current-weather, 
+                        div.aw-widget-current-inner div.aw-widget-content.bg-s, 
+                        div.aw-widget-current-inner div.aw-widget-content.bg-s a.aw-current-weather {
+                                color: #000 !important;
+                        }
+
+                        div.aw-widget-current-inner div.aw-widget-content a.aw-current-weather p span.aw-temperature-today b {
+                            font-weight: 600 !important;
+                            padding-left: 40px !important;
+                            font-size: 1.5rem !important;
+                        }
+
+                        div.aw-widget-current-inner div.aw-widget-content a.aw-current-weather p time {
+                            display: none !important;
+                        }
+
+                        div.aw-widget-current-inner div.aw-widget-content a.aw-current-weather p span.aw-weather-description {
+                            display: none !important;
+                        }
+                        
+                        div.aw-widget-current-inner a.aw-toggle {
+                            display: none !important;
+                        }
+
+                        div#weatherContainer {
+                            padding-top: 10px;
+                        }
+
+                        .lt-106 div.aw-widget-current-inner div.aw-widget-content a.aw-current-weather span.aw-icon {
+                            background-position: 0 0 !important;
+                        }
+
+                        .lt-115 div.aw-widget-current-inner div.aw-widget-content a.aw-current-weather span.aw-icon {
+                            z-index: 1 !important;
+                        }
+
+                        .lt-479 div.aw-widget-current-inner div.aw-widget-content a.aw-current-weather p {
+                            z-index: 1 !important;
+                        }
+
+                        @media screen and (max-width: 39.9375em) {
+                            div.aw-widget-current-inner div.aw-widget-content a.aw-current-weather {
+                                color: #fff !important;
+                            }
+
+                            div#weatherContainer {
+                                padding-top: 10px;
+                            }
+
+                            div.aw-widget-current-inner div.aw-widget-content.bg-cl, 
+                            div.aw-widget-current-inner div.aw-widget-content.bg-cl a.aw-current-weather, 
+                            div.aw-widget-current-inner div.aw-widget-content.bg-s, 
+                            div.aw-widget-current-inner div.aw-widget-content.bg-s a.aw-current-weather {
+                                color: #fff !important;
+                            }
+
+                        }
+                    </style>
+                <script type='text/javascript' src='//content.jwplatform.com/libraries/yrJQMy68.js?ver=1.0.0'></script>
+<script type='text/javascript' src='https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/assets/components/featherlight/featherlight.js?ver=1.6.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var foundation = {"is_front_page":"0"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/dest/javascript/foundation.min.js?ver=2.36.14'></script>
+<script type='text/javascript' src='https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/dest/javascript/what-input/what-input.min.js?ver=4.0.3'></script>
+<script type='text/javascript' src='https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/dest/javascript/frame_resize_2.0.min.js?ver=2.36.14'></script>
+<script type='text/javascript' src='https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-includes/js/comment-reply.min.js?ver=5.2.5'></script>
+<script type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js?ver=1.9.0'></script>
+<script type='text/javascript' src='https://1vuk5m2wsimz2ybwqoijiecq-wpengine.netdna-ssl.com/wp-includes/js/wp-embed.min.js?ver=5.2.5'></script>
+
+
+        <!-- taboola code -->
+            <script type="text/javascript">
+            window._taboola = window._taboola || [];
+            _taboola.push({flush: true});
+        </script>
+        
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"e4824da135","applicationID":"96620540","transactionName":"NFVWZ0YCCERXAkxeXQ0fdVBACglZGRJRWVUPVQ==","queueTime":0,"applicationTime":163,"atts":"GBJVEQ4YG0o=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>

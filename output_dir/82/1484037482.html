@@ -1,0 +1,1232 @@
+
+<!doctype html>
+<html class="no-js" lang="en-US" >
+    <head>
+
+        <meta charset="UTF-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"e4824da135",applicationID:"96616988"};window.NREUM||(NREUM={}),__nr_require=function(n,e,t){function r(t){if(!e[t]){var i=e[t]={exports:{}};n[t][0].call(i.exports,function(e){var i=n[t][1][e];return r(i||e)},i,i.exports)}return e[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(n,e,t){function r(){}function i(n,e,t){return function(){return o(n,[u.now()].concat(f(arguments)),e?null:this,t),e?void 0:this}}var o=n("handle"),a=n(4),f=n(5),c=n("ee").get("tracer"),u=n("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(n,e){s[e]=i(d+e,!0,"api")}),s.addPageAction=i(d+"addPageAction",!0),s.setCurrentRouteName=i(d+"routeName",!0),e.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(n,e){var t={},r=this,i="function"==typeof e;return o(l+"tracer",[u.now(),n,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return e.apply(this,arguments)}catch(n){throw c.emit("fn-err",[arguments,this,n],t),n}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(n,e){m[e]=i(l+e)}),newrelic.noticeError=function(n,e){"string"==typeof n&&(n=new Error(n)),o("err",[n,u.now(),!1,e])}},{}],2:[function(n,e,t){function r(n,e){var t=n.getEntries();t.forEach(function(n){"first-paint"===n.name?a("timing",["fp",Math.floor(n.startTime)]):"first-contentful-paint"===n.name&&a("timing",["fcp",Math.floor(n.startTime)])})}function i(n){if(n instanceof c&&!s){var e,t=Math.round(n.timeStamp);e=t>1e12?Date.now()-t:f.now()-t,s=!0,a("timing",["fi",t,{type:n.type,fid:e}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var o,a=n("handle"),f=n("loader"),c=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){o=new PerformanceObserver(r);try{o.observe({entryTypes:["paint"]})}catch(u){}}if("addEventListener"in document){var s=!1,p=["click","keydown","mousedown","pointerdown","touchstart"];p.forEach(function(n){document.addEventListener(n,i,!1)})}}},{}],3:[function(n,e,t){function r(n,e){if(!i)return!1;if(n!==i)return!1;if(!e)return!0;if(!o)return!1;for(var t=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],4:[function(n,e,t){function r(n,e){var t=[],r="",o=0;for(r in n)i.call(n,r)&&(t[o]=e(r,n[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],5:[function(n,e,t){function r(n,e,t){e||(e=0),"undefined"==typeof t&&(t=n?n.length:0);for(var r=-1,i=t-e||0,o=Array(i<0?0:i);++r<i;)o[r]=n[e+r];return o}e.exports=r},{}],6:[function(n,e,t){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(n,e,t){function r(){}function i(n){function e(n){return n&&n instanceof r?n:n?c(n,f,o):o()}function t(t,r,i,o){if(!d.aborted||o){n&&n(t,r,i);for(var a=e(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function l(n,e){h[n]=v(n).concat(e)}function m(n,e){var t=h[n];if(t)for(var r=0;r<t.length;r++)t[r]===e&&t.splice(r,1)}function v(n){return h[n]||[]}function g(n){return p[n]=p[n]||i(t)}function w(n,e){u(n,function(n,t){e=e||"feature",y[t]=e,e in s||(s[e]=[])})}var h={},y={},b={on:l,addEventListener:l,removeEventListener:m,emit:t,get:g,listeners:v,context:e,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var f="nr@context",c=n("gos"),u=n(4),s={},p={},d=e.exports=i();d.backlog=s},{}],gos:[function(n,e,t){function r(n,e,t){if(i.call(n,e))return n[e];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(n,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return n[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(n,e,t){function r(n,e,t,r){i.buffer([n],r),i.emit(n,e,t)}var i=n("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(n,e,t){function r(n){var e=typeof n;return!n||"object"!==e&&"function"!==e?-1:n===window?0:a(n,o,function(){return i++})}var i=1,o="nr@id",a=n("gos");e.exports=r},{}],loader:[function(n,e,t){function r(){if(!x++){var n=E.info=NREUM.info,e=l.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(n&&n.licenseKey&&n.applicationID&&e))return s.abort();u(y,function(e,t){n[e]||(n[e]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=l.createElement("script");t.src="https://"+n.agent,e.parentNode.insertBefore(t,e)}}function i(){"complete"===l.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=n("handle"),u=n(4),s=n("ee"),p=n(3),d=window,l=d.document,m="addEventListener",v="attachEvent",g=d.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:g,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1158.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=e.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};n(1),n(2),l[m]?(l[m]("DOMContentLoaded",o,!1),d[m]("load",r,!1)):(l[v]("onreadystatechange",i),d[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=n(6)},{}],"wrap-function":[function(n,e,t){function r(n){return!(n&&n instanceof Function&&n.apply&&!n[a])}var i=n("ee"),o=n(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;e.exports=function(n,e){function t(n,e,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){d([u,"",[r,a,i],f])}s(e+"start",[r,a,i],f);try{return c=n.apply(a,r)}catch(p){throw s(e+"err",[r,a,p],f),p}finally{s(e+"end",[r,a,c],f)}}return r(n)?n:(e||(e=""),nrWrapper[a]=n,p(n,nrWrapper),nrWrapper)}function u(n,e,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<e.length;c++)f=e[c],a=n[f],r(a)||(n[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||e){var o=c;c=!0;try{n.emit(t,r,i,e)}catch(a){d([a,t,r,i])}c=o}}function p(n,e){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(n);return t.forEach(function(t){Object.defineProperty(e,t,{get:function(){return n[t]},set:function(e){return n[t]=e,e}})}),e}catch(r){d([r])}for(var i in n)f.call(n,i)&&(e[i]=n[i]);return e}function d(e){try{n.emit("internal-error",e)}catch(t){}}return n||(n=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="cache-control" content="no-cache" />
+        <link rel="icon" href="https://44xv8hmm4vs44orqs2ehffgq-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/assets/images/icons/favicon.ico" type="image/x-icon">
+        <link rel="apple-touch-icon" sizes="144x144" href="https://44xv8hmm4vs44orqs2ehffgq-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/assets/images/icons/apple-touch-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="https://44xv8hmm4vs44orqs2ehffgq-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/assets/images/icons/apple-touch-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="https://44xv8hmm4vs44orqs2ehffgq-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/assets/images/icons/apple-touch-icon-72x72.png">
+        <link rel="apple-touch-icon" href="https://44xv8hmm4vs44orqs2ehffgq-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/assets/images/icons/apple-touch-icon.png">
+        <title>Five West Shore mayors look back on 2019 &#8211; BC Local News</title>
+<!--
+<PageMap>
+	<DataObject type="thumbnail">
+		<Attribute name="src" value="https://44xv8hmm4vs44orqs2ehffgq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19702843_web_191209-VNE-Grumpy-Candy-Cane-Awards_1-300x200.jpg"/>
+		<Attribute name="width" value="300"/>
+		<Attribute name="height" value="200"/>
+	</DataObject>
+</PageMap>
+--><link rel='dns-prefetch' href='//ajax.googleapis.com' />
+<link rel='dns-prefetch' href='//content.jwplatform.com' />
+<link rel='dns-prefetch' href='//cdnjs.cloudflare.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel='stylesheet' id='wp-block-library-css'  href='https://44xv8hmm4vs44orqs2ehffgq-wpengine.netdna-ssl.com/wp-includes/css/dist/block-library/style.min.css?ver=5.2.5' type='text/css' media='all' />
+<link rel='stylesheet' id='slick-css'  href='//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css?ver=1.9.0' type='text/css' media='all' />
+<link rel='stylesheet' id='slick-theme-css'  href='//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css?ver=1.9.0' type='text/css' media='all' />
+<link rel='stylesheet' id='main-stylesheet-css'  href='https://44xv8hmm4vs44orqs2ehffgq-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/dest/css/foundation.min.css?ver=2.36.14' type='text/css' media='all' />
+<link rel='stylesheet' id='featherlight-css'  href='https://44xv8hmm4vs44orqs2ehffgq-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/assets/components/featherlight/featherlight.css?ver=1.6.1' type='text/css' media='all' />
+<script type='text/javascript' src='//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js?ver=2.1.0'></script>
+<link rel='https://api.w.org/' href='https://www.bclocalnews.com/wp-json/' />
+<link rel="alternate" type="application/json+oembed" href="https://www.bclocalnews.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.bclocalnews.com%2Fnews%2Ffive-west-shore-mayors-look-back-on-2019%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://www.bclocalnews.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.bclocalnews.com%2Fnews%2Ffive-west-shore-mayors-look-back-on-2019%2F&#038;format=xml" />
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-3437731-1', 'auto');
+  ga('send', 'pageview');
+  ga('create', 'UA-17099191-1', 'auto', 'bcRollupTracker');
+  ga('bcRollupTracker.send', 'pageview');
+  ga('create', 'UA-17099191-9', 'auto', 'canadaRollupTracker');
+  ga('bcRollupTracker.send', 'pageview');
+</script><!-- Start echo_header_meta_tags() for SEO -->
+<meta property="og:locale" content="en_US" />
+<meta property="og:site_name" content="BC Local News" />
+<meta property="og:url" content="https://www.bclocalnews.com/news/five-west-shore-mayors-look-back-on-2019/" />
+<meta property="og:title" content="Five West Shore mayors look back on 2019 - BC Local News" />
+<meta name="description" content="Mayors also outline what's on the horizon for 2020" />
+<meta property="og:description" content="Mayors also outline what's on the horizon for 2020" />
+<meta property="og:type" content="article" />
+<meta property="article:section" content="" />
+<meta property="article:published_time" content="2020-01-01T00:00:00-08:00" />
+<meta property="og:image" content="https://www.bclocalnews.com/wp-content/uploads/2020/01/19702843_web_191209-VNE-Grumpy-Candy-Cane-Awards_1-1024x683.jpg" />
+<meta property="og:secure_url" content="https://www.bclocalnews.com/wp-content/uploads/2020/01/19702843_web_191209-VNE-Grumpy-Candy-Cane-Awards_1-1024x683.jpg" />
+<meta property="og:image:width" content="1024" />
+<meta property="og:image:height" content="683" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Five West Shore mayors look back on 2019 - BC Local News" />
+<meta property="twitter:description" content="Mayors also outline what's on the horizon for 2020" />
+<meta property="twitter:image" content="https://www.bclocalnews.com/wp-content/uploads/2020/01/19702843_web_191209-VNE-Grumpy-Candy-Cane-Awards_1-1024x683.jpg" />
+<meta property="fb:app_id" content="118942943632" />
+<script type="application/ld+json">{"@context":"https:\/\/schema.org","@type":"NewsArticle","url":"https:\/\/www.bclocalnews.com\/news\/five-west-shore-mayors-look-back-on-2019\/","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/www.bclocalnews.com\/news\/five-west-shore-mayors-look-back-on-2019\/"},"headline":"Five West Shore mayors look back on 2019","datePublished":"2020-01-01T00:00:00-08:00","dateModified":"2020-01-01T00:00:00-08:00","thumbnailUrl":"https:\/\/www.bclocalnews.com\/wp-content\/uploads\/2020\/01\/19702843_web_191209-VNE-Grumpy-Candy-Cane-Awards_1.jpg","image":{"@type":"ImageObject","url":"https:\/\/www.bclocalnews.com\/wp-content\/uploads\/2020\/01\/19702843_web_191209-VNE-Grumpy-Candy-Cane-Awards_1.jpg","width":1200,"height":800},"publisher":{"@type":"Organization","name":"BC Local News","logo":{"@type":"ImageObject","url":"https:\/\/www.bclocalnews.com\/wp-content\/themes\/BlackPress\/assets\/images\/logos\/bcln-logo.png","width":352,"height":52}},"contentLocation":{"@type":"Place","name":"British Columbia, Canada"},"dateline":"British Columbia, Canada","description":"Mayors also outline what&#039;s on the horizon for 2020"}</script>
+<!-- End echo_header_meta_tags() for SEO -->
+
+    <!-- BEGIN: Dev Con Script -->
+    <script id='ns_script_dc' data-key='91532438-f31b-4086-8018-7cd68ddba2a3' data-e='5' src='//includemodal.global.ssl.fastly.net/sp.js' type='text/javascript'></script>
+    <!-- END: Dev Con Script -->  
+    
+        <script>window.twttr = (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0],
+            t = window.twttr || {};
+        if (d.getElementById(id)) return t;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "https://platform.twitter.com/widgets.js";
+        fjs.parentNode.insertBefore(js, fjs);
+
+        t._e = [];
+        t.ready = function(f) {
+            t._e.push(f);
+        };
+
+        return t;
+        }(document, "script", "twitter-wjs"));</script>
+        <!-- DoubleClick for Publishers -->
+<script type='text/javascript'>
+ var googletag = googletag || {};
+ googletag.cmd = googletag.cmd || [];
+ (function() {
+   var gads = document.createElement('script');
+   gads.async = true;
+   gads.type = 'text/javascript';
+   var useSSL = 'https:' == document.location.protocol;
+   gads.src = (useSSL ? 'https:' : 'http:') +
+     '//www.googletagservices.com/tag/js/gpt.js';
+   var node = document.getElementsByTagName('script')[0];
+   node.parentNode.insertBefore(gads, node);
+ })();
+</script>
+
+<script type='text/javascript'>
+ var gptAdSlots = [];
+ var gptRefreshSlots = [];
+ googletag.cmd.push(function() {
+   var mappingHorizontal = googletag.sizeMapping().
+     addSize([1024, 0],[[970, 250],[970, 90], [728, 90]]).
+     addSize([768, 0],[[728, 90], [320, 50], [320, 100], [300, 50]]).
+     addSize([320, 0],[[320, 50], [320, 100], [300, 50]]).
+     addSize([0, 0],[]).
+     build();
+   var mappingVertical = googletag.sizeMapping().
+     addSize([1024, 0],[[300, 1050],[300, 600], [300, 250]]).
+     addSize([600, 0],[[300, 600],[300, 250]]).
+     addSize([400, 0],[300, 250]).
+     addSize([0, 0],[]).
+     build(); 
+   var mappingFeatured = googletag.sizeMapping().
+     addSize([1024, 0],[[300, 1050],[300, 600]]).
+     addSize([600, 0],[[300, 600]]).
+     addSize([0, 0],[300, 250]).
+     build();   
+   var mappingHousePromo = googletag.sizeMapping().
+     addSize([1024, 0],[970, 30]).
+     addSize([600, 0],[[320, 50]]).
+     addSize([320, 0], [320, 50]).
+     addSize([0, 0],[]).
+     build();   
+   var mappingMobileOnly = googletag.sizeMapping().
+     addSize([0, 0],[]).
+     addSize([320, 0], [[320, 50], [300, 250], [1, 1]]).
+     addSize([1024, 0],[]).
+     addSize([600, 0],[]).
+     build();   
+   var mappingPollSponsor = googletag.sizeMapping().
+     addSize([1024, 0],[[500, 200]]).
+     addSize([0, 0],[300, 250]).
+     build();
+
+   gptAdSlots[0] = googletag.defineSlot('/1036919/adunit0', [[320, 50], [970, 30]], 'div-gpt-0').defineSizeMapping(mappingHousePromo).addService(googletag.pubads());
+   gptAdSlots[1] = googletag.defineSlot('/1036919/adunit1', [970, 90], 'div-gpt-1').defineSizeMapping(mappingHorizontal).addService(googletag.pubads());
+   gptAdSlots[2] = googletag.defineSlot('/1036919/adunit2', [[300, 250]], 'div-gpt-2').addService(googletag.pubads());
+   gptAdSlots[3] = googletag.defineSlot('/1036919/adunit3', [[970, 250],[970, 90], [728, 90],[320, 50], [320, 100], [300, 50]], 'div-gpt-3').defineSizeMapping(mappingHorizontal).addService(googletag.pubads());
+   gptAdSlots[4] = googletag.defineSlot('/1036919/adunit4', [[300, 600], [300, 250]], 'div-gpt-4').defineSizeMapping(mappingVertical).addService(googletag.pubads());
+   gptAdSlots[5] = googletag.defineSlot('/1036919/adunit5', [[970, 250],[970, 90], [728, 90],[320, 50], [320, 100], [300, 50]], 'div-gpt-5').defineSizeMapping(mappingHorizontal).addService(googletag.pubads());
+   gptAdSlots[6] = googletag.defineSlot('/1036919/adunit6', [[300, 1050],[300, 600], [300, 250]], 'div-gpt-6').defineSizeMapping(mappingVertical).addService(googletag.pubads());
+   gptAdSlots[7] = googletag.defineSlot('/1036919/adunit7', [[970, 250],[970, 90], [728, 90],[320, 50], [320, 100], [300, 50]], 'div-gpt-7').defineSizeMapping(mappingHorizontal).addService(googletag.pubads());
+   gptAdSlots[8] = googletag.defineSlot('/1036919/adunit8', [[300, 1050],[300, 600], [300, 250]], 'div-gpt-8').defineSizeMapping(mappingVertical).addService(googletag.pubads());
+   gptAdSlots[9] = googletag.defineSlot('/1036919/adunit9', [[970, 250],[970, 90], [728, 90],[320, 50], [320, 100], [300, 50]], 'div-gpt-9').defineSizeMapping(mappingHorizontal).addService(googletag.pubads());
+   gptAdSlots[10] = googletag.defineSlot('/1036919/adunit10', [[300, 1050],[300, 600], [300, 250]], 'div-gpt-10').defineSizeMapping(mappingVertical).addService(googletag.pubads());
+   gptAdSlots[11] = googletag.defineSlot('/1036919/adunit11', [[970, 250],[970, 90], [728, 90],[320, 50], [320, 100], [300, 50]], 'div-gpt-11').defineSizeMapping(mappingHorizontal).addService(googletag.pubads());
+   gptAdSlots[12] = googletag.defineSlot('/1036919/adunit12', [[300, 1050],[300, 600], [300, 250]], 'div-gpt-12').defineSizeMapping(mappingVertical).addService(googletag.pubads());
+   gptAdSlots[13] = googletag.defineSlot('/1036919/adunit13', [[970, 250],[970, 90], [728, 90],[320, 50], [320, 100], [300, 50]], 'div-gpt-13').defineSizeMapping(mappingHorizontal).addService(googletag.pubads());
+   gptAdSlots[14] = googletag.defineSlot('/1036919/adunit14', [[300, 1050],[300, 600], [300, 250]], 'div-gpt-14').defineSizeMapping(mappingVertical).addService(googletag.pubads());
+   gptAdSlots[15] = googletag.defineSlot('/1036919/adunit15', [[970, 250],[970, 90], [728, 90],[320, 50], [320, 100], [300, 50]], 'div-gpt-15').defineSizeMapping(mappingHorizontal).addService(googletag.pubads());
+   gptAdSlots[17] = googletag.defineSlot('/1036919/adunit17', [[320, 50]], 'div-gpt-17').defineSizeMapping(mappingMobileOnly).addService(googletag.pubads());
+   gptAdSlots[18] = googletag.defineSlot('/1036919/adunit18', [[300,250]], 'div-gpt-18').defineSizeMapping(mappingMobileOnly).addService(googletag.pubads());
+   gptAdSlots[19] = googletag.defineSlot('/1036919/adunit19', [[300, 1050],[300, 600], [300, 250]], 'div-gpt-19').defineSizeMapping(mappingVertical).addService(googletag.pubads());
+   gptAdSlots[20] = googletag.defineSlot('/1036919/adunit20', [[500, 200],[300, 250]], 'div-gpt-20').defineSizeMapping(mappingPollSponsor).addService(googletag.pubads());
+   var ccAudVals = "";
+if (typeof(ccauds) != "undefined")
+{
+  for (var cci = 0; cci < ccauds.Profile.Audiences.Audience.length; cci++)
+  {
+    if(ccauds.Profile.Audiences.Audience[cci].abbr == "all") 
+      continue;
+    
+    ccAudVals += ccauds.Profile.Audiences.Audience[cci].abbr;
+    
+    if(ccAudVals.length != 0) 
+      ccAudVals += ",";
+	}
+}
+console.log("ccAudVals = ", ccAudVals);
+   googletag.pubads().setTargeting('ccaud', ccAudVals);
+   googletag.pubads().setTargeting('site', ['bclocalnews.com']).setTargeting('section', ['news','ros']);
+   googletag.pubads().enableSingleRequest();
+   googletag.pubads().disableInitialLoad();
+   googletag.pubads().collapseEmptyDivs();
+   googletag.enableServices();
+ });
+</script>
+<!-- End DoubleClick for Publishers -->
+<!-- 
+    * Script creates the global generalSettings js array. 
+    * Key/Value pair of Black Press general settings section: option name, option value 
+    * NOTE: new options should be added to this array 
+-->
+<script type='text/javascript'>
+        var generalSettings = {"postal_code":"","pub_code":"BCL","secondstreet_contest_feed":""};
+
+</script>
+<!-- Begin comScore Tag -->
+<script>
+  var _comscore = _comscore || [];
+  _comscore.push({ c1: "2", c2: "6035032" });
+  (function() {
+    var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;
+    s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
+    el.parentNode.insertBefore(s, el);
+  })();
+</script>
+<noscript>
+  <img src="https://sb.scorecardresearch.com/p?c1=2&c2=6035032&cv=2.0&cj=1" />
+</noscript>
+<!-- End comScore Tag -->
+    </head>
+    <body class="post-template-default single single-post postid-1125762 single-format-standard offcanvas">
+        <!-- BEGIN: FACE BOOK COMMENTS PLUGIN CODE -->
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+        <!-- END: FACE BOOK COMMENTS PLUGIN CODE -->
+
+    
+    
+    
+    
+    <header id="masthead" class="site-header row collapse" role="banner">
+        <!-- original divs replaced by code after. Note still have 2 divs, 
+             with different settings for mobile and desktop -->
+        <!-- <div  class="small-12 columns" data-sticky-container > -->
+        <!-- <div id="sticky-menu-bar-container" class="top-bar title-bar row collapse" data-sticky data-options="marginTop:0;" style="width:100%"> -->
+        <div  class="small-12 columns" data-sticky-container ><div id="sticky-menu-bar-container" class="top-bar title-bar row collapse" data-sticky data-options="marginTop:0;" style="width:100%">            
+            
+            <article id="text-1" class="menu-button-container small-1 medium-1 columns">
+                    <div id="mobile-menu-button" data-responsive-toggle="site-navigation" data-hide-for="medium">
+                        <button class="fa fa-bars menu" type="button" data-toggle="site-navigation"></button>
+                    </div>
+                    <ul id="menu-mainmenu" class="dropdown menu day-4 show-for-medium" data-dropdown-menu data-options="hoverDelay:150;"><li><a href="#"><i class="fa fa-bars menu"></i></a><ul class="dropdown menu" data-dropdown-menu><li class='nav-search'><a href='/search/'><i class='fa fa-search menu'></i>Search</a></li><li id="menu-item-320" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-320"><a href="https://www.bclocalnews.com/">Home</a></li>
+<li id="menu-item-753415" class="hide menu-item menu-item-type-post_type menu-item-object-page menu-item-753415"><a href="https://www.bclocalnews.com/submit/">Submit News Tip</a></li>
+<li id="menu-item-169" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-has-children menu-item-169"><a href="https://www.bclocalnews.com/./news/">News</a>
+<ul class="dropdown menu vertical" data-toggle>
+	<li id="menu-item-170" class="hide menu-item menu-item-type-taxonomy menu-item-object-category menu-item-170"><a href="https://www.bclocalnews.com/./local-news/">Local News</a></li>
+	<li id="menu-item-888274" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-888274"><a href="https://www.bclocalnews.com/./municipal-election/">Municipal Election</a></li>
+	<li id="menu-item-1073681" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1073681"><a href="https://www.bclocalnews.com/./federal-election/">Federal Election 2019</a></li>
+	<li id="menu-item-172" class="hide menu-item menu-item-type-taxonomy menu-item-object-category menu-item-172"><a href="https://www.bclocalnews.com/./national-news/">Canada &amp; World</a></li>
+	<li id="menu-item-173" class="hide menu-item menu-item-type-post_type menu-item-object-page menu-item-173"><a href="https://www.bclocalnews.com/e-editions/">eEditions</a></li>
+	<li id="menu-item-176" class="hide menu-item menu-item-type-post_type menu-item-object-page menu-item-176"><a href="https://www.bclocalnews.com/submit/">Submit news tip or photo</a></li>
+</ul>
+</li>
+<li id="menu-item-177" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-177"><a href="https://www.bclocalnews.com/./sports/">Sports</a>
+<ul class="dropdown menu vertical" data-toggle>
+	<li id="menu-item-178" class="hide menu-item menu-item-type-taxonomy menu-item-object-category menu-item-178"><a href="https://www.bclocalnews.com/./local-sports/">Local</a></li>
+	<li id="menu-item-809507" class="menu-item menu-item-type-taxonomy menu-item-object-post_tag menu-item-809507"><a href="https://www.bclocalnews.com/tag/b-c-games/">B.C. Games</a></li>
+	<li id="menu-item-879875" class="menu-item menu-item-type-taxonomy menu-item-object-post_tag menu-item-879875"><a href="https://www.bclocalnews.com/tag/55-bc-game/">55+ BC Game</a></li>
+	<li id="menu-item-179" class="hide menu-item menu-item-type-taxonomy menu-item-object-category menu-item-179"><a href="https://www.bclocalnews.com/./national-sports/">Canada &amp; World</a></li>
+	<li id="menu-item-180" class="hide menu-item menu-item-type-post_type menu-item-object-page menu-item-180"><a href="https://www.bclocalnews.com/submit/">Submit sports tip or photo</a></li>
+</ul>
+</li>
+<li id="menu-item-181" class="hide menu-item menu-item-type-taxonomy menu-item-object-category menu-item-181"><a href="https://www.bclocalnews.com/./trending-now/">Trending Now</a></li>
+<li id="menu-item-944999" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-944999"><a target="_blank" rel="noopener noreferrer" href="//www.bcclassifieds.com/?sfid=1">Classifieds</a></li>
+<li id="menu-item-840027" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-840027"><a target="_blank" rel="noopener noreferrer" href="//www.localwork.ca">Jobs</a></li>
+<li id="menu-item-182" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-182"><a href="https://www.bclocalnews.com/./business/">Business</a>
+<ul class="dropdown menu vertical" data-toggle>
+	<li id="menu-item-183" class="hide menu-item menu-item-type-taxonomy menu-item-object-category menu-item-183"><a href="https://www.bclocalnews.com/./local-business/">Local</a></li>
+	<li id="menu-item-185" class="hide menu-item menu-item-type-post_type menu-item-object-page menu-item-185"><a href="https://www.bclocalnews.com/submit/">Submit business tip or photo</a></li>
+</ul>
+</li>
+<li id="menu-item-186" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-186"><a href="https://www.bclocalnews.com/./entertainment/">Entertainment</a>
+<ul class="dropdown menu vertical" data-toggle>
+	<li id="menu-item-187" class="hide menu-item menu-item-type-taxonomy menu-item-object-category menu-item-187"><a href="https://www.bclocalnews.com/./local-entertainment/">Local</a></li>
+	<li id="menu-item-189" class="hide menu-item menu-item-type-post_type menu-item-object-page menu-item-189"><a href="https://www.bclocalnews.com/submit/">Submit entertainment tip or photo</a></li>
+</ul>
+</li>
+<li id="menu-item-1020021" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1020021"><a href="https://www.bclocalnews.com/./photo-galleries/">Photo Galleries</a></li>
+<li id="menu-item-190" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-190"><a href="https://www.bclocalnews.com/./life/">Life</a>
+<ul class="dropdown menu vertical" data-toggle>
+	<li id="menu-item-191" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-191"><a href="https://www.bclocalnews.com/./life/">Local</a></li>
+	<li id="menu-item-193" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-193"><a target="_blank" rel="noopener noreferrer" href="http://winetrails.ca">Wine Trails</a></li>
+	<li id="menu-item-194" class="hide menu-item menu-item-type-post_type menu-item-object-page menu-item-194"><a href="https://www.bclocalnews.com/submit/">Submit life tip or photo</a></li>
+</ul>
+</li>
+<li id="menu-item-195" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-195"><a href="https://www.bclocalnews.com/./community/">Community</a>
+<ul class="dropdown menu vertical" data-toggle>
+	<li id="menu-item-196" class="hide menu-item menu-item-type-taxonomy menu-item-object-category menu-item-196"><a href="https://www.bclocalnews.com/./community/">Local</a></li>
+	<li id="menu-item-197" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-197"><a href="https://www.bclocalnews.com/calendar/">Calendar</a></li>
+	<li id="menu-item-198" class="hide menu-item menu-item-type-post_type menu-item-object-page menu-item-198"><a href="https://www.bclocalnews.com/submit/">Submit community tip or photo</a></li>
+</ul>
+</li>
+<li id="menu-item-282" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-282"><a href="https://www.bclocalnews.com/./opinion/">Opinion</a>
+<ul class="dropdown menu vertical" data-toggle>
+	<li id="menu-item-204" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-204"><a href="https://www.bclocalnews.com/./opinion/">Local Opinion</a></li>
+	<li id="menu-item-202" class="hide menu-item menu-item-type-taxonomy menu-item-object-category menu-item-202"><a href="https://www.bclocalnews.com/./editorials-opinion/">Editorials</a></li>
+	<li id="menu-item-201" class="hide menu-item menu-item-type-taxonomy menu-item-object-category menu-item-201"><a href="https://www.bclocalnews.com/./columns/">Columnists</a></li>
+	<li id="menu-item-203" class="hide menu-item menu-item-type-taxonomy menu-item-object-category menu-item-203"><a href="https://www.bclocalnews.com/./letters/">Letters</a></li>
+	<li id="menu-item-732200" class="hide menu-item menu-item-type-taxonomy menu-item-object-category menu-item-732200"><a href="https://www.bclocalnews.com/./web-poll/">Web poll</a></li>
+	<li id="menu-item-206" class="hide menu-item menu-item-type-post_type menu-item-object-page menu-item-206"><a href="https://www.bclocalnews.com/submitletters/">Submit letter</a></li>
+</ul>
+</li>
+<li id="menu-item-210" class="hide menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-210"><a href="https://www.bclocalnews.com/videos/">Videos</a>
+<ul class="dropdown menu vertical" data-toggle>
+	<li id="menu-item-211" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-211"><a href="https://www.bclocalnews.com/videos/">Local</a></li>
+	<li id="menu-item-212" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-212"><a href="https://www.bclocalnews.com/submit/">Submit video</a></li>
+	<li id="menu-item-213" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-213"><a target="_blank" rel="noopener noreferrer" href="http://blackpress.tv">Black Press TV</a></li>
+</ul>
+</li>
+<li id="menu-item-214" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-214"><a href="https://www.bclocalnews.com/weather/">Weather</a></li>
+<li id="menu-item-216" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-216"><a href="https://www.bclocalnews.com/./obituaries/">Obituaries</a></li>
+<li id="menu-item-329" class="hide menu-item menu-item-type-custom menu-item-object-custom menu-item-329"><a href="#">Special Sections</a></li>
+<li id="menu-item-217" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-217"><a href="https://www.bclocalnews.com/./marketplace/">Marketplace</a>
+<ul class="dropdown menu vertical" data-toggle>
+	<li id="menu-item-275" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-275"><a href="https://www.bclocalnews.com/advertise/">Place an ad</a></li>
+	<li id="menu-item-218" class="hide menu-item menu-item-type-taxonomy menu-item-object-category menu-item-218"><a href="https://www.bclocalnews.com/./marketplace/">Impress branded content</a></li>
+	<li id="menu-item-357" class="hide menu-item menu-item-type-custom menu-item-object-custom menu-item-357"><a target="_blank" rel="noopener noreferrer" href="//yourhouseyourhome.ca">Real Estate</a></li>
+</ul>
+</li>
+<li id="menu-item-321" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-321"><a href="https://www.bclocalnews.com/contests/">Contests</a></li>
+<li id="menu-item-224" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-224"><a href="https://www.bclocalnews.com/contact-us/">Contact Us</a>
+<ul class="dropdown menu vertical" data-toggle>
+	<li id="menu-item-225" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-225"><a href="https://www.bclocalnews.com/contact-us/">Contact Us</a></li>
+	<li id="menu-item-226" class="hide menu-item menu-item-type-post_type menu-item-object-page menu-item-226"><a href="https://www.bclocalnews.com/our-team/">Our Team</a></li>
+	<li id="menu-item-230" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-230"><a target="_blank" rel="noopener noreferrer" href="http://blackpress.ca">Black Press</a></li>
+	<li id="menu-item-231" class="hide menu-item menu-item-type-post_type menu-item-object-page menu-item-231"><a href="https://www.bclocalnews.com/submit/">Submit tip or photo</a></li>
+	<li id="menu-item-227" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-227"><a href="https://www.bclocalnews.com/faq/">FAQ</a></li>
+	<li id="menu-item-228" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-228"><a href="https://www.bclocalnews.com/privacy-policy/">Privacy Policy</a></li>
+	<li id="menu-item-229" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-229"><a href="https://www.bclocalnews.com/terms-of-use/">Terms of use</a></li>
+</ul>
+</li>
+<li id="menu-item-1100395" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1100395"><a href="https://www.bclocalnews.com/site-map/">Site Map</a></li>
+</ul></li></ul>
+                </article>
+                <article id="text-2" class="small-10 medium-10 columns">
+                    <ul data-test="test" id="menu-secondarymenu" class="dropdown menu" data-dropdown-menu>
+                                    <li id="menu-item-249" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-has-children menu-item-249"><a href="https://www.bclocalnews.com/./news/">NEWS</a>
+<ul class="vertical nested menu">
+	<li id="menu-item-250" class="hide show-for-medium menu-item menu-item-type-taxonomy menu-item-object-category menu-item-250"><a href="https://www.bclocalnews.com/./local-news/">Local News</a></li>
+	<li id="menu-item-888303" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-888303"><a href="https://www.bclocalnews.com/./municipal-election/">Municipal Election</a></li>
+	<li id="menu-item-251" class="hide show-for-medium menu-item menu-item-type-taxonomy menu-item-object-category menu-item-251"><a href="https://www.bclocalnews.com/./national-news/">Canada &amp; World</a></li>
+	<li id="menu-item-252" class="hide show-for-medium menu-item menu-item-type-post_type menu-item-object-page menu-item-252"><a href="https://www.bclocalnews.com/e-editions/">eEditions</a></li>
+</ul>
+</li>
+<li id="menu-item-317" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-317"><a href="https://www.bclocalnews.com/./video/">VIDEO</a></li>
+<li id="menu-item-260" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-260"><a target="_blank" rel="noopener noreferrer" href="//www.bcclassifieds.com/?sfid=1">CLASSIFIEDS</a></li>
+<li id="menu-item-258" class="show-for-medium menu-item menu-item-type-taxonomy menu-item-object-category menu-item-258"><a href="https://www.bclocalnews.com/./obituaries/">OBITUARIES</a></li>
+<li id="menu-item-353" class="hide show-for-medium menu-item menu-item-type-custom menu-item-object-custom menu-item-353"><a href="/e-editions">E-EDITIONS</a></li>
+<li id="menu-item-318" class="show-for-medium menu-item menu-item-type-custom menu-item-object-custom menu-item-318"><a target="_blank" rel="noopener noreferrer" href="//www.localwork.ca">JOBS</a></li>
+<li id="menu-item-337" class="show-for-large menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-337"><a href="https://www.bclocalnews.com/contact-us/">CONTACT</a>
+<ul class="vertical nested menu">
+	<li id="menu-item-600065" class="hide menu-item menu-item-type-post_type menu-item-object-page menu-item-600065"><a href="https://www.bclocalnews.com/our-team/">Our Team</a></li>
+	<li id="menu-item-269" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-269"><a href="https://www.bclocalnews.com/contact-us/">Contact Us</a></li>
+	<li id="menu-item-270" class="hide menu-item menu-item-type-post_type menu-item-object-page menu-item-270"><a href="https://www.bclocalnews.com/submit/">Submit news tip or photo</a></li>
+</ul>
+</li>
+<li id="menu-item-336" class="show-for-large menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-336"><a href="https://www.bclocalnews.com/./marketplace/">MARKETPLACE</a>
+<ul class="vertical nested menu">
+	<li id="menu-item-274" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-274"><a href="https://www.bclocalnews.com/advertise/">Place an ad</a></li>
+	<li id="menu-item-262" class="hide menu-item menu-item-type-taxonomy menu-item-object-category menu-item-262"><a href="https://www.bclocalnews.com/./marketplace/">Impress</a></li>
+	<li id="menu-item-356" class="hide menu-item menu-item-type-custom menu-item-object-custom menu-item-356"><a target="_blank" rel="noopener noreferrer" href="//yourhouseyourhome.ca">Real Estate</a></li>
+</ul>
+</li>
+<li id="menu-item-319" class="show-for-large menu-item menu-item-type-post_type menu-item-object-page menu-item-319"><a href="https://www.bclocalnews.com/contests/">CONTESTS</a></li>
+<li id="nav-submit-button" >
+                                    <span data-tooltip aria-haspopup="true" data-disable-hover="false" tabindex="1" title="Submit News Tips">
+                                    <a href="https://www.bclocalnews.com/submit">
+                                    <img src="https://44xv8hmm4vs44orqs2ehffgq-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/assets/images/submit.png" id="header-submit-button">
+                                    </a>
+                                    </span>    
+                                </li></ul>                </article>
+
+                <!-- Search -->
+                <article id="text-5" class="small-1 medium-1 columns">
+                    
+                        <button id="btn_search" type="button" class="float-right fa fa-search menu"></button>
+
+                </article>
+
+                <!-- Search -->
+                <article id="div_search" class="small-12 columns">
+                <!-- **************** -->
+                <!-- Search form container -->
+                    
+                                        <form name="searchForm" action="/search/">
+  
+                        <div class="row collapse">
+                            <div class="small-12 columns">
+
+                                <div class="row collapse">
+                                    <div class="small-2 medium-3 columns">
+                                        &nbsp;
+                                      <input name="cx" value="015619971846971042401:ufh1ywe-cms" type="hidden">
+                                    </div>
+
+                                    <div class="small-1 medium-3 columns">
+                                        &nbsp;
+                                      <input name="ie" value="UTF-8" type="hidden">
+                                    </div>
+
+                                    <div class="small-6 medium-4 columns">
+                                        <input id="google_search_field" class="google-search-field" name="q" value="Story Search" style="" type="text">
+                                      
+                                    </div>
+
+                                    <div class="small-3 medium-2 columns">
+                                      
+                                        <input class="google-search-button" value="Search" type="submit">
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                          
+                    </form>
+                 
+                <!-- **************** -->
+                </article>
+                
+                <article class="small-12 medium-12 columns">
+                    <div class="line"></div>
+                </article>
+            
+            </div>
+
+        </div>
+        
+        <div class ="row" id="header-second-row">
+            <article id="text-12" class="header-widget-left widget_text">			<div class="textwidget"><ul class="social header">
+	<!-- <li><a title="Weather" class="social fa fa-cloud" href="/weather/"></a></li> -->
+	<li><a title="Follow us on Facebook" class="social fa fa-facebook-f" href="https://www.facebook.com/BCNews/" target="_blank" rel="noopener noreferrer"></a></li>
+	<li><a title="Follow us on Twitter" class="social fa fa-twitter" href="https://twitter.com/blackpressmedia" target="_blank" rel="noopener noreferrer"></a></li>
+	<!-- <li><a title="Follow us on Instagram" class="social fa fa-instagram" href="#" target="_blank" rel="noopener noreferrer"></a></li> -->
+</ul></div>
+		</article>            <article id="text-11" class="header-widget-center widget_text">			<div class="textwidget"><a class="pub-logo-large day-4" href="https://www.bclocalnews.com/"><svg id="Outline" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 351.4 51.81"><defs></defs><title></title><path class="bp-pub-logo" d="M81.46,2h11.2C98.26,2,105,5.07,105,14.59c0,5.6-2.52,9.94-8.12,11.13v.14c6.23,1.47,9.1,5.81,9.1,12.11,0,9.1-6.16,13.86-12.88,13.86H81.46Zm9.1,20.44c4.55,0,5.74-2.1,5.74-6.58,0-5.67-1.19-6.65-5.74-6.58Zm0,22.12c5.46,0,6.3-2.17,6.3-7.35,0-4.55-1.12-7.14-6.3-7.07Z" transform="translate(-81.46 -1.01)"/><path class="bp-pub-logo" d="M126.61,20.06c0-8.26-1.05-11.34-3.29-11.34-1.89,0-3.78,1.26-3.78,18.2,0,16.38,1,18.2,3.78,18.2,3,0,3.71-4.62,3.85-11.83l7.7.35c0,8.68-1.26,19.18-11.9,19.18-9.73,0-13-9.52-13-25.9,0-19,5.74-25.9,13-25.9,10.5,0,11.76,9.66,11.76,18.76Z" transform="translate(-81.46 -1.01)"/><path class="bp-pub-logo" d="M156.22,2h9.1V44.14h11.62v7.7H156.22Z" transform="translate(-81.46 -1.01)"/><path class="bp-pub-logo" d="M194.23,1c8.05,0,13.3,6.23,13.3,25.9s-5.25,25.9-13.3,25.9-13.3-6.23-13.3-25.9S186.18,1,194.23,1Zm-3.36,31.15c0,10.78,1.26,13,3.36,13s3.36-2.17,3.36-13V21.67c0-10.78-1.26-13-3.36-13s-3.36,2.17-3.36,13Z" transform="translate(-81.46 -1.01)"/><path class="bp-pub-logo" d="M228.74,20.06c0-8.26-1.05-11.34-3.29-11.34-1.89,0-3.78,1.26-3.78,18.2,0,16.38,1,18.2,3.78,18.2,3,0,3.71-4.62,3.85-11.83l7.7.35c0,8.68-1.26,19.18-11.9,19.18-9.73,0-13-9.52-13-25.9,0-19,5.74-25.9,13-25.9,10.5,0,11.76,9.66,11.76,18.76Z" transform="translate(-81.46 -1.01)"/><path class="bp-pub-logo" d="M247.85,2H261l6.16,49.85h-8.75l-1.33-11.06h-7.35l-1.26,11.06h-7.63Zm5.81,7.7h-.14l-2.87,23.8h5.67Z" transform="translate(-81.46 -1.01)"/><path class="bp-pub-logo" d="M271.92,2H281V44.14h11.62v7.7H271.92Z" transform="translate(-81.46 -1.01)"/><path class="bp-pub-logo" d="M312.59,2h8.89l8.33,26.32H330V2h7.28V51.84h-7.07l-9.73-30.17h-.14V51.84h-7.7Z" transform="translate(-81.46 -1.01)"/><path class="bp-pub-logo" d="M344.16,2h20.58v7.7H353.26V22.44h8.47v8.12h-8.47V44.14h12v7.7H344.16Z" transform="translate(-81.46 -1.01)"/><path class="bp-pub-logo" d="M367.54,2h8.26L379,31.26h.14L383.5,2h8.19l4,29.26h.14L399.4,2h6.51L399.4,51.84h-8.26l-4.34-31.57h-.14l-4.48,31.57h-8Z" transform="translate(-81.46 -1.01)"/><path class="bp-pub-logo" d="M416.75,37.42c0,2.8,0,7.7,3.92,7.7,3,0,4.06-2.8,4.06-4.83,0-8.89-16.52-10.92-16.52-25.69C408.21,7.1,412.27,1,420,1c8.19,0,11.34,6.23,11.55,15.19H423.4c0-2.8,0-7.49-3.64-7.49-2.17,0-3.43,1.82-3.43,4.55,0,8.47,16.52,11.34,16.52,25.83,0,7.63-4.34,13.72-12.53,13.72-9.73,0-11.69-8.54-11.69-15.4Z" transform="translate(-81.46 -1.01)"/></svg></a></div>
+		</article>            <article id="text-33" class="header-widget-right show-for-medium"><div id="weatherContainer" class="textwidget float-right" ></div></article>        </div>
+        
+        <!-- Mobile menu -->
+        <nav id="site-navigation" class="main-navigation top-bar" role="navigation">
+            <div class="top-bar-right row">
+                                    
+<nav class="vertical menu" id="mobile-menu" role="navigation">
+    <ul id="menu-mainmenu-1" class="vertical menu accordion menu" data-accordion-menu><li class='nav-search'><a href='/search/'><i class='fa fa-search menu'></i>Search</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-320"><a href="https://www.bclocalnews.com/">Home</a></li>
+<li class="hide menu-item menu-item-type-post_type menu-item-object-page menu-item-753415"><a href="https://www.bclocalnews.com/submit/">Submit News Tip</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-has-children menu-item-169"><a href="https://www.bclocalnews.com/./news/">News</a>
+<ul class="vertical nested menu">
+	<li class="hide menu-item menu-item-type-taxonomy menu-item-object-category menu-item-170"><a href="https://www.bclocalnews.com/./local-news/">Local News</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-888274"><a href="https://www.bclocalnews.com/./municipal-election/">Municipal Election</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1073681"><a href="https://www.bclocalnews.com/./federal-election/">Federal Election 2019</a></li>
+	<li class="hide menu-item menu-item-type-taxonomy menu-item-object-category menu-item-172"><a href="https://www.bclocalnews.com/./national-news/">Canada &amp; World</a></li>
+	<li class="hide menu-item menu-item-type-post_type menu-item-object-page menu-item-173"><a href="https://www.bclocalnews.com/e-editions/">eEditions</a></li>
+	<li class="hide menu-item menu-item-type-post_type menu-item-object-page menu-item-176"><a href="https://www.bclocalnews.com/submit/">Submit news tip or photo</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-177"><a href="https://www.bclocalnews.com/./sports/">Sports</a>
+<ul class="vertical nested menu">
+	<li class="hide menu-item menu-item-type-taxonomy menu-item-object-category menu-item-178"><a href="https://www.bclocalnews.com/./local-sports/">Local</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-post_tag menu-item-809507"><a href="https://www.bclocalnews.com/tag/b-c-games/">B.C. Games</a></li>
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-post_tag menu-item-879875"><a href="https://www.bclocalnews.com/tag/55-bc-game/">55+ BC Game</a></li>
+	<li class="hide menu-item menu-item-type-taxonomy menu-item-object-category menu-item-179"><a href="https://www.bclocalnews.com/./national-sports/">Canada &amp; World</a></li>
+	<li class="hide menu-item menu-item-type-post_type menu-item-object-page menu-item-180"><a href="https://www.bclocalnews.com/submit/">Submit sports tip or photo</a></li>
+</ul>
+</li>
+<li class="hide menu-item menu-item-type-taxonomy menu-item-object-category menu-item-181"><a href="https://www.bclocalnews.com/./trending-now/">Trending Now</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-944999"><a target="_blank" rel="noopener noreferrer" href="//www.bcclassifieds.com/?sfid=1">Classifieds</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-840027"><a target="_blank" rel="noopener noreferrer" href="//www.localwork.ca">Jobs</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-182"><a href="https://www.bclocalnews.com/./business/">Business</a>
+<ul class="vertical nested menu">
+	<li class="hide menu-item menu-item-type-taxonomy menu-item-object-category menu-item-183"><a href="https://www.bclocalnews.com/./local-business/">Local</a></li>
+	<li class="hide menu-item menu-item-type-post_type menu-item-object-page menu-item-185"><a href="https://www.bclocalnews.com/submit/">Submit business tip or photo</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-186"><a href="https://www.bclocalnews.com/./entertainment/">Entertainment</a>
+<ul class="vertical nested menu">
+	<li class="hide menu-item menu-item-type-taxonomy menu-item-object-category menu-item-187"><a href="https://www.bclocalnews.com/./local-entertainment/">Local</a></li>
+	<li class="hide menu-item menu-item-type-post_type menu-item-object-page menu-item-189"><a href="https://www.bclocalnews.com/submit/">Submit entertainment tip or photo</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1020021"><a href="https://www.bclocalnews.com/./photo-galleries/">Photo Galleries</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-190"><a href="https://www.bclocalnews.com/./life/">Life</a>
+<ul class="vertical nested menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-191"><a href="https://www.bclocalnews.com/./life/">Local</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-193"><a target="_blank" rel="noopener noreferrer" href="http://winetrails.ca">Wine Trails</a></li>
+	<li class="hide menu-item menu-item-type-post_type menu-item-object-page menu-item-194"><a href="https://www.bclocalnews.com/submit/">Submit life tip or photo</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-195"><a href="https://www.bclocalnews.com/./community/">Community</a>
+<ul class="vertical nested menu">
+	<li class="hide menu-item menu-item-type-taxonomy menu-item-object-category menu-item-196"><a href="https://www.bclocalnews.com/./community/">Local</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-197"><a href="https://www.bclocalnews.com/calendar/">Calendar</a></li>
+	<li class="hide menu-item menu-item-type-post_type menu-item-object-page menu-item-198"><a href="https://www.bclocalnews.com/submit/">Submit community tip or photo</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-282"><a href="https://www.bclocalnews.com/./opinion/">Opinion</a>
+<ul class="vertical nested menu">
+	<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-204"><a href="https://www.bclocalnews.com/./opinion/">Local Opinion</a></li>
+	<li class="hide menu-item menu-item-type-taxonomy menu-item-object-category menu-item-202"><a href="https://www.bclocalnews.com/./editorials-opinion/">Editorials</a></li>
+	<li class="hide menu-item menu-item-type-taxonomy menu-item-object-category menu-item-201"><a href="https://www.bclocalnews.com/./columns/">Columnists</a></li>
+	<li class="hide menu-item menu-item-type-taxonomy menu-item-object-category menu-item-203"><a href="https://www.bclocalnews.com/./letters/">Letters</a></li>
+	<li class="hide menu-item menu-item-type-taxonomy menu-item-object-category menu-item-732200"><a href="https://www.bclocalnews.com/./web-poll/">Web poll</a></li>
+	<li class="hide menu-item menu-item-type-post_type menu-item-object-page menu-item-206"><a href="https://www.bclocalnews.com/submitletters/">Submit letter</a></li>
+</ul>
+</li>
+<li class="hide menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-210"><a href="https://www.bclocalnews.com/videos/">Videos</a>
+<ul class="vertical nested menu">
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-211"><a href="https://www.bclocalnews.com/videos/">Local</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-212"><a href="https://www.bclocalnews.com/submit/">Submit video</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-213"><a target="_blank" rel="noopener noreferrer" href="http://blackpress.tv">Black Press TV</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-214"><a href="https://www.bclocalnews.com/weather/">Weather</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-216"><a href="https://www.bclocalnews.com/./obituaries/">Obituaries</a></li>
+<li class="hide menu-item menu-item-type-custom menu-item-object-custom menu-item-329"><a href="#">Special Sections</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-217"><a href="https://www.bclocalnews.com/./marketplace/">Marketplace</a>
+<ul class="vertical nested menu">
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-275"><a href="https://www.bclocalnews.com/advertise/">Place an ad</a></li>
+	<li class="hide menu-item menu-item-type-taxonomy menu-item-object-category menu-item-218"><a href="https://www.bclocalnews.com/./marketplace/">Impress branded content</a></li>
+	<li class="hide menu-item menu-item-type-custom menu-item-object-custom menu-item-357"><a target="_blank" rel="noopener noreferrer" href="//yourhouseyourhome.ca">Real Estate</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-321"><a href="https://www.bclocalnews.com/contests/">Contests</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-224"><a href="https://www.bclocalnews.com/contact-us/">Contact Us</a>
+<ul class="vertical nested menu">
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-225"><a href="https://www.bclocalnews.com/contact-us/">Contact Us</a></li>
+	<li class="hide menu-item menu-item-type-post_type menu-item-object-page menu-item-226"><a href="https://www.bclocalnews.com/our-team/">Our Team</a></li>
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-230"><a target="_blank" rel="noopener noreferrer" href="http://blackpress.ca">Black Press</a></li>
+	<li class="hide menu-item menu-item-type-post_type menu-item-object-page menu-item-231"><a href="https://www.bclocalnews.com/submit/">Submit tip or photo</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-227"><a href="https://www.bclocalnews.com/faq/">FAQ</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-228"><a href="https://www.bclocalnews.com/privacy-policy/">Privacy Policy</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-229"><a href="https://www.bclocalnews.com/terms-of-use/">Terms of use</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1100395"><a href="https://www.bclocalnews.com/site-map/">Site Map</a></li>
+</ul></nav>
+                            </div>
+        </nav>
+        
+        
+        <!-- taboola code -->
+            <script type="text/javascript">
+            window._taboola = window._taboola || [];
+            _taboola.push({article:'auto'});
+            !function (e, f, u, i) {
+            if (!document.getElementById(i)){
+                e.async = 1;
+                e.src = u;
+                e.id = i;
+                f.parentNode.insertBefore(e, f);
+            }
+            }(document.createElement('script'),
+            document.getElementsByTagName('script')[0],
+            '//cdn.taboola.com/libtrc/blackpressmedia-network/loader.js',
+            'tb_loader_script');
+            if(window.performance && typeof window.performance.mark == 'function')
+            {window.performance.mark('tbl_ic');}
+        </script>
+        
+
+    </header>
+
+    <section class="container">
+        <!-- Elevator: return to Top -->
+        <a id="return-to-top" href="javascript:" ><i class="fa fa-chevron-up"></i></a>
+        
+        
+
+<div id="page-full-width" role="main">
+
+    <div class="row module ad">
+        <div class="large-12 columns ad text-center">
+                            </div>
+    </div>
+
+    <!-- Number of attachments: 1 --><!-- Featured Image Layout: medium -->
+
+                <article class="main-content post-1125762 post type-post status-publish format-standard has-post-thumbnail hentry category-news tag-goldstream-news-gazette" id="post-1125762">
+
+        
+        <header>
+            <div class="post-attachment" alt="&lt;1024 - &gt;640"><img width="1200" height="800" src="https://44xv8hmm4vs44orqs2ehffgq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19702843_web_191209-VNE-Grumpy-Candy-Cane-Awards_1.jpg" class="attachment-full size-full" alt="" srcset="https://44xv8hmm4vs44orqs2ehffgq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19702843_web_191209-VNE-Grumpy-Candy-Cane-Awards_1.jpg 1200w, https://44xv8hmm4vs44orqs2ehffgq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19702843_web_191209-VNE-Grumpy-Candy-Cane-Awards_1-300x200.jpg 300w, https://44xv8hmm4vs44orqs2ehffgq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19702843_web_191209-VNE-Grumpy-Candy-Cane-Awards_1-768x512.jpg 768w, https://44xv8hmm4vs44orqs2ehffgq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19702843_web_191209-VNE-Grumpy-Candy-Cane-Awards_1-1024x683.jpg 1024w, https://44xv8hmm4vs44orqs2ehffgq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19702843_web_191209-VNE-Grumpy-Candy-Cane-Awards_1-640x427.jpg 640w" sizes="(max-width: 1200px) 100vw, 1200px" /><p>Black Press Media reached out to mayors from Langford, Colwood, View Royal, Metchosin, and Highlands to ask what has been accomplished by council in 2019 and what is on the horizon for 2020. Here&#8217;s what your mayors had to say. (Black Press Media file photo)</p></div>
+            <div class='code-block code-block-2' style='margin: 8px auto; text-align: center; display: block; clear: both;'>
+<div id="div-gpt-2" class="gpt-ad">
+<script type='text/javascript'>
+    googletag.cmd.push(function() { googletag.display('div-gpt-2');gptRefreshSlots.push(2); });
+</script>
+</div></div>
+                        <h2 class="entry-title">Five West Shore mayors look back on 2019</h2>
+            <p class="lead">Mayors also outline what's on the horizon for 2020</p>
+            <ul class="author-meta"><li>Jan. 1, 2020 12:00 a.m.</li><li><a class="byline" href="https://www.bclocalnews.com/news/">News</a></li></ul>            <ul class="social story top">
+	<li><span data-tooltip aria-haspopup="true" data-disable-hover="false" tabindex="1" title="Post to Facebook"><a href="//www.facebook.com/sharer.php?u=https%3A%2F%2Fwww.bclocalnews.com%2Fnews%2Ffive-west-shore-mayors-look-back-on-2019%2F" class="social fa fa-facebook-f" target="_blank"></a></span></li>
+	<li><span data-tooltip aria-haspopup="true" data-disable-hover="false" tabindex="1" title="Post to Twitter"><a href="//twitter.com/intent/tweet?text=Five+West+Shore+mayors+look+back+on+2019&amp;url=https%3A%2F%2Fwww.bclocalnews.com%2Fnews%2Ffive-west-shore-mayors-look-back-on-2019%2F" class="social fa fa-twitter" target="_blank"></a></span></li>
+	<li><span data-tooltip aria-haspopup="true" data-disable-hover="false" tabindex="1" title="Post to Reddit"><a href="//reddit.com/submit?url=https%3A%2F%2Fwww.bclocalnews.com%2Fnews%2Ffive-west-shore-mayors-look-back-on-2019%2F&title=Five+West+Shore+mayors+look+back+on+2019" class="social fa fa-reddit-alien" target="_blank"></a></span></li>
+	<li><span data-tooltip aria-haspopup="true" data-disable-hover="false" tabindex="1" title="Email story"><a href="mailto:?subject=Five%20West%20Shore%20mayors%20look%20back%20on%202019&amp;body=https%3A%2F%2Fwww.bclocalnews.com%2Fnews%2Ffive-west-shore-mayors-look-back-on-2019%2F" class="social fa fa-envelope-o"></a></span></li>
+
+	<li><span data-tooltip aria-haspopup="true" data-disable-hover="false" tabindex="1" title="Print story"><a href="javascript:window.print();" class="social fa fa-print"></a></span></li>
+	<li><span data-tooltip aria-haspopup="true" data-disable-hover="false" tabindex="1" title="Jump to comments"><a href="#facebook-comments" class="social fa fa-comment-o"></a></span></li>
+
+
+
+</ul>
+        </header>
+                <div class="entry-content">
+
+        <p><p>The holiday season is the best time to remember what we&#8217;ve accomplished and to look at what&#8217;s to come &#8211; and that&#8217;s exactly what five West Shore municipalities are doing before the year comes to a close.</p>
+</p>
+<p><p>Black Press Media reached out to mayors from Langford, Colwood, View Royal, Metchosin and Highlands to ask what has been accomplished by council in 2019 and what is on the horizon for 2020. Here&#8217;s what your mayors had to say.</p>
+</p>
+<p><p><strong>Langford</strong></p>
+</p>
+<p><p>&#8220;2019 has been a remarkable year for Langford,&#8221; said Mayor Stew Young. &#8220;As always, I have to take a moment to thank our extremely hard-working council, City staff, service delivery partners and volunteers for all of their efforts this year to make Langford one of the best places to live, work and raise a family.&#8221;</p>
+</p>
+<p><p>Earlier this year, it was announced that the Provincial Government would be providing funding for three new schools for Langford children.</p>
+</p>
+<p><p>In August, Langford saw the grand opening of a newly renovated and expanded Westhills Stadium and the Sarah Beckett Memorial Playground.</p>
+</p>
+<p><p><ins><strong>ALSO READ: <a href="https://www.goldstreamgazette.com/community/langfords-sarah-beckett-memorial-playground-opens/" target="_blank" rel="noopener noreferrer">Langford&#8217;s Sarah Beckett Memorial playground opens</a></strong></ins></p>
+</p>
+<p><p><ins><strong>READ MORE: <a href="https://www.goldstreamgazette.com/news/100-government-employees-will-work-in-the-west-shore-by-the-end-of-2020/" target="_blank" rel="noopener noreferrer">100 government employees will work in the West Shore by the end of 2020</a></strong></ins></p>
+</p>
+<p><p>Recently, it was announced that 10,000 square feet of government office space would be coming to Westhills so that fewer Langford residents have to commute to Victoria or elsewhere for work. </p>
+</p>
+<p><p>Finally, a mass timber project broke ground on Peatt Road, the first of its kind in Langford.</p>
+</p>
+<p><p>&#8220;Safety continues to be one of council&#8217;s top priorities, and with that in mind, we added three new RCMP officers and three new firefighters, all while keeping taxes among the lowest in the region,&#8221; Young said.</p>
+</p>
+<p><p>In the sports world, Pacific FC brought professional soccer to Langford and kicked off their inaugural season at the expanded Westhills Stadium, joining Rugby Canada and the Rebels Football Club, who call the stadium home.</p>
+</p>
+<p><p>In addition, Pacific FC and the City of Langford have come together to construct the Island Training Centre, the largest indoor field house in B.C. </p>
+</p>
+<p><p>The new facility features a full-size turf field and multi-sport hard court that can be converted into three volleyball courts and a basketball court for use by both professional and community organizations.</p>
+</p>
+<p><p>Langford welcomed more than 300 exciting new businesses this year.</p>
+</p>
+<p><p>&#8220;We&#8217;d like to send a special congratulations to Castro Boateng, owner and head chef at House of Boateng, for winning YAM Magazine&#8217;s 2019 Chef of the Year and Best New Restaurant awards,&#8221; Young pointed out.</p>
+</p>
+<p><p><ins><strong>RELATED:<a href="https://www.goldstreamgazette.com/life/house-of-boateng-a-restaurant-success/" target="_blank" rel="noopener noreferrer"> House of Boateng a restaurant success</a></strong></ins></p>
+</p>
+<p><p><ins><strong>ALSO READ: <a href="https://www.goldstreamgazette.com/news/langford-buys-2-2-million-oceanfront-property-with-plans-for-eco-tourism-recreation/" target="_blank" rel="noopener noreferrer">Langford buys $2.2 million oceanfront property with plans for eco-tourism, recreation</a></strong></ins></p>
+</p>
+<p><p>He recognizes many longstanding Langford businesses that have received special gold business licences to commemorate their ongoing service in the community, including Ma Millers Pub, Sandy&#8217;s Auto Parts, Western Speedway, Jacklin Trading Post, Glenwood Meats, the Cloth Castle, Devonshire Flowers, Belmont Collision, Belmont Veterinary and FTS Technologies.</p>
+</p>
+<p><p>Looking forward to 2020, he&#8217;s excited to see the new BoulderHouse open its doors at City Centre Park and to expand the trail network along Irwin Road and Humpback Road.</p>
+</p>
+<p><p>&#8220;We will also soon be announcing community programming for the City&#8217;s new oceanfront property at Finlayson Arm,&#8221; Young said.</p>
+</p>
+<p><p>In addition, the City will continue to work to identify and develop new commercial space to attract new businesses to the community and to improve access to post-secondary education in the West Shore for its students.</p>
+</p>
+<p><p>Maclean&#8217;s magazine named Langford the 38th best community in Canada this year.</p>
+</p>
+<p><p>&#8220;We continue to strive to be number one!&#8221; Young said.</p>
+</p>
+<p><p><strong>Colwood</strong></p>
+</p>
+<p><p>&#8220;Colwood has a lot to celebrate as we near the end of 2019 and look forward to 2020,&#8221; said Mayor Rob Martin. &#8220;With all this new growth, Colwood is excited to welcome new residents to our community. And it&#8217;s time to kick into high gear the plans we&#8217;ve been putting place over several years to accommodate these positive increases.&#8221;</p>
+</p>
+<p><p>In 2019, the Province made healthy investments in Colwood that will bring more than 300 much-needed new apartments to 342 Wale Road, 330 Goldstream Avenue and 2006 Sooke Road.</p>
+</p>
+<p><p>Residents are now seeing highly visible town centre areas coming to life, with Colwood Corners well on the way to completing its cornerstone building on Sooke Road. Work has begun on the first four buildings that will revitalize the town centre area and the public areas surrounding it. Building permits have been issued for ten buildings.</p>
+</p>
+<p><p><ins><strong>ALSO READ: <a href="https://www.goldstreamgazette.com/news/first-colwood-corners-building-to-start-coming-together-by-september/" target="_blank" rel="noopener noreferrer">First Colwood Corners building to start coming together by September</a></strong></ins></p>
+</p>
+<p><p>Colwood Council earned dozens of accolades for the award-winning Sustainable Infrastructure Replacement Plan, which protects future generations by setting aside the budget required to maintain the City&#8217;s roads, sewer and stormwater systems, natural assets and other infrastructure over the next 50 years.</p>
+</p>
+<p><p>&#8220;The plan will prevent large and unexpected tax increases for residents, because we have taken the time forecast future infrastructure replacement needs,&#8221; Martin said.</p>
+</p>
+<p><p>Colwood was also recognized for creating events and opportunities for residents to connect, as council received a Best of the West Shore Award for 2019 Eats &#038; Beats at the Beach events.</p>
+</p>
+<p><p>Maclean&#8217;s Magazine named Colwood as one of the top two safest communities in B.C. and the sixth-best place in Canada to retire.</p>
+</p>
+<p><p>Council is also excited about the potential of the Allandale Lands on Veterans Memorial Parkway near Sooke Road, with a new owner preparing the site to bring new mixed-use employment opportunities to Colwood.</p>
+</p>
+<p><p><ins><strong>READ MORE: <a href="https://www.goldstreamgazette.com/news/plans-for-colwoods-royal-beach-property-moving-forward/" target="_blank" rel="noopener noreferrer">Plans for Colwood&#8217;s Royal Beach property moving forward</a></strong></ins></p>
+</p>
+<p><p>&#8220;Perhaps most exciting is the progress in Colwood&#8217;s newest waterfront neighbourhoods at Royal Bay and Royal Beach,&#8221; Martin said.</p>
+</p>
+<p><p>New parks and trails are steadily emerging for residents to enjoy as Gablecraft Homes prepares for the commercial Commons to take shape, starting with Sequoia Coffee which is expected to open a pop-up coffee shop in 2020.</p>
+</p>
+<p><p>Colwood has plans to review road layouts and intersections on priority routes, starting with the Latoria and Royal Bay area, and plan for necessary improvements to sidewalks, cycling routes, transit services and potential ferry options.</p>
+</p>
+<p><p>In 2020, they&#8217;ll be encouraging residents to get involved in the creation of a Parks &#038; Recreation Master Plan, a Waterfront Master Plan and a Roadway Beautification Plan, to create engaging environments where people enjoy spending time.</p>
+</p>
+<p><p>&#8220;Council will strive to create a network of beautiful and connected streets, parks, trails and waterfront areas that will promote well-being, connection, inclusion and an ever-greater quality of life in Colwood,&#8221; Martin said.</p>
+</p>
+<p><p>Residents can visit <a href="http://www.letstalkcolwood.ca" target="_blank" rel="noopener noreferrer">www.letstalkcolwood.ca</a> to join the conversation and help shape the future of Colwood.</p>
+</p>
+<p><p><strong>View Royal</strong></p>
+</p>
+<p><p>&#8220;One of the best pieces of news View Royal council received this year came in the form of a survey commissioned to check in with resident satisfaction in our town,&#8221; Mayor David Screech said. </p>
+</p>
+<p><p>&#8220;It turned out residents are very satisfied, giving the town, its services, and their lifestyles here a 99% thumbs up. Even the survey company was impressed with the results.&#8221;</p>
+</p>
+<p><p><ins><strong>ALSO READ: <a href="https://www.goldstreamgazette.com/community/survey-says-99-per-cent-of-residents-call-life-in-view-royal-good-or-very-good/" target="_blank" rel="noopener noreferrer">Survey says 99 per cent of residents call life in View Royal &#8216;good&#8217; or &#8216;very good&#8217;</a></strong></ins></p>
+</p>
+<p><p>Health and wellness were at the forefront of View Royal&#8217;s 2019 initiatives.</p>
+</p>
+<p><p>A new bike park in View Royal Park has cyclists of all experience levels &#8211; from toddlers to adults &#8211; enjoying loops and curves and testing their own skill levels.</p>
+</p>
+<p><p>A new boat launch on Shoreline Drive makes Portage Inlet accessible to kayaks, canoes and much more.</p>
+</p>
+<p><p>View Royal is home to a myriad of parks and trails. A new map highlights some of the beauty spots, which has been added to their website at <a href="http://www.viewroyal.ca" target="_blank" rel="noopener noreferrer">viewroyal.ca </a></p>
+</p>
+<p><p>Traffic continues to clog View Royal roadways during rush hours and the Six Mile Corridor is a particular choke point. </p>
+</p>
+<p><p>A study is underway and residents have had an opportunity to look at some of the options to alleviate congestion.</p>
+</p>
+<p><p><ins><strong>RELATED:<a href="https://www.goldstreamgazette.com/news/view-royal-seeks-feedback-on-six-mile-corridor-traffic-congestion/" target="_blank" rel="noopener noreferrer"> View Royal seeks feedback on Six Mile corridor traffic congestion</a></strong></ins></p>
+</p>
+<p><p>Council declared a climate emergency and climate impact is a key lens as it considers projects and developments in the Town.</p>
+</p>
+<p><p>&#8220;Housing affordability is a challenge across the region and View Royal has initiated a gaps analysis to see where need is greatest in our Town. In the spring, council approved the first purpose-built affordable housing project &#8211; a CRD initiative &#8211; in 30 years,&#8221; said Screech.</p><div id="div-gpt-3" class="gpt-ad horizontal">
+<script type='text/javascript'>
+    googletag.cmd.push(function() { googletag.display('div-gpt-3');gptRefreshSlots.push(3); });
+</script>
+</div>
+</p>
+<p><p>At budget time, council agreed to add an additional RCMP officer to serve the town. It&#8217;s worth noting that the West Shore RCMP is striving to increase their visibility on streets and neighbourhoods.</p>
+</p>
+<p><p>&#8220;We closed this year with a proud moment in which our fire chief, Paul Hurst, received his provincial 35-year bar for continuous service,&#8221; Screech said. </p>
+</p>
+<p><p>&#8220;Chief Hurst has served View Royal for his entire career and I&#8217;m happy to report he plans to continue.&#8221;</p>
+</p>
+<p><p><ins><strong>ALSO READ: <a href="https://www.goldstreamgazette.com/community/view-royal-chief-revisits-35-years-of-heading-into-the-fire/" target="_blank" rel="noopener noreferrer">View Royal chief revisits 35 years of heading into the fire</a></strong></ins></p>
+</p>
+<p><p>In 2020, there will be major development proposals coming for North View Royal and council will review the Official Community Plan. </p>
+</p>
+<p><p>Additionally, View Royal hopes to work with its partners at WestShore Parks and Recreation to see the new skateboard park built.</p>
+</p>
+<p><p><strong>Metchosin</strong></p>
+</p>
+<p><p>This year began with the addition of newly elected officials, Couns. Sharie Epp and Marie-T&#0233;r&#0232;se Little.</p>
+</p>
+<p><p>&#8220;Over the summer, significant improvements were made to the interior and exterior of Metchosin School,&#8221; said Mayor John Ranns.</p>
+</p>
+<p><p><ins><strong>ALSO READ: <a href="https://www.goldstreamgazette.com/news/much-needed-upgrades-coming-to-metchosin-school-museum/" target="_blank" rel="noopener noreferrer">Much-needed upgrades coming to Metchosin School Museum</a></strong></ins></p>
+</p>
+<p><p>The project was organized by the Metchosin Arts and Cultural Association (MACCA) and completed by volunteers, Public Works crew, and inmates from William Head Work Release program.</p>
+</p>
+<p><p>The District continues to work on plans for achieving a sub-regional Emergency Training Centre at the school.</p>
+</p>
+<p><div class='code-block code-block-4' style='margin: 8px 0 8px 8px; float: right;'>
+<div id="div-gpt-4" class="gpt-ad">
+<script type='text/javascript'>
+    googletag.cmd.push(function() { googletag.display('div-gpt-4');gptRefreshSlots.push(4); });
+</script>
+</div></div>
+<p>Over the past year, the District has seen increased demand from the public for bylaw enforcement and access to records under the Freedom of Information and Protection of Privacy Act which has brought changes to their staffing levels. Ranns noted that this may result in a significant tax increase for 2020.</p>
+</p>
+<p><p>&#8220;I continue to believe that tax increases beyond inflation are unsustainable for a rural community and we may have to re-examine our philosophy on revenue sources over the next year,&#8221; Ranns said.</p>
+</p>
+<p><p>Council will consider its budget deliberations for the Five Year Financial Plan and Tax Rate Bylaws in 2020.</p>
+</p>
+<p><p>The District has been working to conserve the rural character and ecological space at Mary Hill, to which Beecher Bay First Nation has committed to help carry out.</p>
+</p>
+<p><p><ins><strong>READ MORE: <a href="https://www.goldstreamgazette.com/news/community-calls-for-answers-12-weeks-after-inmates-escape-metchosin-prison/" target="_blank" rel="noopener noreferrer">Months after inmates escape Metchosin prison, community still wants answers</a></strong></ins></p>
+</p>
+<p><p>Looking ahead to 2020, the District will continue to work towards setting up fiscal revenue for the Metchosin School site through lease agreements to maximize rental return and re-fill the District&#8217;s reserves for the purchase of the school.</p>
+</p>
+<p><p>They&#8217;re planning to hold a goal-setting workshop that will provide the council with a chance to &#8216;examine foundational elements of service&#8217; to the community so they can re-prioritize what Metchosin&#8217;s core values are.</p>
+</p>
+<p><p><strong>Highlands</strong></p>
+</p>
+<p><p>&#8220;I&#8217;m proud to lead a community where people care deeply for one another and that no matter what the issue, we find a way to move forward,&#8221; said Mayor Ken Williams.</p>
+</p>
+<p><p>In 2019, Highlands council and staff have been working on asset management and emergency planning this past year.</p>
+</p>
+<p><p>Highlands has implemented a &#8216;reserves and surplus&#8217; policy, a pavement management plan, and a long-term financial plan.</p>
+</p>
+<p><p>Council has also endorsed an Emergency Program Strategic Plan and the implementation of recommendations is underway, such as the evacuation route planning project. </p>
+</p>
+<p><p>Council endorsed a Groundwater Protection Implementation and Work Plan and authorized staff to work with Union of B.C. Municipalities (UBCM) to secure the remaining funding under the Gas Tax Grant.</p>
+</p>
+<p><p><ins><strong>ALSO READ: <a href="https://www.goldstreamgazette.com/news/highlands-council-remains-united-in-opposition-to-proposed-quarry/" target="_blank" rel="noopener noreferrer">Highlands council remains united in opposition to proposed quarry</a></strong></ins></p>
+</p>
+<p><p><ins><strong>READ MORE: <a href="https://www.goldstreamgazette.com/news/highlands-family-plans-to-rebuild-after-losing-home-three-dogs-to-devastating-fire/" target="_blank" rel="noopener noreferrer">Highlands family plans to rebuild after losing home, three dogs to devastating fire</a></strong></ins></p>
+</p>
+<p><p>Highlands has also worked on a Regional Vegetation Management Strategy to help the region respond to climate stress in the nearby forests and streams.</p>
+</p>
+<p><p>This year, Highlands invited the Association of Vancouver Island and Coastal Communities (AVICC) to partake in the Municipal Survivor Climate Challenge, tracking their ecological footprint over a one-year period until Earth Day 2020. </p>
+</p>
+<p><p>Staff will report those successes back to council to report when the results are complete.</p>
+</p>
+<p><p>&#8220;In 2020, our new Community Hall landscaping project will be complete and looks terrific,&#8221; Williams said. </p>
+</p>
+<p><p>&#8220;The South Highlands Local Area Plan process has begun with the formation of a new task force that will help define South Highlands and update our Official Community Plan.&#8221;</p>
+</p>
+<p><p>aaron.guillen@goldstreamgazette.com</a></p>
+</p>
+<p>
+<hr width="75%">
+<p><p><a href="http://www.twitter.com/iaaronguillen" target="_blank" rel="noopener noreferrer">@iaaronguillen</a><strong>Like us on <a href="http://www.facebook.com/GoldstreamNewsGazette" target="_blank" rel="noopener noreferrer">Facebook</a> and follow us on <a href="http://www.twitter.com/GoldstreamNews" target="_blank" rel="noopener noreferrer">Twitter</a>. </strong></p></p>
+                        </div>
+        
+        <!-- Start: Spot.IM setup -->
+                <!-- End: Spot.IM setup -->
+
+        <!-- BEGIN: Comments -->
+                                <div class="fb-comments" id="facebook-comments" data-href="https://www.bclocalnews.com/news/five-west-shore-mayors-look-back-on-2019/" data-width="100%" data-numposts="10" data-order-by="reverse_time" data-colorscheme="light"></div>
+                <!-- END: Comments -->
+
+        <footer>
+                    </footer>
+                <ul class="social story bottom">
+	<li><span data-tooltip aria-haspopup="true" data-disable-hover="false" tabindex="1" title="Post to Facebook"><a href="//www.facebook.com/sharer.php?u=https%3A%2F%2Fwww.bclocalnews.com%2Fnews%2Ffive-west-shore-mayors-look-back-on-2019%2F" class="social fa fa-facebook-f" target="_blank"></a></span></li>
+	<li><span data-tooltip aria-haspopup="true" data-disable-hover="false" tabindex="1" title="Post to Twitter"><a href="//twitter.com/intent/tweet?text=Five+West+Shore+mayors+look+back+on+2019&amp;url=https%3A%2F%2Fwww.bclocalnews.com%2Fnews%2Ffive-west-shore-mayors-look-back-on-2019%2F" class="social fa fa-twitter" target="_blank"></a></span></li>
+	<li><span data-tooltip aria-haspopup="true" data-disable-hover="false" tabindex="1" title="Post to Reddit"><a href="//reddit.com/submit?url=https%3A%2F%2Fwww.bclocalnews.com%2Fnews%2Ffive-west-shore-mayors-look-back-on-2019%2F&title=Five+West+Shore+mayors+look+back+on+2019" class="social fa fa-reddit-alien" target="_blank"></a></span></li>
+	<li><span data-tooltip aria-haspopup="true" data-disable-hover="false" tabindex="1" title="Email story"><a href="mailto:?subject=Five%20West%20Shore%20mayors%20look%20back%20on%202019&amp;body=https%3A%2F%2Fwww.bclocalnews.com%2Fnews%2Ffive-west-shore-mayors-look-back-on-2019%2F" class="social fa fa-envelope-o"></a></span></li>
+
+	<li><span data-tooltip aria-haspopup="true" data-disable-hover="false" tabindex="1" title="Print story"><a href="javascript:window.print();" class="social fa fa-print"></a></span></li>
+	<li><span data-tooltip aria-haspopup="true" data-disable-hover="false" tabindex="1" title="Jump to comments"><a href="#facebook-comments" class="social fa fa-comment-o"></a></span></li>
+
+
+
+</ul>
+
+        <!-- Comments disabled for now -->
+        <!-- <a class="hollow expanded button comments day-" href="">View Comments <i class="fa fa-comment-o"></i></a> -->
+        
+        
+        <div class="row" style="padding-bottom: 1.5rem;"><div class="columns small-12 medium-12 large-6"><div class='code-block code-block-14' style='margin: 8px auto; text-align: center; display: block; clear: both;'>
+<div id="div-gpt-14" class="gpt-ad">
+<script type='text/javascript'>
+    googletag.cmd.push(function() { googletag.display('div-gpt-14');gptRefreshSlots.push(14); });
+</script>
+</div></div>
+</div><div class="columns small-12 medium-12 large-6"></div></div>        
+    </article>
+
+
+</div>
+
+<div class="row module-adjacent-posts" data-equalizer data-equalize-on="medium">
+	    <div class="small-6 adjacent-prev columns" data-equalizer-watch>
+                    <a class="button" onClick="__gaTracker('send','event','Recirculating Content','Click','Previous Adjacent Story');" href="https://www.bclocalnews.com/news/lake-countrys-year-in-review-december/">
+                <h5><i class="fa fa-chevron-left" aria-hidden="true"></i>Previous <span class="show-for-small-only">story </span></h5>
+                <span class="show-for-medium">
+                    <h6>Lake Country&#8217;s year in review &#8211; December</h6>
+                </span>
+            </a>
+            </div>
+    <div class="small-6 adjacent-next columns" data-equalizer-watch>
+                    <a class="button" onClick="__gaTracker('send','event','Recirculating Content','Click','Next Adjacent Story');" href="https://www.bclocalnews.com/news/august-forestry-firefighters-save-raptor-rehab-centre/">
+                <h5>Next <span class="show-for-small-only">story </span><i class="fa fa-chevron-right" aria-hidden="true"></i></h5>
+                <span class="show-for-medium">
+                    <h6>August: Forestry firefighters save raptor rehab centre</h6>
+                </span>
+            </a>
+            </div>
+</div><div class="row module-recirc">
+	<div class="small-12 columns">
+		<h3 class="text-center"><a onClick="__gaTracker('send','event','Recirculating Content','Click','News Header');" href="https://www.bclocalnews.com/./news/">Just Posted</a></h3>
+                <div class="row module-recirc">
+            <div class="small-12 large-8 module-recirc columns">
+                <!-- Transient Content single-4a70ce3897f41f4d06573010aeacb8fc --><!-- story-recirc-block --><div class="small-up-2 medium-up-2 large-up-3"></div>            </div>
+
+            <div class="small-12 large-4 module-most-read columns">
+                <div class="row">
+    <div class="small-12 module-trending story columns">
+        <h3 class="text-center">Most Read</h3>
+        <ul class="trending-maxi">
+                            <li>
+                <div id="post-1125681" class="row story-list-item collapse">
+	<div class="small-12 medium-8 photo content columns">
+					<h4 class="count"></h4><h5><a onClick="__gaTracker('send','event','Recirculating Content','Click','News Most Read');" href="https://www.bclocalnews.com/news/october-children-living-in-poverty/">October: Children living in poverty</a></h5>
+				<p class="lead web show-for-medium hide-for-large">Looking back at our biggest stories from each month in 2019</p>	</div>
+			<div class="show-for-medium medium-4 columns">
+							<a onClick="__gaTracker('send','event','Recirculating Content','Click','News Most Read');" href="https://www.bclocalnews.com/news/october-children-living-in-poverty/"><img src="https://44xv8hmm4vs44orqs2ehffgq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19880111_web_18829075_web1_191009-PWN-ChildPoverty-1200x800.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://44xv8hmm4vs44orqs2ehffgq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19880111_web_18829075_web1_191009-PWN-ChildPoverty-1200x800.jpg 1200w, https://44xv8hmm4vs44orqs2ehffgq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19880111_web_18829075_web1_191009-PWN-ChildPoverty-1200x800-300x200.jpg 300w, https://44xv8hmm4vs44orqs2ehffgq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19880111_web_18829075_web1_191009-PWN-ChildPoverty-1200x800-768x512.jpg 768w, https://44xv8hmm4vs44orqs2ehffgq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19880111_web_18829075_web1_191009-PWN-ChildPoverty-1200x800-1024x683.jpg 1024w, https://44xv8hmm4vs44orqs2ehffgq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19880111_web_18829075_web1_191009-PWN-ChildPoverty-1200x800-640x427.jpg 640w" sizes="(max-width: 1200px) 100vw, 1200px" /></a>
+					</div>
+	</div>
+            </li>
+                            <li>
+                <div id="post-1125709" class="row story-list-item collapse">
+	<div class="small-12 medium-8 photo content columns">
+					<h4 class="count"></h4><h5><a onClick="__gaTracker('send','event','Recirculating Content','Click','News Most Read');" href="https://www.bclocalnews.com/news/safe-house-to-open-soon-in-burns-lake/">Safe House to open soon in Burns Lake</a></h5>
+				<p class="lead web show-for-medium hide-for-large">Shelter will support victims of domestic violence</p>	</div>
+			<div class="show-for-medium medium-4 columns">
+							<a onClick="__gaTracker('send','event','Recirculating Content','Click','News Most Read');" href="https://www.bclocalnews.com/news/safe-house-to-open-soon-in-burns-lake/"><img src="https://44xv8hmm4vs44orqs2ehffgq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19671129_web_IMG_8161.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://44xv8hmm4vs44orqs2ehffgq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19671129_web_IMG_8161.jpg 864w, https://44xv8hmm4vs44orqs2ehffgq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19671129_web_IMG_8161-300x200.jpg 300w, https://44xv8hmm4vs44orqs2ehffgq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19671129_web_IMG_8161-768x512.jpg 768w, https://44xv8hmm4vs44orqs2ehffgq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19671129_web_IMG_8161-640x427.jpg 640w" sizes="(max-width: 1199px) 98vw, 864px" /></a>
+					</div>
+	</div>
+            </li>
+                            <li>
+                <div id="post-1125683" class="row story-list-item collapse">
+	<div class="small-12 medium-8 photo content columns">
+					<h4 class="count"></h4><h5><a onClick="__gaTracker('send','event','Recirculating Content','Click','News Most Read');" href="https://www.bclocalnews.com/news/council-takes-first-step-to-improve-benson-ave-rail-crossing-safety/">Council takes first step to improve Benson Ave. rail crossing safety</a></h5>
+				<p class="lead web show-for-medium hide-for-large">But project also depends upon federal grant</p>	</div>
+			<div class="show-for-medium medium-4 columns">
+							<a onClick="__gaTracker('send','event','Recirculating Content','Click','News Most Read');" href="https://www.bclocalnews.com/news/council-takes-first-step-to-improve-benson-ave-rail-crossing-safety/"><img src="https://44xv8hmm4vs44orqs2ehffgq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19843325_web_191225-HTO-benson.CN_.crossing.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://44xv8hmm4vs44orqs2ehffgq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19843325_web_191225-HTO-benson.CN_.crossing.jpg 636w, https://44xv8hmm4vs44orqs2ehffgq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19843325_web_191225-HTO-benson.CN_.crossing-300x167.jpg 300w" sizes="(max-width: 1199px) 98vw, 636px" /></a>
+					</div>
+	</div>
+            </li>
+                            <li>
+                <div id="post-1125707" class="row story-list-item collapse">
+	<div class="small-12 medium-8 photo content columns">
+					<h4 class="count"></h4><h5><a onClick="__gaTracker('send','event','Recirculating Content','Click','News Most Read');" href="https://www.bclocalnews.com/news/friedom-hotel-gets-modern-face-lift/">Friedom Hotel gets modern face lift</a></h5>
+				<p class="lead web show-for-medium hide-for-large">The Friedom hotel is one of the oldest buildings in Golden. Located at 511 Main Street, it was originally built in the early 20th century. The hotel first opened its doors just over 90 years ago, in 1928.</p>	</div>
+			<div class="show-for-medium medium-4 columns">
+							<a onClick="__gaTracker('send','event','Recirculating Content','Click','News Most Read');" href="https://www.bclocalnews.com/news/friedom-hotel-gets-modern-face-lift/"><img src="https://44xv8hmm4vs44orqs2ehffgq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19777856_web_Friedom-2.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://44xv8hmm4vs44orqs2ehffgq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19777856_web_Friedom-2.jpg 960w, https://44xv8hmm4vs44orqs2ehffgq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19777856_web_Friedom-2-225x300.jpg 225w, https://44xv8hmm4vs44orqs2ehffgq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19777856_web_Friedom-2-768x1024.jpg 768w, https://44xv8hmm4vs44orqs2ehffgq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19777856_web_Friedom-2-640x853.jpg 640w" sizes="(max-width: 1199px) 98vw, 960px" /></a>
+					</div>
+	</div>
+            </li>
+                            <li>
+                <div id="post-1125721" class="row story-list-item collapse">
+	<div class="small-12 medium-8 photo content columns">
+					<h4 class="count"></h4><h5><a onClick="__gaTracker('send','event','Recirculating Content','Click','News Most Read');" href="https://www.bclocalnews.com/news/december-brush-with-death-gives-new-meaning-to-life/">December: Brush with death gives new meaning to life</a></h5>
+				<p class="lead web show-for-medium hide-for-large">Looking back at our biggest stories from each month in 2019</p>	</div>
+			<div class="show-for-medium medium-4 columns">
+							<a onClick="__gaTracker('send','event','Recirculating Content','Click','News Most Read');" href="https://www.bclocalnews.com/news/december-brush-with-death-gives-new-meaning-to-life/"><img src="https://44xv8hmm4vs44orqs2ehffgq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19881729_web_19691719_web1_BCEHSAward_PGM_3986.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://44xv8hmm4vs44orqs2ehffgq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19881729_web_19691719_web1_BCEHSAward_PGM_3986.jpg 1400w, https://44xv8hmm4vs44orqs2ehffgq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19881729_web_19691719_web1_BCEHSAward_PGM_3986-300x200.jpg 300w, https://44xv8hmm4vs44orqs2ehffgq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19881729_web_19691719_web1_BCEHSAward_PGM_3986-768x512.jpg 768w, https://44xv8hmm4vs44orqs2ehffgq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19881729_web_19691719_web1_BCEHSAward_PGM_3986-1024x682.jpg 1024w, https://44xv8hmm4vs44orqs2ehffgq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19881729_web_19691719_web1_BCEHSAward_PGM_3986-640x427.jpg 640w, https://44xv8hmm4vs44orqs2ehffgq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19881729_web_19691719_web1_BCEHSAward_PGM_3986-1200x800.jpg 1200w" sizes="(max-width: 1199px) 98vw, 1200px" /></a>
+					</div>
+	</div>
+            </li>
+                            <li>
+                <div id="post-1125711" class="row story-list-item collapse">
+	<div class="small-12 medium-8 photo content columns">
+					<h4 class="count"></h4><h5><a onClick="__gaTracker('send','event','Recirculating Content','Click','News Most Read');" href="https://www.bclocalnews.com/news/chamber-optimistic-for-business-activity-next-year/">Chamber optimistic for business activity next year</a></h5>
+				<p class="lead web show-for-medium hide-for-large">Coastal GasLink expected to balance mill closures</p>	</div>
+			<div class="show-for-medium medium-4 columns">
+							<a onClick="__gaTracker('send','event','Recirculating Content','Click','News Most Read');" href="https://www.bclocalnews.com/news/chamber-optimistic-for-business-activity-next-year/"><img src="https://44xv8hmm4vs44orqs2ehffgq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19871026_web_image00001.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://44xv8hmm4vs44orqs2ehffgq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19871026_web_image00001.jpg 768w, https://44xv8hmm4vs44orqs2ehffgq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19871026_web_image00001-300x172.jpg 300w, https://44xv8hmm4vs44orqs2ehffgq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19871026_web_image00001-640x367.jpg 640w" sizes="(max-width: 1199px) 98vw, 768px" /></a>
+					</div>
+	</div>
+            </li>
+                            <li>
+                <div id="post-1125697" class="row story-list-item collapse">
+	<div class="small-12 medium-8 photo content columns">
+					<h4 class="count"></h4><h5><a onClick="__gaTracker('send','event','Recirculating Content','Click','News Most Read');" href="https://www.bclocalnews.com/news/louis-creek-industrial-park-water-supply-well-underway/">Louis Creek Industrial Park water supply well underway</a></h5>
+				<p class="lead web show-for-medium hide-for-large">Lighting for Highway 5 intersections in Louis Creek also being looked at</p>	</div>
+			<div class="show-for-medium medium-4 columns">
+							<a onClick="__gaTracker('send','event','Recirculating Content','Click','News Most Read');" href="https://www.bclocalnews.com/news/louis-creek-industrial-park-water-supply-well-underway/"><img src="https://44xv8hmm4vs44orqs2ehffgq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19939605_web_Louis-Creek-Industrial-Reservoir.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://44xv8hmm4vs44orqs2ehffgq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19939605_web_Louis-Creek-Industrial-Reservoir.jpg 1200w, https://44xv8hmm4vs44orqs2ehffgq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19939605_web_Louis-Creek-Industrial-Reservoir-300x102.jpg 300w, https://44xv8hmm4vs44orqs2ehffgq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19939605_web_Louis-Creek-Industrial-Reservoir-768x260.jpg 768w, https://44xv8hmm4vs44orqs2ehffgq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19939605_web_Louis-Creek-Industrial-Reservoir-1024x347.jpg 1024w, https://44xv8hmm4vs44orqs2ehffgq-wpengine.netdna-ssl.com/wp-content/uploads/2020/01/19939605_web_Louis-Creek-Industrial-Reservoir-640x217.jpg 640w" sizes="(max-width: 1200px) 100vw, 1200px" /></a>
+					</div>
+	</div>
+            </li>
+                </ul>
+    </div>
+</div>            </div>
+        </div>
+    </div>
+</div>
+
+<!-- [post-block post_type='post' taxonomy='category' tax_term='home' taxonomy_posts_per_page='5' taxonomy_2='category' tax_2_term='home2' taxonomy_2_posts_per_page='8' tax_operator='AND' post_template='story-recirc' current_story_id='$currentID' reverse_chron='$reverse_chron'] -->
+<!--//*** Taboola article code ***//-->
+<div class="row">
+	<div class="small-12 columns">
+		<div class="row">
+            <div class="small-12 large-8 columns">
+                
+        <!-- taboola code -->
+            <div id="taboola-below-article-thumbnails"></div>
+            <script type="text/javascript">
+            window._taboola = window._taboola || [];
+            _taboola.push({
+                mode: 'thumbnails-a',
+                container: 'taboola-below-article-thumbnails',
+                placement: 'Below Article Thumbnails',
+                target_type: 'mix'
+            });
+            </script>
+        
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+        </section>
+        <div id="footer-container">
+            <footer id="footer">
+                
+                
+<div id="bp-logo" class="row">
+
+    <div class="small-12 columns">
+ 
+    <!-- *** BEGIN LOGO *** -->
+        <div class="textwidget">
+            <a class="pub-logo-small day-4" href="https://www.bclocalnews.com/"><svg id="Outline" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 351.4 51.81"><defs></defs><title></title><path class="bp-pub-logo" d="M81.46,2h11.2C98.26,2,105,5.07,105,14.59c0,5.6-2.52,9.94-8.12,11.13v.14c6.23,1.47,9.1,5.81,9.1,12.11,0,9.1-6.16,13.86-12.88,13.86H81.46Zm9.1,20.44c4.55,0,5.74-2.1,5.74-6.58,0-5.67-1.19-6.65-5.74-6.58Zm0,22.12c5.46,0,6.3-2.17,6.3-7.35,0-4.55-1.12-7.14-6.3-7.07Z" transform="translate(-81.46 -1.01)"/><path class="bp-pub-logo" d="M126.61,20.06c0-8.26-1.05-11.34-3.29-11.34-1.89,0-3.78,1.26-3.78,18.2,0,16.38,1,18.2,3.78,18.2,3,0,3.71-4.62,3.85-11.83l7.7.35c0,8.68-1.26,19.18-11.9,19.18-9.73,0-13-9.52-13-25.9,0-19,5.74-25.9,13-25.9,10.5,0,11.76,9.66,11.76,18.76Z" transform="translate(-81.46 -1.01)"/><path class="bp-pub-logo" d="M156.22,2h9.1V44.14h11.62v7.7H156.22Z" transform="translate(-81.46 -1.01)"/><path class="bp-pub-logo" d="M194.23,1c8.05,0,13.3,6.23,13.3,25.9s-5.25,25.9-13.3,25.9-13.3-6.23-13.3-25.9S186.18,1,194.23,1Zm-3.36,31.15c0,10.78,1.26,13,3.36,13s3.36-2.17,3.36-13V21.67c0-10.78-1.26-13-3.36-13s-3.36,2.17-3.36,13Z" transform="translate(-81.46 -1.01)"/><path class="bp-pub-logo" d="M228.74,20.06c0-8.26-1.05-11.34-3.29-11.34-1.89,0-3.78,1.26-3.78,18.2,0,16.38,1,18.2,3.78,18.2,3,0,3.71-4.62,3.85-11.83l7.7.35c0,8.68-1.26,19.18-11.9,19.18-9.73,0-13-9.52-13-25.9,0-19,5.74-25.9,13-25.9,10.5,0,11.76,9.66,11.76,18.76Z" transform="translate(-81.46 -1.01)"/><path class="bp-pub-logo" d="M247.85,2H261l6.16,49.85h-8.75l-1.33-11.06h-7.35l-1.26,11.06h-7.63Zm5.81,7.7h-.14l-2.87,23.8h5.67Z" transform="translate(-81.46 -1.01)"/><path class="bp-pub-logo" d="M271.92,2H281V44.14h11.62v7.7H271.92Z" transform="translate(-81.46 -1.01)"/><path class="bp-pub-logo" d="M312.59,2h8.89l8.33,26.32H330V2h7.28V51.84h-7.07l-9.73-30.17h-.14V51.84h-7.7Z" transform="translate(-81.46 -1.01)"/><path class="bp-pub-logo" d="M344.16,2h20.58v7.7H353.26V22.44h8.47v8.12h-8.47V44.14h12v7.7H344.16Z" transform="translate(-81.46 -1.01)"/><path class="bp-pub-logo" d="M367.54,2h8.26L379,31.26h.14L383.5,2h8.19l4,29.26h.14L399.4,2h6.51L399.4,51.84h-8.26l-4.34-31.57h-.14l-4.48,31.57h-8Z" transform="translate(-81.46 -1.01)"/><path class="bp-pub-logo" d="M416.75,37.42c0,2.8,0,7.7,3.92,7.7,3,0,4.06-2.8,4.06-4.83,0-8.89-16.52-10.92-16.52-25.69C408.21,7.1,412.27,1,420,1c8.19,0,11.34,6.23,11.55,15.19H423.4c0-2.8,0-7.49-3.64-7.49-2.17,0-3.43,1.82-3.43,4.55,0,8.47,16.52,11.34,16.52,25.83,0,7.63-4.34,13.72-12.53,13.72-9.73,0-11.69-8.54-11.69-15.4Z" transform="translate(-81.46 -1.01)"/></svg></a>        </div>
+
+    <!-- *** END LOGO *** -->
+    </div>            
+        
+</div><!-- row -->
+
+<div id="bp-social-footer" class="row">
+    <div class="small-12 columns">
+                    
+        <div class="textwidget">
+            <ul class="social footer">
+	<li><a title="Follow us on Facebook" class="social fa fa-facebook-f" href="https://www.facebook.com/BCNews/" target="_blank"></a></li>
+	<li><a title="Follow us on Twitter" class="social fa fa-twitter" href="https://twitter.com/blackpressmedia" target="_blank"></a></li>
+	<!-- <li><a title="Follow us on Instagram" class="social fa fa-instagram" href="#"  target="_blank"></a></li>
+	<li><a title="RSS Feed" class="social fa fa-rss" href="/feed/"></a></li> -->
+<li><a title="Submit a story" href="/submit/">
+            <img style="margin-bottom:0;width: 34px;height: 34px;" 
+            src="https://44xv8hmm4vs44orqs2ehffgq-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/assets/images/submit.png"></a>
+            </li></ul>        </div>
+
+    </div>
+</div><!-- row -->
+
+<div id="bp-site-map-title" class="row" >
+    <div class="small-12 columns" >
+                
+        <div class="textwidget" >        
+             <h4 class="text-center">Explore BC Local News</h4>
+        </div>
+
+    </div>
+</div><!-- row -->   
+
+<!-- <div id="bp-site-map" class="row" > -->
+<div id="bp-site-map" class="small-12 column row" >
+    <!-- <div class="small-12 columns"> -->
+
+        <ul><li><a href="/news/">NEWS</a></li><li><a href="/sports/">SPORTS</a></li><li><a href="/trending-now/">TRENDING NOW</a></li><li><a href="/business/">BUSINESS</a></li><li><a href="/entertainment/">ENTERTAINMENT</a></li><li><a href="/life/">LIFE</a></li><li><a href="/community/">COMMUNITY</a></li><li><a href="/opinion/">OPINION</a></li><li><a href="/video/">VIDEOS</a></li><li><a href="/weather/">WEATHER</a></li><li><a href="/obituaries/">OBITUARIES</a></li><li><a href="/e-editions/">SPECIAL SECTIONS</a></li><li><a href="/marketplace/">MARKETPLACE</a></li><li><a href="/contests/">CONTESTS</a></li><li><a href="/contact-us/">CONTACT US</a></li></ul>                             
+
+    <!-- </div>  -->                        
+</div><!-- row -->
+
+<div id="bp-media-group" class="row" >
+    
+    <div class="small-12 columns">
+                
+        <div class="textwidget">
+            
+            <a href="//www.blackpress.ca/publications/" target="_blank">BLACK PRESS MEDIA</a>      
+           
+        </div>
+
+    </div>
+    
+    <div class="small-12 columns menu-footer-container">
+        <ul id="menu-footer" class="menu" >
+            
+                    
+        
+        </ul>
+        
+    </div>
+
+    <!-- black press media logo-->
+    <div class="small-12 columns">
+        <div class="textwidget">
+                   
+            <a href="//www.blackpress.ca/publications/">
+                        <img style="max-width: 300px;padding-top: 2rem;" src="https://44xv8hmm4vs44orqs2ehffgq-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/assets/images/BlackPressMedia.svg" alt="Black Press Media" ></a>        </div>
+
+    </div>
+
+
+</div><!-- row -->
+
+
+<div id="bp-terms" class="row" >
+    
+    <div class="small-12 columns">
+        
+        <ul id="menu-footer" class="menu">
+            
+            <li class="menu-item"><a target="_blank" href="https://www.bclocalnews.com/contact-us/">Contact Us</a></li><li class="menu-item"><a target="_blank" href="https://www.bclocalnews.com/our-team/">Our Team</a></li><li class="menu-item"><a target="_blank" href="https://www.bclocalnews.com/privacy-policy/">Privacy Policy</a></li><li class="menu-item"><a target="_blank" href="https://www.bclocalnews.com/terms-of-use/">Terms of use</a></li><li class="menu-item"><a target="_blank" href="https://www.bclocalnews.com/site-map/">Site Map</a></li><li class="menu-item"><a target="_blank" href="https://www.bclocalnews.com/./local-news/">BC News</a></li><li class="menu-item"><a target="_blank" href="https://www.bclocalnews.com/weather/">BC Weather</a></li><li class="menu-item"><a target="_blank" href="//www.bcclassifieds.com/?sfid=1">BC Classifieds</a></li>      
+        </ul>
+
+    </div>
+
+    <div class="small-12 columns">
+                
+        <div class="textwidget">
+            &copy; 2020, <a href="#"></a>BC Local News and <a href="http://www.blackpress.ca/">Black Press Group Ltd.</a>
+        </div>
+
+    </div>
+
+</div><!-- row -->
+
+                            </footer>
+        </div>
+
+        
+
+<!-- Start Catfish ad -->
+<div style="position:fixed;bottom:0px;width:100%;background:white;">
+<div class='code-block code-block-17' style='margin: 8px 0; clear: both;'>
+<!-- Reserved for Catfish ad. See display call in Footer. -->
+<div id="div-gpt-17" class="gpt-ad" style="margin: 0 auto;width:320px;">
+<script type='text/javascript'>
+    googletag.cmd.push(function() { googletag.display('div-gpt-17');gptRefreshSlots.push(17); });
+</script>
+</div></div>
+</div>
+<!-- End Catfish ad -->
+
+
+<!-- Start Interstitial ad -->
+<div id='page-cover' style="z-index:999999; text-align:center;background-color:#FFF; position:fixed; top:0; left:0; width:100%; height:100%;padding-top: 25%;padding-left: 10px;padding-right: 10px;display: none;">
+<div class='code-block code-block-18' style='margin: 8px 0; clear: both;'>
+<!-- Reserved for Interstitial ad. See display call in Footer. -->
+<div id="div-gpt-18" class="gpt-ad">
+<script type='text/javascript'>
+  googletag.cmd.push(function() { googletag.display('div-gpt-18');gptRefreshSlots.push(18);googletag.pubads().addEventListener('slotRenderEnded', function(event) {
+                if (event.slot === gptAdSlots[18]) {
+                    if(event.isEmpty) {
+                        document.getElementById("page-cover").style.display = 'none';
+                    }
+                    else{
+                        console.log("setting timer")
+                    	//delay modal window from opening to allow ad tags to render; the above listener means the tags loaded, not necessarily showing the creative.
+                    	var delayModal = window.setTimeout(
+                    		function(){var timeoutID = window.setTimeout(function(){document.getElementById("page-cover").style.display = 'none';},8000);document.getElementById("page-cover").style.display = 'block';}
+                    	,5000);
+                    }
+                }
+            });
+  });
+  $(document).ready(function() {
+    	$("#close-interstitial").click(function() {
+        	document.getElementById("page-cover").style.display = 'none';
+    	});
+	}); 
+</script>
+</div>
+<div><a id="close-interstitial" href="#">Close ad</a></div></div>
+</div>
+<!-- End Interstitial ad -->
+
+
+<script type='text/javascript'>
+    googletag.cmd.push(function() {
+        for (i = 0; i < gptAdSlots.length; i++) { 
+            if(gptRefreshSlots.indexOf(i) == -1){                
+                googletag.destroySlots([gptAdSlots[i]]);
+            }
+        }
+        googletag.pubads().refresh(gptAdSlots);
+    });
+</script>
+                    <style type="text/css">
+                        div.aw-widget-36hour-inner a.aw-arrow {
+                            z-index: 1 !important;
+                        }
+                                                            
+                        div.aw-widget-current [class*="bg-"] {
+                            background: none !important;
+                        }
+
+                        div.aw-current-weather-inner h3 {
+                            display: none;
+                        }
+
+                        div.aw-widget-current-inner div.aw-widget-content {
+                            border: none !important;
+                        }
+
+                        div.aw-widget-current-inner div.aw-widget-content.bg-cl, 
+                        div.aw-widget-current-inner div.aw-widget-content.bg-cl a.aw-current-weather, 
+                        div.aw-widget-current-inner div.aw-widget-content.bg-s, 
+                        div.aw-widget-current-inner div.aw-widget-content.bg-s a.aw-current-weather {
+                                color: #000 !important;
+                        }
+
+                        div.aw-widget-current-inner div.aw-widget-content a.aw-current-weather p span.aw-temperature-today b {
+                            font-weight: 600 !important;
+                            padding-left: 40px !important;
+                            font-size: 1.5rem !important;
+                        }
+
+                        div.aw-widget-current-inner div.aw-widget-content a.aw-current-weather p time {
+                            display: none !important;
+                        }
+
+                        div.aw-widget-current-inner div.aw-widget-content a.aw-current-weather p span.aw-weather-description {
+                            display: none !important;
+                        }
+                        
+                        div.aw-widget-current-inner a.aw-toggle {
+                            display: none !important;
+                        }
+
+                        div#weatherContainer {
+                            padding-top: 10px;
+                        }
+
+                        .lt-106 div.aw-widget-current-inner div.aw-widget-content a.aw-current-weather span.aw-icon {
+                            background-position: 0 0 !important;
+                        }
+
+                        .lt-115 div.aw-widget-current-inner div.aw-widget-content a.aw-current-weather span.aw-icon {
+                            z-index: 1 !important;
+                        }
+
+                        .lt-479 div.aw-widget-current-inner div.aw-widget-content a.aw-current-weather p {
+                            z-index: 1 !important;
+                        }
+
+                        @media screen and (max-width: 39.9375em) {
+                            div.aw-widget-current-inner div.aw-widget-content a.aw-current-weather {
+                                color: #fff !important;
+                            }
+
+                            div#weatherContainer {
+                                padding-top: 10px;
+                            }
+
+                            div.aw-widget-current-inner div.aw-widget-content.bg-cl, 
+                            div.aw-widget-current-inner div.aw-widget-content.bg-cl a.aw-current-weather, 
+                            div.aw-widget-current-inner div.aw-widget-content.bg-s, 
+                            div.aw-widget-current-inner div.aw-widget-content.bg-s a.aw-current-weather {
+                                color: #fff !important;
+                            }
+
+                        }
+                    </style>
+                <script type='text/javascript' src='//content.jwplatform.com/libraries/yrJQMy68.js?ver=1.0.0'></script>
+<script type='text/javascript' src='https://44xv8hmm4vs44orqs2ehffgq-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/assets/components/featherlight/featherlight.js?ver=1.6.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var foundation = {"is_front_page":"0"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://44xv8hmm4vs44orqs2ehffgq-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/dest/javascript/foundation.min.js?ver=2.36.14'></script>
+<script type='text/javascript' src='https://44xv8hmm4vs44orqs2ehffgq-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/dest/javascript/what-input/what-input.min.js?ver=4.0.3'></script>
+<script type='text/javascript' src='https://44xv8hmm4vs44orqs2ehffgq-wpengine.netdna-ssl.com/wp-content/themes/BlackPress/dest/javascript/frame_resize_2.0.min.js?ver=2.36.14'></script>
+<script type='text/javascript' src='https://44xv8hmm4vs44orqs2ehffgq-wpengine.netdna-ssl.com/wp-includes/js/comment-reply.min.js?ver=5.2.5'></script>
+<script type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js?ver=1.9.0'></script>
+<script type='text/javascript' src='https://44xv8hmm4vs44orqs2ehffgq-wpengine.netdna-ssl.com/wp-includes/js/wp-embed.min.js?ver=5.2.5'></script>
+
+
+        <!-- taboola code -->
+            <script type="text/javascript">
+            window._taboola = window._taboola || [];
+            _taboola.push({flush: true});
+        </script>
+        
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"e4824da135","applicationID":"96616988","transactionName":"NFVWZ0YCCERXAkxeXQ0fdVBACglZGRJRWVUPVQ==","queueTime":0,"applicationTime":173,"atts":"GBJVEQ4YG0o=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>

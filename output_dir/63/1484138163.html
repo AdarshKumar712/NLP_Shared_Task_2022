@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"VgYHV1dVGwIBVFlVBQU=",licenseKey:"15ba4da3e8",applicationID:"1108724"};window.NREUM||(NREUM={}),__nr_require=function(t,n,e){function r(e){if(!n[e]){var o=n[e]={exports:{}};t[e][0].call(o.exports,function(n){var o=t[e][1][n];return r(o||n)},o,o.exports)}return n[e].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<e.length;o++)r(e[o]);return r}({1:[function(t,n,e){function r(t){try{s.console&&console.log(t)}catch(n){}}var o,i=t("ee"),a=t(20),s={};try{o=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(s.console=!0,o.indexOf("dev")!==-1&&(s.dev=!0),o.indexOf("nr_dev")!==-1&&(s.nrDev=!0))}catch(c){}s.nrDev&&i.on("internal-error",function(t){r(t.stack)}),s.dev&&i.on("fn-err",function(t,n,e){r(e.stack)}),s.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(s,function(t,n){return t}).join(", ")))},{}],2:[function(t,n,e){function r(t,n,e,r,s){try{p?p-=1:o(s||new UncaughtException(t,n,e),!0)}catch(f){try{i("ierr",[f,c.now(),!0])}catch(d){}}return"function"==typeof u&&u.apply(this,a(arguments))}function UncaughtException(t,n,e){this.message=t||"Uncaught error with no additional information",this.sourceURL=n,this.line=e}function o(t,n){var e=n?null:c.now();i("err",[t,e])}var i=t("handle"),a=t(21),s=t("ee"),c=t("loader"),f=t("gos"),u=window.onerror,d=!1,l="nr@seenError",p=0;c.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(h){"stack"in h&&(t(9),t(8),"addEventListener"in window&&t(5),c.xhrWrappable&&t(10),d=!0)}s.on("fn-start",function(t,n,e){d&&(p+=1)}),s.on("fn-err",function(t,n,e){d&&!e[l]&&(f(e,l,function(){return!0}),this.thrown=!0,o(e))}),s.on("fn-end",function(){d&&!this.thrown&&p>0&&(p-=1)}),s.on("internal-error",function(t){i("ierr",[t,c.now(),!0])})},{}],3:[function(t,n,e){t("loader").features.ins=!0},{}],4:[function(t,n,e){function r(t){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var o=t("ee"),i=t("handle"),a=t(9),s=t(8),c="learResourceTimings",f="addEventListener",u="resourcetimingbufferfull",d="bstResource",l="resource",p="-start",h="-end",m="fn"+p,w="fn"+h,v="bstTimer",g="pushState",y=t("loader");y.features.stn=!0,t(7),"addEventListener"in window&&t(5);var x=NREUM.o.EV;o.on(m,function(t,n){var e=t[0];e instanceof x&&(this.bstStart=y.now())}),o.on(w,function(t,n){var e=t[0];e instanceof x&&i("bst",[e,n,this.bstStart,y.now()])}),a.on(m,function(t,n,e){this.bstStart=y.now(),this.bstType=e}),a.on(w,function(t,n){i(v,[n,this.bstStart,y.now(),this.bstType])}),s.on(m,function(){this.bstStart=y.now()}),s.on(w,function(t,n){i(v,[n,this.bstStart,y.now(),"requestAnimationFrame"])}),o.on(g+p,function(t){this.time=y.now(),this.startPath=location.pathname+location.hash}),o.on(g+h,function(t){i("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),f in window.performance&&(window.performance["c"+c]?window.performance[f](u,function(t){i(d,[window.performance.getEntriesByType(l)]),window.performance["c"+c]()},!1):window.performance[f]("webkit"+u,function(t){i(d,[window.performance.getEntriesByType(l)]),window.performance["webkitC"+c]()},!1)),document[f]("scroll",r,{passive:!0}),document[f]("keypress",r,!1),document[f]("click",r,!1)}},{}],5:[function(t,n,e){function r(t){for(var n=t;n&&!n.hasOwnProperty(u);)n=Object.getPrototypeOf(n);n&&o(n)}function o(t){s.inPlace(t,[u,d],"-",i)}function i(t,n){return t[1]}var a=t("ee").get("events"),s=t("wrap-function")(a,!0),c=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";n.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(o(window),o(f.prototype)),a.on(u+"-start",function(t,n){var e=t[1],r=c(e,"nr@wrapped",function(){function t(){if("function"==typeof e.handleEvent)return e.handleEvent.apply(e,arguments)}var n={object:t,"function":e}[typeof e];return n?s(n,"fn-",null,n.name||"anonymous"):e});this.wrapped=t[1]=r}),a.on(d+"-start",function(t){t[1]=this.wrapped||t[1]})},{}],6:[function(t,n,e){function r(t,n,e){var r=t[n];"function"==typeof r&&(t[n]=function(){var t=i(arguments),n={};o.emit(e+"before-start",[t],n);var a;n[m]&&n[m].dt&&(a=n[m].dt);var s=r.apply(this,t);return o.emit(e+"start",[t,a],s),s.then(function(t){return o.emit(e+"end",[null,t],s),t},function(t){throw o.emit(e+"end",[t],s),t})})}var o=t("ee").get("fetch"),i=t(21),a=t(20);n.exports=o;var s=window,c="fetch-",f=c+"body-",u=["arrayBuffer","blob","json","text","formData"],d=s.Request,l=s.Response,p=s.fetch,h="prototype",m="nr@context";d&&l&&p&&(a(u,function(t,n){r(d[h],n,f),r(l[h],n,f)}),r(s,"fetch",c),o.on(c+"end",function(t,n){var e=this;if(n){var r=n.headers.get("content-length");null!==r&&(e.rxSize=r),o.emit(c+"done",[null,n],e)}else o.emit(c+"done",[t],e)}))},{}],7:[function(t,n,e){var r=t("ee").get("history"),o=t("wrap-function")(r);n.exports=r;var i=window.history&&window.history.constructor&&window.history.constructor.prototype,a=window.history;i&&i.pushState&&i.replaceState&&(a=i),o.inPlace(a,["pushState","replaceState"],"-")},{}],8:[function(t,n,e){var r=t("ee").get("raf"),o=t("wrap-function")(r),i="equestAnimationFrame";n.exports=r,o.inPlace(window,["r"+i,"mozR"+i,"webkitR"+i,"msR"+i],"raf-"),r.on("raf-start",function(t){t[0]=o(t[0],"fn-")})},{}],9:[function(t,n,e){function r(t,n,e){t[0]=a(t[0],"fn-",null,e)}function o(t,n,e){this.method=e,this.timerDuration=isNaN(t[1])?0:+t[1],t[0]=a(t[0],"fn-",this,e)}var i=t("ee").get("timer"),a=t("wrap-function")(i),s="setTimeout",c="setInterval",f="clearTimeout",u="-start",d="-";n.exports=i,a.inPlace(window,[s,"setImmediate"],s+d),a.inPlace(window,[c],c+d),a.inPlace(window,[f,"clearImmediate"],f+d),i.on(c+u,r),i.on(s+u,o)},{}],10:[function(t,n,e){function r(t,n){d.inPlace(n,["onreadystatechange"],"fn-",s)}function o(){var t=this,n=u.context(t);t.readyState>3&&!n.resolved&&(n.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,g,"fn-",s)}function i(t){y.push(t),h&&(b?b.then(a):w?w(a):(E=-E,O.data=E))}function a(){for(var t=0;t<y.length;t++)r([],y[t]);y.length&&(y=[])}function s(t,n){return n}function c(t,n){for(var e in t)n[e]=t[e];return n}t(5);var f=t("ee"),u=f.get("xhr"),d=t("wrap-function")(u),l=NREUM.o,p=l.XHR,h=l.MO,m=l.PR,w=l.SI,v="readystatechange",g=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],y=[];n.exports=u;var x=window.XMLHttpRequest=function(t){var n=new p(t);try{u.emit("new-xhr",[n],n),n.addEventListener(v,o,!1)}catch(e){try{u.emit("internal-error",[e])}catch(r){}}return n};if(c(p,x),x.prototype=p.prototype,d.inPlace(x.prototype,["open","send"],"-xhr-",s),u.on("send-xhr-start",function(t,n){r(t,n),i(n)}),u.on("open-xhr-start",r),h){var b=m&&m.resolve();if(!w&&!m){var E=1,O=document.createTextNode(E);new h(a).observe(O,{characterData:!0})}}else f.on("fn-end",function(t){t[0]&&t[0].type===v||a()})},{}],11:[function(t,n,e){function r(t){if(!i(t))return null;var n=window.NREUM;if(!n.loader_config)return null;var e=(n.loader_config.accountID||"").toString()||null,r=(n.loader_config.agentID||"").toString()||null,s=(n.loader_config.trustKey||"").toString()||null;if(!e||!r)return null;var c=a.generateCatId(),f=a.generateCatId(),u=Date.now(),d=o(c,f,u,e,r,s);return{header:d,guid:c,traceId:f,timestamp:u}}function o(t,n,e,r,o,i){var a="btoa"in window&&"function"==typeof window.btoa;if(!a)return null;var s={v:[0,1],d:{ty:"Browser",ac:r,ap:o,id:t,tr:n,ti:e}};return i&&r!==i&&(s.d.tk=i),btoa(JSON.stringify(s))}function i(t){var n=!1,e=!1,r={};if("init"in NREUM&&"distributed_tracing"in NREUM.init&&(r=NREUM.init.distributed_tracing,e=!!r.enabled),e)if(t.sameOrigin)n=!0;else if(r.allowed_origins instanceof Array)for(var o=0;o<r.allowed_origins.length;o++){var i=s(r.allowed_origins[o]);if(t.hostname===i.hostname&&t.protocol===i.protocol&&t.port===i.port){n=!0;break}}return e&&n}var a=t(18),s=t(13);n.exports={generateTracePayload:r,shouldGenerateTrace:i}},{}],12:[function(t,n,e){function r(t){var n=this.params,e=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;r<p;r++)t.removeEventListener(l[r],this.listener,!1);n.aborted||(e.duration=s.now()-this.startTime,this.loadCaptureCalled||4!==t.readyState?null==n.status&&(n.status=0):a(this,t),e.cbTime=this.cbTime,d.emit("xhr-done",[t],t),c("xhr",[n,e,this.startTime]))}}function o(t,n){var e=t.responseType;if("json"===e&&null!==n)return n;var r="arraybuffer"===e||"blob"===e||"json"===e?t.response:t.responseText;return w(r)}function i(t,n){var e=f(n),r=t.params;r.host=e.hostname+":"+e.port,r.pathname=e.pathname,t.parsedOrigin=f(n),t.sameOrigin=t.parsedOrigin.sameOrigin}function a(t,n){t.params.status=n.status;var e=o(n,t.lastSize);if(e&&(t.metrics.rxSize=e),t.sameOrigin){var r=n.getResponseHeader("X-NewRelic-App-Data");r&&(t.params.cat=r.split(", ").pop())}t.loadCaptureCalled=!0}var s=t("loader");if(s.xhrWrappable){var c=t("handle"),f=t(13),u=t(11).generateTracePayload,d=t("ee"),l=["load","error","abort","timeout"],p=l.length,h=t("id"),m=t(16),w=t(15),v=window.XMLHttpRequest;s.features.xhr=!0,t(10),t(6),d.on("new-xhr",function(t){var n=this;n.totalCbs=0,n.called=0,n.cbTime=0,n.end=r,n.ended=!1,n.xhrGuids={},n.lastSize=null,n.loadCaptureCalled=!1,t.addEventListener("load",function(e){a(n,t)},!1),m&&(m>34||m<10)||window.opera||t.addEventListener("progress",function(t){n.lastSize=t.loaded},!1)}),d.on("open-xhr-start",function(t){this.params={method:t[0]},i(this,t[1]),this.metrics={}}),d.on("open-xhr-end",function(t,n){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&n.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid);var e=u(this.parsedOrigin);e&&e.header&&(n.setRequestHeader("newrelic",e.header),this.dt=e)}),d.on("send-xhr-start",function(t,n){var e=this.metrics,r=t[0],o=this;if(e&&r){var i=w(r);i&&(e.txSize=i)}this.startTime=s.now(),this.listener=function(t){try{"abort"!==t.type||o.loadCaptureCalled||(o.params.aborted=!0),("load"!==t.type||o.called===o.totalCbs&&(o.onloadCalled||"function"!=typeof n.onload))&&o.end(n)}catch(e){try{d.emit("internal-error",[e])}catch(r){}}};for(var a=0;a<p;a++)n.addEventListener(l[a],this.listener,!1)}),d.on("xhr-cb-time",function(t,n,e){this.cbTime+=t,n?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof e.onload||this.end(e)}),d.on("xhr-load-added",function(t,n){var e=""+h(t)+!!n;this.xhrGuids&&!this.xhrGuids[e]&&(this.xhrGuids[e]=!0,this.totalCbs+=1)}),d.on("xhr-load-removed",function(t,n){var e=""+h(t)+!!n;this.xhrGuids&&this.xhrGuids[e]&&(delete this.xhrGuids[e],this.totalCbs-=1)}),d.on("addEventListener-end",function(t,n){n instanceof v&&"load"===t[0]&&d.emit("xhr-load-added",[t[1],t[2]],n)}),d.on("removeEventListener-end",function(t,n){n instanceof v&&"load"===t[0]&&d.emit("xhr-load-removed",[t[1],t[2]],n)}),d.on("fn-start",function(t,n,e){n instanceof v&&("onload"===e&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=s.now()))}),d.on("fn-end",function(t,n){this.xhrCbStart&&d.emit("xhr-cb-time",[s.now()-this.xhrCbStart,this.onload,n],n)}),d.on("fetch-before-start",function(t){var n,e=t[1]||{};"string"==typeof t[0]?n=t[0]:t[0]&&t[0].url&&(n=t[0].url),n&&(this.parsedOrigin=f(n),this.sameOrigin=this.parsedOrigin.sameOrigin);var r=u(this.parsedOrigin);if(r&&r.header){var o=r.header;if("string"==typeof t[0]){var i={};for(var a in e)i[a]=e[a];i.headers=new Headers(e.headers||{}),i.headers.set("newrelic",o),this.dt=r,t.length>1?t[1]=i:t.push(i)}else t[0]&&t[0].headers&&(t[0].headers.append("newrelic",o),this.dt=r)}})}},{}],13:[function(t,n,e){var r={};n.exports=function(t){if(t in r)return r[t];var n=document.createElement("a"),e=window.location,o={};n.href=t,o.port=n.port;var i=n.href.split("://");!o.port&&i[1]&&(o.port=i[1].split("/")[0].split("@").pop().split(":")[1]),o.port&&"0"!==o.port||(o.port="https"===i[0]?"443":"80"),o.hostname=n.hostname||e.hostname,o.pathname=n.pathname,o.protocol=i[0],"/"!==o.pathname.charAt(0)&&(o.pathname="/"+o.pathname);var a=!n.protocol||":"===n.protocol||n.protocol===e.protocol,s=n.hostname===document.domain&&n.port===e.port;return o.sameOrigin=a&&(!n.hostname||s),"/"===o.pathname&&(r[t]=o),o}},{}],14:[function(t,n,e){function r(){}function o(t,n,e){return function(){return i(t,[f.now()].concat(s(arguments)),n?null:this,e),n?void 0:this}}var i=t("handle"),a=t(20),s=t(21),c=t("ee").get("tracer"),f=t("loader"),u=NREUM;"undefined"==typeof window.newrelic&&(newrelic=u);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",p=l+"ixn-";a(d,function(t,n){u[n]=o(l+n,!0,"api")}),u.addPageAction=o(l+"addPageAction",!0),u.setCurrentRouteName=o(l+"routeName",!0),n.exports=newrelic,u.interaction=function(){return(new r).get()};var h=r.prototype={createTracer:function(t,n){var e={},r=this,o="function"==typeof n;return i(p+"tracer",[f.now(),t,e],r),function(){if(c.emit((o?"":"no-")+"fn-start",[f.now(),r,o],e),o)try{return n.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],e),t}finally{c.emit("fn-end",[f.now()],e)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,n){h[n]=o(p+n)}),newrelic.noticeError=function(t,n){"string"==typeof t&&(t=new Error(t)),i("err",[t,f.now(),!1,n])}},{}],15:[function(t,n,e){n.exports=function(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(n){return}}}},{}],16:[function(t,n,e){var r=0,o=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);o&&(r=+o[1]),n.exports=r},{}],17:[function(t,n,e){function r(t,n){var e=t.getEntries();e.forEach(function(t){"first-paint"===t.name?a("timing",["fp",Math.floor(t.startTime)]):"first-contentful-paint"===t.name&&a("timing",["fcp",Math.floor(t.startTime)])})}function o(t){if(t instanceof c&&!u){var n,e=Math.round(t.timeStamp);n=e>1e12?Date.now()-e:s.now()-e,u=!0,a("timing",["fi",e,{type:t.type,fid:n}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var i,a=t("handle"),s=t("loader"),c=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){i=new PerformanceObserver(r);try{i.observe({entryTypes:["paint"]})}catch(f){}}if("addEventListener"in document){var u=!1,d=["click","keydown","mousedown","pointerdown","touchstart"];d.forEach(function(t){document.addEventListener(t,o,!1)})}}},{}],18:[function(t,n,e){function r(){function t(){return n?15&n[e++]:16*Math.random()|0}var n=null,e=0,r=window.crypto||window.msCrypto;r&&r.getRandomValues&&(n=r.getRandomValues(new Uint8Array(31)));for(var o,i="xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx",a="",s=0;s<i.length;s++)o=i[s],"x"===o?a+=t().toString(16):"y"===o?(o=3&t()|8,a+=o.toString(16)):a+=o;return a}function o(){function t(){return n?15&n[e++]:16*Math.random()|0}var n=null,e=0,r=window.crypto||window.msCrypto;r&&r.getRandomValues&&Uint8Array&&(n=r.getRandomValues(new Uint8Array(31)));for(var o=[],i=0;i<16;i++)o.push(t().toString(16));return o.join("")}n.exports={generateUuid:r,generateCatId:o}},{}],19:[function(t,n,e){function r(t,n){if(!o)return!1;if(t!==o)return!1;if(!n)return!0;if(!i)return!1;for(var e=i.split("."),r=n.split("."),a=0;a<r.length;a++)if(r[a]!==e[a])return!1;return!0}var o=null,i=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var s=navigator.userAgent,c=s.match(a);c&&s.indexOf("Chrome")===-1&&s.indexOf("Chromium")===-1&&(o="Safari",i=c[1])}n.exports={agent:o,version:i,match:r}},{}],20:[function(t,n,e){function r(t,n){var e=[],r="",i=0;for(r in t)o.call(t,r)&&(e[i]=n(r,t[r]),i+=1);return e}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],21:[function(t,n,e){function r(t,n,e){n||(n=0),"undefined"==typeof e&&(e=t?t.length:0);for(var r=-1,o=e-n||0,i=Array(o<0?0:o);++r<o;)i[r]=t[n+r];return i}n.exports=r},{}],22:[function(t,n,e){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(t,n,e){function r(){}function o(t){function n(t){return t&&t instanceof r?t:t?c(t,s,i):i()}function e(e,r,o,i){if(!l.aborted||i){t&&t(e,r,o);for(var a=n(o),s=m(e),c=s.length,f=0;f<c;f++)s[f].apply(a,r);var d=u[y[e]];return d&&d.push([x,e,r,a]),a}}function p(t,n){g[t]=m(t).concat(n)}function h(t,n){var e=g[t];if(e)for(var r=0;r<e.length;r++)e[r]===n&&e.splice(r,1)}function m(t){return g[t]||[]}function w(t){return d[t]=d[t]||o(e)}function v(t,n){f(t,function(t,e){n=n||"feature",y[e]=n,n in u||(u[n]=[])})}var g={},y={},x={on:p,addEventListener:p,removeEventListener:h,emit:e,get:w,listeners:m,context:n,buffer:v,abort:a,aborted:!1};return x}function i(){return new r}function a(){(u.api||u.feature)&&(l.aborted=!0,u=l.backlog={})}var s="nr@context",c=t("gos"),f=t(20),u={},d={},l=n.exports=o();l.backlog=u},{}],gos:[function(t,n,e){function r(t,n,e){if(o.call(t,n))return t[n];var r=e();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,n,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return t[n]=r,r}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(t,n,e){function r(t,n,e,r){o.buffer([t],r),o.emit(t,n,e)}var o=t("ee").get("handle");n.exports=r,r.ee=o},{}],id:[function(t,n,e){function r(t){var n=typeof t;return!t||"object"!==n&&"function"!==n?-1:t===window?0:a(t,i,function(){return o++})}var o=1,i="nr@id",a=t("gos");n.exports=r},{}],loader:[function(t,n,e){function r(){if(!E++){var t=b.info=NREUM.info,n=p.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&n))return u.abort();f(y,function(n,e){t[n]||(t[n]=e)}),c("mark",["onload",a()+b.offset],null,"api");var e=p.createElement("script");e.src="https://"+t.agent,n.parentNode.insertBefore(e,n)}}function o(){"complete"===p.readyState&&i()}function i(){c("mark",["domContent",a()+b.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(s=Math.max((new Date).getTime(),s))-b.offset}var s=(new Date).getTime(),c=t("handle"),f=t(20),u=t("ee"),d=t(19),l=window,p=l.document,h="addEventListener",m="attachEvent",w=l.XMLHttpRequest,v=w&&w.prototype;NREUM.o={ST:setTimeout,SI:l.setImmediate,CT:clearTimeout,XHR:w,REQ:l.Request,EV:l.Event,PR:l.Promise,MO:l.MutationObserver};var g=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1158.min.js"},x=w&&v&&v[h]&&!/CriOS/.test(navigator.userAgent),b=n.exports={offset:s,now:a,origin:g,features:{},xhrWrappable:x,userAgent:d};t(14),t(17),p[h]?(p[h]("DOMContentLoaded",i,!1),l[h]("load",r,!1)):(p[m]("onreadystatechange",o),l[m]("onload",r)),c("mark",["firstbyte",s],null,"api");var E=0,O=t(22)},{}],"wrap-function":[function(t,n,e){function r(t){return!(t&&t instanceof Function&&t.apply&&!t[a])}var o=t("ee"),i=t(21),a="nr@original",s=Object.prototype.hasOwnProperty,c=!1;n.exports=function(t,n){function e(t,n,e,o){function nrWrapper(){var r,a,s,c;try{a=this,r=i(arguments),s="function"==typeof e?e(r,a):e||{}}catch(f){l([f,"",[r,a,o],s])}u(n+"start",[r,a,o],s);try{return c=t.apply(a,r)}catch(d){throw u(n+"err",[r,a,d],s),d}finally{u(n+"end",[r,a,c],s)}}return r(t)?t:(n||(n=""),nrWrapper[a]=t,d(t,nrWrapper),nrWrapper)}function f(t,n,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<n.length;c++)s=n[c],a=t[s],r(a)||(t[s]=e(a,f?s+o:o,i,s))}function u(e,r,o){if(!c||n){var i=c;c=!0;try{t.emit(e,r,o,n)}catch(a){l([a,e,r,o])}c=i}}function d(t,n){if(Object.defineProperty&&Object.keys)try{var e=Object.keys(t);return e.forEach(function(e){Object.defineProperty(n,e,{get:function(){return t[e]},set:function(n){return t[e]=n,n}})}),n}catch(r){l([r])}for(var o in t)s.call(t,o)&&(n[o]=t[o]);return n}function l(n){try{t.emit("internal-error",n)}catch(e){}}return t||(t=o),e.inPlace=f,e.flag=a,e}},{}]},{},["loader",2,12,4,3]);</script>
+<meta property="og:url" content="https://www.nhpr.org/post/us-population-growth-2019-slowest-century" />
+<meta property="og:description" content="The annual population growth rate of the United States over the past year continued a decades-long decline, dropping to its lowest level in the past" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="U.S. Population Growth In 2019 Is Slowest In A Century" />
+<link href="https://mediad.publicbroadcasting.net/p/shared/npr/202001/792790307.jpg" rel="image_src" />
+<meta property="og:image" content="https://mediad.publicbroadcasting.net/p/shared/npr/styles/medium/nprshared/202001/792790307.jpg" />
+<meta property="og:image:height" content="2620" />
+<meta content="U.S. Population Growth In 2019 Is Slowest In A Century" about="/post/us-population-growth-2019-slowest-century" property="dc:title" />
+<link rel="shortcut icon" href="//www.nhpr.org/sites/nhpr/files/favicon_1.ico" type="image/vnd.microsoft.icon" />
+<meta property="twitter:creator" content="@nhpr" />
+<meta property="twitter:site" content="@nhpr" />
+<meta property="og:image:width" content="3493" />
+<meta property="twitter:card" content="summary" />
+<meta name="description" content="The annual population growth rate of the United States over the past year continued a decades-long decline, dropping to its lowest level in the past" />
+<link rel="shortcut icon" href="public://favicon_1.ico" type="image/vnd.microsoft.icon" />
+<meta name="has_audio" content="0" />
+<meta name="programs" content="none" />
+<link rel="shortlink" href="/node/146673" />
+<link rel="canonical" href="/post/us-population-growth-2019-slowest-century" />
+<meta name="Generator" content="Drupal 7 (http://drupal.org)" />
+<meta name="category" content="none" />
+<meta name="nid" content="146673" />
+<meta name="wordCount" content="763" />
+<meta name="story_id" content="792737851" />
+<meta name="keywords" content="" />
+<meta name="org_id" content="1" />
+<meta name="author" content="David Welna" />
+<meta name="datePublished" content="2020-01-01" />
+<meta property="fb:pages" content="8607217326" />
+<meta name="google-site-verification" content="MhKIk7bF5in8ySciP1br2w2vxikFi55tUodJWBTEeQs" />
+    <title>U.S. Population Growth In 2019 Is Slowest In A Century | New Hampshire Public Radio</title>
+    <style type="text/css" media="all">@import url("//www.nhpr.org/modules/system/system.base.css?q2pr3t");
+@import url("//www.nhpr.org/modules/system/system.menus.css?q2pr3t");
+@import url("//www.nhpr.org/modules/system/system.messages.css?q2pr3t");</style>
+<style type="text/css" media="all">@import url("//www.nhpr.org/sites/all/libraries/magnific-popup/magnific-popup.css?q2pr3t");</style>
+<style type="text/css" media="all">@import url("//www.nhpr.org/sites/all/modules/contrib/date/date_api/date.css?q2pr3t");
+@import url("//www.nhpr.org/sites/all/modules/contrib/date/date_popup/themes/datepicker.1.7.css?q2pr3t");
+@import url("//www.nhpr.org/modules/field/theme/field.css?q2pr3t");
+@import url("//www.nhpr.org/sites/all/modules/contrib/google_cse/google_cse.css?q2pr3t");
+@import url("//www.nhpr.org/modules/node/node.css?q2pr3t");
+@import url("//www.nhpr.org/sites/all/modules/custom/pi_hull/pi_outrigger/css/pi_outrigger.css?q2pr3t");
+@import url("//www.nhpr.org/modules/search/search.css?q2pr3t");
+@import url("//www.nhpr.org/modules/user/user.css?q2pr3t");
+@import url("//www.nhpr.org/sites/all/modules/contrib/views/css/views.css?q2pr3t");</style>
+<style type="text/css" media="all">@import url("//www.nhpr.org/sites/all/modules/contrib/ctools/css/ctools.css?q2pr3t");
+@import url("//www.nhpr.org/sites/all/modules/custom/pi_guide/css/pi_guide.css?q2pr3t");
+@import url("//www.nhpr.org/sites/all/modules/custom/pi_hull/jplayer/css/jplayer.npr.css?q2pr3t");
+@import url("//www.nhpr.org/sites/all/modules/custom/pi_npr_story/css/pi_npr_story.css?q2pr3t");
+@import url("//www.nhpr.org/sites/all/modules/custom/pi_views/pi_reports_views/css/pi_reports.css?q2pr3t");
+@import url("//www.nhpr.org/sites/all/modules/custom/pi_menus/css/flexiMenu.css?q2pr3t");
+@import url("//www.nhpr.org/sites/all/modules/custom/responsive_footer/responsive-footer.admin.css?q2pr3t");</style>
+<style type="text/css" media="all">
+<!--/*--><![CDATA[/*><!--*/
+.header-region-outer{background-color:#ffffff;}@media screen and (min-width:1024px){.header-region-outer{background-image:url(//www.nhpr.org/sites/nhpr/files/201612/WebHeaderBlue-1.png);background-position:center bottom;background-size:auto;background-repeat:no-repeat;}}.branding .listen-live-toggle > a,.branding .header-utility > a,.branding .header-utility > a.trigger-nav{color:#FFFFFF;}@media screen and (min-width:641px){.branding .trigger-nav{background:#d3292f;}}@media screen and (max-width:640px){.branding .header-utility > a.trigger-nav,.active-menu .branding .header-utility > a.trigger-nav{color:#d3292f;}}#listen-live .listen-live-toggle{background-color:#d3292f;}#listen-live .listen-live-btn{background-color:transparent;color:#FFFFFF;}@media screen and (min-width:640px){#listen-live .listen-live-btn{background-color:#d3292f;}}.branding .give{background:#d3292f;}
+
+/*]]>*/-->
+</style>
+<link type="text/css" rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,700,700italic,900,italic,regular&amp;subset=latin" media="all" />
+<style type="text/css" media="all">@import url("//www.nhpr.org/sites/all/modules/custom/audity/audity/css/audity.css?q2pr3t");
+@import url("//www.nhpr.org/sites/all/modules/custom/pi_ajax_links_api/pi_ajax_links_api.css?q2pr3t");
+@import url("//www.nhpr.org/sites/all/modules/custom/pi_ajax_links_api/nprogress/nprogress.css?q2pr3t");
+@import url("//www.nhpr.org/sites/all/modules/custom/pi_content_types/pi_program/treatments/program-promo/program-promo.css?q2pr3t");
+@import url("//www.nhpr.org/sites/all/modules/custom/community_calendar/lib/typeahead/typeahead.css?q2pr3t");
+@import url("//www.nhpr.org/sites/all/modules/custom/community_calendar/lib/datetimepicker/jquery.timepicker.css?q2pr3t");
+@import url("//www.nhpr.org/sites/all/modules/custom/community_calendar/lib/datetimepicker/bootstrap-datepicker3.standalone.min.css?q2pr3t");
+@import url("//www.nhpr.org/sites/all/modules/custom/community_calendar/assets/community-calendar.css?q2pr3t");
+@import url("//www.nhpr.org/sites/all/modules/custom/npr_entities/npr_fields/npr_image_gallery/css/npr-image-gallery.css?q2pr3t");</style>
+<style type="text/css" media="all">@import url("//www.nhpr.org/sites/all/themes/responso/css/icon-fonts.css?q2pr3t");
+@import url("//www.nhpr.org/sites/all/themes/responso/css/screen.css?q2pr3t");</style>
+    <script type="text/javascript" src="//www.nhpr.org/sites/nhpr/files/js/js_xSpMA4ArVcBKOZ43sPqNRk0gxQZdDVifw27pIUCzWU0.js"></script>
+<script type="text/javascript" src="//www.nhpr.org/sites/nhpr/files/js/js_P9u0bgloveAIlc2kutVCUB_xMaRV3YHWhSVHD3IN5tM.js"></script>
+<script type="text/javascript" src="//www.nhpr.org/sites/nhpr/files/js/js_f_6-OzlFXjayKlsU5sJKLwjz7LFQvdIZDm-Mt6jKwyM.js"></script>
+<script type="text/javascript" src="//www.nhpr.org/sites/nhpr/files/js/js__4npt0PuTlrK-GkTl821OR8Eb7aiGB9GvsSeu1tr7U4.js"></script>
+<script type="text/javascript" src="//www.googletagservices.com/tag/js/gpt.js"></script>
+<script type="text/javascript" src="//www.nhpr.org/sites/nhpr/files/js/js_5Hyi16vbx_ePqKlOocwpUNJdYBFBeSvYvHRN3zVxWPE.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+(function() {var ga = document.createElement("script");ga.type = "text/javascript";ga.async = true;ga.src="//stream.publicbroadcasting.net/analytics/aab2.js";var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(ga, s);})();
+//--><!]]>
+</script>
+<script type="text/javascript" src="//www.nhpr.org/sites/nhpr/files/js/js_tbzCmxNtTcGVuLsIgDhPgyqfxrHSbcLDMpm_iI6RrDI.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":{"theme":"responso","theme_token":"shynau85YJ92yJYL7iMWsxAbiS84JBcSkWwjpRZN7Y8","js":{"0":1,"sites\/all\/modules\/contrib\/jquery_update\/replace\/jquery\/1.8\/jquery.min.js":1,"misc\/jquery.once.js":1,"misc\/drupal.js":1,"sites\/all\/libraries\/magnific-popup\/jquery.magnific-popup.min.js":1,"sites\/all\/modules\/custom\/responsive_utilities\/js\/vendor\/foundation\/foundation.js":1,"sites\/all\/modules\/custom\/responsive_utilities\/js\/vendor\/foundation\/foundation.topbar.js":1,"sites\/all\/modules\/contrib\/google_cse\/google_cse.js":1,"sites\/all\/modules\/custom\/pi_media_types\/pi_audio\/js\/pi-audio.js":1,"sites\/all\/modules\/custom\/pi_hull\/js\/pi-hull.js":1,"sites\/all\/modules\/custom\/pi_hull\/js\/jquery.innerfade.js":1,"sites\/all\/modules\/custom\/pi_hull\/jplayer\/js\/jquery.jplayer.min.js":1,"sites\/all\/modules\/custom\/pi_hull\/jplayer\/js\/main.js":1,"\/\/www.googletagservices.com\/tag\/js\/gpt.js":1,"sites\/all\/modules\/custom\/responsive_ads\/js\/main.js":1,"sites\/all\/modules\/custom\/pi_hull\/pi_outrigger\/js\/shared-cache-roundtrip.js":1,"sites\/all\/modules\/custom\/pi_ndest\/pi_sitewide_alert\/sitewide-alert.js":1,"sites\/all\/modules\/custom\/pi_ajax_links_api\/nprogress\/nprogress.js":1,"sites\/all\/modules\/custom\/pi_ajax_links_api\/pi_ajax_links_api.js":1,"sites\/all\/modules\/custom\/npr_river\/assets\/npr-river.js":1,"sites\/all\/modules\/custom\/npr_entities\/npr_fields\/npr_image_gallery\/js\/npr-image-gallery.js":1,"sites\/all\/modules\/custom\/pi_guide\/js\/pi_guide_schedule_selector.js":1,"sites\/all\/modules\/custom\/pi_assets\/plugins\/images\/js\/popup.js":1,"sites\/all\/modules\/custom\/pi_content_types\/pi_live_event\/js\/iframe.js":1,"sites\/all\/modules\/custom\/responsive_utilities\/js\/vendor\/modernizr.js":1,"sites\/all\/modules\/custom\/responsive_utilities\/js\/vendor\/media.match.min.js":1,"sites\/all\/modules\/custom\/responsive_utilities\/js\/vendor\/matchMedia.addListener.js":1,"sites\/all\/modules\/custom\/responsive_utilities\/js\/vendor\/enquire.min.js":1,"sites\/all\/modules\/custom\/responsive_utilities\/js\/vendor\/fastclick.js":1,"1":1,"sites\/all\/modules\/custom\/pi_content_types\/pi_program\/treatments\/program-promo\/program-promo.js":1,"sites\/all\/modules\/custom\/responsive_utilities\/js\/responsive-utilities.mediaqueries.js":1,"sites\/all\/modules\/custom\/responsive_utilities\/js\/responsive-utilities.scripts.js":1,"sites\/all\/modules\/custom\/responsive_utilities\/js\/responsive-utilities.responsiveimages.js":1,"sites\/all\/modules\/custom\/community_calendar\/lib\/datetimepicker\/jquery.timepicker.min.js":1,"sites\/all\/modules\/custom\/community_calendar\/lib\/datetimepicker\/bootstrap-datepicker.min.js":1,"sites\/all\/modules\/custom\/community_calendar\/lib\/datetimepicker\/jquery.datepair.min.js":1,"sites\/all\/modules\/custom\/community_calendar\/lib\/validation\/jquery.mask.min.js":1,"sites\/all\/modules\/custom\/community_calendar\/lib\/validation\/jquery.validate.min.js":1,"sites\/all\/modules\/custom\/community_calendar\/lib\/typeahead\/typeahead.js":1,"sites\/all\/modules\/custom\/community_calendar\/assets\/community-calendar.helpers.js":1,"sites\/all\/modules\/custom\/community_calendar\/assets\/community-calendar.js":1,"sites\/all\/modules\/custom\/community_calendar\/assets\/community-calendar.filters.js":1,"sites\/all\/modules\/custom\/community_calendar\/assets\/community-calendar.event.js":1,"sites\/all\/modules\/custom\/responsive_utilities\/js\/responsive-utilities.js":1,"sites\/all\/modules\/custom\/responsive_utilities\/js\/responsive-utilities.tag.js":1,"sites\/all\/modules\/custom\/community_calendar\/assets\/community-calendar.location.js":1,"sites\/all\/modules\/custom\/community_calendar\/assets\/community-calendar.organization.js":1,"sites\/all\/modules\/custom\/community_calendar\/assets\/community-calendar.recurrence.js":1,"sites\/all\/modules\/custom\/community_calendar\/assets\/community-calendar.category.js":1,"sites\/all\/modules\/custom\/community_calendar\/assets\/community-calendar.image.js":1,"sites\/all\/modules\/custom\/community_calendar\/assets\/community-calendar.sponsor.js":1,"sites\/all\/modules\/custom\/community_calendar\/assets\/community-calendar.validation.js":1,"sites\/all\/modules\/custom\/responsive_utilities\/js\/responsive-utilities.overrides.js":1,"sites\/all\/modules\/contrib\/disqus\/disqus.js":1,"sites\/all\/modules\/custom\/audity\/audity\/dsplayer.min.js":1},"css":{"modules\/system\/system.base.css":1,"modules\/system\/system.menus.css":1,"modules\/system\/system.messages.css":1,"sites\/all\/libraries\/magnific-popup\/magnific-popup.css":1,"sites\/all\/modules\/contrib\/date\/date_api\/date.css":1,"sites\/all\/modules\/contrib\/date\/date_popup\/themes\/datepicker.1.7.css":1,"modules\/field\/theme\/field.css":1,"sites\/all\/modules\/contrib\/google_cse\/google_cse.css":1,"modules\/node\/node.css":1,"sites\/all\/modules\/custom\/pi_hull\/pi_outrigger\/css\/pi_outrigger.css":1,"modules\/search\/search.css":1,"modules\/user\/user.css":1,"sites\/all\/modules\/contrib\/views\/css\/views.css":1,"sites\/all\/modules\/contrib\/ctools\/css\/ctools.css":1,"sites\/all\/modules\/custom\/pi_guide\/css\/pi_guide.css":1,"sites\/all\/modules\/custom\/pi_hull\/jplayer\/css\/jplayer.npr.css":1,"sites\/all\/modules\/custom\/pi_npr_story\/css\/pi_npr_story.css":1,"sites\/all\/modules\/custom\/pi_views\/pi_reports_views\/css\/pi_reports.css":1,"sites\/all\/modules\/custom\/pi_menus\/css\/flexiMenu.css":1,"sites\/all\/modules\/custom\/responsive_footer\/responsive-footer.admin.css":1,"0":1,"\/\/fonts.googleapis.com\/css?family=Lato:300,700,700italic,900,italic,regular\u0026subset=latin":1,"sites\/all\/modules\/custom\/audity\/audity\/css\/audity.css":1,"sites\/all\/modules\/custom\/pi_ajax_links_api\/pi_ajax_links_api.css":1,"sites\/all\/modules\/custom\/pi_ajax_links_api\/nprogress\/nprogress.css":1,"sites\/all\/modules\/custom\/pi_content_types\/pi_program\/treatments\/program-promo\/program-promo.css":1,"sites\/all\/modules\/custom\/community_calendar\/lib\/typeahead\/typeahead.css":1,"sites\/all\/modules\/custom\/community_calendar\/lib\/datetimepicker\/jquery.timepicker.css":1,"sites\/all\/modules\/custom\/community_calendar\/lib\/datetimepicker\/bootstrap-datepicker3.standalone.min.css":1,"sites\/all\/modules\/custom\/community_calendar\/assets\/community-calendar.css":1,"sites\/all\/modules\/custom\/npr_entities\/npr_fields\/npr_image_gallery\/css\/npr-image-gallery.css":1,"sites\/all\/themes\/responso\/css\/icon-fonts.css":1,"sites\/all\/themes\/responso\/css\/screen.css":1}},"googleCSE":{"cx":"010251366440257945544:klz-uqf8fau","language":"","resultsWidth":600,"domain":"www.google.com","showWaterMark":true},"audityConfig":{"station":{"listenLabel":"Listen Live"},"streams":[{"desc":"NHPR","name":0,"url":"https:\/\/nhpr-ice.streamguys1.com\/nhpr","data":{"type":"composer2","ucs":"5182acf6e1c8493049eeb9c0"}},{"desc":"ClassicalNH","name":1,"url":"https:\/\/peridot.streamguys1.com:7345\/classical","data":{"type":"composer2","ucs":"5239f23ae1c8ca0459822d28"}}],"analytics":{"acct":"aab2"},"ads":{"network":"1206000","units":{"audio":"WEVO_player_audio","display":"WEVO_player_display","leavebehind":"WEVO_player_leavebehind"}}},"responsive_ads":{"networkCode":"1206000","prefix":"WEVO","adUnitTypes":{"leaderboard":{"note":"Only shows above 1024; shows 970x90 or 728x90.","sizes":[{"viewportSize":[0,0],"slotSize":[]},{"viewportSize":[1024,200],"slotSize":[[970,90],[970,50],[728,90]]}]},"medium":{"note":"Won't be served on screens smaller than 640x480.","sizes":[{"viewportSize":[0,0],"slotSize":[]},{"viewportSize":[640,200],"slotSize":[300,250]}]},"tablet":{"note":"Won't be served on screens smaller than 640x480 or larger than 1024x768","sizes":[{"viewportSize":[0,0],"slotSize":[]},{"viewportSize":[640,200],"slotSize":[728,90]},{"viewportSize":[1024,200],"slotSize":[]}]},"mobile":{"note":"Won't be served on screens larger than 640x480.","sizes":[{"viewportSize":[0,0],"slotSize":[320,50]},{"viewportSize":[640,200],"slotSize":[]}]}},"adUnits":[{"name":"leaderboard_1","type":"leaderboard","width":728,"height":90},{"name":"player_display","type":"leaderboard","width":728,"height":90},{"name":"medium_1","type":"medium","width":300,"height":250},{"name":"medium_2","type":"medium","width":300,"height":250},{"name":"medium_3","type":"medium","width":300,"height":250},{"name":"tablet_1","type":"tablet","width":728,"height":90},{"name":"mobile_1","type":"mobile","width":320,"height":50}],"placements":{"leaderboard_1":"main#content","medium_1":".sidebar-content","medium_2":".sidebar-content","medium_3":".sidebar-content","tablet_1":"main#content","mobile_1":"#block-pi-responsive-ads-mobile-1 .content"},"persistentPlacements":[],"targeting":{"id":"146673","type":"post","tags":[],"category":"","programs":[]}},"tms_meta":{"has_audio":"0","programs":"none","category":"none","nid":146673,"author":"David Welna","org_id":"1","keywords":"","wordCount":763,"story_id":"792737851","datePublished":"2020-01-01"},"disqus":{"domain":"npr-nhpr","url":"https:\/\/www.nhpr.org\/post\/us-population-growth-2019-slowest-century","title":"U.S. Population Growth In 2019 Is Slowest In A Century","identifier":"node\/146673"},"responsive_utilities":{"body_classes":"html not-front not-logged-in no-sidebars page-node page-node- page-node-146673 node-type-post fixed-header","custom_vars":{"nid":{"name":"nid","slot":8,"scope_id":3},"pop":{"name":"pop","slot":9,"scope_id":3},"author":{"name":"author","slot":11,"scope_id":3},"keywords":{"name":"tags","slot":12,"scope_id":3},"org_id":{"name":"org_id","slot":13,"scope_id":3},"brand":{"name":"CP_Station","slot":14,"scope_id":2},"has_audio":{"name":"Has_Inline_Audio","slot":15,"scope_id":3},"programs":{"name":"Program","slot":16,"scope_id":3},"category":{"name":"Category","slot":10,"scope_id":3},"datePublished":{"name":"PublishedDate","slot":17,"scope_id":3},"wordCount":{"name":"WordCount","slot":18,"scope_id":3},"story_id":{"name":"API_Story_Id","slot":19,"scope_id":3},"pmp_guid":{"name":"pmp_guid","slot":20,"scope_id":3}},"pagetype_vars":[{"page_type":"Content\/About","regex_pattern":"\/about(-us)?\/?$","pattern_name":"Core Publisher About Page"},{"page_type":"Events","regex_pattern":"\/events(\/|$)","pattern_name":"Core Publisher Events Page"},{"page_type":"People","regex_pattern":"\/people(\/|$)","pattern_name":"Core Publisher People Page"},{"page_type":"Playlist","regex_pattern":"\/search_playlists\/?$","pattern_name":"Core Publisher Playlist Page"},{"page_type":"Program","regex_pattern":"\/programs(\/|$)","pattern_name":"Core Publisher Program Page"},{"page_type":"Schedule","regex_pattern":"\/schedule(\/|$)","pattern_name":"Core Publisher Schedule Page"},{"page_type":"Search","regex_pattern":"\/search\/google\/?","pattern_name":"Core Publisher Search GSA Page"},{"page_type":"Story","regex_pattern":"\/post\/|\/webclip\/","pattern_name":"Core Publisher Story Page"},{"page_type":"Streaming","regex_pattern":"\/listen(-live)?\/?(#|$)","pattern_name":"Core Publisher Listen Live Page"}],"media_queries":{"mobile":"all and (max-width: 40em)","tablet":"screen and (min-width: 40.063em) and (max-width: 64em)","desktop":"screen and (min-width: 64.063em)"}},"pi_ajax_links_api":{"selector":"#page-document","trigger":"a.ajax-link,#page-wrapper a,a.logo,a.mobile-teaser-link,.dropdown a","negative_triggers":".dropdown .back a,.mobile .not-click \u003e a,#toolbar a,a.lightbox,.jp-interface a,.header .not-click \u003e a,.page-admin a,.page-block-factory a,a.give,.social-share a,#change-station,#rss-tablequeue a,a[href^=\"mailto:\"],.popup,a[href^=\"#\"],a:not([href]),ul.tabs\u003eli\u003ea,ul.contextual-links a,#table-queue-fleximenu a[target=\"_blank\"],.delete-button,a[href*='files'],a[href^='http:']","scripts_included":0,"html5":1,"vpager":1}});
+//--><!]]>
+</script>
+    <meta name="viewport" content="width=device-width">
+  </head>
+
+  <body class="html not-front not-logged-in page-node page-node- page-node-146673 node-type-post fixed-header" >
+    <header role="banner" class="header">
+  <div class="skiptocontent"><a href="#main-content">skip to main content</a></div>
+    <div class="region region-header">
+    <div id="block-baby-bear-baby-bear-header" class="block block-baby-bear">
+
+    
+  <div class="content">
+    
+<div class="header-region-outer">
+  <section class="header-region-inner row">
+    <div class="branding large-12 columns">
+      <div class="brand-inner-wrapper">
+        <a href="/" rel="home" class="logo" title="New Hampshire Public Radio Home"><img typeof="foaf:Image" src="//www.nhpr.org/sites/nhpr/files/201504/logo_fid_0.png" alt="New Hampshire Public Radio logo" title="New Hampshire Public Radio Home" /></a>         <div class="tagline">
+                  </div>
+      </div>
+      <div class="header-utility">
+        <a class="trigger-nav" href="#">
+          <span class="icon-list"></span>
+          <span class="menu-text">Site Menu</span>
+        </a>
+        <a class="give" href="https://secure3.convio.net/nhpr/site/Donation2?df_id=3566&mfc_pref=T&3566.donation=form1" target="_blank">
+  DONATE</a>
+      </div>
+    </div>
+  </section>
+</div>
+  </div>
+</div>
+  </div>
+</header>
+    <div class="nav-wrapper mobile">
+      <nav>
+        <div class="top-bar contain-to-grid" data-topbar>
+          <ul class="title-area">
+            <li class="toggle-topbar menu-icon">
+              <a href="#">Menu</a>
+            </li>
+          </ul>
+          <section class="top-bar-section">
+            <div class="table-queue" id="table-queue-fleximenu">
+  <ul  class="menu dropdown">
+<li>
+<a href="/">Home</a>
+</li>
+<li class="dd has-dropdown not-click">
+<a href="https://www.nhpr.org/news">News</a>
+<ul  class="dropdown">
+<li class="left">
+<a href="https://www.nhpr.org/news">Latest from NHPR</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/npr-news">Latest from NPR</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/post/2020-nh-primary-candidate-tracker-where-and-when-see-candidates#stream/0">2020 NH Primary Candidate Tracker</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/topic/2020-primary">NH Primary Dashboard: Stories, Interviews</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/term/politics-0">Politics</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/term/environment-0">Environment</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/term/health-0">Health</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/term/education-0">Education</a>
+</li>
+<li class="left">
+<a href="http://nhpr.org/topic/state-democracy">State of Democracy Stories</a>
+</li>
+<li class="left">
+<a href="https://nenc.news/">New England News Collaborative</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/topic/arts-culture-0">Arts &amp; Culture</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/weather">Weather</a>
+</li>
+</ul>
+</li>
+<li class="dd has-dropdown not-click">
+<a href="https://www.nhpr.org/topic/series">Series</a>
+<ul  class="dropdown">
+<li class="left">
+<a href="https://www.nhpr.org/term/route-4-series">Exploring Route 4</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/topic/special-series-adequate-how-state-decides-value-public-education#stream/0">Adequate: How A State Decides The Value of Public Education</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/topic/special-series-taking-toll#stream/0">Taking a Toll: Opioids &amp; NH&#039;s Children</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/topic/balance-costs-benefits-trade-offs-living-new-hampshire#stream/0">The Balance: NH&#039;s Cost of Living</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/post/special-series-alternatives-nh-gets-creative-curb-ongoing-opioid-crisis">Alternatives: NH Gets Creative Around Opioid Crisis</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/term/onlyinnh">Only In NH</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/topic/radio-field-trips">Radio Field Trips</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/term/crossroad">Crossroad: NH&#039;s Opioid Crisis</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/topic/new-hampshire-firsts-0">NH Firsts</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/term/road-series">Off-Road: ATVs &amp; NH</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/topic/surrounded-stories-nhs-islands">Surrounded: Stories from NH&#039;s Islands</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/topic/roll-call-life-nh-state-house">Roll Call: Life in the NH State House</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/topic/prison-and-justice-reporting#stream/0">Prisons &amp; Justice in NH</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/topic/line-manufacturing-new-hampshire#stream/0">On the Line: Manufacturing in NH</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/topic/foodstuffs">Foodstuffs: N.H. Food &amp; Food Culture</a>
+</li>
+<li class="left">
+<a href="http://www.nhprdigital.org/series-homeless-in-nh#special-series-homeless-in-nh">No Place to Go: Homeless In NH</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/topic/life-seacoast">Life on the Seacoast</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/programs/writers-new-england-stage">Writers on a NE Stage</a>
+</li>
+</ul>
+</li>
+<li class="dd has-dropdown not-click">
+<a href="https://www.nhpr.org/programs">Programs &amp; Podcasts</a>
+<ul  class="dropdown">
+<li class="left">
+<a href="https://www.nhpr.org/schedule">Today&#039;s Schedule</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/programs">All Programs</a>
+</li>
+<li class="left">
+<a href="https://www.strangleholdpodcast.com/">Stranglehold</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/programs/second-greatest-show-earth#stream/0">Second Greatest Show on Earth</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/sites/nhpr/files/podcasting_101_final.pdf">Podcasting 101</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/programs/exchange">The Exchange</a>
+</li>
+<li class="left">
+<a href="http://outsideinradio.org/">Outside/In </a>
+</li>
+<li class="left">
+<a href="https://patientzeropodcast.org">Patient Zero</a>
+</li>
+<li class="left">
+<a href="https://www.bearbrookpodcast.com/">Bear Brook</a>
+</li>
+<li class="left">
+<a href="https://www.supervisionpodcast.org">Supervision</a>
+</li>
+<li class="left">
+<a href="https://www.civics101podcast.org/">Civics 101</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/programs/something-wild">Something Wild</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/topic/bookshelf">The Bookshelf</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/programs/folk-show">The Folk Show</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/programs/morning-edition">Morning Edition</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/programs/all-things-considered">All Things Considered</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/sites/nhpr/files/201908/nhpr_program_schedule_august_2019.pdf">Printable Schedule</a>
+</li>
+</ul>
+</li>
+<li class="dd has-dropdown not-click">
+<a href="https://www.nhpr.org/listen-live-nhpr-online">Listen/Connect</a>
+<ul  class="dropdown">
+<li class="left">
+<a href="https://www.nhpr.org/listen-live-nhpr-online">Listen: Radio &amp; Online</a>
+</li>
+<li class="left">
+<a href="http://classicalnh.org">ClassicalNH: NHPR&#039;s Classical Service</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/having-trouble-nhprs-livestream-player#stream/0">Livestream Troubleshooting</a>
+</li>
+<li class="left">
+<a href="http://eepurl.com/gsxOPj">E-Newsletter Signup</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/community-calendar">Community Calendar</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/social-media">Social Media</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/nhpr-comment-guidelines">Comment Guidelines</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/nhpr-iosandroid-apps">Apps</a>
+</li>
+</ul>
+</li>
+<li class="dd has-dropdown not-click">
+<a href="https://www.nhpr.org/about-nhpr">About NHPR</a>
+<ul  class="dropdown">
+<li class="left">
+<a href="https://www.nhpr.org/topic/station-news">Station News</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/topic/program-alerts">Program Alerts</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/topic/2-minute-2-way">2-Minute, 2-Way</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/topic/nhpr-events">NHPR Events</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/contact-nhpr">Contact</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/people/capacity/staff">Staff</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/nhpr-board-trustees">Board of Trustees</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/nhprs-community-advisory-board">Community Advisory Board</a>
+</li>
+<li class="left">
+<a href="http://nhpr.iapplicants.com/">Job Opportunities</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/nhpr-news-code-ethics">Code of Ethics</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/financial-eeo-information">Financial &amp; EEO Information</a>
+</li>
+</ul>
+</li>
+<li class="dd has-dropdown not-click">
+<a href="http://nhpr.convio.net/site/Donation2?df_id=3448&amp;3448.donation=form1&amp;mfc_pref=T">Support</a>
+<ul  class="dropdown">
+<li class="left">
+<a href="https://www.nhpr.org/term/2019-december-fund-drive">December Fund Drive</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/post/december-2019-fund-drive-drawing-rules-and-regulations">Drawing Rules &amp; Regs</a>
+</li>
+<li class="left">
+<a href="/nhprs-sustaining-members">Sustaining Members</a>
+</li>
+<li class="left">
+<a href="https://secure3.convio.net/nhpr/site/Donation2;jsessionid=00000000.app318b?df_id=3552&amp;mfc_pref=T&amp;3552.donation=form1&amp;NONCE_TOKEN">Make a One-Time Gift</a>
+</li>
+<li class="left">
+<a href="https://newhampshirepublicradio.securecardonation.net ">Donate Your Car</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/donate-stock-nhpr">Make a Stock Gift</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/leadership-circle">Leadership Circle</a>
+</li>
+<li class="left">
+<a href="http://nhpr.plannedgiving.org/">Planned Gifts</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/pledge-free-stream-faqs">Pledge-Free Stream FAQs</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/business-support">Business Sponsorships &amp; Underwriting</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/corporate-match">Corporate Match</a>
+</li>
+<li class="left">
+<a href="/term/protect-my-public-media">Protect My Public Media</a>
+</li>
+<li class="left">
+<a href="http://nhprinnovation.org">Campaign for Innovation</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/search/google">Search</a>
+</li>
+</ul>
+</div>
+          </section>
+        </div>
+      </nav>
+    </div>
+      <div class="region region-persistent">
+    <div id="block-audity-audity" class="block block-audity">
+
+    
+  <div class="content">
+      </div>
+</div>
+  </div>
+    <div id="page-wrapper">
+            <div id="page-document" role="document" class="page">
+  <div class="nav-wrapper">
+    <nav>
+      <div class="top-bar contain-to-grid" data-topbar>
+        <ul class="title-area">
+          <li class="toggle-topbar menu-icon">
+            <a href="#">Menu</a>
+          </li>
+        </ul>
+        <section class="top-bar-section">
+          <div class="table-queue" id="table-queue-fleximenu">
+  <ul  class="menu dropdown">
+<li>
+<a href="/">Home</a>
+</li>
+<li class="dd has-dropdown not-click">
+<a href="https://www.nhpr.org/news">News</a>
+<ul  class="dropdown">
+<li class="left">
+<a href="https://www.nhpr.org/news">Latest from NHPR</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/npr-news">Latest from NPR</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/post/2020-nh-primary-candidate-tracker-where-and-when-see-candidates#stream/0">2020 NH Primary Candidate Tracker</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/topic/2020-primary">NH Primary Dashboard: Stories, Interviews</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/term/politics-0">Politics</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/term/environment-0">Environment</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/term/health-0">Health</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/term/education-0">Education</a>
+</li>
+<li class="left">
+<a href="http://nhpr.org/topic/state-democracy">State of Democracy Stories</a>
+</li>
+<li class="left">
+<a href="https://nenc.news/">New England News Collaborative</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/topic/arts-culture-0">Arts &amp; Culture</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/weather">Weather</a>
+</li>
+</ul>
+</li>
+<li class="dd has-dropdown not-click">
+<a href="https://www.nhpr.org/topic/series">Series</a>
+<ul  class="dropdown">
+<li class="left">
+<a href="https://www.nhpr.org/term/route-4-series">Exploring Route 4</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/topic/special-series-adequate-how-state-decides-value-public-education#stream/0">Adequate: How A State Decides The Value of Public Education</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/topic/special-series-taking-toll#stream/0">Taking a Toll: Opioids &amp; NH&#039;s Children</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/topic/balance-costs-benefits-trade-offs-living-new-hampshire#stream/0">The Balance: NH&#039;s Cost of Living</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/post/special-series-alternatives-nh-gets-creative-curb-ongoing-opioid-crisis">Alternatives: NH Gets Creative Around Opioid Crisis</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/term/onlyinnh">Only In NH</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/topic/radio-field-trips">Radio Field Trips</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/term/crossroad">Crossroad: NH&#039;s Opioid Crisis</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/topic/new-hampshire-firsts-0">NH Firsts</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/term/road-series">Off-Road: ATVs &amp; NH</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/topic/surrounded-stories-nhs-islands">Surrounded: Stories from NH&#039;s Islands</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/topic/roll-call-life-nh-state-house">Roll Call: Life in the NH State House</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/topic/prison-and-justice-reporting#stream/0">Prisons &amp; Justice in NH</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/topic/line-manufacturing-new-hampshire#stream/0">On the Line: Manufacturing in NH</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/topic/foodstuffs">Foodstuffs: N.H. Food &amp; Food Culture</a>
+</li>
+<li class="left">
+<a href="http://www.nhprdigital.org/series-homeless-in-nh#special-series-homeless-in-nh">No Place to Go: Homeless In NH</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/topic/life-seacoast">Life on the Seacoast</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/programs/writers-new-england-stage">Writers on a NE Stage</a>
+</li>
+</ul>
+</li>
+<li class="dd has-dropdown not-click">
+<a href="https://www.nhpr.org/programs">Programs &amp; Podcasts</a>
+<ul  class="dropdown">
+<li class="left">
+<a href="https://www.nhpr.org/schedule">Today&#039;s Schedule</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/programs">All Programs</a>
+</li>
+<li class="left">
+<a href="https://www.strangleholdpodcast.com/">Stranglehold</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/programs/second-greatest-show-earth#stream/0">Second Greatest Show on Earth</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/sites/nhpr/files/podcasting_101_final.pdf">Podcasting 101</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/programs/exchange">The Exchange</a>
+</li>
+<li class="left">
+<a href="http://outsideinradio.org/">Outside/In </a>
+</li>
+<li class="left">
+<a href="https://patientzeropodcast.org">Patient Zero</a>
+</li>
+<li class="left">
+<a href="https://www.bearbrookpodcast.com/">Bear Brook</a>
+</li>
+<li class="left">
+<a href="https://www.supervisionpodcast.org">Supervision</a>
+</li>
+<li class="left">
+<a href="https://www.civics101podcast.org/">Civics 101</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/programs/something-wild">Something Wild</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/topic/bookshelf">The Bookshelf</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/programs/folk-show">The Folk Show</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/programs/morning-edition">Morning Edition</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/programs/all-things-considered">All Things Considered</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/sites/nhpr/files/201908/nhpr_program_schedule_august_2019.pdf">Printable Schedule</a>
+</li>
+</ul>
+</li>
+<li class="dd has-dropdown not-click">
+<a href="https://www.nhpr.org/listen-live-nhpr-online">Listen/Connect</a>
+<ul  class="dropdown">
+<li class="left">
+<a href="https://www.nhpr.org/listen-live-nhpr-online">Listen: Radio &amp; Online</a>
+</li>
+<li class="left">
+<a href="http://classicalnh.org">ClassicalNH: NHPR&#039;s Classical Service</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/having-trouble-nhprs-livestream-player#stream/0">Livestream Troubleshooting</a>
+</li>
+<li class="left">
+<a href="http://eepurl.com/gsxOPj">E-Newsletter Signup</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/community-calendar">Community Calendar</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/social-media">Social Media</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/nhpr-comment-guidelines">Comment Guidelines</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/nhpr-iosandroid-apps">Apps</a>
+</li>
+</ul>
+</li>
+<li class="dd has-dropdown not-click">
+<a href="https://www.nhpr.org/about-nhpr">About NHPR</a>
+<ul  class="dropdown">
+<li class="left">
+<a href="https://www.nhpr.org/topic/station-news">Station News</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/topic/program-alerts">Program Alerts</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/topic/2-minute-2-way">2-Minute, 2-Way</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/topic/nhpr-events">NHPR Events</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/contact-nhpr">Contact</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/people/capacity/staff">Staff</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/nhpr-board-trustees">Board of Trustees</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/nhprs-community-advisory-board">Community Advisory Board</a>
+</li>
+<li class="left">
+<a href="http://nhpr.iapplicants.com/">Job Opportunities</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/nhpr-news-code-ethics">Code of Ethics</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/financial-eeo-information">Financial &amp; EEO Information</a>
+</li>
+</ul>
+</li>
+<li class="dd has-dropdown not-click">
+<a href="http://nhpr.convio.net/site/Donation2?df_id=3448&amp;3448.donation=form1&amp;mfc_pref=T">Support</a>
+<ul  class="dropdown">
+<li class="left">
+<a href="https://www.nhpr.org/term/2019-december-fund-drive">December Fund Drive</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/post/december-2019-fund-drive-drawing-rules-and-regulations">Drawing Rules &amp; Regs</a>
+</li>
+<li class="left">
+<a href="/nhprs-sustaining-members">Sustaining Members</a>
+</li>
+<li class="left">
+<a href="https://secure3.convio.net/nhpr/site/Donation2;jsessionid=00000000.app318b?df_id=3552&amp;mfc_pref=T&amp;3552.donation=form1&amp;NONCE_TOKEN">Make a One-Time Gift</a>
+</li>
+<li class="left">
+<a href="https://newhampshirepublicradio.securecardonation.net ">Donate Your Car</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/donate-stock-nhpr">Make a Stock Gift</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/leadership-circle">Leadership Circle</a>
+</li>
+<li class="left">
+<a href="http://nhpr.plannedgiving.org/">Planned Gifts</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/pledge-free-stream-faqs">Pledge-Free Stream FAQs</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/business-support">Business Sponsorships &amp; Underwriting</a>
+</li>
+<li class="left">
+<a href="https://www.nhpr.org/corporate-match">Corporate Match</a>
+</li>
+<li class="left">
+<a href="/term/protect-my-public-media">Protect My Public Media</a>
+</li>
+<li class="left">
+<a href="http://nhprinnovation.org">Campaign for Innovation</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/search/google">Search</a>
+</li>
+</ul>
+</div>
+        </section>
+      </div>
+    </nav>
+  </div>
+
+  <div id="player" class="player">
+      </div>
+
+      <div class="highlight">
+        <div class="region region-highlighted">
+    <div id="block-pi-sitewide-alert-sitewide-alert" class="block block-pi-sitewide-alert">
+
+    
+  <div class="content">
+    <div id="sitewide-alert"></div>  </div>
+</div>
+  </div>
+    </div>
+  
+      <section class="pre-content">
+      <div>
+          <div class="region region-pre-content">
+    <div id="block-pi-responsive-ads-mobile-1" class="block block-pi-responsive-ads">
+
+    
+  <div class="content">
+      </div>
+</div>
+  </div>
+      </div>
+    </section>
+  
+  
+  
+  <div class="row">
+    <main id="content" role="main" class="main-content small-12 columns">
+      <article class="story">
+        <a id="main-content"></a>
+        
+                                    
+        
+        
+        
+        
+        
+        
+                  <div class="has-sidebar">
+              <div class="region region-content">
+    <div id="block-system-main" class="block block-system">
+
+    
+  <div class="content">
+    <div id="node-146673" class="node node-post full row" about="/post/us-population-growth-2019-slowest-century" typeof="sioc:Item foaf:Document">
+  <div class="small-12 columns">
+        
+    
+    <h1 itemprop="name" class="post-title">
+      U.S. Population Growth In 2019 Is Slowest In A Century    </h1>
+
+  	
+    
+          <div class="by-date">
+        <span class="submitted"><span class="submitted-label">By</span> <span class="name"><a href="/people/david-welna" rel="author">David Welna</a></span></span>
+        <i class="bullet">&#8226;</i>
+        <span class="pub-date">6 minutes ago</span>
+      </div>
+    
+    <div class="row">
+      <div class="large-2 columns sharing-and-programs">
+        
+        <div class="social-share clearfix"><a href="http://facebook.com/sharer.php?u=http%3A%2F%2Fwww.tinyurl.com%2Fwufgz6p&amp;t=U.S.%20Population%20Growth%20In%202019%20Is%20Slowest%20In%20A%20Century" class="social-share-item facebook" title="Share" target="_blank">Share</a><a href="http://twitter.com/intent/tweet?url=http%3A%2F%2Fwww.tinyurl.com%2Fwufgz6p&amp;text=U.S.%20Population%20Growth%20In%202019%20Is%20Slowest%20In%20A%20Century" class="social-share-item twitter" title="Tweet" target="_blank">Tweet</a><a href="mailto:?subject=U.S.%20Population%20Growth%20In%202019%20Is%20Slowest%20In%20A%20Century&amp;body=http%3A%2F%2Fwww.tinyurl.com%2Fwufgz6p" class="social-share-item email" title="Email" target="_blank">Email</a></div>      </div>
+
+      <div class="large-10 columns post-body-container" >
+        <div class="post-body">
+          <div class="field field-name-field-image-gallery field-type-image field-label-hidden"><div class="field-items"><div class="field-item even"><ul class="gallery no-bullet"><li>
+  <figure>
+    <a title="Traffic clogs Highway 101 as people leave work in Los Angeles on Aug. 29, 2014." href="https://mediad.publicbroadcasting.net/p/shared/npr/styles/x_large/nprshared/202001/792790307.jpg" class="noexit lightbox">
+      <img src="https://mediad.publicbroadcasting.net/p/shared/npr/styles/placed_wide/nprshared/202001/792790307.jpg"   alt="Traffic clogs Highway 101 as people leave work in Los Angeles on Aug. 29, 2014.">
+          </a>
+    <div class="image-meta">
+  <figcaption>
+    <div class="caption">Traffic clogs Highway 101 as people leave work in Los Angeles on Aug. 29, 2014.</div>
+    <div class="attribution">
+  <span class="credit">Mark Ralston</span>
+  /  <span class="agency">AFP via Getty Images</span>
+</div>
+  </figcaption>
+</div>
+  </figure>
+</li>
+</ul></div></div></div><div class='api-pub-date'>Originally published on December 31, 2019 9:35 pm </div><div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even" property="content:encoded"><p>The annual population growth rate of the United States over the past year continued a decades-long decline, dropping to its lowest level in the past century.  </p> <p>According to <a href="https://www.census.gov/newsroom/press-releases/2019/popest-nation.html">newly released estimates</a> from the U.S. Census Bureau, the U.S. population grew by 1,552,022 since 2018, an increase of one-half of one percent. </p> <p>That rate of growth is slower than during the Great Depression of the 1930s, a period which had until the past decade marked the smallest expansion of the U.S. population since the overall number of inhabitants <a href="https://www.census.gov/data/tables/time-series/demo/popest/pre-1980-national.html">briefly dropped</a> in 1918</p> <p>Several factors help explain why the U.S. population growth rate is slowing:<br /><br /><strong>Declining fertility rates, more deaths<br /></strong>Forty-two states and the District of Columbia all had a <a href="https://www.census.gov/content/dam/Census/library/visualizations/2019/comm/slower-growth-nations-pop.pdf">drop</a> in the number of births recorded over the past year.  And with the number of deaths continuing a steady decade-long rise as more and more post-World War Two baby boomers reach old age, the number of births outnumbered the number of deaths nationwide by fewer than 1 million for the first time in decades.  </p> <p>That birth-driven increase in population did not occur this year in West Virginia, Maine, New Hampshire and Vermont, all of which had more deaths than births.</p> <p data-pym-loader="" data-child-src="https://apps.npr.org/dailygraphics/graphics/census-growth-20191231/" id="responsive-embed-census-growth-20191231"> Loading... </p> <script src="https://pym.nprapps.org/npr-pym-loader.v2.min.js"></script><p><strong>Fewer immigrants<br /></strong>The estimated number of people moving annually to the U.S. from other parts of the world has steadily declined from the decade's highest total of 1,046,709 in 2016, the final year of the Obama administration.</p> <p>This year's expected total of 595,348 immigrants would be the lowest yet in the Trump administration, which has <a href="https://www.pewresearch.org/fact-tank/2019/05/17/key-facts-about-u-s-immigration-policies-and-proposed-changes/">proposed new restrictions</a> on immigration and slashed the number of refugees being granted asylum.  </p> <p>Many states have also had residents leaving for other states. Over the past nine years, New York is the state with the largest out-migration, losing 1,379,210 of its residents. They are among more than 2.5 million residents of the U.S. Northeast who have moved to other regions, making it the most widely abandoned part of the country.</p> <p>The Midwest has had the second largest exodus. Of the 1,666,043 Midwesterners who have left since 2010, 865,873 hailed from Illinois.</p> <p>In contrast, the 912,038 people who moved away from California over the past nine years were outnumbered by 1,021,544 moving there from abroad.  </p> <p>Other states have had far more people moving in from elsewhere in the country than leaving. Texas has been a top recipient, with 1,145,629 arriving from other states and another 818,757 from abroad since 2010. It's nearly matched by Florida, with 1,289,614 residents of other states moving there and 1,107,039 more coming from abroad.</p> <p>These demographic shifts will likely have consequences when U.S. congressional districts are reapportioned based on the <a href="https://www.census.gov/partners/2020.html">2020 census</a>. </p> <p>"From the calculations I've done," says William Frey, a demographer and senior fellow at The Brookings Institution, "Texas could gain three seats, Florida could gain two seats. California fairly likely could lose a seat for the first time in its history."</p> <p>Frey predicts the aging of the workforce and the shrinking population growth rate will also have political ramifications. </p> <p>"You know, a lot of our decline of births, or at least slow growth of births, can be countered by immigration from abroad," he <a href="https://www.wbur.org/hereandnow/2019/12/31/us-population-growth-slows">tells</a> NPR's <em>Here and Now</em>.  "And so immigration is going to be a much bigger part of our growth. So this is something to pay attention to as we move ahead into the next decade. What is our immigration policy going to be? How are immigrants going to fit into the rest of our society, in the rest of our economy?"<br /><br />"The big safety valve in all of this," Frey says, "is immigration."<br /></p><div class="fullattribution">Copyright 2020 NPR. To see more, visit https://www.npr.org.<img src="https://www.google-analytics.com/__utm.gif?utmac=UA-5828686-4&amp;utmdt=U.S.+Population+Growth+In+2019+Is+Slowest+In+A+Century&amp;utme=8(APIKey)9(MDAxODM1Njk5MDEyMTY5MDg4MzEyOTc5Ng004)" /></div>  </div></div></div><div class="social-share bottom"><a href="http://facebook.com/sharer.php?u=http%3A%2F%2Fwww.tinyurl.com%2Fwufgz6p&amp;t=U.S.%20Population%20Growth%20In%202019%20Is%20Slowest%20In%20A%20Century" class="social-share-item facebook" title="Share" target="_blank">Share</a><a href="http://twitter.com/intent/tweet?url=http%3A%2F%2Fwww.tinyurl.com%2Fwufgz6p&amp;text=U.S.%20Population%20Growth%20In%202019%20Is%20Slowest%20In%20A%20Century" class="social-share-item twitter" title="Tweet" target="_blank">Tweet</a><a href="mailto:?subject=U.S.%20Population%20Growth%20In%202019%20Is%20Slowest%20In%20A%20Century&amp;body=http%3A%2F%2Fwww.tinyurl.com%2Fwufgz6p" class="social-share-item email" title="Email" target="_blank">Email</a></div><div id="disqus_thread"><noscript><p><a href="http://npr-nhpr.disqus.com/?url=https%3A%2F%2Fwww.nhpr.org%2Fpost%2Fus-population-growth-2019-slowest-century">View the discussion thread.</a></p></noscript></div>        </div>
+
+        <div class="related">
+                  </div>
+      </div>
+    </div>
+      </div>
+</div>
+  </div>
+</div>
+  </div>
+
+            <!-- In line style code is temporary -->
+            <div class="sidebar">
+              <div class="sidebar-content"></div>
+            </div>
+          </div>
+              </article>
+    </main>
+  </div>
+
+  
+  <div class="bottom-ads">
+    <div class="bottom-ads-inner"></div>
+  </div>
+</div>
+
+<footer class="footer" role="contentinfo">
+  <div class="row">
+    <div class="footer-affiliate-container small-centered columns">
+                  <div class="region region-footer">
+    <div id="block-pi-table-queue-auxiliarylinksfooter" class="block block-pi-table-queue">
+
+    
+  <div class="content">
+    <div class="table-queue" id="table-queue-auxiliarylinksfooter">
+  <div class="item-list"><ul class="auxiliary-links"><li class="first"><span>&copy; 2020 New Hampshire Public Radio</span></li>
+<li><a href="http://nhpr.org/contact-nhpr" target="_blank">Contact</a></li>
+<li><a href="http://nhpr.convio.net/site/Donation2?df_id=3448&amp;3448.donation=form1&amp;mfc_pref=T" target="_blank">Support</a></li>
+<li><a href="http://nhpr.org/schedule" target="_blank">Schedule</a></li>
+<li><a href="http://nhpr.org/social-media" target="_blank">Social</a></li>
+<li><a href="http://nhpr.org/community-calendar" target="_blank">Community Calendar</a></li>
+<li>NHPR Public Files:</li>
+<li><a href="https://publicfiles.fcc.gov/fm-profile/wcnh" target="_blank">WCNH</a></li>
+<li><a href="https://publicfiles.fcc.gov/fm-profile/wevc" target="_blank">WEVC</a></li>
+<li><a href="https://publicfiles.fcc.gov/fm-profile/wevf" target="_blank">WEVF</a></li>
+<li><a href="https://publicfiles.fcc.gov/fm-profile/wevh" target="_blank">WEVH</a></li>
+<li><a href="https://publicfiles.fcc.gov/fm-profile/wevj" target="_blank">WEVJ</a></li>
+<li><a href="https://publicfiles.fcc.gov/fm-profile/wevn" target="_blank">WEVN</a></li>
+<li><a href="https://publicfiles.fcc.gov/fm-profile/wevo" target="_blank">WEVO</a></li>
+<li><a href="https://publicfiles.fcc.gov/fm-profile/wevq" target="_blank">WEVQ</a></li>
+<li><a href="https://publicfiles.fcc.gov/fm-profile/wevs" target="_blank">WEVS</a></li>
+<li class="last"><a href="mailto:publicfile@nhpr.org" target="_blank">Persons with disabilities who need assistance accessing NHPR&#039;s FCC public files, please contact us at publicfile@nhpr.</a></li>
+</ul></div></div>
+  </div>
+</div>
+  </div>
+          </div>
+  </div>
+</footer>
+      <script type="text/javascript">
+<!--//--><![CDATA[//><!--
+ (function ($) { $(document).foundation({ topbar: { custom_back_text: true, back_text: 'back', mobile_show_parent_link: true } }); }(jQuery));
+//--><!]]>
+</script>
+    </div>
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"15ba4da3e8","applicationID":"1108724","transactionName":"NlMBMhAECEZRAU1eDg8ZNhQLSg9bVAdBGREJRg==","queueTime":0,"applicationTime":19,"atts":"GhQCRFgeG0g=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>

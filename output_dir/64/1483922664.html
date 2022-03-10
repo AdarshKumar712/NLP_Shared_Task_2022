@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"103fa8ca15",applicationID:"144794115"};window.NREUM||(NREUM={}),__nr_require=function(n,e,t){function r(t){if(!e[t]){var i=e[t]={exports:{}};n[t][0].call(i.exports,function(e){var i=n[t][1][e];return r(i||e)},i,i.exports)}return e[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(n,e,t){function r(){}function i(n,e,t){return function(){return o(n,[u.now()].concat(f(arguments)),e?null:this,t),e?void 0:this}}var o=n("handle"),a=n(4),f=n(5),c=n("ee").get("tracer"),u=n("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(n,e){s[e]=i(d+e,!0,"api")}),s.addPageAction=i(d+"addPageAction",!0),s.setCurrentRouteName=i(d+"routeName",!0),e.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(n,e){var t={},r=this,i="function"==typeof e;return o(l+"tracer",[u.now(),n,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return e.apply(this,arguments)}catch(n){throw c.emit("fn-err",[arguments,this,n],t),n}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(n,e){m[e]=i(l+e)}),newrelic.noticeError=function(n,e){"string"==typeof n&&(n=new Error(n)),o("err",[n,u.now(),!1,e])}},{}],2:[function(n,e,t){function r(n,e){var t=n.getEntries();t.forEach(function(n){"first-paint"===n.name?a("timing",["fp",Math.floor(n.startTime)]):"first-contentful-paint"===n.name&&a("timing",["fcp",Math.floor(n.startTime)])})}function i(n){if(n instanceof c&&!s){var e,t=Math.round(n.timeStamp);e=t>1e12?Date.now()-t:f.now()-t,s=!0,a("timing",["fi",t,{type:n.type,fid:e}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var o,a=n("handle"),f=n("loader"),c=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){o=new PerformanceObserver(r);try{o.observe({entryTypes:["paint"]})}catch(u){}}if("addEventListener"in document){var s=!1,p=["click","keydown","mousedown","pointerdown","touchstart"];p.forEach(function(n){document.addEventListener(n,i,!1)})}}},{}],3:[function(n,e,t){function r(n,e){if(!i)return!1;if(n!==i)return!1;if(!e)return!0;if(!o)return!1;for(var t=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],4:[function(n,e,t){function r(n,e){var t=[],r="",o=0;for(r in n)i.call(n,r)&&(t[o]=e(r,n[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],5:[function(n,e,t){function r(n,e,t){e||(e=0),"undefined"==typeof t&&(t=n?n.length:0);for(var r=-1,i=t-e||0,o=Array(i<0?0:i);++r<i;)o[r]=n[e+r];return o}e.exports=r},{}],6:[function(n,e,t){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(n,e,t){function r(){}function i(n){function e(n){return n&&n instanceof r?n:n?c(n,f,o):o()}function t(t,r,i,o){if(!d.aborted||o){n&&n(t,r,i);for(var a=e(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function l(n,e){h[n]=v(n).concat(e)}function m(n,e){var t=h[n];if(t)for(var r=0;r<t.length;r++)t[r]===e&&t.splice(r,1)}function v(n){return h[n]||[]}function g(n){return p[n]=p[n]||i(t)}function w(n,e){u(n,function(n,t){e=e||"feature",y[t]=e,e in s||(s[e]=[])})}var h={},y={},b={on:l,addEventListener:l,removeEventListener:m,emit:t,get:g,listeners:v,context:e,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var f="nr@context",c=n("gos"),u=n(4),s={},p={},d=e.exports=i();d.backlog=s},{}],gos:[function(n,e,t){function r(n,e,t){if(i.call(n,e))return n[e];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(n,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return n[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(n,e,t){function r(n,e,t,r){i.buffer([n],r),i.emit(n,e,t)}var i=n("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(n,e,t){function r(n){var e=typeof n;return!n||"object"!==e&&"function"!==e?-1:n===window?0:a(n,o,function(){return i++})}var i=1,o="nr@id",a=n("gos");e.exports=r},{}],loader:[function(n,e,t){function r(){if(!x++){var n=E.info=NREUM.info,e=l.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(n&&n.licenseKey&&n.applicationID&&e))return s.abort();u(y,function(e,t){n[e]||(n[e]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=l.createElement("script");t.src="https://"+n.agent,e.parentNode.insertBefore(t,e)}}function i(){"complete"===l.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=n("handle"),u=n(4),s=n("ee"),p=n(3),d=window,l=d.document,m="addEventListener",v="attachEvent",g=d.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:g,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1158.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=e.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};n(1),n(2),l[m]?(l[m]("DOMContentLoaded",o,!1),d[m]("load",r,!1)):(l[v]("onreadystatechange",i),d[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=n(6)},{}],"wrap-function":[function(n,e,t){function r(n){return!(n&&n instanceof Function&&n.apply&&!n[a])}var i=n("ee"),o=n(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;e.exports=function(n,e){function t(n,e,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){d([u,"",[r,a,i],f])}s(e+"start",[r,a,i],f);try{return c=n.apply(a,r)}catch(p){throw s(e+"err",[r,a,p],f),p}finally{s(e+"end",[r,a,c],f)}}return r(n)?n:(e||(e=""),nrWrapper[a]=n,p(n,nrWrapper),nrWrapper)}function u(n,e,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<e.length;c++)f=e[c],a=n[f],r(a)||(n[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||e){var o=c;c=!0;try{n.emit(t,r,i,e)}catch(a){d([a,t,r,i])}c=o}}function p(n,e){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(n);return t.forEach(function(t){Object.defineProperty(e,t,{get:function(){return n[t]},set:function(e){return n[t]=e,e}})}),e}catch(r){d([r])}for(var i in n)f.call(n,i)&&(e[i]=n[i]);return e}function d(e){try{n.emit("internal-error",e)}catch(t){}}return n||(n=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script>
+	<link rel="pingback" href="https://chicago.cbslocal.com/xmlrpc.php" />
+
+<!-- WP Header - Start -->
+<meta name="keywords" content="local, news, seen on cbs 2, syndicated local, watch + listen, chicago news, jb pritzker, local tv, marijuana convictions, pardons, recreational marijuana" />
+<meta property="fb:pages" content="27510768337" />
+<meta name="google-site-verification" content="44caXBf4kjHeKKAT7ZZ89NaCX25utL_yRSa-qGpwIhY" />
+<title>Gov. JB Pritzker Grants More Than 11,000 Pardons For Low-Level Marijuana Convictions &#8211; CBS Chicago</title>
+<!-- Jetpack Site Verification Tags -->
+<meta name="google-site-verification" content="44caXBf4kjHeKKAT7ZZ89NaCX25utL_yRSa-qGpwIhY" />
+<meta name="msvalidate.01" content="0FD6BCBEF9479095CF623C15833E1E08" />
+<link rel="dns-prefetch" href="//cdn.cookielaw.org" />
+<script type="text/javascript" charset="UTF-8" src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" data-domain-script="7547764e-53b9-4fff-aef7-ce9cb429c721"></script>
+<link rel="dns-prefetch" href="//production-cmp.isgprivacy.cbsi.com" />
+<script type="text/javascript" charset="UTF-8" src="https://production-cmp.isgprivacy.cbsi.com/dist/optanon.js"></script>
+<script type="text/javascript">!function(n){var o=window,a="cbsoptanon",c="cmd",d="config";o[a]=o[a]?o[a]:{},o[a][c]=o[a][c]?o[a][c]:[],o[a][d]=o[a][d]?o[a][d]:[],["onIframesReady","onFormsReady","onScriptsReady","onAdsReady"].forEach(function(n){o[a][n]=o[a][n]||function(){var d=arguments;o[a][c].push(function(){o[a][n].apply(o[a],d)})}})}();</script>
+<link rel='dns-prefetch' href='//s0.wp.com' />
+<link rel='dns-prefetch' href='//maxcdn.bootstrapcdn.com' />
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//wayne.cbslocal.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="CBS Chicago &raquo; Feed" href="https://chicago.cbslocal.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="CBS Chicago &raquo; Comments Feed" href="https://chicago.cbslocal.com/comments/feed/" />
+<link rel='stylesheet' id='all-css-0' href='https://chicago.cbslocal.com/_static/??-eJytj00OAiEMhS8kNiaKYWE8CwN1JFNawk+8vsi4caWTuGr72u/lFR5JOeGKXKHeMWIBNxVF4ixBYEfNv6RS4CZSMe97u4OfIIwT+pVNGUms/w4nanPgAlF8o76xb4Net8PjQEXLdsY8bD4U1UMuVdKGl1aPFie2gRQFXv6fCqlPXMe/13g5nPRZG6PN8Ql17p9v' type='text/css' media='all' />
+<link crossorigin="anonymous" rel='stylesheet' id='cbs-font-awesome-css'  href='//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css?ver=4.7.0' media='all' />
+<link crossorigin="anonymous" rel='stylesheet' id='cbs-lato-font-css'  href='https://fonts.googleapis.com/css?family=Lato%3A300%2C400%2C700%2C900&#038;ver=1.0.0' media='all' />
+<link rel='stylesheet' id='all-css-4' href='https://chicago.cbslocal.com/_static/??-eJyNy0sKgDAMANELWaNiKy7Es9QYVEg/kIh4e+0FxO3wBq5sMEWlqKA7BRLARQwn9AyiN1ONIhV8sSMin2tJIpD9RkYpZPb64y0L8RujStFzmFo79M3YWeceIdg5IQ==' type='text/css' media='all' />
+<link rel='stylesheet' id='cbs-custom-css-css'  href='https://wayne.cbslocal.com/cbs-local-custom-css/global/cbslocal_custom_global.css?ver=1.0.0' media='all' />
+<link rel='stylesheet' id='all-css-6' href='https://chicago.cbslocal.com/_static/??-eJydUtFuwyAM/KFRFnVrn6Z9CwErZTEYgdMofz/TrK22TNvY24F95zuDnpOyFBkiaz5BgKJtXxSSNagTToOPRQdyE0rl0qCCiWaArG2RmyXB007Qg/5JyEeLk6tXwpm9A8UQEhqG0khOJvMfOF+dlxNltnRVuR8bxkPowa38C1ToCytr2CANjTEkhbcI6nxf3qe6E2ndC3GUKX02edGFF4Rd8LE9vWx8AL5tv+KNSJjUlfYGnIwdN3SmpBIVQauXZh/b/xNMHqv02m8JKf/jdX/TpTPkOXveWv4mdaV/4Nr+Gl665+Ph2HWP+/074ZkylQ==' type='text/css' media='all' />
+<script type='text/javascript' src='https://chicago.cbslocal.com/_static/??-eJy1kEESwiAMRS8kYnW0K8ezUIg0NYRago63Fzsu7MrWGVeB8P/LJ/reKxtZgEVLCwGStk1SFK0hjWwpu9Lqku4jPc5ItA7I6y6t9FxjN8vRU/bISYfoMpUX40ZzKeq2/SRM0NcMw+NdvgpUQD8YgZ/yjAIVDBsPwws9aagy7yKxX7SYc2YrGDn9IxBQubGkRYmMayHhbd6Git5TbAwtGzEIWoLF372j8yAj4n0siFM4Vvv6UFfVZrfrnnXyCnM='></script>
+<link rel='https://api.w.org/' href='https://chicago.cbslocal.com/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://chicago.cbslocal.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://chicago.cbslocal.com/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 5.3.2" />
+<link rel='shortlink' href='https://cbsloc.al/2ZEGH3G' />
+<link rel="alternate" type="application/json+oembed" href="https://chicago.cbslocal.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fchicago.cbslocal.com%2F2019%2F12%2F31%2Fgov-jb-pritzker-issues-more-than-11000-pardons-for-low-level-marijuana-convictions%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://chicago.cbslocal.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fchicago.cbslocal.com%2F2019%2F12%2F31%2Fgov-jb-pritzker-issues-more-than-11000-pardons-for-low-level-marijuana-convictions%2F&#038;format=xml" />
+
+<link rel='dns-prefetch' href='//v0.wordpress.com'/>
+<link rel='dns-prefetch' href='//jetpack.wordpress.com'/>
+<link rel='dns-prefetch' href='//s0.wp.com'/>
+<link rel='dns-prefetch' href='//s1.wp.com'/>
+<link rel='dns-prefetch' href='//s2.wp.com'/>
+<link rel='dns-prefetch' href='//public-api.wordpress.com'/>
+<link rel='dns-prefetch' href='//0.gravatar.com'/>
+<link rel='dns-prefetch' href='//1.gravatar.com'/>
+<link rel='dns-prefetch' href='//2.gravatar.com'/>
+<style type='text/css'>img#wpstats{display:none}</style>
+<meta property="og:title" content="Gov. JB Pritzker Grants More Than 11,000 Pardons For Low-Level Marijuana Convictions" /><meta property="og:image" content="https://chicago.cbslocal.com/wp-content/uploads/sites/15116062/2019/12/Pritzker-Pot-Pardons.png?w=1500" /><meta property="og:image:secure_url" content="https://chicago.cbslocal.com/wp-content/uploads/sites/15116062/2019/12/Pritzker-Pot-Pardons.png?w=1500" /><meta property="og:image:width" content="1500" /><meta property="og:image:height" content="840" /><meta property="og:description" content="Gov. JB Pritzker has pardoned more than 11,000 people convicted of misdemeanor marijuana cases, in the first step toward clearing the records of hundreds of thousands of low-level pot convictions." /><meta property="og:type" content="article" /><meta property="og:url" content="https://chicago.cbslocal.com/2019/12/31/gov-jb-pritzker-issues-more-than-11000-pardons-for-low-level-marijuana-convictions/" /><meta property="article:published_time" content="2019-12-31T11:16:19+00:00" /><meta property="article:suggested-social-copy" content="Gov. JB Pritzker has pardoned more than 11,000 people convicted of misdemeanor marijuana cases, in the first step toward clearing the records of hundreds of thousands of low-level pot convictions." /><meta property="article:publisher" content="http://www.facebook.com/cbschicago" /><meta property="article:author" content="http://www.facebook.com/cbschicago" />
+
+<meta name="twitter:card" content="summary_large_image"/><meta name="twitter:image" content="https://chicago.cbslocal.com/wp-content/uploads/sites/15116062/2019/12/Pritzker-Pot-Pardons.png?w=1500"><meta name="twitter:title" content="Gov. JB Pritzker Grants More Than 11,000 Pardons For Low-Level Marijuana Convictions"/><meta name="twitter:description" content="Gov. JB Pritzker has pardoned more than 11,000 people convicted of misdemeanor marijuana cases, in the first step toward clearing the records of hundreds of thousands of low-level pot convictions."/><meta name="twitter:site" content="/CBSchicago"/>
+<link rel="canonical" href="https://chicago.cbslocal.com/2019/12/31/gov-jb-pritzker-issues-more-than-11000-pardons-for-low-level-marijuana-convictions/" />
+				<style>
+					.main-story-wrapper .basicsection { margin-bottom: 20px; }
+					.main-story-wrapper .basicsection span strong { display: block; font-size: 18px; margin: 0 auto 15px; }
+					.main-story-wrapper .basicsection img { float: none !important; margin: 0 auto 15px; }
+					.main-story-wrapper .basicsection br { margin-bottom: 5px; }
+				</style>
+						<style type="text/css">
+				/* If html does not have either class, do not show lazy loaded images. */
+				html:not( .jetpack-lazy-images-js-enabled ):not( .js ) .jetpack-lazy-image {
+					display: none;
+				}
+			</style>
+			<script>
+				document.documentElement.classList.add(
+					'jetpack-lazy-images-js-enabled'
+				);
+			</script>
+		<link rel="amphtml" href="https://chicago.cbslocal.com/2019/12/31/gov-jb-pritzker-issues-more-than-11000-pardons-for-low-level-marijuana-convictions/amp/">
+<script type="application/ld+json">{"@context":"http:\/\/schema.org","@type":"NewsArticle","publisher":{"@context":"http:\/\/schema.org","@type":"NewsMediaOrganization","@id":"https:\/\/chicago.cbslocal.com","url":"https:\/\/chicago.cbslocal.com","name":"CBS Chicago","foundingDate":"1941-07-01T14:30:00+00:00","logo":{"@type":"ImageObject","url":"https:\/\/chicago.cbslocal.com\/wp-content\/uploads\/sites\/15116062\/2018\/07\/chicago_cbs2.png?w=242"}},"url":"https:\/\/chicago.cbslocal.com\/2019\/12\/31\/gov-jb-pritzker-issues-more-than-11000-pardons-for-low-level-marijuana-convictions\/","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/chicago.cbslocal.com\/2019\/12\/31\/gov-jb-pritzker-issues-more-than-11000-pardons-for-low-level-marijuana-convictions\/"},"headline":"Gov. JB Pritzker Grants More Than 11,000 Pardons For Low-Level Marijuana Convictions","description":"Gov. JB Pritzker has pardoned more than 11,000 people convicted of misdemeanor marijuana cases, in the first step toward clearing the records of hundreds of thousands of low-level pot convictions.","image":"https:\/\/chicago.cbslocal.com\/wp-content\/uploads\/sites\/15116062\/2019\/12\/Pritzker-Pot-Pardons.png?w=150","keywords":["Local","News","Seen on CBS 2","Syndicated Local","Watch + Listen","Chicago News","JB Pritzker","Local TV","Marijuana Convictions","Pardons","Recreational Marijuana","news","Gov. JB Pritzker Grants More Than 11,000 Pardons For Low-Level Marijuana Convictions"],"datePublished":"2019-12-31T11:16:19+00:00","dateModified":"2019-12-31T11:16:19+00:00","author":{"@type":"Organization","name":"CBS Chicago"},"video":{"@context":"https:\/\/schema.org","@type":"VideoObject","name":"Pritzker Pardons More Than 11,000 Pot Convictions","description":"Gov. JB Pritzker has pardoned more than 11,000 people convicted of misdemeanor marijuana cases, in the first step toward clearing the records of hundreds of thousands of low-level pot convictions, a day before the state legalizes cannabis in 2020.","thumbnailUrl":"https:\/\/xheimmxl4gfvfghng2jjos4qhb.gcdn.anvato.net\/captures\/40F\/BB7\/40FBB79BC86E411CB201C3755E7F2A42.jpg?Expires=1672491980&KeyName=mcpkey1&Signature=_Y7l9LJyG2cIjeJrFYQbn57dvVk","uploadDate":"2019-12-31","duration":"T33S","contentUrl":"https:\/\/chicago.cbslocal.com\/video\/4341579-pritzker-pardons-more-than-11000-pot-convictions\/","embedUrl":"https:\/\/chicago.cbslocal.com\/video\/4341579-pritzker-pardons-more-than-11000-pot-convictions\/"}}</script>
+<script>cbs_lib.load_script("//launch.newsinc.com/js/embed.js");</script><script type="text/javascript">cbs_ads.partners.add("amazon", "3063");if(!window["apstag"]){window["apstag"]={init:function(){window["apstag"]._Q.push(["i",arguments]);},fetchBids:function(){window["apstag"]._Q.push(["f",arguments]);},setDisplayBids:function(){},_Q:[]};}</script>
+
+<script type="text/javascript">cbs_ads.partners.add("sharethrough", true);</script>
+<script>cbs_ads.init("4128","CBS.CHI","news",["govjbpritzkergrantsmorethan11000pardonsforlowlevelmarijuanaconvictions","post","article","local","news","seenoncbs2","syndicatedlocal","watchlisten","chicagonews","jbpritzker","localtv","marijuanaconvictions","pardons","recreationalmarijuana","featuredvideo"],{"page_type":"article"});cbs_ads.refresh.set_timer("1");</script>
+
+<link rel="dns-prefetch" href="//www.googletagmanager.com" />
+<script type="text/plain" class="optanon-category-4" src="https://www.googletagmanager.com/gtag/js?id=UA-2438645-63" async></script>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=UA-2438645-63" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script type="text/plain" class="optanon-category-4">window.dataLayer=window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("set",{"dimension1":"local;news;seen-on-cbs-2;syndicated-local;watch-listen;","dimension2":"article"});gtag("config","UA-2438645-63");</script>
+
+<link rel="icon" href="https://chicago.cbslocal.com/wp-content/uploads/sites/15116062/2019/06/cropped-chicago-favicon-512.png?w=32" sizes="32x32" />
+<link rel="icon" href="https://chicago.cbslocal.com/wp-content/uploads/sites/15116062/2019/06/cropped-chicago-favicon-512.png?w=192" sizes="192x192" />
+<link rel="apple-touch-icon-precomposed" href="https://chicago.cbslocal.com/wp-content/uploads/sites/15116062/2019/06/cropped-chicago-favicon-512.png?w=180" />
+<meta name="msapplication-TileImage" content="https://chicago.cbslocal.com/wp-content/uploads/sites/15116062/2019/06/cropped-chicago-favicon-512.png?w=270" />
+		<style type="text/css" id="wp-custom-css">
+			.single-post sup {
+	vertical-align: super;
+	font-size: 9px;
+}
+.postid-994177 #reptile_30_wrapper {
+	display:none;
+}		</style>
+		<!-- WP Header - End -->
+
+	<meta name="description" content="Gov. JB Pritzker has pardoned more than 11,000 people convicted of misdemeanor marijuana cases, in the first step toward clearing the records of hundreds of thousands of low-level pot convictions." />
+<script>//<![CDATA[
+//]]></script>
+
+</head>
+
+<body class="post-template-default single single-post postid-1001723 single-format-standard desktop-display-type  and-temp-wide"><div id="wrapper" class="body-wrapper">
+
+<div id="reptile_skin_1" class="cbs-ad-unit ad_gpt cbs-ad-skin" data-ad_location="skin"><script>cbs_load_skin_by_tile(1);</script></div><header id="page-header" class=""><div class="wrapper">
+
+				<a href="https://chicago.cbslocal.com" id="header-logo"><img src="https://chicago.cbslocal.com/wp-content/uploads/sites/15116062/2018/07/chicago_cbs2.png?w=242" alt="CBS Chicago" /></a>
+	
+	<nav id="navigation-main" data-item-count="7"><ul class="top"><li class="menu-top-item item-0 section-item w-submenu"><div class="cbs-thumbnail-link wo-hover" ><div class="title-wrapper"><strong class="title">Menu</strong></div></div><div class="submenu"><div class="wrapper">
+<section class="items-grid enable-type-icons column-count-2 block-type-grid layout-3_column aspect-ratio-16-9" id="" >
+		<header class="column-header">
+				<h4 class="title">Videos</h4>
+	</header>
+	
+		
+			<div class="article-buckets-list">
+			<a href="https://chicago.cbslocal.com/video/4345020-cbs-2-weather-forecast-10-p-m-12-31-19/" title="CBS 2 Weather Forecast (10 P.M. 12-31-19)" class="cbs-thumbnail-link item-1577852926 content-type-video" ><div class="thumbnail-wrapper"><span class="balance"><img src="https://chicago.cbslocal.com/wp-content/themes/cbs-local/images/global/blank_1x1.gif" data-src="https://xheimmxl4gfvfghng2jjos4qhb.gcdn.anvato.net/captures/46D/1A9/46D1A98496D64A4DAA39EF2A71386AAF.jpg?Expires=1672491937&#038;KeyName=mcpkey1&#038;Signature=2jSrrPJneZrF8WLbTdIEKS1xb68"></span></div><div class="title-wrapper"><strong class="title">CBS 2 Weather Forecast (10 P.M. 12-31-19)</strong><em class="description">CBS 2 Meteorologist Robb Ellis has your forecast.</em></div><time datetime="2020-01-01T04:28:46+00:00" title="December 31, 2019 at 10:28 pm">9 hours ago</time></a><a href="https://chicago.cbslocal.com/video/4345009-another-legionnaires-case-at-veterans-home/" title="Another Legionnaires&#039; Case At Veterans&#039; Home" class="cbs-thumbnail-link item-1577852741 content-type-video" ><div class="thumbnail-wrapper"><span class="balance"><img src="https://chicago.cbslocal.com/wp-content/themes/cbs-local/images/global/blank_1x1.gif" data-src="https://xheimmxl4gfvfghng2jjos4qhb.gcdn.anvato.net/captures/8B1/2F3/8B12F31447794E4DAA1A0E665DA9E98E.jpg?Expires=1672491937&#038;KeyName=mcpkey1&#038;Signature=xFOeRDj6EV8Iv6N8Pv2Ocjt5o_s"></span></div><div class="title-wrapper"><strong class="title">Another Legionnaires&#039; Case At Veterans&#039; Home</strong><em class="description">Another case of Legionnaires&#039; disease has turned up at the veterans&#039; home in Quincy, Illinois.</em></div><time datetime="2020-01-01T04:25:41+00:00" title="December 31, 2019 at 10:25 pm">9 hours ago</time></a>		</div>
+	</section>
+
+<section class="items-grid column-count-1 block-type-wpmenu layout-compact aspect-ratio-16-9" id="" >
+		<header class="column-header">
+				<h4 class="title">More</h4>
+	</header>
+	
+		
+			<div class="article-buckets-list">
+			<a href="https://chicago.cbslocal.com/category/alert/contests/" title="Contests" class="cbs-thumbnail-link item-0" ><div class="title-wrapper"><strong class="title">Contests</strong></div></a><a href="https://chicago.cbslocal.com/category/alert/only-cbs/" title="Only CBS" class="cbs-thumbnail-link item-1" ><div class="title-wrapper"><strong class="title">Only CBS</strong></div></a><a href="https://chicago.cbslocal.com/category/travel/" title="Travel" class="cbs-thumbnail-link item-2" ><div class="title-wrapper"><strong class="title">Travel</strong></div></a>		</div>
+	</section>
+</div></div></li><li class="menu-top-item item-1 w-link w-submenu"><a href="http://chicago.cbslocal.com/category/news/" title="News" class="cbs-thumbnail-link wo-hover" ><div class="title-wrapper"><strong class="title">News</strong></div></a><div class="submenu"><div class="wrapper">
+<section class="items-grid column-count-2 block-type-wpmenu layout-compact aspect-ratio-16-9" id="" >
+		<header class="column-header">
+				<h4 class="title">All News</h4>
+	</header>
+	
+		
+			<div class="article-buckets-list">
+			<a href="https://chicago.cbslocal.com/category/news/local/" title="Chicago News" class="cbs-thumbnail-link item-0" ><div class="title-wrapper"><strong class="title">Chicago News</strong></div></a><a href="https://chicago.cbslocal.com/tag/cbs-2-investigators/" title="Investigative" class="cbs-thumbnail-link item-1" ><div class="title-wrapper"><strong class="title">Investigative</strong></div></a><a href="http://chicago.cbslocal.com/category/politics/" title="Politics" class="cbs-thumbnail-link item-2" ><div class="title-wrapper"><strong class="title">Politics</strong></div></a><a href="http://chicago.cbslocal.com/category/news/business/" title="Business" class="cbs-thumbnail-link item-3" ><div class="title-wrapper"><strong class="title">Business</strong></div></a><a href="http://chicago.cbslocal.com/category/news/consumer/" title="Consumer" class="cbs-thumbnail-link item-4" ><div class="title-wrapper"><strong class="title">Consumer</strong></div></a><a href="http://chicago.cbslocal.com/category/news/entertainment/" title="Entertainment" class="cbs-thumbnail-link item-5" ><div class="title-wrapper"><strong class="title">Entertainment</strong></div></a><a href="http://chicago.cbslocal.com/category/health" title="HealthWatch" class="cbs-thumbnail-link item-6" ><div class="title-wrapper"><strong class="title">HealthWatch</strong></div></a><a href="http://chicago.cbslocal.com/photo-galleries/" title="Photos" class="cbs-thumbnail-link item-7" ><div class="title-wrapper"><strong class="title">Photos</strong></div></a><a href="http://chicago.cbslocal.com/category/autos/" title="Autos" class="cbs-thumbnail-link item-8" ><div class="title-wrapper"><strong class="title">Autos</strong></div></a><a href="https://chicago.cbslocal.com/category/alert/only-cbs/" title="Only CBS" class="cbs-thumbnail-link item-9" ><div class="title-wrapper"><strong class="title">Only CBS</strong></div></a>		</div>
+	</section>
+
+<section class="items-grid enable-type-icons column-count-4 block-type-grid layout-3_column aspect-ratio-16-9" id="" >
+		<header class="column-header">
+				<h4 class="title">Latest Headlines</h4>
+	</header>
+	
+		
+			<div class="article-buckets-list">
+			<a href="https://chicago.cbslocal.com/2020/01/01/recreational-marijuana-becomes-legal-in-illinois/" title="Recreational Marijuana Is Legal In Illinois" class="cbs-thumbnail-link item-1577881857 content-type-video" ><div class="thumbnail-wrapper"><span class="balance"><img src="https://chicago.cbslocal.com/wp-content/themes/cbs-local/images/global/blank_1x1.gif" data-src="https://chicago.cbslocal.com/wp-content/uploads/sites/15116062/2020/01/weed.jpg?w=310&#038;h=174&#038;crop=1"></span></div><div class="title-wrapper"><strong class="title">Recreational Marijuana Is Legal In Illinois</strong><em class="description">Recreational marijuana is officially legal in Illinois.</em></div></a><a href="https://chicago.cbslocal.com/2019/12/31/with-53-of-chicago-homicides-unsolved-in-2019-families-hope-for-justice-in-2020/" title="With 53% Of Chicago Homicides Unsolved In 2019, Families Hope For Justice In 2020" class="cbs-thumbnail-link item-1577854055 content-type-video" ><div class="thumbnail-wrapper"><span class="balance"><img src="https://chicago.cbslocal.com/wp-content/themes/cbs-local/images/global/blank_1x1.gif" data-src="https://chicago.cbslocal.com/wp-content/uploads/sites/15116062/2019/12/Angie_Monroy_Memorial_1231.jpg?w=310&#038;h=174&#038;crop=1"></span></div><div class="title-wrapper"><strong class="title">With 53% Of Chicago Homicides Unsolved In 2019, Families Hope For Justice In 2020</strong><em class="description">Justice in the New Year - it&#039;s what hundreds of Chicagoans want heading into 2020.</em></div></a><a href="https://chicago.cbslocal.com/2019/12/31/with-legal-marijuana-in-2020-some-count-down-to-hempy-new-year/" title="With Legal Marijuana In 2020, Some Count Down To &#039;Hempy&#039; New Year" class="cbs-thumbnail-link item-1577851929 content-type-video" ><div class="thumbnail-wrapper"><span class="balance"><img src="https://chicago.cbslocal.com/wp-content/themes/cbs-local/images/global/blank_1x1.gif" data-src="https://chicago.cbslocal.com/wp-content/uploads/sites/15116062/2019/12/Hempy_New_Year_1.jpg?w=310&#038;h=174&#038;crop=1"></span></div><div class="title-wrapper"><strong class="title">With Legal Marijuana In 2020, Some Count Down To &#039;Hempy&#039; New Year</strong><em class="description">At midnight on Wednesday morning with the start of 2020, recreational marijuana is legal in Illinois.</em></div></a><a href="https://chicago.cbslocal.com/2019/12/31/chicago-weather-clearing-as-we-ring-in-2020/" title="Chicago Weather: Mid-20s As We Ring In 2020" class="cbs-thumbnail-link item-1577850053 content-type-video" ><div class="thumbnail-wrapper"><span class="balance"><img src="https://chicago.cbslocal.com/wp-content/themes/cbs-local/images/global/blank_1x1.gif" data-src="https://chicago.cbslocal.com/wp-content/uploads/sites/15116062/2019/12/1231Next-2-Days-PM.png?w=310&#038;h=174&#038;crop=1"></span></div><div class="title-wrapper"><strong class="title">Chicago Weather: Mid-20s As We Ring In 2020</strong><em class="description">We’re on track to have a chilly, but slightly warmer-than-average New Year’s Eve. </em></div></a>		</div>
+	</section>
+</div></div></li><li class="menu-top-item item-2 w-link w-submenu"><a href="http://chicago.cbslocal.com/category/weather/" title="Weather" class="cbs-thumbnail-link wo-hover" ><div class="title-wrapper"><strong class="title">Weather</strong></div></a><div class="submenu"><div class="wrapper">
+<section class="items-grid column-count-1 block-type-wpmenu layout-compact aspect-ratio-16-9" id="" >
+		<header class="column-header">
+				<h4 class="title">Weather Links</h4>
+	</header>
+	
+		
+			<div class="article-buckets-list">
+			<a href="http://chicago.cbslocal.com/school-closings/" title="Chicago School Closings" class="cbs-thumbnail-link item-0" ><div class="title-wrapper"><strong class="title">Chicago School Closings</strong></div></a><a href="https://www.flightview.com/airport/ORD-Chicago-IL-(O_Hare)/departures" target="_blank" title="Flight Delays O&#039;Hare" class="cbs-thumbnail-link item-1" ><div class="title-wrapper"><strong class="title">Flight Delays O&#039;Hare</strong></div></a><a href="https://www.flightview.com/airport/MDW-Chicago-IL-(Midway)/departures" target="_blank" title="Flight Delays Midway" class="cbs-thumbnail-link item-2" ><div class="title-wrapper"><strong class="title">Flight Delays Midway</strong></div></a><a href="http://apps.cbslocal.com/weather/chicago/" title="Weather App" class="cbs-thumbnail-link item-3" ><div class="title-wrapper"><strong class="title">Weather App</strong></div></a>		</div>
+	</section>
+
+<section class="items-grid enable-type-icons column-count-3 block-type-grid layout-3_column aspect-ratio-16-9" id="" >
+		<header class="column-header">
+				<h4 class="title">More Weather</h4>
+	</header>
+	
+		
+			<div class="article-buckets-list">
+			<a href="https://chicago.cbslocal.com/2019/12/31/chicago-weather-clearing-as-we-ring-in-2020/" title="Chicago Weather: Mid-20s As We Ring In 2020" class="cbs-thumbnail-link item-1577850053 content-type-video" ><div class="thumbnail-wrapper"><span class="balance"><img src="https://chicago.cbslocal.com/wp-content/themes/cbs-local/images/global/blank_1x1.gif" data-src="https://chicago.cbslocal.com/wp-content/uploads/sites/15116062/2019/12/1231Next-2-Days-PM.png?w=310&#038;h=174&#038;crop=1"></span></div><div class="title-wrapper"><strong class="title">Chicago Weather: Mid-20s As We Ring In 2020</strong><em class="description">We’re on track to have a chilly, but slightly warmer-than-average New Year’s Eve. </em></div></a><a href="https://chicago.cbslocal.com/2019/12/31/snow-totals-chicago-weather-new-years-eve/" title="Chicago Weather: Snow Totals For New Year&#039;s Eve" class="cbs-thumbnail-link item-1577813384 content-type-video" ><div class="thumbnail-wrapper"><span class="balance"><img src="https://chicago.cbslocal.com/wp-content/themes/cbs-local/images/global/blank_1x1.gif" data-src="https://chicago.cbslocal.com/wp-content/uploads/sites/15116062/2011/02/snow-generic-0219.jpg?w=310&#038;h=174&#038;crop=1"></span></div><div class="title-wrapper"><strong class="title">Chicago Weather: Snow Totals For New Year&#039;s Eve</strong><em class="description">Here are the 24-hour total snowfall amounts reported by the National Weather Service as of Tuesday morning:</em></div></a><a href="https://chicago.cbslocal.com/2019/12/31/chicago-weather-snowy-windy-new-years-eve-warmup-on-the-way/" title="Chicago Weather: Snowy, Windy New Year&#039;s Eve; Warmup On The Way" class="cbs-thumbnail-link item-1577809090 content-type-video" ><div class="thumbnail-wrapper"><span class="balance"><img src="https://chicago.cbslocal.com/wp-content/themes/cbs-local/images/global/blank_1x1.gif" data-src="https://chicago.cbslocal.com/wp-content/uploads/sites/15116062/2019/12/tues-Bar-Graph-Today.png?w=310&#038;h=174&#038;crop=1"></span></div><div class="title-wrapper"><strong class="title">Chicago Weather: Snowy, Windy New Year&#039;s Eve; Warmup On The Way</strong><em class="description">CBS 2 meteorologist Ed Curran is warning commuters to be aware of slick driving conditions with snow on the roads and high winds. </em></div></a>		</div>
+	</section>
+</div></div></li><li class="menu-top-item item-3 w-link w-submenu"><a href="http://chicago.cbslocal.com/category/sports/" title="Sports" class="cbs-thumbnail-link wo-hover" ><div class="title-wrapper"><strong class="title">Sports</strong></div></a><div class="submenu"><div class="wrapper">
+<section class="items-grid enable-type-icons column-count-6 block-type-grid layout-3_column aspect-ratio-16-9" id="" >
+		<header class="column-header">
+				<h4 class="title">Featured Sports</h4>
+	</header>
+	
+		
+			<div class="article-buckets-list">
+			<a href="https://chicago.cbslocal.com/2019/12/31/bears-linebacker-roquan-smith-crash-halas-hall/" title="Bears Linebacker Roquan Smith Not Hurt After Crashing Car Near Halas Hall" class="cbs-thumbnail-link item-1577825898 content-type-video" ><div class="thumbnail-wrapper"><span class="balance"><img src="https://chicago.cbslocal.com/wp-content/themes/cbs-local/images/global/blank_1x1.gif" data-src="https://chicago.cbslocal.com/wp-content/uploads/sites/15116062/2019/12/Roquan-Smith.jpg?w=310&#038;h=174&#038;crop=1"></span></div><div class="title-wrapper"><strong class="title">Bears Linebacker Roquan Smith Not Hurt After Crashing Car Near Halas Hall</strong><em class="description">Smith was driving to Halas Hall when his car slid off the roadway due to icy conditions, and crashed into a pole.</em></div></a><a href="https://chicago.cbslocal.com/2019/12/31/pace-bears-remain-committed-to-trubisky-as-starting-qb/" title="Bears Say Mitchell Trubisky Will Be Starting QB In 2020; But Offensive Coordinator Mark Helfrich, 3 Other Coaches Fired" class="cbs-thumbnail-link item-1577822186 content-type-video" ><div class="thumbnail-wrapper"><span class="balance"><img src="https://chicago.cbslocal.com/wp-content/themes/cbs-local/images/global/blank_1x1.gif" data-src="https://chicago.cbslocal.com/wp-content/uploads/sites/15116062/2019/12/AP_19363767070611.jpg?w=310&#038;h=174&#038;crop=1"></span></div><div class="title-wrapper"><strong class="title">Bears Say Mitchell Trubisky Will Be Starting QB In 2020; But Offensive Coordinator Mark Helfrich, 3 Other Coaches Fired</strong><em class="description">The Bears were banking on Trubisky to take another big step in his third year in the NFL and second in coach Matt Nagy&#039;s system. But instead of emerging as a top-tier quarterback, the No. 2 overall pick in the 2017 draft took a step back.</em></div></a><a href="https://chicago.cbslocal.com/2019/12/30/milwaukee-bucks-pull-away-in-second-half-bulls-lose/" title="Milwaukee Bucks Pull Away In Second Half, Bulls Lose" class="cbs-thumbnail-link item-1577763969 content-type-video" ><div class="thumbnail-wrapper"><span class="balance"><img src="https://chicago.cbslocal.com/wp-content/themes/cbs-local/images/global/blank_1x1.gif" data-src="https://chicago.cbslocal.com/wp-content/uploads/sites/15116062/2019/12/Bulls_Bucks_GettyImages-1196761046.jpg?w=310&#038;h=174&#038;crop=1"></span></div><div class="title-wrapper"><strong class="title">Milwaukee Bucks Pull Away In Second Half, Bulls Lose</strong><em class="description">Giannis Antetokounmpo had 23 points and 10 rebounds after missing two games with a sore back, and the Milwaukee Bucks pulled away in the second half for a victory over the Chicago Bulls on Monday night.</em></div></a><a href="https://chicago.cbslocal.com/2019/12/30/bears-reflect-disappointing-year/" title="Bears Reflect On Disappointing Year As They Leave Halas Hall For Offseason" class="cbs-thumbnail-link item-1577750948 content-type-video" ><div class="thumbnail-wrapper"><span class="balance"><img src="https://chicago.cbslocal.com/wp-content/themes/cbs-local/images/global/blank_1x1.gif" data-src="https://chicago.cbslocal.com/wp-content/uploads/sites/15116062/2019/12/BF4E82FD2EEB4CE1B41D9530739DE1A7_6.jpg?w=310&#038;h=174&#038;crop=1"></span></div><div class="title-wrapper"><strong class="title">Bears Reflect On Disappointing Year As They Leave Halas Hall For Offseason</strong><em class="description">&quot;We didn&#039;t get in the end zone. A lot of three and outs. Inconsistent opening drives. Not scoring in the first quarter. There&#039;s a lot of things we didn&#039;t accomplish as an offense this year that we need to get better at.&quot;</em></div></a><a href="https://chicago.cbslocal.com/2019/12/30/white-sox-dallas-keuchel-contract-55-5-million/" title="It&#039;s Official: White Sox Sign Pitcher Dallas Keuchel To 3-Year, $55.5 Million Contract" class="cbs-thumbnail-link item-1577724322 content-type-video" ><div class="thumbnail-wrapper"><span class="balance"><img src="https://chicago.cbslocal.com/wp-content/themes/cbs-local/images/global/blank_1x1.gif" data-src="https://chicago.cbslocal.com/wp-content/uploads/sites/15116062/2019/12/Dallas-Keuchel.jpg?w=310&#038;h=174&#038;crop=1"></span></div><div class="title-wrapper"><strong class="title">It&#039;s Official: White Sox Sign Pitcher Dallas Keuchel To 3-Year, $55.5 Million Contract</strong><em class="description">Keuchel will earn $18 million in salary each of the next three seasons. The White Sox hold a $20 million option for 2023 with a $1.5 million buyout.</em></div></a><a href="https://chicago.cbslocal.com/2019/12/29/toews-kane-score-shootout-goals-blackhawks-beat-columbus-blue-jackets/" title="Toews, Kane Score Shootout Goals, Blackhawks Beat Columbus Blue Jackets" class="cbs-thumbnail-link item-1577669945 content-type-video" ><div class="thumbnail-wrapper"><span class="balance"><img src="https://chicago.cbslocal.com/wp-content/themes/cbs-local/images/global/blank_1x1.gif" data-src="https://chicago.cbslocal.com/wp-content/uploads/sites/15116062/2017/04/gettyimages-665489108-e1491936395909.jpg?w=310&#038;h=174&#038;crop=1"></span></div><div class="title-wrapper"><strong class="title">Toews, Kane Score Shootout Goals, Blackhawks Beat Columbus Blue Jackets</strong><em class="description">Jonathan Toews and Patrick Kane scored shootout goals to lift the Chicago Blackhawks to a win over the Columbus Blue Jackets on Sunday night.</em></div></a>		</div>
+	</section>
+</div></div></li><li class="menu-top-item item-4 w-link"><a href="http://chicago.cbslocal.com/video/" title="Video" class="cbs-thumbnail-link wo-hover" ><div class="title-wrapper"><strong class="title">Video</strong></div></a></li><li class="menu-top-item item-5 w-link w-submenu"><a href="http://chicago.cbslocal.com/category/best-of/" title="Best Of" class="cbs-thumbnail-link wo-hover" ><div class="title-wrapper"><strong class="title">Best Of</strong></div></a><div class="submenu"><div class="wrapper">
+<section class="items-grid enable-type-icons column-count-6 block-type-grid layout-3_column aspect-ratio-16-9" id="" >
+		<header class="column-header">
+				<h4 class="title"><a href="http://chicago.cbslocal.com/category/best-of/">Latest Headlines</a></h4>
+	</header>
+	
+		
+			<div class="article-buckets-list">
+			<a href="https://chicago.cbslocal.com/2019/12/28/some-winter-cocktail-ideas-just-in-time-for-new-years-eve/" title="Some Winter Cocktail Ideas Just In Time For New Year&#039;s Eve" class="cbs-thumbnail-link item-1577548751 content-type-video" ><div class="thumbnail-wrapper"><span class="balance"><img src="https://chicago.cbslocal.com/wp-content/themes/cbs-local/images/global/blank_1x1.gif" data-src="https://chicago.cbslocal.com/wp-content/uploads/sites/15116062/2019/12/Winter_Cocktails_1228.jpg?w=310&#038;h=174&#038;crop=1"></span></div><div class="title-wrapper"><strong class="title">Some Winter Cocktail Ideas Just In Time For New Year&#039;s Eve</strong><em class="description">New Year’s Eve is coming up on Tuesday night. Are you planning fun party with fun cocktails?</em></div></a><a href="https://chicago.cbslocal.com/2019/12/21/the-best-wine-and-bubbly-for-the-holiday-season/" title="The Best Wine And Bubbly For The Holiday Season" class="cbs-thumbnail-link item-1576944409 content-type-video" ><div class="thumbnail-wrapper"><span class="balance"><img src="https://chicago.cbslocal.com/wp-content/themes/cbs-local/images/global/blank_1x1.gif" data-src="https://chicago.cbslocal.com/wp-content/uploads/sites/15116062/2019/12/HolidayWines2.jpg?w=310&#038;h=174&#038;crop=1"></span></div><div class="title-wrapper"><strong class="title">The Best Wine And Bubbly For The Holiday Season</strong><em class="description">From holiday gifts to holiday parties, we took a look Saturday morning at some of the best wine to serve this season.</em></div></a><a href="https://chicago.cbslocal.com/2019/12/20/christmas-foods-your-dog-should-never-eat/" title="Christmas Foods Your Dog Should Never Eat" class="cbs-thumbnail-link item-1576867810 content-type-video" ><div class="thumbnail-wrapper"><span class="balance"><img src="https://chicago.cbslocal.com/wp-content/themes/cbs-local/images/global/blank_1x1.gif" data-src="https://chicago.cbslocal.com/wp-content/uploads/sites/15116062/2019/12/christmas-food.png?w=310&#038;h=174&#038;crop=1"></span></div><div class="title-wrapper"><strong class="title">Christmas Foods Your Dog Should Never Eat</strong><em class="description">A warning for pet owners this holiday season.</em></div></a><a href="https://chicago.cbslocal.com/2019/12/17/are-these-trending-chicago-restaurants-on-your-radar/" title="Are These Trending Chicago Restaurants On Your Radar?" class="cbs-thumbnail-link item-1576600470 content-type-video" ><div class="thumbnail-wrapper"><span class="balance"><img src="https://chicago.cbslocal.com/wp-content/themes/cbs-local/images/global/blank_1x1.gif" data-src="https://chicago.cbslocal.com/wp-content/uploads/sites/15116062/2019/12/cracked.jpg?w=310&#038;h=174&#038;crop=1"></span></div><div class="title-wrapper"><strong class="title">Are These Trending Chicago Restaurants On Your Radar?</strong><em class="description">Wondering where Chicago&#039;s insiders are eating and drinking?</em></div></a><a href="https://chicago.cbslocal.com/2019/12/17/new-chicago-businesses-2/" title="Explore The 3 Freshest New Businesses To Debut In Chicago" class="cbs-thumbnail-link item-1576594599 content-type-video" ><div class="thumbnail-wrapper"><span class="balance"><img src="https://chicago.cbslocal.com/wp-content/themes/cbs-local/images/global/blank_1x1.gif" data-src="https://chicago.cbslocal.com/wp-content/uploads/sites/15116062/2019/12/bakery.jpg?w=310&#038;h=174&#038;crop=1"></span></div><div class="title-wrapper"><strong class="title">Explore The 3 Freshest New Businesses To Debut In Chicago</strong></div></a><a href="https://chicago.cbslocal.com/2019/12/17/events-in-chicago-this-week-3/" title="4 Events To Check Out In Chicago This Week" class="cbs-thumbnail-link item-1576594425 content-type-video" ><div class="thumbnail-wrapper"><span class="balance"><img src="https://chicago.cbslocal.com/wp-content/themes/cbs-local/images/global/blank_1x1.gif" data-src="https://chicago.cbslocal.com/wp-content/uploads/sites/15116062/2019/02/microphone.jpg?w=310&#038;h=174&#038;crop=1"></span></div><div class="title-wrapper"><strong class="title">4 Events To Check Out In Chicago This Week</strong><em class="description">Looking for something to do this week?</em></div></a>		</div>
+	</section>
+</div></div></li><li class="menu-top-item item-6 w-submenu"><div class="cbs-thumbnail-link wo-hover" ><div class="title-wrapper"><strong class="title">More</strong></div></div><div class="submenu"><div class="wrapper">
+<section class="items-grid column-count-1 block-type-wpmenu layout-compact aspect-ratio-16-9" id="" >
+		<header class="column-header">
+				<h4 class="title"><a href="https://chicago.cbslocal.com/learn-about-us/">Station Info</a></h4>
+	</header>
+	
+		
+			<div class="article-buckets-list">
+			<a href="https://chicago.cbslocal.com/station/cbs-2/" title="CBS 2/Send Tips" class="cbs-thumbnail-link item-0" ><div class="title-wrapper"><strong class="title">CBS 2/Send Tips</strong></div></a><a href="https://chicago.cbslocal.com/about-us/advertising-basics/" title="Advertise" class="cbs-thumbnail-link item-1" ><div class="title-wrapper"><strong class="title">Advertise</strong></div></a><a href="https://cbs.avature.net/cbstvscareers" title="Jobs &amp; Internships" class="cbs-thumbnail-link item-2" ><div class="title-wrapper"><strong class="title">Jobs &amp; Internships</strong></div></a><a href="https://chicago.cbslocal.com/category/alert/contests/" title="Contests" class="cbs-thumbnail-link item-3" ><div class="title-wrapper"><strong class="title">Contests</strong></div></a>		</div>
+	</section>
+
+<section class="items-grid column-count-1 block-type-wpmenu layout-compact aspect-ratio-16-9" id="" >
+		<header class="column-header">
+				<h4 class="title">Connect</h4>
+	</header>
+	
+		
+			<div class="article-buckets-list">
+			<a href="https://chicago.cbslocal.com/station/cbs-2/" title="Social" class="cbs-thumbnail-link item-0" ><div class="title-wrapper"><strong class="title">Social</strong></div></a><a href="http://apps.cbslocal.com/" title="CBS Local App" class="cbs-thumbnail-link item-1" ><div class="title-wrapper"><strong class="title">CBS Local App</strong></div></a><a href="http://apps.cbslocal.com/weather/chicago/" title="CBS Weather App" class="cbs-thumbnail-link item-2" ><div class="title-wrapper"><strong class="title">CBS Weather App</strong></div></a>		</div>
+	</section>
+
+<section class="items-grid enable-type-icons column-count-3 block-type-grid layout-3_column aspect-ratio-16-9" id="" >
+		<header class="column-header">
+				<h4 class="title"><a href="https://chicago.cbslocal.com/category/travel/">Travel</a></h4>
+	</header>
+	
+		
+			<div class="article-buckets-list">
+			<a href="https://chicago.cbslocal.com/2019/08/22/nfl-stadium-guides-parking-transportation-tailgating/" title="Heading To An NFL Game? Be Sure To Check Out Our NFL Stadium Guides" class="cbs-thumbnail-link item-1566480885" ><div class="thumbnail-wrapper"><span class="balance"><img src="https://chicago.cbslocal.com/wp-content/themes/cbs-local/images/global/blank_1x1.gif" data-src="https://chicago.cbslocal.com/wp-content/uploads/sites/15116062/2019/08/GettyImages-466663843-3.jpg?w=310&#038;h=174&#038;crop=1"></span></div><div class="title-wrapper"><strong class="title">Heading To An NFL Game? Be Sure To Check Out Our NFL Stadium Guides</strong><em class="description">If you and your family are headed to an NFL game this season, we have you covered with guides to stadiums across the league.</em></div></a><a href="https://chicago.cbslocal.com/2019/06/13/top-3-eco-friendly-vacation-spots/" title="Top 3 Eco-Friendly Vacation Spots" class="cbs-thumbnail-link item-1560449704" ><div class="thumbnail-wrapper"><span class="balance"><img src="https://chicago.cbslocal.com/wp-content/themes/cbs-local/images/global/blank_1x1.gif" data-src="https://chicago.cbslocal.com/wp-content/uploads/sites/15116062/2019/06/gettyimages-598645380-e1537896793352.jpg?w=310&#038;h=174&#038;crop=1"></span></div><div class="title-wrapper"><strong class="title">Top 3 Eco-Friendly Vacation Spots</strong><em class="description">Check out the three best spots for an eco-friendly vacation!</em></div></a><a href="https://chicago.cbslocal.com/2019/04/04/final-four-guide-top-10-instagram-worthy-spots-in-minneapolis/" title="Final Four Guide: Top 10 Most Instagram-Worthy Spots In Downtown Minneapolis" class="cbs-thumbnail-link item-1554411634" ><div class="thumbnail-wrapper"><span class="balance"><img src="https://chicago.cbslocal.com/wp-content/themes/cbs-local/images/global/blank_1x1.gif" data-src="https://chicago.cbslocal.com/wp-content/uploads/sites/15116062/2019/04/igworthy.png?w=310&#038;h=174&#038;crop=1"></span></div><div class="title-wrapper"><strong class="title">Final Four Guide: Top 10 Most Instagram-Worthy Spots In Downtown Minneapolis</strong><em class="description">With thousands of Final Four fans heading to downtown Minneapolis in the coming days, you better believe the Instagram filters will be flying.</em></div></a>		</div>
+	</section>
+
+<section class="items-grid enable-type-icons column-count-1 block-type-grid layout-3_column aspect-ratio-16-9" id="" >
+		<header class="column-header">
+				<h4 class="title">More</h4>
+	</header>
+	
+		
+			<div class="article-buckets-list">
+			<a href="http://chicago.cbslocal.com/category/only-cbs/" title="CBS Entertainment" class="cbs-thumbnail-link item-1519413511" ><div class="thumbnail-wrapper"><span class="balance"><img src="https://chicago.cbslocal.com/wp-content/themes/cbs-local/images/global/blank_1x1.gif" data-src="https://chicago.cbslocal.com/wp-content/uploads/sites/15116062/2018/02/onlycbs.png?w=310&#038;h=174&#038;crop=1"></span></div><div class="title-wrapper"><strong class="title">CBS Entertainment</strong></div></a>		</div>
+	</section>
+</div></div></li></ul></nav>
+	<ul id="live"><li class="menu-item item-0"><a href="/live/channel/live-video-from-cbs-chicago/" title="CBS 2" class="cbs-thumbnail-link wo-hover" ><div class="title-wrapper"><strong class="title">CBS 2</strong><em class="description">On Air</em></div></a><div class="submenu"><div class="wrapper"><div id="embed-list-1" class="embed-item embed-list" ><div class="wrapper">
+<header class="partblock__title block-head-wrapper"><h4 class="title"><span>On Air </span> Schedule:</h4></header><div class="block-content-wrapper and-list layout-compact aspect-ratio-16-9"><div class="cbs-thumbnail-link item-0" ><div class="title-wrapper"><strong class="title">06:00 AM</strong><em class="description">CBS 2 News at 6am</em></div></div><div class="cbs-thumbnail-link item-1" ><div class="title-wrapper"><strong class="title">07:00 AM</strong><em class="description">CBS This Morning</em></div></div><div class="cbs-thumbnail-link item-2" ><div class="title-wrapper"><strong class="title">09:00 AM</strong><em class="description">Let's Make a Deal</em></div></div><div class="cbs-thumbnail-link item-3" ><div class="title-wrapper"><strong class="title">10:00 AM</strong><em class="description">The Price Is Right</em></div></div><div class="cbs-thumbnail-link item-4" ><div class="title-wrapper"><strong class="title">11:00 AM</strong><em class="description">CBS 2 News at 11am</em></div></div></div>
+</div></div><a class="view-all" href="http://chicago.cbslocal.com/program-guide/">View All Programs</a></div></div></li></ul>
+	<a href="http://chicago.cbslocal.com/category/weather/" id="info-weather"><div id="weather-widget-sticker" class="embed-item embed-weather weather-widget-wrap" ><div class="wrapper">
+<wx-widget type="current-conditions" latitude="41.878114" longitude="-87.629798" header="false"></wx-widget>
+</div></div></a>
+	<div id="info-search"><form action="https://chicago.cbslocal.com/search/" class="form"><input type="text" class="query" name="q" id="s" size="31" placeholder="Search..." /><input type="reset" class="reset" value="Reset" /><input type="submit" class="submit" value="&#xf002" /></form><span class="open-close" onclick="jQuery(document).ready(function(){jQuery('#info-search').toggleClass('open');});"></span></div>
+</div></header>		<section class="page-ad-container page-pencil-ad-container-top">
+			<div id="reptile_1_wrapper" class="ad-block-wrapper cbs-ad-unit-wrapper"><span id="ad_1"><div id="reptile_1" class="ad-block" data-ad_size="[[970,250],[970,66],[728,90]]" data-ad_location="top"><script>cbs_load_ad_by_tile("1");</script></div></span></div>		</section>
+		
+<div id="page-content" class="main-white page-block-container and-w-sidebar">
+<header id="page-rubric" class="">
+
+			<div class="banner-title-wrapper">
+							<h1 class="title">Gov. JB Pritzker Grants More Than 11,000 Pardons For Low-Level Marijuana Convictions</h1>
+					</div>
+	
+	
+	
+	
+	
+</header>
+<section class="page-columns"><section class="page-column three-column" id="article-entry-date-and-tags"><div class="column-header"><time class="post-date">December 31, 2019 at 11:16 am</time><div class="column-header-metadata"><strong>Filed Under:</strong><span><a href="https://chicago.cbslocal.com/tag/chicago-news/">Chicago News</a>, <a href="https://chicago.cbslocal.com/tag/jb-pritzker/">JB Pritzker</a>, <a href="https://chicago.cbslocal.com/tag/local-tv/">Local TV</a>, <a href="https://chicago.cbslocal.com/tag/marijuana-convictions/">Marijuana Convictions</a>, <a href="https://chicago.cbslocal.com/tag/pardons/">Pardons</a>, <a href="https://chicago.cbslocal.com/tag/recreational-marijuana/">Recreational Marijuana</a></div></div></section><section id="column_block_2" class="page-column and-content-column two-column"><div class="column-item story" id="main-story"><section class="column-item media-type-anvato  close-btn" id="featured-media"><div id="floating-player-container" class="video-wrapper anvato"><div id='p0'></div><script type="text/plain" class="optanon-category-4" async data-anvp='{&quot;mcp&quot;:&quot;cbs&quot;,&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:&quot;100%&quot;,&quot;video&quot;:&quot;4341579&quot;,&quot;autoplay&quot;:true,&quot;titleVisible&quot;:false,&quot;accessKey&quot;:&quot;DVzl9QRzox3ZZsP9bNu5Li3X7obQOnqP&quot;,&quot;accessControl&quot;:{&quot;preview&quot;:false},&quot;pInstance&quot;:&quot;p0&quot;,&quot;plugins&quot;:{&quot;heartbeat&quot;:{&quot;account&quot;:&quot;cbslocal-global-unified&quot;,&quot;publisherId&quot;:&quot;cbslocal&quot;,&quot;jobId&quot;:&quot;sc_va&quot;,&quot;marketingCloudId&quot;:&quot;823BA0335567497F7F000101@AdobeOrg&quot;,&quot;trackingServer&quot;:&quot;cbsdigitalmedia.hb.omtrdc.net&quot;,&quot;customTrackingServer&quot;:&quot;cbsdigitalmedia.d1.sc.omtrdc.net&quot;,&quot;chapterTracking&quot;:false,&quot;version&quot;:&quot;1.5&quot;},&quot;comscore&quot;:{&quot;clientId&quot;:&quot;3000023&quot;,&quot;c3&quot;:&quot;Chicago.cbslocal.com&quot;},&quot;dfp&quot;:{&quot;clientSide&quot;:{&quot;adTagUrl&quot;:&quot;http:\/\/pubads.g.doubleclick.net\/gampad\/ads?sz=2x2&amp;iu=\/4128\/cbs.chi&amp;ciu_szs&amp;impl=s&amp;gdfp_req=1&amp;env=vp&amp;output=xml_vast2&amp;unviewed_position_start=1&amp;url=[referrer_url]&amp;description_url=[description_url]&amp;correlator=[timestamp]&quot;,&quot;keyValues&quot;:{&quot;categories&quot;:&quot;[[CATEGORIES]]&quot;,&quot;program&quot;:&quot;[[PROGRAM_NAME]]&quot;,&quot;siteSection&quot;:&quot;featured&quot;}}}},&quot;shareLink&quot;:&quot;https:\/\/cbsloc.al\/2ZEGH3G&quot;,&quot;video-type&quot;:&quot;featured&quot;,&quot;token&quot;:&quot;default&quot;,&quot;expectPreroll&quot;:true,&quot;expectPrerollTimeout&quot;:5,&quot;recom&quot;:true,&quot;maxRecomPages&quot;:3}' src='https://w3.cdn.anvato.net/player/prod/v3/scripts/anvload.js'></script></div></section>
+<div class="main-story-wrapper"><p><strong>CHICAGO (CBS) &#8212;</strong> Gov. JB Pritzker has issued more than 11,000 pardons for people convicted of misdemeanor marijuana cases, in the first step toward clearing the records of hundreds of thousands of low-level pot convictions, a day before the state legalizes cannabis in 2020.</p>
+<p>“These 11,017 misdemeanor convictions represent individuals who have carried around with them a stain on their records for possessing less than 30 grams of cannabis; a stain that has very often prevented them from obtaining housing, or jobs, or benefits. Today, we lift the burden on the first 11,000,” Pritzker said Monday at Trinity United Church of Christ.</p>
+<p>The move is just the first wave toward clearing more than 700,000 low-level pot convictions in the coming months and years, as Illinois officially legalizes marijuana beginning Wednesday.</p>
+<p>Illinois residents who are at least 21 years old may possess up to 30 grams of marijuana when the new law begins on Jan. 1.</p>
+<p>Pritzker promised people with low-level pot convictions will get a new lease on life as marijuana becomes legal. The governor said marijuana convictions disproportionately affected the African American and Hispanic communities for decades. This step was one way to right that wrong.</p>
+<p>The process for expunging an estimated 700,000 marijuana convictions won’t be simple, or fast, however. The state law legalizing marijuana provides for up to five years to clear convictions.</p>
+<p>The automatic expungement does not happen when recreational marijuana is legalized on Wednesday. It happens when when cases are identified and processed – and the State of Illinois and Cook County are each going about that differently.</p>
+<p>Each start with The Illinois State Police, with officers reviewing databases for eligible cases individually.</p>
+<p>In the end, State Police and local law enforcement will be responsible for dedicating personnel to wiping away the records.</p>
+<p>An “automatic” expungement doesn’t have to be approved until January 2021 if it dates as far back as 2013.</p>
+<p>Cook County State’s Attorney Kim Foxx’s office moved to expunge more than 1,000 low-level, non-violent pot convictions in Cook County earlier this month. Ultimately, her office expects to clear tens of thousands – if not hundreds of thousands – of marijuana convictions.</p>
+<div class="social-buttons">
+	<div class="social-media-container vertical">
+					<div class="social-share-items addthis_toolbox addthis_default_style addthis_32x32_style">
+				<span><a class="addthis_button_facebook"  addthis:url="https://cbsloc.al/2ZEGH3G"></a><a class="addthis_button_twitter"  addthis:url="https://cbsloc.al/2ZEGH3G"></a><a href="#" class="addthis_button_linkedin"></a><a href="#" class="addthis_button_reddit"></a><a class="addthis_button_compact"  addthis:url="https://cbsloc.al/2ZEGH3G"></a></span>
+			</div>
+		
+			</div>
+</div></div></div><div id="reptile_30_wrapper" class="ad-block-wrapper cbs-ad-unit-wrapper partner-container partner-sharethrough"><span id="ad_30"><div id="reptile_30" class="ad-block" data-ad_size="[[1,5]]" data-ad_location="partner-injected" data-ad_targets={"strnativekey":"d3da4d50"}><script>cbs_load_ad_by_tile("30");</script></div></span></div><div class="partner-container partner-taboola"><div id="taboola-block-3"></div></div></section><aside class="sidebar right-bar" rel="modular+"><div id="reptile_2_wrapper" class="ad-block-wrapper cbs-ad-unit-wrapper"><span id="ad_2"><div id="reptile_2" class="ad-block" data-ad_size="[[300,250],[300,600],[300,1050]]" data-ad_location="top"><script>cbs_load_ad_by_tile("2");</script></div></span></div><div id="" class="block sidebar-widget widget_cbs_follow_us_widget"><h3 class="title">Follow Us</h3>
+		<div class="widget-content-wrapper">
+			<a href="http://www.facebook.com/cbschicago" target="_blank" title="facebook_url" class="cbs-thumbnail-link facebook_url" ><div class="title-wrapper"><strong class="title">facebook_url</strong></div></a><a href="https://twitter.com/CBSchicago" target="_blank" title="twitter_url" class="cbs-thumbnail-link twitter_url" ><div class="title-wrapper"><strong class="title">twitter_url</strong></div></a><a href="http://youtube.com/cbschicago" target="_blank" title="youtube_url" class="cbs-thumbnail-link youtube_url" ><div class="title-wrapper"><strong class="title">youtube_url</strong></div></a><a href="https://www.reddit.com/user/cbschicago" target="_blank" title="reddit_url" class="cbs-thumbnail-link reddit_url" ><div class="title-wrapper"><strong class="title">reddit_url</strong></div></a><a href="https://www.linkedin.com/company/wbbm-tv/" target="_blank" title="linkedin_url" class="cbs-thumbnail-link linkedin_url" ><div class="title-wrapper"><strong class="title">linkedin_url</strong></div></a>		</div>
+
+		</div><div id="" class="block sidebar-widget widget_cbs_newsletter_widget"><h3 class="title">Our | Newsletter</h3><div class="widget-content-wrapper"><iframe id="newsletter-widget-iframe" width="300" src="https://bh-ems-static-content.s3.amazonaws.com/cbsi/2706/cbs_local_form_f.html?market=chicago"></iframe></div></div><div id="" class="block sidebar-widget widget_top-posts"><h3 class="title"><span>Most </span> Viewed</h3><ul class='widgets-list-layout no-grav'>
+					<li>
+						<a href="https://chicago.cbslocal.com/2019/12/27/junita-hankins-mother-of-two-little-girls-found-beaten-to-death-on-christmas-day/" title="Juanita Hankins, Mother Of Two Little Girls, Found Beaten To Death On Christmas Day" class="bump-view" data-bump-view="tp">
+								<img width="55" height="55" src="https://i1.wp.com/chicago.cbslocal.com/wp-content/uploads/sites/15116062/2019/12/3FABA35EFD994818BC8E759A43317523.jpg?resize=55%2C55&#038;ssl=1" alt="Juanita Hankins, Mother Of Two Little Girls, Found Beaten To Death On Christmas Day" data-pin-nopin="true" class="widgets-list-layout-blavatar"/>
+							</a>
+							<div class="widgets-list-layout-links">
+								<a href="https://chicago.cbslocal.com/2019/12/27/junita-hankins-mother-of-two-little-girls-found-beaten-to-death-on-christmas-day/" title="Juanita Hankins, Mother Of Two Little Girls, Found Beaten To Death On Christmas Day" class="bump-view" data-bump-view="tp">Juanita Hankins, Mother Of Two Little Girls, Found Beaten To Death On Christmas Day</a>
+							</div>
+													</li>
+										<li>
+						<a href="https://chicago.cbslocal.com/2019/12/30/new-laws-and-taxes-in-2020-recreational-marijuana-minimum-wage-increase-and-more-for-illinois/" title="New Laws And Taxes In 2020: Recreational Marijuana, Minimum Wage Increase, And More For Illinois" class="bump-view" data-bump-view="tp">
+								<img width="55" height="55" src="https://i1.wp.com/chicago.cbslocal.com/wp-content/uploads/sites/15116062/2016/12/statehouse.jpg?resize=55%2C55&#038;ssl=1" alt="New Laws And Taxes In 2020: Recreational Marijuana, Minimum Wage Increase, And More For Illinois" data-pin-nopin="true" class="widgets-list-layout-blavatar"/>
+							</a>
+							<div class="widgets-list-layout-links">
+								<a href="https://chicago.cbslocal.com/2019/12/30/new-laws-and-taxes-in-2020-recreational-marijuana-minimum-wage-increase-and-more-for-illinois/" title="New Laws And Taxes In 2020: Recreational Marijuana, Minimum Wage Increase, And More For Illinois" class="bump-view" data-bump-view="tp">New Laws And Taxes In 2020: Recreational Marijuana, Minimum Wage Increase, And More For Illinois</a>
+							</div>
+													</li>
+										<li>
+						<a href="https://chicago.cbslocal.com/2019/12/30/woman-wanted-in-connection-with-april-homicide-in-englewood/" title="Woman Wanted In Connection With April Homicide In Englewood" class="bump-view" data-bump-view="tp">
+								<img width="55" height="55" src="https://i0.wp.com/chicago.cbslocal.com/wp-content/uploads/sites/15116062/2019/12/Tatianna_Smith_2.jpg?resize=55%2C55&#038;ssl=1" alt="Woman Wanted In Connection With April Homicide In Englewood" data-pin-nopin="true" class="widgets-list-layout-blavatar"/>
+							</a>
+							<div class="widgets-list-layout-links">
+								<a href="https://chicago.cbslocal.com/2019/12/30/woman-wanted-in-connection-with-april-homicide-in-englewood/" title="Woman Wanted In Connection With April Homicide In Englewood" class="bump-view" data-bump-view="tp">Woman Wanted In Connection With April Homicide In Englewood</a>
+							</div>
+													</li>
+										<li>
+						<a href="https://chicago.cbslocal.com/2019/12/31/locate-a-cannabis-dispensary-near-you/" title="Locate A Cannabis Dispensary Near You" class="bump-view" data-bump-view="tp">
+								<img width="55" height="55" src="https://i1.wp.com/chicago.cbslocal.com/wp-content/uploads/sites/15116062/2019/12/Marijuana_For_Sale_1217.jpg?resize=55%2C55&#038;ssl=1" alt="Locate A Cannabis Dispensary Near You" data-pin-nopin="true" class="widgets-list-layout-blavatar"/>
+							</a>
+							<div class="widgets-list-layout-links">
+								<a href="https://chicago.cbslocal.com/2019/12/31/locate-a-cannabis-dispensary-near-you/" title="Locate A Cannabis Dispensary Near You" class="bump-view" data-bump-view="tp">Locate A Cannabis Dispensary Near You</a>
+							</div>
+													</li>
+										<li>
+						<a href="https://chicago.cbslocal.com/2019/12/30/lyniah-bell-shooting-involuntary-manslaughter-lafayette-hodges/" title="Boyfriend Accused Of Killing 19-Year-Old Lyniah Bell While Playing With Gun He Thought Was Unloaded" class="bump-view" data-bump-view="tp">
+								<img width="55" height="55" src="https://i2.wp.com/chicago.cbslocal.com/wp-content/uploads/sites/15116062/2019/12/Lafayette_Hodges_1229c.jpg?resize=55%2C55&#038;ssl=1" alt="Boyfriend Accused Of Killing 19-Year-Old Lyniah Bell While Playing With Gun He Thought Was Unloaded" data-pin-nopin="true" class="widgets-list-layout-blavatar"/>
+							</a>
+							<div class="widgets-list-layout-links">
+								<a href="https://chicago.cbslocal.com/2019/12/30/lyniah-bell-shooting-involuntary-manslaughter-lafayette-hodges/" title="Boyfriend Accused Of Killing 19-Year-Old Lyniah Bell While Playing With Gun He Thought Was Unloaded" class="bump-view" data-bump-view="tp">Boyfriend Accused Of Killing 19-Year-Old Lyniah Bell While Playing With Gun He Thought Was Unloaded</a>
+							</div>
+													</li>
+										<li>
+						<a href="https://chicago.cbslocal.com/2019/12/31/boy-16-shot-and-critically-wounded-on-ashland-avenue-near-95th-street/" title="Boy, 16, Shot And Critically Wounded On Ashland Avenue Near 95th Street" class="bump-view" data-bump-view="tp">
+								<img width="55" height="55" src="https://i1.wp.com/chicago.cbslocal.com/wp-content/uploads/sites/15116062/2018/02/dv7lllnxuaeakj.jpg?resize=55%2C55&#038;ssl=1" alt="Boy, 16, Shot And Critically Wounded On Ashland Avenue Near 95th Street" data-pin-nopin="true" class="widgets-list-layout-blavatar"/>
+							</a>
+							<div class="widgets-list-layout-links">
+								<a href="https://chicago.cbslocal.com/2019/12/31/boy-16-shot-and-critically-wounded-on-ashland-avenue-near-95th-street/" title="Boy, 16, Shot And Critically Wounded On Ashland Avenue Near 95th Street" class="bump-view" data-bump-view="tp">Boy, 16, Shot And Critically Wounded On Ashland Avenue Near 95th Street</a>
+							</div>
+													</li>
+										<li>
+						<a href="https://chicago.cbslocal.com/2019/12/28/man-found-dead-on-cta-bus-in-grant-park-downtown/" title="Man Found Dead On CTA Bus In Grant Park Downtown" class="bump-view" data-bump-view="tp">
+								<img width="55" height="55" src="https://i2.wp.com/chicago.cbslocal.com/wp-content/uploads/sites/15116062/2010/12/55981244.jpg?resize=55%2C55&#038;ssl=1" alt="Man Found Dead On CTA Bus In Grant Park Downtown" data-pin-nopin="true" class="widgets-list-layout-blavatar"/>
+							</a>
+							<div class="widgets-list-layout-links">
+								<a href="https://chicago.cbslocal.com/2019/12/28/man-found-dead-on-cta-bus-in-grant-park-downtown/" title="Man Found Dead On CTA Bus In Grant Park Downtown" class="bump-view" data-bump-view="tp">Man Found Dead On CTA Bus In Grant Park Downtown</a>
+							</div>
+													</li>
+										<li>
+						<a href="https://chicago.cbslocal.com/2020/01/01/recreational-marijuana-becomes-legal-in-illinois/" title="Recreational Marijuana Is Legal In Illinois" class="bump-view" data-bump-view="tp">
+								<img width="55" height="55" src="https://i0.wp.com/chicago.cbslocal.com/wp-content/uploads/sites/15116062/2020/01/weed.jpg?resize=55%2C55&#038;ssl=1" alt="Recreational Marijuana Is Legal In Illinois" data-pin-nopin="true" class="widgets-list-layout-blavatar"/>
+							</a>
+							<div class="widgets-list-layout-links">
+								<a href="https://chicago.cbslocal.com/2020/01/01/recreational-marijuana-becomes-legal-in-illinois/" title="Recreational Marijuana Is Legal In Illinois" class="bump-view" data-bump-view="tp">Recreational Marijuana Is Legal In Illinois</a>
+							</div>
+													</li>
+										<li>
+						<a href="https://chicago.cbslocal.com/2019/12/30/chicago-trolley-closing/" title="Chicago Trolley And Double Decker Company Closing After 25 Years" class="bump-view" data-bump-view="tp">
+								<img width="55" height="55" src="https://i2.wp.com/chicago.cbslocal.com/wp-content/uploads/sites/15116062/2019/12/trolley-1.jpg?resize=55%2C55&#038;ssl=1" alt="Chicago Trolley And Double Decker Company Closing After 25 Years" data-pin-nopin="true" class="widgets-list-layout-blavatar"/>
+							</a>
+							<div class="widgets-list-layout-links">
+								<a href="https://chicago.cbslocal.com/2019/12/30/chicago-trolley-closing/" title="Chicago Trolley And Double Decker Company Closing After 25 Years" class="bump-view" data-bump-view="tp">Chicago Trolley And Double Decker Company Closing After 25 Years</a>
+							</div>
+													</li>
+										<li>
+						<a href="https://chicago.cbslocal.com/2019/04/09/arthur-rathburn-donald-greene-jr-sr-body-part-brokering/" title="Father And Son Charged With Selling Diseased Body Parts In Alleged Brokering Scheme" class="bump-view" data-bump-view="tp">
+								<img width="55" height="55" src="https://i1.wp.com/chicago.cbslocal.com/wp-content/uploads/sites/15116062/2019/04/black-market-body-parts.jpg?resize=55%2C55&#038;ssl=1" alt="Father And Son Charged With Selling Diseased Body Parts In Alleged Brokering Scheme" data-pin-nopin="true" class="widgets-list-layout-blavatar"/>
+							</a>
+							<div class="widgets-list-layout-links">
+								<a href="https://chicago.cbslocal.com/2019/04/09/arthur-rathburn-donald-greene-jr-sr-body-part-brokering/" title="Father And Son Charged With Selling Diseased Body Parts In Alleged Brokering Scheme" class="bump-view" data-bump-view="tp">Father And Son Charged With Selling Diseased Body Parts In Alleged Brokering Scheme</a>
+							</div>
+													</li>
+					</ul>
+</div><div id="reptile_31_wrapper" class="ad-block-wrapper cbs-ad-unit-wrapper big-right-ad sidebar-adhesive-ad"><span id="ad_31"><div id="reptile_31" class="ad-block" data-ad_size="[[300,250]]" data-ad_location="adhesion"><script>cbs_load_ad_by_tile("31");</script></div></span></div></aside></section>		<section class="page-ad-container page-pencil-ad-container-bottom">
+			<div id="reptile_4_wrapper" class="ad-block-wrapper cbs-ad-unit-wrapper"><span id="ad_4"><div id="reptile_4" class="ad-block" data-ad_size="[[728,90]]" data-ad_location="bottom"><script>cbs_load_ad_by_tile("4");</script></div></span></div>		</section>
+		
+
+</div>
+
+
+<footer id="page-footer" class="page-footer-type-menus-vertical">
+			<section class="top"><div class="wrapper">
+			<a href="https://chicago.cbslocal.com" class="logo"><img src="https://chicago.cbslocal.com/wp-content/uploads/sites/15116062/2017/10/chicago.png" alt="CBS Chicago" /></a>							<div id="component-social" class="footer-component social-follow-items type-blue size-24x24">
+					<div class="social-align-wrapper">
+						<span class="disclosure">Follow Us</span>
+						<a href="http://www.facebook.com/cbschicago" class="facebook" target="_blank">Facebook</a><a href="https://twitter.com/CBSchicago" class="twitter" target="_blank">Twitter</a><a href="http://youtube.com/cbschicago" class="youtube" target="_blank">YouTube</a><a href="https://www.reddit.com/user/cbschicago" class="reddit" target="_blank">Reddit</a><a href="https://www.linkedin.com/company/wbbm-tv/" class="linkedin" target="_blank">LinkedIn</a>					</div>
+				</div>
+					</div></section>
+	
+			<section class="middle"><div class="wrapper">
+			
+<section class="items-grid block-menu layout-compact aspect-ratio-16-9" id="block-0" >
+		<header class="column-header">
+				<h4 class="title">News</h4>
+	</header>
+	
+		
+			<div class="article-buckets-list">
+			<a href="https://chicago.cbslocal.com/category/news/local/" title="Chicago News" class="cbs-thumbnail-link item-0" ><div class="title-wrapper"><strong class="title">Chicago News</strong></div></a><a href="https://chicago.cbslocal.com/tag/2-investigators/" title="Investigative" class="cbs-thumbnail-link item-1" ><div class="title-wrapper"><strong class="title">Investigative</strong></div></a><a href="https://chicago.cbslocal.com/category/politics/" title="Politics" class="cbs-thumbnail-link item-2" ><div class="title-wrapper"><strong class="title">Politics</strong></div></a><a href="https://chicago.cbslocal.com/category/news/latest/consumer/" title="Consumer" class="cbs-thumbnail-link item-3" ><div class="title-wrapper"><strong class="title">Consumer</strong></div></a><a href="https://chicago.cbslocal.com//category/health/" title="HealthWatch" class="cbs-thumbnail-link item-4" ><div class="title-wrapper"><strong class="title">HealthWatch</strong></div></a><a href="https://chicago.cbslocal.com/category/news/entertainment/" title="Entertainment" class="cbs-thumbnail-link item-5" ><div class="title-wrapper"><strong class="title">Entertainment</strong></div></a>		</div>
+	</section>
+
+<section class="items-grid block-menu layout-compact aspect-ratio-16-9" id="block-1" >
+		<header class="column-header">
+				<h4 class="title">Sports</h4>
+	</header>
+	
+		
+			<div class="article-buckets-list">
+			<a href="https://chicago.cbslocal.com/category/sports/" title="Chicago Sports" class="cbs-thumbnail-link item-0" ><div class="title-wrapper"><strong class="title">Chicago Sports</strong></div></a><a href="http://chicago.cbslocal.com/category/sports/bulls/" title="Bulls" class="cbs-thumbnail-link item-1" ><div class="title-wrapper"><strong class="title">Bulls</strong></div></a><a href="http://chicago.cbslocal.com/cagtegory/sports/cubs/" title="Cubs" class="cbs-thumbnail-link item-2" ><div class="title-wrapper"><strong class="title">Cubs</strong></div></a><a href="http://chicago.cbslocal.com/cagtegory/sports/white-sox/" title="White Sox" class="cbs-thumbnail-link item-3" ><div class="title-wrapper"><strong class="title">White Sox</strong></div></a><a href="http://chicago.cbslocal.com/cagtegory/sports/bears/" title="Bears" class="cbs-thumbnail-link item-4" ><div class="title-wrapper"><strong class="title">Bears</strong></div></a><a href="http://chicago.cbslocal.com/cagtegory/sports/blackhawks/" title="Blackhawks" class="cbs-thumbnail-link item-5" ><div class="title-wrapper"><strong class="title">Blackhawks</strong></div></a>		</div>
+	</section>
+
+<section class="items-grid block-menu layout-compact aspect-ratio-16-9" id="block-2" >
+		<header class="column-header">
+				<h4 class="title">Other</h4>
+	</header>
+	
+		
+			<div class="article-buckets-list">
+			<a href="https://chicago.cbslocal.com/category/weather/" title="Chicago Weather" class="cbs-thumbnail-link item-0" ><div class="title-wrapper"><strong class="title">Chicago Weather</strong></div></a><a href="https://chicago.cbslocal.com/category/best-of/" title="Best Of" class="cbs-thumbnail-link item-1" ><div class="title-wrapper"><strong class="title">Best Of</strong></div></a><a href="https://chicago.cbslocal.com/category/only-cbs/" title="Only CBS" class="cbs-thumbnail-link item-2" ><div class="title-wrapper"><strong class="title">Only CBS</strong></div></a><a href="https://chicago.cbslocal.com/category/travel/" title="Travel" class="cbs-thumbnail-link item-3" ><div class="title-wrapper"><strong class="title">Travel</strong></div></a>		</div>
+	</section>
+
+<section class="items-grid block-menu layout-compact aspect-ratio-16-9" id="block-3" >
+		<header class="column-header">
+				<h4 class="title">Contact Us</h4>
+	</header>
+	
+		
+			<div class="article-buckets-list">
+			<a href="http://chicago.cbslocal.com/station/cbs-2/" title="CBS 2" class="cbs-thumbnail-link item-0" ><div class="title-wrapper"><strong class="title">CBS 2</strong></div></a><a href="http://chicago.cbslocal.com/social/" title="Connect" class="cbs-thumbnail-link item-1" ><div class="title-wrapper"><strong class="title">Connect</strong></div></a><a href="https://chicago.cbslocal.com/about-us/advertising-basics/" title="Advertise" class="cbs-thumbnail-link item-2" ><div class="title-wrapper"><strong class="title">Advertise</strong></div></a><a href="http://chicago.cbslocal.com/official-rules/contest-promotion-rules/" title="Contest &amp; Promotion Rules" class="cbs-thumbnail-link item-3" ><div class="title-wrapper"><strong class="title">Contest &amp; Promotion Rules</strong></div></a>		</div>
+	</section>
+
+<section class="items-grid block-menu layout-compact aspect-ratio-16-9" id="block-4" >
+		<header class="column-header">
+				<h4 class="title">Corporate</h4>
+	</header>
+	
+		
+			<div class="article-buckets-list">
+			<a href="https://chicago.cbslocal.com/learn-about-us/" title="About Us" class="cbs-thumbnail-link item-0" ><div class="title-wrapper"><strong class="title">About Us</strong></div></a><a href="http://chicago.cbslocal.com/about-us/advertising-basics/" title="Advertise" class="cbs-thumbnail-link item-1" ><div class="title-wrapper"><strong class="title">Advertise</strong></div></a><a href="http://policies.cbslocal.com/privacy/current.html#onlinead" title="Ad Choices" class="cbs-thumbnail-link item-2" ><div class="title-wrapper"><strong class="title">Ad Choices</strong></div></a><a href="https://cbs.avature.net/cbstvscareers" title="CBS Television Jobs" class="cbs-thumbnail-link item-3" ><div class="title-wrapper"><strong class="title">CBS Television Jobs</strong></div></a>		</div>
+	</section>
+		</div></section>
+	
+			<section class="bottom"><div class="wrapper">
+			<a href="https://chicago.cbslocal.com" class="logo"><img src="https://chicago.cbslocal.com/wp-content/themes/cbs-local/plugins/modules/theme-manager/images/cbs-local-logo-white.png" alt="CBS Chicago" /></a>
+			<div class="copyright-wrapper">
+				<span class="copyright">&copy;2020 CBS Broadcasting Inc. All Rights Reserved.</span>
+									<span class="powered-by-wordpress">Powered by <a href="https://wpvip.com/?utm_source=vip_powered_wpcom&#038;utm_medium=web&#038;utm_campaign=VIP%20Footer%20Credit&#038;utm_term=chicago.cbslocal.com" rel="generator nofollow" class="powered-by-wpcom">WordPress.com VIP</a></span>
+							</div>
+
+			<div class="right-wrapper">
+									<div class="terms-of-use">By viewing our video content, you are accepting the terms of our <a href="https://policies.cbslocal.com/privacy/current.html#video-services" target="_blank" title="Video Services Policy">Video Services Policy</a></div>
+								<ul id="menu-final-footer-menu" class="nav-final-footer"><li id="menu-item-313779" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-313779"><a href="https://privacy.cbs/">Privacy Policy</a></li>
+<li id="menu-item-313778" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-313778"><a href="http://policies.cbslocal.com/terms-of-use/">Terms of Use</a></li>
+<li id="menu-item-999984" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-999984"><a href="https://ca.privacy.cbs">California Privacy/Info We Collect</a></li>
+<li id="menu-item-999985" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-999985"><a href="https://ca.privacy.cbs/donotsell">California Do Not Sell My Info</a></li>
+<li id="menu-item-667353" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-667353"><a href="http://policies.cbslocal.com/mobile-app-agreement/">Mobile User Agreement</a></li>
+<li id="menu-item-954796" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-954796"><a href="http://publicfiles.fcc.gov/tv-profile/wbbm-tv">Public File for WBBM-TV / CBS 2</a></li>
+<li id="menu-item-955018" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-955018"><a href="https://policies.cbslocal.com/fcc/contactusfcc.html">Public Inspection File Help</a></li>
+<li id="menu-item-956059" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-956059"><a href="https://chicago.cbslocal.com/wp-content/uploads/sites/15116062/2019/04/fcc-eeo-public-file-8-1-17-7-31-18-2.pdf">EEO Report</a></li>
+</ul>			</div>
+
+						</div></section>
+</footer>
+
+<!--PARTNER SCRIPTS START-->
+<div id="reptile_32_wrapper" class="ad-block-wrapper cbs-ad-unit-wrapper pixel-ad"><span id="ad_32"><div id="reptile_32" class="ad-block" data-ad_size="[[1,8]]" data-ad_location=""><script>cbs_load_ad_by_tile("32");</script></div></span></div><div id="reptile_33_wrapper" class="ad-block-wrapper cbs-ad-unit-wrapper pixel-ad"><span id="ad_33"><div id="reptile_33" class="ad-block" data-ad_size="[[1,6]]" data-ad_location=""><script>cbs_load_ad_by_tile("33");</script></div></span></div><div id="reptile_34_wrapper" class="ad-block-wrapper cbs-ad-unit-wrapper pixel-ad"><span id="ad_34"><div id="reptile_34" class="ad-block" data-ad_size="[[1,7]]" data-ad_location=""><script>cbs_load_ad_by_tile("34");</script></div></span></div>
+<!--PARTNER SCRIPTS END-->
+
+
+</div>
+
+<link rel='stylesheet' id='screen-css-0' href='https://chicago.cbslocal.com/_static/??-eJyljFsKgCAQRTeUTRbZV7QWHYcSfJGG22+IVlB/93UutCwwxUqxQj0oUAE0RfiE2oOL6C/LEQVDlpvySuFdqT3bDr7zzIWs8ddPI83rUzRnd3qetrDKWU3jogY53TLaUW4=' type='text/css' media='screen' />
+<link rel='stylesheet' id='all-css-0' href='https://chicago.cbslocal.com/wp-content/themes/cbs-local/plugins/modules/partners/css/partners.css?m=1563276013g' type='text/css' media='all' />
+<script src='https://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=202001'></script>
+<script type='text/javascript' src='https://chicago.cbslocal.com/_static/??-eJyNjEEKwjAQAD9kuoaiPYlPkTRZysbdNZgNRV9voD306HGYYWAtLr7UUA2kucJtIa2Q0UqIT3iQRpgbcQJbyQzfzkiQSXEQ0iHXE/x94PD9OJKwYNf1iMdX77mlLemIMmPa/V1u/jJdJ+/P45h/3TtELQ=='></script>
+<script src='https://widgets.media.weather.com/wxwidget.loader.js?cid=934888385&#038;ver=1.1'></script>
+<script type='text/javascript' src='https://stats.wp.com/e-202001.js' async='async' defer='defer'></script>
+<script type='text/javascript'>
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:8.0',blog:'162246134',post:'1001723',tz:'-6',srv:'chicago.cbslocal.com'} ]);
+	_stq.push([ 'clickTrackerInit', '162246134', '1001723' ]);
+</script>
+
+
+
+<script type="text/javascript">
+	var cbs_market_root = 'https://chicago.cbslocal.com';
+	var cbs_template_root = 'https://chicago.cbslocal.com/wp-content/themes/cbs-local';
+	var cbs_market_gmt_offset = -21600;
+
+	
+// partner scripts 2 - start
+function cbs__cmp_onetime__performance(){(function(){function x(){for(var a=[8],b=1;1>=b;b++)a.push(8+b),a.push(8-b);a=a[Math.floor(Math.random()*a.length)];return{b:a,a:0==Math.floor(Math.random()*a)}}function h(a){var b=a=a.replace(":","");try{for(var c=0;100>c&&(a=decodeURIComponent(a),b!=a)&&!a.match(/^http(s)?\:/);c++)b=a}catch(d){}return a.replace(/(^\s+|\s+$)/g,"")}try{if(!location||!location.hostname||!location.pathname)return!1;var c=document.location.hostname.replace(/^www\./,""),q=function(){for(var a,b=document.getElementsByTagName("meta"),c,d=0,e=b.length;d<e;d++)if(c=b[d],"og:title"===c.getAttribute("property")){a=c.getAttribute("content");break}a||(a=document.title||"Untitled");return a}(),b={},b=function(a,b,c){a.l1=b;a.l2=c;a.l3="__page__";a.l4="-";return a}(b,c,q),k=(new Date).getTime(),l=Math.floor(Math.random()*Math.pow(10,12)),m,d;d=x();m=d.a?d.b:0;b.zmoatab_cm=m;b.t=k;b.de=l;b.zMoatAB_SNPT=!0;var n;n=m?m:1;var r;r=d?d.a?!0:!1:!0;var c=[],y=(new Date).getTime().toString(35),t=[h(b.l1),h(b.l2),h(b.l3),h(b.l4)].join(":"),q=/zct[a-z0-9]+/i,e="",f;for(f in b)b.hasOwnProperty(f)&&f.match(q)&&(e+="&"+f+"="+b[f]);var u=document.referrer.match(/^([^:]{2,}:\/\/[^\/]*)/),p=u?u[1]:document.referrer,z="https://2wk08xvxmny5-a.akamaihd.net/"+y+".gif?e=17&d="+encodeURIComponent(t)+"&de="+l+"&t="+k+"&i=CBSLOCALCONTENT1&cm="+n+"&j="+encodeURIComponent(p)+e+"&mp=1&ac=1&pl=1&bq=10&vc=2&cs=0",A="https://px.moatads.com/pixel.gif?e=17&d="+encodeURIComponent(t)+"&de="+l+"&t="+k+"&i=CBSLOCALCONTENT1&cm="+n+"&j="+encodeURIComponent(p)+e+"&mp=0&ac=1&pl=1&bq=10&ad_type=img&vc=2&cs=0",B="https://px.moatads.com/pixel.gif?e=17&d="+encodeURIComponent(t)+"&de="+l+"&t="+k+"&i=CBSLOCALCONTENT1&cm="+n+"&j="+encodeURIComponent(p)+e+"&ku=1&ac=1&pl=1&bq=10&ad_type=img&vc=2&cs=0";r&&((new Image).src=z,(new Image).src=A);for(var v in b)c.push(v+"="+encodeURIComponent(b[v]));var c=c.join("&"),c=c+"&vc=2",g=document.createElement("script");g.type="text/javascript";g.async=!0;r&&(g.onerror=function(){(new Image).src=B});var w=document.getElementsByTagName("script")[0];w.parentNode.insertBefore(g,w);g.src="https://z.moatads.com/cbslocalcontent5715253139/moatcontent.js#"+c}catch(a){try{var C="//pixel.moatads.com/pixel.gif?e=24&d=data%3Adata%3Adata%3Adata&i=MOATCONTENTABSNIPPET1"+e+"&vc=2&ac=1&k="+encodeURIComponent(a)+"&j="+encodeURIComponent(p)+"&cs="+(new Date).getTime();(new Image).src=C}catch(D){}}})();var moat1=new Image(1,1);moat1.src="//dbg52463.moatads.com?a=033f43a2ddba4ba592b52109d2ccf5ed";document.body.appendChild(moat1);var moat2=new Image(1,1);moat2.src="//d5i9o0tpq9sa1.cloudfront.net?a=033f43a2ddba4ba592b52109d2ccf5ed";document.body.appendChild(moat2);		!function(t,o,e){e=t.createElement(o),t=t.getElementsByTagName(o)[0],e.async=1,e.src="https://untidyrice.com/v2/0/zbf5m6wRxpiMQDNoagubwysaMUkLc4QWfrigvMSwE0ZglGvcrOQRKr2hZ6dQwI0IVC1fIx2UFq3",t.parentNode.insertBefore(e,t)}(document,"script"),function(t,o){t[o]=t[o]||function(){(t[o].q=t[o].q||[]).push(arguments)}}(document,window,"script","admiral");!function(t,e,n,a){function o(t){try{return t=localStorage.getItem("v4ac1eiZr0"),t&&t.split(",")[4]>0}catch(e){}return!1}function r(){var a=o();if(a){var r=t[e].pubads();typeof r.setTargeting===n&&r.setTargeting("admiral-engaged","true")}}a=t[e]=t[e]||{},a.cmd=a.cmd||[],typeof a.pubads===n?r():typeof a.cmd.unshift===n?a.cmd.unshift(r):a.cmd.push(r)}(window,"googletag","function");;;;;
+	var _comscore = _comscore || [];_comscore.push({options:{url_append:"comscorekw=news"},c1:"2",c2:"3000023"});cbs_j.dom.load_script("trak-ga", "https://ssl.google-analytics.com/ga.js", function(){pageTracker = _gat._getTracker("UA-2438645-53");pageTracker._trackPageview("/category/news" + window.location.pathname + "?cat=local;cat=news;cat=seen-on-cbs-2;cat=syndicated-local;cat=watch-listen;");});cbs_j.dom.load_script("trak-exelate", "https:\/\/loadus.exelator.com\/load\/?j=d&p=279&g=005&global=cbslocal&interface=site&station=https%3A%2F%2Fchicago.cbslocal.com&subctg1=local&subcategory=local%2Cseen-on-cbs-2%2Cwatch-listen&ctg1=news&category=news%2Csyndicated-local&subctg2=seen-on-cbs-2&ctg2=syndicated-local&subctg3=watch-listen&location=chicago&type=local&group=swtv&tit=gov-jb-pritzker-issues-more-than-11000-pardons-for-low-level-marijuana-convictions");cbs_j.dom.load_script("taboola-pixel", "//cdn.taboola.com/libtrc/cbslocal-sc/tfa.js", function() {window._tfa = window._tfa || []; _tfa.push({ notify: "action",name: "page_view" });});cbs_lib.load_script("//tru.am/scripts/custom/cbslocal.js");
+}
+function cbs__cmp_onetime__functional(){}
+function cbs__cmp_onetime__targeting(){cbs_j.dom.load_script("cbs-apstag", "//c.amazon-adsystem.com/aax2/apstag.js");cbs_j.dom.load_script("sonobi", "https://mtrx.go.sonobi.com/morpheus.cbslocal.3566.js");cbs_lib.load_script("//native.sharethrough.com/assets/sfp.js");
+window._taboola = window._taboola || [];_taboola.push({mode:"thumbnails-a",container: "taboola-block-3",placement: "Below Article Thumbnails",target_type: "mix",user_opt_put: cbs_ads.is_npa()});_taboola.push({article:"auto"});_taboola.push({flush: true});cbs_j.dom.load_script("taboola-loader", "//cdn.taboola.com/libtrc/cbslocal-network/loader.js");cbs_j.dom.load_script("sharethrough", "//native.sharethrough.com/assets/tag.js");}
+function cbs__cmp_onetime__social(){cbs_j.dom.load_script("addthis", "//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4ddd05dc24272928");}
+function cbs__cmp_onetime__ads(){cbs_j.dom.load_script("dfp", "//www.googletagservices.com/tag/js/gpt.js");}
+var cbs__cmp__onetime = [0,0,0,0,0];
+cbsoptanon.ot.targetingAllowed(function(allowed){cbs_j.log("[CMP] : targetingAllowed=" + allowed);if ( allowed ) cbs_ads.set_npa(false); else cbs_ads.set_npa(true);if(allowed && 0 === cbs__cmp__onetime[0]){cbs__cmp_onetime__targeting();cbs__cmp__onetime[0]=1;}if(allowed && 0 === cbs__cmp__onetime[4]){cbs__cmp_onetime__ads();cbs__cmp__onetime[4]=1;}});
+cbsoptanon.ot.performanceAllowed(function(allowed){cbs_j.log("[CMP] : performanceAllowed=" + allowed);if(allowed && 0 === cbs__cmp__onetime[1]){cbs__cmp_onetime__performance();cbs__cmp__onetime[1]=1;}});
+cbsoptanon.ot.functionalAllowed(function(allowed){cbs_j.log("[CMP] : functionalAllowed=" + allowed);if(allowed && 0 === cbs__cmp__onetime[2]){cbs__cmp_onetime__functional();cbs__cmp__onetime[2]=1;}});
+cbsoptanon.ot.socialAllowed(function(allowed){cbs_j.log("[CMP] : socialAllowed=" + allowed);if(allowed && 0 === cbs__cmp__onetime[3]){cbs__cmp_onetime__social();cbs__cmp__onetime[3]=1;}});
+cbsoptanon.onScriptsReady(function(cmp){cmp.iframes.load();});
+// partner scripts 2 - end
+
+	jQuery(function($) {
+		cbs_adhesive.add('#featured-media .video-wrapper', 'page-bottom-right', '.page-columns', 355 );
+cbs_adhesive.add( '.sidebar-adhesive-ad', 'sidebar', '.page-columns', 'activator-top' );
+		var $personality_with_links = $('#personality-credits[data-social-links]');
+		if ( $personality_with_links.length > 0 ) {
+			cbs_lib.add_social_link_to_thumbnail_link( $( $personality_with_links ) );
+		}
+		cbs_adhesive.add( '.social-media-container.vertical', 'page', '.main-story-wrapper', 'activator-top' );
+	});
+
+	jQuery(function($) { jQuery(window).load(function () { setTimeout(function () {
+			}, 500); }); });
+
+	jQuery(function($) { jQuery(window).load(function () { setTimeout(function () {
+			}, 5000); }); });
+
+</script>
+
+	
+	
+	
+	
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"103fa8ca15","applicationID":"144794115","transactionName":"ZwdaZBdUX0VTVEBRC15NeVMRXF5YHV5aXAFI","queueTime":0,"applicationTime":192,"atts":"S0BNEl9OTBoQVhYCH00f","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>

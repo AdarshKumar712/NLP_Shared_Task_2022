@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="it-IT">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="content-type" content="text/html charset=UTF-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"NRJS-9128efe565b0f516e01",applicationID:"253609210"};window.NREUM||(NREUM={}),__nr_require=function(e,n,t){function r(t){if(!n[t]){var i=n[t]={exports:{}};e[t][0].call(i.exports,function(n){var i=e[t][1][n];return r(i||n)},i,i.exports)}return n[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(e,n,t){function r(){}function i(e,n,t){return function(){return o(e,[u.now()].concat(f(arguments)),n?null:this,t),n?void 0:this}}var o=e("handle"),a=e(4),f=e(5),c=e("ee").get("tracer"),u=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",d=l+"ixn-";a(p,function(e,n){s[n]=i(l+n,!0,"api")}),s.addPageAction=i(l+"addPageAction",!0),s.setCurrentRouteName=i(l+"routeName",!0),n.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,n){var t={},r=this,i="function"==typeof n;return o(d+"tracer",[u.now(),e,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return n.apply(this,arguments)}catch(e){throw c.emit("fn-err",[arguments,this,e],t),e}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,n){m[n]=i(d+n)}),newrelic.noticeError=function(e,n){"string"==typeof e&&(e=new Error(e)),o("err",[e,u.now(),!1,n])}},{}],2:[function(e,n,t){function r(e,n){var t=e.getEntries();t.forEach(function(e){"first-paint"===e.name?c("timing",["fp",Math.floor(e.startTime)]):"first-contentful-paint"===e.name&&c("timing",["fcp",Math.floor(e.startTime)])})}function i(e,n){var t=e.getEntries();t.length>0&&c("lcp",[t[t.length-1]])}function o(e){if(e instanceof s&&!l){var n,t=Math.round(e.timeStamp);n=t>1e12?Date.now()-t:u.now()-t,l=!0,c("timing",["fi",t,{type:e.type,fid:n}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var a,f,c=e("handle"),u=e("loader"),s=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){a=new PerformanceObserver(r),f=new PerformanceObserver(i);try{a.observe({entryTypes:["paint"]}),f.observe({entryTypes:["largest-contentful-paint"]})}catch(p){}}if("addEventListener"in document){var l=!1,d=["click","keydown","mousedown","pointerdown","touchstart"];d.forEach(function(e){document.addEventListener(e,o,!1)})}}},{}],3:[function(e,n,t){function r(e,n){if(!i)return!1;if(e!==i)return!1;if(!n)return!0;if(!o)return!1;for(var t=o.split("."),r=n.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}n.exports={agent:i,version:o,match:r}},{}],4:[function(e,n,t){function r(e,n){var t=[],r="",o=0;for(r in e)i.call(e,r)&&(t[o]=n(r,e[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;n.exports=r},{}],5:[function(e,n,t){function r(e,n,t){n||(n=0),"undefined"==typeof t&&(t=e?e.length:0);for(var r=-1,i=t-n||0,o=Array(i<0?0:i);++r<i;)o[r]=e[n+r];return o}n.exports=r},{}],6:[function(e,n,t){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,n,t){function r(){}function i(e){function n(e){return e&&e instanceof r?e:e?c(e,f,o):o()}function t(t,r,i,o){if(!l.aborted||o){e&&e(t,r,i);for(var a=n(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function d(e,n){h[e]=v(e).concat(n)}function m(e,n){var t=h[e];if(t)for(var r=0;r<t.length;r++)t[r]===n&&t.splice(r,1)}function v(e){return h[e]||[]}function g(e){return p[e]=p[e]||i(t)}function w(e,n){u(e,function(e,t){n=n||"feature",y[t]=n,n in s||(s[n]=[])})}var h={},y={},b={on:d,addEventListener:d,removeEventListener:m,emit:t,get:g,listeners:v,context:n,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(l.aborted=!0,s=l.backlog={})}var f="nr@context",c=e("gos"),u=e(4),s={},p={},l=n.exports=i();l.backlog=s},{}],gos:[function(e,n,t){function r(e,n,t){if(i.call(e,n))return e[n];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,n,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return e[n]=r,r}var i=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(e,n,t){function r(e,n,t,r){i.buffer([e],r),i.emit(e,n,t)}var i=e("ee").get("handle");n.exports=r,r.ee=i},{}],id:[function(e,n,t){function r(e){var n=typeof e;return!e||"object"!==n&&"function"!==n?-1:e===window?0:a(e,o,function(){return i++})}var i=1,o="nr@id",a=e("gos");n.exports=r},{}],loader:[function(e,n,t){function r(){if(!x++){var e=E.info=NREUM.info,n=d.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&n))return s.abort();u(y,function(n,t){e[n]||(e[n]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=d.createElement("script");t.src="https://"+e.agent,n.parentNode.insertBefore(t,n)}}function i(){"complete"===d.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=e("handle"),u=e(4),s=e("ee"),p=e(3),l=window,d=l.document,m="addEventListener",v="attachEvent",g=l.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:l.setImmediate,CT:clearTimeout,XHR:g,REQ:l.Request,EV:l.Event,PR:l.Promise,MO:l.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1167.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=n.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};e(1),e(2),d[m]?(d[m]("DOMContentLoaded",o,!1),l[m]("load",r,!1)):(d[v]("onreadystatechange",i),l[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=e(6)},{}],"wrap-function":[function(e,n,t){function r(e){return!(e&&e instanceof Function&&e.apply&&!e[a])}var i=e("ee"),o=e(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;n.exports=function(e,n){function t(e,n,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){l([u,"",[r,a,i],f])}s(n+"start",[r,a,i],f);try{return c=e.apply(a,r)}catch(p){throw s(n+"err",[r,a,p],f),p}finally{s(n+"end",[r,a,c],f)}}return r(e)?e:(n||(n=""),nrWrapper[a]=e,p(e,nrWrapper),nrWrapper)}function u(e,n,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<n.length;c++)f=n[c],a=e[f],r(a)||(e[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||n){var o=c;c=!0;try{e.emit(t,r,i,n)}catch(a){l([a,t,r,i])}c=o}}function p(e,n){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(e);return t.forEach(function(t){Object.defineProperty(n,t,{get:function(){return e[t]},set:function(n){return e[t]=n,n}})}),n}catch(r){l([r])}for(var i in e)f.call(e,i)&&(n[i]=e[i]);return n}function l(n){try{e.emit("internal-error",n)}catch(t){}}return e||(e=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script>
+<meta http-equiv="Cache-Control" content="no-cache">
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="format-detection" content="telephone=no">
+<meta name="msapplication-tap-highlight" content="no">
+<link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed|Roboto+Slab" rel="stylesheet">
+<link rel="icon" href="https://www.dire.it/wp-content/themes/dire-MB/favicon.png?v=2" type="image/png" />
+
+<!--[if IEMobile]><meta http-equiv="cleartype" content="on"><![endif]-->
+<script type="text/javascript">
+var _iub = _iub || [];
+_iub.csConfiguration = {"lang":"it","siteId":315079,"consentOnScroll":false,"cookiePolicyId":971395, "banner":{ "acceptButtonDisplay":true,"customizeButtonDisplay":true,"position":"float-bottom-center" }};
+</script><script type="text/javascript" src="//cdn.iubenda.com/cs/iubenda_cs.js" charset="UTF-8" async></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-3271884519787002",
+          enable_page_level_ads: true
+     });
+</script>
+<title>Dl imprese, Conte: &quot;Diamo liquidità immediata per 400 miliardi, una potenza di fuoco&quot; - DIRE.it</title>
+
+<meta name="description" content="&quot;Abbiamo deliberato la sospensione di vari pagamenti fiscali e contributi e ritenute anche per i mesi di aprile e maggio&quot;" />
+<link rel="canonical" href="https://www.dire.it/06-04-2020/444012-dl-imprese-conte-diamo-liquidita-immediata-per-400-miliardi/" />
+<meta property="og:locale" content="it_IT" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Dl imprese, Conte: &quot;Diamo liquidità immediata per 400 miliardi, una potenza di fuoco&quot; - DIRE.it" />
+<meta property="og:description" content="&quot;Abbiamo deliberato la sospensione di vari pagamenti fiscali e contributi e ritenute anche per i mesi di aprile e maggio&quot;" />
+<meta property="og:url" content="https://www.dire.it/06-04-2020/444012-dl-imprese-conte-diamo-liquidita-immediata-per-400-miliardi/" />
+<meta property="og:site_name" content="dire.it" />
+<meta property="article:publisher" content="https://www.facebook.com/agenziastampaDIRE/" />
+<meta property="article:tag" content="coronavirus" />
+<meta property="article:tag" content="coronavirus box alto" />
+<meta property="article:section" content="Politica" />
+<meta property="article:published_time" content="2020-04-06T18:42:34+02:00" />
+<meta property="article:modified_time" content="2020-04-07T08:00:15+02:00" />
+<meta property="og:updated_time" content="2020-04-07T08:00:15+02:00" />
+<meta property="fb:app_id" content="133273586747602" />
+<meta property="og:image" content="https://www.dire.it/wp-content/uploads/2020/03/conte-lis-diretta-fb.jpg" />
+<meta property="og:image:secure_url" content="https://www.dire.it/wp-content/uploads/2020/03/conte-lis-diretta-fb.jpg" />
+<meta property="og:image:width" content="1024" />
+<meta property="og:image:height" content="553" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:description" content="&quot;Abbiamo deliberato la sospensione di vari pagamenti fiscali e contributi e ritenute anche per i mesi di aprile e maggio&quot;" />
+<meta name="twitter:title" content="Dl imprese, Conte: &quot;Diamo liquidità immediata per 400 miliardi, una potenza di fuoco&quot; - DIRE.it" />
+<meta name="twitter:site" content="@Agenzia_Dire" />
+<meta name="twitter:image" content="https://www.dire.it/wp-content/uploads/2020/03/conte-lis-diretta-fb.jpg" />
+<meta name="twitter:creator" content="@Agenzia_Dire" />
+<script type='application/ld+json' class='yoast-schema-graph yoast-schema-graph--main'>{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.dire.it/#organization","name":"Agenzia di Stampa Dire","url":"https://www.dire.it/","sameAs":["https://www.facebook.com/agenziastampaDIRE/","https://www.instagram.com/agenziadistampadire/","https://www.linkedin.com/company/10273374/","https://www.youtube.com/channel/UCTsd-viLbo4eBnU8DAi7kaA?view_as=subscriber","https://twitter.com/Agenzia_Dire"]},{"@type":"WebSite","@id":"https://www.dire.it/#website","url":"https://www.dire.it/","name":"dire.it","publisher":{"@id":"https://www.dire.it/#organization"},"potentialAction":{"@type":"SearchAction","target":"https://www.dire.it/?s={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"ImageObject","@id":"https://www.dire.it/06-04-2020/444012-dl-imprese-conte-diamo-liquidita-immediata-per-400-miliardi/#primaryimage","url":"https://www.dire.it/wp-content/uploads/2020/03/conte-lis-diretta-fb.jpg","width":1024,"height":553,"caption":"conte LIS diretta fb"},{"@type":"WebPage","@id":"https://www.dire.it/06-04-2020/444012-dl-imprese-conte-diamo-liquidita-immediata-per-400-miliardi/#webpage","url":"https://www.dire.it/06-04-2020/444012-dl-imprese-conte-diamo-liquidita-immediata-per-400-miliardi/","inLanguage":"it-IT","name":"Dl imprese, Conte: &quot;Diamo liquidit\u00e0 immediata per 400 miliardi, una potenza di fuoco&quot; - DIRE.it","isPartOf":{"@id":"https://www.dire.it/#website"},"primaryImageOfPage":{"@id":"https://www.dire.it/06-04-2020/444012-dl-imprese-conte-diamo-liquidita-immediata-per-400-miliardi/#primaryimage"},"datePublished":"2020-04-06T18:42:34+02:00","dateModified":"2020-04-07T08:00:15+02:00","description":"\"Abbiamo deliberato la sospensione di vari pagamenti fiscali e contributi e ritenute anche per i mesi di aprile e maggio\""},{"@type":"NewsArticle","@id":"https://www.dire.it/06-04-2020/444012-dl-imprese-conte-diamo-liquidita-immediata-per-400-miliardi/#article","isPartOf":{"@id":"https://www.dire.it/06-04-2020/444012-dl-imprese-conte-diamo-liquidita-immediata-per-400-miliardi/#webpage"},"author":{"@id":"https://www.dire.it/author/redazione/#author"},"headline":"Dl imprese, Conte: &#8220;Diamo liquidit\u00e0 immediata per 400 miliardi, una potenza di fuoco&#8221;","datePublished":"2020-04-06T18:42:34+02:00","dateModified":"2020-04-07T08:00:15+02:00","commentCount":0,"mainEntityOfPage":{"@id":"https://www.dire.it/06-04-2020/444012-dl-imprese-conte-diamo-liquidita-immediata-per-400-miliardi/#webpage"},"publisher":{"@id":"https://www.dire.it/#organization"},"image":{"@id":"https://www.dire.it/06-04-2020/444012-dl-imprese-conte-diamo-liquidita-immediata-per-400-miliardi/#primaryimage"},"keywords":"coronavirus,coronavirus box alto","articleSection":"Politica","copyrightYear":"2020","copyrightHolder":{"@id":"https://www.dire.it#organization"}},{"@type":["Person"],"@id":"https://www.dire.it/author/redazione/#author","name":"Redazione","image":{"@type":"ImageObject","@id":"https://www.dire.it/#authorlogo","url":"https://secure.gravatar.com/avatar/7a9941560edd37b10c42d8aa627cd8e4?s=96&d=mm&r=g","caption":"Redazione"},"description":"redazioneweb@agenziadire.com","sameAs":[]}]}</script>
+
+<link rel="alternate" type="application/rss+xml" title="dire.it &raquo; Feed" href="https://www.dire.it/feed/" />
+<link rel="alternate" type="application/rss+xml" title="dire.it &raquo; Feed dei commenti" href="https://www.dire.it/comments/feed/" />
+<link rel='stylesheet' id='wp-block-library-css' href='https://www.dire.it/wp-includes/css/dist/block-library/style.min.css?ver=5.4' type='text/css' media='all' />
+<link rel='stylesheet' id='dire-style-css' href='https://www.dire.it/wp-content/themes/dire-MB/style.css?ver=uix_307995758' type='text/css' media='all' />
+<link rel='stylesheet' id='bootstrap-css-css' href='//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' type='text/css' media='all' />
+<link rel='stylesheet' id='dashicons-css' href='https://www.dire.it/wp-includes/css/dashicons.min.css?ver=5.4' type='text/css' media='all' />
+<link rel='stylesheet' id='elementor-icons-css' href='https://www.dire.it/wp-content/plugins/elementor/assets/lib/eicons/css/elementor-icons.min.css?ver=5.6.2' type='text/css' media='all' />
+<link rel='stylesheet' id='elementor-animations-css' href='https://www.dire.it/wp-content/plugins/elementor/assets/lib/animations/animations.min.css?ver=2.9.7' type='text/css' media='all' />
+<link rel='stylesheet' id='elementor-frontend-css' href='https://www.dire.it/wp-content/plugins/elementor/assets/css/frontend.min.css?ver=2.9.7' type='text/css' media='all' />
+<link rel='stylesheet' id='elementor-pro-css' href='https://www.dire.it/wp-content/plugins/elementor-pro/assets/css/frontend.min.css?ver=2.7.2' type='text/css' media='all' />
+<link rel='stylesheet' id='font-awesome-5-all-css' href='https://www.dire.it/wp-content/plugins/elementor/assets/lib/font-awesome/css/all.min.css?ver=2.9.7' type='text/css' media='all' />
+<link rel='stylesheet' id='font-awesome-4-shim-css' href='https://www.dire.it/wp-content/plugins/elementor/assets/lib/font-awesome/css/v4-shims.min.css?ver=2.9.7' type='text/css' media='all' />
+<link rel='stylesheet' id='elementor-global-css' href='https://www.dire.it/wp-content/uploads/elementor/css/global.css?ver=1584520160' type='text/css' media='all' />
+<link rel='stylesheet' id='elementor-post-444012-css' href='https://www.dire.it/wp-content/uploads/elementor/css/post-444012.css?ver=1586202230' type='text/css' media='all' />
+<link rel='stylesheet' id='google-fonts-1-css' href='https://fonts.googleapis.com/css?family=Roboto%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CRoboto+Slab%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CLato%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic&#038;ver=5.4' type='text/css' media='all' />
+<script type='text/javascript' src='https://code.jquery.com/jquery-3.1.1.min.js?ver=3.1.1'></script>
+<script type='text/javascript' src='https://code.jquery.com/jquery-migrate-3.0.0.min.js?ver=3.0.0'></script>
+<script type='text/javascript' src='https://www.dire.it/wp-content/plugins/elementor/assets/lib/font-awesome/js/v4-shims.min.js?ver=2.9.7'></script>
+<link rel='https://api.w.org/' href='https://www.dire.it/wp-json/' />
+<link rel='shortlink' href='https://www.dire.it/?p=444012' />
+<link rel="alternate" type="application/json+oembed" href="https://www.dire.it/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.dire.it%2F06-04-2020%2F444012-dl-imprese-conte-diamo-liquidita-immediata-per-400-miliardi%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://www.dire.it/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.dire.it%2F06-04-2020%2F444012-dl-imprese-conte-diamo-liquidita-immediata-per-400-miliardi%2F&#038;format=xml" />
+
+<script type='text/javascript'>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+</script>
+
+<script type='text/javascript'>
+  fbq('init', '966475253544506', [], {
+    "agent": "wordpress-5.4-2.0.1"
+});
+</script><script type='text/javascript'>
+  fbq('track', 'PageView', []);
+</script>
+
+<noscript>
+<img height="1" width="1" style="display:none" alt="fbpx"
+src="https://www.facebook.com/tr?id=966475253544506&ev=PageView&noscript=1" />
+</noscript>
+
+</head>
+<body class="post-template-default single single-post postid-444012 single-format-standard elementor-default elementor-kit-434462 elementor-page elementor-page-444012">
+
+
+<div class="fix-it">
+<div class="row ">
+
+<div class="col-xs-4 col-sm-3">
+<a itemprop="url" class="logo-dire" href="https://www.dire.it/"></a> </div>
+
+<div class="col-sm-5 col-md-6 no-pad hidden-xs">
+<div class=" col-sm-12 search-container">
+<form role="search" role="search" method="get" action="https://www.dire.it/" class="search-form">
+<input name="s" id="s" size="40" type="text" class="search-text" placeholder="cerca...">
+<button id="lgn" class="search-submit"></button>
+</form>
+</div>
+<div class="tickers-container col-sm-12">
+<div id="newsticker-wrap">
+<span class="col-sm-2 no-pad">Ultima Ora</span>
+<div class="simple-ticker col-sm-10" id="ticker">
+<li><a href=https://www.dire.it/07-04-2020/444308-coronavirus-salvini-quando-parte-canale-rai-dedicato-alle-lezioni/>Coronavirus, Salvini: &#8220;Quando parte canale Rai dedicato alle lezioni&#8221;?</a></li><li><a href=https://www.dire.it/07-04-2020/444262-coronavirus-a-roma-lesercito-e-planet-paintball-insieme-per-distribuire-i-viveri/>VIDEO | Coronavirus, a Roma l’esercito e Planet Paintball insieme per distribuire i viveri</a></li><li><a href=https://www.dire.it/07-04-2020/443161-coronavirus-in-israele-medici-ebrei-e-arabi-lottano-insieme-il-17-e-palestinese/>Coronavirus, in Israele medici ebrei e arabi lottano insieme. Il 17% è palestinese</a></li><li><a href=https://www.dire.it/07-04-2020/444167-coronavirus-nursing-up-scrive-a-sileri-siano-assicurati-gli-indennizzi-agli-operatori-sanitari/>Coronavirus, Nursing Up scrive a Sileri: &#8220;Siano assicurati gli indennizzi agli operatori sanitari&#8221;</a></li><li><a href=https://www.dire.it/07-04-2020/444289-tg-ambiente-edizione-del-7-aprile-2020/>Tg Ambiente, edizione del 7 aprile 2020</a></li><li><a href=https://www.dire.it/07-04-2020/444259-a-pasqua-bocelli-cantera-nel-duomo-di-milano-deserto/>A Pasqua Bocelli canterà nel duomo di Milano deserto</a></li><li><a href=https://www.dire.it/07-04-2020/444286-tg-musica-edizione-del-7-aprile-2020/>Tg Musica, edizione del 7 aprile 2020</a></li><li><a href=https://www.dire.it/07-04-2020/444254-coronavirus-possibile-riconversione-degli-impianti-blutec-di-termini-imerese/>Coronavirus, possibile riconversione degli impianti Blutec di Termini Imerese</a></li><li><a href=https://www.dire.it/07-04-2020/444224-atuttomondo-le-principali-notizie-dallestero-4/>#Atuttomondo: le principali notizie dall&#8217;estero</a></li><li><a href=https://www.dire.it/07-04-2020/444226-harry-potter-e-i-doni-della-morte-2-programmi-stasera-in-tv-film/>Harry Potter e i doni della morte 2, Sole a catinelle e Di martedì: i programmi stasera in tv</a></li>
+</div>
+</div>
+</div>
+</div>
+
+<div class="col-xs-8 col-sm-4 col-md-3 text-right">
+<a itemprop="url" class="logo-diregiovani" href="https://www.diregiovani.it" target="_blank"></a>
+<ul class="head-menu"><li id="menu-item-260612" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-260612"><a href="https://www.dire.it/chi-siamo/">Chi siamo</a></li>
+<li id="menu-item-260613" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-260613"><a href="https://www.dire.it/contatti/">Contatti</a></li>
+<li id="menu-item-260616" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-260616"><a target="_blank" rel="noopener noreferrer" href="http://93.63.249.195/newsreader/">Notiziari</a></li>
+<li id="menu-item-382938" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-382938"><a href="https://www.dire.it/canali-rss/">RSS</a></li>
+</ul>
+</div>
+</div>
+
+<div class="row">
+<div class="col-sm-12 text-center menu-container">
+<ul class="mb-menu"><li id="menu-item-162478" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-162478"><a href="#">Canali</a>
+<ul class="sub-menu">
+<li id="menu-item-162303" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-162303"><a href="https://www.dire.it/category/canali/politica/">Politica</a></li>
+<li id="menu-item-162310" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-162310"><a href="https://www.dire.it/category/canali/welfare/">Sociale</a></li>
+<li id="menu-item-162306" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-162306"><a href="https://www.dire.it/category/canali/ambiente/">Ambiente</a></li>
+<li id="menu-item-162307" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-162307"><a href="https://www.dire.it/category/canali/sanita/">Sanità</a></li>
+<li id="menu-item-423155" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-423155"><a href="https://www.dire.it/dire-libri/">Dire Libri</a></li>
+<li id="menu-item-162304" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-162304"><a href="https://www.dire.it/category/canali/giovani/">Giovani</a></li>
+<li id="menu-item-162308" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-162308"><a href="https://www.dire.it/category/canali/costume-e-societa/">Costume e Società</a></li>
+<li id="menu-item-162309" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-162309"><a href="https://www.dire.it/category/canali/cultura/">Cultura</a></li>
+<li id="menu-item-265639" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-265639"><a href="https://www.dire.it/dire-donne/">Dire Donne</a></li>
+<li id="menu-item-332181" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-332181"><a href="https://www.dire.it/category/canali/futuro/">Dire Futuro</a></li>
+<li id="menu-item-443658" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-443658"><a href="https://www.dire.it/category/lavoro/">Lavoro</a></li>
+<li id="menu-item-443659" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-443659"><a href="https://www.dire.it/category/scuola-e-universita/">Scuola e Università</a></li>
+</ul>
+</li>
+<li id="menu-item-162332" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-162332"><a href="#">Esteri</a>
+<ul class="sub-menu">
+<li id="menu-item-162334" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-162334"><a href="https://www.dire.it/category/mondo/">Mondo</a></li>
+<li id="menu-item-260742" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-260742"><a href="https://www.dire.it/category/cooperazione/">Cooperazione</a></li>
+<li id="menu-item-162333" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-162333"><a href="https://www.dire.it/category/europa/">Europa</a></li>
+<li id="menu-item-162335" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-162335"><a href="https://www.dire.it/category/ordine-di-malta/">Ordine di Malta</a></li>
+<li id="menu-item-423157" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-423157"><a href="https://www.dire.it/category/san-marino/">San Marino</a></li>
+<li id="menu-item-162337" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-162337"><a href="https://www.dire.it/category/vaticano/">Vaticano</a></li>
+</ul>
+</li>
+<li id="menu-item-162312" class="diviso menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-162312"><a href="#">Regioni</a>
+<ul class="sub-menu">
+<li id="menu-item-162313" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-162313"><a href="https://www.dire.it/category/territori/abruzzo/">Abruzzo</a></li>
+<li id="menu-item-162314" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-162314"><a href="https://www.dire.it/category/territori/basilicata/">Basilicata</a></li>
+<li id="menu-item-163729" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-163729"><a href="https://www.dire.it/category/territori/calabria/">Calabria</a></li>
+<li id="menu-item-162540" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-162540"><a href="https://www.dire.it/category/territori/campania/">Campania</a></li>
+<li id="menu-item-162316" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-162316"><a href="https://www.dire.it/category/territori/emilia-romagna/">Emilia Romagna</a></li>
+<li id="menu-item-162541" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-162541"><a href="https://www.dire.it/category/territori/friuli-venezia-giulia/">Friuli Venezia Giulia</a></li>
+<li id="menu-item-162318" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-162318"><a href="https://www.dire.it/category/territori/lazio/">Lazio</a></li>
+<li id="menu-item-162542" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-162542"><a href="https://www.dire.it/category/territori/liguria/">Liguria</a></li>
+<li id="menu-item-162320" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-162320"><a href="https://www.dire.it/category/territori/lombardia/">Lombardia</a></li>
+<li id="menu-item-162321" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-162321"><a href="https://www.dire.it/category/territori/marche/">Marche</a></li>
+<li id="menu-item-423158" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-423158"><a href="https://www.dire.it/category/territori/molise/">Molise</a></li>
+<li id="menu-item-162322" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-162322"><a href="https://www.dire.it/category/territori/piemonte/">Piemonte</a></li>
+<li id="menu-item-162543" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-162543"><a href="https://www.dire.it/category/territori/puglia/">Puglia</a></li>
+<li id="menu-item-162325" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-162325"><a href="https://www.dire.it/category/territori/sardegna/">Sardegna</a></li>
+<li id="menu-item-249298" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-249298"><a href="https://www.dire.it/category/territori/sicilia/">Sicilia</a></li>
+<li id="menu-item-162326" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-162326"><a href="https://www.dire.it/category/territori/toscana/">Toscana</a></li>
+<li id="menu-item-162327" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-162327"><a href="https://www.dire.it/category/territori/umbria/">Umbria</a></li>
+<li id="menu-item-162544" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-162544"><a href="https://www.dire.it/category/territori/veneto/">Veneto</a></li>
+</ul>
+</li>
+<li id="menu-item-162329" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-162329"><a href="#">Speciali</a>
+<ul class="sub-menu">
+<li id="menu-item-171549" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-171549"><a href="https://www.dire.it/category/speciali/focus/">ApprofonDiRE</a></li>
+<li id="menu-item-260762" class="menu-item menu-item-type-taxonomy menu-item-object-publication_zone menu-item-260762"><a href="https://www.dire.it/publication_zone/videonews/">Videonews</a></li>
+<li id="menu-item-162802" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-162802"><a href="https://www.dire.it/category/speciali/opinioni/">La selezione del direttore</a></li>
+<li id="menu-item-423159" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-423159"><a href="https://www.dire.it/category/tg/scientificamente/">Scientificamente</a></li>
+<li id="menu-item-423160" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-423160"><a href="https://www.dire.it/direzione-roma-3/">Direzione Roma</a></li>
+</ul>
+</li>
+<li id="menu-item-162338" class="diviso menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-162338"><a href="#">Multimedia</a>
+<ul class="sub-menu">
+<li id="menu-item-162608" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-162608"><a href="https://www.dire.it/category/tg/tg-politico/">TG-Politico</a></li>
+<li id="menu-item-162607" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-162607"><a href="https://www.dire.it/category/tg/tg-lazio/">TG-Lazio</a></li>
+<li id="menu-item-162606" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-162606"><a href="https://www.dire.it/category/tg/tg-ambiente/">TG-Ambiente</a></li>
+<li id="menu-item-162342" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-162342"><a href="https://www.dire.it/category/tg/tg-sanita/">TG-Sanità</a></li>
+<li id="menu-item-165400" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-165400"><a href="https://www.dire.it/category/tg/tg-scuola/">TG-Scuola</a></li>
+<li id="menu-item-190251" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-190251"><a href="https://www.dire.it/category/tg/tg-pediatria/">TG-Pediatria</a></li>
+<li id="menu-item-193219" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-193219"><a href="https://www.dire.it/category/tg/tg-riabilitazione/">TG-Riabilitazione</a></li>
+<li id="menu-item-332185" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-332185"><a href="https://www.dire.it/category/tg/tg-agricoltura/">TG-Agricoltura</a></li>
+<li id="menu-item-423161" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-423161"><a href="https://www.dire.it/category/tg/tg-psicologia/">Tg-Psicologia</a></li>
+<li id="menu-item-428787" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-428787"><a href="https://www.dire.it/category/tg/tg-musica/">TG-Musica</a></li>
+<li id="menu-item-439214" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-439214"><a href="https://www.dire.it/category/tg/tg-cinema/">TG-Cinema</a></li>
+<li id="menu-item-439215" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-439215"><a href="https://www.dire.it/category/tg/tg-cultura/">TG-Cultura</a></li>
+</ul>
+</li>
+<li id="menu-item-190254" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-190254"><a href="#">Newsletter</a>
+<ul class="sub-menu">
+<li id="menu-item-190255" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-190255"><a target="_blank" rel="noopener noreferrer" href="http://direnl.dire.it/scuola/last.php">Scuola</a></li>
+<li id="menu-item-190256" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-190256"><a target="_blank" rel="noopener noreferrer" href="http://direnl.dire.it/psicologia/last.php">Psicologia</a></li>
+<li id="menu-item-190257" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-190257"><a target="_blank" rel="noopener noreferrer" href="http://direnl.dire.it/salute/last.php">Salute</a></li>
+<li id="menu-item-190258" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-190258"><a target="_blank" rel="noopener noreferrer" href="http://direnl.dire.it/minori/last.php">Minori e Pediatria</a></li>
+<li id="menu-item-190259" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-190259"><a target="_blank" rel="noopener noreferrer" href="http://direnl.dire.it/esteri/last.php">Esteri</a></li>
+<li id="menu-item-190261" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-190261"><a target="_blank" rel="noopener noreferrer" href="http://direnl.dire.it/diresanmarino/last.php">San Marino</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="container">
+<div class="row">
+<div itemscope itemtype="http://schema.org/Article" class="col-xs-12 single-container">
+<div class="row">
+<div itemprop="articleBody" class="col-sm-8 article-body">
+<div itemprop="headline" class="title-wrap"><h1> Dl imprese, Conte: &#8220;Diamo liquidità immediata per 400 miliardi, una potenza di fuoco&#8221; </h1></div><div class="thumb-wrap"> <img itemprop="image" src=" https://www.dire.it/wp-content/uploads/2020/03/conte-lis-diretta-fb.jpg " alt"post image" /> </div> <div data-elementor-type="wp-post" data-elementor-id="444012" class="elementor elementor-444012" data-elementor-settings="[]">
+<div class="elementor-inner">
+<div class="elementor-section-wrap">
+<section class="elementor-element elementor-element-577323a9 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-id="577323a9" data-element_type="section">
+<div class="elementor-container elementor-column-gap-default">
+<div class="elementor-row">
+<div class="elementor-element elementor-element-1def7437 elementor-column elementor-col-100 elementor-top-column" data-id="1def7437" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+<div class="elementor-column-wrap  elementor-element-populated">
+<div class="elementor-widget-wrap">
+<div class="elementor-element elementor-element-1b21fc33 elementor-widget elementor-widget-post-info" data-id="1b21fc33" data-element_type="widget" data-widget_type="post-info.default">
+<div class="elementor-widget-container">
+<ul class="elementor-inline-items elementor-icon-list-items elementor-post-info">
+<li class="elementor-icon-list-item elementor-repeater-item-1f2b4e6 elementor-inline-item" itemprop="author">
+<a href="https://www.dire.it/author/redazione/">
+<span class="elementor-icon-list-icon">
+<i class="fa fa-user-circle-o" aria-hidden="true"></i>
+</span>
+<span class="elementor-icon-list-text elementor-post-info__item elementor-post-info__item--type-author">
+Redazione </span>
+</a>
+</li>
+<li class="elementor-icon-list-item elementor-repeater-item-dac3c8b elementor-inline-item" itemprop="datePublished">
+<a href="https://www.dire.it/2020/04/06/">
+<span class="elementor-icon-list-icon">
+<i class="fa fa-calendar" aria-hidden="true"></i>
+</span>
+<span class="elementor-icon-list-text elementor-post-info__item elementor-post-info__item--type-date">
+06/04/2020 </span>
+</a>
+</li>
+<li class="elementor-icon-list-item elementor-repeater-item-d397ed7 elementor-inline-item" itemprop="about">
+<span class="elementor-icon-list-icon">
+ <i aria-hidden="true" class="fas fa-tags"></i> </span>
+<span class="elementor-icon-list-text elementor-post-info__item elementor-post-info__item--type-terms">
+<span class="elementor-post-info__terms-list">
+<a href="https://www.dire.it/category/canali/politica/" class="elementor-post-info__terms-list-item">Politica</a> </span>
+</span>
+</li>
+<li class="elementor-icon-list-item elementor-repeater-item-f9e19c6 elementor-inline-item">
+<span class="elementor-icon-list-icon">
+<i aria-hidden="true" class="far fa-tags"></i> </span>
+<span class="elementor-icon-list-text elementor-post-info__item elementor-post-info__item--type-custom">
+<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="71031415100b181e1f14061413311016141f0b1810151803145f121e1c">[email&#160;protected]</a> </span>
+</li>
+</ul>
+</div>
+</div>
+<div class="elementor-element elementor-element-6420da17 elementor-widget elementor-widget-theme-post-excerpt" data-id="6420da17" data-element_type="widget" data-widget_type="theme-post-excerpt.default">
+<div class="elementor-widget-container">
+"Abbiamo deliberato la sospensione di vari pagamenti fiscali e contributi e ritenute anche per i mesi di aprile e maggio" </div>
+</div>
+<div class="elementor-element elementor-element-72b41e6a elementor-widget elementor-widget-divider" data-id="72b41e6a" data-element_type="widget" data-widget_type="divider.default">
+<div class="elementor-widget-container">
+<div class="elementor-divider">
+<span class="elementor-divider-separator">
+</span>
+</div>
+</div>
+</div>
+<div class="elementor-element elementor-element-71c1ed73 elementor-share-buttons--view-icon elementor-share-buttons--skin-framed elementor-share-buttons--shape-circle elementor-grid-0 elementor-share-buttons--color-official elementor-widget elementor-widget-share-buttons" data-id="71c1ed73" data-element_type="widget" data-widget_type="share-buttons.default">
+<div class="elementor-widget-container">
+<div class="elementor-grid">
+<div class="elementor-grid-item">
+<div class="elementor-share-btn elementor-share-btn_facebook">
+<span class="elementor-share-btn__icon">
+<i class="fab fa-facebook" aria-hidden="true"></i>
+<span class="elementor-screen-only">Share on facebook</span>
+</span>
+</div>
+</div>
+<div class="elementor-grid-item">
+<div class="elementor-share-btn elementor-share-btn_twitter">
+<span class="elementor-share-btn__icon">
+<i class="fab fa-twitter" aria-hidden="true"></i>
+<span class="elementor-screen-only">Share on twitter</span>
+</span>
+</div>
+</div>
+<div class="elementor-grid-item">
+<div class="elementor-share-btn elementor-share-btn_whatsapp">
+<span class="elementor-share-btn__icon">
+<i class="fab fa-whatsapp" aria-hidden="true"></i>
+<span class="elementor-screen-only">Share on whatsapp</span>
+</span>
+</div>
+</div>
+<div class="elementor-grid-item">
+<div class="elementor-share-btn elementor-share-btn_email">
+<span class="elementor-share-btn__icon">
+<i class="fas fa-envelope" aria-hidden="true"></i>
+<span class="elementor-screen-only">Share on email</span>
+</span>
+</div>
+</div>
+<div class="elementor-grid-item">
+<div class="elementor-share-btn elementor-share-btn_print">
+<span class="elementor-share-btn__icon">
+<i class="fas fa-print" aria-hidden="true"></i>
+<span class="elementor-screen-only">Share on print</span>
+</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="elementor-element elementor-element-145a4d6d elementor-widget elementor-widget-text-editor" data-id="145a4d6d" data-element_type="widget" data-widget_type="text-editor.default">
+<div class="elementor-widget-container">
+<div class="elementor-text-editor elementor-clearfix"><p>ROMA &#8211; &#8220;Diamo <strong>liquidita&#8217; immediata per 400 miliardi di euro&#8221;</strong>, annuncia il premier Giuseppe Conte in conferenza stampa a proposito del dl destinato alle imprese. Il governo destina 400 miliardi &#8220;alle imprese, che siano piccole, medie o grandi. 200 miliardi per potenziare l&#8217;intervento sul mercato interno, 200 per l&#8217;export. E&#8217; una <strong>potenza di fuoco che io non ricordo altre volte</strong>. E&#8217; una cifra enorme&#8221;, dice il premier Giuseppe <span class="searchKey">Conte</span></p><h2><strong>CONTE: &#8220;POTENZIATO GOLDEN POWER SU VARI SETTORI&#8221;</strong></h2><p>&#8220;Abbiamo potenziato lo strumento della golden power, potremo controllare operazioni societarie e le scalate ostili non solo nei settori tradizionali, ma in quelli assicurativo, creditizio, finanziario, acqua, salute, sicurezza&#8221;.</p><h2><strong>CONTE: &#8220;DELIBERATA SOSPENSIONE PAGAMENTI APRILE E MAGGIO&#8221;</strong></h2><p>&#8220;Abbiamo deliberato la sospensione di vari pagamenti fiscali e contributi e ritenute anche per i mesi di aprile e maggio&#8221;.</p><h2><strong>CONTE: &#8220;È EPIDEMIA ECONOMICA, AD APRILE DECRETO PIÙ CORPOSO&#8221;</strong></h2><p>&#8220;Faremo un decreto ancora piu&#8217; corposo da realizzare gia&#8217; questo mese, avra&#8217; un approccio pu&#8217; articolato per tutte le categoerie in sofferenza. Ci rendiamo conto che questa epidemia non e&#8217; solo sanitaria ma e&#8217; assolutamente anche di natura economica e sociale. Stiamo lavorando in questa direzione, con il decreto di aprile avremo un poderoso strumento per la protezione sociale e delle famiglie&#8221;.</p><h2><strong>CONTE: &#8220;SU VAL SERIANA CI ASSUMIAMO RESPONSABILITA'&#8221;</strong></h2><p>Il premier Giuseppe <span class="searchKey">Conte</span> ricostruisce la vicenda della mancata adozione delle misure di contenimento ad Alzano e Nembro. &#8220;Ho articolato una nota molto puntuale con cui ho ricostruito quei giorni dal punto di vista del governo nazionale&#8221;, dice in conferenza stampa. &#8220;Dopo la prima indicazione del comitato tecnico scientifico il giorno tre aprile, &#8220;il giorno cinque ho chiesto io stesso di articolare meglio le ragioni a supporto di questa richiesta di una specifica cintura sanitaria, visto che ci stavamo gia&#8217; orientando verso una misura ancora piu&#8217; rigorosa, cioe&#8217; di una cintura per l&#8217;intera Lombardia. Il giorno 6 ho discusso per ore con i componenti del comitato tecnico scientifico e alla fine siamo arrivati alla conclusione che si imponeva una zona rossa per l&#8217;intera Lombardia. E il giorno 7 ho firmato&#8221;. <span class="searchKey">Conte</span> aggiunge: &#8220;Abbiamo sbagliato, oppure ho fatto bene? Noi riteniamo di aver preso questa decisione in scienza e coscienza. Ce ne assumiamo tutta la responsabilita&#8217;. Ci sara&#8217; tutto il tempo per chiamarci a rispondere e io per primo non mi sottrarro&#8217;. Ora e&#8217; ancora il momento della massima concentrazione per uscire da questa emergenza tutti insieme&#8221;.</p><h2><strong>CONTE: &#8220;DOPO PASQUA PROIETTIAMOCI VERSO RINASCITA&#8221;</strong></h2><p> &#8220;Non ci illudiamo che cambiera&#8217; tutto ma da questa Pasqua confidiamo che la curva epidemica diventi sempre pu&#8217; sotto controllo o addirittura discendente e che ci possa permettere di programmare la fase successiva in cui raccoglieremo le forze per proiettarci verso la rinascita, verso una nuova primavera&#8221;.</p><h2><strong>CONTE: &#8220;PRESTO UNA NUOVA PRIMAVERA PER L&#8217;ITALIA&#8221;</strong></h2><p> &#8220;Tutti i leader europei esprimo ammirazione per la forza e la resilienza del nostro paese. Agli italiani tutti voglio dire: state dando un contributo fondamentale in questa battaglia al virus. Presto raccoglieremo il frutto di questi sacrifici, presto quando sara&#8217; tutto superato ci sara&#8217; una nuova primavera per l&#8217;Italia&#8221;.</p><h2><strong>CONTE: &#8220;A PASQUA IN CASA, DA IRRESPONSABILI ANDARE IN GIRO&#8221;</strong></h2><p>&#8220;Vivremo a casa&#8221; i giorni delle festivita&#8217; pasquali. &#8220;Sarebbe da irresponsabili andare in giro. sarebbe irresponsabile allentare questo senso di responsabilita&#8217;&#8221;.  &#8220;Pasqua significa &#8216;passaggio&#8217; dalla schiavitu'&#8221; alla liberazione, &#8220;e noi speriamo che la Pasqua possa portarci anche questo riscatto, questa liberta&#8217;. Il passaggio verso una prospettiva migliore, di completo riscatto&#8221;, aggiunge. </p><h2><strong>CONTE: &#8220;FASE 2? PRESTO DIRLO ORA, CI CONFRONTIAMO CON CTS&#8221;</strong></h2><p>&#8220;Non siamo in condizione di anticipare&#8221; quando partira&#8217; la fase 2. &#8220;Ci confrontiamo costantemente con gli esperti del Cts e in questo momento ci riserviamo di seguire un attimo qual e&#8217; l&#8217;evoluzione della curva epidemiologica e ci riserviamo qualsiasi valutazione. Saremmo piu&#8217; felici se potessimo allentare qualche misura ma fissare oggi una data vorrebbe dire anticipare qualcosa priva di senso&#8221;. </p><h2><strong> CONTE: &#8220;PROTOCOLLI FASE 2 PER CAMMINARE IN STRADA E USO MEZZI&#8221;</strong></h2><p>&#8220;Verranno messi in evidenza protocolli di sicurezza a tutti i livelli sia per camminare per strada che per prendere un mezzo di trasporto, o per spostarsi nei luoghi di lavoro&#8221;.</p><h2><strong>CONTE: &#8220;SU MES IO E GUALTIERI LA PENSIAMO ALLO STESSO MODO&#8221;</strong></h2><p>&#8220;Anche se qualche retroscenista mira a offire una rappresentazione diversificata delle nostre posizioni, io e il ministro Gualtieri siamo assolutamente d&#8217;accordo&#8221;, dice il premier Giuseppe <span class="searchKey">Conte</span> in conferenza stampa a Palazzo Chigi a proposito della posizione del governo sugli eurobond e contro il Mes. Il titolare dell&#8217;Economia Roberto Gualtieri siede al fianco del premier.</p><h2><strong>CONTE: &#8220;MES NO, LA SOLUZIONE SONO GLI EUROBOND&#8221;</strong></h2><p>&#8220;Mes no, eurobond sicuramente si'&#8221;. Risponde cosi&#8217; il premier Giuseppe <span class="searchKey">Conte </span>quando gli si chiede quale tra i due strumenti preferisca. &#8220;Il mes e&#8217; assolutamente inadeguato. Gli eurobond sono la soluzione: una risposta seria, efficace, adeguata al momento che stiamo vivendo&#8221;.</p><p>&#8220;All&#8217;inizio mi hanno suggerito di non fare questa battaglia, ma io sono convinto che la storia e&#8217; con noi e vedremo alla fine la storia quale piega prendera&#8217;&#8221;, dichiata <span class="searchKey">Conte</span> riferendosi alla trattativa in Europa per ottenere dei bond ad hoc per l&#8217;emergenza coronavirus.</p><h2><strong>CONTE: &#8220;AUSPICO 600 EURO PARTITE IVA PRIMA DEL 15 APRILE&#8221;</strong></h2><p>&#8220;Ci siamo subito adoperati e premurati affinche&#8217; tutti possano avere quanto prima le somme che abbiamo previsto nel decreto Cura Italia. C&#8217;e&#8217; stato, e&#8217; cosa nota, un sovraccarico nel sistema informatico Inps. Dall&#8217;Inps mi assicurano che quanto prima arriveranno. Ho chiesto uno sforzo collettivo affinche&#8217; queste erogazioni possano arrivare anche prima del 15 aprile. Sono fiducioso che posso avvenire&#8221;. </p><h2><strong>CONTE: &#8220;VORREI ACCESSO INTERNET FOSSE DIRITTO COSTITUZIONALE&#8221;</strong></h2><p>&#8220;Se fosse per me inserirei una modifica costituzionale, quello del diritto di accesso alle reti infotelematiche. Ormai dovrebbe essere un diritto costituzionalmente tutelato&#8221;.</p><h2><strong>PATUANELLI: &#8220;PIU&#8217; AMPIA MISURA IN EUROPA, ABBIAMO FIDUCIA IN IMPRESE&#8221;</strong></h2><p>&#8220;Il governo ha inteso rispondere a un&#8217;esigenza assoluta delle imprese. <strong>Per le imprese con meno di 500 dipendenti abbiamo rafforzato lo strumento del fondo centrale di garanzia</strong>, che portiamo alla possibilita&#8217; di un prestito fino a 5 milioni di euro con la garanzia dello stato al 90 per cento.<strong> Per le piccole imprese fino a 25 mila euro di prestito lo stato garantisce al 100 per cento</strong>. La procedura di erogazione del credito sara&#8217; immediata e priva di vincoli&#8221;. Lo dice il ministro dello sviluppo Stefano Patuanelli, in conferenza stampa. Il governo garantisce &#8220;affidamenti fino a 800 mila euro con garanzia dello stato fino al 90 per cento ma si arriva al 100 per cento con la garanzia di Confidi. E&#8217; la misura piu&#8217; ampia di Europa&#8221; in termini di garanzie offerte dal settore pubblico. &#8220;Il governo ha grande fiducia negli imprenditori&#8221;, aggiunge Patuanelli.</p><h2><strong>AZZOLINA: &#8220;DIDATTICA A DISTANZA NON PIÙ OPZIONALE&#8221;</strong></h2><p>&#8220;La didattica a distanza non e&#8217; piu&#8217; uno strumento opzionale, ci permettera&#8217; di concludere l&#8217;anno e di dare dignita&#8217; a tutti gli insegnanti che la stanno portando avanti. Per questo li incito a dare di piu'&#8221;.</p><h2><strong>AZZOLINA: &#8220;NON SARÀ POSSIBILE AGGIORNARE  LE GRADUATORIE DEGLI ISTITUTI&#8221;</strong></h2><p>&#8220;Chiedo scusa a tutti i precari ma non sara&#8217; possibile aggiornare le graduatorie di istituto. Non riusciamo a portare avanti un milione di moduli cartacei, ci riaggiorneremo il prossimo anno&#8221;</p></div>
+</div>
+</div>
+<div class="elementor-element elementor-element-69be1b79 elementor-share-buttons--view-icon elementor-share-buttons--skin-framed elementor-share-buttons--shape-circle elementor-grid-0 elementor-share-buttons--color-official elementor-widget elementor-widget-share-buttons" data-id="69be1b79" data-element_type="widget" data-widget_type="share-buttons.default">
+<div class="elementor-widget-container">
+<div class="elementor-grid">
+<div class="elementor-grid-item">
+<div class="elementor-share-btn elementor-share-btn_facebook">
+<span class="elementor-share-btn__icon">
+<i class="fab fa-facebook" aria-hidden="true"></i>
+<span class="elementor-screen-only">Share on facebook</span>
+</span>
+</div>
+</div>
+<div class="elementor-grid-item">
+<div class="elementor-share-btn elementor-share-btn_twitter">
+<span class="elementor-share-btn__icon">
+<i class="fab fa-twitter" aria-hidden="true"></i>
+<span class="elementor-screen-only">Share on twitter</span>
+</span>
+</div>
+</div>
+<div class="elementor-grid-item">
+<div class="elementor-share-btn elementor-share-btn_whatsapp">
+<span class="elementor-share-btn__icon">
+<i class="fab fa-whatsapp" aria-hidden="true"></i>
+<span class="elementor-screen-only">Share on whatsapp</span>
+</span>
+</div>
+</div>
+<div class="elementor-grid-item">
+<div class="elementor-share-btn elementor-share-btn_email">
+<span class="elementor-share-btn__icon">
+<i class="fas fa-envelope" aria-hidden="true"></i>
+<span class="elementor-screen-only">Share on email</span>
+</span>
+</div>
+</div>
+<div class="elementor-grid-item">
+<div class="elementor-share-btn elementor-share-btn_print">
+<span class="elementor-share-btn__icon">
+<i class="fas fa-print" aria-hidden="true"></i>
+<span class="elementor-screen-only">Share on print</span>
+</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="elementor-element elementor-element-7d0e3fb8 elementor-widget elementor-widget-heading" data-id="7d0e3fb8" data-element_type="widget" data-widget_type="heading.default">
+<div class="elementor-widget-container">
+<h4 class="elementor-heading-title elementor-size-default">Leggi anche:</h4> </div>
+</div>
+<div class="elementor-element elementor-element-782a29bc elementor-grid-3 elementor-grid-tablet-2 elementor-grid-mobile-1 elementor-posts--thumbnail-top elementor-widget elementor-widget-posts" data-id="782a29bc" data-element_type="widget" data-settings="{&quot;classic_columns&quot;:&quot;3&quot;,&quot;classic_columns_tablet&quot;:&quot;2&quot;,&quot;classic_columns_mobile&quot;:&quot;1&quot;,&quot;classic_row_gap&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:35,&quot;sizes&quot;:[]}}" data-widget_type="posts.classic">
+<div class="elementor-widget-container">
+<div class="elementor-posts-container elementor-posts elementor-posts--skin-classic elementor-grid">
+<article class="elementor-post elementor-grid-item post-444308 post type-post status-publish format-standard has-post-thumbnail hentry category-politica tag-coronavirus tag-coronavirus-box-basso tag-didattica-a-distanza tag-matteo-salvini tag-scuola">
+<a class="elementor-post__thumbnail__link" href="https://www.dire.it/07-04-2020/444308-coronavirus-salvini-quando-parte-canale-rai-dedicato-alle-lezioni/">
+<div class="elementor-post__thumbnail"><img width="360" height="240" src="https://www.dire.it/wp-content/uploads/2020/04/salvini-imago-2-360x240.jpg" class="attachment-medium size-medium" alt="matteo salvini" srcset="https://www.dire.it/wp-content/uploads/2020/04/salvini-imago-2-360x240.jpg 360w, https://www.dire.it/wp-content/uploads/2020/04/salvini-imago-2-768x511.jpg 768w, https://www.dire.it/wp-content/uploads/2020/04/salvini-imago-2-1536x1022.jpg 1536w, https://www.dire.it/wp-content/uploads/2020/04/salvini-imago-2-2048x1363.jpg 2048w" sizes="(max-width: 360px) 100vw, 360px" /></div>
+</a>
+<div class="elementor-post__text">
+<h3 class="elementor-post__title">
+<a href="https://www.dire.it/07-04-2020/444308-coronavirus-salvini-quando-parte-canale-rai-dedicato-alle-lezioni/">
+Coronavirus, Salvini: &#8220;Quando parte canale Rai dedicato alle lezioni&#8221;? </a>
+</h3>
+</div>
+</article>
+<article class="elementor-post elementor-grid-item post-444262 post type-post status-publish format-standard has-post-thumbnail hentry category-lazio category-welfare tag-coronavirus-italia tag-esercito publication_zone-sotto">
+<a class="elementor-post__thumbnail__link" href="https://www.dire.it/07-04-2020/444262-coronavirus-a-roma-lesercito-e-planet-paintball-insieme-per-distribuire-i-viveri/">
+<div class="elementor-post__thumbnail"><img width="360" height="160" src="https://www.dire.it/wp-content/uploads/2020/04/viveri-360x160.jpg" class="attachment-medium size-medium" alt="distribuzione viveri esercito-paintball" srcset="https://www.dire.it/wp-content/uploads/2020/04/viveri-360x160.jpg 360w, https://www.dire.it/wp-content/uploads/2020/04/viveri-768x341.jpg 768w, https://www.dire.it/wp-content/uploads/2020/04/viveri-1536x682.jpg 1536w, https://www.dire.it/wp-content/uploads/2020/04/viveri-2048x909.jpg 2048w" sizes="(max-width: 360px) 100vw, 360px" /></div>
+</a>
+<div class="elementor-post__text">
+<h3 class="elementor-post__title">
+<a href="https://www.dire.it/07-04-2020/444262-coronavirus-a-roma-lesercito-e-planet-paintball-insieme-per-distribuire-i-viveri/">
+VIDEO | Coronavirus, a Roma l’esercito e Planet Paintball insieme per distribuire i viveri </a>
+</h3>
+</div>
+</article>
+<article class="elementor-post elementor-grid-item post-443161 post type-post status-publish format-standard has-post-thumbnail hentry category-mondo category-welfare tag-coronavirus tag-israele tag-medici tag-palestina tag-razzismo publication_zone-mondo">
+<a class="elementor-post__thumbnail__link" href="https://www.dire.it/07-04-2020/443161-coronavirus-in-israele-medici-ebrei-e-arabi-lottano-insieme-il-17-e-palestinese/">
+<div class="elementor-post__thumbnail"><img width="360" height="177" src="https://www.dire.it/wp-content/uploads/2020/04/okbarbed-wire-1876148_1920-360x177.png" class="attachment-medium size-medium" alt="Israele Foto di Rodolfo Quevenco da Pixabay" srcset="https://www.dire.it/wp-content/uploads/2020/04/okbarbed-wire-1876148_1920-360x177.png 360w, https://www.dire.it/wp-content/uploads/2020/04/okbarbed-wire-1876148_1920-768x377.png 768w, https://www.dire.it/wp-content/uploads/2020/04/okbarbed-wire-1876148_1920-1536x754.png 1536w, https://www.dire.it/wp-content/uploads/2020/04/okbarbed-wire-1876148_1920.png 1857w" sizes="(max-width: 360px) 100vw, 360px" /></div>
+</a>
+<div class="elementor-post__text">
+<h3 class="elementor-post__title">
+<a href="https://www.dire.it/07-04-2020/443161-coronavirus-in-israele-medici-ebrei-e-arabi-lottano-insieme-il-17-e-palestinese/">
+Coronavirus, in Israele medici ebrei e arabi lottano insieme. Il 17% è palestinese </a>
+</h3>
+</div>
+</article>
+<article class="elementor-post elementor-grid-item post-444167 post type-post status-publish format-standard has-post-thumbnail hentry category-sanita category-welfare tag-coronavirus tag-indennizzi tag-ministero-della-salute tag-nursing-up tag-operatori-sanitari tag-pierpaolo-sileri tag-roberto-speranza tag-sindacato-degli-infermieri">
+<a class="elementor-post__thumbnail__link" href="https://www.dire.it/07-04-2020/444167-coronavirus-nursing-up-scrive-a-sileri-siano-assicurati-gli-indennizzi-agli-operatori-sanitari/">
+<div class="elementor-post__thumbnail"><img width="360" height="182" src="https://www.dire.it/wp-content/uploads/2020/04/coronavirus-operatori-sanitari-360x182.jpg" class="attachment-medium size-medium" alt="coronavirus operatori sanitari" srcset="https://www.dire.it/wp-content/uploads/2020/04/coronavirus-operatori-sanitari-360x182.jpg 360w, https://www.dire.it/wp-content/uploads/2020/04/coronavirus-operatori-sanitari-768x388.jpg 768w, https://www.dire.it/wp-content/uploads/2020/04/coronavirus-operatori-sanitari.jpg 1024w" sizes="(max-width: 360px) 100vw, 360px" /></div>
+</a>
+<div class="elementor-post__text">
+<h3 class="elementor-post__title">
+<a href="https://www.dire.it/07-04-2020/444167-coronavirus-nursing-up-scrive-a-sileri-siano-assicurati-gli-indennizzi-agli-operatori-sanitari/">
+Coronavirus, Nursing Up scrive a Sileri: &#8220;Siano assicurati gli indennizzi agli operatori sanitari&#8221; </a>
+</h3>
+</div>
+</article>
+<article class="elementor-post elementor-grid-item post-444289 post type-post status-publish format-standard has-post-thumbnail hentry category-tg-ambiente tag-cop-26 tag-tg-ambiente">
+<a class="elementor-post__thumbnail__link" href="https://www.dire.it/07-04-2020/444289-tg-ambiente-edizione-del-7-aprile-2020/">
+<div class="elementor-post__thumbnail"><img width="360" height="250" src="https://www.dire.it/wp-content/uploads/2018/10/Copertina_Tg_Ambiente-360x250.jpg" class="attachment-medium size-medium" alt="" srcset="https://www.dire.it/wp-content/uploads/2018/10/Copertina_Tg_Ambiente-360x250.jpg 360w, https://www.dire.it/wp-content/uploads/2018/10/Copertina_Tg_Ambiente.jpg 640w" sizes="(max-width: 360px) 100vw, 360px" /></div>
+</a>
+<div class="elementor-post__text">
+<h3 class="elementor-post__title">
+<a href="https://www.dire.it/07-04-2020/444289-tg-ambiente-edizione-del-7-aprile-2020/">
+Tg Ambiente, edizione del 7 aprile 2020 </a>
+</h3>
+</div>
+</article>
+<article class="elementor-post elementor-grid-item post-444259 post type-post status-publish format-standard has-post-thumbnail hentry category-costume-e-societa category-milano tag-andrea-bocelli tag-coronavirus tag-coronavirus-box-basso tag-milano tag-pasqua">
+<a class="elementor-post__thumbnail__link" href="https://www.dire.it/07-04-2020/444259-a-pasqua-bocelli-cantera-nel-duomo-di-milano-deserto/">
+<div class="elementor-post__thumbnail"><img width="360" height="180" src="https://www.dire.it/wp-content/uploads/2020/04/bocelli-milano-360x180.jpg" class="attachment-medium size-medium" alt="bocelli duomo milano" srcset="https://www.dire.it/wp-content/uploads/2020/04/bocelli-milano-360x180.jpg 360w, https://www.dire.it/wp-content/uploads/2020/04/bocelli-milano-768x384.jpg 768w, https://www.dire.it/wp-content/uploads/2020/04/bocelli-milano.jpg 1024w" sizes="(max-width: 360px) 100vw, 360px" /></div>
+</a>
+<div class="elementor-post__text">
+<h3 class="elementor-post__title">
+<a href="https://www.dire.it/07-04-2020/444259-a-pasqua-bocelli-cantera-nel-duomo-di-milano-deserto/">
+A Pasqua Bocelli canterà nel duomo di Milano deserto </a>
+</h3>
+</div>
+</article>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</div>
+<div class="publication-date"> 6 Aprile 2020 </div>
+<div class="hidden" itemprop="datePublished">2020-04-06T20:42:34+02:00</div>
+<div class="hidden" itemprop="dateModified">2020-04-07T10:00:15+02:00</div>
+<div class="hidden" itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+<div itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
+<img src="https:\\www.dire.it\wp-content\uploads\2018\01\logo_dire_sito.png" />
+<meta itemprop="url" content="https:\\www.dire.it\wp-content\uploads\2018\01\logo_dire_sito.png">
+<meta itemprop="width" content="200">
+<meta itemprop="height" content="120">
+</div>
+<meta itemprop="name" content="dire.it">
+</div>
+<div class="col-xs-12 disclaimer text-center">
+<img class="hidden-xs" src="https://www.dire.it/wp-content/themes/dire-MB/_include/image/dire_icon_white.png" alt="info-disclaimer" /><span>Le notizie del sito Dire sono utilizzabili e riproducibili, a condizione di citare espressamente la fonte «Agenzia DIRE» e l'indirizzo «www.dire.it»</span>
+</div>
+</div>
+<div class="col-sm-4 hidden-xs column">
+<div class="row side_widgets">
+<ul id="sidebar">
+<div> <div data-elementor-type="section" data-elementor-id="260857" class="elementor elementor-260857" data-elementor-settings="[]">
+<div class="elementor-inner">
+<div class="elementor-section-wrap">
+<section class="elementor-element elementor-element-3fbeb8f elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-id="3fbeb8f" data-element_type="section">
+<div class="elementor-container elementor-column-gap-default">
+<div class="elementor-row">
+<div class="elementor-element elementor-element-98e10f0 elementor-column elementor-col-100 elementor-top-column" data-id="98e10f0" data-element_type="column">
+<div class="elementor-column-wrap  elementor-element-populated">
+<div class="elementor-widget-wrap">
+<div class="elementor-element elementor-element-dca9a58 elementor-widget elementor-widget-heading" data-id="dca9a58" data-element_type="widget" data-widget_type="heading.default">
+<div class="elementor-widget-container">
+<h2 class="elementor-heading-title elementor-size-default"><a href="https://www.youtube.com/channel/UCTsd-viLbo4eBnU8DAi7kaA?view_as=subscriber" target="_blank">I nostri Tg</a></h2> </div>
+</div>
+<div class="elementor-element elementor-element-60684b4 elementor-widget elementor-widget-image" data-id="60684b4" data-element_type="widget" data-widget_type="image.default">
+<div class="elementor-widget-container">
+<div class="elementor-image">
+<img width="800" height="4" src="https://www.dire.it/wp-content/uploads/2018/01/barra_centrale.png" class="attachment-large size-large" alt="" srcset="https://www.dire.it/wp-content/uploads/2018/01/barra_centrale.png 800w, https://www.dire.it/wp-content/uploads/2018/01/barra_centrale-360x2.png 360w, https://www.dire.it/wp-content/uploads/2018/01/barra_centrale-768x4.png 768w" sizes="(max-width: 800px) 100vw, 800px" /> </div>
+</div>
+</div>
+<div class="elementor-element elementor-element-f315788 elementor-grid-2 elementor-hidden-tablet elementor-hidden-phone elementor-grid-tablet-2 elementor-grid-mobile-1 elementor-widget elementor-widget-portfolio" data-id="f315788" data-element_type="widget" data-settings="{&quot;columns&quot;:&quot;2&quot;,&quot;item_ratio&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:0.8,&quot;sizes&quot;:[]},&quot;row_gap&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:5,&quot;sizes&quot;:[]},&quot;columns_tablet&quot;:&quot;2&quot;,&quot;columns_mobile&quot;:&quot;1&quot;,&quot;item_gap&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]}}" data-widget_type="portfolio.default">
+<div class="elementor-widget-container">
+<div class="elementor-portfolio elementor-grid elementor-posts-container">
+<article class="elementor-portfolio-item elementor-post  post-443939 post type-post status-publish format-standard has-post-thumbnail hentry category-tg-politico">
+<a class="elementor-post__thumbnail__link" href="https://www.dire.it/06-04-2020/443939-tg-politico-parlamentare-edizione-del-6-aprile-2020/">
+<div class="elementor-portfolio-item__img elementor-post__thumbnail">
+<img width="360" height="250" src="https://www.dire.it/wp-content/uploads/2020/02/Copertina_Tg_Politico_Parlamentare-360x250.jpg" class="attachment-medium size-medium" alt="" srcset="https://www.dire.it/wp-content/uploads/2020/02/Copertina_Tg_Politico_Parlamentare-360x250.jpg 360w, https://www.dire.it/wp-content/uploads/2020/02/Copertina_Tg_Politico_Parlamentare.jpg 640w" sizes="(max-width: 360px) 100vw, 360px" /> </div>
+<div class="elementor-portfolio-item__overlay">
+<h3 class="elementor-portfolio-item__title">
+Tg Politico Parlamentare, edizione del 6 aprile 2020 </h3>
+</div>
+</a>
+</article>
+<article class="elementor-portfolio-item elementor-post  post-443895 post type-post status-publish format-standard has-post-thumbnail hentry category-tg-lazio">
+<a class="elementor-post__thumbnail__link" href="https://www.dire.it/06-04-2020/443895-tg-lazio-del-6-aprile-2020/">
+<div class="elementor-portfolio-item__img elementor-post__thumbnail">
+<img width="360" height="250" src="https://www.dire.it/wp-content/uploads/2018/10/Copertina_Tg_Lazio-360x250.jpg" class="attachment-medium size-medium" alt="" srcset="https://www.dire.it/wp-content/uploads/2018/10/Copertina_Tg_Lazio-360x250.jpg 360w, https://www.dire.it/wp-content/uploads/2018/10/Copertina_Tg_Lazio.jpg 640w" sizes="(max-width: 360px) 100vw, 360px" /> </div>
+<div class="elementor-portfolio-item__overlay">
+<h3 class="elementor-portfolio-item__title">
+Tg Lazio, edizione del 6 aprile 2020 </h3>
+</div>
+</a>
+</article>
+</div>
+</div>
+</div>
+<div class="elementor-element elementor-element-8b54b9e elementor-grid-1 elementor-grid-tablet-2 elementor-grid-mobile-1 elementor-widget elementor-widget-portfolio" data-id="8b54b9e" data-element_type="widget" data-settings="{&quot;columns&quot;:&quot;1&quot;,&quot;item_ratio&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:0.8,&quot;sizes&quot;:[]},&quot;row_gap&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:5,&quot;sizes&quot;:[]},&quot;columns_tablet&quot;:&quot;2&quot;,&quot;columns_mobile&quot;:&quot;1&quot;,&quot;item_gap&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]}}" data-widget_type="portfolio.default">
+<div class="elementor-widget-container">
+<div class="elementor-portfolio elementor-grid elementor-posts-container">
+<article class="elementor-portfolio-item elementor-post  post-444289 post type-post status-publish format-standard has-post-thumbnail hentry category-tg-ambiente tag-cop-26 tag-tg-ambiente">
+<a class="elementor-post__thumbnail__link" href="https://www.dire.it/07-04-2020/444289-tg-ambiente-edizione-del-7-aprile-2020/">
+<div class="elementor-portfolio-item__img elementor-post__thumbnail">
+<img width="360" height="250" src="https://www.dire.it/wp-content/uploads/2018/10/Copertina_Tg_Ambiente-360x250.jpg" class="attachment-medium size-medium" alt="" srcset="https://www.dire.it/wp-content/uploads/2018/10/Copertina_Tg_Ambiente-360x250.jpg 360w, https://www.dire.it/wp-content/uploads/2018/10/Copertina_Tg_Ambiente.jpg 640w" sizes="(max-width: 360px) 100vw, 360px" /> </div>
+<div class="elementor-portfolio-item__overlay">
+<h3 class="elementor-portfolio-item__title">
+Tg Ambiente, edizione del 7 aprile 2020 </h3>
+</div>
+</a>
+</article>
+</div>
+</div>
+</div>
+<div class="elementor-element elementor-element-6240db2 elementor-grid-2 elementor-grid-tablet-2 elementor-grid-mobile-1 elementor-widget elementor-widget-portfolio" data-id="6240db2" data-element_type="widget" data-settings="{&quot;columns&quot;:&quot;2&quot;,&quot;item_ratio&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:0.8,&quot;sizes&quot;:[]},&quot;row_gap&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:5,&quot;sizes&quot;:[]},&quot;columns_tablet&quot;:&quot;2&quot;,&quot;columns_mobile&quot;:&quot;1&quot;,&quot;item_gap&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]}}" data-widget_type="portfolio.default">
+<div class="elementor-widget-container">
+<div class="elementor-portfolio elementor-grid elementor-posts-container">
+<article class="elementor-portfolio-item elementor-post  post-444286 post type-post status-publish format-standard has-post-thumbnail hentry category-tg-musica">
+<a class="elementor-post__thumbnail__link" href="https://www.dire.it/07-04-2020/444286-tg-musica-edizione-del-7-aprile-2020/">
+<div class="elementor-portfolio-item__img elementor-post__thumbnail">
+<img width="360" height="250" src="https://www.dire.it/wp-content/uploads/2020/02/TG_Musica_SITO-360x250.jpg" class="attachment-medium size-medium" alt="" srcset="https://www.dire.it/wp-content/uploads/2020/02/TG_Musica_SITO-360x250.jpg 360w, https://www.dire.it/wp-content/uploads/2020/02/TG_Musica_SITO.jpg 640w" sizes="(max-width: 360px) 100vw, 360px" /> </div>
+<div class="elementor-portfolio-item__overlay">
+<h3 class="elementor-portfolio-item__title">
+Tg Musica, edizione del 7 aprile 2020 </h3>
+</div>
+</a>
+</article>
+<article class="elementor-portfolio-item elementor-post  post-443714 post type-post status-publish format-standard has-post-thumbnail hentry category-tg-sanita tag-tg-sanita">
+<a class="elementor-post__thumbnail__link" href="https://www.dire.it/06-04-2020/443714-tg-sanita-edizione-del-6-aprile-2020/">
+<div class="elementor-portfolio-item__img elementor-post__thumbnail">
+<img width="360" height="250" src="https://www.dire.it/wp-content/uploads/2018/10/Copertina_Tg_Sanità-360x250.jpg" class="attachment-medium size-medium" alt="" srcset="https://www.dire.it/wp-content/uploads/2018/10/Copertina_Tg_Sanità-360x250.jpg 360w, https://www.dire.it/wp-content/uploads/2018/10/Copertina_Tg_Sanità.jpg 640w" sizes="(max-width: 360px) 100vw, 360px" /> </div>
+<div class="elementor-portfolio-item__overlay">
+<h3 class="elementor-portfolio-item__title">
+Tg Sanità, edizione del 6 aprile 2020 </h3>
+</div>
+</a>
+</article>
+<article class="elementor-portfolio-item elementor-post  post-443647 post type-post status-publish format-standard has-post-thumbnail hentry category-scientificamente tag-asi tag-coronavirus tag-inaf tag-luca-parmitano tag-paolo-nespoli">
+<a class="elementor-post__thumbnail__link" href="https://www.dire.it/06-04-2020/443647-emergenza-coronavirus-una-mano-arriva-dallo-spazio/">
+<div class="elementor-portfolio-item__img elementor-post__thumbnail">
+<img width="360" height="250" src="https://www.dire.it/wp-content/uploads/2018/10/Copertina_Scientificamente-360x250.jpg" class="attachment-medium size-medium" alt="" srcset="https://www.dire.it/wp-content/uploads/2018/10/Copertina_Scientificamente-360x250.jpg 360w, https://www.dire.it/wp-content/uploads/2018/10/Copertina_Scientificamente.jpg 640w" sizes="(max-width: 360px) 100vw, 360px" /> </div>
+<div class="elementor-portfolio-item__overlay">
+<h3 class="elementor-portfolio-item__title">
+Emergenza Coronavirus, una mano arriva dallo Spazio </h3>
+</div>
+</a>
+</article>
+<article class="elementor-portfolio-item elementor-post  post-442917 post type-post status-publish format-standard has-post-thumbnail hentry category-tg-scuola">
+<a class="elementor-post__thumbnail__link" href="https://www.dire.it/03-04-2020/442917-tg-scuola-edizione-del-3-aprile-2020/">
+<div class="elementor-portfolio-item__img elementor-post__thumbnail">
+ <img width="360" height="250" src="https://www.dire.it/wp-content/uploads/2018/10/Copertina_Tg_Scuola-360x250.jpg" class="attachment-medium size-medium" alt="" srcset="https://www.dire.it/wp-content/uploads/2018/10/Copertina_Tg_Scuola-360x250.jpg 360w, https://www.dire.it/wp-content/uploads/2018/10/Copertina_Tg_Scuola.jpg 640w" sizes="(max-width: 360px) 100vw, 360px" /> </div>
+<div class="elementor-portfolio-item__overlay">
+<h3 class="elementor-portfolio-item__title">
+Tg Scuola, edizione del 3 aprile 2020 </h3>
+</div>
+</a>
+</article>
+<article class="elementor-portfolio-item elementor-post  post-442818 post type-post status-publish format-standard has-post-thumbnail hentry category-tg-psicologia tag-tg-psicologia">
+<a class="elementor-post__thumbnail__link" href="https://www.dire.it/03-04-2020/442818-tg-psicologia-edizione-del-3-aprile-2020/">
+<div class="elementor-portfolio-item__img elementor-post__thumbnail">
+<img width="360" height="250" src="https://www.dire.it/wp-content/uploads/2019/10/Copertina_TG_Psicologia-360x250.jpg" class="attachment-medium size-medium" alt="" srcset="https://www.dire.it/wp-content/uploads/2019/10/Copertina_TG_Psicologia-360x250.jpg 360w, https://www.dire.it/wp-content/uploads/2019/10/Copertina_TG_Psicologia.jpg 640w" sizes="(max-width: 360px) 100vw, 360px" /> </div>
+<div class="elementor-portfolio-item__overlay">
+<h3 class="elementor-portfolio-item__title">
+Tg Psicologia, edizione del 3 aprile 2020 </h3>
+</div>
+</a>
+</article>
+<article class="elementor-portfolio-item elementor-post  post-442369 post type-post status-publish format-standard has-post-thumbnail hentry category-tg-cultura">
+<a class="elementor-post__thumbnail__link" href="https://www.dire.it/02-04-2020/442369-tg-cultura-edizione-del-2-aprile-2020/">
+<div class="elementor-portfolio-item__img elementor-post__thumbnail">
+<img width="360" height="250" src="https://www.dire.it/wp-content/uploads/2020/02/TG_Cultura_SITO-360x250.jpg" class="attachment-medium size-medium" alt="" srcset="https://www.dire.it/wp-content/uploads/2020/02/TG_Cultura_SITO-360x250.jpg 360w, https://www.dire.it/wp-content/uploads/2020/02/TG_Cultura_SITO.jpg 640w" sizes="(max-width: 360px) 100vw, 360px" /> </div>
+<div class="elementor-portfolio-item__overlay">
+<h3 class="elementor-portfolio-item__title">
+Tg Cultura, edizione del 2 aprile 2020 </h3>
+</div>
+</a>
+</article>
+<article class="elementor-portfolio-item elementor-post  post-442349 post type-post status-publish format-standard has-post-thumbnail hentry category-tg-pediatria">
+<a class="elementor-post__thumbnail__link" href="https://www.dire.it/02-04-2020/442349-tg-pediatria-edizione-del-2-aprile-2020/">
+<div class="elementor-portfolio-item__img elementor-post__thumbnail">
+<img width="360" height="250" src="https://www.dire.it/wp-content/uploads/2018/10/Copertina_Tg_Pediatria-360x250.jpg" class="attachment-medium size-medium" alt="" srcset="https://www.dire.it/wp-content/uploads/2018/10/Copertina_Tg_Pediatria-360x250.jpg 360w, https://www.dire.it/wp-content/uploads/2018/10/Copertina_Tg_Pediatria.jpg 640w" sizes="(max-width: 360px) 100vw, 360px" /> </div>
+<div class="elementor-portfolio-item__overlay">
+<h3 class="elementor-portfolio-item__title">
+Tg Pediatria, edizione del 2 aprile 2020 </h3>
+</div>
+</a>
+</article>
+<article class="elementor-portfolio-item elementor-post  post-441879 post type-post status-publish format-standard has-post-thumbnail hentry category-tg-riabilitazione tag-tg-riabilitazione">
+<a class="elementor-post__thumbnail__link" href="https://www.dire.it/01-04-2020/441879-tg-riabilitazione-edizione-dell1-aprile-2020/">
+<div class="elementor-portfolio-item__img elementor-post__thumbnail">
+<img width="360" height="250" src="https://www.dire.it/wp-content/uploads/2018/10/Copertina_Tg_Riabilitazione-360x250.jpg" class="attachment-medium size-medium" alt="" srcset="https://www.dire.it/wp-content/uploads/2018/10/Copertina_Tg_Riabilitazione-360x250.jpg 360w, https://www.dire.it/wp-content/uploads/2018/10/Copertina_Tg_Riabilitazione.jpg 640w" sizes="(max-width: 360px) 100vw, 360px" /> </div>
+<div class="elementor-portfolio-item__overlay">
+<h3 class="elementor-portfolio-item__title">
+Tg Riabilitazione, edizione dell&#8217;1 aprile 2020 </h3>
+</div>
+</a>
+</article>
+<article class="elementor-portfolio-item elementor-post  post-441763 post type-post status-publish format-standard has-post-thumbnail hentry category-tg-cinema">
+<a class="elementor-post__thumbnail__link" href="https://www.dire.it/01-04-2020/441763-tg-cinema-edizione-dell1-aprile-2020/">
+<div class="elementor-portfolio-item__img elementor-post__thumbnail">
+<img width="360" height="250" src="https://www.dire.it/wp-content/uploads/2020/02/TG_Cinema_SITO-360x250.jpg" class="attachment-medium size-medium" alt="" srcset="https://www.dire.it/wp-content/uploads/2020/02/TG_Cinema_SITO-360x250.jpg 360w, https://www.dire.it/wp-content/uploads/2020/02/TG_Cinema_SITO.jpg 640w" sizes="(max-width: 360px) 100vw, 360px" /> </div>
+<div class="elementor-portfolio-item__overlay">
+<h3 class="elementor-portfolio-item__title">
+Tg Cinema, edizione dell&#8217;1 aprile 2020 </h3>
+</div>
+</a>
+</article>
+<article class="elementor-portfolio-item elementor-post  post-441314 post type-post status-publish format-standard has-post-thumbnail hentry category-tg-ambiente">
+<a class="elementor-post__thumbnail__link" href="https://www.dire.it/31-03-2020/441314-tg-ambiente-edizione-del-31-marzo-2020/">
+<div class="elementor-portfolio-item__img elementor-post__thumbnail">
+<img width="360" height="250" src="https://www.dire.it/wp-content/uploads/2018/10/Copertina_Tg_Ambiente-360x250.jpg" class="attachment-medium size-medium" alt="" srcset="https://www.dire.it/wp-content/uploads/2018/10/Copertina_Tg_Ambiente-360x250.jpg 360w, https://www.dire.it/wp-content/uploads/2018/10/Copertina_Tg_Ambiente.jpg 640w" sizes="(max-width: 360px) 100vw, 360px" /> </div>
+<div class="elementor-portfolio-item__overlay">
+<h3 class="elementor-portfolio-item__title">
+Tg Ambiente, edizione del 31 marzo 2020 </h3>
+</div>
+</a>
+</article>
+</div>
+</div>
+</div>
+<div class="elementor-element elementor-element-47e7163 elementor-widget elementor-widget-image" data-id="47e7163" data-element_type="widget" data-widget_type="image.default">
+<div class="elementor-widget-container">
+<div class="elementor-image">
+<a href="http://www.dire.it/dire-oggi/">
+<img width="595" height="916" src="https://www.dire.it/wp-content/uploads/2019/01/DireOggi_Sito_new2.jpg" class="attachment-large size-large" alt="" srcset="https://www.dire.it/wp-content/uploads/2019/01/DireOggi_Sito_new2.jpg 595w, https://www.dire.it/wp-content/uploads/2019/01/DireOggi_Sito_new2-162x250.jpg 162w" sizes="(max-width: 595px) 100vw, 595px" /> </a>
+</div>
+</div>
+</div>
+<div class="elementor-element elementor-element-a39e84e elementor-widget elementor-widget-heading" data-id="a39e84e" data-element_type="widget" data-widget_type="heading.default">
+<div class="elementor-widget-container">
+<h2 class="elementor-heading-title elementor-size-default"><a href="https://www.dire.it/category/speciali/focus/">ApprofonDire</a></h2> </div>
+</div>
+<div class="elementor-element elementor-element-82153d3 elementor-widget elementor-widget-image" data-id="82153d3" data-element_type="widget" data-widget_type="image.default">
+<div class="elementor-widget-container">
+<div class="elementor-image">
+<img width="800" height="4" src="https://www.dire.it/wp-content/uploads/2018/01/barra_centrale.png" class="attachment-large size-large" alt="" srcset="https://www.dire.it/wp-content/uploads/2018/01/barra_centrale.png 800w, https://www.dire.it/wp-content/uploads/2018/01/barra_centrale-360x2.png 360w, https://www.dire.it/wp-content/uploads/2018/01/barra_centrale-768x4.png 768w" sizes="(max-width: 800px) 100vw, 800px" /> </div>
+</div>
+</div>
+<div class="elementor-element elementor-element-094045e elementor-grid-1 elementor-grid-tablet-2 elementor-grid-mobile-1 elementor-posts--thumbnail-top elementor-widget elementor-widget-posts" data-id="094045e" data-element_type="widget" data-settings="{&quot;classic_columns&quot;:&quot;1&quot;,&quot;classic_columns_tablet&quot;:&quot;2&quot;,&quot;classic_columns_mobile&quot;:&quot;1&quot;,&quot;classic_row_gap&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:35,&quot;sizes&quot;:[]}}" data-widget_type="posts.classic">
+<div class="elementor-widget-container">
+<div class="elementor-posts-container elementor-posts elementor-posts--skin-classic elementor-grid">
+<article class="elementor-post elementor-grid-item post-443443 post type-post status-publish format-standard has-post-thumbnail hentry category-focus tag-coronavirus">
+<a class="elementor-post__thumbnail__link" href="https://www.dire.it/05-04-2020/443443-coronavirus-spazio-tempo-corpo-nellemergenza-vissuta-dai-bambini/">
+<div class="elementor-post__thumbnail"><img width="354" height="250" src="https://www.dire.it/wp-content/uploads/2019/01/Imagoeconomica_1145976-354x250.jpg" class="attachment-medium size-medium" alt="" srcset="https://www.dire.it/wp-content/uploads/2019/01/Imagoeconomica_1145976-354x250.jpg 354w, https://www.dire.it/wp-content/uploads/2019/01/Imagoeconomica_1145976-768x543.jpg 768w, https://www.dire.it/wp-content/uploads/2019/01/Imagoeconomica_1145976.jpg 1200w" sizes="(max-width: 354px) 100vw, 354px" /></div>
+</a>
+<div class="elementor-post__text">
+<h3 class="elementor-post__title">
+<a href="https://www.dire.it/05-04-2020/443443-coronavirus-spazio-tempo-corpo-nellemergenza-vissuta-dai-bambini/">
+Coronavirus: spazio, tempo, corpo nell’emergenza vissuta dai bambini </a>
+</h3>
+</div>
+</article>
+</div>
+</div>
+</div>
+<div class="elementor-element elementor-element-b528d42 elementor-widget elementor-widget-heading" data-id="b528d42" data-element_type="widget" data-widget_type="heading.default">
+<div class="elementor-widget-container">
+<h2 class="elementor-heading-title elementor-size-default">Videonews</h2> </div>
+</div>
+<div class="elementor-element elementor-element-3743012 elementor-widget elementor-widget-image" data-id="3743012" data-element_type="widget" data-widget_type="image.default">
+<div class="elementor-widget-container">
+<div class="elementor-image">
+<img width="800" height="4" src="https://www.dire.it/wp-content/uploads/2018/01/barra_centrale.png" class="attachment-large size-large" alt="" srcset="https://www.dire.it/wp-content/uploads/2018/01/barra_centrale.png 800w, https://www.dire.it/wp-content/uploads/2018/01/barra_centrale-360x2.png 360w, https://www.dire.it/wp-content/uploads/2018/01/barra_centrale-768x4.png 768w" sizes="(max-width: 800px) 100vw, 800px" /> </div>
+</div>
+</div>
+<div class="elementor-element elementor-element-2f1ea4c elementor-grid-1 elementor-posts--thumbnail-left video-thumb elementor-posts--align-left elementor-grid-tablet-2 elementor-grid-mobile-1 elementor-widget elementor-widget-posts" data-id="2f1ea4c" data-element_type="widget" data-settings="{&quot;classic_columns&quot;:&quot;1&quot;,&quot;classic_columns_tablet&quot;:&quot;2&quot;,&quot;classic_columns_mobile&quot;:&quot;1&quot;,&quot;classic_row_gap&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:35,&quot;sizes&quot;:[]}}" data-widget_type="posts.classic">
+<div class="elementor-widget-container">
+<div class="elementor-posts-container elementor-posts elementor-posts--skin-classic elementor-grid">
+<article class="elementor-post elementor-grid-item post-444162 post type-post status-publish format-standard has-post-thumbnail hentry category-futuro tag-coronavirus publication_zone-videonews">
+<a class="elementor-post__thumbnail__link" href="https://www.dire.it/07-04-2020/444162-video-coronavirus-in-arrivo-le-visiere-mediche-targate-apple/">
+<div class="elementor-post__thumbnail"><img width="360" height="180" src="https://www.dire.it/wp-content/uploads/2020/04/apple_visiere-360x180.jpg" class="attachment-medium size-medium" alt="apple_visiere" srcset="https://www.dire.it/wp-content/uploads/2020/04/apple_visiere-360x180.jpg 360w, https://www.dire.it/wp-content/uploads/2020/04/apple_visiere-768x384.jpg 768w, https://www.dire.it/wp-content/uploads/2020/04/apple_visiere.jpg 1024w" sizes="(max-width: 360px) 100vw, 360px" /></div>
+</a>
+<div class="elementor-post__text">
+<h3 class="elementor-post__title">
+<a href="https://www.dire.it/07-04-2020/444162-video-coronavirus-in-arrivo-le-visiere-mediche-targate-apple/">
+VIDEO| Coronavirus, in arrivo le visiere mediche targate Apple </a>
+</h3>
+</div>
+</article>
+<article class="elementor-post elementor-grid-item post-443844 post type-post status-publish format-standard has-post-thumbnail hentry category-campania category-lavoro tag-campania tag-coronavirus tag-coronavirus-campania tag-delivery tag-divieti tag-food tag-giappo-sushibar tag-lavoro publication_zone-videonews">
+<a class="elementor-post__thumbnail__link" href="https://www.dire.it/06-04-2020/443844-video-founder-giappo-sushibar-penalizzati-dai-divieti-ora-in-campania-riprenda-il-delivery/">
+<div class="elementor-post__thumbnail"><img width="250" height="250" src="https://www.dire.it/wp-content/uploads/2020/04/giappo--250x250.jpg" class="attachment-medium size-medium" alt="" srcset="https://www.dire.it/wp-content/uploads/2020/04/giappo--250x250.jpg 250w, https://www.dire.it/wp-content/uploads/2020/04/giappo--150x150.jpg 150w, https://www.dire.it/wp-content/uploads/2020/04/giappo--768x768.jpg 768w, https://www.dire.it/wp-content/uploads/2020/04/giappo-.jpg 960w" sizes="(max-width: 250px) 100vw, 250px" /></div>
+</a>
+<div class="elementor-post__text">
+<h3 class="elementor-post__title">
+<a href="https://www.dire.it/06-04-2020/443844-video-founder-giappo-sushibar-penalizzati-dai-divieti-ora-in-campania-riprenda-il-delivery/">
+VIDEO | Founder Giappo SushiBar: &#8220;Penalizzati dai divieti, ora in Campania riprenda il delivery&#8221; </a>
+</h3>
+</div>
+</article>
+<article class="elementor-post elementor-grid-item post-443729 post type-post status-publish format-standard has-post-thumbnail hentry category-liguria category-vaticano tag-don-roberto-fiscer tag-genova publication_zone-videonews">
+<a class="elementor-post__thumbnail__link" href="https://www.dire.it/06-04-2020/443729-genova-benedizione-palme-scooter/">
+<div class="elementor-post__thumbnail"><img width="360" height="210" src="https://www.dire.it/wp-content/uploads/2020/04/benedizione-palme-360x210.jpg" class="attachment-medium size-medium" alt="" srcset="https://www.dire.it/wp-content/uploads/2020/04/benedizione-palme-360x210.jpg 360w, https://www.dire.it/wp-content/uploads/2020/04/benedizione-palme.jpg 504w" sizes="(max-width: 360px) 100vw, 360px" /></div>
+</a>
+<div class="elementor-post__text">
+<h3 class="elementor-post__title">
+<a href="https://www.dire.it/06-04-2020/443729-genova-benedizione-palme-scooter/">
+VIDEO | A Genova la benedizione delle Palme si fa in scooter </a>
+</h3>
+</div>
+</article>
+<article class="elementor-post elementor-grid-item post-443587 post type-post status-publish format-standard has-post-thumbnail hentry category-europa tag-coronavirus tag-regina-elisabetta publication_zone-videonews">
+<a class="elementor-post__thumbnail__link" href="https://www.dire.it/06-04-2020/443587-video-il-discorso-della-regina-elisabetta-insieme-ce-la-faremo/">
+<div class="elementor-post__thumbnail"><img width="360" height="179" src="https://www.dire.it/wp-content/uploads/2020/04/discorso-regina-elisabetta-360x179.jpg" class="attachment-medium size-medium" alt="" srcset="https://www.dire.it/wp-content/uploads/2020/04/discorso-regina-elisabetta-360x179.jpg 360w, https://www.dire.it/wp-content/uploads/2020/04/discorso-regina-elisabetta.jpg 715w" sizes="(max-width: 360px) 100vw, 360px" /></div>
+</a>
+<div class="elementor-post__text">
+<h3 class="elementor-post__title">
+<a href="https://www.dire.it/06-04-2020/443587-video-il-discorso-della-regina-elisabetta-insieme-ce-la-faremo/">
+VIDEO | Il discorso della Regina Elisabetta: &#8220;Insieme ce la faremo&#8221; </a>
+</h3>
+</div>
+</article>
+<article class="elementor-post elementor-grid-item post-443518 post type-post status-publish format-standard has-post-thumbnail hentry category-abruzzo tag-coronavirus publication_zone-videonews">
+<a class="elementor-post__thumbnail__link" href="https://www.dire.it/06-04-2020/443518-a-11-anni-dal-terremoto-laquila-di-nuovo-deserta-per-lemergenza-coronavirus/">
+<div class="elementor-post__thumbnail"><img width="360" height="180" src="https://www.dire.it/wp-content/uploads/2020/04/laquila_6_aprile_2020-1-360x180.jpg" class="attachment-medium size-medium" alt="l&#039;aquila_6_aprile_2020 (1)" srcset="https://www.dire.it/wp-content/uploads/2020/04/laquila_6_aprile_2020-1-360x180.jpg 360w, https://www.dire.it/wp-content/uploads/2020/04/laquila_6_aprile_2020-1-768x384.jpg 768w, https://www.dire.it/wp-content/uploads/2020/04/laquila_6_aprile_2020-1.jpg 1024w" sizes="(max-width: 360px) 100vw, 360px" /></div>
+</a>
+<div class="elementor-post__text">
+<h3 class="elementor-post__title">
+<a href="https://www.dire.it/06-04-2020/443518-a-11-anni-dal-terremoto-laquila-di-nuovo-deserta-per-lemergenza-coronavirus/">
+VIDEO | A 11 anni dal terremoto L&#8217;Aquila di nuovo deserta per l&#8217;emergenza Coronavirus </a>
+</h3>
+</div>
+</article>
+</div>
+</div>
+</div>
+<div class="elementor-element elementor-element-23674d6 elementor-widget elementor-widget-heading" data-id="23674d6" data-element_type="widget" data-widget_type="heading.default">
+<div class="elementor-widget-container">
+<h2 class="elementor-heading-title elementor-size-default">Canali</h2> </div>
+</div>
+<div class="elementor-element elementor-element-a7edd79 elementor-widget elementor-widget-image" data-id="a7edd79" data-element_type="widget" data-widget_type="image.default">
+<div class="elementor-widget-container">
+<div class="elementor-image">
+<img width="800" height="4" src="https://www.dire.it/wp-content/uploads/2018/01/barra_centrale.png" class="attachment-large size-large" alt="" srcset="https://www.dire.it/wp-content/uploads/2018/01/barra_centrale.png 800w, https://www.dire.it/wp-content/uploads/2018/01/barra_centrale-360x2.png 360w, https://www.dire.it/wp-content/uploads/2018/01/barra_centrale-768x4.png 768w" sizes="(max-width: 800px) 100vw, 800px" /> </div>
+</div>
+</div>
+<div class="elementor-element elementor-element-85d0cf2 elementor-widget elementor-widget-image" data-id="85d0cf2" data-element_type="widget" data-widget_type="image.default">
+<div class="elementor-widget-container">
+<div class="elementor-image">
+<a href="http://www.dire.it/dire-donne/">
+<img width="1000" height="600" src="https://www.dire.it/wp-content/uploads/2018/11/banner-diredonne.jpg" class="attachment-large size-large" alt="" srcset="https://www.dire.it/wp-content/uploads/2018/11/banner-diredonne.jpg 1000w, https://www.dire.it/wp-content/uploads/2018/11/banner-diredonne-360x216.jpg 360w, https://www.dire.it/wp-content/uploads/2018/11/banner-diredonne-768x461.jpg 768w" sizes="(max-width: 1000px) 100vw, 1000px" /> </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</div>
+</div> </ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="row footer-nav">
+<div class="col-xs-12">
+<div class="container">
+<ul class="footer-menu"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-260612"><a href="https://www.dire.it/chi-siamo/">Chi siamo</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-260613"><a href="https://www.dire.it/contatti/">Contatti</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-260616"><a target="_blank" rel="noopener noreferrer" href="http://93.63.249.195/newsreader/">Notiziari</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-382938"><a href="https://www.dire.it/canali-rss/">RSS</a></li>
+</ul>
+<div class="quality">
+<img align="top" alt="UNI ENI ISO 9001 EA: 35" src=" https://www.dire.it/wp-content/themes/dire-MB/_include/image/qualita-DIRE.png " /><span>UNI ENI ISO 9001 EA: 35</span></div>
+</div>
+</div>
+<div class="col-xs-12 footer-container">
+<div class="container">
+<span> Agenzia DIRE - Iscritta al Tribunale di Roma – sezione stampa – al n.341/88 del 08/06/1988
+Editore: Com.e – Comunicazione&Editoria srl Corso d’Italia, 38a 00198 Roma – C.F. 08252061000
+<br>Le notizie del sito Dire sono utilizzabili e riproducibili, a condizione di citare espressamente la fonte «Agenzia DIRE» e l'indirizzo «www.dire.it» </span> <br><br>
+<a href="https://www.iubenda.com/privacy-policy/971395" class="iubenda-white no-brand iubenda-embed" title="Privacy Policy ">Privacy Policy</a><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/javascript">(function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src="https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; if(w.addEventListener){w.addEventListener("load", loader, false);}else if(w.attachEvent){w.attachEvent("onload", loader);}else{w.onload = loader;}})(window, document);</script><a href="https://www.iubenda.com/privacy-policy/971395/cookie-policy" class="iubenda-white no-brand iubenda-embed" title="Cookie Policy ">Cookie Policy</a><script type="text/javascript">(function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src="https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; if(w.addEventListener){w.addEventListener("load", loader, false);}else if(w.attachEvent){w.attachEvent("onload", loader);}else{w.onload = loader;}})(window, document);</script>
+</div>
+</div>
+</div>
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-37931214-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"NRJS-9128efe565b0f516e01","applicationID":"253609210","transactionName":"YwFbMRECCEZVABVdWVpLeAYXCglbGxAIWlFYAQ==","queueTime":0,"applicationTime":372,"atts":"T0ZYR1kYG0g=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+<link rel='stylesheet' id='elementor-icons-shared-0-css' href='https://www.dire.it/wp-content/plugins/elementor/assets/lib/font-awesome/css/fontawesome.min.css?ver=5.12.0' type='text/css' media='all' />
+<link rel='stylesheet' id='elementor-icons-fa-solid-css' href='https://www.dire.it/wp-content/plugins/elementor/assets/lib/font-awesome/css/solid.min.css?ver=5.12.0' type='text/css' media='all' />
+<link rel='stylesheet' id='elementor-icons-fa-brands-css' href='https://www.dire.it/wp-content/plugins/elementor/assets/lib/font-awesome/css/brands.min.css?ver=5.12.0' type='text/css' media='all' />
+<link rel='stylesheet' id='elementor-post-260857-css' href='https://www.dire.it/wp-content/uploads/elementor/css/post-260857.css?ver=1585676879' type='text/css' media='all' />
+<script type='text/javascript' src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
+<script type='text/javascript' src='https://www.dire.it/wp-content/themes/dire-MB/_include/js/jquery.parallax-scroll.js'></script>
+<script type='text/javascript' src='https://www.dire.it/wp-content/themes/dire-MB/_include/js/plugin.js'></script>
+<script type='text/javascript' src='https://www.dire.it/wp-content/themes/dire-MB/_include/js/main.js?ver=1.45'></script>
+<script type='text/javascript' src='https://www.dire.it/wp-includes/js/wp-embed.min.js?ver=5.4'></script>
+<script type='text/javascript' src='https://www.dire.it/wp-content/plugins/elementor-pro/assets/lib/social-share/social-share.min.js?ver=0.2.17'></script>
+<script type='text/javascript' src='https://www.dire.it/wp-includes/js/imagesloaded.min.js?ver=3.2.0'></script>
+<script type='text/javascript' src='https://www.dire.it/wp-content/plugins/elementor/assets/js/frontend-modules.min.js?ver=2.9.7'></script>
+<script type='text/javascript' src='https://www.dire.it/wp-content/plugins/elementor-pro/assets/lib/sticky/jquery.sticky.min.js?ver=2.7.2'></script>
+<script type='text/javascript'>
+var ElementorProFrontendConfig = {"ajaxurl":"https:\/\/www.dire.it\/wp-admin\/admin-ajax.php","nonce":"acc83c5b95","shareButtonsNetworks":{"facebook":{"title":"Facebook","has_counter":true},"twitter":{"title":"Twitter"},"google":{"title":"Google+","has_counter":true},"linkedin":{"title":"LinkedIn","has_counter":true},"pinterest":{"title":"Pinterest","has_counter":true},"reddit":{"title":"Reddit","has_counter":true},"vk":{"title":"VK","has_counter":true},"odnoklassniki":{"title":"OK","has_counter":true},"tumblr":{"title":"Tumblr"},"delicious":{"title":"Delicious"},"digg":{"title":"Digg"},"skype":{"title":"Skype"},"stumbleupon":{"title":"StumbleUpon","has_counter":true},"telegram":{"title":"Telegram"},"pocket":{"title":"Pocket","has_counter":true},"xing":{"title":"XING","has_counter":true},"whatsapp":{"title":"WhatsApp"},"email":{"title":"Email"},"print":{"title":"Print"}},"facebook_sdk":{"lang":"it_IT","app_id":""}};
+</script>
+<script type='text/javascript' src='https://www.dire.it/wp-content/plugins/elementor-pro/assets/js/frontend.min.js?ver=2.7.2'></script>
+<script type='text/javascript' src='https://www.dire.it/wp-includes/js/jquery/ui/position.min.js?ver=1.11.4'></script>
+<script type='text/javascript' src='https://www.dire.it/wp-content/plugins/elementor/assets/lib/dialog/dialog.min.js?ver=4.7.6'></script>
+<script type='text/javascript' src='https://www.dire.it/wp-content/plugins/elementor/assets/lib/waypoints/waypoints.min.js?ver=4.0.2'></script>
+<script type='text/javascript' src='https://www.dire.it/wp-content/plugins/elementor/assets/lib/swiper/swiper.min.js?ver=5.3.6'></script>
+<script type='text/javascript' src='https://www.dire.it/wp-content/plugins/elementor/assets/lib/share-link/share-link.min.js?ver=2.9.7'></script>
+<script type='text/javascript'>
+var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false},"i18n":{"shareOnFacebook":"Share on Facebook","shareOnTwitter":"Share on Twitter","pinIt":"Pin it","downloadImage":"Download image"},"is_rtl":false,"breakpoints":{"xs":0,"sm":480,"md":768,"lg":1025,"xl":1440,"xxl":1600},"version":"2.9.7","urls":{"assets":"https:\/\/www.dire.it\/wp-content\/plugins\/elementor\/assets\/"},"settings":{"page":[],"general":{"elementor_global_image_lightbox":"yes","elementor_lightbox_enable_counter":"yes","elementor_lightbox_enable_fullscreen":"yes","elementor_lightbox_enable_zoom":"yes","elementor_lightbox_enable_share":"yes","elementor_lightbox_title_src":"title","elementor_lightbox_description_src":"description"},"editorPreferences":[]},"post":{"id":444012,"title":"Dl%20imprese%2C%20Conte%3A%20%22Diamo%20liquidit%C3%A0%20immediata%20per%20400%20miliardi%2C%20una%20potenza%20di%20fuoco%22%20-%20DIRE.it","excerpt":"\"Abbiamo deliberato la sospensione di vari pagamenti fiscali e contributi e ritenute anche per i mesi di aprile e maggio\"","featuredImage":"https:\/\/www.dire.it\/wp-content\/uploads\/2020\/03\/conte-lis-diretta-fb.jpg"}};
+</script>
+<script type='text/javascript' src='https://www.dire.it/wp-content/plugins/elementor/assets/js/frontend.min.js?ver=2.9.7'></script>
+</html>
+

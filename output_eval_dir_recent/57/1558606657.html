@@ -1,0 +1,932 @@
+<!DOCTYPE html><html lang="tr"><head><script type="text/javascript">
+!function(){function p(e){return JSON.stringify(e)}function x(){_.reload()}function b(e){var t=_.hostname,r=new RegExp("\\w+\\.("+(I.tld||"com|net|org|tv|biz|info")+")(\\.\\w+)*$").exec(t),n=r?"."+r[0]:t,i=new Date;i.setDate(i.getDate()+1);var o="samesite=strict;";return"https:"==_.protocol&&(o+=" secure;"),O.cookie=a+"="+e+"; expires="+i.toGMTString()+"; path=/; "+o+" domain="+n,D.test(O.cookie)}function y(e){if(typeof XMLHttpRequest!=l){var t=new XMLHttpRequest,r=p({message_type:"skipredirect",link:_.href,success:1,userProfile:e});t.open("POST","https://log.haberturk.com/redirect",!0),t.setRequestHeader("Content-Type","application/x-www-form-urlencoded"),t.send(r)}}var S="d",M="m",l="undefined",E=null,N=[1024,600],O=document,T=screen,_=O.location,a="fullsite",D=new RegExp("(^|;\\s*)"+a+"=([^;]+)(;|$)"),I=[],g=typeof JSON!=l&&typeof JSON.parse!=l,J=new function(){function o(){0<s.length?r.setItem(e,p(s)):r.removeItem(e)}var e="__cbg_redirect_urls",t=(new Date).getTime(),a=t+6e4,s=[],c=g&&typeof Storage!=l,r=c?sessionStorage:E;if(this.check=function(e){if(!c)return!1;for(var t=E,r=0;r<s.length;r++){var n=s[r];if(n.url==e){t=n;break}}var i=!1;return t==E?(t={url:e,timestamp:a},s.push(t)):(i=!0,t.timestamp=a),o(),i},null!=r){var n=r.getItem(e),i=JSON.parse(n);if(i)for(var u=0;u<i.length;u++){var f=i[u];t<f.timestamp&&s.push(f)}o()}};cbgmbdetect=function(e){var t,r=(I=e).desktopMinResolution||N,n=r[0],i=r[1],o=e.useReload||0,a=e.profile||S,s=!0,c=D.exec(O.cookie),u=c?c[2]:E;if(u&&u!=S&&u!=M)t="0"==u||u==M?M:S;else{var f=new RegExp(e.desktopUAMatch||"Windows NT|iPad|Macintosh|X11","i"),p=T.width,l=T.height,g=l;p<l&&(l=p,p=g),(t=!f.test(navigator.userAgent)&&(p<n||l<i)?M:S)!=u&&(s=b(t),o&&t!=a&&s&&x())}cbgmbAlternate=function(e){(a==S&&"1"==u||a==M&&t==M)&&jQuery(e).click(function(){b(a==S?"0":"1")&&x()}).fadeIn()};var h=_.pathname,m=e.targetSite||"";if(!o&&t!=a&&s&&m&&e.urlRegexList)for(var d=0,v=e.urlRegexList,w=v.length;d<w;d++){if(("RegExp"==typeof v[d]?v[d]:new RegExp(v[d])).test(h)){var k=h+_.search;if(J.check(k))y(t);else{var R="//"+m+k;_.href=R}break}}}}();try{cbgmbdetect({"profile":"d","targetSite":"m.haberturk.com","desktopMinResolution":[800,600],"urlRegexList":[
+"^/$",
+"^/(secim|yerel-haberler|((video|galeri|gundem|dunya|polemik|medya|yasam)(/[\\w-]+)?)|ekonomi(/(makro-ekonomi|finans-borsa|otomobil|emlak|tatil|airport|sirket-haberleri|teknoloji|is-yasam|enerji|alisveris|para|altin|doviz|borsa|turizm|piyasa|sigorta|merak-edilenler)(/[\\w-]+)?)?|magazin(/(herkes-bunu-konusuyor|fiskos|muzik|cemiyet-hayati|dunyadan|sipsak|roportajlar|televizyon)(/[\\w-]+)?)?|spor(/(avrupa-sampiyonasi-elemeleri-2016|basketbol|diger|futbol|golf|hentbol|motor_sporlari|olimpiyat|ozel|tenis|voleybol)(/[^\\d][\\w-]+){0,2})?|spor/(macmerkezi|super-lig-para-durumu|iddaa/canlisonuclar)|saglik(/(ramazanda-saglikli-yasam|genel-saglik|anne-ve-cocuk|kalp-sagligi|saglikli-beslenme|kanser|cinsel-saglik|estetik-cerrahi|noroloji|ozel-haberler))?|hteditor|htyazarlar|nobetci-eczaneler|ramazan|kesfet|son-dakika-haberleri|astroloji|canliyayin|yemek-tarifleri|yemek-yapma|diyet-yemek-tarifleri|tummansetler|dergilik|bugun-ne-oldu)/?$",
+"^/([\\w-]+-\\d+(-(spor|ekonomi|magazin|teknoloji))?(/\\d+)?|((ekonomi|spor|magazin)/)?[^/]+/haber/\\d+-[^/]+(/\\d+)?|yazarlar/[^/]+/\\d+-[^/]+|(htyazar|hteditor)/([\\w-]+(/\\d+)?))$",
+"^/[a-z]+-haberleri/\\d+-[^/]*$",
+"^/[a-z]+-cuma-namazi-vakti$",
+"^/([a-z]+/)?[a-z]+-haberleri$",
+"^/yerel-haberler/\\d+-[^/]*$",
+"^/(ramazan|nobetci-eczaneler|bulmaca|namaz-vakitleri|havadurumu|video/playlist|ekonomi/piyasa|haberleri|htgastro|sans-oyunlari)/.*$",
+"^/secim/secim2018|/secim/secim2019|/ekonomi/borsa/hisse/([^/]*)$",
+"^/ekonomi/((\\d+-)?(dolar|euro|bitcoin|sterlin)-ne-kadar|\\d+-tl-kac-(dolar|euro|bitcoin|sterlin))$",
+"^/video/[\\w-]+/(izle|video)/[\\w-]+/\\d+$",
+"^/video/videokanal/detay/trt-eba-tv$",
+"^/galeri/[\\w-]+/\\d+-[\\w-]+(/\\d+)?(/\\d+)?/?$",
+"^/secim/(secim2017/referandum|secim201[45])/?$",
+"^/secim/secim2017/referandum/(sehir|ilce)/.*$",
+"^/haberler/bugununAjandasi/?$",
+"^/(spor/iddaa/takimdetay/|milli-piyango|kunye|privacy|bulmaca|roportaj|e-okul-veli-bilgilendirme-sistemi|son-depremler|guzel-sozler|biyografi|sans-oyunlari|ozel-gunler/8-mart-dunya-kadinlar-gunu|eba-giris|corona-virusu)"]});}catch(e){}</script>
+<script type="text/javascript" src="https://im.haberturk.com/assets/js/adblock.js?v=3352" async></script><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" /><meta charset="utf-8" /><title>ŞOK 25-31 Mart Aktüel ürünler kataloğu 2020! ŞOK'da bu hafta kampanyalı indirimli ürünler var | Alışveriş Haberleri</title><meta name="description" content="Son Dakika " /><meta name="news_keywords" content="ŞOK indirimli ürünler, şok 26 mart aktüel kataloğu, şok 28 mart aktüel ürünler kataloğu, şok 28 mart 2020, " /><link rel="index" title="Haber, Habertürk" href="//www.haberturk.com" /><link rel="alternate" media="only screen and (max-width: 640px)" href="https://m.haberturk.com/sok-25-31-mart-aktuel-urunler-katalogu-2020-sok-da-bu-hafta-kampanyali-indirimli-urunler-var-2624902-ekonomi" /><meta property="fb:app_id" content="165954270092871" /><meta property="og:site_name" content="hthayat.haberturk.com" /><meta property="og:title" content="ŞOK 25-31 Mart Aktüel ürünler kataloğu" /><meta property="og:description" content="Haberin detayları için tıklayınız" /><meta property="og:image" content="https://im.haberturk.com/2020/03/25/ver1585144850/2624902_1200x627.jpg" /><meta property="og:url" content="https://www.haberturk.com/sok-25-31-mart-aktuel-urunler-katalogu-2020-sok-da-bu-hafta-kampanyali-indirimli-urunler-var-2624902-ekonomi" /><meta property="og:type" content="article" /><meta property="og:article:tag" content="ŞOK 25-31 Mart Aktüel ürünler kataloğu 2020! ŞOK'da bu hafta kampanyalı indirimli ürünler var" /><meta property="og:article:published_time" content="2020-03-25T17:00:50+03:00" /><meta property="og:article:section" content="alisveris" /><meta property="eng:Id" content="4060642" /><meta property="eng:categoryName" content="alisveris" /><meta property="og:article:author" content="Habertürk" /><meta property="og:locale" content="tr_TR" /><meta name="twitter:card" content="summary_large_image" /><meta name="twitter:site" content="@haberturk" /><meta name="twitter:creator" content="@haberturk" /><meta name="twitter:url" content="https://www.haberturk.com/sok-25-31-mart-aktuel-urunler-katalogu-2020-sok-da-bu-hafta-kampanyali-indirimli-urunler-var-2624902-ekonomi" /><meta name="twitter:title" content="ŞOK 25-31 Mart Aktüel ürünler kataloğu" /><meta name="twitter:description" content="Haberin detayları için tıklayınız" /><meta name="twitter:image:src" content="https://im.haberturk.com/2020/03/25/ver1585144850/2624902_600x314.jpg" /><meta name="twitter:domain" content="haberturk.com" /><meta name="thumbnail_height" content="100" /><meta name="thumbnail_width" content="100" /><link rel="thumbnail" type="image/jpeg" href="https://im.haberturk.com/2020/03/25/2624902_23ab20c3fd3bc9a8181184598b0778f4_640x640.jpg" /><link rel="image_src" type="image/jpeg" href="https://im.haberturk.com/2020/03/25/2624902_23ab20c3fd3bc9a8181184598b0778f4_640x640.jpg" /><link rel="standout" href="https://www.haberturk.com/sok-25-31-mart-aktuel-urunler-katalogu-2020-sok-da-bu-hafta-kampanyali-indirimli-urunler-var-2624902-ekonomi" /><link rel="next" href="/sok-25-31-mart-aktuel-urunler-katalogu-2020-sok-da-bu-hafta-kampanyali-indirimli-urunler-var-2624902-ekonomi/2" /><meta http-equiv="x-dns-prefetch-control" content="on" /><link rel="dns-prefetch" href="https://mo.ciner.com.tr" /><link rel="dns-prefetch" href="https://im.haberturk.com" /><link rel="dns-prefetch" href="//im.hthayat.com" /><link rel="dns-prefetch" href="//adsp.haberturk.com" /><meta http-equiv="pragma" content="no-cache" /><meta http-equiv="expires" content="-1" /><meta http-equiv="cache-control" content="no-cache" /><meta http-equiv="content-language" content="tr" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta name="medium" content="news" /><meta name="google-site-verification" content="akWhafZMP9ir7pT_Tm4W2Q7lnQd5NfkN8SUlEEugDdQ" /><meta property="fb:admins" content="537270901" /><meta property="fb:page_id" content="161827680527303" /><meta property="fb:pages" content="161827680527303" /><link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" /><link rel="amphtml" href="https://m.haberturk.com/sok-25-31-mart-aktuel-urunler-katalogu-2020-sok-da-bu-hafta-kampanyali-indirimli-urunler-var-2624902-amp" /><link rel="next" href="/sok-25-31-mart-aktuel-urunler-katalogu-2020-sok-da-bu-hafta-kampanyali-indirimli-urunler-var-2624902-ekonomi/2" /><link rel="canonical" href="https://www.haberturk.com/sok-25-31-mart-aktuel-urunler-katalogu-2020-sok-da-bu-hafta-kampanyali-indirimli-urunler-var-2624902-ekonomi" /><script type="text/javascript">(function(l,p){try{if(l.pathname!=p)l.href=p+l.search;}catch(e){}})(document.location,"\/sok-25-31-mart-aktuel-urunler-katalogu-2020-sok-da-bu-hafta-kampanyali-indirimli-urunler-var-2624902-ekonomi");</script><script type="application/ld+json">{"@context":"http:\/\/schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"\/\/www.haberturk.com\/ekonomi","name":"HT Ekonomi"}},{"@type":"ListItem","position":2,"item":{"@id":"\/\/www.haberturk.com\/ekonomialisveris","name":"Al\u0131\u015fveri\u015f"}}]}</script><script>
+var allnewsImpressionArray = (typeof allnewsImpressionArray != 'undefined' && allnewsImpressionArray instanceof Array) ? allnewsImpressionArray : [];    
+var allnewsImpressionArrayKey = (typeof allnewsImpressionArrayKey != 'undefined' && allnewsImpressionArrayKey instanceof Array) ? allnewsImpressionArrayKey : [];
+var globalBrand = 'Detail';
+        </script><script type="text/javascript">
+			var HtIsProduction = true,
+	            HtIsHomePage = false,
+	            HtIsNewsPage = true,
+              HtIsSpecialNews = true;
+        </script><script type="text/javascript">
+var __OGEZIO_ASYNC_OPTIONS = {"m1":130,"m2":1,"m3":"4060642","i1":2624902,"i2":2638800,"i3":1,"keywords":"\u015eOK indirimli \u00fcr\u00fcnler,\u015fok 26 mart akt\u00fcel katalo\u011fu,\u015fok 28 mart akt\u00fcel \u00fcr\u00fcnler katalo\u011fu,\u015fok 28 mart 2020"};
+</script><script async src="https://www.googletagmanager.com/gtag/js?id=UA-206852-35"></script>
+<script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-206852-35');
+    </script>
+<link href="https://im.haberturk.com/assets/css/desktop/v4/detail-photo-news.min.css?v=3352" rel="stylesheet"><link href="https://im.haberturk.com/assets/css/desktop/v4/header.min.css?v=3352" rel="stylesheet"><script>
+    /*! head.load - v1.0.3 */
+(function(n,t){"use strict";function w(){}function u(n,t){if(n){typeof n=="object"&&(n=[].slice.call(n));for(var i=0,r=n.length;i<r;i++)t.call(n,n[i],i)}}function it(n,i){var r=Object.prototype.toString.call(i).slice(8,-1);return i!==t&&i!==null&&r===n}function s(n){return it("Function",n)}function a(n){return it("Array",n)}function et(n){var i=n.split("/"),t=i[i.length-1],r=t.indexOf("?");return r!==-1?t.substring(0,r):t}function f(n){(n=n||w,n._done)||(n(),n._done=1)}function ot(n,t,r,u){var f=typeof n=="object"?n:{test:n,success:!t?!1:a(t)?t:[t],failure:!r?!1:a(r)?r:[r],callback:u||w},e=!!f.test;return e&&!!f.success?(f.success.push(f.callback),i.load.apply(null,f.success)):e||!f.failure?u():(f.failure.push(f.callback),i.load.apply(null,f.failure)),i}function v(n){var t={},i,r;if(typeof n=="object")for(i in n)!n[i]||(t={name:i,url:n[i]});else t={name:et(n),url:n};return(r=c[t.name],r&&r.url===t.url)?r:(c[t.name]=t,t)}function y(n){n=n||c;for(var t in n)if(n.hasOwnProperty(t)&&n[t].state!==l)return!1;return!0}function st(n){n.state=ft;u(n.onpreload,function(n){n.call()})}function ht(n){n.state===t&&(n.state=nt,n.onpreload=[],rt({url:n.url,type:"cache"},function(){st(n)}))}function ct(){var n=arguments,t=n[n.length-1],r=[].slice.call(n,1),f=r[0];return(s(t)||(t=null),a(n[0]))?(n[0].push(t),i.load.apply(null,n[0]),i):(f?(u(r,function(n){s(n)||!n||ht(v(n))}),b(v(n[0]),s(f)?f:function(){i.load.apply(null,r)})):b(v(n[0])),i)}function lt(){var n=arguments,t=n[n.length-1],r={};return(s(t)||(t=null),a(n[0]))?(n[0].push(t),i.load.apply(null,n[0]),i):(u(n,function(n){n!==t&&(n=v(n),r[n.name]=n)}),u(n,function(n){n!==t&&(n=v(n),b(n,function(){y(r)&&f(t)}))}),i)}function b(n,t){if(t=t||w,n.state===l){t();return}if(n.state===tt){i.ready(n.name,t);return}if(n.state===nt){n.onpreload.push(function(){b(n,t)});return}n.state=tt;rt(n,function(){n.state=l;t();u(h[n.name],function(n){f(n)});o&&y()&&u(h.ALL,function(n){f(n)})})}function at(n){n=n||"";var t=n.split("?")[0].split(".");return t[t.length-1].toLowerCase()}function rt(t,i){function e(t){t=t||n.event;u.onload=u.onreadystatechange=u.onerror=null;i()}function o(f){f=f||n.event;(f.type==="load"||/loaded|complete/.test(u.readyState)&&(!r.documentMode||r.documentMode<9))&&(n.clearTimeout(t.errorTimeout),n.clearTimeout(t.cssTimeout),u.onload=u.onreadystatechange=u.onerror=null,i())}function s(){if(t.state!==l&&t.cssRetries<=20){for(var i=0,f=r.styleSheets.length;i<f;i++)if(r.styleSheets[i].href===u.href){o({type:"load"});return}t.cssRetries++;t.cssTimeout=n.setTimeout(s,250)}}var u,h,f;i=i||w;h=at(t.url);h==="css"?(u=r.createElement("link"),u.type="text/"+(t.type||"css"),u.rel="stylesheet",u.href=t.url,t.cssRetries=0,t.cssTimeout=n.setTimeout(s,500)):(u=r.createElement("script"),u.type="text/"+(t.type||"javascript"),u.src=t.url);u.onload=u.onreadystatechange=o;u.onerror=e;u.async=!1;u.defer=!1;t.errorTimeout=n.setTimeout(function(){e({type:"timeout"})},7e3);f=r.head||r.getElementsByTagName("head")[0];f.insertBefore(u,f.lastChild)}function vt(){for(var t,u=r.getElementsByTagName("script"),n=0,f=u.length;n<f;n++)if(t=u[n].getAttribute("data-headjs-load"),!!t){i.load(t);return}}function yt(n,t){var v,p,e;return n===r?(o?f(t):d.push(t),i):(s(n)&&(t=n,n="ALL"),a(n))?(v={},u(n,function(n){v[n]=c[n];i.ready(n,function(){y(v)&&f(t)})}),i):typeof n!="string"||!s(t)?i:(p=c[n],p&&p.state===l||n==="ALL"&&y()&&o)?(f(t),i):(e=h[n],e?e.push(t):e=h[n]=[t],i)}function e(){if(!r.body){n.clearTimeout(i.readyTimeout);i.readyTimeout=n.setTimeout(e,50);return}o||(o=!0,vt(),u(d,function(n){f(n)}))}function k(){r.addEventListener?(r.removeEventListener("DOMContentLoaded",k,!1),e()):r.readyState==="complete"&&(r.detachEvent("onreadystatechange",k),e())}var r=n.document,d=[],h={},c={},ut="async"in r.createElement("script")||"MozAppearance"in r.documentElement.style||n.opera,o,g=n.head_conf&&n.head_conf.head||"head",i=n[g]=n[g]||function(){i.ready.apply(null,arguments)},nt=1,ft=2,tt=3,l=4,p;if(r.readyState==="complete")e();else if(r.addEventListener)r.addEventListener("DOMContentLoaded",k,!1),n.addEventListener("load",e,!1);else{r.attachEvent("onreadystatechange",k);n.attachEvent("onload",e);p=!1;try{p=!n.frameElement&&r.documentElement}catch(wt){}p&&p.doScroll&&function pt(){if(!o){try{p.doScroll("left")}catch(t){n.clearTimeout(i.readyTimeout);i.readyTimeout=n.setTimeout(pt,50);return}e()}}()}i.load=i.js=ut?lt:ct;i.test=ot;i.ready=yt;i.ready(r,function(){y()&&u(h.ALL,function(n){f(n)});i.feature&&i.feature("domloaded",!0)})})(window);    var GLOBAL_YAYIN_ID = "130";
+
+    var sondakikaTickerLoading = "/widgetjs/sondakikaTicker.js";
+    var hotTopicsTickerLoading = "/widgetjs/hotTopicsTicker.js";
+    // var cbgloutLoading = "/ekonomi/adscbg/cbglout.js";
+    var siblingsLoading = "/ekonomi/details/siblings/4060642";
+    var gemiusId = 'B8Y7AGNMeOnyyCHMClQ2qMeCrfGkFYNAblwIuDITDBP.D7';
+
+    var jQueryScript = 'https://im.haberturk.com/assets/js/plugins/jquery/jquery-3.3.1.min.js?v=3352';
+    var jQueryScriptMove = 'https://im.haberturk.com/assets/js/plugins/jquery.event.move.js';
+    var globaljs = 'https://im.haberturk.com/assets/js/desktop/v4/detail-page-header.min.js?v=3352';
+
+    dataLayer = [];
+    window.onload = function(e) {
+        head.load([{
+                    jQuery: jQueryScript
+                },
+                {
+                    jQueryScriptMove: jQueryScriptMove
+                },
+                {
+                    globaljs: globaljs
+                },
+                // { cbglout: cbgloutLoading  },
+                {
+                    sondakikaTicker: sondakikaTickerLoading
+                },
+                {
+                    hotTpicsTicker: hotTopicsTickerLoading
+                },
+                {
+                    siblings: siblingsLoading
+                }
+            ],
+            function() {
+                setTimeout(function(){                var autoRefreshType = "";                if (typeof head != "undefined") {
+                if (typeof autoRefreshInit != "undefined") {
+                        autoRefreshType = HTGlobal.AutoRefresh.init(3600000);
+                        dataLayer.push({'Auto Refresh':autoRefreshType});
+                } else {
+                    head.ready("globaljs", function() {
+                        autoRefreshType = HTGlobal.AutoRefresh.init(3600000);
+                        dataLayer.push({'Auto Refresh':autoRefreshType});
+                    });
+                }
+                    
+                } else {
+                    $( document ).ready(function() {
+                        autoRefreshType = HTGlobal.AutoRefresh.init(3600000);
+                        dataLayer.push({'Auto Refresh':autoRefreshType});
+                    });
+                }                dataLayer.push({
+                    'hierarchy': 'Detay',
+                    'category1': 'Ekonomi',
+                    'category2': 'Alışveriş',
+                    'category3': '',
+                    'category4': '',
+                    'detailType': 'Foto Haber',
+                    'layoutType': '',
+                    'categoryOrder': 'Ekonomi/Alışveriş',
+                    'newsID': '2624902',
+                    'newsTitle': 'ŞOK 25-31 Mart Aktüel ürünler kataloğu',
+                    'editorID': '1426',
+                    'textLength': 0,
+                    'commentCount': '',
+                    'photoTotalCount': '2',
+                    'currentPhotoNo': '1',
+                    'columnistName': '',
+                    'adBlockUser': '',
+                'loginStatus': '',
+                'memberId': '',
+                    'gender': '',
+                    'platform': 'Desktop',
+                    'cinerSource': 'Haberturk',
+                    'nativeAd': 'No',
+                    'pageType': 'SEO Özel Foto Haber',
+                    'videoIncluded': 'No',
+                    'webVersion': '98482',
+                    'mobileVersion': '2',
+                    'jsVersion': '98481',
+                    'cssVersion': '98481',
+                    'mvcVersion': '97957',
+                    'modulesVersion': '97975',
+                    'ageGroup' : '',
+                    'disYazarlar' : '',
+                    'dateCreated' : '2020-03-25 17:00',
+                    'dateModified' : '2020-03-25 17:00'
+                    
+                });
+
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NCHP7Z9');
+}, 0);
+setTimeout(function(){!function(){var t=function(t){return(document.cookie.match("(^|; )"+t+"=([^;]*)")||0)[2]},e=function(t,o,e,n){n=void 0===n?"":"domain="+n+";";var i=new Date;i.setDate(i.getDate()+e);var a=escape(o)+(null===e?"":"; expires="+i.toUTCString());document.cookie=t+"="+a+";"+n+"path=/"};if(null==t("uidGender")||null==t("uidAge")||null==t("uidGender2")||null==t("uidAge2")){var n=t("uid");null!=n&&(n=n.replace("==",""),xhttp=new XMLHttpRequest,xhttp.onreadystatechange=function(){if(4==this.readyState&&200==this.status){var t=new RegExp("({.*)").exec(xhttp.responseText);if(null!=t){var o=t[1].replace(/'/g,'"');obj=JSON.parse(o),e("uidGender",obj.S,30,window.location.host),e("uidAge",obj.Y,30,window.location.host),e("uidPanType","HTP",30,window.location.host),e("uidGender2",obj.S,1,window.location.host),e("uidAge2",obj.Y,1,window.location.host),e("uidPanType2","HTP",1,window.location.host)}else xhttp2=new XMLHttpRequest,xhttp2.onreadystatechange=function(){if(4==this.readyState&&200==this.status){var t=new RegExp("({.*)").exec(xhttp2.responseText);if(null!=t){var o=t[1].replace(/'/g,'"');obj=JSON.parse(o),e("uidGender",obj.S,30,window.location.host),e("uidAge",obj.Y,30,window.location.host),e("uidPanType","HTIP",30,window.location.host),e("uidGender2",obj.S,1,window.location.host),e("uidAge2",obj.Y,1,window.location.host),e("uidPanType2","HTIP",1,window.location.host)}}},xhttp2.open("GET","/dynamics/rdshg/7/HaberturkIncuredPanelistData/"+n,!0),xhttp2.send()}},xhttp.open("GET","/dynamics/rdshg/7/HaberturkPanelistData/"+n,!0),xhttp.send())}var o=!1;void 0===window.adblockDetector?o=!0:window.adblockDetector.init({debug:!0,found:function(){o=!0},notFound:function(){o=!1}}),e("ad_blocker",o,30,window.location.host.replace("www.",""))}()},0);
+                            }
+        );
+    };
+    
+var pp_gemius_identifier = 'B8Y7AGNMeOnyyCHMClQ2qMeCrfGkFYNAblwIuDITDBP.D7';
+setTimeout(function() {
+function gemius_pending(i) { window[i] = window[i] || function() {var x = window[i+'_pdata'] = window[i+'_pdata'] || []; x[x.length]=arguments;};};
+gemius_pending('gemius_hit'); gemius_pending('gemius_event'); gemius_pending('pp_gemius_hit'); gemius_pending('pp_gemius_event');
+(function(d,t) {try {var gt=d.createElement(t),s=d.getElementsByTagName(t)[0],l='http'+((location.protocol=='https:')?'s':''); gt.setAttribute('async','async');
+gt.setAttribute('defer','defer'); gt.src=l+'://tr.hit.gemius.pl/xgemius.js'; s.parentNode.insertBefore(gt,s);} catch (e) {}})(document,'script');
+
+  function gemius_player_pending(obj,fun) {obj[fun] = obj[fun] || function() {var x = window['gemius_player_data'] = window['gemius_player_data'] || []; x[x.length]=[this,fun,arguments];};};
+  gemius_player_pending(window,"GemiusPlayer"); gemius_player_pending(GemiusPlayer.prototype,"newProgram"); gemius_player_pending(GemiusPlayer.prototype,"newAd");
+  gemius_player_pending(GemiusPlayer.prototype,"adEvent"); gemius_player_pending(GemiusPlayer.prototype,"programEvent");
+  (function(d,t) {try {var gt=d.createElement(t),s=d.getElementsByTagName(t)[0],l='http'+((location.protocol=='https:')?'s':''); gt.setAttribute('async','async');
+  gt.setAttribute('defer','defer'); gt.src=l+'://gatr.hit.gemius.pl/gplayer.js'; s.parentNode.insertBefore(gt,s);} catch (e) {}})(document,'script');
+},0);</script>
+<script type="application/ld+json">
+                {"@context":"http:\/\/schema.org","@type":"Organization","name":"Haberturk.com","url":"https:\/\/www.haberturk.com","logo":"https:\/\/www.haberturk.com\/images\/ht-logo.png","sameAs":["https:\/\/www.facebook.com\/Haberturk","https:\/\/twitter.com\/haberturk","https:\/\/plus.google.com\/+haberturk","https:\/\/www.linkedin.com\/company\/haberturk\/"]}
+              </script><script type="application/ld+json">
+              {"@context":"http:\/\/schema.org","@type":"NewsArticle","articleSection":"Ekonomi","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/www.haberturk.com\/sok-25-31-mart-aktuel-urunler-katalogu-2020-sok-da-bu-hafta-kampanyali-indirimli-urunler-var-2624902-ekonomi"},"headline":"\u015eOK 25-31 Mart Akt\u00fcel \u00fcr\u00fcnler katalo\u011fu 2020! \u015eOK'da bu hafta kampanyal\u0131 indirimli \u00fcr\u00fcnler var","keywords":["\u015eOK indirimli \u00fcr\u00fcnler"," \u015fok 26 mart akt\u00fcel katalo\u011fu"," \u015fok 28 mart akt\u00fcel \u00fcr\u00fcnler katalo\u011fu"," \u015fok 28 mart 2020"," "],"image":{"@type":"ImageObject","url":"https:\/\/im.haberturk.com\/2020\/03\/25\/ver1585144850\/2624902_823x465.jpg","width":823,"height":465},"dateCreated":"2020-03-25T17:00:50+03:00","datePublished":"2020-03-25T17:00:50+03:00","dateModified":"2020-03-25T17:00:50+03:00","description":"\u015eOK 25-31 Mart 2020 haftan\u0131n f\u0131rsatlar\u0131 katalo\u011fu yay\u0131nland\u0131. \u015eOK'da birbirinden \u00e7e\u015fitli kampanyal\u0131 \u00fcr\u00fcnler dikkat \u00e7ekerken g\u0131da \u00fcr\u00fcnlerinden temizlik malzemelerine kadar bir\u00e7ok yeni \u00fcr\u00fcn raflardaki yerlerini ald\u0131. \u015eOK 25-31 Mart katalo\u011funda indirimli \u00fcr\u00fcnler f\u0131rsatlar\u0131yla m\u00fc\u015fterileri bekliyor. \u0130\u015fte \u015eOK 25-31 Mart 2020 akt\u00fcel \u00fcr\u00fcnler katalo\u011fu...","articleBody":"","author":{"@type":"Thing","name":"Habert\u00fcrk"},"publisher":{"@type":"Organization","name":"Habert\u00fcrk","logo":{"@type":"ImageObject","url":"https:\/\/www.haberturk.com\/images\/ht-logo.png","width":75,"height":35}},"inLanguage":"tr-TR","typicalAgeRange":"7-","alternativeHeadline":"\u015eOK 25-31 Mart Akt\u00fcel \u00fcr\u00fcnler katalo\u011fu 2020! \u015eOK'da bu hafta kampanyal\u0131 indirimli \u00fcr\u00fcnler var","wordCount":2}
+            </script><script type="application/ld+json">
+                {"@context":"https:\/\/schema.org","@type":"WebSite","url":"https:\/\/www.haberturk.com\/","potentialAction":{"@type":"SearchAction","target":"https:\/\/www.haberturk.com\/arama\/{search_term_string}","query-input":"required name=search_term_string"}}
+              </script><script type="text/javascript">
+var cbgAdsSettings={"frameUrl":"\/adscbg\/adsFrame.html","usePrebid":true,"keywords":{"newsPub":["130"],"newsCat1":["4060642","alisveris"]}};
+window.cbgAds=window.cbgAds||{cmd:[],AdsInline:function(zoneId){cbgAds.cmd.push(function(){cbgAds.AdsInline(zoneId);});}};
+cbgAds.cmd.push(function(){cbgAds.AdsHeader([1912,1732,2066,1280,1286,1308,2014]);});
+</script><script type="text/javascript" async src="/ekonomi/adscbg/cbglout.js"></script><script async src="https://contributor.google.com/scripts/a3e5d9d4bf753e2d/loader.js"></script><script>(function(){'use strict';var g=function(a){var b=0;return function(){return b<a.length?{done:!1,value:a[b++]}:{done:!0}}},l=this,m=/^[\w+/_-]+[=]{0,2}$/,p=null,q=function(){},r=function(a){var b=typeof a;if("object"==b)if(a){if(a instanceof Array)return"array";if(a instanceof Object)return b;var c=Object.prototype.toString.call(a);if("[object Window]"==c)return"object";if("[object Array]"==c||"number"==typeof a.length&&"undefined"!=typeof a.splice&&"undefined"!=typeof a.propertyIsEnumerable&&!a.propertyIsEnumerable("splice"))return"array";
+if("[object Function]"==c||"undefined"!=typeof a.call&&"undefined"!=typeof a.propertyIsEnumerable&&!a.propertyIsEnumerable("call"))return"function"}else return"null";else if("function"==b&&"undefined"==typeof a.call)return"object";return b},t=Date.now||function(){return+new Date},u=function(a,b){function c(){}c.prototype=b.prototype;a.m=b.prototype;a.prototype=new c;a.prototype.constructor=a;a.j=function(d,e,f){for(var k=Array(arguments.length-2),h=2;h<arguments.length;h++)k[h-2]=arguments[h];return b.prototype[e].apply(d,
+k)}};var v=function(a,b){Object.defineProperty(l,a,{configurable:!1,get:function(){return b},set:q})};var w=function(){return Math.floor(2147483648*Math.random()).toString(36)+Math.abs(Math.floor(2147483648*Math.random())^t()).toString(36)};var y=function(){this.a="";this.b=x},x={},z=function(a){var b=new y;b.a=a;return b};var A=function(a,b){a.src=b instanceof y&&b.constructor===y&&b.b===x?b.a:"type_error:TrustedResourceUrl";if(null===p)b:{b=l.document;if((b=b.querySelector&&b.querySelector("script[nonce]"))&&(b=b.nonce||b.getAttribute("nonce"))&&m.test(b)){p=b;break b}p=""}b=p;b&&a.setAttribute("nonce",b)};var B=function(a){this.a=a||l.document||document};B.prototype.appendChild=function(a,b){a.appendChild(b)};var C=function(a,b,c,d,e,f){try{var k=a.a,h=a.a.createElement("SCRIPT");h.async=!0;A(h,b);k.head.appendChild(h);h.addEventListener("load",function(){e();d&&k.head.removeChild(h)});h.addEventListener("error",function(){0<c?C(a,b,c-1,d,e,f):(d&&k.head.removeChild(h),f())})}catch(n){f()}};var D=l.atob("aHR0cHM6Ly93d3cuZ3N0YXRpYy5jb20vaW1hZ2VzL2ljb25zL21hdGVyaWFsL3N5c3RlbS8xeC93YXJuaW5nX2FtYmVyXzI0ZHAucG5n"),E=l.atob("WW91IGFyZSBzZWVpbmcgdGhpcyBtZXNzYWdlIGJlY2F1c2UgYWQgb3Igc2NyaXB0IGJsb2NraW5nIHNvZnR3YXJlIGlzIGludGVyZmVyaW5nIHdpdGggdGhpcyBwYWdlLg=="),aa=l.atob("RGlzYWJsZSBhbnkgYWQgb3Igc2NyaXB0IGJsb2NraW5nIHNvZnR3YXJlLCB0aGVuIHJlbG9hZCB0aGlzIHBhZ2Uu"),ba=function(a,b,c){this.b=a;this.f=new B(this.b);this.a=null;this.c=[];this.g=!1;this.i=b;this.h=c},H=function(a){if(a.b.body&&!a.g){var b=
+function(){F(a);l.setTimeout(function(){return G(a,3)},50)};C(a.f,a.i,2,!0,function(){l[a.h]||b()},b);a.g=!0}},F=function(a){for(var b=I(1,5),c=0;c<b;c++){var d=J(a);a.b.body.appendChild(d);a.c.push(d)}b=J(a);b.style.bottom="0";b.style.left="0";b.style.position="fixed";b.style.width=I(100,110).toString()+"%";b.style.zIndex=I(2147483544,2147483644).toString();b.style["background-color"]=K(249,259,242,252,219,229);b.style["box-shadow"]="0 0 12px #888";b.style.color=K(0,10,0,10,0,10);b.style.display=
+"flex";b.style["justify-content"]="center";b.style["font-family"]="Roboto, Arial";c=J(a);c.style.width=I(80,85).toString()+"%";c.style.maxWidth=I(750,775).toString()+"px";c.style.margin="24px";c.style.display="flex";c.style["align-items"]="flex-start";c.style["justify-content"]="center";d=a.f.a.createElement("IMG");d.className=w();d.src=D;d.style.height="24px";d.style.width="24px";d.style["padding-right"]="16px";var e=J(a),f=J(a);f.style["font-weight"]="bold";f.textContent=E;var k=J(a);k.textContent=
+aa;L(a,e,f);L(a,e,k);L(a,c,d);L(a,c,e);L(a,b,c);a.a=b;a.b.body.appendChild(a.a);b=I(1,5);for(c=0;c<b;c++)d=J(a),a.b.body.appendChild(d),a.c.push(d)},L=function(a,b,c){for(var d=I(1,5),e=0;e<d;e++){var f=J(a);b.appendChild(f)}b.appendChild(c);c=I(1,5);for(d=0;d<c;d++)e=J(a),b.appendChild(e)},I=function(a,b){return Math.floor(a+Math.random()*(b-a))},K=function(a,b,c,d,e,f){return"rgb("+I(Math.max(a,0),Math.min(b,255)).toString()+","+I(Math.max(c,0),Math.min(d,255)).toString()+","+I(Math.max(e,0),Math.min(f,
+255)).toString()+")"},J=function(a){a=a.f.a.createElement("DIV");a.className=w();return a},G=function(a,b){0>=b||null!=a.a&&0!=a.a.offsetHeight&&0!=a.a.offsetWidth||(ca(a),F(a),l.setTimeout(function(){return G(a,b-1)},50))},ca=function(a){var b=a.c;var c="undefined"!=typeof Symbol&&Symbol.iterator&&b[Symbol.iterator];b=c?c.call(b):{next:g(b)};for(c=b.next();!c.done;c=b.next())(c=c.value)&&c.parentNode&&c.parentNode.removeChild(c);a.c=[];(b=a.a)&&b.parentNode&&b.parentNode.removeChild(b);a.a=null};var M=function(a,b,c){a=l.btoa(a+b);v(a,c)},da=function(a,b,c){for(var d=[],e=2;e<arguments.length;++e)d[e-2]=arguments[e];e=l.btoa(a+b);e=l[e];if("function"==r(e))e.apply(null,d);else throw Error("API not exported.");};var fa=function(a,b,c,d,e){var f=ea(c),k=function(n){n.appendChild(f);l.setTimeout(function(){f?(0!==f.offsetHeight&&0!==f.offsetWidth?b():a(),f.parentNode&&f.parentNode.removeChild(f)):a()},d)},h=function(n){document.body?k(document.body):0<n?l.setTimeout(function(){h(n-1)},e):b()};h(3)},ea=function(a){var b=document.createElement("div");b.className=a;b.style.width="1px";b.style.height="1px";b.style.position="absolute";b.style.left="-10000px";b.style.top="-10000px";b.style.zIndex="-10000";return b};var N=null;var O=function(){},P="function"==typeof Uint8Array,Q=function(a,b){a.b=null;b||(b=[]);a.l=void 0;a.f=-1;a.a=b;a:{if(b=a.a.length){--b;var c=a.a[b];if(!(null===c||"object"!=typeof c||"array"==r(c)||P&&c instanceof Uint8Array)){a.g=b-a.f;a.c=c;break a}}a.g=Number.MAX_VALUE}a.i={}},R=[],S=function(a,b){if(b<a.g){b+=a.f;var c=a.a[b];return c===R?a.a[b]=[]:c}if(a.c)return c=a.c[b],c===R?a.c[b]=[]:c},U=function(a,b){var c=T;a.b||(a.b={});if(!a.b[b]){var d=S(a,b);d&&(a.b[b]=new c(d))}return a.b[b]};
+O.prototype.h=P?function(){var a=Uint8Array.prototype.toJSON;Uint8Array.prototype.toJSON=function(){if(!N){N={};for(var b=0;65>b;b++)N[b]="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=".charAt(b)}b=N;for(var c=[],d=0;d<this.length;d+=3){var e=this[d],f=d+1<this.length,k=f?this[d+1]:0,h=d+2<this.length,n=h?this[d+2]:0,ha=e>>2;e=(e&3)<<4|k>>4;k=(k&15)<<2|n>>6;n&=63;h||(n=64,f||(k=64));c.push(b[ha],b[e],b[k],b[n])}return c.join("")};try{return JSON.stringify(this.a&&this.a,V)}finally{Uint8Array.prototype.toJSON=
+a}}:function(){return JSON.stringify(this.a&&this.a,V)};var V=function(a,b){return"number"!=typeof b||!isNaN(b)&&Infinity!==b&&-Infinity!==b?b:String(b)};O.prototype.toString=function(){return this.a.toString()};var T=function(a){Q(this,a)};u(T,O);var W=function(a){Q(this,a)};u(W,O);var ia=function(a,b){this.g=new B(a);var c=U(b,11);c=z(S(c,4)||"");this.b=new ba(a,c,S(b,10));this.a=b;this.f=S(this.a,1);this.c=!1},X=function(a,b,c,d){b=new T(b?JSON.parse(b):null);b=z(S(b,4)||"");C(a.g,b,3,!1,c,function(){fa(function(){H(a.b);d(!1)},function(){d(!0)},S(a.a,12),S(a.a,5),S(a.a,3))})},ja=function(a){a.c||(M(a.f,"internal_api_load_with_sb",function(b,c,d){X(a,b,c,d)}),M(a.f,"internal_api_sb",function(){H(a.b)}),a.c=!0)};var Y=function(a){this.h=l.document;this.a=new ia(this.h,a);this.f=S(a,1);this.g=U(a,2);this.c=!1;this.b=a};Y.prototype.start=function(){try{ka(),ja(this.a),l.googlefc=l.googlefc||{},"callbackQueue"in l.googlefc||(l.googlefc.callbackQueue=[]),la(this)}catch(a){H(this.a.b)}};
+var ka=function(){var a=function(){if(!l.frames.googlefcPresent)if(document.body){var b=document.createElement("iframe");b.style.display="none";b.style.width="0px";b.style.height="0px";b.style.border="none";b.style.zIndex="-1000";b.style.left="-1000px";b.style.top="-1000px";b.name="googlefcPresent";document.body.appendChild(b)}else l.setTimeout(a,5)};a()},la=function(a){var b=t();X(a.a,a.g.h(),function(){var c;var d=a.f,e=l[l.btoa(d+"cached_js")];if(e){e=l.atob(e);e=parseInt(e,10);d=l.btoa(d+"cached_js").split(".");
+var f=l;d[0]in f||"undefined"==typeof f.execScript||f.execScript("var "+d[0]);for(;d.length&&(c=d.shift());)d.length?f[c]&&f[c]!==Object.prototype[c]?f=f[c]:f=f[c]={}:f[c]=null;c=Math.abs(b-e);c=1728E5>c?0:c}else c=-1;0!=c&&(da(a.f,"internal_api_sb"),Z(a,S(a.b,9)))},function(c){c?Z(a,S(a.b,7)):Z(a,S(a.b,8))})},Z=function(a,b){a.c||(a.c=!0,a=new l.XMLHttpRequest,a.open("GET",b,!0),a.send())};(function(a,b){l[a]=function(c){for(var d=[],e=0;e<arguments.length;++e)d[e-0]=arguments[e];l[a]=q;b.apply(null,d)}})("__475an521in8a__",function(a){"function"==typeof l.atob&&(a=l.atob(a),a=new W(a?JSON.parse(a):null),(new Y(a)).start())});}).call(this);
+
+window.__475an521in8a__("WyJhM2U1ZDlkNGJmNzUzZTJkIixbbnVsbCxudWxsLG51bGwsImh0dHBzOi8vZnVuZGluZ2Nob2ljZXNtZXNzYWdlcy5nb29nbGUuY29tL2YvQUdTS1d4WGl2c0VZOUhyS1hpTlBPSEpuTS03UnY0R291Z1NJUjN2MmdoTDhSTmJfV3NTaVlTYXROQmg1YTFjV2dlT0dBUXBBY2dfY3BaWl85Q0tZZHhHTyJdCiwyMCxudWxsLDEwMCxudWxsLCJodHRwczovL2Z1bmRpbmdjaG9pY2VzbWVzc2FnZXMuZ29vZ2xlLmNvbS9sL0FHU0tXeFYxSU85TXc2a0FGYUJKUGZubHM3cGlDTHlEVGRFTmJOUmc1eWRXZjd0RTNpY1B6R2FYc2FfNTBvdEM3V2ZBNk51akdXaGVqRmh2RUN6ZHJGWUc/YWJcdTAwM2QxIiwiaHR0cHM6Ly9mdW5kaW5nY2hvaWNlc21lc3NhZ2VzLmdvb2dsZS5jb20vbC9BR1NLV3hYYU5vcjRkTDhtOE93WkhhQ0NiOGR4eGw4VWlieGhJM2UwU3RCclZyTU5vaF8tS2lDdFRVNWp4SmtFNVRiX1o5N25WQnk3Zl9acTFSVXB2Q0dzP2FiXHUwMDNkMlx1MDAyNnNiZlx1MDAzZDEiLCJodHRwczovL2Z1bmRpbmdjaG9pY2VzbWVzc2FnZXMuZ29vZ2xlLmNvbS9sL0FHU0tXeFY4dkw5LW0tcGtoRzJxYlliR1cwUjg3eUE4Vm1DdlE1cnhEQmlzcW93NGtvVXVXeUJCeVIwMzJaRGFzT0tOS0ZkQS1YdXN4cHZtamtaMXZSTTA/c2JmXHUwMDNkMiIsIllUTmxOV1E1WkRSaVpqYzFNMlV5WkFcdTAwM2RcdTAwM2QiLFtudWxsLG51bGwsbnVsbCwiaHR0cHM6Ly93d3cuZ3N0YXRpYy5jb20vMGVtbi9mL3AvYTNlNWQ5ZDRiZjc1M2UyZC5qcz91c3FwXHUwMDNkQ0JBIl0KLCJkaXYtZ3B0LWFkIl0K");</script></head><body class="detail-photo-news category-economy responsive responsive-header"><div class="scroll-top cd-is-visible cd-fade-out" title="Yukarı Git"></div><div class="img-modal"><span class="close"></span></div><div class="widget-comments-modal type1"><div class="modal-content"><span class="close"></span><figure><figcaption><span class="title">Değerli Haberturk.com okurları.</span><p>Haberturk.com ekibi olarak Türkiye’de ve dünyada yaşanan ve haber değeri taşıyan her türlü gelişmeyi sizlere en hızlı, en objektif ve en doyurucu şekilde ulaştırmak için çalışıyoruz. Yoğun gündem içerisinde sunduğumuz haberlerimizle ve olaylarla ilgili eleştiri, görüş, yorumlarınız bizler için çok önemli. Fakat karşılıklı saygı ve yasalara uygunluk çerçevesinde oluşturduğumuz yorum platformlarında daha sağlıklı bir tartışma ortamını temin etmek amacıyla ortaya koyduğumuz bazı yorum ve moderasyon kurallarımıza dikkatinizi çekmek istiyoruz.</p><p>Sayfamızda Türkiye Cumhuriyeti kanunlarına ve evrensel insan haklarına aykırı yorumlar onaylanmaz ve silinir. Okurlarımız tarafından yapılan yorumların, (yorum yapan diğer okurlarımıza yönelik yorumlar da dahil olmak üzere) kişilere, ülkelere, topluluklara, sosyal sınıflara ırk, cinsiyet, din, dil başta olmak üzere ayrımcılık unsurları taşıması durumunda yorum editörlerimiz yorumları onaylamayacaktır ve yorumlar silinecektir. Onaylanmayacak ve silinecek yorumlar kategorisinde aşağılama, nefret söylemi, küfür, hakaret, kadın ve çocuk istismarı, hayvanlara yönelik şiddet söylemi içeren yorumlar da yer almaktadır. Suçu ve suçluyu övmek, Türkiye Cumhuriyeti yasalarına göre suçtur. Bu nedenle bu tarz okur yorumları da doğal olarak Haberturk.com yorum sayfalarında yer almayacaktır.</p><p>Ayrıca Haberturk.com yorum sayfalarında Türkiye Cumhuriyeti mahkemelerinde doğruluğu ispat edilemeyecek iddia, itham ve karalama içeren, halkın tamamını veya bir bölümünü kin ve düşmanlığa tahrik eden, provokatif yorumlar da yapılamaz.</p><p>Yorumlarda markaların ticari itibarını zedeleyici, karalayıcı ve herhangi bir şekilde ticari zarara yol açabilecek yorumlar onaylanmayacak ve silinecektir. Aynı şekilde bir markaya yönelik promosyon veya reklam amaçlı yorumlar da onaylanmayacak ve silinecek yorumlar kategorisindedir. Başka hiçbir siteden alınan linkler Haberturk.com yorum sayfalarında paylaşılamaz.</p><p>Haberturk.com yorum sayfalarında paylaşılan tüm yorumların yasal sorumluluğu yorumu yapan okura aittir ve Haberturk.com bunlardan sorumlu tutulamaz.</p><p>Haberturk.com yorum sayfalarında yorum yapan her okur, yukarıda belirtilen kuralları, sitemizde yayınlanan
+<strong><a href="//www.haberturk.com/kullanimkosullari" target="_blank" title="Kullanım Koşulları">Kullanım Koşulları</a></strong>’nı ve
+<strong><a href="https://www.haberturk.com/privacy" target="_blank" title="Gizlilik Sözleşmesi">Gizlilik Sözleşmesi</a></strong>’ni peşinen okumuş ve kabul etmiş sayılır.</p><p>Bizlerle ve diğer okurlarımızla yorum kurallarına uygun yorumlarınızı, görüşlerinizi yasalar, saygı, nezaket, birlikte yaşama kuralları ve insan haklarına uygun şekilde paylaştığınız için teşekkür ederiz.</p></figcaption><span class="button-content"><a class="button">YORUM KURALLARINI OKUDUM</a></span></figure></div></div><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NCHP7Z9"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><div id="zone_1732" zone-id="1732" class="ads-zone" style="display:none;" zone-viewtype="banner"><script type="text/javascript">head.ready('globaljs', function () {cbgAds.AdsInline(1732);});</script></div><div id="zone_2066" zone-id="2066" class="ads-zone center tp-bn head-banner" zone-viewtype="banner"><script type="text/javascript">cbgAds.AdsInline(2066);</script></div><div id="header2017"><div id="AuthPopup" class=""><div id="ht-auth-popup" class="ht-auth-popup" style="display: none;">
+    <div class="ha-container">
+        <div class="ha-tab">
+            <a href="#" data-show-login>GİRİŞ YAP</a>
+            <a href="#" data-show-register>ÜYE OL</a>
+            <a href="#" data-close-popup class="close">
+                <img src="https://im.haberturk.com/assets/images/auth-popup/close-white.svg" alt="Kapat" width="20" />
+            </a>
+        </div>
+        <div class="ha-form">
+            <form action="/uyelik/login" data-login-form>
+                <div class="ha-form-group">
+                    <input class="full" type="text" name="username" placeholder="E-posta adresi" />
+                </div>
+                <div class="ha-form-group">
+                    <input class="full" type="password" autocomplete="off" name="password" placeholder="Şifre" />
+                </div>
+                <div class="ha-form-group">
+                    <button data-login-submit class="submit">GİRİŞ YAP</button>
+                </div>
+                <div class="ha-form-group">
+                    <a href="#" class="forgot" data-show-reset>Şifremi unuttum</a>
+                </div>
+            </form>
+            <form action="/uyelik/save" data-register-form>
+                <div class="ha-form-group">
+                    <input class="half" type="text" name="name" placeholder="İsim" />
+                    <input class="half" type="text" name="surname" placeholder="Soyisim" />
+                </div>
+                <div class="ha-form-group">
+                    <input class="full" type="text" name="usernick" placeholder="Kullanıcı adı" />
+                </div>
+                <div class="ha-form-group">
+                    <input class="full" type="email" name="email" placeholder="E-posta adresi" />
+                </div>
+                <div class="ha-form-group">
+                    <input class="half" type="password" autocomplete="off" name="password" placeholder="Şifre" />
+                    <input class="half" type="password" autocomplete="off" name="password_confirm" placeholder="Şifre tekrar" />
+                </div>
+                <div class="ha-form-group">
+                    <input class="inline" name="confirmed" type="checkbox" id="confirmed" value="1" />
+                    <label for="confirmed">
+                        <a href="https://www.haberturk.com/kullanimkosullari" target="_blank" title="Kullanım Koşulları">Kullanım Koşullarını</a> ve
+                        <a href="https://www.haberturk.com/privacy" target="_blank" title="Gizlilik Politikası">Gizlilik Politikasını</a> okudum, kabul ediyorum.
+                    </label>
+                </div>
+                <div class="ha-form-group">
+                    <input class="inline" name="bulten_none" type="checkbox" id="bulten_none" value="1" />
+                    <label for="bulten_none"> Tarafıma bültenler ve ticari iletiler gönderilmesini istemiyorum.</label>
+                </div>
+                <div class="ha-form-group">
+                    <button data-register-submit class="submit">ÜYE OL</button>
+                </div>
+            </form>
+            <form action="/uyelik/reset" data-reset-form>
+                <div class="ha-form-group">
+                    <a href="#" class="close" data-close-reset>
+                        <img src="https://im.haberturk.com/assets/images/auth-popup/close-black.svg" alt="Kapat" width="12" />
+                    </a>
+                </div>
+                <div class="ha-form-description">
+                    <h4>ŞİFREMİ UNUTTUM</h4>
+                    <p>Şifrenizi sıfırlamak için oturum açarken kullandığınız e-posta adresinizi giriniz</p>
+                </div>
+                <div class="ha-form-group">
+                    <input class="full" type="text" name="email" placeholder="E-posta adresi" />
+                </div>
+                <div class="ha-form-group">
+                    <button data-reset-submit class="submit">ŞİFREMİ GÖNDER</button>
+                </div>
+            </form>
+        </div>
+        <div class="ha-footer">
+            <button data-go-facebook class="social facebook">
+                <img src="https://im.haberturk.com/assets/images/auth-popup/facebook.svg" alt="Facebook" width="18" />
+                <span>FACEBOOK İLE GİRİŞ YAP</span>
+            </button>
+            <button data-go-twitter class="social twitter">
+                <img src="https://im.haberturk.com/assets/images/auth-popup/twitter.svg" alt="Twitter" width="18" />
+                <span>TWITTER İLE GİRİŞ YAP</span>
+            </button>
+        </div>
+        <div class="ha-message" id="ht-auth-message">
+            <a href="#" data-close-message class="close">
+                <img src="https://im.haberturk.com/assets/images/auth-popup/close-white.svg" alt="Kapat" width="12" />
+            </a>
+            <p data-message-text></p>
+        </div>
+    </div>
+</div>
+<script>
+    var isAutoJsLoaded = false;
+    if (typeof authWidget === 'undefined') {
+        var authWidgetJs = 'https://im.haberturk.com/assets/js/auth-popup/auth.min.js?v=3352';
+        var authWidgetCss = 'https://im.haberturk.com/assets/css/auth-popup/auth.min.css?v=3352';
+        if (typeof head !== 'undefined') {
+
+            var waitForreadyStateCompleteCount = 0;
+            var waitForreadyStateComplete = function () {
+                if (document.readyState == "complete") {
+                    if (document.getElementsByClassName('other-category-menu').length > 0 || document.getElementsByClassName('menu-icon').length > 0) {
+
+                        var waitForreadyOpenLoginFunctionCount = 0;
+                        var waitForreadyOpenLoginFunction = function () {
+                          if (typeof openLoginModal != "undefined") {
+
+                              openLoginModal = openLoginForOtherPlaces;
+
+                          }  else {
+                              setTimeout(function () {
+                                  waitForreadyOpenLoginFunctionCount++;
+                                  if (waitForreadyOpenLoginFunctionCount < 100) {
+                                      waitForreadyOpenLoginFunction();
+                                  }else{
+                                      authPopupLoadAndInit();
+                                  }
+                              }, 1000);
+                          }
+                        };
+                        waitForreadyOpenLoginFunction();
+
+                        var menu_button;
+                        if (document.getElementsByClassName('menu-icon').length > 0){
+                            menu_button = document.querySelector('.menu-icon');
+                        }else{
+                            menu_button = document.querySelector('.login-modal-btn');
+                            if (document.getElementById('userLogin')) {
+                                document.querySelector('#userLogin').addEventListener("click", function (e) {
+                                    openLoginForOtherPlaces();
+                                }, false);
+                            }
+                        }
+                        if (menu_button) {
+                            menu_button.addEventListener("click", function (e) {
+                                authPopupLoadAndInit();
+                            }, false);
+                        }
+                    }else{
+                        authPopupLoadAndInit();
+                    }
+                } else {
+                    setTimeout(function () {
+                        waitForreadyStateCompleteCount++;
+                        if (waitForreadyStateCompleteCount < 100) {
+                            waitForreadyStateComplete();
+                        }else{
+                            authPopupLoadAndInit();
+                        }
+                    }, 100);
+                }
+            };
+            waitForreadyStateComplete();
+
+        } else {
+
+            var authWidgetScript = document.createElement("script");
+            authWidgetScript.type = "text/javascript";
+            authWidgetScript.async = true;
+            authWidgetScript.src = authWidgetJs;
+            document.head.appendChild(authWidgetScript);
+
+            var authWidgetStyle = document.createElement("link");
+            authWidgetStyle.type = "text/css";
+            authWidgetStyle.rel = 'stylesheet';
+            authWidgetStyle.href = authWidgetCss;
+            document.head.appendChild(authWidgetStyle);
+
+            var authWidgetScriptLoaded = false;
+            authWidgetScript.onreadystatechange = authWidgetScript.onload = function() {
+                if (! authWidgetScriptLoaded) {
+                    initAuthPopup();
+                }
+                authWidgetScriptLoaded = true;
+            }
+        }
+
+        function initAuthPopup () {
+            if (! isAutoJsLoaded) {
+                isAutoJsLoaded = true;
+                var isWidgetReadyInterval = setInterval(function () {
+                    if (typeof AuthPopup !== 'undefined') {
+                        clearInterval(isWidgetReadyInterval);
+                        window.authWidget = new AuthPopup;
+
+                        document.getElementById('ht-auth-popup').style.display = '';
+                    }
+                }, 50);
+            }
+        }
+
+        function authPopupLoadAndInit() {
+            head.load([authWidgetJs, authWidgetCss], function () {
+                initAuthPopup();
+            });
+        }
+
+        function openLoginForOtherPlaces() {
+            if (typeof head !== 'undefined') {
+                head.load([authWidgetJs, authWidgetCss], function () {
+                    initAuthPopup();
+                    var maxIntevalRetry = 200; // 20 sn
+                    var isAuthWidgetReady = setInterval(function () {
+                        if (typeof authWidget !== 'undefined') {
+                            authWidget.show();
+                            clearInterval(isAuthWidgetReady);
+                        }
+                        maxIntevalRetry--;
+                        if (maxIntevalRetry === 0) {
+                            clearInterval(isAuthWidgetReady);
+                        }
+                    }, 100);
+                });
+            }else{
+                if (typeof event !== 'undefined') {
+                    event.preventDefault();
+                }
+                var maxIntevalRetry = 200; // 20 sn
+                var isAuthWidgetReady = setInterval(function () {;
+                    if (typeof authWidget !== 'undefined') {
+                        authWidget.show();
+                        clearInterval(isAuthWidgetReady);
+                    }
+                    maxIntevalRetry--;
+                    if (maxIntevalRetry === 0) {
+                        clearInterval(isAuthWidgetReady);
+                    }
+                }, 100);
+            }
+        }
+    }
+
+
+</script></div><header id="header" class="sub-category"><div class="content"><div class="wrapper"><div class="logoo"><a href="/" title="Habertürk"><img src="https://im.haberturk.com/assets/images/v3/logo/haberturk-white.svg" alt="Habertürk"
+width="81" height="44"></a></div><div class="speacial-day"><!-- CUSTOMLOGO -->
+</div><div class="category-list"><ul><li class="" ><a href="/son-dakika-haberleri"
+title="Son Dakika" target="_blank" class="lastminute-color gtm-tracker " data-newsVariant="Header" > SON DAKİKA </a></li><li class="" ><a href="/gundem"
+title="Gündem" target="_blank" class="agenda-color gtm-tracker " data-newsVariant="Header" > GÜNDEM </a><div class="sub-category primary agenda-color"><div class="wrapper"><ul><li class=""><a href="/gundem/politika" class="gtm-tracker" data-newsVariant="ustmenu-gundem-politika"> POLİTİKA</a></li><li class=""><a href="/gundem/ucuncu-sayfa" class="gtm-tracker" data-newsVariant="ustmenu-gundem-3-sayfa"> 3.SAYFA</a></li><li class=""><a href="/gundem/egitim" class="gtm-tracker" data-newsVariant="ustmenu-gundem-egitim"> EĞİTİM</a></li><li class=""><a href="/gundem/guvenlik" class="gtm-tracker" data-newsVariant="ustmenu-gundem-guvenlik"> GÜVENLİK</a></li><li class=""><a href="/gundem/inanc" class="gtm-tracker" data-newsVariant="ustmenu-gundem-inanc"> İNANÇ</a></li><li class=""><a href="/gundem/ankara" class="gtm-tracker" data-newsVariant="ustmenu-gundem-ankara"> ANKARA</a></li><li class=""><a href="/gundem/istanbul" class="gtm-tracker" data-newsVariant="ustmenu-gundem-istanbul"> İSTANBUL</a></li><li class=""><a href="/gundem/ege" class="gtm-tracker" data-newsVariant="ustmenu-gundem-ege"> EGE</a></li><li class=""><a href="/gundem/cevre" class="gtm-tracker" data-newsVariant="ustmenu-gundem-cevre"> ÇEVRE</a></li></ul></div></div></li><li class="selected" ><a href="/ekonomi"
+title="Ekonomi" target="_blank" class="economy-color gtm-tracker selected" data-newsVariant="Header" > EKONOMİ </a><div class="sub-category primary economy-color"><div class="wrapper"><ul><li class=""><a href="/ekonomi/altin" class="gtm-tracker" data-newsVariant="ustmenu-ekonomi-altin"> ALTIN</a></li><li class=""><a href="/ekonomi/doviz" class="gtm-tracker" data-newsVariant="ustmenu-ekonomi-doviz"> DÖVİZ</a></li><li class=""><a href="/ekonomi/borsa" class="gtm-tracker" data-newsVariant="ustmenu-ekonomi-borsa"> BORSA</a></li><li class=""><a href="/ekonomi/otomobil" class="gtm-tracker" data-newsVariant="ustmenu-ekonomi-otomobil"> OTOMOBİL</a></li><li class=""><a href="/ekonomi/turizm" class="gtm-tracker" data-newsVariant="ustmenu-ekonomi-turizm"> TURİZM</a></li><li class="special-a-d-v"><a href="/ekonomi/teknoloji" class="gtm-tracker" data-newsVariant="ustmenu-ekonomi-teknoloji"><div class="special-logo"><img src="https://im.haberturk.com/assets/images/brand-other/vodafone-disi-logo-business.png"></div><div>ile Teknoloji</div><i class="chevron-down"></i></a><div class="sub-category secondary economy-color"><div class="wrapper"><ul class="type1"><li><a title="CEP" href="/ekonomi/teknoloji/cep" class="gtm-tracker" data-newsVariant="ustmenu-ekonomi-teknoloji-cep"><span>CEP</span></a></li><li><a title="İNTERNET" href="/ekonomi/teknoloji/internet" class="gtm-tracker" data-newsVariant="ustmenu-ekonomi-teknoloji-internet"><span>İNTERNET</span></a></li><li><a title="TABLET" href="/ekonomi/teknoloji/tablet" class="gtm-tracker" data-newsVariant="ustmenu-ekonomi-teknoloji-tablet"><span>TABLET</span></a></li><li><a title="OYUN VE UYGULAMA" href="/ekonomi/teknoloji/oyun" class="gtm-tracker" data-newsVariant="ustmenu-ekonomi-teknoloji-oyun-ve-uygulama"><span>OYUN VE UYGULAMA</span></a></li><li><a title="TEKNOLOJİDE LÜKS" href="/ekonomi/teknoloji/teknolojide-luks" class="gtm-tracker" data-newsVariant="ustmenu-ekonomi-teknoloji-teknolojide-luks"><span>TEKNOLOJİDE LÜKS</span></a></li><li><a title="BİLİM" href="/ekonomi/teknoloji/bilim" class="gtm-tracker" data-newsVariant="ustmenu-ekonomi-teknoloji-bilim"><span>BİLİM</span></a></li></ul></div></div></li><li class=""><a href="/ekonomi/enerji" class="gtm-tracker" data-newsVariant="ustmenu-ekonomi-enerji"> ENERJİ</a></li><li class=""><a href="/ekonomi/emlak" class="gtm-tracker" data-newsVariant="ustmenu-ekonomi-emlak"> EMLAK</a></li><li class=""><a href="/ekonomi/is-yasam" class="gtm-tracker" data-newsVariant="ustmenu-ekonomi-is-yasam"> İŞ-YAŞAM</a></li><li class=""><a href="/ekonomi/sigorta" class="gtm-tracker" data-newsVariant="ustmenu-ekonomi-sigorta"> SİGORTA</a></li><li class=""><a href="/ekonomi/girisimcilik" class="gtm-tracker" data-newsVariant="ustmenu-ekonomi-girisimcilik"> GİRİŞİMCİLİK</a></li><li class=""><a href="/ekonomi/savunma-sanayi" class="gtm-tracker" data-newsVariant="ustmenu-ekonomi-savunma-sanayi"> SAVUNMA SANAYİ</a></li></ul></div></div></li><li class="" ><a href="/spor"
+title="Spor" target="_blank" class="sport-color gtm-tracker " data-newsVariant="Header" > SPOR </a><div class="sub-category primary sport-color"><div class="wrapper"><ul><li class=""><a href="/spor/iddaa/canlisonuclar" class="gtm-tracker" data-newsVariant="ustmenu-spor-canli-skor"> CANLI SKOR</a></li><li class=""><a href="/spor/iddaa" class="gtm-tracker" data-newsVariant="ustmenu-spor-iddaa"> İDDAA</a></li><li class=""><a href="/spor/futbol/super_lig" class="gtm-tracker" data-newsVariant="ustmenu-spor-super-lig"> SÜPER LİG</a></li><li class=""><a href="/spor/futbol/1_lig" class="gtm-tracker" data-newsVariant="ustmenu-spor-1lig"> 1.LİG</a></li><li class=""><a href="/spor/basketbol" class="gtm-tracker" data-newsVariant="ustmenu-spor-basketbol"> BASKETBOL</a></li><li class=""><a href="/spor/basketbol/nba" class="gtm-tracker" data-newsVariant="ustmenu-spor-nba"> NBA</a></li><li class=""><a href="/spor/iddaa" class="gtm-tracker" data-newsVariant="ustmenu-spor-iddaa"> İDDAA</a></li><li class=""><a href="/spor/macmerkezi" class="gtm-tracker" data-newsVariant="ustmenu-spor-ht-spor-arena"> HT SPOR ARENA</a></li><li class=""><a href="/spor/iddaa/puandurumu/1/turkiye-super-lig" class="gtm-tracker" data-newsVariant="ustmenu-spor-puan-durumu"> PUAN DURUMU</a></li><li class=""><a href="#" class="gtm-tracker" data-newsVariant="ustmenu-spor-takimlar"> TAKIMLAR<i class="chevron-down"></i></a><div class="sub-category secondary sport-color"><div class="wrapper"><div class="type1"><div class="column"><ul><span class="title">Spor Toto Süper Lig</span><li><a title="ALANYASPOR" href="/spor/futbol/super_lig/alanyaspor" class="gtm-tracker" data-newsVariant="ustmenu-spor-takimlar"><span>ALANYASPOR</span></a></li><li><a title="ANKARAGÜCÜ" href="/spor/futbol/super_lig/ankaragucu" class="gtm-tracker" data-newsVariant="ustmenu-spor-takimlar"><span>ANKARAGÜCÜ</span></a></li><li><a title="ANTALYASPOR" href="/spor/futbol/super_lig/antalyaspor" class="gtm-tracker" data-newsVariant="ustmenu-spor-takimlar"><span>ANTALYASPOR</span></a></li><li><a title="BAŞAKŞEHİR" href="/spor/futbol/super_lig/basaksehir" class="gtm-tracker" data-newsVariant="ustmenu-spor-takimlar"><span>BAŞAKŞEHİR</span></a></li><li><a title="BEŞİKTAŞ" href="/spor/futbol/super_lig/besiktas" class="gtm-tracker" data-newsVariant="ustmenu-spor-takimlar"><span>BEŞİKTAŞ</span></a></li><li><a title="ÇAYKUR RİZESPOR" href="/spor/futbol/super_lig/caykur_rizespor" class="gtm-tracker" data-newsVariant="ustmenu-spor-takimlar"><span>ÇAYKUR RİZESPOR</span></a></li><li><a title="DENİZLİSPOR" href="/spor/futbol/super_lig/denizlispor" class="gtm-tracker" data-newsVariant="ustmenu-spor-takimlar"><span>DENİZLİSPOR</span></a></li><li><a title="FENERBAHÇE" href="/spor/futbol/super_lig/fenerbahce" class="gtm-tracker" data-newsVariant="ustmenu-spor-takimlar"><span>FENERBAHÇE</span></a></li><li><a title="GALATASARAY" href="/spor/futbol/super_lig/galatasaray" class="gtm-tracker" data-newsVariant="ustmenu-spor-takimlar"><span>GALATASARAY</span></a></li><li><a title="GAZİŞEHİR" href="/spor/futbol/super_lig/gazisehir" class="gtm-tracker" data-newsVariant="ustmenu-spor-takimlar"><span>GAZİŞEHİR</span></a></li><li><a title="GENÇLERBİRLİĞİ" href="/spor/futbol/super_lig/genclerbirligi" class="gtm-tracker" data-newsVariant="ustmenu-spor-takimlar"><span>GENÇLERBİRLİĞİ</span></a></li><li><a title="GÖZTEPE" href="/spor/futbol/super_lig/goztepe" class="gtm-tracker" data-newsVariant="ustmenu-spor-takimlar"><span>GÖZTEPE</span></a></li><li><a title="KASIMPAŞA" href="/spor/futbol/super_lig/kasimpasa" class="gtm-tracker" data-newsVariant="ustmenu-spor-takimlar"><span>KASIMPAŞA</span></a></li><li><a title="KAYSERİSPOR" href="/spor/futbol/super_lig/kayserispor" class="gtm-tracker" data-newsVariant="ustmenu-spor-takimlar"><span>KAYSERİSPOR</span></a></li><li><a title="KONYASPOR" href="/spor/futbol/super_lig/konyaspor" class="gtm-tracker" data-newsVariant="ustmenu-spor-takimlar"><span>KONYASPOR</span></a></li><li><a title="SİVASSPOR" href="/spor/futbol/super_lig/sivasspor" class="gtm-tracker" data-newsVariant="ustmenu-spor-takimlar"><span>SİVASSPOR</span></a></li><li><a title="TRABZONSPOR" href="/spor/futbol/super_lig/trabzonspor" class="gtm-tracker" data-newsVariant="ustmenu-spor-takimlar"><span>TRABZONSPOR</span></a></li><li><a title="YENİ MALATYASPOR" href="/spor/futbol/super_lig/yeni_malatyaspor" class="gtm-tracker" data-newsVariant="ustmenu-spor-takimlar"><span>YENİ MALATYASPOR</span></a></li></ul></div><div class="column"><ul><span class="title">TTF 1. LİG</span><li><a title="ADANA DEMİRSPOR" href="/spor/futbol/tff_1_lig/adana_demirspor" class="gtm-tracker" data-newsVariant="ustmenu-spor-takimlar"><span>ADANA DEMİRSPOR</span></a></li><li><a title="ADANASPOR" href="/spor/futbol/tff_1_lig/adanaspor" class="gtm-tracker" data-newsVariant="ustmenu-spor-takimlar"><span>ADANASPOR</span></a></li><li><a title="AFJET AFYONSPOR" href="/spor/futbol/tff_1_lig/afyonspor" class="gtm-tracker" data-newsVariant="ustmenu-spor-takimlar"><span>AFJET AFYONSPOR</span></a></li><li><a title="AKHİSARSPOR" href="/spor/futbol/tff_1_lig/akhisar_belediye" class="gtm-tracker" data-newsVariant="ustmenu-spor-takimlar"><span>AKHİSARSPOR</span></a></li><li><a title="ALTAY" href="/spor/futbol/tff_1_lig/altay" class="gtm-tracker" data-newsVariant="ustmenu-spor-takimlar"><span>ALTAY</span></a></li><li><a title="ALTINORDU" href="/spor/futbol/tff_1_lig/altinordu" class="gtm-tracker" data-newsVariant="ustmenu-spor-takimlar"><span>ALTINORDU</span></a></li><li><a title="BALIKESİRSPOR" href="/spor/futbol/tff_1_lig/balikesirspor" class="gtm-tracker" data-newsVariant="ustmenu-spor-takimlar"><span>BALIKESİRSPOR</span></a></li><li><a title="BB ERZURUMSPOR" href="/spor/futbol/tff_1_lig/erzurum_buyuksehir" class="gtm-tracker" data-newsVariant="ustmenu-spor-takimlar"><span>BB ERZURUMSPOR</span></a></li><li><a title="BOLUSPOR" href="/spor/futbol/tff_1_lig/boluspor" class="gtm-tracker" data-newsVariant="ustmenu-spor-takimlar"><span>BOLUSPOR</span></a></li><li><a title="BURSASPOR" href="/spor/futbol/tff_1_lig/bursa_spor" class="gtm-tracker" data-newsVariant="ustmenu-spor-takimlar"><span>BURSASPOR</span></a></li><li><a title="ELAZIĞSPOR" href="/spor/futbol/tff_1_lig/elazigspor" class="gtm-tracker" data-newsVariant="ustmenu-spor-takimlar"><span>ELAZIĞSPOR</span></a></li><li><a title="ESKİŞEHİRSPOR" href="/spor/futbol/tff_1_lig/eskisehir_spor" class="gtm-tracker" data-newsVariant="ustmenu-spor-takimlar"><span>ESKİŞEHİRSPOR</span></a></li><li><a title="FATİH KARAGÜMRÜKSPOR" href="/spor/futbol/tff_1_lig/fatih_karagumrukspor" class="gtm-tracker" data-newsVariant="ustmenu-spor-takimlar"><span>FATİH KARAGÜMRÜKSPOR</span></a></li><li><a title="GİRESUNSPOR" href="/spor/futbol/tff_1_lig/giresunspor" class="gtm-tracker" data-newsVariant="ustmenu-spor-takimlar"><span>GİRESUNSPOR</span></a></li><li><a title="HATAYSPOR" href="/spor/futbol/tff_1_lig/hatayspor" class="gtm-tracker" data-newsVariant="ustmenu-spor-takimlar"><span>HATAYSPOR</span></a></li><li><a title="İSTANBULSPOR" href="/spor/futbol/tff_1_lig/istanbulspor" class="gtm-tracker" data-newsVariant="ustmenu-spor-takimlar"><span>İSTANBULSPOR</span></a></li><li><a title="KARDEMİR KARABÜKSPOR" href="/spor/futbol/tff_1_lig/kardemir_karabukspor" class="gtm-tracker" data-newsVariant="ustmenu-spor-takimlar"><span>KARDEMİR KARABÜKSPOR</span></a></li><li><a title="KEÇİÖRENGÜCÜ" href="/spor/futbol/tff_1_lig/keciorengucu" class="gtm-tracker" data-newsVariant="ustmenu-spor-takimlar"><span>KEÇİÖRENGÜCÜ</span></a></li><li><a title="MENEMEN BLD." href="/spor/futbol/tff_1_lig/menemen_bld" class="gtm-tracker" data-newsVariant="ustmenu-spor-takimlar"><span>MENEMEN BLD.</span></a></li><li><a title="OSMANLISPOR" href="/spor/futbol/tff_1_lig/osmanlispor" class="gtm-tracker" data-newsVariant="ustmenu-spor-takimlar"><span>OSMANLISPOR</span></a></li><li><a title="ÜMRANİYESPOR" href="/spor/futbol/tff_1_lig/umraniyespor" class="gtm-tracker" data-newsVariant="ustmenu-spor-takimlar"><span>ÜMRANİYESPOR</span></a></li></ul></div></div></div></div></li><li class=""><a href="#" class="gtm-tracker" data-newsVariant="ustmenu-spor-kategoriler"> KATEGORİLER<i class="chevron-down"></i></a><div class="sub-category secondary sport-color"><div class="wrapper"><div class="type1"><div class="column"><ul ><a title="FUTBOL" href="/spor/futbol" class="gtm-tracker title" data-newsVariant="spor-kategoriler" data-id="futbol"><span class="selected">FUTBOL</span></a><li><a title="Şampiyonlar Ligi" href="/spor/futbol/sampiyonlar_ligi" class="gtm-tracker" data-newsVariant="ustmenu-spor-kategori-futbol"><span>Şampiyonlar Ligi</span></a></li><li><a title="Türkiye Kupası" href="/spor/futbol/turkiye_kupasi" class="gtm-tracker" data-newsVariant="ustmenu-spor-kategori-futbol"><span>Türkiye Kupası</span></a></li><li><a title="UEFA Avrupa Ligi" href="/spor/futbol/avrupa_ligi" class="gtm-tracker" data-newsVariant="ustmenu-spor-kategori-futbol"><span>Avrupa Ligi</span></a></li><li><a title="İspanya La Liga" href="/spor/futbol/ispanya" class="gtm-tracker" data-newsVariant="ustmenu-spor-kategori-futbol"><span>İspanya</span></a></li><li><a title="İngiltere Premier Lig" href="/spor/futbol/ingiltere" class="gtm-tracker" data-newsVariant="ustmenu-spor-kategori-futbol"><span>İngiltere</span></a></li><li><a title="Almanya Bundesliga" href="/spor/futbol/almanya" class="gtm-tracker" data-newsVariant="ustmenu-spor-kategori-futbol"><span>Almanya</span></a></li><li><a title="İtalya Serie A" href="/spor/futbol/italya" class="gtm-tracker" data-newsVariant="ustmenu-spor-kategori-futbol"><span>İtalya</span></a></li><li><a title="Fransa Ligi" href="/spor/futbol/fransa" class="gtm-tracker" data-newsVariant="ustmenu-spor-kategori-futbol"><span>Fransa</span></a></li><li><a title="Spor Toto 2. Lig" href="/spor/futbol/tff_2_lig" class="gtm-tracker" data-newsVariant="ustmenu-spor-kategori-futbol"><span>Spor Toto 2. Lig</span></a></li><li><a title="Spor Toto 3. Lig" href="/spor/futbol/tff_3_lig" class="gtm-tracker" data-newsVariant="ustmenu-spor-kategori-futbol"><span>Spor Toto 3. Lig</span></a></li><li><a title="Milli Takım" href="/spor/futbol/milli_takim" class="gtm-tracker" data-newsVariant="ustmenu-spor-kategori-futbol"><span>Milli Takım</span></a></li><li><a title="Süper Kupa" href="/spor/futbol/super_kupa" class="gtm-tracker" data-newsVariant="ustmenu-spor-kategori-futbol"><span>Süper Kupa</span></a></li><li><a title="2018 Dünya Kupası Elemeleri" href="/spor/futbol/2018-dunya-kupasi-elemeleri" class="gtm-tracker" data-newsVariant="ustmenu-spor-kategori-futbol"><span>2018 Dünya Kupası Elemeleri</span></a></li><li><a title="Dünya Futbolu" href="/spor/futbol/dunya_futbolu" class="gtm-tracker" data-newsVariant="ustmenu-spor-kategori-futbol"><span>Dünya Futbolu</span></a></li><li><a title="Diğer" href="/spor/futbol/diger" class="gtm-tracker" data-newsVariant="ustmenu-spor-kategori-futbol"><span>Diğer</span></a></li></ul></div><div class="column"><div class="column"><ul><a title="Basketbol" href="/spor/basketbol" class="gtm-tracker title" data-newsVariant="spor-kategoriler" data-id="basketbol">Basketbol</a><li><a title="TBKL haberleri" href="/spor/basketbol/tkbl" class="gtm-tracker" data-newsVariant="ustmenu-spor-kategori-basketbol"><span>TBKL</span></a></li><li><a title="THY Euro League" href="/spor/basketbol/euroleague" class="gtm-tracker" data-newsVariant="ustmenu-spor-kategori-basketbol"><span>Euro League</span></a></li><li><a title="Euro Cup" href="/spor/basketbol/eurocup" class="gtm-tracker" data-newsVariant="ustmenu-spor-kategori-basketbol"><span>Euro Cup</span></a></li><li><a title="Dünya Basketbol Şampiyonası" href="/spor/basketbol/dunya_sampiyonasi" class="gtm-tracker" data-newsVariant="ustmenu-spor-kategori-basketbol"><span>Dünya Şampiyonasi</span></a></li><li><a title="Basketbol Şampiyonlar Ligi" href="/spor/basketbol/sampiyonlar_lig" class="gtm-tracker" data-newsVariant="ustmenu-spor-kategori-basketbol"><span>Şampiyonlar Ligi</span></a></li><li><a title="Kadınlar Euro League" href="/spor/basketbol/kadinlar_euroleague" class="gtm-tracker" data-newsVariant="ustmenu-spor-kategori-basketbol"><span>Kadınlar Euro League</span></a></li><li><a title="Basketbol Milli Takım" href="/spor/basketbol/milli_takim" class="gtm-tracker" data-newsVariant="ustmenu-spor-kategori-basketbol"><span>Milli Takım</span></a></li><li><a title="Diğer Basketbol Haberleri" href="/spor/basketbol/diger" class="gtm-tracker" data-newsVariant="ustmenu-spor-kategori-basketbol"><span>Diğer</span></a></li></ul></div><div class="column"><ul><a title="Tenis Haberleri" href="/spor/tenis" class="gtm-tracker title" data-newsVariant="spor-kategoriler" data-id="tenis">TENİS</a><li><a title="WTA Haberleri" href="/spor/tenis/wta" class="gtm-tracker" data-newsVariant="ustmenu-spor-kategori-tenis"><span>WTA</span></a></li><li><a title="ATP Haberleri" href="/spor/tenis/atp" class="gtm-tracker" data-newsVariant="ustmenu-spor-kategori-tenis"><span>ATP</span></a></li><li><a title="Grand Slams Haberleri" href="/spor/tenis/grand_slams" class="gtm-tracker" data-newsVariant="ustmenu-spor-kategori-tenis"><span>GRAND SLAM</span></a></li><li><a title="İstanbul Cup Haberleri" href="/spor/tenis/istanbul_cup" class="gtm-tracker" data-newsVariant="ustmenu-spor-kategori-tenis"><span>İSTANBUL CUP</span></a></li><li><a title="Diğer Tenis Haberleri" href="/spor/tenis/diger" class="gtm-tracker" data-newsVariant="ustmenu-spor-kategori-tenis"><span>DİĞER</span></a></li></ul></div><div class="column"><ul><a title="Voleybol Haberleri" href="/spor/voleybol" class="gtm-tracker title" data-newsVariant="spor-kategoriler"><span>Voleybol</span></a></ul></div><div class="column"><ul><a title="Diğer Spor Haberleri" href="/spor/diger" class="gtm-tracker title" data-newsVariant="spor-kategoriler"><span>Diğer</span></a></ul></div></div></div></div></div></li></ul></div></div></li><li class="" ><a href="/magazin"
+title="Magazin" target="_blank" class="magazine-color gtm-tracker " data-newsVariant="Header" > MAGAZİN </a><div class="sub-category primary magazine-color"><div class="wrapper"><ul><li class=""><a href="https://htkulup.haberturk.com" target="_blank" class="gtm-tracker" data-newsVariant="ustmenu-magazin-ht-kulup"><img src="https://im.haberturk.com/assets/images/brand/htkulup-white-new.svg" alt="HT Kulüp"></a></li><li class=""><a href="https://hthayat.haberturk.com/moda" target="_blank" class="gtm-tracker" data-newsVariant="ustmenu-magazin-moda"> MODA</a></li><li class=""><a href="/magazin/televizyon" class="gtm-tracker" data-newsVariant="ustmenu-magazin-televizyon"> TELEVİZYON</a></li><li class=""><a href="/magazin/dunyadan" class="gtm-tracker" data-newsVariant="ustmenu-magazin-dunyadan"> DÜNYADAN</a></li><li class=""><a href="/galeri/magazin" target="_blank" class="gtm-tracker" data-newsVariant="ustmenu-magazin-galeri"> GALERİ</a></li><li class=""><a href="/magazin/roportajlar" class="gtm-tracker" data-newsVariant="ustmenu-magazin-roportajlar"> RÖPORTAJLAR</a></li><li class=""><a href="/magazin/muzik" class="gtm-tracker" data-newsVariant="ustmenu-magazin-muzik"> MÜZİK</a></li></ul></div></div></li><li class="" ><a href="https://hthayat.haberturk.com"
+title="HT Hayat" target="_blank" class="hthayat-color gtm-tracker " data-newsVariant="Header" > KADIN </a></li><li class="" ><a href=""
+title="Yazarlar" target="_blank" class="author-color gtm-tracker " data-newsVariant="Header" style="padding:0"></a></li><li class="" ><a href="/saglik"
+title="Sağlık" class="health-color gtm-tracker " data-newsVariant="Header" > SAĞLIK </a><div class="sub-category primary health-color"><div class="wrapper"><ul><li class=""><a href="/saglik/genel-saglik" class="gtm-tracker" data-newsVariant="ustmenu-saglik-genel-saglik"> GENEL SAĞLIK</a></li><li class=""><a href="/saglik/anne-ve-cocuk" class="gtm-tracker" data-newsVariant="ustmenu-saglik-anne-ve-cocuk"> ANNE VE ÇOCUK</a></li><li class=""><a href="/saglik/kalp-sagligi" class="gtm-tracker" data-newsVariant="ustmenu-saglik-kalp-sagligi"> KALP SAĞLIĞI</a></li><li class=""><a href="/saglik/saglikli-beslenme" class="gtm-tracker" data-newsVariant="ustmenu-saglik-beslenme"> BESLENME</a></li><li class=""><a href="/saglik/kanser" class="gtm-tracker" data-newsVariant="ustmenu-saglik-kanser"> KANSER</a></li><li class=""><a href="/saglik/cinsel-saglik" class="gtm-tracker" data-newsVariant="ustmenu-saglik-cinsel-saglik"> CİNSEL SAĞLIK</a></li><li class=""><a href="/saglik/estetik-cerrahi" class="gtm-tracker" data-newsVariant="ustmenu-saglik-estetik-cerrahi"> ESTETİK CERRAHİ</a></li></ul></div></div></li><li class="" ><a href="/yazarlar"
+title="Yazarlar" target="_blank" class="author-color gtm-tracker " data-newsVariant="Header" > YAZARLAR </a></li><li class="" ><a href=""
+title="Galeri" class="agenda-color gtm-tracker " data-newsVariant="Header" style="padding:0"></a><div class="sub-category primary agenda-color"><div class="wrapper"><ul><li class=""><a href="/galeri/gundem" class="gtm-tracker" data-newsVariant="ustmenu-galeri-gundem"> GÜNDEM</a></li><li class=""><a href="/galeri/ekonomi" class="gtm-tracker" data-newsVariant="ustmenu-galeri-ekonomi"> EKONOMİ</a></li><li class=""><a href="/galeri/spor" class="gtm-tracker" data-newsVariant="ustmenu-galeri-spor"> SPOR</a></li><li class=""><a href="/galeri/komedi" class="gtm-tracker" data-newsVariant="ustmenu-galeri-komedi"> KOMEDİ</a></li><li class=""><a href="/galeri/magazin" class="gtm-tracker" data-newsVariant="ustmenu-galeri-magazin"> MAGAZİN</a></li><li class=""><a href="/galeri/yasam" class="gtm-tracker" data-newsVariant="ustmenu-galeri-yasam"> YAŞAM</a></li><li class=""><a href="/galeri/seyahat" class="gtm-tracker" data-newsVariant="ustmenu-galeri-seyahat"> SEYAHAT</a></li><li class="special-a-d-v"><a href="/galeri/teknoloji" class="gtm-tracker" data-newsVariant="ustmenu-galeri-teknoloji"><div class="special-logo"><img src="https://im.haberturk.com/assets/images/brand-other/vodafone-disi-logo-business.png"></div><div>ile Teknoloji</div></a></li><li class=""><a href="/galeri/diger" class="gtm-tracker" data-newsVariant="ustmenu-galeri-diger"> DİĞER</a></li></ul></div></div></li><li><a href="/canliyayin" title="Canlı Yayın" target="_blank" class="sub-logo live gtm-tracker" data-newsVariant="Header"><img src="https://im.haberturk.com/assets/images/v4/canli-yayin-logo.svg"/></a></li></ul></div><div class="other-menu"><ul><li><a href="/uyelik/bilgi_guncelle" class="header-my-account-btn all-click-event profile gtm-tracker" data-newsVariant="Header"></a></li><li><i class="search"></i></li><li><a href="javascript:void(0)" class="other-category-menu menu gtm-tracker" data-newsVariant="Header" id="other-category-menu-tag" data-device="desktop"></a></li></ul></div></div></div><div class="search-content"><div class="wrapper"><input class="search__input-field" id="yaaniSearchInput"
+value=""
+placeholder="Habertürk'te ara..." ><button type="button" class="search-btn-group" id="yaaniSearch"><span>Ara</span></button></div></div></header><script>
+        var headerJSUrl = 'https://im.haberturk.com/assets/js/v3/header.min.js?v=3352';
+        if (typeof head !== 'undefined') {
+            head.ready('jQuery', function() {
+                head.load(headerJSUrl);
+            });
+        } else {
+            var h = document.getElementsByTagName('head')[0];
+            var scr = document.createElement('script');
+                scr.src = headerJSUrl;
+
+            h.appendChild(scr);
+        }
+    </script><style> /*.other-menu.yaaniPage {padding:0; }.other-menu.yaaniPage ul{float:right;}/*body.open .search-content.yaani{display: none!important;}.other-menu.yaaniPage ul li.searchIcon{display:none;}.other-menu.yaaniPage ul li:last-child{margin-left:5px;}*/
+.search-content.yaani {/*display:block !important; margin-top: 0 !important;*/ position: relative; background-color:#fff; height:50px;
+border-bottom: 3px solid #0f93f7; -webkit-box-shadow: inset -4px 9px 10px -10px rgba(0,0,0,0.74);
+-moz-box-shadow: inset -4px 9px 10px -10px rgba(0,0,0,0.74);
+box-shadow: inset -4px 9px 10px -10px rgba(0,0,0,0.74);}.search-content.yaani .wrapper{padding: 0;}.search-content.yaani .searchLayer {margin:0 20px; display: flex; position: relative; width: 100%;}header .search-content.yaani.show {z-index:99999; margin-top: 0;}header.searchActive{z-index:99999;}.search-content.yaani input.search__input-field{width: calc(100% - 115px); display:block; padding-top:5px; color:#132b4d; font-size:20px; /*font-weight:600; */ padding-left:10px; font-family: "District-BoldItalicAlt"; font-weight: normal; padding-left:15px;}.search-content.yaani input::-webkit-input-placeholder {color:#132b4d !important;}.search-content.yaani input:-moz-placeholder {color: #132b4d !important; }.search-content.yaani input::-moz-placeholder {color: #132b4d !important; }.search-content.yaani input:-ms-input-placeholder {color: #132b4d !important;}.search-content.yaani .yaani-logo {/*position: absolute; left:-10px; overflow: hidden;*/}.search-content.yaani .yaani-logo img{width:40px; position: relative; padding-top:3px; /*top:-8px; left:-10px;*/}.search-content.yaani .yaani-logo-type-2 {position: absolute; right:50px; padding:0 10px; top:0px; height:50px; display:block; background-color: #20349D;}.search-content.yaani .yaani-logo-type-2 img{width:90px; padding-top: 10px;}.search-content.yaani .wrapper button {background-color:#0f93f7; width:70px; height:35px; margin-top:7px; border-radius:5px; cursor:pointer;}.search-content.yaani .wrapper button span{font-weight: bold; font-size:16px;}.search-content.yaani .wrapper button img{width:20px;}.search-content.yaani .dropdown-wrapper{width:150px; display:none;}.search-content.yaani .dropdown-wrapper .ae-select {position: relative; height:50px; line-height: 50px; color:#fff; font-size:20px;
+font-weight:600;}.search-content.yaani .dropdown-wrapper .ae-select-content span{color:#fff;}.search-content.yaani .dropdown-wrapper .ae-select.chosen {color: #fff;}.search-content.yaani .dropdown-wrapper .ae-select .down-icon, .search-content.yaani .ae-select .up-icon {position:absolute; right:6px; top:20px; color:#fff; background: url('https://im.haberturk.com/assets/images/v4/icon/search-arrow-down.svg') no-repeat center center; height:14px; width:10px;}.search-content.yaani .dropdown-wrapper .ae-dropdown .dropdown-menu {background-color:#0C187C; font-size:20px; font-weight:600; color:#fff;}.search-content.yaani .dropdown-wrapper .ae-dropdown .ae-select, .search-content.yaani .dropdown-wrapper .ae-dropdown .dropdown-menu>li {cursor: pointer;}.search-content.yaani .dropdown-wrapper .ae-dropdown .dropdown-menu>li>a:focus, .search-content.yaani .dropdown-wrapper .ae-dropdown .dropdown-menu>li>a:hover {background: none;}.search-content.yaani .dropdown-wrapper .ae-disabled{pointer-events: none;}.search-content.yaani .ae-hide{display:none;}.search-content.yaani ul.dropdown-menu{list-style-type: none;}.search-content.yaani ul.dropdown-menu{margin:0px;}.search-content.yaani ul.dropdown-menu li{padding:6px;}.search-content.yaani ul.dropdown-menu li:first-child {padding-bottom:0;}.search-content.yaani ul.dropdown-menu li a{color:#fff;}.search-content.yaani ul.dropdown-menu li a:hover{opacity: 0.7;}.search-content.yaani ul.dropdown-menu li:first-child a{border-bottom: 1px solid #fff; padding-bottom:6px; display: block;}/* input::-webkit-input-placeholder {color: white !important; opacity:1;}input:-moz-placeholder {color: white !important; opacity:1;}input::-moz-placeholder {color: white !important; opacity:1;}input:-ms-input-placeholder {color: white !important; opacity:1;}*/
+@media (max-width: 1250px){header .search-content.yaani .wrapper{}.search-content.yaani input.search__input-field{}header .search-content.yaani .wrapper {margin:0; }.search-content.yaani .searchLayer{margin: 0;}}</style><script type="text/javascript">
+
+    if (typeof head != "undefined") {
+        head.ready("layout", function () {
+            initYaaniSearch();
+        });
+    } else {
+        jQuery(document).ready(function () {
+            initYaaniSearch();
+        });
+    }
+
+    slugify = function (text) {
+        var trMap = {
+            'çÇ': 'c',
+            'ğĞ': 'g',
+            'şŞ': 's',
+            'üÜ': 'u',
+            'ıİ': 'i',
+            'öÖ': 'o'
+        };
+        for (var key in trMap) {
+            text = text.replace(new RegExp('[' + key + ']', 'g'), trMap[key]);
+        }
+        return  encodeURI(text.trim()
+                .replace(/[^-a-zA-Z0-9\s]+/ig, '') // remove non-alphanumeric chars
+                .replace(/\s/gi, "-") // convert spaces to dashes
+                .replace(/[-]+/gi, "-") // trim repeated dashes
+                .toLowerCase());
+    };
+
+    function initYaaniSearch() {
+        jQuery('#yaaniSearchInput').keypress(function (e) {
+            if (e.which == 13) {
+                e.preventDefault();
+                $('#yaaniSearch').trigger('click');
+            }
+        });
+
+        jQuery('#yaaniSearch').click(function () {
+
+            var yaaniSearchInput = $('#yaaniSearchInput').val();
+            yaaniSearchInput = yaaniSearchInput.replace("&", "|");
+            if (yaaniSearchInput == '') {
+                yaaniSearchInput = $('#yaaniSearchInput').attr('placeholder');
+            }
+
+
+
+            if (yaaniSearchInput.length > 0) {
+                var slug = slugify(yaaniSearchInput);
+                window.location.href = '/arama/' + slug + '?tr=' + yaaniSearchInput;
+            }
+            //HTGlobal.Search.onSearchSubmit('yaaniSearchInput');
+        });
+
+        /*jQuery('.ae-select-content').text(jQuery('.dropdown-menu > li.selected').text());
+        var newOptions = $('.dropdown-menu > li');
+        newOptions.click(function () {
+            $('.ae-select-content').text(jQuery(this).text());
+            $('.dropdown-menu > li').removeClass('selected');
+            $(this).addClass('selected');
+        });
+
+        var aeDropdown = jQuery('.ae-dropdown');
+        aeDropdown.click(function () {
+            jQuery('.dropdown-menu').toggleClass('ae-hide');
+        });*/
+    }
+
+</script></div><div class="container seo-special-news" data-io-article-url="https://www.haberturk.com/sok-25-31-mart-aktuel-urunler-katalogu-2020-sok-da-bu-hafta-kampanyali-indirimli-urunler-var-2624902-ekonomi"><div id="newsWrapper" class="wrapper type1 featured-left detail-photo-news left sidebar-block"><div class="page-skin-content fixed"><div class="page-skin-left"><div id="zone_1281" zone-id="1281" class="no-init" zone-viewtype="banner"></div></div><script type="text/javascript">function renderPageSkinLeft() { if (!window.rightAdsIsPageskin) { cbgAds.RefreshZone(1281); }}</script><div class="page-skin-right"><div id="zone_1280" zone-id="1280" class="ads-zone" zone-viewtype="banner" onRenderEnded="renderPageSkinLeft();"><script type="text/javascript">cbgAds.AdsInline(1280);</script></div></div><div class="page-skin-top"></div></div><div class="box-row masthead-content" id="divMhBlock"><div class="box box-10 widget widget-masthead type1"><div class="wrapper"><script type="text/javascript">
+                        function collapseMastheadOnDemand(mastHeadZoneID) {
+                            var adCnt = "zone_" + mastHeadZoneID + "_mhc";
+                            var mElem = document.getElementById(adCnt);
+                            if (mElem == null || mElem.style.display == "none") {
+                                var mhBlock = document.getElementById("divMhBlock");
+                                if (mhBlock) {
+                                    mhBlock.style.display = "none";
+                                }
+                            }
+                        }
+                    </script>
+<div id="zone_1286" zone-id="1286" class="ads-zone MustHead masthead-content" zone-viewtype="banner" onRenderEnded="collapseMastheadOnDemand(1286);"><script type="text/javascript">cbgAds.AdsInline(1286);</script></div></div></div><div id="news" class="">
+	
+        <div class="box box-2 type1 masthead-height mastheadYani">
+            <a href="https://www.haberturk.com/bim-27-mart-2020-aktuel-urunleri-satisa-cikiyor-bim-de-hangi-urunler-indirimde-iste-tam-liste-2626344-ekonomi" title="BİM 27 Mart Aktüel ürünler kataloğu çıkıyor" target="_blank" class="gtm-tracker" data-newsPosition="0" data-newsId="2625423" data-newsName="BİM 27 Mart Aktüel ürünler kataloğu çıkıyor" data-newsVariant="box-news-image" data-newsList="mastheadYani" data-newsCategory="Ekonomi/Alışveriş">
+                <figure>
+                    <span class="img rate-16x9">
+                        <img src="https://im.haberturk.com/2020/03/26/ver1585241609/2625423_100x100.jpg" alt="BİM 27 Mart Aktüel ürünler kataloğu çıkıyor">
+                    </span>
+                    <figcaption>
+                        <i class="ion-ios-paper-outline"></i>
+                        <span class="category">
+                        <small class="art">
+                            Ekonomi                        </small>
+                        <small class="time">
+                            <i class="ion-ios-clock-outline">
+
+                            </i> 10 saat önce                            </small>
+                        </span>
+                        <span class="title">BİM 27 Mart Aktüel ürünler kataloğu çıkıyor</span>
+                    </figcaption>
+                </figure>
+            </a>
+
+        </div>
+	</div></div><script type="text/javascript">
+    var galleryData = {"page_count":2,"galeri_baslik":"\u015eOK 25-31 Mart Akt\u00fcel \u00fcr\u00fcnler katalo\u011fu 2020! \u015eOK'da bu hafta kampanyal\u0131 indirimli \u00fcr\u00fcnler var","galeri_kategori":" | Al\u0131\u015fveri\u015f Haberleri","next_galeri_url":"https:\/\/www.haberturk.com\/a101-26-mart-aktuel-urunler-katalogu-a101-de-bu-hafta-indirimli-neler-var-2625459-ekonomi","HaberDetayBody":"  ","1":{"image_number":1,"prev_url":"","current_url":"\/sok-25-31-mart-aktuel-urunler-katalogu-2020-sok-da-bu-hafta-kampanyali-indirimli-urunler-var-2624902-ekonomi","next_url":"\/sok-25-31-mart-aktuel-urunler-katalogu-2020-sok-da-bu-hafta-kampanyali-indirimli-urunler-var-2624902-ekonomi\/2","hbrtk_url":"https:\/\/www.haberturk.com\/sok-25-31-mart-aktuel-urunler-katalogu-2020-sok-da-bu-hafta-kampanyali-indirimli-urunler-var-2624902-ekonomi","full_url":"https:\/\/www.haberturk.com\/sok-25-31-mart-aktuel-urunler-katalogu-2020-sok-da-bu-hafta-kampanyali-indirimli-urunler-var-2624902-ekonomi","image":"https:\/\/im.haberturk.com\/2020\/03\/25\/2624902_23ab20c3fd3bc9a8181184598b0778f4_640x640.jpg","thumbnail":"https:\/\/im.haberturk.com\/2020\/03\/25\/2624902_23ab20c3fd3bc9a8181184598b0778f4_300x300.jpg","resim_alti":"","newsPageIndex":1,"newsPageHrcID":"2638800","harita_json":"[]","gemiusIdentifier":"B8Y7AGNMeOnyyCHMClQ2qMeCrfGkFYNAblwIuDITDBP.D7","width":460,"height":640},"2":{"image_number":2,"prev_url":"\/sok-25-31-mart-aktuel-urunler-katalogu-2020-sok-da-bu-hafta-kampanyali-indirimli-urunler-var-2624902-ekonomi","current_url":"\/sok-25-31-mart-aktuel-urunler-katalogu-2020-sok-da-bu-hafta-kampanyali-indirimli-urunler-var-2624902-ekonomi\/2","next_url":"","hbrtk_url":"https:\/\/www.haberturk.com\/sok-25-31-mart-aktuel-urunler-katalogu-2020-sok-da-bu-hafta-kampanyali-indirimli-urunler-var-2624902-ekonomi\/2","full_url":"https:\/\/www.haberturk.com\/sok-25-31-mart-aktuel-urunler-katalogu-2020-sok-da-bu-hafta-kampanyali-indirimli-urunler-var-2624902-ekonomi\/2","image":"https:\/\/im.haberturk.com\/2020\/03\/25\/2624902_b8c1f9aa46c511e6f4f6cdf8cfe7b3a6_640x640.jpg","thumbnail":"https:\/\/im.haberturk.com\/2020\/03\/25\/2624902_b8c1f9aa46c511e6f4f6cdf8cfe7b3a6_300x300.jpg","resim_alti":"","newsPageIndex":2,"newsPageHrcID":"2638799","harita_json":"[]","gemiusIdentifier":"B8Y7AGNMeOnyyCHMClQ2qMeCrfGkFYNAblwIuDITDBP.D7","width":481,"height":640},"wordCount":2},
+            haberId = 2624902,
+            photoGalleryCurrentOrder = 1;
+</script>
+<script type="text/javascript">
+dataLayer.push({
+  'ecommerce': {
+    'detail': {
+     'actionField': {'list': ''},
+      'products': [{
+        'name': 'ŞOK 25-31 Mart Aktüel ürünler kataloğu 2020! ŞOK\'da bu hafta kampanyalı indirimli ürünler var',
+        'id': '2624902',
+        'price': '1',
+        'brand': 'FotoHaberDetay',
+        'category': 'Ekonomi/Alışveriş',
+        'variant': '',
+        'list': '',
+        'quantity': 1
+       }]
+    }
+  }
+});
+</script><div class="photo-section"><section class="featured"><figure><figcaption><h1 class="title"> ŞOK 25-31 Mart Aktüel ürünler kataloğu 2020! ŞOK'da bu hafta kampanyalı indirimli ürünler var </h1><div class="boxTwo type2"><div class="share type1"><ul><li><a class="favorite" title="Favorilerine Ekle" href="javascript:;" onclick="HTGlobal.Utils.addFavorite('2381992');"><i class="ion-bookmark"></i></a></li><li><a class="facebook" title="Facebook'ta Paylaş" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fgez.io%2FlYDB6I"><i class="ion-social-facebook"></i></a></li><li><a class="twitter" title="Twitter'da Paylaş" target="_blank" href="https://twitter.com/share?url=http%3A%2F%2Fgez.io%2FlYDB6I&text=%C5%9EOK%2025-31%20Mart%20Akt%C3%BCel%20%C3%BCr%C3%BCnler%20katalo%C4%9Fu%202020%21%20%C5%9EOK%27da%20bu%20hafta%20kampanyal%C4%B1%20indirimli%20%C3%BCr%C3%BCnler%20var&via=haberturk"><i class="ion-social-twitter"></i></a></li><li><a class="flipboard" title="Flipboard'ta Paylaş!" target="_blank" href="https://share.flipboard.com/bookmarklet/popout?v=2&title=%C5%9EOK%2025-31%20Mart%20Akt%C3%BCel%20%C3%BCr%C3%BCnler%20katalo%C4%9Fu%202020%21%20%C5%9EOK%27da%20bu%20hafta%20kampanyal%C4%B1%20indirimli%20%C3%BCr%C3%BCnler%20var&url=http%3A%2F%2Fgez.io%2FlYDB6I&t=1528879757660&utm_campaign=tools&utm_medium=article-share&utm_source=haberturk.com"><i></i></a></li><li><a class="email" title="Mail Olarak Gönder" target="_blank" href="mailto:Buraya%20gönderilecek%20adresi%20giriniz.?subject=%C5%9EOK%2025-31%20Mart%20Akt%C3%BCel%20%C3%BCr%C3%BCnler%20katalo%C4%9Fu%202020%21%20%C5%9EOK%27da%20bu%20hafta%20kampanyal%C4%B1%20indirimli%20%C3%BCr%C3%BCnler%20var&body=http%3A%2F%2Fgez.io%2FlYDB6I"><i class="ion-ios-email"></i></a></li><li><a class="other" href="javascript:;" title="Yazdır" onclick="window.print();"><i class="ion-printer"></i></a></li></ul></div><div class="category type1"><span class="date"><time>25.03.2020 - 17:00</time><time datetime="2020-03-25T17:00:50+03:00">Güncelleme: 25.03.2020 - 17:00</time></span></div></div><h2 class="spot-title">ŞOK 25-31 Mart 2020 haftanın fırsatları kataloğu yayınlandı. ŞOK'da birbirinden çeşitli kampanyalı ürünler dikkat çekerken gıda ürünlerinden temizlik malzemelerine kadar birçok yeni ürün raflardaki yerlerini aldı. ŞOK 25-31 Mart kataloğunda indirimli ürünler fırsatlarıyla müşterileri bekliyor. İşte ŞOK 25-31 Mart 2020 aktüel ürünler kataloğu...</h2></figcaption></figure><div id="HaberEditorWidget"></div></section><aside class="sidebar photo-sidebar" id="FotoHaberSidebarFixed" data-stick-sidebar data-section-index="0"><div id="" class="box-row"></div><div class="sidebar-wrapper"><div class="sidebar-inner"></div></div></aside><article class="content type1 photo-section"><div class="widget-photo-news type1 photo-news-list"><ul><li id="divID_1" data-order="1"><figure><span class="order">01</span><span class="img"><div class="zoom-in-out"></div><img class="added-image news-image up-right-photo" data-id="1" src="https://im.haberturk.com/2020/03/25/2624902_23ab20c3fd3bc9a8181184598b0778f4_640x640.jpg" alt="ŞOK 25-31 Mart Aktüel ürünler kataloğu 2020! ŞOK'da bu hafta kampanyalı indirimli ürünler var"></span><figcaption><span class="description"></span><div class="share type1 open"><i class="ion-forward"></i><ul><li><a class="facebook" rel="nofollow" title="Facebook'ta Paylaş" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.haberturk.com%2Fsok-25-31-mart-aktuel-urunler-katalogu-2020-sok-da-bu-hafta-kampanyali-indirimli-urunler-var-2624902-ekonomi/1"><i class="ion-social-facebook"></i></a></li><li><a class="twitter" rel="nofollow" title="Twitter'da Paylaş" target="_blank" href="https://twitter.com/share?url=https%3A%2F%2Fwww.haberturk.com%2Fsok-25-31-mart-aktuel-urunler-katalogu-2020-sok-da-bu-hafta-kampanyali-indirimli-urunler-var-2624902-ekonomi/1&text=%C5%9EOK%2025-31%20Mart%20Akt%C3%BCel%20%C3%BCr%C3%BCnler%20katalo%C4%9Fu%202020%21%20%C5%9EOK%27da%20bu%20hafta%20kampanyal%C4%B1%20indirimli%20%C3%BCr%C3%BCnler%20var&via=haberturk"><i class="ion-social-twitter"></i></a></li><li><a class="flipboard" rel="nofollow" title="Flipboard'ta Paylaş!" target="_blank" href="https://share.flipboard.com/bookmarklet/popout?v=2&title=%C5%9EOK%2025-31%20Mart%20Akt%C3%BCel%20%C3%BCr%C3%BCnler%20katalo%C4%9Fu%202020%21%20%C5%9EOK%27da%20bu%20hafta%20kampanyal%C4%B1%20indirimli%20%C3%BCr%C3%BCnler%20var&url=https%3A%2F%2Fwww.haberturk.com%2Fsok-25-31-mart-aktuel-urunler-katalogu-2020-sok-da-bu-hafta-kampanyali-indirimli-urunler-var-2624902-ekonomi/1&t=1528879757660&utm_campaign=tools&utm_medium=article-share&utm_source=haberturk.com"><i></i></a></li></ul></div></figcaption></figure></li><li id="divID_2" data-order="2"><figure><span class="order">02</span><span class="img"><div class="zoom-in-out"></div><img class=" up-right-photo" data-id="2" src="https://im.haberturk.com/2020/03/25/2624902_b8c1f9aa46c511e6f4f6cdf8cfe7b3a6_640x640.jpg" alt="ŞOK 25-31 Mart Aktüel ürünler kataloğu 2020! ŞOK'da bu hafta kampanyalı indirimli ürünler var"></span><figcaption><span class="description"></span><div class="share type1 open"><i class="ion-forward"></i><ul><li><a class="facebook" rel="nofollow" title="Facebook'ta Paylaş" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.haberturk.com%2Fsok-25-31-mart-aktuel-urunler-katalogu-2020-sok-da-bu-hafta-kampanyali-indirimli-urunler-var-2624902-ekonomi/2"><i class="ion-social-facebook"></i></a></li><li><a class="twitter" rel="nofollow" title="Twitter'da Paylaş" target="_blank" href="https://twitter.com/share?url=https%3A%2F%2Fwww.haberturk.com%2Fsok-25-31-mart-aktuel-urunler-katalogu-2020-sok-da-bu-hafta-kampanyali-indirimli-urunler-var-2624902-ekonomi/2&text=%C5%9EOK%2025-31%20Mart%20Akt%C3%BCel%20%C3%BCr%C3%BCnler%20katalo%C4%9Fu%202020%21%20%C5%9EOK%27da%20bu%20hafta%20kampanyal%C4%B1%20indirimli%20%C3%BCr%C3%BCnler%20var&via=haberturk"><i class="ion-social-twitter"></i></a></li><li><a class="flipboard" rel="nofollow" title="Flipboard'ta Paylaş!" target="_blank" href="https://share.flipboard.com/bookmarklet/popout?v=2&title=%C5%9EOK%2025-31%20Mart%20Akt%C3%BCel%20%C3%BCr%C3%BCnler%20katalo%C4%9Fu%202020%21%20%C5%9EOK%27da%20bu%20hafta%20kampanyal%C4%B1%20indirimli%20%C3%BCr%C3%BCnler%20var&url=https%3A%2F%2Fwww.haberturk.com%2Fsok-25-31-mart-aktuel-urunler-katalogu-2020-sok-da-bu-hafta-kampanyali-indirimli-urunler-var-2624902-ekonomi/2&t=1528879757660&utm_campaign=tools&utm_medium=article-share&utm_source=haberturk.com"><i></i></a></li></ul></div></figcaption></figure></li></ul><p></p></div></article><article class="content type1 photo-section"><div class="content-related" id="comments_box_2624902"><div class="widget-tag type1 mb-20"><ul><li><a href="javascript:;" >şok 26 mart aktüel kataloğu</a></li><li><a href="javascript:;" >şok 28 mart aktüel ürünler kataloğu</a></li><li><a href="javascript:;" >şok 28 mart 2020</a></li><li><a href="javascript:;" >şok indirimli ürünler</a></li></ul></div><div class="widget widget-actual-btn type1"><a href="https://www.haberturk.com" title="Günün Önemli Manşetleri" target="_blank"><span>GÜNÜN ÖNEMLİ MANŞETLERİ</span><i class="ion-ios-arrow-thin-right"></i></a></div><div class="widget widget-social-subscribe type1 YoutubeAbone"><a href="https://www.youtube.com/user/gucuozgurlugunde" title="Röportajlar, insan hikayeleri, belgeseller… Binlercesi YouTube kanalımızda." target="_blank"
+class="gtm-tracker"
+data-newsposition="0"
+data-newsid="999991"
+data-newsname="Youtube Web"
+data-newsvariant="box-news"
+data-newslist="YoutubeAbone"
+data-newscategory="Yaşam"><img src="https://im.haberturk.com/assets/images/v4/detailpage/social/detail-page-social-subscribe-light-1-desktop.svg" alt="Röportajlar, insan hikayeleri, belgeseller… Binlercesi YouTube kanalımızda."/></a></div><div class="nd-page-end-620"><div zone-id="1892" class="ads-zone lazy-init" style="text-align:center;" zone-viewtype="banner"></div></div><div class="widget widget-social-subscribe type1 WhatsappAbone"><a href="https://www.haberturk.com/haberturkcom-whatsapp-hatti-2560363" title="Habertürk Whatsapp Hattı"
+class="gtm-tracker"
+data-newsposition="0"
+data-newsid="999992"
+data-newsname="Whatsapp Mobile"
+data-newsvariant="box-news"
+data-newslist="WhatsappAbone"
+data-newscategory="Yaşam"><img src="https://im.haberturk.com/assets/images/v4/detailpage/social/detail-page-whatsapp-banner-light-desktop.svg" alt="Habertürk Whatsapp Hattı"/></a></div><div class="comments-box"><div class="widget widget-comments type1"><div class="head"><h3>YORUMLAR</h3><div><span>Yorum kurallarını okumak için <span class="more-modal">tıklayınız!</span></span><i class="ion-minus-round"></i></div></div><form id="main-form2624902"><input type="hidden" name="ci_csrf_token" value=""/><textarea class="comment-textbox" name="ozet" id="ozet" placeholder="Sen de düşüncelerini paylaş!"></textarea><button class="comment-send" onclick="HTGlobal.Comment.send(2624902, 'main-form')" type="button" class="button">GÖNDER
+</button><span class="alertt"></span></form></div></div><div zone-id="2174" data-width="300" data-height="250" class="ads-zone lazy-init" zone-viewtype="banner"></div><div id="zone_1912" zone-id="1912" class="ads-zone engageyaIframe" style="text-align:center;" zone-viewtype="banner" zone-keywords="custom10=2624902"><script type="text/javascript">cbgAds.AdsInline(1912);</script></div></div></article></div>
+<script type="text/javascript">
+function GAVirtualNewsDetailPageEnd(){ 
+dataLayer.push({
+	'event': 'GAEvent',
+	'eventCategory': 'Enhanced Ecommerce',
+	'eventAction': 'Add To Chart',
+  	'ecommerce': {
+    'currencyCode': 'TRY',
+    'add': {
+      'products': [{
+        'name': 'ŞOK 25-31 Mart Aktüel ürünler kataloğu 2020! ŞOK\'da bu hafta kampanyalı indirimli ürünler var',
+        'id': '2624902',
+        'price': '1',
+        'brand': 'FotoHaberDetay',
+        'category': 'Ekonomi/Alışveriş',
+        'variant': '',
+        'list': '',
+        'quantity': 1
+       }]
+    }
+  }
+});
+dataLayer.push({
+            'event': 'GAEvent',
+            'eventCategory': 'Impression',
+            'eventAction': 'Additional Payload',
+            'newsFinished': '1',
+            'newsID': '2624902',
+            'name': 'ŞOK 25-31 Mart Aktüel ürünler kataloğu 2020! ŞOK\'da bu hafta kampanyalı indirimli ürünler var',
+            'category': 'Ekonomi/Alışveriş',
+            
+        });
+}
+</script>
+<script>
+        head.ready("jQuery", function () {
+            // render sidebar news
+            var sectionCount = 1,
+                    newsPerSection = 6,
+                    currentNewsIndex = 0;
+
+            jQuery.getJSON("/ekonomi/details/FotoHaberKategoriSidebar/4060642", function (newsList) {
+                // sayfadaki haber ile aynı ise listeden silelim
+                for (var cIndex = 0; cIndex < newsList.length; cIndex++) {
+                    if (newsList[cIndex].news.id == haberId) {
+                        newsList.splice(cIndex, 1);
+                    }
+                }
+
+                for (var sectionIndex = 0; sectionIndex < sectionCount; sectionIndex++) {
+                    var $sidebar = jQuery('.photo-sidebar[data-section-index="' + sectionIndex + '"] .sidebar-inner');
+                    for (var newsIndex = 1; newsIndex <= newsPerSection; newsIndex++) {
+                        // haberi append et
+                        $sidebar.append(renderBoxNews(newsList[currentNewsIndex]));
+
+                        // 1.haber
+                        // 2.haber
+                        // 300x600 reklam
+                        // 3.haber
+                        // 4.haber
+                        // 5.haber
+                        // 300x250 reklam
+                        // 6.haber
+
+                        if (newsIndex === 2) {
+                            $sidebar.append(render300x250());
+                        }
+                        if (newsIndex === 5) {
+                            $sidebar.append(render300x600());
+                        }
+
+                        // eğer suanki index, apiden gelen haberlerin sayısına eşit ise
+                        // indexi sıfırlayarak başa dönüyoruz
+                        currentNewsIndex++;
+                        if (currentNewsIndex == newsList.length) {
+                            currentNewsIndex = 0;
+                        }
+                    }
+                    jQuery('div[data-stick-sidebar]').trigger("sticky_kit:recalc");
+                }
+
+                try {
+                    cbgAds.OnDocumentModified();
+                } catch (__ex) {
+                }
+
+                head.load(['https://im.haberturk.com/assets/js/plugins/ResizeSensor.js', 'https://im.haberturk.com/assets/js/plugins/jquery.sticky-kit.js?v=3352'], function () {
+                    jQuery('.sidebar-inner').stick_in_parent({
+                        parent: '.photo-section',
+                        spacer: '.sidebar-wrapper',
+                        offset_top: 0,
+                        recalc_every: 1
+                    });
+                    new ResizeSensor(jQuery('#zone_1286'), function () {
+                        jQuery('div[data-stick-sidebar]').trigger("sticky_kit:recalc");
+                    });
+                });
+
+                head.ready("globaljs", function () {
+                    HTGlobal.GtmTracker.CollectImpression();
+                    jQuery('div[data-stick-sidebar]').trigger("sticky_kit:recalc");
+                });
+                head.ready("cbglout", function () {
+                try{cbgAds.OnDocumentModified();}catch(__ex){}                    jQuery('div[data-stick-sidebar]').trigger("sticky_kit:recalc");
+                });
+            });
+
+
+			
+        });
+
+        function render300x600() {
+            return '<div class="ads-300x600 mb-20 ad-ver-ti-se-ment-300 adv-600"><div zone-id="1864" data-width="300" data-height="600" class="ads-zone lazy-init" zone-viewtype="banner"></div></div>';
+        }
+        ;
+
+        function render300x250() {
+            return '<div class="ads-300x250 mb-20"><div zone-id="1720" data-width="300" data-height="250" class="ads-zone lazy-init" zone-viewtype="banner"></div></div>';
+        }
+        ;
+
+        var transparentImage = 'https://im.haberturk.com/assets/images/v3/transparent.gif';
+
+        function renderBoxNews(item) {
+            return [
+                '<div class="box-row MagazinFotoHaberSidebarFixed">',
+                '<div class="box box-12 type1 mb-20">',
+                '<a href="' + item.news.link + '" title="' + item.news.title + '" target="_blank" class="gtm-tracker" ' + item.gtm.image + '>',
+                '<figure>',
+                '<span class="img rate-16x9">',
+                '<img src="' + item.news.image + '" alt="' + item.news.title + '">',
+                '</span>',
+                '<figcaption>',
+                '<i class="ion-ios-paper-outline"></i>',
+                '<span class="category"><small class="art">' + item.category.name + '</small> <small class="time"><i class="ion-ios-clock-outline"></i> ' + item.news.time + '</small></span>',
+                '<span class="title">' + item.news.name + '</span>',
+                '</figcaption>',
+                '</figure>',
+                '</a>',
+                '</div>',
+                '</div>'
+
+            ].join("\n");
+        }
+        ;
+    </script>
+<style> .photo-section {
+width: 100%;
+height: 100%;
+overflow: hidden;
+}aside.photo-sidebar {
+position: initial !important;
+}</style><div zone-id="1781" class="ads-zone lazy-init masthead-content-footer" style="text-align: center; float: left; margin: 0 auto; width: 100%;" zone-viewtype="banner"></div></div><footer><div class="newsletter"><div class="content"><a href="/" class="logo"></a><div class="description">“Günün manşetlerini ve en çok okunan haberlerini her sabah e-postanızdan takip etmek için Habertürk bültene üye olun.”</div><div class="newsletter-form"><form id="bultenForm" action="/uyelik/bulten" method="POST"><input type="text" name="email" placeholder="E-posta adresinizi yazınız!"><button type="submit" class="gtm-tracker" data-newsVariant="footer-newsletter" data-newsHref="haberturk"></button></form></div></div></div><div class="brand"><div class="content"><ul class="list"><li class="logo-showtv"><a href="https://www.showtv.com.tr?utm_source=haberturk" class="gtm-tracker" data-newsVariant="footer-brand" title="Show TV" target="_blank"></a></li><li class="logo-showmax"><a href="http://www.showmax.com.tr?utm_source=haberturk" class="gtm-tracker" data-newsVariant="footer-brand" title="Show Max" target="_blank"></a></li><li class="logo-showturk"><a href="http://www.showturk.com.tr?utm_source=haberturk" class="gtm-tracker" data-newsVariant="footer-brand" title="Show Türk" target="_blank"></a></li><li class="logo-httv"><a href="https://www.haberturk.com/tv" class="gtm-tracker" data-newsVariant="footer-brand" title="Habertürk Tv" target="_blank"></a></li><li class="logo-bloomberght"><a href="https://www.bloomberght.com?utm_source=haberturk&utm_medium=footerlogo" class="gtm-tracker" data-newsVariant="footer-brand" title="Bloomberg" target="_blank"></a></li><li class="logo-hthayat"><a href="//hthayat.haberturk.com?utm_source=haberturk" class="gtm-tracker" data-newsVariant="footer-brand" title="HTHayat" target="_blank"></a></li><li class="logo-htkulup"><a href="https://htkulup.haberturk.com?utm_source=haberturk" class="gtm-tracker" data-newsVariant="footer-brand" title="HTKulüp" target="_blank"></a></li></ul></div></div><div class="category-list"><div class="content"><ul><ol><li><a href="/son-dakika-haberleri" class="gtm-tracker" data-newsVariant="footer-menu" title="Son Dakika Haberleri">Son Dakika Haberleri</a></li><li><a href="/magazin" class="gtm-tracker" data-newsVariant="footer-menu" title="Magazin Haberleri">Magazin Haberleri</a></li><li><a href="/spor" class="gtm-tracker" data-newsVariant="footer-menu" title="Spor Haberleri">Spor Haberleri</a></li><li><a href="/ekonomi" class="gtm-tracker" data-newsVariant="footer-menu" title="Ekonomi Haberleri">Ekonomi Haberleri</a></li><li><a href="/yerel-haberler" class="gtm-tracker" data-newsVariant="footer-menu" title="Yerel Haberler">Yerel Haberler</a></li><li><a href="/namaz-vakitleri" class="gtm-tracker" data-newsVariant="footer-menu" title="Namaz Vakitleri">Namaz Vakitleri</a></li><li><a href="https://hthayat.haberturk.com/astroloji/gunun-yorumu" class="gtm-tracker" data-newsVariant="footer-menu" title="Günlük Burç Yorumları">Günlük Burç Yorumları</a></li></ol><ol><li><a href="/htyazarlar" class="gtm-tracker" data-newsVariant="footer-menu" title="Köşe Yazıları">Köşe Yazıları</a></li><li><a href="/gundem" class="gtm-tracker" data-newsVariant="footer-menu" title="Güncel Haberler">Gündem</a></li><li><a href="/dunya" class="gtm-tracker" data-newsVariant="footer-menu" title="Dünyadan Haberler">Dünya</a></li><li><a href="/yenimedya" class="gtm-tracker" data-newsVariant="footer-menu" title="Yeni Medya">Yeni Medya</a></li><li><a href="/saglik" class="gtm-tracker" data-newsVariant="footer-menu" title="Sağlık Haberleri">Sağlık</a></li><li><a href="/yemek-tarifleri" class="gtm-tracker" data-newsVariant="footer-menu" title="Yemek Tarifleri">Yemek Tarifleri</a></li><li><a href="/arama/corba-tarifi" class="gtm-tracker" data-newsVariant="footer-menu" target="_blank" title="Çorba Tarifi">Çorba Tarifi</a></li></ol><ol><li><a href="/kultur-sanat" class="gtm-tracker" data-newsVariant="footer-menu" title="Sanat Haberleri">Sanat</a></li><li><a href="/ekonomi/borsa" class="gtm-tracker" data-newsVariant="footer-menu" title="Borsa Haberleri">Borsa</a></li><li><a href="/ekonomi/altin" class="gtm-tracker" data-newsVariant="footer-menu" title="Altın Fiyatları">Altın</a></li><li><a href="/spor/futbol/super_lig" class="gtm-tracker" data-newsVariant="footer-menu" title="Süper Lig Haberleri">Süper Lig</a></li><li><a href="/spor/futbol" class="gtm-tracker" data-newsVariant="footer-menu" title="Futbol Haberleri">Futbol</a></li><li><a href="/spor/iddaa/puandurumu/1-turkiye-spor-toto-super-lig" class="gtm-tracker" data-newsVariant="footer-menu" title="Puan Durumu">Puan Durumu</a></li><li><a href="/spor/fikstur/1-turkiye-spor-toto-super-lig" class="gtm-tracker" data-newsVariant="footer-menu" title="Fikstür">Fikstür</a></li></ol><ol><li><a href="/spor/basketbol" class="gtm-tracker" data-newsVariant="footer-menu" title="Basketbol Haberleri">Basketbol</a></li><li><a href="/sinema" class="gtm-tracker" data-newsVariant="footer-menu" title="Sinema">Sinema</a></li><li><a href="/video" class="gtm-tracker" data-newsVariant="footer-menu" title="Video">Video</a></li><li><a href="/tv-rehberi" class="gtm-tracker" data-newsVariant="footer-menu" title="TV Rehberi">TV Rehberi</a></li><li><a href="/kullanimkosullari" class="gtm-tracker" data-newsVariant="footer-menu" title="Kullanım Koşulları" target="_blank">Kullanım Koşulları</a></li><li><a href="/arama/super-loto-sonuclari" class="gtm-tracker" data-newsVariant="footer-menu" title="Süper Loto Sonuçları" target="_blank">Süper Loto Sonuçları</a></li><li><a href="/arama/sayisal-loto-sonuclari" class="gtm-tracker" data-newsVariant="footer-menu" title="Sayısal Loto Sonuçları" target="_blank">Sayısal Loto Sonuçları</a></li></ol><ol><li><a href="/privacy" class="gtm-tracker" data-newsVariant="footer-menu" title="Gizlilik Sözleşmesi" target="_blank">Gizlilik Sözleşmesi</a></li><li><a href="/cerez-politikasi" class="gtm-tracker" data-newsVariant="footer-menu" title="Çerez Politikası" target="_blank">Çerez Politikası</a></li><li><a href="https://www.bloomberght.com/doviz" class="gtm-tracker" data-newsVariant="footer-menu" target="_blank" title="Döviz Kurları">Döviz</a></li><li><a href="https://hthayat.haberturk.com/hamilelik" class="gtm-tracker" data-newsVariant="footer-menu" target="_blank" title="Gebelik">Hamilelik</a></li><li><a href="https://www.showtv.com.tr/diziler" class="gtm-tracker" data-newsVariant="footer-menu" target="_blank" title="Diziler">Diziler</a></li><li><a href="/arama/elektrik-kesintisi" class="gtm-tracker" data-newsVariant="footer-menu" target="_blank" title="Elektrik Kesintisi">Elektrik Kesintisi</a></li><li><a href="/havadurumu/Turkiye-TR/Istanbul/LTSI" class="gtm-tracker" data-newsVariant="footer-menu" title="Hava Durumu" target="_blank">Hava Durumu</a></li></ol><ol><li><a href="/kunye" class="gtm-tracker" data-newsVariant="footer-menu" target="_blank" title="Künye">Künye</a></li><li><span>OKUR HATTI:<br />(0212) 313 60 00 PBX</span></li></ol></ul></div></div><div class="social-list"><div class="content"><ul><li><a href="https://www.facebook.com/Haberturk" class="facebook ion-social-facebook gtm-tracker" data-newsVariant="footer-social-icons" target="_blank" title="Habertürk Facebook Sayfası"></a></li><li><a href="https://twitter.com/haberturk" class="twitter ion-social-twitter gtm-tracker" data-newsVariant="footer-social-icons" target="_blank" title="Habertürk Twitter Sayfası"></a></li><li><a href="https://www.instagram.com/haberturk" class="instagram ion-social-instagram gtm-tracker" data-newsVariant="footer-social-icons" target="_blank" title="Habertürk Instagram Sayfası"></a></li><li><a href="https://flipboard.com/@HaberTurk" class="flipboard gtm-tracker" data-newsVariant="footer-social-icons" target="_blank" title="Habertürk Flipboard"><i></i></a></li><li><a href="/rss/anasayfa" class="rss ion-social-rss gtm-tracker" data-newsVariant="footer-social-icons" target="_blank" title="Rss"></a></li><li><span class="footer-search-btn search all-click-event ion-ios-search-strong gtm-tracker"></span></li></ul></div><div class="footer-search"><div class="content"><div class="footer-search-textbox"><input type="text" name="" id="footer-search" data-category="magazin" placeholder="Aramak istediğiniz kelimeyi buraya yazınız!"></div><div class="footer-search-btn ion-ios-search-strong" onclick="HTGlobal.Search.onSearchSubmit('footer-search');"></div><div class="footer-search-close-btn all-click-event ion-android-close"></div></div></div></div><div class="copyright"><div class="content"><div><a href="/" class="gtm-tracker" data-newsVariant="footer-copyright">www.haberturk.com</a> internet sitesinde yayınlanan yazı, haber, video ve fotoğrafların her türlü hakkı Haberturk Gazetecilik A.Ş.’ye aittir. İzin alınmadan, kaynak gösterilerek dahi iktibas edilemez.</div><div>Copyright © 2020 - Tüm hakları saklıdır. Habertürk Gazetecilik A.Ş.</div><div><p>Üretim ve Tasarım.
+<a href="http://www.cinergroup.com.tr" class="gtm-tracker" data-newsVariant="footer-copyright" target="_blank"><img src="https://im.haberturk.com/assets/images/brand/ciner-logo.svg" class="footer-ciner-logo" alt="Ciner Bilgi Grubu"></a> Bilgi Grubu</p></div></div></div></footer><script>
+    var detailPageFooter = 'https://im.haberturk.com/assets/js/desktop/v4/detail-page-footer.min.js?v=3352';
+    head.ready("jQuery", function() {
+        head.load([
+            { detailPageFooter: detailPageFooter }
+            ],
+            function() {
+            }
+        );
+    });
+</script>
+</div><div id="zone_1308" zone-id="1308" class="ads-zone" zone-viewtype="banner"><script type="text/javascript">cbgAds.AdsInline(1308);</script></div><div id="zone_2014" zone-id="2014" class="ads-zone" zone-viewtype="banner" zone-keywords="custom1=haberturk&amp;custom2=4060642"><script type="text/javascript">cbgAds.AdsInline(2014);</script></div><script>
+        head.ready("jQuery", function() {
+                    });
+    </script>
+<div id="cookiePolicy" class=""><div class="cookie-policy-confirmation">
+    <div class="wrapper">
+        <p class="leftBlock">Sizlere daha iyi bir hizmet sunabilmek için sitemizde çerezlerden faydalanıyoruz. Sitemizi kullanmaya devam
+            ederek çerezleri kullanmamıza izin vermiş oluyorsunuz.
+            Detaylı bilgi almak için <a href='/cerez-politikasi' style="    color: #666;
+    font-weight: bold;">'Çerez Politikasını'</a> ve  <a href='/privacy' style="    color: #666;
+    font-weight: bold;">'Gizlilik Politikasını'</a> inceleyebilirsiniz.
+        </p>
+        <p class="rightBlock">
+            <a href="javascript:acceptCookies()" class="acceptCookies"><span class="ion ion-md-checkmark"></span> TAMAM</a>
+            <a href="/info/gizlilik-politikasi" class="btn-none">Daha fazla bilgi</a>
+        </p>
+        <div style="clear: both; display: block; content: '';"></div>
+        <span class="policy-close">X</span>
+    </div>
+</div>
+<style>
+.cookie-policy-confirmation{
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    margin: auto;
+    z-index: 5000;
+    width: 100%;
+    max-width: 1180px;
+    min-width: 320px;
+    font-size: 13px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(51, 51, 51);
+    line-height: 1.4;
+    box-shadow: rgba(0, 0, 0, 0.5) 10px 10px 155px 0px;
+    display: none;
+    position: fixed;
+}
+.policy-close{
+        width: 18px;
+    height: 18px;
+    position: absolute;
+    right: 15px;
+    top: -8px;
+    border-radius: 100%;
+    color: #333;
+    font-weight: bold;
+    font-size: 15px;
+    background-color: #fff;
+    cursor: pointer;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+.cookie-policy-confirmation .wrapper{
+    padding: 15px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+.btn-none{
+        color: #757575;
+    border-bottom: 2px dotted red;
+    padding: 5px 0;
+}
+    .leftBlock {
+           float: left;
+    width: calc(100% - 25%);
+    text-align: left;
+    }
+    .leftBlock a{
+        display: inline-block;
+    }
+    .rightBlock {
+          float: left;
+    width: 25%;
+    text-align: center;
+    padding: 15px 0;
+    }
+    .rightBlock .acceptCookies {
+        background: red;
+        color: white !important;
+        padding: 5px 15px;
+        font-size: 16px;
+        font-weight: bold;
+        -webkit-border-radius: 20px;
+        -moz-border-radius: 20px;
+        border-radius: 20px;
+    }
+    @media only screen and (min-width: 768px) {
+    .rightBlock{
+       display: flex;
+    }
+    .btn-none{
+            margin: 0 10px;
+    }
+}
+    @media only screen and (max-width: 767px) {
+    .btn-none{
+        margin: 7px 0;
+        display: inline-block;
+    }
+}
+</style>
+<script type="text/javascript">
+    var euCountries = [
+        "EU", "AD", "AL", "AT", "BA", "BE", "BG", "BY", "CH", "CS", "CZ", "DE", "DK", "EE", "ES", "FI", "FO", "FR", "FX", "GB", "GI",
+        "GR", "HR", "HU", "IE", "IS", "IT", "LI", "LT", "LU", "LV", "MC", "MD", "MK", "MT", "NL", "NO", "PL", "PT", "RO", "SE", "SI",
+        "SJ", "SK", "SM", "UA", "VA"
+    ];
+    var cookiePolicy = getCookiePolicy("cookiePolicy");
+    if (cookiePolicy != 1) {
+        var request = new XMLHttpRequest();
+        request.open('GET', '/dynamics/geoipj', true);
+        request.onload = function() {
+            if (request.status >= 200 && request.status < 400) {
+                var data = JSON.parse(request.responseText);
+                if(euCountries.indexOf(data.country) > -1){
+                    document.getElementsByClassName("cookie-policy-confirmation")[0].style['display'] = 'flex';
+                }
+            }
+        };
+        request.send();
+    }
+
+
+    var button = document.getElementsByClassName("policy-close")[0];
+    button.addEventListener("click",function(e){
+        document.getElementsByClassName("cookie-policy-confirmation")[0].style['display'] = 'none';
+    },false);
+
+
+    function setCookiePolicy(cname, cvalue, exdays) {
+        var d = new Date();
+        d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+        var expires = "expires=" + d.toUTCString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+
+    function getCookiePolicy(cname) {
+        var name = cname + "=";
+        var ca = document.cookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }</script>
+
+<script type="text/javascript">
+
+    var cookieKey = 'npa';
+    var cookieHours = 8760;
+
+    function acceptCookies() {
+        var npDfp = 0;
+        setCookiePolicy(cookieKey, npDfp, cookieHours);
+        setCookiePolicy("cookiePolicy", 1, 365);
+        document.getElementsByClassName("cookie-policy-confirmation")[0].style['display'] = 'none';
+    }
+
+</script></div><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NCHP7Z9"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><script type="text/javascript">cbgAds.cmd.push(function(){cbgAds.AdsBody();});</script></body></html><!--~CBG Server~ /sok-25-31-mart-aktuel-urunler-katalogu-2020-sok-da-bu-hafta-kampanyali-indirimli-urunler-var-2624902-ekonomi at: 2020-03-26 18:19:15 -->

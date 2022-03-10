@@ -1,0 +1,2076 @@
+<!DOCTYPE html>
+<html>
+    <head>
+                                    <script type='text/javascript'>var _sf_startpt=(new Date()).getTime()</script>
+            <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+                    <script type="text/javascript">
+window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o||e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({1:[function(t,e,n){function r(t){try{s.console&&console.log(t)}catch(e){}}var o,i=t("ee"),a=t(23),s={};try{o=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(s.console=!0,o.indexOf("dev")!==-1&&(s.dev=!0),o.indexOf("nr_dev")!==-1&&(s.nrDev=!0))}catch(c){}s.nrDev&&i.on("internal-error",function(t){r(t.stack)}),s.dev&&i.on("fn-err",function(t,e,n){r(n.stack)}),s.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(s,function(t,e){return t}).join(", ")))},{}],2:[function(t,e,n){function r(t,e,n,r,s){try{l?l-=1:o(s||new UncaughtException(t,e,n),!0)}catch(f){try{i("ierr",[f,c.now(),!0])}catch(d){}}return"function"==typeof u&&u.apply(this,a(arguments))}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function o(t,e){var n=e?null:c.now();i("err",[t,n])}var i=t("handle"),a=t(24),s=t("ee"),c=t("loader"),f=t("gos"),u=window.onerror,d=!1,p="nr@seenError",l=0;c.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(h){"stack"in h&&(t(13),t(12),"addEventListener"in window&&t(6),c.xhrWrappable&&t(14),d=!0)}s.on("fn-start",function(t,e,n){d&&(l+=1)}),s.on("fn-err",function(t,e,n){d&&!n[p]&&(f(n,p,function(){return!0}),this.thrown=!0,o(n))}),s.on("fn-end",function(){d&&!this.thrown&&l>0&&(l-=1)}),s.on("internal-error",function(t){i("ierr",[t,c.now(),!0])})},{}],3:[function(t,e,n){t("loader").features.ins=!0},{}],4:[function(t,e,n){function r(){j++,L=y.hash,this[u]=x.now()}function o(){j--,y.hash!==L&&i(0,!0);var t=x.now();this[h]=~~this[h]+t-this[u],this[d]=t}function i(t,e){E.emit("newURL",[""+y,e])}function a(t,e){t.on(e,function(){this[e]=x.now()})}var s="-start",c="-end",f="-body",u="fn"+s,d="fn"+c,p="cb"+s,l="cb"+c,h="jsTime",m="fetch",v="addEventListener",w=window,y=w.location,x=t("loader");if(w[v]&&x.xhrWrappable){var g=t(10),b=t(11),E=t(8),R=t(6),O=t(13),C=t(7),P=t(14),T=t(9),N=t("ee"),S=N.get("tracer");t(16),x.features.spa=!0;var L,j=0;N.on(u,r),N.on(p,r),N.on(d,o),N.on(l,o),N.buffer([u,d,"xhr-done","xhr-resolved"]),R.buffer([u]),O.buffer(["setTimeout"+c,"clearTimeout"+s,u]),P.buffer([u,"new-xhr","send-xhr"+s]),C.buffer([m+s,m+"-done",m+f+s,m+f+c]),E.buffer(["newURL"]),g.buffer([u]),b.buffer(["propagate",p,l,"executor-err","resolve"+s]),S.buffer([u,"no-"+u]),T.buffer(["new-jsonp","cb-start","jsonp-error","jsonp-end"]),a(P,"send-xhr"+s),a(N,"xhr-resolved"),a(N,"xhr-done"),a(C,m+s),a(C,m+"-done"),a(T,"new-jsonp"),a(T,"jsonp-end"),a(T,"cb-start"),E.on("pushState-end",i),E.on("replaceState-end",i),w[v]("hashchange",i,!0),w[v]("load",i,!0),w[v]("popstate",function(){i(0,j>1)},!0)}},{}],5:[function(t,e,n){function r(t){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var o=t("ee"),i=t("handle"),a=t(13),s=t(12),c="learResourceTimings",f="addEventListener",u="resourcetimingbufferfull",d="bstResource",p="resource",l="-start",h="-end",m="fn"+l,v="fn"+h,w="bstTimer",y="pushState",x=t("loader");x.features.stn=!0,t(8);var g=NREUM.o.EV;o.on(m,function(t,e){var n=t[0];n instanceof g&&(this.bstStart=x.now())}),o.on(v,function(t,e){var n=t[0];n instanceof g&&i("bst",[n,e,this.bstStart,x.now()])}),a.on(m,function(t,e,n){this.bstStart=x.now(),this.bstType=n}),a.on(v,function(t,e){i(w,[e,this.bstStart,x.now(),this.bstType])}),s.on(m,function(){this.bstStart=x.now()}),s.on(v,function(t,e){i(w,[e,this.bstStart,x.now(),"requestAnimationFrame"])}),o.on(y+l,function(t){this.time=x.now(),this.startPath=location.pathname+location.hash}),o.on(y+h,function(t){i("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),f in window.performance&&(window.performance["c"+c]?window.performance[f](u,function(t){i(d,[window.performance.getEntriesByType(p)]),window.performance["c"+c]()},!1):window.performance[f]("webkit"+u,function(t){i(d,[window.performance.getEntriesByType(p)]),window.performance["webkitC"+c]()},!1)),document[f]("scroll",r,{passive:!0}),document[f]("keypress",r,!1),document[f]("click",r,!1)}},{}],6:[function(t,e,n){function r(t){for(var e=t;e&&!e.hasOwnProperty(u);)e=Object.getPrototypeOf(e);e&&o(e)}function o(t){s.inPlace(t,[u,d],"-",i)}function i(t,e){return t[1]}var a=t("ee").get("events"),s=t(26)(a,!0),c=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";e.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(o(window),o(f.prototype)),a.on(u+"-start",function(t,e){var n=t[1],r=c(n,"nr@wrapped",function(){function t(){if("function"==typeof n.handleEvent)return n.handleEvent.apply(n,arguments)}var e={object:t,"function":n}[typeof n];return e?s(e,"fn-",null,e.name||"anonymous"):n});this.wrapped=t[1]=r}),a.on(d+"-start",function(t){t[1]=this.wrapped||t[1]})},{}],7:[function(t,e,n){function r(t,e,n){var r=t[e];"function"==typeof r&&(t[e]=function(){var t=r.apply(this,arguments);return o.emit(n+"start",arguments,t),t.then(function(e){return o.emit(n+"end",[null,e],t),e},function(e){throw o.emit(n+"end",[e],t),e})})}var o=t("ee").get("fetch"),i=t(23);e.exports=o;var a=window,s="fetch-",c=s+"body-",f=["arrayBuffer","blob","json","text","formData"],u=a.Request,d=a.Response,p=a.fetch,l="prototype";u&&d&&p&&(i(f,function(t,e){r(u[l],e,c),r(d[l],e,c)}),r(a,"fetch",s),o.on(s+"end",function(t,e){var n=this;if(e){var r=e.headers.get("content-length");null!==r&&(n.rxSize=r),o.emit(s+"done",[null,e],n)}else o.emit(s+"done",[t],n)}))},{}],8:[function(t,e,n){var r=t("ee").get("history"),o=t(26)(r);e.exports=r;var i=window.history&&window.history.constructor&&window.history.constructor.prototype,a=window.history;i&&i.pushState&&i.replaceState&&(a=i),o.inPlace(a,["pushState","replaceState"],"-")},{}],9:[function(t,e,n){function r(t){function e(){c.emit("jsonp-end",[],p),t.removeEventListener("load",e,!1),t.removeEventListener("error",n,!1)}function n(){c.emit("jsonp-error",[],p),c.emit("jsonp-end",[],p),t.removeEventListener("load",e,!1),t.removeEventListener("error",n,!1)}var r=t&&"string"==typeof t.nodeName&&"script"===t.nodeName.toLowerCase();if(r){var o="function"==typeof t.addEventListener;if(o){var a=i(t.src);if(a){var u=s(a),d="function"==typeof u.parent[u.key];if(d){var p={};f.inPlace(u.parent,[u.key],"cb-",p),t.addEventListener("load",e,!1),t.addEventListener("error",n,!1),c.emit("new-jsonp",[t.src],p)}}}}}function o(){return"addEventListener"in window}function i(t){var e=t.match(u);return e?e[1]:null}function a(t,e){var n=t.match(p),r=n[1],o=n[3];return o?a(o,e[r]):e[r]}function s(t){var e=t.match(d);return e&&e.length>=3?{key:e[2],parent:a(e[1],window)}:{key:t,parent:window}}var c=t("ee").get("jsonp"),f=t(26)(c);if(e.exports=c,o()){var u=/[?&](?:callback|cb)=([^&#]+)/,d=/(.*)\.([^.]+)/,p=/^(\w+)(\.|$)(.*)$/,l=["appendChild","insertBefore","replaceChild"];Node&&Node.prototype&&Node.prototype.appendChild?f.inPlace(Node.prototype,l,"dom-"):(f.inPlace(HTMLElement.prototype,l,"dom-"),f.inPlace(HTMLHeadElement.prototype,l,"dom-"),f.inPlace(HTMLBodyElement.prototype,l,"dom-")),c.on("dom-start",function(t){r(t[0])})}},{}],10:[function(t,e,n){var r=t("ee").get("mutation"),o=t(26)(r),i=NREUM.o.MO;e.exports=r,i&&(window.MutationObserver=function(t){return this instanceof i?new i(o(t,"fn-")):i.apply(this,arguments)},MutationObserver.prototype=i.prototype)},{}],11:[function(t,e,n){function r(t){var e=a.context(),n=s(t,"executor-",e),r=new f(n);return a.context(r).getCtx=function(){return e},a.emit("new-promise",[r,e],e),r}function o(t,e){return e}var i=t(26),a=t("ee").get("promise"),s=i(a),c=t(23),f=NREUM.o.PR;e.exports=a,f&&(window.Promise=r,["all","race"].forEach(function(t){var e=f[t];f[t]=function(n){function r(t){return function(){a.emit("propagate",[null,!o],i),o=o||!t}}var o=!1;c(n,function(e,n){Promise.resolve(n).then(r("all"===t),r(!1))});var i=e.apply(f,arguments),s=f.resolve(i);return s}}),["resolve","reject"].forEach(function(t){var e=f[t];f[t]=function(t){var n=e.apply(f,arguments);return t!==n&&a.emit("propagate",[t,!0],n),n}}),f.prototype["catch"]=function(t){return this.then(null,t)},f.prototype=Object.create(f.prototype,{constructor:{value:r}}),c(Object.getOwnPropertyNames(f),function(t,e){try{r[e]=f[e]}catch(n){}}),a.on("executor-start",function(t){t[0]=s(t[0],"resolve-",this),t[1]=s(t[1],"resolve-",this)}),a.on("executor-err",function(t,e,n){t[1](n)}),s.inPlace(f.prototype,["then"],"then-",o),a.on("then-start",function(t,e){this.promise=e,t[0]=s(t[0],"cb-",this),t[1]=s(t[1],"cb-",this)}),a.on("then-end",function(t,e,n){this.nextPromise=n;var r=this.promise;a.emit("propagate",[r,!0],n)}),a.on("cb-end",function(t,e,n){a.emit("propagate",[n,!0],this.nextPromise)}),a.on("propagate",function(t,e,n){this.getCtx&&!e||(this.getCtx=function(){if(t instanceof Promise)var e=a.context(t);return e&&e.getCtx?e.getCtx():this})}),r.toString=function(){return""+f})},{}],12:[function(t,e,n){var r=t("ee").get("raf"),o=t(26)(r),i="equestAnimationFrame";e.exports=r,o.inPlace(window,["r"+i,"mozR"+i,"webkitR"+i,"msR"+i],"raf-"),r.on("raf-start",function(t){t[0]=o(t[0],"fn-")})},{}],13:[function(t,e,n){function r(t,e,n){t[0]=a(t[0],"fn-",null,n)}function o(t,e,n){this.method=n,this.timerDuration=isNaN(t[1])?0:+t[1],t[0]=a(t[0],"fn-",this,n)}var i=t("ee").get("timer"),a=t(26)(i),s="setTimeout",c="setInterval",f="clearTimeout",u="-start",d="-";e.exports=i,a.inPlace(window,[s,"setImmediate"],s+d),a.inPlace(window,[c],c+d),a.inPlace(window,[f,"clearImmediate"],f+d),i.on(c+u,r),i.on(s+u,o)},{}],14:[function(t,e,n){function r(t,e){d.inPlace(e,["onreadystatechange"],"fn-",s)}function o(){var t=this,e=u.context(t);t.readyState>3&&!e.resolved&&(e.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,y,"fn-",s)}function i(t){x.push(t),h&&(b?b.then(a):v?v(a):(E=-E,R.data=E))}function a(){for(var t=0;t<x.length;t++)r([],x[t]);x.length&&(x=[])}function s(t,e){return e}function c(t,e){for(var n in t)e[n]=t[n];return e}t(6);var f=t("ee"),u=f.get("xhr"),d=t(26)(u),p=NREUM.o,l=p.XHR,h=p.MO,m=p.PR,v=p.SI,w="readystatechange",y=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],x=[];e.exports=u;var g=window.XMLHttpRequest=function(t){var e=new l(t);try{u.emit("new-xhr",[e],e),e.addEventListener(w,o,!1)}catch(n){try{u.emit("internal-error",[n])}catch(r){}}return e};if(c(l,g),g.prototype=l.prototype,d.inPlace(g.prototype,["open","send"],"-xhr-",s),u.on("send-xhr-start",function(t,e){r(t,e),i(e)}),u.on("open-xhr-start",r),h){var b=m&&m.resolve();if(!v&&!m){var E=1,R=document.createTextNode(E);new h(a).observe(R,{characterData:!0})}}else f.on("fn-end",function(t){t[0]&&t[0].type===w||a()})},{}],15:[function(t,e,n){function r(){var t=window.NREUM,e=t.info.accountID||null,n=t.info.agentID||null,r=t.info.trustKey||null,i="btoa"in window&&"function"==typeof window.btoa;if(!e||!n||!i)return null;var a={v:[0,1],d:{ty:"Browser",ac:e,ap:n,id:o.generateCatId(),tr:o.generateCatId(),ti:Date.now()}};return r&&e!==r&&(a.d.tk=r),btoa(JSON.stringify(a))}var o=t(21);e.exports={generateTraceHeader:r}},{}],16:[function(t,e,n){function r(t){var e=this.params,n=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;r<l;r++)t.removeEventListener(p[r],this.listener,!1);e.aborted||(n.duration=s.now()-this.startTime,this.loadCaptureCalled||4!==t.readyState?null==e.status&&(e.status=0):a(this,t),n.cbTime=this.cbTime,d.emit("xhr-done",[t],t),c("xhr",[e,n,this.startTime]))}}function o(t,e){var n=t.responseType;if("json"===n&&null!==e)return e;var r="arraybuffer"===n||"blob"===n||"json"===n?t.response:t.responseText;return v(r)}function i(t,e){var n=f(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.sameOrigin=n.sameOrigin}function a(t,e){t.params.status=e.status;var n=o(e,t.lastSize);if(n&&(t.metrics.rxSize=n),t.sameOrigin){var r=e.getResponseHeader("X-NewRelic-App-Data");r&&(t.params.cat=r.split(", ").pop())}t.loadCaptureCalled=!0}var s=t("loader");if(s.xhrWrappable){var c=t("handle"),f=t(17),u=t(15).generateTraceHeader,d=t("ee"),p=["load","error","abort","timeout"],l=p.length,h=t("id"),m=t(20),v=t(19),w=window.XMLHttpRequest;s.features.xhr=!0,t(14),d.on("new-xhr",function(t){var e=this;e.totalCbs=0,e.called=0,e.cbTime=0,e.end=r,e.ended=!1,e.xhrGuids={},e.lastSize=null,e.loadCaptureCalled=!1,t.addEventListener("load",function(n){a(e,t)},!1),m&&(m>34||m<10)||window.opera||t.addEventListener("progress",function(t){e.lastSize=t.loaded},!1)}),d.on("open-xhr-start",function(t){this.params={method:t[0]},i(this,t[1]),this.metrics={}}),d.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid);var n=!1;if("init"in NREUM&&"distributed_tracing"in NREUM.init&&(n=!!NREUM.init.distributed_tracing.enabled),n&&this.sameOrigin){var r=u();r&&e.setRequestHeader("newrelic",r)}}),d.on("send-xhr-start",function(t,e){var n=this.metrics,r=t[0],o=this;if(n&&r){var i=v(r);i&&(n.txSize=i)}this.startTime=s.now(),this.listener=function(t){try{"abort"!==t.type||o.loadCaptureCalled||(o.params.aborted=!0),("load"!==t.type||o.called===o.totalCbs&&(o.onloadCalled||"function"!=typeof e.onload))&&o.end(e)}catch(n){try{d.emit("internal-error",[n])}catch(r){}}};for(var a=0;a<l;a++)e.addEventListener(p[a],this.listener,!1)}),d.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),d.on("xhr-load-added",function(t,e){var n=""+h(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),d.on("xhr-load-removed",function(t,e){var n=""+h(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),d.on("addEventListener-end",function(t,e){e instanceof w&&"load"===t[0]&&d.emit("xhr-load-added",[t[1],t[2]],e)}),d.on("removeEventListener-end",function(t,e){e instanceof w&&"load"===t[0]&&d.emit("xhr-load-removed",[t[1],t[2]],e)}),d.on("fn-start",function(t,e,n){e instanceof w&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=s.now()))}),d.on("fn-end",function(t,e){this.xhrCbStart&&d.emit("xhr-cb-time",[s.now()-this.xhrCbStart,this.onload,e],e)})}},{}],17:[function(t,e,n){e.exports=function(t){var e=document.createElement("a"),n=window.location,r={};e.href=t,r.port=e.port;var o=e.href.split("://");!r.port&&o[1]&&(r.port=o[1].split("/")[0].split("@").pop().split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=e.hostname||n.hostname,r.pathname=e.pathname,r.protocol=o[0],"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname);var i=!e.protocol||":"===e.protocol||e.protocol===n.protocol,a=e.hostname===document.domain&&e.port===n.port;return r.sameOrigin=i&&(!e.hostname||a),r}},{}],18:[function(t,e,n){function r(){}function o(t,e,n){return function(){return i(t,[f.now()].concat(s(arguments)),e?null:this,n),e?void 0:this}}var i=t("handle"),a=t(23),s=t(24),c=t("ee").get("tracer"),f=t("loader"),u=NREUM;"undefined"==typeof window.newrelic&&(newrelic=u);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(t,e){u[e]=o(p+e,!0,"api")}),u.addPageAction=o(p+"addPageAction",!0),u.setCurrentRouteName=o(p+"routeName",!0),e.exports=newrelic,u.interaction=function(){return(new r).get()};var h=r.prototype={createTracer:function(t,e){var n={},r=this,o="function"==typeof e;return i(l+"tracer",[f.now(),t,n],r),function(){if(c.emit((o?"":"no-")+"fn-start",[f.now(),r,o],n),o)try{return e.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],n),t}finally{c.emit("fn-end",[f.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){h[e]=o(l+e)}),newrelic.noticeError=function(t,e){"string"==typeof t&&(t=new Error(t)),i("err",[t,f.now(),!1,e])}},{}],19:[function(t,e,n){e.exports=function(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(e){return}}}},{}],20:[function(t,e,n){var r=0,o=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);o&&(r=+o[1]),e.exports=r},{}],21:[function(t,e,n){function r(){function t(){return e?15&e[n++]:16*Math.random()|0}var e=null,n=0,r=window.crypto||window.msCrypto;r&&r.getRandomValues&&(e=r.getRandomValues(new Uint8Array(31)));for(var o,i="xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx",a="",s=0;s<i.length;s++)o=i[s],"x"===o?a+=t().toString(16):"y"===o?(o=3&t()|8,a+=o.toString(16)):a+=o;return a}function o(){function t(){return e?15&e[n++]:16*Math.random()|0}var e=null,n=0,r=window.crypto||window.msCrypto;r&&r.getRandomValues&&Uint8Array&&(e=r.getRandomValues(new Uint8Array(31)));for(var o=[],i=0;i<16;i++)o.push(t().toString(16));return o.join("")}e.exports={generateUuid:r,generateCatId:o}},{}],22:[function(t,e,n){function r(t,e){if(!o)return!1;if(t!==o)return!1;if(!e)return!0;if(!i)return!1;for(var n=i.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var o=null,i=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var s=navigator.userAgent,c=s.match(a);c&&s.indexOf("Chrome")===-1&&s.indexOf("Chromium")===-1&&(o="Safari",i=c[1])}e.exports={agent:o,version:i,match:r}},{}],23:[function(t,e,n){function r(t,e){var n=[],r="",i=0;for(r in t)o.call(t,r)&&(n[i]=e(r,t[r]),i+=1);return n}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],24:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(o<0?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=r},{}],25:[function(t,e,n){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],26:[function(t,e,n){function r(t){return!(t&&t instanceof Function&&t.apply&&!t[a])}var o=t("ee"),i=t(24),a="nr@original",s=Object.prototype.hasOwnProperty,c=!1;e.exports=function(t,e){function n(t,e,n,o){function nrWrapper(){var r,a,s,c;try{a=this,r=i(arguments),s="function"==typeof n?n(r,a):n||{}}catch(f){p([f,"",[r,a,o],s])}u(e+"start",[r,a,o],s);try{return c=t.apply(a,r)}catch(d){throw u(e+"err",[r,a,d],s),d}finally{u(e+"end",[r,a,c],s)}}return r(t)?t:(e||(e=""),nrWrapper[a]=t,d(t,nrWrapper),nrWrapper)}function f(t,e,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<e.length;c++)s=e[c],a=t[s],r(a)||(t[s]=n(a,f?s+o:o,i,s))}function u(n,r,o){if(!c||e){var i=c;c=!0;try{t.emit(n,r,o,e)}catch(a){p([a,n,r,o])}c=i}}function d(t,e){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(t);return n.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(r){p([r])}for(var o in t)s.call(t,o)&&(e[o]=t[o]);return e}function p(e){try{t.emit("internal-error",e)}catch(n){}}return t||(t=o),n.inPlace=f,n.flag=a,n}},{}],ee:[function(t,e,n){function r(){}function o(t){function e(t){return t&&t instanceof r?t:t?c(t,s,i):i()}function n(n,r,o,i){if(!p.aborted||i){t&&t(n,r,o);for(var a=e(o),s=m(n),c=s.length,f=0;f<c;f++)s[f].apply(a,r);var d=u[x[n]];return d&&d.push([g,n,r,a]),a}}function l(t,e){y[t]=m(t).concat(e)}function h(t,e){var n=y[t];if(n)for(var r=0;r<n.length;r++)n[r]===e&&n.splice(r,1)}function m(t){return y[t]||[]}function v(t){return d[t]=d[t]||o(n)}function w(t,e){f(t,function(t,n){e=e||"feature",x[n]=e,e in u||(u[e]=[])})}var y={},x={},g={on:l,addEventListener:l,removeEventListener:h,emit:n,get:v,listeners:m,context:e,buffer:w,abort:a,aborted:!1};return g}function i(){return new r}function a(){(u.api||u.feature)&&(p.aborted=!0,u=p.backlog={})}var s="nr@context",c=t("gos"),f=t(23),u={},d={},p=e.exports=o();p.backlog=u},{}],gos:[function(t,e,n){function r(t,e,n){if(o.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return t[e]=r,r}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){o.buffer([t],r),o.emit(t,e,n)}var o=t("ee").get("handle");e.exports=r,r.ee=o},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,i,function(){return o++})}var o=1,i="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!E++){var t=b.info=NREUM.info,e=l.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&e))return u.abort();f(x,function(e,n){t[e]||(t[e]=n)}),c("mark",["onload",a()+b.offset],null,"api");var n=l.createElement("script");n.src="https://"+t.agent,e.parentNode.insertBefore(n,e)}}function o(){"complete"===l.readyState&&i()}function i(){c("mark",["domContent",a()+b.offset],null,"api")}function a(){return R.exists&&performance.now?Math.round(performance.now()):(s=Math.max((new Date).getTime(),s))-b.offset}var s=(new Date).getTime(),c=t("handle"),f=t(23),u=t("ee"),d=t(22),p=window,l=p.document,h="addEventListener",m="attachEvent",v=p.XMLHttpRequest,w=v&&v.prototype;NREUM.o={ST:setTimeout,SI:p.setImmediate,CT:clearTimeout,XHR:v,REQ:p.Request,EV:p.Event,PR:p.Promise,MO:p.MutationObserver};var y=""+location,x={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-spa-1130.min.js"},g=v&&w&&w[h]&&!/CriOS/.test(navigator.userAgent),b=e.exports={offset:s,now:a,origin:y,features:{},xhrWrappable:g,userAgent:d};t(18),l[h]?(l[h]("DOMContentLoaded",i,!1),p[h]("load",r,!1)):(l[m]("onreadystatechange",o),p[m]("onload",r)),c("mark",["firstbyte",s],null,"api");var E=0,R=t(25)},{}]},{},["loader",2,16,5,3,4]);
+;NREUM.loader_config={accountID:"2420843",trustKey:"2420843",agentID:"354902859",licenseKey:"ae648b7581",applicationID:"354902816"}
+;NREUM.info={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",licenseKey:"ae648b7581",applicationID:"354902816",sa:1}
+</script>                        
+                
+            
+        <meta name="format-detection" content="telephone=no"/>
+
+        <meta name="author" content="Casa Editorial El Tiempo"/>
+
+        <meta name="genre" content="News"/>
+
+        <meta name="geo.placename" content="Colombia"/>
+
+        <meta name="geo.position" content="4.570868;-74.297333"/>
+
+        <meta name="geo.region" content="CO"/>
+
+        <meta name="google" content="notranslate"/>
+
+        <meta name="ICBM" content="4.570868, -74.297333"/>
+
+        <meta name="language" content="spanish"/>
+
+    
+
+                        <meta name="twitter:card" content="summary_large_image"/>
+
+            <meta name="twitter:site" content="@ELTIEMPO"/>
+
+            <meta name="twitter:creator" content="@ELTIEMPO"/>
+
+            <meta name="twitter:title" content="Médica denunció que fue despedida por solicitar elementos de seguridad"/>
+
+                <meta property="twitter:description" content="La doctora Paola Zambrano hizo pública su queja a través de redes sociales."/>
+
+         
+             
+                 
+                 
+                    <meta name="twitter:image" content="https://www.eltiempo.com/files/image_450_300/uploads/2020/05/08/5eb5ad06cf732.jpeg"/>
+ 
+             
+         
+    
+                                                                    	      
+<link href="https://www.eltiempo.com/files/og_paste_img/uploads/2020/05/08/5eb5ad06cf732.jpeg" rel="image_src">
+<link href="https://www.eltiempo.com/colombia/santander/medica-de-santander-denuncio-que-fue-despedida-por-solicitar-elementos-de-calidad-493356" rel="canonical">
+ 
+    <link href="https://www.eltiempo.com/amp/colombia/santander/medica-de-santander-denuncio-que-fue-despedida-por-solicitar-elementos-de-calidad-493356" rel="amphtml" />
+
+                    <meta name="keywords" content="denunció, despedida, solicitar, elementos, calidad">
+    <meta name="news_keywords" content="denunció, despedida, solicitar, elementos, calidad">
+    <meta name="description" content="Médica denunció que fue despedida por solicitar elementos de calidad | Santander | ElTiempo.com">
+                                                                                                                                            <meta name="robots" content="index"/>
+
+                        <meta property="fb:app_id" content="865245646889167"/>
+
+        <meta property="og:title" content="Médica denunció que fue despedida por solicitar elementos de seguridad"/>
+
+        <meta property="og:url" content="https://www.eltiempo.com/colombia/santander/medica-de-santander-denuncio-que-fue-despedida-por-solicitar-elementos-de-calidad-493356"/>
+
+        <meta property="og:site_name" content="El Tiempo"/>
+
+        <meta property="fb:admins" content="100002279652972"/>
+
+        <meta property="og:locale" content="es_CO"/>
+
+        <meta property="og:locale:alternate" content="es_CO"/>
+
+
+            <meta property="og:description" content="La doctora Paola Zambrano hizo pública su queja a través de redes sociales."/>
+
+
+    
+                                                                                                <meta property="og:type" content="article"/>
+
+            
+                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+       
+            <meta property="og:image" content="https://www.eltiempo.com/files/og_paste_img/uploads/2020/05/08/5eb5ad06cf732.jpeg"/>
+ 
+            <meta property="og:image:url" content="https://www.eltiempo.com/files/og_paste_img/uploads/2020/05/08/5eb5ad06cf732.jpeg"/>
+            <meta property="og:image:width" content="200"/>
+
+            <meta property="og:image:height" content="200"/>
+                    
+            <meta property="og:image:type" content="image/jpeg"/>
+
+
+
+                    <meta property="article:tag" content="Santander"/>
+
+                    <meta property="article:tag" content="Despidos"/>
+
+                    <meta property="article:tag" content="Coronavirus en Colombia"/>
+
+                
+                    <meta property="article:published_time" content="2020-05-08"/>
+
+                <meta property="article:modified_time" content="2020-05-08"/>
+
+                <meta property="article:author" content="Cesar David Duque Chaparro"/>
+
+                            <meta property="article:section" content="colombia"/>
+
+                        
+        <title>    Médica de Santander denunció que fue despedida por solicitar elementos de calidad - Santander - Colombia - ELTIEMPO.COM
+</title>
+                    
+            <link rel="stylesheet" href="/css/ndesktop.css?1588773246" />
+    
+    <link rel="preload" href="https://www.eltiempo.com/css/fonts/open_sans/OpenSans-Semibold.woff2" as="font" type="font/woff2" crossorigin>
+
+        
+
+            <link href="/css/40f10b9.css?1588773246" type="text/css" rel="stylesheet" />
+                        <script type="text/javascript">
+        var sas_siteId = 22171;
+        var sas = sas || {};
+        sas.cmd = sas.cmd || [];
+        sas.cmd.push(function() {
+            sas.setup({ networkid: 484, domain: "//ads.eltiempo.co", async: true });
+        });
+    </script>
+
+        <script src="/js/desktoplib.js?1588773246" type="text/javascript"></script>
+    
+
+                
+
+        <script type="text/javascript">
+            var textChars = 'Por favor no ingreses más de {0} caracteres.';
+            var textSpecialChars = 'No se permiten caracteres especiales.';
+            var textSpecialChars2 = 'Solo se permiten letras, números, comas, puntos y espacios en blanco.';
+            var textNumbers = 'No se permiten números.';
+            var textCharacters = 'Solo se permiten números.';
+            var textEmail = 'Este no es un correo electrónico válido.';
+            var textStartsWithZero = 'El número no puede empezar con cero.';
+            var textOnlyLettersAndNumbersNotWhiteSpaces = 'Solo se permiten letras y números sin espacios en blanco.';
+            var textOnlyLettersAndNumbersWithWhiteSpaces = 'Solo se permiten letras y números con espacios en blanco.';
+            var nameRules = {"required":true,"minlength":1,"maxlength":100,"onlyLettersAndNumbersWithWhiteSpaces":true};
+            var userRules = {"required":true,"onlyLettersAndNumbersNotWhiteSpaces":true,"maxlength":20};
+            var emailRules = {"required":true,"email":true,"noEmail":true,"minlength":1,"maxlength":100};
+            var phoneNumberRules = {"required":false,"noCharacters":true,"maxlength":12,"noStartsWithZero":true};
+            var messageRules = {"noSpecialChars2":true,"required":true,"minlength":10,"maxlength":1000};
+            var privacyRules = {"required":true};
+            var messageRules2 = {"required":false,"maxlength":150};
+            var nameMessage = {"required":"Debes ingresar tu nombre. Recuerda que \u00e9ste no puede tener n\u00fameros o caracteres especiales.","minlength":"\u00a1Al menos debes ingresar {0} caracteres!"};
+            var emailMessage = {"required":"Ingresa tu correo electr\u00f3nico para continuar. Recuerda que debe estar bien escrito para poder continuar.","email":"Tu correo electr\u00f3nico debe tener un formato como nombre@dominio.com"};
+            var messageMessage = {"required":"Escribe ac\u00e1 el error que encontraste para que podamos revisarlo. Gracias.","maxlength":"Por favor no ingreses m\u00e1s de {0} caracteres.","minlength":"Por favor ingresa m\u00e1s de {0} caracteres."};
+            var nc = '4563da6f176be58ebd5c29ac27bdefe6';
+            var s_account = "eltiempo";
+            var wf_public_url = "https://www.eltiempo.com";
+            var pautasSmart = {"desktop":{"recurso":{"push_down":21675,"barra_flotante":8941,"pre_home":29221,"robapagina_superior":9346,"film_strip":32365,"in_read":9343,"cuarto_robapagina":9608},"recurso_patrocinado":{"push_down":8932,"barra_flotante":17232,"robapagina_superior":9344,"film_strip":39297,"in_read":9601,"cuarto_robapagina":44664}},"mobile":{"recurso":{"catfish":20592,"robapagina_superior":27375,"in_read":9703,"banner_superior":9702,"pre_home":31430},"recurso_patrocinado":{"catfish":15271,"robapagina_superior":32645,"in_read":41893,"banner_superior":41895}}};
+            if (!("sas_pageId" in window)) {
+                sas_pageId = '';
+            }
+            if (!("sas_target" in window)) {
+                sas_target = 'home';
+            }
+
+                                                                                                var ssoClient = 'eltiempodigital';
+            var ssoMiSuscripcionPath = 'https://www.eltiempo.com/zona-usuario/mi-suscripcion';
+            var ssoSuscribirmePath = 'https://seg.eltiempo.com/suscripciones/impreso/eltiempodigital?cid=AUT_PRP_-SUS-boton_header_etcom';
+            //var ssoSuscribirmePath = 'https://seg.eltiempo.com/suscripciones'
+            var ssoPortal = 'seg.eltiempo.com';
+            var ssoProtocol = 'https';
+            var ssoVerify = 'server/verify-login/';
+            var ssoVerifyComplement = '/code/basic/';
+            var liftigniter_number = '8';
+
+            //Variables para dmp
+            var deviceXalok = 'desktop';
+            var dmpCampaigns = {"segmento1":{"audiencia":355181,"campana":304553,"numero_campana":1,"hash":"Aa9K0aK0I1E0jwPuSnixSiUG7Uxb2DfS5AlAvRbmNC8%3D","secciones":["justicia","politica","bogota","opinion","colombia","tecnosfera"]},"segmento2":{"audiencia":355189,"campana":304554,"numero_campana":2,"hash":"Q5PKJWzAM3qixYEd2AEFSIFzg8dHRrwZff%2BPSqJJbyI%3D","secciones":["politica","vida","justicia","economia","mundo","deportes"]},"segmento3":{"audiencia":355191,"campana":303509,"numero_campana":3,"hash":"hUyTg2Ik%2B0CX3ltsRahcS4S9wt3vKgqRbyzE2oaAAP8%3D","secciones":["justicia","economia","vida","politica","colombia","tecnosfera"]},"segmento4":{"audiencia":361200,"campana":304559,"numero_campana":4,"hash":"hCNNmr%2FWJ%2FsVAMIlKAi0htYroKSt6HV26cm6gZpMFbE%3D","secciones":["economia","tecnosfera","vida","bogota","deportes","colombia"]},"segmento5":{"audiencia":428587,"campana":350483,"numero_campana":5,"hash":"Z4Lzm8NgVsYDnxtiC2YTGYs6DdS4WLmBIPiHD%2F2Kuw8%3D","secciones":["economia","tecnosfera","politica","justicia"]},"segmento6":{"audiencia":428909,"campana":362238,"numero_campana":6,"hash":"MBy3Ks6dLaQI5AxMkwn9fZd4yFWXD5w1zZ3c2rJlmE0%3D","secciones":["opinion"]},"segmento7":{"audiencia":428906,"campana":362237,"numero_campana":7,"hash":"%2Fim6k3vqRhcciGuGPEAYAqa2z3AZEScTL2X3NagwRNM%3D","secciones":["deportes"]},"segmento8":{"audiencia":428907,"campana":362236,"numero_campana":8,"hash":"e%2BJsjjtaMLQzrj%2BsGci12aYf5Y5IosdxvK89gVidtIs%3D","secciones":["tecnosfera"]}};
+            var dmpArticleNumber = 13;
+            //variables para profiling
+            var profiling = {"coachmark":{"time":1543594585,"name":"coachmark_time_et"},"feed":{"section":"\/var\/www\/eltiempo\/app\/public\/..\/..\/web\/files\/sections.json","content":"\/var\/www\/eltiempo\/app\/public\/..\/..\/web\/files\/content_feed.json"},"sidebar":{"sidebar_automation_time":60000,"sidebar_automation_enable":0}};
+            var profilingApiKey = '0f269180c539c7efa10633cda8a79cbb';
+            var contentProfilingUrl = 'https://servicios.eltiempo.com/content-profiling-api/v1';
+            var profiling_special_section= ["revistas","bocas","carrusel","bogota","lecturas"];
+            var profiling_coachmark_status = 'inactive'
+            var profilingQuantityResources = 120 //variable encargada de lamacenar la maxima cantidad de noticias a presentar
+            var profilingQuantityPerSection = 120 //variable encargada de almacenar la cantidad de secciones seguidas
+            var profilingQuantityResourcesHome = 15 //variable encargada de lamacenar la maxima cantidad de noticias a presentar en el home
+            var tokenSession = getTokenSession();
+            // OneSignal
+            var oneSignalAppId = "d8e81a0b-276a-4763-8cef-bcd5df9a51a5";
+            var oneSignalSafariAppId = "web.onesignal.auto.47a2f439-afd3-4bb7-8cdd-92cc4f5ee46c";
+            var notifyButtonEnable = true;
+        </script>
+                <script defer="defer" src="/js/global_desktop.js?1588773246" type="text/javascript"></script>
+                
+                            
+                                                                                                                                                                 
+                <script type="application/ld+json">
+      {"@context":"http:\/\/schema.org","@type":"NewsArticle","@id":"https:\/\/search.google.com\/structured-data\/testing-tool\/article-493356","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/www.eltiempo.com\/colombia\/santander\/medica-de-santander-denuncio-que-fue-despedida-por-solicitar-elementos-de-calidad-493356"},"headline":"M\u00e9dica denunci\u00f3 que fue despedida por solicitar elementos de seguridad","description":"La doctora Paola Zambrano hizo p\u00fablica su queja a trav\u00e9s de redes sociales.","image":{"@type":"ImageObject","url":"https:\/\/www.eltiempo.com\/files\/article_main\/uploads\/2020\/05\/08\/5eb5ad06cf732.jpeg","width":950,"height":475},"dateModified":"2020-05-08 15:16:32.000000","datePublished":"2020-05-08 15:16:32.000000","articleBody":" El hecho fue denunciado p\u00fablicamente por la doctora Paola Zambrano, quien asegur\u00f3 haber perdido su puesto en el Hospital integrado San Juan de Cimitarra (Santander). Luego de dos a\u00f1os trabajando en este centro m\u00e9dico, Zambrano, quien se desempe\u00f1aba all\u00ed como coordinadora m\u00e9dica desde que inici\u00f3 la emergencia por la pandemia del covid-19, asegura que haber pedido tapabocas, overoles y dem\u00e1s elementos de bioseguridad de buena calidad fue la causa aparente de su despido.(Le recomendamos leer:\u0026nbsp;Tragedia en Santa Marta: covid-19 acab\u00f3 con una familia entera) Zambrano cuenta que el inicio del problema se dio cuando lleg\u00f3 un pedido de tapabocas y overoles al hospital. \u201cLos implementos llegaron sin ficha t\u00e9cnica, los tapabocas eran artesanales y estaban hechos con telas desechables(\u2026) luego los cambiaron y mandaron unos N95 que se rasgaban con facilidad, ten\u00edamos que pegarlos con esparadrapo\u201d, hecho que fue reportado por la m\u00e9dica ante la gerente del hospital v\u00eda correo electr\u00f3nico. La m\u00e9dica tambi\u00e9n denunci\u00f3 que nunca fue posible entregarle a todo el personal de la salud su indumentaria correspondiente. \u201cLa gerente dec\u00eda que no se le iba a entregar a todo el personal porque, como no hab\u00eda todav\u00eda riesgo, pod\u00edan utilizar el overol cuando hicieran las muestras, lavarlo y luego d\u00e1rselo a otra persona\u201d.Para evitar contaminar sus propios uniformes, Zambrano asegur\u00f3 que se pon\u00edan el overol \u00fanicamente con ropa interior debajo, pues no contaban con uniformes desechables para el uso correcto de este implemento.\u201cLa molestia surgi\u00f3 a ra\u00edz de todo esto y por eso me despidieron\u201d asumi\u00f3 la m\u00e9dica, pues en el correo en donde se le adjunt\u00f3 la liquidaci\u00f3n de su contrato inform\u00e1ndole de su despido, no se le fue especificado el motivo.(Lea tambi\u00e9n: Estudiante muri\u00f3 de neumon\u00eda y su cuerpo no aparece hace 21 d\u00edas) Esta redacci\u00f3n intent\u00f3 comunicarse en repetidas ocasiones con la gerente del centro m\u00e9dico, Andrea Navarro, para conocer su versi\u00f3n sobre la denuncia, pero no se obtuvo una respuesta.BUCARAMANGA","author":{"@type":"Person","name":"Bucaramanga"},"publisher":{"name":"El Tiempo","@type":"Organization","logo":{"@type":"ImageObject","url":"https:\/\/www.eltiempo.com\/bundles\/eltiempocms\/images\/el-tiempo\/logo-el-tiempo-azul.jpg","width":600,"height":60}},"hasPart":{"@type":"WebPageElement","isAccessibleForFree":"true","cssSelector":".article"}}
+    </script>
+    <script>
+    
+        subSection = '';
+        if (location.pathname.split("/")[3]) {
+            subSection = subsection();
+        }
+        digitalData = {
+            page: {
+                pageID: '493356',
+                pageName: pageName() + ' - Articulo',
+                channel: section(),
+                day: day(),
+                hour: hour(),
+                referrer: referrer(),
+                contentType: 'Articulo',
+                userName: getUserName(),
+                weekday: weekday(),
+                section: section(),
+                subsection: subSection,
+                autores: 'Cesar David Duque Chaparro',
+                datePublish: '2020-05-08',
+                premium: '0',
+                categoryType: 'Tendencia',
+                                }
+            };
+    </script>
+
+        <!-- Google  Analytic (gtm.js)  -->
+                    <script>
+                (function(w,d,s,l,i){
+                    w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+                    var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+                    j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                })(window,document,'script','dataLayer','GTM-WG4KTGL');
+            </script>
+                            <div class="module">
+    	
+    <div id="p87-m278-277-279" class=""><!-- 11.16 2018 --></div>
+</div>
+                
+    <script type='text/javascript'>
+        /** CONFIGURATION CHARTBEAT **/
+        var _sf_async_config = window._sf_async_config = (window._sf_async_config || {});
+        _sf_async_config.uid = 50648; //CHANGE THIS
+        _sf_async_config.domain = 'eltiempo.com'; //CHANGE THIS
+        _sf_async_config.useCanonical = true;
+        _sf_async_config.flickerControl = false;
+    </script>    
+    <script async src="//static.chartbeat.com/js/chartbeat_mab.js"></script>
+
+
+    
+    <script type="text/javascript">
+        var pageTemplate = "default";
+        var sitesMeter = "default,opinion,editorial,carta,gallery,video,graphic,podcast,especial_modular,especial_tipo_d,archive";
+        var showMeter = "1";
+    </script>
+        <script defer="defer" src="/js/desktopArticle.js?1588773246" type="text/javascript"></script>
+        <script type="text/javascript">
+        var ssoMeterPath = 'https://seg.eltiempo.com/paywall/newmeter/eltiempodigital?callback=?';
+        var defaulMeterType = 'signwall';
+    </script>
+            <script type="text/javascript">
+                        sas_pageId = "152162";
+                           //default article template
+                sas_pageId = "152162";
+                sas_target = "seccion=santander";
+                                                                sas_pageid = "22171/"+sas_pageId; // temporal 6 julio
+            sas_target += ";recurso=493356";
+        </script>
+    
+                                                                                                    <script type="application/ld+json">
+    {
+     "@context": "https://schema.org",
+     "@type": "BreadcrumbList",
+     "itemListElement":
+     [
+      {
+       "@type": "ListItem",
+       "position": 1,
+       "item":
+       {
+        "@id": "https://www.eltiempo.com/",
+        "name": "Inicio"
+       }
+      }
+            ,{
+       "@type": "ListItem",
+       "position": 2,
+       "item":
+       {
+        "@id": "https://www.eltiempo.com/colombia",
+        "name": "colombia"
+       }
+      },
+      {
+       "@type": "ListItem",
+       "position": 3,
+       "item":
+       {
+        "@id": "https://www.eltiempo.com/colombia/santander",
+        "name": "santander"
+       }
+      },
+      {
+       "@type": "ListItem",
+       "position": 4,
+       "item":
+       {
+        "@id": "https://www.eltiempo.com/colombia/santander/medica-de-santander-denuncio-que-fue-despedida-por-solicitar-elementos-de-calidad-493356",
+        "name": "Médica denunció que fue despedida por solicitar elementos de seguridad"
+       }
+      }
+           ]
+    }
+    </script>
+ 
+                    <link rel="shortcut icon" href="/favicon.ico?1588773246" />
+                            </head>
+    <body         class="article-page  section-colombia-santander section-colombia"
+    data-article-id="493356"
+    data-logged="false"
+>
+        
+            <!-- Google  site tag (gtm.js)  -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WG4KTGL"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+        </noscript>
+      <div id="main-container"  class="main-container" >
+
+                    
+                
+
+                    
+                                <div class="ad-unit" id="sas_8932"></div>
+            <div class="ad-unit" id="sas_17232"></div>
+            
+            <div class="ad-unit" id="sas_8941"></div>
+            <div class="ad-unit" id="sas_21675"></div>
+             
+        
+        <div class="ads-before-header">
+    <div class="module-ads">
+        
+        
+    <div id="p15871-m519-518-520" class="">
+<!-- NO BORRAR -->
+<style>
+        .contenido-exclusivo-icon *::before{
+          content: none !important;
+        }
+</style>
+</div>
+<div id="p15871-m525-1-526" class="">
+<!-- Hotjar Tracking Code for https://www.eltiempo.com -->
+<script>
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:1223126,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+</div>
+<div id="p15871-m531-2-532" class=""><style> .rutina { display:none; } </style></div>
+<div id="p15871-m537-3-538" class=""><style>
+.deportes-tablas .titular-tablas .tabs-tablas li#goleadores{
+    display: none;
+}
+.deportes-tablas .titular-tablas .tabs-tablas li#descenso{
+    display: none;
+}
+</style></div>
+<div id="p15871-m543-4-544" class=""><style>.mis-noticias-desactivado.multimedia-article header .top-contenedor .topbar5 {width: unset}</style></div>
+<div id="p15871-m549-5-550" class=""><script type="text/javascript">
+$(document).ready(function(){
+
+$( ".group-members li:nth-child(3)" ).find('span a').text('Asociacion Colombiana de Medios de Informacion')
+
+setTimeout(function(){
+$('.modulo_seleccionados_recurso img[data-original]').each(function(){
+	$(this).attr('data-original', $(this).attr('data-original').replace('files/','/files/')); 
+window.lazyLoad()
+	
+})
+ $('.descubre_noticias').find('.dataurl').each(function(){
+	$(this).attr('href', $(this).attr('href').replace(/(^\/\/)/,'/')); 
+	
+}); }, 6000);
+
+    	if(!$('#sas_9343').length){
+		    var _formatId = 9343;
+		    $('.ads-end-article').append('<di'+'v class="ad-unit" id="sas_9343" width="0" height="0"><\/di'+'v>');
+	        if($('.bbc-mundo').length || $('.articulo.article.default').length==0){
+	        	return;	
+	        }
+	        sas.cmd.push(function() { 
+	            sas.call("std", {
+	                    siteId: sas_siteId, pageId: sas_pageId, formatId: _formatId, target: sas_target , tagId: "sas_"+_formatId
+	                });
+	        });
+		}
+    });
+</script></div>
+</div>
+</div>
+        <div class="module">
+    	
+    <div id="p479996-m332-331-333" class="">
+<script type="text/javascript"> var desactivarMotor = 1; </script><style> .container_liftigniter_article{ display:none; } </style>
+</div>
+</div>
+        
+        
+        <div class="module">
+    	
+    <div id="p480002-m972-971-973" class=""><script> var desactivarMisNoticias = 1; $('body').addClass('mis-noticias-desactivado') </script></div>
+</div>
+    
+
+<div class="content_grid content_grid_header">
+    <header class="">
+        <div class="top-contenedor">
+            <div class="topbar3">
+                                    <div class="icono-hamburguesa"></div>                    <div class="nivel-logo2">
+                        <a href="/" class="">
+                            <figure class="logo">
+                                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAACCAYAAACddGYaAAAAEklEQVR42mP8/vYtDwMUMCJzAGRcBb2SHTFTAAAAAElFTkSuQmCC" alt="" data-original="/images/eltiempo_logo.png">
+                            </figure>
+                        </a>
+                            <span>Médica denunció que fue despedida por solicitar elementos de seguridad</span>
+                    </div>
+                
+                
+                    <ul class="cliente">
+  <li class="buscador-header-container">
+      <a>
+          <span class="buscador-icon"></span>
+
+          <form class="buscador-form" method="GET" action="/buscar" name="search_form" style="display: none">
+              <span class="buscador-icon"></span>
+              <input class="search bloque" type="text" name="q" placeholder="Noticias de Colombia y el Mundo" autocomplete="off">
+              <span class="cerrar-icon"></span>
+          </form>
+      </a>
+  </li>
+  <li><a id="suscribase-header" style="display: none;" target="_blank"><span class="suscribase">Suscribirme</span></a></li>
+  <li class="login-bar" style="display: none;"><a href="/login"><span class="ingresar">Iniciar sesión</span></a></li>
+            <li class="user-bar cuenta" style="display: none;" data-src="">
+            <div class="top-header-icon logged">
+                <span class="username active"></span>
+                <ul class="dropdown">
+    
+                
+            <li>
+            <div class="dropdown-title">Mi cuenta</div>
+        </li>
+        <li class="ico-configurar">
+        <a href="/zona-usuario/configurar-mis-datos">
+            Configurar mis datos
+        </a>
+    </li>
+    <li class="ico-suscripcion" id="suscribirme-path">
+        <!--<a href="">-->
+        <a href="https://suscripciones.eltiempo.com/">
+            Suscribirme
+        </a>
+    </li>
+    <li class="ico-suscripcion" id="mi-suscripcion-path">
+        <a href="/zona-usuario/mi-suscripcion">
+            Mi suscripción
+        </a>
+    </li>    
+    <li class="ico-impreso">
+        <a href="/zona-usuario/version-impresa">
+            Versión impresa
+        </a>
+    </li>
+    <li class="ico-guardado">
+        <a href="/zona-usuario/articulos-guardados">
+            Artículos guardados
+        </a>
+    </li>
+    <li class="ico-boletines">
+        <a href="/zona-usuario/boletines">
+            Boletines
+        </a>
+    </li>
+    <li class="ico-vivamos">
+        <a href="/zona-usuario/club-vivamos">
+            Club vivamos El Tiempo
+        </a>
+    </li>
+    <li class="ico-preguntas">
+        <a href="/preguntas-frecuentes">
+            Preguntas frecuentes
+        </a>
+    </li>
+        <li class="ico-cerrar">
+        <a class="cierre_sesion"
+           data-src="https://seg.eltiempo.com/server/logout/eltiempodigital"
+           data-href="/sesion/logout/eltiempodigital">
+            Cerrar sesión
+        </a>
+    </li>
+    </ul>            </div>
+        </li>
+      <li id="li-cargando" class="header-cargando" style="display: none;"><a id="loading-header"><span class="suscribase-loading">Cargando...</span></a></li>
+  <li class='abrir-noticias dtm-misnoticias-sticky' style="">
+    <a class="noticia upper-text dtm-profiling-header">
+      mis noticias
+    </a>
+  </li>
+</ul>
+
+
+    <ul class="cliente-sticky-profiling" style="display: none">
+        <li class='abrir-noticias dtm-misnoticias-sticky' style="">
+            <a class="noticia upper-text dtm-profiling-header">
+                mis noticias
+            </a>
+      </li>
+    </ul>
+    <div class="redes-topbar" style="display: none">
+                    <div class="texto_redes_header" id="shareArticle">
+                <ul data-share="header">
+                                            <li><a class="comentar" href="#btnVerComentarios"></a></li>
+                                        <li><a class="facebook" href="#"></a></li>
+                    <li><a class="twitter" href="#"></a></li>
+                    <li>
+                                                                        
+                        <a href=""
+                        data-save="{&quot;id&quot;:493356,&quot;titulo&quot;:&quot;M\u00e9dica denunci\u00f3 que fue despedida por solicitar elementos de seguridad&quot;,&quot;lead&quot;:&quot;La doctora Paola Zambrano hizo p\u00fablica su queja a trav\u00e9s de redes sociales.&quot;,&quot;thumbnail&quot;:&quot;&quot;,&quot;timestamp_creacion&quot;:&quot;1588968992&quot;,&quot;timestamp_modificacion&quot;:&quot;1588968992&quot;,&quot;url&quot;:&quot;\/colombia\/santander\/medica-de-santander-denuncio-que-fue-despedida-por-solicitar-elementos-de-calidad-493356&quot;,&quot;seccion&quot;:&quot;Colombia&quot;,&quot;subseccion&quot;:&quot;Santander&quot;}"
+                        data-url="https://seg.eltiempo.com/eltiempodigital/user-area/resource/add"
+                        data-callback="https://seg.eltiempo.com/eltiempodigital/user-area/resource/add?callback=?"
+                        class="guardar btn_Texto13 save-article" id="493356">
+                            GUARDAR
+                            <div class="tooltip-guardado tooltip-guardar">
+                                Ingrese o regístrese <b class="btn_Texto26 conectate">acá</b>
+                                para guardar los artículos en su
+                                zona de usuario y leerlos cuando quiera
+                            </div>
+                        </a>
+
+                        <div class="hidden tooltip-guardado">
+                            <b>Este artículo ya fue guardado</b>
+                            Para consultarlo en otro momento, visite su zona de usuario.
+                        </div>
+                        <div class="hidden tooltip-success-updated">
+                            <b>Artículo guardado</b>
+                            Para consultarlo en otro momento, visite su zona de usuario.
+                        </div>
+                        <div class="hidden tooltip-error">
+                            El artículo no pudo ser guardado, intente nuevamente
+                        </div>
+                    </li>
+                    <li><a class="enviar open-share-by-email-popup ico-rs" href="#"></a></li>
+                    </ul>
+        </div>
+    </div>
+            </div>
+            <div id="tema-añadido" class="tooltip-misnoticias" style="display:none;">
+                <p class="texto-informativo">Acá encontrarás tus noticias de <span class="negrilla" id="tema-nuevo"></span></p>
+            </div>
+        </div>
+        <div class="tooltip-home-desktop go-home-landing-profiling" style="display: none">
+                <div class="texto-tooltip">
+                   Haz clic aquí para ver todas las noticias 
+                </div>
+                <span class="cerrar-icon"></span>  
+        </div>
+
+                    <nav class="page-menu" itemscope="" itemtype="https://www.schema.org/SiteNavigationElement">
+
+                            <div class="menu_principal3">
+                                            <ul class="colombia-menu">
+  <li class="colombia first" itemprop="name">
+    <a href="/colombia" itemprop="url">Colombia</a>
+  </li>
+  <li class="bogota" itemprop="name">
+    <a href="/bogota" itemprop="url">Bogotá</a>
+  </li>
+  <li class="colombia-medellin" itemprop="name">
+    <a href="/colombia/medellin" itemprop="url">Medellín</a>
+  </li>
+  <li class="colombia-cali" itemprop="name">
+    <a href="/colombia/cali" itemprop="url">Cali</a>
+  </li>
+  <li class="colombia-barranquilla" itemprop="name">
+    <a href="/colombia/barranquilla" itemprop="url">Barranquilla</a>
+  </li>
+  <li class="colombia-santander current" itemprop="name">
+    <a href="/colombia/santander" itemprop="url">Santander</a>
+  </li>
+  <li class="link" itemprop="name">
+    <a href="https://www.eltiempo.com/noticias/boyaca" itemprop="url">Boyacá</a>
+  </li>
+  <li class="link" itemprop="name">
+    <a href="https://www.eltiempo.com/noticias/meta" itemprop="url">Llano</a>
+  </li>
+  <li class="colombia-otras-ciudades last" itemprop="name">
+    <a href="/colombia/otras-ciudades" itemprop="url">Más Ciudades</a>
+  </li>
+</ul>
+
+
+                                    </div>
+            
+        </nav>
+    
+
+        <nav class="default" itemscope="" itemtype="https://www.schema.org/SiteNavigationElement">
+            <div class="menu_principal2">
+
+                                                            <ul class="default-menu">
+  <li class="opinion first" itemprop="name">
+    <a href="/opinion" itemprop="url">Opinión</a>
+  </li>
+  <li class="colombia" itemprop="name">
+    <a href="/colombia" itemprop="url">Colombia</a>
+  </li>
+  <li class="bogota" itemprop="name">
+    <a href="/bogota" itemprop="url">Bogotá</a>
+  </li>
+  <li class="mundo" itemprop="name">
+    <a href="/mundo" itemprop="url">Internacional</a>
+  </li>
+  <li class="politica" itemprop="name">
+    <a href="/politica" itemprop="url">Política</a>
+  </li>
+  <li class="justicia" itemprop="name">
+    <a href="/justicia" itemprop="url">Justicia</a>
+  </li>
+  <li class="economia" itemprop="name">
+    <a href="/economia" itemprop="url">Economía</a>
+  </li>
+  <li class="deportes" itemprop="name">
+    <a href="/deportes" itemprop="url">Deportes</a>
+  </li>
+  <li class="cultura" itemprop="name">
+    <a href="/cultura" itemprop="url">Cultura</a>
+  </li>
+  <li class="tecnosfera" itemprop="name">
+    <a href="/tecnosfera" itemprop="url">Tecnología</a>
+  </li>
+  <li class="vida" itemprop="name">
+    <a href="/vida" itemprop="url">Vida</a>
+  </li>
+  <li class="salud" itemprop="name">
+    <a href="/salud" itemprop="url">Salud</a>
+  </li>
+  <li class="unidad-investigativa" itemprop="name">
+    <a href="/unidad-investigativa" itemprop="url">Unidad Investigativa</a>
+  </li>
+  <li class="link external last" itemprop="name">
+    <a href="http://clasificados.eltiempo.com/" itemprop="url">Clasificados</a>
+  </li>
+</ul>
+
+
+                    
+                    <div class="menu_seccion">
+                        <div class="secciones">
+                            <div class="mas-secciones">Más</div>
+                            <ul class="mas-secciones-menu">
+  <li class="link first" itemprop="name">
+    <a href="/especiales" itemprop="url">Especiales</a>
+  </li>
+  <li class="link external" itemprop="name">
+    <a href="/multimedia/videos" itemprop="url">Video</a>
+  </li>
+  <li class="link external" itemprop="name">
+    <a href="/multimedia/galeria-de-fotos" itemprop="url">Galerías</a>
+  </li>
+  <li class="podcast" itemprop="name">
+    <a href="/podcast" itemprop="url">Podcast</a>
+  </li>
+  <li class="datos" itemprop="name">
+    <a href="/datos" itemprop="url">Datos El Tiempo</a>
+  </li>
+  <li class="link external" itemprop="name">
+    <a href="http://www.motor.com.co/" itemprop="url">Motor</a>
+  </li>
+  <li class="carrusel" itemprop="name">
+    <a href="/carrusel" itemprop="url">Carrusel</a>
+  </li>
+  <li class="bocas" itemprop="name">
+    <a href="/bocas" itemprop="url">Bocas</a>
+  </li>
+  <li class="lecturas-dominicales" itemprop="name">
+    <a href="/lecturas-dominicales" itemprop="url">Lecturas</a>
+  </li>
+  <li class="link external" itemprop="name">
+    <a href="http://www.eltiempo.com/noticias/huella-social" itemprop="url">Huella Social</a>
+  </li>
+  <li class="eltiempo-television" itemprop="name">
+    <a href="/eltiempo-television" itemprop="url">EL TIEMPO TV</a>
+  </li>
+  <li class="link" itemprop="name">
+    <a href="/pico-y-placa" itemprop="url">Pico y Placa</a>
+  </li>
+  <li class="link last" itemprop="name">
+    <a href="/clima" itemprop="url">Clima</a>
+  </li>
+</ul>
+
+
+                        </div>
+                    </div>
+                            </div>
+        </nav>
+         
+    </header>
+</div>
+    
+                        
+<div class="alertaBoletin registro-alerta">
+    <div class="barra contenidoAlerta" style="display: none;" id="barraActivacionHeader">
+        <div class="texto">¡Hola
+            <span class="username"></span>!, Tu correo ha sido verificado. Ahora puedes elegir los
+            <a class="alerta-subrayar" href="/zona-usuario/boletines">Boletines</a>
+            que quiera recibir con la mejor información.
+        </div>
+        <div class="content_accion">
+            <a class="cerrar-icon cerrarBarra" onclick="javascript:$('#barraVerificacionHeader').remove();"></a>
+        </div>
+    </div>
+</div>
+                
+<div class="alertaGeneral registro-alerta">
+    <div class="barra contenidoAlerta" style="display: none;" id="first-login-message">
+        <div class="texto">Bienvenido
+            <span class="username"></span>
+            has creado tu cuenta en EL TIEMPO. Conoce y personaliza tu perfil.
+            <div class="content_accion">
+                <a class="cerrar-icon cerrarBarra" onclick="javascript:$('#barraVerificacionHeader').remove();"></a>
+            </div>
+        </div>
+    </div>
+</div>
+                
+<div class="alertaGeneral registro-alerta" id="welcome-bar-message">    
+</div>
+                <div class="alertaCuentaError">
+    <div class="barra verificacion contenidoAlerta" id="barraVerificacionHeader" style="display: none">
+        <div class="texto">Hola
+            <span class="username"></span>
+            el correo
+            <span class="useremail"></span>
+            no ha sido verificado.
+        </div>
+        <div class="texto-dos">
+            <a href="javascript:void(0)" onclick="javascript:checkEmail();" class="verificacorreo">
+                Verificar correo
+            </a>
+            ó
+            <a href="/zona-usuario/actualizar-email">cambiar correo.</a>
+        </div>
+        <div class="content_accion">
+            <a class="cerrar-icon cerrarBarra" onclick="javascript:$('#barraVerificacionHeader').remove();"></a>
+        </div>
+    </div>
+</div>
+
+
+    <section class="m-alert-2 m-alert alertaVerificaCorreo" id="enviar-correo-verificacion" style="display: none;">
+        <span class="ico-alert"></span>
+        <div class="txt-5">El correo electrónico de verificación se enviará a</div>
+        <div class="txt-6 useremail"></div>
+        <p class="txt-5"><br/>Revisa tu bandeja de entrada y si no, en tu carpeta de correo no deseado.</p>
+        <a href="/zona-usuario/actualizar-email" class="btn-1 btn-verifica regresa">
+            NO, CAMBIAR CORREO
+        </a>
+        <a href="javascript:void(0)" class="btn-2 btn-verifica">
+            SI, ENVIAR
+        </a>
+        <a class="cerrarBarra cerrar-icon" onclick="javascript:$('#barraVerificacionHeader').remove();"></a>
+        <span class="loader-icon" style="display: none"></span>
+    </section>
+
+        
+                                            <!--default-->
+<div class="barra-lateral-personalizacion" style="display:none">
+    <div class="header-barra-lateral">
+        <a class="cerrar-noticias" href="#"></a>
+        <p class="cerrar-hover dtm-profiling-close" id="cerrar-sidebar" data-dtm='sidebar'></p>
+        <a class="href_header" href="/mis-noticias">
+            <p class="header-titulo upper-text">
+                mis noticias
+            </p>
+        </a>
+        <a class="editar-noticias" href="/contenido-favorito"></a>
+        <a class="editar-noticias-hover dtm-profiling-edit" href="/contenido-favorito" data-dtm='sidebar'></a>
+    </div>
+    <div class="contenedor-barra-lateral">
+        <div class="cuerpo-barra-lateral">
+            <div class="contenido-barra-lateral" id="contenido-barra-lateral">
+                <div class="imagen-barra-lateral"></div>
+                <p class="texto1-barra-lateral">Queremos que encuentres las noticias que más te interesan</p>
+                <p class="texto2-barra-lateral">Sigue tus temas favoritos en un lugar exclusivo para ti.</p>
+                <a class="contenedor-boton upper-text login-favoritos-sidebar dtm-profiling-start" href="/mis-noticias" data-dtm="sidebar">¡elígelos!</a>
+            </div>
+        </div>
+        <!-- Loader -->
+        <div class="contenido-loader" id="contenido-loader-sidebar" style="display: none">
+            <div class="contenedor-loader">
+                <p class="texto-principal">Estamos cargando tus noticias</p>
+                <span class="loader"></span>
+            </div>
+            <div class="contenedor-empty" style="display: none">
+                <p class="texto-principal">No hemos podido cargar tus noticias</p>
+                <p class="texto-secundario">Intentalo de nuevo m&aacute;s tarde.</p>
+                <a href="#" class="boton-reload">Intentar de nuevo</a>
+            </div>
+        </div>
+    </div>
+    <div class="boton-todas-noticias upper-text dtm-profiling-landing" style="display:none" data-dtm='sidebar'>
+        <a href="/mis-noticias">
+            <div class="boton-texto-todas-noticias ">ver todas mis noticias
+                <span class="boton-image-flecha" deluminate_imagetype="png"></span></div>
+        </a>
+    </div>
+</div>
+
+<!--personalizacion-->
+<script type="application/mustache" id="template-barra-personalizacion">
+    
+  <div class="contenido-barra-lateral-noticias">
+    <span class="titulo-contenido-noticias">Lo más reciente:</span>
+    <div class="noticias-aqui sider-noticias">
+        {{#items}}
+            <div class="contenedor-general-noticias dtm-profiling-sidebar-content" data-dtmidcontent="{{_id}}" data-dtmposition="{{index}}" data-dtmsection="{{categorySlug}}" {{#isLive }}data-dtmlive="en vivo"{{/isLive }}{{#premiumSetting }}data-dtmpremium="contenido premium"{{/premiumSetting }}>
+              <div class="contenedor-noticias">
+                <div class="contenido-noticias">
+                  <a href="/{{slug}}"><img class="img-noticia" src="{{imageThumbnail}}"></a>
+                  <div class="texto-noticia">
+                      <p class="titulo-noticia upper-text">
+                        <span class='section-slug section-name selected-alert'>{{ category }} </span>
+                        {{#isLive }}<span class="titulo-noticia-vivo">EN VIVO</span>{{ /isLive }}
+                      </p>
+                      <a href="/{{slug}}"><p class="fragmento-noticia">{{#premiumSetting }}<span class="fragmento-noticia-bloqueado"></span>{{ /premiumSetting}}{{title}}</p></a>
+                    </div>
+                </div>
+              </div>
+            </div>
+        {{/items}}
+    </div>
+  </div>
+</script>
+
+
+<script type="application/mustache" id="template-barra-personalizacion-default">
+
+      <div class="contenido-barra-lateral" id="contenido-barra-lateral">
+        <div class="imagen-barra-lateral"></div>
+        <p class="texto1-barra-lateral">Queremos que encuentres las noticias que más te interesan</p>
+        <p class="texto2-barra-lateral">Sigue tus temas favoritos en un lugar exclusivo para ti.</p>
+        <a class="contenedor-boton upper-text login-favoritos-sidebar dtm-profiling-start" href="/contenido-favorito">¡elígelos!</a>
+      </div>
+</script>
+                                        
+<!-- Coachmark-->
+<div class="contenedor-coachmark-pers" style="display:none">
+    <div class="filtro-coachmark-1"></div>
+    <div class="filtro-coachmark"></div>
+    <span class="cerrar-coachmark"></span>
+    <span id="cerrar-coachmark" class="cerrar-hover dtm-profiling-cmark-close" data-dtm="couchmark"></span>
+    <div class="contenedor-coachmark-pers-1">
+        <!-- user anonimo  -->
+        <div class="contenedor-datos-anonimo" style="display:none">
+            <div class="imagen-logo-ET"></div>
+            <div class="imagen-coachmark"></div>
+            <div class="imagen-estrella-coachmark"></div>
+            <div class="imagen-circulo-coachmark">
+                <p class="titulo-coachmark">descubre <br>¨mis noticias¨</p>
+                <p class="texto-coachmark">Un lugar exclusivo,<br> donde podrás seguir tus<br> <strong>temas favoritos </strong>.
+                    <a href="/mis-noticias" class="boton-coachmark login-favoritos-coachmark dtm-profiling-start">¡elígelos!</a>
+                </div>
+                <div class="contenedor-botones">
+                    <a href="#" id="despues-coachmark"  class="despues-coachmark dtm-profiling-cmark-skip" data-dtm="omitir"><u>Lo haré después</u></a>
+                </div>
+        </div>
+        
+        <!-- user App -->
+        <div class="contenedor-datos-app" style="display:none">
+            <div class="contenedor-texto-app">
+                <p class="titulo-app upper-text">¡hola!</p>
+                <p class="introduccion-app">Aquí también puedes encontrar <strong>"Mis Noticias"</strong> <br>y seguir los temas que elegiste en la APP.</p>
+                <p class="introduccion2-app">¡Descubre cómo funciona!</p>
+            </div>
+            <div class="contenedor-imagenes-app">
+                <div class="contenedor-paso">
+                    <div class="img-vista-rapida"></div>
+                    <p class="img-titulo upper-text">lo último</p>
+                    <p class="img-texto">La manera más rapida para ponerte al día.</p>
+                </div>
+                <div class="contenedor-paso">
+                    <div class="img-mis-noticias"></div>
+                    <p class="img-titulo upper-text">Mis noticias</p>
+                    <p class="img-texto">Una sección exclusiva donde podras seguir tus temas.</p>
+                </div>
+                <div class="contenedor-paso">
+                    <div class="img-ajustes"></div>
+                    <p class="img-titulo upper-text">editar favoritos</p>
+                    <p class="img-texto">Cuando quieras, cambia los temas que elegiste.</p>
+                </div>
+                <div class="img-tutorial-app"></div>
+            </div>
+            <div class="contenedor-botones">
+                    <a href="/mis-noticias" class="boton-coachmark dtm-profiling-landing">Ir a mis noticias</a>
+                    <p href="#" id="despues-coachmark" class="despues-coachmark dtm-profiling-cmark-skip" data-dtm="lo hare después"><u>Lo haré después</u></a>
+                    </div>
+            </div>
+    </div>
+</div>                <div class="content_grid_margin bk_coachmark_save_personalization" style="display:none;">
+    <div class="seccion">
+        <div class="coachmark-post-pers">
+            <p class="encabezado-post-pers">¡Tus temas favoritos han sido guardados!</p>
+            <p class="texto-post-pers">Ahora estas siguiendo
+                <span class="texto2-post-pers"><span>4</span> TEMAS</span>
+            </p>
+            <p class="encabezado2-post-pers">Te contamos como funciona</p>
+            <div class="contenedor-post-coachmark">
+                <div class="contenedor-imagenes-app">
+                    <div class="contenedor-paso">
+                        <div class="img-vista-rapida"></div>
+                        <p class="img-titulo">LO ÚLTIMO</p>
+                        <p class="img-texto">La manera más rapida para ponerte al día.</p>
+                    </div>
+                    <div class="contenedor-paso">
+                        <div class="img-mis-noticias"></div>
+                        <p class="img-titulo">MIS NOTICIAS</p>
+                        <p class="img-texto">Una sección exclusiva donde podrás seguir tus temas.</p>
+                    </div>
+                    <div class="contenedor-paso">
+                        <div class="img-ajustes"></div>
+                        <p class="img-titulo">EDITAR FAVORITOS</p>
+                        <p class="img-texto">Cuando quieras, cambia los temas que elegiste.</p>
+                    </div>
+                </div>
+                <a href="/mis-noticias" class="boton-coachmark dtm-profiling-landing">VER MIS NOTICIAS</a>
+                 <a href="/"><p class="despues-coachmark-onboarding dtm-profiling-cmark-skip"><u>Lo haré después</u></p></a>
+                <div class="guardar-seleccion" style="display: block">
+                        <div class="contenedor-actualizar">
+                            <span class="texto-actualizate">Recuerda que para ver tus temas en todos tus dispositivos, debes actualizar la App de El Tiempo.</span>
+                            <div class="contenedor-tienda">
+                                <a href="https://play.google.com/store/apps/details?id=com.kubo.web" class="android"><img src="/images/personalizacion/icon-google-play.png" alt=""></a>
+                                <a href="https://itunes.apple.com/us/app/el-tiempo-noticias/id1002696749" class="ios"><img src="/images/personalizacion/icon-app-store.png" alt=""></a>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+                    
+        
+                                        <div class="html-superior-desktop-module">
+            
+        </div>
+        
+        <body><article default class="content_grid articulo article default" data-history-state="0" data-scroll-url="/colombia/santander/medica-de-santander-denuncio-que-fue-despedida-por-solicitar-elementos-de-calidad-493356" data-title="Médica denunció que fue despedida por solicitar elementos de seguridad" data-tracking="https://www.eltiempo.com/track/pageviews/article-493356" id="article-493356" xmlns="http://www.w3.org/1999/html"><div class="tags-article">
+                                                        <hidden data-slug="santander" data-title="Santander"></hidden><hidden data-slug="despidos" data-title="Despidos"></hidden><hidden data-slug="coronavirus-en-colombia" data-title="Coronavirus en Colombia"></hidden>
+</div>
+                    <div class="content_grid_margin">
+                                
+                 
+<section class="intro"><div class="contenedor-seguir-3" style="display: none;">
+			<div class="contenedor-btn-seguir">
+				<label><input type="checkbox" name="Santander" id="santander" data-name="colombia/santander" onchange="followThemeSection(this)"><span class="boton-tema-seguir seguir-temas bt-seguir-desktop-bk dtm-profiling-follow">SEGUIR SANTANDER</span></label>
+			</div>
+			<div class="contenedor-tooltip" id="tooltip-personalizacion">
+				<p class="texto-informativo"><a href="/login"><u>Regístrate o inicia sesión</u></a> para <span class="negrilla">seguir
+			tus temas favoritos.</span></p>
+			</div>
+		</div>
+	
+
+
+
+    
+                
+        <div class="titular">
+                        <div class="patrocinado-bk">
+    
+</div>
+        <div class="minuto-bk">
+            
+        </div>
+        <div class="titulo-principal-bk">
+            
+        <h1 itemprop="headline" class="titulo" id="p493356-m116-115-117">Médica denunció que fue despedida por solicitar elementos de seguridad</h1>
+</div>
+    </div>
+    <div class="lead">
+        
+    <p class="info" id="p493356-m122-121-123">La doctora Paola Zambrano hizo pública su queja a través de redes sociales.</p>
+</div>
+</section><div class="articulos">
+                    <section class="container_col"><div class="col1-new-article">
+                                                            <div class="compartir">
+                                                                         
+             <ul class="articulo-guarda-reporta  " id="guardarDatos" data-share="herramientas">
+<li class="btn_Texto34"> 
+                        <a class="compartir-actions">Compartir</a> 
+                        <ul id="compartir-actions">
+<li class="facebook ico-rs"><a name="Facebook" href="">Facebook<span class="fbcount"></span></a></li> 
+                            <li class="twitter ico-rs"><a name="Twitter" href="">Twitter<span class="twcount"></span></a></li> 
+                            <li class="enviar open-share-by-email-popup ico-rs"><a name="Enviar" href="">Enviar</a></li> 
+                            <li class="linkedin ico-rs"><a name="Linked" href="">Linkedin</a></li>
+                        </ul>
+</li> 
+                                
+                                    <li>
+                        <a id="btnVerComentarios" class="comentar btn_Texto25" href="javascript:void(0)" data-id="493356">Comentar
+                            <span id="count-viafoura" class="comentar"></span></a>
+                    </li>
+                                <li>
+                                                                                
+                    <a href="" data-save='{"id":493356,"titulo":"M\u00e9dica denunci\u00f3 que fue despedida por solicitar elementos de seguridad","lead":"La doctora Paola Zambrano hizo p\u00fablica su queja a trav\u00e9s de redes sociales.","thumbnail":"","timestamp_creacion":"1588968992","timestamp_modificacion":"1588968992","url":"\/colombia\/santander\/medica-de-santander-denuncio-que-fue-despedida-por-solicitar-elementos-de-calidad-493356","seccion":"Colombia","subseccion":"Santander"}' data-url="https://seg.eltiempo.com/eltiempodigital/user-area/resource/add" data-callback="https://seg.eltiempo.com/eltiempodigital/user-area/resource/add?callback=?" class="guarda btn_Texto13 save-article" id="493356">
+                        Guardar
+                        <div class="tooltip-guardado tooltip-guardar">
+                            Ingrese o regístrese <b class="btn_Texto26 conectate">acá</b>
+                            para guardar los artículos en su
+                            zona de usuario y leerlos cuando quiera
+                        </div>
+                    </a>
+
+                    <div class="hidden tooltip-guardado">
+                        <b>Este artículo ya fue guardado</b>
+                        Para consultarlo en otro momento, visite su zona de usuario.
+                    </div>
+                    <div class="hidden tooltip-success-updated">
+                        <b>Artículo guardado</b>
+                        Para consultarlo en otro momento, visite su zona de usuario.
+                    </div>
+                    <div class="hidden tooltip-error">
+                        El artículo no pudo ser guardado, intente nuevamente
+                    </div>
+                                    </li>
+            <li>
+                <a class="reporta btn_Texto14 open-report-error-popup">Reportar</a>
+            </li>
+            <li>
+                <a class="come-back-home" href="/">Portada</a>
+            </li>
+                    </ul>
+</div>
+                                                    </div>
+                                                    <div class="col3 ">
+                        <div class="recurso_apertura">
+            
+                        
+
+
+
+                        
+        <div class="recurso-imagen-apertura-bk" id="p493356-m128-127-129">
+                            <div class="figure-apertura-bk">
+                    
+                                        
+                <figure id="m133-132-134" class="foto-apertura-articulo" itemprop="image" itemscope="" itemtype="https://schema.org/ImageObject"><img alt="Paola Zambrano" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAABCAQAAABeK7cBAAAAC0lEQVR42mNkAAIAAAoAAv/lxKUAAAAASUVORK5CYII=" style=" display: inline;" width="950px" height="475px" data-original="/files/article_main/uploads/2020/05/08/5eb5ad06cf732.jpeg"><meta itemprop="width" content="950">
+<meta itemprop="height" content="475">
+<meta itemprop="url" content="https://www.eltiempo.com/files/article_main/uploads/2020/05/08/5eb5ad06cf732.jpeg"></figure><p id="m140-1-141" class="titulo">El denuncio fue presentado por la doctora Paola Zambrano.</p>
+</div>
+                                <div class="credito-apertura-strong-bk credito-image-bk">
+                    <strong>Foto:</strong>
+                    
+                <p id="m146-2-147" class="autor">Suministrado</p>
+</div>
+            </div>
+</div>
+    </div>
+                    </section><section class="container_col"><div class="content-col1-col2">
+                            <div class="social-col col1">
+                                                                                                            <div class="publicidad pauta_160px">
+                                                                                        <div class="ad-unit" id="sas_9608"></div>
+                                            <div class="ad-unit" id="sas_44664"></div>
+                                        </div>
+                                                                                                </div>
+                            <div class="col2">
+                                                                                                    <div class="temasdeldia tags-en-articulo">
+                                        <div class="tags-en-articulo-title">
+                                            <a>Relacionados:</a>
+                                        </div>
+                                        <div class="tags-en-articulo-links">
+                                                                                                                                                <h2 class="tags-en-articulo-tag">
+                                                        <a class="page-link" href="/noticias/santander">Santander</a>
+                                                    </h2>
+                                                                                                                                                                                                <h2 class="tags-en-articulo-tag">
+                                                        <a class="page-link" href="/noticias/despidos">Despidos</a>
+                                                    </h2>
+                                                                                                                                                                                                <h2 class="tags-en-articulo-tag">
+                                                        <a class="page-link" href="/noticias/coronavirus-en-colombia">Coronavirus en Colombia</a>
+                                                    </h2>
+                                                                                                                                        
+                                        </div>
+                                    </div>
+                                   
+                                                                    <div class="factcheck" id="fact-check-top" hidden>
+                                        <div><p>Contenido cierto</p></div>
+                                        <p>Encuentra la validación de El Cazamentiras al final de la noticia.</p>
+                                    </div>
+                                                     
+                                 <div class="articulo-autor">
+                <div class="autor-bk">
+            <span class="autor"><b>Por:</b>
+                
+            <span itemprop="name" class="nombre" id="p493356-m154-153-155">Bucaramanga</span></span>
+        </div>
+    
+                        <div class="fecha-publicacion-bk">
+                <span class="fecha">
+                    08 de mayo 2020 , 03:16 p.m.
+                </span>
+            </div>
+            </div>
+                                                                <div class="articulo-contenido" itemprop="articleBody">
+                                        
+<div class="modulos" itemprop="articleBody">
+
+        
+
+
+                            
+            
+            
+
+        
+    
+
+        
+        
+
+
+
+        
+
+
+
+
+        
+
+
+
+        
+<!--INICIO SABOR AUDIO-->
+
+<!--FIN SABOR AUDIO-->
+        
+        
+        
+
+        
+
+
+
+        
+
+
+        
+
+
+
+        
+
+
+
+         
+
+
+        
+
+
+             
+
+
+                
+    
+<p class="contenido" id="p493356-m160-159-161">El hecho fue denunciado públicamente por la doctora Paola Zambrano, quien aseguró haber perdido su puesto en el Hospital integrado San Juan de Cimitarra (Santander).</p>
+<p class="contenido" id="p493356-m204-2-205">Luego de dos años trabajando en este centro médico, Zambrano, quien se desempeñaba allí como coordinadora médica desde que inició la emergencia por la pandemia del covid-19, asegura que haber<b> pedido tapabocas, overoles y demás elementos de bioseguridad de buena calidad fue la causa aparente de su despido</b>.<br><br>(Le recomendamos leer: <b><a href="https://www.eltiempo.com/colombia/otras-ciudades/coronavirus-en-santa-marta-muerte-de-una-familia-por-covid-19-ultimas-noticias-493346" target="_blank">Tragedia en Santa Marta: covid-19 acabó con una familia entera</a></b>)</p>
+<p class="contenido" id="p493356-m242-4-243">Zambrano cuenta que el inicio del problema se dio cuando llegó un pedido de tapabocas y overoles al hospital. “Los implementos llegaron sin ficha técnica, los tapabocas eran artesanales y estaban hechos con telas desechables(…) luego los cambiaron y mandaron unos N95 que se rasgaban con facilidad, teníamos que pegarlos con esparadrapo”, hecho que fue reportado por la médica ante la gerente del hospital vía correo electrónico.</p>
+<div id="p493356-m248-5-249" class="">
+<blockquote class="twitter-tweet">
+<p lang="es" dir="ltr">Ex coordinadora médica del hospital de <a href="https://twitter.com/hashtag/Cimitarra?src=hash&amp;ref_src=twsrc%5Etfw">#Cimitarra</a>, Paola Zambrano, denuncia que fue despedida del centro médico por solicitar insumos de buena calidad en materia de <a href="https://twitter.com/hashtag/Bioseguridad?src=hash&amp;ref_src=twsrc%5Etfw">#Bioseguridad</a> para afrontar la <a href="https://twitter.com/hashtag/pandemia?src=hash&amp;ref_src=twsrc%5Etfw">#pandemia</a> del <a href="https://twitter.com/hashtag/covid19?src=hash&amp;ref_src=twsrc%5Etfw">#covid19</a>. <a href="https://t.co/VVsOXkkhwm">pic.twitter.com/VVsOXkkhwm</a></p>— ADN Bucaramanga (@ADN_Bucaramanga) <a href="https://twitter.com/ADN_Bucaramanga/status/1258734871167545344?ref_src=twsrc%5Etfw">May 8, 2020</a>
+</blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+<p class="contenido" id="p493356-m254-6-255">La médica también denunció que nunca fue posible entregarle a todo el personal de la salud su indumentaria correspondiente. “La gerente decía que no se le iba a entregar a todo el personal porque, como no había todavía riesgo, podían utilizar el overol cuando hicieran las muestras, lavarlo y luego dárselo a otra persona”.<br><br>Para evitar contaminar sus propios uniformes, Zambrano aseguró que se ponían <b>el overol únicamente con ropa interior debajo, pues no contaban con uniformes desechables para el uso correcto de este implemento.</b><br><br>“La molestia surgió a raíz de todo esto y por eso me despidieron” asumió la médica, pues en el <b>correo en donde se le adjuntó la liquidación de su contrato informándole de su despido, no se le fue especificado el motivo</b>.<br><br>(Lea también: <b><a href="https://www.eltiempo.com/colombia/otras-ciudades/coronavirus-hoy-estudiante-en-ocana-murio-y-su-cuerpo-no-aparece-493188" target="_blank">Estudiante murió de neumonía y su cuerpo no aparece hace 21 días</a></b>)</p>
+<p class="contenido" id="p493356-m260-7-261">Esta redacción intentó comunicarse en repetidas ocasiones con la gerente del centro médico, Andrea Navarro, para conocer su versión sobre la denuncia, pero no se obtuvo una respuesta.<br><br>BUCARAMANGA</p>
+</div>
+
+                                                                             
+                                                                        
+                                </div>
+                                                                     <div class="articulo-contenido-app">
+    <h3 class="titulo-descarga-app">Descarga la app El Tiempo</h3>
+    <p class="texto-descarga-app">Noticias de Colombia y el mundo al instante: Personaliza, descubre e infórmate.</p>
+    <a class="conocela" href="/aplicacion" target="_blank">CONOCE MÁS</a>
+</div>                                                                   
+                                                                                                                                                         <div class="ad-unit" id="sas_9601"></div>
+                                            <div class="ad-unit" id="sas_9343"></div>
+                                                                                                                                                                            <span class="endArticle"></span>
+                                                                    <div class="article-bottom-ads">
+                                            
+</div>
+                                                                                                                                    
+                                                                                                    
+   
+    
+        
+
+
+                                
+                            </div>                             <div class="content-new-modules-article">
+                                                                                                                                                                                     
+                                    <div class="content-new-modules-two">
+                                        <div class="container_liftigniter_article dtm-modulos_evo_articulo" dtm-name="descubre-noticias"></div>
+                                         
+                                        
+	<section class="empodera  dtm-modulos_evo_articulo nuevo-modulo" dtm-name="empodera">
+					<h2 class="new_modules_title">Empodera tu conocimiento</h2>
+		 		 <div class="articulos ">
+		    		    			        		            		        		                                                                            		        <article class="new-article">
+		        	<div class="content-info-modulo">
+		        				                <div class="tag">
+		                    		                        		                    		                    <a href="/noticias/coronavirus-en-colombia">Coronavirus en Colombia</a>
+		                </div>
+		                		                  	<time class="actualizacion">03:31 p.m. </time>
+		              			                
+		            </div>
+		            <h3>
+	                    <a class='dataurl' href="/justicia/investigacion/investigan-a-funerarias-por-presuntos-cobros-irregulares-a-victimas-de-covid-19-493378">
+	                    	<figure class="tipo default "></figure>
+	                    	Investigan a funerarias por presuntos cobros irregulares por covid-19
+	                    </a>
+	                </h3>
+	                 		        </article>
+		    		    			        		            		        		                                                                            		        <article class="new-article">
+		        	<div class="content-info-modulo">
+		        				                <div class="tag">
+		                    		                    <a href="/noticias/superindustria">Superindustria</a>
+		                </div>
+		                		                  	<time class="actualizacion">03:26 p.m. </time>
+		              			                
+		            </div>
+		            <h3>
+	                    <a class='dataurl' href="/economia/empresas/covid-19-investigasn-funerarias-por-sobrecostos-en-sus-servicios-493380">
+	                    	<figure class="tipo default "></figure>
+	                    	Por cobros adicionales y servicios, investigan a 86 funerarias
+	                    </a>
+	                </h3>
+	                 		        </article>
+		    		    			        		            		        		                                                                            		        <article class="new-article">
+		        	<div class="content-info-modulo">
+		        				                <div class="tag">
+		                    		                        		                    		                    <a href="/noticias/german-varon">Germán Varón</a>
+		                </div>
+		                		                  	<time class="actualizacion">03:12 p.m. </time>
+		              			                
+		            </div>
+		            <h3>
+	                    <a class='dataurl' href="/politica/congreso/congresista-german-varon-relacionado-con-caso-de-celadora-explica-que-fue-lo-que-paso-493364">
+	                    	<figure class="tipo default "></figure>
+	                    	Congresista relacionado con caso de celadora explicó lo que pasó
+	                    </a>
+	                </h3>
+	                 		        </article>
+		    		    			        		            		        		                                                                            		        <article class="new-article">
+		        	<div class="content-info-modulo">
+		        				                <div class="tag">
+		                    		                    <a href="/noticias/banco-de-la-republica">Banco de la República</a>
+		                </div>
+		                		                  	<time class="actualizacion">03:07 p.m. </time>
+		              			                
+		            </div>
+		            <h3>
+	                    <a class='dataurl' href="/economia/sectores/quiere-saber-para-que-es-la-inyeccion-de-liquidez-que-hizo-este-viernes-el-banco-de-la-republica-493366">
+	                    	<figure class="tipo default "></figure>
+	                    	Emisor hace nueva inyección de liquidez por $ 6,3 billones
+	                    </a>
+	                </h3>
+	                 		        </article>
+		    		</div>
+	</section>
+<hidden id="excludeId" value="493356"><div id="conoce-mundo" class="nuestro_mundo dtm-modulos_evo_articulo nuevo-modulo" dtm-name="nuestro-mundo">
+    <h2 class="new_modules_title active"><a>Nuestro Mundo</a></h2>
+    <div class="menu menu_evo">
+        <ul class="menu_seccion">
+<li id="colombia-mundo" class="active"><a href="javascript:void(0)">Colombia</a></li>
+            <li id="internacional"><a href="javascript:void(0)">Internacional</a></li>
+        </ul>
+<div class="menu_nacional activo">
+            <ul class="menu_subseccion" id="nacional-menu">
+<li class="bogota"><a id="bogota" href="javascript:void(0)">Bogotá</a></li>
+                <li class="medellin"><a id="colombia/medellin" href="javascript:void(0)">Medellín</a></li>
+                <li class="cali"><a id="colombia/cali" href="javascript:void(0)">Cali</a></li>
+                <li class="barranquilla"><a id="colombia/barranquilla" href="javascript:void(0)">Barranquilla</a></li>
+                <li class="otras"><a id="colombia/otras-ciudades" href="javascript:void(0)">Más Ciudades</a></li>
+            </ul>
+</div>
+        <div class="menu_internacional" id="internacional-menu">
+            <ul class="menu_subseccion" id="menu_internacional">
+<li class="latinoamerica"><a id="mundo/latinoamerica" href="javascript:void(0)">Latinoamérica</a></li>
+                <li class="venezuela"><a id="mundo/venezuela" href="javascript:void(0)">Venezuela</a></li>
+                <li class="eeuu-canada"><a id="mundo/eeuu-y-canada" href="javascript:void(0)">EEUU y Canadá</a></li>
+                <li class="europa"><a id="mundo/europa" href="javascript:void(0)">Europa</a></li>
+                <li class="africa"><a id="mundo/africa" href="javascript:void(0)">África</a></li>
+                <li class="medio-oriente"><a id="mundo/medio-oriente" href="javascript:void(0)">Medio Oriente</a></li>
+                <li class="asia"><a id="mundo/asia" href="javascript:void(0)">Asia</a></li>
+                <li class="mas-regiones"><a id="mundo/mas-regiones" href="javascript:void(0)">Más Regiones</a></li>
+                
+            </ul>
+</div>
+    </div>
+    <div class="contenido contenido-conoce-mundo">
+             
+                                                    <section class="contenido_uno">
+                                                                             
+                            <article class="new-article">
+                <div class="detalle_articulo">
+                    <div class="content-info-modulo">
+                                                                                                                    <div class="tag">
+                                                                        <a href="/noticias/santa-marta">Santa Marta</a>
+                                </div>
+                                                                                                                                                                                                                                                                                                                                                
+                                                  <time>02:56 p.m. </time>
+                                          </div>
+                    <h3>
+                        <a class='dataurl' href="/colombia/otras-ciudades/coronavirus-en-santa-marta-muerte-de-una-familia-por-covid-19-ultimas-noticias-493346">
+                            <figure class="tipo default "></figure>
+                            Tragedia en Santa Marta: covid-19 acabó con una familia entera
+                        </a>
+                    </h3>
+                                            <p>
+                            <a class='dataurl' href="/colombia/otras-ciudades/coronavirus-en-santa-marta-muerte-de-una-familia-por-covid-19-ultimas-noticias-493346">Cuatro personas que vivían en la misma casa fallecieron por el mortal  ...</a>
+                        </p>
+                                    </div>
+                <figure class="img_articulo">
+                    <a href="/colombia/otras-ciudades/coronavirus-en-santa-marta-muerte-de-una-familia-por-covid-19-ultimas-noticias-493346" class="dataurl">
+                        <img src="/files/secondary_default/uploads/2020/04/15/5e972ed25735f.jpeg" data-original="/files/secondary_default/uploads/2020/04/15/5e972ed25735f.jpeg" />
+                    </a>
+                </figure>
+            </article>
+                                                                                                         
+                            <article class="new-article">
+                <div class="detalle_articulo">
+                    <div class="content-info-modulo">
+                                                                                                                    <div class="tag">
+                                                                        <a href="/noticias/dia-de-la-madre">Día de la madre</a>
+                                </div>
+                                                                                                                                                                                                                                                                                                                                                
+                                                  <time>01:55 p.m. </time>
+                                          </div>
+                    <h3>
+                        <a class='dataurl' href="/colombia/medellin/el-drama-de-una-hija-que-lleva-todo-el-ano-buscando-a-su-madre-desaparecida-493270">
+                            <figure class="tipo default "></figure>
+                            El drama de una hija que lleva todo el 2020 buscando a su mamá perdida
+                        </a>
+                    </h3>
+                                            <p>
+                            <a class='dataurl' href="/colombia/medellin/el-drama-de-una-hija-que-lleva-todo-el-ano-buscando-a-su-madre-desaparecida-493270">Luz Leidy Vanegas desapareció el primero de enero en Medellín y aún no ...</a>
+                        </p>
+                                    </div>
+                <figure class="img_articulo">
+                    <a href="/colombia/medellin/el-drama-de-una-hija-que-lleva-todo-el-ano-buscando-a-su-madre-desaparecida-493270" class="dataurl">
+                        <img src="/files/secondary_default/files/crop/uploads/2020/05/08/5eb580409836f.r_13396026.0-37-501-286.jpeg" data-original="/files/secondary_default/files/crop/uploads/2020/05/08/5eb580409836f.r_13396026.0-37-501-286.jpeg" />
+                    </a>
+                </figure>
+            </article>
+                            </section>
+                                                    <section class="contenido_dos">
+                                                                             
+                            <article class="new-article">
+                <div class="detalle_articulo">
+                    <div class="content-info-modulo">
+                                                                                                                    <div class="tag">
+                                                                        <a href="/noticias/cuarentena">Cuarentena</a>
+                                </div>
+                                                                                                                                                                                                                                        
+                                                  <time>01:52 p.m. </time>
+                                          </div>
+                    <h3>
+                        <a class='dataurl' href="/colombia/otras-ciudades/cuarentena-alcalde-en-magdalena-no-quiere-dar-mercado-a-abuelito-que-lo-critica-493190">
+                            <figure class="tipo default "></figure>
+                            Alcalde en Magdalena no quiere darle mercado a abuelito que lo criticó
+                        </a>
+                    </h3>
+                                    </div>
+                <figure class="img_articulo">
+                    <a href="/colombia/otras-ciudades/cuarentena-alcalde-en-magdalena-no-quiere-dar-mercado-a-abuelito-que-lo-critica-493190" class="dataurl">
+                        <img src="/files/secondary_default/uploads/2020/05/08/5eb5667e37e01.jpeg" data-original="/files/secondary_default/uploads/2020/05/08/5eb5667e37e01.jpeg" />
+                    </a>
+                </figure>
+            </article>
+                                                                                                         
+                            <article class="new-article">
+                <div class="detalle_articulo">
+                    <div class="content-info-modulo">
+                                                                                                                    <div class="tag">
+                                                                        <a href="/noticias/migrantes-venezolanos">Migrantes venezolanos</a>
+                                </div>
+                                                                                                                                                                                                                                        
+                                                  <time>01:18 p.m. </time>
+                                          </div>
+                    <h3>
+                        <a class='dataurl' href="/colombia/otras-ciudades/coronavirus-hoy-migrantes-venezolanos-siguen-saliendo-del-pais-por-la-guajira-493296">
+                            <figure class="tipo default "></figure>
+                            Migrantes venezolanos siguen saliendo del país por La Guajira
+                        </a>
+                    </h3>
+                                    </div>
+                <figure class="img_articulo">
+                    <a href="/colombia/otras-ciudades/coronavirus-hoy-migrantes-venezolanos-siguen-saliendo-del-pais-por-la-guajira-493296" class="dataurl">
+                        <img src="/files/secondary_default/uploads/2020/05/08/5eb58d42612ad.jpeg" data-original="/files/secondary_default/uploads/2020/05/08/5eb58d42612ad.jpeg" />
+                    </a>
+                </figure>
+            </article>
+                                                                                                         
+                            <article class="new-article">
+                <div class="detalle_articulo">
+                    <div class="content-info-modulo">
+                                                                                                                    <div class="tag">
+                                                                        <a href="/noticias/villavicencio">Villavicencio</a>
+                                </div>
+                                                                                                                                                                                    
+                                                  <time>12:54 p.m. </time>
+                                          </div>
+                    <h3>
+                        <a class='dataurl' href="/colombia/otras-ciudades/coronavirus-hoy-amenazan-de-muerte-a-conductor-de-ambulancia-en-villavicencio-493322">
+                            <figure class="tipo default "></figure>
+                            Amenazan de muerte a conductor de ambulancia en Villavicencio
+                        </a>
+                    </h3>
+                                    </div>
+                <figure class="img_articulo">
+                    <a href="/colombia/otras-ciudades/coronavirus-hoy-amenazan-de-muerte-a-conductor-de-ambulancia-en-villavicencio-493322" class="dataurl">
+                        <img src="/files/secondary_default/uploads/2020/05/08/5eb59c810b7b4.jpeg" data-original="/files/secondary_default/uploads/2020/05/08/5eb59c810b7b4.jpeg" />
+                    </a>
+                </figure>
+            </article>
+                            </section>
+                    
+</div>
+</div>
+                                                                                <div class="modulo_eto">
+  <article><div class="eto_text">
+      <h2>
+        <a href="/horoscopo?cid=AUT_CON_PUBL_ET_HOROSCOPOCONT">Horóscopo</a>
+      </h2>
+      <p>
+        <a href="/horoscopo?cid=AUT_CON_PUBL_ET_HOROSCOPOCONT">Encuentra acá todos los signos del zodiaco. Tenemos para ti consejos de amor, finanzas y muchas cosas más.</a>
+      </p>
+    </div>
+    <div class="eto_images">
+        <a href="/horoscopo?cid=AUT_CON_PUBL_ET_HOROSCOPOCONT">
+            <img class="horoscopo" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAABCAQAAABeK7cBAAAAC0lEQVR42mNkAAIAAAoAAv/lxKUAAAAASUVORK5CYII=" alt="icon horoscopo" data-original="/bundles/eltiempocms/images/img_new_article/icon_horoscopo.svg?1588773246"></a>
+    </div>
+  </article><article><div class="eto_text">
+      <h2>
+        <a href="/crucigrama?cid=AUT_CON_PUBL_ET_CRUCIGRAMACONT">Crucigrama</a>
+      </h2>
+      <p>
+        <a href="/crucigrama?cid=AUT_CON_PUBL_ET_CRUCIGRAMACONT">Pon a prueba tus conocimientos con el crucigrama de <span>EL TIEMPO</span></a>
+      </p>
+    </div>
+    <div class="eto_images">
+        <a href="/crucigrama?cid=AUT_CON_PUBL_ET_CRUCIGRAMACONT">
+            <img class="crucigrama" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAABCAQAAABeK7cBAAAAC0lEQVR42mNkAAIAAAoAAv/lxKUAAAAASUVORK5CYII=" alt="icon horoscopo" data-original="/bundles/eltiempocms/images/img_new_article/icon_crucigrama.svg?1588773246"></a>
+    </div>
+  </article>
+</div>
+                                                                                    </hidden>
+</div>
+                                    
+                                                            </div>
+                        </div>
+
+                                                
+                                                                        <div class="col_fija">
+                                                                                                                                         <aside class="pauta_home_spincube publicidad pauta_300x250 "><div class="ad-unit" id="sas_9346"></div>
+                                            <div class="ad-unit" id="sas_9344"></div>
+                                        </aside><div class="tendecias nuevo-modulo" dtm-name="tendencias">
+                                            <h2 id="pontedia" class="active"><a>Ponte al día</a></h2>
+                                            <h2 id="tendencias"><a>Lo más visto</a></h2>
+                                                              <section id="content-pontedia" class="dtm-modulos_evo_articulo" dtm-name="pontedia">
+                                                                                                                                                                                                                                                                                                                              <article class="new-article ">
+                    <div>
+                        <div class="content-info-modulo">
+                                                            <time class="actualizacion">02:53 p.m. </time>
+                                                                                                                                                                <div class="tag">
+                                                                                <a href="/noticias/bogota">Bogotá</a>
+                                    </div>
+                                                                                                                                                                                                                                                                        </div>
+                        <h3>
+                            <a class='dataurl' href="/bogota/coronavirus-en-bogota-reglas-para-los-sectores-que-se-activan-en-bogota-493300">
+                                <figure class="tipo default"></figure>
+                                Se levanta pico y género en Bogotá desde este lunes
+                            </a>
+                        </h3>
+                                                                                                                                                                                <a class="img-pontealdia" href="/bogota/coronavirus-en-bogota-reglas-para-los-sectores-que-se-activan-en-bogota-493300" >
+                            <img src="https://www.eltiempo.com/files/image_50_50/uploads/2020/05/08/5eb5920f10387.jpeg" alt="Claudia López">
+                            <meta itemprop="url" content="https://www.eltiempo.com/files/image_50_50/uploads/2020/05/08/5eb5920f10387.jpeg">
+                            <meta itemprop="width" content="50">
+                            <meta itemprop="height" content="50">
+                        </a>
+                    </div>
+                </article>
+
+                                                                                                                                                                                                                                                                                                                                    <article class="new-article ">
+                    <div>
+                        <div class="content-info-modulo">
+                                                            <time class="actualizacion">02:56 p.m. </time>
+                                                                                                                                                                <div class="tag">
+                                                                                <a href="/noticias/santa-marta">Santa Marta</a>
+                                    </div>
+                                                                                                                                                                                                                                                                                                                                                                                                </div>
+                        <h3>
+                            <a class='dataurl' href="/colombia/otras-ciudades/coronavirus-en-santa-marta-muerte-de-una-familia-por-covid-19-ultimas-noticias-493346">
+                                <figure class="tipo default"></figure>
+                                Tragedia en Santa Marta: covid-19 acabó con una familia entera
+                            </a>
+                        </h3>
+                                                                                                                                                                                <a class="img-pontealdia" href="/colombia/otras-ciudades/coronavirus-en-santa-marta-muerte-de-una-familia-por-covid-19-ultimas-noticias-493346" >
+                            <img src="https://www.eltiempo.com/files/image_50_50/uploads/2020/04/15/5e972ed25735f.jpeg" alt="Santa Marta">
+                            <meta itemprop="url" content="https://www.eltiempo.com/files/image_50_50/uploads/2020/04/15/5e972ed25735f.jpeg">
+                            <meta itemprop="width" content="50">
+                            <meta itemprop="height" content="50">
+                        </a>
+                    </div>
+                </article>
+
+                                                                                                                                                                                                                                                                                                                                    <article class="new-article ">
+                    <div>
+                        <div class="content-info-modulo">
+                                                            <time class="actualizacion">03:35 p.m. </time>
+                                                                                                                                                                <div class="tag">
+                                                                                <a href="/noticias/china">China</a>
+                                    </div>
+                                                                                                                                                                                                                                                                        </div>
+                        <h3>
+                            <a class='dataurl' href="/mundo/asia/china-apoya-investigacion-de-la-oms-sobre-la-pandemia-493234">
+                                <figure class="tipo default"></figure>
+                                China apoya que la OMS evalúe la 'respuesta mundial' a la pandemia
+                            </a>
+                        </h3>
+                                                                                                                                                                                <a class="img-pontealdia" href="/mundo/asia/china-apoya-investigacion-de-la-oms-sobre-la-pandemia-493234" >
+                            <img src="https://www.eltiempo.com/files/image_50_50/uploads/2020/03/11/5e690cc0e22d4.jpeg" alt="Xi Jinping">
+                            <meta itemprop="url" content="https://www.eltiempo.com/files/image_50_50/uploads/2020/03/11/5e690cc0e22d4.jpeg">
+                            <meta itemprop="width" content="50">
+                            <meta itemprop="height" content="50">
+                        </a>
+                    </div>
+                </article>
+
+                                                                                                                                                                                                                                                                                                                                    <article class="new-article ">
+                    <div>
+                        <div class="content-info-modulo">
+                                                            <time class="actualizacion">02:49 p.m. </time>
+                                                                                                                                                                <div class="tag">
+                                                                                <a href="/noticias/bogota">Bogotá</a>
+                                    </div>
+                                                                                                                                                                                                                                                                        </div>
+                        <h3>
+                            <a class='dataurl' href="/bogota/coronavirus-en-bogota-bajo-a-la-mitad-su-tasa-de-mortalidad-493292">
+                                <figure class="tipo default"></figure>
+                                Bogotá bajó a la mitad su tasa de mortalidad por el nuevo coronavirus
+                            </a>
+                        </h3>
+                                                                                                                                                                                <a class="img-pontealdia" href="/bogota/coronavirus-en-bogota-bajo-a-la-mitad-su-tasa-de-mortalidad-493292" >
+                            <img src="https://www.eltiempo.com/files/image_50_50/uploads/2020/05/03/5eaf853534835.jpeg" alt="Las diez sorpresas que trae el nuevo  Plan de Desarrollo">
+                            <meta itemprop="url" content="https://www.eltiempo.com/files/image_50_50/uploads/2020/05/03/5eaf853534835.jpeg">
+                            <meta itemprop="width" content="50">
+                            <meta itemprop="height" content="50">
+                        </a>
+                    </div>
+                </article>
+
+                                                                                                                                                                                                                                                                                                                                    <article class="new-article ">
+                    <div>
+                        <div class="content-info-modulo">
+                                                            <time class="actualizacion">01:05 p.m. </time>
+                                                                                                                                                                <div class="tag">
+                                                                                <a href="/noticias/claudia-lopez">Claudia López</a>
+                                    </div>
+                                                                                                                                                                                                            </div>
+                        <h3>
+                            <a class='dataurl' href="/bogota/coronavirus-en-bogota-hoy-nuevas-medidas-de-la-alcaldesa-claudia-lopez-493228">
+                                <figure class="tipo default"></figure>
+                                Coronavirus: Claudia López anuncia nuevas medidas para Bogotá
+                            </a>
+                        </h3>
+                                                                                                                                                                                <a class="img-pontealdia" href="/bogota/coronavirus-en-bogota-hoy-nuevas-medidas-de-la-alcaldesa-claudia-lopez-493228" >
+                            <img src="https://www.eltiempo.com/files/image_50_50/uploads/2020/05/06/5eb29e8000a83.jpeg" alt="Así continuará la cuarentena en Bogotá tras el anuncio presidencial">
+                            <meta itemprop="url" content="https://www.eltiempo.com/files/image_50_50/uploads/2020/05/06/5eb29e8000a83.jpeg">
+                            <meta itemprop="width" content="50">
+                            <meta itemprop="height" content="50">
+                        </a>
+                    </div>
+                </article>
+
+                                                                                                                                                                                                            </section>
+
+   
+        <section id="content-tendencias" class="dtm-modulos_evo_articulo " dtm-name="lo_mas_visto">
+                <div >
+                                                                                                     
+                                                                                       
+                                <article class="new-article  ">
+                    <div>
+                                                <div class="content-info-modulo">
+                                                                                                                                    <div class="tag">
+                                                                                <a href="/noticias/bogota">Bogotá</a>
+                                    </div>
+                                                                                                                                                                                                                                                                                                            <time class="actualizacion">02:53 p.m. </time>
+                                                        
+                        </div>
+                        <h3>
+                            <a class='dataurl' href="/bogota/coronavirus-en-bogota-reglas-para-los-sectores-que-se-activan-en-bogota-493300">
+                                <figure class="tipo default"></figure>
+                                Se levanta pico y género, y otros cambios para Bogotá desde el lunes
+                            </a>
+                        </h3>
+                    </div>
+                </article>
+                                                                                                                         
+                                                                                       
+                                <article class="new-article  ">
+                    <div>
+                                                <div class="content-info-modulo">
+                                                                                                                                    <div class="tag">
+                                                                                <a href="/noticias/insectos">Insectos</a>
+                                    </div>
+                                                                                                                                                                                                                                                                                                            <time class="actualizacion">09:52 p.m. </time>
+                                                        
+                        </div>
+                        <h3>
+                            <a class='dataurl' href="/mundo/mas-regiones/video-avispones-gigantes-fueron-matados-por-abejas-493050">
+                                <figure class="tipo default"></figure>
+                                Impresionante: grupo de abejas se defendió y mató a avispones gigantes
+                            </a>
+                        </h3>
+                    </div>
+                </article>
+                                                                                                                         
+                                                                                       
+                                <article class="new-article  ">
+                    <div>
+                                                <div class="content-info-modulo">
+                                                                                                                                    <div class="tag">
+                                                                                <a href="/noticias/bogota">Bogotá</a>
+                                    </div>
+                                                                                                                                                                                                                                                <time class="actualizacion">01:54 p.m. </time>
+                                                        
+                        </div>
+                        <h3>
+                            <a class='dataurl' href="/bogota/coronavirus-en-bogota-alerta-naranja-en-algunos-barrios-de-kennedy-493164">
+                                <figure class="tipo default"></figure>
+                                Estas son las zonas con alerta naranja en Kennedy por coronavirus
+                            </a>
+                        </h3>
+                    </div>
+                </article>
+                                                                                                                         
+                                                                                       
+                                <article class="new-article  ">
+                    <div>
+                                                <div class="content-info-modulo">
+                                                                                                                                    <div class="tag">
+                                                                                <a href="/noticias/colombia">Colombia</a>
+                                    </div>
+                                                                                                                                                                                    <time class="actualizacion">10:00 p.m. </time>
+                                                        
+                        </div>
+                        <h3>
+                            <a class='dataurl' href="/colombia/otras-ciudades/ranking-de-las-ciudades-mas-caras-para-vivir-en-colombia-492954">
+                                <figure class="tipo gallery"></figure>
+                                El ranking de las ciudades más caras para vivir en Colombia
+                            </a>
+                        </h3>
+                    </div>
+                </article>
+                                                                                                                         
+                                                                                       
+                                <article class="new-article  ">
+                    <div>
+                                                <div class="content-info-modulo">
+                                                                                                                                    <div class="tag">
+                                                                                <a href="/noticias/claudia-lopez">Claudia López</a>
+                                    </div>
+                                                                                                                                                                                                                                                <time class="actualizacion">01:05 p.m. </time>
+                                                        
+                        </div>
+                        <h3>
+                            <a class='dataurl' href="/bogota/coronavirus-en-bogota-hoy-nuevas-medidas-de-la-alcaldesa-claudia-lopez-493228">
+                                <figure class="tipo default"></figure>
+                                Levantan pico y género en Bogotá y decretan alerta naranja en Kennedy
+                            </a>
+                        </h3>
+                    </div>
+                </article>
+                                                            </div>
+    </section>
+
+</div>
+                                        <aside class="publicidad pauta_300x600 "><div class="ad-unit" id="sas_32365"></div>
+                                            <div class="ad-unit" id="sas_39297"></div>
+                                        </aside><aside class="ads-end-col-der publicidad"><div class="module-ads">
+        
+    <div class="recomendados-boletin suscription formulario">
+<link rel="stylesheet" type="text/css" media="screen" href="/maquetacion/modulos-html-libre/eltiempo/2019/02/formulario-inscripcion/build/assets/css/style-recomendado-article-right.css">
+<script src="/maquetacion/modulos-html-libre/eltiempo/2019/02/formulario-inscripcion/build/assets/js/validacion.js"></script><form class="formulario-inscripcion" action="https://cl.exct.net/DEManager.aspx" name="subscribeForm" method="post"> <input type="hidden" name="_clientID" value="100029292"><input type="hidden" name="_deExternalKey" value="informativos"><input type="hidden" name="_action" value="add"><input type="hidden" name="_returnXML" value="0"><input type="hidden" name="_successURL" value="https://www.eltiempo.com"><input type="hidden" name="_errorURL" value="https://www.eltiempo.com"><!--Campo en falso por cada bolet&iacute;n disponible--><input type="hidden" name="diario_et" value="true"><input type="hidden" name="director_et" value="false"><input type="hidden" name="multimedia_et" value="false"><input type="hidden" name="cronicas_et" value="false"><input type="hidden" name="diario_portafolio" value="false"><input type="hidden" name="semanal_portafolio" value="false"><input type="hidden" name="editor_portafolio" value="false"><input type="hidden" name="revista_portafolio" value="false"><input type="hidden" name="alo_semanal" value="false"><input type="hidden" name="abc_semanal" value="false"><input type="hidden" name="futbolred_semanal" value="false"><input type="hidden" name="donjuan_semanal" value="false"><input type="hidden" name="elecciones_et" value="false"><input type="hidden" name="colombia_et" value="false"><input type="hidden" name="cultura_et" value="false"><input type="hidden" name="deportes_et" value="false"><input type="hidden" name="economia_et" value="false"><input type="hidden" name="justicia_et" value="false"><input type="hidden" name="mundo_et" value="false"><input type="hidden" name="opinion_et" value="false"><input type="hidden" name="tecnosfera_et" value="false"><!--Campo en true para el bolet&iacute;n que se va a registrar--><input type="hidden" name="vespertino_et" value="false"><!------------------------------------------------------><input type="hidden" name="vida_et" value="false"><input type="hidden" name="videos_et" value="false"><input type="hidden" name="bogota_et" value="false"><input type="hidden" name="politica_et" value="false"><input type="hidden" name="registrado_SEG" value="false"><fieldset class="form">
+<div class="logo-boletin"><img src="/maquetacion/modulos-html-libre/eltiempo/2019/02/formulario-inscripcion/build/assets/img/Logo-boletines.png" alt="Logo Boletin"></div> <p class="title">Estás a un clic de recibir a diario la mejor información en tu correo. ¡Inscríbete! </p> <div class="form-noticias"> <div class="alertas"> <p class="exitoso">*Inscripción exitosa.</p> <p class="mensaje-no-valido">*Este no es un correo electrónico válido.</p> </div>
+<span class="user"> <input class="inp-suscription" id="username" name="nombre" type="text" placeholder="Nombre"></span><span class="mail"> <input class="inp-suscription" id="email" maxlength="100" name="email" type="text" placeholder="*Correo electrónico" value=""></span> <button class="button-ins" id="submit-button" name="submit" type="submit">INSCRIBIRSE</button> </div> <div class="politicas"> <p class="politicas-alerta">*Debe aceptar los Términos y condiciones.</p>
+<span class="politicas-cont-checkbox"> <input class="politicas-checkbox" name="habeas" type="checkbox" value="true"><span class="politicas-visual-check"></span></span> <label class="terminos" id="politicas">Acepto los <a class="link2-suscripcion" href="/terminos-condiciones">Términos y condiciones</a>, el <a class="link2-suscripcion" href="/politica-privacidad">Aviso de privacidad</a> y la <a class="link2-suscripcion" href="https://www.eltiempo.com/legal/20130412_HABEAS_DATA_Manual_Interno_CEET.pdf">Política de datos de navegación.</a></label> </div> <div class="vermas"><a class="link1" href="https://www.eltiempo.com/zona-usuario/boletines">VER MÁS BOLETINES</a></div> </fieldset>
+</form> </div>
+<div class="suscription-exito exitoso"> <div class="alertas"> <div class="formulario-inscripcion"> <div class="form">
+<img class="logo-boletines-exito" src="/maquetacion/modulos-html-libre/eltiempo/2019/02/formulario-inscripcion/build/assets/img/Logo-boletines.png" alt="Logo Boletines"><p class="title">¡Felicidades! Tu inscripción ha sido exitosa.</p> <p>Ya puedes ver los últimos contenidos de <strong>EL TIEMPO</strong> en tu bandeja de entrada</p> <div class="vermas"><a class="link1" href="https://www.eltiempo.com/zona-usuario/boletines">VER MÁS BOLETINES</a></div> </div> </div> </div> </div>
+</div></aside><div class="module-free-html">
+        
+        
+    <div class="ad-unit" id="sas_9344" width="300" height="250"><script type="text/javascript">sas.cmd.push(function() { sas.call("std", { siteId: sas_siteId, pageId: sas_pageId, formatId: 9344, target: sas_target });});</script></div>
+</div>
+</div>
+                    </section>
+</div>
+                                    <div class="login-registro-contenido">
+        
+</div>
+                
+
+                                    
+                    <!--FIN MODULO DESKTOP PAUTE FACIL SU TARGET-->
+                                            <div class="articulo-ayuda">
+                            <span class="txt1">Sigue bajando</span>
+                            <span class="txt2">para encontrar más contenido</span>
+                            <span class="icon-flecha"></span>
+                        </div>
+                                    
+                                                                                                <div class="ads-end-article">
+                            
+</div>
+                                    
+                                                                                            <aside class="publicidad su-target"><div id="taboola-below-article-thumbnails"></div>
+                                                         
+                        </aside>
+</div>
+        </article></body>
+
+    
+     
+    
+            <div class="container_liftigniter_general">
+<script type="application/mustache" id="recommendation-template-dmp">
+			<div class="contenido-personalizado dmp article descubre_noticias nuevo-modulo">
+				<h2 class="new_modules_title active">Descubre noticias para ti</h2>
+				<section class="slider">
+					{{#items}}
+						<article class="new-article slide multimediatag-show dtm modulo_seleccionados_recurso">
+								
+								<figure class="img_articulo">
+									<a href="{{url}}" class="enlace dataurl">
+										<img data-original="//www.eltiempo.com/{{thumbnail}}" alt="{{title}}" class="foto recommended-dmp" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAABCAQAAABeK7cBAAAAC0lEQVR42mNkAAIAAAoAAv/lxKUAAAAASUVORK5CYII=">
+									</a>
+								</figure>
+								<a class = "parent_category oculto" href="#">{{ section }}</a> 
+								<div class="content-info-modulo">
+	                            	{{#tag}}
+										<div class="tag">
+											{{#tagAbbrev}}
+												<a href="/noticias/{{ tagSlug }}">{{ tagAbbrev }}</a>
+											{{/tagAbbrev}}
+											{{^tagAbbrev}}
+												<a href="/noticias/{{ tagSlug }}">{{ tag }}</a>
+											{{/tagAbbrev}}
+										</div>
+									{{/tag}}
+									<time class="published-at">
+										{{#published_time_article}}
+										{{published_time_article}}
+										{{/published_time_article}}
+										{{^published_time_article}}
+										{{#hour}}
+										{{hour}}
+										{{/hour}}
+										{{/published_time_article}}
+									</time>
+								</div>
+								<h3>
+									<a class='dataurl' href="{{ url }}">
+										{{#resourceType}}
+				                        	<figure class="tipo {{ resourceType }} {{#premium}}contenido-exclusivo-icon{{/premium}}"></figure>
+				                        	{{ title }}
+				                        {{/resourceType}}
+				                    </a>
+	                            </h3>
+						</article>
+					{{/items}}
+				</section>
+			</div>
+</script>
+
+<script type="application/mustache" id="recommendation-template-dmp-secondary">
+	{{#items}}
+		<article class="new-article multimediatag-show dtm modulo_seleccionados_recurso">
+			
+			<h3>
+				<a class='dataurl' href="{{ url }}">
+					{{#resourceType}}
+                    	<figure class="tipo {{ resourceType }} {{#premium}}contenido-exclusivo-icon{{/premium}}"></figure>
+                    	{{ title }}
+                    {{/resourceType}}
+                </a>
+            </h3>
+			<div class="content-info-modulo">
+				<a class = "parent_category oculto" href="#">{{ section }}</a> 
+				<div class="redes_sociales">
+					<a class="compartir-actions">compartir</a>
+                    <ul id="compartir-actions">
+                        <li><a class="facebook">facebook</a></li>
+                        <li><a class="twitter">twitter</a></li>
+                        <li><a class="enviar open-share-by-email-popup">enviar</a></li>
+                    </ul>
+                </div>
+				{{#tag}}
+					<div class="tag">
+						{{#tagAbbrev}}
+							<a href="/noticias/{{ tagSlug }}">{{ tagAbbrev }}</a>
+						{{/tagAbbrev}}
+						{{^tagAbbrev}}
+							<a href="/noticias/{{ tagSlug }}">{{ tag }}</a>
+						{{/tagAbbrev}}
+					</div>
+				{{/tag}}
+				<time class="published-at">
+					{{#published_time_article}}
+					{{published_time_article}}
+					{{/published_time_article}}
+					{{^published_time_article}}
+					{{#hour}}
+					{{hour}}
+					{{/hour}}
+					{{/published_time_article}}
+				</time>
+			</div>
+		</article>
+	{{/items}}
+</script>
+
+
+	<div id="dmp-recommendation">
+			
+	</div>
+
+</div>
+
+    
+                    <section class="paywall" id="paywall">
+        <div class="signwall-notificacion">
+            <div class="notificacionBox">
+                <div class="tituloNotificacion">
+                    <div class="mensajeNot"></div>
+                    <div class="cerrarNot" style="display:none">
+                        <a href="javascript:void(0)" class="cerrar-icon cerrarBtn cerrado"></a>
+                    </div>
+                </div>
+                <div class="cuerpoNotificacion abierto">                    
+                    <p class="cuerpoP2">
+                        <a href="/zona-usuario/crear">
+                            CREA UNA CUENTA
+                        </a>
+                    </p>
+                    <hr/>
+                    <p class="cuerpoP3">
+                        ¿Ya tienes cuenta? <a href="/login">INGRESA</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+</section>
+    
+
+    <img class="img-tracking" src="https://www.eltiempo.com/track/pageviews/article-493356" width="1" height="1" />
+
+    
+                                    <div class="paywallv2-container">     
+    <div class="paywall">
+        <div class="abstract">
+            <div class="cerrarNot" style="display:none">
+                <a href="/" class="cerrar-icon"></a>
+            </div>
+            <div class="cabezaAbstract paywall-cabeza">
+                <div class="logo"></div>
+                <div class="articulosleidos" id="articulosleidos-abstract">
+                                        
+                <p class="title" id="p182736-m175-174-176">Llegaste al <b>límite de contenidos</b> del mes</p>
+</div>
+            </div>            
+            <div class="cuerpoAbstract">
+                <div class="content-bk">
+                    
+                                        
+                        
+                <p class="paywallh3" id="p182736-m181-180-182">Disfruta al máximo el contenido de <b>EL TIEMPO DIGITAL</b> de forma ilimitada. ¡Suscríbete ya!</p>
+</div> 
+                <div class="suscriptBox">
+                     
+                <a href="https://seg.eltiempo.com/suscripciones/digital/eltiempodigital?cid=ORG_CON_NA_ET_PAYWALLCONTEO" class="botonSuscribete undefined" id="p182736-m187-186-188" title="">COP $900 / MES*</a>
+</div>
+                <div class="suscriptor-bk">
+                        
+                                               
+                <p class="yasuscriptor yapaywall" id="p182736-m193-192-194">Si ya eres suscriptor del impreso</p>
+<a href="/zona-usuario/activar" class="ingresar flecha-icon undefined" id="p182736-m211-1-212" title="">actívate</a>
+</div>
+                <div class="notas-tyc">
+                    
+                <p class="nota-suscripcion" id="p182736-m199-198-200">* COP $900 / mes durante los dos primeros meses</p>
+</div>
+                  
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="signwall">
+            <div class="abstract">
+                <div class="cabezaAbstract">
+                    <div class="logo"></div>
+                    <div class="backto"><a href="/">VOLVER A PORTADA</a></div>
+                </div>
+                <div class="cuerpoAbstract">
+                    <div class="leftAbstract">
+                        <p class="title">Sabemos que te gusta estar siempre informado.</p>
+                        <p class="subtitle">Crea una cuenta y podrás disfrutar de: </p>
+                        <ul class="contentItem">
+<li>
+<strong>Acceso a boletines</strong> con las mejores noticias de actualidad.</li>
+                            <li>
+<strong>Comentar</strong> las noticias que te interesan.</li>
+                            <li>
+<strong>Guardar</strong> tus artículos favoritos.</li>
+                        </ul>
+<p class="description">
+                            Crea una cuenta y podrás <strong>disfrutar nuestro contenido</strong> desde cualquier dispositivo.
+                        </p>
+                    </div>
+                    <div class="rightAbstract">
+                        <iframe id="ob_iframe" name="ob_iframe" frameborder="0" hspace="0" scrolling="no" data-src="https://seg.eltiempo.com/server/login/eltiempodigital/authorization_code/code/basic/75564322329619/abstract"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+                
+                    <div class="module-free-html">
+        
+        
+    <div id="p195006-m661-660-662" class=""><script type="text/javascript">
+/*$(document).ready(function() {
+    var art=["MAM-1543083","MAM-1540330","MAM-979851","MAM-766875","MAM-1580184","MAM-1018830","MAM-1579819","MAM-1365165"]
+    if(digitalData && digitalData.page && art.indexOf(digitalData.page.pageID)>=0){
+        $(".autor .nombre").html("Sergio Ocampo Madrid");
+    }
+});*/
+</script></div>
+<div id="p195006-m728-1-729" class=""><style>
+.rutina{ display:none;}
+</style></div>
+</div>
+                            
+            
+        
+
+                    
+<div class="content_grid content-grid-footer">
+    <footer>
+    <div class="container_footer02_2015 ">
+        <div class="content-footer02">
+            <div class="identy-et">
+                <div class="nivel-logo2">
+                    <figure class="logo">
+                        <a href="/">
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAACCAYAAACddGYaAAAAEklEQVR42mP8/vYtDwMUMCJzAGRcBb2SHTFTAAAAAElFTkSuQmCC" alt="" data-original="/images/eltiempo_logo.png">
+                        </a>
+                    </figure>
+                </div>
+            </div>
+            <div class="disclaimer-ft">
+                <div class="disclaimer-content">
+    
+<p id="p18612-m227-226-228">COPYRIGHT © 2020 EL TIEMPO Casa Editorial. Prohibida su reproducción total o parcial, así como su traducción a cualquier idioma sin autorización escrita de su titular. ELTIEMPO.com todas las noticias principales de Colombia y el Mundo</p>
+</div>
+            </div>
+            <div class="siguenos-ft siguenos-en-bk">
+                <span>SÍGUENOS EN:</span>
+                <ul class="redes_segir_footer">
+                    <li>
+                        <a href="https://www.facebook.com/eltiempo" target="_blank"></a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/eltiempo" target="_blank"></a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com/eltiempo/" target="_blank"></a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/user/ElTiempoPLAY" target="_blank"></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
+
+                <div class="dictum-box" id="dictum-box"></div>
+</div>
+
+                
+                      
+                            <script defer="defer" type="text/javascript" src="/advertisement/pages"></script>
+                        
+              
+                            <script defer="defer" src="//ced.sascdn.com/tag/484/smart.js" type="text/javascript"></script>
+               
+        
+                
+        <script type='text/javascript'>
+          
+            /** CONFIGURATION START **/          
+            _sf_async_config.sections = 'colombia'; //CHANGE THIS
+            _sf_async_config.authors = 'Cesar David Duque Chaparro'; //CHANGE THIS
+            var _cbq = window._cbq = (window._cbq || []);
+            if(getUserName()){
+                if(getCmsCookie('suscriptor') == "true"){
+                    _cbq.push(['_acct', 'paid']);    
+                }else 
+                    _cbq.push(['_acct', 'lgdin']);    
+                }
+            else{
+                _cbq.push(['_acct', 'anon']);       
+            }
+            /** CONFIGURATION END **/            
+            (function() {
+                function loadChartbeat() {
+                    
+                    var e = document.createElement('script');
+                    var n = document.getElementsByTagName('script')[0];
+                    e.type = 'text/javascript';
+                    e.async = true;
+                    e.src = '//static.chartbeat.com/js/chartbeat.js';
+                    n.parentNode.insertBefore(e, n);
+                }                            
+                loadChartbeat();
+            })();
+        </script>
+        
+                    <!-- begin Convert Experiences code-->
+            <!--    <script defer="defer" type="text/javascript" src="//cdn-3.convertexperiments.com/js/10022306-10021161.js"></script>-->
+            <!-- end Convert Experiences code -->
+                
+        <script src="//assets.adobedtm.com/41d3b477534338831f14b02d7af1cd359b73904f/satelliteLib-d2eaf14d78bc52358b0da00e13dbcd0258543316.js"></script>
+        <script type="text/javascript">_satellite.pageBottomFired = -1;</script>
+        <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" defer="defer"></script>
+        
+        <script async type="text/javascript" src="/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=150858022"></script>
+</body>
+</html>
+
+

@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+
+<meta name="twitter:card" content="summary_large_image">
+
+<!--[if lt IE 7]><html class="lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]><html class="lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]><html class="lt-ie9"><![endif]-->
+<!--[if gt IE 8]><!--><!-- <html> --><!--<![endif]-->
+<head>
+<!--[if IE]><![endif]-->
+<meta charset="utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"ac4612941d",applicationID:"39678350"};window.NREUM||(NREUM={}),__nr_require=function(n,e,t){function r(t){if(!e[t]){var i=e[t]={exports:{}};n[t][0].call(i.exports,function(e){var i=n[t][1][e];return r(i||e)},i,i.exports)}return e[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(n,e,t){function r(){}function i(n,e,t){return function(){return o(n,[u.now()].concat(f(arguments)),e?null:this,t),e?void 0:this}}var o=n("handle"),a=n(4),f=n(5),c=n("ee").get("tracer"),u=n("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(n,e){s[e]=i(d+e,!0,"api")}),s.addPageAction=i(d+"addPageAction",!0),s.setCurrentRouteName=i(d+"routeName",!0),e.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(n,e){var t={},r=this,i="function"==typeof e;return o(l+"tracer",[u.now(),n,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return e.apply(this,arguments)}catch(n){throw c.emit("fn-err",[arguments,this,n],t),n}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(n,e){m[e]=i(l+e)}),newrelic.noticeError=function(n,e){"string"==typeof n&&(n=new Error(n)),o("err",[n,u.now(),!1,e])}},{}],2:[function(n,e,t){function r(n,e){var t=n.getEntries();t.forEach(function(n){"first-paint"===n.name?a("timing",["fp",Math.floor(n.startTime)]):"first-contentful-paint"===n.name&&a("timing",["fcp",Math.floor(n.startTime)])})}function i(n){if(n instanceof c&&!s){var e,t=Math.round(n.timeStamp);e=t>1e12?Date.now()-t:f.now()-t,s=!0,a("timing",["fi",t,{type:n.type,fid:e}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var o,a=n("handle"),f=n("loader"),c=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){o=new PerformanceObserver(r);try{o.observe({entryTypes:["paint"]})}catch(u){}}if("addEventListener"in document){var s=!1,p=["click","keydown","mousedown","pointerdown","touchstart"];p.forEach(function(n){document.addEventListener(n,i,!1)})}}},{}],3:[function(n,e,t){function r(n,e){if(!i)return!1;if(n!==i)return!1;if(!e)return!0;if(!o)return!1;for(var t=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],4:[function(n,e,t){function r(n,e){var t=[],r="",o=0;for(r in n)i.call(n,r)&&(t[o]=e(r,n[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],5:[function(n,e,t){function r(n,e,t){e||(e=0),"undefined"==typeof t&&(t=n?n.length:0);for(var r=-1,i=t-e||0,o=Array(i<0?0:i);++r<i;)o[r]=n[e+r];return o}e.exports=r},{}],6:[function(n,e,t){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(n,e,t){function r(){}function i(n){function e(n){return n&&n instanceof r?n:n?c(n,f,o):o()}function t(t,r,i,o){if(!d.aborted||o){n&&n(t,r,i);for(var a=e(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function l(n,e){h[n]=v(n).concat(e)}function m(n,e){var t=h[n];if(t)for(var r=0;r<t.length;r++)t[r]===e&&t.splice(r,1)}function v(n){return h[n]||[]}function g(n){return p[n]=p[n]||i(t)}function w(n,e){u(n,function(n,t){e=e||"feature",y[t]=e,e in s||(s[e]=[])})}var h={},y={},b={on:l,addEventListener:l,removeEventListener:m,emit:t,get:g,listeners:v,context:e,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var f="nr@context",c=n("gos"),u=n(4),s={},p={},d=e.exports=i();d.backlog=s},{}],gos:[function(n,e,t){function r(n,e,t){if(i.call(n,e))return n[e];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(n,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return n[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(n,e,t){function r(n,e,t,r){i.buffer([n],r),i.emit(n,e,t)}var i=n("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(n,e,t){function r(n){var e=typeof n;return!n||"object"!==e&&"function"!==e?-1:n===window?0:a(n,o,function(){return i++})}var i=1,o="nr@id",a=n("gos");e.exports=r},{}],loader:[function(n,e,t){function r(){if(!x++){var n=E.info=NREUM.info,e=l.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(n&&n.licenseKey&&n.applicationID&&e))return s.abort();u(y,function(e,t){n[e]||(n[e]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=l.createElement("script");t.src="https://"+n.agent,e.parentNode.insertBefore(t,e)}}function i(){"complete"===l.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=n("handle"),u=n(4),s=n("ee"),p=n(3),d=window,l=d.document,m="addEventListener",v="attachEvent",g=d.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:g,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1158.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=e.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};n(1),n(2),l[m]?(l[m]("DOMContentLoaded",o,!1),d[m]("load",r,!1)):(l[v]("onreadystatechange",i),d[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=n(6)},{}],"wrap-function":[function(n,e,t){function r(n){return!(n&&n instanceof Function&&n.apply&&!n[a])}var i=n("ee"),o=n(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;e.exports=function(n,e){function t(n,e,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){d([u,"",[r,a,i],f])}s(e+"start",[r,a,i],f);try{return c=n.apply(a,r)}catch(p){throw s(e+"err",[r,a,p],f),p}finally{s(e+"end",[r,a,c],f)}}return r(n)?n:(e||(e=""),nrWrapper[a]=n,p(n,nrWrapper),nrWrapper)}function u(n,e,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<e.length;c++)f=e[c],a=n[f],r(a)||(n[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||e){var o=c;c=!0;try{n.emit(t,r,i,e)}catch(a){d([a,t,r,i])}c=o}}function p(n,e){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(n);return t.forEach(function(t){Object.defineProperty(e,t,{get:function(){return n[t]},set:function(e){return n[t]=e,e}})}),e}catch(r){d([r])}for(var i in n)f.call(n,i)&&(e[i]=n[i]);return e}function d(e){try{n.emit("internal-error",e)}catch(t){}}return n||(n=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script>
+<link rel="dns-prefetch" href="//ajax.googleapis.com" />
+<link rel="dns-prefetch" href="//www.googletagservices.com" />
+<link rel="dns-prefetch" href="//www.google-analytics.com" />
+<link rel="dns-prefetch" href="//stats.g.doubleclick.net" />
+<link rel="dns-prefetch" href="//cdn.rawgit.com" />
+<script src="https://www.google.com/recaptcha/api.js?hl=en" async="async" defer="defer"></script>
+<link rel="apple-touch-icon-precomposed" size="57x57" href="https://www.mmtimes.com/sites/mmtimes.com/files/og-images-en/mmtimes_ios_57x57.jpg" />
+<link rel="shortcut icon" href="https://www.mmtimes.com/sites/mmtimes.com/files/favicon.ico" type="image/vnd.microsoft.icon" />
+<link rel="apple-touch-icon-precomposed" size="144x144" href="https://www.mmtimes.com/sites/mmtimes.com/files/og-images-en/mmtimes_ios_144x144.jpg" />
+<link rel="apple-touch-icon-precomposed" size="114x114" href="https://www.mmtimes.com/sites/mmtimes.com/files/og-images-en/mmtimes_ios_114x114.jpg" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta name="MobileOptimized" content="width" />
+<meta name="description" content="When Daw Aung San Suu Kyi’s National League for Democracy (NLD) swept the first free election in the country in over half a century in 2015, there was much optimism about the revival of democratic principles, especially freedom of speech and expression." />
+<meta name="HandheldFriendly" content="1" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="generator" content="Drupal 7 (http://drupal.org)" />
+<link rel="canonical" href="https://www.mmtimes.com/news/freedom-speech-remains-elusive-under-nld-regime.html" />
+<link rel="shortlink" href="https://www.mmtimes.com/node/113628" />
+<meta property="og:site_name" content="The Myanmar Times" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.mmtimes.com/news/freedom-speech-remains-elusive-under-nld-regime.html" />
+<meta property="og:title" content="Freedom of speech remains elusive under NLD regime" />
+<meta property="og:description" content="When Daw Aung San Suu Kyi’s National League for Democracy (NLD) swept the first free election in the country in over half a century in 2015, there was much optimism about the revival of democratic principles, especially freedom of speech and expression." />
+<meta property="og:image" content="https://www.mmtimes.com/sites/mmtimes.com/files/news-images/nld_21.jpg" />
+<meta property="article:published_time" content="2020-01-01" />
+<title>Freedom of speech remains elusive under NLD regime | The Myanmar Times</title>
+<link type="text/css" rel="stylesheet" href="https://www.mmtimes.com/sites/mmtimes.com/files/advagg_css/css__V1K38woDhfnFZUIHq05DcPutL9i7_ygIlA5kmsuTeeY__jh3GF34aSF4Wp0D_0lM1DE55ghFLJU-LMHBMDVrModo__rr46qr-OQqSsU72AwnGhP6N29idib1sMfZ7AE5LtNuE.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://www.mmtimes.com/sites/mmtimes.com/files/advagg_css/css__tqy9HLkr2TjUvyG1uSxyY9wFDoOhI0ilKhzIPK2qEqQ__WGqU_JSnMAtvfwhGUjTCBjZvJZ4jVQQDSHvRNW1j0Ic__rr46qr-OQqSsU72AwnGhP6N29idib1sMfZ7AE5LtNuE.css" media="screen" />
+<link type="text/css" rel="stylesheet" href="https://www.mmtimes.com/sites/mmtimes.com/files/advagg_css/css__2vG39HgDxcbLSU2J13szH1w3IUd8OREbB1jxCJ0YSAU__3fYWFlston-ofCXRxYGKslThogMdGeUg0ABOLB_J58o__rr46qr-OQqSsU72AwnGhP6N29idib1sMfZ7AE5LtNuE.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://www.mmtimes.com/sites/mmtimes.com/files/advagg_css/css__lfj7xrskurr0qtDeNQzgoFnZ76_b4_9M8oT-c10sMQU__oIN6vvo2Wm2VaGOH390Gdf7fSjIZcpL-iizyskPrBN8__rr46qr-OQqSsU72AwnGhP6N29idib1sMfZ7AE5LtNuE.css" media="only screen" />
+<link type="text/css" rel="stylesheet" href="https://www.mmtimes.com/sites/mmtimes.com/files/advagg_css/css__8nG9-7SwL3F4kYrbnm3AgYDEwRyDpAZZoJGpsofFgw0__iBo2EzyNrI-f15KuOuHWUcJDTMe3H0itn1Q3x9A663o__rr46qr-OQqSsU72AwnGhP6N29idib1sMfZ7AE5LtNuE.css" media="only screen" />
+
+<!--[if lt IE 9]>
+<link type="text/css" rel="stylesheet" href="https://www.mmtimes.com/sites/mmtimes.com/files/advagg_css/css__M5c7aQPD8juLqq-1dCkvYKnQ_yTZvMlXRCFF9jE-1I4__JrjP6o1xxFVfxZ1biUNLq8jL-B9sFirRtk6Oyh04O00__rr46qr-OQqSsU72AwnGhP6N29idib1sMfZ7AE5LtNuE.css" media="screen" />
+<![endif]-->
+<script>var fonts=document.cookie.split("advaggf");for(var key in fonts){var font=fonts[key].split("="),pos=font[0].indexOf("ont_");-1!==pos&&(window.document.documentElement.className+=" "+font[0].substr(4).replace(/[^a-zA-Z0-9\-]/g,""))}</script>
+<script>(function(h,o,t,j,a,r){
+  h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+  h._hjSettings={hjid:"136682",hjsv:5};
+  a=o.getElementsByTagName('head')[0];
+  r=o.createElement('script');r.async=1;
+  r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+  a.appendChild(r);
+})(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');</script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script>window.jQuery || document.write("<script src='/sites/mmtimes.com/modules/jquery_update/replace/jquery/1.7/jquery.min.js'>\x3C/script>")</script>
+<script src="https://www.mmtimes.com/sites/mmtimes.com/files/advagg_js/js__jerbbIZ6U5Dc215mQSdj1zSk0fcxf6NRL_MzkTifupQ__ncuumT-HRt8mHEwXNcliLQB6HED4fvx3pgPnWukne9A__rr46qr-OQqSsU72AwnGhP6N29idib1sMfZ7AE5LtNuE.js"></script>
+<script>var googletag = googletag || {};
+googletag.cmd = googletag.cmd || [];
+googletag.slots = googletag.slots || {};</script>
+<script src="https://www.googletagservices.com/tag/js/gpt.js"></script>
+<script src="https://www.mmtimes.com/sites/mmtimes.com/files/advagg_js/js__9ici6QMeDS-cROq8R0RhuICsMGMP2wcJZNQQFsqQi44__hV7dljfYA6Pu0iFb87aBFJ-Nn4ErgYZaEvZ1xhD0gDQ__rr46qr-OQqSsU72AwnGhP6N29idib1sMfZ7AE5LtNuE.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+<script>window.jQuery.ui || document.write("<script src='/sites/mmtimes.com/modules/jquery_update/replace/ui/ui/minified/jquery-ui.min.js'>\x3C/script>")</script>
+<script>googletag.slots["mte_innity_universal_tag"] = googletag.defineOutOfPageSlot("/21633292058/mte_innity_universal_tag", "dfp-ad-mte_innity_universal_tag")
+  .addService(googletag.pubads());</script>
+<script>var mapping = googletag.sizeMapping()
+  .addSize([1024, 0], [728, 90])
+  .addSize([640, 0], [468, 60])
+  .addSize([0, 0], [300, 250])
+  .build();
+googletag.slots["mte_c1_leaderboard"] = googletag.defineSlot("/21633292058/mte_c1_leaderboard", [[728, 90], [468, 60], [300, 250]], "dfp-ad-mte_c1_leaderboard")
+  .addService(googletag.pubads())
+  .defineSizeMapping(mapping);</script>
+<script>googletag.slots["mte_c3_right_medium_rectangle"] = googletag.defineSlot("/21633292058/mte_c3_right_medium_rectangle", [300, 250], "dfp-ad-mte_c3_right_medium_rectangle")
+  .addService(googletag.pubads());</script>
+<script>googletag.slots["mte_c4_right_medium_rectangle"] = googletag.defineSlot("/21633292058/mte_c4_right_medium_rectangle", [300, 250], "dfp-ad-mte_c4_right_medium_rectangle")
+  .addService(googletag.pubads());</script>
+<script>googletag.slots["mte_d3_right_medium_rectangle"] = googletag.defineSlot("/21633292058/mte_d3_right_medium_rectangle", [300, 250], "dfp-ad-mte_d3_right_medium_rectangle")
+  .addService(googletag.pubads());</script>
+<script>googletag.slots["mte_d4_right_medium_rectangle"] = googletag.defineSlot("/21633292058/mte_d4_right_medium_rectangle", [300, 250], "dfp-ad-mte_d4_right_medium_rectangle")
+  .addService(googletag.pubads());</script>
+<script>googletag.slots["mte_c5_right_medium_rectangle"] = googletag.defineSlot("/21633292058/mte_c5_right_medium_rectangle", [300, 250], "dfp-ad-mte_c5_right_medium_rectangle")
+  .addService(googletag.pubads());</script>
+<script>googletag.slots["mte_c6_right_medium_rectangle"] = googletag.defineSlot("/21633292058/mte_c6_right_medium_rectangle", [300, 250], "dfp-ad-mte_c6_right_medium_rectangle")
+  .addService(googletag.pubads());</script>
+<script>googletag.slots["mte_d5_right_medium_rectangle"] = googletag.defineSlot("/21633292058/mte_d5_right_medium_rectangle", [300, 250], "dfp-ad-mte_d5_right_medium_rectangle")
+  .addService(googletag.pubads());</script>
+<script>googletag.slots["mte_d6_right_medium_rectangle"] = googletag.defineSlot("/21633292058/mte_d6_right_medium_rectangle", [300, 250], "dfp-ad-mte_d6_right_medium_rectangle")
+  .addService(googletag.pubads());</script>
+<script src="https://www.mmtimes.com/sites/mmtimes.com/files/advagg_js/js__XcNJzN3b-6vcAPdCZux5-cYjUSYr11sDrLwpIvOU3eo__NiErOiZXX2-tbMbaB2SeZZTXY9tcRgyFm9idwLXrlj0__rr46qr-OQqSsU72AwnGhP6N29idib1sMfZ7AE5LtNuE.js"></script>
+<script>googletag.slots["mte_top_left_rectangle"] = googletag.defineSlot("/21633292058/mte_a1_top_left_rectangle", [180, 150], "dfp-ad-mte_top_left_rectangle")
+  .addService(googletag.pubads());</script>
+<script>googletag.slots["mte_top_right_rectangle"] = googletag.defineSlot("/21633292058/mte_a2_top_right_rectangle", [180, 150], "dfp-ad-mte_top_right_rectangle")
+  .addService(googletag.pubads());</script>
+<script>var mapping = googletag.sizeMapping()
+  .addSize([1024, 0], [980, 120])
+  .addSize([640, 0], [468, 60])
+  .addSize([0, 0], [300, 250])
+  .build();
+googletag.slots["mte_a3_panorama"] = googletag.defineSlot("/21633292058/mte_a3_panorama", [[980, 120], [468, 60], [300, 250]], "dfp-ad-mte_a3_panorama")
+  .addService(googletag.pubads())
+  .defineSizeMapping(mapping);</script>
+<script src="https://www.mmtimes.com/sites/mmtimes.com/files/advagg_js/js__Ff7_C_fzIArf5SR6bZeE_Xpl27vKfkCePfU4L6hMp_A__3QBDCa5bwa9co-qEJeEfs53Sgm_1DYFwIcFoxRre_pE__rr46qr-OQqSsU72AwnGhP6N29idib1sMfZ7AE5LtNuE.js"></script>
+<script>googletag.cmd.push(function() {
+  googletag.pubads().enableAsyncRendering();
+  googletag.pubads().collapseEmptyDivs();
+  googletag.pubads().setTargeting("url", "/news/freedom-speech-remains-elusive-under-nld-regime.html");
+  googletag.pubads().setTargeting("language", "english");
+  googletag.pubads().setTargeting("category", "national news");
+  googletag.pubads().setTargeting("cat-top", "national news");
+});
+
+googletag.enableServices();</script>
+<script src="https://www.mmtimes.com/sites/mmtimes.com/files/advagg_js/js__8sZcSMGjz3GK4jhGnidX9p2GZLFjwbq47-pbaEY2ir8__wgtJeGWt7mdrfO5DDDjuQbm_io_kjqEaYeQilloH0VQ__rr46qr-OQqSsU72AwnGhP6N29idib1sMfZ7AE5LtNuE.js"></script>
+<script>(function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,"script","//www.google-analytics.com/analytics.js","ga");ga("create", "UA-35816339-1", {"cookieDomain":".mmtimes.com"});ga("require", "displayfeatures");ga("set", "anonymizeIp", true);ga("send", "pageview");</script>
+<script src="https://www.mmtimes.com/sites/mmtimes.com/files/advagg_js/js__cGptZvoBMMgNsFsDGJeOriJVWOkkSzv5yhzS7tyC7-Y__f7LVn7zSYlCGcR9Iv-sBassEcCN07DjbEMhIXmKZiTQ__rr46qr-OQqSsU72AwnGhP6N29idib1sMfZ7AE5LtNuE.js"></script>
+<script src="https://www.mmtimes.com/sites/mmtimes.com/files/advagg_js/js__gZKcZUB5MAyiECw3OUqY3dShM0zvlvIja_0Qg9EGBhw__K4ApKepJPcurZyZkfZbfF4bND8mRif4uimvll4yTanU__rr46qr-OQqSsU72AwnGhP6N29idib1sMfZ7AE5LtNuE.js" defer="defer" async="async"></script>
+<script defer="defer" async="async" src="https://cdn.rawgit.com/bramstein/fontfaceobserver/master/fontfaceobserver.js"></script>
+<script src="https://www.mmtimes.com/sites/mmtimes.com/files/advagg_js/js__lFYn8eRud2tG7hzEnHgZw3yr3NehyP-tCwjXFS5aFOY__iDGgZkEwNIVf3G2bm5ZB0yTlFG54no1f4pqkzTeDNrU__rr46qr-OQqSsU72AwnGhP6N29idib1sMfZ7AE5LtNuE.js"></script>
+<script>jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":{"theme":"mspiral_theme","theme_token":"PVqdoWOAwvmE-iTeXAMeeQB2VInp3auLn4xtbIRoaMo","css":{"modules\/system\/system.base.css":1,"modules\/system\/system.menus.css":1,"modules\/system\/system.messages.css":1,"modules\/system\/system.theme.css":1,"misc\/ui\/jquery.ui.core.css":1,"misc\/ui\/jquery.ui.theme.css":1,"misc\/ui\/jquery.ui.datepicker.css":1,"sites\/mmtimes.com\/modules\/date\/date_popup\/themes\/jquery.timeentry.css":1,"modules\/book\/book.css":1,"modules\/comment\/comment.css":1,"sites\/mmtimes.com\/modules\/date\/date_api\/date.css":1,"sites\/mmtimes.com\/modules\/date\/date_popup\/themes\/datepicker.1.7.css":1,"sites\/mmtimes.com\/modules\/date\/date_repeat_field\/date_repeat_field.css":1,"modules\/field\/theme\/field.css":1,"sites\/mmtimes.com\/modules\/logintoboggan\/logintoboggan.css":1,"sites\/mmtimes.com\/modules\/_custom\/mspiral_core\/css\/mspiral-core.css":1,"modules\/node\/node.css":1,"modules\/search\/search.css":1,"sites\/mmtimes.com\/modules\/ubercart\/uc_file\/uc_file.css":1,"sites\/mmtimes.com\/modules\/ubercart\/uc_order\/uc_order.css":1,"sites\/mmtimes.com\/modules\/ubercart\/uc_product\/uc_product.css":1,"sites\/mmtimes.com\/modules\/ubercart\/uc_store\/uc_store.css":1,"modules\/user\/user.css":1,"sites\/mmtimes.com\/modules\/youtube\/css\/youtube.css":1,"sites\/mmtimes.com\/modules\/extlink\/extlink.css":1,"sites\/mmtimes.com\/modules\/views\/css\/views.css":1,"sites\/mmtimes.com\/modules\/back_to_top\/css\/back_to_top.css":1,"sites\/mmtimes.com\/modules\/ckeditor\/css\/ckeditor.css":1,"sites\/default-project50.local7.mspiral.net\/libraries\/colorbox\/example3\/colorbox.css":1,"sites\/mmtimes.com\/modules\/ctools\/css\/ctools.css":1,"sites\/mmtimes.com\/modules\/panels\/css\/panels.css":1,"sites\/mmtimes.com\/modules\/responsive_menus\/styles\/meanMenu\/meanmenu.min.css":1,"sites\/mmtimes.com\/modules\/quicktabs\/css\/quicktabs.css":1,"sites\/mmtimes.com\/themes\/adaptivetheme\/at_core\/css\/at.layout.css":1,"sites\/mmtimes.com\/themes\/mspiral-theme\/css\/global.base.css":1,"sites\/mmtimes.com\/themes\/mspiral-theme\/css\/global.styles.css":1,"sites\/mmtimes.com\/themes\/mspiral-theme\/css\/mspiral-theme.css":1,"sites\/mmtimes.com\/themes\/mspiral-theme\/css\/font-awesome-animation.css":1,"sites\/mmtimes.com\/themes\/mspiral-theme\/css\/font-awesome.css":1,"sites\/mmtimes.com\/themes\/mspiral-theme\/css\/stacktable.css":1,"sites\/mmtimes.com\/themes\/mspiral-theme\/css\/mspiral-custom.css":1,"public:\/\/adaptivetheme\/mspiral_theme_files\/mspiral_theme.responsive.layout.css":1,"public:\/\/adaptivetheme\/mspiral_theme_files\/mspiral_theme.responsive.styles.css":1,"public:\/\/adaptivetheme\/mspiral_theme_files\/mspiral_theme.lt-ie9.layout.css":1},"js":{"\/\/ajax.googleapis.com\/ajax\/libs\/jquery\/1.7.2\/jquery.min.js":1,"misc\/jquery-extend-3.4.0.js":1,"misc\/jquery.once.js":1,"https:\/\/www.googletagservices.com\/tag\/js\/gpt.js":1,"misc\/drupal.js":1,"\/\/ajax.googleapis.com\/ajax\/libs\/jqueryui\/1.10.2\/jquery-ui.min.js":1,"modules\/locale\/locale.datepicker.js":1,"sites\/mmtimes.com\/modules\/date\/date_popup\/jquery.timeentry.pack.js":1,"sites\/mmtimes.com\/modules\/imce_prettyfiles\/imce_prettyfiles.js":1,"sites\/mmtimes.com\/modules\/_custom\/mspiral_core\/js\/mspiral-admin.js":1,"sites\/mmtimes.com\/modules\/ubercart\/uc_file\/uc_file.js":1,"sites\/mmtimes.com\/modules\/back_to_top\/js\/back_to_top.js":1,"sites\/mmtimes.com\/modules\/extlink\/extlink.js":1,"misc\/progress.js":1,"sites\/mmtimes.com\/libraries\/colorbox\/jquery.colorbox-min.js":1,"sites\/mmtimes.com\/modules\/colorbox\/js\/colorbox.js":1,"sites\/mmtimes.com\/modules\/colorbox\/js\/colorbox_inline.js":1,"sites\/mmtimes.com\/modules\/jcaption\/jcaption.js":1,"sites\/mmtimes.com\/modules\/captcha\/captcha.js":1,"sites\/mmtimes.com\/modules\/responsive_menus\/styles\/meanMenu\/jquery.meanmenu.min.js":1,"sites\/mmtimes.com\/modules\/responsive_menus\/styles\/meanMenu\/responsive_menus_mean_menu.js":1,"sites\/mmtimes.com\/modules\/google_analytics\/googleanalytics.js":1,"sites\/mmtimes.com\/modules\/date\/date_popup\/date_popup.js":1,"modules\/o_contrib_seven\/advagg\/advagg_font\/advagg_font.js":1,"https:\/\/cdn.rawgit.com\/bramstein\/fontfaceobserver\/master\/fontfaceobserver.js":1,"sites\/mmtimes.com\/modules\/quicktabs\/js\/quicktabs.js":1,"sites\/mmtimes.com\/themes\/mspiral-theme\/scripts\/sticky-menu.js":1,"sites\/mmtimes.com\/themes\/mspiral-theme\/scripts\/stacktable.js":1,"sites\/mmtimes.com\/themes\/mspiral-theme\/scripts\/mspiral_core.js":1,"sites\/mmtimes.com\/themes\/mspiral-theme\/scripts\/swipe.js":1}},"colorbox":{"opacity":"0.85","current":"{current} of {total}","previous":"\u00ab Prev","next":"Next \u00bb","close":"Close","maxWidth":"98%","maxHeight":"98%","fixed":true,"mobiledetect":true,"mobiledevicewidth":"480px"},"jcaption":{"jcaption_selectors":[".node-content .field-items img",".pane-token .block-content img",".node-content img"],"jcaption_alt_title":"alt","jcaption_requireText":1,"jcaption_copyStyle":1,"jcaption_removeStyle":1,"jcaption_removeClass":1,"jcaption_removeAlign":1,"jcaption_copyAlignmentToClass":0,"jcaption_copyFloatToClass":1,"jcaption_copyClassToClass":1,"jcaption_autoWidth":1,"jcaption_keepLink":0,"jcaption_styleMarkup":"img-caption","jcaption_animate":0,"jcaption_showDuration":"200","jcaption_hideDuration":"200"},"jcarousel":{"ajaxPath":"\/jcarousel\/ajax\/views"},"better_exposed_filters":{"views":{"news_opinion":{"displays":{"latest_news_inner_sidebar":{"filters":[]},"most_read_news_sidebar":{"filters":[]}}},"featured_news_details_image":{"displays":{"normal_news_details_image":{"filters":[]}}},"related_news":{"displays":{"related_news_three_col":{"filters":[]},"related_special_news_threecol":{"filters":[]}}}}},"back_to_top":{"back_to_top_button_trigger":"100","back_to_top_button_text":"Back to top","#attached":{"library":[["system","ui"]]}},"responsive_menus":[{"selectors":"#block-system-main-menu","container":"body","trigger_txt":"\u003Cspan \/\u003E\u003Cspan \/\u003E\u003Cspan \/\u003E","close_txt":"X","close_size":"18px","position":"right","media_size":"1170","show_children":"1","expand_children":"1","expand_txt":"+","contract_txt":"-","remove_attrs":"0","responsive_menus_style":"mean_menu"}],"extlink":{"extTarget":"_blank","extClass":0,"extLabel":"(link is external)","extImgClass":0,"extSubdomains":0,"extExclude":"(www\\.mmtimes\\.com) | (myanmar\\.mmtimes\\.com)","extInclude":"","extCssExclude":"","extCssExplicit":"","extAlert":0,"extAlertText":"This link will take you to an external web site.","mailtoClass":0,"mailtoLabel":"(link sends e-mail)"},"googleanalytics":{"trackOutbound":1,"trackMailto":1,"trackDownload":1,"trackDownloadExtensions":"7z|aac|arc|arj|asf|asx|avi|bin|csv|doc(x|m)?|dot(x|m)?|exe|flv|gif|gz|gzip|hqx|jar|jpe?g|js|mp(2|3|4|e?g)|mov(ie)?|msi|msp|pdf|phps|png|ppt(x|m)?|pot(x|m)?|pps(x|m)?|ppam|sld(x|m)?|thmx|qtm?|ra(m|r)?|sea|sit|tar|tgz|torrent|txt|wav|wma|wmv|wpd|xls(x|m|b)?|xlt(x|m)|xlam|xml|z|zip","trackColorbox":1,"trackDomainMode":"1"},"urlIsAjaxTrusted":{"\/search\/node":true,"\/search\/node\/all":true,"\/news\/freedom-speech-remains-elusive-under-nld-regime.html":true},"jquery":{"ui":{"datepicker":{"isRTL":false,"firstDay":"1"}}},"datePopup":{"edit-date-filter-min-datepicker-popup-0":{"func":"datepicker","settings":{"changeMonth":true,"changeYear":true,"autoPopUp":"focus","closeAtTop":false,"speed":"immediate","firstDay":1,"dateFormat":"mm\/dd\/yy","yearRange":"-3:+3","fromTo":false,"defaultDate":"0y"}},"edit-date-filter-max-datepicker-popup-0":{"func":"datepicker","settings":{"changeMonth":true,"changeYear":true,"autoPopUp":"focus","closeAtTop":false,"speed":"immediate","firstDay":1,"dateFormat":"mm\/dd\/yy","yearRange":"-3:+3","fromTo":false,"defaultDate":"0y"}}},"advagg_font_cookie":1,"advagg_font_no_fout":1,"quicktabs":{"qt_social_plugin":{"name":"social_plugin","tabs":[{"bid":"block_delta_7","hide_title":0},{"bid":"block_delta_18","hide_title":0}],"better_exposed_filters":{"views":{"news_opinion":{"displays":{"most_read_news_sidebar":{"filters":[]}}}}}}},"adaptivetheme":{"mspiral_theme":{"layout_settings":{"bigscreen":"three-col-grail","tablet_landscape":"three-col-grail","tablet_portrait":"one-col-vert","smalltouch_landscape":"one-col-vert","smalltouch_portrait":"one-col-stack"},"media_query_settings":{"bigscreen":"only screen and (min-width:1025px)","tablet_landscape":"only screen and (min-width:769px) and (max-width:1024px)","tablet_portrait":"only screen and (min-width:581px) and (max-width:768px)","smalltouch_landscape":"only screen and (min-width:321px) and (max-width:580px)","smalltouch_portrait":"only screen and (max-width:320px)"}}},"advagg_font":{"trebuchet-ms":"Trebuchet MS"}});</script>
+<!--[if lt IE 9]>
+<script src="https://www.mmtimes.com/sites/mmtimes.com/themes/adaptivetheme/at_core/scripts/html5.js?q30lpm"></script>
+<![endif]-->
+<script async data-cfasync="false" src="https://static.myopenads.com/sites/mmtimes.com/web-head.js"></script>
+<script type="text/javascript">
+  window._taboola = window._taboola || [];
+  _taboola.push({article:'auto'});
+  !function (e, f, u, i) {
+    if (!document.getElementById(i)){
+      e.async = 1;
+      e.src = u;
+      e.id = i;
+      f.parentNode.insertBefore(e, f);
+    }
+  }(document.createElement('script'),
+  document.getElementsByTagName('script')[0],
+  '//cdn.taboola.com/libtrc/myanmartimes-mmtimes/loader.js',
+  'tb_loader_script');
+  if(window.performance && typeof window.performance.mark == 'function')
+    {window.performance.mark('tbl_ic');}
+</script>
+<!-- mmtimes give js codes -->
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-6622305925836088",
+          enable_page_level_ads: true
+     });
+</script>
+<!-- end mmtimes give js codes -->
+
+</head>
+<body class="html not-front not-logged-in no-sidebars page-node page-node- page-node-113628 node-type-news hide-page-title site-name-hidden atr-7.x-3.x atv-7.x-3.2 lang-en site-name-the-myanmar-times section-news">
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.9&appId=350304652028482";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+!function(d,s,id){var js,fjs=d.getElementsByTagName(s)
+[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+
+</script>
+  <div id="skip-link" class="nocontent">
+    <a href="#main-content" class="element-invisible element-focusable">Skip to main content</a>
+  </div>
+    <div id="page-wrapper">
+  <div class="msp-search-form">
+      <form action="/search/node/all" method="get" id="views-exposed-form-search-page-search" accept-charset="UTF-8"><div><div class="views-exposed-form">
+  <div class="views-exposed-widgets clearfix">
+          <div id="edit-site-search-wrapper" class="views-exposed-widget views-widget-filter-combine_1">
+                  <label for="edit-site-search">
+            Search          </label>
+                        <div class="views-widget">
+          <div class="form-item form-type-textfield form-item-site-search">
+ <input type="text" id="edit-site-search" name="site-search" value="" size="30" maxlength="128" class="form-text" />
+</div>
+        </div>
+              </div>
+          <div id="edit-date-filter-wrapper" class="views-exposed-widget views-widget-filter-date_filter">
+                        <div class="views-widget">
+          <div id="edit-date-filter-min-wrapper"><div id="edit-date-filter-min-inside-wrapper"><div  class="container-inline-date"><div class="form-item form-type-date-popup form-item-date-filter-min">
+  <label for="edit-date-filter-min">Start date </label>
+ <div id="edit-date-filter-min"  class="date-padding"><div class="form-item form-type-textfield form-item-date-filter-min-date">
+  <label class="element-invisible" for="edit-date-filter-min-datepicker-popup-0">Date </label>
+ <input type="text" id="edit-date-filter-min-datepicker-popup-0" name="date_filter[min][date]" value="" size="20" maxlength="30" class="form-text" />
+<div class="description"> E.g., 01/02/2020</div>
+</div>
+</div>
+</div>
+</div></div></div><div id="edit-date-filter-max-wrapper"><div id="edit-date-filter-max-inside-wrapper"><div  class="container-inline-date"><div class="form-item form-type-date-popup form-item-date-filter-max">
+  <label for="edit-date-filter-max">End date </label>
+ <div id="edit-date-filter-max"  class="date-padding"><div class="form-item form-type-textfield form-item-date-filter-max-date">
+  <label class="element-invisible" for="edit-date-filter-max-datepicker-popup-0">Date </label>
+ <input type="text" id="edit-date-filter-max-datepicker-popup-0" name="date_filter[max][date]" value="" size="20" maxlength="30" class="form-text" />
+<div class="description"> E.g., 01/02/2020</div>
+</div>
+</div>
+</div>
+</div></div></div>        </div>
+              </div>
+                    <div class="views-exposed-widget views-submit-button">
+      <input type="submit" id="edit-submit-search" name="" value="Search" class="form-submit" />    </div>
+      </div>
+</div>
+</div></form>  </div>
+  <div id="page" class="container page">
+
+    <!-- !Leaderboard Region --> 
+        <div id="menu-bar" class="nav clearfix"><nav id="block-system-main-menu" class="block block-system block-menu no-title menu-wrapper menu-bar-wrapper clearfix odd first block-count-7 block-region-menu-bar block-main-menu"  role="navigation">  
+  
+  <ul class="menu clearfix"><li class="first leaf menu-depth-1 menu-item-6517"><a href="/" title="">Home</a></li><li class="expanded menu-depth-1 menu-item-8329"><a href="/national-news.html" title="">National</a><ul class="menu clearfix"><li class="first leaf menu-depth-2 menu-item-8345"><a href="/national-news/nay-pyi-taw.html" title="">Nay Pyi Taw</a></li><li class="leaf menu-depth-2 menu-item-9374"><a href="/national-news/yangon.html" title="">Yangon</a></li><li class="leaf menu-depth-2 menu-item-8347"><a href="/national-news/mandalay-upper-myanmar.html" title="">Mandalay &amp; Upper Myanmar</a></li><li class="last leaf menu-depth-2 menu-item-9358"><a href="/national-news/week-in-review.html" title="">Week in Review</a></li></ul></li><li class="expanded menu-depth-1 menu-item-8330"><a href="/business.html" title="">Business</a><ul class="menu clearfix"><li class="first last leaf menu-depth-2 menu-item-9375"><a href="/business/property-news.html" title="">Property News</a></li></ul></li><li class="leaf menu-depth-1 menu-item-11395"><a href="/world-news.html" title="">World</a></li><li class="expanded menu-depth-1 menu-item-11399"><a href="/focus.html" title="">Focus</a><ul class="menu clearfix"><li class="first leaf menu-depth-2 menu-item-11400"><a href="/focus/sme-focus.html" title="">SME Focus</a></li><li class="leaf menu-depth-2 menu-item-11401"><a href="/focus/environment.html" title="">Environment</a></li><li class="leaf menu-depth-2 menu-item-11402"><a href="/focus/women.html" title="">Women</a></li><li class="last leaf menu-depth-2 menu-item-8349"><a href="/business/technology.html" title="">Technology</a></li></ul></li><li class="expanded menu-depth-1 menu-item-8331"><a href="/lifestyle.html" title="">Lifestyle</a><ul class="menu clearfix"><li class="first leaf menu-depth-2 menu-item-9369"><a href="/lifestyle/top-10.html" title="">Top 10</a></li><li class="leaf menu-depth-2 menu-item-9694"><a href="/restaurant-reviews.html" title="">Restaurant Review</a></li><li class="last leaf menu-depth-2 menu-item-8912"><a href="/lifestyle/travel.html" title="">Travel</a></li></ul></li><li class="expanded menu-depth-1 menu-item-11193"><a href="/the-metro.html" title="">The Metro</a><ul class="menu clearfix"><li class="first leaf menu-depth-2 menu-item-9359"><a href="/the-metro/movie-time.html" title="">Movie Time</a></li><li class="leaf menu-depth-2 menu-item-9357"><a href="/the-metro/property-watch.html" title="">Property Watch</a></li><li class="last leaf menu-depth-2 menu-item-9366"><a href="/the-metro/whats-on-yangon.html" title="">What&#039;s On in Yangon!</a></li></ul></li><li class="expanded menu-depth-1 menu-item-8332"><a href="/sports.html" title="">Sports</a><ul class="menu clearfix"><li class="first leaf menu-depth-2 menu-item-11546"><a href="/sports/sea-games-2019.html" title="">SEA Games 2019</a></li><li class="leaf menu-depth-2 menu-item-11398"><a href="/tags/one-championship" title="">ONE Championship</a></li><li class="last leaf menu-depth-2 menu-item-8354"><a href="/sports/martial-arts.html" title="">Martial Arts</a></li></ul></li><li class="leaf menu-depth-1 menu-item-8333"><a href="/opinion.html" title="">Opinion</a></li><li class="last leaf menu-depth-1 menu-item-9373"><a href="/sponsored.html" title="">Sponsored</a></li></ul>  
+  </nav><div id="block-block-44" class="block block-block no-title menu-wrapper menu-bar-wrapper clearfix even block-count-8 block-region-menu-bar block-44" >  
+  
+  <div class="subscribe-now">
+	<a href="/Subscription">Subscribe</a></div>
+  
+  </div><div id="block-block-8" class="block block-block social-block no-title menu-wrapper menu-bar-wrapper clearfix odd last block-count-9 block-region-menu-bar block-8" >  
+  
+  <div class="social-icon">
+	<a href="https://www.facebook.com/themyanmartimesenglish" target="_blank"><i class="fa fa-facebook faa-vertical animated-hover"></i></a><a href="https://www.twitter.com/TheMyanmarTimes" target="_blank"><i class="fa fa-twitter faa-vertical animated-hover"></i></a><span class="block-toggle up-arrow"><i class="fa fa-search faa-pulse animated-hover"></i></span></div>
+  
+  </div></div>   
+     
+    <header id="header" class="clearfix" role="banner">
+      <div class="header-inner">
+              <!-- !Branding -->
+        <div id="branding" class="branding-elements clearfix">
+          <div class="ads-rectangle-left">
+          <div id="dfp-ad-mte_top_left_rectangle-wrapper" class="dfp-tag-wrapper">
+<div  id="dfp-ad-mte_top_left_rectangle" class="dfp-tag-wrapper">
+    <script type="text/javascript">
+    googletag.cmd.push(function() {
+      googletag.display("dfp-ad-mte_top_left_rectangle");
+    });
+  </script>
+</div>
+</div>
+          </div>
+                          <div id="logo">
+                <div class="language-switcher">
+                <ul class="menu clearfix"><li class="first leaf menu-depth-1 menu-item-11391"><a href="/" title="">English</a></li><li class="last leaf menu-depth-1 menu-item-11392"><a href="https://myanmar.mmtimes.com" title="">Myanmar</a></li></ul>                </div>
+                <a href="/"><img class="site-logo" typeof="foaf:Image" src="https://www.mmtimes.com/sites/mmtimes.com/files/mmt-2x_1.png" alt="The Myanmar Times" /></a>                                  <div class="date-language">
+                    <span class='today'>Thursday, January 02, 2020</span> 
+                   <!--  <span class="language-switcher"> -->
+                      <!--  -->
+                   <!--  </span> -->
+                  </div>
+              </div>
+                      <div class="ads-rectangle-right">
+          <div id="dfp-ad-mte_top_right_rectangle-wrapper" class="dfp-tag-wrapper">
+<div  id="dfp-ad-mte_top_right_rectangle" class="dfp-tag-wrapper">
+    <script type="text/javascript">
+    googletag.cmd.push(function() {
+      googletag.display("dfp-ad-mte_top_right_rectangle");
+    });
+  </script>
+</div>
+</div>          </div>
+                      <!-- !Site name and Slogan -->
+            <div class="element-invisible h-group" id="name-and-slogan">
+
+                              <h1 class="element-invisible" id="site-name"><a href="/" title="Home page">The Myanmar Times</a></h1>
+              
+              
+            </div>
+                  </div>
+      
+      <!-- !Header Region -->
+      
+      </div>
+    </header>
+
+    <!-- !Navigation -->
+    
+        
+    <!-- !Breadcrumbs -->
+    <div id="breadcrumb" class="clearfix"><nav class="breadcrumb-wrapper clearfix" role="navigation" aria-labelledby="breadcrumb-label"><h2 id="breadcrumb-label" class="element-invisible">You are here</h2><ol id="crumbs" class="clearfix"><li class="crumb crumb-first"><span typeof="v:Breadcrumb"><a rel="v:url"  property="v:title"  href="/">Home</a></span></li><li class="crumb"><span class="crumb-separator"> &#187; </span><span typeof="v:Breadcrumb"><a rel="v:url"  property="v:title"  href="/national-news.html">National News</a></span></li><li class="crumb crumb-last"><span class="crumb-separator"> &#187; </span><span class="crumb-title">Freedom of speech remains elusive under NLD regime</span></li></ol></nav></div>
+    <!-- !Front Page News Tags -->
+        <!-- !Messages and Help -->
+        
+    <!-- !Secondary Content Region -->
+    <div class="region region-secondary-content"><div class="region-inner clearfix"><div id="block-dfp-mte-a3-panorama" class="block block-dfp no-title odd first block-count-10 block-region-secondary-content block-mte-a3-panorama" ><div class="block-inner clearfix">  
+  
+  <div class="block-content content"><div id="dfp-ad-mte_a3_panorama-wrapper" class="dfp-tag-wrapper">
+<div  id="dfp-ad-mte_a3_panorama" class="dfp-tag-wrapper">
+    <script type="text/javascript">
+    googletag.cmd.push(function() {
+      googletag.display("dfp-ad-mte_a3_panorama");
+    });
+  </script>
+</div>
+</div></div>  
+  </div></div><div id="block-mspiral-core-custom-page-title" class="block block-mspiral-core no-title even last block-count-11 block-region-secondary-content block-custom-page-title" ><div class="block-inner clearfix">  
+  
+  <div class="block-content content">Freedom of speech remains elusive under NLD regime</div>  
+  </div></div></div></div>
+    <div id="columns" class="columns clearfix">
+      <main id="content-column" class="content-column" role="main">
+        <div class="content-inner">
+
+          <!-- !Highlighted region -->
+          
+          <section id="main-content">
+
+            
+            <!-- !Main Content Header -->
+                          <header id="main-content-header" class="clearfix">
+
+                                  <h1 id="page-title">
+                    Freedom of speech remains elusive under NLD regime                  </h1>
+                
+                
+              </header>
+            
+            <!-- !Main Content -->
+                          <div id="content" class="region">
+                <div id="block-system-main" class="block block-system no-title odd first last block-count-12 block-region-content block-main" >  
+  
+  <div class="mmtimes-frontpage at-panel panel-display clearfix" >
+      <div class="region region-mmtimes-frontpage-top region-conditional-stack">
+      <div class="region-inner clearfix">
+        <div class="panel-pane pane-block pane-block-53 no-title block">
+  <div class="block-inner clearfix">
+    
+            
+    
+    <div class="block-content">
+      <div> </div>
+    </div>
+
+    
+    
+  </div>
+</div>
+      </div>
+    </div>
+    <div class="two-66-33">
+    <div class="region region-mmtimes-frontpage-first">
+      <div class="region-inner clearfix">
+        <div class="panel-pane pane-views-panes pane-featured-news-details-image-normal-news-details-image no-title block">
+  <div class="block-inner clearfix">
+    
+            
+    
+    <div class="block-content">
+      <div class="view view-featured-news-details-image view-id-featured_news_details_image view-display-id-normal_news_details_image view-dom-id-7cddf8836fa421bd9b35ac7562a74e37">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first views-row-last">
+      
+  <div class="views-field views-field-views-conditional">        <span class="field-content"><div class="news-detail-bar">
+    <div class="news-info">          
+          <span class="news-author"> <a href="/author/sit-htet-aung">Sit Htet Aung</a> </span>
+          <span class="news-date">01 Jan 2020</span> 
+    </div>
+  </div>
+ <div class="news-normal-image-wrapper">
+     <div class="field-name-field-news-image"><img typeof="foaf:Image" class="image-style-mmtimes-ratio-c-normal-detail-image" src="https://www.mmtimes.com/sites/mmtimes.com/files/styles/mmtimes_ratio_c_normal_detail_image/public/news-images/nld_21.jpg?itok=XD1b_PpG" width="840" height="610" alt="Protesters march in downtown Yangon to oppose amendments to the Peaceful Assembly and Peaceful Procession Law. Shin Moe Myint/The Myanmar Times" /></div>
+<div class="img-caption">Protesters march in downtown Yangon to oppose amendments to the Peaceful Assembly and Peaceful Procession Law. Shin Moe Myint/The Myanmar Times</div>
+  </div></span>  </div>  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div>    </div>
+
+    
+    
+  </div>
+</div>
+<div class="panel-separator"></div><div class="panel-pane pane-dfp-pane no-title block">
+  <div class="block-inner clearfix">
+    
+            
+    
+    <div class="block-content">
+          </div>
+
+    
+    
+  </div>
+</div>
+<div class="panel-separator"></div><div class="panel-pane pane-node-content no-title block">
+  <div class="block-inner clearfix">
+    
+            
+    
+    <div class="block-content">
+      <article id="node-113628" class="node node-news article odd node-lang-en node-full clearfix" about="/news/freedom-speech-remains-elusive-under-nld-regime.html" typeof="sioc:Item foaf:Document" role="article">
+                            <!-- <div class="image-alt"></div> -->
+              <div class="news-detail-title">Freedom of speech remains elusive under NLD regime</div>
+     <div class="node-content">
+               <div class="summary">
+            <p>
+	<strong>When Daw Aung San Suu Kyi’s National League for Democracy (NLD) swept the first free election in the country in over half a century in 2015, there was much optimism about the revival of democratic principles, especially freedom of speech and expression.</strong></p>
+ 
+          </div>
+              <div class="field field-name-body field-type-text-with-summary field-label-hidden view-mode-full"><div class="field-items"><div class="field-item even" property="content:encoded"><p>
+	But as the ruling NLD enters its fifth and final year in office, the optimism has turned into bitterness and frustration as people are hauled to court and jailed for speaking their minds. </p>
+<p><div id="block-block-37--2" class="block block-block no-title even block-count-6 block-region-block-inject-adv-3 block-37" ><div class="block-inner clearfix">  
+  
+  <div class="block-content content"><div class="adunit" data-adunit="mmtimes.com-728x90-1" data-dimensions="728x90,300x250" data-size-mapping="728x90-468x60-300x250"></div>
+</div>  
+  </div></div><p><div id="block-dfp-mte-c1-leaderboard--2" class="block block-dfp no-title even block-count-4 block-region-block-inject-adv-7 block-mte-c1-leaderboard" ><div class="block-inner clearfix">  
+  
+  <div class="block-content content"><div id="dfp-ad-mte_c1_leaderboard-wrapper" class="dfp-tag-wrapper">
+<div  id="dfp-ad-mte_c1_leaderboard" class="dfp-tag-wrapper">
+    <script type="text/javascript">
+    googletag.cmd.push(function() {
+      googletag.display("dfp-ad-mte_c1_leaderboard");
+    });
+  </script>
+</div>
+</div></div>  
+  </div></div><p>
+	Human rights activists said the laws that the Tatmadaw (military) juntas used to suppress individual freedom are still very much in use by military and civilian officials.</p>
+<p><p>
+	Among the laws that rights advocates said curtail freedom of expression are Section 66(d) of the Telecommunications Law, the Law Protecting the Privacy and Security of Citizens, sections 505(a) and (b), and 124(a) of the Penal Code, and the Peaceful Assembly and Peaceful Procession Law. </p>
+<p><div id="block-block-50--2" class="block block-block no-title even block-count-5 block-region-block-inject-adv-4 block-50" ><div class="block-inner clearfix">  
+  
+  <div class="block-content content"><p style="text-align:center">
+<script type="text/javascript">
+<!--//--><![CDATA[// ><!--
+
+var _ase  = _ase || [];
+/* load placement for account: Myanmar Times, site: mmtimes.com, zone size : 300x250 */
+_ase.push(['1511410987','1511411643']);
+
+//--><!]]>
+</script><script src="//gamma.cachefly.net/js/ad-exchange.js" type="text/javascript"></script></p>
+</div>  
+  </div></div><p>
+	Athan, a freedom of expression group, said that over 250 people were either imprisoned or charged with violating laws that restrict freedom of expression through June this year.</p>
+<p><p>
+	U Aye Maung, who formerly represented Rakhine State’s Ann constituency in the Pyithu Hluttaw (Lower House), and ethnic Rakhine author Wai Hin Aung were found guilty by a Rahine court of incitement and high treason for their speeches to a public gathering in Mrauk-U township. They were sentenced to 22 years in prison.</p>
+<p><p>
+	In his speech, U Aye Maung had said, “Burmese people only think of Rakhine people as slaves and deny them equal rights. There are people going for armed revolution to get sovereignty and by taking advantage of political flaws. We need to get to our goals and change our mindset for self-government again.” </p>
+<p>
+	Nationalists like the extremist monk U Wirathu and activist U Hla Swe were also prosecuted because of speeches they made under laws that human rights advocates see as curtailing free expression. They faced life imprisonment if found guilty.</p>
+<p>
+	U Wirathu was charged because of his speeches at demonstrations against amendments to the 2008 Constitution. U Hla Swe was changed over his speeches at demonstrations supporting the military at Yangon City Hall. Officials said their speeches had defamed the government. </p>
+<p><p>
+	Both are still at large, have standing arrest warrants, and are considered fugitives from the law.</p>
+<p>
+	In Loikaw, the capital of Kayah State, six Karenni youths were sentenced to six months in prison for describing State Chief Minister U L Paung Sho and Kayah State Planning and Finance Minister as “political criminals and Karenni national betrayers” during a protest against erecting a statue of independence hero Bogyoke Aung San in a park. </p>
+<p>
+	In Myitkyina, the capital of Kachin State, a judge sentenced two youth activists to 15 days in prison for holding a street performance to mark the eighth anniversary of the resumption of clashes in the strife-torn state. When one of the activists handed the judge a broken scale, he was given an additional three months in jail.</p>
+<p>
+	U Myo Nyunt, NLD spokesperson, said that Myanmar’s laws restricting freedom of expression are necessary to maintain law order in the country as it transitions to democracy. </p>
+<p>
+	He said that even though the NLD had fought military dictatorships for decades, it had to be careful when opposing laws implemented under the repressive regime.</p>
+<p>
+	“Democratic countries face the inevitable problem of groups that have different opinions and violent protest,” he said. “We have to manage them according to the law. Acts that violate the law are undemocratic.” </p>
+<p>
+	U Myo Nyunt said courts under the NLD-led government had been “relatively lenient” in sentencing those found guilty of breaking freedom of expression laws. Unlike previous regimes, the NLD-led government does not interfere in the judicial process, he said. </p>
+<p>
+	The Tatmadaw also charges people under freedom of expression laws, mostly ‘section 505(a) sedition.’</p>
+<p>
+	But advocates said they would not settle for anything less than total freedom of expression.</p>
+<p>
+	“It’s very important for the authorities of Myanmar to immediately repeal the laws that target and oppress peaceful activists and critics,” said Nicholas Bequelin, Southeast Asia regional director for Amnesty International. </p>
+<p>
+	The Assistance Association for Political Prisoners (AAPP) expressed concern about what it saw as the deterioration of freedom of speech and expression in Myanmar.</p>
+<p>
+	“The climate of freedom of speech has terribly deteriorated and is now in critical condition,” the group said in a statement.  </p>
+<p>
+	AAPP said there are 633 political prisoners in the country’s prisons. </p>
+<p>
+	As of November this year, 80 people were jailed for political offences, 180 are facing trial while being detained in prison, and 373 are awaiting trial outside of prison, it said.</p>
+<p>
+	Freedom of speech is one of the fundamental rights that strengthen democracy. Filing court cases against, and giving prison sentences to, activists, workers and civilians who express their views stunts the democratic process, the group said.</p>
+<p>
+	Human rights activists have demanded the amendment or repeal of laws that restrict freedom of speech and expression. But neither the government nor parliament have shown any sign of paying attention to the demands, as the two institutions struggle to seek a balance between individual freedom and collective responsibility. – <em>Translated</em></p>
+</div></div></div>              <div class="translated-by"></div>
+          </div> 
+
+    
+     <!-- <div class="social-bar"> -->
+    <!-- <div class="share-title"></div> -->
+    <div class="addthis-share"><div class="addthis_inline_share_toolbox"></div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5996bfed0536412b"></script> </div>
+      <!-- <div class="share-more">
+        <div class="custom-share-btn" data-popup-open="popup-1">Share More</div>
+        <div class="more-share-btn popup" data-popup="popup-1">
+          <div class="popup-inner"> -->
+            <!-- <div class="print-btn"></div> -->
+            <!-- <div class="linkin-btn"></div> -->
+            <!-- <div class="viber-share"></div>
+            <! <a class="popup-close" data-popup-close="popup-1" href="#">x</a> -->
+          <!-- </div> -->
+        <!-- </div> -->
+      <!-- </div> -->
+    <!-- </div> -->
+      
+  
+  <span property="dc:title" content="Freedom of speech remains elusive under NLD regime" class="rdf-meta element-hidden"></span><span property="sioc:num_replies" content="0" datatype="xsd:integer" class="rdf-meta element-hidden"></span></article>
+    </div>
+
+    
+    
+  </div>
+</div>
+      </div>
+    </div>
+    <div class="region region-mmtimes-frontpage-second">
+      <div class="region-inner clearfix">
+        <div class="panel-pane pane-block pane-block-43 no-title block">
+  <div class="block-inner clearfix">
+    
+            
+    
+    <div class="block-content">
+      <script data-cfasync="false" type="text/javascript" src="https://www.revupads.com/banner/tag.php?slot=5165934413&amp;width=300&amp;height=250"></script>    </div>
+
+    
+    
+  </div>
+</div>
+<div class="panel-separator"></div><div class="panel-pane pane-dfp-pane no-title block">
+  <div class="block-inner clearfix">
+    
+            
+    
+    <div class="block-content">
+      <div id="dfp-ad-mte_c3_right_medium_rectangle-wrapper" class="dfp-tag-wrapper">
+<div  id="dfp-ad-mte_c3_right_medium_rectangle" class="dfp-tag-wrapper">
+    <script type="text/javascript">
+    googletag.cmd.push(function() {
+      googletag.display("dfp-ad-mte_c3_right_medium_rectangle");
+    });
+  </script>
+</div>
+</div>    </div>
+
+    
+    
+  </div>
+</div>
+<div class="panel-separator"></div><div class="panel-pane pane-dfp-pane no-title block">
+  <div class="block-inner clearfix">
+    
+            
+    
+    <div class="block-content">
+      <div id="dfp-ad-mte_c4_right_medium_rectangle-wrapper" class="dfp-tag-wrapper">
+<div  id="dfp-ad-mte_c4_right_medium_rectangle" class="dfp-tag-wrapper">
+    <script type="text/javascript">
+    googletag.cmd.push(function() {
+      googletag.display("dfp-ad-mte_c4_right_medium_rectangle");
+    });
+  </script>
+</div>
+</div>    </div>
+
+    
+    
+  </div>
+</div>
+<div class="panel-separator"></div><div class="panel-pane pane-dfp-pane no-title block">
+  <div class="block-inner clearfix">
+    
+            
+    
+    <div class="block-content">
+      <div id="dfp-ad-mte_d3_right_medium_rectangle-wrapper" class="dfp-tag-wrapper">
+<div  id="dfp-ad-mte_d3_right_medium_rectangle" class="dfp-tag-wrapper">
+    <script type="text/javascript">
+    googletag.cmd.push(function() {
+      googletag.display("dfp-ad-mte_d3_right_medium_rectangle");
+    });
+  </script>
+</div>
+</div>    </div>
+
+    
+    
+  </div>
+</div>
+<div class="panel-separator"></div><div class="panel-pane pane-dfp-pane no-title block">
+  <div class="block-inner clearfix">
+    
+            
+    
+    <div class="block-content">
+      <div id="dfp-ad-mte_d4_right_medium_rectangle-wrapper" class="dfp-tag-wrapper">
+<div  id="dfp-ad-mte_d4_right_medium_rectangle" class="dfp-tag-wrapper">
+    <script type="text/javascript">
+    googletag.cmd.push(function() {
+      googletag.display("dfp-ad-mte_d4_right_medium_rectangle");
+    });
+  </script>
+</div>
+</div>    </div>
+
+    
+    
+  </div>
+</div>
+<div class="panel-separator"></div><div class="panel-pane pane-block pane-block-50 no-title block">
+  <div class="block-inner clearfix">
+    
+            
+    
+    <div class="block-content">
+      <p style="text-align:center">
+<script type="text/javascript">
+<!--//--><![CDATA[// ><!--
+
+var _ase  = _ase || [];
+/* load placement for account: Myanmar Times, site: mmtimes.com, zone size : 300x250 */
+_ase.push(['1511410987','1511411643']);
+
+//--><!]]>
+</script><script src="//gamma.cachefly.net/js/ad-exchange.js" type="text/javascript"></script></p>
+    </div>
+
+    
+    
+  </div>
+</div>
+<div class="panel-separator"></div><section class="panel-pane pane-views-panes pane-news-opinion-most-read-news-sidebar block">
+  <div class="block-inner clearfix">
+    
+              <h2 class="pane-title block-title"><span>Most Read</span></h2>
+        
+    
+    <div class="block-content">
+      <div class="view view-news-opinion view-id-news_opinion view-display-id-most_read_news_sidebar latest-news-sidebar-block bar-block view-dom-id-af7bfc570537750503b4e357c8dca73b">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first">
+      
+  <div class="views-field views-field-nothing">        <span class="field-content"><div class="most-read-news">
+    <div class="news-left">
+        <div class="news-title"> <a href="/news/mon-educator-says-budget-ethnic-literature-goes-waste.html">Mon educator says budget for ethnic...</a></div>
+        <div class="news-info">
+              <span class="news-author"><a href="/author/tint-zaw-tun">Tint Zaw Tun</a></span>
+              <span class="news-date">01 Jan 2020</span>
+        </div>
+    </div>
+      <div class="news-right">
+       <a href="/news/mon-educator-says-budget-ethnic-literature-goes-waste.html"><img typeof="foaf:Image" class="image-style-mmtimes-ratio-c-most-read-image" src="https://www.mmtimes.com/sites/mmtimes.com/files/styles/mmtimes_ratio_c_most_read_image/public/default_images/sample-page-02_2_0.jpg?itok=P1FHtI3i" width="80" height="58" alt="" /></a>
+    </div>
+     <div class="edit-link"></div>
+</div></span>  </div>  </div>
+  <div class="views-row views-row-2 views-row-even">
+      
+  <div class="views-field views-field-nothing">        <span class="field-content"><div class="most-read-news">
+    <div class="news-left">
+        <div class="news-title"> <a href="/news/tatmadaw-aviation-department-discuss-security-landing-issues.html">Tatmadaw, aviation department discuss...</a></div>
+        <div class="news-info">
+              <span class="news-author"><a href="/author/zeyar-hein">Zeyar Hein</a></span>
+              <span class="news-date">02 Jan 2020</span>
+        </div>
+    </div>
+      <div class="news-right">
+       <a href="/news/tatmadaw-aviation-department-discuss-security-landing-issues.html"><img typeof="foaf:Image" class="image-style-mmtimes-ratio-c-most-read-image" src="https://www.mmtimes.com/sites/mmtimes.com/files/styles/mmtimes_ratio_c_most_read_image/public/news-images/2-mai-jet-in-ygn-intl-airport.jpg?itok=WQC8gzLU" width="80" height="58" alt="A Myanmar National Airlines jet lands at Yangon International Airport. Photo EPA" /></a>
+    </div>
+     <div class="edit-link"></div>
+</div></span>  </div>  </div>
+  <div class="views-row views-row-3 views-row-odd">
+      
+  <div class="views-field views-field-nothing">        <span class="field-content"><div class="most-read-news">
+    <div class="news-left">
+        <div class="news-title"> <a href="/news/incompetence-tops-anti-corruption-complaints.html">Incompetence tops anti-corruption complaints</a></div>
+        <div class="news-info">
+              <span class="news-author"><a href="/author/khin-myat-myat-wai">Khin Myat Myat Wai</a></span>
+              <span class="news-date">01 Jan 2020</span>
+        </div>
+    </div>
+      <div class="news-right">
+       <a href="/news/incompetence-tops-anti-corruption-complaints.html"><img typeof="foaf:Image" class="image-style-mmtimes-ratio-c-most-read-image" src="https://www.mmtimes.com/sites/mmtimes.com/files/styles/mmtimes_ratio_c_most_read_image/public/default_images/sample-page-02_2_0.jpg?itok=P1FHtI3i" width="80" height="58" alt="" /></a>
+    </div>
+     <div class="edit-link"></div>
+</div></span>  </div>  </div>
+  <div class="views-row views-row-4 views-row-even">
+      
+  <div class="views-field views-field-nothing">        <span class="field-content"><div class="most-read-news">
+    <div class="news-left">
+        <div class="news-title"> <a href="/news/improved-technique-boosts-breeding-myanmar-endangered-tortoises.html">Improved technique boosts breeding of...</a></div>
+        <div class="news-info">
+              <span class="news-author"><a href="/author/aung-phay-kyi-soe">Aung Phay Kyi Soe</a></span>
+              <span class="news-date">02 Jan 2020</span>
+        </div>
+    </div>
+      <div class="news-right">
+       <a href="/news/improved-technique-boosts-breeding-myanmar-endangered-tortoises.html"><img typeof="foaf:Image" class="image-style-mmtimes-ratio-c-most-read-image" src="https://www.mmtimes.com/sites/mmtimes.com/files/styles/mmtimes_ratio_c_most_read_image/public/news-images/3-star-tortoise-2.jpg?itok=VNPitikb" width="80" height="58" alt="The biggest Burmese star tortoise in the world. Photos: Aung Phay Kyi Soe" /></a>
+    </div>
+     <div class="edit-link"></div>
+</div></span>  </div>  </div>
+  <div class="views-row views-row-5 views-row-odd views-row-last">
+      
+  <div class="views-field views-field-nothing">        <span class="field-content"><div class="most-read-news">
+    <div class="news-left">
+        <div class="news-title"> <a href="/news/writer-sue-police-naming-toddler-nursery-school-rape.html">Writer to sue police for naming toddler in...</a></div>
+        <div class="news-info">
+              <span class="news-author"><a href="/author/tint-zaw-tun">Tint Zaw Tun</a></span>
+              <span class="news-date">01 Jan 2020</span>
+        </div>
+    </div>
+      <div class="news-right">
+       <a href="/news/writer-sue-police-naming-toddler-nursery-school-rape.html"><img typeof="foaf:Image" class="image-style-mmtimes-ratio-c-most-read-image" src="https://www.mmtimes.com/sites/mmtimes.com/files/styles/mmtimes_ratio_c_most_read_image/public/news-images/rape_3.jpg?itok=y3ACgjj_" width="80" height="58" alt="A woman with a sticker on her cheek reading ‘Justice for Victoria’ joins a protest in Yangon recently calling for justice for the toddler who was allegedly raped at a Nay Pyi Taw nursery school last May. Photo - EPA" /></a>
+    </div>
+     <div class="edit-link"></div>
+</div></span>  </div>  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div>    </div>
+
+    
+    
+  </div>
+</section>
+<div class="panel-separator"></div><div class="panel-pane pane-dfp-pane no-title block">
+  <div class="block-inner clearfix">
+    
+            
+    
+    <div class="block-content">
+      <div id="dfp-ad-mte_c5_right_medium_rectangle-wrapper" class="dfp-tag-wrapper">
+<div  id="dfp-ad-mte_c5_right_medium_rectangle" class="dfp-tag-wrapper">
+    <script type="text/javascript">
+    googletag.cmd.push(function() {
+      googletag.display("dfp-ad-mte_c5_right_medium_rectangle");
+    });
+  </script>
+</div>
+</div>    </div>
+
+    
+    
+  </div>
+</div>
+<div class="panel-separator"></div><div class="panel-pane pane-dfp-pane no-title block">
+  <div class="block-inner clearfix">
+    
+            
+    
+    <div class="block-content">
+      <div id="dfp-ad-mte_c6_right_medium_rectangle-wrapper" class="dfp-tag-wrapper">
+<div  id="dfp-ad-mte_c6_right_medium_rectangle" class="dfp-tag-wrapper">
+    <script type="text/javascript">
+    googletag.cmd.push(function() {
+      googletag.display("dfp-ad-mte_c6_right_medium_rectangle");
+    });
+  </script>
+</div>
+</div>    </div>
+
+    
+    
+  </div>
+</div>
+<div class="panel-separator"></div><div class="panel-pane pane-dfp-pane no-title block">
+  <div class="block-inner clearfix">
+    
+            
+    
+    <div class="block-content">
+      <div id="dfp-ad-mte_d5_right_medium_rectangle-wrapper" class="dfp-tag-wrapper">
+<div  id="dfp-ad-mte_d5_right_medium_rectangle" class="dfp-tag-wrapper">
+    <script type="text/javascript">
+    googletag.cmd.push(function() {
+      googletag.display("dfp-ad-mte_d5_right_medium_rectangle");
+    });
+  </script>
+</div>
+</div>    </div>
+
+    
+    
+  </div>
+</div>
+<div class="panel-separator"></div><div class="panel-pane pane-dfp-pane no-title block">
+  <div class="block-inner clearfix">
+    
+            
+    
+    <div class="block-content">
+      <div id="dfp-ad-mte_d6_right_medium_rectangle-wrapper" class="dfp-tag-wrapper">
+<div  id="dfp-ad-mte_d6_right_medium_rectangle" class="dfp-tag-wrapper">
+    <script type="text/javascript">
+    googletag.cmd.push(function() {
+      googletag.display("dfp-ad-mte_d6_right_medium_rectangle");
+    });
+  </script>
+</div>
+</div>    </div>
+
+    
+    
+  </div>
+</div>
+<div class="panel-separator"></div><div class="panel-pane pane-block pane-block-46 no-title block">
+  <div class="block-inner clearfix">
+    
+            
+    
+    <div class="block-content">
+      <div id="taboola-right-rail-thumbnails" style="margin: 0 auto; width:90%;"> </div>
+<script type="text/javascript">
+<!--//--><![CDATA[// ><!--
+
+  window._taboola = window._taboola || [];
+  _taboola.push({
+    mode: 'thumbnails-rr',
+    container: 'taboola-right-rail-thumbnails',
+    placement: 'Right Rail Thumbnails',
+    target_type: 'mix'
+  });
+
+//--><!]]>
+</script>    </div>
+
+    
+    
+  </div>
+</div>
+      </div>
+    </div>
+  </div>
+  <div class="region region-mmtimes-frontpage-third region-conditional-stack">
+    <div class="region-inner clearfix">
+          </div>
+  </div>
+   <div class="two-66-33">
+    <div class="region region-mmtimes-frontpage-fourth">
+      <div class="region-inner clearfix">
+        <div class="panel-pane pane-views-panes pane-related-news-related-news-three-col msp-three-col no-title block">
+  <div class="block-inner clearfix">
+    
+            
+    
+    <div class="block-content">
+      <div class="view view-related-news view-id-related_news view-display-id-related_news_three_col bar-block more-business view-dom-id-d8cab335778dc005562b5c24a056d902">
+            <div class="view-header">
+      <h2><span>More In <a href="/national-news.html" typeof="Concept" property="prefLabel" datatype="">National News</a></span></h2>
+    </div>
+  
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first">
+      
+  <div class="views-field views-field-nothing">        <span class="field-content"><div class="news-related">
+   <div class="news-top">
+       <a href="/news/improved-technique-boosts-breeding-myanmar-endangered-tortoises.html"><img typeof="foaf:Image" class="image-style-mmtimes-ratio-c-four-col" src="https://www.mmtimes.com/sites/mmtimes.com/files/styles/mmtimes_ratio_c_four_col/public/news-images/3-star-tortoise-2.jpg?itok=cJFJ3zII" width="260" height="189" alt="The biggest Burmese star tortoise in the world. Photos: Aung Phay Kyi Soe" /></a>
+    </div>
+    <div class="news-bottom">
+         <div class="news-title"> <a href="/news/improved-technique-boosts-breeding-myanmar-endangered-tortoises.html">Improved technique boosts breeding of  Myanmar endangered tortoises</a></div>
+        <div class="news-info">
+             <span class="news-category">  <a href="/national-news.html" typeof="skos:Concept" property="rdfs:label skos:prefLabel" datatype="">National News</a> </span>
+                <span class="news-date">02 Jan 2020</span>
+        </div>
+    </div>
+    <div class="edit-link"></div>
+</div></span>  </div>  </div>
+  <div class="views-row views-row-2 views-row-even">
+      
+  <div class="views-field views-field-nothing">        <span class="field-content"><div class="news-related">
+   <div class="news-top">
+       <a href="/news/tatmadaw-aviation-department-discuss-security-landing-issues.html"><img typeof="foaf:Image" class="image-style-mmtimes-ratio-c-four-col" src="https://www.mmtimes.com/sites/mmtimes.com/files/styles/mmtimes_ratio_c_four_col/public/news-images/2-mai-jet-in-ygn-intl-airport.jpg?itok=vRhw-gaZ" width="260" height="189" alt="A Myanmar National Airlines jet lands at Yangon International Airport. Photo EPA" /></a>
+    </div>
+    <div class="news-bottom">
+         <div class="news-title"> <a href="/news/tatmadaw-aviation-department-discuss-security-landing-issues.html">Tatmadaw, aviation department discuss security, landing issues</a></div>
+        <div class="news-info">
+             <span class="news-category">  <a href="/national-news.html" typeof="skos:Concept" property="rdfs:label skos:prefLabel" datatype="">National News</a> </span>
+                <span class="news-date">02 Jan 2020</span>
+        </div>
+    </div>
+    <div class="edit-link"></div>
+</div></span>  </div>  </div>
+  <div class="views-row views-row-3 views-row-odd">
+      
+  <div class="views-field views-field-nothing">        <span class="field-content"><div class="news-related">
+   <div class="news-top">
+       <a href="/news/three-ethnic-armed-groups-extend-truce-through-february.html"><img typeof="foaf:Image" class="image-style-mmtimes-ratio-c-four-col" src="https://www.mmtimes.com/sites/mmtimes.com/files/styles/mmtimes_ratio_c_four_col/public/default_images/sample-page-02_2_0.jpg?itok=R2LyFvSq" width="260" height="189" alt="" /></a>
+    </div>
+    <div class="news-bottom">
+         <div class="news-title"> <a href="/news/three-ethnic-armed-groups-extend-truce-through-february.html">Three ethnic armed groups extend truce through February</a></div>
+        <div class="news-info">
+             <span class="news-category">  <a href="/national-news.html" typeof="skos:Concept" property="rdfs:label skos:prefLabel" datatype="">National News</a> </span>
+                <span class="news-date">02 Jan 2020</span>
+        </div>
+    </div>
+    <div class="edit-link"></div>
+</div></span>  </div>  </div>
+  <div class="views-row views-row-4 views-row-even">
+      
+  <div class="views-field views-field-nothing">        <span class="field-content"><div class="news-related">
+   <div class="news-top">
+       <a href="/news/aa-releases-16-captive-govt-bus-drivers.html"><img typeof="foaf:Image" class="image-style-mmtimes-ratio-c-four-col" src="https://www.mmtimes.com/sites/mmtimes.com/files/styles/mmtimes_ratio_c_four_col/public/news-images/cruise-ship-kaladan-sittwe-rakhine_0.jpg?itok=YIhaORIJ" width="260" height="189" alt="A cruise passenger ship sails along the Kalandan River in Sittwe, Rakhine, in September 2019. Photo: EPA" /></a>
+    </div>
+    <div class="news-bottom">
+         <div class="news-title"> <a href="/news/aa-releases-16-captive-govt-bus-drivers.html">AA releases 16 captive govt bus drivers</a></div>
+        <div class="news-info">
+             <span class="news-category">  <a href="/national-news.html" typeof="skos:Concept" property="rdfs:label skos:prefLabel" datatype="">National News</a> </span>
+                <span class="news-date">01 Jan 2020</span>
+        </div>
+    </div>
+    <div class="edit-link"></div>
+</div></span>  </div>  </div>
+  <div class="views-row views-row-5 views-row-odd">
+      
+  <div class="views-field views-field-nothing">        <span class="field-content"><div class="news-related">
+   <div class="news-top">
+       <a href="/news/writer-sue-police-naming-toddler-nursery-school-rape.html"><img typeof="foaf:Image" class="image-style-mmtimes-ratio-c-four-col" src="https://www.mmtimes.com/sites/mmtimes.com/files/styles/mmtimes_ratio_c_four_col/public/news-images/rape_3.jpg?itok=Cgu-8trO" width="260" height="189" alt="A woman with a sticker on her cheek reading ‘Justice for Victoria’ joins a protest in Yangon recently calling for justice for the toddler who was allegedly raped at a Nay Pyi Taw nursery school last May. Photo - EPA" /></a>
+    </div>
+    <div class="news-bottom">
+         <div class="news-title"> <a href="/news/writer-sue-police-naming-toddler-nursery-school-rape.html">Writer to sue police for naming toddler in nursery school rape</a></div>
+        <div class="news-info">
+             <span class="news-category">  <a href="/national-news.html" typeof="skos:Concept" property="rdfs:label skos:prefLabel" datatype="">National News</a> </span>
+                <span class="news-date">01 Jan 2020</span>
+        </div>
+    </div>
+    <div class="edit-link"></div>
+</div></span>  </div>  </div>
+  <div class="views-row views-row-6 views-row-even views-row-last">
+      
+  <div class="views-field views-field-nothing">        <span class="field-content"><div class="news-related">
+   <div class="news-top">
+       <a href="/news/incompetence-tops-anti-corruption-complaints.html"><img typeof="foaf:Image" class="image-style-mmtimes-ratio-c-four-col" src="https://www.mmtimes.com/sites/mmtimes.com/files/styles/mmtimes_ratio_c_four_col/public/default_images/sample-page-02_2_0.jpg?itok=R2LyFvSq" width="260" height="189" alt="" /></a>
+    </div>
+    <div class="news-bottom">
+         <div class="news-title"> <a href="/news/incompetence-tops-anti-corruption-complaints.html">Incompetence tops anti-corruption complaints</a></div>
+        <div class="news-info">
+             <span class="news-category">  <a href="/national-news.html" typeof="skos:Concept" property="rdfs:label skos:prefLabel" datatype="">National News</a> </span>
+                <span class="news-date">01 Jan 2020</span>
+        </div>
+    </div>
+    <div class="edit-link"></div>
+</div></span>  </div>  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div>    </div>
+
+    
+    
+  </div>
+</div>
+<div class="panel-separator"></div><div class="panel-pane pane-block pane-block-45 no-title block">
+  <div class="block-inner clearfix">
+    
+            
+    
+    <div class="block-content">
+      <div id="taboola-below-article-thumbnails" style="overflow: auto; max-height: 130vh; padding: 20px; -moz-box-sizing: border-box; box-sizing: border-box;"> </div>
+<script type="text/javascript">
+<!--//--><![CDATA[// ><!--
+
+  window._taboola = window._taboola || [];
+  _taboola.push({
+    mode: 'alternating-thumbnails-a',
+    container: 'taboola-below-article-thumbnails',
+    placement: 'Below Article Thumbnails',
+    target_type: 'mix'
+  });
+//--><!]]>
+</script>    </div>
+
+    
+    
+  </div>
+</div>
+      </div>
+    </div>
+    <div class="region region-mmtimes-frontpage-fifth">
+      <div class="region-inner clearfix">
+        <section class="panel-pane pane-views-panes pane-news-opinion-latest-news-inner-sidebar block">
+  <div class="block-inner clearfix">
+    
+              <h2 class="pane-title block-title"><span>Latest News</span></h2>
+        
+    
+    <div class="block-content">
+      <div class="view view-news-opinion view-id-news_opinion view-display-id-latest_news_inner_sidebar latest-news-sidebar-block bar-block  view-dom-id-35dcb3a65f2337875906eb587ef0d502">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first">
+      
+  <div class="views-field views-field-nothing">        <span class="field-content"><div class="latest-news inner">
+    <div class="news-left">
+        <div class="news-title"> <a href="/news/whats-yangon.html-238">What&#039;s  On  in Yangon 		</a></div>
+        <div class="news-info">
+            <span class="news-category"><a href="/the-metro/whats-on-yangon.html" typeof="skos:Concept" property="rdfs:label skos:prefLabel" datatype="">What&#039;s On in Yangon!</a></span>
+              <span class="news-date">02 Jan 2020</span>
+        </div>
+    </div>
+      <div class="news-right">
+       <a href="/news/whats-yangon.html-238"><img typeof="foaf:Image" class="image-style-mmtimes-ratio-c-most-read-image" src="https://www.mmtimes.com/sites/mmtimes.com/files/styles/mmtimes_ratio_c_most_read_image/public/news-images/12-drink-and-learn-burmese.jpg?itok=3n7XpOBh" width="80" height="58" alt="" /></a>
+    </div>
+     <div class="edit-link"></div>
+</div></span>  </div>  </div>
+  <div class="views-row views-row-2 views-row-even">
+      
+  <div class="views-field views-field-nothing">        <span class="field-content"><div class="latest-news inner">
+    <div class="news-left">
+        <div class="news-title"> <a href="/news/ford-v-ferrari-very-pleasant-fast-ride.html">‘Ford v Ferrari’ is a very pleasant (fast)...</a></div>
+        <div class="news-info">
+            <span class="news-category"><a href="/the-metro.html" typeof="skos:Concept" property="rdfs:label skos:prefLabel" datatype="">The Metro</a></span>
+              <span class="news-date">02 Jan 2020</span>
+        </div>
+    </div>
+      <div class="news-right">
+       <a href="/news/ford-v-ferrari-very-pleasant-fast-ride.html"><img typeof="foaf:Image" class="image-style-mmtimes-ratio-c-most-read-image" src="https://www.mmtimes.com/sites/mmtimes.com/files/styles/mmtimes_ratio_c_most_read_image/public/news-images/13-ford-vs-ferrari-2.jpg?itok=5gHhIIZb" width="80" height="58" alt="Photos: AP" /></a>
+    </div>
+     <div class="edit-link"></div>
+</div></span>  </div>  </div>
+  <div class="views-row views-row-3 views-row-odd">
+      
+  <div class="views-field views-field-nothing">        <span class="field-content"><div class="latest-news inner">
+    <div class="news-left">
+        <div class="news-title"> <a href="/news/movie-timescreenings-january-2-8.html">Movie Time:Screenings from  January 2 to 8</a></div>
+        <div class="news-info">
+            <span class="news-category"><a href="/the-metro/movie-time.html" typeof="skos:Concept" property="rdfs:label skos:prefLabel" datatype="">Movie Time</a></span>
+              <span class="news-date">02 Jan 2020</span>
+        </div>
+    </div>
+      <div class="news-right">
+       <a href="/news/movie-timescreenings-january-2-8.html"><img typeof="foaf:Image" class="image-style-mmtimes-ratio-c-most-read-image" src="https://www.mmtimes.com/sites/mmtimes.com/files/styles/mmtimes_ratio_c_most_read_image/public/news-images/11-movies-list-2.jpg?itok=mlmbpXEN" width="80" height="58" alt="" /></a>
+    </div>
+     <div class="edit-link"></div>
+</div></span>  </div>  </div>
+  <div class="views-row views-row-4 views-row-even">
+      
+  <div class="views-field views-field-nothing">        <span class="field-content"><div class="latest-news inner">
+    <div class="news-left">
+        <div class="news-title"> <a href="/news/worst-tech-predictions-2010s.html">Worst tech predictions of 2010s</a></div>
+        <div class="news-info">
+            <span class="news-category"><a href="/business/technology.html" typeof="skos:Concept" property="rdfs:label skos:prefLabel" datatype="">Technology</a></span>
+              <span class="news-date">02 Jan 2020</span>
+        </div>
+    </div>
+      <div class="news-right">
+       <a href="/news/worst-tech-predictions-2010s.html"><img typeof="foaf:Image" class="image-style-mmtimes-ratio-c-most-read-image" src="https://www.mmtimes.com/sites/mmtimes.com/files/styles/mmtimes_ratio_c_most_read_image/public/news-images/6-page-6-photo_1.jpg?itok=Yt_Y4JEJ" width="80" height="58" alt="The PAL-V Liberty Pioneer Edition flying car is displayed at the 89th Geneva International Motor Show in Geneva, Switzerland, last March. Photo: EPA" /></a>
+    </div>
+     <div class="edit-link"></div>
+</div></span>  </div>  </div>
+  <div class="views-row views-row-5 views-row-odd">
+      
+  <div class="views-field views-field-nothing">        <span class="field-content"><div class="latest-news inner">
+    <div class="news-left">
+        <div class="news-title"> <a href="/news/upscale-multi-ethnic-charm-yankin.html">The upscale, multi-ethnic charm of Yankin</a></div>
+        <div class="news-info">
+            <span class="news-category"><a href="/the-metro.html" typeof="skos:Concept" property="rdfs:label skos:prefLabel" datatype="">The Metro</a></span>
+              <span class="news-date">02 Jan 2020</span>
+        </div>
+    </div>
+      <div class="news-right">
+       <a href="/news/upscale-multi-ethnic-charm-yankin.html"><img typeof="foaf:Image" class="image-style-mmtimes-ratio-c-most-read-image" src="https://www.mmtimes.com/sites/mmtimes.com/files/styles/mmtimes_ratio_c_most_read_image/public/news-images/10-11-township-review-yankin-7.jpg?itok=2-hbq_AJ" width="80" height="58" alt="Photos: Shin Moe Myint" /></a>
+    </div>
+     <div class="edit-link"></div>
+</div></span>  </div>  </div>
+  <div class="views-row views-row-6 views-row-even">
+      
+  <div class="views-field views-field-nothing">        <span class="field-content"><div class="latest-news inner">
+    <div class="news-left">
+        <div class="news-title"> <a href="/news/improved-technique-boosts-breeding-myanmar-endangered-tortoises.html">Improved technique boosts breeding of...</a></div>
+        <div class="news-info">
+            <span class="news-category"><a href="/national-news.html" typeof="skos:Concept" property="rdfs:label skos:prefLabel" datatype="">National News</a></span>
+              <span class="news-date">02 Jan 2020</span>
+        </div>
+    </div>
+      <div class="news-right">
+       <a href="/news/improved-technique-boosts-breeding-myanmar-endangered-tortoises.html"><img typeof="foaf:Image" class="image-style-mmtimes-ratio-c-most-read-image" src="https://www.mmtimes.com/sites/mmtimes.com/files/styles/mmtimes_ratio_c_most_read_image/public/news-images/3-star-tortoise-2.jpg?itok=VNPitikb" width="80" height="58" alt="The biggest Burmese star tortoise in the world. Photos: Aung Phay Kyi Soe" /></a>
+    </div>
+     <div class="edit-link"></div>
+</div></span>  </div>  </div>
+  <div class="views-row views-row-7 views-row-odd">
+      
+  <div class="views-field views-field-nothing">        <span class="field-content"><div class="latest-news inner">
+    <div class="news-left">
+        <div class="news-title"> <a href="/news/tatmadaw-aviation-department-discuss-security-landing-issues.html">Tatmadaw, aviation department discuss...</a></div>
+        <div class="news-info">
+            <span class="news-category"><a href="/national-news.html" typeof="skos:Concept" property="rdfs:label skos:prefLabel" datatype="">National News</a></span>
+              <span class="news-date">02 Jan 2020</span>
+        </div>
+    </div>
+      <div class="news-right">
+       <a href="/news/tatmadaw-aviation-department-discuss-security-landing-issues.html"><img typeof="foaf:Image" class="image-style-mmtimes-ratio-c-most-read-image" src="https://www.mmtimes.com/sites/mmtimes.com/files/styles/mmtimes_ratio_c_most_read_image/public/news-images/2-mai-jet-in-ygn-intl-airport.jpg?itok=WQC8gzLU" width="80" height="58" alt="A Myanmar National Airlines jet lands at Yangon International Airport. Photo EPA" /></a>
+    </div>
+     <div class="edit-link"></div>
+</div></span>  </div>  </div>
+  <div class="views-row views-row-8 views-row-even">
+      
+  <div class="views-field views-field-nothing">        <span class="field-content"><div class="latest-news inner">
+    <div class="news-left">
+        <div class="news-title"> <a href="/news/yangon-revelry-fatalities-drop-four-police-say.html">Yangon revelry fatalities drop to four,...</a></div>
+        <div class="news-info">
+            <span class="news-category"><a href="/national-news/yangon.html" typeof="skos:Concept" property="rdfs:label skos:prefLabel" datatype="">Yangon</a></span>
+              <span class="news-date">02 Jan 2020</span>
+        </div>
+    </div>
+      <div class="news-right">
+       <a href="/news/yangon-revelry-fatalities-drop-four-police-say.html"><img typeof="foaf:Image" class="image-style-mmtimes-ratio-c-most-read-image" src="https://www.mmtimes.com/sites/mmtimes.com/files/styles/mmtimes_ratio_c_most_read_image/public/news-images/2-new-year-countdown-event.jpg?itok=36WhTbt9" width="80" height="58" alt="People attend a New Year’s Eve concert in downtown Yangon on Tuesday. Photo: Supplied" /></a>
+    </div>
+     <div class="edit-link"></div>
+</div></span>  </div>  </div>
+  <div class="views-row views-row-9 views-row-odd">
+      
+  <div class="views-field views-field-nothing">        <span class="field-content"><div class="latest-news inner">
+    <div class="news-left">
+        <div class="news-title"> <a href="/news/exploratory-drilling-begins-onshore-block-magwe.html">Exploratory drilling begins at onshore block...</a></div>
+        <div class="news-info">
+            <span class="news-category"><a href="/business.html" typeof="skos:Concept" property="rdfs:label skos:prefLabel" datatype="">Business</a></span>
+              <span class="news-date">02 Jan 2020</span>
+        </div>
+    </div>
+      <div class="news-right">
+       <a href="/news/exploratory-drilling-begins-onshore-block-magwe.html"><img typeof="foaf:Image" class="image-style-mmtimes-ratio-c-most-read-image" src="https://www.mmtimes.com/sites/mmtimes.com/files/styles/mmtimes_ratio_c_most_read_image/public/news-images/4-onshore-block-in-magwe.jpg?itok=0caWNHIP" width="80" height="58" alt="Photo: Supplied" /></a>
+    </div>
+     <div class="edit-link"></div>
+</div></span>  </div>  </div>
+  <div class="views-row views-row-10 views-row-even views-row-last">
+      
+  <div class="views-field views-field-nothing">        <span class="field-content"><div class="latest-news inner">
+    <div class="news-left">
+        <div class="news-title"> <a href="/news/magnitsky-sanctions-no-impact-tatmadaw-businesses-experts.html">Magnitsky sanctions no impact on Tatmadaw...</a></div>
+        <div class="news-info">
+            <span class="news-category"><a href="/business.html" typeof="skos:Concept" property="rdfs:label skos:prefLabel" datatype="">Business</a></span>
+              <span class="news-date">02 Jan 2020</span>
+        </div>
+    </div>
+      <div class="news-right">
+       <a href="/news/magnitsky-sanctions-no-impact-tatmadaw-businesses-experts.html"><img typeof="foaf:Image" class="image-style-mmtimes-ratio-c-most-read-image" src="https://www.mmtimes.com/sites/mmtimes.com/files/styles/mmtimes_ratio_c_most_read_image/public/news-images/snr-gen-min-aung-hlaing-093.jpg?itok=0UcVKVYq" width="80" height="58" alt="Commander-in-Chief Senior General Min Aung Hlaing (centre) and his fellow commanders arrive to observe the drills on the second day of the &#039;Sin Phyu Shin&#039; joint military exercises in the Ayeyarwady delta region, in February 2018. Photo: EPA" /></a>
+    </div>
+     <div class="edit-link"></div>
+</div></span>  </div>  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div>    </div>
+
+    
+    
+  </div>
+</section>
+      </div>
+    </div>
+  </div>
+  <div class="region region-mmtimes-frontpage-sixth region-conditional-stack">
+    <div class="region-inner clearfix">
+          </div>
+  </div>
+   <div class="two-66-33">
+    <div class="region region-mmtimes-frontpage-seventh">
+      <div class="region-inner clearfix">
+              </div>
+    </div>
+    <div class="region region-mmtimes-frontpage-eighth">
+      <div class="region-inner clearfix">
+              </div>
+    </div>
+   </div>
+      <div class="region region-mmtimes-frontpage-bottom region-conditional-stack">
+      <div class="region-inner clearfix">
+        <div class="panel-pane pane-dfp-pane no-title block">
+  <div class="block-inner clearfix">
+    
+            
+    
+    <div class="block-content">
+      <div id="dfp-ad-mte_innity_universal_tag-wrapper" class="dfp-tag-wrapper">
+<div  id="dfp-ad-mte_innity_universal_tag" class="dfp-tag-wrapper">
+    <script type="text/javascript">
+    googletag.cmd.push(function() {
+      googletag.display("dfp-ad-mte_innity_universal_tag");
+    });
+  </script>
+</div>
+</div>    </div>
+
+    
+    
+  </div>
+</div>
+      </div>
+    </div>
+  </div>
+  
+  </div>              </div>
+            
+            <!-- !Feed Icons -->
+            
+            
+          </section><!-- /end #main-content -->
+
+          <!-- !Content Aside Region-->
+          
+        </div><!-- /end .content-inner -->
+      </main><!-- /end #content-column -->
+
+      <!-- !Sidebar Regions -->
+            
+    </div><!-- /end #columns -->
+    <!-- ! Main Content Second Region -->
+    
+    <!-- !Tertiary Content Region -->
+    <div class="region region-tertiary-content"><div class="region-inner clearfix"><nav id="block-menu-menu-footer-menu" class="block block-menu no-title odd first block-count-13 block-region-tertiary-content block-menu-footer-menu"  role="navigation"><div class="block-inner clearfix">  
+  
+  <div class="block-content content"><ul class="menu clearfix"><li class="first leaf menu-depth-1 menu-item-7906"><a href="/" title="">Home</a></li><li class="leaf menu-depth-1 menu-item-9165"><a href="/national-news.html" title="">National News</a></li><li class="leaf menu-depth-1 menu-item-9166"><a href="/business.html" title="">Business</a></li><li class="leaf menu-depth-1 menu-item-9708"><a href="/timeout/tea-break.html" title="">The Pulse</a></li><li class="leaf menu-depth-1 menu-item-9168"><a href="/sports.html" title="">Sports</a></li><li class="leaf menu-depth-1 menu-item-9169"><a href="/opinion.html" title="">Opinion</a></li><li class="leaf menu-depth-1 menu-item-9170"><a href="/in-depth.html" title="">In Depth</a></li><li class="leaf menu-depth-1 menu-item-9171"><a href="/special-features.html" title="">Special Features</a></li><li class="leaf menu-depth-1 menu-item-9696"><a href="/in-pictures.html" title="">In Pictures</a></li><li class="leaf menu-depth-1 menu-item-9697"><a href="/national-news/nay-pyi-taw.html" title="">Nay Pyi Taw</a></li><li class="leaf menu-depth-1 menu-item-9698"><a href="/national-news/yangon.html" title="">Yangon</a></li><li class="leaf menu-depth-1 menu-item-9702"><a href="/national-news/mandalay-upper-myanmar.html" title="">Mandalay and Upper Myanmar </a></li><li class="leaf menu-depth-1 menu-item-9703"><a href="/business/property-news.html" title="">Property News</a></li><li class="leaf menu-depth-1 menu-item-9705"><a href="/business/technology.html" title="">Technology</a></li><li class="leaf menu-depth-1 menu-item-9711"><a href="/lifestyle/travel.html" title="">Travel</a></li><li class="leaf menu-depth-1 menu-item-9712"><a href="/timeout/tea-break.html" title="">Dining</a></li><li class="leaf menu-depth-1 menu-item-9582"><a href="/about" title="">About Us</a></li><li class="leaf menu-depth-1 menu-item-5443"><a href="/component/contact/contact/9.html" title="">Contact Us</a></li><li class="leaf menu-depth-1 menu-item-9714"><a href="/privacy-policy" title="">Privacy Policy</a></li><li class="last leaf menu-depth-1 menu-item-10174"><a href="/subscription" title="">Subscription</a></li></ul></div>  
+  </div></nav><div id="block-quicktabs-social-plugin" class="block block-quicktabs no-title even block-count-16 block-region-tertiary-content block-social-plugin" ><div class="block-inner clearfix">  
+  
+  <div class="block-content content"><div  id="quicktabs-social_plugin" class="quicktabs-wrapper quicktabs-style-nostyle"><div class="item-list item-list-q"><ul class="quicktabs-tabs quicktabs-style-nostyle"><li class="active even first"><a href="/news/freedom-speech-remains-elusive-under-nld-regime.html?qt-social_plugin=0#qt-social_plugin" id="quicktabs-tab-social_plugin-0" class="quicktabs-tab quicktabs-tab-block quicktabs-tab-block-block-delta-7 active">Facebook</a></li><li class="odd last"><a href="/news/freedom-speech-remains-elusive-under-nld-regime.html?qt-social_plugin=1#qt-social_plugin" id="quicktabs-tab-social_plugin-1" class="quicktabs-tab quicktabs-tab-block quicktabs-tab-block-block-delta-18 active">Twitter</a></li></ul></div><div id="quicktabs-container-social_plugin" class="quicktabs_main quicktabs-style-nostyle"><div  id="quicktabs-tabpage-social_plugin-0" class="quicktabs-tabpage "><div id="block-block-7" class="block block-block no-title odd first block-count-14 block-region-quicktabs-tabpage block-7" ><div class="block-inner clearfix">  
+  
+  <div class="block-content content"><div class="fb-page" data-adapt-container-width="true" data-height="200" data-hide-cover="false" data-href="https://www.facebook.com/themyanmartimesenglish" data-show-facepile="true" data-small-header="false" data-width="">
+<blockquote cite="https://www.facebook.com/themyanmartimes" class="fb-xfbml-parse-ignore"><p><a href="https://www.facebook.com/themyanmartimesenglish">The Myanmar Times</a></p></blockquote>
+</div>
+</div>  
+  </div></div></div><div  id="quicktabs-tabpage-social_plugin-1" class="quicktabs-tabpage quicktabs-hide"><div id="block-block-18" class="block block-block no-title even block-count-15 block-region-quicktabs-tabpage block-18" ><div class="block-inner clearfix">  
+  
+  <div class="block-content content"><p><a class="twitter-timeline" data-height="200" data-width="370" href="https://twitter.com/TheMyanmarTimes">Tweets by TheMyanmarTimes</a></p>
+<p><a href="https://twitter.com/TheMyanmarTimes" class="twitter-follow-button" data-show-count="false">Follow @TheMyanmarTimes</a></p>
+<script async="" src="//platform.twitter.com/widgets.js" charset="utf-8"></script></div>  
+  </div></div></div></div></div></div>  
+  </div></div><section id="block-mailchimp-signup-newsletter" class="block block-mailchimp-signup odd last block-count-17 block-region-tertiary-content block-newsletter" ><div class="block-inner clearfix">  
+      <h2 class="block-title">Newsletter</h2>
+  
+  <div class="block-content content"><form class="mailchimp-signup-subscribe-form" action="/news/freedom-speech-remains-elusive-under-nld-regime.html" method="post" id="mailchimp-signup-subscribe-block-newsletter-form" accept-charset="UTF-8"><div><div class="mailchimp-signup-subscribe-form-description"></div><div id="mailchimp-newsletter-063a8b8da2-mergefields" class="mailchimp-newsletter-mergefields"><div class="form-item form-type-textfield form-item-mergevars-FNAME">
+  <label for="edit-mergevars-fname">Name </label>
+ <input placeholder="Name" type="text" id="edit-mergevars-fname" name="mergevars[FNAME]" value="" size="25" maxlength="128" class="form-text" />
+</div>
+<div class="form-item form-type-textfield form-item-mergevars-EMAIL">
+  <label for="edit-mergevars-email">Email <span class="form-required" title="This field is required.">*</span></label>
+ <input placeholder="Email" type="text" id="edit-mergevars-email" name="mergevars[EMAIL]" value="" size="25" maxlength="128" class="form-text required" />
+</div>
+</div><input type="hidden" name="form_build_id" value="form-xTy1qIWLEpPZr-4ZGhhOw0qtSOiRIxt1ULyG2axdOQ8" />
+<input type="hidden" name="form_id" value="mailchimp_signup_subscribe_block_newsletter_form" />
+<div class="captcha"><input type="hidden" name="captcha_sid" value="13663874" />
+<input type="hidden" name="captcha_token" value="9c053ad934e9b88dd8397575627c11a0" />
+<input type="hidden" name="captcha_response" value="Google no captcha" />
+<div class="g-recaptcha" data-sitekey="6LfXfyQUAAAAADb0p-D8OcnXwGyJsyRINHcCIw0Q" data-theme="light" data-type="image"></div></div><div class="form-actions form-wrapper" id="edit-actions"><input type="submit" id="edit-submit" name="op" value="Submit" class="form-submit" /></div></div></form></div>  
+  </div></section></div></div>
+    <!-- !Footer -->
+          <footer id="footer" class="clearfix" role="contentinfo">
+        <div class="region region-footer"><div class="region-inner clearfix"><div id="block-mspiral-core-custom-copyright" class="block block-mspiral-core no-title odd first block-count-18 block-region-footer block-custom-copyright" ><div class="block-inner clearfix">  
+  
+  <div class="block-content content"><p>&copy; Copyright 2020 The Myanmar Times.<span> All rights reserved.</span></p></div>  
+  </div></div><div id="block-block-1" class="block block-block no-title even last block-count-19 block-region-footer block-1" ><div class="block-inner clearfix">  
+  
+  <div class="block-content content"><p>Made by <img alt="" src="/sites/mmtimes.com/files/default_images/inspiral_54x54_0.png" style="height: 27px; width: 27px;" /><a href="https://inspiralcreative.com/" target="_blank">Inspiral Creative</a></p>
+</div>  
+  </div></div></div></div>              </footer>
+    
+  </div>
+</div>    <script>
+    (function(w, d, s, u, a, m) {
+    var p='?l='+escape(w.location)+((d.referrer)? '&amp;r='+escape(d.referrer):'');
+    a = d.createElement(s), m = d.getElementsByTagName(s)[0];
+    a.async = 1;a.src = u+p;m.parentNode.insertBefore(a, m);
+    })(window, document, 'script', '//smart.synergy-e.com/tracker/trk-async.php');       
+  </script>
+  <!-- End unitus x -->
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"ac4612941d","applicationID":"39678350,6170158","transactionName":"NFIGZBRSC0FQUhFaWg0YJVMSWgpcHkEEVFA8WgVeB1QAQG5fCldQPEENVRFsFVNWVA==","queueTime":0,"applicationTime":916,"atts":"GBUFElxIGE8=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+<script type="text/javascript">
+  window._taboola = window._taboola || [];
+  _taboola.push({flush: true});
+</script>
+</html>
